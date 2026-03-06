@@ -13,7 +13,7 @@ class GetGenaiOpenaiApiKeysFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGenaiOpenaiApiKeysFilter({
+  const GetGenaiOpenaiApiKeysFilter({
     this.all,
     required this.key,
     this.matchBy,

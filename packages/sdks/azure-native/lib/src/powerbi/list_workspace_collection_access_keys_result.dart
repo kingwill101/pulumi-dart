@@ -11,7 +11,7 @@ class ListWorkspaceCollectionAccessKeysResult {
   /// Creates a new [ListWorkspaceCollectionAccessKeysResult].
   /// [key1] Access key 1
   /// [key2] Access key 2
-  ListWorkspaceCollectionAccessKeysResult({
+  const ListWorkspaceCollectionAccessKeysResult({
     this.key1,
     this.key2,
   });

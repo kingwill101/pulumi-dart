@@ -11,7 +11,7 @@ class GetListenerDefaultActionFixedResponse {
   /// [contentType] Required.
   /// [messageBody] Required.
   /// [statusCode] Required.
-  GetListenerDefaultActionFixedResponse({
+  const GetListenerDefaultActionFixedResponse({
     required this.contentType,
     required this.messageBody,
     required this.statusCode,

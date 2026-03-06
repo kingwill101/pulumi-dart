@@ -8,7 +8,7 @@ class GetWorkerPoolTemplateNodeSelector {
 
   /// Creates a new [GetWorkerPoolTemplateNodeSelector].
   /// [accelerator] The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-  GetWorkerPoolTemplateNodeSelector({
+  const GetWorkerPoolTemplateNodeSelector({
     required this.accelerator,
   });
 

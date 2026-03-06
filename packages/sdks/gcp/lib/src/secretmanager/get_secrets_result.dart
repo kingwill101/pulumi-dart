@@ -18,7 +18,7 @@ class GetSecretsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [secrets] A list of secrets matching the filter. Structure is defined below.
-  GetSecretsResult({
+  const GetSecretsResult({
     this.filter,
     required this.id,
     required this.project,

@@ -19,7 +19,7 @@ class GetUserDataMappingArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [userDataMappingId] Required.
-  GetUserDataMappingArgs({
+  const GetUserDataMappingArgs({
     required this.consentStoreId,
     required this.datasetId,
     required this.location,

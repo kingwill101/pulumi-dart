@@ -22,7 +22,7 @@ class FirewallPolicyWithRulesRuleMatchLayer4Config {
   /// Creates a new [FirewallPolicyWithRulesRuleMatchLayer4Config].
   /// [ipProtocol] (Output)
   /// [ports] (Output)
-  FirewallPolicyWithRulesRuleMatchLayer4Config({
+  const FirewallPolicyWithRulesRuleMatchLayer4Config({
     required this.ipProtocol,
     this.ports,
   });

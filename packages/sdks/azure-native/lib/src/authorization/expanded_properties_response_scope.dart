@@ -15,7 +15,7 @@ class ExpandedPropertiesResponseScope {
   /// [displayName] Display name of the resource
   /// [id] Scope id of the resource
   /// [type] Type of the resource
-  ExpandedPropertiesResponseScope({
+  const ExpandedPropertiesResponseScope({
     this.displayName,
     this.id,
     this.type,

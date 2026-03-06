@@ -13,7 +13,7 @@ class EnableMigrationInputProperties {
   /// Creates a new [EnableMigrationInputProperties].
   /// [policyId] The policy Id.
   /// [providerSpecificDetails] The provider specific details.
-  EnableMigrationInputProperties({
+  const EnableMigrationInputProperties({
     required this.policyId,
     required this.providerSpecificDetails,
   });

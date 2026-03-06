@@ -15,7 +15,7 @@ class AutoScalePropertiesResponse {
   /// [enabled] Whether automatic scaling is enabled for the Big Data pool.
   /// [maxNodeCount] The maximum number of nodes the Big Data pool can support.
   /// [minNodeCount] The minimum number of nodes the Big Data pool can support.
-  AutoScalePropertiesResponse({
+  const AutoScalePropertiesResponse({
     this.enabled,
     this.maxNodeCount,
     this.minNodeCount,

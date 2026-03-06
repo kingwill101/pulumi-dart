@@ -68,7 +68,7 @@ class GetListenersListener {
   /// [serverGroupId] The ID of the server group.
   /// [startPort] Full Port listens to the starting port. Valid values: `0` ~ `65535`.
   /// [status] The status of the resource.
-  GetListenersListener({
+  const GetListenersListener({
     required this.alpnEnabled,
     required this.alpnPolicy,
     required this.caCertificateIds,

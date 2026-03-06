@@ -8,7 +8,7 @@ class GetJobDefinitionEksPropertyPodPropertyVolumeHostPath {
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolumeHostPath].
   /// [path] The path of the file or directory on the host to mount into containers on the pod.
-  GetJobDefinitionEksPropertyPodPropertyVolumeHostPath({
+  const GetJobDefinitionEksPropertyPodPropertyVolumeHostPath({
     required this.path,
   });
 

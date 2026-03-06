@@ -8,7 +8,7 @@ class AppJobConfig {
 
   /// Creates a new [AppJobConfig].
   /// [buildComputeType] Size of the build instance. Valid values: `STANDARD_8GB`, `LARGE_16GB`, and `XLARGE_72GB`. Default: `STANDARD_8GB`.
-  AppJobConfig({
+  const AppJobConfig({
     this.buildComputeType,
   });
 

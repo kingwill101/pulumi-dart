@@ -31,7 +31,7 @@ class VirtualNetworkApplianceArgs {
   /// [subnet] The reference to the subnet resource.
   /// [tags] Resource tags.
   /// [virtualNetworkApplianceName] The name of the virtual network appliance.
-  VirtualNetworkApplianceArgs({
+  const VirtualNetworkApplianceArgs({
     this.bandwidthInGbps,
     this.id,
     this.location,

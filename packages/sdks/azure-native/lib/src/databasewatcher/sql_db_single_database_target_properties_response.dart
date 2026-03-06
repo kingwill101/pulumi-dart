@@ -29,7 +29,7 @@ class SqlDbSingleDatabaseTargetPropertiesResponse {
   /// [targetAuthenticationType] The type of authentication to use when connecting to a target.
   /// [targetType] Discriminator property for TargetProperties.
   /// [targetVault] To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-  SqlDbSingleDatabaseTargetPropertiesResponse({
+  const SqlDbSingleDatabaseTargetPropertiesResponse({
     required this.connectionServerName,
     required this.provisioningState,
     this.readIntent,

@@ -30,7 +30,7 @@ class GetSmtpUsernameResult {
   /// [tenantId] The tenant of the linked Entra Application.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [username] The SMTP username. Could be free form or in the email address format.
-  GetSmtpUsernameResult({
+  const GetSmtpUsernameResult({
     required this.azureApiVersion,
     required this.entraApplicationId,
     required this.id,

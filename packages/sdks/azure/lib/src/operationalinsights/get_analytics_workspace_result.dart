@@ -35,7 +35,7 @@ class GetAnalyticsWorkspaceResult {
   /// [sku] The SKU of the Log Analytics Workspace.
   /// [tags] A mapping of tags assigned to the resource.
   /// [workspaceId] The Workspace (or Customer) ID for the Log Analytics Workspace.
-  GetAnalyticsWorkspaceResult({
+  const GetAnalyticsWorkspaceResult({
     required this.dailyQuotaGb,
     required this.id,
     required this.location,

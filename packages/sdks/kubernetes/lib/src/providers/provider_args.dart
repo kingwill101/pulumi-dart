@@ -86,7 +86,7 @@ class ProviderArgs {
   /// [skipUpdateUnreachable] If present and set to true, the provider will skip resources update associated with an unreachable Kubernetes cluster from Pulumi state
   /// [suppressDeprecationWarnings] If present and set to true, suppress apiVersion deprecation warnings from the CLI.
   /// [suppressHelmHookWarnings] If present and set to true, suppress unsupported Helm hook warnings from the CLI.
-  ProviderArgs({
+  const ProviderArgs({
     this.alwaysRender,
     this.cluster,
     this.clusterIdentifier,

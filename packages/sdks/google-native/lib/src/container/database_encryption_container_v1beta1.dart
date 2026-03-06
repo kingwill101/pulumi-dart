@@ -13,7 +13,7 @@ class DatabaseEncryptionContainerV1beta1 {
   /// Creates a new [DatabaseEncryptionContainerV1beta1].
   /// [keyName] Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   /// [state] The desired state of etcd encryption.
-  DatabaseEncryptionContainerV1beta1({
+  const DatabaseEncryptionContainerV1beta1({
     this.keyName,
     this.state,
   });

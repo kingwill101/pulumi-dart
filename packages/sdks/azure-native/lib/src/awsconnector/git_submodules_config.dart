@@ -9,7 +9,7 @@ class GitSubmodulesConfig {
 
   /// Creates a new [GitSubmodulesConfig].
   /// [fetchSubmodules] &lt;p&gt; Set to true to fetch Git submodules for your CodeBuild build project. &lt;/p&gt;
-  GitSubmodulesConfig({
+  const GitSubmodulesConfig({
     this.fetchSubmodules,
   });
 

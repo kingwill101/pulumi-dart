@@ -8,7 +8,7 @@ class AvroOptions {
 
   /// Creates a new [AvroOptions].
   /// [useAvroLogicalTypes] [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
-  AvroOptions({
+  const AvroOptions({
     this.useAvroLogicalTypes,
   });
 

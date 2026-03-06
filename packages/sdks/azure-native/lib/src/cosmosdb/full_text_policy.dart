@@ -13,7 +13,7 @@ class FullTextPolicy {
   /// Creates a new [FullTextPolicy].
   /// [defaultLanguage] The default language for a full text paths.
   /// [fullTextPaths] List of FullText Paths
-  FullTextPolicy({
+  const FullTextPolicy({
     this.defaultLanguage,
     this.fullTextPaths,
   });

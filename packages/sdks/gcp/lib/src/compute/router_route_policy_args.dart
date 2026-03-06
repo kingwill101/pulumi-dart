@@ -31,7 +31,7 @@ class RouterRoutePolicyArgs {
   /// [router] The name of the Cloud Router in which this route policy will be configured.
   /// [terms] List of terms (the order in the list is not important, they are evaluated in order of priority).
   /// [type] This is policy's type, which is one of IMPORT or EXPORT
-  RouterRoutePolicyArgs({
+  const RouterRoutePolicyArgs({
     this.name,
     this.project,
     this.region,

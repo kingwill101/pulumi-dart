@@ -15,7 +15,7 @@ class GetMultipleActivationKeyArgs {
   /// Creates a new [GetMultipleActivationKeyArgs].
   /// [multipleActivationKeyName] The name of the MAK key.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMultipleActivationKeyArgs({
+  const GetMultipleActivationKeyArgs({
     required this.multipleActivationKeyName,
     required this.resourceGroupName,
   });

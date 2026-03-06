@@ -9,7 +9,7 @@ class DbInstanceLogDeliveryConfiguration {
 
   /// Creates a new [DbInstanceLogDeliveryConfiguration].
   /// [s3Configuration] Configuration for S3 bucket log delivery.
-  DbInstanceLogDeliveryConfiguration({
+  const DbInstanceLogDeliveryConfiguration({
     this.s3Configuration,
   });
 

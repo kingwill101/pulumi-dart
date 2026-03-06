@@ -26,7 +26,7 @@ class GetInstancePscInstanceConfigPscAutoConnection {
   /// [consumerProject] The consumer project to which the PSC service automation endpoint will
   /// [ipAddress] The IP address of the PSC service automation endpoint.
   /// [status] The status of the PSC service automation connection.
-  GetInstancePscInstanceConfigPscAutoConnection({
+  const GetInstancePscInstanceConfigPscAutoConnection({
     required this.consumerNetwork,
     required this.consumerNetworkStatus,
     required this.consumerProject,

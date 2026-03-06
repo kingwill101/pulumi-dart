@@ -17,7 +17,7 @@ class GetV2RuntimeVersionsArgs {
   /// Creates a new [GetV2RuntimeVersionsArgs].
   /// [project] The project to list versions for. If it
   /// [zone] The zone to list versions for. If it
-  GetV2RuntimeVersionsArgs({
+  const GetV2RuntimeVersionsArgs({
     this.project,
     this.zone,
   });

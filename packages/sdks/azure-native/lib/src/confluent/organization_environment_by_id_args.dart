@@ -29,7 +29,7 @@ class OrganizationEnvironmentByIdArgs {
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [streamGovernanceConfig] Stream governance configuration
-  OrganizationEnvironmentByIdArgs({
+  const OrganizationEnvironmentByIdArgs({
     this.environmentId,
     this.kind,
     this.metadata,

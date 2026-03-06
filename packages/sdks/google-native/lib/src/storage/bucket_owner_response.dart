@@ -12,7 +12,7 @@ class BucketOwnerResponse {
   /// Creates a new [BucketOwnerResponse].
   /// [entity] The entity, in the form project-owner-projectId.
   /// [entityId] The ID for the entity.
-  BucketOwnerResponse({
+  const BucketOwnerResponse({
     required this.entity,
     required this.entityId,
   });

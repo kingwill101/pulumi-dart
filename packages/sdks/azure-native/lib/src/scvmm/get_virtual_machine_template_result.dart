@@ -88,7 +88,7 @@ class GetVirtualMachineTemplateResult {
   /// [type] Resource Type
   /// [uuid] Unique ID of the virtual machine template.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  GetVirtualMachineTemplateResult({
+  const GetVirtualMachineTemplateResult({
     required this.azureApiVersion,
     required this.computerName,
     required this.cpuCount,

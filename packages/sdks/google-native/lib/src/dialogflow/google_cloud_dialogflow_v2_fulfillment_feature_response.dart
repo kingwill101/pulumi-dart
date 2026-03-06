@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2FulfillmentFeatureResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2FulfillmentFeatureResponse].
   /// [type] The type of the feature that enabled for fulfillment.
-  GoogleCloudDialogflowV2FulfillmentFeatureResponse({
+  const GoogleCloudDialogflowV2FulfillmentFeatureResponse({
     required this.type,
   });
 

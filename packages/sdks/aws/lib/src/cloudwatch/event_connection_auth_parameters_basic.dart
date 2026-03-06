@@ -11,7 +11,7 @@ class EventConnectionAuthParametersBasic {
   /// Creates a new [EventConnectionAuthParametersBasic].
   /// [password] A password for the authorization. Created and stored in AWS Secrets Manager.
   /// [username] A username for the authorization.
-  EventConnectionAuthParametersBasic({
+  const EventConnectionAuthParametersBasic({
     required this.password,
     required this.username,
   });

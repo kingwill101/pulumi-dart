@@ -64,7 +64,7 @@ class GetApiProductResult {
   /// [quotaInterval] Time interval over which the number of request messages is calculated.
   /// [quotaTimeUnit] Time unit defined for the `quotaInterval`. Valid values include `minute`, `hour`, `day`, or `month`.
   /// [scopes] Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
-  GetApiProductResult({
+  const GetApiProductResult({
     required this.apiResources,
     required this.approvalType,
     required this.attributes,

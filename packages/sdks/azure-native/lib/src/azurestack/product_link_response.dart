@@ -12,7 +12,7 @@ class ProductLinkResponse {
   /// Creates a new [ProductLinkResponse].
   /// [displayName] The description of the link.
   /// [uri] The URI corresponding to the link.
-  ProductLinkResponse({
+  const ProductLinkResponse({
     this.displayName,
     this.uri,
   });

@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources {
   /// Creates a new [GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources].
   /// [executorsCount] Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
   /// [maxExecutorsCount] Optional. Max configurable executors. If max_executors_count &gt; executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
-  GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources({
+  const GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources({
     this.executorsCount,
     this.maxExecutorsCount,
   });

@@ -45,7 +45,7 @@ class GetTemplatesResult {
   /// [templateFormat] Optional.
   /// [templateType] Optional.
   /// [templates] A list of OOS Templates. Each element contains the following attributes:
-  GetTemplatesResult({
+  const GetTemplatesResult({
     this.category,
     this.createdBy,
     this.createdDate,

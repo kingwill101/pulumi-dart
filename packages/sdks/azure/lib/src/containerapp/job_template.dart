@@ -17,7 +17,7 @@ class JobTemplate {
   /// [containers] A `container` block as defined below.
   /// [initContainers] A `init_container` block as defined below.
   /// [volumes] A `volume` block as defined below.
-  JobTemplate({
+  const JobTemplate({
     required this.containers,
     this.initContainers,
     this.volumes,

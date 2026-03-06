@@ -40,7 +40,7 @@ class GoogleCloudStorageLinkedServiceResponse {
   /// [serviceUrl] This value specifies the endpoint to access with the Google Cloud Storage Connector. This is an optional property; change it only if you want to try a different service endpoint or want to switch between https and http. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  GoogleCloudStorageLinkedServiceResponse({
+  const GoogleCloudStorageLinkedServiceResponse({
     this.accessKeyId,
     this.annotations,
     this.connectVia,

@@ -14,7 +14,7 @@ class EncryptionSettingsElement {
   /// Creates a new [EncryptionSettingsElement].
   /// [diskEncryptionKey] Key Vault Secret Url and vault id of the disk encryption key
   /// [keyEncryptionKey] Key Vault Key Url and vault id of the key encryption key. KeyEncryptionKey is optional and when provided is used to unwrap the disk encryption key.
-  EncryptionSettingsElement({
+  const EncryptionSettingsElement({
     this.diskEncryptionKey,
     this.keyEncryptionKey,
   });

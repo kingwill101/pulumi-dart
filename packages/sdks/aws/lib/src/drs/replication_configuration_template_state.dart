@@ -66,7 +66,7 @@ class ReplicationConfigurationTemplateState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [useDedicatedReplicationServer] Whether to use a dedicated Replication Server in the replication staging area.
-  ReplicationConfigurationTemplateState({
+  const ReplicationConfigurationTemplateState({
     this.arn,
     this.associateDefaultSecurityGroup,
     this.autoReplicateNewDisks,

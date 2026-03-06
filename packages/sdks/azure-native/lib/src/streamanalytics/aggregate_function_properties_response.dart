@@ -24,7 +24,7 @@ class AggregateFunctionPropertiesResponse {
   /// [inputs] Optional.
   /// [output] Describes the output of a function.
   /// [type] Indicates the type of function.
-  AggregateFunctionPropertiesResponse({
+  const AggregateFunctionPropertiesResponse({
     this.binding,
     required this.etag,
     this.inputs,

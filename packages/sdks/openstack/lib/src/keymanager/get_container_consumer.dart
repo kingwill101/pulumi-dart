@@ -11,7 +11,7 @@ class GetContainerConsumer {
   /// Creates a new [GetContainerConsumer].
   /// [name] The Container name.
   /// [url] The consumer URL.
-  GetContainerConsumer({
+  const GetContainerConsumer({
     this.name,
     this.url,
   });

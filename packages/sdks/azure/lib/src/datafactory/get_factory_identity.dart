@@ -17,7 +17,7 @@ class GetFactoryIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Data Factory.
   /// [tenantId] The Tenant ID associated with the VSTS account.
   /// [type] The type of Managed Service Identity that is configured on this Data Factory.
-  GetFactoryIdentity({
+  const GetFactoryIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

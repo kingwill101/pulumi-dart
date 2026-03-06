@@ -30,7 +30,7 @@ class VpnGatewayConnectionState {
   /// [trafficSelectorPolicies] One or more `traffic_selector_policy` blocks as defined below.
   /// [vpnGatewayId] The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   /// [vpnLinks] One or more `vpn_link` blocks as defined below.
-  VpnGatewayConnectionState({
+  const VpnGatewayConnectionState({
     this.internetSecurityEnabled,
     this.name,
     this.remoteVpnSiteId,

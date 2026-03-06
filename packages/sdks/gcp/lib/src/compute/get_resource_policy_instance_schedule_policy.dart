@@ -23,7 +23,7 @@ class GetResourcePolicyInstanceSchedulePolicy {
   /// [timeZone] Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
   /// [vmStartSchedules] Specifies the schedule for starting instances.
   /// [vmStopSchedules] Specifies the schedule for stopping instances.
-  GetResourcePolicyInstanceSchedulePolicy({
+  const GetResourcePolicyInstanceSchedulePolicy({
     required this.expirationTime,
     required this.startTime,
     required this.timeZone,

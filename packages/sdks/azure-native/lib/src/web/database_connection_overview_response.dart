@@ -22,7 +22,7 @@ class DatabaseConnectionOverviewResponse {
   /// [name] If present, the name of this database connection resource.
   /// [region] The region of the database resource.
   /// [resourceId] The resource id of the database.
-  DatabaseConnectionOverviewResponse({
+  const DatabaseConnectionOverviewResponse({
     required this.configurationFiles,
     required this.connectionIdentity,
     required this.name,

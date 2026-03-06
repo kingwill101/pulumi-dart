@@ -41,7 +41,7 @@ class VirtualPhysicalConnectionArgs {
   /// [virtualPhysicalConnectionName] The name of the physical connection.
   /// [vlanId] The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
   /// [vpconnAliUid] The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
-  VirtualPhysicalConnectionArgs({
+  const VirtualPhysicalConnectionArgs({
     this.description,
     this.dryRun,
     this.expectSpec,

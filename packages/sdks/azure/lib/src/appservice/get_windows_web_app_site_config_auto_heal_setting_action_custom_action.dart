@@ -11,7 +11,7 @@ class GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
   /// Creates a new [GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction].
   /// [executable] The command run when this `auto_heal` action is triggered.
   /// [parameters] The parameters passed to the `executable`.
-  GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction({
+  const GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction({
     required this.executable,
     required this.parameters,
   });

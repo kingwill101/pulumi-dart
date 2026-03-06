@@ -64,7 +64,7 @@ class MetricArgs {
   /// [name] The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
   /// [project] The ID of the project in which the resource belongs.
   /// [valueExtractor] A valueExtractor is required when using a distribution logs-based metric to extract the values to
-  MetricArgs({
+  const MetricArgs({
     this.bucketName,
     this.bucketOptions,
     this.description,

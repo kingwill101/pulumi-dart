@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1AttributeResponse {
   /// Creates a new [GoogleCloudApigeeV1AttributeResponse].
   /// [name] API key of the attribute.
   /// [value] Value of the attribute.
-  GoogleCloudApigeeV1AttributeResponse({
+  const GoogleCloudApigeeV1AttributeResponse({
     required this.name,
     required this.value,
   });

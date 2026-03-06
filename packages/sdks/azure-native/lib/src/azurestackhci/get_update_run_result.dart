@@ -65,7 +65,7 @@ class GetUpdateRunResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [timeStarted] Timestamp of the update run was started.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetUpdateRunResult({
+  const GetUpdateRunResult({
     required this.azureApiVersion,
     this.description,
     this.duration,

@@ -21,7 +21,7 @@ class GetDockerImageArgs {
   /// [location] The location of the artifact registry.
   /// [project] The project ID in which the resource belongs. If it is not provided, the provider project is used.
   /// [repositoryId] The last part of the repository name to fetch from.
-  GetDockerImageArgs({
+  const GetDockerImageArgs({
     required this.imageName,
     required this.location,
     this.project,

@@ -9,7 +9,7 @@ class ServiceConnectTlsCertificateAuthority {
 
   /// Creates a new [ServiceConnectTlsCertificateAuthority].
   /// [awsPcaAuthorityArn] The ARN of the AWS Private Certificate Authority certificate.
-  ServiceConnectTlsCertificateAuthority({
+  const ServiceConnectTlsCertificateAuthority({
     this.awsPcaAuthorityArn,
   });
 

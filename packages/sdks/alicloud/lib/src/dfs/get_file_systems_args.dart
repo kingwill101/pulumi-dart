@@ -18,7 +18,7 @@ class GetFileSystemsArgs {
   /// [ids] A list of File System IDs.
   /// [nameRegex] A regex string to filter results by File System name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetFileSystemsArgs({
+  const GetFileSystemsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

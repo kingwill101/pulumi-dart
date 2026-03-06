@@ -15,7 +15,7 @@ class ForwardingRuleServiceDirectoryRegistrationResponseComputeV1 {
   /// [namespace] Service Directory namespace to register the forwarding rule under.
   /// [service] Service Directory service to register the forwarding rule under.
   /// [serviceDirectoryRegion] [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
-  ForwardingRuleServiceDirectoryRegistrationResponseComputeV1({
+  const ForwardingRuleServiceDirectoryRegistrationResponseComputeV1({
     required this.namespace,
     required this.service,
     required this.serviceDirectoryRegion,

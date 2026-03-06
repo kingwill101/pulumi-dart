@@ -42,7 +42,7 @@ class CacheToS3 {
   /// [secretAccessKey] Defaults to `$AWS_SECRET_ACCESS_KEY`.
   /// [sessionToken] Defaults to `$AWS_SESSION_TOKEN`.
   /// [usePathStyle] Uses `bucket` in the URL instead of hostname when `true`.
-  CacheToS3({
+  const CacheToS3({
     this.accessKeyId,
     this.blobsPrefix,
     required this.bucket,

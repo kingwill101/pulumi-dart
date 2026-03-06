@@ -27,7 +27,7 @@ class TemplateArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [templateName] The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
   /// [versionName] The name of template version.
-  TemplateArgs({
+  const TemplateArgs({
     this.autoDeleteExecutions,
     required this.content,
     this.resourceGroupId,

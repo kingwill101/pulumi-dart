@@ -17,7 +17,7 @@ class GetUserArgs {
   /// [instance] Required.
   /// [name] Required.
   /// [project] Optional.
-  GetUserArgs({
+  const GetUserArgs({
     this.host,
     required this.instance,
     required this.name,

@@ -42,7 +42,7 @@ class GetAppIngress {
   /// [targetPort] The target port on the container for the Ingress traffic.
   /// [trafficWeights] A `traffic_weight` block as detailed below.
   /// [transport] The transport method for the Ingress.
-  GetAppIngress({
+  const GetAppIngress({
     required this.allowInsecureConnections,
     required this.clientCertificateMode,
     required this.cors,

@@ -42,7 +42,7 @@ class ResponsePlanState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The tags applied to the response plan.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ResponsePlanState({
+  const ResponsePlanState({
     this.action,
     this.arn,
     this.chatChannels,

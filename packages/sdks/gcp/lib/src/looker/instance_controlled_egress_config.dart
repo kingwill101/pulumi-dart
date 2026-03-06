@@ -12,7 +12,7 @@ class InstanceControlledEgressConfig {
   /// Creates a new [InstanceControlledEgressConfig].
   /// [egressFqdns] List of fully qualified domain names to be added to the allowlist for
   /// [marketplaceEnabled] Whether the Looker Marketplace is enabled.
-  InstanceControlledEgressConfig({
+  const InstanceControlledEgressConfig({
     this.egressFqdns,
     this.marketplaceEnabled,
   });

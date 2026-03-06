@@ -11,7 +11,7 @@ class AuthorityUserDefinedAccessUrls {
   /// Creates a new [AuthorityUserDefinedAccessUrls].
   /// [aiaIssuingCertificateUrls] A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
   /// [crlAccessUrls] A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
-  AuthorityUserDefinedAccessUrls({
+  const AuthorityUserDefinedAccessUrls({
     this.aiaIssuingCertificateUrls,
     this.crlAccessUrls,
   });

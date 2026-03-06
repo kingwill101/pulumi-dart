@@ -45,7 +45,7 @@ class VirtualNetworkPeeringState {
   /// [useRemoteGateways] Can remote gateways be used on the Databricks virtual network? Defaults to `false`.
   /// [virtualNetworkId] The ID of the internal Virtual Network used by the DataBricks Workspace.
   /// [workspaceId] The ID of the Databricks Workspace that this Databricks Virtual Network Peering is bound. Changing this forces a new resource to be created.
-  VirtualNetworkPeeringState({
+  const VirtualNetworkPeeringState({
     this.addressSpacePrefixes,
     this.allowForwardedTraffic,
     this.allowGatewayTransit,

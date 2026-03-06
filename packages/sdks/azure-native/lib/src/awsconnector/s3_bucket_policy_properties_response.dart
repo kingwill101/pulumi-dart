@@ -34,7 +34,7 @@ class S3BucketPolicyPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  S3BucketPolicyPropertiesResponse({
+  const S3BucketPolicyPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

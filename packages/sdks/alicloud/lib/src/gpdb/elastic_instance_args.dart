@@ -67,7 +67,7 @@ class ElasticInstanceArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] The virtual switch ID to launch ADB PG instances in one VPC.
   /// [zoneId] The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
-  ElasticInstanceArgs({
+  const ElasticInstanceArgs({
     this.dbInstanceCategory,
     this.dbInstanceDescription,
     this.encryptionKey,

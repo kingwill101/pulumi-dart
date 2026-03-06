@@ -53,7 +53,7 @@ class ElasticsearchState {
   /// [resourceGroupName] The name of the Resource Group where the Elasticsearch resource should exist. Changing this forces a new Elasticsearch to be created.
   /// [skuName] Specifies the name of the SKU for this Elasticsearch. Changing this forces a new Elasticsearch to be created.
   /// [tags] A mapping of tags which should be assigned to the Elasticsearch resource.
-  ElasticsearchState({
+  const ElasticsearchState({
     this.elasticCloudDeploymentId,
     this.elasticCloudEmailAddress,
     this.elasticCloudSsoDefaultUrl,

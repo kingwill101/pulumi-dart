@@ -60,7 +60,7 @@ class OdbSubnetState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [purpose] Purpose of the subnet.
   /// [state] State of the ODB Subnet.
-  OdbSubnetState({
+  const OdbSubnetState({
     this.cidrRange,
     this.createTime,
     this.deletionProtection,

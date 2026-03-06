@@ -63,7 +63,7 @@ class EnvironmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   /// [userParameters] The user parameters that are used in the environment.
-  EnvironmentState({
+  const EnvironmentState({
     this.accountIdentifier,
     this.accountRegion,
     this.blueprintIdentifier,

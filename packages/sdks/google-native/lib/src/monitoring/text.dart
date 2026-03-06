@@ -17,7 +17,7 @@ class Text {
   /// [content] The text content to be displayed.
   /// [format] How the text content is formatted.
   /// [style] How the text is styled
-  Text({
+  const Text({
     this.content,
     this.format,
     this.style,

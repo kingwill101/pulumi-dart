@@ -32,7 +32,7 @@ class GetDeliveryChannelsChannel {
   /// [description] The description of the delivery channel.
   /// [id] The ID of the Config Delivery Channel.
   /// [status] The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
-  GetDeliveryChannelsChannel({
+  const GetDeliveryChannelsChannel({
     required this.deliveryChannelAssumeRoleArn,
     required this.deliveryChannelCondition,
     required this.deliveryChannelId,

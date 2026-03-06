@@ -45,7 +45,7 @@ class FeatureGroupArgs {
   /// [roleArn] The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offline_store_config` is provided.
   /// [tags] Map of resource tags for the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [throughputConfig] Optional.
-  FeatureGroupArgs({
+  const FeatureGroupArgs({
     this.description,
     required this.eventTimeFeatureName,
     required this.featureDefinitions,

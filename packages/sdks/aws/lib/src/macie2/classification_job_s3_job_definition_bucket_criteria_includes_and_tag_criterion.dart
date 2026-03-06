@@ -12,7 +12,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion {
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion].
   /// [comparator] The operator to use in the condition. Valid combination and values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
   /// [tagValues] The  tag key and value pairs to use in the condition. One or more blocks are allowed. (documented below)
-  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion({
+  const ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion({
     this.comparator,
     this.tagValues,
   });

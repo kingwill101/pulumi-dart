@@ -29,7 +29,7 @@ class GetPeeringResult {
   /// [state] The current state of this Peering.
   /// [statusMessage] Additional information about the current status of this peering, if available.
   /// [updateTime] Last update time.
-  GetPeeringResult({
+  const GetPeeringResult({
     required this.authorizedNetwork,
     required this.createTime,
     required this.domainResource,

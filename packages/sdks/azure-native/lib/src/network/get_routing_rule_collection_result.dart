@@ -41,7 +41,7 @@ class GetRoutingRuleCollectionResult {
   /// [resourceGuid] Unique identifier for this resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetRoutingRuleCollectionResult({
+  const GetRoutingRuleCollectionResult({
     required this.appliesTo,
     required this.azureApiVersion,
     this.description,

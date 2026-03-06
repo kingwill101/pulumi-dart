@@ -29,7 +29,7 @@ class FluxConfigurationKustomization {
   /// [retryIntervalInSeconds] The interval at which to re-reconcile the kustomization on the cluster in the event of failure on reconciliation. Defaults to `600`.
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the kustomization on the cluster. Defaults to `600`.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the kustomization on the cluster. Defaults to `600`.
-  FluxConfigurationKustomization({
+  const FluxConfigurationKustomization({
     this.dependsOns,
     this.garbageCollectionEnabled,
     required this.name,

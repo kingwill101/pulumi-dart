@@ -58,7 +58,7 @@ class RetrohuntState {
   /// [project] The ID of the project in which the resource belongs.
   /// [rule] The Rule ID of the rule.
   /// [state] Output only. The state of the retrohunt.
-  RetrohuntState({
+  const RetrohuntState({
     this.retrohuntId,
     this.executionIntervals,
     this.instance,

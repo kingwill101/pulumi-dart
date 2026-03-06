@@ -12,7 +12,7 @@ class Guaranteed {
   /// Creates a new [Guaranteed].
   /// [minDuration] Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
   /// [reserved] Optional. Specifies the request should be scheduled on reserved capacity.
-  Guaranteed({
+  const Guaranteed({
     this.minDuration,
     this.reserved,
   });

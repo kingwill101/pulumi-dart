@@ -11,7 +11,7 @@ class DomainOsBios {
   /// Creates a new [DomainOsBios].
   /// [rebootTimeout] Defines the timeout duration for rebooting the domain, controlling wait time before action is taken.
   /// [useSerial] Configures whether the BIOS should use the serial console for output.
-  DomainOsBios({
+  const DomainOsBios({
     this.rebootTimeout,
     this.useSerial,
   });

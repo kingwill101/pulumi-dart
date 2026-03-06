@@ -12,7 +12,7 @@ class ClusterPropertiesKeyEncryptionKeyIdentity {
   /// Creates a new [ClusterPropertiesKeyEncryptionKeyIdentity].
   /// [identityType] Only userAssignedIdentity is supported in this API version; other types may be supported in the future
   /// [userAssignedIdentityResourceId] User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/&lt;sub uuid&gt;/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-  ClusterPropertiesKeyEncryptionKeyIdentity({
+  const ClusterPropertiesKeyEncryptionKeyIdentity({
     this.identityType,
     this.userAssignedIdentityResourceId,
   });

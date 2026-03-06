@@ -27,7 +27,7 @@ class ComputePolicyResponse {
   /// [objectId] The AAD object identifier for the entity to create a policy for.
   /// [objectType] The type of AAD object the object identifier refers to.
   /// [type] The resource type.
-  ComputePolicyResponse({
+  const ComputePolicyResponse({
     required this.id,
     required this.maxDegreeOfParallelismPerJob,
     required this.minPriorityPerJob,

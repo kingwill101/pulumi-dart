@@ -22,7 +22,7 @@ class ConnectionEventingConfigAuthConfig {
   /// [authKey] The type of authentication configured.
   /// [authType] authType of the Connection
   /// [userPassword] User password for Authentication.
-  ConnectionEventingConfigAuthConfig({
+  const ConnectionEventingConfigAuthConfig({
     this.additionalVariables,
     this.authKey,
     required this.authType,

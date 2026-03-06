@@ -14,7 +14,7 @@ class GetAppSpecServiceCorsAllowOrigins {
   /// [exact] The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
   /// [prefix] The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
   /// [regex] The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
-  GetAppSpecServiceCorsAllowOrigins({
+  const GetAppSpecServiceCorsAllowOrigins({
     this.exact,
     this.prefix,
     this.regex,

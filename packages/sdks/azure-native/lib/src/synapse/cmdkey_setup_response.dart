@@ -20,7 +20,7 @@ class CmdkeySetupResponse {
   /// [targetName] The server name of data source access.
   /// [type] The type of custom setup.
   /// [userName] The user name of data source access.
-  CmdkeySetupResponse({
+  const CmdkeySetupResponse({
     required this.password,
     required this.targetName,
     required this.type,

@@ -12,7 +12,7 @@ class PublicIPPrefixSkuResponse {
   /// Creates a new [PublicIPPrefixSkuResponse].
   /// [name] Name of a public IP prefix SKU.
   /// [tier] Tier of a public IP prefix SKU.
-  PublicIPPrefixSkuResponse({
+  const PublicIPPrefixSkuResponse({
     this.name,
     this.tier,
   });

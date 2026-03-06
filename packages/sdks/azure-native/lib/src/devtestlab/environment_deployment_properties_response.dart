@@ -13,7 +13,7 @@ class EnvironmentDeploymentPropertiesResponse {
   /// Creates a new [EnvironmentDeploymentPropertiesResponse].
   /// [armTemplateId] The Azure Resource Manager template's identifier.
   /// [parameters] The parameters of the Azure Resource Manager template.
-  EnvironmentDeploymentPropertiesResponse({
+  const EnvironmentDeploymentPropertiesResponse({
     this.armTemplateId,
     this.parameters,
   });

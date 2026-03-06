@@ -320,7 +320,7 @@ class DdrInstanceState {
   /// [zoneId] The Zone to launch the DB instance. It supports multiple zone.
   /// [zoneIdSlaveA] The region ID of the secondary instance if you create a secondary instance.
   /// [zoneIdSlaveB] The region ID of the log instance if you create a log instance.
-  DdrInstanceState({
+  const DdrInstanceState({
     this.acl,
     this.autoRenew,
     this.autoRenewPeriod,

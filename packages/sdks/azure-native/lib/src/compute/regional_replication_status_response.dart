@@ -18,7 +18,7 @@ class RegionalReplicationStatusResponse {
   /// [progress] It indicates progress of the replication job.
   /// [region] The region to which the gallery image version is being replicated to.
   /// [state] This is the regional replication state.
-  RegionalReplicationStatusResponse({
+  const RegionalReplicationStatusResponse({
     required this.details,
     required this.progress,
     required this.region,

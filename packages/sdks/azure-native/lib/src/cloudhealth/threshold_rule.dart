@@ -12,7 +12,7 @@ class ThresholdRule {
   /// Creates a new [ThresholdRule].
   /// [operator] Operator how to compare the signal value with the threshold
   /// [threshold] Threshold value
-  ThresholdRule({
+  const ThresholdRule({
     required this.operator,
     required this.threshold,
   });

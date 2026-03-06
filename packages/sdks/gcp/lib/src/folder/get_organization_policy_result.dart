@@ -28,7 +28,7 @@ class GetOrganizationPolicyResult {
   /// [restorePolicies] Required.
   /// [updateTime] Required.
   /// [version] Required.
-  GetOrganizationPolicyResult({
+  const GetOrganizationPolicyResult({
     required this.booleanPolicies,
     required this.constraint,
     required this.etag,

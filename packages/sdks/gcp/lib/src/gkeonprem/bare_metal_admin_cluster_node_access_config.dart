@@ -9,7 +9,7 @@ class BareMetalAdminClusterNodeAccessConfig {
 
   /// Creates a new [BareMetalAdminClusterNodeAccessConfig].
   /// [loginUser] LoginUser is the user name used to access node machines.
-  BareMetalAdminClusterNodeAccessConfig({
+  const BareMetalAdminClusterNodeAccessConfig({
     this.loginUser,
   });
 

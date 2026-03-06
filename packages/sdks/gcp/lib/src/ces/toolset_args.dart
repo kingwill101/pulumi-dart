@@ -41,7 +41,7 @@ class ToolsetArgs {
   /// [openApiToolset] A toolset that contains a list of tools that are defined by an OpenAPI
   /// [project] The ID of the project in which the resource belongs.
   /// [toolsetId] The ID to use for the toolset, which will become the final component of
-  ToolsetArgs({
+  const ToolsetArgs({
     required this.app,
     this.description,
     this.displayName,

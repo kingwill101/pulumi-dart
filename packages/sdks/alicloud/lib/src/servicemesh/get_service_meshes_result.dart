@@ -27,7 +27,7 @@ class GetServiceMeshesResult {
   /// [names] A list of Service Mesh names.
   /// [outputFile] Optional.
   /// [status] The status of the Service Mesh instance.
-  GetServiceMeshesResult({
+  const GetServiceMeshesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

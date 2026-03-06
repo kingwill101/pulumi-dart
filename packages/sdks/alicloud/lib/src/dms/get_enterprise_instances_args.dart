@@ -39,7 +39,7 @@ class GetEnterpriseInstancesArgs {
   /// [searchKey] The keyword used to query database instances.
   /// [status] Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
   /// [tid] The ID of the tenant in Data Management (DMS) Enterprise.
-  GetEnterpriseInstancesArgs({
+  const GetEnterpriseInstancesArgs({
     this.envType,
     this.instanceAliasRegex,
     this.instanceSource,

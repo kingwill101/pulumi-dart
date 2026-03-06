@@ -15,7 +15,7 @@ class FunctionBuildConfigSourceStorageSource {
   /// [bucket] Google Cloud Storage bucket containing the source
   /// [generation] Google Cloud Storage generation for the object. If the generation
   /// [object_] Google Cloud Storage object containing the source.
-  FunctionBuildConfigSourceStorageSource({
+  const FunctionBuildConfigSourceStorageSource({
     this.bucket,
     this.generation,
     this.object_,

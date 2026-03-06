@@ -17,7 +17,7 @@ class GetRealTimeLogDeliveriesArgs {
   /// [domain] Required.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
-  GetRealTimeLogDeliveriesArgs({
+  const GetRealTimeLogDeliveriesArgs({
     required this.domain,
     this.outputFile,
     this.status,

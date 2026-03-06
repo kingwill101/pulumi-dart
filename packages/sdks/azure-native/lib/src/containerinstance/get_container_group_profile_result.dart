@@ -81,7 +81,7 @@ class GetContainerGroupProfileResult {
   /// [type] The resource type.
   /// [volumes] The list of volumes that can be mounted by containers in this container group.
   /// [zones] The zones for the container group.
-  GetContainerGroupProfileResult({
+  const GetContainerGroupProfileResult({
     required this.azureApiVersion,
     this.confidentialComputeProperties,
     required this.containers,

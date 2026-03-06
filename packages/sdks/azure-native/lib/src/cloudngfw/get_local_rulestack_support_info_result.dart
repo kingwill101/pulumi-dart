@@ -41,7 +41,7 @@ class GetLocalRulestackSupportInfoResult {
   /// [supportURL] URL for paloaltonetworks Customer Service Portal
   /// [userDomainSupported] user domain is supported in Customer Support Portal
   /// [userRegistered] user registered in Customer Support Portal
-  GetLocalRulestackSupportInfoResult({
+  const GetLocalRulestackSupportInfoResult({
     this.accountId,
     this.accountRegistered,
     this.freeTrial,

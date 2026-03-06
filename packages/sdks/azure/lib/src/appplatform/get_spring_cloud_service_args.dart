@@ -15,7 +15,7 @@ class GetSpringCloudServiceArgs {
   /// Creates a new [GetSpringCloudServiceArgs].
   /// [name] Specifies The name of the Spring Cloud Service resource.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Spring Cloud Service exists.
-  GetSpringCloudServiceArgs({
+  const GetSpringCloudServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -23,7 +23,7 @@ class GetKubernetesPermissionPermission {
   /// [resourceType] The authorization type. Valid values `cluster`, `namespace` and `console`.
   /// [roleName] The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
   /// [roleType] The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-  GetKubernetesPermissionPermission({
+  const GetKubernetesPermissionPermission({
     required this.isOwner,
     required this.isRamRole,
     required this.resourceId,

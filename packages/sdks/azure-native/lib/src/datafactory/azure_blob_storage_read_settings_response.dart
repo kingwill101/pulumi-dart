@@ -46,7 +46,7 @@ class AzureBlobStorageReadSettingsResponse {
   /// [type] The read setting type.
   /// [wildcardFileName] Azure blob wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Azure blob wildcardFolderPath. Type: string (or Expression with resultType string).
-  AzureBlobStorageReadSettingsResponse({
+  const AzureBlobStorageReadSettingsResponse({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

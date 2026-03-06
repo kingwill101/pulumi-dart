@@ -9,7 +9,7 @@ class NetworkForwardAddress {
 
   /// Creates a new [NetworkForwardAddress].
   /// [pci] Configures forwarding for PCI addresses.
-  NetworkForwardAddress({
+  const NetworkForwardAddress({
     this.pci,
   });
 

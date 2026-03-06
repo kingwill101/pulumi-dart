@@ -17,7 +17,7 @@ class MonitorPlan {
   /// [effectiveDate] Specifies the date when plan was applied. Changing this forces a new Azure Native New Relic Monitor to be created.
   /// [planId] Specifies the plan id published by NewRelic. The only possible value is `newrelic-pay-as-you-go-free-live`. Defaults to `newrelic-pay-as-you-go-free-live`. Changing this forces a new Azure Native New Relic Monitor to be created.
   /// [usageType] Specifies the usage type. Possible values are `COMMITTED` and `PAYG`. Defaults to `PAYG`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  MonitorPlan({
+  const MonitorPlan({
     this.billingCycle,
     required this.effectiveDate,
     this.planId,

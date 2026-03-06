@@ -46,7 +46,7 @@ class ZoneState {
   /// [userClientIp] The IP address of the client.
   /// [userInfos] The user information of the host synchronization task. See `user_info` below.
   /// [zoneName] The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
-  ZoneState({
+  const ZoneState({
     this.isPtr,
     this.lang,
     this.name,

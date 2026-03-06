@@ -15,7 +15,7 @@ class RoutinePythonOptions {
   /// Creates a new [RoutinePythonOptions].
   /// [entryPoint] The name of the function defined in Python code as the entry point when the
   /// [packages] A list of Python package names along with versions to be installed.
-  RoutinePythonOptions({
+  const RoutinePythonOptions({
     required this.entryPoint,
     this.packages,
   });

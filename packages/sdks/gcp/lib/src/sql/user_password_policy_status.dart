@@ -11,7 +11,7 @@ class UserPasswordPolicyStatus {
   /// Creates a new [UserPasswordPolicyStatus].
   /// [locked] If true, user does not have login privileges.
   /// [passwordExpirationTime] Password expiration duration with one week grace period.
-  UserPasswordPolicyStatus({
+  const UserPasswordPolicyStatus({
     this.locked,
     this.passwordExpirationTime,
   });

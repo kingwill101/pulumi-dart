@@ -21,7 +21,7 @@ class FlexibleServerFirewallRuleArgs {
   /// [name] The name which should be used for this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
   /// [serverId] The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
   /// [startIpAddress] The IPv4 Address defining the start of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.
-  FlexibleServerFirewallRuleArgs({
+  const FlexibleServerFirewallRuleArgs({
     required this.endIpAddress,
     this.name,
     required this.serverId,

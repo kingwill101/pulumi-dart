@@ -49,7 +49,7 @@ class ResponsysLinkedServiceResponse {
   /// [useHostVerification] Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
   /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
   /// [version] Version of the linked service.
-  ResponsysLinkedServiceResponse({
+  const ResponsysLinkedServiceResponse({
     this.annotations,
     required this.clientId,
     this.clientSecret,

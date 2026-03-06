@@ -11,7 +11,7 @@ class GetClusterMaintenancePolicyRecurringWindow {
   /// [endTime] Required.
   /// [recurrence] Required.
   /// [startTime] Required.
-  GetClusterMaintenancePolicyRecurringWindow({
+  const GetClusterMaintenancePolicyRecurringWindow({
     required this.endTime,
     required this.recurrence,
     required this.startTime,

@@ -12,7 +12,7 @@ class CloudSqlCredentialResponse {
   /// Creates a new [CloudSqlCredentialResponse].
   /// [password] The password for the credential.
   /// [username] The username for the credential.
-  CloudSqlCredentialResponse({
+  const CloudSqlCredentialResponse({
     required this.password,
     required this.username,
   });

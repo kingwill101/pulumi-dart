@@ -19,7 +19,7 @@ class DatacenterAddressInstructionResponseResponse {
   /// [dataCenterAzureLocation] Azure Location where the Data Center serves primarily.
   /// [datacenterAddressType] Data center address type
   /// [supportedCarriersForReturnShipment] List of supported carriers for return shipment.
-  DatacenterAddressInstructionResponseResponse({
+  const DatacenterAddressInstructionResponseResponse({
     required this.communicationInstruction,
     required this.dataCenterAzureLocation,
     required this.datacenterAddressType,

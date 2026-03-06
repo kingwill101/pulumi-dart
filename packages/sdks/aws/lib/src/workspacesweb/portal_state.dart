@@ -81,7 +81,7 @@ class PortalState {
   /// [trustStoreArn] ARN of the trust store associated with the portal.
   /// [userAccessLoggingSettingsArn] ARN of the user access logging settings associated with the portal.
   /// [userSettingsArn] ARN of the user settings associated with the portal.
-  PortalState({
+  const PortalState({
     this.additionalEncryptionContext,
     this.authenticationType,
     this.browserSettingsArn,

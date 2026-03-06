@@ -13,7 +13,7 @@ class GetManagedAzResiliencyStatusResult {
   /// Creates a new [GetManagedAzResiliencyStatusResult].
   /// [baseResourceStatus] List of Managed VM Sizes for Service Fabric Managed Clusters.
   /// [isClusterZoneResilient] URL to get the next set of Managed VM Sizes if there are any.
-  GetManagedAzResiliencyStatusResult({
+  const GetManagedAzResiliencyStatusResult({
     this.baseResourceStatus,
     required this.isClusterZoneResilient,
   });

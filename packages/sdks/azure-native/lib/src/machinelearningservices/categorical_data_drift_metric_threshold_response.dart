@@ -15,7 +15,7 @@ class CategoricalDataDriftMetricThresholdResponse {
   /// [dataType] Expected value is 'Categorical'.
   /// [metric] [Required] The categorical data drift metric to calculate.
   /// [threshold] The threshold value. If null, a default value will be set depending on the selected metric.
-  CategoricalDataDriftMetricThresholdResponse({
+  const CategoricalDataDriftMetricThresholdResponse({
     required this.dataType,
     required this.metric,
     this.threshold,

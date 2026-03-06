@@ -25,7 +25,7 @@ class InstanceAllowedIpAttachmentArgs {
   /// [allowedType] The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
   /// [instanceId] The ID of the instance.
   /// [portRange] The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
-  InstanceAllowedIpAttachmentArgs({
+  const InstanceAllowedIpAttachmentArgs({
     required this.allowedIp,
     required this.allowedType,
     required this.instanceId,

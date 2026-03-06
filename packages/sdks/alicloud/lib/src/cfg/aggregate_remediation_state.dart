@@ -42,7 +42,7 @@ class AggregateRemediationState {
   /// [remediationSourceType] The source of the template to perform the correction. Value:
   /// [remediationTemplateId] The ID of the correction template.
   /// [remediationType] Remediation type. Value:
-  AggregateRemediationState({
+  const AggregateRemediationState({
     this.aggregatorId,
     this.configRuleId,
     this.invokeType,

@@ -21,7 +21,7 @@ class SocketAddrMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
-  SocketAddrMatchConditionParametersResponse({
+  const SocketAddrMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

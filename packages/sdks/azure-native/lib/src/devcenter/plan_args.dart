@@ -25,7 +25,7 @@ class PlanArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU for DevCenters created using this definition.
   /// [tags] Resource tags.
-  PlanArgs({
+  const PlanArgs({
     this.location,
     this.planName,
     required this.resourceGroupName,

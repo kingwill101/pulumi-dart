@@ -18,7 +18,7 @@ class GetSubnetArgs {
   /// [name] Specifies the name of the Subnet.
   /// [resourceGroupName] Specifies the name of the resource group the Virtual Network is located in.
   /// [virtualNetworkName] Specifies the name of the Virtual Network this Subnet is located within.
-  GetSubnetArgs({
+  const GetSubnetArgs({
     required this.name,
     required this.resourceGroupName,
     required this.virtualNetworkName,

@@ -48,7 +48,7 @@ class ApplicationSettingsArgs {
   /// [tracerType] Configures the type of tracer used. Valid values are `CROSS_APPLICATION_TRACER`, `DISTRIBUTED_TRACING`, `NONE`, `OPT_OUT`.
   /// [transactionTracers] Configuration block for transaction tracer. Providing this block enables transaction tracing. The following arguments are supported:
   /// [useServerSideConfig] Enable or disable server side monitoring for the New Relic application.
-  ApplicationSettingsArgs({
+  const ApplicationSettingsArgs({
     this.appApdexThreshold,
     this.enableRealUserMonitoring,
     this.enableSlowSql,

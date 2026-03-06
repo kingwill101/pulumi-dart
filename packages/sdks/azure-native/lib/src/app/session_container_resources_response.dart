@@ -12,7 +12,7 @@ class SessionContainerResourcesResponse {
   /// Creates a new [SessionContainerResourcesResponse].
   /// [cpu] Required CPU in cores, e.g. 0.5
   /// [memory] Required memory, e.g. "250Mb"
-  SessionContainerResourcesResponse({
+  const SessionContainerResourcesResponse({
     this.cpu,
     this.memory,
   });

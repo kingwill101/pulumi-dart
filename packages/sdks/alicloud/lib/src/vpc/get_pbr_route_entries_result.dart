@@ -20,7 +20,7 @@ class GetPbrRouteEntriesResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [vpnGatewayId] The ID of the vpn gateway.
-  GetPbrRouteEntriesResult({
+  const GetPbrRouteEntriesResult({
     required this.entries,
     required this.id,
     required this.ids,

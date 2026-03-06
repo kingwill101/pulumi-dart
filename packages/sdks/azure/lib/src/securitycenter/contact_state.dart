@@ -21,7 +21,7 @@ class ContactState {
   /// [email] The email of the Security Center Contact.
   /// [name] The name of the Security Center Contact. Changing this forces a new Security Center Contact to be created.
   /// [phone] The phone number of the Security Center Contact.
-  ContactState({
+  const ContactState({
     this.alertNotifications,
     this.alertsToAdmins,
     this.email,

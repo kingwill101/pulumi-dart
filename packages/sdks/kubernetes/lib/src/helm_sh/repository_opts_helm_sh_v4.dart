@@ -24,7 +24,7 @@ class RepositoryOptsHelmShV4 {
   /// [password] Password for HTTP basic authentication
   /// [repo] Repository where to locate the requested chart. If it's a URL the chart is installed without installing the repository.
   /// [username] Username for HTTP basic authentication
-  RepositoryOptsHelmShV4({
+  const RepositoryOptsHelmShV4({
     this.caFile,
     this.certFile,
     this.keyFile,

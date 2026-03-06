@@ -20,7 +20,7 @@ class DatabaseOnlineMigrationSource {
   /// [password] A randomly generated password for the default user.
   /// [port] The port on which the database cluster is listening.
   /// [username] The default user for the database.
-  DatabaseOnlineMigrationSource({
+  const DatabaseOnlineMigrationSource({
     required this.dbName,
     required this.host,
     required this.password,

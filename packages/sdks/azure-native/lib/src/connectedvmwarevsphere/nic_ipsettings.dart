@@ -21,7 +21,7 @@ class NicIPSettings {
   /// [gateway] Gets or sets the gateway.
   /// [ipAddress] Gets or sets the ip address for the nic.
   /// [subnetMask] Gets or sets the mask.
-  NicIPSettings({
+  const NicIPSettings({
     this.allocationMethod,
     this.dnsServers,
     this.gateway,

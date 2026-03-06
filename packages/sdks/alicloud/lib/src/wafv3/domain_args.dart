@@ -31,7 +31,7 @@ class DomainArgs {
   /// [redirect] Configure forwarding information. See `redirect` below.
   /// [resourceManagerResourceGroupId] The ID of the Alibaba Cloud resource group.
   /// [tags] The tags. You can specify up to 20 tags.
-  DomainArgs({
+  const DomainArgs({
     this.accessType,
     required this.domain,
     required this.instanceId,

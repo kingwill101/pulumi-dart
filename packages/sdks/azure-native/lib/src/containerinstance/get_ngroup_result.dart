@@ -54,7 +54,7 @@ class GetNGroupResult {
   /// [type] The resource type.
   /// [updateProfile] Used by the customer to specify the way to update the Container Groups in NGroup.
   /// [zones] The zones for the container group.
-  GetNGroupResult({
+  const GetNGroupResult({
     required this.azureApiVersion,
     this.containerGroupProfiles,
     this.elasticProfile,

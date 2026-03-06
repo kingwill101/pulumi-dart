@@ -9,7 +9,7 @@ class ElasticSnapshotPropertiesResponse {
 
   /// Creates a new [ElasticSnapshotPropertiesResponse].
   /// [provisioningState] Azure lifecycle management.
-  ElasticSnapshotPropertiesResponse({
+  const ElasticSnapshotPropertiesResponse({
     required this.provisioningState,
   });
 

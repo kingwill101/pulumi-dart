@@ -24,7 +24,7 @@ class MoverSourceEndpointState {
   /// [name] Specifies the name which should be used for this Storage Mover Source Endpoint. Changing this forces a new resource to be created.
   /// [nfsVersion] Specifies the NFS protocol version. Possible values are `NFSauto`, `NFSv3` and `NFSv4`. Defaults to `NFSauto`. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the Storage Mover for this Storage Mover Source Endpoint. Changing this forces a new resource to be created.
-  MoverSourceEndpointState({
+  const MoverSourceEndpointState({
     this.description,
     this.export,
     this.host,

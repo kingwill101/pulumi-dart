@@ -134,7 +134,7 @@ class GenaiAgentArgs {
   /// [topP] Top P sampling parameter
   /// [url] URL for the Agent
   /// [userId] User ID linked with the Agent
-  GenaiAgentArgs({
+  const GenaiAgentArgs({
     this.agentGuardrails,
     this.anthropicApiKeys,
     this.anthropicKeyUuid,

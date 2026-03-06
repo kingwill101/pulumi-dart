@@ -21,7 +21,7 @@ class TrustedIdProviderArgs {
   /// [idProvider] The URL of this trusted identity provider.
   /// [resourceGroupName] The name of the Azure resource group.
   /// [trustedIdProviderName] The name of the trusted identity provider. This is used for differentiation of providers in the account.
-  TrustedIdProviderArgs({
+  const TrustedIdProviderArgs({
     required this.accountName,
     required this.idProvider,
     required this.resourceGroupName,

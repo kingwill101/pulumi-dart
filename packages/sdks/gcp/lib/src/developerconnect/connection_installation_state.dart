@@ -23,7 +23,7 @@ class ConnectionInstallationState {
   /// [actionUri] Output only. Link to follow for next action. Empty string if the installation is already
   /// [message] Output only. Message of what the user should do next to continue the installation.
   /// [stage] (Output)
-  ConnectionInstallationState({
+  const ConnectionInstallationState({
     this.actionUri,
     this.message,
     this.stage,

@@ -12,7 +12,7 @@ class GetRegionsRegion {
   /// Creates a new [GetRegionsRegion].
   /// [regionId] The Region ID.
   /// [zoneIds] A list of available zone ids in the region_id.
-  GetRegionsRegion({
+  const GetRegionsRegion({
     required this.regionId,
     required this.zoneIds,
   });

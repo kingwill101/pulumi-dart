@@ -18,7 +18,7 @@ class GetVlansResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [vlans] Required.
-  GetVlansResult({
+  const GetVlansResult({
     this.filters,
     required this.id,
     this.order,

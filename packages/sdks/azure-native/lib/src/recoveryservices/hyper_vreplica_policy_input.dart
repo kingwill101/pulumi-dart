@@ -40,7 +40,7 @@ class HyperVReplicaPolicyInput {
   /// [recoveryPoints] A value indicating the number of recovery points.
   /// [replicaDeletion] A value indicating whether the VM has to be auto deleted.
   /// [replicationPort] A value indicating the recovery HTTPS port.
-  HyperVReplicaPolicyInput({
+  const HyperVReplicaPolicyInput({
     this.allowedAuthenticationType,
     this.applicationConsistentSnapshotFrequencyInHours,
     this.compression,

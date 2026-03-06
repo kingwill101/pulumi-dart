@@ -17,7 +17,7 @@ class DatabaseFirewallRule {
   /// [type] The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
   /// [uuid] A unique identifier for the firewall rule.
   /// [value] The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-  DatabaseFirewallRule({
+  const DatabaseFirewallRule({
     this.createdAt,
     required this.type,
     this.uuid,

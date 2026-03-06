@@ -12,7 +12,7 @@ class GetInstanceTypesTypeAddonBackupRegionPrice {
   /// [hourly] Required.
   /// [id] The ID representing the Linode Type.
   /// [monthly] Required.
-  GetInstanceTypesTypeAddonBackupRegionPrice({
+  const GetInstanceTypesTypeAddonBackupRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

@@ -25,7 +25,7 @@ class GetRoutersRouterNat {
   /// [tcpEstablishedIdleTimeoutSec] Required.
   /// [tcpTransitoryIdleTimeoutSec] Required.
   /// [udpIdleTimeoutSec] Required.
-  GetRoutersRouterNat({
+  const GetRoutersRouterNat({
     required this.enableEndpointIndependentMapping,
     required this.icmpIdleTimeoutSec,
     required this.minPortsPerVm,

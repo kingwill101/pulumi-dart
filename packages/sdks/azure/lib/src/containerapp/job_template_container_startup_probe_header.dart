@@ -11,7 +11,7 @@ class JobTemplateContainerStartupProbeHeader {
   /// Creates a new [JobTemplateContainerStartupProbeHeader].
   /// [name] The HTTP Header Name.
   /// [value] The HTTP Header value.
-  JobTemplateContainerStartupProbeHeader({
+  const JobTemplateContainerStartupProbeHeader({
     required this.name,
     required this.value,
   });

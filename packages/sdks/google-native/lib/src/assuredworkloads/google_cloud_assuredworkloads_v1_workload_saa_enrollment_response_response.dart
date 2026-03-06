@@ -12,7 +12,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse {
   /// Creates a new [GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse].
   /// [setupErrors] Indicates SAA enrollment setup error if any.
   /// [setupStatus] Indicates SAA enrollment status of a given workload.
-  GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse({
+  const GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse({
     required this.setupErrors,
     required this.setupStatus,
   });

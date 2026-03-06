@@ -12,7 +12,7 @@ class PortRange {
   /// Creates a new [PortRange].
   /// [fromPort] Property fromPort
   /// [toPort] Property toPort
-  PortRange({
+  const PortRange({
     this.fromPort,
     this.toPort,
   });

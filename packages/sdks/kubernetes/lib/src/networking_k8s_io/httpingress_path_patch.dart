@@ -26,7 +26,7 @@ class HTTPIngressPathPatch {
   /// [backend] backend defines the referenced service endpoint to which the traffic will be forwarded to.
   /// [path] path is matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/' and must be present when using PathType with value "Exact" or "Prefix".
   /// [pathType] pathType determines the interpretation of the path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is
-  HTTPIngressPathPatch({
+  const HTTPIngressPathPatch({
     this.backend,
     this.path,
     this.pathType,

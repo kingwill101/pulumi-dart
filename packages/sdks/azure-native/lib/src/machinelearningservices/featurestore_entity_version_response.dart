@@ -31,7 +31,7 @@ class FeaturestoreEntityVersionResponse {
   /// [provisioningState] Provisioning state for the featurestore entity version.
   /// [stage] Specifies the asset stage
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  FeaturestoreEntityVersionResponse({
+  const FeaturestoreEntityVersionResponse({
     this.description,
     this.indexColumns,
     this.isAnonymous,

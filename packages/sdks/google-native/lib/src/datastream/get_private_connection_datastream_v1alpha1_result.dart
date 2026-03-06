@@ -31,7 +31,7 @@ class GetPrivateConnectionDatastreamV1alpha1Result {
   /// [state] The state of the Private Connection.
   /// [updateTime] The update time of the resource.
   /// [vpcPeeringConfig] VPC Peering Config
-  GetPrivateConnectionDatastreamV1alpha1Result({
+  const GetPrivateConnectionDatastreamV1alpha1Result({
     required this.createTime,
     required this.displayName,
     required this.error,

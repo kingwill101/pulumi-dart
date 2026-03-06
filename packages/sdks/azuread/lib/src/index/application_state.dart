@@ -134,7 +134,7 @@ class ApplicationState {
   /// [templateId] Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   /// [termsOfServiceUrl] URL of the application's terms of service statement.
   /// [web] A `web` block as documented below, which configures web related settings for this application.
-  ApplicationState({
+  const ApplicationState({
     this.api,
     this.appRoleIds,
     this.appRoles,

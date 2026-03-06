@@ -19,7 +19,7 @@ class MonitoringScheduleMonitoringScheduleConfig {
   /// [monitoringJobDefinitionName] The name of the monitoring job definition to schedule.
   /// [monitoringType] The type of the monitoring job definition to schedule. Valid values are `DataQuality`, `ModelQuality`, `ModelBias` or `ModelExplainability`
   /// [scheduleConfig] Configures the monitoring schedule. Fields are documented below.
-  MonitoringScheduleMonitoringScheduleConfig({
+  const MonitoringScheduleMonitoringScheduleConfig({
     this.monitoringJobDefinition,
     this.monitoringJobDefinitionName,
     required this.monitoringType,

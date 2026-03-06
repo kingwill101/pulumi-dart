@@ -28,7 +28,7 @@ class ServiceEndpointPolicy {
   /// [serviceAlias] The alias indicating if the policy belongs to a service
   /// [serviceEndpointPolicyDefinitions] A collection of service endpoint policy definitions of the service endpoint policy.
   /// [tags] Resource tags.
-  ServiceEndpointPolicy({
+  const ServiceEndpointPolicy({
     this.contextualServiceEndpointPolicies,
     this.etag,
     this.id,

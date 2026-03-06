@@ -10,7 +10,7 @@ class WorkerPoolTemplateContainerEnvValueSource {
 
   /// Creates a new [WorkerPoolTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  WorkerPoolTemplateContainerEnvValueSource({
+  const WorkerPoolTemplateContainerEnvValueSource({
     this.secretKeyRef,
   });
 

@@ -33,7 +33,7 @@ class BasicEndpointArgs {
   /// [endpointSubAddressType] The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
   /// [endpointType] The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
   /// [endpointZoneId] The zone id of the Basic Endpoint.
-  BasicEndpointArgs({
+  const BasicEndpointArgs({
     required this.acceleratorId,
     this.basicEndpointName,
     required this.endpointAddress,

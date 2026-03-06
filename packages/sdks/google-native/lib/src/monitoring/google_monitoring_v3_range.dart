@@ -12,7 +12,7 @@ class GoogleMonitoringV3Range {
   /// Creates a new [GoogleMonitoringV3Range].
   /// [max] Range maximum.
   /// [min] Range minimum.
-  GoogleMonitoringV3Range({
+  const GoogleMonitoringV3Range({
     this.max,
     this.min,
   });

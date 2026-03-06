@@ -25,7 +25,7 @@ class GetNetworkInsightsAnalysisArgs {
   /// [networkInsightsAnalysisId] ID of the Network Insights Analysis to select.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
-  GetNetworkInsightsAnalysisArgs({
+  const GetNetworkInsightsAnalysisArgs({
     this.filters,
     this.networkInsightsAnalysisId,
     this.region,

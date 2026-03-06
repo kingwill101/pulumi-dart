@@ -28,7 +28,7 @@ class DocumentDbOutputDataSourceResponse {
   /// [documentId] The name of the field in output events used to specify the primary key which insert or update operations are based on.
   /// [partitionKey] The name of the field in output events used to specify the key for partitioning output across collections. If 'collectionNamePattern' contains the {partition} token, this property is required to be specified.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  DocumentDbOutputDataSourceResponse({
+  const DocumentDbOutputDataSourceResponse({
     this.accountId,
     this.accountKey,
     this.collectionNamePattern,

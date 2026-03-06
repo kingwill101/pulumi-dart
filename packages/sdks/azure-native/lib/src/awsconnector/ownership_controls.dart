@@ -10,7 +10,7 @@ class OwnershipControls {
 
   /// Creates a new [OwnershipControls].
   /// [rules] Specifies the container element for Object Ownership rules.
-  OwnershipControls({
+  const OwnershipControls({
     this.rules,
   });
 

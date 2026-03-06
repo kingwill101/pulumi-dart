@@ -11,7 +11,7 @@ class PolicyRuleRetentionRule {
   /// Creates a new [PolicyRuleRetentionRule].
   /// [advancedRetentionType] Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
   /// [retention] Retention time, in days
-  PolicyRuleRetentionRule({
+  const PolicyRuleRetentionRule({
     this.advancedRetentionType,
     this.retention,
   });

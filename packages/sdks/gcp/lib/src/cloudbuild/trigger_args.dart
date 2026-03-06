@@ -143,7 +143,7 @@ class TriggerArgs {
   /// [tags] Tags for annotation of a BuildTrigger
   /// [triggerTemplate] Template describing the types of source changes to trigger a build.
   /// [webhookConfig] WebhookConfig describes the configuration of a trigger that creates
-  TriggerArgs({
+  const TriggerArgs({
     this.approvalConfig,
     this.bitbucketServerTriggerConfig,
     this.build,

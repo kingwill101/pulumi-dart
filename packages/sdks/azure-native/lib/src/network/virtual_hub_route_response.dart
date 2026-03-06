@@ -12,7 +12,7 @@ class VirtualHubRouteResponse {
   /// Creates a new [VirtualHubRouteResponse].
   /// [addressPrefixes] List of all addressPrefixes.
   /// [nextHopIpAddress] NextHop ip address.
-  VirtualHubRouteResponse({
+  const VirtualHubRouteResponse({
     this.addressPrefixes,
     this.nextHopIpAddress,
   });

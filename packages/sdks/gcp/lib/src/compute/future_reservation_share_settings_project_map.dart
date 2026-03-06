@@ -11,7 +11,7 @@ class FutureReservationShareSettingsProjectMap {
   /// Creates a new [FutureReservationShareSettingsProjectMap].
   /// [id] The identifier for this object. Format specified above.
   /// [projectId] The project ID, should be same as the key of this project config in the parent map.
-  FutureReservationShareSettingsProjectMap({
+  const FutureReservationShareSettingsProjectMap({
     required this.id,
     this.projectId,
   });

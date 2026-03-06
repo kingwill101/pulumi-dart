@@ -22,7 +22,7 @@ class JwtResponse {
   /// [jwksPublicKeys] The provider's public key set to validate the signature of the JWT.
   /// [jwtHeaders] jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order: 1. The Authorization header using the Bearer schema. See `here `_. Example: Authorization: Bearer . 2. `access_token` query parameter. See `this `_ Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations. This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
   /// [jwtParams] This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
-  JwtResponse({
+  const JwtResponse({
     required this.audiences,
     required this.issuer,
     required this.jwksPublicKeys,

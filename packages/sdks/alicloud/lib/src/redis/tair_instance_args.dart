@@ -168,7 +168,7 @@ class TairInstanceArgs {
   /// [vpcId] The ID of the virtual private cloud (VPC).
   /// [vswitchId] The ID of the vSwitch to which the instance is connected.
   /// [zoneId] Zone ID
-  TairInstanceArgs({
+  const TairInstanceArgs({
     this.autoRenew,
     this.autoRenewPeriod,
     this.backupId,

@@ -24,7 +24,7 @@ class EventHubCaptureDescription {
   /// [intervalInSeconds] Specifies the time interval in seconds at which the capture will happen. Values can be between `60` and `900` seconds. Defaults to `300` seconds.
   /// [sizeLimitInBytes] Specifies the amount of data built up in your EventHub before a Capture Operation occurs. Value should be between `10485760` and `524288000` bytes. Defaults to `314572800` bytes.
   /// [skipEmptyArchives] Specifies if empty files should not be emitted if no events occur during the Capture time window. Defaults to `false`.
-  EventHubCaptureDescription({
+  const EventHubCaptureDescription({
     required this.destination,
     required this.enabled,
     required this.encoding,

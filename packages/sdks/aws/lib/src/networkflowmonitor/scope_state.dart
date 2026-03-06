@@ -30,7 +30,7 @@ class ScopeState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targets] The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   /// [timeouts] Optional.
-  ScopeState({
+  const ScopeState({
     this.region,
     this.scopeArn,
     this.scopeId,

@@ -20,7 +20,7 @@ class FaultSimulationDetailsResponse {
   /// [nodeTypeFaultSimulation] List of node type simulations associated with the cluster fault simulation.
   /// [operationId] unique identifier for the operation associated with the fault simulation.
   /// [parameters] Fault simulation parameters.
-  FaultSimulationDetailsResponse({
+  const FaultSimulationDetailsResponse({
     this.clusterId,
     this.nodeTypeFaultSimulation,
     this.operationId,

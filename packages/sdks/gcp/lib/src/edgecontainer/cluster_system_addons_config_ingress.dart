@@ -11,7 +11,7 @@ class ClusterSystemAddonsConfigIngress {
   /// Creates a new [ClusterSystemAddonsConfigIngress].
   /// [disabled] Whether Ingress is disabled.
   /// [ipv4Vip] Ingress VIP.
-  ClusterSystemAddonsConfigIngress({
+  const ClusterSystemAddonsConfigIngress({
     this.disabled,
     this.ipv4Vip,
   });

@@ -11,7 +11,7 @@ class GetServiceDnsEntry {
   /// Creates a new [GetServiceDnsEntry].
   /// [domainName] DNS name for the service.
   /// [hostedZoneId] Hosted zone ID where the DNS name is registered.
-  GetServiceDnsEntry({
+  const GetServiceDnsEntry({
     required this.domainName,
     required this.hostedZoneId,
   });

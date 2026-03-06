@@ -28,7 +28,7 @@ class GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult {
   /// [properties] Gets the properties of the object.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Gets the resource type.
-  GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.eTag,
     required this.id,

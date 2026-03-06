@@ -12,7 +12,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
   /// [environment] Optional.
   /// [materials] Optional.
   /// [parameters] Optional.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness({
     this.environment,
     this.materials,
     this.parameters,

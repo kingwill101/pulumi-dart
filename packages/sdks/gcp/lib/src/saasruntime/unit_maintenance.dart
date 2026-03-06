@@ -10,7 +10,7 @@ class UnitMaintenance {
 
   /// Creates a new [UnitMaintenance].
   /// [pinnedUntilTime] If present, it fixes the release on the unit until the given time; i.e.
-  UnitMaintenance({
+  const UnitMaintenance({
     this.pinnedUntilTime,
   });
 

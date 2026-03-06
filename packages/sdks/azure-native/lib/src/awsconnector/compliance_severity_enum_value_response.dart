@@ -9,7 +9,7 @@ class ComplianceSeverityEnumValueResponse {
 
   /// Creates a new [ComplianceSeverityEnumValueResponse].
   /// [value] Property value
-  ComplianceSeverityEnumValueResponse({
+  const ComplianceSeverityEnumValueResponse({
     this.value,
   });
 

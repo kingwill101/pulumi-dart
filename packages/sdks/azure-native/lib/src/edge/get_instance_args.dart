@@ -21,7 +21,7 @@ class GetInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionName] Name of the solution
   /// [targetName] Name of the target
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.instanceName,
     required this.resourceGroupName,
     required this.solutionName,

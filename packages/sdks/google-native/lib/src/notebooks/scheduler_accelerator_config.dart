@@ -13,7 +13,7 @@ class SchedulerAcceleratorConfig {
   /// Creates a new [SchedulerAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Type of this accelerator.
-  SchedulerAcceleratorConfig({
+  const SchedulerAcceleratorConfig({
     this.coreCount,
     this.type,
   });

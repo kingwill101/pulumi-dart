@@ -16,7 +16,7 @@ class GetQuotasetV3Args {
   /// Creates a new [GetQuotasetV3Args].
   /// [projectId] The id of the project to retrieve the quotaset.
   /// [region] The region in which to obtain the V3 Blockstorage client.
-  GetQuotasetV3Args({
+  const GetQuotasetV3Args({
     required this.projectId,
     this.region,
   });

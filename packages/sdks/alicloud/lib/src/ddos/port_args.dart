@@ -31,7 +31,7 @@ class PortArgs {
   /// [frontendProtocol] The type of the forwarding protocol to query. Valid values:
   /// [instanceId] The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
   /// [realServers] List of source IP addresses
-  PortArgs({
+  const PortArgs({
     this.backendPort,
     this.config,
     required this.frontendPort,

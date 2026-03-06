@@ -15,7 +15,7 @@ class GetStateMachineArgs {
   /// Creates a new [GetStateMachineArgs].
   /// [name] Friendly name of the state machine to match.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetStateMachineArgs({
+  const GetStateMachineArgs({
     required this.name,
     this.region,
   });

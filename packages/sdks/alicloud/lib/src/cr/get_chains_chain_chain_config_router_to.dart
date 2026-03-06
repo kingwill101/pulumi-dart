@@ -8,7 +8,7 @@ class GetChainsChainChainConfigRouterTo {
 
   /// Creates a new [GetChainsChainChainConfigRouterTo].
   /// [nodeName] The name of delivery chain node.
-  GetChainsChainChainConfigRouterTo({
+  const GetChainsChainChainConfigRouterTo({
     required this.nodeName,
   });
 

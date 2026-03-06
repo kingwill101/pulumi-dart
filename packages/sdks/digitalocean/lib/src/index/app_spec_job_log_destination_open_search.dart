@@ -18,7 +18,7 @@ class AppSpecJobLogDestinationOpenSearch {
   /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
   /// [endpoint] OpenSearch endpoint.
   /// [indexName] OpenSearch index name.
-  AppSpecJobLogDestinationOpenSearch({
+  const AppSpecJobLogDestinationOpenSearch({
     required this.basicAuth,
     this.clusterName,
     this.endpoint,

@@ -26,7 +26,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
   /// [url] Url of the Deployment
   /// [uuid] API Key value
   /// [visibility] Visibility of the Deployment
-  GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment({
     required this.createdAt,
     this.name,
     this.status,

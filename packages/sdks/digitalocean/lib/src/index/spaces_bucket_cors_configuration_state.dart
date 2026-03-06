@@ -16,7 +16,7 @@ class SpacesBucketCorsConfigurationState {
   /// [bucket] The name of the bucket to which to apply the CORS configuration.
   /// [corsRules] Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   /// [region] The region where the bucket resides.
-  SpacesBucketCorsConfigurationState({
+  const SpacesBucketCorsConfigurationState({
     this.bucket,
     this.corsRules,
     this.region,

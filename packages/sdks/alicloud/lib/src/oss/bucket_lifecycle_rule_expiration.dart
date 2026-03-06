@@ -19,7 +19,7 @@ class BucketLifecycleRuleExpiration {
   /// [date] Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
   /// [days] Specifies the number of days noncurrent object versions transition.
   /// [expiredObjectDeleteMarker] On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
-  BucketLifecycleRuleExpiration({
+  const BucketLifecycleRuleExpiration({
     this.createdBeforeDate,
     this.date,
     this.days,

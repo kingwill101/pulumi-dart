@@ -13,7 +13,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraint {
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraint].
   /// [cannedConstraintId] Organization policy canned constraint Id
   /// [policyRules] Definition of policy rules
-  PosturePolicySetPolicyConstraintOrgPolicyConstraint({
+  const PosturePolicySetPolicyConstraintOrgPolicyConstraint({
     required this.cannedConstraintId,
     required this.policyRules,
   });

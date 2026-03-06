@@ -57,7 +57,7 @@ class TargetHttpProxyState {
   /// [proxyId] The unique identifier for the resource.
   /// [selfLink] The URI of the created resource.
   /// [urlMap] A reference to the UrlMap resource that defines the mapping from URL
-  TargetHttpProxyState({
+  const TargetHttpProxyState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

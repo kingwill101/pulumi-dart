@@ -71,7 +71,7 @@ class GetSharedImageResult {
   /// [tags] A mapping of tags assigned to the Shared Image.
   /// [trustedLaunchEnabled] Specifies if Trusted Launch has to be enabled for the Virtual Machine created from the Shared Image.
   /// [trustedLaunchSupported] Specifies if supports creation of both Trusted Launch virtual machines and Gen2 virtual machines with standard security created from the Shared Image.
-  GetSharedImageResult({
+  const GetSharedImageResult({
     required this.acceleratedNetworkSupportEnabled,
     required this.architecture,
     required this.confidentialVmEnabled,

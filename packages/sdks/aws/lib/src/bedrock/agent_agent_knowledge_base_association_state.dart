@@ -29,7 +29,7 @@ class AgentAgentKnowledgeBaseAssociationState {
   /// [knowledgeBaseState] Whether to use the knowledge base when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  AgentAgentKnowledgeBaseAssociationState({
+  const AgentAgentKnowledgeBaseAssociationState({
     this.agentId,
     this.agentVersion,
     this.description,

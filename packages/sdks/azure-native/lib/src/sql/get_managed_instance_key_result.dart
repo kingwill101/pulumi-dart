@@ -29,7 +29,7 @@ class GetManagedInstanceKeyResult {
   /// [name] Resource name.
   /// [thumbprint] Thumbprint of the key.
   /// [type] Resource type.
-  GetManagedInstanceKeyResult({
+  const GetManagedInstanceKeyResult({
     required this.autoRotationEnabled,
     required this.azureApiVersion,
     required this.creationDate,

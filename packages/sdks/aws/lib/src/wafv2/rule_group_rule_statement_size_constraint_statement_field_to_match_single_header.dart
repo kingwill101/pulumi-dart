@@ -8,7 +8,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleHeader {
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleHeader].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleHeader({
+  const RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

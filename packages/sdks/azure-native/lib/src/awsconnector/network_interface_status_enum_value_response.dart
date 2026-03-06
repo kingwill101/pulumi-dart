@@ -9,7 +9,7 @@ class NetworkInterfaceStatusEnumValueResponse {
 
   /// Creates a new [NetworkInterfaceStatusEnumValueResponse].
   /// [value] Property value
-  NetworkInterfaceStatusEnumValueResponse({
+  const NetworkInterfaceStatusEnumValueResponse({
     this.value,
   });
 

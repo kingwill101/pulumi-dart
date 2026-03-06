@@ -9,7 +9,7 @@ class BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
 
   /// Creates a new [BatchEnvironmentConfigExecutionConfigAuthenticationConfig].
   /// [userWorkloadAuthenticationType] Authentication type for the user workload running in containers.
-  BatchEnvironmentConfigExecutionConfigAuthenticationConfig({
+  const BatchEnvironmentConfigExecutionConfigAuthenticationConfig({
     this.userWorkloadAuthenticationType,
   });
 

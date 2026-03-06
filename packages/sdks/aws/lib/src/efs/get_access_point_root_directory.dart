@@ -12,7 +12,7 @@ class GetAccessPointRootDirectory {
   /// Creates a new [GetAccessPointRootDirectory].
   /// [creationInfos] Single element list containing information on the creation permissions of the directory
   /// [path] Path exposed as the root directory
-  GetAccessPointRootDirectory({
+  const GetAccessPointRootDirectory({
     required this.creationInfos,
     required this.path,
   });

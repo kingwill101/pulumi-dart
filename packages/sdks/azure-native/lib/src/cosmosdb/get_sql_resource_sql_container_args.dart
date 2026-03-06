@@ -21,7 +21,7 @@ class GetSqlResourceSqlContainerArgs {
   /// [containerName] Cosmos DB container name.
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSqlResourceSqlContainerArgs({
+  const GetSqlResourceSqlContainerArgs({
     required this.accountName,
     required this.containerName,
     required this.databaseName,

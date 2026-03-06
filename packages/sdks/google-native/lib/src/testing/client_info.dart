@@ -13,7 +13,7 @@ class ClientInfo {
   /// Creates a new [ClientInfo].
   /// [clientInfoDetails] The list of detailed information about client.
   /// [name] Client name, such as gcloud.
-  ClientInfo({
+  const ClientInfo({
     this.clientInfoDetails,
     required this.name,
   });

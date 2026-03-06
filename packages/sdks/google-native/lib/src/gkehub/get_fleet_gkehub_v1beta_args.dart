@@ -15,7 +15,7 @@ class GetFleetGkehubV1betaArgs {
   /// [fleetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFleetGkehubV1betaArgs({
+  const GetFleetGkehubV1betaArgs({
     required this.fleetId,
     required this.location,
     this.project,

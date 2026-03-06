@@ -48,7 +48,7 @@ class CodeRepositoryIndexState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] Output only. Code Repository Index instance State.
   /// [updateTime] Output only. Update time stamp.
-  CodeRepositoryIndexState({
+  const CodeRepositoryIndexState({
     this.codeRepositoryIndexId,
     this.createTime,
     this.effectiveLabels,

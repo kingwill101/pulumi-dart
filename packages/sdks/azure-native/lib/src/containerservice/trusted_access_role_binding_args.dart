@@ -24,7 +24,7 @@ class TrustedAccessRoleBindingArgs {
   /// [roles] A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
   /// [sourceResourceId] The ARM resource ID of source resource that trusted access is configured for.
   /// [trustedAccessRoleBindingName] The name of trusted access role binding.
-  TrustedAccessRoleBindingArgs({
+  const TrustedAccessRoleBindingArgs({
     required this.resourceGroupName,
     required this.resourceName,
     required this.roles,

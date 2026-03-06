@@ -30,7 +30,7 @@ class NamedRuleWithOperations {
   /// [resourceNames] ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
   /// [resources] Resources is a list of resources this rule applies to.
   /// [scope] scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*".
-  NamedRuleWithOperations({
+  const NamedRuleWithOperations({
     this.apiGroups,
     this.apiVersions,
     this.operations,

@@ -14,7 +14,7 @@ class ServiceAttachmentConsumerProjectLimitResponseComputeV1 {
   /// [connectionLimit] The value of the limit to set.
   /// [networkUrl] The network URL for the network to set the limit for.
   /// [projectIdOrNum] The project id or number for the project to set the limit for.
-  ServiceAttachmentConsumerProjectLimitResponseComputeV1({
+  const ServiceAttachmentConsumerProjectLimitResponseComputeV1({
     required this.connectionLimit,
     required this.networkUrl,
     required this.projectIdOrNum,

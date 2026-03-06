@@ -40,7 +40,7 @@ class NatRuleArgs {
   /// [natRuleName] The name of the nat rule.
   /// [resourceGroupName] The resource group name of the VpnGateway.
   /// [type] The type of NAT rule for VPN NAT.
-  NatRuleArgs({
+  const NatRuleArgs({
     this.externalMappings,
     required this.gatewayName,
     this.id,

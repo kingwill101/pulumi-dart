@@ -30,7 +30,7 @@ class GetReportResult {
   /// [summary] Summary view of the Report.
   /// [type] Report type.
   /// [updateTime] Last update timestamp.
-  GetReportResult({
+  const GetReportResult({
     required this.createTime,
     required this.description,
     required this.displayName,

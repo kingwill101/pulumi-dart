@@ -18,7 +18,7 @@ class GetAppServiceEnvironmentPrivateEndpointConnectionArgs {
   /// [name] Name of the App Service Environment.
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetAppServiceEnvironmentPrivateEndpointConnectionArgs({
+  const GetAppServiceEnvironmentPrivateEndpointConnectionArgs({
     required this.name,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

@@ -9,7 +9,7 @@ class SimpleFilterParametersResponse {
 
   /// Creates a new [SimpleFilterParametersResponse].
   /// [zones] List of Azure availability zones to filter targets by.
-  SimpleFilterParametersResponse({
+  const SimpleFilterParametersResponse({
     this.zones,
   });
 

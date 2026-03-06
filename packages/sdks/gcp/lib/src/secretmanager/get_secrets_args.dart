@@ -15,7 +15,7 @@ class GetSecretsArgs {
   /// Creates a new [GetSecretsArgs].
   /// [filter] Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed.
   /// [project] The ID of the project.
-  GetSecretsArgs({
+  const GetSecretsArgs({
     this.filter,
     this.project,
   });

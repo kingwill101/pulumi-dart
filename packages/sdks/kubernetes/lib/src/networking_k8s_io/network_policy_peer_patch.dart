@@ -21,7 +21,7 @@ class NetworkPolicyPeerPatch {
   /// [ipBlock] ipBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
   /// [namespaceSelector] namespaceSelector selects namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.
   /// [podSelector] podSelector is a label selector which selects pods. This field follows standard label selector semantics; if present but empty, it selects all pods.
-  NetworkPolicyPeerPatch({
+  const NetworkPolicyPeerPatch({
     this.ipBlock,
     this.namespaceSelector,
     this.podSelector,

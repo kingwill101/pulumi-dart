@@ -16,7 +16,7 @@ class GetRouteSpecGrpcRouteMatchMetadataMatch {
   /// [ranges] Required.
   /// [regex] Required.
   /// [suffix] Required.
-  GetRouteSpecGrpcRouteMatchMetadataMatch({
+  const GetRouteSpecGrpcRouteMatchMetadataMatch({
     required this.exact,
     required this.prefix,
     required this.ranges,

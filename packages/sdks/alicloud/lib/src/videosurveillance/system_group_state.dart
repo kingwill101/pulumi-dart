@@ -51,7 +51,7 @@ class SystemGroupState {
   /// [playDomain] The domain name of plan streaming used by the group.
   /// [pushDomain] The domain name of push streaming used by the group.
   /// [status] Whether to open Group. Valid values: `on`,`off`.
-  SystemGroupState({
+  const SystemGroupState({
     this.callback,
     this.captureImage,
     this.captureInterval,

@@ -14,7 +14,7 @@ class RegionCommitmentLicenseResource {
   /// [amount] The number of licenses purchased.
   /// [coresPerLicense] Specifies the core range of the instance for which this license applies.
   /// [license] Any applicable license URI.
-  RegionCommitmentLicenseResource({
+  const RegionCommitmentLicenseResource({
     this.amount,
     this.coresPerLicense,
     required this.license,

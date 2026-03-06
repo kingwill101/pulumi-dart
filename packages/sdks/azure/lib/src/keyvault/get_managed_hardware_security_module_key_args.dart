@@ -17,7 +17,7 @@ class GetManagedHardwareSecurityModuleKeyArgs {
   /// Creates a new [GetManagedHardwareSecurityModuleKeyArgs].
   /// [managedHsmId] Specifies the ID of the Managed Hardware Security Module instance where the Secret resides, available on the `azure.keyvault.ManagedHardwareSecurityModuleKey` Data Source / Resource.
   /// [name] Specifies the name of the Managed Hardware Security Module Key.
-  GetManagedHardwareSecurityModuleKeyArgs({
+  const GetManagedHardwareSecurityModuleKeyArgs({
     required this.managedHsmId,
     required this.name,
   });

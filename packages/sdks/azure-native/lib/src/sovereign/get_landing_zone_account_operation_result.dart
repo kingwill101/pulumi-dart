@@ -35,7 +35,7 @@ class GetLandingZoneAccountOperationResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLandingZoneAccountOperationResult({
+  const GetLandingZoneAccountOperationResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

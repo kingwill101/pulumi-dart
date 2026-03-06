@@ -8,7 +8,7 @@ class TemplateSourceDestination {
 
   /// Creates a new [TemplateSourceDestination].
   /// [url] Destination URL that gets filled in on new project creation.
-  TemplateSourceDestination({
+  const TemplateSourceDestination({
     this.url,
   });
 

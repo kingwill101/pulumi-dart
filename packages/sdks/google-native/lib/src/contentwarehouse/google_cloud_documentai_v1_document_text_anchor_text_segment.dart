@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment].
   /// [endIndex] TextSegment half open end UTF-8 char index in the Document.text.
   /// [startIndex] TextSegment start UTF-8 char index in the Document.text.
-  GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment({
+  const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment({
     this.endIndex,
     this.startIndex,
   });

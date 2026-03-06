@@ -13,7 +13,7 @@ class GatewayMessageBusStreamInputDataSourceResponse {
   /// Creates a new [GatewayMessageBusStreamInputDataSourceResponse].
   /// [topic] The name of the Service Bus topic.
   /// [type] Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
-  GatewayMessageBusStreamInputDataSourceResponse({
+  const GatewayMessageBusStreamInputDataSourceResponse({
     this.topic,
     required this.type,
   });

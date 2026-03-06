@@ -347,7 +347,7 @@ class InstanceState {
   /// [upgradeStorageConfig] Whether to upgrade the storage file system configuration on the read replica.
   /// [username] (Required unless a `snapshot_identifier` or `replicate_source_db`
   /// [vpcSecurityGroupIds] List of VPC security groups to
-  InstanceState({
+  const InstanceState({
     this.address,
     this.allocatedStorage,
     this.allowMajorVersionUpgrade,

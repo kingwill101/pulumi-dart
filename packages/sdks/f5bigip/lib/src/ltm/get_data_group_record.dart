@@ -10,7 +10,7 @@ class GetDataGroupRecord {
   /// Creates a new [GetDataGroupRecord].
   /// [data] Optional.
   /// [name] Name of the datagroup
-  GetDataGroupRecord({
+  const GetDataGroupRecord({
     this.data,
     required this.name,
   });

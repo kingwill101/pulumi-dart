@@ -15,7 +15,7 @@ class OsDiskResponse {
   /// [diskSizeGB] Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
   /// [name] The VHD name.
   /// [osType] The OS type.
-  OsDiskResponse({
+  const OsDiskResponse({
     this.diskSizeGB,
     this.name,
     this.osType,

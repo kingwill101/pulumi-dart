@@ -12,7 +12,7 @@ class RetryPolicyResponse {
   /// Creates a new [RetryPolicyResponse].
   /// [eventTimeToLiveInMinutes] Time To Live (in minutes) for events.
   /// [maxDeliveryAttempts] Maximum number of delivery retry attempts for events.
-  RetryPolicyResponse({
+  const RetryPolicyResponse({
     this.eventTimeToLiveInMinutes,
     this.maxDeliveryAttempts,
   });

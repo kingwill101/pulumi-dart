@@ -56,7 +56,7 @@ class SecurityProfileGroupState {
   /// [threatPreventionProfile] Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   /// [updateTime] Time the security profile group was updated in UTC.
   /// [urlFilteringProfile] Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
-  SecurityProfileGroupState({
+  const SecurityProfileGroupState({
     this.createTime,
     this.customInterceptProfile,
     this.customMirroringProfile,

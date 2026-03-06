@@ -33,7 +33,7 @@ class DeployedResourcesPropertiesResponse {
   /// [isTestMigration] Gets or sets a value indicating whether scenario is test migration.
   /// [status] Gets or sets the status of deployed resources.
   /// [type] Gets or sets the type of deployed resources.
-  DeployedResourcesPropertiesResponse({
+  const DeployedResourcesPropertiesResponse({
     required this.context,
     required this.deployedResourceId,
     required this.deploymentTimestamp,

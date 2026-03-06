@@ -41,7 +41,7 @@ class GetVpdsResult {
   /// [vpdId] The id of the vpd.
   /// [vpdName] The Name of the VPD.
   /// [vpds] A list of Vpd Entries. Each element contains the following attributes:
-  GetVpdsResult({
+  const GetVpdsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

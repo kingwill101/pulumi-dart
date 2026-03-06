@@ -13,7 +13,7 @@ class WebAnonymousAuthentication {
   /// Creates a new [WebAnonymousAuthentication].
   /// [authenticationType] Type of authentication used to connect to the web table source.
   /// [url] The URL of the web service endpoint, e.g. https://www.microsoft.com . Type: string (or Expression with resultType string).
-  WebAnonymousAuthentication({
+  const WebAnonymousAuthentication({
     required this.authenticationType,
     required this.url,
   });

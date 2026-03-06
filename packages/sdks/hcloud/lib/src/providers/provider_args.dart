@@ -24,7 +24,7 @@ class ProviderArgs {
   /// [pollFunction] The type of function to be used during the polling.
   /// [pollInterval] The interval at which actions are polled by the client. Default `500ms`. Increase this interval if you run into rate limiting errors.
   /// [token] The Hetzner Cloud API token, can also be specified with the HCLOUD_TOKEN environment variable.
-  ProviderArgs({
+  const ProviderArgs({
     this.endpoint,
     this.endpointHetzner,
     this.pollFunction,

@@ -11,7 +11,7 @@ class ApplicationCustomHostAliasV2 {
   /// Creates a new [ApplicationCustomHostAliasV2].
   /// [hostName] The domain name or hostname.
   /// [ip] The IP address.
-  ApplicationCustomHostAliasV2({
+  const ApplicationCustomHostAliasV2({
     this.hostName,
     this.ip,
   });

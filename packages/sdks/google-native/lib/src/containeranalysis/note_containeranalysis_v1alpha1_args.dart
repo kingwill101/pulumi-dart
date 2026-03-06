@@ -94,7 +94,7 @@ class NoteContaineranalysisV1alpha1Args {
   /// [upgrade] A note describing an upgrade.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
   /// [vulnerabilityType] A package vulnerability type of note.
-  NoteContaineranalysisV1alpha1Args({
+  const NoteContaineranalysisV1alpha1Args({
     this.attestationAuthority,
     this.baseImage,
     this.buildType,

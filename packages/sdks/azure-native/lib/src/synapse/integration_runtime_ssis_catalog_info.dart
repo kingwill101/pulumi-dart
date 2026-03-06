@@ -19,7 +19,7 @@ class IntegrationRuntimeSsisCatalogInfo {
   /// [catalogAdminUserName] The administrator user name of catalog database.
   /// [catalogPricingTier] The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
   /// [catalogServerEndpoint] The catalog database server URL.
-  IntegrationRuntimeSsisCatalogInfo({
+  const IntegrationRuntimeSsisCatalogInfo({
     this.catalogAdminPassword,
     this.catalogAdminUserName,
     this.catalogPricingTier,

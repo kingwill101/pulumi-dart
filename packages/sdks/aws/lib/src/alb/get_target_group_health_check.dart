@@ -23,7 +23,7 @@ class GetTargetGroupHealthCheck {
   /// [protocol] Required.
   /// [timeout] Required.
   /// [unhealthyThreshold] Required.
-  GetTargetGroupHealthCheck({
+  const GetTargetGroupHealthCheck({
     required this.enabled,
     required this.healthyThreshold,
     required this.interval,

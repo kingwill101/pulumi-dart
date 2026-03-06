@@ -50,7 +50,7 @@ class TopicArgs {
   /// [requiresDuplicateDetection] Boolean flag which controls whether the Topic requires duplicate detection. Defaults to `false`. Changing this forces a new resource to be created.
   /// [status] The Status of the Service Bus Topic. Acceptable values are `Active` or `Disabled`. Defaults to `Active`.
   /// [supportOrdering] Boolean flag which controls whether the Topic supports ordering.
-  TopicArgs({
+  const TopicArgs({
     this.autoDeleteOnIdle,
     this.batchedOperationsEnabled,
     this.defaultMessageTtl,

@@ -15,7 +15,7 @@ class GetNamespaceNetworkRuleSetArgs {
   /// Creates a new [GetNamespaceNetworkRuleSetArgs].
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetNamespaceNetworkRuleSetArgs({
+  const GetNamespaceNetworkRuleSetArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

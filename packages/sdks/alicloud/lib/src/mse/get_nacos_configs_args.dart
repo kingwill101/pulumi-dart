@@ -43,7 +43,7 @@ class GetNacosConfigsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [requestPars] The extended request parameters. The JSON format is supported.
   /// [tags] The tags of the configuration.
-  GetNacosConfigsArgs({
+  const GetNacosConfigsArgs({
     this.acceptLanguage,
     this.appName,
     this.dataId,

@@ -8,7 +8,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace {
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace].
   /// [namespace] The namespace to use for aggregation
-  WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace({
+  const WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace({
     required this.namespace,
   });
 

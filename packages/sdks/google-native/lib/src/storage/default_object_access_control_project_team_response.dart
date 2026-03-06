@@ -12,7 +12,7 @@ class DefaultObjectAccessControlProjectTeamResponse {
   /// Creates a new [DefaultObjectAccessControlProjectTeamResponse].
   /// [projectNumber] The project number.
   /// [team] The team.
-  DefaultObjectAccessControlProjectTeamResponse({
+  const DefaultObjectAccessControlProjectTeamResponse({
     required this.projectNumber,
     required this.team,
   });

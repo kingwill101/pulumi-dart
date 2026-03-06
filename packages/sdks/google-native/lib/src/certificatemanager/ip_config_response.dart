@@ -12,7 +12,7 @@ class IpConfigResponse {
   /// Creates a new [IpConfigResponse].
   /// [ipAddress] An external IP address.
   /// [ports] Ports.
-  IpConfigResponse({
+  const IpConfigResponse({
     required this.ipAddress,
     required this.ports,
   });

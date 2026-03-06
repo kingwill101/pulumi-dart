@@ -24,7 +24,7 @@ class StorageAccountMicrosoftEndpointsResponse {
   /// [queue] Gets the queue endpoint.
   /// [table] Gets the table endpoint.
   /// [web] Gets the web endpoint.
-  StorageAccountMicrosoftEndpointsResponse({
+  const StorageAccountMicrosoftEndpointsResponse({
     required this.blob,
     required this.dfs,
     required this.file,

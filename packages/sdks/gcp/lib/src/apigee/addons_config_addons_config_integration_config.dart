@@ -8,7 +8,7 @@ class AddonsConfigAddonsConfigIntegrationConfig {
 
   /// Creates a new [AddonsConfigAddonsConfigIntegrationConfig].
   /// [enabled] Flag that specifies whether the Integration add-on is enabled.
-  AddonsConfigAddonsConfigIntegrationConfig({
+  const AddonsConfigAddonsConfigIntegrationConfig({
     this.enabled,
   });
 

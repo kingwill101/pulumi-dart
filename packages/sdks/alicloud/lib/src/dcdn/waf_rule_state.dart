@@ -59,7 +59,7 @@ class WafRuleState {
   /// [scenes] The types of the protection policies.
   /// [status] The status of the waf rule. Valid values: `on` and `off`. Default value: on.
   /// [wafGroupIds] The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
-  WafRuleState({
+  const WafRuleState({
     this.action,
     this.ccStatus,
     this.cnRegionList,

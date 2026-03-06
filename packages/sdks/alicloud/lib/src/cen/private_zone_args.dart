@@ -23,7 +23,7 @@ class PrivateZoneArgs {
   /// [cenId] The ID of the CEN instance.
   /// [hostRegionId] The ID of the region where PrivateZone is deployed.
   /// [hostVpcId] The ID of the VPC that is associated with PrivateZone.
-  PrivateZoneArgs({
+  const PrivateZoneArgs({
     required this.accessRegionId,
     required this.cenId,
     required this.hostRegionId,

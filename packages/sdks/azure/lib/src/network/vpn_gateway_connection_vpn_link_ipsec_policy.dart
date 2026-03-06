@@ -29,7 +29,7 @@ class VpnGatewayConnectionVpnLinkIpsecPolicy {
   /// [pfsGroup] The Pfs Group used in IKE Phase 2 for the new child SA. Possible values are `None`, `PFS1`, `PFS2`, `PFS14`, `PFS24`, `PFS2048`, `PFSMM`, `ECP256`, `ECP384`.
   /// [saDataSizeKb] The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for the site to site VPN tunnel.
   /// [saLifetimeSec] The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for the site to site VPN tunnel.
-  VpnGatewayConnectionVpnLinkIpsecPolicy({
+  const VpnGatewayConnectionVpnLinkIpsecPolicy({
     required this.dhGroup,
     required this.encryptionAlgorithm,
     required this.ikeEncryptionAlgorithm,

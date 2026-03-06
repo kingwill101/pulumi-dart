@@ -16,7 +16,7 @@ class ConnectToTargetSqlMISyncTaskOutputResponse {
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Target server version
   /// [validationErrors] Validation errors
-  ConnectToTargetSqlMISyncTaskOutputResponse({
+  const ConnectToTargetSqlMISyncTaskOutputResponse({
     required this.targetServerBrandVersion,
     required this.targetServerVersion,
     required this.validationErrors,

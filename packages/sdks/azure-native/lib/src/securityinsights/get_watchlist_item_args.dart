@@ -21,7 +21,7 @@ class GetWatchlistItemArgs {
   /// [watchlistAlias] The watchlist alias
   /// [watchlistItemId] The watchlist item id (GUID)
   /// [workspaceName] The name of the workspace.
-  GetWatchlistItemArgs({
+  const GetWatchlistItemArgs({
     required this.resourceGroupName,
     required this.watchlistAlias,
     required this.watchlistItemId,

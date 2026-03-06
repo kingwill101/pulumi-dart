@@ -59,7 +59,7 @@ class VpcEndpointServiceState {
   /// [tags] The list of tags.
   /// [vpcEndpointServiceName] The name of the endpoint service.
   /// [zoneAffinityEnabled] Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-  VpcEndpointServiceState({
+  const VpcEndpointServiceState({
     this.addressIpVersion,
     this.autoAcceptConnection,
     this.connectBandwidth,

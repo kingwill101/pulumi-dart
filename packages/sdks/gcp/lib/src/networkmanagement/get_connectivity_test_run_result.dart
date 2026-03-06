@@ -18,7 +18,7 @@ class GetConnectivityTestRunResult {
   /// [name] Required.
   /// [project] Required.
   /// [reachabilityDetails] Connectivity test reachability details.
-  GetConnectivityTestRunResult({
+  const GetConnectivityTestRunResult({
     required this.id,
     required this.name,
     required this.project,

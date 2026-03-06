@@ -10,7 +10,7 @@ class NetworkConfigResponse {
 
   /// Creates a new [NetworkConfigResponse].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-  NetworkConfigResponse({
+  const NetworkConfigResponse({
     required this.consumers,
   });
 

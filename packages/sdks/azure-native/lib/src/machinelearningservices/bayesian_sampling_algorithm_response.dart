@@ -9,7 +9,7 @@ class BayesianSamplingAlgorithmResponse {
 
   /// Creates a new [BayesianSamplingAlgorithmResponse].
   /// [samplingAlgorithmType] Expected value is 'Bayesian'.
-  BayesianSamplingAlgorithmResponse({
+  const BayesianSamplingAlgorithmResponse({
     required this.samplingAlgorithmType,
   });
 

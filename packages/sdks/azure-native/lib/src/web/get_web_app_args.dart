@@ -15,7 +15,7 @@ class GetWebAppArgs {
   /// Creates a new [GetWebAppArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppArgs({
+  const GetWebAppArgs({
     required this.name,
     required this.resourceGroupName,
   });

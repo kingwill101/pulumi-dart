@@ -14,7 +14,7 @@ class GetNetworkManagedServiceS3Access {
   /// [ipv4Addresses] Required.
   /// [s3PolicyDocument] Required.
   /// [status] The status of the network resource.
-  GetNetworkManagedServiceS3Access({
+  const GetNetworkManagedServiceS3Access({
     required this.domainName,
     required this.ipv4Addresses,
     required this.s3PolicyDocument,

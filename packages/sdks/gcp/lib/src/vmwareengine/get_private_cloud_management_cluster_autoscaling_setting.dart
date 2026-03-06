@@ -34,7 +34,7 @@ class GetPrivateCloudManagementClusterAutoscalingSetting {
   /// [coolDownPeriod] The minimum duration between consecutive autoscale operations.
   /// [maxClusterNodeCount] Maximum number of nodes of any type in a cluster.
   /// [minClusterNodeCount] Minimum number of nodes of any type in a cluster.
-  GetPrivateCloudManagementClusterAutoscalingSetting({
+  const GetPrivateCloudManagementClusterAutoscalingSetting({
     required this.autoscalingPolicies,
     required this.coolDownPeriod,
     required this.maxClusterNodeCount,

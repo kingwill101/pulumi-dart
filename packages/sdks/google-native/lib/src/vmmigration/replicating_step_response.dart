@@ -18,7 +18,7 @@ class ReplicatingStepResponse {
   /// [lastTwoMinutesAverageBytesPerSecond] The source disks replication rate for the last 2 minutes in bytes per second.
   /// [replicatedBytes] Replicated bytes in the step.
   /// [totalBytes] Total bytes to be handled in the step.
-  ReplicatingStepResponse({
+  const ReplicatingStepResponse({
     required this.lastThirtyMinutesAverageBytesPerSecond,
     required this.lastTwoMinutesAverageBytesPerSecond,
     required this.replicatedBytes,

@@ -40,7 +40,7 @@ class ListStorageAccountSASArgs {
   /// [services] The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
   /// [sharedAccessExpiryTime] The time at which the shared access signature becomes invalid.
   /// [sharedAccessStartTime] The time at which the SAS becomes valid.
-  ListStorageAccountSASArgs({
+  const ListStorageAccountSASArgs({
     required this.accountName,
     this.iPAddressOrRange,
     this.keyToSign,

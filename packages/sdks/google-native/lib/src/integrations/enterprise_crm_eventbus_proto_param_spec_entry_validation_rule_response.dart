@@ -14,7 +14,7 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse {
   /// [doubleRange] Required.
   /// [intRange] Required.
   /// [stringRegex] Required.
-  EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse({
+  const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse({
     required this.doubleRange,
     required this.intRange,
     required this.stringRegex,

@@ -57,7 +57,7 @@ class PrivateDnsState {
   /// [standbyVswitchIp] Standby zone switch IP address
   /// [status] status
   /// [vpcId] The ID of the VPC.
-  PrivateDnsState({
+  const PrivateDnsState({
     this.accessInstanceId,
     this.accessInstanceName,
     this.domainNameLists,

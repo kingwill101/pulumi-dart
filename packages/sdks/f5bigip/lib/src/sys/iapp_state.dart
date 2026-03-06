@@ -59,7 +59,7 @@ class IAppState {
   /// [templatePrerequisiteErrors] Indicates any missing prerequisites associated with the template that defines this application.
   /// [trafficGroup] The name of the traffic group that the application service is assigned to.
   /// [variables] Optional.
-  IAppState({
+  const IAppState({
     this.description,
     this.devicegroup,
     this.executeAction,

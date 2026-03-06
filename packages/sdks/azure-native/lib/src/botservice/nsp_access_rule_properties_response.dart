@@ -29,7 +29,7 @@ class NspAccessRulePropertiesResponse {
   /// [networkSecurityPerimeters] NetworkSecurityPerimeters for inbound rules
   /// [phoneNumbers] Phone numbers for outbound rules
   /// [subscriptions] Subscriptions for inbound rules
-  NspAccessRulePropertiesResponse({
+  const NspAccessRulePropertiesResponse({
     this.addressPrefixes,
     this.direction,
     required this.emailAddresses,

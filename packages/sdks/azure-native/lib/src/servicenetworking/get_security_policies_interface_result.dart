@@ -37,7 +37,7 @@ class GetSecurityPoliciesInterfaceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [wafPolicy] Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
-  GetSecurityPoliciesInterfaceResult({
+  const GetSecurityPoliciesInterfaceResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

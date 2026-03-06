@@ -34,7 +34,7 @@ class PrivateCloudArgs {
   /// [project] Optional.
   /// [requestId] Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [type] Optional. Type of the private cloud. Defaults to STANDARD.
-  PrivateCloudArgs({
+  const PrivateCloudArgs({
     this.description,
     this.location,
     required this.managementCluster,

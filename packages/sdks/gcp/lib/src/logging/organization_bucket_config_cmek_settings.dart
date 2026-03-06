@@ -29,7 +29,7 @@ class OrganizationBucketConfigCmekSettings {
   /// [kmsKeyVersionName] The CryptoKeyVersion resource name for the configured Cloud KMS key.
   /// [name] The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
   /// [serviceAccountId] The service account associated with a project for which CMEK will apply.
-  OrganizationBucketConfigCmekSettings({
+  const OrganizationBucketConfigCmekSettings({
     required this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,

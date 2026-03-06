@@ -32,7 +32,7 @@ class FilesetState {
   /// [fileSystemPath] The path of Fileset.
   /// [filesetId] Fileset ID
   /// [status] The status of Fileset. Includes:
-  FilesetState({
+  const FilesetState({
     this.createTime,
     this.deletionProtection,
     this.description,

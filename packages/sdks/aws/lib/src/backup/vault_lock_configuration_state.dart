@@ -24,7 +24,7 @@ class VaultLockConfigurationState {
   /// [maxRetentionDays] The maximum retention period that the vault retains its recovery points.
   /// [minRetentionDays] The minimum retention period that the vault retains its recovery points.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  VaultLockConfigurationState({
+  const VaultLockConfigurationState({
     this.backupVaultArn,
     this.backupVaultName,
     this.changeableForDays,

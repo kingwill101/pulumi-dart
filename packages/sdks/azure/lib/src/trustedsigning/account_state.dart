@@ -24,7 +24,7 @@ class AccountState {
   /// [resourceGroupName] The name of the Resource Group where the Trusted Signing Account should exist. Changing this forces a new Trusted Signing Account to be created.
   /// [skuName] The sku name of this Trusted Signing Account. Possible values are `Basic` and `Premium`.
   /// [tags] A mapping of tags which should be assigned to the Trusted Signing Account.
-  AccountState({
+  const AccountState({
     this.accountUri,
     this.location,
     this.name,

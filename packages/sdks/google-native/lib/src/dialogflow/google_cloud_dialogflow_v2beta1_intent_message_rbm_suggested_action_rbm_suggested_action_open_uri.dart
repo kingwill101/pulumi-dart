@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri].
   /// [uri] The uri to open on the user device
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri({
     required this.uri,
   });
 

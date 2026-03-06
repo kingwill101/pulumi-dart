@@ -10,7 +10,7 @@ class AutomationSelector {
 
   /// Creates a new [AutomationSelector].
   /// [targets] Contains attributes about a target.
-  AutomationSelector({
+  const AutomationSelector({
     required this.targets,
   });
 

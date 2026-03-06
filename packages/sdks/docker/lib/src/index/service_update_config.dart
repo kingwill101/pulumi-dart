@@ -23,7 +23,7 @@ class ServiceUpdateConfig {
   /// [monitor] Duration after each task update to monitor for failure (ns|us|ms|s|m|h). Defaults to `5s`.
   /// [order] Update order: either 'stop-first' or 'start-first'. Defaults to `stop-first`.
   /// [parallelism] Maximum number of tasks to be updated in one iteration. Defaults to `1`
-  ServiceUpdateConfig({
+  const ServiceUpdateConfig({
     this.delay,
     this.failureAction,
     this.maxFailureRatio,

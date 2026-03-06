@@ -12,7 +12,7 @@ class DatasetPropertyKeyResponse {
   /// Creates a new [DatasetPropertyKeyResponse].
   /// [path] Path to the input value from the message.
   /// [primaryKey] If true the property will be used as a primary key. At most one primary key can exists.
-  DatasetPropertyKeyResponse({
+  const DatasetPropertyKeyResponse({
     required this.path,
     this.primaryKey,
   });

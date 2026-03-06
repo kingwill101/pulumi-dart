@@ -11,7 +11,7 @@ class SpringCloudBuildPackBindingLaunch {
   /// Creates a new [SpringCloudBuildPackBindingLaunch].
   /// [properties] Specifies a map of non-sensitive properties for launchProperties.
   /// [secrets] Specifies a map of sensitive properties for launchProperties.
-  SpringCloudBuildPackBindingLaunch({
+  const SpringCloudBuildPackBindingLaunch({
     this.properties,
     this.secrets,
   });

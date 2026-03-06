@@ -24,7 +24,7 @@ class WorkstationConfigContainer {
   /// [image] Docker image defining the container. This image must be accessible by the config's service account.
   /// [runAsUser] If set, overrides the USER specified in the image with the given uid.
   /// [workingDir] If set, overrides the default DIR specified by the image.
-  WorkstationConfigContainer({
+  const WorkstationConfigContainer({
     this.args,
     this.commands,
     this.env,

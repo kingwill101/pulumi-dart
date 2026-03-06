@@ -11,7 +11,7 @@ class WebhookAuthenticationConfiguration {
   /// Creates a new [WebhookAuthenticationConfiguration].
   /// [allowedIpRange] A valid CIDR block for `IP` filtering. Required for `IP`.
   /// [secretToken] The shared secret for the GitHub repository webhook. Set this as `secret` in your `github_repository_webhook`'s `configuration` block. Required for `GITHUB_HMAC`.
-  WebhookAuthenticationConfiguration({
+  const WebhookAuthenticationConfiguration({
     this.allowedIpRange,
     this.secretToken,
   });

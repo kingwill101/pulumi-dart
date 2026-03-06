@@ -43,7 +43,7 @@ class EnterprisePolicyArgs {
   /// [networkInjection] Settings concerning network injection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  EnterprisePolicyArgs({
+  const EnterprisePolicyArgs({
     this.encryption,
     this.enterprisePolicyName,
     this.healthStatus,

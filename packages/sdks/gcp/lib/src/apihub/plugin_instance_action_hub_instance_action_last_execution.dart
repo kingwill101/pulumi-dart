@@ -23,7 +23,7 @@ class PluginInstanceActionHubInstanceActionLastExecution {
   /// [errorMessage] Error message describing the failure, if any, during Create, Delete or
   /// [result] The result of the last execution of the plugin instance.
   /// [startTime] The last execution start time of the plugin instance.
-  PluginInstanceActionHubInstanceActionLastExecution({
+  const PluginInstanceActionHubInstanceActionLastExecution({
     this.endTime,
     this.errorMessage,
     this.result,

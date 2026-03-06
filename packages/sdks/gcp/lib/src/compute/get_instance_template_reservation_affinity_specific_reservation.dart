@@ -11,7 +11,7 @@ class GetInstanceTemplateReservationAffinitySpecificReservation {
   /// Creates a new [GetInstanceTemplateReservationAffinitySpecificReservation].
   /// [key] The key for the node affinity label.
   /// [values] Corresponds to the label values of a reservation resource.
-  GetInstanceTemplateReservationAffinitySpecificReservation({
+  const GetInstanceTemplateReservationAffinitySpecificReservation({
     required this.key,
     required this.values,
   });

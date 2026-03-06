@@ -30,7 +30,7 @@ class PipelineStageOnSuccessConditionRule {
   /// [roleArn] The pipeline role ARN associated with the rule.
   /// [ruleTypeId] The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `rule_type_id` block below.
   /// [timeoutInMinutes] The action timeout for the rule.
-  PipelineStageOnSuccessConditionRule({
+  const PipelineStageOnSuccessConditionRule({
     this.commands,
     this.configuration,
     this.inputArtifacts,

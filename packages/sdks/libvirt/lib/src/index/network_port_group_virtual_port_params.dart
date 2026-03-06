@@ -25,7 +25,7 @@ class NetworkPortGroupVirtualPortParams {
   /// [openVSwitch] Defines parameters for Open vSwitch-related virtual ports.
   /// [vepa8021qbg] Configures parameters for VEPA 802.1Qbg-related virtual ports.
   /// [vnTag8011qbh] Configures parameters for VNTag 8011QBH-related virtual ports.
-  NetworkPortGroupVirtualPortParams({
+  const NetworkPortGroupVirtualPortParams({
     this.any,
     this.midoNet,
     this.openVSwitch,

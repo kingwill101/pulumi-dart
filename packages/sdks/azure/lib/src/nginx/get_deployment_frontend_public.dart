@@ -8,7 +8,7 @@ class GetDeploymentFrontendPublic {
 
   /// Creates a new [GetDeploymentFrontendPublic].
   /// [ipAddresses] The list of Public IP Resource IDs for this NGINX Deployment.
-  GetDeploymentFrontendPublic({
+  const GetDeploymentFrontendPublic({
     required this.ipAddresses,
   });
 

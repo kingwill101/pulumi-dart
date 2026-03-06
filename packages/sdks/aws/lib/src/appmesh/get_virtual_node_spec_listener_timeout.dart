@@ -17,7 +17,7 @@ class GetVirtualNodeSpecListenerTimeout {
   /// [http2s] Required.
   /// [https] Required.
   /// [tcps] Required.
-  GetVirtualNodeSpecListenerTimeout({
+  const GetVirtualNodeSpecListenerTimeout({
     required this.grpcs,
     required this.http2s,
     required this.https,

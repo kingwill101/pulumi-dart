@@ -65,7 +65,7 @@ class CosmosDbLinkedService {
   /// [tenant] The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  CosmosDbLinkedService({
+  const CosmosDbLinkedService({
     this.accountEndpoint,
     this.accountKey,
     this.annotations,

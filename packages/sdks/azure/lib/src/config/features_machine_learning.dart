@@ -7,7 +7,7 @@ class FeaturesMachineLearning {
 
   /// Creates a new [FeaturesMachineLearning].
   /// [purgeSoftDeletedWorkspaceOnDestroy] Optional.
-  FeaturesMachineLearning({
+  const FeaturesMachineLearning({
     this.purgeSoftDeletedWorkspaceOnDestroy,
   });
 

@@ -22,7 +22,7 @@ class GetContainerRegistriesResult {
   /// [serverUrl] Required.
   /// [storageUsageBytes] Required.
   /// [subscriptionTierSlug] Required.
-  GetContainerRegistriesResult({
+  const GetContainerRegistriesResult({
     required this.createdAt,
     required this.endpoint,
     required this.id,

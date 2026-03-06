@@ -11,7 +11,7 @@ class FlowletDataFlowSourceSchemaLinkedService {
   /// Creates a new [FlowletDataFlowSourceSchemaLinkedService].
   /// [name] The name for the Data Factory Linked Service with schema.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  FlowletDataFlowSourceSchemaLinkedService({
+  const FlowletDataFlowSourceSchemaLinkedService({
     required this.name,
     this.parameters,
   });

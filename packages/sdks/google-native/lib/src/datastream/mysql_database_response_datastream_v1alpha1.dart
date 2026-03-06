@@ -13,7 +13,7 @@ class MysqlDatabaseResponseDatastreamV1alpha1 {
   /// Creates a new [MysqlDatabaseResponseDatastreamV1alpha1].
   /// [databaseName] Database name.
   /// [mysqlTables] Tables in the database.
-  MysqlDatabaseResponseDatastreamV1alpha1({
+  const MysqlDatabaseResponseDatastreamV1alpha1({
     required this.databaseName,
     required this.mysqlTables,
   });

@@ -11,7 +11,7 @@ class TableConstraintsForeignKeysItemReferencedTableResponse {
   /// [datasetId] Required.
   /// [project] Required.
   /// [tableId] Required.
-  TableConstraintsForeignKeysItemReferencedTableResponse({
+  const TableConstraintsForeignKeysItemReferencedTableResponse({
     required this.datasetId,
     required this.project,
     required this.tableId,

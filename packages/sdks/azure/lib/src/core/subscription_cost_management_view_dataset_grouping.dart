@@ -11,7 +11,7 @@ class SubscriptionCostManagementViewDatasetGrouping {
   /// Creates a new [SubscriptionCostManagementViewDatasetGrouping].
   /// [name] The name of the column to group.
   /// [type] The type of the column. Possible values are `Dimension` and `TagKey`.
-  SubscriptionCostManagementViewDatasetGrouping({
+  const SubscriptionCostManagementViewDatasetGrouping({
     required this.name,
     required this.type,
   });

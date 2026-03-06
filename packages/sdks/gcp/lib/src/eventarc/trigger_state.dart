@@ -73,7 +73,7 @@ class TriggerState {
   /// [transport] Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
   /// [uid] Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   /// [updateTime] Output only. The last-modified time.
-  TriggerState({
+  const TriggerState({
     this.channel,
     this.conditions,
     this.createTime,

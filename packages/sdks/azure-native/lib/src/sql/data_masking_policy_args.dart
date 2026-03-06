@@ -28,7 +28,7 @@ class DataMaskingPolicyArgs {
   /// [exemptPrincipals] The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  DataMaskingPolicyArgs({
+  const DataMaskingPolicyArgs({
     this.dataMaskingPolicyName,
     required this.dataMaskingState,
     required this.databaseName,

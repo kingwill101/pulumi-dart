@@ -22,7 +22,7 @@ class AzureBlobResponse {
   /// [blobContainerName] Blob container name where backups are stored.
   /// [identity] Identity details for authentication using a Managed Identity.
   /// [storageAccountResourceId] Resource Id of the storage account where backups are stored.
-  AzureBlobResponse({
+  const AzureBlobResponse({
     this.accountKey,
     this.authType,
     this.blobContainerName,

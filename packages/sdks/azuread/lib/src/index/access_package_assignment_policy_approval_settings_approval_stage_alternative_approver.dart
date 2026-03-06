@@ -14,7 +14,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
   /// [backup] For a user in an approval stage, this property indicates whether the user is a backup fallback approver
   /// [objectId] The object ID of the subject
   /// [subjectType] Type of users
-  AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover({
+  const AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover({
     this.backup,
     this.objectId,
     required this.subjectType,

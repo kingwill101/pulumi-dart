@@ -16,7 +16,7 @@ class ContentLinkResponse {
   /// [contentHash] Gets or sets the hash.
   /// [uri] Gets or sets the uri of content.
   /// [version] Gets or sets the version of the content.
-  ContentLinkResponse({
+  const ContentLinkResponse({
     this.contentHash,
     this.uri,
     this.version,

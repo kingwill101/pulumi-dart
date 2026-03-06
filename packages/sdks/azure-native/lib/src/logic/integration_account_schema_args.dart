@@ -45,7 +45,7 @@ class IntegrationAccountSchemaArgs {
   /// [schemaType] The schema type.
   /// [tags] The resource tags.
   /// [targetNamespace] The target namespace of the schema.
-  IntegrationAccountSchemaArgs({
+  const IntegrationAccountSchemaArgs({
     this.content,
     this.contentType,
     this.documentName,

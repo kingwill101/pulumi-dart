@@ -67,7 +67,7 @@ class GetTrunkedNetworkResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachinesAssociatedIds] Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
   /// [vlans] The list of vlans that are selected from the isolation domains for trunking.
-  GetTrunkedNetworkResult({
+  const GetTrunkedNetworkResult({
     required this.associatedResourceIds,
     required this.azureApiVersion,
     required this.clusterId,

@@ -21,7 +21,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   /// [header] Configures inspection of the response header.See `header` for more details.
   /// [json] Configures inspection of the response JSON. See `json` for more details.
   /// [statusCode] Configures inspection of the response status code.See `status_code` for more details.
-  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection({
+  const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection({
     this.bodyContains,
     this.header,
     this.json,

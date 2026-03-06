@@ -19,7 +19,7 @@ class DeploymentLogging {
   /// [log4jLoggers] log4j configuration   See `log4j_loggers` below.
   /// [logReservePolicy] Log retention policy   See `log_reserve_policy` below.
   /// [loggingProfile] Default system log template
-  DeploymentLogging({
+  const DeploymentLogging({
     this.log4j2ConfigurationTemplate,
     this.log4jLoggers,
     this.logReservePolicy,

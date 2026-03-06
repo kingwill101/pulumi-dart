@@ -24,7 +24,7 @@ class Ipv6EgressRuleArgs {
   /// [instanceType] The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
   /// [ipv6EgressRuleName] The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
   /// [ipv6GatewayId] The ID of the IPv6 gateway.
-  Ipv6EgressRuleArgs({
+  const Ipv6EgressRuleArgs({
     this.description,
     required this.instanceId,
     this.instanceType,

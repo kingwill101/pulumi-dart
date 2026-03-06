@@ -21,7 +21,7 @@ class GetFunctionResult {
   /// [name] Resource name
   /// [properties] The properties that are associated with a function.
   /// [type] Resource type
-  GetFunctionResult({
+  const GetFunctionResult({
     required this.azureApiVersion,
     required this.id,
     this.name,

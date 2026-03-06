@@ -28,7 +28,7 @@ class AgentcoreOauth2CredentialProviderState {
   /// [name] Name of the OAuth2 credential provider.
   /// [oauth2ProviderConfig] OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2_provider_config` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AgentcoreOauth2CredentialProviderState({
+  const AgentcoreOauth2CredentialProviderState({
     this.clientSecretArns,
     this.credentialProviderArn,
     this.credentialProviderVendor,

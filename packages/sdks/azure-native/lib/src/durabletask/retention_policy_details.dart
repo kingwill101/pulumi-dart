@@ -12,7 +12,7 @@ class RetentionPolicyDetails {
   /// Creates a new [RetentionPolicyDetails].
   /// [orchestrationState] The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states.
   /// [retentionPeriodInDays] The retention period in days after which the orchestration will be purged automatically
-  RetentionPolicyDetails({
+  const RetentionPolicyDetails({
     this.orchestrationState,
     required this.retentionPeriodInDays,
   });

@@ -12,7 +12,7 @@ class RangePartitioningResponse {
   /// Creates a new [RangePartitioningResponse].
   /// [field] [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
   /// [range] [TrustedTester] [Required] Defines the ranges for range partitioning.
-  RangePartitioningResponse({
+  const RangePartitioningResponse({
     required this.field,
     required this.range,
   });

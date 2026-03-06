@@ -13,7 +13,7 @@ class AwsEc2AccountAttributeProperties {
   /// Creates a new [AwsEc2AccountAttributeProperties].
   /// [attributeName] &lt;p&gt;The name of the account attribute.&lt;/p&gt;
   /// [attributeValues] &lt;p&gt;The values for the account attribute.&lt;/p&gt;
-  AwsEc2AccountAttributeProperties({
+  const AwsEc2AccountAttributeProperties({
     this.attributeName,
     this.attributeValues,
   });

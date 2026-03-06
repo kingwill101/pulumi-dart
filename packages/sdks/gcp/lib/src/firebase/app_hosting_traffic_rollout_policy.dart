@@ -16,7 +16,7 @@ class AppHostingTrafficRolloutPolicy {
   /// [codebaseBranch] Specifies a branch that triggers a new build to be started with this
   /// [disabled] A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
   /// [disabledTime] (Output)
-  AppHostingTrafficRolloutPolicy({
+  const AppHostingTrafficRolloutPolicy({
     this.codebaseBranch,
     this.disabled,
     this.disabledTime,

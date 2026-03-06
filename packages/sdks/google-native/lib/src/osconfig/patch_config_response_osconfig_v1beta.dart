@@ -38,7 +38,7 @@ class PatchConfigResponseOsconfigV1beta {
   /// [windowsUpdate] Windows update settings. Use this override the default windows patch rules.
   /// [yum] Yum update settings. Use this setting to override the default `yum` patch rules.
   /// [zypper] Zypper update settings. Use this setting to override the default `zypper` patch rules.
-  PatchConfigResponseOsconfigV1beta({
+  const PatchConfigResponseOsconfigV1beta({
     required this.apt,
     required this.goo,
     required this.migInstancesAllowed,

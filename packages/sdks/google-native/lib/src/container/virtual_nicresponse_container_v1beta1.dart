@@ -9,7 +9,7 @@ class VirtualNICResponseContainerV1beta1 {
 
   /// Creates a new [VirtualNICResponseContainerV1beta1].
   /// [enabled] Whether gVNIC features are enabled in the node pool.
-  VirtualNICResponseContainerV1beta1({
+  const VirtualNICResponseContainerV1beta1({
     required this.enabled,
   });
 

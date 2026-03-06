@@ -19,7 +19,7 @@ class CertificateConfiguration {
   /// [certificatePassword] Certificate Password.
   /// [encodedCertificate] Base64 Encoded certificate.
   /// [storeName] The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations.
-  CertificateConfiguration({
+  const CertificateConfiguration({
     this.certificate,
     this.certificatePassword,
     this.encodedCertificate,

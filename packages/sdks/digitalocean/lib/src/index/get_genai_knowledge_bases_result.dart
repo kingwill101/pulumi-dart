@@ -18,7 +18,7 @@ class GetGenaiKnowledgeBasesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [knowledgeBases] Required.
   /// [sorts] Optional.
-  GetGenaiKnowledgeBasesResult({
+  const GetGenaiKnowledgeBasesResult({
     this.filters,
     required this.id,
     required this.knowledgeBases,

@@ -15,7 +15,7 @@ class GetApiGatewayArgs {
   /// Creates a new [GetApiGatewayArgs].
   /// [gatewayName] The name of the API Management gateway.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApiGatewayArgs({
+  const GetApiGatewayArgs({
     required this.gatewayName,
     required this.resourceGroupName,
   });

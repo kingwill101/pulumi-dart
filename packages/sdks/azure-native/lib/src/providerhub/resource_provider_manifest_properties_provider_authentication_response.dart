@@ -9,7 +9,7 @@ class ResourceProviderManifestPropertiesProviderAuthenticationResponse {
 
   /// Creates a new [ResourceProviderManifestPropertiesProviderAuthenticationResponse].
   /// [allowedAudiences] The allowed audiences.
-  ResourceProviderManifestPropertiesProviderAuthenticationResponse({
+  const ResourceProviderManifestPropertiesProviderAuthenticationResponse({
     required this.allowedAudiences,
   });
 

@@ -18,7 +18,7 @@ class GetIntegrationAccountSchemaArgs {
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
   /// [schemaName] The integration account schema name.
-  GetIntegrationAccountSchemaArgs({
+  const GetIntegrationAccountSchemaArgs({
     required this.integrationAccountName,
     required this.resourceGroupName,
     required this.schemaName,

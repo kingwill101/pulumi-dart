@@ -11,7 +11,7 @@ class DomainDevicesParallelLog {
   /// Creates a new [DomainDevicesParallelLog].
   /// [append] Indicates whether to append log data to the existing log file.
   /// [file] Defines the file path where channel logs will be written.
-  DomainDevicesParallelLog({
+  const DomainDevicesParallelLog({
     this.append,
     required this.file,
   });

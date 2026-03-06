@@ -21,7 +21,7 @@ class GetLinkedWorkspaceResult {
   /// [name] Friendly name of the linked workspace.
   /// [properties] LinkedWorkspace specific properties.
   /// [type] Resource type of linked workspace.
-  GetLinkedWorkspaceResult({
+  const GetLinkedWorkspaceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

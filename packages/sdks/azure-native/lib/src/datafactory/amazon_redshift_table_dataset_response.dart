@@ -40,7 +40,7 @@ class AmazonRedshiftTableDatasetResponse {
   /// [table] The Amazon Redshift table name. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  AmazonRedshiftTableDatasetResponse({
+  const AmazonRedshiftTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

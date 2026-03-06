@@ -141,7 +141,7 @@ class GetClustersCluster {
   /// [vpcId] The VPC ID.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.accessInfos,
     required this.autoScalingAllowed,
     required this.autoScalingByLoadAllowed,

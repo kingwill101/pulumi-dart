@@ -39,7 +39,7 @@ class GetIntegrationAccountPartnerResult {
   /// [partnerType] The partner type.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountPartnerResult({
+  const GetIntegrationAccountPartnerResult({
     required this.azureApiVersion,
     required this.changedTime,
     required this.content,

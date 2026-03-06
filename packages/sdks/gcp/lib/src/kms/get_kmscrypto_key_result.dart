@@ -44,7 +44,7 @@ class GetKMSCryptoKeyResult {
   /// [rotationPeriod] Every time this period passes, generate a new CryptoKeyVersion and set it as
   /// [skipInitialVersionCreation] Required.
   /// [versionTemplates] Required.
-  GetKMSCryptoKeyResult({
+  const GetKMSCryptoKeyResult({
     required this.cryptoKeyBackend,
     required this.destroyScheduledDuration,
     required this.effectiveLabels,

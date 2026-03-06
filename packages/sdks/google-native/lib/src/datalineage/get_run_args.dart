@@ -17,7 +17,7 @@ class GetRunArgs {
   /// [processId] Required.
   /// [project] Optional.
   /// [runId] Required.
-  GetRunArgs({
+  const GetRunArgs({
     required this.location,
     required this.processId,
     this.project,

@@ -22,7 +22,7 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse {
   /// [reset] Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
   /// [rules] In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
   /// [updateTime] The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
-  GoogleCloudOrgpolicyV2PolicySpecResponse({
+  const GoogleCloudOrgpolicyV2PolicySpecResponse({
     required this.etag,
     required this.inheritFromParent,
     required this.reset,

@@ -15,7 +15,7 @@ class MigrateMySqlAzureDbForMySqlOfflineDatabaseInput {
   /// [name] Name of the database
   /// [tableMap] Mapping of source to target tables
   /// [targetDatabaseName] Name of target database. Note: Target database will be truncated before starting migration.
-  MigrateMySqlAzureDbForMySqlOfflineDatabaseInput({
+  const MigrateMySqlAzureDbForMySqlOfflineDatabaseInput({
     this.name,
     this.tableMap,
     this.targetDatabaseName,

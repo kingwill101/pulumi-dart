@@ -22,7 +22,7 @@ class ArchiveDeploymentArgs {
   /// [labels] User-supplied key-value pairs used to organize ArchiveDeployments. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
   /// [name] Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
   /// [organizationId] Required.
-  ArchiveDeploymentArgs({
+  const ArchiveDeploymentArgs({
     required this.environmentId,
     this.gcsUri,
     this.labels,

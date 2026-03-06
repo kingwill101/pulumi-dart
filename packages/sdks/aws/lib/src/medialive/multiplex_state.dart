@@ -32,7 +32,7 @@ class MultiplexState {
   /// [startMultiplex] Whether to start the Multiplex. Defaults to `false`.
   /// [tags] A map of tags to assign to the Multiplex. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  MultiplexState({
+  const MultiplexState({
     this.arn,
     this.availabilityZones,
     this.multiplexSettings,

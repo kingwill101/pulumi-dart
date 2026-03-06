@@ -34,7 +34,7 @@ class FormTypeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of form type. Must be "ENABLED" or "DISABLED" If status is set to "ENABLED" terraform cannot delete the resource until it is manually changed in the AWS console.
   /// [timeouts] Optional.
-  FormTypeArgs({
+  const FormTypeArgs({
     this.description,
     required this.domainIdentifier,
     required this.model,

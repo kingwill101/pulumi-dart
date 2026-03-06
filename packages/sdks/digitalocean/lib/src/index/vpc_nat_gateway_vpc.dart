@@ -14,7 +14,7 @@ class VpcNatGatewayVpc {
   /// [defaultGateway] Boolean flag indicating if this should be the default gateway in this VPC
   /// [gatewayIp] The private IP of the VPC NAT Gateway
   /// [vpcUuid] The ID of the ingress VPC
-  VpcNatGatewayVpc({
+  const VpcNatGatewayVpc({
     this.defaultGateway,
     this.gatewayIp,
     required this.vpcUuid,

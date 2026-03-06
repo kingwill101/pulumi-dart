@@ -12,7 +12,7 @@ class WorkflowPropertiesResponse {
   /// Creates a new [WorkflowPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
   /// [workflowTemplateId] Workflow template Id
-  WorkflowPropertiesResponse({
+  const WorkflowPropertiesResponse({
     required this.provisioningState,
     required this.workflowTemplateId,
   });

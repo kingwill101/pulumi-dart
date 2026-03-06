@@ -11,7 +11,7 @@ class VpcEncryptionControlResourceExclusionsLambda {
   /// Creates a new [VpcEncryptionControlResourceExclusionsLambda].
   /// [state] The current state of the VPC Encryption Control.
   /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
-  VpcEncryptionControlResourceExclusionsLambda({
+  const VpcEncryptionControlResourceExclusionsLambda({
     required this.state,
     required this.stateMessage,
   });

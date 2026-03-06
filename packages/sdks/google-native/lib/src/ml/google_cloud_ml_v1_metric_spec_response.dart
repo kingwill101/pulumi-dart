@@ -12,7 +12,7 @@ class GoogleCloudMlV1MetricSpecResponse {
   /// Creates a new [GoogleCloudMlV1MetricSpecResponse].
   /// [name] metric name.
   /// [target] Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
-  GoogleCloudMlV1MetricSpecResponse({
+  const GoogleCloudMlV1MetricSpecResponse({
     required this.name,
     required this.target,
   });

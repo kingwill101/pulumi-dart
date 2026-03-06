@@ -115,7 +115,7 @@ class NetworkState {
   /// [tags] The tags of Vpc.
   /// [userCidrs] A list of user CIDRs.
   /// [vpcName] The new name of the VPC.
-  NetworkState({
+  const NetworkState({
     this.cidrBlock,
     this.classicLinkEnabled,
     this.createTime,

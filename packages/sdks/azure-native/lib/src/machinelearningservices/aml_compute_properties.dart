@@ -43,7 +43,7 @@ class AmlComputeProperties {
   /// [virtualMachineImage] Virtual Machine image for AML Compute - windows only
   /// [vmPriority] Virtual Machine priority
   /// [vmSize] Virtual Machine Size
-  AmlComputeProperties({
+  const AmlComputeProperties({
     this.enableNodePublicIp,
     this.isolatedNetwork,
     this.osType,

@@ -9,7 +9,7 @@ class AutomationRuleCriteriaProductName {
   /// Creates a new [AutomationRuleCriteriaProductName].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaProductName({
+  const AutomationRuleCriteriaProductName({
     required this.comparison,
     required this.value,
   });

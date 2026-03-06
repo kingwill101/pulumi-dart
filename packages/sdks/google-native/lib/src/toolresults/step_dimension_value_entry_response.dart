@@ -9,7 +9,7 @@ class StepDimensionValueEntryResponse {
   /// Creates a new [StepDimensionValueEntryResponse].
   /// [key] Required.
   /// [value] Required.
-  StepDimensionValueEntryResponse({
+  const StepDimensionValueEntryResponse({
     required this.key,
     required this.value,
   });

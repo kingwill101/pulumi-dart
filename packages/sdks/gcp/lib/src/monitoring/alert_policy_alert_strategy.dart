@@ -24,7 +24,7 @@ class AlertPolicyAlertStrategy {
   /// [notificationChannelStrategies] Control over how the notification channels in `notification_channels`
   /// [notificationPrompts] Control when notifications will be sent out.
   /// [notificationRateLimit] Required for alert policies with a LogMatch condition.
-  AlertPolicyAlertStrategy({
+  const AlertPolicyAlertStrategy({
     this.autoClose,
     this.notificationChannelStrategies,
     this.notificationPrompts,

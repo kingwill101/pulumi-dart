@@ -37,7 +37,7 @@ class ResourceGroupTemplateDeploymentArgs {
   /// [tags] A mapping of tags which should be assigned to the Resource Group Template Deployment.
   /// [templateContent] The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
   /// [templateSpecVersionId] The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
-  ResourceGroupTemplateDeploymentArgs({
+  const ResourceGroupTemplateDeploymentArgs({
     this.debugLevel,
     required this.deploymentMode,
     this.name,

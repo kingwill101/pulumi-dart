@@ -18,7 +18,7 @@ class ElasticBackupProperties {
   /// [elasticVolumeResourceId] ResourceId used to identify the Elastic Volume
   /// [label] Label for backup
   /// [snapshotUsage] Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
-  ElasticBackupProperties({
+  const ElasticBackupProperties({
     this.elasticSnapshotResourceId,
     required this.elasticVolumeResourceId,
     this.label,

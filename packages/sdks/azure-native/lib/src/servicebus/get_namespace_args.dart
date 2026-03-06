@@ -15,7 +15,7 @@ class GetNamespaceArgs {
   /// Creates a new [GetNamespaceArgs].
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNamespaceArgs({
+  const GetNamespaceArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

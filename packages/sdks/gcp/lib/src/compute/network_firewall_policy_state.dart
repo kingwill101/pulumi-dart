@@ -40,7 +40,7 @@ class NetworkFirewallPolicyState {
   /// [ruleTupleCount] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
-  NetworkFirewallPolicyState({
+  const NetworkFirewallPolicyState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

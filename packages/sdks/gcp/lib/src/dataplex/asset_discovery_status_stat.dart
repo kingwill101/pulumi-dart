@@ -17,7 +17,7 @@ class AssetDiscoveryStatusStat {
   /// [dataSize] The number of stored data bytes within the referenced resource.
   /// [filesets] The count of fileset entities within the referenced resource.
   /// [tables] The count of table entities within the referenced resource.
-  AssetDiscoveryStatusStat({
+  const AssetDiscoveryStatusStat({
     this.dataItems,
     this.dataSize,
     this.filesets,

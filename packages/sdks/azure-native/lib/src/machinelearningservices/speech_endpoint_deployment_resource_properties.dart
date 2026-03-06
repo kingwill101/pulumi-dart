@@ -25,7 +25,7 @@ class SpeechEndpointDeploymentResourceProperties {
   /// [sku] Optional.
   /// [type] Kind of the deployment.
   /// [versionUpgradeOption] Deployment model version upgrade option.
-  SpeechEndpointDeploymentResourceProperties({
+  const SpeechEndpointDeploymentResourceProperties({
     this.failureReason,
     required this.model,
     this.raiPolicyName,

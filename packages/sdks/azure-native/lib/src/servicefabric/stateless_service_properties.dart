@@ -56,7 +56,7 @@ class StatelessServiceProperties {
   /// [servicePackageActivationMode] The activation Mode of the service package
   /// [servicePlacementPolicies] A list that describes the correlation of the service with other services.
   /// [serviceTypeName] The name of the service type
-  StatelessServiceProperties({
+  const StatelessServiceProperties({
     this.correlationScheme,
     this.defaultMoveCost,
     required this.instanceCount,

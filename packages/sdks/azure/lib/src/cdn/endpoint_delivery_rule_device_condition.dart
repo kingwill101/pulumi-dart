@@ -14,7 +14,7 @@ class EndpointDeliveryRuleDeviceCondition {
   /// [matchValues] Valid values are `Desktop` and `Mobile`.
   /// [negateCondition] Defaults to `false`.
   /// [operator] Valid values are `Equal`. Defaults to `Equal`.
-  EndpointDeliveryRuleDeviceCondition({
+  const EndpointDeliveryRuleDeviceCondition({
     required this.matchValues,
     this.negateCondition,
     this.operator,

@@ -20,7 +20,7 @@ class FileSystemRecycleBin {
   /// [secondarySize] Amount of low-frequency data stored in the recycle bin. Unit: Byte.
   /// [size] The amount of files stored in the Recycle Bin. Unit: Byte.
   /// [status] Recycle Bin Status
-  FileSystemRecycleBin({
+  const FileSystemRecycleBin({
     this.enableTime,
     this.reservedDays,
     this.secondarySize,

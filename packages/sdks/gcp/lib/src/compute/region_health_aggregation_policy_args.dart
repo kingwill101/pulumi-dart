@@ -64,7 +64,7 @@ class RegionHealthAggregationPolicyArgs {
   /// [policyType] Specifies the type of the healthAggregationPolicy. The only allowed value
   /// [project] The ID of the project in which the resource belongs.
   /// [region] URL of the region where the health aggregation policy resides.
-  RegionHealthAggregationPolicyArgs({
+  const RegionHealthAggregationPolicyArgs({
     this.description,
     this.healthyPercentThreshold,
     this.minHealthyThreshold,

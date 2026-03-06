@@ -34,7 +34,7 @@ class RetrohuntArgs {
   /// [processInterval] Represents a time interval, encoded as a Timestamp start (inclusive) and a
   /// [project] The ID of the project in which the resource belongs.
   /// [rule] The Rule ID of the rule.
-  RetrohuntArgs({
+  const RetrohuntArgs({
     this.retrohuntId,
     required this.instance,
     required this.location,

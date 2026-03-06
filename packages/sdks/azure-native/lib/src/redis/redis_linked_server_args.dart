@@ -28,7 +28,7 @@ class RedisLinkedServerArgs {
   /// [name] The name of the Redis cache.
   /// [resourceGroupName] The name of the resource group.
   /// [serverRole] Role of the linked server.
-  RedisLinkedServerArgs({
+  const RedisLinkedServerArgs({
     required this.linkedRedisCacheId,
     required this.linkedRedisCacheLocation,
     this.linkedServerName,

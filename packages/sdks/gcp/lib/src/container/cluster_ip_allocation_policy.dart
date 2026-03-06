@@ -60,7 +60,7 @@ class ClusterIpAllocationPolicy {
   /// [servicesIpv4CidrBlock] The IP address range of the services IPs in this cluster.
   /// [servicesSecondaryRangeName] The name of the existing
   /// [stackType] The IP Stack Type of the cluster.
-  ClusterIpAllocationPolicy({
+  const ClusterIpAllocationPolicy({
     this.additionalIpRangesConfigs,
     this.additionalPodRangesConfig,
     this.autoIpamConfig,

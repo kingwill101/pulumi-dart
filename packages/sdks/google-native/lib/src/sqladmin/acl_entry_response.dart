@@ -18,7 +18,7 @@ class AclEntryResponse {
   /// [kind] This is always `sql#aclEntry`.
   /// [name] Optional. A label to identify this entry.
   /// [value] The allowlisted value for the access control list.
-  AclEntryResponse({
+  const AclEntryResponse({
     required this.expirationTime,
     required this.kind,
     required this.name,

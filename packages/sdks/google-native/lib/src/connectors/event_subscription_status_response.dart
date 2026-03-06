@@ -12,7 +12,7 @@ class EventSubscriptionStatusResponse {
   /// Creates a new [EventSubscriptionStatusResponse].
   /// [description] Description of the state.
   /// [state] State of Event Subscription resource.
-  EventSubscriptionStatusResponse({
+  const EventSubscriptionStatusResponse({
     required this.description,
     required this.state,
   });

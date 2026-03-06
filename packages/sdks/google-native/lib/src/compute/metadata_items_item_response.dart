@@ -12,7 +12,7 @@ class MetadataItemsItemResponse {
   /// Creates a new [MetadataItemsItemResponse].
   /// [key] Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
   /// [value] Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-  MetadataItemsItemResponse({
+  const MetadataItemsItemResponse({
     required this.key,
     required this.value,
   });

@@ -11,7 +11,7 @@ class InstancePersonality {
   /// Creates a new [InstancePersonality].
   /// [content] The contents of the file. Limited to 255 bytes.
   /// [file] The absolute path of the destination file.
-  InstancePersonality({
+  const InstancePersonality({
     required this.content,
     required this.file,
   });

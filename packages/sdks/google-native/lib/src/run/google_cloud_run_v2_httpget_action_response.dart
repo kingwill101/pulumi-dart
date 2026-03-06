@@ -16,7 +16,7 @@ class GoogleCloudRunV2HTTPGetActionResponse {
   /// [httpHeaders] Custom headers to set in the request. HTTP allows repeated headers.
   /// [path] Path to access on the HTTP server. Defaults to '/'.
   /// [port] Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  GoogleCloudRunV2HTTPGetActionResponse({
+  const GoogleCloudRunV2HTTPGetActionResponse({
     required this.httpHeaders,
     required this.path,
     required this.port,

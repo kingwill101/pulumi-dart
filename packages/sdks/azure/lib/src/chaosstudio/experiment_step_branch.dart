@@ -12,7 +12,7 @@ class ExperimentStepBranch {
   /// Creates a new [ExperimentStepBranch].
   /// [actions] One or more `actions` blocks as defined above.
   /// [name] The name of the branch.
-  ExperimentStepBranch({
+  const ExperimentStepBranch({
     required this.actions,
     required this.name,
   });

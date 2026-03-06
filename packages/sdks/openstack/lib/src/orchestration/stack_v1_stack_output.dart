@@ -12,7 +12,7 @@ class StackV1StackOutput {
   /// [description] The description of the stack resource.
   /// [outputKey] Required.
   /// [outputValue] Required.
-  StackV1StackOutput({
+  const StackV1StackOutput({
     this.description,
     required this.outputKey,
     required this.outputValue,

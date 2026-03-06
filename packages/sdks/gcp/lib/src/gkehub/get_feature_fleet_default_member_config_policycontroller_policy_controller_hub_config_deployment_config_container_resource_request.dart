@@ -11,7 +11,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest].
   /// [cpu] CPU requirement expressed in Kubernetes resource units.
   /// [memory] Memory requirement expressed in Kubernetes resource units.
-  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest({
+  const GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest({
     required this.cpu,
     required this.memory,
   });

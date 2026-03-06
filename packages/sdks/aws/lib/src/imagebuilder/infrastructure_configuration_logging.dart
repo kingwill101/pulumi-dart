@@ -9,7 +9,7 @@ class InfrastructureConfigurationLogging {
 
   /// Creates a new [InfrastructureConfigurationLogging].
   /// [s3Logs] Configuration block with S3 logging settings. Detailed below.
-  InfrastructureConfigurationLogging({
+  const InfrastructureConfigurationLogging({
     required this.s3Logs,
   });
 

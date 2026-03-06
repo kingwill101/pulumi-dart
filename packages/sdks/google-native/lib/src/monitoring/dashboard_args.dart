@@ -43,7 +43,7 @@ class DashboardArgs {
   /// [name] Immutable. The resource name of the dashboard.
   /// [project] Optional.
   /// [rowLayout] The content is divided into equally spaced rows and the widgets are arranged horizontally.
-  DashboardArgs({
+  const DashboardArgs({
     this.columnLayout,
     this.dashboardFilters,
     required this.displayName,

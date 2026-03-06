@@ -15,7 +15,7 @@ class GlobalDatabaseNetworkArgs {
   /// Creates a new [GlobalDatabaseNetworkArgs].
   /// [dbClusterId] The ID of the primary cluster.
   /// [description] The description of the Global Database Network.
-  GlobalDatabaseNetworkArgs({
+  const GlobalDatabaseNetworkArgs({
     required this.dbClusterId,
     this.description,
   });

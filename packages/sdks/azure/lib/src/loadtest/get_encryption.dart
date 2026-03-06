@@ -12,7 +12,7 @@ class GetEncryption {
   /// Creates a new [GetEncryption].
   /// [identities] An `identity` block as defined below.
   /// [keyUrl] The URI specifying the Key vault and key to be used to encrypt data in this resource.
-  GetEncryption({
+  const GetEncryption({
     required this.identities,
     required this.keyUrl,
   });

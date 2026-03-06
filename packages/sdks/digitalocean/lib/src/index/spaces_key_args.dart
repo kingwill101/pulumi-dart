@@ -16,7 +16,7 @@ class SpacesKeyArgs {
   /// Creates a new [SpacesKeyArgs].
   /// [grants] A grant for the key (documented below).
   /// [name] The name of the key
-  SpacesKeyArgs({
+  const SpacesKeyArgs({
     this.grants,
     this.name,
   });

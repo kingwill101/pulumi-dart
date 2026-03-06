@@ -12,7 +12,7 @@ class ReplicaGroupDrillArgs {
 
   /// Creates a new [ReplicaGroupDrillArgs].
   /// [groupId] The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
-  ReplicaGroupDrillArgs({
+  const ReplicaGroupDrillArgs({
     required this.groupId,
   });
 

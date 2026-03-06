@@ -50,7 +50,7 @@ class InstanceGroupManagerActionsSummaryResponse {
   /// [stopping] The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
   /// [suspending] The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
   /// [verifying] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
-  InstanceGroupManagerActionsSummaryResponse({
+  const InstanceGroupManagerActionsSummaryResponse({
     required this.abandoning,
     required this.creating,
     required this.creatingAtomically,

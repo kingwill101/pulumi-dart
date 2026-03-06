@@ -96,7 +96,7 @@ class NetworkArgs {
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [routingMode] The network-wide routing mode to use. If set to `REGIONAL`, this
-  NetworkArgs({
+  const NetworkArgs({
     this.autoCreateSubnetworks,
     this.bgpAlwaysCompareMed,
     this.bgpBestPathSelectionMode,

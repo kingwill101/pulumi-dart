@@ -12,7 +12,7 @@ class CustomNamingConventionResponse {
   /// Creates a new [CustomNamingConventionResponse].
   /// [formula] The custom naming formula for the resource type.
   /// [resourceType] The type of the resource.
-  CustomNamingConventionResponse({
+  const CustomNamingConventionResponse({
     required this.formula,
     required this.resourceType,
   });

@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2InfoTypeStatsResponse {
   /// Creates a new [GooglePrivacyDlpV2InfoTypeStatsResponse].
   /// [count] Number of findings for this infoType.
   /// [infoType] The type of finding this stat is for.
-  GooglePrivacyDlpV2InfoTypeStatsResponse({
+  const GooglePrivacyDlpV2InfoTypeStatsResponse({
     required this.count,
     required this.infoType,
   });

@@ -22,7 +22,7 @@ class BusinessCaseOperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [settings] Business case settings.
-  BusinessCaseOperationArgs({
+  const BusinessCaseOperationArgs({
     this.businessCaseName,
     required this.projectName,
     required this.resourceGroupName,

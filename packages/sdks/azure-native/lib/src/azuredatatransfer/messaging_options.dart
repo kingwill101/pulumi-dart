@@ -9,7 +9,7 @@ class MessagingOptions {
 
   /// Creates a new [MessagingOptions].
   /// [billingTier] Billing tier for this messaging flow
-  MessagingOptions({
+  const MessagingOptions({
     this.billingTier,
   });
 

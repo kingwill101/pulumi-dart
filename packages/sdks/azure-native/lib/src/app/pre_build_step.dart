@@ -16,7 +16,7 @@ class PreBuildStep {
   /// [description] Description of the pre-build step.
   /// [httpGet] Http get request to send before the build.
   /// [scripts] List of custom commands to run.
-  PreBuildStep({
+  const PreBuildStep({
     this.description,
     this.httpGet,
     this.scripts,

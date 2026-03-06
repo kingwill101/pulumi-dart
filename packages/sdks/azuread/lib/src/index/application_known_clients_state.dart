@@ -12,7 +12,7 @@ class ApplicationKnownClientsState {
   /// Creates a new [ApplicationKnownClientsState].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [knownClientIds] A set of client IDs for the known applications.
-  ApplicationKnownClientsState({
+  const ApplicationKnownClientsState({
     this.applicationId,
     this.knownClientIds,
   });

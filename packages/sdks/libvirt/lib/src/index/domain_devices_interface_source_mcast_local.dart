@@ -11,7 +11,7 @@ class DomainDevicesInterfaceSourceMcastLocal {
   /// Creates a new [DomainDevicesInterfaceSourceMcastLocal].
   /// [address] Specifies the local address for UDP communications on the network interface.
   /// [port] Sets the local port number for UDP traffic on the network interface.
-  DomainDevicesInterfaceSourceMcastLocal({
+  const DomainDevicesInterfaceSourceMcastLocal({
     this.address,
     this.port,
   });

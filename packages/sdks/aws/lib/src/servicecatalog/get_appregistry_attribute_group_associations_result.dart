@@ -14,7 +14,7 @@ class GetAppregistryAttributeGroupAssociationsResult {
   /// [id] Optional.
   /// [name] Optional.
   /// [region] Required.
-  GetAppregistryAttributeGroupAssociationsResult({
+  const GetAppregistryAttributeGroupAssociationsResult({
     required this.attributeGroupIds,
     this.id,
     this.name,

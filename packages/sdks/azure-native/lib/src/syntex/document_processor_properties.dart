@@ -12,7 +12,7 @@ class DocumentProcessorProperties {
   /// Creates a new [DocumentProcessorProperties].
   /// [spoTenantId] The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
   /// [spoTenantUrl] The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
-  DocumentProcessorProperties({
+  const DocumentProcessorProperties({
     required this.spoTenantId,
     required this.spoTenantUrl,
   });

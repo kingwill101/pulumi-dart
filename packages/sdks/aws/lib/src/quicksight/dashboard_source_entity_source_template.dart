@@ -12,7 +12,7 @@ class DashboardSourceEntitySourceTemplate {
   /// Creates a new [DashboardSourceEntitySourceTemplate].
   /// [arn] The Amazon Resource Name (ARN) of the resource.
   /// [dataSetReferences] List of dataset references. See data_set_references.
-  DashboardSourceEntitySourceTemplate({
+  const DashboardSourceEntitySourceTemplate({
     required this.arn,
     required this.dataSetReferences,
   });

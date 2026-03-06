@@ -16,7 +16,7 @@ class TagTemplateFieldType {
   /// Creates a new [TagTemplateFieldType].
   /// [enumType] Represents an enum type.
   /// [primitiveType] Represents primitive types - string, bool etc.
-  TagTemplateFieldType({
+  const TagTemplateFieldType({
     this.enumType,
     this.primitiveType,
   });

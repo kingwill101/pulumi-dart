@@ -15,7 +15,7 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryResponse {
   /// [baseUrl] The location of the repository directory.
   /// [displayName] The display name of the repository.
   /// [gpgKeys] URIs of GPG keys.
-  OSPolicyResourceRepositoryResourceZypperRepositoryResponse({
+  const OSPolicyResourceRepositoryResourceZypperRepositoryResponse({
     required this.baseUrl,
     required this.displayName,
     required this.gpgKeys,

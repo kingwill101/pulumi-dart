@@ -9,7 +9,7 @@ class EntraIdentityProviderProperties {
 
   /// Creates a new [EntraIdentityProviderProperties].
   /// [principalType] The principal type of the user.
-  EntraIdentityProviderProperties({
+  const EntraIdentityProviderProperties({
     required this.principalType,
   });
 

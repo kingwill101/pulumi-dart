@@ -12,7 +12,7 @@ class PermissionConstraintResponse {
   /// Creates a new [PermissionConstraintResponse].
   /// [key] Key of the constraint.
   /// [values] A list of allowed values.
-  PermissionConstraintResponse({
+  const PermissionConstraintResponse({
     required this.key,
     required this.values,
   });

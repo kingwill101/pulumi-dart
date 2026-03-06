@@ -19,7 +19,7 @@ class GetSubscriptionPushConfigOidcToken {
   /// Creates a new [GetSubscriptionPushConfigOidcToken].
   /// [audience] Audience to be used when generating OIDC token. The audience claim
   /// [serviceAccountEmail] Service account email to be used for generating the OIDC token.
-  GetSubscriptionPushConfigOidcToken({
+  const GetSubscriptionPushConfigOidcToken({
     required this.audience,
     required this.serviceAccountEmail,
   });

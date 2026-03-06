@@ -36,7 +36,7 @@ class GetAggregateConfigRulesResult {
   /// [riskLevel] The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
   /// [rules] A list of Config Aggregate Config Rules. Each element contains the following attributes:
   /// [status] The status of the rule.
-  GetAggregateConfigRulesResult({
+  const GetAggregateConfigRulesResult({
     this.aggregateConfigRuleName,
     required this.aggregatorId,
     this.enableDetails,

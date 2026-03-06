@@ -87,7 +87,7 @@ class EnterpriseInstanceArgs {
   /// [tid] The tenant ID.
   /// [useDsql] Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
   /// [vpcId] VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
-  EnterpriseInstanceArgs({
+  const EnterpriseInstanceArgs({
     this.dataLinkName,
     required this.databasePassword,
     required this.databaseUser,

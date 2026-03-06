@@ -11,7 +11,7 @@ class ListEASubscriptionListMigrationDatePostResult {
   /// Creates a new [ListEASubscriptionListMigrationDatePostResult].
   /// [isGrandFatherableSubscription] Is subscription in the grand fatherable subscription list.
   /// [optedInDate] Time to start using new pricing model.
-  ListEASubscriptionListMigrationDatePostResult({
+  const ListEASubscriptionListMigrationDatePostResult({
     this.isGrandFatherableSubscription,
     this.optedInDate,
   });

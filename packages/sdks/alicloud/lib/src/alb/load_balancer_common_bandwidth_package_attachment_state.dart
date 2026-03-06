@@ -18,7 +18,7 @@ class LoadBalancerCommonBandwidthPackageAttachmentState {
   /// [dryRun] Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
   /// [loadBalancerId] The ID of the applied server load balancer instance.
   /// [status] The status of the Application Load balancing instance. Value:-**Inactive**: Stopped, indicating that the instance listener will no longer forward traffic.-**Active**: running.-**Provisioning**: The project is being created.-**Configuring**: The configuration is being changed.-**CreateFailed**: The instance cannot be deleted without any charge.
-  LoadBalancerCommonBandwidthPackageAttachmentState({
+  const LoadBalancerCommonBandwidthPackageAttachmentState({
     this.bandwidthPackageId,
     this.dryRun,
     this.loadBalancerId,

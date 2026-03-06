@@ -42,7 +42,7 @@ class SiteHealthSummaryResponse {
   /// [remediationGuidance] Gets the remediation guidance.
   /// [severity] Gets the severity of error.
   /// [summaryMessage] Gets the summary message.
-  SiteHealthSummaryResponse({
+  const SiteHealthSummaryResponse({
     this.affectedObjectsCount,
     required this.affectedResourceType,
     this.affectedResources,

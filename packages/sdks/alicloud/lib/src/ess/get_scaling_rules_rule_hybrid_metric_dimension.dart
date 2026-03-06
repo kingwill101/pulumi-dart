@@ -11,7 +11,7 @@ class GetScalingRulesRuleHybridMetricDimension {
   /// Creates a new [GetScalingRulesRuleHybridMetricDimension].
   /// [dimensionKey] (Available since v1.250.0) The dimension key of the metric.
   /// [dimensionValue] (Available since v1.250.0) The dimension value of the metric.
-  GetScalingRulesRuleHybridMetricDimension({
+  const GetScalingRulesRuleHybridMetricDimension({
     required this.dimensionKey,
     required this.dimensionValue,
   });

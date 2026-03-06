@@ -65,7 +65,7 @@ class AiIndexEndpointState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the index endpoint. eg us-central1
   /// [updateTime] The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiIndexEndpointState({
+  const AiIndexEndpointState({
     this.createTime,
     this.description,
     this.displayName,

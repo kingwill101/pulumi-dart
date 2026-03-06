@@ -64,7 +64,7 @@ class Container {
   /// [terminationMessagePolicy] Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
   /// [volumeMounts] Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
-  Container({
+  const Container({
     this.args,
     this.command,
     this.env,

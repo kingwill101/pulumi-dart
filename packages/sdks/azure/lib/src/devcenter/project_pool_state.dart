@@ -38,7 +38,7 @@ class ProjectPoolState {
   /// [singleSignOnEnabled] Specifies whether Dev Boxes in the Pool will have SSO enabled or disabled. Defaults to `false`.
   /// [stopOnDisconnectGracePeriodMinutes] The specified time in minutes to wait before stopping a Dev Center Dev Box once disconnect is detected. Possible values are between `60` and `480`.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Project Pool.
-  ProjectPoolState({
+  const ProjectPoolState({
     this.devBoxDefinitionName,
     this.devCenterAttachedNetworkName,
     this.devCenterProjectId,

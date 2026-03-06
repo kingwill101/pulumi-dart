@@ -21,7 +21,7 @@ class RandomIntegerArgs {
   /// [max] The maximum inclusive value of the range.
   /// [min] The minimum inclusive value of the range.
   /// [seed] A custom seed to always produce the same value.
-  RandomIntegerArgs({
+  const RandomIntegerArgs({
     this.keepers,
     required this.max,
     required this.min,

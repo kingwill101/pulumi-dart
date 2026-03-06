@@ -22,7 +22,7 @@ class OrganizationPolicyListPolicy {
   /// [deny] One or the other must be set.
   /// [inheritFromParent] If set to true, the values from the effective Policy of the parent resource
   /// [suggestedValue] The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
-  OrganizationPolicyListPolicy({
+  const OrganizationPolicyListPolicy({
     this.allow,
     this.deny,
     this.inheritFromParent,

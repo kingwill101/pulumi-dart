@@ -12,7 +12,7 @@ class ServiceAccountSubject {
   /// Creates a new [ServiceAccountSubject].
   /// [name] `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
   /// [namespace] `namespace` is the namespace of matching ServiceAccount objects. Required.
-  ServiceAccountSubject({
+  const ServiceAccountSubject({
     required this.name,
     required this.namespace,
   });

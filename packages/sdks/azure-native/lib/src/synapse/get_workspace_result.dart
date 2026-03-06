@@ -96,7 +96,7 @@ class GetWorkspaceResult {
   /// [virtualNetworkProfile] Virtual Network profile
   /// [workspaceRepositoryConfiguration] Git integration settings
   /// [workspaceUID] The workspace unique identifier
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.adlaResourceId,
     required this.azureApiVersion,
     required this.connectivityEndpoints,

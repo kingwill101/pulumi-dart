@@ -15,7 +15,7 @@ class GetScheduledActionArgs {
   /// Creates a new [GetScheduledActionArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduledActionName] The name of the ScheduledAction
-  GetScheduledActionArgs({
+  const GetScheduledActionArgs({
     required this.resourceGroupName,
     required this.scheduledActionName,
   });

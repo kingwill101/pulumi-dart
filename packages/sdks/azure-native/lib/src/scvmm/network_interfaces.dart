@@ -27,7 +27,7 @@ class NetworkInterfaces {
   /// [name] Gets or sets the name of the network interface.
   /// [nicId] Gets or sets the nic id.
   /// [virtualNetworkId] Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic.
-  NetworkInterfaces({
+  const NetworkInterfaces({
     this.ipv4AddressType,
     this.ipv6AddressType,
     this.macAddress,

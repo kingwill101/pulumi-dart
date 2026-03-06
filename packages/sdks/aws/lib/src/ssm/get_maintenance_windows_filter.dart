@@ -11,7 +11,7 @@ class GetMaintenanceWindowsFilter {
   /// Creates a new [GetMaintenanceWindowsFilter].
   /// [name] Name of the filter field. Valid values can be found in the [SSM DescribeMaintenanceWindows API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribeMaintenanceWindows.html#API_DescribeMaintenanceWindows_RequestSyntax).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetMaintenanceWindowsFilter({
+  const GetMaintenanceWindowsFilter({
     required this.name,
     required this.values,
   });

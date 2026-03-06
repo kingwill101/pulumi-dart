@@ -62,7 +62,7 @@ class WorkloadImpactPropertiesResponse {
   /// [reportedTimeUtc] Time at which impact is reported
   /// [startDateTime] Time at which impact was observed
   /// [workload] Information about the impacted workload
-  WorkloadImpactPropertiesResponse({
+  const WorkloadImpactPropertiesResponse({
     this.additionalProperties,
     this.armCorrelationIds,
     this.clientIncidentDetails,

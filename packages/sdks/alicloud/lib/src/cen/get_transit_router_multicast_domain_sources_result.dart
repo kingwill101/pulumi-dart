@@ -20,7 +20,7 @@ class GetTransitRouterMulticastDomainSourcesResult {
   /// [outputFile] Optional.
   /// [sources] A list of Transit Router Multicast Domain Source Entries. Each element contains the following attributes:
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast source belongs.
-  GetTransitRouterMulticastDomainSourcesResult({
+  const GetTransitRouterMulticastDomainSourcesResult({
     required this.id,
     required this.ids,
     this.outputFile,

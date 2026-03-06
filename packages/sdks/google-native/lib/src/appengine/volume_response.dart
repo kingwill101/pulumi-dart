@@ -15,7 +15,7 @@ class VolumeResponse {
   /// [name] Unique name for the volume.
   /// [sizeGb] Volume size in gigabytes.
   /// [volumeType] Underlying volume type, e.g. 'tmpfs'.
-  VolumeResponse({
+  const VolumeResponse({
     required this.name,
     required this.sizeGb,
     required this.volumeType,

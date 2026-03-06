@@ -29,7 +29,7 @@ class BrandState {
   /// [orgInternalOnly] Whether the brand is only intended for usage inside the GSuite organization only.
   /// [project] The ID of the project in which the resource belongs.
   /// [supportEmail] Support email displayed on the OAuth consent screen. Can be either a
-  BrandState({
+  const BrandState({
     this.applicationTitle,
     this.name,
     this.orgInternalOnly,

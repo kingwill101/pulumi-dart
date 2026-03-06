@@ -15,7 +15,7 @@ class CurrentScenarioDetails {
   /// [jobId] ARM Id of the job being executed.
   /// [scenarioName] Scenario name.
   /// [startTime] Start time of the workflow.
-  CurrentScenarioDetails({
+  const CurrentScenarioDetails({
     this.jobId,
     this.scenarioName,
     this.startTime,

@@ -35,7 +35,7 @@ class GetIpamIpamPoolAllocationsResult {
   /// [nameRegex] Optional.
   /// [names] A list of name of Ipam Pool Allocations.
   /// [outputFile] Optional.
-  GetIpamIpamPoolAllocationsResult({
+  const GetIpamIpamPoolAllocationsResult({
     required this.allocations,
     this.cidr,
     required this.id,

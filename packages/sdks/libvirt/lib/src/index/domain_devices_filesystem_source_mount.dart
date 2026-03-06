@@ -11,7 +11,7 @@ class DomainDevicesFilesystemSourceMount {
   /// Creates a new [DomainDevicesFilesystemSourceMount].
   /// [dir] Sets the directory used as the mount point for the filesystem source.
   /// [socket] Indicates if the mount point is a socket.
-  DomainDevicesFilesystemSourceMount({
+  const DomainDevicesFilesystemSourceMount({
     this.dir,
     this.socket,
   });

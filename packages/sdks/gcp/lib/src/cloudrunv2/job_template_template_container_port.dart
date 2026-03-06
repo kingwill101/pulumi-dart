@@ -11,7 +11,7 @@ class JobTemplateTemplateContainerPort {
   /// Creates a new [JobTemplateTemplateContainerPort].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 &lt; containerPort &lt; 65536.
   /// [name] If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-  JobTemplateTemplateContainerPort({
+  const JobTemplateTemplateContainerPort({
     this.containerPort,
     this.name,
   });

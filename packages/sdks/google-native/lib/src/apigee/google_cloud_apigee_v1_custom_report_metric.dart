@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1CustomReportMetric {
   /// Creates a new [GoogleCloudApigeeV1CustomReportMetric].
   /// [function] aggregate function
   /// [name] name of the metric
-  GoogleCloudApigeeV1CustomReportMetric({
+  const GoogleCloudApigeeV1CustomReportMetric({
     this.function,
     this.name,
   });

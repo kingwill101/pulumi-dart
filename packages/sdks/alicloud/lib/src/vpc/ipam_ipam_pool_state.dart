@@ -60,7 +60,7 @@ class IpamIpamPoolState {
   /// [sourceIpamPoolId] The instance ID of the source IPAM address pool.
   /// [status] The status of the resource.
   /// [tags] The tag of the resource.
-  IpamIpamPoolState({
+  const IpamIpamPoolState({
     this.allocationDefaultCidrMask,
     this.allocationMaxCidrMask,
     this.allocationMinCidrMask,

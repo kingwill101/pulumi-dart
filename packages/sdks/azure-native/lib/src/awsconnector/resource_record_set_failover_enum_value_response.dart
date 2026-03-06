@@ -9,7 +9,7 @@ class ResourceRecordSetFailoverEnumValueResponse {
 
   /// Creates a new [ResourceRecordSetFailoverEnumValueResponse].
   /// [value] Property value
-  ResourceRecordSetFailoverEnumValueResponse({
+  const ResourceRecordSetFailoverEnumValueResponse({
     this.value,
   });
 

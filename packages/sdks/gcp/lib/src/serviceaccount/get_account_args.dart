@@ -24,7 +24,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [accountId] The Google service account ID. This be one of:
   /// [project] The ID of the project that the service account is present in.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.accountId,
     this.project,
   });

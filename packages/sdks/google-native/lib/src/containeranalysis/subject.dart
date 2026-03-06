@@ -10,7 +10,7 @@ class Subject {
   /// Creates a new [Subject].
   /// [digest] `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   /// [name] Optional.
-  Subject({
+  const Subject({
     this.digest,
     this.name,
   });

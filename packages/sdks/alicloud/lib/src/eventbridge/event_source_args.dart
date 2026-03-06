@@ -40,7 +40,7 @@ class EventSourceArgs {
   /// [externalSourceConfig] The configuration of the external data source.
   /// [externalSourceType] The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
   /// [linkedExternalSource] Specifies whether to connect to an external data source. Default value: `false`.
-  EventSourceArgs({
+  const EventSourceArgs({
     this.description,
     required this.eventBusName,
     required this.eventSourceName,

@@ -7,7 +7,7 @@ class LocationFsxOntapFileSystemProtocolNfsMountOptions {
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolNfsMountOptions].
   /// [version] Optional.
-  LocationFsxOntapFileSystemProtocolNfsMountOptions({
+  const LocationFsxOntapFileSystemProtocolNfsMountOptions({
     this.version,
   });
 

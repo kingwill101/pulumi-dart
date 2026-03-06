@@ -19,7 +19,7 @@ class AppServiceLogs {
   /// [detailedErrorMessagesEnabled] Should `Detailed error messages` be enabled on this App Service? Defaults to `false`.
   /// [failedRequestTracingEnabled] Should `Failed request tracing` be enabled on this App Service? Defaults to `false`.
   /// [httpLogs] An `http_logs` block as defined below.
-  AppServiceLogs({
+  const AppServiceLogs({
     this.applicationLogs,
     this.detailedErrorMessagesEnabled,
     this.failedRequestTracingEnabled,

@@ -20,7 +20,7 @@ class RouterRoutePolicyTermAction {
   /// [expression] Textual representation of an expression in Common Expression
   /// [location] String indicating the location of the expression for error
   /// [title] Title for the expression, i.e. a short string describing its
-  RouterRoutePolicyTermAction({
+  const RouterRoutePolicyTermAction({
     this.description,
     required this.expression,
     this.location,

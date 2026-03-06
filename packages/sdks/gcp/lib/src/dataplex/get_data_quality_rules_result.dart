@@ -19,7 +19,7 @@ class GetDataQualityRulesResult {
   /// [location] Optional.
   /// [project] Optional.
   /// [rules] (Computed) The list of generated data quality rules. For more details, please see the datascan page.
-  GetDataQualityRulesResult({
+  const GetDataQualityRulesResult({
     required this.dataScanId,
     required this.id,
     this.location,

@@ -35,7 +35,7 @@ class EndpointMysqlSettings {
   /// [serverTimezone] Time zone for the source MySQL database.
   /// [serviceAccessRoleArn] ARN of the IAM role to authenticate when connecting to the endpoint.
   /// [targetDbType] Where to migrate source tables on the target. Valid values are `specific-database` and `multiple-databases`.
-  EndpointMysqlSettings({
+  const EndpointMysqlSettings({
     this.afterConnectScript,
     this.authenticationMethod,
     this.cleanSourceMetadataOnMismatch,

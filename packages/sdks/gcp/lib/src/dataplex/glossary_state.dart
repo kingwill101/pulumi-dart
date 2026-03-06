@@ -53,7 +53,7 @@ class GlossaryState {
   /// [termCount] The number of terms in the glossary.
   /// [uid] System generated unique id for the Glossary. This ID will be different if the Glossary is deleted and re-created with the same name.
   /// [updateTime] The time at which the glossary was last updated.
-  GlossaryState({
+  const GlossaryState({
     this.categoryCount,
     this.createTime,
     this.description,

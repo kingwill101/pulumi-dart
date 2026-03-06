@@ -11,7 +11,7 @@ class ConnectionAuthParametersBasicAuthParameters {
   /// Creates a new [ConnectionAuthParametersBasicAuthParameters].
   /// [password] The password for basic authentication.
   /// [username] The username for basic authentication.
-  ConnectionAuthParametersBasicAuthParameters({
+  const ConnectionAuthParametersBasicAuthParameters({
     this.password,
     this.username,
   });

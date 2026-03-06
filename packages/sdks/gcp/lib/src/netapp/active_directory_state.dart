@@ -93,7 +93,7 @@ class ActiveDirectoryState {
   /// [state] The state of the Active Directory policy (not the Active Directory itself).
   /// [stateDetails] The state details of the Active Directory.
   /// [username] Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
-  ActiveDirectoryState({
+  const ActiveDirectoryState({
     this.administrators,
     this.aesEncryption,
     this.backupOperators,

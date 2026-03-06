@@ -10,7 +10,7 @@ class AttachedClusterProxyConfig {
 
   /// Creates a new [AttachedClusterProxyConfig].
   /// [kubernetesSecret] The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
-  AttachedClusterProxyConfig({
+  const AttachedClusterProxyConfig({
     this.kubernetesSecret,
   });
 

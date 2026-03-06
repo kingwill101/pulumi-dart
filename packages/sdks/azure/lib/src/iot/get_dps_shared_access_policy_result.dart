@@ -26,7 +26,7 @@ class GetDpsSharedAccessPolicyResult {
   /// [resourceGroupName] Required.
   /// [secondaryConnectionString] The secondary connection string of the Shared Access Policy.
   /// [secondaryKey] The secondary key used to create the authentication token.
-  GetDpsSharedAccessPolicyResult({
+  const GetDpsSharedAccessPolicyResult({
     required this.id,
     required this.iothubDpsName,
     required this.name,

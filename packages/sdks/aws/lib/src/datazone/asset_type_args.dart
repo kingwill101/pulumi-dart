@@ -33,7 +33,7 @@ class AssetTypeArgs {
   /// [owningProjectIdentifier] The unique identifier of the Amazon DataZone project that owns the custom asset type.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  AssetTypeArgs({
+  const AssetTypeArgs({
     this.description,
     required this.domainIdentifier,
     this.formsInputs,

@@ -8,7 +8,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueStringListValue {
 
   /// Creates a new [CloudControlParameterSpecValidationAllowedValuesValueStringListValue].
   /// [values] The strings in the list.
-  CloudControlParameterSpecValidationAllowedValuesValueStringListValue({
+  const CloudControlParameterSpecValidationAllowedValuesValueStringListValue({
     required this.values,
   });
 

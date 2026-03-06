@@ -9,7 +9,7 @@ class AiDatasetEncryptionSpec {
 
   /// Creates a new [AiDatasetEncryptionSpec].
   /// [kmsKeyName] Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-  AiDatasetEncryptionSpec({
+  const AiDatasetEncryptionSpec({
     this.kmsKeyName,
   });
 

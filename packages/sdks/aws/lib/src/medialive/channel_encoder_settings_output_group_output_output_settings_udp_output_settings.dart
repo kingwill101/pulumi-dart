@@ -19,7 +19,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
   /// [containerSettings] UDP container settings. See Container Settings for more details.
   /// [destination] Destination address and port number for RTP or UDP packets. See Destination for more details.
   /// [fecOutputSettings] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings({
     this.bufferMsec,
     required this.containerSettings,
     required this.destination,

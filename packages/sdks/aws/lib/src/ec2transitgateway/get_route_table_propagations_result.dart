@@ -19,7 +19,7 @@ class GetRouteTablePropagationsResult {
   /// [ids] Set of Transit Gateway Route Table Association identifiers.
   /// [region] Required.
   /// [transitGatewayRouteTableId] Required.
-  GetRouteTablePropagationsResult({
+  const GetRouteTablePropagationsResult({
     this.filters,
     required this.id,
     required this.ids,

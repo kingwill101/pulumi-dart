@@ -10,7 +10,7 @@ class ExternalDocumentation {
   /// Creates a new [ExternalDocumentation].
   /// [description] Optional.
   /// [url] Optional.
-  ExternalDocumentation({
+  const ExternalDocumentation({
     this.description,
     this.url,
   });

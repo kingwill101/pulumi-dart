@@ -12,7 +12,7 @@ class SubResourceWithColocationStatusResponse {
   /// Creates a new [SubResourceWithColocationStatusResponse].
   /// [colocationStatus] Describes colocation status of a resource in the Proximity Placement Group.
   /// [id] Resource Id
-  SubResourceWithColocationStatusResponse({
+  const SubResourceWithColocationStatusResponse({
     this.colocationStatus,
     this.id,
   });

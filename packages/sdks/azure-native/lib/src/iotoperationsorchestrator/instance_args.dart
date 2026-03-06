@@ -42,7 +42,7 @@ class InstanceArgs {
   /// [tags] Resource tags.
   /// [target] Defines the Target the Instance will deploy to.
   /// [version] Version of the particular resource.
-  InstanceArgs({
+  const InstanceArgs({
     required this.extendedLocation,
     this.location,
     this.name,

@@ -30,7 +30,7 @@ class HttpRouteCorsPolicy {
   /// [disabled] If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
   /// [exposeHeaders] Specifies the content for Access-Control-Expose-Headers header.
   /// [maxAge] Specifies how long result of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
-  HttpRouteCorsPolicy({
+  const HttpRouteCorsPolicy({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

@@ -14,7 +14,7 @@ class LakeAssetStatus {
   /// [activeAssets] Number of active assets.
   /// [securityPolicyApplyingAssets] Number of assets that are in process of updating the security policy on attached resources.
   /// [updateTime] Output only. The time when the lake was last updated.
-  LakeAssetStatus({
+  const LakeAssetStatus({
     this.activeAssets,
     this.securityPolicyApplyingAssets,
     this.updateTime,

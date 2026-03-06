@@ -11,7 +11,7 @@ class GetAlertRuleTemplateSecurityIncidentTemplate {
   /// Creates a new [GetAlertRuleTemplateSecurityIncidentTemplate].
   /// [description] The description of this Sentinel Scheduled Alert Rule Template.
   /// [productFilter] The Microsoft Security Service from where the alert will be generated.
-  GetAlertRuleTemplateSecurityIncidentTemplate({
+  const GetAlertRuleTemplateSecurityIncidentTemplate({
     required this.description,
     required this.productFilter,
   });

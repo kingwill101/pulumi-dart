@@ -22,7 +22,7 @@ class AutoPatchingSettings {
   /// [enable] Enable or disable autopatching on SQL virtual machine.
   /// [maintenanceWindowDuration] Duration of patching.
   /// [maintenanceWindowStartingHour] Hour of the day when patching is initiated. Local VM time.
-  AutoPatchingSettings({
+  const AutoPatchingSettings({
     this.additionalVmPatch,
     this.dayOfWeek,
     this.enable,

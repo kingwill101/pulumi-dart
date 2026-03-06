@@ -34,7 +34,7 @@ class DatabaseArgs {
   /// [dbClusterId] The ID of cluster.
   /// [dbDescription] The description of the database. The description must meet the following requirements:
   /// [dbName] The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.accountName,
     this.characterSetName,
     this.collate,

@@ -12,7 +12,7 @@ class ProjectRepoIdContaineranalysisV1beta1 {
   /// Creates a new [ProjectRepoIdContaineranalysisV1beta1].
   /// [project] The ID of the project.
   /// [repoName] The name of the repo. Leave empty for the default repo.
-  ProjectRepoIdContaineranalysisV1beta1({
+  const ProjectRepoIdContaineranalysisV1beta1({
     this.project,
     this.repoName,
   });

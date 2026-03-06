@@ -26,7 +26,7 @@ class GetSequencesResult {
   /// [regexPattern] Optional.
   /// [schemas] Optional.
   /// [sequences] A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-  GetSequencesResult({
+  const GetSequencesResult({
     required this.database,
     required this.id,
     this.likeAllPatterns,

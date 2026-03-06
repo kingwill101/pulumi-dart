@@ -9,7 +9,7 @@ class ProjectCatalogSettingsResponse {
 
   /// Creates a new [ProjectCatalogSettingsResponse].
   /// [catalogItemSyncTypes] Indicates catalog item types that can be synced.
-  ProjectCatalogSettingsResponse({
+  const ProjectCatalogSettingsResponse({
     this.catalogItemSyncTypes,
   });
 

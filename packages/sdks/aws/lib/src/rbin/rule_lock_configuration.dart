@@ -9,7 +9,7 @@ class RuleLockConfiguration {
 
   /// Creates a new [RuleLockConfiguration].
   /// [unlockDelay] Information about the retention rule unlock delay. See `unlock_delay` below.
-  RuleLockConfiguration({
+  const RuleLockConfiguration({
     required this.unlockDelay,
   });
 

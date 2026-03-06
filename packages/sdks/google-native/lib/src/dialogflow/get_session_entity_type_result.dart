@@ -16,7 +16,7 @@ class GetSessionEntityTypeResult {
   /// [entities] The collection of entities associated with this session entity type.
   /// [entityOverrideMode] Indicates whether the additional data should override or supplement the custom entity type definition.
   /// [name] The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
-  GetSessionEntityTypeResult({
+  const GetSessionEntityTypeResult({
     required this.entities,
     required this.entityOverrideMode,
     required this.name,

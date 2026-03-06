@@ -23,7 +23,7 @@ class PerfCounterDataSource {
   /// [name] A friendly name for the data source.
   /// [samplingFrequencyInSeconds] The number of seconds between consecutive counter measurements (samples).
   /// [streams] List of streams that this data source will be sent to.
-  PerfCounterDataSource({
+  const PerfCounterDataSource({
     this.counterSpecifiers,
     this.name,
     this.samplingFrequencyInSeconds,

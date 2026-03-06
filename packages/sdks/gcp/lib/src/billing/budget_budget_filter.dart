@@ -63,7 +63,7 @@ class BudgetBudgetFilter {
   /// [resourceAncestors] A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
   /// [services] A set of services of the form services/{service_id},
   /// [subaccounts] A set of subaccounts of the form billingAccounts/{account_id},
-  BudgetBudgetFilter({
+  const BudgetBudgetFilter({
     this.calendarPeriod,
     this.creditTypes,
     this.creditTypesTreatment,

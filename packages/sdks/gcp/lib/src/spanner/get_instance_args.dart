@@ -22,7 +22,7 @@ class GetInstanceArgs {
   /// [displayName] Optional.
   /// [name] The name of the spanner instance.
   /// [project] The project in which the resource belongs. If it
-  GetInstanceArgs({
+  const GetInstanceArgs({
     this.config,
     this.displayName,
     required this.name,

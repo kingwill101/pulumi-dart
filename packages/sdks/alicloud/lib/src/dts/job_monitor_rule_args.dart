@@ -24,7 +24,7 @@ class JobMonitorRuleArgs {
   /// [phone] The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
   /// [state] Whether to enable monitoring rules, valid values: `Y`, `N`.
   /// [type] Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
-  JobMonitorRuleArgs({
+  const JobMonitorRuleArgs({
     this.delayRuleTime,
     required this.dtsJobId,
     this.phone,

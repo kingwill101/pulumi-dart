@@ -21,7 +21,7 @@ class GetSqlServerArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [sqlServerName] Name of the SQL Server.
   /// [sqlServerRegistrationName] Name of the SQL Server registration.
-  GetSqlServerArgs({
+  const GetSqlServerArgs({
     this.expand,
     required this.resourceGroupName,
     required this.sqlServerName,

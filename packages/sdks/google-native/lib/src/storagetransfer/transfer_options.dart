@@ -23,7 +23,7 @@ class TransferOptions {
   /// [metadataOptions] Represents the selected metadata options for a transfer job.
   /// [overwriteObjectsAlreadyExistingInSink] When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
   /// [overwriteWhen] When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
-  TransferOptions({
+  const TransferOptions({
     this.deleteObjectsFromSourceAfterTransfer,
     this.deleteObjectsUniqueInSink,
     this.metadataOptions,

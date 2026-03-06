@@ -13,7 +13,7 @@ class GetInstanceSqladminV1beta4Args {
   /// Creates a new [GetInstanceSqladminV1beta4Args].
   /// [instance] Required.
   /// [project] Optional.
-  GetInstanceSqladminV1beta4Args({
+  const GetInstanceSqladminV1beta4Args({
     required this.instance,
     this.project,
   });

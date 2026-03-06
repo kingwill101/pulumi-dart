@@ -13,7 +13,7 @@ class EntityMapping {
   /// Creates a new [EntityMapping].
   /// [entityType] The V3 type of the mapped entity
   /// [fieldMappings] array of field mappings for the given entity mapping
-  EntityMapping({
+  const EntityMapping({
     this.entityType,
     this.fieldMappings,
   });

@@ -33,7 +33,7 @@ class OutputPowerbiArgs {
   /// [table] The name of the Power BI table under the specified dataset.
   /// [tokenUserDisplayName] The user display name of the user that was used to obtain the refresh token.
   /// [tokenUserPrincipalName] The user principal name (UPN) of the user that was used to obtain the refresh token.
-  OutputPowerbiArgs({
+  const OutputPowerbiArgs({
     required this.dataset,
     required this.groupId,
     required this.groupName,

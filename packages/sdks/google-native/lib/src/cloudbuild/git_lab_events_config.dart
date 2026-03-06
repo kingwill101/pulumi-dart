@@ -20,7 +20,7 @@ class GitLabEventsConfig {
   /// [projectNamespace] Namespace of the GitLab project.
   /// [pullRequest] Filter to match changes in pull requests.
   /// [push] Filter to match changes in refs like branches, tags.
-  GitLabEventsConfig({
+  const GitLabEventsConfig({
     this.gitlabConfigResource,
     this.projectNamespace,
     this.pullRequest,

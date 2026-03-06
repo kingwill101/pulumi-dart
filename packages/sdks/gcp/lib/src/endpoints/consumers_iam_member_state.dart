@@ -37,7 +37,7 @@ class ConsumersIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   /// [serviceName] The name of the service. Used to find the parent resource to bind the IAM policy to
-  ConsumersIamMemberState({
+  const ConsumersIamMemberState({
     this.condition,
     this.consumerProject,
     this.etag,

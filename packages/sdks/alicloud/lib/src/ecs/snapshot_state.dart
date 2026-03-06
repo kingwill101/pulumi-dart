@@ -40,7 +40,7 @@ class SnapshotState {
   /// [snapshotName] Optional.
   /// [status] Optional.
   /// [tags] A mapping of tags to assign to the resource.
-  SnapshotState({
+  const SnapshotState({
     this.category,
     this.createTime,
     this.description,

@@ -22,7 +22,7 @@ class GetGrantRuleToCensArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetGrantRuleToCensArgs({
+  const GetGrantRuleToCensArgs({
     this.ids,
     required this.instanceId,
     this.outputFile,

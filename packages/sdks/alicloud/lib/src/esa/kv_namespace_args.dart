@@ -15,7 +15,7 @@ class KvNamespaceArgs {
   /// Creates a new [KvNamespaceArgs].
   /// [description] The description of the namespace.
   /// [kvNamespace] The name of the namespace.
-  KvNamespaceArgs({
+  const KvNamespaceArgs({
     this.description,
     required this.kvNamespace,
   });

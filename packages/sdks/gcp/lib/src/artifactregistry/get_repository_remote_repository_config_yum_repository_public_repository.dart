@@ -11,7 +11,7 @@ class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
   /// Creates a new [GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
   /// [repositoryPath] Specific repository from the base, e.g. '"pub/rocky/9/BaseOS/x86_64/os"'
-  GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository({
+  const GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository({
     required this.repositoryBase,
     required this.repositoryPath,
   });

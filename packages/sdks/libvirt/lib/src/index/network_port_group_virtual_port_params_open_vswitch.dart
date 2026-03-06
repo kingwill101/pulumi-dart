@@ -11,7 +11,7 @@ class NetworkPortGroupVirtualPortParamsOpenVSwitch {
   /// Creates a new [NetworkPortGroupVirtualPortParamsOpenVSwitch].
   /// [interfaceId] Sets the interface ID for Open vSwitch virtual port parameters.
   /// [profileId] Specifies the profile ID for Open vSwitch virtual port parameters.
-  NetworkPortGroupVirtualPortParamsOpenVSwitch({
+  const NetworkPortGroupVirtualPortParamsOpenVSwitch({
     this.interfaceId,
     this.profileId,
   });

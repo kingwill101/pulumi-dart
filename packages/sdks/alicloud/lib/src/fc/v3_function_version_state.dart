@@ -21,7 +21,7 @@ class V3FunctionVersionState {
   /// [functionName] Function Name
   /// [lastModifiedTime] (Available since v1.234.0) Update time
   /// [versionId] Function Version
-  V3FunctionVersionState({
+  const V3FunctionVersionState({
     this.createTime,
     this.description,
     this.functionName,

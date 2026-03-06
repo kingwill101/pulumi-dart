@@ -11,7 +11,7 @@ class GetTableRetentionProperty {
   /// Creates a new [GetTableRetentionProperty].
   /// [magneticStoreRetentionPeriodInDays] Duration in days in which the data must be stored in magnetic store.
   /// [memoryStoreRetentionPeriodInHours] Duration in hours in which the data must be stored in memory store.
-  GetTableRetentionProperty({
+  const GetTableRetentionProperty({
     required this.magneticStoreRetentionPeriodInDays,
     required this.memoryStoreRetentionPeriodInHours,
   });

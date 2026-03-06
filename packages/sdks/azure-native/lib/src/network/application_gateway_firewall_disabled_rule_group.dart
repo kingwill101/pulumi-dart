@@ -12,7 +12,7 @@ class ApplicationGatewayFirewallDisabledRuleGroup {
   /// Creates a new [ApplicationGatewayFirewallDisabledRuleGroup].
   /// [ruleGroupName] The name of the rule group that will be disabled.
   /// [rules] The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
-  ApplicationGatewayFirewallDisabledRuleGroup({
+  const ApplicationGatewayFirewallDisabledRuleGroup({
     required this.ruleGroupName,
     this.rules,
   });

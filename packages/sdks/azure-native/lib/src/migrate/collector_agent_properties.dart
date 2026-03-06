@@ -8,7 +8,7 @@ class CollectorAgentProperties {
 
   /// Creates a new [CollectorAgentProperties].
   /// [spnDetails] Optional.
-  CollectorAgentProperties({
+  const CollectorAgentProperties({
     this.spnDetails,
   });
 

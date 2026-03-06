@@ -16,7 +16,7 @@ class MigrationSecretParameters {
   /// [adminCredentials] Credentials of administrator users for source and target servers.
   /// [sourceServerUsername] Gets or sets the name of the user for the source server. This user doesn't need to be an administrator.
   /// [targetServerUsername] Gets or sets the name of the user for the target server. This user doesn't need to be an administrator.
-  MigrationSecretParameters({
+  const MigrationSecretParameters({
     required this.adminCredentials,
     this.sourceServerUsername,
     this.targetServerUsername,

@@ -23,7 +23,7 @@ class GroupArgs {
   /// [displayName] A string containing the name of the group. This value is commonly displayed when the group is referenced.
   /// [identityStoreId] The globally unique identifier for the identity store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupArgs({
+  const GroupArgs({
     this.description,
     required this.displayName,
     required this.identityStoreId,

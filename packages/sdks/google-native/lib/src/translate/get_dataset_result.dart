@@ -35,7 +35,7 @@ class GetDatasetResult {
   /// [trainExampleCount] Number of training examples (sentence pairs).
   /// [updateTime] Timestamp when this dataset was last updated.
   /// [validateExampleCount] Number of validation examples (sentence pairs).
-  GetDatasetResult({
+  const GetDatasetResult({
     required this.createTime,
     required this.displayName,
     required this.exampleCount,

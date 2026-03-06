@@ -55,7 +55,7 @@ class ExpressRouteCircuitArgs {
   /// [serviceProviderName] The name of the ExpressRoute Service Provider. Changing this forces a new resource to be created.
   /// [sku] A `sku` block for the ExpressRoute circuit as documented below.
   /// [tags] A mapping of tags to assign to the resource.
-  ExpressRouteCircuitArgs({
+  const ExpressRouteCircuitArgs({
     this.allowClassicOperations,
     this.authorizationKey,
     this.bandwidthInGbps,

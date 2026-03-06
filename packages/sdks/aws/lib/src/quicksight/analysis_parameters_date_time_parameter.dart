@@ -12,7 +12,7 @@ class AnalysisParametersDateTimeParameter {
   /// Creates a new [AnalysisParametersDateTimeParameter].
   /// [name] Display name for the analysis.
   /// [values] Required.
-  AnalysisParametersDateTimeParameter({
+  const AnalysisParametersDateTimeParameter({
     required this.name,
     required this.values,
   });

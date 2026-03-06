@@ -13,7 +13,7 @@ class RegionInstanceGroupManagerAllInstancesConfig {
   /// Creates a new [RegionInstanceGroupManagerAllInstancesConfig].
   /// [labels] , The label key-value pairs that you want to patch onto the instance.
   /// [metadata] , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
-  RegionInstanceGroupManagerAllInstancesConfig({
+  const RegionInstanceGroupManagerAllInstancesConfig({
     this.labels,
     this.metadata,
   });

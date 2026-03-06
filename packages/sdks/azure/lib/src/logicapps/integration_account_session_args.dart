@@ -21,7 +21,7 @@ class IntegrationAccountSessionArgs {
   /// [integrationAccountName] The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Session to be created.
   /// [name] The name which should be used for this Logic App Integration Account Session. Changing this forces a new Logic App Integration Account Session to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Session should exist. Changing this forces a new Logic App Integration Account Session to be created.
-  IntegrationAccountSessionArgs({
+  const IntegrationAccountSessionArgs({
     required this.content,
     required this.integrationAccountName,
     this.name,

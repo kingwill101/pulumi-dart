@@ -15,7 +15,7 @@ class GalleryImageIdentifierResponse {
   /// [offer] The name of the gallery image definition offer.
   /// [publisher] The name of the gallery image definition publisher.
   /// [sku] The name of the gallery image definition SKU.
-  GalleryImageIdentifierResponse({
+  const GalleryImageIdentifierResponse({
     required this.offer,
     required this.publisher,
     required this.sku,

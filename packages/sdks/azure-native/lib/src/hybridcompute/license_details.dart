@@ -25,7 +25,7 @@ class LicenseDetails {
   /// [target] Describes the license target server.
   /// [type] Describes the license core type (pCore or vCore).
   /// [volumeLicenseDetails] A list of volume license details.
-  LicenseDetails({
+  const LicenseDetails({
     this.edition,
     this.processors,
     this.state,

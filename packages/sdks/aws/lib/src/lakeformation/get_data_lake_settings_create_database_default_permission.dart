@@ -11,7 +11,7 @@ class GetDataLakeSettingsCreateDatabaseDefaultPermission {
   /// Creates a new [GetDataLakeSettingsCreateDatabaseDefaultPermission].
   /// [permissions] List of permissions granted to the principal.
   /// [principal] Principal who is granted permissions.
-  GetDataLakeSettingsCreateDatabaseDefaultPermission({
+  const GetDataLakeSettingsCreateDatabaseDefaultPermission({
     required this.permissions,
     required this.principal,
   });

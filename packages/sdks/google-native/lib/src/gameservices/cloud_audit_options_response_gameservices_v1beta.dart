@@ -13,7 +13,7 @@ class CloudAuditOptionsResponseGameservicesV1beta {
   /// Creates a new [CloudAuditOptionsResponseGameservicesV1beta].
   /// [authorizationLoggingOptions] Information used by the Cloud Audit Logging pipeline.
   /// [logName] The log_name to populate in the Cloud Audit Record.
-  CloudAuditOptionsResponseGameservicesV1beta({
+  const CloudAuditOptionsResponseGameservicesV1beta({
     required this.authorizationLoggingOptions,
     required this.logName,
   });

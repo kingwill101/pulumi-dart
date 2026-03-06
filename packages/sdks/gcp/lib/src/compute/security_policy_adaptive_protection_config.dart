@@ -15,7 +15,7 @@ class SecurityPolicyAdaptiveProtectionConfig {
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfig].
   /// [autoDeployConfig] Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
   /// [layer7DdosDefenseConfig] Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-  SecurityPolicyAdaptiveProtectionConfig({
+  const SecurityPolicyAdaptiveProtectionConfig({
     this.autoDeployConfig,
     this.layer7DdosDefenseConfig,
   });

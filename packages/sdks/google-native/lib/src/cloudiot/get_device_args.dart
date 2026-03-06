@@ -19,7 +19,7 @@ class GetDeviceArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [registryId] Required.
-  GetDeviceArgs({
+  const GetDeviceArgs({
     required this.deviceId,
     this.fieldMask,
     required this.location,

@@ -42,7 +42,7 @@ class ConfigurationKeyState {
   /// [type] The type of the App Configuration Key. It can either be `kv` (simple [key/value](https://docs.microsoft.com/azure/azure-app-configuration/concept-key-value)) or `vault` (where the value is a reference to a [Key Vault Secret](https://azure.microsoft.com/en-gb/services/key-vault/). Defaults to `kv`.
   /// [value] The value of the App Configuration Key. This should only be set when type is set to `kv`.
   /// [vaultKeyReference] The ID of the vault secret this App Configuration Key refers to. This should only be set when `type` is set to `vault`.
-  ConfigurationKeyState({
+  const ConfigurationKeyState({
     this.configurationStoreId,
     this.contentType,
     this.etag,

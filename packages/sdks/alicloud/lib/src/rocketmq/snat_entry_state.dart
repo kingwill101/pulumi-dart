@@ -15,7 +15,7 @@ class SnatEntryState {
   /// [cidrBlock] The destination CIDR block.
   /// [sagId] The ID of the SAG instance.
   /// [snatIp] The public IP address.
-  SnatEntryState({
+  const SnatEntryState({
     this.cidrBlock,
     this.sagId,
     this.snatIp,

@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime {
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime].
   /// [minutes] Required.
-  GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime({
+  const GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime({
     required this.minutes,
   });
 

@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1AssetStatusResponse {
   /// [activeAssets] Number of active assets.
   /// [securityPolicyApplyingAssets] Number of assets that are in process of updating the security policy on attached resources.
   /// [updateTime] Last update time of the status.
-  GoogleCloudDataplexV1AssetStatusResponse({
+  const GoogleCloudDataplexV1AssetStatusResponse({
     required this.activeAssets,
     required this.securityPolicyApplyingAssets,
     required this.updateTime,

@@ -11,7 +11,7 @@ class CatalogDatabaseFederatedDatabase {
   /// Creates a new [CatalogDatabaseFederatedDatabase].
   /// [connectionName] Name of the connection to the external metastore.
   /// [identifier] Unique identifier for the federated database.
-  CatalogDatabaseFederatedDatabase({
+  const CatalogDatabaseFederatedDatabase({
     this.connectionName,
     this.identifier,
   });

@@ -14,7 +14,7 @@ class DeliveryRuleUrlPathConditionResponse {
   /// Creates a new [DeliveryRuleUrlPathConditionResponse].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleUrlPathConditionResponse({
+  const DeliveryRuleUrlPathConditionResponse({
     required this.name,
     required this.parameters,
   });

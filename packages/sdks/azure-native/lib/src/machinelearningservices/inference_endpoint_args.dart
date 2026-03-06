@@ -42,7 +42,7 @@ class InferenceEndpointArgs {
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  InferenceEndpointArgs({
+  const InferenceEndpointArgs({
     this.endpointName,
     this.identity,
     required this.inferenceEndpointProperties,

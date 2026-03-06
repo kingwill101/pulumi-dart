@@ -73,7 +73,7 @@ class ImageState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] Version of the image.
   /// [workflows] Configuration block with the workflow configuration. Detailed below.
-  ImageState({
+  const ImageState({
     this.arn,
     this.containerRecipeArn,
     this.dateCreated,

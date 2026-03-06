@@ -21,7 +21,7 @@ class AssessmentArgs {
   /// [locale] Assessment Type Locale.
   /// [typeId] Assessment Type Id.
   /// [workloadId] Workload Id.
-  AssessmentArgs({
+  const AssessmentArgs({
     this.assessmentName,
     this.locale,
     this.typeId,

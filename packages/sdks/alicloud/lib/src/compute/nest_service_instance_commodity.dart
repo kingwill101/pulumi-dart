@@ -11,7 +11,7 @@ class NestServiceInstanceCommodity {
   /// Creates a new [NestServiceInstanceCommodity].
   /// [payPeriod] Length of purchase.
   /// [payPeriodUnit] Duration unit. Valid values: `Year`, `Month`, `Day`.
-  NestServiceInstanceCommodity({
+  const NestServiceInstanceCommodity({
     this.payPeriod,
     this.payPeriodUnit,
   });

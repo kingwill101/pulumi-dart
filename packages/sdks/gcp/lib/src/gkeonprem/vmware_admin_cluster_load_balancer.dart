@@ -25,7 +25,7 @@ class VmwareAdminClusterLoadBalancer {
   /// [manualLbConfig] Manually configured load balancers.
   /// [metalLbConfig] Metal LB load balancers.
   /// [vipConfig] Specified the VMware Load Balancer Config
-  VmwareAdminClusterLoadBalancer({
+  const VmwareAdminClusterLoadBalancer({
     this.f5Config,
     this.manualLbConfig,
     this.metalLbConfig,

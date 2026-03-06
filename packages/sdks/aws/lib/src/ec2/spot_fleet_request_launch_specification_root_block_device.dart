@@ -19,7 +19,7 @@ class SpotFleetRequestLaunchSpecificationRootBlockDevice {
   /// [throughput] Optional.
   /// [volumeSize] Optional.
   /// [volumeType] Optional.
-  SpotFleetRequestLaunchSpecificationRootBlockDevice({
+  const SpotFleetRequestLaunchSpecificationRootBlockDevice({
     this.deleteOnTermination,
     this.encrypted,
     this.iops,

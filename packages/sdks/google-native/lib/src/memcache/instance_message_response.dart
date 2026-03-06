@@ -11,7 +11,7 @@ class InstanceMessageResponse {
   /// Creates a new [InstanceMessageResponse].
   /// [code] A code that correspond to one type of user-facing message.
   /// [message] Message on memcached instance which will be exposed to users.
-  InstanceMessageResponse({
+  const InstanceMessageResponse({
     required this.code,
     required this.message,
   });

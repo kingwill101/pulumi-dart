@@ -14,7 +14,7 @@ class EnvironmentConfig {
   /// Creates a new [EnvironmentConfig].
   /// [executionConfig] Optional. Execution configuration for a workload.
   /// [peripheralsConfig] Optional. Peripherals configuration that workload has access to.
-  EnvironmentConfig({
+  const EnvironmentConfig({
     this.executionConfig,
     this.peripheralsConfig,
   });

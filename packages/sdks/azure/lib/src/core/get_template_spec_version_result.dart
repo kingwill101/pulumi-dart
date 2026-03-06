@@ -20,7 +20,7 @@ class GetTemplateSpecVersionResult {
   /// [tags] A mapping of tags assigned to the Template.
   /// [templateBody] The ARM Template body of the Template Spec Version.
   /// [version] Required.
-  GetTemplateSpecVersionResult({
+  const GetTemplateSpecVersionResult({
     required this.id,
     required this.name,
     required this.resourceGroupName,

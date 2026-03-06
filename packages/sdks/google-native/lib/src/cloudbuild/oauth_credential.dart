@@ -9,7 +9,7 @@ class OAuthCredential {
 
   /// Creates a new [OAuthCredential].
   /// [oauthTokenSecretVersion] A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-  OAuthCredential({
+  const OAuthCredential({
     this.oauthTokenSecretVersion,
   });
 

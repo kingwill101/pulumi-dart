@@ -8,7 +8,7 @@ class ListFeatureAccountResult {
 
   /// Creates a new [ListFeatureAccountResult].
   /// [features] Features with enabled status
-  ListFeatureAccountResult({
+  const ListFeatureAccountResult({
     required this.features,
   });
 

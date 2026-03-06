@@ -14,7 +14,7 @@ class DomainDevicesInterfaceRom {
   /// [bar] Configures the BAR settings for the ROM attribute of the host device.
   /// [enabled] Sets whether the ROM of the host device is enabled or disabled.
   /// [file] Specifies the path to the ROM file used by the host device for initialization.
-  DomainDevicesInterfaceRom({
+  const DomainDevicesInterfaceRom({
     this.bar,
     this.enabled,
     this.file,

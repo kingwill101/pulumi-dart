@@ -22,7 +22,7 @@ class ReplicationObject {
   /// [remoteVolumeRegion] The remote region for the other end of the Volume Replication.
   /// [remoteVolumeResourceId] The resource ID of the remote volume. Required for cross region and cross zone replication
   /// [replicationSchedule] Schedule
-  ReplicationObject({
+  const ReplicationObject({
     this.endpointType,
     this.remotePath,
     this.remoteVolumeRegion,

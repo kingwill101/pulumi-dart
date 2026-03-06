@@ -12,7 +12,7 @@ class RuntimeClassStrategyOptions {
   /// Creates a new [RuntimeClassStrategyOptions].
   /// [allowedRuntimeClassNames] allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
   /// [defaultRuntimeClassName] defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
-  RuntimeClassStrategyOptions({
+  const RuntimeClassStrategyOptions({
     required this.allowedRuntimeClassNames,
     this.defaultRuntimeClassName,
   });

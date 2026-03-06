@@ -27,7 +27,7 @@ class GetCommandsCommand {
   /// [invokeDesktops] The Implementation of the Target Cloud Desktop Collection.
   /// [invokeId] The invoke id of the Command.
   /// [status] Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
-  GetCommandsCommand({
+  const GetCommandsCommand({
     required this.commandContent,
     required this.commandType,
     required this.createTime,

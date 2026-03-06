@@ -15,7 +15,7 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction {
   /// [artifactId] The id of the relevant artifact in the recipe.
   /// [destination] Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
   /// [type] The type of the archive to extract.
-  GuestPoliciesRecipeUpdateStepArchiveExtraction({
+  const GuestPoliciesRecipeUpdateStepArchiveExtraction({
     required this.artifactId,
     this.destination,
     required this.type,

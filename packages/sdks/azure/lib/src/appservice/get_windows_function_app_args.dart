@@ -15,7 +15,7 @@ class GetWindowsFunctionAppArgs {
   /// Creates a new [GetWindowsFunctionAppArgs].
   /// [name] The name of this Windows Function App.
   /// [resourceGroupName] The name of the Resource Group where the Windows Function App exists.
-  GetWindowsFunctionAppArgs({
+  const GetWindowsFunctionAppArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -11,7 +11,7 @@ class EnvironmentStorageConfiguration {
   /// Creates a new [EnvironmentStorageConfiguration].
   /// [efs] Optional.
   /// [fsx] Optional.
-  EnvironmentStorageConfiguration({
+  const EnvironmentStorageConfiguration({
     this.efs,
     this.fsx,
   });

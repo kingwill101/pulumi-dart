@@ -21,7 +21,7 @@ class GetDatabaseArgs {
   /// [instance] The name of the database's spanner instance.
   /// [name] The name of the spanner database.
   /// [project] The project in which the resource belongs. If it
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.instance,
     required this.name,
     this.project,

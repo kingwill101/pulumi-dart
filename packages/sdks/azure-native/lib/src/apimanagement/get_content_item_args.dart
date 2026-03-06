@@ -21,7 +21,7 @@ class GetContentItemArgs {
   /// [contentTypeId] Content type identifier.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetContentItemArgs({
+  const GetContentItemArgs({
     required this.contentItemId,
     required this.contentTypeId,
     required this.resourceGroupName,

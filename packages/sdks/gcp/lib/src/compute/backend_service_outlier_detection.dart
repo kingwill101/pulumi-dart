@@ -68,7 +68,7 @@ class BackendServiceOutlierDetection {
   /// [successRateMinimumHosts] The number of hosts in a cluster that must have enough request volume to detect
   /// [successRateRequestVolume] The minimum number of total requests that must be collected in one interval (as
   /// [successRateStdevFactor] This factor is used to determine the ejection threshold for success rate outlier
-  BackendServiceOutlierDetection({
+  const BackendServiceOutlierDetection({
     this.baseEjectionTime,
     this.consecutiveErrors,
     this.consecutiveGatewayFailure,

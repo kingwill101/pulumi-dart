@@ -18,7 +18,7 @@ class AssociatedWorkspaceResponse {
   /// [resourceId] Associated workspace arm resource id, in the form of: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}.
   /// [workspaceId] Associated workspace immutable id.
   /// [workspaceName] Associated workspace resource name.
-  AssociatedWorkspaceResponse({
+  const AssociatedWorkspaceResponse({
     required this.associateDate,
     required this.resourceId,
     required this.workspaceId,

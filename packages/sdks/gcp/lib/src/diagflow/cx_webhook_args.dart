@@ -41,7 +41,7 @@ class CxWebhookArgs {
   /// [securitySettings] Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
   /// [serviceDirectory] Configuration for a Service Directory service.
   /// [timeout] Webhook execution timeout.
-  CxWebhookArgs({
+  const CxWebhookArgs({
     this.disabled,
     required this.displayName,
     this.enableSpellCorrection,

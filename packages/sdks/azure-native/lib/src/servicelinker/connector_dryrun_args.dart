@@ -25,7 +25,7 @@ class ConnectorDryrunArgs {
   /// [parameters] The parameters of the dryrun
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subscriptionId] The ID of the target subscription.
-  ConnectorDryrunArgs({
+  const ConnectorDryrunArgs({
     this.dryrunName,
     required this.location,
     this.parameters,

@@ -21,7 +21,7 @@ class GetHandshakesArgs {
   /// [ids] A list of Resource Manager Handshake IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
-  GetHandshakesArgs({
+  const GetHandshakesArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

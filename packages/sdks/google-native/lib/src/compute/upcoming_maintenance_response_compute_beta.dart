@@ -23,7 +23,7 @@ class UpcomingMaintenanceResponseComputeBeta {
   /// [type] Defines the type of maintenance.
   /// [windowEndTime] The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
   /// [windowStartTime] The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
-  UpcomingMaintenanceResponseComputeBeta({
+  const UpcomingMaintenanceResponseComputeBeta({
     required this.canReschedule,
     required this.latestWindowStartTime,
     required this.maintenanceStatus,

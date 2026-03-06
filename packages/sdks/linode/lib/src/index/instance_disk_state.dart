@@ -53,7 +53,7 @@ class InstanceDiskState {
   /// [status] A brief description of this Disk's current state.
   /// [timeouts] Optional.
   /// [updated] When this disk was last updated.
-  InstanceDiskState({
+  const InstanceDiskState({
     this.authorizedKeys,
     this.authorizedUsers,
     this.created,

@@ -11,7 +11,7 @@ class GetRulesRuleRuleConditionQueryStringConfigValue {
   /// Creates a new [GetRulesRuleRuleConditionQueryStringConfigValue].
   /// [key] The key of the query string.
   /// [value] The value of the query string.
-  GetRulesRuleRuleConditionQueryStringConfigValue({
+  const GetRulesRuleRuleConditionQueryStringConfigValue({
     required this.key,
     required this.value,
   });

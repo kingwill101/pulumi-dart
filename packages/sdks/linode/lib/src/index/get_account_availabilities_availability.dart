@@ -14,7 +14,7 @@ class GetAccountAvailabilitiesAvailability {
   /// [availables] A set of services which are available for the given region.
   /// [region] The region this availability entry refers to.
   /// [unavailables] A set of services that are unavailable for the given region.
-  GetAccountAvailabilitiesAvailability({
+  const GetAccountAvailabilitiesAvailability({
     required this.availables,
     required this.region,
     required this.unavailables,

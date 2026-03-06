@@ -18,7 +18,7 @@ class ElasticBackupPolicyProperties {
   /// [monthlyBackupsToKeep] Monthly backups count to keep
   /// [policyState] The property to identify whether Backup Policy is enabled or not
   /// [weeklyBackupsToKeep] Weekly backups count to keep
-  ElasticBackupPolicyProperties({
+  const ElasticBackupPolicyProperties({
     this.dailyBackupsToKeep,
     this.monthlyBackupsToKeep,
     this.policyState,

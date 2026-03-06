@@ -9,7 +9,7 @@ class SubordinateConfigChainResponse {
 
   /// Creates a new [SubordinateConfigChainResponse].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.
-  SubordinateConfigChainResponse({
+  const SubordinateConfigChainResponse({
     required this.pemCertificates,
   });
 

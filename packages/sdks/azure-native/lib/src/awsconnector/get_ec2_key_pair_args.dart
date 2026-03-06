@@ -15,7 +15,7 @@ class GetEc2KeyPairArgs {
   /// Creates a new [GetEc2KeyPairArgs].
   /// [name] Name of Ec2KeyPair
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2KeyPairArgs({
+  const GetEc2KeyPairArgs({
     required this.name,
     required this.resourceGroupName,
   });

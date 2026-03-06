@@ -19,7 +19,7 @@ class SubscriptionPricingState {
   /// [resourceType] The resource type this setting affects. Possible values are `AI`, `Api`, `AppServices`, `ContainerRegistry`, `KeyVaults`, `KubernetesService`, `SqlServers`, `SqlServerVirtualMachines`, `StorageAccounts`, `VirtualMachines`, `Arm`, `Dns`, `OpenSourceRelationalDatabases`, `Containers`, `CosmosDbs` and `CloudPosture`. Defaults to `VirtualMachines`
   /// [subplan] Resource type pricing subplan. Contact your MSFT representative for possible values. Changing this forces a new resource to be created.
   /// [tier] The pricing tier to use. Possible values are `Free` and `Standard`.
-  SubscriptionPricingState({
+  const SubscriptionPricingState({
     this.extensions,
     this.resourceType,
     this.subplan,

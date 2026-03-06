@@ -11,7 +11,7 @@ class VirtualNetworkStatusResponseProvisioningStatus {
   /// Creates a new [VirtualNetworkStatusResponseProvisioningStatus].
   /// [operationId] The ID of the operation performed on the virtual network
   /// [status] The status of the operation performed on the virtual network [Succeeded, Failed, InProgress]
-  VirtualNetworkStatusResponseProvisioningStatus({
+  const VirtualNetworkStatusResponseProvisioningStatus({
     this.operationId,
     this.status,
   });

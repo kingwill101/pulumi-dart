@@ -32,7 +32,7 @@ class FrameworkArgs {
   /// [frameworkId] ID of the framework.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [organization] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  FrameworkArgs({
+  const FrameworkArgs({
     this.cloudControlDetails,
     this.description,
     this.displayName,

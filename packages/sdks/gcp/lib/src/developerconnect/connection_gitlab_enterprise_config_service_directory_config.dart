@@ -10,7 +10,7 @@ class ConnectionGitlabEnterpriseConfigServiceDirectoryConfig {
 
   /// Creates a new [ConnectionGitlabEnterpriseConfigServiceDirectoryConfig].
   /// [service] Required. The Service Directory service name.
-  ConnectionGitlabEnterpriseConfigServiceDirectoryConfig({
+  const ConnectionGitlabEnterpriseConfigServiceDirectoryConfig({
     required this.service,
   });
 

@@ -8,7 +8,7 @@ class FieldLevelEncryptionProfileEncryptionEntities {
 
   /// Creates a new [FieldLevelEncryptionProfileEncryptionEntities].
   /// [items] Optional.
-  FieldLevelEncryptionProfileEncryptionEntities({
+  const FieldLevelEncryptionProfileEncryptionEntities({
     this.items,
   });
 

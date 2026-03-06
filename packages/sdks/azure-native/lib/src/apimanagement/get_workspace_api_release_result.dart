@@ -29,7 +29,7 @@ class GetWorkspaceApiReleaseResult {
   /// [notes] Release Notes
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedDateTime] The time the API release was updated.
-  GetWorkspaceApiReleaseResult({
+  const GetWorkspaceApiReleaseResult({
     this.apiId,
     required this.azureApiVersion,
     required this.createdDateTime,

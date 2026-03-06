@@ -9,7 +9,7 @@ class GetDependencyViewForAllMachinesResultPropertiesResponse {
 
   /// Creates a new [GetDependencyViewForAllMachinesResultPropertiesResponse].
   /// [layoutFileSasUrl] The SAS URI of the blob containing the layout file for the multi-server view.
-  GetDependencyViewForAllMachinesResultPropertiesResponse({
+  const GetDependencyViewForAllMachinesResultPropertiesResponse({
     required this.layoutFileSasUrl,
   });
 

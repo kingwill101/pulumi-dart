@@ -8,7 +8,7 @@ class MapConfiguration {
 
   /// Creates a new [MapConfiguration].
   /// [style] Specifies the map style selected from an available data provider. Valid values can be found in the [Location Service CreateMap API Reference](https://docs.aws.amazon.com/location/latest/APIReference/API_CreateMap.html).
-  MapConfiguration({
+  const MapConfiguration({
     required this.style,
   });
 

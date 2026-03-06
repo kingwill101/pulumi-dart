@@ -8,7 +8,7 @@ class WafRuleSharedActions {
 
   /// Creates a new [WafRuleSharedActions].
   /// [response] Optional.
-  WafRuleSharedActions({
+  const WafRuleSharedActions({
     this.response,
   });
 

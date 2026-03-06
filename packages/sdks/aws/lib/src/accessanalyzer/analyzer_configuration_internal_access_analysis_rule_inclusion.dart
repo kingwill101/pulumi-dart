@@ -14,7 +14,7 @@ class AnalyzerConfigurationInternalAccessAnalysisRuleInclusion {
   /// [accountIds] List of AWS account IDs to apply to the internal access analysis rule criteria. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.
   /// [resourceArns] List of resource ARNs to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources that match these ARNs.
   /// [resourceTypes] List of resource types to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources of these types. Refer to [InternalAccessAnalysisRuleCriteria](https://docs.aws.amazon.com/access-analyzer/latest/APIReference/API_InternalAccessAnalysisRuleCriteria.html) in the AWS IAM Access Analyzer API Reference for valid values.
-  AnalyzerConfigurationInternalAccessAnalysisRuleInclusion({
+  const AnalyzerConfigurationInternalAccessAnalysisRuleInclusion({
     this.accountIds,
     this.resourceArns,
     this.resourceTypes,

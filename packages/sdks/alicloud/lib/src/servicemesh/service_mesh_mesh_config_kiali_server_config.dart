@@ -17,7 +17,7 @@ class ServiceMeshMeshConfigKialiServerConfig {
   /// [webPort] The port used when accessing the mesh topology in a custom way
   /// [webRoot] The root path of the service when accessing the mesh topology in a custom way
   /// [webSchema] The protocol used when accessing the mesh topology in a custom way. Can only be http or https
-  ServiceMeshMeshConfigKialiServerConfig({
+  const ServiceMeshMeshConfigKialiServerConfig({
     this.webFqdn,
     this.webPort,
     this.webRoot,

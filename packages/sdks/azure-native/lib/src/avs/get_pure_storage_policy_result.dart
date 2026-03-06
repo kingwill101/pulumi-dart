@@ -30,7 +30,7 @@ class GetPureStoragePolicyResult {
   /// [storagePoolId] Azure resource ID of the Pure Storage Pool associated with the storage policy
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPureStoragePolicyResult({
+  const GetPureStoragePolicyResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

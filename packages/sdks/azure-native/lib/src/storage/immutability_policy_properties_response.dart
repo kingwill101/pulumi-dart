@@ -25,7 +25,7 @@ class ImmutabilityPolicyPropertiesResponse {
   /// [immutabilityPeriodSinceCreationInDays] The immutability period for the blobs in the container since the policy creation, in days.
   /// [state] The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
   /// [updateHistory] The ImmutabilityPolicy update history of the blob container.
-  ImmutabilityPolicyPropertiesResponse({
+  const ImmutabilityPolicyPropertiesResponse({
     this.allowProtectedAppendWrites,
     this.allowProtectedAppendWritesAll,
     required this.etag,

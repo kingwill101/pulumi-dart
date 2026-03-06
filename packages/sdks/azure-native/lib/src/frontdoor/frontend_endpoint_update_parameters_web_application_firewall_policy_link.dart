@@ -9,7 +9,7 @@ class FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink {
 
   /// Creates a new [FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.
-  FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink({
+  const FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink({
     this.id,
   });
 

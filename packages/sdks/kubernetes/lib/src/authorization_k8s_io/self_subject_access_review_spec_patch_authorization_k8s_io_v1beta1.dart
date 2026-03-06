@@ -14,7 +14,7 @@ class SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1 {
   /// Creates a new [SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1].
   /// [nonResourceAttributes] NonResourceAttributes describes information for a non-resource access request
   /// [resourceAttributes] ResourceAuthorizationAttributes describes information for a resource access request
-  SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1({
+  const SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1({
     this.nonResourceAttributes,
     this.resourceAttributes,
   });

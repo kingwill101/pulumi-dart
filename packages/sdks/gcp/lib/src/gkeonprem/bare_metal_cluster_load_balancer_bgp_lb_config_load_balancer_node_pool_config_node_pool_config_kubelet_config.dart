@@ -27,7 +27,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
   /// [registryBurst] The maximum size of bursty pulls, temporarily allows pulls to burst to this
   /// [registryPullQps] The limit of registry pulls per second.
   /// [serializeImagePullsDisabled] Prevents the Kubelet from pulling multiple images at a time.
-  BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig({
+  const BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig({
     this.registryBurst,
     this.registryPullQps,
     this.serializeImagePullsDisabled,

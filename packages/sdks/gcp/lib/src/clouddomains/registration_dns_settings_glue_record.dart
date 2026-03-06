@@ -16,7 +16,7 @@ class RegistrationDnsSettingsGlueRecord {
   /// [hostName] Required. Domain name of the host in Punycode format.
   /// [ipv4Addresses] List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
   /// [ipv6Addresses] List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-  RegistrationDnsSettingsGlueRecord({
+  const RegistrationDnsSettingsGlueRecord({
     required this.hostName,
     this.ipv4Addresses,
     this.ipv6Addresses,

@@ -25,7 +25,7 @@ class GetFrameworkResult {
   /// [name] Required.
   /// [region] Required.
   /// [tags] Required.
-  GetFrameworkResult({
+  const GetFrameworkResult({
     required this.arn,
     required this.complianceType,
     required this.controlSets,

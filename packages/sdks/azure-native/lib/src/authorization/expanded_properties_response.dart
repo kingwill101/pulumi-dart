@@ -18,7 +18,7 @@ class ExpandedPropertiesResponse {
   /// [principal] Details of the principal
   /// [roleDefinition] Details of role definition
   /// [scope] Details of the resource scope
-  ExpandedPropertiesResponse({
+  const ExpandedPropertiesResponse({
     this.principal,
     this.roleDefinition,
     this.scope,

@@ -34,7 +34,7 @@ class AcmCertificateSummaryPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  AcmCertificateSummaryPropertiesResponse({
+  const AcmCertificateSummaryPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

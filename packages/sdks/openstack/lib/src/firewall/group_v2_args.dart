@@ -62,7 +62,7 @@ class GroupV2Args {
   /// [region] The region in which to obtain the v2 networking client.
   /// [shared] Sharing status of the firewall group (must be "true"
   /// [tenantId] This argument conflicts and is interchangeable with
-  GroupV2Args({
+  const GroupV2Args({
     this.adminStateUp,
     this.description,
     this.egressFirewallPolicyId,

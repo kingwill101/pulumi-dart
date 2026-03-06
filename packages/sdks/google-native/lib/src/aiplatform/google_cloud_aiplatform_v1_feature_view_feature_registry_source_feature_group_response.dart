@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupRespons
   /// Creates a new [GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse].
   /// [featureGroupId] Identifier of the feature group.
   /// [featureIds] Identifiers of features under the feature group.
-  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse({
+  const GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse({
     required this.featureGroupId,
     required this.featureIds,
   });

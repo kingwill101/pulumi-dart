@@ -23,7 +23,7 @@ class DomainDevicesVideoDriver {
   /// [packed] Determines if the driver supports packed queues for the video device.
   /// [pagePerVq] Controls the use of a page per Virtqueue (VQ) for the video device driver.
   /// [vgaConf] Configures the VGA options for the video device driver.
-  DomainDevicesVideoDriver({
+  const DomainDevicesVideoDriver({
     this.ats,
     this.iommu,
     this.name,

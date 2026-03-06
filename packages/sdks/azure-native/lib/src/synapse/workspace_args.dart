@@ -79,7 +79,7 @@ class WorkspaceArgs {
   /// [virtualNetworkProfile] Virtual Network profile
   /// [workspaceName] The name of the workspace.
   /// [workspaceRepositoryConfiguration] Git integration settings
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.azureADOnlyAuthentication,
     this.cspWorkspaceAdminProperties,
     this.defaultDataLakeStorage,

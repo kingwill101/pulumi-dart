@@ -25,7 +25,7 @@ class ConfigurationGroupValueArgs {
   /// [properties] Hybrid configuration group value properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ConfigurationGroupValueArgs({
+  const ConfigurationGroupValueArgs({
     this.configurationGroupValueName,
     this.location,
     this.properties,

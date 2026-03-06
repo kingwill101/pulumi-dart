@@ -103,7 +103,7 @@ class BudgetArgs {
   /// [scope] The scope associated with budget operations.
   /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain.
   /// [timePeriod] The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
-  BudgetArgs({
+  const BudgetArgs({
     this.amount,
     this.budgetName,
     required this.category,

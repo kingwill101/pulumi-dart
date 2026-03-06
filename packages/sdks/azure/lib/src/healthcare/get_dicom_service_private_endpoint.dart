@@ -11,7 +11,7 @@ class GetDicomServicePrivateEndpoint {
   /// Creates a new [GetDicomServicePrivateEndpoint].
   /// [id] The ID of the Healthcare DICOM Service.
   /// [name] The name of the Healthcare DICOM Service
-  GetDicomServicePrivateEndpoint({
+  const GetDicomServicePrivateEndpoint({
     required this.id,
     required this.name,
   });

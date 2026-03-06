@@ -17,7 +17,7 @@ class VirtualGatewaySpec {
   /// [backendDefaults] Defaults for backends.
   /// [listeners] Listeners that the mesh endpoint is expected to receive inbound traffic from. You can specify one listener.
   /// [logging] Inbound and outbound access logging information for the virtual gateway.
-  VirtualGatewaySpec({
+  const VirtualGatewaySpec({
     this.backendDefaults,
     required this.listeners,
     this.logging,

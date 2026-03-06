@@ -13,7 +13,7 @@ class CxToolVersionToolDataStoreSpec {
   /// Creates a new [CxToolVersionToolDataStoreSpec].
   /// [dataStoreConnections] List of data stores to search.
   /// [fallbackPrompt] Fallback prompt configurations to use.
-  CxToolVersionToolDataStoreSpec({
+  const CxToolVersionToolDataStoreSpec({
     required this.dataStoreConnections,
     required this.fallbackPrompt,
   });

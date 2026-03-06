@@ -12,7 +12,7 @@ class NatGatewayPublicIpPrefixAssociationState {
   /// Creates a new [NatGatewayPublicIpPrefixAssociationState].
   /// [natGatewayId] The ID of the NAT Gateway. Changing this forces a new resource to be created.
   /// [publicIpPrefixId] The ID of the Public IP Prefix which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
-  NatGatewayPublicIpPrefixAssociationState({
+  const NatGatewayPublicIpPrefixAssociationState({
     this.natGatewayId,
     this.publicIpPrefixId,
   });

@@ -37,7 +37,7 @@ class GetDomainsDomain {
   /// [resourceGroupId] The Resource Group ID.
   /// [sources] the Origin Server Information.
   /// [status] The status of the resource.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.certInfos,
     required this.cname,
     required this.createTime,

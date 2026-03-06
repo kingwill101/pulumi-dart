@@ -24,7 +24,7 @@ class EncryptionKeyVaultPropertiesResponse {
   /// [keyVaultUrl] The URL of the vault.
   /// [keyVersion] The version of the key.
   /// [versionType] Property of the key if user provided or auto detected
-  EncryptionKeyVaultPropertiesResponse({
+  const EncryptionKeyVaultPropertiesResponse({
     required this.autoDetectedKeyVersion,
     this.keyName,
     required this.keyState,

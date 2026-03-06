@@ -20,7 +20,7 @@ class AuthorizationPolicyRuleDestination {
   /// [httpHeaderMatch] Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
   /// [methods] A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
   /// [ports] List of destination ports to match. At least one port should match.
-  AuthorizationPolicyRuleDestination({
+  const AuthorizationPolicyRuleDestination({
     required this.hosts,
     this.httpHeaderMatch,
     required this.methods,

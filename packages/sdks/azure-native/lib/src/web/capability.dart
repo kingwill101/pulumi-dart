@@ -15,7 +15,7 @@ class Capability {
   /// [name] Name of the SKU capability.
   /// [reason] Reason of the SKU capability.
   /// [value] Value of the SKU capability.
-  Capability({
+  const Capability({
     this.name,
     this.reason,
     this.value,

@@ -59,7 +59,7 @@ class VaultPropertiesResponse {
   /// [softDeleteRetentionInDays] softDelete data retention days. It accepts &gt;=7 and &lt;=90.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
   /// [vaultUri] The URI of the vault for performing operations on keys and secrets.
-  VaultPropertiesResponse({
+  const VaultPropertiesResponse({
     this.accessPolicies,
     this.enablePurgeProtection,
     this.enableRbacAuthorization,

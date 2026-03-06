@@ -19,7 +19,7 @@ class GetRepositoriesResult {
   /// [nameFilter] Optional.
   /// [project] Optional.
   /// [repositories] A list of all retrieved Artifact Registry repositories. Structure is defined below.
-  GetRepositoriesResult({
+  const GetRepositoriesResult({
     required this.id,
     required this.location,
     this.nameFilter,

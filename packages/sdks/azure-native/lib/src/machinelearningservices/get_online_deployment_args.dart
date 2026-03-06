@@ -21,7 +21,7 @@ class GetOnlineDeploymentArgs {
   /// [endpointName] Inference endpoint name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetOnlineDeploymentArgs({
+  const GetOnlineDeploymentArgs({
     required this.deploymentName,
     required this.endpointName,
     required this.resourceGroupName,

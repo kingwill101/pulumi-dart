@@ -13,7 +13,7 @@ class AliasContextContaineranalysisV1beta1 {
   /// Creates a new [AliasContextContaineranalysisV1beta1].
   /// [kind] The alias kind.
   /// [name] The alias name.
-  AliasContextContaineranalysisV1beta1({
+  const AliasContextContaineranalysisV1beta1({
     this.kind,
     this.name,
   });

@@ -18,7 +18,7 @@ class GetAwsVersionsResult {
   /// [project] Optional.
   /// [supportedRegions] A list of AWS regions that are available for use with this project and GCP location.
   /// [validVersions] A list of versions available for use with this project and location.
-  GetAwsVersionsResult({
+  const GetAwsVersionsResult({
     required this.id,
     this.location,
     this.project,

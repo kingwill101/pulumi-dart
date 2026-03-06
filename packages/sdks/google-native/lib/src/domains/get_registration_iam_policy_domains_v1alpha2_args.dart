@@ -17,7 +17,7 @@ class GetRegistrationIamPolicyDomainsV1alpha2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [registrationId] Required.
-  GetRegistrationIamPolicyDomainsV1alpha2Args({
+  const GetRegistrationIamPolicyDomainsV1alpha2Args({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

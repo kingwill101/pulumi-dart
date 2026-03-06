@@ -13,7 +13,7 @@ class PropertiesResponseEncryption {
   /// Creates a new [PropertiesResponseEncryption].
   /// [keyVault] Key vault properties.
   /// [state] The state of onboarding, which only appears in the response.
-  PropertiesResponseEncryption({
+  const PropertiesResponseEncryption({
     this.keyVault,
     this.state,
   });

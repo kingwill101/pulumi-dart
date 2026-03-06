@@ -39,7 +39,7 @@ class AuthorizerState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [tokenKeyName] The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.
   /// [tokenSigningPublicKeys] The public keys used to verify the digital signature returned by your custom authentication service. This value is required if signing is enabled in your authorizer.
-  AuthorizerState({
+  const AuthorizerState({
     this.arn,
     this.authorizerFunctionArn,
     this.enableCachingForHttp,

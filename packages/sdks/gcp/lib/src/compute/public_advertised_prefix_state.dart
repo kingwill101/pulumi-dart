@@ -52,7 +52,7 @@ class PublicAdvertisedPrefixState {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
   /// [sharedSecret] Output Only. The shared secret to be used for reverse DNS verification.
-  PublicAdvertisedPrefixState({
+  const PublicAdvertisedPrefixState({
     this.description,
     this.dnsVerificationIp,
     this.ipCidrRange,

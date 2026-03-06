@@ -29,7 +29,7 @@ class FirewallApplicationRuleCollectionRule {
   /// [sourceAddresses] A list of source IP addresses and/or IP ranges.
   /// [sourceIpGroups] A list of source IP Group IDs for the rule.
   /// [targetFqdns] A list of FQDNs.
-  FirewallApplicationRuleCollectionRule({
+  const FirewallApplicationRuleCollectionRule({
     this.description,
     this.fqdnTags,
     required this.name,

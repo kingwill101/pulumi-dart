@@ -30,7 +30,7 @@ class GetEventBusResult {
   /// [logConfigs] Block for logging configuration settings for the event bus.
   /// [name] Required.
   /// [region] Required.
-  GetEventBusResult({
+  const GetEventBusResult({
     required this.arn,
     required this.deadLetterConfigs,
     required this.description,

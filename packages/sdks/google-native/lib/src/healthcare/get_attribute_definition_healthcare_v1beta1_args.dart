@@ -19,7 +19,7 @@ class GetAttributeDefinitionHealthcareV1beta1Args {
   /// [datasetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAttributeDefinitionHealthcareV1beta1Args({
+  const GetAttributeDefinitionHealthcareV1beta1Args({
     required this.attributeDefinitionId,
     required this.consentStoreId,
     required this.datasetId,

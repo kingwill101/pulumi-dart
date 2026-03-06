@@ -17,7 +17,7 @@ class GetControlRetailV2alphaArgs {
   /// [controlId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetControlRetailV2alphaArgs({
+  const GetControlRetailV2alphaArgs({
     required this.catalogId,
     required this.controlId,
     required this.location,

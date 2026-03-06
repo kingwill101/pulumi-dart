@@ -28,7 +28,7 @@ class DnsZoneState {
   /// [name] Name of the Dns Zone in the following format:
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [peeringConfig] Peering zone config
-  DnsZoneState({
+  const DnsZoneState({
     this.description,
     this.dnsZoneId,
     this.domain,

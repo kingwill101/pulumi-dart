@@ -22,7 +22,7 @@ class JobResourceProperties {
   /// [source] Uploaded source information of the Job.
   /// [template] The template which is applied for all executions of the Job.
   /// [triggerConfig] The Job trigger related configuration.
-  JobResourceProperties({
+  const JobResourceProperties({
     this.managedComponentReferences,
     this.source,
     this.template,

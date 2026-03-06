@@ -9,7 +9,7 @@ class IpAddress {
 
   /// Creates a new [IpAddress].
   /// [address] The address.
-  IpAddress({
+  const IpAddress({
     this.address,
   });
 

@@ -12,7 +12,7 @@ class AuditLogConfigResponseNetworkconnectivityV1alpha1 {
   /// Creates a new [AuditLogConfigResponseNetworkconnectivityV1alpha1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigResponseNetworkconnectivityV1alpha1({
+  const AuditLogConfigResponseNetworkconnectivityV1alpha1({
     required this.exemptedMembers,
     required this.logType,
   });

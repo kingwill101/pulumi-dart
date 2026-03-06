@@ -15,7 +15,7 @@ class DelegationSignerInfoResponse {
   /// [digestAlgorithmType] The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
   /// [digestValue] The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
   /// [record] The record represents a delegation signer (DS) record.
-  DelegationSignerInfoResponse({
+  const DelegationSignerInfoResponse({
     required this.digestAlgorithmType,
     required this.digestValue,
     required this.record,

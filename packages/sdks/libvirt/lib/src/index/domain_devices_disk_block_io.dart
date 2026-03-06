@@ -14,7 +14,7 @@ class DomainDevicesDiskBlockIo {
   /// [discardGranularity] Sets the granularity for discard operations performed by the disk.
   /// [logicalBlockSize] Specifies the logical block size of the disk, affecting read/write operations.
   /// [physicalBlockSize] Configures the physical block size of the disk.
-  DomainDevicesDiskBlockIo({
+  const DomainDevicesDiskBlockIo({
     this.discardGranularity,
     this.logicalBlockSize,
     this.physicalBlockSize,

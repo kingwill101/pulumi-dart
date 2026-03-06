@@ -12,7 +12,7 @@ class DataSourceRelationalDatabaseConfig {
   /// Creates a new [DataSourceRelationalDatabaseConfig].
   /// [httpEndpointConfig] Amazon RDS HTTP endpoint configuration. See `http_endpoint_config` Block for details.
   /// [sourceType] Source type for the relational database. Valid values: `RDS_HTTP_ENDPOINT`.
-  DataSourceRelationalDatabaseConfig({
+  const DataSourceRelationalDatabaseConfig({
     this.httpEndpointConfig,
     this.sourceType,
   });

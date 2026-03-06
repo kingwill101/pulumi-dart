@@ -28,7 +28,7 @@ class IpExtendedCommunityArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  IpExtendedCommunityArgs({
+  const IpExtendedCommunityArgs({
     this.annotation,
     this.ipExtendedCommunityName,
     required this.ipExtendedCommunityRules,

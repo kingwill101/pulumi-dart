@@ -9,7 +9,7 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] Name of the SKU to be applied
-  Sku({
+  const Sku({
     this.name,
   });
 

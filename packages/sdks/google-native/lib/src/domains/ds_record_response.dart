@@ -18,7 +18,7 @@ class DsRecordResponse {
   /// [digest] The digest generated from the referenced DNSKEY.
   /// [digestType] The hash function used to generate the digest of the referenced DNSKEY.
   /// [keyTag] The key tag of the record. Must be set in range 0 -- 65535.
-  DsRecordResponse({
+  const DsRecordResponse({
     required this.algorithm,
     required this.digest,
     required this.digestType,

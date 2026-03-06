@@ -23,7 +23,7 @@ class GtmInstanceAlertConfig {
   /// [emailNotice] Whether to configure mail notification. Valid values: `true`, `false`.
   /// [noticeType] The Alarm Event Type.
   /// [smsNotice] Whether to configure SMS notification. Valid values: `true`, `false`.
-  GtmInstanceAlertConfig({
+  const GtmInstanceAlertConfig({
     this.dingtalkNotice,
     this.emailNotice,
     this.noticeType,

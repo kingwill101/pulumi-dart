@@ -23,7 +23,7 @@ class StatefulResponse {
   /// [maxAgentLifetime] How long should stateful machines be kept around. The maximum is one week.
   /// [resourcePredictions] Defines pool buffer/stand-by agents.
   /// [resourcePredictionsProfile] Defines how the pool buffer/stand-by agents is provided.
-  StatefulResponse({
+  const StatefulResponse({
     this.gracePeriodTimeSpan,
     required this.kind,
     this.maxAgentLifetime,

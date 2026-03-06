@@ -20,7 +20,7 @@ class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
   /// [clientSecret] The client's secret.
   /// [scope] A space-delimited list of requested scope permissions.
   /// [tokenEndpoint] The token url endpoint to send the token request to.
-  AuthConfigDecryptedCredentialOauth2AuthorizationCode({
+  const AuthConfigDecryptedCredentialOauth2AuthorizationCode({
     this.authEndpoint,
     this.clientId,
     this.clientSecret,

@@ -14,7 +14,7 @@ class MetadataAuthor {
   /// [email] The email address of the author contact.
   /// [link] The link for author/vendor page.
   /// [name] The name of the author, company or person.
-  MetadataAuthor({
+  const MetadataAuthor({
     this.email,
     this.link,
     this.name,

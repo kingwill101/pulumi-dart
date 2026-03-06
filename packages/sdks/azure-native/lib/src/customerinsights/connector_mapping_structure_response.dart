@@ -18,7 +18,7 @@ class ConnectorMappingStructureResponse {
   /// [customFormatSpecifier] Custom format specifier for input parsing.
   /// [isEncrypted] Indicates if the column is encrypted.
   /// [propertyName] The property name of the mapping entity.
-  ConnectorMappingStructureResponse({
+  const ConnectorMappingStructureResponse({
     required this.columnName,
     this.customFormatSpecifier,
     this.isEncrypted,

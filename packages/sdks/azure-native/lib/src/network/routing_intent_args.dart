@@ -28,7 +28,7 @@ class RoutingIntentArgs {
   /// [routingIntentName] The name of the per VirtualHub singleton Routing Intent resource.
   /// [routingPolicies] List of routing policies.
   /// [virtualHubName] The name of the VirtualHub.
-  RoutingIntentArgs({
+  const RoutingIntentArgs({
     this.id,
     this.name,
     required this.resourceGroupName,

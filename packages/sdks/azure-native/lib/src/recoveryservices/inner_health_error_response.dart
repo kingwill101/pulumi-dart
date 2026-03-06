@@ -48,7 +48,7 @@ class InnerHealthErrorResponse {
   /// [recommendedAction] Recommended action to resolve error.
   /// [recoveryProviderErrorMessage] DRA error message.
   /// [summaryMessage] Summary message of the entity.
-  InnerHealthErrorResponse({
+  const InnerHealthErrorResponse({
     this.creationTimeUtc,
     this.customerResolvability,
     this.entityId,

@@ -15,7 +15,7 @@ class DatabaseDbArgs {
   /// Creates a new [DatabaseDbArgs].
   /// [clusterId] The ID of the original source database cluster.
   /// [name] The name for the database.
-  DatabaseDbArgs({
+  const DatabaseDbArgs({
     required this.clusterId,
     this.name,
   });

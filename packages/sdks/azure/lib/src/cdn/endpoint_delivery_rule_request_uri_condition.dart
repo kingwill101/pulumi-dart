@@ -17,7 +17,7 @@ class EndpointDeliveryRuleRequestUriCondition {
   /// [negateCondition] Defaults to `false`.
   /// [operator] Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
   /// [transforms] A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  EndpointDeliveryRuleRequestUriCondition({
+  const EndpointDeliveryRuleRequestUriCondition({
     this.matchValues,
     this.negateCondition,
     required this.operator,

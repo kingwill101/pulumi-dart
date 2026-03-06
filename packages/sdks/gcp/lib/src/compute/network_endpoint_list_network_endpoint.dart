@@ -20,7 +20,7 @@ class NetworkEndpointListNetworkEndpoint {
   /// [instance] The name for a specific VM instance that the IP address belongs to.
   /// [ipAddress] IPv4 address of network endpoint. The IP address must belong
   /// [port] Port number of network endpoint.
-  NetworkEndpointListNetworkEndpoint({
+  const NetworkEndpointListNetworkEndpoint({
     this.instance,
     required this.ipAddress,
     this.port,

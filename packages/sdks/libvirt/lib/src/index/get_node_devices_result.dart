@@ -11,7 +11,7 @@ class GetNodeDevicesResult {
   /// [capability] Optional.
   /// [devices] Required.
   /// [id] Required.
-  GetNodeDevicesResult({
+  const GetNodeDevicesResult({
     this.capability,
     required this.devices,
     required this.id,

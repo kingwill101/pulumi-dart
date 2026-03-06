@@ -32,7 +32,7 @@ class AiLogicConfigState {
   /// [name] Identifier. The resource name of the config.
   /// [project] The ID of the project in which the resource belongs.
   /// [telemetryConfig] Configuration for telemetry.
-  AiLogicConfigState({
+  const AiLogicConfigState({
     this.generativeLanguageConfig,
     this.location,
     this.name,

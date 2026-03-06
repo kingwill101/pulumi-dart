@@ -12,7 +12,7 @@ class AiTrafficAnalysisStatusArgs {
 
   /// Creates a new [AiTrafficAnalysisStatusArgs].
   /// [status] Status
-  AiTrafficAnalysisStatusArgs({
+  const AiTrafficAnalysisStatusArgs({
     this.status,
   });
 

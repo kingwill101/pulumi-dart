@@ -21,7 +21,7 @@ class GetFileShareArgs {
   /// [expand] Optional, used to expand the properties within share's properties. Valid values are: stats. Should be passed as a string with delimiter ','.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [shareName] The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  GetFileShareArgs({
+  const GetFileShareArgs({
     required this.accountName,
     this.expand,
     required this.resourceGroupName,

@@ -30,7 +30,7 @@ class DeveloperArgs {
   /// [lastName] Last name of the developer.
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [userName] User name of the developer. Not used by Apigee hybrid.
-  DeveloperArgs({
+  const DeveloperArgs({
     this.attributes,
     required this.email,
     required this.firstName,

@@ -22,7 +22,7 @@ class ResourceInfo {
   /// [status] Overall health status. Overall status is derived based on the status of each sub level resources.
   /// [sub] List of Info for the sub level resources.
   /// [time] The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
-  ResourceInfo({
+  const ResourceInfo({
     required this.id,
     this.resource,
     this.status,

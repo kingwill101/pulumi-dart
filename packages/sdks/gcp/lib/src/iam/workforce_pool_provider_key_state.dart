@@ -38,7 +38,7 @@ class WorkforcePoolProviderKeyState {
   /// [state] The state of the key.
   /// [use] The purpose of the key.
   /// [workforcePoolId] The ID of the workforce pool.
-  WorkforcePoolProviderKeyState({
+  const WorkforcePoolProviderKeyState({
     this.expireTime,
     this.keyData,
     this.keyId,

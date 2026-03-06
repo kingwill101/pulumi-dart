@@ -27,7 +27,7 @@ class NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration {
   /// [secondaryIpv4Prefix] Secondary IPv4 Address Prefix.
   /// [secondaryIpv6Prefix] Secondary IPv6 Address Prefix.
   /// [vlanId] VLAN for CE/PE Layer 3 connectivity.Example : 501
-  NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration({
+  const NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration({
     required this.fabricASN,
     required this.peerASN,
     this.primaryIpv4Prefix,

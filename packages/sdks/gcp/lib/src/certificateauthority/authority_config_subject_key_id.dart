@@ -10,7 +10,7 @@ class AuthorityConfigSubjectKeyId {
 
   /// Creates a new [AuthorityConfigSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.
-  AuthorityConfigSubjectKeyId({
+  const AuthorityConfigSubjectKeyId({
     this.keyId,
   });
 

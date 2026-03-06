@@ -40,7 +40,7 @@ class GetCertificateResult {
   /// [scope] Immutable. The scope of the certificate.
   /// [selfManaged] If set, defines data of a self-managed certificate.
   /// [updateTime] The last update timestamp of a Certificate.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.createTime,
     required this.description,
     required this.expireTime,

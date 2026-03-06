@@ -34,7 +34,7 @@ class MySqlConnectionInfo {
   /// [serverName] Name of the server
   /// [type] Type of connection info
   /// [userName] User name
-  MySqlConnectionInfo({
+  const MySqlConnectionInfo({
     this.additionalSettings,
     this.authentication,
     this.dataSource,

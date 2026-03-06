@@ -22,7 +22,7 @@ class ServiceAccountRecordResponse {
   /// [id] Id of the service account
   /// [kind] Type of account
   /// [metadata] Metadata of the record
-  ServiceAccountRecordResponse({
+  const ServiceAccountRecordResponse({
     this.description,
     this.displayName,
     this.id,

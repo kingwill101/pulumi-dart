@@ -155,7 +155,7 @@ class UserState {
   /// [usageLocation] The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
   /// [userPrincipalName] The user principal name (UPN) of the user.
   /// [userType] The user type in the directory. Possible values are `Guest` or `Member`.
-  UserState({
+  const UserState({
     this.aboutMe,
     this.accountEnabled,
     this.ageGroup,

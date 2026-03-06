@@ -21,7 +21,7 @@ class GetKeypairArgs {
   /// [name] The unique name of the keypair.
   /// [region] The region in which to obtain the V2 Compute client.
   /// [userId] The user id of the owner of the key pair.
-  GetKeypairArgs({
+  const GetKeypairArgs({
     required this.name,
     this.region,
     this.userId,

@@ -32,7 +32,7 @@ class GetAlertContactsContact {
   /// [phoneNum] The mobile number of the alert contact.
   /// [systemNoc] Specifies whether the alert contact receives system notifications.
   /// [webhook] Webhook Information.
-  GetAlertContactsContact({
+  const GetAlertContactsContact({
     required this.alertContactId,
     required this.alertContactName,
     required this.createTime,

@@ -27,7 +27,7 @@ class GetDevBoxDefinitionResult {
   /// [name] Required.
   /// [skuName] The name of the SKU for the Dev Center Dev Box Definition.
   /// [tags] A mapping of tags assigned to the Dev Center Dev Box Definition.
-  GetDevBoxDefinitionResult({
+  const GetDevBoxDefinitionResult({
     required this.devCenterId,
     required this.hibernateSupportEnabled,
     required this.id,

@@ -27,7 +27,7 @@ class UserHierarchyStructureHierarchyStructure {
   /// [levelOne] A block that defines the details of level one. The level block is documented below.
   /// [levelThree] A block that defines the details of level three. The level block is documented below.
   /// [levelTwo] A block that defines the details of level two. The level block is documented below.
-  UserHierarchyStructureHierarchyStructure({
+  const UserHierarchyStructureHierarchyStructure({
     this.levelFive,
     this.levelFour,
     this.levelOne,

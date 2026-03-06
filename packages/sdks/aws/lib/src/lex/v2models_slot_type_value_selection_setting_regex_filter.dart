@@ -8,7 +8,7 @@ class V2modelsSlotTypeValueSelectionSettingRegexFilter {
 
   /// Creates a new [V2modelsSlotTypeValueSelectionSettingRegexFilter].
   /// [pattern] A regular expression used to validate the value of a slot.
-  V2modelsSlotTypeValueSelectionSettingRegexFilter({
+  const V2modelsSlotTypeValueSelectionSettingRegexFilter({
     required this.pattern,
   });
 

@@ -72,7 +72,7 @@ class GetConnectionMonitorResult {
   /// [testConfigurations] List of connection monitor test configurations.
   /// [testGroups] List of connection monitor test groups.
   /// [type] Connection monitor type.
-  GetConnectionMonitorResult({
+  const GetConnectionMonitorResult({
     this.autoStart,
     required this.azureApiVersion,
     required this.connectionMonitorType,

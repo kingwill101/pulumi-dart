@@ -8,7 +8,7 @@ class ListServerGatewayStatusResult {
 
   /// Creates a new [ListServerGatewayStatusResult].
   /// [status] Live message of list gateway. Status: 0 - Live
-  ListServerGatewayStatusResult({
+  const ListServerGatewayStatusResult({
     this.status,
   });
 

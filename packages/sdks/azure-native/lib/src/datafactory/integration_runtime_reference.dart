@@ -15,7 +15,7 @@ class IntegrationRuntimeReference {
   /// [parameters] Arguments for integration runtime.
   /// [referenceName] Reference integration runtime name.
   /// [type] Type of integration runtime.
-  IntegrationRuntimeReference({
+  const IntegrationRuntimeReference({
     this.parameters,
     required this.referenceName,
     required this.type,

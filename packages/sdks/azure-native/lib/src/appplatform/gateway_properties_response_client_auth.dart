@@ -12,7 +12,7 @@ class GatewayPropertiesResponseClientAuth {
   /// Creates a new [GatewayPropertiesResponseClientAuth].
   /// [certificateVerification] Whether to enable certificate verification or not
   /// [certificates] Collection of certificate resource Ids in Azure Spring Apps.
-  GatewayPropertiesResponseClientAuth({
+  const GatewayPropertiesResponseClientAuth({
     this.certificateVerification,
     this.certificates,
   });

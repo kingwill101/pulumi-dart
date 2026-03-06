@@ -15,7 +15,7 @@ class KpiGroupByMetadataResponse {
   /// [displayName] The display name.
   /// [fieldName] The name of the field.
   /// [fieldType] The type of the field.
-  KpiGroupByMetadataResponse({
+  const KpiGroupByMetadataResponse({
     this.displayName,
     this.fieldName,
     this.fieldType,

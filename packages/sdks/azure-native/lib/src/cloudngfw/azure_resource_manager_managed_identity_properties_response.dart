@@ -19,7 +19,7 @@ class AzureResourceManagerManagedIdentityPropertiesResponse {
   /// [tenantId] The Active Directory tenant id of the principal.
   /// [type] The type of managed identity assigned to this resource.
   /// [userAssignedIdentities] The identities assigned to this resource by the user.
-  AzureResourceManagerManagedIdentityPropertiesResponse({
+  const AzureResourceManagerManagedIdentityPropertiesResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

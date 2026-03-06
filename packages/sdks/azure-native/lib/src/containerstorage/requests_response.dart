@@ -9,7 +9,7 @@ class RequestsResponse {
 
   /// Creates a new [RequestsResponse].
   /// [storage] Requested capacity of the pool in GiB.
-  RequestsResponse({
+  const RequestsResponse({
     this.storage,
   });
 

@@ -39,7 +39,7 @@ class MySqlReplicaConfigurationResponseSqladminV1beta4 {
   /// [sslCipher] A list of permissible ciphers to use for SSL encryption.
   /// [username] The username for the replication connection.
   /// [verifyServerCertificate] Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
-  MySqlReplicaConfigurationResponseSqladminV1beta4({
+  const MySqlReplicaConfigurationResponseSqladminV1beta4({
     required this.caCertificate,
     required this.clientCertificate,
     required this.clientKey,

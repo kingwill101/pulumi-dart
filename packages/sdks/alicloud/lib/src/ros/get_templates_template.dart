@@ -38,7 +38,7 @@ class GetTemplatesTemplate {
   /// [templateId] The ID of the template.
   /// [templateName] The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   /// [templateVersion] Template Version.
-  GetTemplatesTemplate({
+  const GetTemplatesTemplate({
     required this.changeSetId,
     required this.description,
     required this.id,

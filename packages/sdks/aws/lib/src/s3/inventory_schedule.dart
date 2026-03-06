@@ -8,7 +8,7 @@ class InventorySchedule {
 
   /// Creates a new [InventorySchedule].
   /// [frequency] Specifies how frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
-  InventorySchedule({
+  const InventorySchedule({
     required this.frequency,
   });
 

@@ -30,7 +30,7 @@ class UpdateConfigurationResponse {
   /// [operatingSystem] operating system of target machines
   /// [targets] Group targets for the software update configuration.
   /// [windows] Windows specific update configuration.
-  UpdateConfigurationResponse({
+  const UpdateConfigurationResponse({
     this.azureVirtualMachines,
     this.duration,
     this.linux,

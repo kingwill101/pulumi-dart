@@ -66,7 +66,7 @@ class PatchDeploymentState {
   /// [recurringSchedule] Schedule recurring executions.
   /// [rollout] Rollout strategy of the patch job.
   /// [updateTime] Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
-  PatchDeploymentState({
+  const PatchDeploymentState({
     this.createTime,
     this.description,
     this.duration,

@@ -26,7 +26,7 @@ class FirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   /// [startIpAddress] Specifies the Start IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.endIpAddress,
     this.name,
     required this.resourceGroupName,

@@ -8,7 +8,7 @@ class ImmutabilitySettingsResponse {
 
   /// Creates a new [ImmutabilitySettingsResponse].
   /// [state] Optional.
-  ImmutabilitySettingsResponse({
+  const ImmutabilitySettingsResponse({
     this.state,
   });
 

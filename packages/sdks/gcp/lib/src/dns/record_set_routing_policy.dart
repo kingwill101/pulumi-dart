@@ -26,7 +26,7 @@ class RecordSetRoutingPolicy {
   /// [healthCheck] Specifies the health check (used with external endpoints).
   /// [primaryBackup] The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
   /// [wrrs] The configuration for Weighted Round Robin based routing policy.
-  RecordSetRoutingPolicy({
+  const RecordSetRoutingPolicy({
     this.enableGeoFencing,
     this.geos,
     this.healthCheck,

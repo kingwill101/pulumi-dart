@@ -17,7 +17,7 @@ class EmailServiceDomainVerificationRecordDmarc {
   /// [ttl] Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
   /// [type] Type of the DNS record. Example: TXT
   /// [value] Value of the DNS record.
-  EmailServiceDomainVerificationRecordDmarc({
+  const EmailServiceDomainVerificationRecordDmarc({
     this.name,
     this.ttl,
     this.type,

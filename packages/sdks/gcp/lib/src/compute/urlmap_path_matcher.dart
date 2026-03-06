@@ -70,7 +70,7 @@ class URLMapPathMatcher {
   /// [name] The name to which this PathMatcher is referred by the HostRule.
   /// [pathRules] The list of path rules. Use this list instead of routeRules when routing based
   /// [routeRules] The list of ordered HTTP route rules. Use this list instead of pathRules when
-  URLMapPathMatcher({
+  const URLMapPathMatcher({
     this.defaultCustomErrorResponsePolicy,
     this.defaultRouteAction,
     this.defaultService,

@@ -13,7 +13,7 @@ class AiFeatureGroupBigQuery {
   /// Creates a new [AiFeatureGroupBigQuery].
   /// [bigQuerySource] The BigQuery source URI that points to either a BigQuery Table or View.
   /// [entityIdColumns] Columns to construct entityId / row keys. If not provided defaults to entityId.
-  AiFeatureGroupBigQuery({
+  const AiFeatureGroupBigQuery({
     required this.bigQuerySource,
     this.entityIdColumns,
   });

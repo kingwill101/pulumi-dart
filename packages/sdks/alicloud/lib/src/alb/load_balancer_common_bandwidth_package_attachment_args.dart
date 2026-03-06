@@ -18,7 +18,7 @@ class LoadBalancerCommonBandwidthPackageAttachmentArgs {
   /// [bandwidthPackageId] The ID of the bound shared bandwidth package.
   /// [dryRun] Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
   /// [loadBalancerId] The ID of the applied server load balancer instance.
-  LoadBalancerCommonBandwidthPackageAttachmentArgs({
+  const LoadBalancerCommonBandwidthPackageAttachmentArgs({
     required this.bandwidthPackageId,
     this.dryRun,
     required this.loadBalancerId,

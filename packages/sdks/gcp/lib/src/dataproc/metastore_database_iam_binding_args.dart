@@ -46,7 +46,7 @@ class MetastoreDatabaseIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
-  MetastoreDatabaseIamBindingArgs({
+  const MetastoreDatabaseIamBindingArgs({
     this.condition,
     required this.database,
     this.location,

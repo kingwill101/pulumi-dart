@@ -14,7 +14,7 @@ class GetInstanceBackupsAutomaticDisk {
   /// [filesystem] The filesystem of this disk.
   /// [label] The label of this disk.
   /// [size] The size of this disk.
-  GetInstanceBackupsAutomaticDisk({
+  const GetInstanceBackupsAutomaticDisk({
     required this.filesystem,
     required this.label,
     required this.size,

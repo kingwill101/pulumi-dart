@@ -23,7 +23,7 @@ class GetSchemasResult {
   /// [notLikeAllPatterns] Optional.
   /// [regexPattern] Optional.
   /// [schemas] A list of full names of found schemas.
-  GetSchemasResult({
+  const GetSchemasResult({
     required this.database,
     required this.id,
     this.includeSystemSchemas,

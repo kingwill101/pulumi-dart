@@ -45,7 +45,7 @@ class WorkstationArgs {
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] The ID of the parent workstation cluster config.
   /// [workstationId] ID to use for the workstation.
-  WorkstationArgs({
+  const WorkstationArgs({
     this.annotations,
     this.displayName,
     this.env,

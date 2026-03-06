@@ -12,7 +12,7 @@ class RecordMap {
   /// Creates a new [RecordMap].
   /// [from] Record Map Key.
   /// [to] Record Map Value.
-  RecordMap({
+  const RecordMap({
     required this.from,
     required this.to,
   });

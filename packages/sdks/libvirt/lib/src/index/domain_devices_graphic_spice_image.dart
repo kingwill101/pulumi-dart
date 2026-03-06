@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpiceImage {
 
   /// Creates a new [DomainDevicesGraphicSpiceImage].
   /// [compression] Sets the compression method for graphical images transmitted over the Spice connection.
-  DomainDevicesGraphicSpiceImage({
+  const DomainDevicesGraphicSpiceImage({
     required this.compression,
   });
 

@@ -35,7 +35,7 @@ class PortfolioShareArgs {
   /// [shareTagOptions] Whether to enable sharing of `aws.servicecatalog.TagOption` resources when creating the portfolio share.
   /// [type] Type of portfolio share. Valid values are `ACCOUNT` (an external account), `ORGANIZATION` (a share to every account in an organization), `ORGANIZATIONAL_UNIT`, `ORGANIZATION_MEMBER_ACCOUNT` (a share to an account in an organization).
   /// [waitForAcceptance] Whether to wait (up to the timeout) for the share to be accepted. Organizational shares are automatically accepted.
-  PortfolioShareArgs({
+  const PortfolioShareArgs({
     this.acceptLanguage,
     required this.portfolioId,
     required this.principalId,

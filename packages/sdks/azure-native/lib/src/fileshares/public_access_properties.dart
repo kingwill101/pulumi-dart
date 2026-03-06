@@ -9,7 +9,7 @@ class PublicAccessProperties {
 
   /// Creates a new [PublicAccessProperties].
   /// [allowedSubnets] The allowed set of subnets when access is restricted.
-  PublicAccessProperties({
+  const PublicAccessProperties({
     this.allowedSubnets,
   });
 

@@ -8,7 +8,7 @@ class DomainDevicesInterfacePortOptions {
 
   /// Creates a new [DomainDevicesInterfacePortOptions].
   /// [isolated] Sets whether the network port's traffic is isolated from others.
-  DomainDevicesInterfacePortOptions({
+  const DomainDevicesInterfacePortOptions({
     this.isolated,
   });
 

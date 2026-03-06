@@ -15,7 +15,7 @@ class GetKnowledgeBaseDialogflowV2beta1Args {
   /// [knowledgeBaseId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetKnowledgeBaseDialogflowV2beta1Args({
+  const GetKnowledgeBaseDialogflowV2beta1Args({
     required this.knowledgeBaseId,
     required this.location,
     this.project,

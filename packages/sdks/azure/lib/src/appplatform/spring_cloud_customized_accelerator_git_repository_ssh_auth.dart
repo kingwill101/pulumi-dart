@@ -14,7 +14,7 @@ class SpringCloudCustomizedAcceleratorGitRepositorySshAuth {
   /// [hostKey] Specifies the Public SSH Key of git repository basic auth.
   /// [hostKeyAlgorithm] Specifies the SSH Key algorithm of git repository basic auth.
   /// [privateKey] Specifies the Private SSH Key of git repository basic auth.
-  SpringCloudCustomizedAcceleratorGitRepositorySshAuth({
+  const SpringCloudCustomizedAcceleratorGitRepositorySshAuth({
     this.hostKey,
     this.hostKeyAlgorithm,
     required this.privateKey,

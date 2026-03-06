@@ -24,7 +24,7 @@ class CertificateArgs {
   /// [keyVirtualPath] Specify the path to the key file of this certificate.
   /// [name] The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
-  CertificateArgs({
+  const CertificateArgs({
     required this.certificateVirtualPath,
     required this.keyVaultSecretId,
     required this.keyVirtualPath,

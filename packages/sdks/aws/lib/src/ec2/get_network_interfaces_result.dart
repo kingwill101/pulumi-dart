@@ -19,7 +19,7 @@ class GetNetworkInterfacesResult {
   /// [ids] List of all the network interface ids found.
   /// [region] Required.
   /// [tags] Required.
-  GetNetworkInterfacesResult({
+  const GetNetworkInterfacesResult({
     this.filters,
     required this.id,
     required this.ids,

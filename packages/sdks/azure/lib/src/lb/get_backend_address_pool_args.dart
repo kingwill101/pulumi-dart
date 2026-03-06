@@ -15,7 +15,7 @@ class GetBackendAddressPoolArgs {
   /// Creates a new [GetBackendAddressPoolArgs].
   /// [loadbalancerId] The ID of the Load Balancer in which the Backend Address Pool exists.
   /// [name] Specifies the name of the Backend Address Pool.
-  GetBackendAddressPoolArgs({
+  const GetBackendAddressPoolArgs({
     required this.loadbalancerId,
     required this.name,
   });

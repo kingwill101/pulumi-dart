@@ -15,7 +15,7 @@ class ComputeInstanceCreatedByResponse {
   /// [userId] Uniquely identifies the user within his/her organization.
   /// [userName] Name of the user.
   /// [userOrgId] Uniquely identifies user' Azure Active Directory organization.
-  ComputeInstanceCreatedByResponse({
+  const ComputeInstanceCreatedByResponse({
     required this.userId,
     required this.userName,
     required this.userOrgId,

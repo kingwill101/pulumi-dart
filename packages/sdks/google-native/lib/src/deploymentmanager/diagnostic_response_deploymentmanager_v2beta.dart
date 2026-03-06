@@ -11,7 +11,7 @@ class DiagnosticResponseDeploymentmanagerV2beta {
   /// Creates a new [DiagnosticResponseDeploymentmanagerV2beta].
   /// [field] JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
   /// [level] Level to record this diagnostic.
-  DiagnosticResponseDeploymentmanagerV2beta({
+  const DiagnosticResponseDeploymentmanagerV2beta({
     required this.field,
     required this.level,
   });

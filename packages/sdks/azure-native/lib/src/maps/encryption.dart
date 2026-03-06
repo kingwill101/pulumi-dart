@@ -13,7 +13,7 @@ class Encryption {
   /// Creates a new [Encryption].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.
   /// [infrastructureEncryption] (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled.
-  Encryption({
+  const Encryption({
     this.customerManagedKeyEncryption,
     this.infrastructureEncryption,
   });

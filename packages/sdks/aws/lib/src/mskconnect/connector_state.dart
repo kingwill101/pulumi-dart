@@ -66,7 +66,7 @@ class ConnectorState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] The current version of the connector.
   /// [workerConfiguration] Specifies which worker configuration to use with the connector. See `worker_configuration` Block for details.
-  ConnectorState({
+  const ConnectorState({
     this.arn,
     this.capacity,
     this.connectorConfiguration,

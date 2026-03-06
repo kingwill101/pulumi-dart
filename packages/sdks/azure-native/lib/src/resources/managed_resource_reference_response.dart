@@ -15,7 +15,7 @@ class ManagedResourceReferenceResponse {
   /// [denyStatus] denyAssignment settings applied to the resource.
   /// [id] The ARM Resource ID of a resource managed by the deployment stack.
   /// [status] Current management state of the resource in the deployment stack.
-  ManagedResourceReferenceResponse({
+  const ManagedResourceReferenceResponse({
     this.denyStatus,
     required this.id,
     this.status,

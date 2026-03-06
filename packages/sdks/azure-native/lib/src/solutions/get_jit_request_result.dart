@@ -55,7 +55,7 @@ class GetJitRequestResult {
   /// [tags] Resource tags
   /// [type] Resource type
   /// [updatedBy] The client entity that last updated the JIT request.
-  GetJitRequestResult({
+  const GetJitRequestResult({
     required this.applicationResourceId,
     required this.azureApiVersion,
     required this.createdBy,

@@ -9,7 +9,7 @@ class GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse {
 
   /// Creates a new [GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse].
   /// [mode] Defaults to Mode.AUTO.
-  GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse({
+  const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse({
     required this.mode,
   });
 

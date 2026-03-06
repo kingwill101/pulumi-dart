@@ -13,7 +13,7 @@ class RestoreTestingSelectionProtectedResourceConditions {
   /// Creates a new [RestoreTestingSelectionProtectedResourceConditions].
   /// [stringEquals] The list of string equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching.". See the structure for details
   /// [stringNotEquals] The list of string not equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching.". See the structure for details
-  RestoreTestingSelectionProtectedResourceConditions({
+  const RestoreTestingSelectionProtectedResourceConditions({
     this.stringEquals,
     this.stringNotEquals,
   });

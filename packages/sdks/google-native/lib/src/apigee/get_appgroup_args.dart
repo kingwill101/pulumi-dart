@@ -13,7 +13,7 @@ class GetAppgroupArgs {
   /// Creates a new [GetAppgroupArgs].
   /// [appgroupId] Required.
   /// [organizationId] Required.
-  GetAppgroupArgs({
+  const GetAppgroupArgs({
     required this.appgroupId,
     required this.organizationId,
   });

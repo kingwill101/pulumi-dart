@@ -19,7 +19,7 @@ class DelegationSignerRecordState {
   /// [domainName] The name of the domain that will have its parent DNS zone updated with the Delegation Signer record.
   /// [signingAttributes] The information about a key, including the algorithm, public key-value, and flags.
   /// [timeouts] Optional.
-  DelegationSignerRecordState({
+  const DelegationSignerRecordState({
     this.dnssecKeyId,
     this.domainName,
     this.signingAttributes,

@@ -30,7 +30,7 @@ class GetClusterCredentialsArgs {
   /// [dbUser] Name of a database user. If a user name matching `db_user` exists in the database, the temporary user credentials have the same permissions as the  existing user. If `db_user` doesn't exist in the database and `auto_create` is `True`, a new user is created using the value for `db_user` with `PUBLIC` permissions.  If a database user matching the value for `db_user` doesn't exist and `not` is `False`, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.
   /// [durationSeconds] The number of seconds until the returned temporary password expires. Valid values are between `900` and `3600`. Default value is `900`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetClusterCredentialsArgs({
+  const GetClusterCredentialsArgs({
     this.autoCreate,
     required this.clusterIdentifier,
     this.dbGroups,

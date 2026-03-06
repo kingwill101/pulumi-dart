@@ -77,7 +77,7 @@ class WebPubSubArgs {
   /// [socketIO] SocketIO settings for the resource
   /// [tags] Resource tags.
   /// [tls] TLS settings for the resource
-  WebPubSubArgs({
+  const WebPubSubArgs({
     this.disableAadAuth,
     this.disableLocalAuth,
     this.identity,

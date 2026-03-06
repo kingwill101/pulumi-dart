@@ -12,7 +12,7 @@ class AclArgs {
 
   /// Creates a new [AclArgs].
   /// [name] The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-  AclArgs({
+  const AclArgs({
     this.name,
   });
 

@@ -46,7 +46,7 @@ class ClusterState {
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [region] The region in which the cluster and associated nodes will be created in.
   /// [virtualClusterConfig] Allows you to configure a virtual Dataproc on GKE cluster.
-  ClusterState({
+  const ClusterState({
     this.clusterConfig,
     this.effectiveLabels,
     this.gracefulDecommissionTimeout,

@@ -11,7 +11,7 @@ class GetTableView {
   /// Creates a new [GetTableView].
   /// [query] A query that BigQuery executes when the view is referenced.
   /// [useLegacySql] Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
-  GetTableView({
+  const GetTableView({
     required this.query,
     required this.useLegacySql,
   });

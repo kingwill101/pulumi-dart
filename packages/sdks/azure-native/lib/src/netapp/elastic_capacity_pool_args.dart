@@ -31,7 +31,7 @@ class ElasticCapacityPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [zones] The availability zones.
-  ElasticCapacityPoolArgs({
+  const ElasticCapacityPoolArgs({
     required this.accountName,
     this.location,
     this.poolName,

@@ -13,7 +13,7 @@ class AzureMLWebServiceFileResponse {
   /// Creates a new [AzureMLWebServiceFileResponse].
   /// [filePath] The relative file path, including container name, in the Azure Blob Storage specified by the LinkedService. Type: string (or Expression with resultType string).
   /// [linkedServiceName] Reference to an Azure Storage LinkedService, where Azure ML WebService Input/Output file located.
-  AzureMLWebServiceFileResponse({
+  const AzureMLWebServiceFileResponse({
     required this.filePath,
     required this.linkedServiceName,
   });

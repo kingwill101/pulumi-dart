@@ -18,7 +18,7 @@ class GetKafkaVersionArgs {
   /// [preferredVersions] Ordered list of preferred Kafka versions. The first match in this list will be returned. Either `preferred_versions` or `version` must be set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferred_versions` or `version` must be set.
-  GetKafkaVersionArgs({
+  const GetKafkaVersionArgs({
     this.preferredVersions,
     this.region,
     this.version,

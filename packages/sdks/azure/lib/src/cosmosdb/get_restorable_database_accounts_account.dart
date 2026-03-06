@@ -21,7 +21,7 @@ class GetRestorableDatabaseAccountsAccount {
   /// [deletionTime] The deletion time of the regional Cosmos DB Restorable Database Account.
   /// [id] The ID of the Cosmos DB Restorable Database Account.
   /// [restorableLocations] One or more `restorable_locations` blocks as defined below.
-  GetRestorableDatabaseAccountsAccount({
+  const GetRestorableDatabaseAccountsAccount({
     required this.apiType,
     required this.creationTime,
     required this.deletionTime,

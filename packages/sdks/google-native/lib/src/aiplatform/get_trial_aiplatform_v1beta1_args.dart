@@ -17,7 +17,7 @@ class GetTrialAiplatformV1beta1Args {
   /// [project] Optional.
   /// [studyId] Required.
   /// [trialId] Required.
-  GetTrialAiplatformV1beta1Args({
+  const GetTrialAiplatformV1beta1Args({
     required this.location,
     this.project,
     required this.studyId,

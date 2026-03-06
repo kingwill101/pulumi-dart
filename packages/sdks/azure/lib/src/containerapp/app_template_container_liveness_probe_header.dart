@@ -11,7 +11,7 @@ class AppTemplateContainerLivenessProbeHeader {
   /// Creates a new [AppTemplateContainerLivenessProbeHeader].
   /// [name] The HTTP Header Name.
   /// [value] The HTTP Header value.
-  AppTemplateContainerLivenessProbeHeader({
+  const AppTemplateContainerLivenessProbeHeader({
     required this.name,
     required this.value,
   });

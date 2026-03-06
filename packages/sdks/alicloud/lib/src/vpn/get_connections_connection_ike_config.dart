@@ -32,7 +32,7 @@ class GetConnectionsConnectionIkeConfig {
   /// [ikeRemoteId] The identification of the customer gateway.
   /// [ikeVersion] IKE Version.
   /// [psk] Preshared secret key.
-  GetConnectionsConnectionIkeConfig({
+  const GetConnectionsConnectionIkeConfig({
     this.ikeAuthAlg,
     this.ikeEncAlg,
     this.ikeLifetime,

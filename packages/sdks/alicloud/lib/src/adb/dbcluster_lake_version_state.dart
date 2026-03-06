@@ -121,7 +121,7 @@ class DBClusterLakeVersionState {
   /// [vpcId] The vpc ID of the resource.
   /// [vswitchId] The ID of the vSwitch.
   /// [zoneId] The zone ID of the resource.
-  DBClusterLakeVersionState({
+  const DBClusterLakeVersionState({
     this.backupSetId,
     this.commodityCode,
     this.computeResource,

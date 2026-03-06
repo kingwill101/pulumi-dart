@@ -16,7 +16,7 @@ class GetReceivedLicensesArgs {
   /// Creates a new [GetReceivedLicensesArgs].
   /// [filters] Custom filter block as described below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetReceivedLicensesArgs({
+  const GetReceivedLicensesArgs({
     this.filters,
     this.region,
   });

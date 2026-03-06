@@ -42,7 +42,7 @@ class LocationFsxOntapFileSystemState {
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [uri] URI of the FSx ONTAP file system location
-  LocationFsxOntapFileSystemState({
+  const LocationFsxOntapFileSystemState({
     this.arn,
     this.creationTime,
     this.fsxFilesystemArn,

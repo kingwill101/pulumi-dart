@@ -26,7 +26,7 @@ class VngClientConnectionConfigurationResponse {
   /// [provisioningState] The provisioning state of the VngClientConnectionConfiguration resource.
   /// [virtualNetworkGatewayPolicyGroups] List of references to virtualNetworkGatewayPolicyGroups
   /// [vpnClientAddressPool] The reference to the address space resource which represents Address space for P2S VpnClient.
-  VngClientConnectionConfigurationResponse({
+  const VngClientConnectionConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

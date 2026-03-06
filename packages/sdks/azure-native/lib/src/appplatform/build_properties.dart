@@ -30,7 +30,7 @@ class BuildProperties {
   /// [env] The environment variables for this build
   /// [relativePath] The relative path of source code
   /// [resourceRequests] The customized build resource for this build
-  BuildProperties({
+  const BuildProperties({
     this.agentPool,
     this.apms,
     this.builder,

@@ -27,7 +27,7 @@ class GlobalSchemaArgs {
   /// [schemaId] A unique identifier for this Schema. Changing this forces a new resource to be created.
   /// [type] The content type of the Schema. Possible values are `xml` and `json`.
   /// [value] The string defining the document representing the Schema.
-  GlobalSchemaArgs({
+  const GlobalSchemaArgs({
     required this.apiManagementName,
     this.description,
     required this.resourceGroupName,

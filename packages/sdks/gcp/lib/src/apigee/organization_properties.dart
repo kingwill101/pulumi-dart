@@ -10,7 +10,7 @@ class OrganizationProperties {
 
   /// Creates a new [OrganizationProperties].
   /// [properties] List of all properties in the object.
-  OrganizationProperties({
+  const OrganizationProperties({
     this.properties,
   });
 

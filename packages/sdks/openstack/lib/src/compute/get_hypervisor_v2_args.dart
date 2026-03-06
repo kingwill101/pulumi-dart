@@ -16,7 +16,7 @@ class GetHypervisorV2Args {
   /// Creates a new [GetHypervisorV2Args].
   /// [hostname] The hostname of the hypervisor.
   /// [region] The region in which to obtain the V2 Compute client.
-  GetHypervisorV2Args({
+  const GetHypervisorV2Args({
     this.hostname,
     this.region,
   });

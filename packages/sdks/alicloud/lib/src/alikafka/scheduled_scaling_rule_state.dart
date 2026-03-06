@@ -43,7 +43,7 @@ class ScheduledScalingRuleState {
   /// [scheduleType] The schedule type. Valid values:
   /// [timeZone] The time zone (Coordinated Universal Time).
   /// [weeklyTypes] The weekly types. Supports execution on multiple days. When `repeat_type` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
-  ScheduledScalingRuleState({
+  const ScheduledScalingRuleState({
     this.durationMinutes,
     this.enable,
     this.firstScheduledTime,

@@ -8,7 +8,7 @@ class ModelSettings {
 
   /// Creates a new [ModelSettings].
   /// [modelId] The unique model identifier that this ServerlessEndpoint should provision.
-  ModelSettings({
+  const ModelSettings({
     this.modelId,
   });
 

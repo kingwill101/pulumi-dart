@@ -15,7 +15,7 @@ class InstanceReservationAffinity {
   /// [consumeReservationType] The type of Compute Reservation.
   /// [key] Corresponds to the label key of reservation resource.
   /// [values] Corresponds to the label values of reservation resource.
-  InstanceReservationAffinity({
+  const InstanceReservationAffinity({
     required this.consumeReservationType,
     this.key,
     this.values,

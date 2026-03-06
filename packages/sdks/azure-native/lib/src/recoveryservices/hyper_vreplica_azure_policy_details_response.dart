@@ -28,7 +28,7 @@ class HyperVReplicaAzurePolicyDetailsResponse {
   /// [onlineReplicationStartTime] The scheduled start time for the initial replication. If this parameter is Null, the initial replication starts immediately.
   /// [recoveryPointHistoryDurationInHours] The duration (in hours) to which point the recovery history needs to be maintained.
   /// [replicationInterval] The replication interval.
-  HyperVReplicaAzurePolicyDetailsResponse({
+  const HyperVReplicaAzurePolicyDetailsResponse({
     this.activeStorageAccountId,
     this.applicationConsistentSnapshotFrequencyInHours,
     this.encryption,

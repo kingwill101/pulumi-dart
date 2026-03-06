@@ -429,7 +429,7 @@ class InstanceArgs {
   /// [zoneId] The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
   /// [zoneIdSlaveA] The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
   /// [zoneIdSlaveB] RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
-  InstanceArgs({
+  const InstanceArgs({
     this.acl,
     this.autoRenew,
     this.autoRenewPeriod,

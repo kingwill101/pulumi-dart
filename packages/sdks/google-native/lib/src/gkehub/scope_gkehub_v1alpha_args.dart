@@ -25,7 +25,7 @@ class ScopeGkehubV1alphaArgs {
   /// [namespaceLabels] Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
   /// [project] Optional.
   /// [scopeId] Required. Client chosen ID for the Scope. `scope_id` must be a ????
-  ScopeGkehubV1alphaArgs({
+  const ScopeGkehubV1alphaArgs({
     this.labels,
     this.location,
     this.name,

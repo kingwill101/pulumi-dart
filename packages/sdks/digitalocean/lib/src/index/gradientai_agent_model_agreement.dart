@@ -17,7 +17,7 @@ class GradientaiAgentModelAgreement {
   /// [name] Name of the agreement
   /// [url] URL of the agreement
   /// [uuid] UUID of the agreement
-  GradientaiAgentModelAgreement({
+  const GradientaiAgentModelAgreement({
     this.description,
     this.name,
     this.url,

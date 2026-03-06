@@ -16,7 +16,7 @@ class VolumeBackingStore {
   /// [format] Sets the format type for the backing store of the storage volume.
   /// [path] Defines the path to the backing store for the storage volume.
   /// [permissions] Configures the permissions for the backing store of the storage volume.
-  VolumeBackingStore({
+  const VolumeBackingStore({
     this.format,
     required this.path,
     this.permissions,

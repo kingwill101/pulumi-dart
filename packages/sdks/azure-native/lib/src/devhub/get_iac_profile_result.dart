@@ -70,7 +70,7 @@ class GetIacProfileResult {
   /// [tags] Resource tags.
   /// [templates] Optional.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetIacProfileResult({
+  const GetIacProfileResult({
     required this.authStatus,
     required this.azureApiVersion,
     this.branchName,

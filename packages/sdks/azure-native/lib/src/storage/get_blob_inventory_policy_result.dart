@@ -28,7 +28,7 @@ class GetBlobInventoryPolicyResult {
   /// [policy] The storage account blob inventory policy object. It is composed of policy rules.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetBlobInventoryPolicyResult({
+  const GetBlobInventoryPolicyResult({
     required this.azureApiVersion,
     required this.id,
     required this.lastModifiedTime,

@@ -12,7 +12,7 @@ class BucketObjectRetentionResponse {
   /// Creates a new [BucketObjectRetentionResponse].
   /// [mode] The bucket's object retention mode, can only be Unlocked or Locked.
   /// [retainUntilTime] A time in RFC 3339 format until which object retention protects this object.
-  BucketObjectRetentionResponse({
+  const BucketObjectRetentionResponse({
     required this.mode,
     required this.retainUntilTime,
   });

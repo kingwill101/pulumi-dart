@@ -15,7 +15,7 @@ class GetBillingHubServiceFreeHourBalanceArgs {
   /// Creates a new [GetBillingHubServiceFreeHourBalanceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetBillingHubServiceFreeHourBalanceArgs({
+  const GetBillingHubServiceFreeHourBalanceArgs({
     required this.resourceGroupName,
     required this.testBaseAccountName,
   });

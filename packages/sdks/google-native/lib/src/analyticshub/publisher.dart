@@ -12,7 +12,7 @@ class Publisher {
   /// Creates a new [Publisher].
   /// [name] Optional. Name of the listing publisher.
   /// [primaryContact] Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
-  Publisher({
+  const Publisher({
     this.name,
     this.primaryContact,
   });

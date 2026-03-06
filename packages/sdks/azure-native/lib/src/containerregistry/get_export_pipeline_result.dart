@@ -38,7 +38,7 @@ class GetExportPipelineResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [target] The target properties of the export pipeline.
   /// [type] The type of the resource.
-  GetExportPipelineResult({
+  const GetExportPipelineResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

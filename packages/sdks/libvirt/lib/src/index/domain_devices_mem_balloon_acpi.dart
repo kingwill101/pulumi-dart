@@ -8,7 +8,7 @@ class DomainDevicesMemBalloonAcpi {
 
   /// Creates a new [DomainDevicesMemBalloonAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesMemBalloonAcpi({
+  const DomainDevicesMemBalloonAcpi({
     this.index,
   });
 

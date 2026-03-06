@@ -8,7 +8,7 @@ class VmwareAdminClusterLoadBalancerMetalLbConfig {
 
   /// Creates a new [VmwareAdminClusterLoadBalancerMetalLbConfig].
   /// [enabled] Metal LB is enabled.
-  VmwareAdminClusterLoadBalancerMetalLbConfig({
+  const VmwareAdminClusterLoadBalancerMetalLbConfig({
     this.enabled,
   });
 

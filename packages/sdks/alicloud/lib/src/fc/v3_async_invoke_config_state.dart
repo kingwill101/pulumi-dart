@@ -34,7 +34,7 @@ class V3AsyncInvokeConfigState {
   /// [maxAsyncEventAgeInSeconds] Event maximum survival time
   /// [maxAsyncRetryAttempts] Number of Asynchronous call retries
   /// [qualifier] Function version or alias
-  V3AsyncInvokeConfigState({
+  const V3AsyncInvokeConfigState({
     this.asyncTask,
     this.createTime,
     this.destinationConfig,

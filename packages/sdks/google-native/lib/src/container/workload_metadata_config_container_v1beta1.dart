@@ -14,7 +14,7 @@ class WorkloadMetadataConfigContainerV1beta1 {
   /// Creates a new [WorkloadMetadataConfigContainerV1beta1].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.
   /// [nodeMetadata] NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-  WorkloadMetadataConfigContainerV1beta1({
+  const WorkloadMetadataConfigContainerV1beta1({
     this.mode,
     this.nodeMetadata,
   });

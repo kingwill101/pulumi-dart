@@ -12,7 +12,7 @@ class ClusterSecretManagerConfig {
   /// Creates a new [ClusterSecretManagerConfig].
   /// [enabled] Enable the Secret Manager add-on for this cluster.
   /// [rotationConfig] config for secret manager auto rotation. Structure is docuemented below
-  ClusterSecretManagerConfig({
+  const ClusterSecretManagerConfig({
     required this.enabled,
     this.rotationConfig,
   });

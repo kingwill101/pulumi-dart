@@ -13,7 +13,7 @@ class FirewallParams {
 
   /// Creates a new [FirewallParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the firewall. Tag keys and values have the
-  FirewallParams({
+  const FirewallParams({
     this.resourceManagerTags,
   });
 

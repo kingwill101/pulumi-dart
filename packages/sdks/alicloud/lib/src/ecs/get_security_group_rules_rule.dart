@@ -44,7 +44,7 @@ class GetSecurityGroupRulesRule {
   /// [sourceCidrIp] Source IP address segment for ingress authorization.
   /// [sourceGroupId] Source security group ID for ingress authorization.
   /// [sourceGroupOwnerAccount] Alibaba Cloud account of the source security group.
-  GetSecurityGroupRulesRule({
+  const GetSecurityGroupRulesRule({
     required this.description,
     required this.destCidrIp,
     required this.destGroupId,

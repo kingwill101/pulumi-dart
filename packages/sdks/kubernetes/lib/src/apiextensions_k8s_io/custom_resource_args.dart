@@ -22,7 +22,7 @@ class CustomResourceArgs {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   /// [others] This field is not an actual property. It is used to represent custom property names and their values that can be passed in addition to the other input properties.
-  CustomResourceArgs({
+  const CustomResourceArgs({
     required this.apiVersion,
     required this.kind,
     this.metadata,

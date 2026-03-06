@@ -14,7 +14,7 @@ class CxFlowAdvancedSettingsLoggingSettings {
   /// [enableConsentBasedRedaction] Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
   /// [enableInteractionLogging] Enables DF Interaction logging.
   /// [enableStackdriverLogging] Enables Google Cloud Logging.
-  CxFlowAdvancedSettingsLoggingSettings({
+  const CxFlowAdvancedSettingsLoggingSettings({
     this.enableConsentBasedRedaction,
     this.enableInteractionLogging,
     this.enableStackdriverLogging,

@@ -18,7 +18,7 @@ class GetWorkloadNetworkDnsZoneArgs {
   /// [dnsZoneId] ID of the DNS zone.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetWorkloadNetworkDnsZoneArgs({
+  const GetWorkloadNetworkDnsZoneArgs({
     required this.dnsZoneId,
     required this.privateCloudName,
     required this.resourceGroupName,

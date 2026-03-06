@@ -8,7 +8,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
 
   /// Creates a new [PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath({
+  const PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath({
     required this.path,
   });
 

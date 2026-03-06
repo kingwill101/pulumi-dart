@@ -191,7 +191,7 @@ class ReadOnlyInstanceState {
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [whitelistNetworkType] The network type of the IP address whitelist. Default value: MIX. Valid values:
   /// [zoneId] The Zone to launch the DB instance.
-  ReadOnlyInstanceState({
+  const ReadOnlyInstanceState({
     this.acl,
     this.autoRenew,
     this.autoRenewPeriod,

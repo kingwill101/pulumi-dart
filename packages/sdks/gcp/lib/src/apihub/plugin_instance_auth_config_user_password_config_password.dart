@@ -9,7 +9,7 @@ class PluginInstanceAuthConfigUserPasswordConfigPassword {
 
   /// Creates a new [PluginInstanceAuthConfigUserPasswordConfigPassword].
   /// [secretVersion] The resource name of the secret version in the format,
-  PluginInstanceAuthConfigUserPasswordConfigPassword({
+  const PluginInstanceAuthConfigUserPasswordConfigPassword({
     required this.secretVersion,
   });
 

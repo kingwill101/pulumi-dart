@@ -12,7 +12,7 @@ class ApiKeyResponse {
   /// Creates a new [ApiKeyResponse].
   /// [createdAt] The creation time of the api key.
   /// [key] The Api key.
-  ApiKeyResponse({
+  const ApiKeyResponse({
     this.createdAt,
     required this.key,
   });

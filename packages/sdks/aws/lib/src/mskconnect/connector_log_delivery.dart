@@ -9,7 +9,7 @@ class ConnectorLogDelivery {
 
   /// Creates a new [ConnectorLogDelivery].
   /// [workerLogDelivery] The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See `worker_log_delivery` Block for details.
-  ConnectorLogDelivery({
+  const ConnectorLogDelivery({
     required this.workerLogDelivery,
   });
 

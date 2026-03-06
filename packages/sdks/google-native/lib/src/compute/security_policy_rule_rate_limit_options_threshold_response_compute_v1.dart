@@ -11,7 +11,7 @@ class SecurityPolicyRuleRateLimitOptionsThresholdResponseComputeV1 {
   /// Creates a new [SecurityPolicyRuleRateLimitOptionsThresholdResponseComputeV1].
   /// [count] Number of HTTP(S) requests for calculating the threshold.
   /// [intervalSec] Interval over which the threshold is computed.
-  SecurityPolicyRuleRateLimitOptionsThresholdResponseComputeV1({
+  const SecurityPolicyRuleRateLimitOptionsThresholdResponseComputeV1({
     required this.count,
     required this.intervalSec,
   });

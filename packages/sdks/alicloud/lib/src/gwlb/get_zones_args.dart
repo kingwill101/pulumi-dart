@@ -21,7 +21,7 @@ class GetZonesArgs {
   /// [acceptLanguage] The supported language. Valid values:
   /// [ids] A list of Zone IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({
+  const GetZonesArgs({
     this.acceptLanguage,
     this.ids,
     this.outputFile,

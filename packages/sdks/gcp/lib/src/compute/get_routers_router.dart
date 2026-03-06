@@ -32,7 +32,7 @@ class GetRoutersRouter {
   /// [nats] Required.
   /// [network] Required.
   /// [selfLink] Required.
-  GetRoutersRouter({
+  const GetRoutersRouter({
     required this.bgpPeers,
     required this.bgps,
     required this.creationTimestamp,

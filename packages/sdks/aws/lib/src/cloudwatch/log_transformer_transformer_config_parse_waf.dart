@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigParseWaf {
 
   /// Creates a new [LogTransformerTransformerConfigParseWaf].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseWaf({
+  const LogTransformerTransformerConfigParseWaf({
     this.source,
   });
 

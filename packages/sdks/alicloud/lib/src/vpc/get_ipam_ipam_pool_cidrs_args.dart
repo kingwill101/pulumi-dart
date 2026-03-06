@@ -18,7 +18,7 @@ class GetIpamIpamPoolCidrsArgs {
   /// [cidr] The CIDR address segment to be preset.&gt; currently, only IPv4 address segments are supported.
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetIpamIpamPoolCidrsArgs({
+  const GetIpamIpamPoolCidrsArgs({
     this.cidr,
     required this.ipamPoolId,
     this.outputFile,

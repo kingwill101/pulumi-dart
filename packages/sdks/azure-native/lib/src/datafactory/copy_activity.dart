@@ -97,7 +97,7 @@ class CopyActivity {
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
   /// [validateDataConsistency] Whether to enable Data Consistency validation. Type: boolean (or Expression with resultType boolean).
-  CopyActivity({
+  const CopyActivity({
     this.dataIntegrationUnits,
     this.dependsOn,
     this.description,

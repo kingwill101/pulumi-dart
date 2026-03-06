@@ -9,7 +9,7 @@ class SoftwareRecipeStepInstallDpkgResponse {
 
   /// Creates a new [SoftwareRecipeStepInstallDpkgResponse].
   /// [artifactId] The id of the relevant artifact in the recipe.
-  SoftwareRecipeStepInstallDpkgResponse({
+  const SoftwareRecipeStepInstallDpkgResponse({
     required this.artifactId,
   });
 

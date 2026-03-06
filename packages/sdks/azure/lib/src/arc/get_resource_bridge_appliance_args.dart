@@ -15,7 +15,7 @@ class GetResourceBridgeApplianceArgs {
   /// Creates a new [GetResourceBridgeApplianceArgs].
   /// [name] The name of this Arc Resource Bridge Appliance.
   /// [resourceGroupName] The name of the Resource Group where the Arc Resource Bridge Appliance exists.
-  GetResourceBridgeApplianceArgs({
+  const GetResourceBridgeApplianceArgs({
     required this.name,
     required this.resourceGroupName,
   });

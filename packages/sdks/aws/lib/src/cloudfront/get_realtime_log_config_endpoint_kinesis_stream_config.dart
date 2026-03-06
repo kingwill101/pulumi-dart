@@ -12,7 +12,7 @@ class GetRealtimeLogConfigEndpointKinesisStreamConfig {
   /// Creates a new [GetRealtimeLogConfigEndpointKinesisStreamConfig].
   /// [roleArn] (Required) ARN of an IAM role that CloudFront can use to send real-time log data to the Kinesis data stream.
   /// [streamArn] (Required) ARN of the Kinesis data stream.
-  GetRealtimeLogConfigEndpointKinesisStreamConfig({
+  const GetRealtimeLogConfigEndpointKinesisStreamConfig({
     required this.roleArn,
     required this.streamArn,
   });

@@ -14,7 +14,7 @@ class FeatureStoreSettings {
   /// [computeRuntime] Compute runtime config for feature store type workspace.
   /// [offlineStoreConnectionName] Optional.
   /// [onlineStoreConnectionName] Optional.
-  FeatureStoreSettings({
+  const FeatureStoreSettings({
     this.computeRuntime,
     this.offlineStoreConnectionName,
     this.onlineStoreConnectionName,

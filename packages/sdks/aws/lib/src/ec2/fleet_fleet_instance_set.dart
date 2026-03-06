@@ -17,7 +17,7 @@ class FleetFleetInstanceSet {
   /// [instanceType] The instance type.
   /// [lifecycle] Indicates if the instance that was launched is a Spot Instance or On-Demand Instance.
   /// [platform] The value is `Windows` for Windows instances. Otherwise, the value is blank.
-  FleetFleetInstanceSet({
+  const FleetFleetInstanceSet({
     this.instanceIds,
     this.instanceType,
     this.lifecycle,

@@ -13,7 +13,7 @@ class GetLocationsArgs {
 
   /// Creates a new [GetLocationsArgs].
   /// [project] The project to list versions for. If it
-  GetLocationsArgs({
+  const GetLocationsArgs({
     this.project,
   });
 

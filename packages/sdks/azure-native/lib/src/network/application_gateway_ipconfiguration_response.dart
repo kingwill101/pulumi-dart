@@ -25,7 +25,7 @@ class ApplicationGatewayIPConfigurationResponse {
   /// [provisioningState] The provisioning state of the application gateway IP configuration resource.
   /// [subnet] Reference to the subnet resource. A subnet from where application gateway gets its private address.
   /// [type] Type of the resource.
-  ApplicationGatewayIPConfigurationResponse({
+  const ApplicationGatewayIPConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

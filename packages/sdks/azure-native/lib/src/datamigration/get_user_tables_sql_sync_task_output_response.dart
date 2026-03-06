@@ -20,7 +20,7 @@ class GetUserTablesSqlSyncTaskOutputResponse {
   /// [databasesToTargetTables] Mapping from database name to list of target tables
   /// [tableValidationErrors] Mapping from database name to list of validation errors
   /// [validationErrors] Validation errors
-  GetUserTablesSqlSyncTaskOutputResponse({
+  const GetUserTablesSqlSyncTaskOutputResponse({
     required this.databasesToSourceTables,
     required this.databasesToTargetTables,
     required this.tableValidationErrors,

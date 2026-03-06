@@ -30,7 +30,7 @@ class ManagedClusterLoadBalancerProfile {
   /// [managedOutboundIPs] Desired managed outbound IPs for the cluster load balancer.
   /// [outboundIPPrefixes] Desired outbound IP Prefix resources for the cluster load balancer.
   /// [outboundIPs] Desired outbound IP resources for the cluster load balancer.
-  ManagedClusterLoadBalancerProfile({
+  const ManagedClusterLoadBalancerProfile({
     this.allocatedOutboundPorts,
     this.backendPoolType,
     this.enableMultipleStandardLoadBalancers,

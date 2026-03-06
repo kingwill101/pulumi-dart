@@ -8,7 +8,7 @@ class GetRemoteReferenceResult {
 
   /// Creates a new [GetRemoteReferenceResult].
   /// [outputs] The outputs displayed from Terraform state.
-  GetRemoteReferenceResult({
+  const GetRemoteReferenceResult({
     required this.outputs,
   });
 

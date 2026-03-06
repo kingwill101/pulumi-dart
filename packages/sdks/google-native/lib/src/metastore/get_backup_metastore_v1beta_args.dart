@@ -17,7 +17,7 @@ class GetBackupMetastoreV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetBackupMetastoreV1betaArgs({
+  const GetBackupMetastoreV1betaArgs({
     required this.backupId,
     required this.location,
     this.project,

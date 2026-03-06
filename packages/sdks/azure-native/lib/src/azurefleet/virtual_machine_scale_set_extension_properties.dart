@@ -50,7 +50,7 @@ class VirtualMachineScaleSetExtensionProperties {
   /// [suppressFailures] Indicates whether failures stemming from the extension will be suppressed
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  VirtualMachineScaleSetExtensionProperties({
+  const VirtualMachineScaleSetExtensionProperties({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,

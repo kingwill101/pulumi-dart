@@ -8,7 +8,7 @@ class GetInsightsDatasetConfigSourceFolder {
 
   /// Creates a new [GetInsightsDatasetConfigSourceFolder].
   /// [folderNumbers] The list of folder numbers to include in the DatasetConfig.
-  GetInsightsDatasetConfigSourceFolder({
+  const GetInsightsDatasetConfigSourceFolder({
     required this.folderNumbers,
   });
 

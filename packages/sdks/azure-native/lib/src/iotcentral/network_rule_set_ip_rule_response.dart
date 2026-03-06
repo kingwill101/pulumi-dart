@@ -15,7 +15,7 @@ class NetworkRuleSetIpRuleResponse {
   /// [action] The network action for the IP mask.
   /// [filterName] The readable name of the IP rule.
   /// [ipMask] The CIDR block defining the IP range.
-  NetworkRuleSetIpRuleResponse({
+  const NetworkRuleSetIpRuleResponse({
     required this.action,
     this.filterName,
     this.ipMask,

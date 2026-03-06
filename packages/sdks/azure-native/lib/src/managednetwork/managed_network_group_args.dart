@@ -37,7 +37,7 @@ class ManagedNetworkGroupArgs {
   /// [subnets] The collection of  subnets covered by the Managed Network
   /// [subscriptions] The collection of subscriptions covered by the Managed Network
   /// [virtualNetworks] The collection of virtual nets covered by the Managed Network
-  ManagedNetworkGroupArgs({
+  const ManagedNetworkGroupArgs({
     this.kind,
     this.location,
     this.managedNetworkGroupName,

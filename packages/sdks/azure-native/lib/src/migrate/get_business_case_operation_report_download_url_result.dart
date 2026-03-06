@@ -11,7 +11,7 @@ class GetBusinessCaseOperationReportDownloadUrlResult {
   /// Creates a new [GetBusinessCaseOperationReportDownloadUrlResult].
   /// [businessCaseReportUrl] Hyperlink to download report.
   /// [expirationTime] Expiry date of download url.
-  GetBusinessCaseOperationReportDownloadUrlResult({
+  const GetBusinessCaseOperationReportDownloadUrlResult({
     required this.businessCaseReportUrl,
     required this.expirationTime,
   });

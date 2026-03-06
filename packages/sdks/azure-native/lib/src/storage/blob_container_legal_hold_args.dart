@@ -24,7 +24,7 @@ class BlobContainerLegalHoldArgs {
   /// [containerName] Name of the Blob Container.
   /// [resourceGroupName] Name of the resource group that contains the storage account.
   /// [tags] List of legal hold tags. Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
-  BlobContainerLegalHoldArgs({
+  const BlobContainerLegalHoldArgs({
     required this.accountName,
     this.allowProtectedAppendWritesAll,
     required this.containerName,

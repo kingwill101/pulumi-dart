@@ -14,7 +14,7 @@ class TransferJobLoggingConfig {
   /// [enableOnPremGcsTransferLogs] For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
   /// [logActionStates] States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
   /// [logActions] Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
-  TransferJobLoggingConfig({
+  const TransferJobLoggingConfig({
     this.enableOnPremGcsTransferLogs,
     this.logActionStates,
     this.logActions,

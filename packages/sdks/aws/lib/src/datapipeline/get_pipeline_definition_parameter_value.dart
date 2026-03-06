@@ -11,7 +11,7 @@ class GetPipelineDefinitionParameterValue {
   /// Creates a new [GetPipelineDefinitionParameterValue].
   /// [id] ID of the object.
   /// [stringValue] Field value, expressed as a String.
-  GetPipelineDefinitionParameterValue({
+  const GetPipelineDefinitionParameterValue({
     required this.id,
     required this.stringValue,
   });

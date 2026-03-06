@@ -38,7 +38,7 @@ class MonitorDowntimeState {
   /// [name] A name to identify the Monitor Downtime to be created.
   /// [startTime] A datetime stamp signifying the start of the Monitor Downtime.
   /// [timeZone] The timezone that applies to the Monitor Downtime schedule.
-  MonitorDowntimeState({
+  const MonitorDowntimeState({
     this.accountId,
     this.endRepeat,
     this.endTime,

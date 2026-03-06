@@ -55,7 +55,7 @@ class SourceArgs {
   /// [sourceResourceId] The uri of the resource impacted which lead to the grant of the credit.
   /// [status] Status of the credit
   /// [tags] Resource tags.
-  SourceArgs({
+  const SourceArgs({
     this.credit,
     required this.creditName,
     this.identity,

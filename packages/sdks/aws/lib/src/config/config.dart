@@ -310,5 +310,5 @@ class AwsConfig {
 
 }
 
-final config = AwsConfig();
+const config = AwsConfig();
 

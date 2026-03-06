@@ -33,7 +33,7 @@ class SqlManagedInstanceArgs {
   /// [sku] Resource sku.
   /// [sqlManagedInstanceName] Name of SQL Managed Instance
   /// [tags] Resource tags.
-  SqlManagedInstanceArgs({
+  const SqlManagedInstanceArgs({
     this.extendedLocation,
     this.location,
     required this.properties,

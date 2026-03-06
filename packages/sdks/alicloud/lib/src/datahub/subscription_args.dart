@@ -18,7 +18,7 @@ class SubscriptionArgs {
   /// [comment] Comment of the datahub subscription. It cannot be longer than 255 characters.
   /// [projectName] The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   /// [topicName] The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.comment,
     required this.projectName,
     required this.topicName,

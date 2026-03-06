@@ -14,7 +14,7 @@ class ConfigBlockingFunctionsForwardInboundCredentials {
   /// [accessToken] Whether to pass the user's OAuth identity provider's access token.
   /// [idToken] Whether to pass the user's OIDC identity provider's ID token.
   /// [refreshToken] Whether to pass the user's OAuth identity provider's refresh token.
-  ConfigBlockingFunctionsForwardInboundCredentials({
+  const ConfigBlockingFunctionsForwardInboundCredentials({
     this.accessToken,
     this.idToken,
     this.refreshToken,

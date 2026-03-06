@@ -16,7 +16,7 @@ class AssistantGenerationConfig {
   /// Creates a new [AssistantGenerationConfig].
   /// [defaultLanguage] The default language to use for the generation of the assistant response.
   /// [systemInstruction] System instruction, also known as the prompt preamble for LLM calls.
-  AssistantGenerationConfig({
+  const AssistantGenerationConfig({
     this.defaultLanguage,
     this.systemInstruction,
   });

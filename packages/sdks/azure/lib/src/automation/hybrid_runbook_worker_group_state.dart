@@ -18,7 +18,7 @@ class HybridRunbookWorkerGroupState {
   /// [credentialName] The name of resource type `azure.automation.Credential` to use for hybrid worker.
   /// [name] The name which should be used for this Automation Account Runbook Worker Group. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
-  HybridRunbookWorkerGroupState({
+  const HybridRunbookWorkerGroupState({
     this.automationAccountName,
     this.credentialName,
     this.name,

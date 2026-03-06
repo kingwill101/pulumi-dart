@@ -48,7 +48,7 @@ class GetAutomationResult {
   /// [sources] A collection of the source event types which evaluate the security automation set of rules.
   /// [tags] A list of key value pairs that describe the resource.
   /// [type] Resource type
-  GetAutomationResult({
+  const GetAutomationResult({
     this.actions,
     required this.azureApiVersion,
     this.description,

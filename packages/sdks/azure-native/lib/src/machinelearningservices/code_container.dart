@@ -18,7 +18,7 @@ class CodeContainer {
   /// [isArchived] Is the asset archived?
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  CodeContainer({
+  const CodeContainer({
     this.description,
     this.isArchived,
     this.properties,

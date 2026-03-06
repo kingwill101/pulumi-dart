@@ -34,7 +34,7 @@ class ClusterEc2Attributes {
   /// [serviceAccessSecurityGroup] Identifier of the Amazon EC2 service-access security group - required when the cluster runs on a private subnet.
   /// [subnetId] VPC subnet id where you want the job flow to launch. Cannot specify the `cc1.4xlarge` instance type for nodes of a job flow launched in an Amazon VPC.
   /// [subnetIds] List of VPC subnet id-s where you want the job flow to launch.  Amazon EMR identifies the best Availability Zone to launch instances according to your fleet specifications.
-  ClusterEc2Attributes({
+  const ClusterEc2Attributes({
     this.additionalMasterSecurityGroups,
     this.additionalSlaveSecurityGroups,
     this.emrManagedMasterSecurityGroup,

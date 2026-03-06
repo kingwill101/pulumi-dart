@@ -18,7 +18,7 @@ class GetIntegrationAccountAssemblyArgs {
   /// [assemblyArtifactName] The assembly artifact name.
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationAccountAssemblyArgs({
+  const GetIntegrationAccountAssemblyArgs({
     required this.assemblyArtifactName,
     required this.integrationAccountName,
     required this.resourceGroupName,

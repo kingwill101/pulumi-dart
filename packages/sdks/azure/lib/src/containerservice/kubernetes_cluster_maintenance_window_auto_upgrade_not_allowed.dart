@@ -11,7 +11,7 @@ class KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed {
   /// Creates a new [KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed].
   /// [end] The end of a time span, formatted as an RFC3339 string.
   /// [start] The start of a time span, formatted as an RFC3339 string.
-  KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed({
+  const KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed({
     required this.end,
     required this.start,
   });

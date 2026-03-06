@@ -44,7 +44,7 @@ class DeliveryPipelineArgs {
   /// [project] The project for the resource
   /// [serialPipeline] SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
   /// [suspended] When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
-  DeliveryPipelineArgs({
+  const DeliveryPipelineArgs({
     this.annotations,
     this.description,
     this.labels,

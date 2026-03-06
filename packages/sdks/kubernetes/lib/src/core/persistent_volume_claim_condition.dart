@@ -24,7 +24,7 @@ class PersistentVolumeClaimCondition {
   /// [reason] reason is a unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports "Resizing" that means the underlying persistent volume is being resized.
   /// [status] Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/#:~:text=state%20of%20pvc-,conditions.status,-(string)%2C%20required
   /// [type] Type is the type of the condition. More info: https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/#:~:text=set%20to%20%27ResizeStarted%27.-,PersistentVolumeClaimCondition,-contains%20details%20about
-  PersistentVolumeClaimCondition({
+  const PersistentVolumeClaimCondition({
     this.lastProbeTime,
     this.lastTransitionTime,
     this.message,

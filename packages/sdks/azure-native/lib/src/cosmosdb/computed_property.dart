@@ -12,7 +12,7 @@ class ComputedProperty {
   /// Creates a new [ComputedProperty].
   /// [name] The name of a computed property, for example - "cp_lowerName"
   /// [query] The query that evaluates the value for computed property, for example - "SELECT VALUE LOWER(c.name) FROM c"
-  ComputedProperty({
+  const ComputedProperty({
     this.name,
     this.query,
   });

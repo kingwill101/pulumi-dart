@@ -24,7 +24,7 @@ class ApplicationState {
   /// [displayName] The display name for the application.
   /// [name] The name of the application. This must be unique within the account. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group that contains the Batch account. Changing this forces a new resource to be created.
-  ApplicationState({
+  const ApplicationState({
     this.accountName,
     this.allowUpdates,
     this.defaultVersion,

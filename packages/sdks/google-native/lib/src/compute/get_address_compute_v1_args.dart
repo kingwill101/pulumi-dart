@@ -15,7 +15,7 @@ class GetAddressComputeV1Args {
   /// [address] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetAddressComputeV1Args({
+  const GetAddressComputeV1Args({
     required this.address,
     this.project,
     required this.region,

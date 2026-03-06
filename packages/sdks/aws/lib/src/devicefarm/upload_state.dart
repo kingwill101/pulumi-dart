@@ -33,7 +33,7 @@ class UploadState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] The upload's upload type. See [AWS Docs](https://docs.aws.amazon.com/devicefarm/latest/APIReference/API_CreateUpload.html#API_CreateUpload_RequestSyntax) for valid list of values.
   /// [url] The presigned Amazon S3 URL that was used to store a file using a PUT request.
-  UploadState({
+  const UploadState({
     this.arn,
     this.category,
     this.contentType,

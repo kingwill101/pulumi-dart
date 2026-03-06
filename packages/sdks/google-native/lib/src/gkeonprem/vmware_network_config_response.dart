@@ -31,7 +31,7 @@ class VmwareNetworkConfigResponse {
   /// [serviceAddressCidrBlocks] All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
   /// [staticIpConfig] Configuration settings for a static IP configuration.
   /// [vcenterNetwork] vcenter_network specifies vCenter network name. Inherited from the admin cluster.
-  VmwareNetworkConfigResponse({
+  const VmwareNetworkConfigResponse({
     required this.controlPlaneV2Config,
     required this.dhcpIpConfig,
     required this.hostConfig,

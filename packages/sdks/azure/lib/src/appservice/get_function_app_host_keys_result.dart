@@ -35,7 +35,7 @@ class GetFunctionAppHostKeysResult {
   /// [resourceGroupName] Required.
   /// [signalrExtensionKey] Function App resource's SignalR Extension system key.
   /// [webpubsubExtensionKey] Function App resource's Web PubSub Extension system key.
-  GetFunctionAppHostKeysResult({
+  const GetFunctionAppHostKeysResult({
     required this.blobsExtensionKey,
     required this.defaultFunctionKey,
     required this.durabletaskExtensionKey,

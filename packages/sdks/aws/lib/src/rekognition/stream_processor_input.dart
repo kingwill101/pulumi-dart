@@ -9,7 +9,7 @@ class StreamProcessorInput {
 
   /// Creates a new [StreamProcessorInput].
   /// [kinesisVideoStream] Kinesis input stream. See `kinesis_video_stream`.
-  StreamProcessorInput({
+  const StreamProcessorInput({
     required this.kinesisVideoStream,
   });
 

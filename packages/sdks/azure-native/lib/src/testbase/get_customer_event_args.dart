@@ -18,7 +18,7 @@ class GetCustomerEventArgs {
   /// [customerEventName] The resource name of the Test Base Customer event.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetCustomerEventArgs({
+  const GetCustomerEventArgs({
     required this.customerEventName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

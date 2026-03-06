@@ -43,7 +43,7 @@ class LbEdgeExtensionArgs {
   /// [location] The location of the edge extension
   /// [name] Name of the LbEdgeExtension resource in the following format: projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}
   /// [project] The ID of the project in which the resource belongs.
-  LbEdgeExtensionArgs({
+  const LbEdgeExtensionArgs({
     this.description,
     required this.extensionChains,
     required this.forwardingRules,

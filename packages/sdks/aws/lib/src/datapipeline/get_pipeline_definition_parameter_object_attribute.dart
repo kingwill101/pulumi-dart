@@ -11,7 +11,7 @@ class GetPipelineDefinitionParameterObjectAttribute {
   /// Creates a new [GetPipelineDefinitionParameterObjectAttribute].
   /// [key] Field identifier.
   /// [stringValue] Field value, expressed as a String.
-  GetPipelineDefinitionParameterObjectAttribute({
+  const GetPipelineDefinitionParameterObjectAttribute({
     required this.key,
     required this.stringValue,
   });

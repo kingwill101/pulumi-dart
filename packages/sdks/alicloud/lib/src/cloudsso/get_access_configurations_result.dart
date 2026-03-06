@@ -24,7 +24,7 @@ class GetAccessConfigurationsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetAccessConfigurationsResult({
+  const GetAccessConfigurationsResult({
     required this.configurations,
     required this.directoryId,
     this.enableDetails,

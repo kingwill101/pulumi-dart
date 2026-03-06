@@ -11,7 +11,7 @@ class NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
   /// Creates a new [NodePoolNodeConfigGuestAcceleratorGpuSharingConfig].
   /// [gpuSharingStrategy] The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
   /// [maxSharedClientsPerGpu] The maximum number of containers that can share a GPU.
-  NodePoolNodeConfigGuestAcceleratorGpuSharingConfig({
+  const NodePoolNodeConfigGuestAcceleratorGpuSharingConfig({
     required this.gpuSharingStrategy,
     required this.maxSharedClientsPerGpu,
   });

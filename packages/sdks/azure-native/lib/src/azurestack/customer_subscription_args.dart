@@ -21,7 +21,7 @@ class CustomerSubscriptionArgs {
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
   /// [tenantId] Tenant Id.
-  CustomerSubscriptionArgs({
+  const CustomerSubscriptionArgs({
     this.customerSubscriptionName,
     required this.registrationName,
     required this.resourceGroup,

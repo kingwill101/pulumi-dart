@@ -24,7 +24,7 @@ class DistributionConfigurationDistributionAmiDistributionConfiguration {
   /// [launchPermission] Configuration block of EC2 launch permissions to apply to the distributed AMI. Detailed below.
   /// [name] Name to apply to the distributed AMI.
   /// [targetAccountIds] Set of AWS Account identifiers to distribute the AMI.
-  DistributionConfigurationDistributionAmiDistributionConfiguration({
+  const DistributionConfigurationDistributionAmiDistributionConfiguration({
     this.amiTags,
     this.description,
     this.kmsKeyId,

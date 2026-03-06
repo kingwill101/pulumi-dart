@@ -35,7 +35,7 @@ class Contact {
   /// [nameMiddle] Middle name.
   /// [organization] Organization contact belongs to.
   /// [phone] Phone number.
-  Contact({
+  const Contact({
     this.addressMailing,
     required this.email,
     this.fax,

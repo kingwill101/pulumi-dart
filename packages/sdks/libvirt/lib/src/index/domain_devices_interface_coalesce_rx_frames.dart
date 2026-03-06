@@ -8,7 +8,7 @@ class DomainDevicesInterfaceCoalesceRxFrames {
 
   /// Creates a new [DomainDevicesInterfaceCoalesceRxFrames].
   /// [max] Sets the maximum number of frames that can be coalesced for received packets, influencing performance characteristics.
-  DomainDevicesInterfaceCoalesceRxFrames({
+  const DomainDevicesInterfaceCoalesceRxFrames({
     this.max,
   });
 

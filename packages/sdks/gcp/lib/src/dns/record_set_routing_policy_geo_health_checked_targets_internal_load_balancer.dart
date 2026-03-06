@@ -26,7 +26,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
   /// [port] The configured port of the load balancer.
   /// [project] The ID of the project in which the load balancer belongs.
   /// [region] The region of the load balancer. Only needed for regional load balancers.
-  RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer({
+  const RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer({
     required this.ipAddress,
     required this.ipProtocol,
     this.loadBalancerType,

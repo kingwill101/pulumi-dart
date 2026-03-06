@@ -17,7 +17,7 @@ class GetInstantSnapshotIamPolicyArgs {
   /// [project] Optional.
   /// [resource] Required.
   /// [zone] Required.
-  GetInstantSnapshotIamPolicyArgs({
+  const GetInstantSnapshotIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsVisualMenuOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsVisualMenuOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsVisualMenuOption({
+  const DashboardDashboardPublishOptionsVisualMenuOption({
     this.availabilityStatus,
   });
 

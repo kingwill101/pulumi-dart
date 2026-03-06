@@ -37,7 +37,7 @@ class DeploymentArgs {
   /// [preview] If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
   /// [project] Optional.
   /// [target] [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
-  DeploymentArgs({
+  const DeploymentArgs({
     this.createPolicy,
     this.credential,
     this.description,

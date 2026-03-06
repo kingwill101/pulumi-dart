@@ -20,7 +20,7 @@ class SiteArgs {
   /// [labels] Optional. User-specified labels for the Hosting site.
   /// [project] Optional.
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
-  SiteArgs({
+  const SiteArgs({
     this.appId,
     this.labels,
     this.project,

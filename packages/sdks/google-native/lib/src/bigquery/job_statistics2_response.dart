@@ -119,7 +119,7 @@ class JobStatistics2Response {
   /// [totalSlotMs] [Output only] Slot-milliseconds for the job.
   /// [transferredBytes] Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
   /// [undeclaredQueryParameters] Standard SQL only: list of undeclared query parameters detected during a dry run validation.
-  JobStatistics2Response({
+  const JobStatistics2Response({
     required this.biEngineStatistics,
     required this.billingTier,
     required this.cacheHit,

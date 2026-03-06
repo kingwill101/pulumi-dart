@@ -15,7 +15,7 @@ class ExampleMessageChunkImage {
   /// Creates a new [ExampleMessageChunkImage].
   /// [data] Raw bytes of the image.
   /// [mimeType] The IANA standard MIME type of the source data.
-  ExampleMessageChunkImage({
+  const ExampleMessageChunkImage({
     required this.data,
     required this.mimeType,
   });

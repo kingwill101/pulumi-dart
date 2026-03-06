@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceBridge {
 
   /// Creates a new [DomainDevicesInterfaceSourceBridge].
   /// [bridge] Defines the name of the bridge device used by the network interface.
-  DomainDevicesInterfaceSourceBridge({
+  const DomainDevicesInterfaceSourceBridge({
     required this.bridge,
   });
 

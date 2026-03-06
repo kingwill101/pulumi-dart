@@ -15,7 +15,7 @@ class GetWindowsWebAppArgs {
   /// Creates a new [GetWindowsWebAppArgs].
   /// [name] The name of this Windows Web App.
   /// [resourceGroupName] The name of the Resource Group where the Windows Web App exists.
-  GetWindowsWebAppArgs({
+  const GetWindowsWebAppArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -8,7 +8,7 @@ class ProgressPropertiesResponse {
 
   /// Creates a new [ProgressPropertiesResponse].
   /// [percentage] The percentage complete of the copy operation.
-  ProgressPropertiesResponse({
+  const ProgressPropertiesResponse({
     this.percentage,
   });
 

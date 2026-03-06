@@ -47,7 +47,7 @@ class LabelingJobArgs {
   /// [roleArn] ARN of IAM role that Amazon SageMaker assumes to perform tasks during data labeling.
   /// [stoppingConditions] Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LabelingJobArgs({
+  const LabelingJobArgs({
     required this.humanTaskConfig,
     required this.inputConfig,
     required this.labelAttributeName,

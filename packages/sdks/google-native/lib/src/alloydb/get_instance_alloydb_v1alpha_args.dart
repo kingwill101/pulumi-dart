@@ -19,7 +19,7 @@ class GetInstanceAlloydbV1alphaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetInstanceAlloydbV1alphaArgs({
+  const GetInstanceAlloydbV1alphaArgs({
     required this.clusterId,
     required this.instanceId,
     required this.location,

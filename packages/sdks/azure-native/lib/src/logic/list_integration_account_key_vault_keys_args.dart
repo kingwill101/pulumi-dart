@@ -22,7 +22,7 @@ class ListIntegrationAccountKeyVaultKeysArgs {
   /// [keyVault] The key vault reference.
   /// [resourceGroupName] The resource group name.
   /// [skipToken] The skip token.
-  ListIntegrationAccountKeyVaultKeysArgs({
+  const ListIntegrationAccountKeyVaultKeysArgs({
     required this.integrationAccountName,
     required this.keyVault,
     required this.resourceGroupName,

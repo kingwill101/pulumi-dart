@@ -11,7 +11,7 @@ class GetGradientaiKnowledgeBaseDataSourcesArgs {
 
   /// Creates a new [GetGradientaiKnowledgeBaseDataSourcesArgs].
   /// [knowledgeBaseUuid] Required.
-  GetGradientaiKnowledgeBaseDataSourcesArgs({
+  const GetGradientaiKnowledgeBaseDataSourcesArgs({
     required this.knowledgeBaseUuid,
   });
 

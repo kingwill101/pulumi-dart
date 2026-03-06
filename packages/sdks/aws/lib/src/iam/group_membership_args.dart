@@ -18,7 +18,7 @@ class GroupMembershipArgs {
   /// [group] The IAM Group name to attach the list of `users` to
   /// [name] The name to identify the Group Membership
   /// [users] A list of IAM User names to associate with the Group
-  GroupMembershipArgs({
+  const GroupMembershipArgs({
     required this.group,
     this.name,
     required this.users,

@@ -31,7 +31,7 @@ class VpnServerConfigurationArgs {
   /// [resourceGroupName] The resource group name of the VpnServerConfiguration.
   /// [tags] Resource tags.
   /// [vpnServerConfigurationName] The name of the VpnServerConfiguration being created or updated.
-  VpnServerConfigurationArgs({
+  const VpnServerConfigurationArgs({
     this.id,
     this.location,
     this.name,

@@ -20,7 +20,7 @@ class VirtualMachineManagerVirtualMachineInstanceInfrastructure {
   /// [systemCenterVirtualMachineManagerInventoryItemId] The ID of the System Center Virtual Machine Manager Inventory Item for System Center Virtual Machine Manager Virtual Machine Instance. Changing this forces a new resource to be created.
   /// [systemCenterVirtualMachineManagerTemplateId] The ID of the System Center Virtual Machine Manager Virtual Machine Template to use for deploying the Virtual Machine. Changing this forces a new resource to be created.
   /// [systemCenterVirtualMachineManagerVirtualMachineServerId] The ID of the System Center Virtual Machine Manager Virtual Machine. Changing this forces a new resource to be created.
-  VirtualMachineManagerVirtualMachineInstanceInfrastructure({
+  const VirtualMachineManagerVirtualMachineInstanceInfrastructure({
     this.checkpointType,
     this.systemCenterVirtualMachineManagerCloudId,
     this.systemCenterVirtualMachineManagerInventoryItemId,

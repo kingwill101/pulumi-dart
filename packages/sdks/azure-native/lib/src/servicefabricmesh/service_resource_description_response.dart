@@ -55,7 +55,7 @@ class ServiceResourceDescriptionResponse {
   /// [statusDetails] Gives additional information about the current status of the service.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   /// [unhealthyEvaluation] When the service's health state is not 'Ok', this additional details from service fabric Health Manager for the user to know why the service is marked unhealthy.
-  ServiceResourceDescriptionResponse({
+  const ServiceResourceDescriptionResponse({
     this.autoScalingPolicies,
     required this.codePackages,
     this.description,

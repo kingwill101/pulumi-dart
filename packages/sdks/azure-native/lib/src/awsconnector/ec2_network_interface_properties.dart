@@ -31,7 +31,7 @@ class Ec2NetworkInterfaceProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2NetworkInterfaceProperties({
+  const Ec2NetworkInterfaceProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

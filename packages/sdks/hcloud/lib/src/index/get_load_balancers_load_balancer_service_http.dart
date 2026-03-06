@@ -15,7 +15,7 @@ class GetLoadBalancersLoadBalancerServiceHttp {
   /// [cookieName] Required.
   /// [redirectHttp] Required.
   /// [stickySessions] Required.
-  GetLoadBalancersLoadBalancerServiceHttp({
+  const GetLoadBalancersLoadBalancerServiceHttp({
     required this.certificates,
     required this.cookieLifetime,
     required this.cookieName,

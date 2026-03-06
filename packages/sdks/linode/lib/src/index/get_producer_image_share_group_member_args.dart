@@ -15,7 +15,7 @@ class GetProducerImageShareGroupMemberArgs {
   /// Creates a new [GetProducerImageShareGroupMemberArgs].
   /// [sharegroupId] The ID of the Image Share Group the member belongs to.
   /// [tokenUuid] The UUID of member's token.
-  GetProducerImageShareGroupMemberArgs({
+  const GetProducerImageShareGroupMemberArgs({
     required this.sharegroupId,
     required this.tokenUuid,
   });

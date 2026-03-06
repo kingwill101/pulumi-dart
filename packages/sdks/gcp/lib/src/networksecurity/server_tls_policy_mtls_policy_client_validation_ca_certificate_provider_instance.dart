@@ -8,7 +8,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance {
 
   /// Creates a new [ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance].
   /// [pluginInstance] Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-  ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance({
+  const ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance({
     required this.pluginInstance,
   });
 

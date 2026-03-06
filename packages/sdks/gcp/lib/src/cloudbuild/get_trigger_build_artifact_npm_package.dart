@@ -13,7 +13,7 @@ class GetTriggerBuildArtifactNpmPackage {
   /// Creates a new [GetTriggerBuildArtifactNpmPackage].
   /// [packagePath] Path to the package.json. e.g. workspace/path/to/package
   /// [repository] Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
-  GetTriggerBuildArtifactNpmPackage({
+  const GetTriggerBuildArtifactNpmPackage({
     required this.packagePath,
     required this.repository,
   });

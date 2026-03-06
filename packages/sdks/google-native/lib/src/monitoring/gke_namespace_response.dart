@@ -18,7 +18,7 @@ class GkeNamespaceResponse {
   /// [location] The location of the parent cluster. This may be a zone or region.
   /// [namespaceName] The name of this namespace.
   /// [project] The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
-  GkeNamespaceResponse({
+  const GkeNamespaceResponse({
     required this.clusterName,
     required this.location,
     required this.namespaceName,

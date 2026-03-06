@@ -81,7 +81,7 @@ class ServerArgs {
   /// [storage] Storage related properties of a server.
   /// [tags] Resource tags.
   /// [version] Server version.
-  ServerArgs({
+  const ServerArgs({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.availabilityZone,

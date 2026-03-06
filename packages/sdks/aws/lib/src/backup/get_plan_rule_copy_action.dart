@@ -10,7 +10,7 @@ class GetPlanRuleCopyAction {
   /// Creates a new [GetPlanRuleCopyAction].
   /// [destinationVaultArn] Required.
   /// [lifecycles] Required.
-  GetPlanRuleCopyAction({
+  const GetPlanRuleCopyAction({
     required this.destinationVaultArn,
     required this.lifecycles,
   });

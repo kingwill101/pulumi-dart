@@ -86,7 +86,7 @@ class StoragePoolState {
   /// [statuses] Status information for the storage pool resource.
   /// [storagePoolType] Type of the storage pool. For example, the
   /// [zone] A reference to the zone where the storage pool resides.
-  StoragePoolState({
+  const StoragePoolState({
     this.capacityProvisioningType,
     this.creationTimestamp,
     this.deletionProtection,

@@ -32,7 +32,7 @@ class GetServerGroupsArgs {
   /// [serverGroupType] The type of the server group. Valid values: `Instance`, `Ip`.
   /// [status] The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
   /// [tags] Optional.
-  GetServerGroupsArgs({
+  const GetServerGroupsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

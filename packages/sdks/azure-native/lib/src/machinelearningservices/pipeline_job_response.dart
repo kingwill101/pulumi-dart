@@ -68,7 +68,7 @@ class PipelineJobResponse {
   /// [sourceJobId] ARM resource ID of source job.
   /// [status] Status of the job.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  PipelineJobResponse({
+  const PipelineJobResponse({
     this.componentId,
     this.computeId,
     this.description,

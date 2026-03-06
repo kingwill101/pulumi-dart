@@ -34,7 +34,7 @@ class ReplicationAgentDetailsResponse {
   /// [lastHeartbeatUtc] The last heartbeat received from the replication agent.
   /// [name] The replication agent name.
   /// [version] The version.
-  ReplicationAgentDetailsResponse({
+  const ReplicationAgentDetailsResponse({
     required this.biosId,
     required this.fabricObjectId,
     required this.fqdn,

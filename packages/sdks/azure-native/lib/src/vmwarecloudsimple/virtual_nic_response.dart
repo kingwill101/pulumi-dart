@@ -32,7 +32,7 @@ class VirtualNicResponse {
   /// [powerOnBoot] Is NIC powered on/off on boot
   /// [virtualNicId] NIC id
   /// [virtualNicName] NIC name
-  VirtualNicResponse({
+  const VirtualNicResponse({
     this.customization,
     this.ipAddresses,
     this.macAddress,

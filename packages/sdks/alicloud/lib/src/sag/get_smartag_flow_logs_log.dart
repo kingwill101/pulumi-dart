@@ -53,7 +53,7 @@ class GetSmartagFlowLogsLog {
   /// [slsRegionId] The ID of the region where Log Service is deployed.
   /// [status] The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
   /// [totalSagNum] The number of Smart Access gateway (SAG) instances with which the flow log is associated.
-  GetSmartagFlowLogsLog({
+  const GetSmartagFlowLogsLog({
     required this.activeAging,
     required this.description,
     required this.flowLogId,

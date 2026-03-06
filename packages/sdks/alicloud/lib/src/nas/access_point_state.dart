@@ -47,7 +47,7 @@ class AccessPointState {
   /// [status] The status of the access point.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The vSwitch ID.
-  AccessPointState({
+  const AccessPointState({
     this.accessGroup,
     this.accessPointId,
     this.accessPointName,

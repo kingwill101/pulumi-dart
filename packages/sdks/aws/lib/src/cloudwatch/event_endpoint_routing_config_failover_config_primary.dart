@@ -8,7 +8,7 @@ class EventEndpointRoutingConfigFailoverConfigPrimary {
 
   /// Creates a new [EventEndpointRoutingConfigFailoverConfigPrimary].
   /// [healthCheck] The ARN of the health check used by the endpoint to determine whether failover is triggered.
-  EventEndpointRoutingConfigFailoverConfigPrimary({
+  const EventEndpointRoutingConfigFailoverConfigPrimary({
     this.healthCheck,
   });
 

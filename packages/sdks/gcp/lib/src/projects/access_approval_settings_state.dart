@@ -48,7 +48,7 @@ class AccessApprovalSettingsState {
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
   /// [project] (Optional, Deprecated)
   /// [projectId] ID of the project of the access approval settings.
-  AccessApprovalSettingsState({
+  const AccessApprovalSettingsState({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
     this.enrolledAncestor,

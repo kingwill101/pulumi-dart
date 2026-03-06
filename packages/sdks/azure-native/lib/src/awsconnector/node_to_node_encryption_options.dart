@@ -9,7 +9,7 @@ class NodeToNodeEncryptionOptions {
 
   /// Creates a new [NodeToNodeEncryptionOptions].
   /// [enabled] &lt;p&gt;True to enable node-to-node encryption.&lt;/p&gt;
-  NodeToNodeEncryptionOptions({
+  const NodeToNodeEncryptionOptions({
     this.enabled,
   });
 

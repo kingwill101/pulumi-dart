@@ -36,7 +36,7 @@ class ResourceClassResourceK8sIoV1alpha2 {
   /// [parametersRef] ParametersRef references an arbitrary separate object that may hold parameters that will be used by the driver when allocating a resource that uses this class. A dynamic resource driver can distinguish between parameters stored here and and those stored in ResourceClaimSpec.
   /// [structuredParameters] If and only if allocation of claims using this class is handled via structured parameters, then StructuredParameters must be set to true.
   /// [suitableNodes] Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.
-  ResourceClassResourceK8sIoV1alpha2({
+  const ResourceClassResourceK8sIoV1alpha2({
     this.apiVersion,
     required this.driverName,
     this.kind,

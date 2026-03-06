@@ -25,7 +25,7 @@ class GetUserHierarchyStructureHierarchyStructure {
   /// [levelOnes] Details of level one. See below.
   /// [levelThrees] Details of level three. See below.
   /// [levelTwos] Details of level two. See below.
-  GetUserHierarchyStructureHierarchyStructure({
+  const GetUserHierarchyStructureHierarchyStructure({
     required this.levelFives,
     required this.levelFours,
     required this.levelOnes,

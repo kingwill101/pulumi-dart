@@ -33,7 +33,7 @@ class CustomResourceProviderArgs {
   /// [resourceTypes] A list of resource types that the custom resource provider implements.
   /// [tags] Resource tags
   /// [validations] A list of validations to run on the custom resource provider's requests.
-  CustomResourceProviderArgs({
+  const CustomResourceProviderArgs({
     this.actions,
     this.location,
     required this.resourceGroupName,

@@ -18,7 +18,7 @@ class TlsCipherPolicyArgs {
   /// [ciphers] The encryption algorithms supported. It depends on the value of `tls_versions`.
   /// [tlsCipherPolicyName] TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
   /// [tlsVersions] The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
-  TlsCipherPolicyArgs({
+  const TlsCipherPolicyArgs({
     required this.ciphers,
     required this.tlsCipherPolicyName,
     required this.tlsVersions,

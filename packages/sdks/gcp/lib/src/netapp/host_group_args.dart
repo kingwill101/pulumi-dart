@@ -41,7 +41,7 @@ class HostGroupArgs {
   /// [osType] The OS type of the host group. It indicates the type of operating system
   /// [project] The ID of the project in which the resource belongs.
   /// [type] Type of the host group.
-  HostGroupArgs({
+  const HostGroupArgs({
     this.description,
     required this.hosts,
     this.labels,

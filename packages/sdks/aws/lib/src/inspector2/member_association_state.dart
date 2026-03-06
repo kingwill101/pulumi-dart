@@ -21,7 +21,7 @@ class MemberAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [relationshipStatus] Status of the member relationship
   /// [updatedAt] Date and time of the last update of the relationship
-  MemberAssociationState({
+  const MemberAssociationState({
     this.accountId,
     this.delegatedAdminAccountId,
     this.region,

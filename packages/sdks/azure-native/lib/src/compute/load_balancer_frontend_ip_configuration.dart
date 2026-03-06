@@ -13,7 +13,7 @@ class LoadBalancerFrontendIpConfiguration {
   /// Creates a new [LoadBalancerFrontendIpConfiguration].
   /// [name] The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
   /// [properties] Properties of load balancer frontend ip configuration.
-  LoadBalancerFrontendIpConfiguration({
+  const LoadBalancerFrontendIpConfiguration({
     required this.name,
     required this.properties,
   });

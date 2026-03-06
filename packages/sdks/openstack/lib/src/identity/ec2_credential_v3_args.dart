@@ -25,7 +25,7 @@ class Ec2CredentialV3Args {
   /// [projectId] The ID of the project the EC2 credential is created
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [userId] The ID of the user the EC2 credential is created for.
-  Ec2CredentialV3Args({
+  const Ec2CredentialV3Args({
     this.projectId,
     this.region,
     this.userId,

@@ -13,7 +13,7 @@ class ConfluentSchemaRegistry {
   /// Creates a new [ConfluentSchemaRegistry].
   /// [endpoint] The endpoint of service.
   /// [type] The target service type.
-  ConfluentSchemaRegistry({
+  const ConfluentSchemaRegistry({
     this.endpoint,
     required this.type,
   });

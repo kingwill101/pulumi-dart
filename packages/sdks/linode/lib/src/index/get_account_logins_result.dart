@@ -15,7 +15,7 @@ class GetAccountLoginsResult {
   /// [filters] Optional.
   /// [id] The unique ID of this login object.
   /// [logins] Required.
-  GetAccountLoginsResult({
+  const GetAccountLoginsResult({
     this.filters,
     required this.id,
     required this.logins,

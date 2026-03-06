@@ -24,7 +24,7 @@ class GetBackendServiceTlsSetting {
   /// [authenticationConfig] Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
   /// [sni] Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
   /// [subjectAltNames] A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
-  GetBackendServiceTlsSetting({
+  const GetBackendServiceTlsSetting({
     required this.authenticationConfig,
     required this.sni,
     required this.subjectAltNames,

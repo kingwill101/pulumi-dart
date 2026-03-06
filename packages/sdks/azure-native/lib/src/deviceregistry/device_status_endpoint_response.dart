@@ -10,7 +10,7 @@ class DeviceStatusEndpointResponse {
 
   /// Creates a new [DeviceStatusEndpointResponse].
   /// [error] Defines the error related to this endpoint.
-  DeviceStatusEndpointResponse({
+  const DeviceStatusEndpointResponse({
     required this.error,
   });
 

@@ -14,7 +14,7 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
   /// [bucketName] The name of the Spaces bucket
   /// [itemPath] The path to the item in the bucket
   /// [region] The region of the Spaces bucket
-  GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource({
+  const GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource({
     this.bucketName,
     this.itemPath,
     this.region,

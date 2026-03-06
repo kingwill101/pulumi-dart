@@ -12,7 +12,7 @@ class IstioConfigResponse {
   /// Creates a new [IstioConfigResponse].
   /// [auth] The specified Istio auth mode, either none, or mutual TLS.
   /// [disabled] Whether Istio is enabled for this cluster.
-  IstioConfigResponse({
+  const IstioConfigResponse({
     required this.auth,
     required this.disabled,
   });

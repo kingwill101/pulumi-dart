@@ -26,7 +26,7 @@ class MigrateSqlServerSqlDbTaskProperties {
   /// [isCloneable] whether the task can be cloned or not
   /// [taskId] task id
   /// [taskType] Task type.
-  MigrateSqlServerSqlDbTaskProperties({
+  const MigrateSqlServerSqlDbTaskProperties({
     this.clientData,
     this.createdOn,
     this.input,

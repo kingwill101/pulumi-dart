@@ -9,7 +9,7 @@ class AuthorizationLoggingOptionsResponseComputeV1 {
 
   /// Creates a new [AuthorizationLoggingOptionsResponseComputeV1].
   /// [permissionType] This is deprecated and has no effect. Do not use.
-  AuthorizationLoggingOptionsResponseComputeV1({
+  const AuthorizationLoggingOptionsResponseComputeV1({
     required this.permissionType,
   });
 

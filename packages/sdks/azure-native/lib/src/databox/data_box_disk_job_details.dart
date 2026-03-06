@@ -47,7 +47,7 @@ class DataBoxDiskJobDetails {
   /// [preferredDisks] User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
   /// [reverseShippingDetails] Optional Reverse Shipping details for order.
   /// [shippingAddress] Shipping address of the customer.
-  DataBoxDiskJobDetails({
+  const DataBoxDiskJobDetails({
     required this.contactDetails,
     this.dataExportDetails,
     this.dataImportDetails,

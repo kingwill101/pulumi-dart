@@ -47,7 +47,7 @@ class GroupState {
   /// [verifiedaccessGroupArn] ARN of this verified acess group.
   /// [verifiedaccessGroupId] ID of this verified access group.
   /// [verifiedaccessInstanceId] The id of the verified access instance this group is associated with.
-  GroupState({
+  const GroupState({
     this.creationTime,
     this.deletionTime,
     this.description,

@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigUpperCaseString {
 
   /// Creates a new [LogTransformerTransformerConfigUpperCaseString].
   /// [withKeys] Specifies the keys of the fields to convert to uppercase.
-  LogTransformerTransformerConfigUpperCaseString({
+  const LogTransformerTransformerConfigUpperCaseString({
     required this.withKeys,
   });
 

@@ -19,7 +19,7 @@ class UserPoolConfig {
   /// [awsRegion] &lt;p&gt;The Amazon Web Services Region in which the user pool was created.&lt;/p&gt;
   /// [defaultAction] &lt;p&gt;The action that you want your GraphQL API to take when a request that uses Amazon Cognito user pool authentication doesn't match the Amazon Cognito user pool configuration.&lt;/p&gt;
   /// [userPoolId] &lt;p&gt;The user pool ID.&lt;/p&gt;
-  UserPoolConfig({
+  const UserPoolConfig({
     this.appIdClientRegex,
     this.awsRegion,
     this.defaultAction,

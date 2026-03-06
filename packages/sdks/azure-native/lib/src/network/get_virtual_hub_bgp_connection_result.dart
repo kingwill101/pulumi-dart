@@ -36,7 +36,7 @@ class GetVirtualHubBgpConnectionResult {
   /// [peerIp] Peer IP.
   /// [provisioningState] The provisioning state of the resource.
   /// [type] Connection type.
-  GetVirtualHubBgpConnectionResult({
+  const GetVirtualHubBgpConnectionResult({
     required this.azureApiVersion,
     required this.connectionState,
     required this.etag,

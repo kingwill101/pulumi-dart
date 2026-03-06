@@ -11,7 +11,7 @@ class GetManagedDiskEncryptionSettingKeyEncryptionKey {
   /// Creates a new [GetManagedDiskEncryptionSettingKeyEncryptionKey].
   /// [keyUrl] The URL to the Key Vault Key used as the Key Encryption Key.
   /// [sourceVaultId] The ID of the source Key Vault.
-  GetManagedDiskEncryptionSettingKeyEncryptionKey({
+  const GetManagedDiskEncryptionSettingKeyEncryptionKey({
     required this.keyUrl,
     required this.sourceVaultId,
   });

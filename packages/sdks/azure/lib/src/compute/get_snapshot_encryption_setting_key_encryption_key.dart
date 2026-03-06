@@ -9,7 +9,7 @@ class GetSnapshotEncryptionSettingKeyEncryptionKey {
   /// Creates a new [GetSnapshotEncryptionSettingKeyEncryptionKey].
   /// [keyUrl] Required.
   /// [sourceVaultId] Required.
-  GetSnapshotEncryptionSettingKeyEncryptionKey({
+  const GetSnapshotEncryptionSettingKeyEncryptionKey({
     required this.keyUrl,
     required this.sourceVaultId,
   });

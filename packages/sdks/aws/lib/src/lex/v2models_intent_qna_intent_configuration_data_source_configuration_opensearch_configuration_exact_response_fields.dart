@@ -11,7 +11,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields].
   /// [answerField] Field name for the answer.
   /// [questionField] Field name for the question.
-  V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields({
+  const V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields({
     required this.answerField,
     required this.questionField,
   });

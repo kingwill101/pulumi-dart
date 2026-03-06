@@ -30,7 +30,7 @@ class DataLakeGen2FilesystemState {
   /// [owner] Specifies the Object ID of the Azure Active Directory User to make the owning user of the root path (i.e. `/`). Possible values also include `$superuser`.
   /// [properties] A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
   /// [storageAccountId] Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
-  DataLakeGen2FilesystemState({
+  const DataLakeGen2FilesystemState({
     this.aces,
     this.defaultEncryptionScope,
     this.group,

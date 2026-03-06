@@ -18,7 +18,7 @@ class GuestPoliciesPackageRepositoryZypper {
   /// [displayName] The display name of the repository.
   /// [gpgKeys] URIs of GPG keys.
   /// [id] A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
-  GuestPoliciesPackageRepositoryZypper({
+  const GuestPoliciesPackageRepositoryZypper({
     required this.baseUrl,
     this.displayName,
     this.gpgKeys,

@@ -45,7 +45,7 @@ class GetCompanyResult {
   /// [size] Optional. The employer's company size.
   /// [suspended] Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
   /// [websiteUri] Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
-  GetCompanyResult({
+  const GetCompanyResult({
     required this.careerSiteUri,
     required this.derivedInfo,
     required this.displayName,

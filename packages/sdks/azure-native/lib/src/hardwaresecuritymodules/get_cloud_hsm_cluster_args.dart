@@ -15,7 +15,7 @@ class GetCloudHsmClusterArgs {
   /// Creates a new [GetCloudHsmClusterArgs].
   /// [cloudHsmClusterName] The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudHsmClusterArgs({
+  const GetCloudHsmClusterArgs({
     required this.cloudHsmClusterName,
     required this.resourceGroupName,
   });

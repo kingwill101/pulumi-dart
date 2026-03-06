@@ -11,7 +11,7 @@ class GetOrganizationIamPolicyCloudresourcemanagerV3Args {
 
   /// Creates a new [GetOrganizationIamPolicyCloudresourcemanagerV3Args].
   /// [organizationId] Required.
-  GetOrganizationIamPolicyCloudresourcemanagerV3Args({
+  const GetOrganizationIamPolicyCloudresourcemanagerV3Args({
     required this.organizationId,
   });
 

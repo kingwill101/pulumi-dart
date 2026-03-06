@@ -11,7 +11,7 @@ class HttpRouteRuleMatchHeaderRangeMatch {
   /// Creates a new [HttpRouteRuleMatchHeaderRangeMatch].
   /// [end] End of the range (exclusive).
   /// [start] Start of the range (inclusive).
-  HttpRouteRuleMatchHeaderRangeMatch({
+  const HttpRouteRuleMatchHeaderRangeMatch({
     required this.end,
     required this.start,
   });

@@ -9,7 +9,7 @@ class InsightFiltersWorkflowStatus {
   /// Creates a new [InsightFiltersWorkflowStatus].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersWorkflowStatus({
+  const InsightFiltersWorkflowStatus({
     required this.comparison,
     required this.value,
   });

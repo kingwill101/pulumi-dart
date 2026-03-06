@@ -18,7 +18,7 @@ class GetFrontendsInterfaceArgs {
   /// [frontendName] Frontends
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trafficControllerName] traffic controller name for path
-  GetFrontendsInterfaceArgs({
+  const GetFrontendsInterfaceArgs({
     required this.frontendName,
     required this.resourceGroupName,
     required this.trafficControllerName,

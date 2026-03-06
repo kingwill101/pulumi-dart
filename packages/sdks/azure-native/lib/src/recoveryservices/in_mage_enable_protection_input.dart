@@ -41,7 +41,7 @@ class InMageEnableProtectionInput {
   /// [retentionDrive] The retention drive to use on the MT.
   /// [runAsAccountId] The CS account Id.
   /// [vmFriendlyName] The VM Name.
-  InMageEnableProtectionInput({
+  const InMageEnableProtectionInput({
     this.datastoreName,
     this.diskExclusionInput,
     this.disksToInclude,

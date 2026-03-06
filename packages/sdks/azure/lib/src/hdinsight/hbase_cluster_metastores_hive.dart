@@ -17,7 +17,7 @@ class HBaseClusterMetastoresHive {
   /// [password] The external Hive metastore's existing SQL server admin password. Changing this forces a new resource to be created.
   /// [server] The fully-qualified domain name (FQDN) of the SQL server to use for the external Hive metastore. Changing this forces a new resource to be created.
   /// [username] The external Hive metastore's existing SQL server admin username. Changing this forces a new resource to be created.
-  HBaseClusterMetastoresHive({
+  const HBaseClusterMetastoresHive({
     required this.databaseName,
     required this.password,
     required this.server,

@@ -31,7 +31,7 @@ class LicenseDetailsResponse {
   /// [target] Describes the license target server.
   /// [type] Describes the license core type (pCore or vCore).
   /// [volumeLicenseDetails] A list of volume license details.
-  LicenseDetailsResponse({
+  const LicenseDetailsResponse({
     required this.assignedLicenses,
     this.edition,
     required this.immutableId,

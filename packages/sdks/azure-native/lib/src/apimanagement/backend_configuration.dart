@@ -10,7 +10,7 @@ class BackendConfiguration {
 
   /// Creates a new [BackendConfiguration].
   /// [subnet] The default hostname of the data-plane gateway to which requests can be sent.
-  BackendConfiguration({
+  const BackendConfiguration({
     this.subnet,
   });
 

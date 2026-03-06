@@ -14,7 +14,7 @@ class GetContainerGroupsGroupContainerVolumeMount {
   /// [mountPath] The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
   /// [name] The name of the volume. The name is the same as the volume you selected when you purchased the container.
   /// [readOnly] Default value: `false`.
-  GetContainerGroupsGroupContainerVolumeMount({
+  const GetContainerGroupsGroupContainerVolumeMount({
     required this.mountPath,
     required this.name,
     required this.readOnly,

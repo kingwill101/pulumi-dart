@@ -12,7 +12,7 @@ class JsonMapperDestinationFieldResponse {
   /// Creates a new [JsonMapperDestinationFieldResponse].
   /// [destination] Define the destination's element. The element is the body or the attributes of the message, to which the json array mapper will write the output map.
   /// [fieldName] Define a destination field name under the given element. Leaving this empty, means the root of the element. In case element=attributes and fieldName is empty, the object's attributes themselves will contain the key value output pairs.
-  JsonMapperDestinationFieldResponse({
+  const JsonMapperDestinationFieldResponse({
     this.destination,
     this.fieldName,
   });

@@ -34,7 +34,7 @@ class SecurityProfileResponse {
   /// [proxyAgentSettings] Specifies ProxyAgent settings while creating the virtual machine. Minimum
   /// [securityType] Specifies the SecurityType of the virtual machine. It has to be set to any
   /// [uefiSettings] Specifies the security settings like secure boot and vTPM used while creating
-  SecurityProfileResponse({
+  const SecurityProfileResponse({
     this.encryptionAtHost,
     this.encryptionIdentity,
     this.proxyAgentSettings,

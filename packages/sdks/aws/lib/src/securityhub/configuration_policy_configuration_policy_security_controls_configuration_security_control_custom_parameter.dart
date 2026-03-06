@@ -12,7 +12,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
   /// Creates a new [ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter].
   /// [parameters] An object that specifies parameter values for a control in a configuration policy. See below.
   /// [securityControlId] The ID of the security control. For more information see the [Security Hub controls reference] documentation.
-  ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter({
+  const ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter({
     required this.parameters,
     required this.securityControlId,
   });

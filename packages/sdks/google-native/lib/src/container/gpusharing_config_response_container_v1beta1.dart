@@ -12,7 +12,7 @@ class GPUSharingConfigResponseContainerV1beta1 {
   /// Creates a new [GPUSharingConfigResponseContainerV1beta1].
   /// [gpuSharingStrategy] The type of GPU sharing strategy to enable on the GPU node.
   /// [maxSharedClientsPerGpu] The max number of containers that can share a physical GPU.
-  GPUSharingConfigResponseContainerV1beta1({
+  const GPUSharingConfigResponseContainerV1beta1({
     required this.gpuSharingStrategy,
     required this.maxSharedClientsPerGpu,
   });

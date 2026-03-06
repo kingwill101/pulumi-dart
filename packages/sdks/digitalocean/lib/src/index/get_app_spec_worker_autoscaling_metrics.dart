@@ -9,7 +9,7 @@ class GetAppSpecWorkerAutoscalingMetrics {
 
   /// Creates a new [GetAppSpecWorkerAutoscalingMetrics].
   /// [cpu] Settings for scaling the component based on CPU utilization.
-  GetAppSpecWorkerAutoscalingMetrics({
+  const GetAppSpecWorkerAutoscalingMetrics({
     this.cpu,
   });
 

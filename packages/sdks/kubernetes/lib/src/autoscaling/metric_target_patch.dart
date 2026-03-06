@@ -18,7 +18,7 @@ class MetricTargetPatch {
   /// [averageValue] averageValue is the target value of the average of the metric across all relevant pods (as a quantity)
   /// [type] type represents whether the metric type is Utilization, Value, or AverageValue
   /// [value] value is the target value of the metric (as a quantity).
-  MetricTargetPatch({
+  const MetricTargetPatch({
     this.averageUtilization,
     this.averageValue,
     this.type,

@@ -17,7 +17,7 @@ class DomainDevicesTpmBackend {
   /// [emulator] Configures the emulator backend for the TPM device, which handles its operations.
   /// [external] Configures external settings for the TPM backend to use an external TPM device.
   /// [passthrough] Configures the backend for the TPM device to be in passthrough mode, allowing direct access to the host's TPM functionality.
-  DomainDevicesTpmBackend({
+  const DomainDevicesTpmBackend({
     this.emulator,
     this.external,
     this.passthrough,

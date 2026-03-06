@@ -18,7 +18,7 @@ class NodePoolLocalDiskEncryption {
   /// [kmsKey] The Cloud KMS CryptoKey e.g. projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} to use for protecting node local disks.
   /// [kmsKeyActiveVersion] (Output)
   /// [kmsKeyState] (Output)
-  NodePoolLocalDiskEncryption({
+  const NodePoolLocalDiskEncryption({
     this.kmsKey,
     this.kmsKeyActiveVersion,
     this.kmsKeyState,

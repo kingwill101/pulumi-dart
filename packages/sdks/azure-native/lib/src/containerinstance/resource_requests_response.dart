@@ -16,7 +16,7 @@ class ResourceRequestsResponse {
   /// [cpu] The CPU request of this container instance.
   /// [gpu] The GPU request of this container instance.
   /// [memoryInGB] The memory request in GB of this container instance.
-  ResourceRequestsResponse({
+  const ResourceRequestsResponse({
     required this.cpu,
     this.gpu,
     required this.memoryInGB,

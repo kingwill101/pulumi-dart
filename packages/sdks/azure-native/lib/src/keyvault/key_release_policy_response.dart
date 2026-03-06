@@ -11,7 +11,7 @@ class KeyReleasePolicyResponse {
   /// Creates a new [KeyReleasePolicyResponse].
   /// [contentType] Content type and version of key release policy
   /// [data] Blob encoding the policy rules under which the key can be released.
-  KeyReleasePolicyResponse({
+  const KeyReleasePolicyResponse({
     this.contentType,
     this.data,
   });

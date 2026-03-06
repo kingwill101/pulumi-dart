@@ -10,7 +10,7 @@ class RelationshipTypeMappingResponse {
 
   /// Creates a new [RelationshipTypeMappingResponse].
   /// [fieldMappings] Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well.
-  RelationshipTypeMappingResponse({
+  const RelationshipTypeMappingResponse({
     required this.fieldMappings,
   });
 

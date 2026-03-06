@@ -8,7 +8,7 @@ class HubManagedNetwork {
 
   /// Creates a new [HubManagedNetwork].
   /// [isolationMode] The isolation mode of the AI Foundry Hub. Possible values are `Disabled`, `AllowOnlyApprovedOutbound`, and `AllowInternetOutbound`.
-  HubManagedNetwork({
+  const HubManagedNetwork({
     this.isolationMode,
   });
 

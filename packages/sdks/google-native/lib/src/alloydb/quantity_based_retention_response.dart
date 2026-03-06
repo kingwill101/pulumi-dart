@@ -9,7 +9,7 @@ class QuantityBasedRetentionResponse {
 
   /// Creates a new [QuantityBasedRetentionResponse].
   /// [count] The number of backups to retain.
-  QuantityBasedRetentionResponse({
+  const QuantityBasedRetentionResponse({
     required this.count,
   });
 

@@ -35,7 +35,7 @@ class CertificateDescriptionResponse {
   /// [subjectDescription] Describes some of the values in a certificate that are related to the subject and lifetime.
   /// [subjectKeyId] Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
   /// [x509Description] Describes some of the technical X.509 fields in a certificate.
-  CertificateDescriptionResponse({
+  const CertificateDescriptionResponse({
     required this.aiaIssuingCertificateUrls,
     required this.authorityKeyId,
     required this.certFingerprint,

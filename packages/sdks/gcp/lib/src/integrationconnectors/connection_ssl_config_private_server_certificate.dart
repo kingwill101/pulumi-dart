@@ -8,7 +8,7 @@ class ConnectionSslConfigPrivateServerCertificate {
 
   /// Creates a new [ConnectionSslConfigPrivateServerCertificate].
   /// [secretVersion] Secret version of Secret Value for Config variable.
-  ConnectionSslConfigPrivateServerCertificate({
+  const ConnectionSslConfigPrivateServerCertificate({
     required this.secretVersion,
   });
 

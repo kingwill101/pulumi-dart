@@ -12,7 +12,7 @@ class StatusCodesResponse {
   /// Creates a new [StatusCodesResponse].
   /// [items] The items (status codes) for an origin group.
   /// [quantity] The number of status codes.
-  StatusCodesResponse({
+  const StatusCodesResponse({
     this.items,
     this.quantity,
   });

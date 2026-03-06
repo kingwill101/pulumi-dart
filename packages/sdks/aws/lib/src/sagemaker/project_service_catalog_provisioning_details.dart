@@ -18,7 +18,7 @@ class ProjectServiceCatalogProvisioningDetails {
   /// [productId] The ID of the product to provision.
   /// [provisioningArtifactId] The ID of the provisioning artifact.
   /// [provisioningParameters] A list of key value pairs that you specify when you provision a product. See Provisioning Parameter below.
-  ProjectServiceCatalogProvisioningDetails({
+  const ProjectServiceCatalogProvisioningDetails({
     this.pathId,
     required this.productId,
     this.provisioningArtifactId,

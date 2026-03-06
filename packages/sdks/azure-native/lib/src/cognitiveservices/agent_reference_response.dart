@@ -12,7 +12,7 @@ class AgentReferenceResponse {
   /// Creates a new [AgentReferenceResponse].
   /// [agentId] Gets the agent's unique identifier within the organization (subscription).
   /// [agentName] Gets the agent's name (unique within the project/app).
-  AgentReferenceResponse({
+  const AgentReferenceResponse({
     this.agentId,
     this.agentName,
   });

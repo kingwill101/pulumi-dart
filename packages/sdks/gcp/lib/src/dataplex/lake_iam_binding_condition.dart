@@ -11,7 +11,7 @@ class LakeIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  LakeIamBindingCondition({
+  const LakeIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

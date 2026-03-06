@@ -38,7 +38,7 @@ class GetApplicationInfosApplication {
   /// [quotaUnit] Required.
   /// [reason] Required.
   /// [status] Required.
-  GetApplicationInfosApplication({
+  const GetApplicationInfosApplication({
     required this.applicationId,
     required this.approveValue,
     required this.auditReason,

@@ -14,7 +14,7 @@ class DomainDevicesTpmBackendEmulatorProfile {
   /// [name] Specifies the name of the profile for the emulator TPM backend.
   /// [removeDisabled] Configures whether to remove disabled profiles for the emulator TPM backend.
   /// [source] Sets the source configuration for the profile of the emulator TPM backend.
-  DomainDevicesTpmBackendEmulatorProfile({
+  const DomainDevicesTpmBackendEmulatorProfile({
     this.name,
     this.removeDisabled,
     this.source,

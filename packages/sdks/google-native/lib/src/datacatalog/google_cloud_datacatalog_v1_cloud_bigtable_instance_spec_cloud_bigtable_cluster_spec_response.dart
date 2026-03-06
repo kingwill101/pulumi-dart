@@ -18,7 +18,7 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecR
   /// [linkedResource] A link back to the parent resource, in this case Instance.
   /// [location] Location of the cluster, typically a Cloud zone.
   /// [type] Type of the resource. For a cluster this would be "CLUSTER".
-  GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse({
+  const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse({
     required this.displayName,
     required this.linkedResource,
     required this.location,

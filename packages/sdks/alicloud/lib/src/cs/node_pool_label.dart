@@ -11,7 +11,7 @@ class NodePoolLabel {
   /// Creates a new [NodePoolLabel].
   /// [key] The label key.
   /// [value] The label value.
-  NodePoolLabel({
+  const NodePoolLabel({
     required this.key,
     this.value,
   });

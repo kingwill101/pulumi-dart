@@ -9,7 +9,7 @@ class StringStringKeyValuePairResponse {
   /// Creates a new [StringStringKeyValuePairResponse].
   /// [key] Optional.
   /// [value] Optional.
-  StringStringKeyValuePairResponse({
+  const StringStringKeyValuePairResponse({
     this.key,
     this.value,
   });

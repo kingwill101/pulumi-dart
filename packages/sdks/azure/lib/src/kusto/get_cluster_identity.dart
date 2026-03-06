@@ -17,7 +17,7 @@ class GetClusterIdentity {
   /// [principalId] The Principal ID associated with this System Assigned Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this System Assigned Managed Service Identity.
   /// [type] The type of Managed Service Identity that is configured on this Kusto Cluster.
-  GetClusterIdentity({
+  const GetClusterIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

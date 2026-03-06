@@ -24,7 +24,7 @@ class MigrateSqlServerSqlDbDatabaseInputResponse {
   /// [schemaSetting] Settings selected for DB schema migration.
   /// [tableMap] Mapping of source to target tables
   /// [targetDatabaseName] Name of target database. Note: Target database will be truncated before starting migration.
-  MigrateSqlServerSqlDbDatabaseInputResponse({
+  const MigrateSqlServerSqlDbDatabaseInputResponse({
     this.id,
     this.makeSourceDbReadOnly,
     this.name,

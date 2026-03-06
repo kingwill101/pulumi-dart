@@ -21,7 +21,7 @@ class CloudinitDiskArgs {
   /// [name] Name for this cloud-init disk resource
   /// [networkConfig] Cloud-init network configuration (optional, usually YAML)
   /// [userData] Cloud-init user-data content (usually YAML)
-  CloudinitDiskArgs({
+  const CloudinitDiskArgs({
     required this.metaData,
     this.name,
     this.networkConfig,

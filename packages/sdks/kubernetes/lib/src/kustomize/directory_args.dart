@@ -24,7 +24,7 @@ class DirectoryArgs {
   /// [namespace] The default namespace to apply to the resources. Defaults to the provider's namespace.
   /// [resourcePrefix] A prefix for the auto-generated resource names. Defaults to the name of the Directory resource. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo:resourceName".
   /// [skipAwait] Indicates that child resources should skip the await logic.
-  DirectoryArgs({
+  const DirectoryArgs({
     required this.directory,
     this.namespace,
     this.resourcePrefix,

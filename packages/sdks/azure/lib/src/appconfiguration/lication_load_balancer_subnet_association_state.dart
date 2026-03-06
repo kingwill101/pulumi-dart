@@ -20,7 +20,7 @@ class LicationLoadBalancerSubnetAssociationState {
   /// [name] The name which should be used for this Application Gateway for Containers Association. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet which the Application Gateway for Containers associated to.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers Association.
-  LicationLoadBalancerSubnetAssociationState({
+  const LicationLoadBalancerSubnetAssociationState({
     this.applicationLoadBalancerId,
     this.name,
     this.subnetId,

@@ -15,7 +15,7 @@ class DrtAccessRoleArnAssociationArgs {
   /// Creates a new [DrtAccessRoleArnAssociationArgs].
   /// [roleArn] The Amazon Resource Name (ARN) of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
   /// [timeouts] Optional.
-  DrtAccessRoleArnAssociationArgs({
+  const DrtAccessRoleArnAssociationArgs({
     required this.roleArn,
     this.timeouts,
   });

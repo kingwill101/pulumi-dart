@@ -59,7 +59,7 @@ class GetServiceMeshesMeshMeshConfig {
   /// [sidecarInjectors] The configuration of the Sidecar injector.
   /// [telemetry] Whether to enable acquisition Prometheus metrics.
   /// [tracing] Whether to enable link trace.
-  GetServiceMeshesMeshMeshConfig({
+  const GetServiceMeshesMeshMeshConfig({
     required this.accessLogs,
     required this.audits,
     required this.controlPlaneLogs,

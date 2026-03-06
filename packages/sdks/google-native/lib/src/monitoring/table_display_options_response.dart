@@ -9,7 +9,7 @@ class TableDisplayOptionsResponse {
 
   /// Creates a new [TableDisplayOptionsResponse].
   /// [shownColumns] Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
-  TableDisplayOptionsResponse({
+  const TableDisplayOptionsResponse({
     required this.shownColumns,
   });
 

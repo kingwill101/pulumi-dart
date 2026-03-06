@@ -15,7 +15,7 @@ class SubnetResponse {
   /// [allowPublicIp] The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).
   /// [labSubnetName] The name of the subnet as seen in the lab.
   /// [resourceId] The resource ID of the subnet.
-  SubnetResponse({
+  const SubnetResponse({
     this.allowPublicIp,
     this.labSubnetName,
     this.resourceId,

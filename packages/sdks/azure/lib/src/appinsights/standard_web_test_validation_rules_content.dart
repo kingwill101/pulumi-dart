@@ -14,7 +14,7 @@ class StandardWebTestValidationRulesContent {
   /// [contentMatch] A string value containing the content to match on.
   /// [ignoreCase] Ignore the casing in the `content_match` value.
   /// [passIfTextFound] If the content of `content_match` is found, pass the test. If set to `false`, the WebTest is failing if the content of `content_match` is found.
-  StandardWebTestValidationRulesContent({
+  const StandardWebTestValidationRulesContent({
     required this.contentMatch,
     this.ignoreCase,
     this.passIfTextFound,

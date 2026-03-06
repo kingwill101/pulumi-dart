@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesBlockSuspend {
 
   /// Creates a new [DomainFeaturesCapabilitiesBlockSuspend].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesBlockSuspend({
+  const DomainFeaturesCapabilitiesBlockSuspend({
     this.state,
   });
 

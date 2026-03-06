@@ -18,7 +18,7 @@ class GetHpcClustersArgs {
   /// [ids] A list of Hpc Cluster IDs.
   /// [nameRegex] A regex string to filter results by Hpc Cluster name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetHpcClustersArgs({
+  const GetHpcClustersArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

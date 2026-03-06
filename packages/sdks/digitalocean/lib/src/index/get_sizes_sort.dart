@@ -12,7 +12,7 @@ class GetSizesSort {
   /// Creates a new [GetSizesSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the sizes by this key. This may be one of `slug`,
-  GetSizesSort({
+  const GetSizesSort({
     this.direction,
     required this.key,
   });

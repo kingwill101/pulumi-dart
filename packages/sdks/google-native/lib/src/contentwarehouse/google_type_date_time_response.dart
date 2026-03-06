@@ -34,7 +34,7 @@ class GoogleTypeDateTimeResponse {
   /// [timeZone] Time zone.
   /// [utcOffset] UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }.
   /// [year] Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
-  GoogleTypeDateTimeResponse({
+  const GoogleTypeDateTimeResponse({
     required this.day,
     required this.hours,
     required this.minutes,

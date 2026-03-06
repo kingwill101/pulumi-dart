@@ -60,7 +60,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionResponse {
   /// [schemaSources] The mapping information between this property to another schema source.
   /// [textTypeOptions] Text/string property.
   /// [timestampTypeOptions] Timestamp property. It is not supported by CMEK compliant deployment.
-  GoogleCloudContentwarehouseV1PropertyDefinitionResponse({
+  const GoogleCloudContentwarehouseV1PropertyDefinitionResponse({
     required this.dateTimeTypeOptions,
     required this.displayName,
     required this.enumTypeOptions,

@@ -12,7 +12,7 @@ class GetInstanceInitialReplication {
   /// Creates a new [GetInstanceInitialReplication].
   /// [replicas] The replication role.
   /// [role] The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
-  GetInstanceInitialReplication({
+  const GetInstanceInitialReplication({
     required this.replicas,
     required this.role,
   });

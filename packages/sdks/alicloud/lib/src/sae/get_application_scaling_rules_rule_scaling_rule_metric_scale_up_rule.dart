@@ -14,7 +14,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
   /// [disabled] Whether shrinkage is prohibited. The values are described as follows:
   /// [stabilizationWindowSeconds] Expansion cooling time.
   /// [step] Flexible expansion step. The maximum number of instances per unit time.
-  GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule({
+  const GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule({
     required this.disabled,
     required this.stabilizationWindowSeconds,
     required this.step,

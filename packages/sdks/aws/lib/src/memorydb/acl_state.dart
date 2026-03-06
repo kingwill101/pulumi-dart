@@ -30,7 +30,7 @@ class AclState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userNames] Set of MemoryDB user names to be included in this ACL.
-  AclState({
+  const AclState({
     this.arn,
     this.minimumEngineVersion,
     this.name,

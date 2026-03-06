@@ -13,7 +13,7 @@ class ProjectArgs {
 
   /// Creates a new [ProjectArgs].
   /// [project] The ID of the project in which the resource belongs.
-  ProjectArgs({
+  const ProjectArgs({
     this.project,
   });
 

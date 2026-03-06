@@ -33,7 +33,7 @@ class IotHubResourceArgs {
   /// [resourceName] The name of the IoT hub.
   /// [sku] IotHub SKU info
   /// [tags] The resource tags.
-  IotHubResourceArgs({
+  const IotHubResourceArgs({
     this.identity,
     this.location,
     this.properties,

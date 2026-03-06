@@ -24,7 +24,7 @@ class GetHoneypotPresetsPreset {
   /// [metas] Honeypot template custom parameters.
   /// [nodeId] Unique id of management node
   /// [presetName] Honeypot template custom name
-  GetHoneypotPresetsPreset({
+  const GetHoneypotPresetsPreset({
     required this.honeypotImageName,
     required this.honeypotPresetId,
     required this.id,

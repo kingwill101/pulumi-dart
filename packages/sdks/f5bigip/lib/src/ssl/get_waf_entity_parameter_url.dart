@@ -13,7 +13,7 @@ class GetWafEntityParameterUrl {
   /// [name] Required.
   /// [protocol] Required.
   /// [type] Required.
-  GetWafEntityParameterUrl({
+  const GetWafEntityParameterUrl({
     required this.method,
     required this.name,
     required this.protocol,

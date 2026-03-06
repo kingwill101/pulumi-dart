@@ -26,7 +26,7 @@ class ServiceGroupMonitoringAgentProcessArgs {
   /// [matchExpressFilterRelation] The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
   /// [matchExpresses] The expressions used to match instances. See `match_express` below.
   /// [processName] The name of the process.
-  ServiceGroupMonitoringAgentProcessArgs({
+  const ServiceGroupMonitoringAgentProcessArgs({
     required this.alertConfigs,
     required this.groupId,
     this.matchExpressFilterRelation,

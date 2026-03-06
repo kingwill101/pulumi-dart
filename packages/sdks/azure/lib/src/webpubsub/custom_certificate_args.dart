@@ -22,7 +22,7 @@ class CustomCertificateArgs {
   /// [customCertificateId] The certificate ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   /// [name] The name of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   /// [webPubsubId] The Web PubSub ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
-  CustomCertificateArgs({
+  const CustomCertificateArgs({
     required this.customCertificateId,
     this.name,
     required this.webPubsubId,

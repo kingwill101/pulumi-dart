@@ -41,7 +41,7 @@ class AiFeatureStoreArgs {
   /// [onlineStorageTtlDays] TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the dataset. eg us-central1
-  AiFeatureStoreArgs({
+  const AiFeatureStoreArgs({
     this.encryptionSpec,
     this.forceDestroy,
     this.labels,

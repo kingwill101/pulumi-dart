@@ -36,7 +36,7 @@ class X12EnvelopeOverride {
   /// [senderApplicationId] The sender application id.
   /// [targetNamespace] The target namespace on which this envelope settings has to be applied.
   /// [timeFormat] The time format.
-  X12EnvelopeOverride({
+  const X12EnvelopeOverride({
     required this.dateFormat,
     this.functionalIdentifierCode,
     required this.headerVersion,

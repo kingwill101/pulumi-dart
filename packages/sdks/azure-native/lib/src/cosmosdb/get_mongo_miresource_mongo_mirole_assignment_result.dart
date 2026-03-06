@@ -33,7 +33,7 @@ class GetMongoMIResourceMongoMIRoleAssignmentResult {
   /// [scope] The data plane resource path for which access is being granted through this MongoMI Role Assignment.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetMongoMIResourceMongoMIRoleAssignmentResult({
+  const GetMongoMIResourceMongoMIRoleAssignmentResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

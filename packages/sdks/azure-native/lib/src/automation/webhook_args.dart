@@ -40,7 +40,7 @@ class WebhookArgs {
   /// [runbook] Gets or sets the runbook.
   /// [uri] Gets or sets the uri.
   /// [webhookName] The webhook name.
-  WebhookArgs({
+  const WebhookArgs({
     required this.automationAccountName,
     this.expiryTime,
     this.isEnabled,

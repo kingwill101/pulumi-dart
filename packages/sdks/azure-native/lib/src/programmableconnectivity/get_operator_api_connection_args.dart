@@ -15,7 +15,7 @@ class GetOperatorApiConnectionArgs {
   /// Creates a new [GetOperatorApiConnectionArgs].
   /// [operatorApiConnectionName] Azure Programmable Connectivity (APC) Operator API Connection Name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOperatorApiConnectionArgs({
+  const GetOperatorApiConnectionArgs({
     required this.operatorApiConnectionName,
     required this.resourceGroupName,
   });

@@ -18,7 +18,7 @@ class IncidentInfoResponse {
   /// [relationName] Relation Name
   /// [severity] The severity of the incident
   /// [title] The title of the incident
-  IncidentInfoResponse({
+  const IncidentInfoResponse({
     this.incidentId,
     this.relationName,
     this.severity,

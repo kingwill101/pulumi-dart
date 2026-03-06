@@ -14,7 +14,7 @@ class AppDataStoreSettings {
 
   /// Creates a new [AppDataStoreSettings].
   /// [engines] (Output)
-  AppDataStoreSettings({
+  const AppDataStoreSettings({
     this.engines,
   });
 

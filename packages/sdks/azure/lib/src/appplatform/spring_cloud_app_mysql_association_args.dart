@@ -27,7 +27,7 @@ class SpringCloudAppMysqlAssociationArgs {
   /// [password] Specifies the password which should be used when connecting to the MySQL Database from the Spring Cloud App.
   /// [springCloudAppId] Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   /// [username] Specifies the username which should be used when connecting to the MySQL Database from the Spring Cloud App.
-  SpringCloudAppMysqlAssociationArgs({
+  const SpringCloudAppMysqlAssociationArgs({
     required this.databaseName,
     required this.mysqlServerId,
     this.name,

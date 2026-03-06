@@ -21,7 +21,7 @@ class RandomShuffleArgs {
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [resultCount] The number of results to return. Defaults to the number of items in the `input` list. If fewer items are requested, some elements will be excluded from the result. If more items are requested, items will be repeated in the result but not more frequently than the number of items in the input list.
   /// [seed] Arbitrary string with which to seed the random number generator, in order to produce less-volatile permutations of the list.
-  RandomShuffleArgs({
+  const RandomShuffleArgs({
     required this.inputs,
     this.keepers,
     this.resultCount,

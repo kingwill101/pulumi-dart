@@ -20,7 +20,7 @@ class GetNetworkInterfaceAttachment {
   /// [instanceId] ID of the instance.
   /// [instanceOwnerId] AWS account ID of the owner of the instance.
   /// [networkCardIndex] Index of the network card.
-  GetNetworkInterfaceAttachment({
+  const GetNetworkInterfaceAttachment({
     required this.attachmentId,
     required this.deviceIndex,
     required this.instanceId,

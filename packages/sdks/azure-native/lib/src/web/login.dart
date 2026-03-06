@@ -30,7 +30,7 @@ class Login {
   /// [preserveUrlFragmentsForLogins] &lt;code&gt;true&lt;/code&gt; if the fragments from the request are preserved after the login request is made; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [routes] The routes that specify the endpoints used for login and logout requests.
   /// [tokenStore] The configuration settings of the token store.
-  Login({
+  const Login({
     this.allowedExternalRedirectUrls,
     this.cookieExpiration,
     this.nonce,

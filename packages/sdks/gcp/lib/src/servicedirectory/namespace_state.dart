@@ -36,7 +36,7 @@ class NamespaceState {
   /// [namespaceId] The Resource ID must be 1-63 characters long, including digits,
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  NamespaceState({
+  const NamespaceState({
     this.effectiveLabels,
     this.labels,
     this.location,

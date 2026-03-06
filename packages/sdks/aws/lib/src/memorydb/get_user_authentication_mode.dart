@@ -11,7 +11,7 @@ class GetUserAuthenticationMode {
   /// Creates a new [GetUserAuthenticationMode].
   /// [passwordCount] Number of passwords belonging to the user if `type` is set to `password`.
   /// [type] Type of authentication configured.
-  GetUserAuthenticationMode({
+  const GetUserAuthenticationMode({
     required this.passwordCount,
     required this.type,
   });

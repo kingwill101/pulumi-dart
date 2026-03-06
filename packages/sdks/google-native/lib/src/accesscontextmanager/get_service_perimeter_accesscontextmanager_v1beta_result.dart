@@ -21,7 +21,7 @@ class GetServicePerimeterAccesscontextmanagerV1betaResult {
   /// [perimeterType] Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
   /// [status] Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
   /// [title] Human readable title. Must be unique within the Policy.
-  GetServicePerimeterAccesscontextmanagerV1betaResult({
+  const GetServicePerimeterAccesscontextmanagerV1betaResult({
     required this.description,
     required this.name,
     required this.perimeterType,

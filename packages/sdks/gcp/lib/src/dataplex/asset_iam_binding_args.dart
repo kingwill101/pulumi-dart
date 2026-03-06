@@ -49,7 +49,7 @@ class AssetIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  AssetIamBindingArgs({
+  const AssetIamBindingArgs({
     required this.asset,
     this.condition,
     required this.dataplexZone,

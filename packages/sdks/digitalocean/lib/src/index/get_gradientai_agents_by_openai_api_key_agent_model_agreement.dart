@@ -17,7 +17,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement {
   /// [name] Name of the agreement
   /// [url] URL of the agreement
   /// [uuid] UUID of the agreement
-  GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement({
     this.description,
     this.name,
     this.url,

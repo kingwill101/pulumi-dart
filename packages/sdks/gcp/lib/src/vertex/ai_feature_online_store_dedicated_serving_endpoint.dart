@@ -18,7 +18,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpoint {
   /// [privateServiceConnectConfig] Private service connect config.
   /// [publicEndpointDomainName] (Output)
   /// [serviceAttachment] (Output)
-  AiFeatureOnlineStoreDedicatedServingEndpoint({
+  const AiFeatureOnlineStoreDedicatedServingEndpoint({
     this.privateServiceConnectConfig,
     this.publicEndpointDomainName,
     this.serviceAttachment,

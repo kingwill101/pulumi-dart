@@ -98,7 +98,7 @@ class ContentTemplateArgs {
   /// [threatAnalysisTechniques] the techniques the resource covers, these have to be aligned with the tactics being used
   /// [version] Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
   /// [workspaceName] The name of the workspace.
-  ContentTemplateArgs({
+  const ContentTemplateArgs({
     this.author,
     this.categories,
     required this.contentId,

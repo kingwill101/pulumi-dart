@@ -36,7 +36,7 @@ class GetInstanceEbsBlockDevice {
   /// [volumeId] Required.
   /// [volumeSize] Size of the volume, in GiB.
   /// [volumeType] Type of the volume.
-  GetInstanceEbsBlockDevice({
+  const GetInstanceEbsBlockDevice({
     required this.deleteOnTermination,
     required this.deviceName,
     required this.encrypted,

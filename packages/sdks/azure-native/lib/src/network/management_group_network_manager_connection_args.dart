@@ -21,7 +21,7 @@ class ManagementGroupNetworkManagerConnectionArgs {
   /// [managementGroupId] The management group Id which uniquely identify the Microsoft Azure management group.
   /// [networkManagerConnectionName] Name for the network manager connection.
   /// [networkManagerId] Network Manager Id.
-  ManagementGroupNetworkManagerConnectionArgs({
+  const ManagementGroupNetworkManagerConnectionArgs({
     this.description,
     required this.managementGroupId,
     this.networkManagerConnectionName,

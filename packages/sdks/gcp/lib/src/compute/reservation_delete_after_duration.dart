@@ -11,7 +11,7 @@ class ReservationDeleteAfterDuration {
   /// Creates a new [ReservationDeleteAfterDuration].
   /// [nanos] Number of nanoseconds for the auto-delete duration.
   /// [seconds] Number of seconds for the auto-delete duration.
-  ReservationDeleteAfterDuration({
+  const ReservationDeleteAfterDuration({
     this.nanos,
     this.seconds,
   });

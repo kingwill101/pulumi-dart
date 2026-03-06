@@ -34,7 +34,7 @@ class ManagedZoneArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [targetProject] The name of the Target Project.
   /// [targetVpc] The name of the Target Project VPC Network.
-  ManagedZoneArgs({
+  const ManagedZoneArgs({
     this.description,
     required this.dns,
     this.labels,

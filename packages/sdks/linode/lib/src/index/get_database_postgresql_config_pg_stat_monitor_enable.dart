@@ -11,7 +11,7 @@ class GetDatabasePostgresqlConfigPgStatMonitorEnable {
   /// [description] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabasePostgresqlConfigPgStatMonitorEnable({
+  const GetDatabasePostgresqlConfigPgStatMonitorEnable({
     required this.description,
     required this.requiresRestart,
     required this.type,

@@ -143,7 +143,7 @@ class VersionAppengineV1betaArgs {
   /// [vm] Whether to deploy this version in a container on a virtual machine.
   /// [vpcAccessConnector] Enables VPC connectivity for standard apps.
   /// [zones] The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-  VersionAppengineV1betaArgs({
+  const VersionAppengineV1betaArgs({
     this.apiConfig,
     this.appEngineApis,
     required this.appId,

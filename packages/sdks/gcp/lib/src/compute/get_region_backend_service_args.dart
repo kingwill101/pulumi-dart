@@ -19,7 +19,7 @@ class GetRegionBackendServiceArgs {
   /// [name] The name of the regional backend service.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region where the backend service resides.
-  GetRegionBackendServiceArgs({
+  const GetRegionBackendServiceArgs({
     required this.name,
     this.project,
     this.region,

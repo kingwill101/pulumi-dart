@@ -23,7 +23,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse {
   /// [image] Optional. The image for the card.
   /// [subtitle] Optional. The subtitle of the card.
   /// [title] Optional. The title of the card.
-  GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse({
     required this.buttons,
     required this.formattedText,
     required this.image,

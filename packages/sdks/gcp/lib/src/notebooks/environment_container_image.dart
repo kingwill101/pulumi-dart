@@ -12,7 +12,7 @@ class EnvironmentContainerImage {
   /// Creates a new [EnvironmentContainerImage].
   /// [repository] The path to the container image repository.
   /// [tag] The tag of the container image. If not specified, this defaults to the latest tag.
-  EnvironmentContainerImage({
+  const EnvironmentContainerImage({
     required this.repository,
     this.tag,
   });

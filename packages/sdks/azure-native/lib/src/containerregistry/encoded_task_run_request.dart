@@ -48,7 +48,7 @@ class EncodedTaskRunRequest {
   /// [timeout] Run timeout in seconds.
   /// [type] The type of the run request.
   /// [values] The collection of overridable values that can be passed when running a task.
-  EncodedTaskRunRequest({
+  const EncodedTaskRunRequest({
     this.agentConfiguration,
     this.agentPoolName,
     this.credentials,

@@ -14,7 +14,7 @@ class GetCatalogTableStorageDescriptorSchemaReferenceSchemaId {
   /// [registryName] Name of the schema registry that contains the schema.
   /// [schemaArn] ARN of the schema.
   /// [schemaName] Name of the schema.
-  GetCatalogTableStorageDescriptorSchemaReferenceSchemaId({
+  const GetCatalogTableStorageDescriptorSchemaReferenceSchemaId({
     required this.registryName,
     required this.schemaArn,
     required this.schemaName,

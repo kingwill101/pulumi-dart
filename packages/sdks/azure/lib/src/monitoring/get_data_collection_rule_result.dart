@@ -51,7 +51,7 @@ class GetDataCollectionRuleResult {
   /// [resourceGroupName] Required.
   /// [streamDeclarations] A `stream_declaration` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Rule.
-  GetDataCollectionRuleResult({
+  const GetDataCollectionRuleResult({
     required this.dataCollectionEndpointId,
     required this.dataFlows,
     required this.dataSources,

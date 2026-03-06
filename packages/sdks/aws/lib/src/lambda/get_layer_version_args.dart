@@ -26,7 +26,7 @@ class GetLayerVersionArgs {
   /// [layerName] Name of the Lambda layer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Specific layer version. Conflicts with `compatible_runtime` and `compatible_architecture`. If omitted, the latest available layer version will be used.
-  GetLayerVersionArgs({
+  const GetLayerVersionArgs({
     this.compatibleArchitecture,
     this.compatibleRuntime,
     required this.layerName,

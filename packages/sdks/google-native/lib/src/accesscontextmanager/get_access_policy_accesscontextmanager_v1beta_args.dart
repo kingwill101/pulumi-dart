@@ -11,7 +11,7 @@ class GetAccessPolicyAccesscontextmanagerV1betaArgs {
 
   /// Creates a new [GetAccessPolicyAccesscontextmanagerV1betaArgs].
   /// [accessPolicyId] Required.
-  GetAccessPolicyAccesscontextmanagerV1betaArgs({
+  const GetAccessPolicyAccesscontextmanagerV1betaArgs({
     required this.accessPolicyId,
   });
 

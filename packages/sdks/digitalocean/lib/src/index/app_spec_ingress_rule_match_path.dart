@@ -8,7 +8,7 @@ class AppSpecIngressRuleMatchPath {
 
   /// Creates a new [AppSpecIngressRuleMatchPath].
   /// [prefix] Prefix-based match.
-  AppSpecIngressRuleMatchPath({
+  const AppSpecIngressRuleMatchPath({
     this.prefix,
   });
 

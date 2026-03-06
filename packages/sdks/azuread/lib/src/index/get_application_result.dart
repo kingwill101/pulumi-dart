@@ -112,7 +112,7 @@ class GetApplicationResult {
   /// [tags] A list of tags applied to the application.
   /// [termsOfServiceUrl] URL of the application's terms of service statement.
   /// [webs] A `web` block as documented below.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.apis,
     required this.appRoleIds,
     required this.appRoles,

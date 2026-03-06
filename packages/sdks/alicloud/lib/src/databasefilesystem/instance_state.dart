@@ -76,7 +76,7 @@ class InstanceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [usedScene] The usage scenario of DBFS. Value range:
   /// [zoneId] The ID of the zone to which the database file system belongs.
-  InstanceState({
+  const InstanceState({
     this.advancedFeatures,
     this.category,
     this.createTime,

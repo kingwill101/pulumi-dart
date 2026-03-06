@@ -11,7 +11,7 @@ class ContainerServicePublicDomainNamesCertificate {
   /// Creates a new [ContainerServicePublicDomainNamesCertificate].
   /// [certificateName] Name of the certificate.
   /// [domainNames] List of domain names for the certificate.
-  ContainerServicePublicDomainNamesCertificate({
+  const ContainerServicePublicDomainNamesCertificate({
     required this.certificateName,
     required this.domainNames,
   });

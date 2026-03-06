@@ -26,7 +26,7 @@ class ReplicationPolicyArgs {
   /// [recoveryPointRetentionInMinutes] The duration in minutes for which the recovery points need to be stored.
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
-  ReplicationPolicyArgs({
+  const ReplicationPolicyArgs({
     required this.applicationConsistentSnapshotFrequencyInMinutes,
     this.name,
     required this.recoveryPointRetentionInMinutes,

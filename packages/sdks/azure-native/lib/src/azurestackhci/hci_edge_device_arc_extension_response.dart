@@ -25,7 +25,7 @@ class HciEdgeDeviceArcExtensionResponse {
   /// [managedBy] Indicates whether the extension is managed by the user or by Azure.
   /// [state] Arc extension state from arc machine extension.
   /// [typeHandlerVersion] Extension version installed.
-  HciEdgeDeviceArcExtensionResponse({
+  const HciEdgeDeviceArcExtensionResponse({
     required this.errorDetails,
     required this.extensionName,
     required this.extensionResourceId,

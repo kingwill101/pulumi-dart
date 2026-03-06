@@ -37,7 +37,7 @@ class OracleProviderInstanceProperties {
   /// [sapSid] Gets or sets the SAP System Identifier
   /// [sslCertificateUri] Gets or sets the blob URI to SSL certificate for the Oracle Database.
   /// [sslPreference] Gets or sets certificate preference if secure communication is enabled.
-  OracleProviderInstanceProperties({
+  const OracleProviderInstanceProperties({
     this.dbName,
     this.dbPassword,
     this.dbPasswordUri,

@@ -35,7 +35,7 @@ class SslNegotiationPolicyArgs {
   /// [name] The name of the SSL negotiation policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  SslNegotiationPolicyArgs({
+  const SslNegotiationPolicyArgs({
     this.attributes,
     required this.lbPort,
     required this.loadBalancer,

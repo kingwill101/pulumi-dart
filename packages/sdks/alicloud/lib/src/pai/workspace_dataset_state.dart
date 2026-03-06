@@ -83,7 +83,7 @@ class WorkspaceDatasetState {
   /// [uri] The Uri configuration sample is as follows:
   /// [userId] The ID of the dataset owner.
   /// [workspaceId] The ID of the workspace where the dataset is located. For details about how to obtain the workspace ID, see ListWorkspaces.
-  WorkspaceDatasetState({
+  const WorkspaceDatasetState({
     this.accessibility,
     this.createTime,
     this.dataSourceType,

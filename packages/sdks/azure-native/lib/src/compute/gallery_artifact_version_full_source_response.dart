@@ -15,7 +15,7 @@ class GalleryArtifactVersionFullSourceResponse {
   /// [communityGalleryImageId] The resource Id of the source Community Gallery Image.  Only required when using Community Gallery Image as a source.
   /// [id] The id of the gallery artifact version source.
   /// [virtualMachineId] The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.
-  GalleryArtifactVersionFullSourceResponse({
+  const GalleryArtifactVersionFullSourceResponse({
     this.communityGalleryImageId,
     this.id,
     this.virtualMachineId,

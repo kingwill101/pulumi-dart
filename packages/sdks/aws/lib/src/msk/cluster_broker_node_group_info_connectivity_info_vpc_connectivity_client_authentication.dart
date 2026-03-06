@@ -12,7 +12,7 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication].
   /// [sasl] Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
   /// [tls] Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
-  ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication({
+  const ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication({
     this.sasl,
     this.tls,
   });

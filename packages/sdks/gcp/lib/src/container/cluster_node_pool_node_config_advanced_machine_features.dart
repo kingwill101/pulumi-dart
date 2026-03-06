@@ -14,7 +14,7 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures {
   /// [enableNestedVirtualization] Defines whether the instance should have nested virtualization enabled. Defaults to false.
   /// [performanceMonitoringUnit] Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
   /// [threadsPerCore] The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
-  ClusterNodePoolNodeConfigAdvancedMachineFeatures({
+  const ClusterNodePoolNodeConfigAdvancedMachineFeatures({
     this.enableNestedVirtualization,
     this.performanceMonitoringUnit,
     required this.threadsPerCore,

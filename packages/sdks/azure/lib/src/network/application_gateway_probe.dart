@@ -42,7 +42,7 @@ class ApplicationGatewayProbe {
   /// [protocol] The Protocol used for this Probe. Possible values are `Http` and `Https`.
   /// [timeout] The Timeout used for this Probe, which indicates when a probe becomes unhealthy. Possible values range from 1 second to a maximum of 86,400 seconds.
   /// [unhealthyThreshold] The Unhealthy Threshold for this Probe, which indicates the amount of retries which should be attempted before a node is deemed unhealthy. Possible values are from 1 to 20.
-  ApplicationGatewayProbe({
+  const ApplicationGatewayProbe({
     this.host,
     this.id,
     required this.interval,

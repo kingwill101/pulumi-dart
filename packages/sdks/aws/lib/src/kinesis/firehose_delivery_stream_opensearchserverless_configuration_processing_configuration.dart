@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigura
   /// Creates a new [FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
   /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
-  FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration({
+  const FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,
   });

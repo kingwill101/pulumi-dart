@@ -22,7 +22,7 @@ class ImportSqlCollectorOperationArgs {
   /// [projectName] Assessment Project Name
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ImportSqlCollectorOperationArgs({
+  const ImportSqlCollectorOperationArgs({
     this.importSqlCollectorsName,
     required this.projectName,
     this.properties,

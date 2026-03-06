@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisReturnPathComponentVpc {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisReturnPathComponentVpc({
+  const NetworkInsightsAnalysisReturnPathComponentVpc({
     this.arn,
     this.id,
     this.name,

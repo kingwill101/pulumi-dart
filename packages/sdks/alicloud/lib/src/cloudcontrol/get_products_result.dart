@@ -23,7 +23,7 @@ class GetProductsResult {
   /// [names] A list of name of Products.
   /// [outputFile] Optional.
   /// [products] A list of Product Entries. Each element contains the following attributes:
-  GetProductsResult({
+  const GetProductsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

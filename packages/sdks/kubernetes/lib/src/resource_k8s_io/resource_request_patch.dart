@@ -13,7 +13,7 @@ class ResourceRequestPatch {
   /// Creates a new [ResourceRequestPatch].
   /// [namedResources] NamedResources describes a request for resources with the named resources model.
   /// [vendorParameters] VendorParameters are arbitrary setup parameters for the requested resource. They are ignored while allocating a claim.
-  ResourceRequestPatch({
+  const ResourceRequestPatch({
     this.namedResources,
     this.vendorParameters,
   });

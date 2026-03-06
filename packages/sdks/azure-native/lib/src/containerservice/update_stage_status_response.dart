@@ -21,7 +21,7 @@ class UpdateStageStatusResponse {
   /// [groups] The list of groups to be updated as part of this UpdateStage.
   /// [name] The name of the UpdateStage.
   /// [status] The status of the UpdateStage.
-  UpdateStageStatusResponse({
+  const UpdateStageStatusResponse({
     required this.afterStageWaitStatus,
     required this.groups,
     required this.name,

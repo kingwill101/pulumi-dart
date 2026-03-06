@@ -15,7 +15,7 @@ class ResourceSku {
   /// [capacity] The number of instances in the read only query pool.
   /// [name] Name of the SKU level.
   /// [tier] The name of the Azure pricing tier to which the SKU applies.
-  ResourceSku({
+  const ResourceSku({
     this.capacity,
     required this.name,
     this.tier,

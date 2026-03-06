@@ -25,7 +25,7 @@ class GetBindingResult {
   /// [properties] Properties of the Binding resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetBindingResult({
+  const GetBindingResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

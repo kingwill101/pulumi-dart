@@ -23,7 +23,7 @@ class GetEnvFeaturesFeature {
   /// [featureVersion] The version of the feature.
   /// [id] The ID of the Env Feature. It formats as `&lt;environment_id&gt;:&lt;env_feature_name&gt;`.
   /// [status] The status of the feature.
-  GetEnvFeaturesFeature({
+  const GetEnvFeaturesFeature({
     required this.aliyunLang,
     required this.envFeatureName,
     required this.environmentId,

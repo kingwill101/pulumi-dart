@@ -29,7 +29,7 @@ class GetPrometheusAlertRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `0`, `1`.
   /// [type] The type of the alert rule.
-  GetPrometheusAlertRulesArgs({
+  const GetPrometheusAlertRulesArgs({
     required this.clusterId,
     this.ids,
     this.matchExpressions,

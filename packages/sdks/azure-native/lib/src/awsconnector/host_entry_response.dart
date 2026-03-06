@@ -12,7 +12,7 @@ class HostEntryResponse {
   /// Creates a new [HostEntryResponse].
   /// [hostname] The hostname to use in the ``/etc/hosts`` entry.
   /// [ipAddress] The IP address to use in the ``/etc/hosts`` entry.
-  HostEntryResponse({
+  const HostEntryResponse({
     this.hostname,
     this.ipAddress,
   });

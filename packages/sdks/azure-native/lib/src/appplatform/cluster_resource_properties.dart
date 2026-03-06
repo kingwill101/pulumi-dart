@@ -30,7 +30,7 @@ class ClusterResourceProperties {
   /// [networkProfile] Network profile of the Service
   /// [vnetAddons] Additional Service settings in vnet injection instance
   /// [zoneRedundant] Optional.
-  ClusterResourceProperties({
+  const ClusterResourceProperties({
     this.infraResourceGroup,
     this.maintenanceScheduleConfiguration,
     this.managedEnvironmentId,

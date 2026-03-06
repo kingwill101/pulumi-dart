@@ -27,7 +27,7 @@ class PartnerState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] (Optional) The partner integration status.
   /// [statusMessage] (Optional) The status message provided by the partner.
-  PartnerState({
+  const PartnerState({
     this.accountId,
     this.clusterIdentifier,
     this.databaseName,

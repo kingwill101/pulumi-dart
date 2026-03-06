@@ -24,7 +24,7 @@ class NotebookInstanceLifecycleConfigurationArgs {
   /// [onStart] A shell script (base64-encoded) that runs every time the SageMaker AI Notebook Instance is started including the time it's created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  NotebookInstanceLifecycleConfigurationArgs({
+  const NotebookInstanceLifecycleConfigurationArgs({
     this.name,
     this.onCreate,
     this.onStart,

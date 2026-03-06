@@ -11,7 +11,7 @@ class MetastoreServiceIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  MetastoreServiceIamBindingCondition({
+  const MetastoreServiceIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -33,7 +33,7 @@ class EnvironmentArgs {
   /// [postStartupScript] Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
   /// [project] Optional.
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.containerImage,
     this.description,
     this.displayName,

@@ -24,7 +24,7 @@ class SyncCloudEndpointArgs {
   /// [storageAccountId] The ID of the Storage Account where the Storage Share exists. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   /// [storageAccountTenantId] The Tenant ID of the Storage Account where the Storage Share exists. Changing this forces a new Storage Sync Cloud Endpoint to be created. Defaults to the current tenant id.
   /// [storageSyncGroupId] The ID of the Storage Sync Group where this Cloud Endpoint should be created. Changing this forces a new Storage Sync Cloud Endpoint to be created.
-  SyncCloudEndpointArgs({
+  const SyncCloudEndpointArgs({
     required this.fileShareName,
     this.name,
     required this.storageAccountId,

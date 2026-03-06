@@ -21,7 +21,7 @@ class DefaultServiceAccountsState {
   /// [project] The project ID where service accounts are created.
   /// [restorePolicy] The action to be performed in the default service accounts on the resource destroy.
   /// [serviceAccounts] The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
-  DefaultServiceAccountsState({
+  const DefaultServiceAccountsState({
     this.action,
     this.project,
     this.restorePolicy,

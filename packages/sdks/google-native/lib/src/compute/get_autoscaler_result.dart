@@ -50,7 +50,7 @@ class GetAutoscalerResult {
   /// [statusDetails] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
   /// [target] URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
   /// [zone] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
-  GetAutoscalerResult({
+  const GetAutoscalerResult({
     required this.autoscalingPolicy,
     required this.creationTimestamp,
     required this.description,

@@ -149,7 +149,7 @@ class KubernetesClusterAciConnectorLinux {
   /// Creates a new [KubernetesClusterAciConnectorLinux].
   /// [connectorIdentities] A `connector_identity` block is exported. The exported attributes are defined below.
   /// [subnetName] The subnet name for the virtual nodes to run.
-  KubernetesClusterAciConnectorLinux({
+  const KubernetesClusterAciConnectorLinux({
     this.connectorIdentities,
     required this.subnetName,
   });

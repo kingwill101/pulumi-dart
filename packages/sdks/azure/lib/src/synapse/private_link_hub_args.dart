@@ -21,7 +21,7 @@ class PrivateLinkHubArgs {
   /// [name] The name which should be used for this Synapse Private Link Hub. Changing this forces a new Synapse Private Link Hub to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Synapse Private Link Hub. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Synapse Private Link Hub.
-  PrivateLinkHubArgs({
+  const PrivateLinkHubArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

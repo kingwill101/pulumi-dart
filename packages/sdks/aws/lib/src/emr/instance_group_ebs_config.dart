@@ -17,7 +17,7 @@ class InstanceGroupEbsConfig {
   /// [size] The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
   /// [type] The volume type. Valid options are 'gp2', 'io1' and 'standard'.
   /// [volumesPerInstance] The number of EBS Volumes to attach per instance.
-  InstanceGroupEbsConfig({
+  const InstanceGroupEbsConfig({
     this.iops,
     required this.size,
     required this.type,

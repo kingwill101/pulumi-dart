@@ -23,7 +23,7 @@ class ReplicationLinkArgs {
   /// [linkType] Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  ReplicationLinkArgs({
+  const ReplicationLinkArgs({
     required this.databaseName,
     this.linkId,
     this.linkType,

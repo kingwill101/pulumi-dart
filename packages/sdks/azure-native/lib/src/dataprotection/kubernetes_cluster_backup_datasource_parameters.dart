@@ -38,7 +38,7 @@ class KubernetesClusterBackupDatasourceParameters {
   /// [labelSelectors] Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
   /// [objectType] Type of the specific object - used for deserializing
   /// [snapshotVolumes] Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
-  KubernetesClusterBackupDatasourceParameters({
+  const KubernetesClusterBackupDatasourceParameters({
     this.backupHookReferences,
     this.excludedNamespaces,
     this.excludedResourceTypes,

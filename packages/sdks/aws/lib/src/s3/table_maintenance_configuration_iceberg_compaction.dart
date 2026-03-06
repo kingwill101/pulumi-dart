@@ -14,7 +14,7 @@ class TableMaintenanceConfigurationIcebergCompaction {
   /// Creates a new [TableMaintenanceConfigurationIcebergCompaction].
   /// [settings] Settings object for compaction.
   /// [status] Whether the configuration is enabled.
-  TableMaintenanceConfigurationIcebergCompaction({
+  const TableMaintenanceConfigurationIcebergCompaction({
     required this.settings,
     required this.status,
   });

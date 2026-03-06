@@ -9,7 +9,7 @@ class SandboxConfigResponse {
 
   /// Creates a new [SandboxConfigResponse].
   /// [type] Type of the sandbox to use for the node.
-  SandboxConfigResponse({
+  const SandboxConfigResponse({
     required this.type,
   });
 

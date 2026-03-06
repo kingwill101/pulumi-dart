@@ -10,7 +10,7 @@ class EndpointMatcherResponse {
 
   /// Creates a new [EndpointMatcherResponse].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointMatcherResponse({
+  const EndpointMatcherResponse({
     required this.metadataLabelMatcher,
   });
 

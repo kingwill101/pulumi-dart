@@ -21,7 +21,7 @@ class SqlManagedInstanceK8sSpecResponse {
   /// [scheduling] The kubernetes scheduling information.
   /// [security] The kubernetes security information.
   /// [settings] The kubernetes settings information.
-  SqlManagedInstanceK8sSpecResponse({
+  const SqlManagedInstanceK8sSpecResponse({
     this.replicas,
     this.scheduling,
     this.security,

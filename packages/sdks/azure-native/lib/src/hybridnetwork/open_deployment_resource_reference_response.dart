@@ -13,7 +13,7 @@ class OpenDeploymentResourceReferenceResponse {
   /// Creates a new [OpenDeploymentResourceReferenceResponse].
   /// [id] Resource ID.
   /// [idType] The resource reference arm id type.
-  OpenDeploymentResourceReferenceResponse({
+  const OpenDeploymentResourceReferenceResponse({
     this.id,
     required this.idType,
   });

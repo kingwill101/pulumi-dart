@@ -11,7 +11,7 @@ class ConditionalAccessPolicyConditionsDevices {
 
   /// Creates a new [ConditionalAccessPolicyConditionsDevices].
   /// [filter] A `filter` block as documented below.
-  ConditionalAccessPolicyConditionsDevices({
+  const ConditionalAccessPolicyConditionsDevices({
     this.filter,
   });
 

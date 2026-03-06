@@ -9,7 +9,7 @@ class DefenderForServersGcpOfferingSubPlan {
 
   /// Creates a new [DefenderForServersGcpOfferingSubPlan].
   /// [type] The available sub plans
-  DefenderForServersGcpOfferingSubPlan({
+  const DefenderForServersGcpOfferingSubPlan({
     this.type,
   });
 

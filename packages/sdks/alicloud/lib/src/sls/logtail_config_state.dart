@@ -34,7 +34,7 @@ class LogtailConfigState {
   /// [outputDetail] Detailed configuration of logtail output See `output_detail` below.
   /// [outputType] Log output mode. You can only upload data to log service.
   /// [projectName] Project name
-  LogtailConfigState({
+  const LogtailConfigState({
     this.createTime,
     this.inputDetail,
     this.inputType,

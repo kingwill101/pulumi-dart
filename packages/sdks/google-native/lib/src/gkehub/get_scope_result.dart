@@ -30,7 +30,7 @@ class GetScopeResult {
   /// [state] State of the scope resource.
   /// [uid] Google-generated UUID for this resource. This is unique across all scope resources. If a scope resource is deleted and another resource with the same name is created, it gets a different uid.
   /// [updateTime] When the scope was last updated.
-  GetScopeResult({
+  const GetScopeResult({
     required this.createTime,
     required this.deleteTime,
     required this.labels,

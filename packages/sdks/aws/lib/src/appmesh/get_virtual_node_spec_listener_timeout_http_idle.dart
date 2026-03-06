@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerTimeoutHttpIdle {
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutHttpIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetVirtualNodeSpecListenerTimeoutHttpIdle({
+  const GetVirtualNodeSpecListenerTimeoutHttpIdle({
     required this.unit,
     required this.value,
   });

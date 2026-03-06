@@ -8,7 +8,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig 
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig].
   /// [token] (Output)
-  AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig({
+  const AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig({
     this.token,
   });
 

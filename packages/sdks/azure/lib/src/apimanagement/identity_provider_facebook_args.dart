@@ -21,7 +21,7 @@ class IdentityProviderFacebookArgs {
   /// [appId] App ID for Facebook.
   /// [appSecret] App Secret for Facebook.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  IdentityProviderFacebookArgs({
+  const IdentityProviderFacebookArgs({
     required this.apiManagementName,
     required this.appId,
     required this.appSecret,

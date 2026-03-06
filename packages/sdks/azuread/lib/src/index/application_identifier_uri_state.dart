@@ -12,7 +12,7 @@ class ApplicationIdentifierUriState {
   /// Creates a new [ApplicationIdentifierUriState].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [identifierUri] The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
-  ApplicationIdentifierUriState({
+  const ApplicationIdentifierUriState({
     this.applicationId,
     this.identifierUri,
   });

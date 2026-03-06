@@ -16,7 +16,7 @@ class PrivateLinkConfiguration {
   /// [groupId] The HDInsight private linkable sub-resource name to apply the private link configuration to. For example, 'headnode', 'gateway', 'edgenode'.
   /// [ipConfigurations] The IP configurations for the private link service.
   /// [name] The name of private link configuration.
-  PrivateLinkConfiguration({
+  const PrivateLinkConfiguration({
     required this.groupId,
     required this.ipConfigurations,
     required this.name,

@@ -30,7 +30,7 @@ class SimplePrivateEndpointConnectionResponse {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  SimplePrivateEndpointConnectionResponse({
+  const SimplePrivateEndpointConnectionResponse({
     this.groupIds,
     required this.id,
     required this.name,

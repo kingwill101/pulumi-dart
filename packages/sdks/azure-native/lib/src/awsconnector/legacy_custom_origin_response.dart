@@ -21,7 +21,7 @@ class LegacyCustomOriginResponse {
   /// [httpsPort] Property httpsPort
   /// [originProtocolPolicy] Property originProtocolPolicy
   /// [originSSLProtocols] Property originSSLProtocols
-  LegacyCustomOriginResponse({
+  const LegacyCustomOriginResponse({
     this.dnsName,
     this.httpPort,
     this.httpsPort,

@@ -20,7 +20,7 @@ class GetProducerDataSharesArgs {
   /// [producerArn] Amazon Resource Name (ARN) of the producer namespace that returns in the list of datashares.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of a datashare in the producer. Valid values are `ACTIVE`, `AUTHORIZED`, `PENDING_AUTHORIZATION`, `DEAUTHORIZED`, and `REJECTED`. Omit this argument to return all statuses.
-  GetProducerDataSharesArgs({
+  const GetProducerDataSharesArgs({
     required this.producerArn,
     this.region,
     this.status,

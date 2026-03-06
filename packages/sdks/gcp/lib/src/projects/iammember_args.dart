@@ -31,7 +31,7 @@ class IAMMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
   /// [project] The project id of the target project. This is not
   /// [role] The role that should be applied. Only one
-  IAMMemberArgs({
+  const IAMMemberArgs({
     this.condition,
     required this.member,
     required this.project,

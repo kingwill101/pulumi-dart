@@ -12,7 +12,7 @@ class NatGatewayStatusProvisioningStatusResponse {
   /// Creates a new [NatGatewayStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the nat gateway
   /// [status] The status of the operation performed on the nat gateway [Succeeded, Failed, InProgress]
-  NatGatewayStatusProvisioningStatusResponse({
+  const NatGatewayStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

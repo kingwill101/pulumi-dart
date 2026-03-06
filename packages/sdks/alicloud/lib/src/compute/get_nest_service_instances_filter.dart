@@ -11,7 +11,7 @@ class GetNestServiceInstancesFilter {
   /// Creates a new [GetNestServiceInstancesFilter].
   /// [name] The name of the service.
   /// [values] Set of values that are accepted for the given field.
-  GetNestServiceInstancesFilter({
+  const GetNestServiceInstancesFilter({
     this.name,
     this.values,
   });

@@ -15,7 +15,7 @@ class GetChannelPartnerLinkArgs {
   /// [accountId] Required.
   /// [channelPartnerLinkId] Required.
   /// [view] Optional.
-  GetChannelPartnerLinkArgs({
+  const GetChannelPartnerLinkArgs({
     required this.accountId,
     required this.channelPartnerLinkId,
     this.view,

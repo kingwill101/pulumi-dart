@@ -21,7 +21,7 @@ class WebApplicationDirectory {
   /// [sourcePaths] Gets or sets the paths of the directory on the source machine.
   /// [sourceSize] Gets or sets the size of the directory on the source machine.
   /// [storageProfile] Storage profile for the directory on the target container.
-  WebApplicationDirectory({
+  const WebApplicationDirectory({
     this.isEditable,
     this.sourcePaths,
     this.sourceSize,

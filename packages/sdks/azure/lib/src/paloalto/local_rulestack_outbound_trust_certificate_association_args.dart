@@ -12,7 +12,7 @@ class LocalRulestackOutboundTrustCertificateAssociationArgs {
 
   /// Creates a new [LocalRulestackOutboundTrustCertificateAssociationArgs].
   /// [certificateId] The ID of the Certificate to use as the Outbound Trust Certificate. Changing this forces a new Palo Alto Networks Rulestack Outbound Trust Certificate Association to be created.
-  LocalRulestackOutboundTrustCertificateAssociationArgs({
+  const LocalRulestackOutboundTrustCertificateAssociationArgs({
     required this.certificateId,
   });
 

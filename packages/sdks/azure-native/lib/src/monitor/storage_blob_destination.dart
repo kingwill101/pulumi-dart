@@ -15,7 +15,7 @@ class StorageBlobDestination {
   /// [containerName] The container name of the Storage Blob.
   /// [name] A friendly name for the destination.
   /// [storageAccountResourceId] The resource ID of the storage account.
-  StorageBlobDestination({
+  const StorageBlobDestination({
     this.containerName,
     this.name,
     this.storageAccountResourceId,

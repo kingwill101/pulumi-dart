@@ -9,7 +9,7 @@ class LoadBalancerDetailsResponse {
 
   /// Creates a new [LoadBalancerDetailsResponse].
   /// [id] Fully qualified resource ID for the load balancer.
-  LoadBalancerDetailsResponse({
+  const LoadBalancerDetailsResponse({
     required this.id,
   });
 

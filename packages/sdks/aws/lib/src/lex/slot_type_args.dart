@@ -35,7 +35,7 @@ class SlotTypeArgs {
   /// [name] The name of the slot type. The name is not case sensitive. Must be less than or equal to 100 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [valueSelectionStrategy] Determines the slot resolution strategy that Amazon Lex
-  SlotTypeArgs({
+  const SlotTypeArgs({
     this.createVersion,
     this.description,
     required this.enumerationValues,

@@ -12,7 +12,7 @@ class WindowStartTime {
   /// Creates a new [WindowStartTime].
   /// [hours] &lt;p&gt;The start hour of the window in Coordinated Universal Time (UTC), using 24-hour time. For example, &lt;code&gt;17&lt;/code&gt; refers to 5:00 P.M. UTC.&lt;/p&gt;
   /// [minutes] &lt;p&gt;The start minute of the window, in UTC.&lt;/p&gt;
-  WindowStartTime({
+  const WindowStartTime({
     this.hours,
     this.minutes,
   });

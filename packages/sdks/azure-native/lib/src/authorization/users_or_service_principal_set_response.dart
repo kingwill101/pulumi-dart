@@ -15,7 +15,7 @@ class UsersOrServicePrincipalSetResponse {
   /// [displayName] The display Name of the entity.
   /// [id] The object id of the entity.
   /// [type] The type of user.
-  UsersOrServicePrincipalSetResponse({
+  const UsersOrServicePrincipalSetResponse({
     this.displayName,
     this.id,
     this.type,

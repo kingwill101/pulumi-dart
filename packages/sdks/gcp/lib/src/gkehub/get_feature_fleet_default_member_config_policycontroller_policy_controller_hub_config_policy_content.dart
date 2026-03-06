@@ -13,7 +13,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent].
   /// [bundles] Configures which bundles to install and their corresponding install specs.
   /// [templateLibraries] Configures the installation of the Template Library.
-  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent({
+  const GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent({
     required this.bundles,
     required this.templateLibraries,
   });

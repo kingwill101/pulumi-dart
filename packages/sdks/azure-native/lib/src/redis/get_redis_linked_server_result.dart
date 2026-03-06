@@ -29,7 +29,7 @@ class GetRedisLinkedServerResult {
   /// [provisioningState] Terminal state of the link between primary and secondary redis cache.
   /// [serverRole] Role of the linked server.
   /// [type] Resource type.
-  GetRedisLinkedServerResult({
+  const GetRedisLinkedServerResult({
     required this.azureApiVersion,
     required this.id,
     required this.linkedRedisCacheId,

@@ -24,7 +24,7 @@ class DomainOwnershipIdentifierArgs {
   /// [name] Name of identifier.
   /// [ownershipId] Ownership Id.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  DomainOwnershipIdentifierArgs({
+  const DomainOwnershipIdentifierArgs({
     required this.domainName,
     this.kind,
     this.name,

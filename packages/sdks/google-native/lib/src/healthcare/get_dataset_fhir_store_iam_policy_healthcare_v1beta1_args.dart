@@ -19,7 +19,7 @@ class GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args({
+  const GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args({
     required this.datasetId,
     required this.fhirStoreId,
     required this.location,

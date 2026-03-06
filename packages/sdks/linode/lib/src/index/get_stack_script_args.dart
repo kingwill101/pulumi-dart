@@ -12,7 +12,7 @@ class GetStackScriptArgs {
 
   /// Creates a new [GetStackScriptArgs].
   /// [id] The unique numeric ID of the StackScript to query.
-  GetStackScriptArgs({
+  const GetStackScriptArgs({
     required this.id,
   });
 

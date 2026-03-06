@@ -22,7 +22,7 @@ class HTTPGetActionResponse {
   /// [path] Path to access on the HTTP server.
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
   /// [scheme] Not supported by Cloud Run.
-  HTTPGetActionResponse({
+  const HTTPGetActionResponse({
     required this.host,
     required this.httpHeaders,
     required this.path,

@@ -16,7 +16,7 @@ class CertManagerCertOptions {
   /// [duration] Duration of CA cert.
   /// [privateKey] Cert Manager private key.
   /// [renewBefore] Renew before time of CA cert.
-  CertManagerCertOptions({
+  const CertManagerCertOptions({
     required this.duration,
     required this.privateKey,
     required this.renewBefore,

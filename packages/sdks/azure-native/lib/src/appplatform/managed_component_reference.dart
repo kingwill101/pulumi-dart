@@ -9,7 +9,7 @@ class ManagedComponentReference {
 
   /// Creates a new [ManagedComponentReference].
   /// [resourceId] Resource Id of the managed component
-  ManagedComponentReference({
+  const ManagedComponentReference({
     required this.resourceId,
   });
 

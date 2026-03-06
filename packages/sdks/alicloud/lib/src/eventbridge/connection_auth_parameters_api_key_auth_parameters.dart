@@ -11,7 +11,7 @@ class ConnectionAuthParametersApiKeyAuthParameters {
   /// Creates a new [ConnectionAuthParametersApiKeyAuthParameters].
   /// [apiKeyName] The name of the API key.
   /// [apiKeyValue] The value of the API key.
-  ConnectionAuthParametersApiKeyAuthParameters({
+  const ConnectionAuthParametersApiKeyAuthParameters({
     this.apiKeyName,
     this.apiKeyValue,
   });

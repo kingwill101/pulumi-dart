@@ -45,7 +45,7 @@ class GetUsersUser {
   /// [status] User status. Valid values: `Enabled` and `Disabled`.
   /// [userId] The User ID of the group.
   /// [userName] The name of user.
-  GetUsersUser({
+  const GetUsersUser({
     required this.createTime,
     required this.description,
     required this.directoryId,

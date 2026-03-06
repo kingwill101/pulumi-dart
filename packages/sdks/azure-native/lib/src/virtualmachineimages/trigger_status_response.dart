@@ -15,7 +15,7 @@ class TriggerStatusResponse {
   /// [code] The status code.
   /// [message] The detailed status message, including for alerts and error messages.
   /// [time] The time of the status.
-  TriggerStatusResponse({
+  const TriggerStatusResponse({
     required this.code,
     required this.message,
     required this.time,

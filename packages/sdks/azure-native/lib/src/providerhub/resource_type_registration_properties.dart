@@ -271,7 +271,7 @@ class ResourceTypeRegistrationProperties {
   /// [templateDeploymentPolicy] The template deployment policy.
   /// [throttlingRules] The throttling rules.
   /// [tokenAuthConfiguration] The token auth configuration.
-  ResourceTypeRegistrationProperties({
+  const ResourceTypeRegistrationProperties({
     this.addResourceListTargetLocations,
     this.additionalOptions,
     this.allowEmptyRoleAssignments,

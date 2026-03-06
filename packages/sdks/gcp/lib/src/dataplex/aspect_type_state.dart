@@ -61,7 +61,7 @@ class AspectTypeState {
   /// [transferStatus] Denotes the transfer status of the Aspect Type. It is unspecified
   /// [uid] System generated globally unique ID for the AspectType. This ID will be different if the AspectType is deleted and re-created with the same name.
   /// [updateTime] The time when the AspectType was last updated.
-  AspectTypeState({
+  const AspectTypeState({
     this.aspectTypeId,
     this.createTime,
     this.dataClassification,

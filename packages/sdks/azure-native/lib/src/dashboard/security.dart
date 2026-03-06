@@ -9,7 +9,7 @@ class Security {
 
   /// Creates a new [Security].
   /// [csrfAlwaysCheck] Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
-  Security({
+  const Security({
     this.csrfAlwaysCheck,
   });
 

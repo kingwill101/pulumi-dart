@@ -11,7 +11,7 @@ class TemplateQuotaDimension {
   /// Creates a new [TemplateQuotaDimension].
   /// [key] The Key of quota_dimensions.
   /// [value] The Value of quota_dimensions.
-  TemplateQuotaDimension({
+  const TemplateQuotaDimension({
     this.key,
     this.value,
   });

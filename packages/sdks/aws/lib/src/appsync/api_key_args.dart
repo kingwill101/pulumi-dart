@@ -21,7 +21,7 @@ class ApiKeyArgs {
   /// [description] API key description. Defaults to "Managed by Pulumi".
   /// [expires] RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ApiKeyArgs({
+  const ApiKeyArgs({
     required this.apiId,
     this.description,
     this.expires,

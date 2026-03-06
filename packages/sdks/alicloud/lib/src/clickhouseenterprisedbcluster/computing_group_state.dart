@@ -39,7 +39,7 @@ class ComputingGroupState {
   /// [nodeCount] Number of computing group nodes
   /// [nodeScaleMax] Computing group node elasticity upper limit
   /// [nodeScaleMin] Lower limit of computing group node elasticity
-  ComputingGroupState({
+  const ComputingGroupState({
     this.computingGroupDescription,
     this.computingGroupEndpointNames,
     this.computingGroupEndpoints,

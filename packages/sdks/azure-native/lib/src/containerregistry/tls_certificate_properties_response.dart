@@ -12,7 +12,7 @@ class TlsCertificatePropertiesResponse {
   /// Creates a new [TlsCertificatePropertiesResponse].
   /// [location] Indicates the location of the certificates.
   /// [type] The type of certificate location.
-  TlsCertificatePropertiesResponse({
+  const TlsCertificatePropertiesResponse({
     required this.location,
     required this.type,
   });

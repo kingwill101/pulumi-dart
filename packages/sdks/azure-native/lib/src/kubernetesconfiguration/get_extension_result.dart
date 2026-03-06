@@ -79,7 +79,7 @@ class GetExtensionResult {
   /// [systemData] Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
-  GetExtensionResult({
+  const GetExtensionResult({
     this.aksAssignedIdentity,
     this.autoUpgradeMinorVersion,
     required this.azureApiVersion,

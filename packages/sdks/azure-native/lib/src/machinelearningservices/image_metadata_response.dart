@@ -15,7 +15,7 @@ class ImageMetadataResponse {
   /// [currentImageVersion] Specifies the current operating system image version this compute instance is running on.
   /// [isLatestOsImageVersion] Specifies whether this compute instance is running on the latest operating system image.
   /// [latestImageVersion] Specifies the latest available operating system image version.
-  ImageMetadataResponse({
+  const ImageMetadataResponse({
     this.currentImageVersion,
     this.isLatestOsImageVersion,
     this.latestImageVersion,

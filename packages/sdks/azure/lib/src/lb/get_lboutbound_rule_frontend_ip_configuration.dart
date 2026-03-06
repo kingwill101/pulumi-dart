@@ -11,7 +11,7 @@ class GetLBOutboundRuleFrontendIpConfiguration {
   /// Creates a new [GetLBOutboundRuleFrontendIpConfiguration].
   /// [id] The ID of the Frontend IP Configuration.
   /// [name] The name of this Load Balancer Outbound Rule.
-  GetLBOutboundRuleFrontendIpConfiguration({
+  const GetLBOutboundRuleFrontendIpConfiguration({
     required this.id,
     required this.name,
   });

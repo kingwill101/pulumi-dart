@@ -42,7 +42,7 @@ class EcsBackupClientArgs {
   /// [proxyUser] The username of custom data plane proxy server.
   /// [status] Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
   /// [useHttps] Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
-  EcsBackupClientArgs({
+  const EcsBackupClientArgs({
     this.dataNetworkType,
     this.dataProxySetting,
     required this.instanceId,

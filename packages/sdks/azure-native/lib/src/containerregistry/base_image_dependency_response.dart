@@ -21,7 +21,7 @@ class BaseImageDependencyResponse {
   /// [repository] The repository name.
   /// [tag] The tag name.
   /// [type] The type of the base image dependency.
-  BaseImageDependencyResponse({
+  const BaseImageDependencyResponse({
     this.digest,
     this.registry,
     this.repository,

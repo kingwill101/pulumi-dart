@@ -12,7 +12,7 @@ class ImageSharePermissionState {
   /// Creates a new [ImageSharePermissionState].
   /// [accountId] Alibaba Cloud Account ID. It is used to share images.
   /// [imageId] The source image ID.
-  ImageSharePermissionState({
+  const ImageSharePermissionState({
     this.accountId,
     this.imageId,
   });

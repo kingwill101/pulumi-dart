@@ -14,7 +14,7 @@ class GetMultiRegionAccessPointRegion {
   /// [bucket] The name of the bucket.
   /// [bucketAccountId] The AWS account ID that owns the bucket.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetMultiRegionAccessPointRegion({
+  const GetMultiRegionAccessPointRegion({
     required this.bucket,
     required this.bucketAccountId,
     required this.region,

@@ -22,7 +22,7 @@ class ClusterS3Import {
   /// [ingestionRole] Role applied to load the data.
   /// [sourceEngine] Source engine for the backup
   /// [sourceEngineVersion] Version of the source engine used to make the backup
-  ClusterS3Import({
+  const ClusterS3Import({
     required this.bucketName,
     this.bucketPrefix,
     required this.ingestionRole,

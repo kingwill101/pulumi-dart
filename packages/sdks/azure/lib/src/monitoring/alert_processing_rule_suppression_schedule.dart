@@ -18,7 +18,7 @@ class AlertProcessingRuleSuppressionSchedule {
   /// [effectiveUntil] Specifies the Alert Processing Rule effective end time (Y-m-d'T'H:M:S).
   /// [recurrence] A `recurrence` block as defined above.
   /// [timeZone] The time zone (e.g. Pacific Standard time, Eastern Standard Time). Defaults to `UTC`. [possible values are defined here](https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-  AlertProcessingRuleSuppressionSchedule({
+  const AlertProcessingRuleSuppressionSchedule({
     this.effectiveFrom,
     this.effectiveUntil,
     this.recurrence,

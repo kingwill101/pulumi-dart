@@ -40,7 +40,7 @@ class HyperVReplicaPolicyDetailsResponse {
   /// [recoveryPoints] A value indicating the number of recovery points.
   /// [replicaDeletionOption] A value indicating whether the VM has to be auto deleted. Supported Values: String.Empty, None, OnRecoveryCloud
   /// [replicationPort] A value indicating the recovery HTTPS port.
-  HyperVReplicaPolicyDetailsResponse({
+  const HyperVReplicaPolicyDetailsResponse({
     this.allowedAuthenticationType,
     this.applicationConsistentSnapshotFrequencyInHours,
     this.compression,

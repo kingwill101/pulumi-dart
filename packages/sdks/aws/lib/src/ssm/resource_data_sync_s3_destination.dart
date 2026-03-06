@@ -20,7 +20,7 @@ class ResourceDataSyncS3Destination {
   /// [prefix] Prefix for the bucket.
   /// [region] Region with the bucket targeted by the Resource Data Sync.
   /// [syncFormat] A supported sync format. Only JsonSerDe is currently supported. Defaults to JsonSerDe.
-  ResourceDataSyncS3Destination({
+  const ResourceDataSyncS3Destination({
     required this.bucketName,
     this.kmsKeyArn,
     this.prefix,

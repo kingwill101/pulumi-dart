@@ -52,7 +52,7 @@ class NetworkSecurityGroupResponse {
   /// [subnets] A collection of references to subnets.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  NetworkSecurityGroupResponse({
+  const NetworkSecurityGroupResponse({
     required this.defaultSecurityRules,
     required this.etag,
     required this.flowLogs,

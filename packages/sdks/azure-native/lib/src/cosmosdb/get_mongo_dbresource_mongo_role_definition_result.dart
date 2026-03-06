@@ -32,7 +32,7 @@ class GetMongoDBResourceMongoRoleDefinitionResult {
   /// [roleName] A user-friendly name for the Role Definition. Must be unique for the database account.
   /// [roles] The set of roles inherited by this Role Definition.
   /// [type] The type of Azure resource.
-  GetMongoDBResourceMongoRoleDefinitionResult({
+  const GetMongoDBResourceMongoRoleDefinitionResult({
     required this.azureApiVersion,
     this.databaseName,
     required this.id,

@@ -18,7 +18,7 @@ class StorageProfile {
   /// [geoRedundantBackup] Enable Geo-redundant or not for server backup.
   /// [storageAutogrow] Enable Storage Auto Grow.
   /// [storageMB] Max storage allowed for a server.
-  StorageProfile({
+  const StorageProfile({
     this.backupRetentionDays,
     this.geoRedundantBackup,
     this.storageAutogrow,

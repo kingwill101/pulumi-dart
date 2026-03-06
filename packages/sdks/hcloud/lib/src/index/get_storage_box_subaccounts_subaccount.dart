@@ -33,7 +33,7 @@ class GetStorageBoxSubaccountsSubaccount {
   /// [server] FQDN of the Storage Box Subaccount.
   /// [storageBoxId] ID of the Storage Box.
   /// [username] Username of the Storage Box Subaccount.
-  GetStorageBoxSubaccountsSubaccount({
+  const GetStorageBoxSubaccountsSubaccount({
     required this.accessSettings,
     required this.description,
     required this.homeDirectory,

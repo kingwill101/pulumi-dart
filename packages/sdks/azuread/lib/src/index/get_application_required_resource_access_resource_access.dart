@@ -11,7 +11,7 @@ class GetApplicationRequiredResourceAccessResourceAccess {
   /// Creates a new [GetApplicationRequiredResourceAccessResourceAccess].
   /// [id] The unique identifier for an app role or OAuth2 permission scope published by the resource application.
   /// [type] Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
-  GetApplicationRequiredResourceAccessResourceAccess({
+  const GetApplicationRequiredResourceAccessResourceAccess({
     required this.id,
     required this.type,
   });

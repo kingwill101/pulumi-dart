@@ -11,7 +11,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity].
   /// [windowAfter] Number of characters after the finding to consider.
   /// [windowBefore] Number of characters before the finding to consider.
-  PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity({
     this.windowAfter,
     this.windowBefore,
   });

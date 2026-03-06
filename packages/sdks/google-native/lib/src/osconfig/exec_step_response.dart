@@ -13,7 +13,7 @@ class ExecStepResponse {
   /// Creates a new [ExecStepResponse].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   /// [windowsExecStepConfig] The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  ExecStepResponse({
+  const ExecStepResponse({
     required this.linuxExecStepConfig,
     required this.windowsExecStepConfig,
   });

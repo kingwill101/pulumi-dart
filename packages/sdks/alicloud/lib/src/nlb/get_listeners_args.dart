@@ -21,7 +21,7 @@ class GetListenersArgs {
   /// [listenerProtocol] The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
   /// [loadBalancerIds] The ID of the NLB instance. You can specify at most 20 IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetListenersArgs({
+  const GetListenersArgs({
     this.ids,
     this.listenerProtocol,
     this.loadBalancerIds,

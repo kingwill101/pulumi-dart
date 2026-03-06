@@ -28,7 +28,7 @@ class DatabaseAccountSqlContainerArgs {
   /// [options] A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   /// [resource] The standard JSON format of a container
   /// [resourceGroupName] Name of an Azure resource group.
-  DatabaseAccountSqlContainerArgs({
+  const DatabaseAccountSqlContainerArgs({
     required this.accountName,
     this.containerName,
     required this.databaseName,

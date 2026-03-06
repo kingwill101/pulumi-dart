@@ -15,7 +15,7 @@ class VirtualHardDiskDownloadStatusResponse {
   /// [downloadedSizeInMB] The downloaded sized of the virtual hard disk in MB
   /// [progressPercentage] The progress of the operation in percentage
   /// [status] The status of Uploading virtual hard disk [Succeeded, Failed, InProgress]
-  VirtualHardDiskDownloadStatusResponse({
+  const VirtualHardDiskDownloadStatusResponse({
     this.downloadedSizeInMB,
     this.progressPercentage,
     required this.status,

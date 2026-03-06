@@ -9,7 +9,7 @@ class AwsResponse {
 
   /// Creates a new [AwsResponse].
   /// [accountId] The AWS account ID.
-  AwsResponse({
+  const AwsResponse({
     required this.accountId,
   });
 

@@ -11,7 +11,7 @@ class GetAccountAliasResult {
   /// Creates a new [GetAccountAliasResult].
   /// [accountAlias] Alias associated with the AWS account.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetAccountAliasResult({
+  const GetAccountAliasResult({
     required this.accountAlias,
     required this.id,
   });

@@ -81,7 +81,7 @@ class GetWindowsFunctionAppAuthSettingsV2 {
   /// [runtimeVersion] The Runtime Version of the Authentication and Authorisation feature of this App.
   /// [twitterV2s] A `twitter_v2` block as defined below.
   /// [unauthenticatedAction] The action to take for requests made without authentication.
-  GetWindowsFunctionAppAuthSettingsV2({
+  const GetWindowsFunctionAppAuthSettingsV2({
     required this.activeDirectoryV2s,
     required this.appleV2s,
     required this.authEnabled,

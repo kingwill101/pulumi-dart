@@ -71,7 +71,7 @@ class GetAutomationAccountResult {
   /// [systemData] Resource system metadata.
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetAutomationAccountResult({
+  const GetAutomationAccountResult({
     this.automationHybridServiceUrl,
     required this.azureApiVersion,
     required this.creationTime,

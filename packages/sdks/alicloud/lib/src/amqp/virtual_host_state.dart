@@ -12,7 +12,7 @@ class VirtualHostState {
   /// Creates a new [VirtualHostState].
   /// [instanceId] InstanceId.
   /// [virtualHostName] VirtualHostName.
-  VirtualHostState({
+  const VirtualHostState({
     this.instanceId,
     this.virtualHostName,
   });

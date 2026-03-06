@@ -12,7 +12,7 @@ class TopicRuleDynamodbv2 {
   /// Creates a new [TopicRuleDynamodbv2].
   /// [putItem] Configuration block with DynamoDB Table to which the message will be written. Nested arguments below.
   /// [roleArn] The ARN of the IAM role that grants access to the DynamoDB table.
-  TopicRuleDynamodbv2({
+  const TopicRuleDynamodbv2({
     this.putItem,
     required this.roleArn,
   });

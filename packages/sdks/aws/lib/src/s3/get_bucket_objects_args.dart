@@ -33,7 +33,7 @@ class GetBucketObjectsArgs {
   /// [prefix] Limits results to object keys with this prefix (Default: none)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [startAfter] Returns key names lexicographically after a specific object key in your bucket (Default: none; S3 lists object keys in UTF-8 character encoding in lexicographical order)
-  GetBucketObjectsArgs({
+  const GetBucketObjectsArgs({
     required this.bucket,
     this.delimiter,
     this.encodingType,

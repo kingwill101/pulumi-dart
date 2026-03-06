@@ -17,7 +17,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderCo
   /// [issuer] OAuth2 authorization server issuer identifier.
   /// [responseTypes] Set of OAuth2 response types supported by the authorization server.
   /// [tokenEndpoint] OAuth2 token endpoint URL.
-  AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata({
+  const AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata({
     required this.authorizationEndpoint,
     required this.issuer,
     required this.responseTypes,

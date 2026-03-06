@@ -53,7 +53,7 @@ class KafkaConnectorArgs {
   /// [nodeTolerations] The Node Tolerations for the Bridge Connector pods.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  KafkaConnectorArgs({
+  const KafkaConnectorArgs({
     this.clientIdPrefix,
     required this.extendedLocation,
     this.image,

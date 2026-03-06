@@ -14,7 +14,7 @@ class GetKubernetesNodePoolsNodepoolTaint {
   /// [effect] The scheduling policy.
   /// [key] The key of a taint.
   /// [value] The value of a taint.
-  GetKubernetesNodePoolsNodepoolTaint({
+  const GetKubernetesNodePoolsNodepoolTaint({
     required this.effect,
     required this.key,
     required this.value,

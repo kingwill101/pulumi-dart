@@ -17,7 +17,7 @@ class GetCertificateAuthorityIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetCertificateAuthorityIamPolicyArgs({
+  const GetCertificateAuthorityIamPolicyArgs({
     required this.certificateAuthorityId,
     required this.location,
     this.optionsRequestedPolicyVersion,

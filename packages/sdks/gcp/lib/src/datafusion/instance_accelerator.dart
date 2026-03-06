@@ -13,7 +13,7 @@ class InstanceAccelerator {
   /// Creates a new [InstanceAccelerator].
   /// [acceleratorType] The type of an accelator for a CDF instance.
   /// [state] The type of an accelator for a CDF instance.
-  InstanceAccelerator({
+  const InstanceAccelerator({
     required this.acceleratorType,
     required this.state,
   });

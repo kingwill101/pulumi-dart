@@ -11,7 +11,7 @@ class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters].
   /// [input] The inputs for the STEP_FUNCTION task.
   /// [name] The name of the STEP_FUNCTION task.
-  MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters({
+  const MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters({
     this.input,
     this.name,
   });

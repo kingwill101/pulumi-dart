@@ -12,7 +12,7 @@ class GetVariableArgs {
 
   /// Creates a new [GetVariableArgs].
   /// [variableName] The name of the variable to operate on.
-  GetVariableArgs({
+  const GetVariableArgs({
     required this.variableName,
   });
 

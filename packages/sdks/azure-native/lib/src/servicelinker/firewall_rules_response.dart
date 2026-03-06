@@ -15,7 +15,7 @@ class FirewallRulesResponse {
   /// [azureServices] Allow Azure services to access the target service if true.
   /// [callerClientIP] Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
   /// [ipRanges] This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
-  FirewallRulesResponse({
+  const FirewallRulesResponse({
     this.azureServices,
     this.callerClientIP,
     this.ipRanges,

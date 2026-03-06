@@ -23,7 +23,7 @@ class DatasetJsonAzureBlobStorageLocation {
   /// [dynamicPathEnabled] Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   /// [filename] The filename of the file on the web server.
   /// [path] The folder path to the file on the web server.
-  DatasetJsonAzureBlobStorageLocation({
+  const DatasetJsonAzureBlobStorageLocation({
     required this.container,
     this.dynamicContainerEnabled,
     this.dynamicFilenameEnabled,

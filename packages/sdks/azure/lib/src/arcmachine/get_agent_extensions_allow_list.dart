@@ -11,7 +11,7 @@ class GetAgentExtensionsAllowList {
   /// Creates a new [GetAgentExtensionsAllowList].
   /// [publisher] Publisher of the extension.
   /// [type] The identity type.
-  GetAgentExtensionsAllowList({
+  const GetAgentExtensionsAllowList({
     required this.publisher,
     required this.type,
   });

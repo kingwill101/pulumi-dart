@@ -43,7 +43,7 @@ class GetPermissionsResult {
   /// [region] Required.
   /// [table] Required.
   /// [tableWithColumns] Required.
-  GetPermissionsResult({
+  const GetPermissionsResult({
     this.catalogId,
     this.catalogResource,
     required this.dataCellsFilter,

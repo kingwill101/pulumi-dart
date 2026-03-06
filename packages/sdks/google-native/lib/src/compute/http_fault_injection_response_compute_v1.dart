@@ -14,7 +14,7 @@ class HttpFaultInjectionResponseComputeV1 {
   /// Creates a new [HttpFaultInjectionResponseComputeV1].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  HttpFaultInjectionResponseComputeV1({
+  const HttpFaultInjectionResponseComputeV1({
     required this.abort,
     required this.delay,
   });

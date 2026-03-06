@@ -24,7 +24,7 @@ class CallbackArgs {
   /// [callbackTypes] A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
   /// [callbackUrl] The detection result will be called back to the url.
   /// [cryptType] The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
-  CallbackArgs({
+  const CallbackArgs({
     required this.callbackName,
     required this.callbackSuggestions,
     required this.callbackTypes,

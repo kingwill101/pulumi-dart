@@ -49,7 +49,7 @@ class OracleServiceCloudLinkedService {
   /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
   /// [username] The user name that you use to access Oracle Service Cloud server.
   /// [version] Version of the linked service.
-  OracleServiceCloudLinkedService({
+  const OracleServiceCloudLinkedService({
     this.annotations,
     this.connectVia,
     this.description,

@@ -16,7 +16,7 @@ class GetProjectArgs {
   /// Creates a new [GetProjectArgs].
   /// [id] the ID of the project to retrieve
   /// [name] the name of the project to retrieve. The data source will raise an error if more than
-  GetProjectArgs({
+  const GetProjectArgs({
     this.id,
     this.name,
   });

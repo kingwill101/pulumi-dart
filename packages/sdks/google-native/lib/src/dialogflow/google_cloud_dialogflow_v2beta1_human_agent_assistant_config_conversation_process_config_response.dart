@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessCo
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse].
   /// [recentSentencesCount] Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse({
     required this.recentSentencesCount,
   });
 

@@ -9,7 +9,7 @@ class LoadBalancerProbeReference {
 
   /// Creates a new [LoadBalancerProbeReference].
   /// [name] name of the health probe
-  LoadBalancerProbeReference({
+  const LoadBalancerProbeReference({
     required this.name,
   });
 

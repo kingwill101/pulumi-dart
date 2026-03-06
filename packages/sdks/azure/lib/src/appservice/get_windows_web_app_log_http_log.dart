@@ -13,7 +13,7 @@ class GetWindowsWebAppLogHttpLog {
   /// Creates a new [GetWindowsWebAppLogHttpLog].
   /// [azureBlobStorages] A `azure_blob_storage` block as defined above.
   /// [fileSystems] A `file_system` block as defined above.
-  GetWindowsWebAppLogHttpLog({
+  const GetWindowsWebAppLogHttpLog({
     required this.azureBlobStorages,
     required this.fileSystems,
   });

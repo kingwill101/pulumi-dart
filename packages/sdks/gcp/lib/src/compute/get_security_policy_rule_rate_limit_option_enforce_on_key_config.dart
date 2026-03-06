@@ -11,7 +11,7 @@ class GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
   /// Creates a new [GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig].
   /// [enforceOnKeyName] Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
   /// [enforceOnKeyType] Determines the key to enforce the rate_limit_threshold on
-  GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig({
+  const GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig({
     required this.enforceOnKeyName,
     required this.enforceOnKeyType,
   });

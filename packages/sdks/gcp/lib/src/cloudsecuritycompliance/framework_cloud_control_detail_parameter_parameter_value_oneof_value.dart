@@ -13,7 +13,7 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValue {
   /// Creates a new [FrameworkCloudControlDetailParameterParameterValueOneofValue].
   /// [name] The name of the parameter.
   /// [parameterValue] The value of the parameter.
-  FrameworkCloudControlDetailParameterParameterValueOneofValue({
+  const FrameworkCloudControlDetailParameterParameterValueOneofValue({
     this.name,
     this.parameterValue,
   });

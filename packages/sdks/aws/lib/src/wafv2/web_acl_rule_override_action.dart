@@ -11,7 +11,7 @@ class WebAclRuleOverrideAction {
   /// Creates a new [WebAclRuleOverrideAction].
   /// [count] Override the rule action setting to count (i.e., only count matches). Configured as an empty block `{}`.
   /// [none] Don't override the rule action setting. Configured as an empty block `{}`.
-  WebAclRuleOverrideAction({
+  const WebAclRuleOverrideAction({
     this.count,
     this.none,
   });

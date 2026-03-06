@@ -13,7 +13,7 @@ class ConnectionMonitorEndpointFilter {
   /// Creates a new [ConnectionMonitorEndpointFilter].
   /// [items] List of items in the filter.
   /// [type] The behavior of the endpoint filter. Currently only 'Include' is supported.
-  ConnectionMonitorEndpointFilter({
+  const ConnectionMonitorEndpointFilter({
     this.items,
     this.type,
   });

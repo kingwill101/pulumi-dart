@@ -9,7 +9,7 @@ class BucketEncryptionResponse {
 
   /// Creates a new [BucketEncryptionResponse].
   /// [defaultKmsKeyName] A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-  BucketEncryptionResponse({
+  const BucketEncryptionResponse({
     required this.defaultKmsKeyName,
   });
 

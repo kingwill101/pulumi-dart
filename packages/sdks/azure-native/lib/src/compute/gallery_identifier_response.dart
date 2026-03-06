@@ -9,7 +9,7 @@ class GalleryIdentifierResponse {
 
   /// Creates a new [GalleryIdentifierResponse].
   /// [uniqueName] The unique name of the Shared Image Gallery. This name is generated automatically by Azure.
-  GalleryIdentifierResponse({
+  const GalleryIdentifierResponse({
     required this.uniqueName,
   });
 

@@ -46,7 +46,7 @@ class ClusterState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcEndpointServiceName] The DSQL Cluster's VPC endpoint service name.
-  ClusterState({
+  const ClusterState({
     this.arn,
     this.deletionProtectionEnabled,
     this.encryptionDetails,

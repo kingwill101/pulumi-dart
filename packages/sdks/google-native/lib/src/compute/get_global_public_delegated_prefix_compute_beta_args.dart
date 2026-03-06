@@ -13,7 +13,7 @@ class GetGlobalPublicDelegatedPrefixComputeBetaArgs {
   /// Creates a new [GetGlobalPublicDelegatedPrefixComputeBetaArgs].
   /// [project] Optional.
   /// [publicDelegatedPrefix] Required.
-  GetGlobalPublicDelegatedPrefixComputeBetaArgs({
+  const GetGlobalPublicDelegatedPrefixComputeBetaArgs({
     this.project,
     required this.publicDelegatedPrefix,
   });

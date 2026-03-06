@@ -15,7 +15,7 @@ class SharedVPCServiceProjectState {
   /// [deletionPolicy] The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
   /// [hostProject] The ID of a host project to associate.
   /// [serviceProject] The ID of the project that will serve as a Shared VPC service project.
-  SharedVPCServiceProjectState({
+  const SharedVPCServiceProjectState({
     this.deletionPolicy,
     this.hostProject,
     this.serviceProject,

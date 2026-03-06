@@ -17,7 +17,7 @@ class GetAspectTypeIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAspectTypeIamPolicyArgs({
+  const GetAspectTypeIamPolicyArgs({
     required this.aspectTypeId,
     required this.location,
     this.optionsRequestedPolicyVersion,

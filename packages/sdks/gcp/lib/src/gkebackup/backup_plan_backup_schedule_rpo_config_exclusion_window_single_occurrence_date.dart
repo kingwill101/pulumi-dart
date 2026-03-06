@@ -14,7 +14,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
   /// [day] Day of a month.
   /// [month] Month of a year.
   /// [year] Year of the date.
-  BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate({
+  const BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate({
     this.day,
     this.month,
     this.year,

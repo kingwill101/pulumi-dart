@@ -14,7 +14,7 @@ class IngressBackend {
   /// Creates a new [IngressBackend].
   /// [resource] resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with "Service".
   /// [service] service references a service as a backend. This is a mutually exclusive setting with "Resource".
-  IngressBackend({
+  const IngressBackend({
     this.resource,
     this.service,
   });

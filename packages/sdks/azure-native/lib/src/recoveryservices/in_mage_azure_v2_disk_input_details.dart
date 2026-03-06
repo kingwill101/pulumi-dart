@@ -18,7 +18,7 @@ class InMageAzureV2DiskInputDetails {
   /// [diskId] The DiskId.
   /// [diskType] The disk type.
   /// [logStorageAccountId] The LogStorageAccountId.
-  InMageAzureV2DiskInputDetails({
+  const InMageAzureV2DiskInputDetails({
     this.diskEncryptionSetId,
     this.diskId,
     this.diskType,

@@ -22,7 +22,7 @@ class CustomTargetTypeIamBindingArgs {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Required.
-  CustomTargetTypeIamBindingArgs({
+  const CustomTargetTypeIamBindingArgs({
     this.condition,
     this.location,
     required this.members,

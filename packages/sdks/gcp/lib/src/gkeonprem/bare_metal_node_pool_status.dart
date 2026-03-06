@@ -19,7 +19,7 @@ class BareMetalNodePoolStatus {
   /// Creates a new [BareMetalNodePoolStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  BareMetalNodePoolStatus({
+  const BareMetalNodePoolStatus({
     this.conditions,
     this.errorMessage,
   });

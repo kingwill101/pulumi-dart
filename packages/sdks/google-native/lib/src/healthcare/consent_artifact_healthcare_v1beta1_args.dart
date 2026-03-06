@@ -43,7 +43,7 @@ class ConsentArtifactHealthcareV1beta1Args {
   /// [userId] User's UUID provided by the client.
   /// [userSignature] Optional. User's signature.
   /// [witnessSignature] Optional. A signature from a witness.
-  ConsentArtifactHealthcareV1beta1Args({
+  const ConsentArtifactHealthcareV1beta1Args({
     this.consentContentScreenshots,
     this.consentContentVersion,
     required this.consentStoreId,

@@ -16,7 +16,7 @@ class StartMigrationScenarioServerRoleResultResponse {
   /// [exceptionsAndWarnings] Migration exceptions and warnings.
   /// [name] Name of server role.
   /// [state] Current state of migration
-  StartMigrationScenarioServerRoleResultResponse({
+  const StartMigrationScenarioServerRoleResultResponse({
     required this.exceptionsAndWarnings,
     required this.name,
     required this.state,

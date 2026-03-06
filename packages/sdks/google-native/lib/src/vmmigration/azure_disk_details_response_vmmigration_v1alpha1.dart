@@ -15,7 +15,7 @@ class AzureDiskDetailsResponseVmmigrationV1alpha1 {
   /// [diskId] Azure disk ID.
   /// [diskNumber] The ordinal number of the disk.
   /// [sizeGb] Size in GB.
-  AzureDiskDetailsResponseVmmigrationV1alpha1({
+  const AzureDiskDetailsResponseVmmigrationV1alpha1({
     required this.diskId,
     required this.diskNumber,
     required this.sizeGb,

@@ -13,7 +13,7 @@ class PackageStoreResponse {
   /// Creates a new [PackageStoreResponse].
   /// [name] The name of the package store
   /// [packageStoreLinkedService] The package store linked service reference.
-  PackageStoreResponse({
+  const PackageStoreResponse({
     required this.name,
     required this.packageStoreLinkedService,
   });

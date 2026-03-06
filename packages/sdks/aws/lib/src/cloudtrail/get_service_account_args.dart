@@ -12,7 +12,7 @@ class GetServiceAccountArgs {
 
   /// Creates a new [GetServiceAccountArgs].
   /// [region] Name of the Region whose AWS CloudTrail account ID is desired. Defaults to the Region set in the provider configuration.
-  GetServiceAccountArgs({
+  const GetServiceAccountArgs({
     this.region,
   });
 

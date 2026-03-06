@@ -15,7 +15,7 @@ class GetCommunicationServiceArgs {
   /// Creates a new [GetCommunicationServiceArgs].
   /// [communicationServiceName] The name of the CommunicationService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCommunicationServiceArgs({
+  const GetCommunicationServiceArgs({
     required this.communicationServiceName,
     required this.resourceGroupName,
   });

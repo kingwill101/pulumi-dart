@@ -12,7 +12,7 @@ class ConnectionState {
   /// Creates a new [ConnectionState].
   /// [description] Description of the connection state.
   /// [status] Status of the connection.
-  ConnectionState({
+  const ConnectionState({
     this.description,
     this.status,
   });

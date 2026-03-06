@@ -23,7 +23,7 @@ class GetChannelConnectionResult {
   /// [name] The name of the connection.
   /// [uid] Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
   /// [updateTime] The last-modified time.
-  GetChannelConnectionResult({
+  const GetChannelConnectionResult({
     required this.activationToken,
     required this.channel,
     required this.createTime,

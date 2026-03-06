@@ -30,7 +30,7 @@ class DomainArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [userEngagementTracking] Describes whether user engagement tracking is enabled or disabled.
-  DomainArgs({
+  const DomainArgs({
     required this.domainManagement,
     this.domainName,
     required this.emailServiceName,

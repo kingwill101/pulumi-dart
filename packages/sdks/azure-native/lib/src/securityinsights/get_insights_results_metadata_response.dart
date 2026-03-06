@@ -13,7 +13,7 @@ class GetInsightsResultsMetadataResponse {
   /// Creates a new [GetInsightsResultsMetadataResponse].
   /// [errors] information about the failed queries
   /// [totalCount] the total items found for the insights request
-  GetInsightsResultsMetadataResponse({
+  const GetInsightsResultsMetadataResponse({
     this.errors,
     required this.totalCount,
   });

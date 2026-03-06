@@ -23,7 +23,7 @@ class VmwareControlPlaneNodeConfigResponse {
   /// [memory] The megabytes of memory for each admin cluster node that serves as a control plane for this VMware user cluster (default: 8192 MB memory).
   /// [replicas] The number of control plane nodes for this VMware user cluster. (default: 1 replica).
   /// [vsphereConfig] Vsphere-specific config.
-  VmwareControlPlaneNodeConfigResponse({
+  const VmwareControlPlaneNodeConfigResponse({
     required this.autoResizeConfig,
     required this.cpus,
     required this.memory,

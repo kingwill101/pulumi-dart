@@ -11,7 +11,7 @@ class CustomerManagedPolicyAttachmentCustomerManagedPolicyReference {
   /// Creates a new [CustomerManagedPolicyAttachmentCustomerManagedPolicyReference].
   /// [name] Name of the customer managed IAM Policy to be attached.
   /// [path] The path to the IAM policy to be attached. The default is `/`. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names) for more information.
-  CustomerManagedPolicyAttachmentCustomerManagedPolicyReference({
+  const CustomerManagedPolicyAttachmentCustomerManagedPolicyReference({
     required this.name,
     this.path,
   });

@@ -9,7 +9,7 @@ class EventSourcesConfigEventSource {
 
   /// Creates a new [EventSourcesConfigEventSource].
   /// [amazonCodeGuruProfilers] Stores whether DevOps Guru is configured to consume recommendations which are generated from AWS CodeGuru Profiler. See `amazon_code_guru_profiler` below.
-  EventSourcesConfigEventSource({
+  const EventSourcesConfigEventSource({
     required this.amazonCodeGuruProfilers,
   });
 

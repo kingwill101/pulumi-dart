@@ -27,7 +27,7 @@ class GetIntegrationAccountAssemblyResult {
   /// [properties] The assembly properties.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountAssemblyResult({
+  const GetIntegrationAccountAssemblyResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

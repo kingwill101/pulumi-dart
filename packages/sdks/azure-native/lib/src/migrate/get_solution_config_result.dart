@@ -8,7 +8,7 @@ class GetSolutionConfigResult {
 
   /// Creates a new [GetSolutionConfigResult].
   /// [publisherSasUri] Gets or sets the publisher sas uri for the solution.
-  GetSolutionConfigResult({
+  const GetSolutionConfigResult({
     this.publisherSasUri,
   });
 

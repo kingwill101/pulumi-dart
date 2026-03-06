@@ -36,7 +36,7 @@ class GetCustomRoutingEndpointTrafficPoliciesResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetCustomRoutingEndpointTrafficPoliciesResult({
+  const GetCustomRoutingEndpointTrafficPoliciesResult({
     required this.acceleratorId,
     this.address,
     required this.customRoutingEndpointTrafficPolicies,

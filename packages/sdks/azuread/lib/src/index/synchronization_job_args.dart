@@ -18,7 +18,7 @@ class SynchronizationJobArgs {
   /// [enabled] Whether the provisioning job is enabled. Default state is `true`.
   /// [servicePrincipalId] The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   /// [templateId] Identifier of the synchronization template this job is based on.
-  SynchronizationJobArgs({
+  const SynchronizationJobArgs({
     this.enabled,
     required this.servicePrincipalId,
     required this.templateId,

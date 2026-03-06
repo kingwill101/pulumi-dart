@@ -34,7 +34,7 @@ class GetApiKeysItem {
   /// [stageKeys] Required.
   /// [tags] Map of tags for the resource.
   /// [value] Value of the API Key.
-  GetApiKeysItem({
+  const GetApiKeysItem({
     required this.createdDate,
     required this.customerId,
     required this.description,

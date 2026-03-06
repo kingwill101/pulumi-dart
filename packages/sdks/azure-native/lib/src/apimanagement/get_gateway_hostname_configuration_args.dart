@@ -21,7 +21,7 @@ class GetGatewayHostnameConfigurationArgs {
   /// [hcId] Gateway hostname configuration identifier. Must be unique in the scope of parent Gateway entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetGatewayHostnameConfigurationArgs({
+  const GetGatewayHostnameConfigurationArgs({
     required this.gatewayId,
     required this.hcId,
     required this.resourceGroupName,

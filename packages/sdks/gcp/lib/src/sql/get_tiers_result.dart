@@ -15,7 +15,7 @@ class GetTiersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [project] Required.
   /// [tiers] A list of all available machine types (tiers) for project. Each contains:
-  GetTiersResult({
+  const GetTiersResult({
     required this.id,
     required this.project,
     required this.tiers,

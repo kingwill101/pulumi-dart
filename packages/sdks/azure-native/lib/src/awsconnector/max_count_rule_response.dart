@@ -15,7 +15,7 @@ class MaxCountRuleResponse {
   /// [deleteSourceFromS3] Set to true to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.
   /// [enabled] Specify true to apply the rule, or false to disable it.
   /// [maxCount] Specify the maximum number of application versions to retain.
-  MaxCountRuleResponse({
+  const MaxCountRuleResponse({
     this.deleteSourceFromS3,
     this.enabled,
     this.maxCount,

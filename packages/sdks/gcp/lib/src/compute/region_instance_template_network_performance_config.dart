@@ -8,7 +8,7 @@ class RegionInstanceTemplateNetworkPerformanceConfig {
 
   /// Creates a new [RegionInstanceTemplateNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
-  RegionInstanceTemplateNetworkPerformanceConfig({
+  const RegionInstanceTemplateNetworkPerformanceConfig({
     required this.totalEgressBandwidthTier,
   });
 

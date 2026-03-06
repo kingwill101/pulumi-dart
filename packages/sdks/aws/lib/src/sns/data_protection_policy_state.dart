@@ -15,7 +15,7 @@ class DataProtectionPolicyState {
   /// [arn] The ARN of the SNS topic
   /// [policy] The fully-formed AWS policy as JSON. For more information about building AWS IAM policy documents with this provider, see the AWS IAM Policy Document Guide.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DataProtectionPolicyState({
+  const DataProtectionPolicyState({
     this.arn,
     this.policy,
     this.region,

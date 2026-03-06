@@ -15,7 +15,7 @@ class GetRecordsArgs {
   /// Creates a new [GetRecordsArgs].
   /// [nameRegex] Regex string to apply to the resource record names returned by AWS.
   /// [zoneId] The ID of the hosted zone that contains the resource record sets that you want to list.
-  GetRecordsArgs({
+  const GetRecordsArgs({
     this.nameRegex,
     required this.zoneId,
   });

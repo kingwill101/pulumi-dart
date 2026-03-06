@@ -16,7 +16,7 @@ class AgentcoreGatewayTargetCredentialProviderConfiguration {
   /// [apiKey] API key-based authentication configuration. See `api_key` below.
   /// [gatewayIamRole] Use the gateway's IAM role for authentication. This is an empty configuration block.
   /// [oauth] OAuth-based authentication configuration. See `oauth` below.
-  AgentcoreGatewayTargetCredentialProviderConfiguration({
+  const AgentcoreGatewayTargetCredentialProviderConfiguration({
     this.apiKey,
     this.gatewayIamRole,
     this.oauth,

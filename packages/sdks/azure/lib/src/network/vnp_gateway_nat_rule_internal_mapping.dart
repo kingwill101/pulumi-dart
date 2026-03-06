@@ -11,7 +11,7 @@ class VnpGatewayNatRuleInternalMapping {
   /// Creates a new [VnpGatewayNatRuleInternalMapping].
   /// [addressSpace] The string CIDR representing the address space for the VPN Gateway Nat Rule internal mapping.
   /// [portRange] The single port range for the VPN Gateway Nat Rule internal mapping.
-  VnpGatewayNatRuleInternalMapping({
+  const VnpGatewayNatRuleInternalMapping({
     required this.addressSpace,
     this.portRange,
   });

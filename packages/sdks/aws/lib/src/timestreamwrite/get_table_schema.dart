@@ -8,7 +8,7 @@ class GetTableSchema {
 
   /// Creates a new [GetTableSchema].
   /// [compositePartitionKeys] Required.
-  GetTableSchema({
+  const GetTableSchema({
     required this.compositePartitionKeys,
   });
 

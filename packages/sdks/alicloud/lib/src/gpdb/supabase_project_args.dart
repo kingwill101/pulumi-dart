@@ -42,7 +42,7 @@ class SupabaseProjectArgs {
   /// [vpcId] The VPC ID.
   /// [vswitchId] The vSwitch ID.
   /// [zoneId] The Zone ID.
-  SupabaseProjectArgs({
+  const SupabaseProjectArgs({
     required this.accountPassword,
     this.diskPerformanceLevel,
     required this.projectName,

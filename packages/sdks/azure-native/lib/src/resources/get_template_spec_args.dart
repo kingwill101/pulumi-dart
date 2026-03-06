@@ -18,7 +18,7 @@ class GetTemplateSpecArgs {
   /// [expand] Allows for expansion of additional Template Spec details in the response. Optional.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [templateSpecName] Name of the Template Spec.
-  GetTemplateSpecArgs({
+  const GetTemplateSpecArgs({
     this.expand,
     required this.resourceGroupName,
     required this.templateSpecName,

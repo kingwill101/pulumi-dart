@@ -27,7 +27,7 @@ class AwsOrganizationsOrganizationPropertiesResponse {
   /// [managementAccountEmail] The email address that is associated with the AWS account that is designated as the management account for the organization.
   /// [managementAccountId] The unique identifier (ID) of the management account of an organization.
   /// [rootId] The unique identifier (ID) for the root.
-  AwsOrganizationsOrganizationPropertiesResponse({
+  const AwsOrganizationsOrganizationPropertiesResponse({
     this.arn,
     this.featureSet,
     this.id,

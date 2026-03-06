@@ -14,7 +14,7 @@ class GetFrontdoorOriginGroupLoadBalancing {
   /// [additionalLatencyInMilliseconds] Specifies the additional latency in milliseconds for probes to fall into the lowest latency bucket.
   /// [sampleSize] Specifies the number of samples to consider for load balancing decisions.
   /// [successfulSamplesRequired] Specifies the number of samples within the sample period that must succeed.
-  GetFrontdoorOriginGroupLoadBalancing({
+  const GetFrontdoorOriginGroupLoadBalancing({
     required this.additionalLatencyInMilliseconds,
     required this.sampleSize,
     required this.successfulSamplesRequired,

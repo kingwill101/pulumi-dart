@@ -53,7 +53,7 @@ class GetSearchAllResourcesResult {
   /// [project] The project that this resource belongs to, in the form of `projects/{project_number}`.
   /// [state] The state of this resource.
   /// [updateTime] The last update timestamp of this resource, at which the resource was last modified or deleted.
-  GetSearchAllResourcesResult({
+  const GetSearchAllResourcesResult({
     required this.assetType,
     required this.createTime,
     required this.description,

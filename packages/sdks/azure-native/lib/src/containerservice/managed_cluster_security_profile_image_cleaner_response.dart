@@ -12,7 +12,7 @@ class ManagedClusterSecurityProfileImageCleanerResponse {
   /// Creates a new [ManagedClusterSecurityProfileImageCleanerResponse].
   /// [enabled] Whether to enable Image Cleaner on AKS cluster.
   /// [intervalHours] Image Cleaner scanning interval in hours.
-  ManagedClusterSecurityProfileImageCleanerResponse({
+  const ManagedClusterSecurityProfileImageCleanerResponse({
     this.enabled,
     this.intervalHours,
   });

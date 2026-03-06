@@ -17,7 +17,7 @@ class RouteAsPath {
   /// Creates a new [RouteAsPath].
   /// [asLists] (Output)
   /// [pathSegmentType] (Output)
-  RouteAsPath({
+  const RouteAsPath({
     this.asLists,
     this.pathSegmentType,
   });

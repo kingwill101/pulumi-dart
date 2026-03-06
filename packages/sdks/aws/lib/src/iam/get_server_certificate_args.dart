@@ -21,7 +21,7 @@ class GetServerCertificateArgs {
   /// [name] exact name of the cert to lookup
   /// [namePrefix] prefix of cert to filter by
   /// [pathPrefix] prefix of path to filter by
-  GetServerCertificateArgs({
+  const GetServerCertificateArgs({
     this.latest,
     this.name,
     this.namePrefix,

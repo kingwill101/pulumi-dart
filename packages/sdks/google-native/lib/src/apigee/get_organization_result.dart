@@ -91,7 +91,7 @@ class GetOrganizationResult {
   /// [subscriptionPlan] Subscription plan that the customer has purchased. Output only.
   /// [subscriptionType] DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
   /// [type] Not used by Apigee.
-  GetOrganizationResult({
+  const GetOrganizationResult({
     required this.addonsConfig,
     required this.analyticsRegion,
     required this.apiConsumerDataEncryptionKeyName,

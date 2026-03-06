@@ -27,7 +27,7 @@ class VpcEndpointZoneState {
   /// [status] The state of the zone.
   /// [vswitchId] The ID of the vSwitch in the zone.
   /// [zoneId] The zone ID.
-  VpcEndpointZoneState({
+  const VpcEndpointZoneState({
     this.dryRun,
     this.endpointId,
     this.eniIp,

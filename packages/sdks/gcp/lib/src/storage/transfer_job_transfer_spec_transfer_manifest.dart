@@ -8,7 +8,7 @@ class TransferJobTransferSpecTransferManifest {
 
   /// Creates a new [TransferJobTransferSpecTransferManifest].
   /// [location] The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
-  TransferJobTransferSpecTransferManifest({
+  const TransferJobTransferSpecTransferManifest({
     required this.location,
   });
 

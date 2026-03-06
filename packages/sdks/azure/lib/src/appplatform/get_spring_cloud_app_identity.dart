@@ -16,7 +16,7 @@ class GetSpringCloudAppIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Spring Cloud Application.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Spring Cloud Application.
   /// [type] The Type of Managed Identity assigned to the Spring Cloud Application.
-  GetSpringCloudAppIdentity({
+  const GetSpringCloudAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

@@ -9,7 +9,7 @@ class BgpConfigurationResponse {
 
   /// Creates a new [BgpConfigurationResponse].
   /// [asnToIpAddressMapping] Asn to ip address mapping
-  BgpConfigurationResponse({
+  const BgpConfigurationResponse({
     this.asnToIpAddressMapping,
   });
 

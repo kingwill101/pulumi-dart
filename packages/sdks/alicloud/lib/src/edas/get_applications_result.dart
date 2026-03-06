@@ -23,7 +23,7 @@ class GetApplicationsResult {
   /// [nameRegex] Optional.
   /// [names] A list of applications names.
   /// [outputFile] Optional.
-  GetApplicationsResult({
+  const GetApplicationsResult({
     required this.applications,
     required this.id,
     required this.ids,

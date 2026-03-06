@@ -8,7 +8,7 @@ class GetDiskAsyncPrimaryDisk {
 
   /// Creates a new [GetDiskAsyncPrimaryDisk].
   /// [disk] Primary disk for asynchronous disk replication.
-  GetDiskAsyncPrimaryDisk({
+  const GetDiskAsyncPrimaryDisk({
     required this.disk,
   });
 

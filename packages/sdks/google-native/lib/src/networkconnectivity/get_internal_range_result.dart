@@ -44,7 +44,7 @@ class GetInternalRangeResult {
   /// [updateTime] Time when the internal range was updated.
   /// [usage] The type of usage set for this InternalRange.
   /// [users] The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
-  GetInternalRangeResult({
+  const GetInternalRangeResult({
     required this.createTime,
     required this.description,
     required this.ipCidrRange,

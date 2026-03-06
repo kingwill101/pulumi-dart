@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1TrialParameterResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1TrialParameterResponse].
   /// [parameterId] The ID of the parameter. The parameter should be defined in StudySpec's Parameters.
   /// [value] The value of the parameter. `number_value` will be set if a parameter defined in StudySpec is in type 'INTEGER', 'DOUBLE' or 'DISCRETE'. `string_value` will be set if a parameter defined in StudySpec is in type 'CATEGORICAL'.
-  GoogleCloudAiplatformV1beta1TrialParameterResponse({
+  const GoogleCloudAiplatformV1beta1TrialParameterResponse({
     required this.parameterId,
     required this.value,
   });

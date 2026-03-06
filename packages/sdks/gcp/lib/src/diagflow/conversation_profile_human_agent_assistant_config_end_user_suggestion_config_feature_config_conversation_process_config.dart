@@ -8,7 +8,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig].
   /// [recentSentencesCount] Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig({
     this.recentSentencesCount,
   });
 

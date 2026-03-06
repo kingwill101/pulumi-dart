@@ -12,7 +12,7 @@ class GcsProfile {
   /// Creates a new [GcsProfile].
   /// [bucket] The Cloud Storage bucket name.
   /// [rootPath] The root path inside the Cloud Storage bucket.
-  GcsProfile({
+  const GcsProfile({
     required this.bucket,
     this.rootPath,
   });

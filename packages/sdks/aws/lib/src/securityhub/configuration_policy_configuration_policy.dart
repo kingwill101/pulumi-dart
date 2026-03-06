@@ -15,7 +15,7 @@ class ConfigurationPolicyConfigurationPolicy {
   /// [enabledStandardArns] A list that defines which security standards are enabled in the configuration policy. It must be defined if `service_enabled` is set to true.
   /// [securityControlsConfiguration] Defines which security controls are enabled in the configuration policy and any customizations to parameters affecting them. See below.
   /// [serviceEnabled] Indicates whether Security Hub is enabled in the policy.
-  ConfigurationPolicyConfigurationPolicy({
+  const ConfigurationPolicyConfigurationPolicy({
     this.enabledStandardArns,
     this.securityControlsConfiguration,
     required this.serviceEnabled,

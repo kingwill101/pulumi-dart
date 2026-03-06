@@ -90,7 +90,7 @@ class GetNoteContaineranalysisV1beta1Result {
   /// [updateTime] The time this note was last updated. This field can be used as a filter in list requests.
   /// [vulnerability] A note describing a package vulnerability.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
-  GetNoteContaineranalysisV1beta1Result({
+  const GetNoteContaineranalysisV1beta1Result({
     required this.attestationAuthority,
     required this.baseImage,
     required this.build,

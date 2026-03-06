@@ -26,7 +26,7 @@ class VpcEndpointLinkedVpcArgs {
   /// [moduleName] The name of the module that you want to access. Valid Values:
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch.
-  VpcEndpointLinkedVpcArgs({
+  const VpcEndpointLinkedVpcArgs({
     this.enableCreateDnsRecordInPvzt,
     required this.instanceId,
     required this.moduleName,

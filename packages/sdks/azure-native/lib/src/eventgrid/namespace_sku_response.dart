@@ -14,7 +14,7 @@ class NamespaceSkuResponse {
   /// Creates a new [NamespaceSkuResponse].
   /// [capacity] Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
   /// [name] The name of the SKU.
-  NamespaceSkuResponse({
+  const NamespaceSkuResponse({
     this.capacity,
     this.name,
   });

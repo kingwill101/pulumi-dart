@@ -8,7 +8,7 @@ class DomainDevicesDiskSourceDir {
 
   /// Creates a new [DomainDevicesDiskSourceDir].
   /// [dir] Defines the specific directory path for the backing store source configuration.
-  DomainDevicesDiskSourceDir({
+  const DomainDevicesDiskSourceDir({
     this.dir,
   });
 

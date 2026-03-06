@@ -10,7 +10,7 @@ class KubernetesClusterNodeProvisioningProfile {
   /// Creates a new [KubernetesClusterNodeProvisioningProfile].
   /// [defaultNodePools] Specifies whether default node pools should be provisioned automatically. Possible values are `Auto` and `None`. Defaults to `Auto`. At least one of `mode` or `default_node_pools` must be specified.
   /// [mode] Optional.
-  KubernetesClusterNodeProvisioningProfile({
+  const KubernetesClusterNodeProvisioningProfile({
     this.defaultNodePools,
     this.mode,
   });

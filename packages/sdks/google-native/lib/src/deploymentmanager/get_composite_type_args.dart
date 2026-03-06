@@ -13,7 +13,7 @@ class GetCompositeTypeArgs {
   /// Creates a new [GetCompositeTypeArgs].
   /// [compositeType] Required.
   /// [project] Optional.
-  GetCompositeTypeArgs({
+  const GetCompositeTypeArgs({
     required this.compositeType,
     this.project,
   });

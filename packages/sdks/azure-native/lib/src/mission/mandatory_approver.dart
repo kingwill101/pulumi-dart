@@ -9,7 +9,7 @@ class MandatoryApprover {
 
   /// Creates a new [MandatoryApprover].
   /// [approverEntraId] EntraId of the approver
-  MandatoryApprover({
+  const MandatoryApprover({
     required this.approverEntraId,
   });
 

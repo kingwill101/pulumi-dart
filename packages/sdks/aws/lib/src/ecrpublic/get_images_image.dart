@@ -26,7 +26,7 @@ class GetImagesImage {
   /// [imageTags] Required.
   /// [registryId] AWS account ID associated with the public registry that contains the repository. If not specified, the default public registry is assumed.
   /// [repositoryName] Name of the public repository.
-  GetImagesImage({
+  const GetImagesImage({
     required this.artifactMediaType,
     required this.imageDigest,
     required this.imageManifestMediaType,

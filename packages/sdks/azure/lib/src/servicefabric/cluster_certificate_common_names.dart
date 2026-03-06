@@ -12,7 +12,7 @@ class ClusterCertificateCommonNames {
   /// Creates a new [ClusterCertificateCommonNames].
   /// [commonNames] A `common_names` block as defined below.
   /// [x509StoreName] The X509 Store where the Certificate Exists, such as `My`.
-  ClusterCertificateCommonNames({
+  const ClusterCertificateCommonNames({
     required this.commonNames,
     required this.x509StoreName,
   });

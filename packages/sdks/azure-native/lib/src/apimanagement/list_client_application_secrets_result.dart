@@ -9,7 +9,7 @@ class ListClientApplicationSecretsResult {
 
   /// Creates a new [ListClientApplicationSecretsResult].
   /// [entra] Microsoft EntraID client application secrets
-  ListClientApplicationSecretsResult({
+  const ListClientApplicationSecretsResult({
     this.entra,
   });
 

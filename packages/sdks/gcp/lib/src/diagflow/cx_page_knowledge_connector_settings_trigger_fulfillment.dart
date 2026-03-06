@@ -39,7 +39,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
   /// [setParameterActions] Set parameter values before executing the webhook.
   /// [tag] The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
   /// [webhook] The webhook to call. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
-  CxPageKnowledgeConnectorSettingsTriggerFulfillment({
+  const CxPageKnowledgeConnectorSettingsTriggerFulfillment({
     this.advancedSettings,
     this.conditionalCases,
     this.enableGenerativeFallback,

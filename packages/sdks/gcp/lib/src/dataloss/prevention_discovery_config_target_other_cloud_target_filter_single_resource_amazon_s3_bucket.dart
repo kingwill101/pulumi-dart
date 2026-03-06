@@ -12,7 +12,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket].
   /// [awsAccount] The AWS account.
   /// [bucketName] The bucket name.
-  PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket({
     this.awsAccount,
     this.bucketName,
   });

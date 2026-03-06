@@ -96,7 +96,7 @@ class DraftPackageArgs {
   /// [useAutofill] Indicates whether user choose to enable script auto-fill.
   /// [useSample] Specifies whether a sample package should be used instead of the one uploaded by the user.
   /// [version] Application version
-  DraftPackageArgs({
+  const DraftPackageArgs({
     this.appFileName,
     this.applicationName,
     this.comments,

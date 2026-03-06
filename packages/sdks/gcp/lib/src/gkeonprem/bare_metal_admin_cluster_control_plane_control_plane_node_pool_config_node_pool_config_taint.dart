@@ -14,7 +14,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
   /// [effect] Available taint effects.
   /// [key] (Optional)
   /// [value] (Optional)
-  BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint({
+  const BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint({
     this.effect,
     this.key,
     this.value,

@@ -18,7 +18,7 @@ class TagArgs {
   /// [sourceImage] Name of the source image.
   /// [tagTriggers] List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
   /// [targetImage] Name of the target image.
-  TagArgs({
+  const TagArgs({
     required this.sourceImage,
     this.tagTriggers,
     required this.targetImage,

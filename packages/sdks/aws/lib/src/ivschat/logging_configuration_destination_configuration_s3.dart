@@ -10,7 +10,7 @@ class LoggingConfigurationDestinationConfigurationS3 {
 
   /// Creates a new [LoggingConfigurationDestinationConfigurationS3].
   /// [bucketName] Name of the Amazon S3 bucket where chat activity will be logged.
-  LoggingConfigurationDestinationConfigurationS3({
+  const LoggingConfigurationDestinationConfigurationS3({
     required this.bucketName,
   });
 

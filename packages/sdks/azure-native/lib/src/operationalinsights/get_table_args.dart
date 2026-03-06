@@ -18,7 +18,7 @@ class GetTableArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tableName] The name of the table.
   /// [workspaceName] The name of the workspace.
-  GetTableArgs({
+  const GetTableArgs({
     required this.resourceGroupName,
     required this.tableName,
     required this.workspaceName,

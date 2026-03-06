@@ -18,7 +18,7 @@ class GetSiteCertificateArgs {
   /// [certificateName] Name of the certificate.
   /// [name] Name of the site.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSiteCertificateArgs({
+  const GetSiteCertificateArgs({
     required this.certificateName,
     required this.name,
     required this.resourceGroupName,

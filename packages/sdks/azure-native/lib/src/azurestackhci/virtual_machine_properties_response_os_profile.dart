@@ -23,7 +23,7 @@ class VirtualMachinePropertiesResponseOsProfile {
   /// [linuxConfiguration] LinuxConfiguration - linux specific configuration values for the virtual machine
   /// [osType] OsType - string specifying whether the OS is Linux or Windows
   /// [windowsConfiguration] Windows Configuration for the virtual machine
-  VirtualMachinePropertiesResponseOsProfile({
+  const VirtualMachinePropertiesResponseOsProfile({
     this.adminUsername,
     this.computerName,
     this.linuxConfiguration,

@@ -13,7 +13,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase {
   /// Creates a new [StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase].
   /// [collections] Collections in the database.
   /// [database] Database name.
-  StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase({
+  const StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase({
     this.collections,
     this.database,
   });

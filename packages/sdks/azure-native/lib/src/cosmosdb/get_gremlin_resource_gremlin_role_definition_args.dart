@@ -18,7 +18,7 @@ class GetGremlinResourceGremlinRoleDefinitionArgs {
   /// [accountName] Cosmos DB database account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [roleDefinitionId] The GUID for the Role Definition.
-  GetGremlinResourceGremlinRoleDefinitionArgs({
+  const GetGremlinResourceGremlinRoleDefinitionArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.roleDefinitionId,

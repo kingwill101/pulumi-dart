@@ -28,7 +28,7 @@ class AccessPointState {
   /// [publicAccessBlockConfiguration] Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
   /// [status] The status of the resource
   /// [vpcConfiguration] If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
-  AccessPointState({
+  const AccessPointState({
     this.accessPointName,
     this.bucket,
     this.networkOrigin,

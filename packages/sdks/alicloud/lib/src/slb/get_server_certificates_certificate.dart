@@ -47,7 +47,7 @@ class GetServerCertificatesCertificate {
   /// [resourceGroupId] The Id of resource group which the slb server certificates belongs.
   /// [subjectAlternativeNames] Server certificate subject alternative name list.
   /// [tags] A mapping of tags to assign to the resource.
-  GetServerCertificatesCertificate({
+  const GetServerCertificatesCertificate({
     required this.alicloudCertificateId,
     required this.alicloudCertificateName,
     required this.commonName,

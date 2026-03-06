@@ -9,7 +9,7 @@ class FeaturesAppConfiguration {
   /// Creates a new [FeaturesAppConfiguration].
   /// [purgeSoftDeleteOnDestroy] Optional.
   /// [recoverSoftDeleted] Optional.
-  FeaturesAppConfiguration({
+  const FeaturesAppConfiguration({
     this.purgeSoftDeleteOnDestroy,
     this.recoverSoftDeleted,
   });

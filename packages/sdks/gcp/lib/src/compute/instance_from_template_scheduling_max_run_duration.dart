@@ -15,7 +15,7 @@ class InstanceFromTemplateSchedulingMaxRunDuration {
   /// Creates a new [InstanceFromTemplateSchedulingMaxRunDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  InstanceFromTemplateSchedulingMaxRunDuration({
+  const InstanceFromTemplateSchedulingMaxRunDuration({
     this.nanos,
     required this.seconds,
   });

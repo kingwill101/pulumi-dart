@@ -11,7 +11,7 @@ class WorkspaceDatasetversionLabel {
   /// Creates a new [WorkspaceDatasetversionLabel].
   /// [key] The key of the tags
   /// [value] The value of the tags
-  WorkspaceDatasetversionLabel({
+  const WorkspaceDatasetversionLabel({
     this.key,
     this.value,
   });

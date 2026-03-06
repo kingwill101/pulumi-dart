@@ -31,7 +31,7 @@ class GetInstancesInstance {
   /// [updatedAt] Required.
   /// [version] Required.
   /// [vswitchId] Required.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.createdAt,
     required this.dataNodeAmount,
     required this.dataNodeDiskSize,

@@ -30,7 +30,7 @@ class CertificateObjectLocalRulestackArgs {
   /// [localRulestackName] LocalRulestack resource name
   /// [name] certificate name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  CertificateObjectLocalRulestackArgs({
+  const CertificateObjectLocalRulestackArgs({
     this.auditComment,
     required this.certificateSelfSigned,
     this.certificateSignerResourceId,

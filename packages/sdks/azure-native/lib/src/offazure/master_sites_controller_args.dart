@@ -36,7 +36,7 @@ class MasterSitesControllerArgs {
   /// [siteName] Site name
   /// [sites] Gets or sets the sites that are a part of Master Site.
   /// [tags] Resource tags.
-  MasterSitesControllerArgs({
+  const MasterSitesControllerArgs({
     this.allowMultipleSites,
     this.customerStorageAccountArmId,
     this.location,

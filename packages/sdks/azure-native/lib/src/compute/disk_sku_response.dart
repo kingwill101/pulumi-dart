@@ -12,7 +12,7 @@ class DiskSkuResponse {
   /// Creates a new [DiskSkuResponse].
   /// [name] The sku name.
   /// [tier] The sku tier.
-  DiskSkuResponse({
+  const DiskSkuResponse({
     this.name,
     required this.tier,
   });

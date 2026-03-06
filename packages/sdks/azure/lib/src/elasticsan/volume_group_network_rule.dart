@@ -11,7 +11,7 @@ class VolumeGroupNetworkRule {
   /// Creates a new [VolumeGroupNetworkRule].
   /// [action] The action to take when the Subnet attempts to access this Elastic SAN Volume Group. The only possible value is `Allow`. Defaults to `Allow`.
   /// [subnetId] The ID of the Subnet which should be allowed to access this Elastic SAN Volume Group.
-  VolumeGroupNetworkRule({
+  const VolumeGroupNetworkRule({
     this.action,
     required this.subnetId,
   });

@@ -8,7 +8,7 @@ class GetCapacityPoolVolumeGroupIdForLdapUserResult {
 
   /// Creates a new [GetCapacityPoolVolumeGroupIdForLdapUserResult].
   /// [groupIdsForLdapUser] Group Id list
-  GetCapacityPoolVolumeGroupIdForLdapUserResult({
+  const GetCapacityPoolVolumeGroupIdForLdapUserResult({
     this.groupIdsForLdapUser,
   });
 

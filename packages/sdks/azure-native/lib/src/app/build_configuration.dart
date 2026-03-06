@@ -23,7 +23,7 @@ class BuildConfiguration {
   /// [platform] Platform to be used to build and run the app.
   /// [platformVersion] Platform version to be used to build and run the app.
   /// [preBuildSteps] List of steps to perform before the build.
-  BuildConfiguration({
+  const BuildConfiguration({
     this.baseOs,
     this.environmentVariables,
     this.platform,

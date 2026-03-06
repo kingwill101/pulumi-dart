@@ -13,7 +13,7 @@ class GetReplicationRecoveryPlanAzureToAzureSetting {
   /// [primaryZone] Required.
   /// [recoveryEdgeZone] Required.
   /// [recoveryZone] Required.
-  GetReplicationRecoveryPlanAzureToAzureSetting({
+  const GetReplicationRecoveryPlanAzureToAzureSetting({
     required this.primaryEdgeZone,
     required this.primaryZone,
     required this.recoveryEdgeZone,

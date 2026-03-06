@@ -10,7 +10,7 @@ class WafRuleConfigActionsResponse {
   /// Creates a new [WafRuleConfigActionsResponse].
   /// [code] Optional.
   /// [id] The internal unique ID of the WAF rule.
-  WafRuleConfigActionsResponse({
+  const WafRuleConfigActionsResponse({
     this.code,
     this.id,
   });

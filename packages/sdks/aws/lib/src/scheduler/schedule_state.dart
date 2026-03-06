@@ -55,7 +55,7 @@ class ScheduleState {
   /// [startDate] The date, in UTC, after which the schedule can begin invoking its target. Depending on the schedule's recurrence expression, invocations might occur on, or after, the start date you specify. EventBridge Scheduler ignores the start date for one-time schedules. Example: `2030-01-01T01:00:00Z`.
   /// [state] Specifies whether the schedule is enabled or disabled. One of: `ENABLED` (default), `DISABLED`.
   /// [target] Configures the target of the schedule. Detailed below.
-  ScheduleState({
+  const ScheduleState({
     this.actionAfterCompletion,
     this.arn,
     this.description,

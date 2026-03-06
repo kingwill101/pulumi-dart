@@ -15,7 +15,7 @@ class GetComponentCurrentBillingFeatureResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [currentBillingFeatures] Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
   /// [dataVolumeCap] An Application Insights component daily data volume cap
-  GetComponentCurrentBillingFeatureResult({
+  const GetComponentCurrentBillingFeatureResult({
     required this.azureApiVersion,
     this.currentBillingFeatures,
     this.dataVolumeCap,

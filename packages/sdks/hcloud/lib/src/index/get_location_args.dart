@@ -15,7 +15,7 @@ class GetLocationArgs {
   /// Creates a new [GetLocationArgs].
   /// [id] ID of the Location.
   /// [name] Name of the Location.
-  GetLocationArgs({
+  const GetLocationArgs({
     this.id,
     this.name,
   });

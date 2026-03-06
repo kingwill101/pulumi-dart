@@ -19,7 +19,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
   /// [errorStatuses] (Output)
   /// [executionTime] (Output)
   /// [workflowInvocation] (Output)
-  RepositoryWorkflowConfigRecentScheduledExecutionRecord({
+  const RepositoryWorkflowConfigRecentScheduledExecutionRecord({
     this.errorStatuses,
     this.executionTime,
     this.workflowInvocation,

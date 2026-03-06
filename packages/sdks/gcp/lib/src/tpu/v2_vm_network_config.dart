@@ -24,7 +24,7 @@ class V2VmNetworkConfig {
   /// [network] The name of the network for the TPU node. It must be a preexisting Google Compute Engine
   /// [queueCount] Specifies networking queue count for TPU VM instance's network interface.
   /// [subnetwork] The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-  V2VmNetworkConfig({
+  const V2VmNetworkConfig({
     this.canIpForward,
     this.enableExternalIps,
     this.network,

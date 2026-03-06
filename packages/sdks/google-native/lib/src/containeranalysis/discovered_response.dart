@@ -40,7 +40,7 @@ class DiscoveredResponse {
   /// [lastScanTime] The last time this resource was scanned.
   /// [operation] An operation that indicates the status of the current scan. This field is deprecated, do not use.
   /// [sbomStatus] The status of an SBOM generation.
-  DiscoveredResponse({
+  const DiscoveredResponse({
     required this.analysisCompleted,
     required this.analysisError,
     required this.analysisStatus,

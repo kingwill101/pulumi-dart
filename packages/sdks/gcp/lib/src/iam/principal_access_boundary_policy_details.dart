@@ -16,7 +16,7 @@ class PrincipalAccessBoundaryPolicyDetails {
   /// Creates a new [PrincipalAccessBoundaryPolicyDetails].
   /// [enforcementVersion] The version number that indicates which Google Cloud services
   /// [rules] A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
-  PrincipalAccessBoundaryPolicyDetails({
+  const PrincipalAccessBoundaryPolicyDetails({
     this.enforcementVersion,
     required this.rules,
   });

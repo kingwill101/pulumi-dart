@@ -40,7 +40,7 @@ class ApplicationGatewayRequestRoutingRule {
   /// [rewriteRuleSet] Rewrite Rule Set resource in Basic rule of the application gateway.
   /// [ruleType] Rule type.
   /// [urlPathMap] URL path map resource of the application gateway.
-  ApplicationGatewayRequestRoutingRule({
+  const ApplicationGatewayRequestRoutingRule({
     this.backendAddressPool,
     this.backendHttpSettings,
     this.httpListener,

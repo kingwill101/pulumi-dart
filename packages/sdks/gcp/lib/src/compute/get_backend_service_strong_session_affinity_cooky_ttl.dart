@@ -15,7 +15,7 @@ class GetBackendServiceStrongSessionAffinityCookyTtl {
   /// Creates a new [GetBackendServiceStrongSessionAffinityCookyTtl].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  GetBackendServiceStrongSessionAffinityCookyTtl({
+  const GetBackendServiceStrongSessionAffinityCookyTtl({
     required this.nanos,
     required this.seconds,
   });

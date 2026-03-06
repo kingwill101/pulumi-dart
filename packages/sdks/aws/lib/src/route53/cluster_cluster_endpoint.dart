@@ -11,7 +11,7 @@ class ClusterClusterEndpoint {
   /// Creates a new [ClusterClusterEndpoint].
   /// [endpoint] Cluster endpoint.
   /// [region] Region of the endpoint.
-  ClusterClusterEndpoint({
+  const ClusterClusterEndpoint({
     this.endpoint,
     this.region,
   });

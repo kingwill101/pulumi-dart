@@ -23,7 +23,7 @@ class AutoscalerAutoscalingPolicyCpuUtilization {
   /// Creates a new [AutoscalerAutoscalingPolicyCpuUtilization].
   /// [predictiveMethod] Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
   /// [target] The target CPU utilization that the autoscaler should maintain.
-  AutoscalerAutoscalingPolicyCpuUtilization({
+  const AutoscalerAutoscalingPolicyCpuUtilization({
     this.predictiveMethod,
     required this.target,
   });

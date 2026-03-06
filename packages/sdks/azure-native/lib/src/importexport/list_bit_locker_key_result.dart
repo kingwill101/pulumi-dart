@@ -10,7 +10,7 @@ class ListBitLockerKeyResult {
 
   /// Creates a new [ListBitLockerKeyResult].
   /// [value] drive status
-  ListBitLockerKeyResult({
+  const ListBitLockerKeyResult({
     this.value,
   });
 

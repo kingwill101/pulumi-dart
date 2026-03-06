@@ -14,7 +14,7 @@ class ProjectMemberRole {
   /// [code] Project Role Code.
   /// [name] project role name
   /// [type] project role type
-  ProjectMemberRole({
+  const ProjectMemberRole({
     this.code,
     this.name,
     this.type,

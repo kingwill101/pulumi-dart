@@ -18,7 +18,7 @@ class AS2MessageConnectionSettingsResponse {
   /// [keepHttpConnectionAlive] The value indicating whether to keep the connection alive.
   /// [supportHttpStatusCodeContinue] The value indicating whether to support HTTP status code 'CONTINUE'.
   /// [unfoldHttpHeaders] The value indicating whether to unfold the HTTP headers.
-  AS2MessageConnectionSettingsResponse({
+  const AS2MessageConnectionSettingsResponse({
     required this.ignoreCertificateNameMismatch,
     required this.keepHttpConnectionAlive,
     required this.supportHttpStatusCodeContinue,

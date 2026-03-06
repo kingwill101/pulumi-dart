@@ -50,7 +50,7 @@ class ServicePerimetersServicePerimeterStatus {
   /// [resources] A list of GCP resources that are inside of the service perimeter.
   /// [restrictedServices] GCP services that are subject to the Service Perimeter
   /// [vpcAccessibleServices] Specifies how APIs are allowed to communicate within the Service
-  ServicePerimetersServicePerimeterStatus({
+  const ServicePerimetersServicePerimeterStatus({
     this.accessLevels,
     this.egressPolicies,
     this.ingressPolicies,

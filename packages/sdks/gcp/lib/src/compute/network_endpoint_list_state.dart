@@ -23,7 +23,7 @@ class NetworkEndpointListState {
   /// [networkEndpoints] The network endpoints to be added to the enclosing network endpoint group
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Zone where the containing network endpoint group is located.
-  NetworkEndpointListState({
+  const NetworkEndpointListState({
     this.networkEndpointGroup,
     this.networkEndpoints,
     this.project,

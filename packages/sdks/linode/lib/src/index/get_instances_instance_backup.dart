@@ -14,7 +14,7 @@ class GetInstancesInstanceBackup {
   /// [available] Whether this Backup is available for restoration.
   /// [enabled] If this Linode has the Backup service enabled.
   /// [schedules] Required.
-  GetInstancesInstanceBackup({
+  const GetInstancesInstanceBackup({
     required this.available,
     required this.enabled,
     required this.schedules,

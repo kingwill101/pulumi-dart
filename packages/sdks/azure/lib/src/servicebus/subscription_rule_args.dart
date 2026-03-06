@@ -28,7 +28,7 @@ class SubscriptionRuleArgs {
   /// [name] Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
   /// [sqlFilter] Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
   /// [subscriptionId] The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
-  SubscriptionRuleArgs({
+  const SubscriptionRuleArgs({
     this.action,
     this.correlationFilter,
     required this.filterType,

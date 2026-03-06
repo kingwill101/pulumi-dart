@@ -56,7 +56,7 @@ class GetVmmServerResult {
   /// [type] Resource Type
   /// [uuid] Unique ID of vmmServer.
   /// [version] Version is the version of the vmmSever.
-  GetVmmServerResult({
+  const GetVmmServerResult({
     required this.azureApiVersion,
     required this.connectionStatus,
     this.credentials,

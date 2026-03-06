@@ -40,7 +40,7 @@ class GetAddonResult {
   /// [region] Required.
   /// [serviceAccountRoleArn] ARN of IAM role used for EKS add-on. If value is empty -
   /// [tags] Required.
-  GetAddonResult({
+  const GetAddonResult({
     required this.addonName,
     required this.addonVersion,
     required this.arn,

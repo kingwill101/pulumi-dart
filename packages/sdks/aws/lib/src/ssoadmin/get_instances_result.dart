@@ -16,7 +16,7 @@ class GetInstancesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identityStoreIds] Set of identifiers of the identity stores connected to the SSO Instances.
   /// [region] Required.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.arns,
     required this.id,
     required this.identityStoreIds,

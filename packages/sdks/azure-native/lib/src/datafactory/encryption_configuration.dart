@@ -19,7 +19,7 @@ class EncryptionConfiguration {
   /// [keyName] The name of the key in Azure Key Vault to use as Customer Managed Key.
   /// [keyVersion] The version of the key used for CMK. If not provided, latest version will be used.
   /// [vaultBaseUrl] The url of the Azure Key Vault used for CMK.
-  EncryptionConfiguration({
+  const EncryptionConfiguration({
     this.identity,
     required this.keyName,
     this.keyVersion,

@@ -15,7 +15,7 @@ class ApplicationSecurityGroup {
   /// [id] Resource ID.
   /// [location] Resource location.
   /// [tags] Resource tags.
-  ApplicationSecurityGroup({
+  const ApplicationSecurityGroup({
     this.id,
     this.location,
     this.tags,

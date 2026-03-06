@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2TriggerResponse {
   /// Creates a new [GooglePrivacyDlpV2TriggerResponse].
   /// [manual] For use with hybrid jobs. Jobs must be manually created and finished.
   /// [schedule] Create a job on a repeating basis based on the elapse of time.
-  GooglePrivacyDlpV2TriggerResponse({
+  const GooglePrivacyDlpV2TriggerResponse({
     required this.manual,
     required this.schedule,
   });

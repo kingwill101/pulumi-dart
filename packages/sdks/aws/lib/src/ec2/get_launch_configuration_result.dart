@@ -66,7 +66,7 @@ class GetLaunchConfigurationResult {
   /// [securityGroups] List of associated Security Group IDS.
   /// [spotPrice] Price to use for reserving Spot instances.
   /// [userData] User Data of the instance.
-  GetLaunchConfigurationResult({
+  const GetLaunchConfigurationResult({
     required this.arn,
     required this.associatePublicIpAddress,
     required this.ebsBlockDevices,

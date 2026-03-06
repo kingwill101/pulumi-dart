@@ -11,7 +11,7 @@ class AlertProcessingRuleActionGroupConditionTargetResourceType {
   /// Creates a new [AlertProcessingRuleActionGroupConditionTargetResourceType].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   /// [values] A list of values to match for a given condition. The values should be valid resource types. (e.g. Microsoft.Compute/VirtualMachines)
-  AlertProcessingRuleActionGroupConditionTargetResourceType({
+  const AlertProcessingRuleActionGroupConditionTargetResourceType({
     required this.operator,
     required this.values,
   });

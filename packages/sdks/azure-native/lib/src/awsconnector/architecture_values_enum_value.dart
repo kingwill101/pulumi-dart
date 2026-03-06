@@ -9,7 +9,7 @@ class ArchitectureValuesEnumValue {
 
   /// Creates a new [ArchitectureValuesEnumValue].
   /// [value] Property value
-  ArchitectureValuesEnumValue({
+  const ArchitectureValuesEnumValue({
     this.value,
   });
 

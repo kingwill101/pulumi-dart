@@ -27,7 +27,7 @@ class WafRuleState {
   /// [siteId] The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   /// [siteVersion] Optional.
   /// [wafRuleId] The unique identifier of the WAF rule.
-  WafRuleState({
+  const WafRuleState({
     this.config,
     this.phase,
     this.rulesetId,

@@ -17,7 +17,7 @@ class GetEdgeCacheKeysetIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetEdgeCacheKeysetIamPolicyArgs({
+  const GetEdgeCacheKeysetIamPolicyArgs({
     required this.edgeCacheKeysetId,
     required this.location,
     this.optionsRequestedPolicyVersion,

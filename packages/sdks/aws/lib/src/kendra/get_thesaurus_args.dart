@@ -21,7 +21,7 @@ class GetThesaurusArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that helps organize the Thesaurus you create.
   /// [thesaurusId] Identifier of the Thesaurus.
-  GetThesaurusArgs({
+  const GetThesaurusArgs({
     required this.indexId,
     this.region,
     this.tags,

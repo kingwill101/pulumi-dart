@@ -10,7 +10,7 @@ class MysqlRdbms {
 
   /// Creates a new [MysqlRdbms].
   /// [mysqlDatabases] Mysql databases on the server
-  MysqlRdbms({
+  const MysqlRdbms({
     this.mysqlDatabases,
   });
 

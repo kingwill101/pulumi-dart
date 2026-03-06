@@ -12,7 +12,7 @@ class SkuResourcePropertiesResponse {
   /// Creates a new [SkuResourcePropertiesResponse].
   /// [provisioningState] The provisioning state.
   /// [skuSettings] The sku settings.
-  SkuResourcePropertiesResponse({
+  const SkuResourcePropertiesResponse({
     required this.provisioningState,
     required this.skuSettings,
   });

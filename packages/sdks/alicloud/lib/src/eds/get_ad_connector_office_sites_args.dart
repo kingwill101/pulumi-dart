@@ -30,7 +30,7 @@ class GetAdConnectorOfficeSitesArgs {
   /// [nameRegex] A regex string to filter results by Ad Connector Office Site name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The workspace status. Valid values:
-  GetAdConnectorOfficeSitesArgs({
+  const GetAdConnectorOfficeSitesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -16,7 +16,7 @@ class SpaceSpaceSettingsJupyterServerAppSettings {
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. See `code_repository` Block below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `default_resource_spec` Block below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  SpaceSpaceSettingsJupyterServerAppSettings({
+  const SpaceSpaceSettingsJupyterServerAppSettings({
     this.codeRepositories,
     required this.defaultResourceSpec,
     this.lifecycleConfigArns,

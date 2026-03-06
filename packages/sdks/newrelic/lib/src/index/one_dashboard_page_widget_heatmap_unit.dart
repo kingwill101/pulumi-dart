@@ -12,7 +12,7 @@ class OneDashboardPageWidgetHeatmapUnit {
   /// Creates a new [OneDashboardPageWidgetHeatmapUnit].
   /// [seriesOverrides] (Optional) A Nested block which will take two string attributes `color` and `series_name`. This nested block is used to customize colors of individual.
   /// [unit] (Optional) Choose a unit to customize the unit on your Y axis and in each of your series.
-  OneDashboardPageWidgetHeatmapUnit({
+  const OneDashboardPageWidgetHeatmapUnit({
     this.seriesOverrides,
     this.unit,
   });

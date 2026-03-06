@@ -13,7 +13,7 @@ class ResourceMetricSourceAutoscalingV2beta2 {
   /// Creates a new [ResourceMetricSourceAutoscalingV2beta2].
   /// [name] name is the name of the resource in question.
   /// [target] target specifies the target value for the given metric
-  ResourceMetricSourceAutoscalingV2beta2({
+  const ResourceMetricSourceAutoscalingV2beta2({
     required this.name,
     required this.target,
   });

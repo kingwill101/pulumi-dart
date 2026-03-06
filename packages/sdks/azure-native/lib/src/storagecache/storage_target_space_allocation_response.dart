@@ -12,7 +12,7 @@ class StorageTargetSpaceAllocationResponse {
   /// Creates a new [StorageTargetSpaceAllocationResponse].
   /// [allocationPercentage] The percentage of cache space allocated for this storage target
   /// [name] Name of the storage target.
-  StorageTargetSpaceAllocationResponse({
+  const StorageTargetSpaceAllocationResponse({
     this.allocationPercentage,
     this.name,
   });

@@ -22,7 +22,7 @@ class MongoMigrationCollectionResponse {
   /// [sourceDatabase] Source database name.
   /// [targetCollection] Target collection name.
   /// [targetDatabase] Target database name.
-  MongoMigrationCollectionResponse({
+  const MongoMigrationCollectionResponse({
     required this.migrationProgressDetails,
     this.sourceCollection,
     this.sourceDatabase,

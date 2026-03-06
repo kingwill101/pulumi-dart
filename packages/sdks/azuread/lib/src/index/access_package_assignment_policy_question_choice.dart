@@ -12,7 +12,7 @@ class AccessPackageAssignmentPolicyQuestionChoice {
   /// Creates a new [AccessPackageAssignmentPolicyQuestionChoice].
   /// [actualValue] The actual value of this choice
   /// [displayValue] The display text of this choice
-  AccessPackageAssignmentPolicyQuestionChoice({
+  const AccessPackageAssignmentPolicyQuestionChoice({
     required this.actualValue,
     required this.displayValue,
   });

@@ -12,7 +12,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse {
   /// Creates a new [GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse].
   /// [allowedValues] List of values allowed at this resource.
   /// [deniedValues] List of values denied at this resource.
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse({
+  const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse({
     required this.allowedValues,
     required this.deniedValues,
   });

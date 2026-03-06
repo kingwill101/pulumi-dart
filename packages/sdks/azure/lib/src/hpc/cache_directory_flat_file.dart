@@ -11,7 +11,7 @@ class CacheDirectoryFlatFile {
   /// Creates a new [CacheDirectoryFlatFile].
   /// [groupFileUri] The URI of the file containing group information (`/etc/group` file format in Unix-like OS).
   /// [passwordFileUri] The URI of the file containing user information (`/etc/passwd` file format in Unix-like OS).
-  CacheDirectoryFlatFile({
+  const CacheDirectoryFlatFile({
     required this.groupFileUri,
     required this.passwordFileUri,
   });

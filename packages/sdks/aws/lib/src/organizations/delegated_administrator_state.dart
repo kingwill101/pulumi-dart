@@ -33,7 +33,7 @@ class DelegatedAdministratorState {
   /// [name] The friendly name of the delegated administrator's account.
   /// [servicePrincipal] The service principal of the AWS service for which you want to make the member account a delegated administrator.
   /// [status] The status of the delegated administrator's account in the organization.
-  DelegatedAdministratorState({
+  const DelegatedAdministratorState({
     this.accountId,
     this.arn,
     this.delegationEnabledDate,

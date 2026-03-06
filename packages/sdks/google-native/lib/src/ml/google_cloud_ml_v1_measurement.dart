@@ -13,7 +13,7 @@ class GoogleCloudMlV1Measurement {
   /// Creates a new [GoogleCloudMlV1Measurement].
   /// [metrics] Provides a list of metrics that act as inputs into the objective function.
   /// [stepCount] The number of steps a machine learning model has been trained for. Must be non-negative.
-  GoogleCloudMlV1Measurement({
+  const GoogleCloudMlV1Measurement({
     this.metrics,
     this.stepCount,
   });

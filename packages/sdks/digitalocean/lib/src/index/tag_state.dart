@@ -27,7 +27,7 @@ class TagState {
   /// [totalResourceCount] A count of the total number of resources that the tag is applied to.
   /// [volumeSnapshotsCount] A count of the volume snapshots that the tag is applied to.
   /// [volumesCount] A count of the volumes that the tag is applied to.
-  TagState({
+  const TagState({
     this.databasesCount,
     this.dropletsCount,
     this.imagesCount,

@@ -37,7 +37,7 @@ class ExampleArgs {
   /// [location] Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [messages] The collection of messages that make up the conversation.
   /// [project] The ID of the project in which the resource belongs.
-  ExampleArgs({
+  const ExampleArgs({
     required this.app,
     this.description,
     required this.displayName,

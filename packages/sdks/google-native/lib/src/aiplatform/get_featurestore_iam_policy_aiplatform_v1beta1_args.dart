@@ -15,7 +15,7 @@ class GetFeaturestoreIamPolicyAiplatformV1beta1Args {
   /// [featurestoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeaturestoreIamPolicyAiplatformV1beta1Args({
+  const GetFeaturestoreIamPolicyAiplatformV1beta1Args({
     required this.featurestoreId,
     required this.location,
     this.project,

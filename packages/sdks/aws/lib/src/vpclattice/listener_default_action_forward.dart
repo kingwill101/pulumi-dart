@@ -9,7 +9,7 @@ class ListenerDefaultActionForward {
 
   /// Creates a new [ListenerDefaultActionForward].
   /// [targetGroups] One or more target group blocks.
-  ListenerDefaultActionForward({
+  const ListenerDefaultActionForward({
     this.targetGroups,
   });
 

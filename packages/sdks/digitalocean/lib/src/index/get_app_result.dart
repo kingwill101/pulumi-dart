@@ -43,7 +43,7 @@ class GetAppResult {
   /// [specs] A DigitalOcean App spec describing the app.
   /// [updatedAt] The date and time of when the app was last updated.
   /// [urn] The uniform resource identifier for the app.
-  GetAppResult({
+  const GetAppResult({
     required this.activeDeploymentId,
     required this.appId,
     required this.createdAt,

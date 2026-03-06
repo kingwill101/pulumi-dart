@@ -9,7 +9,7 @@ class MountPointMap {
 
   /// Creates a new [MountPointMap].
   /// [shareId] ID of the share mounted to the role VM.
-  MountPointMap({
+  const MountPointMap({
     required this.shareId,
   });
 

@@ -13,7 +13,7 @@ class SELinuxStrategyOptions {
   /// Creates a new [SELinuxStrategyOptions].
   /// [rule] rule is the strategy that will dictate the allowable labels that may be set.
   /// [seLinuxOptions] seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-  SELinuxStrategyOptions({
+  const SELinuxStrategyOptions({
     required this.rule,
     this.seLinuxOptions,
   });

@@ -19,7 +19,7 @@ class AutomationActionEventHub {
   /// [connectionString] The target Event Hub connection string (it will not be included in any response).
   /// [eventHubResourceId] The target Event Hub Azure Resource ID.
   /// [isTrustedServiceEnabled] Indicates whether the trusted service is enabled or not.
-  AutomationActionEventHub({
+  const AutomationActionEventHub({
     required this.actionType,
     this.connectionString,
     this.eventHubResourceId,

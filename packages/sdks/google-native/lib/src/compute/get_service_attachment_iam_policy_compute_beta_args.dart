@@ -17,7 +17,7 @@ class GetServiceAttachmentIamPolicyComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetServiceAttachmentIamPolicyComputeBetaArgs({
+  const GetServiceAttachmentIamPolicyComputeBetaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

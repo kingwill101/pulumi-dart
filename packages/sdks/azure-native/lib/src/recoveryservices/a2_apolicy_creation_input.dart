@@ -22,7 +22,7 @@ class A2APolicyCreationInput {
   /// [instanceType] The class type.
   /// [multiVmSyncStatus] A value indicating whether multi-VM sync has to be enabled. Value should be 'Enabled' or 'Disabled'.
   /// [recoveryPointHistory] The duration in minutes until which the recovery points need to be stored.
-  A2APolicyCreationInput({
+  const A2APolicyCreationInput({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

@@ -55,7 +55,7 @@ class RouterState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the router resides.
   /// [selfLink] The URI of the created resource.
-  RouterState({
+  const RouterState({
     this.bgp,
     this.creationTimestamp,
     this.description,

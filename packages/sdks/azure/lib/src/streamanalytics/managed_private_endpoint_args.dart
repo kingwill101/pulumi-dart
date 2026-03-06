@@ -24,7 +24,7 @@ class ManagedPrivateEndpointArgs {
   /// [streamAnalyticsClusterName] The name of the Stream Analytics Cluster where the Managed Private Endpoint should be created. Changing this forces a new resource to be created.
   /// [subresourceName] Specifies the sub resource name which the Stream Analytics Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Private Link Enabled Remote Resource which this Stream Analytics Private endpoint should be connected to. Changing this forces a new resource to be created.
-  ManagedPrivateEndpointArgs({
+  const ManagedPrivateEndpointArgs({
     this.name,
     required this.resourceGroupName,
     required this.streamAnalyticsClusterName,

@@ -105,7 +105,7 @@ class RegistryEnterpriseInstanceState {
   /// [resourceGroupId] The ID of the resource group
   /// [status] Instance Status
   /// [vpcQuota] The number of VPC access controls.
-  RegistryEnterpriseInstanceState({
+  const RegistryEnterpriseInstanceState({
     this.createTime,
     this.createdTime,
     this.customOssBucket,

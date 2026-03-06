@@ -11,7 +11,7 @@ class RegistryEnterpriseInstanceInstanceEndpointDomain {
   /// Creates a new [RegistryEnterpriseInstanceInstanceEndpointDomain].
   /// [domain] Domain
   /// [type] Domain Type
-  RegistryEnterpriseInstanceInstanceEndpointDomain({
+  const RegistryEnterpriseInstanceInstanceEndpointDomain({
     this.domain,
     this.type,
   });

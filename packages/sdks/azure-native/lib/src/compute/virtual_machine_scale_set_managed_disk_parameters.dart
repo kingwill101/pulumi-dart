@@ -17,7 +17,7 @@ class VirtualMachineScaleSetManagedDiskParameters {
   /// [diskEncryptionSet] Specifies the customer managed disk encryption set resource id for the managed disk.
   /// [securityProfile] Specifies the security profile for the managed disk.
   /// [storageAccountType] Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-  VirtualMachineScaleSetManagedDiskParameters({
+  const VirtualMachineScaleSetManagedDiskParameters({
     this.diskEncryptionSet,
     this.securityProfile,
     this.storageAccountType,

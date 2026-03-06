@@ -39,7 +39,7 @@ class GetProfileResult {
   /// [timezone] The profile's preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
   /// [twoFactorAuth] If true, logins from untrusted computers will require Two Factor Authentication.
   /// [username] The username for logging in to Linode services.
-  GetProfileResult({
+  const GetProfileResult({
     required this.authorizedKeys,
     required this.email,
     required this.emailNotifications,

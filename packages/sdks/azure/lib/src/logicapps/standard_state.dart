@@ -112,7 +112,7 @@ class StandardState {
   /// [version] The runtime version associated with the Logic App. Defaults to `~4`.
   /// [virtualNetworkSubnetId] The subnet ID which will be used by this resource for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   /// [vnetContentShareEnabled] Specifies whether allow routing traffic between the Logic App and Storage Account content share through a virtual network. Defaults to `false`.
-  StandardState({
+  const StandardState({
     this.appServicePlanId,
     this.appSettings,
     this.bundleVersion,

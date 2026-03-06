@@ -19,7 +19,7 @@ class GetEncryptedValueResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyVaultKeyId] Required.
   /// [plainTextValue] Optional.
-  GetEncryptedValueResult({
+  const GetEncryptedValueResult({
     required this.algorithm,
     required this.decodedPlainTextValue,
     this.encryptedData,

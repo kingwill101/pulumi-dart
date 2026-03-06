@@ -21,7 +21,7 @@ class ComputeScheduling {
   /// [nodeAffinities] A set of node affinity and anti-affinity configurations for sole tenant nodes.
   /// [onHostMaintenance] How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
   /// [restartType] Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
-  ComputeScheduling({
+  const ComputeScheduling({
     this.minNodeCpus,
     this.nodeAffinities,
     this.onHostMaintenance,

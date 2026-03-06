@@ -7,7 +7,7 @@ class UserProfileDetailIam {
 
   /// Creates a new [UserProfileDetailIam].
   /// [arn] Required.
-  UserProfileDetailIam({
+  const UserProfileDetailIam({
     required this.arn,
   });
 

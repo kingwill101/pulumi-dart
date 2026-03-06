@@ -48,7 +48,7 @@ class PreventionJobTriggerState {
   /// [triggerId] The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// [triggers] What event needs to occur for a new job to be started.
   /// [updateTime] The last update timestamp of an inspectTemplate. Set by the server.
-  PreventionJobTriggerState({
+  const PreventionJobTriggerState({
     this.createTime,
     this.description,
     this.displayName,

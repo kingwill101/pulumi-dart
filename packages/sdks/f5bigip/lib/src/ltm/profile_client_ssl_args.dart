@@ -193,7 +193,7 @@ class ProfileClientSslArgs {
   /// [strictResume] Enables or disables the resumption of SSL sessions after an unclean shutdown.When creating a new profile, the setting is provided by the parent profile.
   /// [tmOptions] List of Enabled selection from a set of industry standard options for handling SSL processing.By default,
   /// [uncleanShutdown] Unclean Shutdown (enabled / disabled)
-  ProfileClientSslArgs({
+  const ProfileClientSslArgs({
     this.alertTimeout,
     this.allowExpiredCrl,
     this.allowNonSsl,

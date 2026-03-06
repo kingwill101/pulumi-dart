@@ -19,7 +19,7 @@ class GetInstanceArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.clusterId,
     required this.instanceId,
     required this.location,

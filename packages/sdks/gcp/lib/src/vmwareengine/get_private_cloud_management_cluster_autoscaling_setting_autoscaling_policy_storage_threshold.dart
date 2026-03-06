@@ -11,7 +11,7 @@ class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorage
   /// Creates a new [GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold].
   /// [scaleIn] The utilization triggering the scale-in operation in percent.
   /// [scaleOut] The utilization triggering the scale-out operation in percent.
-  GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold({
+  const GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold({
     required this.scaleIn,
     required this.scaleOut,
   });

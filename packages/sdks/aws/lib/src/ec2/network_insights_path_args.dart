@@ -43,7 +43,7 @@ class NetworkInsightsPathArgs {
   /// [source] ID or ARN of the resource which is the source of the path. Can be an Instance, Internet Gateway, Network Interface, Transit Gateway, VPC Endpoint, VPC Peering Connection or VPN Gateway. If the resource is in another account, you must specify an ARN.
   /// [sourceIp] IP address of the source resource.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  NetworkInsightsPathArgs({
+  const NetworkInsightsPathArgs({
     this.destination,
     this.destinationIp,
     this.destinationPort,

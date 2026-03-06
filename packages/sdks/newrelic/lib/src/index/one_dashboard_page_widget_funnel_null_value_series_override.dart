@@ -11,7 +11,7 @@ class OneDashboardPageWidgetFunnelNullValueSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetFunnelNullValueSeriesOverride].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesName] Series name
-  OneDashboardPageWidgetFunnelNullValueSeriesOverride({
+  const OneDashboardPageWidgetFunnelNullValueSeriesOverride({
     this.nullValue,
     this.seriesName,
   });

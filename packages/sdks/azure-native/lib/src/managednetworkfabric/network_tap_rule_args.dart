@@ -41,7 +41,7 @@ class NetworkTapRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [tapRulesUrl] Network Tap Rules file URL.
-  NetworkTapRuleArgs({
+  const NetworkTapRuleArgs({
     this.annotation,
     required this.configurationType,
     this.dynamicMatchConfigurations,

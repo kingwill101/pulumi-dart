@@ -11,7 +11,7 @@ class ListAccountKeysResult {
   /// Creates a new [ListAccountKeysResult].
   /// [atlasKafkaPrimaryEndpoint] Gets or sets the primary connection string.
   /// [atlasKafkaSecondaryEndpoint] Gets or sets the secondary connection string.
-  ListAccountKeysResult({
+  const ListAccountKeysResult({
     this.atlasKafkaPrimaryEndpoint,
     this.atlasKafkaSecondaryEndpoint,
   });

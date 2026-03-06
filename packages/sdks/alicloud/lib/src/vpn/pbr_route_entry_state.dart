@@ -27,7 +27,7 @@ class PbrRouteEntryState {
   /// [status] The status of the vpn pbr route entry.
   /// [vpnGatewayId] The ID of the vpn gateway.
   /// [weight] The weight of the policy-based route. Valid values: 0 and 100.
-  PbrRouteEntryState({
+  const PbrRouteEntryState({
     this.nextHop,
     this.publishVpc,
     this.routeDest,

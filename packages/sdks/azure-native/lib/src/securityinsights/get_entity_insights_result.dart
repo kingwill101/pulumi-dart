@@ -14,7 +14,7 @@ class GetEntityInsightsResult {
   /// Creates a new [GetEntityInsightsResult].
   /// [metaData] The metadata from the get insights operation results.
   /// [value] The insights result values.
-  GetEntityInsightsResult({
+  const GetEntityInsightsResult({
     this.metaData,
     this.value,
   });

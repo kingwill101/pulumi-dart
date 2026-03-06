@@ -23,7 +23,7 @@ class GetAPICollectionResult {
   /// [id] Resource Id
   /// [name] Resource name
   /// [type] Resource type
-  GetAPICollectionResult({
+  const GetAPICollectionResult({
     this.additionalData,
     required this.azureApiVersion,
     this.displayName,

@@ -11,7 +11,7 @@ class CxAgentTextToSpeechSettings {
 
   /// Creates a new [CxAgentTextToSpeechSettings].
   /// [synthesizeSpeechConfigs] Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
-  CxAgentTextToSpeechSettings({
+  const CxAgentTextToSpeechSettings({
     this.synthesizeSpeechConfigs,
   });
 

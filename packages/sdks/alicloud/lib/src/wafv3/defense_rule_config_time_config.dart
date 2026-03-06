@@ -19,7 +19,7 @@ class DefenseRuleConfigTimeConfig {
   /// [timeScope] The effective period of the rule. Valid values:
   /// [timeZone] The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
   /// [weekTimePeriods] The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `week_time_periods` below.
-  DefenseRuleConfigTimeConfig({
+  const DefenseRuleConfigTimeConfig({
     this.timePeriods,
     this.timeScope,
     this.timeZone,

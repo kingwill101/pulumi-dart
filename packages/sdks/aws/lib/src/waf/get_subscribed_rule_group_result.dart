@@ -12,7 +12,7 @@ class GetSubscribedRuleGroupResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [metricName] Optional.
   /// [name] Optional.
-  GetSubscribedRuleGroupResult({
+  const GetSubscribedRuleGroupResult({
     required this.id,
     this.metricName,
     this.name,

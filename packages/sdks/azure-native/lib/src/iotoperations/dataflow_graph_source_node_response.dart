@@ -17,7 +17,7 @@ class DataflowGraphSourceNodeResponse {
   /// [name] Name of the node.
   /// [nodeType] DataflowGraph node types.
   /// [sourceSettings] Source configuration.
-  DataflowGraphSourceNodeResponse({
+  const DataflowGraphSourceNodeResponse({
     required this.name,
     required this.nodeType,
     required this.sourceSettings,

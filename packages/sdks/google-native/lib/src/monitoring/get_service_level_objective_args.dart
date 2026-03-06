@@ -19,7 +19,7 @@ class GetServiceLevelObjectiveArgs {
   /// [v3Id] Required.
   /// [v3Id1] Required.
   /// [view] Optional.
-  GetServiceLevelObjectiveArgs({
+  const GetServiceLevelObjectiveArgs({
     required this.serviceId,
     required this.serviceLevelObjectiveId,
     required this.v3Id,

@@ -39,7 +39,7 @@ class GetNetworkInterfaceIpConfiguration {
   /// [privateIpAddressVersion] Required.
   /// [publicIpAddressId] The ID of the Public IP Address which is connected to this Network Interface.
   /// [subnetId] The ID of the Subnet which the Network Interface is connected to.
-  GetNetworkInterfaceIpConfiguration({
+  const GetNetworkInterfaceIpConfiguration({
     required this.applicationGatewayBackendAddressPoolsIds,
     required this.applicationSecurityGroupIds,
     required this.gatewayLoadBalancerFrontendIpConfigurationId,

@@ -38,7 +38,7 @@ class GetVariablesResult {
   /// [nulls] One or more `variable` blocks as defined below for each null variable.
   /// [objects] Required.
   /// [strings] One or more `variable` blocks as defined below for each string variable.
-  GetVariablesResult({
+  const GetVariablesResult({
     required this.automationAccountId,
     required this.bools,
     required this.datetimes,

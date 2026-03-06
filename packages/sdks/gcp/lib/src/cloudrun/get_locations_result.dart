@@ -13,7 +13,7 @@ class GetLocationsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [locations] The list of Cloud Run locations available for the given project.
   /// [project] Required.
-  GetLocationsResult({
+  const GetLocationsResult({
     required this.id,
     required this.locations,
     required this.project,

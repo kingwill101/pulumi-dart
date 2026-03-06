@@ -12,7 +12,7 @@ class ListPrivateStoreNewPlansNotificationsArgs {
 
   /// Creates a new [ListPrivateStoreNewPlansNotificationsArgs].
   /// [privateStoreId] The store ID - must use the tenant ID
-  ListPrivateStoreNewPlansNotificationsArgs({
+  const ListPrivateStoreNewPlansNotificationsArgs({
     required this.privateStoreId,
   });
 

@@ -34,7 +34,7 @@ class CloudExadataInfrastructureMaintenanceWindow {
   /// [patchingMode] The patching mode for the maintenance window.
   /// [preference] The preference for the maintenance window scheduling.
   /// [weeksOfMonths] The weeks of the month when maintenance can be performed.
-  CloudExadataInfrastructureMaintenanceWindow({
+  const CloudExadataInfrastructureMaintenanceWindow({
     required this.customActionTimeoutInMins,
     this.daysOfWeeks,
     this.hoursOfDays,

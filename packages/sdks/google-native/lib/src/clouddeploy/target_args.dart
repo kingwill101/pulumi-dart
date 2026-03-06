@@ -60,7 +60,7 @@ class TargetArgs {
   /// [requireApproval] Optional. Whether or not the `Target` requires approval.
   /// [run] Optional. Information specifying a Cloud Run deployment target.
   /// [targetId] Required. ID of the `Target`.
-  TargetArgs({
+  const TargetArgs({
     this.annotations,
     this.anthosCluster,
     this.deployParameters,

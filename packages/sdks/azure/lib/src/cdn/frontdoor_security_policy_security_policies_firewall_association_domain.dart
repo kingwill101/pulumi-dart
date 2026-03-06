@@ -11,7 +11,7 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
   /// Creates a new [FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain].
   /// [active] Is the Front Door Custom Domain/Endpoint activated?
   /// [cdnFrontdoorDomainId] The Resource Id of the **Front Door Custom Domain** or **Front Door Endpoint** that should be bound to this Front Door Security Policy.
-  FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain({
+  const FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain({
     this.active,
     required this.cdnFrontdoorDomainId,
   });

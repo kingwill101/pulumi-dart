@@ -29,7 +29,7 @@ class GetIndustrialPidLoopsArgs {
   /// [pidLoopName] The name of Pid Loop.
   /// [pidProjectId] The pid project id.
   /// [status] The status of Pid Loop.
-  GetIndustrialPidLoopsArgs({
+  const GetIndustrialPidLoopsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

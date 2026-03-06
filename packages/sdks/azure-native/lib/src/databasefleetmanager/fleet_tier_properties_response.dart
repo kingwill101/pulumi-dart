@@ -45,7 +45,7 @@ class FleetTierPropertiesResponse {
   /// [serverless] If true, serverless resources are provisioned in the tier.
   /// [serviceTier] Service tier of provisioned resources. Supported values: GeneralPurpose, Hyperscale.
   /// [zoneRedundancy] Enable zone redundancy for all databases in this tier.
-  FleetTierPropertiesResponse({
+  const FleetTierPropertiesResponse({
     this.capacity,
     this.databaseCapacityMax,
     this.databaseCapacityMin,

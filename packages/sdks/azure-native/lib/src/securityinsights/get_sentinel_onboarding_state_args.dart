@@ -18,7 +18,7 @@ class GetSentinelOnboardingStateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sentinelOnboardingStateName] The Sentinel onboarding state name. Supports - default
   /// [workspaceName] The name of the workspace.
-  GetSentinelOnboardingStateArgs({
+  const GetSentinelOnboardingStateArgs({
     required this.resourceGroupName,
     required this.sentinelOnboardingStateName,
     required this.workspaceName,

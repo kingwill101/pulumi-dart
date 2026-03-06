@@ -12,7 +12,7 @@ class GetHierarchySettingArgs {
 
   /// Creates a new [GetHierarchySettingArgs].
   /// [groupId] Management Group ID.
-  GetHierarchySettingArgs({
+  const GetHierarchySettingArgs({
     required this.groupId,
   });
 

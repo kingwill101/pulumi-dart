@@ -14,7 +14,7 @@ class AutoHealRules {
   /// Creates a new [AutoHealRules].
   /// [actions] Actions to be executed when a rule is triggered.
   /// [triggers] Conditions that describe when to execute the auto-heal actions.
-  AutoHealRules({
+  const AutoHealRules({
     this.actions,
     this.triggers,
   });

@@ -54,7 +54,7 @@ class ServerEndpointArgs {
   /// [syncGroupName] Name of Sync Group resource.
   /// [tierFilesOlderThanDays] Tier files older than days.
   /// [volumeFreeSpacePercent] Level of free space to be maintained by Cloud Tiering if it is enabled.
-  ServerEndpointArgs({
+  const ServerEndpointArgs({
     this.cloudTiering,
     this.friendlyName,
     this.initialDownloadPolicy,

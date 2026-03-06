@@ -13,7 +13,7 @@ class IncludedPathResponse {
   /// Creates a new [IncludedPathResponse].
   /// [indexes] List of indexes for this path
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
-  IncludedPathResponse({
+  const IncludedPathResponse({
     this.indexes,
     this.path,
   });

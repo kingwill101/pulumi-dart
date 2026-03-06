@@ -17,7 +17,7 @@ class GetAnalysisArgs {
   /// [conversationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAnalysisArgs({
+  const GetAnalysisArgs({
     required this.analysisId,
     required this.conversationId,
     required this.location,

@@ -15,7 +15,7 @@ class GetProductSetArgs {
   /// [location] Required.
   /// [productSetId] Required.
   /// [project] Optional.
-  GetProductSetArgs({
+  const GetProductSetArgs({
     required this.location,
     required this.productSetId,
     this.project,

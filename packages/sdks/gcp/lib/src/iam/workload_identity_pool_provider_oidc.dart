@@ -46,7 +46,7 @@ class WorkloadIdentityPoolProviderOidc {
   /// [allowedAudiences] Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
   /// [issuerUri] The OIDC issuer URL.
   /// [jwksJson] OIDC JWKs in JSON String format. For details on definition of a
-  WorkloadIdentityPoolProviderOidc({
+  const WorkloadIdentityPoolProviderOidc({
     this.allowedAudiences,
     required this.issuerUri,
     this.jwksJson,

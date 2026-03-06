@@ -13,7 +13,7 @@ class CspmMonitorJFrogOfferingResponse {
   /// Creates a new [CspmMonitorJFrogOfferingResponse].
   /// [description] The offering description.
   /// [offeringType] The type of the security offering.
-  CspmMonitorJFrogOfferingResponse({
+  const CspmMonitorJFrogOfferingResponse({
     required this.description,
     required this.offeringType,
   });

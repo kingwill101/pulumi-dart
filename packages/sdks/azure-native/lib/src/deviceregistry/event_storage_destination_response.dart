@@ -14,7 +14,7 @@ class EventStorageDestinationResponse {
   /// Creates a new [EventStorageDestinationResponse].
   /// [configuration] The storage destination configuration.
   /// [target] The set of supported event destinations for an asset.
-  EventStorageDestinationResponse({
+  const EventStorageDestinationResponse({
     required this.configuration,
     required this.target,
   });

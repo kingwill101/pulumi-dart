@@ -25,7 +25,7 @@ class AccountArgs {
   /// [name] The name which should be used for this Data Share Account. Changing this forces a new Data Share Account to be created.
   /// [resourceGroupName] The name of the Resource Group where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
   /// [tags] A mapping of tags which should be assigned to the Data Share Account.
-  AccountArgs({
+  const AccountArgs({
     required this.identity,
     this.location,
     this.name,

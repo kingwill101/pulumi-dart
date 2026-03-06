@@ -9,7 +9,7 @@ class MpegCommonEncryptionResponse {
 
   /// Creates a new [MpegCommonEncryptionResponse].
   /// [scheme] Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
-  MpegCommonEncryptionResponse({
+  const MpegCommonEncryptionResponse({
     required this.scheme,
   });
 

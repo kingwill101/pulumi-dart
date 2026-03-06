@@ -18,7 +18,7 @@ class GetLocalRulestackSupportInfoArgs {
   /// [email] email address on behalf of which this API called
   /// [localRulestackName] LocalRulestack resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLocalRulestackSupportInfoArgs({
+  const GetLocalRulestackSupportInfoArgs({
     this.email,
     required this.localRulestackName,
     required this.resourceGroupName,

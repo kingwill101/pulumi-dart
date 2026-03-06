@@ -20,7 +20,7 @@ class GetAlertContactGroupsGroup {
   /// [contactIds] contact ids.
   /// [createTime] The creation time of the resource.
   /// [id] The ID of the Alert Contact Group.
-  GetAlertContactGroupsGroup({
+  const GetAlertContactGroupsGroup({
     required this.alertContactGroupId,
     required this.alertContactGroupName,
     required this.contactIds,

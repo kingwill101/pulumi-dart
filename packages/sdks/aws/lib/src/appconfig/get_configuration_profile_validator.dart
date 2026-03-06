@@ -11,7 +11,7 @@ class GetConfigurationProfileValidator {
   /// Creates a new [GetConfigurationProfileValidator].
   /// [content] Either the JSON Schema content or the ARN of an AWS Lambda function.
   /// [type] Type of validator. Valid values: JSON_SCHEMA and LAMBDA.
-  GetConfigurationProfileValidator({
+  const GetConfigurationProfileValidator({
     required this.content,
     required this.type,
   });

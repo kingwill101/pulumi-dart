@@ -23,7 +23,7 @@ class PublicNetworkAddressReplicaSet {
   /// [networkType] The network type, should be always "Public".
   /// [replicaSetRole] The role of the node.
   /// [roleId] The id of the role.
-  PublicNetworkAddressReplicaSet({
+  const PublicNetworkAddressReplicaSet({
     this.connectionDomain,
     this.connectionPort,
     this.connectionType,

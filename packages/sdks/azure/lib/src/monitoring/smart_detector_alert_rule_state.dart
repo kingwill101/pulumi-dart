@@ -40,7 +40,7 @@ class SmartDetectorAlertRuleState {
   /// [severity] Specifies the severity of this Smart Detector Alert Rule. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3` or `Sev4`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [throttlingDuration] Specifies the duration (in ISO8601 format) to wait before notifying on the alert rule again.
-  SmartDetectorAlertRuleState({
+  const SmartDetectorAlertRuleState({
     this.actionGroup,
     this.description,
     this.detectorType,

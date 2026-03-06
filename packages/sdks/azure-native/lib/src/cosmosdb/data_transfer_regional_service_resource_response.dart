@@ -15,7 +15,7 @@ class DataTransferRegionalServiceResourceResponse {
   /// [location] The location name.
   /// [name] The regional service name.
   /// [status] Describes the status of a service.
-  DataTransferRegionalServiceResourceResponse({
+  const DataTransferRegionalServiceResourceResponse({
     required this.location,
     required this.name,
     required this.status,

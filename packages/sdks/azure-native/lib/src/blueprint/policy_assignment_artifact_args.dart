@@ -41,7 +41,7 @@ class PolicyAssignmentArtifactArgs {
   /// [policyDefinitionId] Azure resource ID of the policy definition.
   /// [resourceGroup] Name of the resource group placeholder to which the policy will be assigned.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
-  PolicyAssignmentArtifactArgs({
+  const PolicyAssignmentArtifactArgs({
     this.artifactName,
     required this.blueprintName,
     this.dependsOn,

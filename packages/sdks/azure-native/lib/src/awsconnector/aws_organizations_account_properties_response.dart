@@ -37,7 +37,7 @@ class AwsOrganizationsAccountPropertiesResponse {
   /// [roleName] The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. Default name is OrganizationAccountAccessRole if not specified.
   /// [status] The status of the account in the organization.
   /// [tags] A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value.
-  AwsOrganizationsAccountPropertiesResponse({
+  const AwsOrganizationsAccountPropertiesResponse({
     this.accountId,
     this.accountName,
     this.arn,

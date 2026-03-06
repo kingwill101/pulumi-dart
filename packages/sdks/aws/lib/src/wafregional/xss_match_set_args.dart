@@ -19,7 +19,7 @@ class XssMatchSetArgs {
   /// [name] The name of the set
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [xssMatchTuples] The parts of web requests that you want to inspect for cross-site scripting attacks.
-  XssMatchSetArgs({
+  const XssMatchSetArgs({
     this.name,
     this.region,
     this.xssMatchTuples,

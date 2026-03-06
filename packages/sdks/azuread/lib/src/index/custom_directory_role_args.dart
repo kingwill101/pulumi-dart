@@ -28,7 +28,7 @@ class CustomDirectoryRoleArgs {
   /// [permissions] A collection of `permissions` blocks as documented below.
   /// [templateId] Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
   /// [version] The version of the role definition. This can be any arbitrary string between 1-128 characters.
-  CustomDirectoryRoleArgs({
+  const CustomDirectoryRoleArgs({
     this.description,
     required this.displayName,
     required this.enabled,

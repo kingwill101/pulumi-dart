@@ -14,7 +14,7 @@ class ResolverInboundEndpointIpConfigurations {
   /// [privateIpAddress] Private IP address of the IP configuration.
   /// [privateIpAllocationMethod] Private IP address allocation method. Allowed value is `Dynamic` and `Static`. Defaults to `Dynamic`.
   /// [subnetId] The subnet ID of the IP configuration.
-  ResolverInboundEndpointIpConfigurations({
+  const ResolverInboundEndpointIpConfigurations({
     this.privateIpAddress,
     this.privateIpAllocationMethod,
     required this.subnetId,

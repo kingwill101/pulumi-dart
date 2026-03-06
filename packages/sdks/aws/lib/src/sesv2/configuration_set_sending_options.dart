@@ -8,7 +8,7 @@ class ConfigurationSetSendingOptions {
 
   /// Creates a new [ConfigurationSetSendingOptions].
   /// [sendingEnabled] If `true`, email sending is enabled for the configuration set. If `false`, email sending is disabled for the configuration set.
-  ConfigurationSetSendingOptions({
+  const ConfigurationSetSendingOptions({
     this.sendingEnabled,
   });
 

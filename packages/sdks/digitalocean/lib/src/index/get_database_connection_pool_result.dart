@@ -42,7 +42,7 @@ class GetDatabaseConnectionPoolResult {
   /// [size] Size of the connection pool.
   /// [uri] The full URI for connecting to the database connection pool.
   /// [user] Username for the connection pool's default user.
-  GetDatabaseConnectionPoolResult({
+  const GetDatabaseConnectionPoolResult({
     required this.clusterId,
     required this.dbName,
     required this.host,

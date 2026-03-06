@@ -31,7 +31,7 @@ class AlertsSuppressionRuleArgs {
   /// [reason] The reason for dismissing the alert
   /// [state] Possible states of the rule
   /// [suppressionAlertsScope] The suppression conditions
-  AlertsSuppressionRuleArgs({
+  const AlertsSuppressionRuleArgs({
     required this.alertType,
     this.alertsSuppressionRuleName,
     this.comment,

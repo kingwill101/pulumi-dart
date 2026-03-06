@@ -104,7 +104,7 @@ class DomainResourceState {
   /// [realServers] Server address information of the source station.
   /// [rsType] The address type of the origin server. Valid values:
   /// [whiteLists] IP whitelist list.
-  DomainResourceState({
+  const DomainResourceState({
     this.aiMode,
     this.aiTemplate,
     this.blackLists,

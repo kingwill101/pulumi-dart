@@ -15,7 +15,7 @@ class AlidnsDomainAttachmentArgs {
   /// Creates a new [AlidnsDomainAttachmentArgs].
   /// [domainNames] The domain names bound to the DNS instance.
   /// [instanceId] The id of the DNS instance.
-  AlidnsDomainAttachmentArgs({
+  const AlidnsDomainAttachmentArgs({
     required this.domainNames,
     required this.instanceId,
   });

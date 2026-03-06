@@ -9,7 +9,7 @@ class TermsOfService {
 
   /// Creates a new [TermsOfService].
   /// [url] URL pointing to the terms of service.
-  TermsOfService({
+  const TermsOfService({
     required this.url,
   });
 

@@ -48,7 +48,7 @@ class GetSecretResult {
   /// [ttl] Required.
   /// [versionAliases] Required.
   /// [versionDestroyTtl] Required.
-  GetSecretResult({
+  const GetSecretResult({
     required this.annotations,
     required this.createTime,
     required this.deletionProtection,

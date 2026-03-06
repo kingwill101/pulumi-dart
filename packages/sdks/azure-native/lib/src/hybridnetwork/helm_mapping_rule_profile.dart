@@ -22,7 +22,7 @@ class HelmMappingRuleProfile {
   /// [releaseName] Helm release name.
   /// [releaseNamespace] Helm release namespace.
   /// [values] Helm release values.
-  HelmMappingRuleProfile({
+  const HelmMappingRuleProfile({
     this.helmPackageVersion,
     this.options,
     this.releaseName,

@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse].
   /// [values] Matches values of the parent parameter of 'CATEGORICAL' type. All values must exist in `categorical_value_spec` of parent parameter.
-  GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse({
+  const GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse({
     required this.values,
   });
 

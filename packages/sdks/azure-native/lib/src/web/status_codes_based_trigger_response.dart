@@ -24,7 +24,7 @@ class StatusCodesBasedTriggerResponse {
   /// [subStatus] Request Sub Status.
   /// [timeInterval] Time interval.
   /// [win32Status] Win32 error code.
-  StatusCodesBasedTriggerResponse({
+  const StatusCodesBasedTriggerResponse({
     this.count,
     this.path,
     this.status,

@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1FeatureOnlineStoreBigtable {
 
   /// Creates a new [GoogleCloudAiplatformV1FeatureOnlineStoreBigtable].
   /// [autoScaling] Autoscaling config applied to Bigtable Instance.
-  GoogleCloudAiplatformV1FeatureOnlineStoreBigtable({
+  const GoogleCloudAiplatformV1FeatureOnlineStoreBigtable({
     required this.autoScaling,
   });
 

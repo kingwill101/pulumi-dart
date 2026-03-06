@@ -69,7 +69,7 @@ class GetServerResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userVisibleState] A state of a server that is visible to user.
   /// [version] Server version.
-  GetServerResult({
+  const GetServerResult({
     this.administratorLogin,
     required this.azureApiVersion,
     this.earliestRestoreDate,

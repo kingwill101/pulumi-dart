@@ -8,7 +8,7 @@ class TriggerActionNotificationProperty {
 
   /// Creates a new [TriggerActionNotificationProperty].
   /// [notifyDelayAfter] After a job run starts, the number of minutes to wait before sending a job run delay notification.
-  TriggerActionNotificationProperty({
+  const TriggerActionNotificationProperty({
     this.notifyDelayAfter,
   });
 

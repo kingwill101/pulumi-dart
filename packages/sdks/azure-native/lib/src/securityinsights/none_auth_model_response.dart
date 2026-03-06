@@ -10,7 +10,7 @@ class NoneAuthModelResponse {
 
   /// Creates a new [NoneAuthModelResponse].
   /// [type] Type of paging
-  NoneAuthModelResponse({
+  const NoneAuthModelResponse({
     required this.type,
   });
 

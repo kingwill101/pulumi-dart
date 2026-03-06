@@ -12,7 +12,7 @@ class ResourceGroupPolicyAssignmentOverride {
   /// Creates a new [ResourceGroupPolicyAssignmentOverride].
   /// [selectors] One or more `override_selector` block as defined below.
   /// [value] Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
-  ResourceGroupPolicyAssignmentOverride({
+  const ResourceGroupPolicyAssignmentOverride({
     this.selectors,
     required this.value,
   });

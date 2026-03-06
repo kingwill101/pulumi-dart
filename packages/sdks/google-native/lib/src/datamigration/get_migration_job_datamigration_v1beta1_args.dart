@@ -15,7 +15,7 @@ class GetMigrationJobDatamigrationV1beta1Args {
   /// [location] Required.
   /// [migrationJobId] Required.
   /// [project] Optional.
-  GetMigrationJobDatamigrationV1beta1Args({
+  const GetMigrationJobDatamigrationV1beta1Args({
     required this.location,
     required this.migrationJobId,
     this.project,

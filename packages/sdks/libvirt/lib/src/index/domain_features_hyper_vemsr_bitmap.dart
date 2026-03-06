@@ -8,7 +8,7 @@ class DomainFeaturesHyperVEmsrBitmap {
 
   /// Creates a new [DomainFeaturesHyperVEmsrBitmap].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVEmsrBitmap({
+  const DomainFeaturesHyperVEmsrBitmap({
     this.state,
   });
 

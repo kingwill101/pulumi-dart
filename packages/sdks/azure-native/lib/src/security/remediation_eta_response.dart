@@ -12,7 +12,7 @@ class RemediationEtaResponse {
   /// Creates a new [RemediationEtaResponse].
   /// [eta] ETA for remediation.
   /// [justification] Justification for change of Eta.
-  RemediationEtaResponse({
+  const RemediationEtaResponse({
     required this.eta,
     required this.justification,
   });

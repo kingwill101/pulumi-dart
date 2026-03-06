@@ -17,7 +17,7 @@ class WorkerPoolInstanceSplitStatus {
   /// [percent] (Output)
   /// [revision] (Output)
   /// [type] (Output)
-  WorkerPoolInstanceSplitStatus({
+  const WorkerPoolInstanceSplitStatus({
     this.percent,
     this.revision,
     this.type,

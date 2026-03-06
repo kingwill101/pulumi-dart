@@ -168,7 +168,7 @@ class EdgeKubernetesState {
   /// [workerNumber] The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
   /// [workerRamRoleName] The RamRole Name attached to worker node.
   /// [workerVswitchIds] The vswitches used by workers.
-  EdgeKubernetesState({
+  const EdgeKubernetesState({
     this.addons,
     this.availabilityZone,
     this.certificateAuthority,

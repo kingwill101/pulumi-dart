@@ -37,7 +37,7 @@ class GetEmailTemplateResult {
   /// [subject] Subject of the Template.
   /// [title] Title of the Template.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEmailTemplateResult({
+  const GetEmailTemplateResult({
     required this.azureApiVersion,
     required this.body,
     this.description,

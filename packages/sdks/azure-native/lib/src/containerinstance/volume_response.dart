@@ -26,7 +26,7 @@ class VolumeResponse {
   /// [name] The name of the volume.
   /// [secret] The secret volume.
   /// [secretReference] The secret reference volume.
-  VolumeResponse({
+  const VolumeResponse({
     this.azureFile,
     this.emptyDir,
     this.gitRepo,

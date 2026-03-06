@@ -34,7 +34,7 @@ class GetCertificateResult {
   /// [thumbprint] Thumbprint of the certificate.
   /// [validFrom] [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of certificate starting validity date.
   /// [validTill] [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of certificate ending validity date.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.arn,
     required this.certificateType,
     required this.customerOverride,

@@ -9,7 +9,7 @@ class PoolFeatures {
 
   /// Creates a new [PoolFeatures].
   /// [cow] Indicates whether copy-on-write (COW) is enabled for the storage pool's images.
-  PoolFeatures({
+  const PoolFeatures({
     this.cow,
   });
 

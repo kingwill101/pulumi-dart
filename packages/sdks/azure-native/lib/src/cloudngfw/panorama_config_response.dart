@@ -30,7 +30,7 @@ class PanoramaConfigResponse {
   /// [panoramaServer2] Secondary Panorama Server IP address value in dotted format for IPv4
   /// [tplName] Panorama Template Stack to join - (Once configured we can not edit the value)
   /// [vmAuthKey] VM auth key for panorama connectivity
-  PanoramaConfigResponse({
+  const PanoramaConfigResponse({
     required this.cgName,
     required this.configString,
     required this.dgName,

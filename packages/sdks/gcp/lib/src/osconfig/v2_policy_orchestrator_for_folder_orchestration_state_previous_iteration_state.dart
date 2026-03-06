@@ -51,7 +51,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState {
   /// [rolloutResource] (Output)
   /// [startTime] (Output)
   /// [state] State of the orchestrator. Can be updated to change orchestrator behaviour.
-  V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState({
+  const V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState({
     this.errors,
     this.failedActions,
     this.finishTime,

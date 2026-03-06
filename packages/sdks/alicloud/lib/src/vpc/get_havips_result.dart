@@ -22,7 +22,7 @@ class GetHavipsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetHavipsResult({
+  const GetHavipsResult({
     required this.havips,
     required this.id,
     required this.ids,

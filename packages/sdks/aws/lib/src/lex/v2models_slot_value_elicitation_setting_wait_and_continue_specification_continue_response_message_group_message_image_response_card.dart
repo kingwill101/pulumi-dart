@@ -14,7 +14,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueRes
   /// [imageUrl] Optional.
   /// [subtitle] Optional.
   /// [title] Required.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageImageResponseCard({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageImageResponseCard({
     this.buttons,
     this.imageUrl,
     this.subtitle,

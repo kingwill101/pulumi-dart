@@ -11,7 +11,7 @@ class TargetGroupTargetFailover {
   /// Creates a new [TargetGroupTargetFailover].
   /// [onDeregistration] Indicates how the GWLB handles existing flows when a target is deregistered. Possible values are `rebalance` and `no_rebalance`. Must match the attribute value set for `on_unhealthy`. Default: `no_rebalance`.
   /// [onUnhealthy] Indicates how the GWLB handles existing flows when a target is unhealthy. Possible values are `rebalance` and `no_rebalance`. Must match the attribute value set for `on_deregistration`. Default: `no_rebalance`.
-  TargetGroupTargetFailover({
+  const TargetGroupTargetFailover({
     required this.onDeregistration,
     required this.onUnhealthy,
   });

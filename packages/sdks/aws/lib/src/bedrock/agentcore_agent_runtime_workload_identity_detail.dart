@@ -8,7 +8,7 @@ class AgentcoreAgentRuntimeWorkloadIdentityDetail {
 
   /// Creates a new [AgentcoreAgentRuntimeWorkloadIdentityDetail].
   /// [workloadIdentityArn] ARN of the workload identity.
-  AgentcoreAgentRuntimeWorkloadIdentityDetail({
+  const AgentcoreAgentRuntimeWorkloadIdentityDetail({
     required this.workloadIdentityArn,
   });
 

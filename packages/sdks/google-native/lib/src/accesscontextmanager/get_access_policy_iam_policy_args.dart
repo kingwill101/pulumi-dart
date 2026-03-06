@@ -11,7 +11,7 @@ class GetAccessPolicyIamPolicyArgs {
 
   /// Creates a new [GetAccessPolicyIamPolicyArgs].
   /// [accessPolicyId] Required.
-  GetAccessPolicyIamPolicyArgs({
+  const GetAccessPolicyIamPolicyArgs({
     required this.accessPolicyId,
   });
 

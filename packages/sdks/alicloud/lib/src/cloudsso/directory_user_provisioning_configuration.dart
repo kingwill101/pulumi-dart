@@ -11,7 +11,7 @@ class DirectoryUserProvisioningConfiguration {
   /// Creates a new [DirectoryUserProvisioningConfiguration].
   /// [defaultLandingPage] The duration of the Session after the user logs in.
   /// [sessionDuration] The duration of the Session after the user logs in.
-  DirectoryUserProvisioningConfiguration({
+  const DirectoryUserProvisioningConfiguration({
     this.defaultLandingPage,
     this.sessionDuration,
   });

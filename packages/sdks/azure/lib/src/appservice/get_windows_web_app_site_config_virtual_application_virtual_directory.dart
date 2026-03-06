@@ -11,7 +11,7 @@ class GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory {
   /// Creates a new [GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory].
   /// [physicalPath] The path on disk to the Virtual Directory
   /// [virtualPath] The Virtual Path of the Virtual Directory.
-  GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory({
+  const GetWindowsWebAppSiteConfigVirtualApplicationVirtualDirectory({
     required this.physicalPath,
     required this.virtualPath,
   });

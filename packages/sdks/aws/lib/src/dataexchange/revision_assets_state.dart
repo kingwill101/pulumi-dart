@@ -43,7 +43,7 @@ class RevisionAssetsState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [updatedAt] The timestamp when the revision was last updated, in RFC3339 format.
-  RevisionAssetsState({
+  const RevisionAssetsState({
     this.arn,
     this.assets,
     this.comment,

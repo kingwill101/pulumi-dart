@@ -15,7 +15,7 @@ class DeadLetterWithResourceIdentityResponse {
   /// Creates a new [DeadLetterWithResourceIdentityResponse].
   /// [deadLetterDestination] Information about the destination where events have to be delivered for the event subscription.
   /// [identity] The identity to use when dead-lettering events.
-  DeadLetterWithResourceIdentityResponse({
+  const DeadLetterWithResourceIdentityResponse({
     this.deadLetterDestination,
     this.identity,
   });

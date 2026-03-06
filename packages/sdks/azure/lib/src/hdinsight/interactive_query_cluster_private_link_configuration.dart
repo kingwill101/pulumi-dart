@@ -15,7 +15,7 @@ class InteractiveQueryClusterPrivateLinkConfiguration {
   /// [groupId] The ID of the private link service group.
   /// [ipConfiguration] An `ip_configuration` block as defined below.
   /// [name] The name of the private link configuration.
-  InteractiveQueryClusterPrivateLinkConfiguration({
+  const InteractiveQueryClusterPrivateLinkConfiguration({
     required this.groupId,
     required this.ipConfiguration,
     required this.name,

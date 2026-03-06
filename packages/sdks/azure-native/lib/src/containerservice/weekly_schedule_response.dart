@@ -12,7 +12,7 @@ class WeeklyScheduleResponse {
   /// Creates a new [WeeklyScheduleResponse].
   /// [dayOfWeek] Specifies on which day of the week the maintenance occurs.
   /// [intervalWeeks] Specifies the number of weeks between each set of occurrences.
-  WeeklyScheduleResponse({
+  const WeeklyScheduleResponse({
     required this.dayOfWeek,
     required this.intervalWeeks,
   });

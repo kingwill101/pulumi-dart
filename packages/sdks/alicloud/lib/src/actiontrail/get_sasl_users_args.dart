@@ -21,7 +21,7 @@ class GetSaslUsersArgs {
   /// [instanceId] The ID of the instance.
   /// [nameRegex] A regex string to filter results by Sasl User name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetSaslUsersArgs({
+  const GetSaslUsersArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

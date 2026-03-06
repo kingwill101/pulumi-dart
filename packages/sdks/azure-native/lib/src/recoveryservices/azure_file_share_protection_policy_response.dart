@@ -34,7 +34,7 @@ class AzureFileShareProtectionPolicyResponse {
   /// [timeZone] TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
   /// [vaultRetentionPolicy] Retention policy with the details on hardened backup copy retention ranges.
   /// [workLoadType] Type of workload for the backup management
-  AzureFileShareProtectionPolicyResponse({
+  const AzureFileShareProtectionPolicyResponse({
     required this.backupManagementType,
     this.protectedItemsCount,
     this.resourceGuardOperationRequests,

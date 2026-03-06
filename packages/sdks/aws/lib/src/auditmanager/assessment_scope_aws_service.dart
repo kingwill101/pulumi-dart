@@ -8,7 +8,7 @@ class AssessmentScopeAwsService {
 
   /// Creates a new [AssessmentScopeAwsService].
   /// [serviceName] Name of the Amazon Web Service.
-  AssessmentScopeAwsService({
+  const AssessmentScopeAwsService({
     required this.serviceName,
   });
 

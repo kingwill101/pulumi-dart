@@ -56,7 +56,7 @@ class DataLakeConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [target] The protocol to use for connecting with Brokers. NOTE - Enum only storage is supported at at time.
-  DataLakeConnectorArgs({
+  const DataLakeConnectorArgs({
     this.dataLakeConnectorName,
     required this.databaseFormat,
     required this.extendedLocation,

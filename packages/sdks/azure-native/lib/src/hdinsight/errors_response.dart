@@ -12,7 +12,7 @@ class ErrorsResponse {
   /// Creates a new [ErrorsResponse].
   /// [code] The error code.
   /// [message] The error message.
-  ErrorsResponse({
+  const ErrorsResponse({
     this.code,
     this.message,
   });

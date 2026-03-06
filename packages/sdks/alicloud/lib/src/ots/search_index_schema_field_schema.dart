@@ -26,7 +26,7 @@ class SearchIndexSchemaFieldSchema {
   /// [index] Specifies whether to enable indexing for the column. Type: Boolean.
   /// [isArray] Specifies whether the value is an array. Type: Boolean.
   /// [store] Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
-  SearchIndexSchemaFieldSchema({
+  const SearchIndexSchemaFieldSchema({
     this.analyzer,
     this.enableSortAndAgg,
     required this.fieldName,

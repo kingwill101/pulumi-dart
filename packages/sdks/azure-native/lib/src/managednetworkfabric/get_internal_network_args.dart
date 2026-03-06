@@ -18,7 +18,7 @@ class GetInternalNetworkArgs {
   /// [internalNetworkName] Name of the Internal Network.
   /// [l3IsolationDomainName] Name of the L3 Isolation Domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetInternalNetworkArgs({
+  const GetInternalNetworkArgs({
     required this.internalNetworkName,
     required this.l3IsolationDomainName,
     required this.resourceGroupName,

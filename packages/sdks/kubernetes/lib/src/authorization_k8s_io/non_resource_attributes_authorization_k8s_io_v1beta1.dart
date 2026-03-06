@@ -12,7 +12,7 @@ class NonResourceAttributesAuthorizationK8sIoV1beta1 {
   /// Creates a new [NonResourceAttributesAuthorizationK8sIoV1beta1].
   /// [path] Path is the URL path of the request
   /// [verb] Verb is the standard HTTP verb
-  NonResourceAttributesAuthorizationK8sIoV1beta1({
+  const NonResourceAttributesAuthorizationK8sIoV1beta1({
     this.path,
     this.verb,
   });

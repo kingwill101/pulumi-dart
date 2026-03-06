@@ -12,7 +12,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilter {
   /// Creates a new [HybridMonitorSlsTaskSlsProcessConfigFilter].
   /// [filters] The conditions that are used to filter logs imported from Log Service. See `filters` below.
   /// [relation] The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
-  HybridMonitorSlsTaskSlsProcessConfigFilter({
+  const HybridMonitorSlsTaskSlsProcessConfigFilter({
     this.filters,
     this.relation,
   });

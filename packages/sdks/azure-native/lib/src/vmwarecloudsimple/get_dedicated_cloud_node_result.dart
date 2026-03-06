@@ -31,7 +31,7 @@ class GetDedicatedCloudNodeResult {
   /// [sku] Dedicated Cloud Nodes SKU
   /// [tags] Dedicated Cloud Nodes tags
   /// [type] {resourceProviderNamespace}/{resourceType}
-  GetDedicatedCloudNodeResult({
+  const GetDedicatedCloudNodeResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

@@ -18,7 +18,7 @@ class ImageArgs {
   /// [description] The description of the image.
   /// [desktopId] The desktop id of the desktop.
   /// [imageName] The name of the image.
-  ImageArgs({
+  const ImageArgs({
     this.description,
     required this.desktopId,
     this.imageName,

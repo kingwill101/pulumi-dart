@@ -9,7 +9,7 @@ class ProximityPlacementGroupPropertiesIntentResponse {
 
   /// Creates a new [ProximityPlacementGroupPropertiesIntentResponse].
   /// [vmSizes] Specifies possible sizes of virtual machines that can be created in the proximity placement group.
-  ProximityPlacementGroupPropertiesIntentResponse({
+  const ProximityPlacementGroupPropertiesIntentResponse({
     this.vmSizes,
   });
 

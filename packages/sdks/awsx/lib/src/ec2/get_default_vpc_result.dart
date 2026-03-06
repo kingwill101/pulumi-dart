@@ -12,7 +12,7 @@ class GetDefaultVpcResult {
   /// [privateSubnetIds] Required.
   /// [publicSubnetIds] Required.
   /// [vpcId] The VPC ID for the default VPC
-  GetDefaultVpcResult({
+  const GetDefaultVpcResult({
     required this.privateSubnetIds,
     required this.publicSubnetIds,
     required this.vpcId,

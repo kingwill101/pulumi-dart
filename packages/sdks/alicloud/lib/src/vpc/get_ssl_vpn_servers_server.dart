@@ -44,7 +44,7 @@ class GetSslVpnServersServer {
   /// [port] The port used by the SSL-VPN server.
   /// [proto] The protocol used by the SSL-VPN server.
   /// [vpnGatewayId] Use the VPN gateway ID as the search key.
-  GetSslVpnServersServer({
+  const GetSslVpnServersServer({
     required this.cipher,
     required this.clientIpPool,
     required this.compress,

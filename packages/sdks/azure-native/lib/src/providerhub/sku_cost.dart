@@ -14,7 +14,7 @@ class SkuCost {
   /// [extendedUnit] The extended unit.
   /// [meterId] The meter id.
   /// [quantity] The quantity.
-  SkuCost({
+  const SkuCost({
     this.extendedUnit,
     required this.meterId,
     this.quantity,

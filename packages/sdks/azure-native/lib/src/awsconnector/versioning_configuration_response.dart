@@ -9,7 +9,7 @@ class VersioningConfigurationResponse {
 
   /// Creates a new [VersioningConfigurationResponse].
   /// [status] The versioning state of the bucket.
-  VersioningConfigurationResponse({
+  const VersioningConfigurationResponse({
     this.status,
   });
 

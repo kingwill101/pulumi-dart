@@ -29,7 +29,7 @@ class ApplicationGatewayBackendAddressPoolResponse {
   /// [name] Name of the backend address pool that is unique within an Application Gateway.
   /// [provisioningState] The provisioning state of the backend address pool resource.
   /// [type] Type of the resource.
-  ApplicationGatewayBackendAddressPoolResponse({
+  const ApplicationGatewayBackendAddressPoolResponse({
     this.backendAddresses,
     required this.backendIPConfigurations,
     required this.etag,

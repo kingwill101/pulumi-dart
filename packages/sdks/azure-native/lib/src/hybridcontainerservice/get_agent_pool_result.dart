@@ -73,7 +73,7 @@ class GetAgentPoolResult {
   /// [tags] Resource tags
   /// [type] Resource Type
   /// [vmSize] VmSize - The size of the agent pool VMs.
-  GetAgentPoolResult({
+  const GetAgentPoolResult({
     this.availabilityZones,
     required this.azureApiVersion,
     this.cloudProviderProfile,

@@ -24,7 +24,7 @@ class ConnectorDefinitionsResourceProviderResponse {
   /// [providerDisplayName] Gets or sets the permissions provider display name.
   /// [requiredPermissions] Required permissions for the connector resource provider that define in ResourceProviders.
   /// [scope] The scope on which the user should have permissions, in order to be able to create connections.
-  ConnectorDefinitionsResourceProviderResponse({
+  const ConnectorDefinitionsResourceProviderResponse({
     required this.permissionsDisplayText,
     required this.provider,
     required this.providerDisplayName,

@@ -27,7 +27,7 @@ class AiMetadataStoreArgs {
   /// [name] The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the Metadata Store. eg us-central1
-  AiMetadataStoreArgs({
+  const AiMetadataStoreArgs({
     this.description,
     this.encryptionSpec,
     this.name,

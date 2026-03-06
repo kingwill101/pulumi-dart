@@ -19,7 +19,7 @@ class DirectoryBucketAccessPointScopeState {
   /// [name] The name of the access point that you want to apply the scope to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
-  DirectoryBucketAccessPointScopeState({
+  const DirectoryBucketAccessPointScopeState({
     this.accountId,
     this.name,
     this.region,

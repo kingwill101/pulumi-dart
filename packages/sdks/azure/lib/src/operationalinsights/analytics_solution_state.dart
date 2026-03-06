@@ -28,7 +28,7 @@ class AnalyticsSolutionState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [workspaceName] The full name of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
   /// [workspaceResourceId] The full resource ID of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
-  AnalyticsSolutionState({
+  const AnalyticsSolutionState({
     this.location,
     this.plan,
     this.resourceGroupName,

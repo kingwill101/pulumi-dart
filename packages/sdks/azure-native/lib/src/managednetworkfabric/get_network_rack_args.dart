@@ -15,7 +15,7 @@ class GetNetworkRackArgs {
   /// Creates a new [GetNetworkRackArgs].
   /// [networkRackName] Name of the Network Rack.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkRackArgs({
+  const GetNetworkRackArgs({
     required this.networkRackName,
     required this.resourceGroupName,
   });

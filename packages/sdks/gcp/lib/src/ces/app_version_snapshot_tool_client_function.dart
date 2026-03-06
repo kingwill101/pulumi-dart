@@ -26,7 +26,7 @@ class AppVersionSnapshotToolClientFunction {
   /// [name] (Output)
   /// [parameters] (Output)
   /// [responses] (Output)
-  AppVersionSnapshotToolClientFunction({
+  const AppVersionSnapshotToolClientFunction({
     this.description,
     this.name,
     this.parameters,

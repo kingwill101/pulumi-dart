@@ -26,7 +26,7 @@ class GetSnapshotsResult {
   /// [snapshotName] Optional.
   /// [snapshots] Required.
   /// [status] Optional.
-  GetSnapshotsResult({
+  const GetSnapshotsResult({
     this.fileSystemId,
     required this.id,
     required this.ids,

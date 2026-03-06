@@ -15,7 +15,7 @@ class GetVolumeArgs {
   /// Creates a new [GetVolumeArgs].
   /// [resourceGroupName] Azure resource group name
   /// [volumeResourceName] The identity of the volume.
-  GetVolumeArgs({
+  const GetVolumeArgs({
     required this.resourceGroupName,
     required this.volumeResourceName,
   });

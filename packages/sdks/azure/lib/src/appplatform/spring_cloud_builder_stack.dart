@@ -11,7 +11,7 @@ class SpringCloudBuilderStack {
   /// Creates a new [SpringCloudBuilderStack].
   /// [id] Specifies the ID of the ClusterStack.
   /// [version] Specifies the version of the ClusterStack
-  SpringCloudBuilderStack({
+  const SpringCloudBuilderStack({
     required this.id,
     required this.version,
   });

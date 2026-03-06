@@ -25,7 +25,7 @@ class ReservationAssignmentArgs {
   /// [location] The location for the resource
   /// [project] The ID of the project in which the resource belongs.
   /// [reservation] The reservation for the resource
-  ReservationAssignmentArgs({
+  const ReservationAssignmentArgs({
     required this.assignee,
     required this.jobType,
     this.location,

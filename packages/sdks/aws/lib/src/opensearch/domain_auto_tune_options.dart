@@ -20,7 +20,7 @@ class DomainAutoTuneOptions {
   /// [maintenanceSchedules] Configuration block for Auto-Tune maintenance windows. Can be specified multiple times for each maintenance window. Detailed below.
   /// [rollbackOnDisable] Whether to roll back to default Auto-Tune settings when disabling Auto-Tune. Valid values: `DEFAULT_ROLLBACK` or `NO_ROLLBACK`.
   /// [useOffPeakWindow] Whether to schedule Auto-Tune optimizations that require blue/green deployments during the domain's configured daily off-peak window. Defaults to `false`.
-  DomainAutoTuneOptions({
+  const DomainAutoTuneOptions({
     required this.desiredState,
     this.maintenanceSchedules,
     this.rollbackOnDisable,

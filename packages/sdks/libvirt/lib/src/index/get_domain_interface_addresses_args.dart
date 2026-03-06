@@ -15,7 +15,7 @@ class GetDomainInterfaceAddressesArgs {
   /// Creates a new [GetDomainInterfaceAddressesArgs].
   /// [domain] Domain UUID or name to query. Use `libvirt_domain.example.id` or `libvirt_domain.example.name` to reference a managed domain.
   /// [source] Source to query for IP addresses:
-  GetDomainInterfaceAddressesArgs({
+  const GetDomainInterfaceAddressesArgs({
     required this.domain,
     this.source,
   });

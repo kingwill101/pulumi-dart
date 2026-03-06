@@ -12,7 +12,7 @@ class ResourceProviderService {
   /// Creates a new [ResourceProviderService].
   /// [serviceName] The service name.
   /// [status] The status.
-  ResourceProviderService({
+  const ResourceProviderService({
     this.serviceName,
     this.status,
   });

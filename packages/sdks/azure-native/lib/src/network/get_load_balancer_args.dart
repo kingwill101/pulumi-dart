@@ -18,7 +18,7 @@ class GetLoadBalancerArgs {
   /// [expand] Expands referenced resources.
   /// [loadBalancerName] The name of the load balancer.
   /// [resourceGroupName] The name of the resource group.
-  GetLoadBalancerArgs({
+  const GetLoadBalancerArgs({
     this.expand,
     required this.loadBalancerName,
     required this.resourceGroupName,

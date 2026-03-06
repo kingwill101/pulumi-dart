@@ -14,7 +14,7 @@ class ReportPlanReportDeliveryChannel {
   /// [formats] A list of the format of your reports: CSV, JSON, or both. If not specified, the default format is CSV.
   /// [s3BucketName] The unique name of the S3 bucket that receives your reports.
   /// [s3KeyPrefix] The prefix for where Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path: s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name. If not specified, there is no prefix.
-  ReportPlanReportDeliveryChannel({
+  const ReportPlanReportDeliveryChannel({
     this.formats,
     required this.s3BucketName,
     this.s3KeyPrefix,

@@ -9,7 +9,7 @@ class ContainerExec {
 
   /// Creates a new [ContainerExec].
   /// [command] The commands to execute within the container.
-  ContainerExec({
+  const ContainerExec({
     this.command,
   });
 

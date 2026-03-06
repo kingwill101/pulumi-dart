@@ -15,7 +15,7 @@ class RoleRefRbacAuthorizationK8sIoV1beta1 {
   /// [apiGroup] APIGroup is the group for the resource being referenced
   /// [kind] Kind is the type of resource being referenced
   /// [name] Name is the name of resource being referenced
-  RoleRefRbacAuthorizationK8sIoV1beta1({
+  const RoleRefRbacAuthorizationK8sIoV1beta1({
     required this.apiGroup,
     required this.kind,
     required this.name,

@@ -9,7 +9,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement {
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement].
   /// [statements] The statements to combine.
-  WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement({
+  const WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement({
     required this.statements,
   });
 

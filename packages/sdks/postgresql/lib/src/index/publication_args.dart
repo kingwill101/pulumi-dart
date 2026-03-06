@@ -33,7 +33,7 @@ class PublicationArgs {
   /// [publishParams] Which 'publish' options should be turned on. Default to 'insert','update','delete'
   /// [publishViaPartitionRootParam] Should be option 'publish_via_partition_root' be turned on. Default to 'false'
   /// [tables] Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
-  PublicationArgs({
+  const PublicationArgs({
     this.allTables,
     this.database,
     this.dropCascade,

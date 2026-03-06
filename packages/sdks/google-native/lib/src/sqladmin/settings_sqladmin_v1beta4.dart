@@ -121,7 +121,7 @@ class SettingsSqladminV1beta4 {
   /// [tier] The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
   /// [timeZone] Server timezone, relevant only for Cloud SQL for SQL Server.
   /// [userLabels] User-provided labels, represented as a dictionary where each label is a single key value pair.
-  SettingsSqladminV1beta4({
+  const SettingsSqladminV1beta4({
     this.activationPolicy,
     this.activeDirectoryConfig,
     this.advancedMachineFeatures,

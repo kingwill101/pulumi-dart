@@ -63,7 +63,7 @@ class DatabaseKafkaConfigArgs {
   /// [logRollJitterMs] The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
   /// [logSegmentDeleteDelayMs] The amount of time to wait before deleting a file from the filesystem.
   /// [messageMaxBytes] The maximum size of message that the server can receive.
-  DatabaseKafkaConfigArgs({
+  const DatabaseKafkaConfigArgs({
     this.autoCreateTopicsEnable,
     required this.clusterId,
     this.groupInitialRebalanceDelayMs,

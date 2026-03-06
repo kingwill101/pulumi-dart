@@ -94,7 +94,7 @@ class PoolArgs {
   /// [tlsContainerRef] The reference to the key manager service
   /// [tlsEnabled] When true connections to backend member servers
   /// [tlsVersions] A list of TLS protocol versions. Available
-  PoolArgs({
+  const PoolArgs({
     this.adminStateUp,
     this.alpnProtocols,
     this.caTlsContainerRef,

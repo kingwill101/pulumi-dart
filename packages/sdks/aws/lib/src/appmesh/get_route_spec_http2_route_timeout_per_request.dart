@@ -9,7 +9,7 @@ class GetRouteSpecHttp2RouteTimeoutPerRequest {
   /// Creates a new [GetRouteSpecHttp2RouteTimeoutPerRequest].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecHttp2RouteTimeoutPerRequest({
+  const GetRouteSpecHttp2RouteTimeoutPerRequest({
     required this.unit,
     required this.value,
   });

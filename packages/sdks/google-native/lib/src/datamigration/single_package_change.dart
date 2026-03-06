@@ -12,7 +12,7 @@ class SinglePackageChange {
   /// Creates a new [SinglePackageChange].
   /// [packageBody] Optional. Sql code for package body
   /// [packageDescription] Optional. Sql code for package description
-  SinglePackageChange({
+  const SinglePackageChange({
     this.packageBody,
     this.packageDescription,
   });

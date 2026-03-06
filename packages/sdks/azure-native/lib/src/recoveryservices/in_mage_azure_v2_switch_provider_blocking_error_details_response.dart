@@ -24,7 +24,7 @@ class InMageAzureV2SwitchProviderBlockingErrorDetailsResponse {
   /// [errorTags] The error tags.
   /// [possibleCauses] The possible causes.
   /// [recommendedAction] The recommended action.
-  InMageAzureV2SwitchProviderBlockingErrorDetailsResponse({
+  const InMageAzureV2SwitchProviderBlockingErrorDetailsResponse({
     required this.errorCode,
     required this.errorMessage,
     required this.errorMessageParameters,

@@ -18,7 +18,7 @@ class ProgressMetricsResponse {
   /// [incrementalDataLastRefreshDateTime] The time of last successful incremental data refresh in UTC.
   /// [skippedDatapointCount] The skipped datapoint count.
   /// [totalDatapointCount] The total datapoint count.
-  ProgressMetricsResponse({
+  const ProgressMetricsResponse({
     required this.completedDatapointCount,
     required this.incrementalDataLastRefreshDateTime,
     required this.skippedDatapointCount,

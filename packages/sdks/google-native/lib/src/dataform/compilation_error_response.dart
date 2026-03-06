@@ -19,7 +19,7 @@ class CompilationErrorResponse {
   /// [message] The error's top level message.
   /// [path] The path of the file where this error occurred, if available, relative to the project root.
   /// [stack] The error's full stack trace.
-  CompilationErrorResponse({
+  const CompilationErrorResponse({
     required this.actionTarget,
     required this.message,
     required this.path,

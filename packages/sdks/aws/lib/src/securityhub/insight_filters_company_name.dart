@@ -9,7 +9,7 @@ class InsightFiltersCompanyName {
   /// Creates a new [InsightFiltersCompanyName].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersCompanyName({
+  const InsightFiltersCompanyName({
     required this.comparison,
     required this.value,
   });

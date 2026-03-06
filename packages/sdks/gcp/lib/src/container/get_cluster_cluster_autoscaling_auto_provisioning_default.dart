@@ -38,7 +38,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefault {
   /// [serviceAccount] The Google Cloud Platform Service Account to be used by the node VMs.
   /// [shieldedInstanceConfigs] Shielded Instance options.
   /// [upgradeSettings] Specifies the upgrade settings for NAP created node pools
-  GetClusterClusterAutoscalingAutoProvisioningDefault({
+  const GetClusterClusterAutoscalingAutoProvisioningDefault({
     required this.bootDiskKmsKey,
     required this.diskSize,
     required this.diskType,

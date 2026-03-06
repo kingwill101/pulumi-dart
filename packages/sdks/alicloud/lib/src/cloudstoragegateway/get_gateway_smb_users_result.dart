@@ -20,7 +20,7 @@ class GetGatewaySmbUsersResult {
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
   /// [users] Required.
-  GetGatewaySmbUsersResult({
+  const GetGatewaySmbUsersResult({
     required this.gatewayId,
     required this.id,
     required this.ids,

@@ -41,7 +41,7 @@ class AutoscalerState {
   /// [selfLink] The URI of the created resource.
   /// [target] URL of the managed instance group that this autoscaler will scale.
   /// [zone] URL of the zone where the instance group resides.
-  AutoscalerState({
+  const AutoscalerState({
     this.autoscalingPolicy,
     this.creationTimestamp,
     this.description,

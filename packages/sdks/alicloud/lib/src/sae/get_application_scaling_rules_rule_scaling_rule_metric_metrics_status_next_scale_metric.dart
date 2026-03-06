@@ -14,7 +14,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetri
   /// [name] The name of the trigger condition.
   /// [nextScaleInAverageUtilization] The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
   /// [nextScaleOutAverageUtilization] The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
-  GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric({
+  const GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric({
     required this.name,
     required this.nextScaleInAverageUtilization,
     required this.nextScaleOutAverageUtilization,

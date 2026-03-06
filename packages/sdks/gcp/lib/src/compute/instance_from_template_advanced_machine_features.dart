@@ -23,7 +23,7 @@ class InstanceFromTemplateAdvancedMachineFeatures {
   /// [threadsPerCore] The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
   /// [turboMode] Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
   /// [visibleCoreCount] The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
-  InstanceFromTemplateAdvancedMachineFeatures({
+  const InstanceFromTemplateAdvancedMachineFeatures({
     this.enableNestedVirtualization,
     this.enableUefiNetworking,
     this.performanceMonitoringUnit,

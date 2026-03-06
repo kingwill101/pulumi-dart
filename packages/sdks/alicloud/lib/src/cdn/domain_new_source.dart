@@ -20,7 +20,7 @@ class DomainNewSource {
   /// [priority] Priority of the source. Valid values are `0` and `100`. Default value is `20`.
   /// [type] The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
   /// [weight] Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
-  DomainNewSource({
+  const DomainNewSource({
     this.content,
     this.port,
     this.priority,

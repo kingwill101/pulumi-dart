@@ -14,7 +14,7 @@ class EventConnectionAuthParametersInvocationHttpParametersQueryString {
   /// [isValueSecret] Specified whether the value is secret.
   /// [key] The key for the parameter.
   /// [value] The value associated with the key. Created and stored in AWS Secrets Manager if is secret.
-  EventConnectionAuthParametersInvocationHttpParametersQueryString({
+  const EventConnectionAuthParametersInvocationHttpParametersQueryString({
     this.isValueSecret,
     this.key,
     this.value,

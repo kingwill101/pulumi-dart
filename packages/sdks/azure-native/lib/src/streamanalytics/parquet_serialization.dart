@@ -10,7 +10,7 @@ class ParquetSerialization {
 
   /// Creates a new [ParquetSerialization].
   /// [type] Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
-  ParquetSerialization({
+  const ParquetSerialization({
     required this.type,
   });
 

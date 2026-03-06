@@ -12,7 +12,7 @@ class ResourceMapResponse {
   /// Creates a new [ResourceMapResponse].
   /// [from] Resource Map Key.
   /// [to] Resource Map Value.
-  ResourceMapResponse({
+  const ResourceMapResponse({
     required this.from,
     required this.to,
   });

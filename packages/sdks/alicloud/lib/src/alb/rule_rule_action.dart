@@ -50,7 +50,7 @@ class RuleRuleAction {
   /// [trafficLimitConfig] The Flow speed limit. See `traffic_limit_config` below.
   /// [trafficMirrorConfig] The Traffic mirroring. See `traffic_mirror_config` below.
   /// [type] The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-  RuleRuleAction({
+  const RuleRuleAction({
     this.corsConfig,
     this.fixedResponseConfig,
     this.forwardGroupConfig,

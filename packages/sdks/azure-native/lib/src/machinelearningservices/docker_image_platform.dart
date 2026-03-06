@@ -8,7 +8,7 @@ class DockerImagePlatform {
 
   /// Creates a new [DockerImagePlatform].
   /// [operatingSystemType] The OS type the Environment.
-  DockerImagePlatform({
+  const DockerImagePlatform({
     this.operatingSystemType,
   });
 

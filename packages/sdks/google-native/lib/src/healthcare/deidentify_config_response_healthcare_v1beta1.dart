@@ -41,7 +41,7 @@ class DeidentifyConfigResponseHealthcareV1beta1 {
   /// [operationMetadata] Details about the work the de-identify operation performed.
   /// [text] Configures de-identification of text wherever it is found in the source_dataset.
   /// [useRegionalDataProcessing] Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
-  DeidentifyConfigResponseHealthcareV1beta1({
+  const DeidentifyConfigResponseHealthcareV1beta1({
     required this.annotation,
     required this.dicom,
     required this.dicomTagConfig,

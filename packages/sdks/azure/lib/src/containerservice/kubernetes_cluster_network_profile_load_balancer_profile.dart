@@ -35,7 +35,7 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile {
   /// [outboundIpAddressIds] The ID of the Public IP Addresses which should be used for outbound communication for the cluster load balancer.
   /// [outboundIpPrefixIds] The ID of the outbound Public IP Address Prefixes which should be used for the cluster load balancer.
   /// [outboundPortsAllocated] Number of desired SNAT port for each VM in the clusters load balancer. Must be between `0` and `64000` inclusive. Defaults to `0`.
-  KubernetesClusterNetworkProfileLoadBalancerProfile({
+  const KubernetesClusterNetworkProfileLoadBalancerProfile({
     this.backendPoolType,
     this.effectiveOutboundIps,
     this.idleTimeoutInMinutes,

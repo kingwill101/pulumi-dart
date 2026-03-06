@@ -28,7 +28,7 @@ class AccountRaiPolicyArgs {
   /// [mode] The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
   /// [name] The name of the Cognitive Service Account RAI Policy. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountRaiPolicyArgs({
+  const AccountRaiPolicyArgs({
     required this.basePolicyName,
     required this.cognitiveAccountId,
     required this.contentFilters,

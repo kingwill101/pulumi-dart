@@ -25,7 +25,7 @@ class NodePoolUpgradeSettings {
   /// [maxSurge] The number of additional nodes that can be added to the node pool during
   /// [maxUnavailable] The number of nodes that can be simultaneously unavailable during
   /// [strategy] The upgrade strategy to be used for upgrading the nodes.
-  NodePoolUpgradeSettings({
+  const NodePoolUpgradeSettings({
     this.blueGreenSettings,
     this.maxSurge,
     this.maxUnavailable,

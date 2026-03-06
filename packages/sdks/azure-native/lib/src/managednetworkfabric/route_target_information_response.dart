@@ -18,7 +18,7 @@ class RouteTargetInformationResponse {
   /// [exportIpv6RouteTargets] Route Targets to be applied for outgoing routes from CE.
   /// [importIpv4RouteTargets] Route Targets to be applied for incoming routes into CE.
   /// [importIpv6RouteTargets] Route Targets to be applied for incoming routes from CE.
-  RouteTargetInformationResponse({
+  const RouteTargetInformationResponse({
     this.exportIpv4RouteTargets,
     this.exportIpv6RouteTargets,
     this.importIpv4RouteTargets,

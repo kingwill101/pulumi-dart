@@ -9,7 +9,7 @@ class SharedVPCHostProjectState {
 
   /// Creates a new [SharedVPCHostProjectState].
   /// [project] The ID of the project that will serve as a Shared VPC host project
-  SharedVPCHostProjectState({
+  const SharedVPCHostProjectState({
     this.project,
   });
 

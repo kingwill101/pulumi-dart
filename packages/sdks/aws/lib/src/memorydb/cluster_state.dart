@@ -105,7 +105,7 @@ class ClusterState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [tlsEnabled] A flag to enable in-transit encryption on the cluster. When set to `false`, the `acl_name` must be `open-access`. Defaults to `true`.
-  ClusterState({
+  const ClusterState({
     this.aclName,
     this.arn,
     this.autoMinorVersionUpgrade,

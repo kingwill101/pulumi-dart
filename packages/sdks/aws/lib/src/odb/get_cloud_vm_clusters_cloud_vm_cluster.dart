@@ -29,7 +29,7 @@ class GetCloudVmClustersCloudVmCluster {
   /// [ociUrl] The HTTPS link to the VM cluster in OCI.
   /// [ocid] The OCID of the VM cluster.
   /// [odbNetworkId] The ID of the ODB network.
-  GetCloudVmClustersCloudVmCluster({
+  const GetCloudVmClustersCloudVmCluster({
     required this.arn,
     required this.cloudExadataInfrastructureId,
     required this.displayName,

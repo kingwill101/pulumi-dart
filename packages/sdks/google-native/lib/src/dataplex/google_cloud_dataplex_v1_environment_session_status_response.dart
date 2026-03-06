@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1EnvironmentSessionStatusResponse {
 
   /// Creates a new [GoogleCloudDataplexV1EnvironmentSessionStatusResponse].
   /// [active] Queries over sessions to mark whether the environment is currently active or not
-  GoogleCloudDataplexV1EnvironmentSessionStatusResponse({
+  const GoogleCloudDataplexV1EnvironmentSessionStatusResponse({
     required this.active,
   });
 

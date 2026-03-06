@@ -15,7 +15,7 @@ class BasicAuthenticationResponse {
   /// [password] Gets or sets the password, return value will always be empty.
   /// [type] Gets or sets the HTTP authentication type.
   /// [username] Gets or sets the username.
-  BasicAuthenticationResponse({
+  const BasicAuthenticationResponse({
     this.password,
     required this.type,
     this.username,

@@ -9,7 +9,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPr
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration].
   /// [inputLambdaProcessor] Describes the Lambda function that is used to preprocess the records in the stream before being processed by your application code.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration({
     required this.inputLambdaProcessor,
   });
 

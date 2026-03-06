@@ -14,7 +14,7 @@ class AzureClusterWorkloadIdentityConfig {
   /// [identityProvider] The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
   /// [issuerUri] The OIDC issuer URL for this cluster.
   /// [workloadPool] The Workload Identity Pool associated to the cluster.
-  AzureClusterWorkloadIdentityConfig({
+  const AzureClusterWorkloadIdentityConfig({
     this.identityProvider,
     this.issuerUri,
     this.workloadPool,

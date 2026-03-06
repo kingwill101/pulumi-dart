@@ -30,7 +30,7 @@ class ApplicationArgs {
   /// [displayName] The display name for the application.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
-  ApplicationArgs({
+  const ApplicationArgs({
     required this.accountName,
     this.allowUpdates,
     this.applicationName,

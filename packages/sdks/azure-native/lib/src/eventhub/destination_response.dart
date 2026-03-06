@@ -31,7 +31,7 @@ class DestinationResponse {
   /// [identity] A value that indicates whether capture description is enabled.
   /// [name] Name for capture destination
   /// [storageAccountResourceId] Resource id of the storage account to be used to create the blobs
-  DestinationResponse({
+  const DestinationResponse({
     this.archiveNameFormat,
     this.blobContainer,
     this.dataLakeAccountName,

@@ -15,7 +15,7 @@ class ListLinkerConfigurationsArgs {
   /// Creates a new [ListLinkerConfigurationsArgs].
   /// [linkerName] The name Linker resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
-  ListLinkerConfigurationsArgs({
+  const ListLinkerConfigurationsArgs({
     required this.linkerName,
     required this.resourceUri,
   });

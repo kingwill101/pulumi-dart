@@ -15,7 +15,7 @@ class AvailabilityZoneGroupState {
   /// [groupName] Name of the Availability Zone Group.
   /// [optInStatus] Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AvailabilityZoneGroupState({
+  const AvailabilityZoneGroupState({
     this.groupName,
     this.optInStatus,
     this.region,

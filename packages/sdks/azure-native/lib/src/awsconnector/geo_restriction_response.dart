@@ -12,7 +12,7 @@ class GeoRestrictionResponse {
   /// Creates a new [GeoRestrictionResponse].
   /// [locations] A complex type that contains a ``Location`` element for each country in which you want CloudFront either to distribute your content or not distribute your content.
   /// [restrictionType] The method that you want to use to restrict distribution of your content by country.
-  GeoRestrictionResponse({
+  const GeoRestrictionResponse({
     this.locations,
     this.restrictionType,
   });

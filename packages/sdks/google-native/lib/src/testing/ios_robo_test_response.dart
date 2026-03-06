@@ -16,7 +16,7 @@ class IosRoboTestResponse {
   /// [appBundleId] The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
   /// [appIpa] The ipa stored at this file should be used to run the test.
   /// [roboScript] An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
-  IosRoboTestResponse({
+  const IosRoboTestResponse({
     required this.appBundleId,
     required this.appIpa,
     required this.roboScript,

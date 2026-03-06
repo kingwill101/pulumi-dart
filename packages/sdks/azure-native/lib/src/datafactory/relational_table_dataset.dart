@@ -37,7 +37,7 @@ class RelationalTableDataset {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableName] The relational table name. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  RelationalTableDataset({
+  const RelationalTableDataset({
     this.annotations,
     this.description,
     this.folder,

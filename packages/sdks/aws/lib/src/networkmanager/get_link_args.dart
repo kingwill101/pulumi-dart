@@ -18,7 +18,7 @@ class GetLinkArgs {
   /// [globalNetworkId] ID of the Global Network of the link to retrieve.
   /// [linkId] ID of the specific link to retrieve.
   /// [tags] Key-value tags for the link.
-  GetLinkArgs({
+  const GetLinkArgs({
     required this.globalNetworkId,
     required this.linkId,
     this.tags,

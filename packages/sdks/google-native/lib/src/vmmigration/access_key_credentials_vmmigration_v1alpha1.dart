@@ -15,7 +15,7 @@ class AccessKeyCredentialsVmmigrationV1alpha1 {
   /// [accessKeyId] AWS access key ID.
   /// [secretAccessKey] Input only. AWS secret access key.
   /// [sessionToken] Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
-  AccessKeyCredentialsVmmigrationV1alpha1({
+  const AccessKeyCredentialsVmmigrationV1alpha1({
     this.accessKeyId,
     this.secretAccessKey,
     this.sessionToken,

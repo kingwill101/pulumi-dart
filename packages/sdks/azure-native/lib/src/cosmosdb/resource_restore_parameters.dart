@@ -15,7 +15,7 @@ class ResourceRestoreParameters {
   /// [restoreSource] The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
   /// [restoreTimestampInUtc] Time to which the account has to be restored (ISO-8601 format).
   /// [restoreWithTtlDisabled] Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
-  ResourceRestoreParameters({
+  const ResourceRestoreParameters({
     this.restoreSource,
     this.restoreTimestampInUtc,
     this.restoreWithTtlDisabled,

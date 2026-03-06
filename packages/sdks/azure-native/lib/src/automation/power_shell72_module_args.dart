@@ -31,7 +31,7 @@ class PowerShell72ModuleArgs {
   /// [name] Sets name of the resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Sets the tags attached to the resource.
-  PowerShell72ModuleArgs({
+  const PowerShell72ModuleArgs({
     required this.automationAccountName,
     required this.contentLink,
     this.location,

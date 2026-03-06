@@ -29,7 +29,7 @@ class OfficeDataConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tenantId] The tenant id to connect to, and get the data from.
   /// [workspaceName] The name of the workspace.
-  OfficeDataConnectorArgs({
+  const OfficeDataConnectorArgs({
     this.dataConnectorId,
     required this.dataTypes,
     required this.kind,

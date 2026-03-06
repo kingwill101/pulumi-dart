@@ -26,7 +26,7 @@ class VmwareAdminClusterStatusCondition {
   /// [reason] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  VmwareAdminClusterStatusCondition({
+  const VmwareAdminClusterStatusCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

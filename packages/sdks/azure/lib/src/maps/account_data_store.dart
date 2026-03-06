@@ -11,7 +11,7 @@ class AccountDataStore {
   /// Creates a new [AccountDataStore].
   /// [storageAccountId] The ID of the Storage Account that should be linked to this Azure Maps Account.
   /// [uniqueName] The name given to the linked Storage Account.
-  AccountDataStore({
+  const AccountDataStore({
     this.storageAccountId,
     required this.uniqueName,
   });

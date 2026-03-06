@@ -29,7 +29,7 @@ class GetRandomPasswordResult {
   /// [randomPassword] Random password.
   /// [region] Required.
   /// [requireEachIncludedType] Optional.
-  GetRandomPasswordResult({
+  const GetRandomPasswordResult({
     this.excludeCharacters,
     this.excludeLowercase,
     this.excludeNumbers,

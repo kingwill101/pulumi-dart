@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3beta1EventInputResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EventInputResponse].
   /// [event] Name of the event.
-  GoogleCloudDialogflowCxV3beta1EventInputResponse({
+  const GoogleCloudDialogflowCxV3beta1EventInputResponse({
     required this.event,
   });
 

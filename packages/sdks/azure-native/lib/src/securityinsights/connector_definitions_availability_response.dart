@@ -12,7 +12,7 @@ class ConnectorDefinitionsAvailabilityResponse {
   /// Creates a new [ConnectorDefinitionsAvailabilityResponse].
   /// [isPreview] Gets or sets a value indicating whether the connector is preview.
   /// [status] The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
-  ConnectorDefinitionsAvailabilityResponse({
+  const ConnectorDefinitionsAvailabilityResponse({
     this.isPreview,
     this.status,
   });

@@ -21,7 +21,7 @@ class DatascanDataDiscoverySpecStorageConfig {
   /// [excludePatterns] Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
   /// [includePatterns] Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
   /// [jsonOptions] Configuration for JSON data.
-  DatascanDataDiscoverySpecStorageConfig({
+  const DatascanDataDiscoverySpecStorageConfig({
     this.csvOptions,
     this.excludePatterns,
     this.includePatterns,

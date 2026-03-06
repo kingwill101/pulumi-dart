@@ -21,7 +21,7 @@ class GetPrefixArgs {
   /// [peeringServiceName] The name of the peering service.
   /// [prefixName] The name of the prefix.
   /// [resourceGroupName] The name of the resource group.
-  GetPrefixArgs({
+  const GetPrefixArgs({
     this.expand,
     required this.peeringServiceName,
     required this.prefixName,

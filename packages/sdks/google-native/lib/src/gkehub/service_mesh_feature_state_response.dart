@@ -10,7 +10,7 @@ class ServiceMeshFeatureStateResponse {
 
   /// Creates a new [ServiceMeshFeatureStateResponse].
   /// [analysisMessages] Results of running Service Mesh analyzers.
-  ServiceMeshFeatureStateResponse({
+  const ServiceMeshFeatureStateResponse({
     required this.analysisMessages,
   });
 

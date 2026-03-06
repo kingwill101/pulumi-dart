@@ -17,7 +17,7 @@ class AppVariableDeclaration {
   /// [description] The description of the variable.
   /// [name] The name of the variable. The name must start with a letter or underscore
   /// [schema] Represents a select subset of an OpenAPI 3.0 schema object.
-  AppVariableDeclaration({
+  const AppVariableDeclaration({
     required this.description,
     required this.name,
     required this.schema,

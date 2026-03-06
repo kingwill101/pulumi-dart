@@ -14,7 +14,7 @@ class StorageProfile {
   /// Creates a new [StorageProfile].
   /// [nfsIpAddress] IP Address to connect to storage.
   /// [osDisks] Specifies information about the operating system disk used by Azure Large
-  StorageProfile({
+  const StorageProfile({
     this.nfsIpAddress,
     this.osDisks,
   });

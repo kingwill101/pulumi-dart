@@ -43,7 +43,7 @@ class AutoScalingConfigurationVersionState {
   /// [status] Current state of the auto scaling configuration. An INACTIVE configuration revision has been deleted and can't be used. It is permanently removed some time after deletion.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  AutoScalingConfigurationVersionState({
+  const AutoScalingConfigurationVersionState({
     this.arn,
     this.autoScalingConfigurationName,
     this.autoScalingConfigurationRevision,

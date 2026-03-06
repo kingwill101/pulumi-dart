@@ -15,7 +15,7 @@ class GetPlanArgs {
   /// Creates a new [GetPlanArgs].
   /// [planName] The name of the devcenter plan.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPlanArgs({
+  const GetPlanArgs({
     required this.planName,
     required this.resourceGroupName,
   });

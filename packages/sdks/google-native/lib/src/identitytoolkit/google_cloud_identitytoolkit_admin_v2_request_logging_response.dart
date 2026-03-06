@@ -9,7 +9,7 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse].
   /// [enabled] Whether logging is enabled for this project or not.
-  GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse({
+  const GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse({
     required this.enabled,
   });
 

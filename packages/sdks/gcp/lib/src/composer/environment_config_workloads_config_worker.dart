@@ -20,7 +20,7 @@ class EnvironmentConfigWorkloadsConfigWorker {
   /// [memoryGb] Memory (GB) request and limit for a single Airflow worker replica.
   /// [minCount] Minimum number of workers for autoscaling.
   /// [storageGb] Storage (GB) request and limit for a single Airflow worker replica.
-  EnvironmentConfigWorkloadsConfigWorker({
+  const EnvironmentConfigWorkloadsConfigWorker({
     this.cpu,
     this.maxCount,
     this.memoryGb,

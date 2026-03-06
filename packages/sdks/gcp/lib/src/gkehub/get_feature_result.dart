@@ -39,7 +39,7 @@ class GetFeatureResult {
   /// [specs] Required.
   /// [states] Required.
   /// [updateTime] Required.
-  GetFeatureResult({
+  const GetFeatureResult({
     required this.createTime,
     required this.deleteTime,
     required this.effectiveLabels,

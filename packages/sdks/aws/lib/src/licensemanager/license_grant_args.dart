@@ -24,7 +24,7 @@ class LicenseGrantArgs {
   /// [name] The Name of the grant.
   /// [principal] The target account for the grant in the form of the ARN for an account principal of the root user.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LicenseGrantArgs({
+  const LicenseGrantArgs({
     required this.allowedOperations,
     required this.licenseArn,
     this.name,

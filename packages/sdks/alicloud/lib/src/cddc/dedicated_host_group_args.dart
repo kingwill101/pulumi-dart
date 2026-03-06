@@ -37,7 +37,7 @@ class DedicatedHostGroupArgs {
   /// [memAllocationRatio] The Memory Allocation Ratio of the Dedicated Host Group.
   /// [openPermission] Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
   /// [vpcId] The virtual private cloud (VPC) ID of the dedicated cluster.
-  DedicatedHostGroupArgs({
+  const DedicatedHostGroupArgs({
     this.allocationPolicy,
     this.cpuAllocationRatio,
     this.dedicatedHostGroupDesc,

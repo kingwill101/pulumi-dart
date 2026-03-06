@@ -20,7 +20,7 @@ class GetQuickConnectQuickConnectConfig {
   /// [queueConfigs] Queue configuration of the Quick Connect. This is returned only if `quick_connect_type` is `QUEUE`. The `queue_config` block is documented below.
   /// [quickConnectType] Configuration type of the Quick Connect. Valid values are `PHONE_NUMBER`, `QUEUE`, `USER`.
   /// [userConfigs] User configuration of the Quick Connect. This is returned only if `quick_connect_type` is `USER`. The `user_config` block is documented below.
-  GetQuickConnectQuickConnectConfig({
+  const GetQuickConnectQuickConnectConfig({
     required this.phoneConfigs,
     required this.queueConfigs,
     required this.quickConnectType,

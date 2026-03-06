@@ -18,7 +18,7 @@ class ElasticInferenceAcceleratorAssociation {
   /// [elasticInferenceAcceleratorAssociationId] &lt;p&gt; The ID of the association. &lt;/p&gt;
   /// [elasticInferenceAcceleratorAssociationState] &lt;p&gt; The state of the elastic inference accelerator. &lt;/p&gt;
   /// [elasticInferenceAcceleratorAssociationTime] &lt;p&gt; The time at which the elastic inference accelerator is associated with an instance. &lt;/p&gt;
-  ElasticInferenceAcceleratorAssociation({
+  const ElasticInferenceAcceleratorAssociation({
     this.elasticInferenceAcceleratorArn,
     this.elasticInferenceAcceleratorAssociationId,
     this.elasticInferenceAcceleratorAssociationState,

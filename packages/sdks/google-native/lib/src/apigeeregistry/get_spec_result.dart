@@ -47,7 +47,7 @@ class GetSpecResult {
   /// [revisionUpdateTime] Last update timestamp: when the represented revision was last modified.
   /// [sizeBytes] The size of the spec file in bytes. If the spec is gzipped, this is the size of the uncompressed spec.
   /// [sourceUri] The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved.
-  GetSpecResult({
+  const GetSpecResult({
     required this.annotations,
     required this.contents,
     required this.createTime,

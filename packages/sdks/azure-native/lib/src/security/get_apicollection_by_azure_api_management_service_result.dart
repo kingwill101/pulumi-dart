@@ -47,7 +47,7 @@ class GetAPICollectionByAzureApiManagementServiceResult {
   /// [provisioningState] Gets the provisioning state of the API collection.
   /// [sensitivityLabel] The highest priority sensitivity label from Microsoft Purview in this API collection.
   /// [type] Resource type
-  GetAPICollectionByAzureApiManagementServiceResult({
+  const GetAPICollectionByAzureApiManagementServiceResult({
     required this.azureApiVersion,
     required this.baseUrl,
     required this.discoveredVia,

@@ -9,7 +9,7 @@ class NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange {
   /// Creates a new [NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange({
+  const NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange({
     this.from,
     this.to,
   });

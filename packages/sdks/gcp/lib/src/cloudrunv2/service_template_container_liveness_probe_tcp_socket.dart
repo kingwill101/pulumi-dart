@@ -9,7 +9,7 @@ class ServiceTemplateContainerLivenessProbeTcpSocket {
 
   /// Creates a new [ServiceTemplateContainerLivenessProbeTcpSocket].
   /// [port] Port number to access on the container. Must be in the range 1 to 65535.
-  ServiceTemplateContainerLivenessProbeTcpSocket({
+  const ServiceTemplateContainerLivenessProbeTcpSocket({
     required this.port,
   });
 

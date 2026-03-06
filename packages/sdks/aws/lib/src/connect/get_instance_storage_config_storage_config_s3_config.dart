@@ -15,7 +15,7 @@ class GetInstanceStorageConfigStorageConfigS3Config {
   /// [bucketName] The S3 bucket name.
   /// [bucketPrefix] The S3 bucket prefix.
   /// [encryptionConfigs] The encryption configuration. Documented below.
-  GetInstanceStorageConfigStorageConfigS3Config({
+  const GetInstanceStorageConfigStorageConfigS3Config({
     required this.bucketName,
     required this.bucketPrefix,
     required this.encryptionConfigs,

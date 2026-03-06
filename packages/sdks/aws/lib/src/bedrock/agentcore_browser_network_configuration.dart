@@ -12,7 +12,7 @@ class AgentcoreBrowserNetworkConfiguration {
   /// Creates a new [AgentcoreBrowserNetworkConfiguration].
   /// [networkMode] Network mode for the browser. Valid values: `PUBLIC`, `VPC`.
   /// [vpcConfig] VPC configuration when `network_mode` is `VPC`. See `vpc_config` below.
-  AgentcoreBrowserNetworkConfiguration({
+  const AgentcoreBrowserNetworkConfiguration({
     required this.networkMode,
     this.vpcConfig,
   });

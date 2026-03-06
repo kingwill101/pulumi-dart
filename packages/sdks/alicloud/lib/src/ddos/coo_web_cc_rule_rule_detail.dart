@@ -24,7 +24,7 @@ class CooWebCcRuleRuleDetail {
   /// [rateLimit] Rate limiting statistics. See `rate_limit` below.
   /// [statistics] Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
   /// [statusCode] The HTTP status code. See `status_code` below.
-  CooWebCcRuleRuleDetail({
+  const CooWebCcRuleRuleDetail({
     required this.action,
     required this.conditions,
     required this.rateLimit,

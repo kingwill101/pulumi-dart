@@ -31,7 +31,7 @@ class DeploymentArgs {
   /// [deviceGroupName] Name of device group.
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DeploymentArgs({
+  const DeploymentArgs({
     required this.catalogName,
     this.deployedImages,
     this.deploymentId,

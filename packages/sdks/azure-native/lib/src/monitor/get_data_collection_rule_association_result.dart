@@ -40,7 +40,7 @@ class GetDataCollectionRuleAssociationResult {
   /// [provisioningState] The resource provisioning state.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetDataCollectionRuleAssociationResult({
+  const GetDataCollectionRuleAssociationResult({
     required this.azureApiVersion,
     this.dataCollectionEndpointId,
     this.dataCollectionRuleId,

@@ -32,7 +32,7 @@ class PreventionInspectTemplateArgs {
   /// [inspectConfig] The core content of the template.
   /// [parent] The parent of the inspect template in any of the following formats:
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-  PreventionInspectTemplateArgs({
+  const PreventionInspectTemplateArgs({
     this.description,
     this.displayName,
     this.inspectConfig,

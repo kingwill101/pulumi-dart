@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [properties] Resource properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Arc PrivateLinkScope resource.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     this.properties,
     required this.resourceGroupName,

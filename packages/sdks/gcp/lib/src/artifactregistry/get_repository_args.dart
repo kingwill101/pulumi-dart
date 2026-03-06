@@ -21,7 +21,7 @@ class GetRepositoryArgs {
   /// [location] The location of the artifact registry repository. eg us-central1
   /// [project] The project in which the resource belongs. If it
   /// [repositoryId] The last part of the repository name.
-  GetRepositoryArgs({
+  const GetRepositoryArgs({
     required this.location,
     this.project,
     required this.repositoryId,

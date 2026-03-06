@@ -12,7 +12,7 @@ class RetryPolicy {
   /// Creates a new [RetryPolicy].
   /// [retryCount] Retry count for user request
   /// [retryWindowInMinutes] Retry window in minutes for user request
-  RetryPolicy({
+  const RetryPolicy({
     this.retryCount,
     this.retryWindowInMinutes,
   });

@@ -14,7 +14,7 @@ class BuildResourceRequestsResponse {
   /// Creates a new [BuildResourceRequestsResponse].
   /// [cpu] Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m.
   /// [memory] Optional Memory allocated to the build resource. 1 GB can be represented by 1Gi or 1024Mi.
-  BuildResourceRequestsResponse({
+  const BuildResourceRequestsResponse({
     this.cpu,
     this.memory,
   });

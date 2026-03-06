@@ -12,7 +12,7 @@ class ConnectionAwsAccessRole {
   /// Creates a new [ConnectionAwsAccessRole].
   /// [iamRoleId] The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
   /// [identity] (Output)
-  ConnectionAwsAccessRole({
+  const ConnectionAwsAccessRole({
     required this.iamRoleId,
     this.identity,
   });

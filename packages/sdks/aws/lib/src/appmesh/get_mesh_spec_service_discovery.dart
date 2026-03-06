@@ -7,7 +7,7 @@ class GetMeshSpecServiceDiscovery {
 
   /// Creates a new [GetMeshSpecServiceDiscovery].
   /// [ipPreference] Required.
-  GetMeshSpecServiceDiscovery({
+  const GetMeshSpecServiceDiscovery({
     required this.ipPreference,
   });
 

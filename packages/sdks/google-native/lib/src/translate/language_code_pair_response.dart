@@ -12,7 +12,7 @@ class LanguageCodePairResponse {
   /// Creates a new [LanguageCodePairResponse].
   /// [sourceLanguageCode] The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
   /// [targetLanguageCode] The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
-  LanguageCodePairResponse({
+  const LanguageCodePairResponse({
     required this.sourceLanguageCode,
     required this.targetLanguageCode,
   });

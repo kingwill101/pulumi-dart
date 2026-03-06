@@ -21,7 +21,7 @@ class GetFavoriteProcessArgs {
   /// [packageName] The resource name of the Test Base Package.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetFavoriteProcessArgs({
+  const GetFavoriteProcessArgs({
     required this.favoriteProcessResourceName,
     required this.packageName,
     required this.resourceGroupName,

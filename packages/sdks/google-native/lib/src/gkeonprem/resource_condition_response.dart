@@ -21,7 +21,7 @@ class ResourceConditionResponse {
   /// [reason] Machine-readable message indicating details about last transition.
   /// [state] state of the condition.
   /// [type] Type of the condition. (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
-  ResourceConditionResponse({
+  const ResourceConditionResponse({
     required this.lastTransitionTime,
     required this.message,
     required this.reason,

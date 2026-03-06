@@ -24,7 +24,7 @@ class WidgetConfigUiSettingsDataStoreUiConfig {
   /// [facetFields] Structure is documented below.
   /// [fieldsUiComponentsMaps] 'The key is the UI component. Currently supported `title`, `thumbnail`,
   /// [name] The name of the data store. It should be data store resource name. Format:
-  WidgetConfigUiSettingsDataStoreUiConfig({
+  const WidgetConfigUiSettingsDataStoreUiConfig({
     this.facetFields,
     this.fieldsUiComponentsMaps,
     this.name,

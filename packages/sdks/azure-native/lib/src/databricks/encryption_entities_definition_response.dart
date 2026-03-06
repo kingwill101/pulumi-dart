@@ -14,7 +14,7 @@ class EncryptionEntitiesDefinitionResponse {
   /// Creates a new [EncryptionEntitiesDefinitionResponse].
   /// [managedDisk] Encryption properties for the databricks managed disks.
   /// [managedServices] Encryption properties for the databricks managed services.
-  EncryptionEntitiesDefinitionResponse({
+  const EncryptionEntitiesDefinitionResponse({
     this.managedDisk,
     this.managedServices,
   });

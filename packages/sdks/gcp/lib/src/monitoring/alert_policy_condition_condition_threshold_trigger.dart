@@ -15,7 +15,7 @@ class AlertPolicyConditionConditionThresholdTrigger {
   /// Creates a new [AlertPolicyConditionConditionThresholdTrigger].
   /// [count] The absolute number of time series
   /// [percent] The percentage of time series that
-  AlertPolicyConditionConditionThresholdTrigger({
+  const AlertPolicyConditionConditionThresholdTrigger({
     this.count,
     this.percent,
   });

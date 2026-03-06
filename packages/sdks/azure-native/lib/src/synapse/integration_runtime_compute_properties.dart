@@ -26,7 +26,7 @@ class IntegrationRuntimeComputeProperties {
   /// [nodeSize] The node size requirement to managed integration runtime.
   /// [numberOfNodes] The required number of nodes for managed integration runtime.
   /// [vNetProperties] VNet properties for managed integration runtime.
-  IntegrationRuntimeComputeProperties({
+  const IntegrationRuntimeComputeProperties({
     this.dataFlowProperties,
     this.location,
     this.maxParallelExecutionsPerNode,

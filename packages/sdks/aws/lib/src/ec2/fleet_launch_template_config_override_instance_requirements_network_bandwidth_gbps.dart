@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps 
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps].
   /// [max] The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this parameter.
   /// [min] The minimum amount of network bandwidth, in Gbps. To specify no minimum limit, omit this parameter.
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps({
     this.max,
     this.min,
   });

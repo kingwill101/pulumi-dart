@@ -12,7 +12,7 @@ class ReportTimePeriod {
   /// Creates a new [ReportTimePeriod].
   /// [from] The start date to pull data from.
   /// [to] The end date to pull data to.
-  ReportTimePeriod({
+  const ReportTimePeriod({
     required this.from,
     required this.to,
   });

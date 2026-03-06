@@ -30,7 +30,7 @@ class GetRegionSSLPolicyResult {
   /// [project] Optional.
   /// [region] Optional.
   /// [selfLink] Required.
-  GetRegionSSLPolicyResult({
+  const GetRegionSSLPolicyResult({
     required this.creationTimestamp,
     required this.customFeatures,
     required this.description,

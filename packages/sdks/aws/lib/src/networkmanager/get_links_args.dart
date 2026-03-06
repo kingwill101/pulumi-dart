@@ -24,7 +24,7 @@ class GetLinksArgs {
   /// [siteId] ID of the site of the links to retrieve.
   /// [tags] Restricts the list to the links with these tags.
   /// [type] Link type to retrieve.
-  GetLinksArgs({
+  const GetLinksArgs({
     required this.globalNetworkId,
     this.providerName,
     this.siteId,

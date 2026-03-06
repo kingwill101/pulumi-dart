@@ -74,7 +74,7 @@ class NfsFileShareArgs {
   /// [squash] Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcEndpointDnsName] The DNS name of the VPC endpoint for S3 PrivateLink.
-  NfsFileShareArgs({
+  const NfsFileShareArgs({
     this.auditDestinationArn,
     this.bucketRegion,
     this.cacheAttributes,

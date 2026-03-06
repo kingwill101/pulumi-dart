@@ -8,7 +8,7 @@ class TargetAssociatedEntityAnthosCluster {
 
   /// Creates a new [TargetAssociatedEntityAnthosCluster].
   /// [membership] Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
-  TargetAssociatedEntityAnthosCluster({
+  const TargetAssociatedEntityAnthosCluster({
     this.membership,
   });
 

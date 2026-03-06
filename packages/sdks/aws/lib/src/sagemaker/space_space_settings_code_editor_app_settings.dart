@@ -13,7 +13,7 @@ class SpaceSpaceSettingsCodeEditorAppSettings {
   /// Creates a new [SpaceSpaceSettingsCodeEditorAppSettings].
   /// [appLifecycleManagement] Settings that are used to configure and manage the lifecycle of JupyterLab applications in a space. See `app_lifecycle_management` Block below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `default_resource_spec` Block below.
-  SpaceSpaceSettingsCodeEditorAppSettings({
+  const SpaceSpaceSettingsCodeEditorAppSettings({
     this.appLifecycleManagement,
     required this.defaultResourceSpec,
   });

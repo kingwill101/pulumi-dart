@@ -11,7 +11,7 @@ class GetInstanceTypeInstanceDisk {
   /// [count] Required.
   /// [size] Required.
   /// [type] Required.
-  GetInstanceTypeInstanceDisk({
+  const GetInstanceTypeInstanceDisk({
     required this.count,
     required this.size,
     required this.type,

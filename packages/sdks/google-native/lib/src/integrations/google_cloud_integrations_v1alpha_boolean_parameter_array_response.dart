@@ -9,7 +9,7 @@ class GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse].
   /// [booleanValues] Boolean array.
-  GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse({
+  const GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse({
     required this.booleanValues,
   });
 

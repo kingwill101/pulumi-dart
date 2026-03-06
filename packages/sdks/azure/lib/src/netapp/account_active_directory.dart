@@ -49,7 +49,7 @@ class AccountActiveDirectory {
   /// [siteName] The Active Directory site the service will limit Domain Controller discovery to. If blank, defaults to `Default-First-Site-Name`.
   /// [smbServerName] The NetBIOS name which should be used for the NetApp SMB Server, which will be registered as a computer account in the AD and used to mount volumes.
   /// [username] The Username of Active Directory Domain Administrator.
-  AccountActiveDirectory({
+  const AccountActiveDirectory({
     this.aesEncryptionEnabled,
     required this.dnsServers,
     required this.domain,

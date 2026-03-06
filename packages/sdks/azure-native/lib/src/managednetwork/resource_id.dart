@@ -9,7 +9,7 @@ class ResourceId {
 
   /// Creates a new [ResourceId].
   /// [id] Resource Id
-  ResourceId({
+  const ResourceId({
     this.id,
   });
 

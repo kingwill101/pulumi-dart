@@ -15,7 +15,7 @@ class ValueListFilterResponse {
   /// [ignoreCase] Whether to ignore case when filtering by values. Defaults to false
   /// [valuePresentList] Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
   /// [values] The list to be used to filter by
-  ValueListFilterResponse({
+  const ValueListFilterResponse({
     required this.ignoreCase,
     required this.valuePresentList,
     required this.values,

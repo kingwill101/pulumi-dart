@@ -17,7 +17,7 @@ class AutoscaleNotificationResponse {
   /// [email] the email notification.
   /// [operation] the operation associated with the notification and its value must be "scale"
   /// [webhooks] the collection of webhook notifications.
-  AutoscaleNotificationResponse({
+  const AutoscaleNotificationResponse({
     this.email,
     required this.operation,
     this.webhooks,

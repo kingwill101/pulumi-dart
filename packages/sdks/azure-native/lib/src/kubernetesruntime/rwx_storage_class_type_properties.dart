@@ -13,7 +13,7 @@ class RwxStorageClassTypeProperties {
   /// Creates a new [RwxStorageClassTypeProperties].
   /// [backingStorageClassName] The backing storageclass used to create new storageclass
   /// [type] Type of a storage class
-  RwxStorageClassTypeProperties({
+  const RwxStorageClassTypeProperties({
     required this.backingStorageClassName,
     required this.type,
   });

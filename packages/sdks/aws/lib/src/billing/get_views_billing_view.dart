@@ -19,7 +19,7 @@ class GetViewsBillingView {
   /// [description] Description of the billing view.
   /// [name] Name of the billing view.
   /// [ownerAccountId] Account ID of the billing view owner.
-  GetViewsBillingView({
+  const GetViewsBillingView({
     required this.arn,
     required this.billingViewType,
     required this.description,

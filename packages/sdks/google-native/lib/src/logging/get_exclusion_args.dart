@@ -13,7 +13,7 @@ class GetExclusionArgs {
   /// Creates a new [GetExclusionArgs].
   /// [exclusionId] Required.
   /// [project] Optional.
-  GetExclusionArgs({
+  const GetExclusionArgs({
     required this.exclusionId,
     this.project,
   });

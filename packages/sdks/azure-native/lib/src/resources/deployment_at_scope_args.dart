@@ -25,7 +25,7 @@ class DeploymentAtScopeArgs {
   /// [properties] The deployment properties.
   /// [scope] The resource scope.
   /// [tags] Deployment tags
-  DeploymentAtScopeArgs({
+  const DeploymentAtScopeArgs({
     this.deploymentName,
     this.location,
     required this.properties,

@@ -21,7 +21,7 @@ class ChartNamespaceArgs {
   /// [defaultRepoType] DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
   /// [instanceId] The ID of the Container Registry instance.
   /// [namespaceName] The name of the namespace that you want to create.
-  ChartNamespaceArgs({
+  const ChartNamespaceArgs({
     this.autoCreateRepo,
     this.defaultRepoType,
     required this.instanceId,

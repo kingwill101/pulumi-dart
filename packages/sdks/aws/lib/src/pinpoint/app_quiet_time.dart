@@ -11,7 +11,7 @@ class AppQuietTime {
   /// Creates a new [AppQuietTime].
   /// [end] The default end time for quiet time in ISO 8601 format. Required if `start` is set
   /// [start] The default start time for quiet time in ISO 8601 format. Required if `end` is set
-  AppQuietTime({
+  const AppQuietTime({
     this.end,
     this.start,
   });

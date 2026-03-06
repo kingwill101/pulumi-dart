@@ -11,7 +11,7 @@ class MonitorAlertAlertsSlack {
   /// Creates a new [MonitorAlertAlertsSlack].
   /// [channel] The Slack channel to send alerts to
   /// [url] The webhook URL for Slack
-  MonitorAlertAlertsSlack({
+  const MonitorAlertAlertsSlack({
     required this.channel,
     required this.url,
   });

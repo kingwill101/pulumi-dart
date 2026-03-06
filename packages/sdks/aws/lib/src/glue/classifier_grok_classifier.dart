@@ -14,7 +14,7 @@ class ClassifierGrokClassifier {
   /// [classification] An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
   /// [customPatterns] Custom grok patterns used by this classifier.
   /// [grokPattern] The grok pattern used by this classifier.
-  ClassifierGrokClassifier({
+  const ClassifierGrokClassifier({
     required this.classification,
     this.customPatterns,
     required this.grokPattern,

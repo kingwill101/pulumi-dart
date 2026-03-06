@@ -15,7 +15,7 @@ class ServiceTemplateSpecContainerVolumeMount {
   /// [mountPath] Path within the container at which the volume should be mounted.  Must
   /// [name] This must match the Name of a Volume.
   /// [subPath] Path within the volume from which the container's volume should be mounted.
-  ServiceTemplateSpecContainerVolumeMount({
+  const ServiceTemplateSpecContainerVolumeMount({
     required this.mountPath,
     required this.name,
     this.subPath,

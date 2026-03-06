@@ -15,7 +15,7 @@ class GetBackupVaultArgs {
   /// Creates a new [GetBackupVaultArgs].
   /// [name] Specifies the name of the Backup Vault.
   /// [resourceGroupName] The name of the Resource Group where the Backup Vault exists.
-  GetBackupVaultArgs({
+  const GetBackupVaultArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -27,7 +27,7 @@ class ClusterNodeGroup {
   /// [nodes] Node List See `nodes` below.
   /// [userData] Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
   /// [zoneId] Zone ID
-  ClusterNodeGroup({
+  const ClusterNodeGroup({
     this.imageId,
     this.machineType,
     this.nodeGroupDescription,

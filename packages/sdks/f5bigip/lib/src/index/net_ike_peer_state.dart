@@ -108,7 +108,7 @@ class NetIkePeerState {
   /// [trafficSelectors] Specifies the names of the traffic-selector objects associated with this ike-peer
   /// [verifyCert] Specifies whether to verify the certificate chain of the remote peer based on the trusted certificates in ca-cert-file
   /// [versions] Specifies which version of IKE to be used
-  NetIkePeerState({
+  const NetIkePeerState({
     this.appService,
     this.caCertFile,
     this.crlFile,

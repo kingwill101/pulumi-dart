@@ -54,7 +54,7 @@ class ApiConfigArgs {
   /// [managedServiceConfigs] Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
   /// [openapiDocuments] OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
   /// [project] The ID of the project in which the resource belongs.
-  ApiConfigArgs({
+  const ApiConfigArgs({
     required this.api,
     this.apiConfigId,
     this.apiConfigIdPrefix,

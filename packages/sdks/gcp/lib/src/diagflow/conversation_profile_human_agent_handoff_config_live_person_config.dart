@@ -8,7 +8,7 @@ class ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
 
   /// Creates a new [ConversationProfileHumanAgentHandoffConfigLivePersonConfig].
   /// [accountNumber] Account number of the LivePerson account to connect.
-  ConversationProfileHumanAgentHandoffConfigLivePersonConfig({
+  const ConversationProfileHumanAgentHandoffConfigLivePersonConfig({
     required this.accountNumber,
   });
 

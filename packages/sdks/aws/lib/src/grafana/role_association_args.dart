@@ -26,7 +26,7 @@ class RoleAssociationArgs {
   /// [role] The grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
   /// [userIds] The AWS SSO user ids to be assigned the role given in `role`.
   /// [workspaceId] The workspace id.
-  RoleAssociationArgs({
+  const RoleAssociationArgs({
     this.groupIds,
     this.region,
     required this.role,

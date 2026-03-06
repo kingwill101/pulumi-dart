@@ -30,7 +30,7 @@ class GetFileSystemsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [protocolType] The protocol type of the file system.
   /// [storageType] The storage type of the file system.
-  GetFileSystemsArgs({
+  const GetFileSystemsArgs({
     this.descriptionRegex,
     this.ids,
     this.outputFile,

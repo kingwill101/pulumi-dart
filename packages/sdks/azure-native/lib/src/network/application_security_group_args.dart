@@ -24,7 +24,7 @@ class ApplicationSecurityGroupArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  ApplicationSecurityGroupArgs({
+  const ApplicationSecurityGroupArgs({
     this.applicationSecurityGroupName,
     this.id,
     this.location,

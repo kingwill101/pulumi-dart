@@ -15,7 +15,7 @@ class AADProperties {
   /// [servicePrincipalClientId] Optional.
   /// [servicePrincipalObjectId] Optional.
   /// [tenantId] Optional.
-  AADProperties({
+  const AADProperties({
     this.audience,
     this.authority,
     this.servicePrincipalClientId,

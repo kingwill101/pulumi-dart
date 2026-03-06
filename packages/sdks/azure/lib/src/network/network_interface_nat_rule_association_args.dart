@@ -18,7 +18,7 @@ class NetworkInterfaceNatRuleAssociationArgs {
   /// [ipConfigurationName] The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.
   /// [natRuleId] The ID of the Load Balancer NAT Rule which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
-  NetworkInterfaceNatRuleAssociationArgs({
+  const NetworkInterfaceNatRuleAssociationArgs({
     required this.ipConfigurationName,
     required this.natRuleId,
     required this.networkInterfaceId,

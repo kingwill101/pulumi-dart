@@ -20,7 +20,7 @@ class FolderFeedCondition {
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [location] String indicating the location of the expression for error reporting, e.g. a file
   /// [title] Title for the expression, i.e. a short string describing its purpose.
-  FolderFeedCondition({
+  const FolderFeedCondition({
     this.description,
     required this.expression,
     this.location,

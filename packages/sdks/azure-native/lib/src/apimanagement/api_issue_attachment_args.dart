@@ -33,7 +33,7 @@ class ApiIssueAttachmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [title] Filename by which the binary data will be saved.
-  ApiIssueAttachmentArgs({
+  const ApiIssueAttachmentArgs({
     required this.apiId,
     this.attachmentId,
     required this.content,

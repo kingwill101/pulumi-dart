@@ -14,7 +14,7 @@ class MaintenanceWindowTaskTaskInvocationParametersLambdaParameters {
   /// [clientContext] Pass client-specific information to the Lambda function that you are invoking.
   /// [payload] JSON to provide to your Lambda function as input.
   /// [qualifier] Specify a Lambda function version or alias name.
-  MaintenanceWindowTaskTaskInvocationParametersLambdaParameters({
+  const MaintenanceWindowTaskTaskInvocationParametersLambdaParameters({
     this.clientContext,
     this.payload,
     this.qualifier,

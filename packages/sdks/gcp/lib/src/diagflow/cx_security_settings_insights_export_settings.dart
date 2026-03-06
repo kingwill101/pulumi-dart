@@ -8,7 +8,7 @@ class CxSecuritySettingsInsightsExportSettings {
 
   /// Creates a new [CxSecuritySettingsInsightsExportSettings].
   /// [enableInsightsExport] If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
-  CxSecuritySettingsInsightsExportSettings({
+  const CxSecuritySettingsInsightsExportSettings({
     required this.enableInsightsExport,
   });
 

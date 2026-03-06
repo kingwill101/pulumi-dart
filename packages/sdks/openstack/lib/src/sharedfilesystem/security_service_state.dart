@@ -48,7 +48,7 @@ class SecurityServiceState {
   /// [server] The security service host name or IP address.
   /// [type] The security service type - can either be active\_directory,
   /// [user] The security service user or group name that is used by the
-  SecurityServiceState({
+  const SecurityServiceState({
     this.description,
     this.dnsIp,
     this.domain,

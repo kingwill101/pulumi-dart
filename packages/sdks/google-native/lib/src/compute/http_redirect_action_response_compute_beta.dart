@@ -24,7 +24,7 @@ class HttpRedirectActionResponseComputeBeta {
   /// [prefixRedirect] The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
   /// [redirectResponseCode] The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
   /// [stripQuery] If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
-  HttpRedirectActionResponseComputeBeta({
+  const HttpRedirectActionResponseComputeBeta({
     required this.hostRedirect,
     required this.httpsRedirect,
     required this.pathRedirect,

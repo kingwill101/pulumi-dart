@@ -12,7 +12,7 @@ class HighAvailabilitySoftwareConfigurationResponse {
   /// Creates a new [HighAvailabilitySoftwareConfigurationResponse].
   /// [fencingClientId] The fencing client id.
   /// [fencingClientPassword] The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
-  HighAvailabilitySoftwareConfigurationResponse({
+  const HighAvailabilitySoftwareConfigurationResponse({
     required this.fencingClientId,
     required this.fencingClientPassword,
   });

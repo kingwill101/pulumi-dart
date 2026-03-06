@@ -42,7 +42,7 @@ class DraModelPropertiesResponse {
   /// [provisioningState] Gets or sets the provisioning state of the Dra.
   /// [resourceAccessIdentity] Identity model.
   /// [versionNumber] Gets or sets the Dra version.
-  DraModelPropertiesResponse({
+  const DraModelPropertiesResponse({
     required this.authenticationIdentity,
     required this.correlationId,
     required this.customProperties,

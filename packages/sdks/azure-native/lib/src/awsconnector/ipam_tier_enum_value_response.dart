@@ -9,7 +9,7 @@ class IpamTierEnumValueResponse {
 
   /// Creates a new [IpamTierEnumValueResponse].
   /// [value] Property value
-  IpamTierEnumValueResponse({
+  const IpamTierEnumValueResponse({
     this.value,
   });
 

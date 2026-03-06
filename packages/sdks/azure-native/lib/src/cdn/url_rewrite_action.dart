@@ -14,7 +14,7 @@ class UrlRewriteAction {
   /// Creates a new [UrlRewriteAction].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  UrlRewriteAction({
+  const UrlRewriteAction({
     required this.name,
     required this.parameters,
   });

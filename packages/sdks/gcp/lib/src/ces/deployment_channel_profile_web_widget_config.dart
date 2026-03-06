@@ -23,7 +23,7 @@ class DeploymentChannelProfileWebWidgetConfig {
   /// [modality] The modality of the web widget.
   /// [theme] The theme of the web widget.
   /// [webWidgetTitle] The title of the web widget.
-  DeploymentChannelProfileWebWidgetConfig({
+  const DeploymentChannelProfileWebWidgetConfig({
     this.modality,
     this.theme,
     this.webWidgetTitle,

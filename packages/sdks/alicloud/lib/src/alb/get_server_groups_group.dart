@@ -41,7 +41,7 @@ class GetServerGroupsGroup {
   /// [stickySessionConfigs] The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the virtual private cloud (VPC).
-  GetServerGroupsGroup({
+  const GetServerGroupsGroup({
     required this.healthCheckConfigs,
     required this.id,
     required this.protocol,

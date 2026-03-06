@@ -8,7 +8,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms].
   /// [keyId] KMS key ARN.
-  StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms({
+  const StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms({
     required this.keyId,
   });
 

@@ -29,7 +29,7 @@ class PrestoJobDataprocV1beta2 {
   /// [properties] Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryList] A list of queries.
-  PrestoJobDataprocV1beta2({
+  const PrestoJobDataprocV1beta2({
     this.clientTags,
     this.continueOnFailure,
     this.loggingConfig,

@@ -10,7 +10,7 @@ class PrincipalInfo {
 
   /// Creates a new [PrincipalInfo].
   /// [serviceAccount] A GCP service account.
-  PrincipalInfo({
+  const PrincipalInfo({
     this.serviceAccount,
   });
 

@@ -27,7 +27,7 @@ class ClientInstanceAttachmentState {
   /// [instanceId] The EAIS instance ID.
   /// [regionId] The region ID of the resource
   /// [status] The status of the resource
-  ClientInstanceAttachmentState({
+  const ClientInstanceAttachmentState({
     this.category,
     this.clientInstanceId,
     this.createTime,

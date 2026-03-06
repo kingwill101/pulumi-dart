@@ -45,7 +45,7 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   /// [parentIntValues] Optional.
   /// [scaleType] How the parameter should be scaled. Leave unset for categorical parameters.
   /// [type] The type of the parameter.
-  GoogleCloudMlV1StudyConfigParameterSpec({
+  const GoogleCloudMlV1StudyConfigParameterSpec({
     this.categoricalValueSpec,
     this.childParameterSpecs,
     this.discreteValueSpec,

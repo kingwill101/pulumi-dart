@@ -41,7 +41,7 @@ class OrganizationDiscoveryConfigArgs {
   /// [organizationId] Required.
   /// [status] A status for this configuration.
   /// [targets] Target to match against for determining what to scan and how frequently.
-  OrganizationDiscoveryConfigArgs({
+  const OrganizationDiscoveryConfigArgs({
     this.actions,
     this.configId,
     this.displayName,

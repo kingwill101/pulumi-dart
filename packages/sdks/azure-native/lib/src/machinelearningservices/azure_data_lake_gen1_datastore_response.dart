@@ -38,7 +38,7 @@ class AzureDataLakeGen1DatastoreResponse {
   /// [storeName] [Required] Azure Data Lake store name.
   /// [subscriptionId] Azure Subscription Id
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  AzureDataLakeGen1DatastoreResponse({
+  const AzureDataLakeGen1DatastoreResponse({
     required this.credentials,
     required this.datastoreType,
     this.description,

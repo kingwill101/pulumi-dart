@@ -33,7 +33,7 @@ class AiFeatureGroupFeatureArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region for the resource. It should be the same as the feature group's region.
   /// [versionColumnName] The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
-  AiFeatureGroupFeatureArgs({
+  const AiFeatureGroupFeatureArgs({
     this.description,
     required this.featureGroup,
     this.labels,

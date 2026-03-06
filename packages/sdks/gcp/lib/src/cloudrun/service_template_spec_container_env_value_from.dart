@@ -10,7 +10,7 @@ class ServiceTemplateSpecContainerEnvValueFrom {
 
   /// Creates a new [ServiceTemplateSpecContainerEnvValueFrom].
   /// [secretKeyRef] Selects a key (version) of a secret in Secret Manager.
-  ServiceTemplateSpecContainerEnvValueFrom({
+  const ServiceTemplateSpecContainerEnvValueFrom({
     required this.secretKeyRef,
   });
 

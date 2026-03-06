@@ -15,7 +15,7 @@ class HighAvailabilityResponse {
   /// [mode] High availability mode for a server.
   /// [standbyAvailabilityZone] Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
   /// [state] Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant.
-  HighAvailabilityResponse({
+  const HighAvailabilityResponse({
     this.mode,
     this.standbyAvailabilityZone,
     required this.state,

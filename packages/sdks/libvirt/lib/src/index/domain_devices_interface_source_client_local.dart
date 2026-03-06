@@ -11,7 +11,7 @@ class DomainDevicesInterfaceSourceClientLocal {
   /// Creates a new [DomainDevicesInterfaceSourceClientLocal].
   /// [address] Specifies the local address for UDP communications on the network interface.
   /// [port] Sets the local port number for UDP traffic on the network interface.
-  DomainDevicesInterfaceSourceClientLocal({
+  const DomainDevicesInterfaceSourceClientLocal({
     this.address,
     this.port,
   });

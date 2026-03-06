@@ -9,7 +9,7 @@ class UsagePlanThrottleSettings {
   /// Creates a new [UsagePlanThrottleSettings].
   /// [burstLimit] Optional.
   /// [rateLimit] Optional.
-  UsagePlanThrottleSettings({
+  const UsagePlanThrottleSettings({
     this.burstLimit,
     this.rateLimit,
   });

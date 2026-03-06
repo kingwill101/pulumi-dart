@@ -39,7 +39,7 @@ class GetSapVirtualInstanceInvokeSizingRecommendationsArgs {
   /// [location] The name of the Azure region.
   /// [sapProduct] Defines the SAP Product type.
   /// [saps] The SAP Application Performance Standard measurement.
-  GetSapVirtualInstanceInvokeSizingRecommendationsArgs({
+  const GetSapVirtualInstanceInvokeSizingRecommendationsArgs({
     required this.appLocation,
     required this.databaseType,
     required this.dbMemory,

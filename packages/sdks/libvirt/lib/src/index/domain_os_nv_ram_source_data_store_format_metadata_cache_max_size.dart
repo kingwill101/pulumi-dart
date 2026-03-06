@@ -11,7 +11,7 @@ class DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize {
   /// Creates a new [DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize].
   /// [unit] Specifies the unit for the maximum size of the metadata cache in the data store format.
   /// [value] Sets the value for the maximum size of the metadata cache in the data store format configuration.
-  DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize({
+  const DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize({
     this.unit,
     required this.value,
   });

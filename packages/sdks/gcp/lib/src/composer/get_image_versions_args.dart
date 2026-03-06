@@ -17,7 +17,7 @@ class GetImageVersionsArgs {
   /// Creates a new [GetImageVersionsArgs].
   /// [project] The ID of the project to list versions in.
   /// [region] The location to list versions in.
-  GetImageVersionsArgs({
+  const GetImageVersionsArgs({
     this.project,
     this.region,
   });

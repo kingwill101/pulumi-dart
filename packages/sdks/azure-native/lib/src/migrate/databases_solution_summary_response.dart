@@ -19,7 +19,7 @@ class DatabasesSolutionSummaryResponse {
   /// [databasesAssessedCount] Gets or sets the count of databases assessed.
   /// [instanceType] Gets the Instance type.
   /// [migrationReadyCount] Gets or sets the count of databases ready for migration.
-  DatabasesSolutionSummaryResponse({
+  const DatabasesSolutionSummaryResponse({
     this.databaseInstancesAssessedCount,
     this.databasesAssessedCount,
     required this.instanceType,

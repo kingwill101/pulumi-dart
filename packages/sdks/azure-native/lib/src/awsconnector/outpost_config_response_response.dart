@@ -16,7 +16,7 @@ class OutpostConfigResponseResponse {
   /// [controlPlaneInstanceType] &lt;p&gt;The Amazon EC2 instance type used for the control plane. The instance type is the same for all control plane instances.&lt;/p&gt;
   /// [controlPlanePlacement] &lt;p&gt;An object representing the placement configuration for all the control plane instances of your local Amazon EKS cluster on an Amazon Web Services Outpost. For more information, see &lt;a href='https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-capacity-considerations.html'&gt;Capacity considerations&lt;/a&gt; in the &lt;i&gt;Amazon EKS User Guide&lt;/i&gt;.&lt;/p&gt;
   /// [outpostArns] &lt;p&gt;The ARN of the Outpost that you specified for use with your local Amazon EKS cluster on Outposts.&lt;/p&gt;
-  OutpostConfigResponseResponse({
+  const OutpostConfigResponseResponse({
     this.controlPlaneInstanceType,
     this.controlPlanePlacement,
     this.outpostArns,

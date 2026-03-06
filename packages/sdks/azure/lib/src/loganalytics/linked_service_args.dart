@@ -23,7 +23,7 @@ class LinkedServiceArgs {
   /// [resourceGroupName] The name of the resource group in which the Log Analytics Linked Service is created. Changing this forces a new resource to be created.
   /// [workspaceId] The ID of the Log Analytics Workspace that will contain the Log Analytics Linked Service resource.
   /// [writeAccessId] The ID of the writable Resource that will be linked to the workspace. This should be used for linking to a Log Analytics Cluster resource.
-  LinkedServiceArgs({
+  const LinkedServiceArgs({
     this.readAccessId,
     required this.resourceGroupName,
     required this.workspaceId,

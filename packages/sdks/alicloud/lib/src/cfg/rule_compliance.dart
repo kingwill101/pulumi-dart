@@ -11,7 +11,7 @@ class RuleCompliance {
   /// Creates a new [RuleCompliance].
   /// [complianceType] The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
   /// [count] The count of compliance.
-  RuleCompliance({
+  const RuleCompliance({
     this.complianceType,
     this.count,
   });

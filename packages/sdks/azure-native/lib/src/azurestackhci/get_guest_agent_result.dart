@@ -34,7 +34,7 @@ class GetGuestAgentResult {
   /// [status] The guest agent status.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGuestAgentResult({
+  const GetGuestAgentResult({
     required this.azureApiVersion,
     this.credentials,
     required this.id,

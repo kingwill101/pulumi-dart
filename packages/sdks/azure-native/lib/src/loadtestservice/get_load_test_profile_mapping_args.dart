@@ -15,7 +15,7 @@ class GetLoadTestProfileMappingArgs {
   /// Creates a new [GetLoadTestProfileMappingArgs].
   /// [loadTestProfileMappingName] Load Test Profile Mapping name
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetLoadTestProfileMappingArgs({
+  const GetLoadTestProfileMappingArgs({
     required this.loadTestProfileMappingName,
     required this.resourceUri,
   });

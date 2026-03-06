@@ -27,7 +27,7 @@ class ManagedIdentityTokenResponse {
   /// [notBefore] The timespan when the access token takes effect. This is represented as the number of seconds from epoch.
   /// [resourceId] The Azure resource ID for the issued token. This is either the managed application ID or the user-assigned identity ID.
   /// [tokenType] The type of the token.
-  ManagedIdentityTokenResponse({
+  const ManagedIdentityTokenResponse({
     this.accessToken,
     this.authorizationAudience,
     this.expiresIn,

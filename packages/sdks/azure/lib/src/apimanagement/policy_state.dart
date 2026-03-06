@@ -15,7 +15,7 @@ class PolicyState {
   /// [apiManagementId] The ID of the API Management service. Changing this forces a new API Management service Policy to be created.
   /// [xmlContent] The XML Content for this Policy as a string. To integrate frontend and backend services in Azure API Management, utilize the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, specifying the `base-url` value. Typically, this value corresponds to the `url` property defined in the `Backend` resource configuration.
   /// [xmlLink] A link to a Policy XML Document, which must be publicly available.
-  PolicyState({
+  const PolicyState({
     this.apiManagementId,
     this.xmlContent,
     this.xmlLink,

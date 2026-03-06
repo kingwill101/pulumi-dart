@@ -38,7 +38,7 @@ class NotificationRuleState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targets] Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
-  NotificationRuleState({
+  const NotificationRuleState({
     this.arn,
     this.detailType,
     this.eventTypeIds,

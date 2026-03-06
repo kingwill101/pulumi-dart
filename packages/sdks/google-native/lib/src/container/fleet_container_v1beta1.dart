@@ -9,7 +9,7 @@ class FleetContainerV1beta1 {
 
   /// Creates a new [FleetContainerV1beta1].
   /// [project] The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
-  FleetContainerV1beta1({
+  const FleetContainerV1beta1({
     this.project,
   });
 

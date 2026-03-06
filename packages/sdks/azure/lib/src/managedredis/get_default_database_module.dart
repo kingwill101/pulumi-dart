@@ -14,7 +14,7 @@ class GetDefaultDatabaseModule {
   /// [args] The configuration options for the module.
   /// [name] The name of the Managed Redis instance.
   /// [version] The version of the module.
-  GetDefaultDatabaseModule({
+  const GetDefaultDatabaseModule({
     required this.args,
     required this.name,
     required this.version,

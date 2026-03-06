@@ -35,7 +35,7 @@ class ApplicationRuleConditionResponse {
   /// [sourceAddresses] List of source IP addresses for this rule.
   /// [sourceIpGroups] List of source IpGroups for this rule.
   /// [targetFqdns] List of FQDNs for this rule condition.
-  ApplicationRuleConditionResponse({
+  const ApplicationRuleConditionResponse({
     this.description,
     this.destinationAddresses,
     this.fqdnTags,

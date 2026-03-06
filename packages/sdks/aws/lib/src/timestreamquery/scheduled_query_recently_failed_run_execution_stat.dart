@@ -23,7 +23,7 @@ class ScheduledQueryRecentlyFailedRunExecutionStat {
   /// [executionTimeInMillis] Total time, measured in milliseconds, that was needed for the scheduled query run to complete.
   /// [queryResultRows] Number of rows present in the output from running a query before ingestion to destination data source.
   /// [recordsIngested] Number of records ingested for a single scheduled query run.
-  ScheduledQueryRecentlyFailedRunExecutionStat({
+  const ScheduledQueryRecentlyFailedRunExecutionStat({
     this.bytesMetered,
     this.cumulativeBytesScanned,
     this.dataWrites,

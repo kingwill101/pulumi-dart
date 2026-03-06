@@ -28,7 +28,7 @@ class ServiceBindingArgs {
   /// [project] Optional.
   /// [service] The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
   /// [serviceBindingId] Required. Short name of the ServiceBinding resource to be created.
-  ServiceBindingArgs({
+  const ServiceBindingArgs({
     this.description,
     this.labels,
     this.location,

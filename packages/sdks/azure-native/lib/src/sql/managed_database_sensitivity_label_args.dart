@@ -47,7 +47,7 @@ class ManagedDatabaseSensitivityLabelArgs {
   /// [schemaName] The name of the schema.
   /// [sensitivityLabelSource] The source of the sensitivity label.
   /// [tableName] The name of the table.
-  ManagedDatabaseSensitivityLabelArgs({
+  const ManagedDatabaseSensitivityLabelArgs({
     this.clientClassificationSource,
     required this.columnName,
     required this.databaseName,

@@ -11,7 +11,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSo
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource].
   /// [generation] The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
   /// [uri] The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
-  ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource({
+  const ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource({
     this.generation,
     required this.uri,
   });

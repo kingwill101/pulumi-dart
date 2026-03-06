@@ -53,7 +53,7 @@ class IoTHubEndpoint {
   /// [resourceGroupName] The resource group in which the endpoint will be created.
   /// [subscriptionId] The subscription ID for the endpoint.
   /// [type] The type of the endpoint. Possible values are `AzureIotHub.StorageContainer`, `AzureIotHub.ServiceBusQueue`, `AzureIotHub.ServiceBusTopic` or `AzureIotHub.EventHub`.
-  IoTHubEndpoint({
+  const IoTHubEndpoint({
     this.authenticationType,
     this.batchFrequencyInSeconds,
     this.connectionString,

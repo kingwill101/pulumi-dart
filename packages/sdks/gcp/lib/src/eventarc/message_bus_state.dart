@@ -70,7 +70,7 @@ class MessageBusState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] Output only. Server assigned unique identifier for the channel. The value is a UUID4
   /// [updateTime] Output only. The last-modified time.
-  MessageBusState({
+  const MessageBusState({
     this.annotations,
     this.createTime,
     this.cryptoKeyName,

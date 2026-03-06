@@ -9,7 +9,7 @@ class ExtendedLocation {
 
   /// Creates a new [ExtendedLocation].
   /// [name] Name of extended location.
-  ExtendedLocation({
+  const ExtendedLocation({
     this.name,
   });
 

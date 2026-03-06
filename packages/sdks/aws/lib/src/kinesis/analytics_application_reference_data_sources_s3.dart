@@ -14,7 +14,7 @@ class AnalyticsApplicationReferenceDataSourcesS3 {
   /// [bucketArn] The S3 Bucket ARN.
   /// [fileKey] The File Key name containing reference data.
   /// [roleArn] The IAM Role ARN to read the data.
-  AnalyticsApplicationReferenceDataSourcesS3({
+  const AnalyticsApplicationReferenceDataSourcesS3({
     required this.bucketArn,
     required this.fileKey,
     required this.roleArn,

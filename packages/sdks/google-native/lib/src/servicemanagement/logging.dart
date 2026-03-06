@@ -13,7 +13,7 @@ class Logging {
   /// Creates a new [Logging].
   /// [consumerDestinations] Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
   /// [producerDestinations] Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
-  Logging({
+  const Logging({
     this.consumerDestinations,
     this.producerDestinations,
   });

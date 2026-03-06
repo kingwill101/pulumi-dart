@@ -41,7 +41,7 @@ class ServiceGatewayArgs {
   /// [tags] Resource tags.
   /// [virtualNetwork] Reference to an existing virtual network.
   /// [zones] A list of availability zones denoting the zone in which service gateway should be deployed.
-  ServiceGatewayArgs({
+  const ServiceGatewayArgs({
     this.location,
     required this.resourceGroupName,
     this.routeTargetAddress,

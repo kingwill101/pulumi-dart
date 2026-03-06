@@ -26,7 +26,7 @@ class VirtualNetworkTap {
   /// [id] Resource ID.
   /// [location] Resource location.
   /// [tags] Resource tags.
-  VirtualNetworkTap({
+  const VirtualNetworkTap({
     this.destinationLoadBalancerFrontEndIPConfiguration,
     this.destinationNetworkInterfaceIPConfiguration,
     this.destinationPort,

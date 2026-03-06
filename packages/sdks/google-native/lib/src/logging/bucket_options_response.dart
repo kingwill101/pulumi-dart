@@ -18,7 +18,7 @@ class BucketOptionsResponse {
   /// [explicitBuckets] The explicit buckets.
   /// [exponentialBuckets] The exponential buckets.
   /// [linearBuckets] The linear bucket.
-  BucketOptionsResponse({
+  const BucketOptionsResponse({
     required this.explicitBuckets,
     required this.exponentialBuckets,
     required this.linearBuckets,

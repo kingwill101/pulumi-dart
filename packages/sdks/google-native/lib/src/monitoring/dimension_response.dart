@@ -30,7 +30,7 @@ class DimensionResponse {
   /// [sortColumn] The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
   /// [sortOrder] The sort order applied to the sort column.
   /// [timeBinSize] time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
-  DimensionResponse({
+  const DimensionResponse({
     required this.column,
     required this.columnType,
     required this.floatBinSize,

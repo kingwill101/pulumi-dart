@@ -23,7 +23,7 @@ class NamespaceSchemaGroupArgs {
   /// [namespaceId] Specifies the ID of the EventHub Namespace. Changing this forces a new resource to be created.
   /// [schemaCompatibility] Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.
   /// [schemaType] Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
-  NamespaceSchemaGroupArgs({
+  const NamespaceSchemaGroupArgs({
     this.name,
     required this.namespaceId,
     required this.schemaCompatibility,

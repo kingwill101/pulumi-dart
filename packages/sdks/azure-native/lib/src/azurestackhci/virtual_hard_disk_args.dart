@@ -55,7 +55,7 @@ class VirtualHardDiskArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [virtualHardDiskName] Name of the virtual hard disk
-  VirtualHardDiskArgs({
+  const VirtualHardDiskArgs({
     this.blockSizeBytes,
     this.containerId,
     this.createFromLocal,

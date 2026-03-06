@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse].
   /// [cells] Optional. List of cells that make up this row.
   /// [dividerAfter] Optional. Whether to add a visual divider after this row.
-  GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse({
     required this.cells,
     required this.dividerAfter,
   });

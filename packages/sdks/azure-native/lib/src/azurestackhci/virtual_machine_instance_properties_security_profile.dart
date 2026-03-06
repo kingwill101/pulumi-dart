@@ -16,7 +16,7 @@ class VirtualMachineInstancePropertiesSecurityProfile {
   /// [enableTPM] Enable TPM flag
   /// [securityType] Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
   /// [uefiSettings] Uefi settings of the virtual machine instance
-  VirtualMachineInstancePropertiesSecurityProfile({
+  const VirtualMachineInstancePropertiesSecurityProfile({
     this.enableTPM,
     this.securityType,
     this.uefiSettings,

@@ -18,7 +18,7 @@ class OneDashboardRawPage {
   /// [guid] The unique entity identifier of the dashboard page in New Relic.
   /// [name] The title of the dashboard.
   /// [widgets] (Optional) A nested block that describes a widget. See Nested widget blocks below for details.
-  OneDashboardRawPage({
+  const OneDashboardRawPage({
     this.description,
     this.guid,
     required this.name,

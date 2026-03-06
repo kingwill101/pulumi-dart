@@ -40,7 +40,7 @@ class OutboundRuleResponse {
   /// [protocol] The protocol for the outbound rule in load balancer.
   /// [provisioningState] The provisioning state of the outbound rule resource.
   /// [type] Type of the resource.
-  OutboundRuleResponse({
+  const OutboundRuleResponse({
     this.allocatedOutboundPorts,
     required this.backendAddressPool,
     this.enableTcpReset,

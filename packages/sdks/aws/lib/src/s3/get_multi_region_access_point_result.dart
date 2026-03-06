@@ -39,7 +39,7 @@ class GetMultiRegionAccessPointResult {
   /// [region] The name of the region.
   /// [regions] A collection of the regions and buckets associated with the Multi-Region Access Point.
   /// [status] The current status of the Multi-Region Access Point.
-  GetMultiRegionAccessPointResult({
+  const GetMultiRegionAccessPointResult({
     required this.accountId,
     required this.alias,
     required this.arn,

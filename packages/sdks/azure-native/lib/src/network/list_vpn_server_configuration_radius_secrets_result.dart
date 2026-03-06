@@ -13,7 +13,7 @@ class ListVpnServerConfigurationRadiusSecretsResult {
   /// Creates a new [ListVpnServerConfigurationRadiusSecretsResult].
   /// [nextLink] URL to get the next set of operation list results if there are any.
   /// [value] List of Radius servers with respective radius secrets.
-  ListVpnServerConfigurationRadiusSecretsResult({
+  const ListVpnServerConfigurationRadiusSecretsResult({
     this.nextLink,
     this.value,
   });

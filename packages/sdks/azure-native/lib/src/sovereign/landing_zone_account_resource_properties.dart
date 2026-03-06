@@ -9,7 +9,7 @@ class LandingZoneAccountResourceProperties {
 
   /// Creates a new [LandingZoneAccountResourceProperties].
   /// [storageAccount] The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
-  LandingZoneAccountResourceProperties({
+  const LandingZoneAccountResourceProperties({
     required this.storageAccount,
   });
 

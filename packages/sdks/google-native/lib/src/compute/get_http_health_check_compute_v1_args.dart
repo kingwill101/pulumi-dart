@@ -13,7 +13,7 @@ class GetHttpHealthCheckComputeV1Args {
   /// Creates a new [GetHttpHealthCheckComputeV1Args].
   /// [httpHealthCheck] Required.
   /// [project] Optional.
-  GetHttpHealthCheckComputeV1Args({
+  const GetHttpHealthCheckComputeV1Args({
     required this.httpHealthCheck,
     this.project,
   });

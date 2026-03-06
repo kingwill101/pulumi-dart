@@ -18,7 +18,7 @@ class ApplianceVersionResponse {
   /// [releaseNotesUri] Link to a page that contains the version release notes.
   /// [uri] A link for downloading the version.
   /// [version] The appliance version.
-  ApplianceVersionResponse({
+  const ApplianceVersionResponse({
     required this.critical,
     required this.releaseNotesUri,
     required this.uri,

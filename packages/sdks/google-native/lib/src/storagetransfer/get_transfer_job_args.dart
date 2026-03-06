@@ -13,7 +13,7 @@ class GetTransferJobArgs {
   /// Creates a new [GetTransferJobArgs].
   /// [projectId] Required.
   /// [transferJobId] Required.
-  GetTransferJobArgs({
+  const GetTransferJobArgs({
     required this.projectId,
     required this.transferJobId,
   });

@@ -25,7 +25,7 @@ class GetListenersResult {
   /// [outputFile] Optional.
   /// [protocol] Listener protocol. Possible values: `http`, `https`, `tcp` and `udp`.
   /// [slbListeners] A list of SLB listeners. Each element contains the following attributes:
-  GetListenersResult({
+  const GetListenersResult({
     this.descriptionRegex,
     this.frontendPort,
     required this.id,

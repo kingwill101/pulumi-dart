@@ -10,7 +10,7 @@ class MSTIDataConnectorDataTypes {
 
   /// Creates a new [MSTIDataConnectorDataTypes].
   /// [microsoftEmergingThreatFeed] Data type for Microsoft Threat Intelligence data connector.
-  MSTIDataConnectorDataTypes({
+  const MSTIDataConnectorDataTypes({
     required this.microsoftEmergingThreatFeed,
   });
 

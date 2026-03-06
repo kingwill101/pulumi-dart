@@ -104,7 +104,7 @@ class AmazonRdsForSqlServerLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userName] The on-premises Windows authentication user name. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AmazonRdsForSqlServerLinkedServiceResponse({
+  const AmazonRdsForSqlServerLinkedServiceResponse({
     this.alwaysEncryptedSettings,
     this.annotations,
     this.applicationIntent,

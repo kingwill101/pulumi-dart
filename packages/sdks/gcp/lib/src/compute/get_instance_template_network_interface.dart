@@ -69,7 +69,7 @@ class GetInstanceTemplateNetworkInterface {
   /// [stackType] The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
   /// [subnetwork] the name of the subnetwork to attach this interface
   /// [subnetworkProject] The ID of the project in which the subnetwork belongs.
-  GetInstanceTemplateNetworkInterface({
+  const GetInstanceTemplateNetworkInterface({
     required this.accessConfigs,
     required this.aliasIpRanges,
     required this.igmpQuery,

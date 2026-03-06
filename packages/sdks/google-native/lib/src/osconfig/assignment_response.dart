@@ -23,7 +23,7 @@ class AssignmentResponse {
   /// [instances] Targets any of the instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or to target specific VM instances for development and testing. Only supported for project-level policies and must reference instances within this project.
   /// [osTypes] Targets VM instances matching at least one of the following OS types. VM instances must match all supplied criteria for a given OsType to be included.
   /// [zones] Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
-  AssignmentResponse({
+  const AssignmentResponse({
     required this.groupLabels,
     required this.instanceNamePrefixes,
     required this.instances,

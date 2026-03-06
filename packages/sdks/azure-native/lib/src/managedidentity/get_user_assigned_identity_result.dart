@@ -36,7 +36,7 @@ class GetUserAssignedIdentityResult {
   /// [tags] Resource tags.
   /// [tenantId] The id of the tenant which the identity belongs to.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetUserAssignedIdentityResult({
+  const GetUserAssignedIdentityResult({
     required this.azureApiVersion,
     required this.clientId,
     required this.id,

@@ -14,7 +14,7 @@ class Hl7TypesConfigHealthcareV1beta1 {
   /// Creates a new [Hl7TypesConfigHealthcareV1beta1].
   /// [type] The HL7v2 type definitions.
   /// [version] The version selectors that this config applies to. A message must match ALL version sources to apply.
-  Hl7TypesConfigHealthcareV1beta1({
+  const Hl7TypesConfigHealthcareV1beta1({
     this.type,
     this.version,
   });

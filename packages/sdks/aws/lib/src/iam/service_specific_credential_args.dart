@@ -21,7 +21,7 @@ class ServiceSpecificCredentialArgs {
   /// [serviceName] The name of the AWS service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials. Supported services are `codecommit.amazonaws.com`, `bedrock.amazonaws.com`, and `cassandra.amazonaws.com`.
   /// [status] The status to be assigned to the service-specific credential. Valid values are `Active`, `Inactive`, and `Expired`. Default value is `Active`. Note that `Expired` is only used for read operations and cannot be set manually.
   /// [userName] The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.
-  ServiceSpecificCredentialArgs({
+  const ServiceSpecificCredentialArgs({
     this.credentialAgeDays,
     required this.serviceName,
     this.status,

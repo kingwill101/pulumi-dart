@@ -11,7 +11,7 @@ class FeatureIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  FeatureIamMemberCondition({
+  const FeatureIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

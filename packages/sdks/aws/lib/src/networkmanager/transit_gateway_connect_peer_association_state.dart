@@ -20,7 +20,7 @@ class TransitGatewayConnectPeerAssociationState {
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
   /// [transitGatewayConnectPeerArn] ARN of the Connect peer.
-  TransitGatewayConnectPeerAssociationState({
+  const TransitGatewayConnectPeerAssociationState({
     this.deviceId,
     this.globalNetworkId,
     this.linkId,

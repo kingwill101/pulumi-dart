@@ -17,7 +17,7 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
   /// Creates a new [ServiceTemplateSpecContainerEnvValueFromSecretKeyRef].
   /// [key] A Cloud Secret Manager secret version. Must be 'latest' for the latest
   /// [name] The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
-  ServiceTemplateSpecContainerEnvValueFromSecretKeyRef({
+  const ServiceTemplateSpecContainerEnvValueFromSecretKeyRef({
     required this.key,
     required this.name,
   });

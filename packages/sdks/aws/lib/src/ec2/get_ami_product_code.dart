@@ -9,7 +9,7 @@ class GetAmiProductCode {
   /// Creates a new [GetAmiProductCode].
   /// [productCodeId] Required.
   /// [productCodeType] Required.
-  GetAmiProductCode({
+  const GetAmiProductCode({
     required this.productCodeId,
     required this.productCodeType,
   });

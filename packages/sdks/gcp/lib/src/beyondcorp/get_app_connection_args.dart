@@ -22,7 +22,7 @@ class GetAppConnectionArgs {
   /// [name] The name of the App Connection.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetAppConnectionArgs({
+  const GetAppConnectionArgs({
     required this.name,
     this.project,
     this.region,

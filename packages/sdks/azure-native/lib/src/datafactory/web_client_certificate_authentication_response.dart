@@ -20,7 +20,7 @@ class WebClientCertificateAuthenticationResponse {
   /// [password] Password for the PFX file.
   /// [pfx] Base64-encoded contents of a PFX file.
   /// [url] The URL of the web service endpoint, e.g. https://www.microsoft.com . Type: string (or Expression with resultType string).
-  WebClientCertificateAuthenticationResponse({
+  const WebClientCertificateAuthenticationResponse({
     required this.authenticationType,
     required this.password,
     required this.pfx,

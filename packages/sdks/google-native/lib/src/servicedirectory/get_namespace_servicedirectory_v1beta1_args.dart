@@ -15,7 +15,7 @@ class GetNamespaceServicedirectoryV1beta1Args {
   /// [location] Required.
   /// [namespaceId] Required.
   /// [project] Optional.
-  GetNamespaceServicedirectoryV1beta1Args({
+  const GetNamespaceServicedirectoryV1beta1Args({
     required this.location,
     required this.namespaceId,
     this.project,

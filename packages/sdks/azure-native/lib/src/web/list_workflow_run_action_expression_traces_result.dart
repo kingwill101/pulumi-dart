@@ -14,7 +14,7 @@ class ListWorkflowRunActionExpressionTracesResult {
   /// [inputs] Optional.
   /// [nextLink] The link used to get the next page of recommendations.
   /// [value] Optional.
-  ListWorkflowRunActionExpressionTracesResult({
+  const ListWorkflowRunActionExpressionTracesResult({
     this.inputs,
     this.nextLink,
     this.value,

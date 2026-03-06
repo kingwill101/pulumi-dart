@@ -18,7 +18,7 @@ class GetTransitHubArgs {
   /// [communityName] The name of the communityResource Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [transitHubName] The name of the TransitHub Resource
-  GetTransitHubArgs({
+  const GetTransitHubArgs({
     required this.communityName,
     required this.resourceGroupName,
     required this.transitHubName,

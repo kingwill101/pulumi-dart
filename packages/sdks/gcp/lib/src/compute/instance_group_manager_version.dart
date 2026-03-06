@@ -18,7 +18,7 @@ class InstanceGroupManagerVersion {
   /// [instanceTemplate] The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
   /// [name] Version name.
   /// [targetSize] The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-  InstanceGroupManagerVersion({
+  const InstanceGroupManagerVersion({
     required this.instanceTemplate,
     this.name,
     this.targetSize,

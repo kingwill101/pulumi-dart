@@ -11,7 +11,7 @@ class ApiProductOperationGroupOperationConfigAttribute {
   /// Creates a new [ApiProductOperationGroupOperationConfigAttribute].
   /// [name] Key of the attribute.
   /// [value] Value of the attribute.
-  ApiProductOperationGroupOperationConfigAttribute({
+  const ApiProductOperationGroupOperationConfigAttribute({
     this.name,
     this.value,
   });

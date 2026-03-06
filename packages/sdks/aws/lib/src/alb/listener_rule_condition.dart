@@ -31,7 +31,7 @@ class ListenerRuleCondition {
   /// [pathPattern] Path patterns to match against the request URL. Path Pattern block fields documented below.
   /// [queryStrings] Query strings to match. Query String block fields documented below.
   /// [sourceIp] Contains a single `values` item which is a list of source IP CIDR notations to match. You can use both IPv4 and IPv6 addresses. Wildcards are not supported. Condition is satisfied if the source IP address of the request matches one of the CIDR blocks. Condition is not satisfied by the addresses in the `X-Forwarded-For` header, use `http_header` condition instead.
-  ListenerRuleCondition({
+  const ListenerRuleCondition({
     this.hostHeader,
     this.httpHeader,
     this.httpRequestMethod,

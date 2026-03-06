@@ -136,7 +136,7 @@ class GetBareMetalMachineResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachinesAssociatedIds] Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the VirtualMachines that are hosted on this bare metal machine.
-  GetBareMetalMachineResult({
+  const GetBareMetalMachineResult({
     required this.associatedResourceIds,
     required this.azureApiVersion,
     required this.bmcConnectionString,

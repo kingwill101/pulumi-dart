@@ -12,7 +12,7 @@ class PoolSourceAdapterParentAddr {
   /// Creates a new [PoolSourceAdapterParentAddr].
   /// [address] Configures the address information related to the parent device of the adapter.
   /// [uniqueId] Provides a unique identifier for the address of the parent adapter.
-  PoolSourceAdapterParentAddr({
+  const PoolSourceAdapterParentAddr({
     this.address,
     required this.uniqueId,
   });

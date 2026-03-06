@@ -123,7 +123,7 @@ class GetManagedEnvironmentResult {
   /// [vnetConfiguration] Vnet configuration for the environment
   /// [workloadProfiles] Workload profiles configured for the Managed Environment.
   /// [zoneRedundant] Whether or not this Managed Environment is zone-redundant.
-  GetManagedEnvironmentResult({
+  const GetManagedEnvironmentResult({
     this.appInsightsConfiguration,
     this.appLogsConfiguration,
     this.availabilityZones,

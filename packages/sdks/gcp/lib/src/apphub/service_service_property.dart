@@ -40,7 +40,7 @@ class ServiceServiceProperty {
   /// [location] Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   /// [registrationTypes] (Output)
   /// [zone] (Output)
-  ServiceServiceProperty({
+  const ServiceServiceProperty({
     this.extendedMetadatas,
     this.functionalTypes,
     this.gcpProject,

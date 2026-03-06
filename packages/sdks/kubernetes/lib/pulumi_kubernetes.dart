@@ -33,41 +33,41 @@ import 'package:pulumi_kubernetes/storage_k8s_io.dart' as module_storage_k8s_io;
 import 'package:pulumi_kubernetes/storagemigration_k8s_io.dart' as module_storagemigration_k8s_io;
 import 'package:pulumi_kubernetes/yaml.dart' as module_yaml;
 
-final admissionregistration_k8s_io = _AdmissionregistrationK8sIoModuleNamespace();
-final apiextensions_k8s_io = _ApiextensionsK8sIoModuleNamespace();
-final apiregistration_k8s_io = _ApiregistrationK8sIoModuleNamespace();
-final apps = _AppsModuleNamespace();
-final auditregistration_k8s_io = _AuditregistrationK8sIoModuleNamespace();
-final authentication_k8s_io = _AuthenticationK8sIoModuleNamespace();
-final authorization_k8s_io = _AuthorizationK8sIoModuleNamespace();
-final autoscaling = _AutoscalingModuleNamespace();
-final batch = _BatchModuleNamespace();
-final certificates_k8s_io = _CertificatesK8sIoModuleNamespace();
-final coordination_k8s_io = _CoordinationK8sIoModuleNamespace();
-final core = _CoreModuleNamespace();
-final discovery_k8s_io = _DiscoveryK8sIoModuleNamespace();
-final events_k8s_io = _EventsK8sIoModuleNamespace();
-final extensions = _ExtensionsModuleNamespace();
-final flowcontrol_apiserver_k8s_io = _FlowcontrolApiserverK8sIoModuleNamespace();
-final helm_sh = _HelmShModuleNamespace();
-final index = _IndexModuleNamespace();
-final kustomize = _KustomizeModuleNamespace();
-final meta = _MetaModuleNamespace();
-final networking_k8s_io = _NetworkingK8sIoModuleNamespace();
-final node_k8s_io = _NodeK8sIoModuleNamespace();
-final pkg = _PkgModuleNamespace();
-final policy = _PolicyModuleNamespace();
-final providers = _ProvidersModuleNamespace();
-final rbac_authorization_k8s_io = _RbacAuthorizationK8sIoModuleNamespace();
-final resource_k8s_io = _ResourceK8sIoModuleNamespace();
-final scheduling_k8s_io = _SchedulingK8sIoModuleNamespace();
-final settings_k8s_io = _SettingsK8sIoModuleNamespace();
-final storage_k8s_io = _StorageK8sIoModuleNamespace();
-final storagemigration_k8s_io = _StoragemigrationK8sIoModuleNamespace();
-final yaml = _YamlModuleNamespace();
+final admissionregistration_k8s_io = const _AdmissionregistrationK8sIoModuleNamespace();
+final apiextensions_k8s_io = const _ApiextensionsK8sIoModuleNamespace();
+final apiregistration_k8s_io = const _ApiregistrationK8sIoModuleNamespace();
+final apps = const _AppsModuleNamespace();
+final auditregistration_k8s_io = const _AuditregistrationK8sIoModuleNamespace();
+final authentication_k8s_io = const _AuthenticationK8sIoModuleNamespace();
+final authorization_k8s_io = const _AuthorizationK8sIoModuleNamespace();
+final autoscaling = const _AutoscalingModuleNamespace();
+final batch = const _BatchModuleNamespace();
+final certificates_k8s_io = const _CertificatesK8sIoModuleNamespace();
+final coordination_k8s_io = const _CoordinationK8sIoModuleNamespace();
+final core = const _CoreModuleNamespace();
+final discovery_k8s_io = const _DiscoveryK8sIoModuleNamespace();
+final events_k8s_io = const _EventsK8sIoModuleNamespace();
+final extensions = const _ExtensionsModuleNamespace();
+final flowcontrol_apiserver_k8s_io = const _FlowcontrolApiserverK8sIoModuleNamespace();
+final helm_sh = const _HelmShModuleNamespace();
+final index = const _IndexModuleNamespace();
+final kustomize = const _KustomizeModuleNamespace();
+final meta = const _MetaModuleNamespace();
+final networking_k8s_io = const _NetworkingK8sIoModuleNamespace();
+final node_k8s_io = const _NodeK8sIoModuleNamespace();
+final pkg = const _PkgModuleNamespace();
+final policy = const _PolicyModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
+final rbac_authorization_k8s_io = const _RbacAuthorizationK8sIoModuleNamespace();
+final resource_k8s_io = const _ResourceK8sIoModuleNamespace();
+final scheduling_k8s_io = const _SchedulingK8sIoModuleNamespace();
+final settings_k8s_io = const _SettingsK8sIoModuleNamespace();
+final storage_k8s_io = const _StorageK8sIoModuleNamespace();
+final storagemigration_k8s_io = const _StoragemigrationK8sIoModuleNamespace();
+final yaml = const _YamlModuleNamespace();
 
 class _AdmissionregistrationK8sIoModuleNamespace {
-  _AdmissionregistrationK8sIoModuleNamespace();
+  const _AdmissionregistrationK8sIoModuleNamespace();
   final ApplyConfiguration = module_admissionregistration_k8s_io.ApplyConfiguration.new;
   final ApplyConfigurationArgs = module_admissionregistration_k8s_io.ApplyConfiguration.new;
   final ApplyConfigurationPatch = module_admissionregistration_k8s_io.ApplyConfigurationPatch.new;
@@ -199,7 +199,7 @@ class _AdmissionregistrationK8sIoModuleNamespace {
 }
 
 class _ApiextensionsK8sIoModuleNamespace {
-  _ApiextensionsK8sIoModuleNamespace();
+  const _ApiextensionsK8sIoModuleNamespace();
   final CustomResourceArgs = module_apiextensions_k8s_io.CustomResourceArgs.new;
   final CustomResourceColumnDefinition = module_apiextensions_k8s_io.CustomResourceColumnDefinition.new;
   final CustomResourceColumnDefinitionArgs = module_apiextensions_k8s_io.CustomResourceColumnDefinition.new;
@@ -281,7 +281,7 @@ class _ApiextensionsK8sIoModuleNamespace {
 }
 
 class _ApiregistrationK8sIoModuleNamespace {
-  _ApiregistrationK8sIoModuleNamespace();
+  const _ApiregistrationK8sIoModuleNamespace();
   final APIService = module_apiregistration_k8s_io.APIService.new;
   final APIServiceArgs = module_apiregistration_k8s_io.APIService.new;
   final APIServiceCondition = module_apiregistration_k8s_io.APIServiceCondition.new;
@@ -307,7 +307,7 @@ class _ApiregistrationK8sIoModuleNamespace {
 }
 
 class _AppsModuleNamespace {
-  _AppsModuleNamespace();
+  const _AppsModuleNamespace();
   final ControllerRevision = module_apps.ControllerRevision.new;
   final ControllerRevisionArgs = module_apps.ControllerRevision.new;
   final ControllerRevisionList = module_apps.ControllerRevisionList.new;
@@ -442,7 +442,7 @@ class _AppsModuleNamespace {
 }
 
 class _AuditregistrationK8sIoModuleNamespace {
-  _AuditregistrationK8sIoModuleNamespace();
+  const _AuditregistrationK8sIoModuleNamespace();
   final AuditSink = module_auditregistration_k8s_io.AuditSink.new;
   final AuditSinkArgs = module_auditregistration_k8s_io.AuditSink.new;
   final AuditSinkList = module_auditregistration_k8s_io.AuditSinkList.new;
@@ -476,7 +476,7 @@ class _AuditregistrationK8sIoModuleNamespace {
 }
 
 class _AuthenticationK8sIoModuleNamespace {
-  _AuthenticationK8sIoModuleNamespace();
+  const _AuthenticationK8sIoModuleNamespace();
   final BoundObjectReference = module_authentication_k8s_io.BoundObjectReference.new;
   final BoundObjectReferenceArgs = module_authentication_k8s_io.BoundObjectReference.new;
   final BoundObjectReferencePatch = module_authentication_k8s_io.BoundObjectReferencePatch.new;
@@ -520,7 +520,7 @@ class _AuthenticationK8sIoModuleNamespace {
 }
 
 class _AuthorizationK8sIoModuleNamespace {
-  _AuthorizationK8sIoModuleNamespace();
+  const _AuthorizationK8sIoModuleNamespace();
   final FieldSelectorAttributes = module_authorization_k8s_io.FieldSelectorAttributes.new;
   final FieldSelectorAttributesArgs = module_authorization_k8s_io.FieldSelectorAttributes.new;
   final FieldSelectorAttributesPatch = module_authorization_k8s_io.FieldSelectorAttributesPatch.new;
@@ -584,7 +584,7 @@ class _AuthorizationK8sIoModuleNamespace {
 }
 
 class _AutoscalingModuleNamespace {
-  _AutoscalingModuleNamespace();
+  const _AutoscalingModuleNamespace();
   final ContainerResourceMetricSource = module_autoscaling.ContainerResourceMetricSource.new;
   final ContainerResourceMetricSourceArgs = module_autoscaling.ContainerResourceMetricSource.new;
   final ContainerResourceMetricSourcePatch = module_autoscaling.ContainerResourceMetricSourcePatch.new;
@@ -694,7 +694,7 @@ class _AutoscalingModuleNamespace {
 }
 
 class _BatchModuleNamespace {
-  _BatchModuleNamespace();
+  const _BatchModuleNamespace();
   final CronJob = module_batch.CronJob.new;
   final CronJobArgs = module_batch.CronJob.new;
   final CronJobList = module_batch.CronJobList.new;
@@ -762,7 +762,7 @@ class _BatchModuleNamespace {
 }
 
 class _CertificatesK8sIoModuleNamespace {
-  _CertificatesK8sIoModuleNamespace();
+  const _CertificatesK8sIoModuleNamespace();
   final CertificateSigningRequest = module_certificates_k8s_io.CertificateSigningRequest.new;
   final CertificateSigningRequestArgs = module_certificates_k8s_io.CertificateSigningRequest.new;
   final CertificateSigningRequestCondition = module_certificates_k8s_io.CertificateSigningRequestCondition.new;
@@ -808,7 +808,7 @@ class _CertificatesK8sIoModuleNamespace {
 }
 
 class _CoordinationK8sIoModuleNamespace {
-  _CoordinationK8sIoModuleNamespace();
+  const _CoordinationK8sIoModuleNamespace();
   final Lease = module_coordination_k8s_io.Lease.new;
   final LeaseArgs = module_coordination_k8s_io.Lease.new;
   final LeaseCandidate = module_coordination_k8s_io.LeaseCandidate.new;
@@ -832,7 +832,7 @@ class _CoordinationK8sIoModuleNamespace {
 }
 
 class _CoreModuleNamespace {
-  _CoreModuleNamespace();
+  const _CoreModuleNamespace();
   final AWSElasticBlockStoreVolumeSource = module_core.AWSElasticBlockStoreVolumeSource.new;
   final AWSElasticBlockStoreVolumeSourceArgs = module_core.AWSElasticBlockStoreVolumeSource.new;
   final AWSElasticBlockStoreVolumeSourcePatch = module_core.AWSElasticBlockStoreVolumeSourcePatch.new;
@@ -1689,7 +1689,7 @@ class _CoreModuleNamespace {
 }
 
 class _DiscoveryK8sIoModuleNamespace {
-  _DiscoveryK8sIoModuleNamespace();
+  const _DiscoveryK8sIoModuleNamespace();
   final Endpoint = module_discovery_k8s_io.Endpoint.new;
   final EndpointArgs = module_discovery_k8s_io.Endpoint.new;
   final EndpointConditions = module_discovery_k8s_io.EndpointConditions.new;
@@ -1723,7 +1723,7 @@ class _DiscoveryK8sIoModuleNamespace {
 }
 
 class _EventsK8sIoModuleNamespace {
-  _EventsK8sIoModuleNamespace();
+  const _EventsK8sIoModuleNamespace();
   final Event = module_events_k8s_io.Event.new;
   final EventArgs = module_events_k8s_io.Event.new;
   final EventList = module_events_k8s_io.EventList.new;
@@ -1737,7 +1737,7 @@ class _EventsK8sIoModuleNamespace {
 }
 
 class _ExtensionsModuleNamespace {
-  _ExtensionsModuleNamespace();
+  const _ExtensionsModuleNamespace();
   final AllowedCSIDriver = module_extensions.AllowedCSIDriver.new;
   final AllowedCSIDriverArgs = module_extensions.AllowedCSIDriver.new;
   final AllowedCSIDriverPatch = module_extensions.AllowedCSIDriverPatch.new;
@@ -1950,7 +1950,7 @@ class _ExtensionsModuleNamespace {
 }
 
 class _FlowcontrolApiserverK8sIoModuleNamespace {
-  _FlowcontrolApiserverK8sIoModuleNamespace();
+  const _FlowcontrolApiserverK8sIoModuleNamespace();
   final ExemptPriorityLevelConfiguration = module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
   final ExemptPriorityLevelConfigurationArgs = module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfiguration.new;
   final ExemptPriorityLevelConfigurationPatch = module_flowcontrol_apiserver_k8s_io.ExemptPriorityLevelConfigurationPatch.new;
@@ -2042,7 +2042,7 @@ class _FlowcontrolApiserverK8sIoModuleNamespace {
 }
 
 class _HelmShModuleNamespace {
-  _HelmShModuleNamespace();
+  const _HelmShModuleNamespace();
   final Chart = module_helm_sh.Chart.new;
   final ChartArgs = module_helm_sh.ChartArgs.new;
   final FetchOpts = module_helm_sh.FetchOpts.new;
@@ -2058,7 +2058,7 @@ class _HelmShModuleNamespace {
 }
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final HelmReleaseSettings = module_index.HelmReleaseSettings.new;
   final HelmReleaseSettingsArgs = module_index.HelmReleaseSettings.new;
   final KubeClientSettings = module_index.KubeClientSettings.new;
@@ -2066,13 +2066,13 @@ class _IndexModuleNamespace {
 }
 
 class _KustomizeModuleNamespace {
-  _KustomizeModuleNamespace();
+  const _KustomizeModuleNamespace();
   final Directory = module_kustomize.Directory.new;
   final DirectoryArgs = module_kustomize.DirectoryArgs.new;
 }
 
 class _MetaModuleNamespace {
-  _MetaModuleNamespace();
+  const _MetaModuleNamespace();
   final APIGroup = module_meta.APIGroup.new;
   final APIGroupArgs = module_meta.APIGroup.new;
   final APIGroupList = module_meta.APIGroupList.new;
@@ -2160,7 +2160,7 @@ class _MetaModuleNamespace {
 }
 
 class _NetworkingK8sIoModuleNamespace {
-  _NetworkingK8sIoModuleNamespace();
+  const _NetworkingK8sIoModuleNamespace();
   final ClusterCIDR = module_networking_k8s_io.ClusterCIDR.new;
   final ClusterCIDRArgs = module_networking_k8s_io.ClusterCIDR.new;
   final ClusterCIDRList = module_networking_k8s_io.ClusterCIDRList.new;
@@ -2304,7 +2304,7 @@ class _NetworkingK8sIoModuleNamespace {
 }
 
 class _NodeK8sIoModuleNamespace {
-  _NodeK8sIoModuleNamespace();
+  const _NodeK8sIoModuleNamespace();
   final Overhead = module_node_k8s_io.Overhead.new;
   final OverheadArgs = module_node_k8s_io.Overhead.new;
   final OverheadPatch = module_node_k8s_io.OverheadPatch.new;
@@ -2326,7 +2326,7 @@ class _NodeK8sIoModuleNamespace {
 }
 
 class _PkgModuleNamespace {
-  _PkgModuleNamespace();
+  const _PkgModuleNamespace();
   final Info = module_pkg.Info.new;
   final InfoArgs = module_pkg.Info.new;
   final InfoPatch = module_pkg.InfoPatch.new;
@@ -2334,7 +2334,7 @@ class _PkgModuleNamespace {
 }
 
 class _PolicyModuleNamespace {
-  _PolicyModuleNamespace();
+  const _PolicyModuleNamespace();
   final AllowedCSIDriver = module_policy.AllowedCSIDriver.new;
   final AllowedCSIDriverArgs = module_policy.AllowedCSIDriver.new;
   final AllowedCSIDriverPatch = module_policy.AllowedCSIDriverPatch.new;
@@ -2410,14 +2410,14 @@ class _PolicyModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Kubernetes = module_providers.ProviderProvider.new;
   final KubernetesArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
 }
 
 class _RbacAuthorizationK8sIoModuleNamespace {
-  _RbacAuthorizationK8sIoModuleNamespace();
+  const _RbacAuthorizationK8sIoModuleNamespace();
   final AggregationRule = module_rbac_authorization_k8s_io.AggregationRule.new;
   final AggregationRuleArgs = module_rbac_authorization_k8s_io.AggregationRule.new;
   final AggregationRulePatch = module_rbac_authorization_k8s_io.AggregationRulePatch.new;
@@ -2461,7 +2461,7 @@ class _RbacAuthorizationK8sIoModuleNamespace {
 }
 
 class _ResourceK8sIoModuleNamespace {
-  _ResourceK8sIoModuleNamespace();
+  const _ResourceK8sIoModuleNamespace();
   final AllocatedDeviceStatus = module_resource_k8s_io.AllocatedDeviceStatus.new;
   final AllocatedDeviceStatusArgs = module_resource_k8s_io.AllocatedDeviceStatus.new;
   final AllocatedDeviceStatusPatch = module_resource_k8s_io.AllocatedDeviceStatusPatch.new;
@@ -2765,7 +2765,7 @@ class _ResourceK8sIoModuleNamespace {
 }
 
 class _SchedulingK8sIoModuleNamespace {
-  _SchedulingK8sIoModuleNamespace();
+  const _SchedulingK8sIoModuleNamespace();
   final GangSchedulingPolicy = module_scheduling_k8s_io.GangSchedulingPolicy.new;
   final GangSchedulingPolicyArgs = module_scheduling_k8s_io.GangSchedulingPolicy.new;
   final GangSchedulingPolicyPatch = module_scheduling_k8s_io.GangSchedulingPolicyPatch.new;
@@ -2801,7 +2801,7 @@ class _SchedulingK8sIoModuleNamespace {
 }
 
 class _SettingsK8sIoModuleNamespace {
-  _SettingsK8sIoModuleNamespace();
+  const _SettingsK8sIoModuleNamespace();
   final PodPreset = module_settings_k8s_io.PodPreset.new;
   final PodPresetArgs = module_settings_k8s_io.PodPreset.new;
   final PodPresetList = module_settings_k8s_io.PodPresetList.new;
@@ -2815,7 +2815,7 @@ class _SettingsK8sIoModuleNamespace {
 }
 
 class _StorageK8sIoModuleNamespace {
-  _StorageK8sIoModuleNamespace();
+  const _StorageK8sIoModuleNamespace();
   final CSIDriver = module_storage_k8s_io.CSIDriver.new;
   final CSIDriverArgs = module_storage_k8s_io.CSIDriver.new;
   final CSIDriverList = module_storage_k8s_io.CSIDriverList.new;
@@ -2891,7 +2891,7 @@ class _StorageK8sIoModuleNamespace {
 }
 
 class _StoragemigrationK8sIoModuleNamespace {
-  _StoragemigrationK8sIoModuleNamespace();
+  const _StoragemigrationK8sIoModuleNamespace();
   final GroupVersionResource = module_storagemigration_k8s_io.GroupVersionResource.new;
   final GroupVersionResourceArgs = module_storagemigration_k8s_io.GroupVersionResource.new;
   final GroupVersionResourcePatch = module_storagemigration_k8s_io.GroupVersionResourcePatch.new;
@@ -2917,7 +2917,7 @@ class _StoragemigrationK8sIoModuleNamespace {
 }
 
 class _YamlModuleNamespace {
-  _YamlModuleNamespace();
+  const _YamlModuleNamespace();
   final ConfigFile = module_yaml.ConfigFile.new;
   final ConfigFileArgs = module_yaml.ConfigFileArgs.new;
   final ConfigGroup = module_yaml.ConfigGroup.new;

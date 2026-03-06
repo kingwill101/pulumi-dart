@@ -13,7 +13,7 @@ class ReservationReplicationStatusError {
   /// Creates a new [ReservationReplicationStatusError].
   /// [code] (Output)
   /// [message] (Output)
-  ReservationReplicationStatusError({
+  const ReservationReplicationStatusError({
     this.code,
     this.message,
   });

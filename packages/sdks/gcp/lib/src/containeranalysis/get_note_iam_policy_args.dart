@@ -16,7 +16,7 @@ class GetNoteIamPolicyArgs {
   /// Creates a new [GetNoteIamPolicyArgs].
   /// [note] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetNoteIamPolicyArgs({
+  const GetNoteIamPolicyArgs({
     required this.note,
     this.project,
   });

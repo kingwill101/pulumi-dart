@@ -15,7 +15,7 @@ class ListenerDefaultActionForward {
   /// Creates a new [ListenerDefaultActionForward].
   /// [stickiness] Configuration block for target group stickiness for the rule. See below.
   /// [targetGroups] Set of 1-5 target group blocks. See below.
-  ListenerDefaultActionForward({
+  const ListenerDefaultActionForward({
     this.stickiness,
     required this.targetGroups,
   });

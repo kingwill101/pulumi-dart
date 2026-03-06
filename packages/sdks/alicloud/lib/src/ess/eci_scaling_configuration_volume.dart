@@ -62,7 +62,7 @@ class EciScalingConfigurationVolume {
   /// [nfsVolumeReadOnly] The nfs volume read only. Default to `false`.
   /// [nfsVolumeServer] The address of the NFS server.
   /// [type] The type of the volume.
-  EciScalingConfigurationVolume({
+  const EciScalingConfigurationVolume({
     this.configFileVolumeConfigFileToPaths,
     this.configFileVolumeDefaultMode,
     this.diskVolumeDiskId,

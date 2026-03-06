@@ -36,7 +36,7 @@ class WebAppSitePushSettingsSlotArgs {
   /// [slot] Name of web app slot. If not specified then will default to production slot.
   /// [tagWhitelistJson] Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
   /// [tagsRequiringAuth] Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
-  WebAppSitePushSettingsSlotArgs({
+  const WebAppSitePushSettingsSlotArgs({
     this.dynamicTagsJson,
     required this.isPushEnabled,
     this.kind,

@@ -21,7 +21,7 @@ class ProbeSettingsResponse {
   /// [period] The length of time between probes in ISO 8601 format.
   /// [successThreshold] The number of successful probes before returning a healthy status.
   /// [timeout] The probe timeout in ISO 8601 format.
-  ProbeSettingsResponse({
+  const ProbeSettingsResponse({
     this.failureThreshold,
     this.initialDelay,
     this.period,

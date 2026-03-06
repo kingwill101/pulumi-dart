@@ -17,7 +17,7 @@ class GetCiphertextResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyId] Required.
   /// [plaintext] Required.
-  GetCiphertextResult({
+  const GetCiphertextResult({
     required this.ciphertextBlob,
     this.encryptionContext,
     required this.id,

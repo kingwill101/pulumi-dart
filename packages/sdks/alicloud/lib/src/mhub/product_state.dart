@@ -9,7 +9,7 @@ class ProductState {
 
   /// Creates a new [ProductState].
   /// [productName] ProductName.
-  ProductState({
+  const ProductState({
     this.productName,
   });
 

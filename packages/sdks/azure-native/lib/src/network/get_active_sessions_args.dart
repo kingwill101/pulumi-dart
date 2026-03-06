@@ -15,7 +15,7 @@ class GetActiveSessionsArgs {
   /// Creates a new [GetActiveSessionsArgs].
   /// [bastionHostName] The name of the Bastion Host.
   /// [resourceGroupName] The name of the resource group.
-  GetActiveSessionsArgs({
+  const GetActiveSessionsArgs({
     required this.bastionHostName,
     required this.resourceGroupName,
   });

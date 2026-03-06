@@ -18,7 +18,7 @@ class ConsumerPscConfigResponse {
   /// [network] The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
   /// [project] The consumer project where PSC connections are allowed to be created in.
   /// [state] Overall state of PSC Connections management for this consumer psc config.
-  ConsumerPscConfigResponse({
+  const ConsumerPscConfigResponse({
     required this.disableGlobalAccess,
     required this.network,
     required this.project,

@@ -14,7 +14,7 @@ class GetTopicMessageTransform {
   /// Creates a new [GetTopicMessageTransform].
   /// [disabled] Controls whether or not to use this transform. If not set or 'false',
   /// [javascriptUdfs] Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-  GetTopicMessageTransform({
+  const GetTopicMessageTransform({
     required this.disabled,
     required this.javascriptUdfs,
   });

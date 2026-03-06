@@ -15,7 +15,7 @@ class GetContainerAppArgs {
   /// Creates a new [GetContainerAppArgs].
   /// [containerAppName] Name of the Container App.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContainerAppArgs({
+  const GetContainerAppArgs({
     required this.containerAppName,
     required this.resourceGroupName,
   });

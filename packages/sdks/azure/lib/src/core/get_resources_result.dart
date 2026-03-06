@@ -24,7 +24,7 @@ class GetResourcesResult {
   /// [resourceGroupName] The name of the Resource Group in which this Resource exists.
   /// [resources] One or more `resource` blocks as defined below.
   /// [type] The type of this Resource. (e.g. `Microsoft.Network/virtualNetworks`).
-  GetResourcesResult({
+  const GetResourcesResult({
     required this.id,
     required this.name,
     this.requiredTags,

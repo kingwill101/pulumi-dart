@@ -20,7 +20,7 @@ class GetRouteTableRoutesResult {
   /// [region] Required.
   /// [routes] List of Transit Gateway Routes.
   /// [transitGatewayRouteTableId] Required.
-  GetRouteTableRoutesResult({
+  const GetRouteTableRoutesResult({
     required this.filters,
     required this.id,
     required this.region,

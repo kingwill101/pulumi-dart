@@ -14,7 +14,7 @@ class RemoteImageBuildSecret {
   /// [env] Environment variable source of the secret
   /// [id] ID of the secret. By default, secrets are mounted to /run/secrets/\n\n
   /// [src] File source of the secret. Takes precedence over `env`
-  RemoteImageBuildSecret({
+  const RemoteImageBuildSecret({
     this.env,
     required this.id,
     this.src,

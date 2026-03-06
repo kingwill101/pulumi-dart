@@ -40,7 +40,7 @@ class AndroidRoboTestResponse {
   /// [roboMode] The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
   /// [roboScript] A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
   /// [startingIntents] The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
-  AndroidRoboTestResponse({
+  const AndroidRoboTestResponse({
     required this.appApk,
     required this.appBundle,
     required this.appInitialActivity,

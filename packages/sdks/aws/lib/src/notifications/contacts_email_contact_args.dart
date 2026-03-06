@@ -24,7 +24,7 @@ class ContactsEmailContactArgs {
   /// [emailAddress] Email address for the contact. Must be between 6 and 254 characters and match an email
   /// [name] Name of the email contact. Must be between 1 and 64 characters and can contain alphanumeric
   /// [tags] Map of tags to assign to the resource. If configured with a provider
-  ContactsEmailContactArgs({
+  const ContactsEmailContactArgs({
     required this.emailAddress,
     this.name,
     this.tags,

@@ -37,7 +37,7 @@ class OsPolicyAssignmentArgs {
   /// [osPolicyAssignmentId] Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
   /// [project] Optional.
   /// [rollout] Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
-  OsPolicyAssignmentArgs({
+  const OsPolicyAssignmentArgs({
     this.description,
     this.etag,
     required this.instanceFilter,

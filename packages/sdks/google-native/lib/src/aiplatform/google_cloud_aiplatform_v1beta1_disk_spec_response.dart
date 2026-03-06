@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1DiskSpecResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1DiskSpecResponse].
   /// [bootDiskSizeGb] Size in GB of the boot disk (default is 100GB).
   /// [bootDiskType] Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-  GoogleCloudAiplatformV1beta1DiskSpecResponse({
+  const GoogleCloudAiplatformV1beta1DiskSpecResponse({
     required this.bootDiskSizeGb,
     required this.bootDiskType,
   });

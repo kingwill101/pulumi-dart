@@ -74,7 +74,7 @@ class FastHttpAppState {
   /// [tenant] Name of the FAST HTTPS application tenant.
   /// [virtualServer] `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// [wafSecurityPolicy] `waf_security_policy` block takes input for FAST-Generated WAF Security Policy.
-  FastHttpAppState({
+  const FastHttpAppState({
     this.application,
     this.endpointLtmPolicies,
     this.existingMonitor,

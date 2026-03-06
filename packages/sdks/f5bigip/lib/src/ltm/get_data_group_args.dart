@@ -22,7 +22,7 @@ class GetDataGroupArgs {
   /// [partition] partition of the datagroup
   /// [records] Specifies record of type (string/ip/integer)
   /// [type] The Data Group type (string, ip, integer)"
-  GetDataGroupArgs({
+  const GetDataGroupArgs({
     required this.name,
     required this.partition,
     this.records,

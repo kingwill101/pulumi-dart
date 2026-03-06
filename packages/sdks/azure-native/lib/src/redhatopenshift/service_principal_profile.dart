@@ -12,7 +12,7 @@ class ServicePrincipalProfile {
   /// Creates a new [ServicePrincipalProfile].
   /// [clientId] The client ID used for the cluster.
   /// [clientSecret] The client secret used for the cluster.
-  ServicePrincipalProfile({
+  const ServicePrincipalProfile({
     this.clientId,
     this.clientSecret,
   });

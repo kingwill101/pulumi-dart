@@ -15,7 +15,7 @@ class GetJobTemplateTemplateVpcAccess {
   /// [connector] VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
   /// [egress] Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
   /// [networkInterfaces] Direct VPC egress settings. Currently only single network interface is supported.
-  GetJobTemplateTemplateVpcAccess({
+  const GetJobTemplateTemplateVpcAccess({
     required this.connector,
     required this.egress,
     required this.networkInterfaces,

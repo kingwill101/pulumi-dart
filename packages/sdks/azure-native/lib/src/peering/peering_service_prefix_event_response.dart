@@ -21,7 +21,7 @@ class PeeringServicePrefixEventResponse {
   /// [eventSummary] The summary of the event associated with a prefix.
   /// [eventTimestamp] The timestamp of the event associated with a prefix.
   /// [eventType] The type of the event associated with a prefix.
-  PeeringServicePrefixEventResponse({
+  const PeeringServicePrefixEventResponse({
     required this.eventDescription,
     required this.eventLevel,
     required this.eventSummary,

@@ -23,7 +23,7 @@ class GetConfigurationRecordersRecorder {
   /// [organizationMasterId] The ID of the Enterprise management account.
   /// [resourceTypes] A list of resource types to be monitored.
   /// [status] Status of resource monitoring.
-  GetConfigurationRecordersRecorder({
+  const GetConfigurationRecordersRecorder({
     required this.accountId,
     required this.id,
     required this.organizationEnableStatus,

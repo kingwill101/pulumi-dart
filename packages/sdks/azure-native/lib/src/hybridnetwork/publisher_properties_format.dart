@@ -9,7 +9,7 @@ class PublisherPropertiesFormat {
 
   /// Creates a new [PublisherPropertiesFormat].
   /// [scope] The publisher scope.
-  PublisherPropertiesFormat({
+  const PublisherPropertiesFormat({
     this.scope,
   });
 

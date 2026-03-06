@@ -17,7 +17,7 @@ class GetDataCollectionRuleDataSourceSyslog {
   /// [logLevels] Specifies a list of log levels. Use a wildcard `*` to collect logs for all log levels. Possible values are `Debug`,  `Info`, `Notice`, `Warning`, `Error`, `Critical`, `Alert`, `Emergency`,and `*`.
   /// [name] Specifies the name of the Data Collection Rule.
   /// [streams] Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
-  GetDataCollectionRuleDataSourceSyslog({
+  const GetDataCollectionRuleDataSourceSyslog({
     required this.facilityNames,
     required this.logLevels,
     required this.name,

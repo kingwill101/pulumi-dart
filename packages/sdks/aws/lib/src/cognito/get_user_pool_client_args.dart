@@ -18,7 +18,7 @@ class GetUserPoolClientArgs {
   /// [clientId] Client Id of the user pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] User pool the client belongs to.
-  GetUserPoolClientArgs({
+  const GetUserPoolClientArgs({
     required this.clientId,
     this.region,
     required this.userPoolId,

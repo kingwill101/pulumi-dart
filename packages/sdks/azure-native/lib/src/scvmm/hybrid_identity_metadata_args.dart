@@ -24,7 +24,7 @@ class HybridIdentityMetadataArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [resourceUid] Gets or sets the Vm Id.
   /// [virtualMachineName] Name of the vm.
-  HybridIdentityMetadataArgs({
+  const HybridIdentityMetadataArgs({
     this.metadataName,
     this.publicKey,
     required this.resourceGroupName,

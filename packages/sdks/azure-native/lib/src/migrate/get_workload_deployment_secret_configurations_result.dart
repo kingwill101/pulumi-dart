@@ -24,7 +24,7 @@ class GetWorkloadDeploymentSecretConfigurationsResult {
   /// [systemData] Required.
   /// [tags] Gets or sets the resource tags.
   /// [type] Gets or sets the type of the resource.
-  GetWorkloadDeploymentSecretConfigurationsResult({
+  const GetWorkloadDeploymentSecretConfigurationsResult({
     required this.id,
     required this.name,
     required this.properties,

@@ -19,7 +19,7 @@ class GetTopicArgs {
   /// [namespaceId] The ID of the ServiceBus Namespace where the Service Bus Topic exists.
   /// [namespaceName] Optional.
   /// [resourceGroupName] Optional.
-  GetTopicArgs({
+  const GetTopicArgs({
     required this.name,
     this.namespaceId,
     this.namespaceName,

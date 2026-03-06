@@ -11,7 +11,7 @@ class GetWindowsWebAppSiteConfigCor {
   /// Creates a new [GetWindowsWebAppSiteConfigCor].
   /// [allowedOrigins] A `allowed_origins` block as defined above.
   /// [supportCredentials] Whether CORS requests with credentials are allowed.
-  GetWindowsWebAppSiteConfigCor({
+  const GetWindowsWebAppSiteConfigCor({
     required this.allowedOrigins,
     required this.supportCredentials,
   });

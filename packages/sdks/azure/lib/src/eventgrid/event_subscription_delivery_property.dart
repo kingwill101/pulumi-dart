@@ -20,7 +20,7 @@ class EventSubscriptionDeliveryProperty {
   /// [sourceField] If the `type` is `Dynamic`, then provide the payload field to be used as the value. Valid source fields differ by subscription type.
   /// [type] Either `Static` or `Dynamic`
   /// [value] If the `type` is `Static`, then provide the value to use
-  EventSubscriptionDeliveryProperty({
+  const EventSubscriptionDeliveryProperty({
     required this.headerName,
     this.secret,
     this.sourceField,

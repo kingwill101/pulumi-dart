@@ -9,7 +9,7 @@ class GroupSubjectFlowcontrolApiserverK8sIoV1beta3 {
 
   /// Creates a new [GroupSubjectFlowcontrolApiserverK8sIoV1beta3].
   /// [name] name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
-  GroupSubjectFlowcontrolApiserverK8sIoV1beta3({
+  const GroupSubjectFlowcontrolApiserverK8sIoV1beta3({
     required this.name,
   });
 

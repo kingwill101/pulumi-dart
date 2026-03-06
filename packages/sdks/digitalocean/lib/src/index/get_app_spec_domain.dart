@@ -17,7 +17,7 @@ class GetAppSpecDomain {
   /// [type] The type of the environment variable, `GENERAL` or `SECRET`.
   /// [wildcard] Indicates whether the domain includes all sub-domains, in addition to the given domain.
   /// [zone] If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
-  GetAppSpecDomain({
+  const GetAppSpecDomain({
     required this.name,
     required this.type,
     required this.wildcard,

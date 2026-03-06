@@ -12,7 +12,7 @@ class SavingsSettings {
   /// Creates a new [SavingsSettings].
   /// [azureOfferCode] Gets or sets the Azure offer code.
   /// [savingsOptions] Gets or sets the savings options.
-  SavingsSettings({
+  const SavingsSettings({
     this.azureOfferCode,
     this.savingsOptions,
   });

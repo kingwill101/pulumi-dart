@@ -8,7 +8,7 @@ class ImmutabilitySettings {
 
   /// Creates a new [ImmutabilitySettings].
   /// [state] Optional.
-  ImmutabilitySettings({
+  const ImmutabilitySettings({
     this.state,
   });
 

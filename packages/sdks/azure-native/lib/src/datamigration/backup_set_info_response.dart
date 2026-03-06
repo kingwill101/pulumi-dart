@@ -37,7 +37,7 @@ class BackupSetInfoResponse {
   /// [lastLsn] Last log sequence number of the backup file
   /// [lastModifiedTime] Last modified time of the backup file in share location
   /// [listOfBackupFiles] List of files in the backup set
-  BackupSetInfoResponse({
+  const BackupSetInfoResponse({
     this.backupFinishedDate,
     this.backupSetId,
     this.backupStartDate,

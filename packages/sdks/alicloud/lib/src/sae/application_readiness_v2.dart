@@ -32,7 +32,7 @@ class ApplicationReadinessV2 {
   /// [successThreshold] The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
   /// [tcpSocket] The liveness check settings of the container. See `tcp_socket` below.
   /// [timeoutSeconds] The timeout period of the health check.
-  ApplicationReadinessV2({
+  const ApplicationReadinessV2({
     this.exec,
     this.failureThreshold,
     this.httpGet,

@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigParsePostgres {
 
   /// Creates a new [LogTransformerTransformerConfigParsePostgres].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParsePostgres({
+  const LogTransformerTransformerConfigParsePostgres({
     this.source,
   });
 

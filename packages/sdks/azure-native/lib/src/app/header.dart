@@ -12,7 +12,7 @@ class Header {
   /// Creates a new [Header].
   /// [key] The key of otlp configuration header
   /// [value] The value of otlp configuration header
-  Header({
+  const Header({
     this.key,
     this.value,
   });

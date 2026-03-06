@@ -33,7 +33,7 @@ class GetVpcEndpointServicesArgs {
   /// [status] The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcEndpointServiceName] The name of the endpoint service.
-  GetVpcEndpointServicesArgs({
+  const GetVpcEndpointServicesArgs({
     this.autoAcceptConnection,
     this.ids,
     this.nameRegex,

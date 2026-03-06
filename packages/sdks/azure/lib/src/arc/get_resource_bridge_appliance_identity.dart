@@ -14,7 +14,7 @@ class GetResourceBridgeApplianceIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The type of this Managed Service Identity.
-  GetResourceBridgeApplianceIdentity({
+  const GetResourceBridgeApplianceIdentity({
     required this.principalId,
     required this.tenantId,
     required this.type,

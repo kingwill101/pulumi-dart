@@ -19,7 +19,7 @@ class EncryptionServices {
   /// [file] The encryption function of the file storage service.
   /// [queue] The encryption function of the queue storage service.
   /// [table] The encryption function of the table storage service.
-  EncryptionServices({
+  const EncryptionServices({
     this.blob,
     this.file,
     this.queue,

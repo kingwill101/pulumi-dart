@@ -25,7 +25,7 @@ class DefenderFoDatabasesAwsOfferingResponse {
   /// [description] The offering description.
   /// [offeringType] The type of the security offering.
   /// [rds] The RDS configuration
-  DefenderFoDatabasesAwsOfferingResponse({
+  const DefenderFoDatabasesAwsOfferingResponse({
     this.arcAutoProvisioning,
     this.databasesDspm,
     required this.description,

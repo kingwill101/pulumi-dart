@@ -53,7 +53,7 @@ class GitHubWorkflowProfileResponse {
   /// [pullNumber] The number associated with the submitted pull request.
   /// [repositoryName] Repository Name
   /// [repositoryOwner] Repository Owner
-  GitHubWorkflowProfileResponse({
+  const GitHubWorkflowProfileResponse({
     this.acr,
     this.aksResourceId,
     required this.authStatus,

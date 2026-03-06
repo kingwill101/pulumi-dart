@@ -24,7 +24,7 @@ class EnvironmentTypeArgs {
   /// [environmentTypeName] The name of the environment type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  EnvironmentTypeArgs({
+  const EnvironmentTypeArgs({
     required this.devCenterName,
     this.displayName,
     this.environmentTypeName,

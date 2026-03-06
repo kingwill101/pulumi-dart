@@ -15,7 +15,7 @@ class ImagePurchasePlanResponse {
   /// [name] The plan ID.
   /// [product] The product ID.
   /// [publisher] The publisher ID.
-  ImagePurchasePlanResponse({
+  const ImagePurchasePlanResponse({
     this.name,
     this.product,
     this.publisher,

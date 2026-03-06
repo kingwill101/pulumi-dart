@@ -20,7 +20,7 @@ class SpringCloudServiceRequiredNetworkTrafficRule {
   /// [ipAddresses] The IP list of required traffic.
   /// [port] The port of required traffic.
   /// [protocol] The protocol of required traffic.
-  SpringCloudServiceRequiredNetworkTrafficRule({
+  const SpringCloudServiceRequiredNetworkTrafficRule({
     this.direction,
     this.fqdns,
     this.ipAddresses,

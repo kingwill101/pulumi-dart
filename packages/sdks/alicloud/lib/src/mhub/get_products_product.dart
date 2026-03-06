@@ -14,7 +14,7 @@ class GetProductsProduct {
   /// [id] The ID of the Product.
   /// [productId] The ID of the Product.
   /// [productName] The name of the Product.
-  GetProductsProduct({
+  const GetProductsProduct({
     required this.id,
     required this.productId,
     required this.productName,

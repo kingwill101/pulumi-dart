@@ -12,7 +12,7 @@ class DataProviderResponseAnalyticshubV1beta1 {
   /// Creates a new [DataProviderResponseAnalyticshubV1beta1].
   /// [name] Optional. Name of the data provider.
   /// [primaryContact] Optional. Email or URL of the data provider. Max Length: 1000 bytes.
-  DataProviderResponseAnalyticshubV1beta1({
+  const DataProviderResponseAnalyticshubV1beta1({
     required this.name,
     required this.primaryContact,
   });

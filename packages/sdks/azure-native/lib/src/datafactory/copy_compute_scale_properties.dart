@@ -12,7 +12,7 @@ class CopyComputeScaleProperties {
   /// Creates a new [CopyComputeScaleProperties].
   /// [dataIntegrationUnit] DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
   /// [timeToLive] Time to live (in minutes) setting of integration runtime which will execute copy activity.
-  CopyComputeScaleProperties({
+  const CopyComputeScaleProperties({
     this.dataIntegrationUnit,
     this.timeToLive,
   });

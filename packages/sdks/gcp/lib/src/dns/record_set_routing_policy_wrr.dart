@@ -16,7 +16,7 @@ class RecordSetRoutingPolicyWrr {
   /// [healthCheckedTargets] The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
   /// [rrdatas] Same as `rrdatas` above.
   /// [weight] The ratio of traffic routed to the target.
-  RecordSetRoutingPolicyWrr({
+  const RecordSetRoutingPolicyWrr({
     this.healthCheckedTargets,
     this.rrdatas,
     required this.weight,

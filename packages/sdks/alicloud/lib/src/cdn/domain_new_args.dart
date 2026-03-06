@@ -41,7 +41,7 @@ class DomainNewArgs {
   /// [sources] The source address list of the accelerated domain. Defaults to null. See `sources` below.
   /// [status] The status of the resource, valid values: `online`, `offline`.
   /// [tags] The tag of the resource
-  DomainNewArgs({
+  const DomainNewArgs({
     required this.cdnType,
     this.certificateConfig,
     this.checkUrl,

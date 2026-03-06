@@ -15,7 +15,7 @@ class SafetyProviderConfigResponse {
   /// [blocking] If blocking would occur.
   /// [safetyProviderName] Name of RAI Safety Provider.
   /// [source] Content source to apply the Content Filters.
-  SafetyProviderConfigResponse({
+  const SafetyProviderConfigResponse({
     this.blocking,
     this.safetyProviderName,
     this.source,

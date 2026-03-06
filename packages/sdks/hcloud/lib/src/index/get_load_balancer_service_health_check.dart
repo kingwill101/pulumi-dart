@@ -24,7 +24,7 @@ class GetLoadBalancerServiceHealthCheck {
   /// [protocol] (string) Protocol the health check uses. `http`, `https` or `tcp`
   /// [retries] (int) Number of tries a health check will be performed until a target will be listed as `unhealthy`.
   /// [timeout] (int) Timeout when a health check try will be canceled if there is no response, in seconds.
-  GetLoadBalancerServiceHealthCheck({
+  const GetLoadBalancerServiceHealthCheck({
     required this.https,
     required this.interval,
     required this.port,

@@ -10,7 +10,7 @@ class GenericServiceTelemetry {
 
   /// Creates a new [GenericServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GenericServiceTelemetry({
+  const GenericServiceTelemetry({
     this.resourceName,
   });
 

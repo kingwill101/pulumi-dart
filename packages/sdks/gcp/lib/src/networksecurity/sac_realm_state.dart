@@ -49,7 +49,7 @@ class SacRealmState {
   /// [state] State of the realm.
   /// [symantecOptions] Configuration required for Symantec realms.
   /// [updateTime] Timestamp when the realm was last updated.
-  SacRealmState({
+  const SacRealmState({
     this.createTime,
     this.effectiveLabels,
     this.labels,

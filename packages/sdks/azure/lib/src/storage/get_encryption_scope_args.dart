@@ -15,7 +15,7 @@ class GetEncryptionScopeArgs {
   /// Creates a new [GetEncryptionScopeArgs].
   /// [name] The name of this Storage Encryption Scope.
   /// [storageAccountId] The ID of the Storage Account where this Storage Encryption Scope exists.
-  GetEncryptionScopeArgs({
+  const GetEncryptionScopeArgs({
     required this.name,
     required this.storageAccountId,
   });

@@ -13,7 +13,7 @@ class TcpCheck {
   /// Creates a new [TcpCheck].
   /// [pingConfig] Contains information needed to add pings to a TCP check.
   /// [port] The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
-  TcpCheck({
+  const TcpCheck({
     this.pingConfig,
     this.port,
   });

@@ -38,7 +38,7 @@ class GetContainerGroupsResult {
   /// [vswitchId] Optional.
   /// [withEvent] Optional.
   /// [zoneId] Optional.
-  GetContainerGroupsResult({
+  const GetContainerGroupsResult({
     this.containerGroupName,
     this.enableDetails,
     required this.groups,

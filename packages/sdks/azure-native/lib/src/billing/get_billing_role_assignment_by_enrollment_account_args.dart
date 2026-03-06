@@ -18,7 +18,7 @@ class GetBillingRoleAssignmentByEnrollmentAccountArgs {
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [billingRoleAssignmentName] The ID that uniquely identifies a role assignment.
   /// [enrollmentAccountName] The name of the enrollment account.
-  GetBillingRoleAssignmentByEnrollmentAccountArgs({
+  const GetBillingRoleAssignmentByEnrollmentAccountArgs({
     required this.billingAccountName,
     required this.billingRoleAssignmentName,
     required this.enrollmentAccountName,

@@ -17,7 +17,7 @@ class GetArtifactIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetArtifactIamPolicyArgs({
+  const GetArtifactIamPolicyArgs({
     required this.artifactId,
     required this.location,
     this.optionsRequestedPolicyVersion,

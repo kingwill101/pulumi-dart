@@ -24,7 +24,7 @@ class GetInstancesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [paymentType] The paymen type of the resource. Valid values: `Subscription`.
   /// [status] The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -21,7 +21,7 @@ class GetDocumentArgs {
   /// [database] The name of the Firestore database.
   /// [documentId] The id of the document to get.
   /// [project] The project in which the database resides.
-  GetDocumentArgs({
+  const GetDocumentArgs({
     required this.collection,
     required this.database,
     required this.documentId,

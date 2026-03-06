@@ -56,7 +56,7 @@ class WasmPluginState {
   /// [updateTime] Output only. The timestamp when the resource was updated.
   /// [usedBies] Output only. List of all extensions that use this WasmPlugin resource.
   /// [versions] All versions of this WasmPlugin resource in the key-value format. The key is the resource ID, and the value is the VersionDetails object.
-  WasmPluginState({
+  const WasmPluginState({
     this.createTime,
     this.description,
     this.effectiveLabels,

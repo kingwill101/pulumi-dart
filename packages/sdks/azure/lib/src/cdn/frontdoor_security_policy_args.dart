@@ -19,7 +19,7 @@ class FrontdoorSecurityPolicyArgs {
   /// [cdnFrontdoorProfileId] The Front Door Profile Resource Id that is linked to this Front Door Security Policy. Changing this forces a new Front Door Security Policy to be created.
   /// [name] The name which should be used for this Front Door Security Policy. Possible values must not be an empty string. Changing this forces a new Front Door Security Policy to be created.
   /// [securityPolicies] An `security_policies` block as defined below.
-  FrontdoorSecurityPolicyArgs({
+  const FrontdoorSecurityPolicyArgs({
     required this.cdnFrontdoorProfileId,
     this.name,
     required this.securityPolicies,

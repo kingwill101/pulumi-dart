@@ -18,7 +18,7 @@ class ContainerResourceMetricStatusAutoscalingV2beta1 {
   /// [currentAverageUtilization] currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.
   /// [currentAverageValue] currentAverageValue is the current value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type. It will always be set, regardless of the corresponding metric specification.
   /// [name] name is the name of the resource in question.
-  ContainerResourceMetricStatusAutoscalingV2beta1({
+  const ContainerResourceMetricStatusAutoscalingV2beta1({
     required this.container,
     this.currentAverageUtilization,
     required this.currentAverageValue,

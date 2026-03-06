@@ -35,7 +35,7 @@ class GetStorageBoxTypeResult {
   /// [snapshotLimit] Maximum number of allowed manual snapshots.
   /// [subaccountsLimit] Maximum number of subaccounts.
   /// [unavailableAfter] Date of the Storage Box Type removal. After this date, the Storage Box Type cannot be used anymore.
-  GetStorageBoxTypeResult({
+  const GetStorageBoxTypeResult({
     required this.automaticSnapshotLimit,
     required this.deprecationAnnounced,
     required this.description,

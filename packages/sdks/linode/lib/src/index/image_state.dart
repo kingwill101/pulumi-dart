@@ -92,7 +92,7 @@ class ImageState {
   /// [type] How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
   /// [vendor] The upstream distribution vendor. Nil for private Images.
   /// [waitForReplications] Whether to wait for all image replications become `available`. Default to false.
-  ImageState({
+  const ImageState({
     this.capabilities,
     this.cloudInit,
     this.created,

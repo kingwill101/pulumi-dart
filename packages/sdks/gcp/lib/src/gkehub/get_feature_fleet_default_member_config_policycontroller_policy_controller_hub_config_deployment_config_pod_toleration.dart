@@ -17,7 +17,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   /// [key] Matches a taint key (not necessarily unique).
   /// [operator] Matches a taint operator.
   /// [value] Matches a taint value.
-  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration({
+  const GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration({
     required this.effect,
     required this.key,
     required this.operator,

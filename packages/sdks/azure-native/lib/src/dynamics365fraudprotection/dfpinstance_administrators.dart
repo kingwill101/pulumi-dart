@@ -9,7 +9,7 @@ class DFPInstanceAdministrators {
 
   /// Creates a new [DFPInstanceAdministrators].
   /// [members] An array of administrator user identities.
-  DFPInstanceAdministrators({
+  const DFPInstanceAdministrators({
     this.members,
   });
 

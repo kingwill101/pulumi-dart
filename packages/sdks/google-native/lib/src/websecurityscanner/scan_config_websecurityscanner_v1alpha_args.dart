@@ -46,7 +46,7 @@ class ScanConfigWebsecurityscannerV1alphaArgs {
   /// [startingUrls] The starting URLs from which the scanner finds site pages.
   /// [targetPlatforms] Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
   /// [userAgent] The user agent used during scanning.
-  ScanConfigWebsecurityscannerV1alphaArgs({
+  const ScanConfigWebsecurityscannerV1alphaArgs({
     this.authentication,
     this.blacklistPatterns,
     required this.displayName,

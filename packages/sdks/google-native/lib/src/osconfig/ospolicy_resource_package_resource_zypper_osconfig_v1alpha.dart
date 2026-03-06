@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceZypperOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceZypperOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceZypperOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceZypperOsconfigV1alpha({
     required this.name,
   });
 

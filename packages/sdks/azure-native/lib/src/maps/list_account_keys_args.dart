@@ -15,7 +15,7 @@ class ListAccountKeysArgs {
   /// Creates a new [ListAccountKeysArgs].
   /// [accountName] The name of the Maps Account.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListAccountKeysArgs({
+  const ListAccountKeysArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

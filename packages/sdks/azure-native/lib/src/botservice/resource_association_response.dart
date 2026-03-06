@@ -12,7 +12,7 @@ class ResourceAssociationResponse {
   /// Creates a new [ResourceAssociationResponse].
   /// [accessMode] Access Mode of the resource association
   /// [name] Name of the resource association
-  ResourceAssociationResponse({
+  const ResourceAssociationResponse({
     this.accessMode,
     this.name,
   });

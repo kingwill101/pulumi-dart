@@ -42,7 +42,7 @@ class DisplayData {
   /// [strValue] Contains value if the data is of string type.
   /// [timestampValue] Contains value if the data is of timestamp type.
   /// [url] An optional full URL.
-  DisplayData({
+  const DisplayData({
     this.boolValue,
     this.durationValue,
     this.floatValue,

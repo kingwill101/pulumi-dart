@@ -15,7 +15,7 @@ class GetAuthorizationTokenArgs {
   /// Creates a new [GetAuthorizationTokenArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] AWS account ID of the ECR Repository. If not specified the default account is assumed.
-  GetAuthorizationTokenArgs({
+  const GetAuthorizationTokenArgs({
     this.region,
     this.registryId,
   });

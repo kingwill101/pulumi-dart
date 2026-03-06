@@ -31,7 +31,7 @@ class ChannelArgs {
   /// [retainedReleaseCount] The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
   /// [siteId] Required.
   /// [ttl] Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
-  ChannelArgs({
+  const ChannelArgs({
     required this.channelId,
     this.expireTime,
     this.labels,

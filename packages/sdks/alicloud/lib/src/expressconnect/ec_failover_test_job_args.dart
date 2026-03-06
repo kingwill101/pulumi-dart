@@ -30,7 +30,7 @@ class EcFailoverTestJobArgs {
   /// [resourceIds] Resource id list.
   /// [resourceType] Resource type.
   /// [status] The status of the resource.
-  EcFailoverTestJobArgs({
+  const EcFailoverTestJobArgs({
     this.description,
     this.ecFailoverTestJobName,
     required this.jobDuration,

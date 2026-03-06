@@ -18,7 +18,7 @@ class WorkspaceState {
   /// [description] The description of the API Management Workspace.
   /// [displayName] The display name of the API Management Workspace.
   /// [name] Specifies the name which should be used for this API Management Workspace. Changing this forces a new resource to be created.
-  WorkspaceState({
+  const WorkspaceState({
     this.apiManagementId,
     this.description,
     this.displayName,

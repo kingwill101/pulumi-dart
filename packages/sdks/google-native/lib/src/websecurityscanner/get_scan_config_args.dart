@@ -13,7 +13,7 @@ class GetScanConfigArgs {
   /// Creates a new [GetScanConfigArgs].
   /// [project] Optional.
   /// [scanConfigId] Required.
-  GetScanConfigArgs({
+  const GetScanConfigArgs({
     this.project,
     required this.scanConfigId,
   });

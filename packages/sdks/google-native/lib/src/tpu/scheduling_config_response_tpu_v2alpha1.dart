@@ -12,7 +12,7 @@ class SchedulingConfigResponseTpuV2alpha1 {
   /// Creates a new [SchedulingConfigResponseTpuV2alpha1].
   /// [preemptible] Defines whether the node is preemptible.
   /// [reserved] Whether the node is created under a reservation.
-  SchedulingConfigResponseTpuV2alpha1({
+  const SchedulingConfigResponseTpuV2alpha1({
     required this.preemptible,
     required this.reserved,
   });

@@ -56,7 +56,7 @@ class GetVpcIpsVpcIp {
   /// [subnetId] The id of the VPC Subnet for this interface.
   /// [subnetMask] The mask that separates host bits from network bits for the address or address_range.
   /// [vpcId] The id of the parent VPC for the list of VPC IPs.
-  GetVpcIpsVpcIp({
+  const GetVpcIpsVpcIp({
     required this.active,
     required this.address,
     required this.addressRange,

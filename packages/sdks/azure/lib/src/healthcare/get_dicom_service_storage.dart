@@ -11,7 +11,7 @@ class GetDicomServiceStorage {
   /// Creates a new [GetDicomServiceStorage].
   /// [fileSystemName] The filesystem name of connected storage account.
   /// [storageAccountId] The resource ID of connected storage account.
-  GetDicomServiceStorage({
+  const GetDicomServiceStorage({
     required this.fileSystemName,
     required this.storageAccountId,
   });

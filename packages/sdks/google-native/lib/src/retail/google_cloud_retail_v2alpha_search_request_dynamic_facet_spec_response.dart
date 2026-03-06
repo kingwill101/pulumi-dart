@@ -9,7 +9,7 @@ class GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse {
 
   /// Creates a new [GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse].
   /// [mode] Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
-  GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse({
+  const GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponse({
     required this.mode,
   });
 

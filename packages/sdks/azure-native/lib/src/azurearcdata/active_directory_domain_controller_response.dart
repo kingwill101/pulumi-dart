@@ -9,7 +9,7 @@ class ActiveDirectoryDomainControllerResponse {
 
   /// Creates a new [ActiveDirectoryDomainControllerResponse].
   /// [hostname] Fully-qualified domain name of a domain controller in the AD domain.
-  ActiveDirectoryDomainControllerResponse({
+  const ActiveDirectoryDomainControllerResponse({
     required this.hostname,
   });
 

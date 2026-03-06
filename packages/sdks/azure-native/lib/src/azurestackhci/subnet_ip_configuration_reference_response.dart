@@ -9,7 +9,7 @@ class SubnetIpConfigurationReferenceResponse {
 
   /// Creates a new [SubnetIpConfigurationReferenceResponse].
   /// [id] The Azure Resource ID for a Network Interface.
-  SubnetIpConfigurationReferenceResponse({
+  const SubnetIpConfigurationReferenceResponse({
     this.id,
   });
 

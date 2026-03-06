@@ -33,7 +33,7 @@ class ManagedNetworkSettingsResponse {
   /// [networkId] Required.
   /// [outboundRules] Optional.
   /// [status] Status of the Provisioning for the managed network of a machine learning workspace.
-  ManagedNetworkSettingsResponse({
+  const ManagedNetworkSettingsResponse({
     this.enableFirewallLog,
     this.enableNetworkMonitor,
     this.firewallPublicIpAddress,

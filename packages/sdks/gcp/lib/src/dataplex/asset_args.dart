@@ -44,7 +44,7 @@ class AssetArgs {
   /// [name] The name of the asset.
   /// [project] The project for the resource
   /// [resourceSpec] Required. Immutable. Specification of the resource that is referenced by this asset.
-  AssetArgs({
+  const AssetArgs({
     required this.dataplexZone,
     this.description,
     required this.discoverySpec,

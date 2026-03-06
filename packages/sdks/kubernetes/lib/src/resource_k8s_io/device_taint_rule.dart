@@ -26,7 +26,7 @@ class DeviceTaintRule {
   /// [metadata] Standard object metadata
   /// [spec] Spec specifies the selector and one taint.
   /// [status] Status provides information about what was requested in the spec.
-  DeviceTaintRule({
+  const DeviceTaintRule({
     this.apiVersion,
     this.kind,
     this.metadata,

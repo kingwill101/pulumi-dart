@@ -17,7 +17,7 @@ class VirtualMachineConfiguration {
   /// [imageReference] The image reference.
   /// [osProfile] The OS profile.
   /// [vmSize] The virtual machine size.
-  VirtualMachineConfiguration({
+  const VirtualMachineConfiguration({
     required this.imageReference,
     required this.osProfile,
     required this.vmSize,

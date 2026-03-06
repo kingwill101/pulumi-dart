@@ -36,7 +36,7 @@ class NamespaceState {
   /// [secondaryKey] The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   /// [skuName] The name of the SKU to use. At this time the only supported value is `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
-  NamespaceState({
+  const NamespaceState({
     this.location,
     this.metricId,
     this.name,

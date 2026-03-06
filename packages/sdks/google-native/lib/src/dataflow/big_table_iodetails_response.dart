@@ -15,7 +15,7 @@ class BigTableIODetailsResponse {
   /// [instanceId] InstanceId accessed in the connection.
   /// [project] ProjectId accessed in the connection.
   /// [tableId] TableId accessed in the connection.
-  BigTableIODetailsResponse({
+  const BigTableIODetailsResponse({
     required this.instanceId,
     required this.project,
     required this.tableId,

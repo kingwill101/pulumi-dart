@@ -12,7 +12,7 @@ class SecretVolumeItemResponse {
   /// Creates a new [SecretVolumeItemResponse].
   /// [path] Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.
   /// [secretRef] Name of the Container App secret from which to pull the secret value.
-  SecretVolumeItemResponse({
+  const SecretVolumeItemResponse({
     this.path,
     this.secretRef,
   });

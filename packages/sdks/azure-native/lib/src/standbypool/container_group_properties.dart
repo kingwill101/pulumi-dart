@@ -14,7 +14,7 @@ class ContainerGroupProperties {
   /// Creates a new [ContainerGroupProperties].
   /// [containerGroupProfile] Specifies container group profile of standby container groups.
   /// [subnetIds] Specifies subnet Ids for container group.
-  ContainerGroupProperties({
+  const ContainerGroupProperties({
     required this.containerGroupProfile,
     this.subnetIds,
   });

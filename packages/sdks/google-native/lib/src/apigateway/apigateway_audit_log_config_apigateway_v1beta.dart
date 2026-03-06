@@ -13,7 +13,7 @@ class ApigatewayAuditLogConfigApigatewayV1beta {
   /// Creates a new [ApigatewayAuditLogConfigApigatewayV1beta].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  ApigatewayAuditLogConfigApigatewayV1beta({
+  const ApigatewayAuditLogConfigApigatewayV1beta({
     this.exemptedMembers,
     this.logType,
   });

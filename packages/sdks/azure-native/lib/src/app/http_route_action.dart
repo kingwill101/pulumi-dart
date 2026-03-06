@@ -9,7 +9,7 @@ class HttpRouteAction {
 
   /// Creates a new [HttpRouteAction].
   /// [prefixRewrite] Rewrite prefix, default is no rewrites
-  HttpRouteAction({
+  const HttpRouteAction({
     this.prefixRewrite,
   });
 

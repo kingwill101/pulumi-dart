@@ -11,7 +11,7 @@ class GetBudgetSubscriptionTimePeriod {
   /// Creates a new [GetBudgetSubscriptionTimePeriod].
   /// [endDate] The end date for the budget.
   /// [startDate] The start date for the budget.
-  GetBudgetSubscriptionTimePeriod({
+  const GetBudgetSubscriptionTimePeriod({
     required this.endDate,
     required this.startDate,
   });

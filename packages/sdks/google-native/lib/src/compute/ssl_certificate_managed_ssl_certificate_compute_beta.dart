@@ -9,7 +9,7 @@ class SslCertificateManagedSslCertificateComputeBeta {
 
   /// Creates a new [SslCertificateManagedSslCertificateComputeBeta].
   /// [domains] The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
-  SslCertificateManagedSslCertificateComputeBeta({
+  const SslCertificateManagedSslCertificateComputeBeta({
     this.domains,
   });
 

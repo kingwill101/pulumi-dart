@@ -32,7 +32,7 @@ class GetTrailsDeprecatedActiontrail {
   /// [status] Required.
   /// [trailName] Required.
   /// [trailRegion] Required.
-  GetTrailsDeprecatedActiontrail({
+  const GetTrailsDeprecatedActiontrail({
     required this.eventRw,
     required this.id,
     required this.isOrganizationTrail,

@@ -9,7 +9,7 @@ class ClientConnectionResponse {
 
   /// Creates a new [ClientConnectionResponse].
   /// [enabled] Indicates if client connection is enabled for this SQL Server instance.
-  ClientConnectionResponse({
+  const ClientConnectionResponse({
     this.enabled,
   });
 

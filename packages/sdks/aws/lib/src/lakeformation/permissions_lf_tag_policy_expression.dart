@@ -11,7 +11,7 @@ class PermissionsLfTagPolicyExpression {
   /// Creates a new [PermissionsLfTagPolicyExpression].
   /// [key] The key-name of an LF-Tag.
   /// [values] A list of possible values of an LF-Tag.
-  PermissionsLfTagPolicyExpression({
+  const PermissionsLfTagPolicyExpression({
     required this.key,
     required this.values,
   });

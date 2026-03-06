@@ -9,7 +9,7 @@ class FileSourceInfo {
 
   /// Creates a new [FileSourceInfo].
   /// [shareId] File share ID.
-  FileSourceInfo({
+  const FileSourceInfo({
     required this.shareId,
   });
 

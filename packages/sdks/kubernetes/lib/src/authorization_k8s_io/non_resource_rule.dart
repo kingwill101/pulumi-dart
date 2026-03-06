@@ -12,7 +12,7 @@ class NonResourceRule {
   /// Creates a new [NonResourceRule].
   /// [nonResourceURLs] NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
   /// [verbs] Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.
-  NonResourceRule({
+  const NonResourceRule({
     this.nonResourceURLs,
     required this.verbs,
   });

@@ -235,7 +235,7 @@ class SpotInstanceRequestState {
   /// [volumeTags] Map of tags to assign, at instance-creation time, to root and EBS volumes.
   /// [vpcSecurityGroupIds] List of security group IDs to associate with.
   /// [waitForFulfillment] If set, this provider will
-  SpotInstanceRequestState({
+  const SpotInstanceRequestState({
     this.ami,
     this.arn,
     this.associatePublicIpAddress,

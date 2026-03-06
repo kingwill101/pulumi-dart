@@ -9,7 +9,7 @@ class GetClusterStateInfo {
 
   /// Creates a new [GetClusterStateInfo].
   /// [updateInfos] A nested object resource.
-  GetClusterStateInfo({
+  const GetClusterStateInfo({
     required this.updateInfos,
   });
 

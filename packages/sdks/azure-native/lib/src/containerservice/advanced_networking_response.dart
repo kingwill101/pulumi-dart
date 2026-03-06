@@ -17,7 +17,7 @@ class AdvancedNetworkingResponse {
   /// [enabled] Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
   /// [observability] Observability profile to enable advanced network metrics and flow logs with historical contexts.
   /// [security] Security profile to enable security features on cilium based cluster.
-  AdvancedNetworkingResponse({
+  const AdvancedNetworkingResponse({
     this.enabled,
     this.observability,
     this.security,

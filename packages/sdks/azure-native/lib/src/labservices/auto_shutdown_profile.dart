@@ -26,7 +26,7 @@ class AutoShutdownProfile {
   /// [shutdownOnDisconnect] Whether shutdown on disconnect is enabled
   /// [shutdownOnIdle] Whether a VM will get shutdown when it has idled for a period of time.
   /// [shutdownWhenNotConnected] Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  AutoShutdownProfile({
+  const AutoShutdownProfile({
     this.disconnectDelay,
     this.idleDelay,
     this.noConnectDelay,

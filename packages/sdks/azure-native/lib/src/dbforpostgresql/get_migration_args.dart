@@ -18,7 +18,7 @@ class GetMigrationArgs {
   /// [migrationName] Name of migration.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetMigrationArgs({
+  const GetMigrationArgs({
     required this.migrationName,
     required this.resourceGroupName,
     required this.serverName,

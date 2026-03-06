@@ -34,7 +34,7 @@ class WorkspaceGroupArgs {
   /// [serviceName] The name of the API Management service.
   /// [type] Group type.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceGroupArgs({
+  const WorkspaceGroupArgs({
     this.description,
     required this.displayName,
     this.externalId,

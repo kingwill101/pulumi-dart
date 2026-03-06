@@ -24,7 +24,7 @@ class GetCapacityPoolBackupArgs {
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the volume
-  GetCapacityPoolBackupArgs({
+  const GetCapacityPoolBackupArgs({
     required this.accountName,
     required this.backupName,
     required this.poolName,

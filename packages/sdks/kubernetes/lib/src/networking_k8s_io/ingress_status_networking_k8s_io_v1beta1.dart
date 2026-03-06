@@ -10,7 +10,7 @@ class IngressStatusNetworkingK8sIoV1beta1 {
 
   /// Creates a new [IngressStatusNetworkingK8sIoV1beta1].
   /// [loadBalancer] LoadBalancer contains the current status of the load-balancer.
-  IngressStatusNetworkingK8sIoV1beta1({
+  const IngressStatusNetworkingK8sIoV1beta1({
     this.loadBalancer,
   });
 

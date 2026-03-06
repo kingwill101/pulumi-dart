@@ -11,7 +11,7 @@ class GetMachineGroupsGroup {
   /// Creates a new [GetMachineGroupsGroup].
   /// [groupName] Machine Group name
   /// [id] The ID of the resource supplied above.
-  GetMachineGroupsGroup({
+  const GetMachineGroupsGroup({
     required this.groupName,
     required this.id,
   });

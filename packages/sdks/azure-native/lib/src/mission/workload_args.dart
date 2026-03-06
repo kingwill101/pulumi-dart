@@ -27,7 +27,7 @@ class WorkloadArgs {
   /// [tags] Resource tags.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   /// [workloadName] The name of the workloadResource Resource
-  WorkloadArgs({
+  const WorkloadArgs({
     this.location,
     this.resourceGroupCollection,
     required this.resourceGroupName,

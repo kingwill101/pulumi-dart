@@ -13,7 +13,7 @@ class VirtualServiceSpecProvider {
   /// Creates a new [VirtualServiceSpecProvider].
   /// [virtualNode] Virtual node associated with a virtual service.
   /// [virtualRouter] Virtual router associated with a virtual service.
-  VirtualServiceSpecProvider({
+  const VirtualServiceSpecProvider({
     this.virtualNode,
     this.virtualRouter,
   });

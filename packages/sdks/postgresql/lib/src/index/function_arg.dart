@@ -17,7 +17,7 @@ class FunctionArg {
   /// [mode] Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
   /// [name] The name of the argument.
   /// [type] The type of the argument.
-  FunctionArg({
+  const FunctionArg({
     this.default_,
     this.mode,
     this.name,

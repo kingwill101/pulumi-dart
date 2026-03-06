@@ -12,7 +12,7 @@ class AdminUser {
   /// Creates a new [AdminUser].
   /// [familyName] Optional. Last/family name of the first admin user.
   /// [givenName] Optional. First/given name of the first admin user.
-  AdminUser({
+  const AdminUser({
     this.familyName,
     this.givenName,
   });

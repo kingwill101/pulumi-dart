@@ -15,7 +15,7 @@ class ResourceFieldSelector {
   /// [containerName] Container name: required for volumes, optional for env vars
   /// [divisor] Specifies the output format of the exposed resources, defaults to "1"
   /// [resource] Required: resource to select
-  ResourceFieldSelector({
+  const ResourceFieldSelector({
     this.containerName,
     this.divisor,
     required this.resource,

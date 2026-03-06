@@ -11,7 +11,7 @@ class GetNodeGroupRemoteAccess {
   /// Creates a new [GetNodeGroupRemoteAccess].
   /// [ec2SshKey] EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group.
   /// [sourceSecurityGroupIds] Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes.
-  GetNodeGroupRemoteAccess({
+  const GetNodeGroupRemoteAccess({
     required this.ec2SshKey,
     required this.sourceSecurityGroupIds,
   });

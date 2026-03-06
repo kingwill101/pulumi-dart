@@ -17,7 +17,7 @@ class GetSecretsSecret {
   /// [id] The ID of this secret.
   /// [name] The name of secret.
   /// [tags] The tags of this secret.
-  GetSecretsSecret({
+  const GetSecretsSecret({
     required this.enabled,
     required this.id,
     required this.name,

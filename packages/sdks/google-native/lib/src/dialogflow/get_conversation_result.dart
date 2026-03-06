@@ -27,7 +27,7 @@ class GetConversationResult {
   /// [name] The unique identifier of this conversation. Format: `projects//locations//conversations/`.
   /// [phoneNumber] It will not be empty if the conversation is to be connected over telephony.
   /// [startTime] The time the conversation was started.
-  GetConversationResult({
+  const GetConversationResult({
     required this.conversationProfile,
     required this.conversationStage,
     required this.endTime,

@@ -90,7 +90,7 @@ class ScopeAccessReviewScheduleDefinitionByIdArgs {
   /// [scheduleDefinitionId] The id of the access review schedule definition.
   /// [scope] The scope of the resource.
   /// [type] The recurrence type : weekly, monthly, etc.
-  ScopeAccessReviewScheduleDefinitionByIdArgs({
+  const ScopeAccessReviewScheduleDefinitionByIdArgs({
     this.autoApplyDecisionsEnabled,
     this.backupReviewers,
     this.defaultDecision,

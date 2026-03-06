@@ -14,7 +14,7 @@ class KubernetesClusterWebAppRoutingWebAppRoutingIdentity {
   /// [clientId] The Client ID of the user-defined Managed Identity used for Web App Routing.
   /// [objectId] The Object ID of the user-defined Managed Identity used for Web App Routing
   /// [userAssignedIdentityId] The ID of the User Assigned Identity used for Web App Routing.
-  KubernetesClusterWebAppRoutingWebAppRoutingIdentity({
+  const KubernetesClusterWebAppRoutingWebAppRoutingIdentity({
     this.clientId,
     this.objectId,
     this.userAssignedIdentityId,

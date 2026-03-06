@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionByHostPoolArgs {
   /// [hostPoolName] The name of the host pool within the specified resource group
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionByHostPoolArgs({
+  const GetPrivateEndpointConnectionByHostPoolArgs({
     required this.hostPoolName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

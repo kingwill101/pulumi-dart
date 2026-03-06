@@ -18,7 +18,7 @@ class AgentKnowledgeBaseStorageConfigurationPineconeConfiguration {
   /// [credentialsSecretArn] ARN of the secret that you created in AWS Secrets Manager that is linked to your Pinecone API key.
   /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
   /// [namespace] Namespace to be used to write new data to your database.
-  AgentKnowledgeBaseStorageConfigurationPineconeConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationPineconeConfiguration({
     required this.connectionString,
     required this.credentialsSecretArn,
     required this.fieldMapping,

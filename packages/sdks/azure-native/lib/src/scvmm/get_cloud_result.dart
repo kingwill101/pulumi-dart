@@ -55,7 +55,7 @@ class GetCloudResult {
   /// [type] Resource Type
   /// [uuid] Unique ID of the cloud.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  GetCloudResult({
+  const GetCloudResult({
     required this.azureApiVersion,
     required this.cloudCapacity,
     required this.cloudName,

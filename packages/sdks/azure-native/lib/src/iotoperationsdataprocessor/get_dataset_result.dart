@@ -51,7 +51,7 @@ class GetDatasetResult {
   /// [timestamp] Path to an RFC3339 timestamp in the message. If no path is provided, the ingestion time of the record is used for time-based joins.
   /// [ttl] Time to live for individual records.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDatasetResult({
+  const GetDatasetResult({
     required this.azureApiVersion,
     this.description,
     required this.extendedLocation,

@@ -8,7 +8,7 @@ class GetAuthorityConfigSubjectKeyId {
 
   /// Creates a new [GetAuthorityConfigSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.
-  GetAuthorityConfigSubjectKeyId({
+  const GetAuthorityConfigSubjectKeyId({
     required this.keyId,
   });
 

@@ -9,7 +9,7 @@ class VirtualNodeSpecBackendDefaults {
 
   /// Creates a new [VirtualNodeSpecBackendDefaults].
   /// [clientPolicy] Default client policy for virtual service backends. See above for details.
-  VirtualNodeSpecBackendDefaults({
+  const VirtualNodeSpecBackendDefaults({
     this.clientPolicy,
   });
 

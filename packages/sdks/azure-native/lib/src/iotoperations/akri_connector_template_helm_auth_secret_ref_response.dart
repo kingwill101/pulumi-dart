@@ -15,7 +15,7 @@ class AkriConnectorTemplateHelmAuthSecretRefResponse {
   /// [passwordKey] The key of the password in the secret.
   /// [secretRef] The name of the secret.
   /// [usernameKey] The key of the username in the secret.
-  AkriConnectorTemplateHelmAuthSecretRefResponse({
+  const AkriConnectorTemplateHelmAuthSecretRefResponse({
     required this.passwordKey,
     required this.secretRef,
     required this.usernameKey,

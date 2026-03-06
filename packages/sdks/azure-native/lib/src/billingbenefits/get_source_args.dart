@@ -18,7 +18,7 @@ class GetSourceArgs {
   /// [creditName] Name of the credit
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceName] Name of the credit source
-  GetSourceArgs({
+  const GetSourceArgs({
     required this.creditName,
     required this.resourceGroupName,
     required this.sourceName,

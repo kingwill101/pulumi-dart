@@ -11,7 +11,7 @@ class GetUserPoolSchemaAttributeStringAttributeConstraint {
   /// Creates a new [GetUserPoolSchemaAttributeStringAttributeConstraint].
   /// [maxLength] - Maximum allowed length.
   /// [minLength] - Minimum allowed length.
-  GetUserPoolSchemaAttributeStringAttributeConstraint({
+  const GetUserPoolSchemaAttributeStringAttributeConstraint({
     required this.maxLength,
     required this.minLength,
   });

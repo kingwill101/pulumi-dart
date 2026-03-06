@@ -21,7 +21,7 @@ class GetCertificateCertificatePolicyX509CertificateProperty {
   /// [subject] The Certificate's Subject.
   /// [subjectAlternativeNames] A `subject_alternative_names` block as defined below.
   /// [validityInMonths] The Certificates Validity Period in Months.
-  GetCertificateCertificatePolicyX509CertificateProperty({
+  const GetCertificateCertificatePolicyX509CertificateProperty({
     required this.extendedKeyUsages,
     required this.keyUsages,
     required this.subject,

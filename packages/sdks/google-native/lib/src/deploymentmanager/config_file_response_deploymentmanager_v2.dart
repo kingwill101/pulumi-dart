@@ -8,7 +8,7 @@ class ConfigFileResponseDeploymentmanagerV2 {
 
   /// Creates a new [ConfigFileResponseDeploymentmanagerV2].
   /// [content] The contents of the file.
-  ConfigFileResponseDeploymentmanagerV2({
+  const ConfigFileResponseDeploymentmanagerV2({
     required this.content,
   });
 

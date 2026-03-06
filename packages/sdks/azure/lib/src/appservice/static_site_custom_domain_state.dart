@@ -18,7 +18,7 @@ class StaticSiteCustomDomainState {
   /// [staticSiteId] The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   /// [validationToken] Token to be used with `dns-txt-token` validation.
   /// [validationType] One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
-  StaticSiteCustomDomainState({
+  const StaticSiteCustomDomainState({
     this.domainName,
     this.staticSiteId,
     this.validationToken,

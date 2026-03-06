@@ -9,7 +9,7 @@ class VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork {
 
   /// Creates a new [VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork].
   /// [id] The Id of the databricks virtual network.
-  VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork({
+  const VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork({
     this.id,
   });
 

@@ -18,7 +18,7 @@ class StreamInputBlobSerialization {
   /// [encoding] The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
   /// [fieldDelimiter] The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
   /// [type] The serialization format used for incoming data streams. Possible values are `Avro`, `Csv` and `Json`.
-  StreamInputBlobSerialization({
+  const StreamInputBlobSerialization({
     this.encoding,
     this.fieldDelimiter,
     required this.type,

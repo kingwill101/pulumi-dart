@@ -15,7 +15,7 @@ class RulestackDetails {
   /// [location] Rulestack location
   /// [resourceId] Resource Id
   /// [rulestackId] Associated rulestack Id
-  RulestackDetails({
+  const RulestackDetails({
     this.location,
     this.resourceId,
     this.rulestackId,

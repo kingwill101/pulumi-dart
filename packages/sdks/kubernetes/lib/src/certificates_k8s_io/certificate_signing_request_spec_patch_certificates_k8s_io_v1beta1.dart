@@ -34,7 +34,7 @@ class CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1 {
   /// [uid] UID information about the requesting user. See user.Info interface for details.
   /// [usages] allowedUsages specifies a set of usage contexts the key will be valid for. See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3
   /// [username] Information about the requesting user. See user.Info interface for details.
-  CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1({
+  const CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1({
     this.extra,
     this.groups,
     this.request,

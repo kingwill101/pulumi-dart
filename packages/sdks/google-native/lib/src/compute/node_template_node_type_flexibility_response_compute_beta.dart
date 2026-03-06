@@ -11,7 +11,7 @@ class NodeTemplateNodeTypeFlexibilityResponseComputeBeta {
   /// [cpus] Required.
   /// [localSsd] Required.
   /// [memory] Required.
-  NodeTemplateNodeTypeFlexibilityResponseComputeBeta({
+  const NodeTemplateNodeTypeFlexibilityResponseComputeBeta({
     required this.cpus,
     required this.localSsd,
     required this.memory,

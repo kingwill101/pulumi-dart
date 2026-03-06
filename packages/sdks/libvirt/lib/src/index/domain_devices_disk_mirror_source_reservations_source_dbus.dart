@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorSourceReservationsSourceDbus {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceReservationsSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesDiskMirrorSourceReservationsSourceDbus({
+  const DomainDevicesDiskMirrorSourceReservationsSourceDbus({
     this.channel,
   });
 

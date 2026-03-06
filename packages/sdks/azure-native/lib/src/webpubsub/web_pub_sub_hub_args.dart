@@ -22,7 +22,7 @@ class WebPubSubHubArgs {
   /// [properties] Properties of a hub.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  WebPubSubHubArgs({
+  const WebPubSubHubArgs({
     this.hubName,
     required this.properties,
     required this.resourceGroupName,

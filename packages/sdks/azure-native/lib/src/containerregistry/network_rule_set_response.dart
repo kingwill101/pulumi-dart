@@ -13,7 +13,7 @@ class NetworkRuleSetResponse {
   /// Creates a new [NetworkRuleSetResponse].
   /// [defaultAction] The default action of allow or deny when no other rules match.
   /// [ipRules] The IP ACL rules.
-  NetworkRuleSetResponse({
+  const NetworkRuleSetResponse({
     required this.defaultAction,
     this.ipRules,
   });

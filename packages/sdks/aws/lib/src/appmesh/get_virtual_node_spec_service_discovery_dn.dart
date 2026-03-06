@@ -11,7 +11,7 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
   /// [hostname] Required.
   /// [ipPreference] Required.
   /// [responseType] Required.
-  GetVirtualNodeSpecServiceDiscoveryDn({
+  const GetVirtualNodeSpecServiceDiscoveryDn({
     required this.hostname,
     required this.ipPreference,
     required this.responseType,

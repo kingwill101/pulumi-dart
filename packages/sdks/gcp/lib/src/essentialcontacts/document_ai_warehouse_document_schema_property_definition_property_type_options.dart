@@ -10,7 +10,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions {
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions].
   /// [propertyDefinitions] Defines the metadata for a schema property.
-  DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions({
+  const DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions({
     required this.propertyDefinitions,
   });
 

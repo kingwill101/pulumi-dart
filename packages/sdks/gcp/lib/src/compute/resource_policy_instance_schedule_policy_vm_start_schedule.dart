@@ -8,7 +8,7 @@ class ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyVmStartSchedule].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicyVmStartSchedule({
+  const ResourcePolicyInstanceSchedulePolicyVmStartSchedule({
     required this.schedule,
   });
 

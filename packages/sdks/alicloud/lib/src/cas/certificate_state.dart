@@ -31,7 +31,7 @@ class CertificateState {
   /// [signCert] Optional.
   /// [signPrivateKey] Optional.
   /// [tags] Optional.
-  CertificateState({
+  const CertificateState({
     this.cert,
     this.certificateName,
     this.encryptCert,

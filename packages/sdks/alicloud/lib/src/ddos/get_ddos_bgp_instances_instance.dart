@@ -32,7 +32,7 @@ class GetDdosBgpInstancesInstance {
   /// [normalBandwidth] Normal defend bandwidth of the instance. The unit is Gbps.
   /// [region] The instance's region.
   /// [type] The instance's type.
-  GetDdosBgpInstancesInstance({
+  const GetDdosBgpInstancesInstance({
     required this.bandwidth,
     required this.baseBandwidth,
     required this.id,

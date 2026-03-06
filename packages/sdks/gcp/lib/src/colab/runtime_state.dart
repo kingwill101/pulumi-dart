@@ -48,7 +48,7 @@ class RuntimeState {
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeUser] The user email of the NotebookRuntime.
   /// [state] Output only. The state of the runtime.
-  RuntimeState({
+  const RuntimeState({
     this.autoUpgrade,
     this.description,
     this.desiredState,

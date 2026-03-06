@@ -35,7 +35,7 @@ class NotificationRuleArgs {
   /// [status] The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
-  NotificationRuleArgs({
+  const NotificationRuleArgs({
     required this.detailType,
     required this.eventTypeIds,
     this.name,

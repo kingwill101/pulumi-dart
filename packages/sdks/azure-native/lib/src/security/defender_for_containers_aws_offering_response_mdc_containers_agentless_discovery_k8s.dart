@@ -12,7 +12,7 @@ class DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s
   /// Creates a new [DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is Microsoft Defender container agentless discovery K8s enabled
-  DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s({
+  const DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s({
     this.cloudRoleArn,
     this.enabled,
   });

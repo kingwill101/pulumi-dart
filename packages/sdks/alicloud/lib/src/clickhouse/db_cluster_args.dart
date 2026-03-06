@@ -86,7 +86,7 @@ class DbClusterArgs {
   /// [vpcId] The id of the VPC.
   /// [vswitchId] The vswitch id of DBCluster.
   /// [zoneId] The zone ID of the instance.
-  DbClusterArgs({
+  const DbClusterArgs({
     this.allocatePublicConnection,
     required this.category,
     this.coldStorage,

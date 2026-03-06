@@ -15,7 +15,7 @@ class DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
   /// [consecutiveErrors] The number of consecutive errors before the circuit is opened.
   /// [intervalInSeconds] The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
   /// [timeoutInSeconds] The interval in seconds until a retry attempt is made after the circuit is opened.
-  DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration({
+  const DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration({
     this.consecutiveErrors,
     this.intervalInSeconds,
     this.timeoutInSeconds,

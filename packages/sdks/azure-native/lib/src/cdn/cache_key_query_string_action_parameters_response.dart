@@ -15,7 +15,7 @@ class CacheKeyQueryStringActionParametersResponse {
   /// [queryParameters] query parameters to include or exclude (comma separated).
   /// [queryStringBehavior] Caching behavior for the requests
   /// [typeName] Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
-  CacheKeyQueryStringActionParametersResponse({
+  const CacheKeyQueryStringActionParametersResponse({
     this.queryParameters,
     required this.queryStringBehavior,
     required this.typeName,

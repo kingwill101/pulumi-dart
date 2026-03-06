@@ -62,7 +62,7 @@ class ValidationRule {
   /// [optionalOldSelf] optionalOldSelf is used to opt a transition rule into evaluation even when the object is first created, or if the old object is missing the value.
   /// [reason] reason provides a machine-readable validation failure reason that is returned to the caller when a request fails this validation rule. The HTTP status code returned to the caller will match the reason of the reason of the first failed validation rule. The currently supported reasons are: "FieldValueInvalid", "FieldValueForbidden", "FieldValueRequired", "FieldValueDuplicate". If not set, default to use "FieldValueInvalid". All future added reasons must be accepted by clients when reading this value and unknown reasons should be treated as FieldValueInvalid.
   /// [rule] Rule represents the expression which will be evaluated by CEL. ref: https://github.com/google/cel-spec The Rule is scoped to the location of the x-kubernetes-validations extension in the schema. The `self` variable in the CEL expression is bound to the scoped value. Example: - Rule scoped to the root of a resource with a status subresource: {"rule": "self.status.actual &lt;= self.spec.maxDesired"}
-  ValidationRule({
+  const ValidationRule({
     this.fieldPath,
     this.message,
     this.messageExpression,

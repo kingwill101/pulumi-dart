@@ -9,7 +9,7 @@ class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh {
 
   /// Creates a new [DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh].
   /// [lookbackWindow] The lookback window setup for an incremental refresh configuration. See lookback_window.
-  DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh({
+  const DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh({
     required this.lookbackWindow,
   });
 

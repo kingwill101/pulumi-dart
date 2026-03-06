@@ -10,7 +10,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementF
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

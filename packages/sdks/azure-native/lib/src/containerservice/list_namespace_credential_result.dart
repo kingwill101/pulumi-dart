@@ -10,7 +10,7 @@ class ListNamespaceCredentialResult {
 
   /// Creates a new [ListNamespaceCredentialResult].
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListNamespaceCredentialResult({
+  const ListNamespaceCredentialResult({
     required this.kubeconfigs,
   });
 

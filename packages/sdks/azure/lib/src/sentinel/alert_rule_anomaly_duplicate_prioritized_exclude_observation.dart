@@ -17,7 +17,7 @@ class AlertRuleAnomalyDuplicatePrioritizedExcludeObservation {
   /// [exclude] The excluded value per `description`.
   /// [name] The name of the prioritized exclude observation.
   /// [prioritize] The prioritized value per `description`.
-  AlertRuleAnomalyDuplicatePrioritizedExcludeObservation({
+  const AlertRuleAnomalyDuplicatePrioritizedExcludeObservation({
     this.description,
     this.exclude,
     required this.name,

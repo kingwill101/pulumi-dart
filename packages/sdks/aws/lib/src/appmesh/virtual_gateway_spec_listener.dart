@@ -21,7 +21,7 @@ class VirtualGatewaySpecListener {
   /// [healthCheck] Health check information for the listener.
   /// [portMapping] Port mapping information for the listener.
   /// [tls] Transport Layer Security (TLS) properties for the listener
-  VirtualGatewaySpecListener({
+  const VirtualGatewaySpecListener({
     this.connectionPool,
     this.healthCheck,
     required this.portMapping,

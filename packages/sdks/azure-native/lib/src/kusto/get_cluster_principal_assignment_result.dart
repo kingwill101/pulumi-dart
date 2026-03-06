@@ -41,7 +41,7 @@ class GetClusterPrincipalAssignmentResult {
   /// [tenantId] The tenant id of the principal
   /// [tenantName] The tenant name of the principal
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetClusterPrincipalAssignmentResult({
+  const GetClusterPrincipalAssignmentResult({
     required this.aadObjectId,
     required this.azureApiVersion,
     required this.id,

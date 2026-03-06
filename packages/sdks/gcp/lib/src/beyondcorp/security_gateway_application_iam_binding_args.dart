@@ -43,7 +43,7 @@ class SecurityGatewayApplicationIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [securityGatewayId] ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
-  SecurityGatewayApplicationIamBindingArgs({
+  const SecurityGatewayApplicationIamBindingArgs({
     required this.applicationId,
     this.condition,
     required this.members,

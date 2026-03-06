@@ -41,7 +41,7 @@ class IamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [tableId] Used to find the parent resource to bind the IAM policy to
-  IamBindingArgs({
+  const IamBindingArgs({
     this.condition,
     required this.datasetId,
     required this.members,

@@ -13,7 +13,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
   /// Creates a new [StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema].
   /// [postgresqlTables] Tables in the schema.
   /// [schema] Database name.
-  StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema({
+  const StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema({
     this.postgresqlTables,
     required this.schema,
   });

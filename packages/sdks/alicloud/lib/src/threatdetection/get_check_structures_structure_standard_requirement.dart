@@ -18,7 +18,7 @@ class GetCheckStructuresStructureStandardRequirement {
   /// [sections] The information about the sections of check items.
   /// [showName] The display name of the standard for the check item.
   /// [totalCheckCount] The total number of check items for the requirement.
-  GetCheckStructuresStructureStandardRequirement({
+  const GetCheckStructuresStructureStandardRequirement({
     required this.id,
     required this.sections,
     required this.showName,

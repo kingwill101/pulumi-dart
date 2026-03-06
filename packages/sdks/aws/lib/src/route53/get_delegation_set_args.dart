@@ -12,7 +12,7 @@ class GetDelegationSetArgs {
 
   /// Creates a new [GetDelegationSetArgs].
   /// [id] Delegation set ID.
-  GetDelegationSetArgs({
+  const GetDelegationSetArgs({
     required this.id,
   });
 

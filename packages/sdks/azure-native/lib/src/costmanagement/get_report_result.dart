@@ -35,7 +35,7 @@ class GetReportResult {
   /// [schedule] Has schedule information for the report.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetReportResult({
+  const GetReportResult({
     required this.azureApiVersion,
     required this.definition,
     required this.deliveryInfo,

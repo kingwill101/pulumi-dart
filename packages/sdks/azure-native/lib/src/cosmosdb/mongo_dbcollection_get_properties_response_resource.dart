@@ -34,7 +34,7 @@ class MongoDBCollectionGetPropertiesResponseResource {
   /// [rid] A system generated property. A unique identifier.
   /// [shardKey] A key-value pair of shard keys to be applied for the request.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
-  MongoDBCollectionGetPropertiesResponseResource({
+  const MongoDBCollectionGetPropertiesResponseResource({
     this.analyticalStorageTtl,
     this.createMode,
     required this.etag,

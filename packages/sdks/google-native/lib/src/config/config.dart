@@ -66,5 +66,5 @@ class GoogleNativeConfig {
 
 }
 
-final config = GoogleNativeConfig();
+const config = GoogleNativeConfig();
 

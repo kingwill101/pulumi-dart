@@ -15,7 +15,7 @@ class ListQueryKeyBySearchServiceArgs {
   /// Creates a new [ListQueryKeyBySearchServiceArgs].
   /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
-  ListQueryKeyBySearchServiceArgs({
+  const ListQueryKeyBySearchServiceArgs({
     required this.resourceGroupName,
     required this.searchServiceName,
   });

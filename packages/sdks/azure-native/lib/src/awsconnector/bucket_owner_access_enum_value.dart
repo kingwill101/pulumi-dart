@@ -9,7 +9,7 @@ class BucketOwnerAccessEnumValue {
 
   /// Creates a new [BucketOwnerAccessEnumValue].
   /// [value] Property value
-  BucketOwnerAccessEnumValue({
+  const BucketOwnerAccessEnumValue({
     this.value,
   });
 

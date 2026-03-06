@@ -11,7 +11,7 @@ class SpatialSpec {
   /// Creates a new [SpatialSpec].
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
   /// [types] List of path's spatial type
-  SpatialSpec({
+  const SpatialSpec({
     this.path,
     this.types,
   });

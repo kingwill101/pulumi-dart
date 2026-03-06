@@ -36,7 +36,7 @@ class DatabaseArgs {
   /// [project] The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
   /// [selfLink] The URI of this resource.
   /// [sqlserverDatabaseDetails] Optional.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.charset,
     this.collation,
     this.etag,

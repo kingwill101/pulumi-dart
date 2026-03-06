@@ -13,7 +13,7 @@ class GetDomainManagedidentitiesV1alpha1Args {
   /// Creates a new [GetDomainManagedidentitiesV1alpha1Args].
   /// [domainId] Required.
   /// [project] Optional.
-  GetDomainManagedidentitiesV1alpha1Args({
+  const GetDomainManagedidentitiesV1alpha1Args({
     required this.domainId,
     this.project,
   });

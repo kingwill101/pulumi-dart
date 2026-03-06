@@ -24,7 +24,7 @@ class LiftrBaseOfferDetailsResponse {
   /// [publisherId] Publisher Id for the marketplace offer
   /// [termId] Plan Display Name for the marketplace offer
   /// [termUnit] Plan Display Name for the marketplace offer
-  LiftrBaseOfferDetailsResponse({
+  const LiftrBaseOfferDetailsResponse({
     required this.offerId,
     required this.planId,
     this.planName,

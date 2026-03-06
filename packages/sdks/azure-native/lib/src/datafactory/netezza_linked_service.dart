@@ -52,7 +52,7 @@ class NetezzaLinkedService {
   /// [type] Type of linked service.
   /// [uid] Username for authentication. Type: string.
   /// [version] Version of the linked service.
-  NetezzaLinkedService({
+  const NetezzaLinkedService({
     this.annotations,
     this.connectVia,
     this.connectionString,

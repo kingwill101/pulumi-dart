@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2ConversationInfoResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2ConversationInfoResponse].
   /// [languageCode] Optional. The language code of the conversation data within this dataset. See https://cloud.google.com/apis/design/standard_fields for more information. Supports all UTF-8 languages.
-  GoogleCloudDialogflowV2ConversationInfoResponse({
+  const GoogleCloudDialogflowV2ConversationInfoResponse({
     required this.languageCode,
   });
 

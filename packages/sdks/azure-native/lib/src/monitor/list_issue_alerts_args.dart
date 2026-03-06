@@ -21,7 +21,7 @@ class ListIssueAlertsArgs {
   /// [filter] The filter to apply on the operation. For example, to filter by relevance, use "$filter=relevance eq 'Relevant'". Note: this property is currently a placeholder and is not in use.
   /// [issueName] The name of the IssueResource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListIssueAlertsArgs({
+  const ListIssueAlertsArgs({
     required this.azureMonitorWorkspaceName,
     this.filter,
     required this.issueName,

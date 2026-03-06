@@ -14,7 +14,7 @@ class VPCRouteEntryNextHopNextHopRelatedInfo {
   /// [instanceId] InstanceId
   /// [instanceType] InstanceType
   /// [regionId] The region of the instance associated with the next hop.
-  VPCRouteEntryNextHopNextHopRelatedInfo({
+  const VPCRouteEntryNextHopNextHopRelatedInfo({
     this.instanceId,
     this.instanceType,
     this.regionId,

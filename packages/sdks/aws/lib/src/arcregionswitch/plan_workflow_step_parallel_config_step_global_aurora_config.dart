@@ -27,7 +27,7 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfig {
   /// [globalClusterIdentifier] Global cluster identifier.
   /// [timeoutMinutes] Timeout in minutes.
   /// [ungracefuls] Ungraceful behavior configuration. See Ungraceful Aurora below.
-  PlanWorkflowStepParallelConfigStepGlobalAuroraConfig({
+  const PlanWorkflowStepParallelConfigStepGlobalAuroraConfig({
     required this.behavior,
     this.crossAccountRole,
     required this.databaseClusterArns,

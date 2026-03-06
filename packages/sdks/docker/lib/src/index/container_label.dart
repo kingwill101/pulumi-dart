@@ -11,7 +11,7 @@ class ContainerLabel {
   /// Creates a new [ContainerLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  ContainerLabel({
+  const ContainerLabel({
     required this.label,
     required this.value,
   });

@@ -11,7 +11,7 @@ class ResourceGroupCostManagementViewDatasetSorting {
   /// Creates a new [ResourceGroupCostManagementViewDatasetSorting].
   /// [direction] Direction of sort. Possible values are `Ascending` and `Descending`.
   /// [name] The name of the column to sort.
-  ResourceGroupCostManagementViewDatasetSorting({
+  const ResourceGroupCostManagementViewDatasetSorting({
     required this.direction,
     required this.name,
   });

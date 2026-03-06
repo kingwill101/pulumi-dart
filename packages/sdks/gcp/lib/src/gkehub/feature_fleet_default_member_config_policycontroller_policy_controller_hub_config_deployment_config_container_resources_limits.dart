@@ -11,7 +11,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits].
   /// [cpu] CPU requirement expressed in Kubernetes resource units.
   /// [memory] Memory requirement expressed in Kubernetes resource units.
-  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits({
+  const FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits({
     this.cpu,
     this.memory,
   });

@@ -15,7 +15,7 @@ class GetVirtualWanArgs {
   /// Creates a new [GetVirtualWanArgs].
   /// [name] The name of this Virtual Wan.
   /// [resourceGroupName] The name of the Resource Group where the Virtual Wan exists.
-  GetVirtualWanArgs({
+  const GetVirtualWanArgs({
     required this.name,
     required this.resourceGroupName,
   });

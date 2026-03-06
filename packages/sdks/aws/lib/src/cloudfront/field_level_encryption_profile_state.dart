@@ -25,7 +25,7 @@ class FieldLevelEncryptionProfileState {
   /// [encryptionEntities] The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
   /// [etag] The current version of the Field Level Encryption Profile. For example: `E2QWRUHAPOMQZL`.
   /// [name] The name of the Field Level Encryption Profile.
-  FieldLevelEncryptionProfileState({
+  const FieldLevelEncryptionProfileState({
     this.arn,
     this.callerReference,
     this.comment,

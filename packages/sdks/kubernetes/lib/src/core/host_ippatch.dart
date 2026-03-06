@@ -9,7 +9,7 @@ class HostIPPatch {
 
   /// Creates a new [HostIPPatch].
   /// [ip] IP is the IP address assigned to the host
-  HostIPPatch({
+  const HostIPPatch({
     this.ip,
   });
 

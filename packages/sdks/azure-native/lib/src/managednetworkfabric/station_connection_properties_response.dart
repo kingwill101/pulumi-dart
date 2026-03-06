@@ -15,7 +15,7 @@ class StationConnectionPropertiesResponse {
   /// [keepaliveIdleTime] Connection keepalive idle time in seconds
   /// [probeCount] Probe count, default value is 10
   /// [probeInterval] Probe interval in seconds, default value is 60
-  StationConnectionPropertiesResponse({
+  const StationConnectionPropertiesResponse({
     this.keepaliveIdleTime,
     this.probeCount,
     this.probeInterval,

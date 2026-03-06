@@ -15,7 +15,7 @@ class GetPlanArgs {
   /// Creates a new [GetPlanArgs].
   /// [contactId] The Amazon Resource Name (ARN) of the contact or escalation plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPlanArgs({
+  const GetPlanArgs({
     required this.contactId,
     this.region,
   });

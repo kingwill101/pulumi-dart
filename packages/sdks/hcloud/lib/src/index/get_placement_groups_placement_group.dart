@@ -15,7 +15,7 @@ class GetPlacementGroupsPlacementGroup {
   /// [name] Required.
   /// [servers] Required.
   /// [type] Required.
-  GetPlacementGroupsPlacementGroup({
+  const GetPlacementGroupsPlacementGroup({
     required this.id,
     required this.labels,
     required this.name,

@@ -13,7 +13,7 @@ class ClassificationExportConfigurationState {
   /// Creates a new [ClassificationExportConfigurationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3Destination] Configuration block for a S3 Destination. Defined below
-  ClassificationExportConfigurationState({
+  const ClassificationExportConfigurationState({
     this.region,
     this.s3Destination,
   });

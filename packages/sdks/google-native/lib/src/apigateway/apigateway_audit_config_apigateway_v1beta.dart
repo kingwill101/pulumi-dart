@@ -13,7 +13,7 @@ class ApigatewayAuditConfigApigatewayV1beta {
   /// Creates a new [ApigatewayAuditConfigApigatewayV1beta].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  ApigatewayAuditConfigApigatewayV1beta({
+  const ApigatewayAuditConfigApigatewayV1beta({
     this.auditLogConfigs,
     this.service,
   });

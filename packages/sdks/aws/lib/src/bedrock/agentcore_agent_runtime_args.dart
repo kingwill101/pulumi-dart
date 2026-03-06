@@ -56,7 +56,7 @@ class AgentcoreAgentRuntimeArgs {
   /// [roleArn] ARN of the IAM role that the agent runtime assumes to access AWS services.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  AgentcoreAgentRuntimeArgs({
+  const AgentcoreAgentRuntimeArgs({
     required this.agentRuntimeArtifact,
     required this.agentRuntimeName,
     this.authorizerConfiguration,

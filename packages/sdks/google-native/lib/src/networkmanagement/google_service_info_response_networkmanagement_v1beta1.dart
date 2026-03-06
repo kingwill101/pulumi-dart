@@ -12,7 +12,7 @@ class GoogleServiceInfoResponseNetworkmanagementV1beta1 {
   /// Creates a new [GoogleServiceInfoResponseNetworkmanagementV1beta1].
   /// [googleServiceType] Recognized type of a Google Service.
   /// [sourceIp] Source IP address.
-  GoogleServiceInfoResponseNetworkmanagementV1beta1({
+  const GoogleServiceInfoResponseNetworkmanagementV1beta1({
     required this.googleServiceType,
     required this.sourceIp,
   });

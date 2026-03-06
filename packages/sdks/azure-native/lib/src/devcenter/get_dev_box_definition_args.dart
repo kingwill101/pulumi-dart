@@ -18,7 +18,7 @@ class GetDevBoxDefinitionArgs {
   /// [devBoxDefinitionName] The name of the Dev Box definition.
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDevBoxDefinitionArgs({
+  const GetDevBoxDefinitionArgs({
     required this.devBoxDefinitionName,
     required this.devCenterName,
     required this.resourceGroupName,

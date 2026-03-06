@@ -9,7 +9,7 @@ class MarketplaceGalleryImageStatusDownloadStatusResponse {
 
   /// Creates a new [MarketplaceGalleryImageStatusDownloadStatusResponse].
   /// [downloadSizeInMB] The downloaded sized of the image in MB
-  MarketplaceGalleryImageStatusDownloadStatusResponse({
+  const MarketplaceGalleryImageStatusDownloadStatusResponse({
     this.downloadSizeInMB,
   });
 

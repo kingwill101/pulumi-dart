@@ -37,7 +37,7 @@ class CxPageFormParameter {
   /// [isList] Indicates whether the parameter represents a list of values.
   /// [redact] Indicates whether the parameter content should be redacted in log.
   /// [required] Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
-  CxPageFormParameter({
+  const CxPageFormParameter({
     this.advancedSettings,
     this.defaultValue,
     this.displayName,

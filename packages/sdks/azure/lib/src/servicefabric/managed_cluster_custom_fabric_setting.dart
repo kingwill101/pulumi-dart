@@ -14,7 +14,7 @@ class ManagedClusterCustomFabricSetting {
   /// [parameter] Parameter name.
   /// [section] Section name.
   /// [value] Parameter value.
-  ManagedClusterCustomFabricSetting({
+  const ManagedClusterCustomFabricSetting({
     required this.parameter,
     required this.section,
     required this.value,

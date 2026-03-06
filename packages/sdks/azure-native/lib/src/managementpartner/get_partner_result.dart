@@ -41,7 +41,7 @@ class GetPartnerResult {
   /// [type] Type of resource. "Microsoft.ManagementPartner/partners"
   /// [updatedTime] This is the DateTime when the partner was updated.
   /// [version] This is the version.
-  GetPartnerResult({
+  const GetPartnerResult({
     required this.azureApiVersion,
     this.createdTime,
     this.etag,

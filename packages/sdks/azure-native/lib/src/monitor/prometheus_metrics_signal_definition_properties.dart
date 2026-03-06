@@ -32,7 +32,7 @@ class PrometheusMetricsSignalDefinitionProperties {
   /// [signalKind] Supported signal kinds as discriminator
   /// [tags] Optional set of labels (key-value pairs)
   /// [timeGrain] Time range of signal. ISO duration format like PT10M.
-  PrometheusMetricsSignalDefinitionProperties({
+  const PrometheusMetricsSignalDefinitionProperties({
     this.dataUnit,
     this.displayName,
     required this.evaluationRules,

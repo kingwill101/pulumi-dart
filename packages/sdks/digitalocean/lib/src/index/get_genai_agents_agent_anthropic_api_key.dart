@@ -23,7 +23,7 @@ class GetGenaiAgentsAgentAnthropicApiKey {
   /// [name] Name of the API Key
   /// [updatedAt] Updated At timestamp for the API Key
   /// [uuid] API Key value
-  GetGenaiAgentsAgentAnthropicApiKey({
+  const GetGenaiAgentsAgentAnthropicApiKey({
     required this.createdAt,
     this.createdBy,
     required this.deletedAt,

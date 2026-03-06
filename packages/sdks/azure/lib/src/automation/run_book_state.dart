@@ -60,7 +60,7 @@ class RunBookState {
   /// [runbookType] The type of the runbook - can be either `Graph`, `GraphPowerShell`, `GraphPowerShellWorkflow`, `PowerShellWorkflow`, `PowerShell`, `PowerShell72`, `Python`, `Python3`, `Python2` or `Script`. Changing this forces a new resource to be created.
   /// [runtimeEnvironmentName] The runtime environment name for the runbook.
   /// [tags] A mapping of tags to assign to the resource.
-  RunBookState({
+  const RunBookState({
     this.automationAccountName,
     this.content,
     this.description,

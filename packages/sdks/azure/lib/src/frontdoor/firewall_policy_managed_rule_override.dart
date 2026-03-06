@@ -16,7 +16,7 @@ class FirewallPolicyManagedRuleOverride {
   /// [exclusions] One or more `exclusion` blocks as defined below.
   /// [ruleGroupName] The managed rule group to override.
   /// [rules] One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
-  FirewallPolicyManagedRuleOverride({
+  const FirewallPolicyManagedRuleOverride({
     this.exclusions,
     required this.ruleGroupName,
     this.rules,

@@ -31,7 +31,7 @@ class ElasticLoadBalancingV2ListenerProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ElasticLoadBalancingV2ListenerProperties({
+  const ElasticLoadBalancingV2ListenerProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

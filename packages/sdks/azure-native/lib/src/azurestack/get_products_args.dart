@@ -18,7 +18,7 @@ class GetProductsArgs {
   /// [productName] Name of the product.
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
-  GetProductsArgs({
+  const GetProductsArgs({
     required this.productName,
     required this.registrationName,
     required this.resourceGroup,

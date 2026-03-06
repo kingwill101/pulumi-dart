@@ -14,7 +14,7 @@ class GetVirtualHostsHost {
   /// [id] The ID of the Virtual Host.
   /// [instanceId] InstanceId.
   /// [virtualHostName] VirtualHostName.
-  GetVirtualHostsHost({
+  const GetVirtualHostsHost({
     required this.id,
     required this.instanceId,
     required this.virtualHostName,

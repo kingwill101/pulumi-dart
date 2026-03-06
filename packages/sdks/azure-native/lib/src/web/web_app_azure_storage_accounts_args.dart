@@ -22,7 +22,7 @@ class WebAppAzureStorageAccountsArgs {
   /// [name] Name of the app.
   /// [properties] Azure storage accounts.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppAzureStorageAccountsArgs({
+  const WebAppAzureStorageAccountsArgs({
     this.kind,
     required this.name,
     this.properties,

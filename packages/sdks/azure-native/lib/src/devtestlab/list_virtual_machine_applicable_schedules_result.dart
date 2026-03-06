@@ -27,7 +27,7 @@ class ListVirtualMachineApplicableSchedulesResult {
   /// [name] The name of the resource.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
-  ListVirtualMachineApplicableSchedulesResult({
+  const ListVirtualMachineApplicableSchedulesResult({
     required this.id,
     this.labVmsShutdown,
     this.labVmsStartup,

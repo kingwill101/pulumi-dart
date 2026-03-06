@@ -13,7 +13,7 @@ class AnalyzerConfiguration {
   /// Creates a new [AnalyzerConfiguration].
   /// [internalAccess] Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internal_access` Block for details.
   /// [unusedAccess] Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unused_access` Block for details.
-  AnalyzerConfiguration({
+  const AnalyzerConfiguration({
     this.internalAccess,
     this.unusedAccess,
   });

@@ -22,7 +22,7 @@ class VlanState {
   /// [mtu] Specifies the maximum transmission unit (MTU) for traffic on this VLAN. The default value is `1500`.
   /// [name] Name of the vlan
   /// [tag] Specifies a number that the system adds into the header of any frame passing through the VLAN.
-  VlanState({
+  const VlanState({
     this.cmpHash,
     this.interfaces,
     this.mtu,

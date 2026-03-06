@@ -10,7 +10,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression].
   /// [condition] A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression({
     this.condition,
   });
 

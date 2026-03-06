@@ -8,7 +8,7 @@ class SpaceOwnershipSettings {
 
   /// Creates a new [SpaceOwnershipSettings].
   /// [ownerUserProfileName] The user profile who is the owner of the private space.
-  SpaceOwnershipSettings({
+  const SpaceOwnershipSettings({
     required this.ownerUserProfileName,
   });
 

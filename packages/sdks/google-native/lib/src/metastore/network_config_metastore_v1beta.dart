@@ -13,7 +13,7 @@ class NetworkConfigMetastoreV1beta {
   /// Creates a new [NetworkConfigMetastoreV1beta].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
   /// [customRoutesEnabled] Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
-  NetworkConfigMetastoreV1beta({
+  const NetworkConfigMetastoreV1beta({
     this.consumers,
     this.customRoutesEnabled,
   });

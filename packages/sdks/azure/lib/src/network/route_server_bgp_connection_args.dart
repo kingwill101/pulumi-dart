@@ -21,7 +21,7 @@ class RouteServerBgpConnectionArgs {
   /// [peerAsn] The peer autonomous system number for the Route Server Bgp Connection. Changing this forces a new resource to be created.
   /// [peerIp] The peer ip address for the Route Server Bgp Connection. Changing this forces a new resource to be created.
   /// [routeServerId] The ID of the Route Server within which this Bgp connection should be created. Changing this forces a new resource to be created.
-  RouteServerBgpConnectionArgs({
+  const RouteServerBgpConnectionArgs({
     this.name,
     required this.peerAsn,
     required this.peerIp,

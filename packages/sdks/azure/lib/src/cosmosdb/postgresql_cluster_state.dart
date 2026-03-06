@@ -87,7 +87,7 @@ class PostgresqlClusterState {
   /// [sourceResourceId] The resource ID of the source Azure Cosmos DB for PostgreSQL cluster for read replica clusters. Changing this forces a new resource to be created.
   /// [sqlVersion] The major PostgreSQL version on the Azure Cosmos DB for PostgreSQL cluster. Possible values are `11`, `12`, `13`, `14`, `15` and `16`.
   /// [tags] A mapping of tags which should be assigned to the Azure Cosmos DB for PostgreSQL Cluster.
-  PostgresqlClusterState({
+  const PostgresqlClusterState({
     this.administratorLoginPassword,
     this.citusVersion,
     this.coordinatorPublicIpAccessEnabled,

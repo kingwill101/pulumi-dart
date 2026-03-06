@@ -18,7 +18,7 @@ class GetNetworkManagerRoutingConfigurationArgs {
   /// [configurationName] The name of the network manager Routing Configuration.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkManagerRoutingConfigurationArgs({
+  const GetNetworkManagerRoutingConfigurationArgs({
     required this.configurationName,
     required this.networkManagerName,
     required this.resourceGroupName,

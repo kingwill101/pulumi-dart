@@ -11,7 +11,7 @@ class Authorization {
 
   /// Creates a new [Authorization].
   /// [code] Gets or sets one-time OAuth code to exchange for refresh and access tokens.
-  Authorization({
+  const Authorization({
     this.code,
   });
 

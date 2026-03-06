@@ -8,7 +8,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
 
   /// Creates a new [GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection].
   /// [location] The location of the replica to apply asymmetric autoscaling options.
-  GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection({
+  const GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection({
     required this.location,
   });
 

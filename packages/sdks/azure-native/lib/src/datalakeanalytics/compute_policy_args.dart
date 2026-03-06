@@ -30,7 +30,7 @@ class ComputePolicyArgs {
   /// [objectId] The AAD object identifier for the entity to create a policy for.
   /// [objectType] The type of AAD object the object identifier refers to.
   /// [resourceGroupName] The name of the Azure resource group.
-  ComputePolicyArgs({
+  const ComputePolicyArgs({
     required this.accountName,
     this.computePolicyName,
     this.maxDegreeOfParallelismPerJob,

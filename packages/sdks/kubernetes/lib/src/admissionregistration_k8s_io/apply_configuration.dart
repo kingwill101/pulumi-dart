@@ -36,7 +36,7 @@ class ApplyConfiguration {
 
   /// Creates a new [ApplyConfiguration].
   /// [expression] expression will be evaluated by CEL to create an apply configuration. ref: https://github.com/google/cel-spec
-  ApplyConfiguration({
+  const ApplyConfiguration({
     this.expression,
   });
 

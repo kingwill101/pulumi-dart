@@ -9,7 +9,7 @@ class BuildpackProperties {
 
   /// Creates a new [BuildpackProperties].
   /// [id] Id of the buildpack
-  BuildpackProperties({
+  const BuildpackProperties({
     this.id,
   });
 

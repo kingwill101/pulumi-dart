@@ -34,7 +34,7 @@ class UsernamePasswordAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  UsernamePasswordAuthTypeConnectionProperties({
+  const UsernamePasswordAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

@@ -21,7 +21,7 @@ class SourceConfigResponse {
   /// [oracleSourceConfig] Oracle data source configuration.
   /// [postgresqlSourceConfig] PostgreSQL data source configuration.
   /// [sourceConnectionProfile] Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-  SourceConfigResponse({
+  const SourceConfigResponse({
     required this.mysqlSourceConfig,
     required this.oracleSourceConfig,
     required this.postgresqlSourceConfig,

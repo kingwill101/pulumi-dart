@@ -11,7 +11,7 @@ class BuildMetadataContaineranalysisV1beta1 {
   /// [finishedOn] Optional.
   /// [invocationId] Optional.
   /// [startedOn] Optional.
-  BuildMetadataContaineranalysisV1beta1({
+  const BuildMetadataContaineranalysisV1beta1({
     this.finishedOn,
     this.invocationId,
     this.startedOn,

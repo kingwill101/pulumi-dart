@@ -11,7 +11,7 @@ class FlowletDataFlowSourceDataset {
   /// Creates a new [FlowletDataFlowSourceDataset].
   /// [name] The name for the Data Factory Dataset.
   /// [parameters] A map of parameters to associate with the Data Factory dataset.
-  FlowletDataFlowSourceDataset({
+  const FlowletDataFlowSourceDataset({
     required this.name,
     this.parameters,
   });

@@ -40,7 +40,7 @@ class GetMonitorResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags to assign to the resource.
   /// [users] User's information. A `user` block as defined below.
-  GetMonitorResult({
+  const GetMonitorResult({
     required this.environmentProperties,
     required this.id,
     required this.identities,

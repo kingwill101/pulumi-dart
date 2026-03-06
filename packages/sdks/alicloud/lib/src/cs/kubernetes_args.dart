@@ -177,7 +177,7 @@ class KubernetesArgs {
   /// [timezone] When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
   /// [userCa] The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
   /// [version] Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-  KubernetesArgs({
+  const KubernetesArgs({
     this.addons,
     this.apiAudiences,
     this.clientCert,

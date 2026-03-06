@@ -9,7 +9,7 @@ class RoleSinkInfoResponse {
 
   /// Creates a new [RoleSinkInfoResponse].
   /// [roleId] Compute role ID.
-  RoleSinkInfoResponse({
+  const RoleSinkInfoResponse({
     required this.roleId,
   });
 

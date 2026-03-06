@@ -18,7 +18,7 @@ class StandardSchedulerSettingsAppengineV1beta {
   /// [minInstances] Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
   /// [targetCpuUtilization] Target CPU utilization ratio to maintain when scaling.
   /// [targetThroughputUtilization] Target throughput utilization ratio to maintain when scaling
-  StandardSchedulerSettingsAppengineV1beta({
+  const StandardSchedulerSettingsAppengineV1beta({
     this.maxInstances,
     this.minInstances,
     this.targetCpuUtilization,

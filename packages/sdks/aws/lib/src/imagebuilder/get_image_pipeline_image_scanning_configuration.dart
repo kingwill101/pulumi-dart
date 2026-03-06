@@ -12,7 +12,7 @@ class GetImagePipelineImageScanningConfiguration {
   /// Creates a new [GetImagePipelineImageScanningConfiguration].
   /// [ecrConfigurations] List if an object with ecr configuration for image scanning
   /// [imageScanningEnabled] Whether image scanning is enabled.
-  GetImagePipelineImageScanningConfiguration({
+  const GetImagePipelineImageScanningConfiguration({
     required this.ecrConfigurations,
     required this.imageScanningEnabled,
   });

@@ -15,7 +15,7 @@ class GetDiskArgs {
   /// [disk] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetDiskArgs({
+  const GetDiskArgs({
     required this.disk,
     this.project,
     required this.zone,

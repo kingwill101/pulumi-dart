@@ -26,7 +26,7 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration {
   /// [noActionEmail] The email template used when a detected risk event is allowed. See notify email type below.
   /// [replyTo] The destination to which the receiver of an email should reply to.
   /// [sourceArn] The Amazon Resource Name (ARN) of the identity that is associated with the sending authorization policy. This identity permits Amazon Cognito to send for the email address specified in the From parameter.
-  RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration({
+  const RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration({
     this.blockEmail,
     this.from,
     this.mfaEmail,

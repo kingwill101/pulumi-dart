@@ -17,7 +17,7 @@ class GetDatabasePostgresqlV2Updates {
   /// [duration] The maximum maintenance window time in hours.
   /// [frequency] How frequently maintenance occurs. Currently can only be weekly.
   /// [hourOfDay] How frequently maintenance occurs. Currently can only be weekly.
-  GetDatabasePostgresqlV2Updates({
+  const GetDatabasePostgresqlV2Updates({
     required this.dayOfWeek,
     required this.duration,
     required this.frequency,

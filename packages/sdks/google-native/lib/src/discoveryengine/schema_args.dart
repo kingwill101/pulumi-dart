@@ -29,7 +29,7 @@ class SchemaArgs {
   /// [project] Optional.
   /// [schemaId] Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
   /// [structSchema] The structured representation of the schema.
-  SchemaArgs({
+  const SchemaArgs({
     required this.collectionId,
     required this.dataStoreId,
     this.jsonSchema,

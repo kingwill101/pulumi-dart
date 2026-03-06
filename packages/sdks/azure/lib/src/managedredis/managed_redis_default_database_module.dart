@@ -20,7 +20,7 @@ class ManagedRedisDefaultDatabaseModule {
   /// [args] Configuration options for the module (e.g. `ERROR_RATE 0.00 INITIAL_SIZE 400`).
   /// [name] The name which should be used for this module. Possible values are `RedisBloom`, `RedisTimeSeries`, `RediSearch` and `RedisJSON`.
   /// [version] Version of the module to be used.
-  ManagedRedisDefaultDatabaseModule({
+  const ManagedRedisDefaultDatabaseModule({
     this.args,
     required this.name,
     this.version,

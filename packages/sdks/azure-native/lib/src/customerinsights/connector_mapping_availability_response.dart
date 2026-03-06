@@ -12,7 +12,7 @@ class ConnectorMappingAvailabilityResponse {
   /// Creates a new [ConnectorMappingAvailabilityResponse].
   /// [frequency] The frequency to update.
   /// [interval] The interval of the given frequency to use.
-  ConnectorMappingAvailabilityResponse({
+  const ConnectorMappingAvailabilityResponse({
     this.frequency,
     required this.interval,
   });

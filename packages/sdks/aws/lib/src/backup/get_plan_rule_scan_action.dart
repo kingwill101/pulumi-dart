@@ -9,7 +9,7 @@ class GetPlanRuleScanAction {
   /// Creates a new [GetPlanRuleScanAction].
   /// [malwareScanner] Required.
   /// [scanMode] Required.
-  GetPlanRuleScanAction({
+  const GetPlanRuleScanAction({
     required this.malwareScanner,
     required this.scanMode,
   });

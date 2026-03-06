@@ -134,7 +134,7 @@ class GetLinuxWebAppResult {
   /// [virtualNetworkBackupRestoreEnabled] Whether backup and restore operations over the linked virtual network are enabled.
   /// [virtualNetworkSubnetId] The subnet id which the Linux Web App is vNet Integrated with.
   /// [webdeployPublishBasicAuthenticationEnabled] Are the default WebDeploy Basic Authentication publishing credentials enabled.
-  GetLinuxWebAppResult({
+  const GetLinuxWebAppResult({
     required this.appMetadata,
     required this.appSettings,
     required this.authSettings,

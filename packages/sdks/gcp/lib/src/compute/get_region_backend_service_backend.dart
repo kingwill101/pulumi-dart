@@ -133,7 +133,7 @@ class GetRegionBackendServiceBackend {
   /// [maxRatePerInstance] The max requests per second (RPS) that a single backend
   /// [maxUtilization] Used when balancingMode is UTILIZATION. This ratio defines the
   /// [trafficDuration] This field specifies how long a connection should be kept alive for:
-  GetRegionBackendServiceBackend({
+  const GetRegionBackendServiceBackend({
     required this.balancingMode,
     required this.capacityScaler,
     required this.customMetrics,

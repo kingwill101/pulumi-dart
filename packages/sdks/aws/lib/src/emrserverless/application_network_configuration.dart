@@ -11,7 +11,7 @@ class ApplicationNetworkConfiguration {
   /// Creates a new [ApplicationNetworkConfiguration].
   /// [securityGroupIds] The array of security group Ids for customer VPC connectivity.
   /// [subnetIds] The array of subnet Ids for customer VPC connectivity.
-  ApplicationNetworkConfiguration({
+  const ApplicationNetworkConfiguration({
     this.securityGroupIds,
     this.subnetIds,
   });

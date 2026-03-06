@@ -15,7 +15,7 @@ class CentralizationRuleForOrganizationRuleSource {
   /// [regions] Set of AWS regions from which to centralize logs. Must contain at least one region.
   /// [scope] Scope defining which resources to include. Use organization ID format: `OrganizationId = 'o-example123456'`.
   /// [sourceLogsConfiguration] Configuration block for source logs settings. See `source_logs_configuration` below.
-  CentralizationRuleForOrganizationRuleSource({
+  const CentralizationRuleForOrganizationRuleSource({
     required this.regions,
     required this.scope,
     this.sourceLogsConfiguration,

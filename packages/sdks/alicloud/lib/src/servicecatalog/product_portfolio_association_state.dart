@@ -12,7 +12,7 @@ class ProductPortfolioAssociationState {
   /// Creates a new [ProductPortfolioAssociationState].
   /// [portfolioId] Product Portfolio ID
   /// [productId] Product ID
-  ProductPortfolioAssociationState({
+  const ProductPortfolioAssociationState({
     this.portfolioId,
     this.productId,
   });

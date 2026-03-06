@@ -9,7 +9,7 @@ class BgpCidrsConfigurationResponse {
 
   /// Creates a new [BgpCidrsConfigurationResponse].
   /// [bgpCidrs] Mcc cache node Bgp Cidr details.
-  BgpCidrsConfigurationResponse({
+  const BgpCidrsConfigurationResponse({
     required this.bgpCidrs,
   });
 

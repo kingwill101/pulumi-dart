@@ -34,7 +34,7 @@ class SpringCloudBuildDeploymentArgs {
   /// [name] The name which should be used for this Spring Cloud Build Deployment. Changing this forces a new Spring Cloud Build Deployment to be created.
   /// [quota] A `quota` block as defined below.
   /// [springCloudAppId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Build Deployment to be created.
-  SpringCloudBuildDeploymentArgs({
+  const SpringCloudBuildDeploymentArgs({
     this.addonJson,
     this.applicationPerformanceMonitoringIds,
     required this.buildResultId,

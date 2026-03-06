@@ -43,7 +43,7 @@ class DiscoveredAssetEndpointProfileArgs {
   /// [tags] Resource tags.
   /// [targetAddress] The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   /// [version] An integer that is incremented each time the resource is modified.
-  DiscoveredAssetEndpointProfileArgs({
+  const DiscoveredAssetEndpointProfileArgs({
     this.additionalConfiguration,
     this.discoveredAssetEndpointProfileName,
     required this.discoveryId,

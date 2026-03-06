@@ -26,7 +26,7 @@ class FrameworkShareArgs {
   /// [destinationRegion] Amazon Web Services region of the recipient.
   /// [frameworkId] Unique identifier for the shared custom framework.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  FrameworkShareArgs({
+  const FrameworkShareArgs({
     this.comment,
     required this.destinationAccount,
     required this.destinationRegion,

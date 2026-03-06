@@ -9,7 +9,7 @@ class SoftDeletePolicy {
 
   /// Creates a new [SoftDeletePolicy].
   /// [isSoftDeleteEnabled] Enables soft-deletion for resources in this gallery, allowing them to be recovered within retention time.
-  SoftDeletePolicy({
+  const SoftDeletePolicy({
     this.isSoftDeleteEnabled,
   });
 

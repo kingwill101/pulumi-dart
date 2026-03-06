@@ -16,7 +16,7 @@ class GetLimitsV2Args {
   /// Creates a new [GetLimitsV2Args].
   /// [projectId] The id of the project to retrieve the limits.
   /// [region] The region in which to obtain the V2 Compute client.
-  GetLimitsV2Args({
+  const GetLimitsV2Args({
     required this.projectId,
     this.region,
   });

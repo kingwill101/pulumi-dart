@@ -11,7 +11,7 @@ class GetRegionsFilter {
   /// Creates a new [GetRegionsFilter].
   /// [name] Name of the filter field. Valid values can be found in the [describe-regions AWS CLI Reference][1].
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetRegionsFilter({
+  const GetRegionsFilter({
     required this.name,
     required this.values,
   });

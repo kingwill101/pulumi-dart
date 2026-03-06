@@ -12,7 +12,7 @@ class UrlMapTestHeaderResponse {
   /// Creates a new [UrlMapTestHeaderResponse].
   /// [name] Header name.
   /// [value] Header value.
-  UrlMapTestHeaderResponse({
+  const UrlMapTestHeaderResponse({
     required this.name,
     required this.value,
   });

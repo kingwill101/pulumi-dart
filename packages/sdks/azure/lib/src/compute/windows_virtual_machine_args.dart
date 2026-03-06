@@ -218,7 +218,7 @@ class WindowsVirtualMachineArgs {
   /// [vtpmEnabled] Specifies if vTPM (virtual Trusted Platform Module) and Trusted Launch is enabled for the Virtual Machine. Changing this forces a new resource to be created.
   /// [winrmListeners] One or more `winrm_listener` blocks as defined below. Changing this forces a new resource to be created.
   /// [zone] * `zones` - (Optional) Specifies the Availability Zone in which this Windows Virtual Machine should be located. Changing this forces a new Windows Virtual Machine to be created.
-  WindowsVirtualMachineArgs({
+  const WindowsVirtualMachineArgs({
     this.additionalCapabilities,
     this.additionalUnattendContents,
     this.adminPassword,

@@ -8,7 +8,7 @@ class FeatureGroupFeatureDefinitionCollectionConfig {
 
   /// Creates a new [FeatureGroupFeatureDefinitionCollectionConfig].
   /// [vectorConfig] Optional.
-  FeatureGroupFeatureDefinitionCollectionConfig({
+  const FeatureGroupFeatureDefinitionCollectionConfig({
     this.vectorConfig,
   });
 

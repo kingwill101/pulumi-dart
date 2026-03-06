@@ -15,7 +15,7 @@ class GetGroupTemplateDeploymentResult {
   /// [managementGroupId] Required.
   /// [name] Required.
   /// [outputContent] The JSON Content of the Outputs of the ARM Template Deployment.
-  GetGroupTemplateDeploymentResult({
+  const GetGroupTemplateDeploymentResult({
     required this.id,
     required this.managementGroupId,
     required this.name,

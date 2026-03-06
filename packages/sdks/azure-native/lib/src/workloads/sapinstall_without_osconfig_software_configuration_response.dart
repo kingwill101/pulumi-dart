@@ -23,7 +23,7 @@ class SAPInstallWithoutOSConfigSoftwareConfigurationResponse {
   /// [sapBitsStorageAccountId] The SAP bits storage account id.
   /// [softwareInstallationType] The SAP software installation Type.
   /// [softwareVersion] The software version to install.
-  SAPInstallWithoutOSConfigSoftwareConfigurationResponse({
+  const SAPInstallWithoutOSConfigSoftwareConfigurationResponse({
     required this.bomUrl,
     this.highAvailabilitySoftwareConfiguration,
     required this.sapBitsStorageAccountId,

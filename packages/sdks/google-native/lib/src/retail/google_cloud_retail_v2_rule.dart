@@ -50,7 +50,7 @@ class GoogleCloudRetailV2Rule {
   /// [removeFacetAction] Remove an attribute as a facet in the request (if present).
   /// [replacementAction] Replaces specific terms in the query.
   /// [twowaySynonymsAction] Treats a set of terms as synonyms of one another.
-  GoogleCloudRetailV2Rule({
+  const GoogleCloudRetailV2Rule({
     this.boostAction,
     required this.condition,
     this.doNotAssociateAction,

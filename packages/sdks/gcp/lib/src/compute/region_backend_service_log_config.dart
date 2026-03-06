@@ -22,7 +22,7 @@ class RegionBackendServiceLogConfig {
   /// [optionalFields] Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
   /// [optionalMode] Specifies the optional logging mode for the load balancer traffic.
   /// [sampleRate] This field can only be specified if logging is enabled for this backend service. The value of
-  RegionBackendServiceLogConfig({
+  const RegionBackendServiceLogConfig({
     this.enable,
     this.optionalFields,
     this.optionalMode,

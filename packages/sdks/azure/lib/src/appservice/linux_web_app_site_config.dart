@@ -110,7 +110,7 @@ class LinuxWebAppSiteConfig {
   /// [vnetRouteAllEnabled] Should all outbound traffic have NAT Gateways, Network Security Groups and User Defined Routes applied? Defaults to `false`.
   /// [websocketsEnabled] Should Web Sockets be enabled? Defaults to `false`.
   /// [workerCount] The number of Workers for this Linux App Service.
-  LinuxWebAppSiteConfig({
+  const LinuxWebAppSiteConfig({
     this.alwaysOn,
     this.apiDefinitionUrl,
     this.apiManagementApiId,

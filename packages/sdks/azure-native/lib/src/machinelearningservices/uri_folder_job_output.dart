@@ -18,7 +18,7 @@ class UriFolderJobOutput {
   /// [jobOutputType] Enum to determine the Job Output Type.
   /// [mode] Output Asset Delivery Mode.
   /// [uri] Output Asset URI.
-  UriFolderJobOutput({
+  const UriFolderJobOutput({
     this.description,
     required this.jobOutputType,
     this.mode,

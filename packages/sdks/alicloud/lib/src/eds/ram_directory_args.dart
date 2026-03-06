@@ -24,7 +24,7 @@ class RamDirectoryArgs {
   /// [enableInternetAccess] Whether to grant local administrator rights to users who use cloud desktops.
   /// [ramDirectoryName] The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   /// [vswitchIds] List of VSwitch IDs in the directory.
-  RamDirectoryArgs({
+  const RamDirectoryArgs({
     this.desktopAccessType,
     this.enableAdminAccess,
     this.enableInternetAccess,

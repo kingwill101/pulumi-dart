@@ -12,7 +12,7 @@ class EventSeriesPatch {
   /// Creates a new [EventSeriesPatch].
   /// [count] count is the number of occurrences in this series up to the last heartbeat time.
   /// [lastObservedTime] lastObservedTime is the time when last Event from the series was seen before last heartbeat.
-  EventSeriesPatch({
+  const EventSeriesPatch({
     this.count,
     this.lastObservedTime,
   });

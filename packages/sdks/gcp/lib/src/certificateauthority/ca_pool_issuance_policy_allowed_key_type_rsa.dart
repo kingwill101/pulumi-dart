@@ -13,7 +13,7 @@ class CaPoolIssuancePolicyAllowedKeyTypeRsa {
   /// Creates a new [CaPoolIssuancePolicyAllowedKeyTypeRsa].
   /// [maxModulusSize] The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
   /// [minModulusSize] The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
-  CaPoolIssuancePolicyAllowedKeyTypeRsa({
+  const CaPoolIssuancePolicyAllowedKeyTypeRsa({
     this.maxModulusSize,
     this.minModulusSize,
   });

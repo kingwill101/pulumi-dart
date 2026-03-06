@@ -24,7 +24,7 @@ class AuditArgs {
   /// [multiAccounts] Multi-account configuration, please fill in multiple aliuid.
   /// [resourceDirectoryType] Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
   /// [variableMap] Log audit detailed configuration.
-  AuditArgs({
+  const AuditArgs({
     required this.aliuid,
     required this.displayName,
     this.multiAccounts,

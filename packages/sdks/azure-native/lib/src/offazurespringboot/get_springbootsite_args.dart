@@ -15,7 +15,7 @@ class GetSpringbootsiteArgs {
   /// Creates a new [GetSpringbootsiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [springbootsitesName] The springbootsites name.
-  GetSpringbootsiteArgs({
+  const GetSpringbootsiteArgs({
     required this.resourceGroupName,
     required this.springbootsitesName,
   });

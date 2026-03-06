@@ -13,7 +13,7 @@ class ListScheduleApplicableResult {
   /// Creates a new [ListScheduleApplicableResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Schedule items on this page
-  ListScheduleApplicableResult({
+  const ListScheduleApplicableResult({
     this.nextLink,
     required this.value,
   });

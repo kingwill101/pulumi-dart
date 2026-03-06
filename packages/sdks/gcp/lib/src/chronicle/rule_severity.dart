@@ -9,7 +9,7 @@ class RuleSeverity {
 
   /// Creates a new [RuleSeverity].
   /// [displayName] The display name of the severity level. Extracted from the meta section of
-  RuleSeverity({
+  const RuleSeverity({
     this.displayName,
   });
 

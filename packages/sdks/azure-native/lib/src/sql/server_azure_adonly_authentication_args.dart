@@ -21,7 +21,7 @@ class ServerAzureADOnlyAuthenticationArgs {
   /// [azureADOnlyAuthentication] Azure Active Directory only Authentication enabled.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  ServerAzureADOnlyAuthenticationArgs({
+  const ServerAzureADOnlyAuthenticationArgs({
     this.authenticationName,
     required this.azureADOnlyAuthentication,
     required this.resourceGroupName,

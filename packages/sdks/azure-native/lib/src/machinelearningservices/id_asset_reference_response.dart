@@ -13,7 +13,7 @@ class IdAssetReferenceResponse {
   /// Creates a new [IdAssetReferenceResponse].
   /// [assetId] [Required] ARM resource ID of the asset.
   /// [referenceType] Enum to determine which reference method to use for an asset.
-  IdAssetReferenceResponse({
+  const IdAssetReferenceResponse({
     required this.assetId,
     required this.referenceType,
   });

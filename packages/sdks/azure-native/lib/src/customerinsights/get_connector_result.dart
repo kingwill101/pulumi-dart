@@ -50,7 +50,7 @@ class GetConnectorResult {
   /// [state] State of connector.
   /// [tenantId] The hub name.
   /// [type] Resource type.
-  GetConnectorResult({
+  const GetConnectorResult({
     required this.azureApiVersion,
     required this.connectorId,
     this.connectorName,

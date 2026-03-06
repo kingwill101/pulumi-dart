@@ -8,7 +8,7 @@ class AnalysisCompletedResponseContaineranalysisV1beta1 {
 
   /// Creates a new [AnalysisCompletedResponseContaineranalysisV1beta1].
   /// [analysisType] Required.
-  AnalysisCompletedResponseContaineranalysisV1beta1({
+  const AnalysisCompletedResponseContaineranalysisV1beta1({
     required this.analysisType,
   });
 

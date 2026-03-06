@@ -13,7 +13,7 @@ class CaptureIdentity {
   /// Creates a new [CaptureIdentity].
   /// [type] Type of Azure Active Directory Managed Identity.
   /// [userAssignedIdentity] ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
-  CaptureIdentity({
+  const CaptureIdentity({
     this.type,
     this.userAssignedIdentity,
   });

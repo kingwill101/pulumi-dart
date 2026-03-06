@@ -19,7 +19,7 @@ class RegistrationAssignmentArgs {
   /// [properties] The properties of a registration assignment.
   /// [registrationAssignmentId] The GUID of the registration assignment.
   /// [scope] The scope of the resource.
-  RegistrationAssignmentArgs({
+  const RegistrationAssignmentArgs({
     this.properties,
     this.registrationAssignmentId,
     required this.scope,

@@ -9,7 +9,7 @@ class OriginGroupMemberResponse {
 
   /// Creates a new [OriginGroupMemberResponse].
   /// [originId] The ID for an origin in an origin group.
-  OriginGroupMemberResponse({
+  const OriginGroupMemberResponse({
     this.originId,
   });
 

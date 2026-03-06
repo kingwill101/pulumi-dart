@@ -23,7 +23,7 @@ class MonitorSsoConfigurationArgs {
   /// [name] The name of the SingleSignOn configuration. Defaults to `default`.
   /// [singleSignOn] The state of SingleSignOn configuration. Possible values are `Enable`, `Disable`, `Initial` and `Existing`.
   /// [singleSignOnEnabled] Optional.
-  MonitorSsoConfigurationArgs({
+  const MonitorSsoConfigurationArgs({
     required this.datadogMonitorId,
     required this.enterpriseApplicationId,
     this.name,

@@ -30,7 +30,7 @@ class IpamIpamResourceDiscoveryState {
   /// [resourceGroupId] The ID of the resource group
   /// [status] The status of the resource discovery instance. Value:
   /// [tags] Label list information.
-  IpamIpamResourceDiscoveryState({
+  const IpamIpamResourceDiscoveryState({
     this.createTime,
     this.ipamResourceDiscoveryDescription,
     this.ipamResourceDiscoveryName,

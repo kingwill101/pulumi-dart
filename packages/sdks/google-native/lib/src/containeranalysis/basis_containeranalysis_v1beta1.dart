@@ -13,7 +13,7 @@ class BasisContaineranalysisV1beta1 {
   /// Creates a new [BasisContaineranalysisV1beta1].
   /// [fingerprint] Immutable. The fingerprint of the base image.
   /// [resourceUrl] Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-  BasisContaineranalysisV1beta1({
+  const BasisContaineranalysisV1beta1({
     required this.fingerprint,
     required this.resourceUrl,
   });

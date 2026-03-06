@@ -16,7 +16,7 @@ class InsightsConfigRuntimeConfigGkeWorkload {
   /// Creates a new [InsightsConfigRuntimeConfigGkeWorkload].
   /// [cluster] The name of the GKE cluster.
   /// [deployment] (Output)
-  InsightsConfigRuntimeConfigGkeWorkload({
+  const InsightsConfigRuntimeConfigGkeWorkload({
     required this.cluster,
     this.deployment,
   });

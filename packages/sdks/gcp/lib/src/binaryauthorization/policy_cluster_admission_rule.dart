@@ -26,7 +26,7 @@ class PolicyClusterAdmissionRule {
   /// [enforcementMode] The action when a pod creation is denied by the admission rule.
   /// [evaluationMode] How this admission rule will be evaluated.
   /// [requireAttestationsBies] The resource names of the attestors that must attest to a
-  PolicyClusterAdmissionRule({
+  const PolicyClusterAdmissionRule({
     required this.cluster,
     required this.enforcementMode,
     required this.evaluationMode,

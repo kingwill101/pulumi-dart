@@ -11,7 +11,7 @@ class InstanceOauthConfig {
   /// Creates a new [InstanceOauthConfig].
   /// [clientId] The client ID for the Oauth config.
   /// [clientSecret] The client secret for the Oauth config.
-  InstanceOauthConfig({
+  const InstanceOauthConfig({
     required this.clientId,
     required this.clientSecret,
   });

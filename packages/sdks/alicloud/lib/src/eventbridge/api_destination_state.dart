@@ -22,7 +22,7 @@ class ApiDestinationState {
   /// [createTime] The creation time of the Api Destination.
   /// [description] The description of the API destination.
   /// [httpApiParameters] The parameters that are configured for the API destination. See `http_api_parameters` below.
-  ApiDestinationState({
+  const ApiDestinationState({
     this.apiDestinationName,
     this.connectionName,
     this.createTime,

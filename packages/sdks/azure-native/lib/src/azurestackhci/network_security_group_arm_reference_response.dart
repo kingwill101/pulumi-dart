@@ -9,7 +9,7 @@ class NetworkSecurityGroupArmReferenceResponse {
 
   /// Creates a new [NetworkSecurityGroupArmReferenceResponse].
   /// [id] The Azure Resource ID for a Network Security Group.
-  NetworkSecurityGroupArmReferenceResponse({
+  const NetworkSecurityGroupArmReferenceResponse({
     this.id,
   });
 

@@ -12,7 +12,7 @@ class DefaultObjectAccessControlProjectTeam {
   /// Creates a new [DefaultObjectAccessControlProjectTeam].
   /// [projectNumber] The project number.
   /// [team] The team.
-  DefaultObjectAccessControlProjectTeam({
+  const DefaultObjectAccessControlProjectTeam({
     this.projectNumber,
     this.team,
   });

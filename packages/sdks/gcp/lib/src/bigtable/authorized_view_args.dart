@@ -30,7 +30,7 @@ class AuthorizedViewArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [subsetView] An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
   /// [tableName] The name of the Bigtable table in which the authorized view belongs.
-  AuthorizedViewArgs({
+  const AuthorizedViewArgs({
     this.deletionProtection,
     required this.instanceName,
     this.name,

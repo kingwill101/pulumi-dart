@@ -8,7 +8,7 @@ class RegistryTaskRegistryCredentialSource {
 
   /// Creates a new [RegistryTaskRegistryCredentialSource].
   /// [loginMode] The login mode for the source registry. Possible values are `None` and `Default`.
-  RegistryTaskRegistryCredentialSource({
+  const RegistryTaskRegistryCredentialSource({
     required this.loginMode,
   });
 

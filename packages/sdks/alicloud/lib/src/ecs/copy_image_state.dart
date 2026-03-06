@@ -26,7 +26,7 @@ class CopyImageState {
   /// [sourceImageId] Optional.
   /// [sourceRegionId] Optional.
   /// [tags] Optional.
-  CopyImageState({
+  const CopyImageState({
     this.deleteAutoSnapshot,
     this.description,
     this.encrypted,

@@ -13,7 +13,7 @@ class InstanceCrossInstanceReplicationConfigMembership {
   /// Creates a new [InstanceCrossInstanceReplicationConfigMembership].
   /// [primaryInstances] Details of the primary instance that is used as the replication source for all the secondary instances.
   /// [secondaryInstances] List of secondary instances that are replicating from the primary instance.
-  InstanceCrossInstanceReplicationConfigMembership({
+  const InstanceCrossInstanceReplicationConfigMembership({
     this.primaryInstances,
     this.secondaryInstances,
   });

@@ -12,7 +12,7 @@ class DomainArgs {
 
   /// Creates a new [DomainArgs].
   /// [domainName] Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
-  DomainArgs({
+  const DomainArgs({
     required this.domainName,
   });
 

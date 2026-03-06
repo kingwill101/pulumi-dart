@@ -12,7 +12,7 @@ class TestBaseAccountSKUCapabilityResponse {
   /// Creates a new [TestBaseAccountSKUCapabilityResponse].
   /// [name] An invariant to describe the feature, such as 'SLA'.
   /// [value] An invariant if the feature is measured by quantity, such as 99.9%.
-  TestBaseAccountSKUCapabilityResponse({
+  const TestBaseAccountSKUCapabilityResponse({
     required this.name,
     required this.value,
   });

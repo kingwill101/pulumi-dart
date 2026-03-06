@@ -31,7 +31,7 @@ class RegionBackendServiceFailoverPolicy {
   /// [disableConnectionDrainOnFailover] On failover or failback, this field indicates whether connection drain
   /// [dropTrafficIfUnhealthy] This option is used only when no healthy VMs are detected in the primary
   /// [failoverRatio] The value of the field must be in [0, 1]. If the ratio of the healthy
-  RegionBackendServiceFailoverPolicy({
+  const RegionBackendServiceFailoverPolicy({
     this.disableConnectionDrainOnFailover,
     this.dropTrafficIfUnhealthy,
     this.failoverRatio,

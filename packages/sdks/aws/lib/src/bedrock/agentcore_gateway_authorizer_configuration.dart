@@ -9,7 +9,7 @@ class AgentcoreGatewayAuthorizerConfiguration {
 
   /// Creates a new [AgentcoreGatewayAuthorizerConfiguration].
   /// [customJwtAuthorizer] JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
-  AgentcoreGatewayAuthorizerConfiguration({
+  const AgentcoreGatewayAuthorizerConfiguration({
     this.customJwtAuthorizer,
   });
 

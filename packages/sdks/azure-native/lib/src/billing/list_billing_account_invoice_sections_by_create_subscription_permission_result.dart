@@ -13,7 +13,7 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult {
   /// Creates a new [ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult].
   /// [nextLink] The link (url) to the next page of results.
   /// [value] The list of resources.
-  ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult({
+  const ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult({
     required this.nextLink,
     required this.value,
   });

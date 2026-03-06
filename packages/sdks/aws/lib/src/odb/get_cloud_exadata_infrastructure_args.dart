@@ -17,7 +17,7 @@ class GetCloudExadataInfrastructureArgs {
   /// Creates a new [GetCloudExadataInfrastructureArgs].
   /// [id] The unique identifier of the Exadata infrastructure.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCloudExadataInfrastructureArgs({
+  const GetCloudExadataInfrastructureArgs({
     required this.id,
     this.region,
   });

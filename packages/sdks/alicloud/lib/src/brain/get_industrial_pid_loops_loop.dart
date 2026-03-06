@@ -33,7 +33,7 @@ class GetIndustrialPidLoopsLoop {
   /// [pidLoopType] The type of Pid Loop.
   /// [pidProjectId] The pid project id.
   /// [status] The status of Pid Loop.
-  GetIndustrialPidLoopsLoop({
+  const GetIndustrialPidLoopsLoop({
     required this.id,
     required this.pidLoopConfiguration,
     required this.pidLoopDcsType,

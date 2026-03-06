@@ -8,7 +8,7 @@ class AppLoggingSettingsConversationLoggingSettings {
 
   /// Creates a new [AppLoggingSettingsConversationLoggingSettings].
   /// [disableConversationLogging] Whether to disable conversation logging for the sessions.
-  AppLoggingSettingsConversationLoggingSettings({
+  const AppLoggingSettingsConversationLoggingSettings({
     this.disableConversationLogging,
   });
 

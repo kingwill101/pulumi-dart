@@ -27,7 +27,7 @@ class ForwardingRuleInfoResponse {
   /// [target] Target type of the forwarding rule.
   /// [uri] URI of a Compute Engine forwarding rule.
   /// [vip] VIP of the forwarding rule.
-  ForwardingRuleInfoResponse({
+  const ForwardingRuleInfoResponse({
     required this.displayName,
     required this.matchedPortRange,
     required this.matchedProtocol,

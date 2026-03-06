@@ -9,7 +9,7 @@ class ChangeDataCaptureResponseFolder {
 
   /// Creates a new [ChangeDataCaptureResponseFolder].
   /// [name] The name of the folder that this CDC is in.
-  ChangeDataCaptureResponseFolder({
+  const ChangeDataCaptureResponseFolder({
     this.name,
   });
 

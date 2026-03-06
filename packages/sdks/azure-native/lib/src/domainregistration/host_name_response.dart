@@ -24,7 +24,7 @@ class HostNameResponse {
   /// [hostNameType] Type of the hostname.
   /// [name] Name of the hostname.
   /// [siteNames] List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
-  HostNameResponse({
+  const HostNameResponse({
     this.azureResourceName,
     this.azureResourceType,
     this.customHostNameDnsRecordType,

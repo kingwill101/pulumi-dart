@@ -44,7 +44,7 @@ class TargetTCPProxyState {
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to
   /// [proxyId] The unique identifier for the resource.
   /// [selfLink] The URI of the created resource.
-  TargetTCPProxyState({
+  const TargetTCPProxyState({
     this.backendService,
     this.creationTimestamp,
     this.description,

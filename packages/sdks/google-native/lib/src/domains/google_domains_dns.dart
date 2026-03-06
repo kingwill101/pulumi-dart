@@ -10,7 +10,7 @@ class GoogleDomainsDns {
 
   /// Creates a new [GoogleDomainsDns].
   /// [dsState] The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-  GoogleDomainsDns({
+  const GoogleDomainsDns({
     required this.dsState,
   });
 

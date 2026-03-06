@@ -28,7 +28,7 @@ class ZoneArgs {
   /// [name] Name of the Zone.
   /// [primaryNameservers] Primary nameservers of the Zone. Forbidden when mode is primary and required when mode is secondary.
   /// [ttl] Default Time To Live (TTL) of the Zone.
-  ZoneArgs({
+  const ZoneArgs({
     this.deleteProtection,
     this.labels,
     required this.mode,

@@ -35,7 +35,7 @@ class ResourceLfTagState {
   /// [table] Configuration block for a table resource. See Table for more details.
   /// [tableWithColumns] Configuration block for a table with columns resource. See Table With Columns for more details.
   /// [timeouts] Optional.
-  ResourceLfTagState({
+  const ResourceLfTagState({
     this.catalogId,
     this.database,
     this.lfTag,

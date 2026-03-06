@@ -43,7 +43,7 @@ class InstanceArgs {
   /// [status] The status of the resource
   /// [tags] The tags.
   /// [vswitchId] Switch ID.
-  InstanceArgs({
+  const InstanceArgs({
     this.category,
     this.environmentVars,
     this.force,

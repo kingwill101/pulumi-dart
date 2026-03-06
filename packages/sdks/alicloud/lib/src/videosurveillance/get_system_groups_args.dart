@@ -27,7 +27,7 @@ class GetSystemGroupsArgs {
   /// [nameRegex] A regex string to filter results by Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status. Valid values: `on`,`off`.
-  GetSystemGroupsArgs({
+  const GetSystemGroupsArgs({
     this.ids,
     this.inProtocol,
     this.name,

@@ -21,7 +21,7 @@ class SecurityGroupVpcAssociationState {
   /// [state] State of the VPC association. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupVpcAssociation.html) for possible values.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC to make the association with.
-  SecurityGroupVpcAssociationState({
+  const SecurityGroupVpcAssociationState({
     this.region,
     this.securityGroupId,
     this.state,

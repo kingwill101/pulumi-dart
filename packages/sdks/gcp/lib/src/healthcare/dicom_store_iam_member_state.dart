@@ -33,7 +33,7 @@ class DicomStoreIamMemberState {
   /// [etag] (Computed) The etag of the DICOM store's IAM policy.
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  DicomStoreIamMemberState({
+  const DicomStoreIamMemberState({
     this.condition,
     this.dicomStoreId,
     this.etag,

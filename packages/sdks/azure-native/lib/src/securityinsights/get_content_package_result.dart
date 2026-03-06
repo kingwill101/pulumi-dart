@@ -98,7 +98,7 @@ class GetContentPackageResult {
   /// [threatAnalysisTechniques] the techniques the resource covers, these have to be aligned with the tactics being used
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] the latest version number of the package
-  GetContentPackageResult({
+  const GetContentPackageResult({
     this.author,
     required this.azureApiVersion,
     this.categories,

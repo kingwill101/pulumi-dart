@@ -22,7 +22,7 @@ class TemplateContentsResponseDeploymentmanagerV2beta {
   /// [mainTemplate] The filename of the mainTemplate
   /// [schema] The contents of the template schema.
   /// [template] The contents of the main template file.
-  TemplateContentsResponseDeploymentmanagerV2beta({
+  const TemplateContentsResponseDeploymentmanagerV2beta({
     required this.imports,
     required this.interpreter,
     required this.mainTemplate,

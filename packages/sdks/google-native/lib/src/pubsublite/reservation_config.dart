@@ -9,7 +9,7 @@ class ReservationConfig {
 
   /// Creates a new [ReservationConfig].
   /// [throughputReservation] The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-  ReservationConfig({
+  const ReservationConfig({
     this.throughputReservation,
   });
 

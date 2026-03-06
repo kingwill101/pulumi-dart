@@ -9,7 +9,7 @@ class GetGenaiAgentsSort {
   /// Creates a new [GetGenaiAgentsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGenaiAgentsSort({
+  const GetGenaiAgentsSort({
     this.direction,
     required this.key,
   });

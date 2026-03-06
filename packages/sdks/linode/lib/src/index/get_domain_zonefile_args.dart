@@ -12,7 +12,7 @@ class GetDomainZonefileArgs {
 
   /// Creates a new [GetDomainZonefileArgs].
   /// [domainId] The associated domain's unique ID.
-  GetDomainZonefileArgs({
+  const GetDomainZonefileArgs({
     required this.domainId,
   });
 

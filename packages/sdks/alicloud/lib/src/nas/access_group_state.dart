@@ -37,7 +37,7 @@ class AccessGroupState {
   /// [name] Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
   /// [regionId] (Available since v1.256.0) The region ID.
   /// [type] Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
-  AccessGroupState({
+  const AccessGroupState({
     this.accessGroupName,
     this.accessGroupType,
     this.createTime,

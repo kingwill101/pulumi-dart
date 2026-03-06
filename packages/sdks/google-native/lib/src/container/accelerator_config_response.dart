@@ -23,7 +23,7 @@ class AcceleratorConfigResponse {
   /// [gpuDriverInstallationConfig] The configuration for auto installation of GPU driver.
   /// [gpuPartitionSize] Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
   /// [gpuSharingConfig] The configuration for GPU sharing options.
-  AcceleratorConfigResponse({
+  const AcceleratorConfigResponse({
     required this.acceleratorCount,
     required this.acceleratorType,
     required this.gpuDriverInstallationConfig,

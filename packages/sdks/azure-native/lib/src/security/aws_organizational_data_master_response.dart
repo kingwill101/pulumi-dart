@@ -16,7 +16,7 @@ class AwsOrganizationalDataMasterResponse {
   /// [excludedAccountIds] If the multi cloud account is of membership type organization, list of accounts excluded from offering
   /// [organizationMembershipType] The multi cloud account's membership type in the organization
   /// [stacksetName] If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
-  AwsOrganizationalDataMasterResponse({
+  const AwsOrganizationalDataMasterResponse({
     this.excludedAccountIds,
     required this.organizationMembershipType,
     this.stacksetName,

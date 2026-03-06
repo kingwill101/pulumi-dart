@@ -16,7 +16,7 @@ class NetworkBandwidth {
   /// [classId] Sets the class identifier for the bandwidth configuration, categorizing the type of bandwidth used for the network.
   /// [inbound] Configures the settings for outbound bandwidth, controlling the data flow sent by the network.
   /// [outbound] Configures the settings for outbound bandwidth, controlling the data flow sent by the network.
-  NetworkBandwidth({
+  const NetworkBandwidth({
     this.classId,
     this.inbound,
     this.outbound,

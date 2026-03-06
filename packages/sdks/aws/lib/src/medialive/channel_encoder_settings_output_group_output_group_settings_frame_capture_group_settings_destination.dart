@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSetti
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination({
     required this.destinationRefId,
   });
 

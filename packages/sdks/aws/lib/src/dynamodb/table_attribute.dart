@@ -11,7 +11,7 @@ class TableAttribute {
   /// Creates a new [TableAttribute].
   /// [name] Name of the attribute
   /// [type] Attribute type. Valid values are `S` (string), `N` (number), `B` (binary).
-  TableAttribute({
+  const TableAttribute({
     required this.name,
     required this.type,
   });

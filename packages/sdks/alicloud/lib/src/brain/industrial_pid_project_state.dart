@@ -15,7 +15,7 @@ class IndustrialPidProjectState {
   /// [pidOrganizationId] The ID of Pid Organization.
   /// [pidProjectDesc] The description of Pid Project.
   /// [pidProjectName] The name of Pid Project.
-  IndustrialPidProjectState({
+  const IndustrialPidProjectState({
     this.pidOrganizationId,
     this.pidProjectDesc,
     this.pidProjectName,

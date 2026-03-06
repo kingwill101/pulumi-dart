@@ -17,7 +17,7 @@ class PipeSourceParametersSelfManagedKafkaParametersCredentials {
   /// [clientCertificateTlsAuth] The ARN of the Secrets Manager secret containing the credentials.
   /// [saslScram256Auth] The ARN of the Secrets Manager secret containing the credentials.
   /// [saslScram512Auth] The ARN of the Secrets Manager secret containing the credentials.
-  PipeSourceParametersSelfManagedKafkaParametersCredentials({
+  const PipeSourceParametersSelfManagedKafkaParametersCredentials({
     this.basicAuth,
     this.clientCertificateTlsAuth,
     this.saslScram256Auth,

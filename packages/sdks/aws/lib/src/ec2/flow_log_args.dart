@@ -62,7 +62,7 @@ class FlowLogArgs {
   /// [transitGatewayAttachmentId] Transit Gateway Attachment ID to attach to.
   /// [transitGatewayId] Transit Gateway ID to attach to.
   /// [vpcId] VPC ID to attach to.
-  FlowLogArgs({
+  const FlowLogArgs({
     this.deliverCrossAccountRole,
     this.destinationOptions,
     this.eniId,

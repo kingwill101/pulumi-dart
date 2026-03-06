@@ -18,7 +18,7 @@ class ListOrganizationRegionsArgs {
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [searchFilters] Search filters for the request
-  ListOrganizationRegionsArgs({
+  const ListOrganizationRegionsArgs({
     required this.organizationName,
     required this.resourceGroupName,
     this.searchFilters,

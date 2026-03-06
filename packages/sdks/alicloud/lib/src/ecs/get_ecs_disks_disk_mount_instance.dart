@@ -14,7 +14,7 @@ class GetEcsDisksDiskMountInstance {
   /// [attachedTime] A mount of time.
   /// [device] The mount point of the disk.
   /// [instanceId] Filter the results by the specified ECS instance ID.
-  GetEcsDisksDiskMountInstance({
+  const GetEcsDisksDiskMountInstance({
     required this.attachedTime,
     required this.device,
     required this.instanceId,

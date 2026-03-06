@@ -20,7 +20,7 @@ class GetSecretsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] Set of names of the matched Secrets Manager secrets.
   /// [region] Required.
-  GetSecretsResult({
+  const GetSecretsResult({
     required this.arns,
     this.filters,
     required this.id,

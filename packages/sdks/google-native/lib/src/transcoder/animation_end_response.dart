@@ -9,7 +9,7 @@ class AnimationEndResponse {
 
   /// Creates a new [AnimationEndResponse].
   /// [startTimeOffset] The time to end overlay object, in seconds. Default: 0
-  AnimationEndResponse({
+  const AnimationEndResponse({
     required this.startTimeOffset,
   });
 

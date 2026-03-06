@@ -33,7 +33,7 @@ class FeedbackMessageArgs {
   /// [operatorFeedbackMetadata] Optional.
   /// [project] Optional.
   /// [requesterFeedbackMetadata] Optional.
-  FeedbackMessageArgs({
+  const FeedbackMessageArgs({
     required this.annotatedDatasetId,
     this.body,
     this.createTime,

@@ -15,7 +15,7 @@ class GetUrlListNetworksecurityV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [urlListId] Required.
-  GetUrlListNetworksecurityV1beta1Args({
+  const GetUrlListNetworksecurityV1beta1Args({
     required this.location,
     this.project,
     required this.urlListId,

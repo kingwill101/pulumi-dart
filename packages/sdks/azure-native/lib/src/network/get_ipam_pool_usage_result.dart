@@ -34,7 +34,7 @@ class GetIpamPoolUsageResult {
   /// [numberOfReservedIPAddresses] Total number of reserved IP addresses in the IpamPool.
   /// [reservedAddressPrefixes] List of reserved IP address prefixes. These IP addresses could be reclaimed if not assigned in the given time.
   /// [totalNumberOfIPAddresses] Total number of IP addresses managed in the IpamPool.
-  GetIpamPoolUsageResult({
+  const GetIpamPoolUsageResult({
     required this.addressPrefixes,
     required this.allocatedAddressPrefixes,
     required this.availableAddressPrefixes,

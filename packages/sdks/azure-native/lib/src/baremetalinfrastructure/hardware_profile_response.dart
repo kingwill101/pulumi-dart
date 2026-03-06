@@ -12,7 +12,7 @@ class HardwareProfileResponse {
   /// Creates a new [HardwareProfileResponse].
   /// [azureBareMetalInstanceSize] Specifies the Azure Bare Metal Instance SKU.
   /// [hardwareType] Name of the hardware type (vendor and/or their product name)
-  HardwareProfileResponse({
+  const HardwareProfileResponse({
     this.azureBareMetalInstanceSize,
     this.hardwareType,
   });

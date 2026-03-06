@@ -18,7 +18,7 @@ class GetMachineExtensionArgs {
   /// [extensionName] The name of the machine extension.
   /// [resourceGroupName] The Resource Group Name.
   /// [virtualMachineName] The name of the machine containing the extension.
-  GetMachineExtensionArgs({
+  const GetMachineExtensionArgs({
     required this.extensionName,
     required this.resourceGroupName,
     required this.virtualMachineName,

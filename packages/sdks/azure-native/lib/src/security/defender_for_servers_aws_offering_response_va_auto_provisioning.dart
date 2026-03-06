@@ -13,7 +13,7 @@ class DefenderForServersAwsOfferingResponseVaAutoProvisioning {
   /// Creates a new [DefenderForServersAwsOfferingResponseVaAutoProvisioning].
   /// [configuration] configuration for Vulnerability Assessment autoprovisioning
   /// [enabled] Is Vulnerability Assessment auto provisioning enabled
-  DefenderForServersAwsOfferingResponseVaAutoProvisioning({
+  const DefenderForServersAwsOfferingResponseVaAutoProvisioning({
     this.configuration,
     this.enabled,
   });

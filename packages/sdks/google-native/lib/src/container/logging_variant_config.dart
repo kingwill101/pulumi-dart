@@ -10,7 +10,7 @@ class LoggingVariantConfig {
 
   /// Creates a new [LoggingVariantConfig].
   /// [variant] Logging variant deployed on nodes.
-  LoggingVariantConfig({
+  const LoggingVariantConfig({
     this.variant,
   });
 

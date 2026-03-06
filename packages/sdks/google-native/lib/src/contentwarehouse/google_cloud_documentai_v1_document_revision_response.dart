@@ -25,7 +25,7 @@ class GoogleCloudDocumentaiV1DocumentRevisionResponse {
   /// [parent] The revisions that this revision is based on. This can include one or more parent (when documents are merged.) This field represents the index into the `revisions` field.
   /// [parentIds] The revisions that this revision is based on. Must include all the ids that have anything to do with this revision - eg. there are `provenance.parent.revision` fields that index into this field.
   /// [processor] If the annotation was made by processor identify the processor by its resource name.
-  GoogleCloudDocumentaiV1DocumentRevisionResponse({
+  const GoogleCloudDocumentaiV1DocumentRevisionResponse({
     required this.agent,
     required this.createTime,
     required this.humanReview,

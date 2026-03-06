@@ -28,7 +28,7 @@ class NamespaceArgs {
   /// [location] The location for the Namespace.
   /// [namespaceId] The Resource ID must be 1-63 characters long, including digits,
   /// [project] The ID of the project in which the resource belongs.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.labels,
     required this.location,
     required this.namespaceId,

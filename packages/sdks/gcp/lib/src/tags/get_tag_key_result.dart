@@ -31,7 +31,7 @@ class GetTagKeyResult {
   /// [parent] Required.
   /// [shortName] Required.
   /// [updateTime] Update time.
-  GetTagKeyResult({
+  const GetTagKeyResult({
     required this.allowedValuesRegex,
     required this.createTime,
     required this.description,

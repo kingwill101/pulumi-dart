@@ -14,7 +14,7 @@ class FleetRuntimeConfigurationServerProcess {
   /// [concurrentExecutions] Number of server processes using this configuration to run concurrently on an instance.
   /// [launchPath] Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
   /// [parameters] Optional list of parameters to pass to the server executable on launch.
-  FleetRuntimeConfigurationServerProcess({
+  const FleetRuntimeConfigurationServerProcess({
     required this.concurrentExecutions,
     required this.launchPath,
     this.parameters,

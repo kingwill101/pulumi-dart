@@ -12,7 +12,7 @@ class ScopeMapResponse {
   /// Creates a new [ScopeMapResponse].
   /// [from] Scope Map Key.
   /// [to] Scope Map Value.
-  ScopeMapResponse({
+  const ScopeMapResponse({
     required this.from,
     required this.to,
   });

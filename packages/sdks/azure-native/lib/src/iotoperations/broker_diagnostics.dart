@@ -22,7 +22,7 @@ class BrokerDiagnostics {
   /// [metrics] The metrics settings for the resource.
   /// [selfCheck] The self check properties.
   /// [traces] The trace properties.
-  BrokerDiagnostics({
+  const BrokerDiagnostics({
     this.logs,
     this.metrics,
     this.selfCheck,

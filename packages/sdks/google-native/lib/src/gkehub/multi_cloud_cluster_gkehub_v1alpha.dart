@@ -9,7 +9,7 @@ class MultiCloudClusterGkehubV1alpha {
 
   /// Creates a new [MultiCloudClusterGkehubV1alpha].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
-  MultiCloudClusterGkehubV1alpha({
+  const MultiCloudClusterGkehubV1alpha({
     this.resourceLink,
   });
 

@@ -17,7 +17,7 @@ class GetManagementServerIamPolicyArgs {
   /// [managementServerId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetManagementServerIamPolicyArgs({
+  const GetManagementServerIamPolicyArgs({
     required this.location,
     required this.managementServerId,
     this.optionsRequestedPolicyVersion,

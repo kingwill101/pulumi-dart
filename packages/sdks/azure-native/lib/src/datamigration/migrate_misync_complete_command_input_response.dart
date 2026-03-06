@@ -9,7 +9,7 @@ class MigrateMISyncCompleteCommandInputResponse {
 
   /// Creates a new [MigrateMISyncCompleteCommandInputResponse].
   /// [sourceDatabaseName] Name of managed instance database
-  MigrateMISyncCompleteCommandInputResponse({
+  const MigrateMISyncCompleteCommandInputResponse({
     required this.sourceDatabaseName,
   });
 

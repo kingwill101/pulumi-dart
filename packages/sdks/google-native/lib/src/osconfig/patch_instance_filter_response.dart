@@ -22,7 +22,7 @@ class PatchInstanceFilterResponse {
   /// [instanceNamePrefixes] Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
   /// [instances] Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
   /// [zones] Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-  PatchInstanceFilterResponse({
+  const PatchInstanceFilterResponse({
     required this.all,
     required this.groupLabels,
     required this.instanceNamePrefixes,

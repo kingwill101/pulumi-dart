@@ -33,7 +33,7 @@ class GetNodeClassesArgs {
   /// [payType] Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
   /// [regionId] The Region to launch the PolarDB cluster.
   /// [zoneId] The Zone to launch the PolarDB cluster.
-  GetNodeClassesArgs({
+  const GetNodeClassesArgs({
     this.category,
     this.dbNodeClass,
     this.dbType,

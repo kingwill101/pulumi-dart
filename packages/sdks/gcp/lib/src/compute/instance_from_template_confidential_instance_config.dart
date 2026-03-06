@@ -14,7 +14,7 @@ class InstanceFromTemplateConfidentialInstanceConfig {
   /// Creates a new [InstanceFromTemplateConfidentialInstanceConfig].
   /// [confidentialInstanceType] The confidential computing technology the instance uses.
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
-  InstanceFromTemplateConfidentialInstanceConfig({
+  const InstanceFromTemplateConfidentialInstanceConfig({
     this.confidentialInstanceType,
     this.enableConfidentialCompute,
   });

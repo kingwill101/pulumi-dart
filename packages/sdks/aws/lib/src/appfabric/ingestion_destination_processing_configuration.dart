@@ -9,7 +9,7 @@ class IngestionDestinationProcessingConfiguration {
 
   /// Creates a new [IngestionDestinationProcessingConfiguration].
   /// [auditLog] Contains information about an audit log processing configuration.
-  IngestionDestinationProcessingConfiguration({
+  const IngestionDestinationProcessingConfiguration({
     required this.auditLog,
   });
 

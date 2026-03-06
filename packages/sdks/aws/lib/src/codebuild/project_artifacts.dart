@@ -44,7 +44,7 @@ class ProjectArtifacts {
   /// [packaging] Type of build output artifact to create. If `type` is set to `S3`, valid values are `NONE`,
   /// [path] If `type` is set to `S3`, this is the path to the output artifact.
   /// [type] Build output artifact's type. Valid values: `CODEPIPELINE`, `NO_ARTIFACTS`, `S3`.
-  ProjectArtifacts({
+  const ProjectArtifacts({
     this.artifactIdentifier,
     this.bucketOwnerAccess,
     this.encryptionDisabled,

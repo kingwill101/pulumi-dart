@@ -39,7 +39,7 @@ class PrometheusArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   /// [vswitchId] The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
-  PrometheusArgs({
+  const PrometheusArgs({
     this.clusterId,
     this.clusterName,
     required this.clusterType,

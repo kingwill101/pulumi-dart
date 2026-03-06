@@ -17,7 +17,7 @@ class GetAccountKeyArgs {
   /// Creates a new [GetAccountKeyArgs].
   /// [name] The name of the service account key. This must have format
   /// [publicKeyType] The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
-  GetAccountKeyArgs({
+  const GetAccountKeyArgs({
     required this.name,
     this.publicKeyType,
   });

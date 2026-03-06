@@ -21,7 +21,7 @@ class GetWebAppSiteExtensionSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [siteExtensionId] Site extension name.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API uses the production slot.
-  GetWebAppSiteExtensionSlotArgs({
+  const GetWebAppSiteExtensionSlotArgs({
     required this.name,
     required this.resourceGroupName,
     required this.siteExtensionId,

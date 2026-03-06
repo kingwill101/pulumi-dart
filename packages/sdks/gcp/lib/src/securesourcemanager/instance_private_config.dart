@@ -19,7 +19,7 @@ class InstancePrivateConfig {
   /// [httpServiceAttachment] (Output)
   /// [isPrivate] 'Indicate if it's private instance.'
   /// [sshServiceAttachment] (Output)
-  InstancePrivateConfig({
+  const InstancePrivateConfig({
     this.caPool,
     this.httpServiceAttachment,
     required this.isPrivate,

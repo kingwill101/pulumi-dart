@@ -8,7 +8,7 @@ class AppTimeZoneSettings {
 
   /// Creates a new [AppTimeZoneSettings].
   /// [timeZone] The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
-  AppTimeZoneSettings({
+  const AppTimeZoneSettings({
     this.timeZone,
   });
 

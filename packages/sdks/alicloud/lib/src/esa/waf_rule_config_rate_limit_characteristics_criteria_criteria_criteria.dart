@@ -7,7 +7,7 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
 
   /// Creates a new [WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria].
   /// [matchType] Optional.
-  WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria({
+  const WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria({
     this.matchType,
   });
 

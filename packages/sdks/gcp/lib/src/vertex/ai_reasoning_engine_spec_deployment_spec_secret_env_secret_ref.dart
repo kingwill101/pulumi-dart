@@ -14,7 +14,7 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef {
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef].
   /// [secret] The name of the secret in Cloud Secret Manager.
   /// [version] The Cloud Secret Manager secret version. Can be 'latest'
-  AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef({
+  const AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef({
     required this.secret,
     this.version,
   });

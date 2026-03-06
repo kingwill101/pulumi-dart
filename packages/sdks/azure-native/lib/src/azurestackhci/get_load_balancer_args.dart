@@ -15,7 +15,7 @@ class GetLoadBalancerArgs {
   /// Creates a new [GetLoadBalancerArgs].
   /// [loadBalancerName] Name of the load balancer
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLoadBalancerArgs({
+  const GetLoadBalancerArgs({
     required this.loadBalancerName,
     required this.resourceGroupName,
   });

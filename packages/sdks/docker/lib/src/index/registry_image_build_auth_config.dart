@@ -29,7 +29,7 @@ class RegistryImageBuildAuthConfig {
   /// [registryToken] the registry token
   /// [serverAddress] the server address
   /// [userName] the registry user name
-  RegistryImageBuildAuthConfig({
+  const RegistryImageBuildAuthConfig({
     this.auth,
     this.email,
     required this.hostName,

@@ -12,7 +12,7 @@ class CryptoKeyVersionTemplate {
   /// Creates a new [CryptoKeyVersionTemplate].
   /// [algorithm] The algorithm to use when creating a version based on this template.
   /// [protectionLevel] The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
-  CryptoKeyVersionTemplate({
+  const CryptoKeyVersionTemplate({
     required this.algorithm,
     this.protectionLevel,
   });

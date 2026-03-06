@@ -25,7 +25,7 @@ class GetWebhookDialogflowV3beta1Result {
   /// [name] The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
   /// [serviceDirectory] Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
   /// [timeout] Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-  GetWebhookDialogflowV3beta1Result({
+  const GetWebhookDialogflowV3beta1Result({
     required this.disabled,
     required this.displayName,
     required this.genericWebService,

@@ -23,7 +23,7 @@ class DeploymentResourcePoolArgs {
   /// [location] Optional.
   /// [name] Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
   /// [project] Optional.
-  DeploymentResourcePoolArgs({
+  const DeploymentResourcePoolArgs({
     required this.dedicatedResources,
     required this.deploymentResourcePoolId,
     this.location,

@@ -37,7 +37,7 @@ class AuthConfig {
   /// [oauth2JwtBearer] Oauth2JwtBearer.
   /// [sshPublicKey] SSH Public Key.
   /// [userPassword] UserPassword.
-  AuthConfig({
+  const AuthConfig({
     this.additionalVariables,
     this.authKey,
     this.authType,

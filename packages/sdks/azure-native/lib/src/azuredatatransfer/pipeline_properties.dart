@@ -22,7 +22,7 @@ class PipelineProperties {
   /// [policies] The policies for this pipeline
   /// [remoteCloud] Remote cloud of the data to be transferred or received
   /// [subscribers] Subscribers of this resource
-  PipelineProperties({
+  const PipelineProperties({
     this.displayName,
     this.flowTypes,
     this.policies,

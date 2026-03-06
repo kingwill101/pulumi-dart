@@ -15,7 +15,7 @@ class UserGroupMembershipArgs {
   /// Creates a new [UserGroupMembershipArgs].
   /// [groups] A list of IAM Groups to add the user to
   /// [user] The name of the IAM User to add to groups
-  UserGroupMembershipArgs({
+  const UserGroupMembershipArgs({
     required this.groups,
     required this.user,
   });

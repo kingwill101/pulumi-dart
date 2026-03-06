@@ -16,7 +16,7 @@ class ReportSummarySoleTenantNodeAllocationResponse {
   /// [allocatedAssetCount] Count of assets allocated to these nodes
   /// [node] Sole Tenant node type, e.g. "m3-node-128-3904"
   /// [nodeCount] Count of this node type to be provisioned
-  ReportSummarySoleTenantNodeAllocationResponse({
+  const ReportSummarySoleTenantNodeAllocationResponse({
     required this.allocatedAssetCount,
     required this.node,
     required this.nodeCount,

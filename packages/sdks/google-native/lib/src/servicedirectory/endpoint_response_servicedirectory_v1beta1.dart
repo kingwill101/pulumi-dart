@@ -30,7 +30,7 @@ class EndpointResponseServicedirectoryV1beta1 {
   /// [port] Optional. Service Directory rejects values outside of `[0, 65535]`.
   /// [uid] A globally unique identifier (in UUID4 format) for this endpoint.
   /// [updateTime] The timestamp when the endpoint was last updated.
-  EndpointResponseServicedirectoryV1beta1({
+  const EndpointResponseServicedirectoryV1beta1({
     required this.address,
     required this.createTime,
     required this.metadata,

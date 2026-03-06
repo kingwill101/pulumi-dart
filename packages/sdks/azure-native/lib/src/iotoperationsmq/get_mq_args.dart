@@ -15,7 +15,7 @@ class GetMqArgs {
   /// Creates a new [GetMqArgs].
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMqArgs({
+  const GetMqArgs({
     required this.mqName,
     required this.resourceGroupName,
   });

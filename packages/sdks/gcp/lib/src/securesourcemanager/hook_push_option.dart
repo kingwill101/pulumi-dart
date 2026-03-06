@@ -11,7 +11,7 @@ class HookPushOption {
 
   /// Creates a new [HookPushOption].
   /// [branchFilter] Trigger hook for matching branches only.
-  HookPushOption({
+  const HookPushOption({
     this.branchFilter,
   });
 

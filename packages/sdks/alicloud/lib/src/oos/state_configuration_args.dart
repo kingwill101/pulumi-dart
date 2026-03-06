@@ -39,7 +39,7 @@ class StateConfigurationArgs {
   /// [targets] The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
   /// [templateName] The name of the template.
   /// [templateVersion] The version number. If you do not specify this parameter, the system uses the latest version.
-  StateConfigurationArgs({
+  const StateConfigurationArgs({
     this.configureMode,
     this.description,
     this.parameters,

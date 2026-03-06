@@ -50,7 +50,7 @@ class GetRegistrationResult {
   /// [state] The state of the `Registration`
   /// [supportedPrivacy] Set of options for the `contact_settings.privacy` field that this `Registration` supports.
   /// [transferFailureReason] Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
-  GetRegistrationResult({
+  const GetRegistrationResult({
     required this.contactSettings,
     required this.createTime,
     required this.dnsSettings,

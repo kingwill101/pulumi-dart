@@ -21,7 +21,7 @@ class EcsKeyPairAttachmentArgs {
   /// [instanceIds] The list of ECS instance's IDs.
   /// [keyName] New field 'key_pair_name' instead.
   /// [keyPairName] The name of key pair used to bind.
-  EcsKeyPairAttachmentArgs({
+  const EcsKeyPairAttachmentArgs({
     this.force,
     required this.instanceIds,
     this.keyName,

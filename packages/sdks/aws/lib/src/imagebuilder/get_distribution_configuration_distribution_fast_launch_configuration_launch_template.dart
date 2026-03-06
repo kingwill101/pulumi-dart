@@ -14,7 +14,7 @@ class GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTempl
   /// [launchTemplateId] ID of the Amazon EC2 launch template.
   /// [launchTemplateName] The name of the launch template to use for faster launching for a Windows AMI.
   /// [launchTemplateVersion] The version of the launch template to use for faster launching for a Windows AMI.
-  GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate({
+  const GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate({
     required this.launchTemplateId,
     required this.launchTemplateName,
     required this.launchTemplateVersion,

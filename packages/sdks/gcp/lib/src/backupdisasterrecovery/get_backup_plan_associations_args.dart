@@ -20,7 +20,7 @@ class GetBackupPlanAssociationsArgs {
   /// [location] The location where the Backup Plan Association resources reside.
   /// [project] The project in which the resource belongs. If it
   /// [resourceType] The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
-  GetBackupPlanAssociationsArgs({
+  const GetBackupPlanAssociationsArgs({
     required this.location,
     this.project,
     this.resourceType,

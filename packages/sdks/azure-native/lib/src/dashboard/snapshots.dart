@@ -9,7 +9,7 @@ class Snapshots {
 
   /// Creates a new [Snapshots].
   /// [externalEnabled] Set to false to disable external snapshot publish endpoint
-  Snapshots({
+  const Snapshots({
     this.externalEnabled,
   });
 

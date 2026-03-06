@@ -18,7 +18,7 @@ class GetGuestConfigurationAssignmentsVMSSArgs {
   /// [name] The guest configuration assignment name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmssName] The name of the virtual machine scale set.
-  GetGuestConfigurationAssignmentsVMSSArgs({
+  const GetGuestConfigurationAssignmentsVMSSArgs({
     required this.name,
     required this.resourceGroupName,
     required this.vmssName,

@@ -36,7 +36,7 @@ class GetNetworkGroupResult {
   /// [resourceGuid] Unique identifier for this resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetNetworkGroupResult({
+  const GetNetworkGroupResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

@@ -15,7 +15,7 @@ class GetInstanceBackupIamPolicyArgs {
   /// [backupId] Required.
   /// [instanceId] Required.
   /// [project] Optional.
-  GetInstanceBackupIamPolicyArgs({
+  const GetInstanceBackupIamPolicyArgs({
     required this.backupId,
     required this.instanceId,
     this.project,

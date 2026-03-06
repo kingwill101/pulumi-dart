@@ -15,7 +15,7 @@ class PreventionInspectTemplateInspectConfigRuleSet {
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSet].
   /// [infoTypes] List of infoTypes this rule set is applied to.
   /// [rules] Set of rules to be applied to infoTypes. The rules are applied in order.
-  PreventionInspectTemplateInspectConfigRuleSet({
+  const PreventionInspectTemplateInspectConfigRuleSet({
     required this.infoTypes,
     required this.rules,
   });

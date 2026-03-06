@@ -12,7 +12,7 @@ class NetworkPolicyResponse {
   /// Creates a new [NetworkPolicyResponse].
   /// [egress] The egress policy for the managed namespace.
   /// [ingress] The ingress policy for the managed namespace.
-  NetworkPolicyResponse({
+  const NetworkPolicyResponse({
     this.egress,
     this.ingress,
   });

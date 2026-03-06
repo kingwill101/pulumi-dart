@@ -17,7 +17,7 @@ class WindowsVirtualMachineGalleryImageReference {
   /// [publisher] The Publisher of the Gallery Image. Changing this forces a new resource to be created.
   /// [sku] The SKU of the Gallery Image. Changing this forces a new resource to be created.
   /// [version] The Version of the Gallery Image. Changing this forces a new resource to be created.
-  WindowsVirtualMachineGalleryImageReference({
+  const WindowsVirtualMachineGalleryImageReference({
     required this.offer,
     required this.publisher,
     required this.sku,

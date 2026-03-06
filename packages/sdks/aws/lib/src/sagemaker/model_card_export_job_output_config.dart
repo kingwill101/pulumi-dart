@@ -8,7 +8,7 @@ class ModelCardExportJobOutputConfig {
 
   /// Creates a new [ModelCardExportJobOutputConfig].
   /// [s3OutputPath] Amazon S3 output path.
-  ModelCardExportJobOutputConfig({
+  const ModelCardExportJobOutputConfig({
     required this.s3OutputPath,
   });
 

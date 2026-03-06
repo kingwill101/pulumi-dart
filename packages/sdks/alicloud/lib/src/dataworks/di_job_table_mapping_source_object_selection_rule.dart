@@ -20,7 +20,7 @@ class DiJobTableMappingSourceObjectSelectionRule {
   /// [expression] Expression, such as mysql_table_1
   /// [expressionType] Expression type, value range: Exact/Regex
   /// [objectType] Object type, optional enumeration value:
-  DiJobTableMappingSourceObjectSelectionRule({
+  const DiJobTableMappingSourceObjectSelectionRule({
     this.action,
     this.expression,
     this.expressionType,

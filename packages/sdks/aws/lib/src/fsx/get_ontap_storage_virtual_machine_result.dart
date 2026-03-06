@@ -49,7 +49,7 @@ class GetOntapStorageVirtualMachineResult {
   /// [subtype] The SVM's subtype.
   /// [tags] Required.
   /// [uuid] The SVM's UUID.
-  GetOntapStorageVirtualMachineResult({
+  const GetOntapStorageVirtualMachineResult({
     required this.activeDirectoryConfigurations,
     required this.arn,
     required this.creationTime,

@@ -10,7 +10,7 @@ class NativePerformanceDataResponse {
 
   /// Creates a new [NativePerformanceDataResponse].
   /// [dataSource] The data source for this resource.
-  NativePerformanceDataResponse({
+  const NativePerformanceDataResponse({
     required this.dataSource,
   });
 

@@ -8,7 +8,7 @@ class InsightFiltersNetworkDestinationIpv4 {
 
   /// Creates a new [InsightFiltersNetworkDestinationIpv4].
   /// [cidr] A finding's CIDR value.
-  InsightFiltersNetworkDestinationIpv4({
+  const InsightFiltersNetworkDestinationIpv4({
     required this.cidr,
   });
 

@@ -12,7 +12,7 @@ class Nonce {
   /// Creates a new [Nonce].
   /// [nonceExpirationInterval] The time after the request is made when the nonce should expire.
   /// [validateNonce] &lt;code&gt;false&lt;/code&gt; if the nonce should not be validated while completing the login flow; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  Nonce({
+  const Nonce({
     this.nonceExpirationInterval,
     this.validateNonce,
   });

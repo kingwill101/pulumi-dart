@@ -13,7 +13,7 @@ class GoogleIamV1AuditLogConfigDnsV1beta2 {
   /// Creates a new [GoogleIamV1AuditLogConfigDnsV1beta2].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  GoogleIamV1AuditLogConfigDnsV1beta2({
+  const GoogleIamV1AuditLogConfigDnsV1beta2({
     this.exemptedMembers,
     this.logType,
   });

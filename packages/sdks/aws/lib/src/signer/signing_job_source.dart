@@ -9,7 +9,7 @@ class SigningJobSource {
 
   /// Creates a new [SigningJobSource].
   /// [s3] A configuration block describing the S3 Source object: See S3 Source below for details.
-  SigningJobSource({
+  const SigningJobSource({
     required this.s3,
   });
 

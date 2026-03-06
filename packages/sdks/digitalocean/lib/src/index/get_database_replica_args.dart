@@ -18,7 +18,7 @@ class GetDatabaseReplicaArgs {
   /// [clusterId] The ID of the original source database cluster.
   /// [name] The name for the database replica.
   /// [tags] A list of tag names to be applied to the database replica.
-  GetDatabaseReplicaArgs({
+  const GetDatabaseReplicaArgs({
     required this.clusterId,
     required this.name,
     this.tags,

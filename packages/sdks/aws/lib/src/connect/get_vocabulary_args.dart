@@ -26,7 +26,7 @@ class GetVocabularyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the Vocabulary.
   /// [vocabularyId] Returns information on a specific Vocabulary by Vocabulary id
-  GetVocabularyArgs({
+  const GetVocabularyArgs({
     required this.instanceId,
     this.name,
     this.region,

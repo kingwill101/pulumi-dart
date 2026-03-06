@@ -11,7 +11,7 @@ class ImagePipelineLoggingConfiguration {
   /// Creates a new [ImagePipelineLoggingConfiguration].
   /// [imageLogGroupName] Name of the CloudWatch Log Group to send image logs to.
   /// [pipelineLogGroupName] Name of the CloudWatch Log Group to send pipeline logs to.
-  ImagePipelineLoggingConfiguration({
+  const ImagePipelineLoggingConfiguration({
     this.imageLogGroupName,
     this.pipelineLogGroupName,
   });

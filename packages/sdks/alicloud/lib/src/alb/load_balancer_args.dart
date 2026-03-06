@@ -67,7 +67,7 @@ class LoadBalancerArgs {
   /// [tags] The tag of the resource
   /// [vpcId] The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
   /// [zoneMappings] The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.accessLogConfig,
     this.addressAllocatedMode,
     this.addressIpVersion,

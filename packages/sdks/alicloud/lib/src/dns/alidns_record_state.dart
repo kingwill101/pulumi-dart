@@ -39,7 +39,7 @@ class AlidnsRecordState {
   /// [type] The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
   /// [userClientIp] The IP address of the client.
   /// [value] The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
-  AlidnsRecordState({
+  const AlidnsRecordState({
     this.domainName,
     this.lang,
     this.line,

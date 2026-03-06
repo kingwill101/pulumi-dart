@@ -13,7 +13,7 @@ class GetFirewallSettingsDefaultFirewallIds {
   /// [nodebalancer] Required.
   /// [publicInterface] Required.
   /// [vpcInterface] Required.
-  GetFirewallSettingsDefaultFirewallIds({
+  const GetFirewallSettingsDefaultFirewallIds({
     required this.linode,
     required this.nodebalancer,
     required this.publicInterface,

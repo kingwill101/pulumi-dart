@@ -18,7 +18,7 @@ class ContainerPolicyArgs {
   /// [containerName] The name of the container.
   /// [policy] The contents of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ContainerPolicyArgs({
+  const ContainerPolicyArgs({
     required this.containerName,
     required this.policy,
     this.region,

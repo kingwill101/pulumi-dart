@@ -9,7 +9,7 @@ class RRTypeEnumValueResponse {
 
   /// Creates a new [RRTypeEnumValueResponse].
   /// [value] Property value
-  RRTypeEnumValueResponse({
+  const RRTypeEnumValueResponse({
     this.value,
   });
 

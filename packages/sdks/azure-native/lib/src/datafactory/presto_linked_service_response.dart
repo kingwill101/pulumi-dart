@@ -73,7 +73,7 @@ class PrestoLinkedServiceResponse {
   /// [useSystemTrustStore] Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
   /// [username] The user name used to connect to the Presto server.
   /// [version] Version of the linked service.
-  PrestoLinkedServiceResponse({
+  const PrestoLinkedServiceResponse({
     this.allowHostNameCNMismatch,
     this.allowSelfSignedServerCert,
     this.annotations,

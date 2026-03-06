@@ -24,7 +24,7 @@ class GetZoneResult {
   /// [numberOfRecordSets] The number of records already in the zone.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the DNS Zone.
-  GetZoneResult({
+  const GetZoneResult({
     required this.id,
     required this.maxNumberOfRecordSets,
     required this.name,

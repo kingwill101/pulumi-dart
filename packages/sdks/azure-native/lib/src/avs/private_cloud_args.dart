@@ -71,7 +71,7 @@ class PrivateCloudArgs {
   /// [tags] Resource tags.
   /// [vcenterPassword] Optionally, set the vCenter admin password when the private cloud is created
   /// [virtualNetworkId] Azure resource ID of the virtual network
-  PrivateCloudArgs({
+  const PrivateCloudArgs({
     this.availability,
     this.dnsZoneType,
     this.encryption,

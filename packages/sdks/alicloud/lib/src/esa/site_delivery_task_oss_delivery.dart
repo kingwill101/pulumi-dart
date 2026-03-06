@@ -14,7 +14,7 @@ class SiteDeliveryTaskOssDelivery {
   /// [bucketName] Optional.
   /// [prefixPath] Optional.
   /// [region] The region ID of the service.
-  SiteDeliveryTaskOssDelivery({
+  const SiteDeliveryTaskOssDelivery({
     this.aliuid,
     this.bucketName,
     this.prefixPath,

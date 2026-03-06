@@ -8,7 +8,7 @@ class AppHostingBuildSourceContainer {
 
   /// Creates a new [AppHostingBuildSourceContainer].
   /// [image] A URI representing a container for the backend to use.
-  AppHostingBuildSourceContainer({
+  const AppHostingBuildSourceContainer({
     required this.image,
   });
 

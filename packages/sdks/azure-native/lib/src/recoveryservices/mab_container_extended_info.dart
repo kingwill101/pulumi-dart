@@ -21,7 +21,7 @@ class MabContainerExtendedInfo {
   /// [lastBackupStatus] Latest backup status of this container.
   /// [lastRefreshedAt] Time stamp when this container was refreshed.
   /// [policyName] Backup policy associated with this container.
-  MabContainerExtendedInfo({
+  const MabContainerExtendedInfo({
     this.backupItemType,
     this.backupItems,
     this.lastBackupStatus,

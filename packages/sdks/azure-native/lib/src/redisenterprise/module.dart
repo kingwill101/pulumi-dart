@@ -12,7 +12,7 @@ class Module {
   /// Creates a new [Module].
   /// [args] Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
   /// [name] The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
-  Module({
+  const Module({
     this.args,
     required this.name,
   });

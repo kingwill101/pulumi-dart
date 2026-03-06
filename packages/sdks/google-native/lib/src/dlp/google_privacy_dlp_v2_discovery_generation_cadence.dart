@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DiscoveryGenerationCadence {
   /// Creates a new [GooglePrivacyDlpV2DiscoveryGenerationCadence].
   /// [schemaModifiedCadence] Governs when to update data profiles when a schema is modified.
   /// [tableModifiedCadence] Governs when to update data profiles when a table is modified.
-  GooglePrivacyDlpV2DiscoveryGenerationCadence({
+  const GooglePrivacyDlpV2DiscoveryGenerationCadence({
     this.schemaModifiedCadence,
     this.tableModifiedCadence,
   });

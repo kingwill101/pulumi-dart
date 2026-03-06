@@ -43,7 +43,7 @@ class IdentityProviders {
   /// [google] The configuration settings of the Google provider.
   /// [legacyMicrosoftAccount] The configuration settings of the legacy Microsoft Account provider.
   /// [twitter] The configuration settings of the Twitter provider.
-  IdentityProviders({
+  const IdentityProviders({
     this.apple,
     this.azureActiveDirectory,
     this.azureStaticWebApps,

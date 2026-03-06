@@ -12,7 +12,7 @@ class CertificateProperties {
   /// Creates a new [CertificateProperties].
   /// [certificate] The certificate content
   /// [isVerified] Determines whether certificate has been verified.
-  CertificateProperties({
+  const CertificateProperties({
     this.certificate,
     this.isVerified,
   });

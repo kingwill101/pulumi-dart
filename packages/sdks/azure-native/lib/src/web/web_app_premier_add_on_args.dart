@@ -42,7 +42,7 @@ class WebAppPremierAddOnArgs {
   /// [sku] Premier add on SKU.
   /// [tags] Resource tags.
   /// [vendor] Premier add on Vendor.
-  WebAppPremierAddOnArgs({
+  const WebAppPremierAddOnArgs({
     this.kind,
     this.location,
     this.marketplaceOffer,

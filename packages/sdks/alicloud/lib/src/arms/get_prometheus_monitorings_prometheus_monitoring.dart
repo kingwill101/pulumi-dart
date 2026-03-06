@@ -23,7 +23,7 @@ class GetPrometheusMonitoringsPrometheusMonitoring {
   /// [monitoringName] The name of the monitoring configuration.
   /// [status] The status of the monitoring configuration. Valid values: `run`, `stop`.
   /// [type] The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
-  GetPrometheusMonitoringsPrometheusMonitoring({
+  const GetPrometheusMonitoringsPrometheusMonitoring({
     required this.clusterId,
     required this.configYaml,
     required this.id,

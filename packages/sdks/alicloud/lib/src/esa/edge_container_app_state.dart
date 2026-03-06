@@ -64,7 +64,7 @@ class EdgeContainerAppState {
   /// [servicePort] The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
   /// [status] The status of the application.
   /// [targetPort] The server port. Valid values: 1 to 65535.
-  EdgeContainerAppState({
+  const EdgeContainerAppState({
     this.createTime,
     this.edgeContainerAppName,
     this.healthCheckFailTimes,

@@ -29,7 +29,7 @@ class AppHostingDomainArgs {
   /// [location] The location of the Backend that this Domain is associated with
   /// [project] The ID of the project in which the resource belongs.
   /// [serve] The serving behavior of the domain. If specified, the domain will
-  AppHostingDomainArgs({
+  const AppHostingDomainArgs({
     required this.backend,
     required this.domainId,
     required this.location,

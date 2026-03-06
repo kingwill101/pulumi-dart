@@ -8,7 +8,7 @@ class WebAclChallengeConfigImmunityTimeProperty {
 
   /// Creates a new [WebAclChallengeConfigImmunityTimeProperty].
   /// [immunityTime] The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default setting is 300.
-  WebAclChallengeConfigImmunityTimeProperty({
+  const WebAclChallengeConfigImmunityTimeProperty({
     this.immunityTime,
   });
 

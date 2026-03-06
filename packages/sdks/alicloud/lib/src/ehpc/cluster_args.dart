@@ -206,7 +206,7 @@ class ClusterArgs {
   /// [withoutAgent] Specifies whether not to install the agent. Default value: `false`.
   /// [withoutElasticIp] Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
   /// [zoneId] The ID of the zone.
-  ClusterArgs({
+  const ClusterArgs({
     this.accountType,
     this.additionalVolumes,
     this.applications,

@@ -13,7 +13,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailu
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
   /// [response] Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalDefaultBranch({
+  const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalDefaultBranch({
     this.nextStep,
     this.response,
   });

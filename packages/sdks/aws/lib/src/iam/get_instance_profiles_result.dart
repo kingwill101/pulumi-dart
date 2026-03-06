@@ -19,7 +19,7 @@ class GetInstanceProfilesResult {
   /// [names] Set of IAM instance profile names.
   /// [paths] Set of IAM instance profile paths.
   /// [roleName] Required.
-  GetInstanceProfilesResult({
+  const GetInstanceProfilesResult({
     required this.arns,
     required this.id,
     required this.names,

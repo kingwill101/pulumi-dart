@@ -22,7 +22,7 @@ class HoneypotPresetState {
   /// [meta] Honeypot template custom parameters. See `meta` below.
   /// [nodeId] Unique id of management node
   /// [presetName] Honeypot template custom name
-  HoneypotPresetState({
+  const HoneypotPresetState({
     this.honeypotImageName,
     this.honeypotPresetId,
     this.meta,

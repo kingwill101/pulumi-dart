@@ -7,7 +7,7 @@ class FeaturesApplicationInsights {
 
   /// Creates a new [FeaturesApplicationInsights].
   /// [disableGeneratedRule] Optional.
-  FeaturesApplicationInsights({
+  const FeaturesApplicationInsights({
     this.disableGeneratedRule,
   });
 

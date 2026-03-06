@@ -35,7 +35,7 @@ class DbInstanceIpArrayArgs {
   /// [dbInstanceIpArrayName] The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
   /// [modifyMode] The method of modification. Valid values:
   /// [securityIpLists] The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
-  DbInstanceIpArrayArgs({
+  const DbInstanceIpArrayArgs({
     required this.dbInstanceId,
     this.dbInstanceIpArrayAttribute,
     required this.dbInstanceIpArrayName,

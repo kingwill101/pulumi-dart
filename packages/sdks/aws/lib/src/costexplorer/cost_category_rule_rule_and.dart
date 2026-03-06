@@ -29,7 +29,7 @@ class CostCategoryRuleRuleAnd {
   /// [not] Return results that match both `Dimension` object.
   /// [ors] Return results that match both `Dimension` object.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  CostCategoryRuleRuleAnd({
+  const CostCategoryRuleRuleAnd({
     this.ands,
     this.costCategory,
     this.dimension,

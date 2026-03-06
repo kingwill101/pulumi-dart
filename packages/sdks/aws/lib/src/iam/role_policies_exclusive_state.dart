@@ -12,7 +12,7 @@ class RolePoliciesExclusiveState {
   /// Creates a new [RolePoliciesExclusiveState].
   /// [policyNames] A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   /// [roleName] IAM role name.
-  RolePoliciesExclusiveState({
+  const RolePoliciesExclusiveState({
     this.policyNames,
     this.roleName,
   });

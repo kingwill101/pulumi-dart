@@ -20,7 +20,7 @@ class GetVulWhitelistsWhitelist {
   /// [targetInfo] Set the effective range of the whitelist.
   /// [vulWhitelistId] The ID of the Vul Whitelist.
   /// [whitelist] Information about the vulnerability to be added to the whitelist.
-  GetVulWhitelistsWhitelist({
+  const GetVulWhitelistsWhitelist({
     required this.id,
     required this.reason,
     required this.targetInfo,

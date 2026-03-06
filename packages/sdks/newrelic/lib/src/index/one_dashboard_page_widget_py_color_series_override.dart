@@ -11,7 +11,7 @@ class OneDashboardPageWidgetPyColorSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetPyColorSeriesOverride].
   /// [color] (Optional) Choose a color to customize the color of your charts per series in area, bar, line, pie, and stacked bar charts. Accepted values are RGB, HEX, or HSL code.
   /// [seriesName] Series name
-  OneDashboardPageWidgetPyColorSeriesOverride({
+  const OneDashboardPageWidgetPyColorSeriesOverride({
     this.color,
     this.seriesName,
   });

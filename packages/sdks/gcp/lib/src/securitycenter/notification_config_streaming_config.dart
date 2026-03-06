@@ -26,7 +26,7 @@ class NotificationConfigStreamingConfig {
 
   /// Creates a new [NotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  NotificationConfigStreamingConfig({
+  const NotificationConfigStreamingConfig({
     required this.filter,
   });
 

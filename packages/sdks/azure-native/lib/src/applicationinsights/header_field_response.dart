@@ -12,7 +12,7 @@ class HeaderFieldResponse {
   /// Creates a new [HeaderFieldResponse].
   /// [headerFieldName] The name of the header.
   /// [headerFieldValue] The value of the header.
-  HeaderFieldResponse({
+  const HeaderFieldResponse({
     this.headerFieldName,
     this.headerFieldValue,
   });

@@ -68,7 +68,7 @@ class InfrastructureConfigurationState {
   /// [tags] Key-value map of resource tags to assign to the configuration. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [terminateInstanceOnFailure] Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
-  InfrastructureConfigurationState({
+  const InfrastructureConfigurationState({
     this.arn,
     this.dateCreated,
     this.dateUpdated,

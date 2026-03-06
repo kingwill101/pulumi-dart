@@ -10,7 +10,7 @@ class ListFleetCredentialsResult {
 
   /// Creates a new [ListFleetCredentialsResult].
   /// [kubeconfigs] Array of base64-encoded Kubernetes configuration files.
-  ListFleetCredentialsResult({
+  const ListFleetCredentialsResult({
     required this.kubeconfigs,
   });
 

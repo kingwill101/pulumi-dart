@@ -8,7 +8,7 @@ class FleetUpdateRunManagedClusterUpdateNodeImageSelection {
 
   /// Creates a new [FleetUpdateRunManagedClusterUpdateNodeImageSelection].
   /// [type] Specifies the node image upgrade type. Possible values are `Latest` and `Consistent`.
-  FleetUpdateRunManagedClusterUpdateNodeImageSelection({
+  const FleetUpdateRunManagedClusterUpdateNodeImageSelection({
     required this.type,
   });
 

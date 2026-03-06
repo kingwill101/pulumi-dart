@@ -12,7 +12,7 @@ class DomainState {
   /// Creates a new [DomainState].
   /// [domainName] Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
   /// [status] The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
-  DomainState({
+  const DomainState({
     this.domainName,
     this.status,
   });

@@ -12,7 +12,7 @@ class CreditDimensionResponse {
   /// Creates a new [CreditDimensionResponse].
   /// [key] The dimension key (e.g., productFamily, description, creditType)
   /// [value] The dimension value
-  CreditDimensionResponse({
+  const CreditDimensionResponse({
     required this.key,
     required this.value,
   });

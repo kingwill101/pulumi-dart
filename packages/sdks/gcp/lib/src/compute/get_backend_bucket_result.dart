@@ -37,7 +37,7 @@ class GetBackendBucketResult {
   /// [params] Required.
   /// [project] Optional.
   /// [selfLink] Required.
-  GetBackendBucketResult({
+  const GetBackendBucketResult({
     required this.bucketName,
     required this.cdnPolicies,
     required this.compressionMode,

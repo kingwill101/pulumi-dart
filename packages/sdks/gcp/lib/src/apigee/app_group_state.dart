@@ -43,7 +43,7 @@ class AppGroupState {
   /// [orgId] The Apigee Organization associated with the Apigee app group,
   /// [organization] App group name displayed in the UI
   /// [status] Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
-  AppGroupState({
+  const AppGroupState({
     this.appGroupId,
     this.attributes,
     this.channelId,

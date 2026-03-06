@@ -9,7 +9,7 @@ class GetKeyRingsKeyRing {
   /// Creates a new [GetKeyRingsKeyRing].
   /// [id] Required.
   /// [name] Required.
-  GetKeyRingsKeyRing({
+  const GetKeyRingsKeyRing({
     required this.id,
     required this.name,
   });

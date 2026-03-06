@@ -25,7 +25,7 @@ class GetRouterNatArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the router and NAT reside.
   /// [router] The name of the Cloud Router in which this NAT will be configured.
-  GetRouterNatArgs({
+  const GetRouterNatArgs({
     required this.name,
     this.project,
     this.region,

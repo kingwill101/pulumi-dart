@@ -20,7 +20,7 @@ class GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
   /// [ifCase] If case
   /// [isDeleted] Child agent is deleted
   /// [routeName] Route name
-  GetGenaiAgentVersionsAgentVersionAttachedChildAgent({
+  const GetGenaiAgentVersionsAgentVersionAttachedChildAgent({
     required this.agentName,
     required this.childAgentUuid,
     required this.ifCase,

@@ -44,7 +44,7 @@ class TagTemplateIamBindingArgs {
   /// [region] Template location region.
   /// [role] The role that should be applied. Only one
   /// [tagTemplate] Used to find the parent resource to bind the IAM policy to
-  TagTemplateIamBindingArgs({
+  const TagTemplateIamBindingArgs({
     this.condition,
     required this.members,
     this.project,

@@ -37,7 +37,7 @@ class ProactiveDetectionConfigurationArgs {
   /// [resourceName] The name of the Application Insights component resource.
   /// [ruleDefinitions] Static definitions of the ProactiveDetection configuration rule (same values for all components).
   /// [sendEmailsToSubscriptionOwners] A flag that indicated whether notifications on this rule should be sent to subscription owners
-  ProactiveDetectionConfigurationArgs({
+  const ProactiveDetectionConfigurationArgs({
     this.configurationId,
     this.customEmails,
     this.enabled,

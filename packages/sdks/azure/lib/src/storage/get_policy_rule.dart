@@ -19,7 +19,7 @@ class GetPolicyRule {
   /// [enabled] Boolean to specify whether the rule is enabled.
   /// [filters] A `filter` block as documented below.
   /// [name] The filter tag name used for tag based filtering for blob objects.
-  GetPolicyRule({
+  const GetPolicyRule({
     required this.actions,
     required this.enabled,
     required this.filters,

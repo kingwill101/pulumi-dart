@@ -15,7 +15,7 @@ class EmailNotification {
   /// [customEmails] the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
   /// [sendToSubscriptionAdministrator] a value indicating whether to send email to subscription administrator.
   /// [sendToSubscriptionCoAdministrators] a value indicating whether to send email to subscription co-administrators.
-  EmailNotification({
+  const EmailNotification({
     this.customEmails,
     this.sendToSubscriptionAdministrator,
     this.sendToSubscriptionCoAdministrators,

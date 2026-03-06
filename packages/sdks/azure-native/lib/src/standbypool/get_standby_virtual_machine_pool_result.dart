@@ -40,7 +40,7 @@ class GetStandbyVirtualMachinePoolResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachineState] Specifies the desired state of virtual machines in the pool.
-  GetStandbyVirtualMachinePoolResult({
+  const GetStandbyVirtualMachinePoolResult({
     this.attachedVirtualMachineScaleSetId,
     required this.azureApiVersion,
     this.elasticityProfile,

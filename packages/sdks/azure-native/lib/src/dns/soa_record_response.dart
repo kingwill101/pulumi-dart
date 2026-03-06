@@ -27,7 +27,7 @@ class SoaRecordResponse {
   /// [refreshTime] The refresh value for this SOA record.
   /// [retryTime] The retry time for this SOA record.
   /// [serialNumber] The serial number for this SOA record.
-  SoaRecordResponse({
+  const SoaRecordResponse({
     this.email,
     this.expireTime,
     this.host,

@@ -14,7 +14,7 @@ class SmartDetectorAlertRuleActionGroup {
   /// [emailSubject] Specifies a custom email subject if Email Receiver is specified in Monitor Action Group resource.
   /// [ids] Specifies the action group ids.
   /// [webhookPayload] A JSON String which Specifies the custom webhook payload if Webhook Receiver is specified in Monitor Action Group resource.
-  SmartDetectorAlertRuleActionGroup({
+  const SmartDetectorAlertRuleActionGroup({
     this.emailSubject,
     required this.ids,
     this.webhookPayload,

@@ -24,7 +24,7 @@ class AzureDiskVolumeSource {
   /// [fsType] fsType is Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
   /// [kind] kind expected values are Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared
   /// [readOnly] readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
-  AzureDiskVolumeSource({
+  const AzureDiskVolumeSource({
     this.cachingMode,
     required this.diskName,
     required this.diskURI,

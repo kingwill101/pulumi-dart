@@ -20,7 +20,7 @@ class KxClusterScalingGroupConfiguration {
   /// [memoryReservation] A reservation of the minimum amount of memory that should be available on the scaling group for a kdb cluster to be successfully placed in a scaling group.
   /// [nodeCount] The number of kdb cluster nodes.
   /// [scalingGroupName] A unique identifier for the kdb scaling group.
-  KxClusterScalingGroupConfiguration({
+  const KxClusterScalingGroupConfiguration({
     this.cpu,
     this.memoryLimit,
     required this.memoryReservation,

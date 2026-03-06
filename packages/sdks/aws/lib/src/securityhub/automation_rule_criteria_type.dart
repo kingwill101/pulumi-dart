@@ -9,7 +9,7 @@ class AutomationRuleCriteriaType {
   /// Creates a new [AutomationRuleCriteriaType].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaType({
+  const AutomationRuleCriteriaType({
     required this.comparison,
     required this.value,
   });

@@ -26,7 +26,7 @@ class CompensationEntryResponse {
   /// [range] Optional. Compensation range.
   /// [type] Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
   /// [unit] Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-  CompensationEntryResponse({
+  const CompensationEntryResponse({
     required this.amount,
     required this.description,
     required this.expectedUnitsPerYear,

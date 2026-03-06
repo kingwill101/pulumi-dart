@@ -8,7 +8,7 @@ class CxEntityTypeExcludedPhrase {
 
   /// Creates a new [CxEntityTypeExcludedPhrase].
   /// [value] The word or phrase to be excluded.
-  CxEntityTypeExcludedPhrase({
+  const CxEntityTypeExcludedPhrase({
     this.value,
   });
 

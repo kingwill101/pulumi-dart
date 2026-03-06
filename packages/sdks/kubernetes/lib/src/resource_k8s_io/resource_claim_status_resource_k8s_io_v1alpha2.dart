@@ -26,7 +26,7 @@ class ResourceClaimStatusResourceK8sIoV1alpha2 {
   /// [deallocationRequested] DeallocationRequested indicates that a ResourceClaim is to be deallocated.
   /// [driverName] DriverName is a copy of the driver name from the ResourceClass at the time when allocation started.
   /// [reservedFor] ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started.
-  ResourceClaimStatusResourceK8sIoV1alpha2({
+  const ResourceClaimStatusResourceK8sIoV1alpha2({
     this.allocation,
     this.deallocationRequested,
     this.driverName,

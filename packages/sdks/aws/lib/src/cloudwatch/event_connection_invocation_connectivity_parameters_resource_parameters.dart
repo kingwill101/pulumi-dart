@@ -10,7 +10,7 @@ class EventConnectionInvocationConnectivityParametersResourceParameters {
   /// Creates a new [EventConnectionInvocationConnectivityParametersResourceParameters].
   /// [resourceAssociationArn] Optional.
   /// [resourceConfigurationArn] ARN of the Amazon VPC Lattice resource configuration for the resource endpoint.
-  EventConnectionInvocationConnectivityParametersResourceParameters({
+  const EventConnectionInvocationConnectivityParametersResourceParameters({
     this.resourceAssociationArn,
     required this.resourceConfigurationArn,
   });

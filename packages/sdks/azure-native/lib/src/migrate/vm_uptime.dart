@@ -12,7 +12,7 @@ class VmUptime {
   /// Creates a new [VmUptime].
   /// [daysPerMonth] Number of days in a month for VM uptime.
   /// [hoursPerDay] Number of hours per day for VM uptime.
-  VmUptime({
+  const VmUptime({
     this.daysPerMonth,
     this.hoursPerDay,
   });

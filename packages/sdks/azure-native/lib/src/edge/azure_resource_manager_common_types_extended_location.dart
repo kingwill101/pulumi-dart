@@ -12,7 +12,7 @@ class AzureResourceManagerCommonTypesExtendedLocation {
   /// Creates a new [AzureResourceManagerCommonTypesExtendedLocation].
   /// [name] The name of the extended location.
   /// [type] The type of the extended location.
-  AzureResourceManagerCommonTypesExtendedLocation({
+  const AzureResourceManagerCommonTypesExtendedLocation({
     required this.name,
     required this.type,
   });

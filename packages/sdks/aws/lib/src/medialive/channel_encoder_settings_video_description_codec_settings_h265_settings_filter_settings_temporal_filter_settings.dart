@@ -11,7 +11,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSetti
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings].
   /// [postFilterSharpening] Post filter sharpening.
   /// [strength] Filter strength.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings({
     this.postFilterSharpening,
     this.strength,
   });

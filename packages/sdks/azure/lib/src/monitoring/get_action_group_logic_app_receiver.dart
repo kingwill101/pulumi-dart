@@ -17,7 +17,7 @@ class GetActionGroupLogicAppReceiver {
   /// [name] Specifies the name of the Action Group.
   /// [resourceId] The Azure resource ID of the logic app.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  GetActionGroupLogicAppReceiver({
+  const GetActionGroupLogicAppReceiver({
     required this.callbackUrl,
     required this.name,
     required this.resourceId,

@@ -30,7 +30,7 @@ class HAVipArgs {
   /// [resourceGroupId] The ID of the resource group to which the HAVIP belongs.
   /// [tags] The list of tags.
   /// [vswitchId] The vswitch_id of the HaVip, the field can't be changed.
-  HAVipArgs({
+  const HAVipArgs({
     this.description,
     this.haVipName,
     this.havipName,

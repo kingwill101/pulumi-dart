@@ -8,7 +8,7 @@ class NetworkPortOptions {
 
   /// Creates a new [NetworkPortOptions].
   /// [isolated] Specifies whether the network port is isolated, preventing traffic flow from other ports.
-  NetworkPortOptions({
+  const NetworkPortOptions({
     this.isolated,
   });
 

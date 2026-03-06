@@ -9,7 +9,7 @@ class VmwareAAGConfig {
 
   /// Creates a new [VmwareAAGConfig].
   /// [aagConfigDisabled] Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
-  VmwareAAGConfig({
+  const VmwareAAGConfig({
     this.aagConfigDisabled,
   });
 

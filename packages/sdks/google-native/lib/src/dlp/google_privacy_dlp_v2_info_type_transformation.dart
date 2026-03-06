@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
   /// Creates a new [GooglePrivacyDlpV2InfoTypeTransformation].
   /// [infoTypes] InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
   /// [primitiveTransformation] Primitive transformation to apply to the infoType.
-  GooglePrivacyDlpV2InfoTypeTransformation({
+  const GooglePrivacyDlpV2InfoTypeTransformation({
     this.infoTypes,
     required this.primitiveTransformation,
   });

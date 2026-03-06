@@ -27,7 +27,7 @@ class Encryption {
   /// [mpegCenc] Configuration for MPEG Common Encryption (MPEG-CENC).
   /// [sampleAes] Configuration for SAMPLE-AES encryption.
   /// [secretManagerKeySource] Keys are stored in Google Secret Manager.
-  Encryption({
+  const Encryption({
     this.aes128,
     required this.drmSystems,
     required this.id,

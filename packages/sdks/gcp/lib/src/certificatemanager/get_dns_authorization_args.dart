@@ -21,7 +21,7 @@ class GetDnsAuthorizationArgs {
   /// [location] The Certificate Manager location. If not specified, "global" is used.
   /// [name] The name of the DNS Authorization.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  GetDnsAuthorizationArgs({
+  const GetDnsAuthorizationArgs({
     required this.domain,
     this.location,
     required this.name,

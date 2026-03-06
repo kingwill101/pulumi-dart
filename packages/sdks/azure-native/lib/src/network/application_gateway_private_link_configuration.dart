@@ -16,7 +16,7 @@ class ApplicationGatewayPrivateLinkConfiguration {
   /// [id] Resource ID.
   /// [ipConfigurations] An array of application gateway private link ip configurations.
   /// [name] Name of the private link configuration that is unique within an Application Gateway.
-  ApplicationGatewayPrivateLinkConfiguration({
+  const ApplicationGatewayPrivateLinkConfiguration({
     this.id,
     this.ipConfigurations,
     this.name,

@@ -10,7 +10,7 @@ class DiskEncryptionConfiguration {
 
   /// Creates a new [DiskEncryptionConfiguration].
   /// [targets] On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
-  DiskEncryptionConfiguration({
+  const DiskEncryptionConfiguration({
     this.targets,
   });
 

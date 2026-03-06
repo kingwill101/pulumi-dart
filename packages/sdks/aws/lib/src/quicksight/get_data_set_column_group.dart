@@ -8,7 +8,7 @@ class GetDataSetColumnGroup {
 
   /// Creates a new [GetDataSetColumnGroup].
   /// [geoSpatialColumnGroups] Required.
-  GetDataSetColumnGroup({
+  const GetDataSetColumnGroup({
     required this.geoSpatialColumnGroups,
   });
 

@@ -11,7 +11,7 @@ class AlertAnnotation {
   /// Creates a new [AlertAnnotation].
   /// [key] Annotations's key for new alert.
   /// [value] Annotations's value for new alert.
-  AlertAnnotation({
+  const AlertAnnotation({
     required this.key,
     required this.value,
   });

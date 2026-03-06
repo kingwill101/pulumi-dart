@@ -21,7 +21,7 @@ class PlacementGroupArgs {
   /// [placementGroupPolicy] Whether Linodes must be able to become compliant during assignment. (Default `strict`)
   /// [placementGroupType] The placement group type to use when placing Linodes in this group.
   /// [region] The region of the Placement Group.
-  PlacementGroupArgs({
+  const PlacementGroupArgs({
     required this.label,
     this.placementGroupPolicy,
     required this.placementGroupType,

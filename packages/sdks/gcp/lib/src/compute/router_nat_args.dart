@@ -144,7 +144,7 @@ class RouterNatArgs {
   /// [tcpTransitoryIdleTimeoutSec] Timeout (in seconds) for TCP transitory connections.
   /// [type] Indicates whether this NAT is used for public or private IP translation.
   /// [udpIdleTimeoutSec] Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
-  RouterNatArgs({
+  const RouterNatArgs({
     this.autoNetworkTier,
     this.drainNatIps,
     this.enableDynamicPortAllocation,

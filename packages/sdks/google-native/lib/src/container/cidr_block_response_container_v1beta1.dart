@@ -12,7 +12,7 @@ class CidrBlockResponseContainerV1beta1 {
   /// Creates a new [CidrBlockResponseContainerV1beta1].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.
   /// [displayName] display_name is an optional field for users to identify CIDR blocks.
-  CidrBlockResponseContainerV1beta1({
+  const CidrBlockResponseContainerV1beta1({
     required this.cidrBlock,
     required this.displayName,
   });

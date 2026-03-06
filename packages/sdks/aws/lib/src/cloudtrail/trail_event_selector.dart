@@ -18,7 +18,7 @@ class TrailEventSelector {
   /// [excludeManagementEventSources] A set of event sources to exclude. Valid values include: `kms.amazonaws.com` and `rdsdata.amazonaws.com`. `include_management_events` must be set to`true` to allow this.
   /// [includeManagementEvents] Whether to include management events for your trail. Defaults to `true`.
   /// [readWriteType] Type of events to log. Valid values are `ReadOnly`, `WriteOnly`, `All`. Default value is `All`.
-  TrailEventSelector({
+  const TrailEventSelector({
     this.dataResources,
     this.excludeManagementEventSources,
     this.includeManagementEvents,

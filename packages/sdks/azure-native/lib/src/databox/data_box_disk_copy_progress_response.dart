@@ -25,7 +25,7 @@ class DataBoxDiskCopyProgressResponse {
   /// [percentComplete] Indicates the percentage completed for the copy of the disk.
   /// [serialNumber] The serial number of the disk
   /// [status] The Status of the copy
-  DataBoxDiskCopyProgressResponse({
+  const DataBoxDiskCopyProgressResponse({
     required this.actions,
     required this.bytesCopied,
     required this.error,

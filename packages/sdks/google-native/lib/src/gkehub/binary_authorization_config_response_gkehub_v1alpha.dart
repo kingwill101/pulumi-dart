@@ -13,7 +13,7 @@ class BinaryAuthorizationConfigResponseGkehubV1alpha {
   /// Creates a new [BinaryAuthorizationConfigResponseGkehubV1alpha].
   /// [evaluationMode] Optional. Mode of operation for binauthz policy evaluation.
   /// [policyBindings] Optional. Binauthz policies that apply to this cluster.
-  BinaryAuthorizationConfigResponseGkehubV1alpha({
+  const BinaryAuthorizationConfigResponseGkehubV1alpha({
     required this.evaluationMode,
     required this.policyBindings,
   });

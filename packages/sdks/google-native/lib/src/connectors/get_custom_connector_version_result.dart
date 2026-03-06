@@ -34,7 +34,7 @@ class GetCustomConnectorVersionResult {
   /// [specLocation] Optional. Location of the custom connector spec.
   /// [type] Type of the customConnector.
   /// [updateTime] Updated time.
-  GetCustomConnectorVersionResult({
+  const GetCustomConnectorVersionResult({
     required this.authConfig,
     required this.createTime,
     required this.destinationConfig,

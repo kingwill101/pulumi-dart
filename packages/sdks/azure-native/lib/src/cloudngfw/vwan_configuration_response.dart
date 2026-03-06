@@ -23,7 +23,7 @@ class VwanConfigurationResponse {
   /// [trustSubnet] Trust Subnet
   /// [unTrustSubnet] Untrust Subnet
   /// [vHub] vHub Address
-  VwanConfigurationResponse({
+  const VwanConfigurationResponse({
     this.ipOfTrustSubnetForUdr,
     this.networkVirtualApplianceId,
     this.trustSubnet,

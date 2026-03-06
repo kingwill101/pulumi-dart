@@ -26,7 +26,7 @@ class ReleaseResponse {
   /// [releaseUser] Identifies the user who created the release.
   /// [type] Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
   /// [version] The configuration and content that was released.
-  ReleaseResponse({
+  const ReleaseResponse({
     required this.message,
     required this.name,
     required this.releaseTime,

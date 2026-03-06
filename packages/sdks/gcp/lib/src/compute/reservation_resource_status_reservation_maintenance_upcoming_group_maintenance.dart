@@ -37,7 +37,7 @@ class ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance {
   /// [type] (Output)
   /// [windowEndTime] (Output)
   /// [windowStartTime] (Output)
-  ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance({
+  const ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance({
     this.canReschedule,
     this.latestWindowStartTime,
     this.maintenanceOnShutdown,

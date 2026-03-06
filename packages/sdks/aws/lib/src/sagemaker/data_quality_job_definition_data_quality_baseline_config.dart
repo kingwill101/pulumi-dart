@@ -13,7 +13,7 @@ class DataQualityJobDefinitionDataQualityBaselineConfig {
   /// Creates a new [DataQualityJobDefinitionDataQualityBaselineConfig].
   /// [constraintsResource] The constraints resource for a monitoring job. Fields are documented below.
   /// [statisticsResource] The statistics resource for a monitoring job. Fields are documented below.
-  DataQualityJobDefinitionDataQualityBaselineConfig({
+  const DataQualityJobDefinitionDataQualityBaselineConfig({
     this.constraintsResource,
     this.statisticsResource,
   });

@@ -17,7 +17,7 @@ class GetRoleResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] See Argument Reference above.
   /// [region] See Argument Reference above.
-  GetRoleResult({
+  const GetRoleResult({
     required this.domainId,
     required this.id,
     required this.name,

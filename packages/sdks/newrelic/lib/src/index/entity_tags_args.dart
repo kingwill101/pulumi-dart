@@ -16,7 +16,7 @@ class EntityTagsArgs {
   /// Creates a new [EntityTagsArgs].
   /// [guid] The guid of the entity to tag.
   /// [tags] A nested block that describes an entity tag. See Nested tag blocks below for details.
-  EntityTagsArgs({
+  const EntityTagsArgs({
     required this.guid,
     required this.tags,
   });

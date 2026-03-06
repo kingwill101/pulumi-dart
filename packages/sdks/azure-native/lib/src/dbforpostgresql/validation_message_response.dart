@@ -12,7 +12,7 @@ class ValidationMessageResponse {
   /// Creates a new [ValidationMessageResponse].
   /// [message] Validation message string.
   /// [state] Severity of validation message.
-  ValidationMessageResponse({
+  const ValidationMessageResponse({
     this.message,
     this.state,
   });

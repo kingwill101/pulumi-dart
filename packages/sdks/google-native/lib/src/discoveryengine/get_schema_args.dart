@@ -19,7 +19,7 @@ class GetSchemaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [schemaId] Required.
-  GetSchemaArgs({
+  const GetSchemaArgs({
     required this.collectionId,
     required this.dataStoreId,
     required this.location,

@@ -66,7 +66,7 @@ class ProtocolMountTargetState {
   /// [vpcId] The VPC ID of the protocol service mount point.
   /// [vswitchId] The vSwitch ID of the protocol service mount target.
   /// [vswitchIds] The vSwitch IDs of the protocol service mount target.
-  ProtocolMountTargetState({
+  const ProtocolMountTargetState({
     this.accessGroupName,
     this.createTime,
     this.description,

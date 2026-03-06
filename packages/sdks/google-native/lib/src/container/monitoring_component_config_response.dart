@@ -9,7 +9,7 @@ class MonitoringComponentConfigResponse {
 
   /// Creates a new [MonitoringComponentConfigResponse].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.
-  MonitoringComponentConfigResponse({
+  const MonitoringComponentConfigResponse({
     required this.enableComponents,
   });
 

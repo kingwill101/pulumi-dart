@@ -15,7 +15,7 @@ class InstanceAclAttachmentState {
   /// [aclId] The ID of the ACL to attach.
   /// [aclType] The type of the ACL. Valid values: `white`, `black`.
   /// [instanceId] The ID of the API Gateway instance that the ACL will be attached to.
-  InstanceAclAttachmentState({
+  const InstanceAclAttachmentState({
     this.aclId,
     this.aclType,
     this.instanceId,

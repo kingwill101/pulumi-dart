@@ -10,7 +10,7 @@ class PreviewFeatureRolloutOperation {
 
   /// Creates a new [PreviewFeatureRolloutOperation].
   /// [rolloutInput] The input for the rollout operation.
-  PreviewFeatureRolloutOperation({
+  const PreviewFeatureRolloutOperation({
     this.rolloutInput,
   });
 

@@ -38,7 +38,7 @@ class AseV3NetworkingConfigurationResponse {
   /// [remoteDebugEnabled] Property to enable and disable Remote Debug on ASEV3
   /// [type] Resource type.
   /// [windowsOutboundIpAddresses] Required.
-  AseV3NetworkingConfigurationResponse({
+  const AseV3NetworkingConfigurationResponse({
     this.allowNewPrivateEndpointConnections,
     required this.externalInboundIpAddresses,
     this.ftpEnabled,

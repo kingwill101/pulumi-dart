@@ -23,7 +23,7 @@ class ResourceSetState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
-  ResourceSetState({
+  const ResourceSetState({
     this.arn,
     this.region,
     this.resourceSets,

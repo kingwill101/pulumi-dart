@@ -8,7 +8,7 @@ class FeaturesDatabricksWorkspace {
 
   /// Creates a new [FeaturesDatabricksWorkspace].
   /// [forceDelete] When enabled, the managed resource group that contains the Unity Catalog data will be forcibly deleted when the workspace is destroyed, regardless of contents.
-  FeaturesDatabricksWorkspace({
+  const FeaturesDatabricksWorkspace({
     this.forceDelete,
   });
 

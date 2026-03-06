@@ -12,7 +12,7 @@ class ExportRecurrencePeriod {
   /// Creates a new [ExportRecurrencePeriod].
   /// [from] The start date of recurrence.
   /// [to] The end date of recurrence.
-  ExportRecurrencePeriod({
+  const ExportRecurrencePeriod({
     required this.from,
     this.to,
   });

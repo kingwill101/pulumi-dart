@@ -15,7 +15,7 @@ class SchemaComparisonValidationResultTypeResponse {
   /// [objectName] Name of the object that has the difference
   /// [objectType] Type of the object that has the difference. e.g (Table/View/StoredProcedure)
   /// [updateAction] Update action type with respect to target
-  SchemaComparisonValidationResultTypeResponse({
+  const SchemaComparisonValidationResultTypeResponse({
     this.objectName,
     this.objectType,
     this.updateAction,

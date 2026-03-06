@@ -11,7 +11,7 @@ class OrchestratedVirtualMachineScaleSetPriorityMix {
   /// Creates a new [OrchestratedVirtualMachineScaleSetPriorityMix].
   /// [baseRegularCount] Specifies the base number of VMs of `Regular` priority that will be created before any VMs of priority `Spot` are created. Possible values are integers between `0` and `1000`. Defaults to `0`.
   /// [regularPercentageAboveBase] Specifies the desired percentage of VM instances that are of `Regular` priority after the base count has been reached. Possible values are integers between `0` and `100`. Defaults to `0`.
-  OrchestratedVirtualMachineScaleSetPriorityMix({
+  const OrchestratedVirtualMachineScaleSetPriorityMix({
     this.baseRegularCount,
     this.regularPercentageAboveBase,
   });

@@ -22,7 +22,7 @@ class ConnectionProfileOracleForwardSshConnectivity {
   /// [port] Port for the SSH tunnel, default value is 22.
   /// [privateKey] Input only. SSH private key. Only one of `password` and `private_key` can be configured.
   /// [username] Required. Username for the SSH tunnel.
-  ConnectionProfileOracleForwardSshConnectivity({
+  const ConnectionProfileOracleForwardSshConnectivity({
     required this.hostname,
     this.password,
     required this.port,

@@ -18,7 +18,7 @@ class GetGradientaiKnowledgeBasesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [knowledgeBases] Required.
   /// [sorts] Optional.
-  GetGradientaiKnowledgeBasesResult({
+  const GetGradientaiKnowledgeBasesResult({
     this.filters,
     required this.id,
     required this.knowledgeBases,

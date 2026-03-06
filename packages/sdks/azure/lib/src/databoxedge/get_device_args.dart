@@ -15,7 +15,7 @@ class GetDeviceArgs {
   /// Creates a new [GetDeviceArgs].
   /// [name] The name which should be used for this Databox Edge Device. Changing this forces a new Databox Edge Device to be created.
   /// [resourceGroupName] The name of the Resource Group where the Databox Edge Device should exist. Changing this forces a new Databox Edge Device to be created.
-  GetDeviceArgs({
+  const GetDeviceArgs({
     required this.name,
     required this.resourceGroupName,
   });

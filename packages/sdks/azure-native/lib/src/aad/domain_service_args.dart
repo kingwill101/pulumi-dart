@@ -60,7 +60,7 @@ class DomainServiceArgs {
   /// [sku] Sku Type
   /// [syncScope] All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
   /// [tags] Resource tags
-  DomainServiceArgs({
+  const DomainServiceArgs({
     this.configDiagnostics,
     this.domainConfigurationType,
     this.domainName,

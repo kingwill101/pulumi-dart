@@ -36,7 +36,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// [publicIpAddresses] A `public_ip_address` block as defined below.
   /// [subnetId] The ID of the Subnet which this IP Configuration should be connected to.
   /// [version] The Internet Protocol Version which should be used for this IP Configuration. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`.
-  OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
+  const OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
     this.applicationGatewayBackendAddressPoolIds,
     this.applicationSecurityGroupIds,
     this.loadBalancerBackendAddressPoolIds,

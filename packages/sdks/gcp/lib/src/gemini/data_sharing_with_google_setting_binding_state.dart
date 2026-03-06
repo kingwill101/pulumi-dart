@@ -47,7 +47,7 @@ class DataSharingWithGoogleSettingBindingState {
   /// [settingBindingId] Required. Id of the setting binding.
   /// [target] Target of the binding.
   /// [updateTime] Update time stamp.
-  DataSharingWithGoogleSettingBindingState({
+  const DataSharingWithGoogleSettingBindingState({
     this.createTime,
     this.dataSharingWithGoogleSettingId,
     this.effectiveLabels,

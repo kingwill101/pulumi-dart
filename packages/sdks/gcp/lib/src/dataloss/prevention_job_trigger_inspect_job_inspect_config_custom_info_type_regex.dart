@@ -12,7 +12,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex {
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex].
   /// [groupIndexes] The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
   /// [pattern] Pattern defining the regular expression.
-  PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex({
+  const PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex({
     this.groupIndexes,
     required this.pattern,
   });

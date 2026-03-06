@@ -15,7 +15,7 @@ class GetEventSourceArgs {
   /// Creates a new [GetEventSourceArgs].
   /// [namePrefix] Specifying this limits the results to only those partner event sources with names that start with the specified prefix
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetEventSourceArgs({
+  const GetEventSourceArgs({
     this.namePrefix,
     this.region,
   });

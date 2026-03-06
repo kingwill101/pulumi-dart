@@ -32,7 +32,7 @@ class DomainManagedidentitiesV1alpha1Args {
   /// [managedIdentitiesAdminName] Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
   /// [project] Optional.
   /// [reservedIpRange] The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-  DomainManagedidentitiesV1alpha1Args({
+  const DomainManagedidentitiesV1alpha1Args({
     this.auditLogsEnabled,
     this.authorizedNetworks,
     this.domainName,

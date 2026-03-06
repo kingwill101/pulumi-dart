@@ -10,7 +10,7 @@ class NodeImageSelectionStatusResponse {
 
   /// Creates a new [NodeImageSelectionStatusResponse].
   /// [selectedNodeImageVersions] The image versions to upgrade the nodes to.
-  NodeImageSelectionStatusResponse({
+  const NodeImageSelectionStatusResponse({
     required this.selectedNodeImageVersions,
   });
 

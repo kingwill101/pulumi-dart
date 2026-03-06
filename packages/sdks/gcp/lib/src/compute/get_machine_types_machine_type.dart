@@ -41,7 +41,7 @@ class GetMachineTypesMachineType {
   /// [memoryMb] The amount of physical memory available to the instance, defined in MB.
   /// [name] The name of the machine type.
   /// [selfLink] The server-defined URL for the machine type.
-  GetMachineTypesMachineType({
+  const GetMachineTypesMachineType({
     required this.accelerators,
     required this.bundledLocalSsds,
     required this.deprecateds,

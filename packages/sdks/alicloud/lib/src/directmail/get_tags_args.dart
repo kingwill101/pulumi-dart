@@ -18,7 +18,7 @@ class GetTagsArgs {
   /// [ids] A list of Tag IDs.
   /// [nameRegex] A regex string to filter results by Tag name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetTagsArgs({
+  const GetTagsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

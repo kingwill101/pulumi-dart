@@ -33,7 +33,7 @@ class GetApprovalRuleTemplateResult {
   /// [name] Required.
   /// [region] Required.
   /// [ruleContentSha256] SHA-256 hash signature for the content of the approval rule template.
-  GetApprovalRuleTemplateResult({
+  const GetApprovalRuleTemplateResult({
     required this.approvalRuleTemplateId,
     required this.content,
     required this.creationDate,

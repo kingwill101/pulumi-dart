@@ -15,7 +15,7 @@ class ListBotSecretsArgs {
   /// Creates a new [ListBotSecretsArgs].
   /// [botName] The name of the Bot resource.
   /// [resourceGroupName] The name of the Bot resource group in the user subscription.
-  ListBotSecretsArgs({
+  const ListBotSecretsArgs({
     required this.botName,
     required this.resourceGroupName,
   });

@@ -16,7 +16,7 @@ class GetDiskReplicaGroupsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Required.
   /// [outputFile] Optional.
-  GetDiskReplicaGroupsResult({
+  const GetDiskReplicaGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

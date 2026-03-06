@@ -19,7 +19,7 @@ class GetConsentArtifactArgs {
   /// [datasetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConsentArtifactArgs({
+  const GetConsentArtifactArgs({
     required this.consentArtifactId,
     required this.consentStoreId,
     required this.datasetId,

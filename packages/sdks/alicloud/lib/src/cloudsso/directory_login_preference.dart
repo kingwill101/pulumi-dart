@@ -11,7 +11,7 @@ class DirectoryLoginPreference {
   /// Creates a new [DirectoryLoginPreference].
   /// [allowUserToGetCredentials] Whether the user can obtain the program access credential in the portal after logging in.
   /// [loginNetworkMasks] IP address whitelist
-  DirectoryLoginPreference({
+  const DirectoryLoginPreference({
     this.allowUserToGetCredentials,
     this.loginNetworkMasks,
   });

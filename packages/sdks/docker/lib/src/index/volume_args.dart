@@ -26,7 +26,7 @@ class VolumeArgs {
   /// [driverOpts] Options specific to the driver.
   /// [labels] User-defined key/value metadata
   /// [name] The name of the Docker volume (will be generated if not provided).
-  VolumeArgs({
+  const VolumeArgs({
     this.cluster,
     this.driver,
     this.driverOpts,

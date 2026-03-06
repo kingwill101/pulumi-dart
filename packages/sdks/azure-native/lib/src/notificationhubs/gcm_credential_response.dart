@@ -12,7 +12,7 @@ class GcmCredentialResponse {
   /// Creates a new [GcmCredentialResponse].
   /// [gcmEndpoint] Gets or sets the GCM endpoint.
   /// [googleApiKey] Gets or sets the Google API key.
-  GcmCredentialResponse({
+  const GcmCredentialResponse({
     this.gcmEndpoint,
     required this.googleApiKey,
   });

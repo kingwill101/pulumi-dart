@@ -98,7 +98,7 @@ class GetApplicationResult {
   /// [tags] Resource tags
   /// [type] Resource type
   /// [updatedBy] The client entity that last updated the JIT request.
-  GetApplicationResult({
+  const GetApplicationResult({
     this.applicationDefinitionId,
     required this.artifacts,
     required this.authorizations,

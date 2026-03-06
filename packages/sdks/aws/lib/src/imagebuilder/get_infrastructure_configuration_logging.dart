@@ -9,7 +9,7 @@ class GetInfrastructureConfigurationLogging {
 
   /// Creates a new [GetInfrastructureConfigurationLogging].
   /// [s3Logs] Nested list of S3 logs settings.
-  GetInfrastructureConfigurationLogging({
+  const GetInfrastructureConfigurationLogging({
     required this.s3Logs,
   });
 

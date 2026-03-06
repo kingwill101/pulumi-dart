@@ -13,7 +13,7 @@ class GetPublicAdvertisedPrefixComputeBetaArgs {
   /// Creates a new [GetPublicAdvertisedPrefixComputeBetaArgs].
   /// [project] Optional.
   /// [publicAdvertisedPrefix] Required.
-  GetPublicAdvertisedPrefixComputeBetaArgs({
+  const GetPublicAdvertisedPrefixComputeBetaArgs({
     this.project,
     required this.publicAdvertisedPrefix,
   });

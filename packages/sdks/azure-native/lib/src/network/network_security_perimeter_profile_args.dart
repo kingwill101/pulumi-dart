@@ -27,7 +27,7 @@ class NetworkSecurityPerimeterProfileArgs {
   /// [profileName] The name of the NSP profile.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NetworkSecurityPerimeterProfileArgs({
+  const NetworkSecurityPerimeterProfileArgs({
     this.id,
     this.location,
     required this.networkSecurityPerimeterName,

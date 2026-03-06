@@ -15,7 +15,7 @@ class GoogleCloudIntegrationsV1alphaFailurePolicyResponse {
   /// [intervalTime] Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
   /// [maxRetries] Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
   /// [retryStrategy] Defines what happens to the task upon failure.
-  GoogleCloudIntegrationsV1alphaFailurePolicyResponse({
+  const GoogleCloudIntegrationsV1alphaFailurePolicyResponse({
     required this.intervalTime,
     required this.maxRetries,
     required this.retryStrategy,

@@ -11,7 +11,7 @@ class ApiProfile {
   /// Creates a new [ApiProfile].
   /// [apiVersion] Api version.
   /// [profileVersion] Profile version.
-  ApiProfile({
+  const ApiProfile({
     this.apiVersion,
     this.profileVersion,
   });

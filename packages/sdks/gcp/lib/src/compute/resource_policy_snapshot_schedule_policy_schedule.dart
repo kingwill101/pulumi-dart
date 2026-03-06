@@ -20,7 +20,7 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
   /// [dailySchedule] The policy will execute every nth day at the specified time.
   /// [hourlySchedule] The policy will execute every nth hour starting at the specified time.
   /// [weeklySchedule] Allows specifying a snapshot time for each day of the week.
-  ResourcePolicySnapshotSchedulePolicySchedule({
+  const ResourcePolicySnapshotSchedulePolicySchedule({
     this.dailySchedule,
     this.hourlySchedule,
     this.weeklySchedule,

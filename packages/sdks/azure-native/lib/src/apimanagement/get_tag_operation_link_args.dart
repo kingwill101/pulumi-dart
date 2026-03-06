@@ -21,7 +21,7 @@ class GetTagOperationLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
-  GetTagOperationLinkArgs({
+  const GetTagOperationLinkArgs({
     required this.operationLinkId,
     required this.resourceGroupName,
     required this.serviceName,

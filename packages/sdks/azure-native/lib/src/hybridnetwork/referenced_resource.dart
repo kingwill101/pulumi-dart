@@ -9,7 +9,7 @@ class ReferencedResource {
 
   /// Creates a new [ReferencedResource].
   /// [id] Resource ID.
-  ReferencedResource({
+  const ReferencedResource({
     this.id,
   });
 

@@ -13,7 +13,7 @@ class BasisResponseContaineranalysisV1beta1 {
   /// Creates a new [BasisResponseContaineranalysisV1beta1].
   /// [fingerprint] Immutable. The fingerprint of the base image.
   /// [resourceUrl] Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-  BasisResponseContaineranalysisV1beta1({
+  const BasisResponseContaineranalysisV1beta1({
     required this.fingerprint,
     required this.resourceUrl,
   });

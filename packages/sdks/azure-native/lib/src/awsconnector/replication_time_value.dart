@@ -9,7 +9,7 @@ class ReplicationTimeValue {
 
   /// Creates a new [ReplicationTimeValue].
   /// [minutes] Contains an integer specifying time in minutes.   Valid value: 15
-  ReplicationTimeValue({
+  const ReplicationTimeValue({
     this.minutes,
   });
 

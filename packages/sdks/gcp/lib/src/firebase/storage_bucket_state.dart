@@ -16,7 +16,7 @@ class StorageBucketState {
   /// [bucketId] Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   /// [name] Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
   /// [project] The ID of the project in which the resource belongs.
-  StorageBucketState({
+  const StorageBucketState({
     this.bucketId,
     this.name,
     this.project,

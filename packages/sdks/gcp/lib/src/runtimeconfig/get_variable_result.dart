@@ -20,7 +20,7 @@ class GetVariableResult {
   /// [text] Required.
   /// [updateTime] Required.
   /// [value] Required.
-  GetVariableResult({
+  const GetVariableResult({
     required this.id,
     required this.name,
     required this.parent,

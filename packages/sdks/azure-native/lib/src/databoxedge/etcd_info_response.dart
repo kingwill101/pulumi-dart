@@ -12,7 +12,7 @@ class EtcdInfoResponse {
   /// Creates a new [EtcdInfoResponse].
   /// [type] Etcd type
   /// [version] Etcd version
-  EtcdInfoResponse({
+  const EtcdInfoResponse({
     required this.type,
     required this.version,
   });

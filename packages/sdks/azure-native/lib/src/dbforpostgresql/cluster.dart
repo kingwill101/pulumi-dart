@@ -12,7 +12,7 @@ class Cluster {
   /// Creates a new [Cluster].
   /// [clusterSize] Number of nodes assigned to the elastic cluster.
   /// [defaultDatabaseName] Default database name for the elastic cluster.
-  Cluster({
+  const Cluster({
     this.clusterSize,
     this.defaultDatabaseName,
   });

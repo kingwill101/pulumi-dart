@@ -9,7 +9,7 @@ class ProposedMultiRegionAccessPointPolicyResponse {
 
   /// Creates a new [ProposedMultiRegionAccessPointPolicyResponse].
   /// [policy] &lt;p&gt;The details of the proposed policy.&lt;/p&gt;
-  ProposedMultiRegionAccessPointPolicyResponse({
+  const ProposedMultiRegionAccessPointPolicyResponse({
     this.policy,
   });
 

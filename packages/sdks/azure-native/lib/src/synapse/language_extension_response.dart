@@ -9,7 +9,7 @@ class LanguageExtensionResponse {
 
   /// Creates a new [LanguageExtensionResponse].
   /// [languageExtensionName] The language extension name.
-  LanguageExtensionResponse({
+  const LanguageExtensionResponse({
     this.languageExtensionName,
   });
 

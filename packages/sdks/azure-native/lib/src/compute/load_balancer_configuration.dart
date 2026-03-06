@@ -16,7 +16,7 @@ class LoadBalancerConfiguration {
   /// [id] Resource Id
   /// [name] The name of the Load balancer
   /// [properties] Properties of the load balancer configuration.
-  LoadBalancerConfiguration({
+  const LoadBalancerConfiguration({
     this.id,
     required this.name,
     required this.properties,

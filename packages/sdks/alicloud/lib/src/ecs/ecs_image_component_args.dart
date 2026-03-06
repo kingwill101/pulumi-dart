@@ -51,7 +51,7 @@ class EcsImageComponentArgs {
   /// [resourceGroupId] The ID of the enterprise resource group to which the created image component belongs.
   /// [systemType] The operating system supported by the component.
   /// [tags] List of label key-value pairs.
-  EcsImageComponentArgs({
+  const EcsImageComponentArgs({
     this.componentType,
     this.componentVersion,
     required this.content,

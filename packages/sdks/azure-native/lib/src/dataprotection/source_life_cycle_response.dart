@@ -17,7 +17,7 @@ class SourceLifeCycleResponse {
   /// [deleteAfter] Delete Option
   /// [sourceDataStore] DataStoreInfo base
   /// [targetDataStoreCopySettings] Optional.
-  SourceLifeCycleResponse({
+  const SourceLifeCycleResponse({
     required this.deleteAfter,
     required this.sourceDataStore,
     this.targetDataStoreCopySettings,

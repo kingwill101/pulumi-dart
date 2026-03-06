@@ -12,7 +12,7 @@ class TCPFlagField {
   /// Creates a new [TCPFlagField].
   /// [flags] Property flags
   /// [masks] Property masks
-  TCPFlagField({
+  const TCPFlagField({
     this.flags,
     this.masks,
   });

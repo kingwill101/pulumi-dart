@@ -10,7 +10,7 @@ class VirtualMachinePropertiesSsh {
 
   /// Creates a new [VirtualMachinePropertiesSsh].
   /// [publicKeys] PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-  VirtualMachinePropertiesSsh({
+  const VirtualMachinePropertiesSsh({
     this.publicKeys,
   });
 

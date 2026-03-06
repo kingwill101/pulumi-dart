@@ -41,7 +41,7 @@ class ServiceArgs {
   /// [tags] Optional.
   /// [virtualNicId] The ID of the Microsoft.Network/networkInterfaces resource which the service have
   /// [virtualSubnetId] The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
-  ServiceArgs({
+  const ServiceArgs({
     this.autoStopDelay,
     this.deleteResourcesOnStop,
     required this.groupName,

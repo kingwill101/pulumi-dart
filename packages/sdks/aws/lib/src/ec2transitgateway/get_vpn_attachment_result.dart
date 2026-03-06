@@ -21,7 +21,7 @@ class GetVpnAttachmentResult {
   /// [tags] Key-value tags for the EC2 Transit Gateway VPN Attachment
   /// [transitGatewayId] Optional.
   /// [vpnConnectionId] Optional.
-  GetVpnAttachmentResult({
+  const GetVpnAttachmentResult({
     this.filters,
     required this.id,
     required this.region,

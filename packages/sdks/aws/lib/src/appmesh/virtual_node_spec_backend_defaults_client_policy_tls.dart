@@ -19,7 +19,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTls {
   /// [enforce] Whether the policy is enforced. Default is `true`.
   /// [ports] One or more ports that the policy is enforced for.
   /// [validation] Listener's Transport Layer Security (TLS) validation context.
-  VirtualNodeSpecBackendDefaultsClientPolicyTls({
+  const VirtualNodeSpecBackendDefaultsClientPolicyTls({
     this.certificate,
     this.enforce,
     this.ports,

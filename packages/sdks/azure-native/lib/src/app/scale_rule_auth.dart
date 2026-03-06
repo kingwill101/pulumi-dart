@@ -12,7 +12,7 @@ class ScaleRuleAuth {
   /// Creates a new [ScaleRuleAuth].
   /// [secretRef] Name of the secret from which to pull the auth params.
   /// [triggerParameter] Trigger Parameter that uses the secret
-  ScaleRuleAuth({
+  const ScaleRuleAuth({
     this.secretRef,
     this.triggerParameter,
   });

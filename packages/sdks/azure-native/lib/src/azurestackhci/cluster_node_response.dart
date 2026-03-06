@@ -51,7 +51,7 @@ class ClusterNodeResponse {
   /// [osVersion] Version of the operating system running on the cluster node.
   /// [serialNumber] Immutable id of the cluster node.
   /// [windowsServerSubscription] State of Windows Server Subscription.
-  ClusterNodeResponse({
+  const ClusterNodeResponse({
     required this.coreCount,
     required this.ehcResourceId,
     required this.id,

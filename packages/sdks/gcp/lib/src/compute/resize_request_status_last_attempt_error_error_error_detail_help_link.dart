@@ -12,7 +12,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
   /// Creates a new [ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink].
   /// [description] An optional description of this resize-request.
   /// [url] (Output)
-  ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink({
+  const ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink({
     this.description,
     this.url,
   });

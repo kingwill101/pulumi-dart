@@ -39,7 +39,7 @@ class GetHybridRunbookWorkerResult {
   /// [vmResourceId] Azure Resource Manager Id for a virtual machine.
   /// [workerName] Name of the HybridWorker.
   /// [workerType] Type of the HybridWorker.
-  GetHybridRunbookWorkerResult({
+  const GetHybridRunbookWorkerResult({
     required this.azureApiVersion,
     required this.id,
     this.ip,

@@ -98,7 +98,7 @@ class StepResponseNetworkmanagementV1beta1 {
   /// [vpcConnector] Display information of a VPC connector.
   /// [vpnGateway] Display information of a Compute Engine VPN gateway.
   /// [vpnTunnel] Display information of a Compute Engine VPN tunnel.
-  StepResponseNetworkmanagementV1beta1({
+  const StepResponseNetworkmanagementV1beta1({
     required this.abort,
     required this.appEngineVersion,
     required this.causesDrop,

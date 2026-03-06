@@ -12,7 +12,7 @@ class DomainDevicesRedirDevSourceDev {
   /// Creates a new [DomainDevicesRedirDevSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.
   /// [secLabels] Configures the security label settings for the device source in the EGD backend.
-  DomainDevicesRedirDevSourceDev({
+  const DomainDevicesRedirDevSourceDev({
     required this.path,
     this.secLabels,
   });

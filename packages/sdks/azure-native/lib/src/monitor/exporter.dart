@@ -20,7 +20,7 @@ class Exporter {
   /// [name] The name of exporter.
   /// [tcp] TCP based exporter. Used for pipelineGroup exporter.
   /// [type] The type of exporter.
-  Exporter({
+  const Exporter({
     this.azureMonitorWorkspaceLogs,
     required this.name,
     this.tcp,

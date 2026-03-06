@@ -9,7 +9,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRem
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove].
   /// [headerName] Headers to remove from the response prior to sending it back to the client.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove({
     required this.headerName,
   });
 

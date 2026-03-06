@@ -27,7 +27,7 @@ class ConnectionConfigVariable {
   /// [key] Key for the configVariable
   /// [secretValue] Secret value of configVariable.
   /// [stringValue] String Value of configVariabley
-  ConnectionConfigVariable({
+  const ConnectionConfigVariable({
     this.booleanValue,
     this.encryptionKeyValue,
     this.integerValue,

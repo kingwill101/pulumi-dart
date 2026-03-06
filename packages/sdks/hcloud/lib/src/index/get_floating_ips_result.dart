@@ -15,7 +15,7 @@ class GetFloatingIpsResult {
   /// [floatingIps] (list) List of all matching floating ips. See `data.hcloud_floating_ip` for schema.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [withSelector] Optional.
-  GetFloatingIpsResult({
+  const GetFloatingIpsResult({
     required this.floatingIps,
     required this.id,
     this.withSelector,

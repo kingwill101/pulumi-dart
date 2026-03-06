@@ -12,7 +12,7 @@ class TypedErrorInfoResponse {
   /// Creates a new [TypedErrorInfoResponse].
   /// [info] The scenario specific error details.
   /// [type] The type of included error details.
-  TypedErrorInfoResponse({
+  const TypedErrorInfoResponse({
     required this.info,
     required this.type,
   });

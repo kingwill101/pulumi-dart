@@ -22,7 +22,7 @@ class GetBucketIpFilter {
   /// [mode] The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.
   /// [publicNetworkSources] The public network IP address ranges that can access the bucket and its data.
   /// [vpcNetworkSources] The list of VPC networks that can access the bucket.
-  GetBucketIpFilter({
+  const GetBucketIpFilter({
     required this.allowAllServiceAgentAccess,
     required this.allowCrossOrgVpcs,
     required this.mode,

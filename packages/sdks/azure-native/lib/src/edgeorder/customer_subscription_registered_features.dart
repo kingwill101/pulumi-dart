@@ -12,7 +12,7 @@ class CustomerSubscriptionRegisteredFeatures {
   /// Creates a new [CustomerSubscriptionRegisteredFeatures].
   /// [name] Name of subscription registered feature.
   /// [state] State of subscription registered feature.
-  CustomerSubscriptionRegisteredFeatures({
+  const CustomerSubscriptionRegisteredFeatures({
     this.name,
     this.state,
   });

@@ -86,7 +86,7 @@ class BucketState {
   /// [transferAcceleration] A transfer acceleration status of a bucket. See `transfer_acceleration` below.
   /// [versioning] A state of versioning. See `versioning` below.
   /// [website] A website configuration. See `website` below.
-  BucketState({
+  const BucketState({
     this.accessMonitor,
     this.acl,
     this.bucket,

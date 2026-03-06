@@ -84,7 +84,7 @@ class ProfileArgs {
   /// [phoneNumber] The customer’s phone number, which has not been specified as a mobile, home, or business number.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [shippingAddress] A block that specifies the customer’s shipping address. Documented below.
-  ProfileArgs({
+  const ProfileArgs({
     this.accountNumber,
     this.additionalInformation,
     this.address,

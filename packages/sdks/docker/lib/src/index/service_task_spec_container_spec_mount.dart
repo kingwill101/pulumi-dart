@@ -29,7 +29,7 @@ class ServiceTaskSpecContainerSpecMount {
   /// [tmpfsOptions] Optional configuration for the tmpfs type
   /// [type] The mount type
   /// [volumeOptions] Optional configuration for the volume type
-  ServiceTaskSpecContainerSpecMount({
+  const ServiceTaskSpecContainerSpecMount({
     this.bindOptions,
     this.readOnly,
     this.source,

@@ -84,7 +84,7 @@ class GetVersionResult {
   /// [triggerConfigsInternal] Optional. Trigger configurations.
   /// [updateTime] Auto-generated.
   /// [userLabel] Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-  GetVersionResult({
+  const GetVersionResult({
     required this.cloudLoggingDetails,
     required this.createTime,
     required this.databasePersistencePolicy,

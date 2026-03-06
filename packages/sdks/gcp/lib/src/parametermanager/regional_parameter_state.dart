@@ -60,7 +60,7 @@ class RegionalParameterState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The time at which the regional Parameter was updated.
-  RegionalParameterState({
+  const RegionalParameterState({
     this.createTime,
     this.effectiveLabels,
     this.format,

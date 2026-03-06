@@ -24,7 +24,7 @@ class ClientInstanceAttachmentArgs {
   /// [eiInstanceType] The Ei instance specification, which is used to filter matching specifications for updating.
   /// [instanceId] The EAIS instance ID.
   /// [status] The status of the resource
-  ClientInstanceAttachmentArgs({
+  const ClientInstanceAttachmentArgs({
     this.category,
     required this.clientInstanceId,
     this.eiInstanceType,

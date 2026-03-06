@@ -28,7 +28,7 @@ class GetSecurityPoliciesResult {
   /// [securityPolicyNames] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetSecurityPoliciesResult({
+  const GetSecurityPoliciesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

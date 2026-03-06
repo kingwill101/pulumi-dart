@@ -30,7 +30,7 @@ class FloatingIpArgs {
   /// [name] Name of the Floating IP.
   /// [serverId] Server to assign the Floating IP to. Optional if `home_location` argument is passed.
   /// [type] Type of the Floating IP. `ipv4` `ipv6`
-  FloatingIpArgs({
+  const FloatingIpArgs({
     this.deleteProtection,
     this.description,
     this.homeLocation,

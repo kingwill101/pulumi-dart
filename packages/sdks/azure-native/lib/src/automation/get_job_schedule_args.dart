@@ -18,7 +18,7 @@ class GetJobScheduleArgs {
   /// [automationAccountName] The name of the automation account.
   /// [jobScheduleId] The job schedule name.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetJobScheduleArgs({
+  const GetJobScheduleArgs({
     required this.automationAccountName,
     required this.jobScheduleId,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class EncryptionKeyResponse {
   /// Creates a new [EncryptionKeyResponse].
   /// [kmsKeyName] The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
   /// [type] Type.
-  EncryptionKeyResponse({
+  const EncryptionKeyResponse({
     required this.kmsKeyName,
     required this.type,
   });

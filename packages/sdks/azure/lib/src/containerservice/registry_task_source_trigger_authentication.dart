@@ -20,7 +20,7 @@ class RegistryTaskSourceTriggerAuthentication {
   /// [scope] The scope of the access token.
   /// [token] The access token used to access the source control provider.
   /// [tokenType] The type of the token. Possible values are `PAT` (personal access token) and `OAuth`.
-  RegistryTaskSourceTriggerAuthentication({
+  const RegistryTaskSourceTriggerAuthentication({
     this.expireInSeconds,
     this.refreshToken,
     this.scope,

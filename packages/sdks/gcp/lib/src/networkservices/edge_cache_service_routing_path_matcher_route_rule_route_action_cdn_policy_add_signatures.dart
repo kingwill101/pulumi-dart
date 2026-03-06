@@ -34,7 +34,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
   /// [keyset] The keyset to use for signature generation.
   /// [tokenQueryParameter] The query parameter in which to put the generated token.
   /// [tokenTtl] The duration the token is valid starting from the moment the token is first generated.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures({
     required this.actions,
     this.copiedParameters,
     this.keyset,

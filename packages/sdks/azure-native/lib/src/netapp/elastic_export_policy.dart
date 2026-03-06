@@ -10,7 +10,7 @@ class ElasticExportPolicy {
 
   /// Creates a new [ElasticExportPolicy].
   /// [rules] Export policy rule
-  ElasticExportPolicy({
+  const ElasticExportPolicy({
     this.rules,
   });
 

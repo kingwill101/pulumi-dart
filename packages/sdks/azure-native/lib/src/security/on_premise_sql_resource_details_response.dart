@@ -28,7 +28,7 @@ class OnPremiseSqlResourceDetailsResponse {
   /// [sourceComputerId] The oms agent Id installed on the machine
   /// [vmuuid] The unique Id of the machine
   /// [workspaceId] Azure resource Id of the workspace the machine is attached to
-  OnPremiseSqlResourceDetailsResponse({
+  const OnPremiseSqlResourceDetailsResponse({
     required this.databaseName,
     required this.machineName,
     required this.serverName,

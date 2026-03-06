@@ -24,7 +24,7 @@ class SystemDataResponse {
   /// [lastModifiedAt] The timestamp of the key vault resource last modification (UTC).
   /// [lastModifiedBy] The identity that last modified the key vault resource.
   /// [lastModifiedByType] The type of identity that last modified the key vault resource.
-  SystemDataResponse({
+  const SystemDataResponse({
     this.createdAt,
     this.createdBy,
     this.createdByType,

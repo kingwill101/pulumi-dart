@@ -21,7 +21,7 @@ class WorkspaceFeatures {
   /// [enableDataExport] Flag that indicate if data should be exported.
   /// [enableLogAccessUsingOnlyResourcePermissions] Flag that indicate which permission to use - resource or workspace or both.
   /// [immediatePurgeDataOn30Days] Flag that describes if we want to remove the data after 30 days.
-  WorkspaceFeatures({
+  const WorkspaceFeatures({
     this.clusterResourceId,
     this.disableLocalAuth,
     this.enableDataExport,

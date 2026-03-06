@@ -12,7 +12,7 @@ class DefenderCspmAwsOfferingResponseDatabasesDspm {
   /// Creates a new [DefenderCspmAwsOfferingResponseDatabasesDspm].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is databases DSPM protection enabled
-  DefenderCspmAwsOfferingResponseDatabasesDspm({
+  const DefenderCspmAwsOfferingResponseDatabasesDspm({
     this.cloudRoleArn,
     this.enabled,
   });

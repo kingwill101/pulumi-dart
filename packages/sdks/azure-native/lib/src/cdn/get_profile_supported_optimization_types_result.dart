@@ -8,7 +8,7 @@ class GetProfileSupportedOptimizationTypesResult {
 
   /// Creates a new [GetProfileSupportedOptimizationTypesResult].
   /// [supportedOptimizationTypes] Supported optimization types for a profile.
-  GetProfileSupportedOptimizationTypesResult({
+  const GetProfileSupportedOptimizationTypesResult({
     required this.supportedOptimizationTypes,
   });
 

@@ -40,7 +40,7 @@ class GetIpGroupResult {
   /// [provisioningState] The provisioning state of the IpGroups resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetIpGroupResult({
+  const GetIpGroupResult({
     required this.azureApiVersion,
     required this.etag,
     required this.firewallPolicies,

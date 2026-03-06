@@ -40,7 +40,7 @@ class GetKustoDatabaseDataSetMappingResult {
   /// [provisioningState] Provisioning state of the data set mapping.
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetKustoDatabaseDataSetMappingResult({
+  const GetKustoDatabaseDataSetMappingResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.dataSetMappingStatus,

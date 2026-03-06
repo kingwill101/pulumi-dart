@@ -9,7 +9,7 @@ class DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettin
   /// Creates a new [DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec].
   /// [cpu] Optional.
   /// [memory] Optional.
-  DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec({
+  const DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec({
     this.cpu,
     this.memory,
   });

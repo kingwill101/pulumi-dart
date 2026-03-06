@@ -101,7 +101,7 @@ class GetContainerGroupsGroup {
   /// [vpcId] The if of vpc.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
-  GetContainerGroupsGroup({
+  const GetContainerGroupsGroup({
     required this.containerGroupId,
     required this.containerGroupName,
     required this.containers,

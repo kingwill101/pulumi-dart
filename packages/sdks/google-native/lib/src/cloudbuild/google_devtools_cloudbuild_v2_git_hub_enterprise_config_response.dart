@@ -37,7 +37,7 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse {
   /// [serviceDirectoryConfig] Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
   /// [sslCa] SSL certificate to use for requests to GitHub Enterprise.
   /// [webhookSecretSecretVersion] SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
-  GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse({
+  const GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse({
     required this.apiKey,
     required this.appId,
     required this.appInstallationId,

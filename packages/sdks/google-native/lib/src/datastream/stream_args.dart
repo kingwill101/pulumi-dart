@@ -50,7 +50,7 @@ class StreamArgs {
   /// [sourceConfig] Source connection profile configuration.
   /// [state] The state of the stream.
   /// [streamId] Required. The stream identifier.
-  StreamArgs({
+  const StreamArgs({
     this.backfillAll,
     this.backfillNone,
     this.customerManagedEncryptionKey,

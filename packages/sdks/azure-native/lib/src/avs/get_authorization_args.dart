@@ -18,7 +18,7 @@ class GetAuthorizationArgs {
   /// [authorizationName] Name of the ExpressRoute Circuit Authorization
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAuthorizationArgs({
+  const GetAuthorizationArgs({
     required this.authorizationName,
     required this.privateCloudName,
     required this.resourceGroupName,

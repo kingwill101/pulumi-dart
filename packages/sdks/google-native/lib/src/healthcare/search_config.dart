@@ -10,7 +10,7 @@ class SearchConfig {
 
   /// Creates a new [SearchConfig].
   /// [searchParameters] A list of search parameters in this FHIR store that are used to configure this FHIR store.
-  SearchConfig({
+  const SearchConfig({
     this.searchParameters,
   });
 

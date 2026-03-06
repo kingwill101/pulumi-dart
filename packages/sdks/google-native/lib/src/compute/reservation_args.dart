@@ -48,7 +48,7 @@ class ReservationArgs {
   /// [specificReservation] Reservation for instances with specific machine shapes.
   /// [specificReservationRequired] Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
   /// [zone] Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-  ReservationArgs({
+  const ReservationArgs({
     this.aggregateReservation,
     this.deleteAfterDuration,
     this.deleteAtTime,

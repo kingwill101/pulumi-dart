@@ -9,7 +9,7 @@ class TaskDefinitionHostEntry {
   /// Creates a new [TaskDefinitionHostEntry].
   /// [hostname] Optional.
   /// [ipAddress] Optional.
-  TaskDefinitionHostEntry({
+  const TaskDefinitionHostEntry({
     this.hostname,
     this.ipAddress,
   });

@@ -12,7 +12,7 @@ class JitAuthorizationPolicies {
   /// Creates a new [JitAuthorizationPolicies].
   /// [principalId] The the principal id that will be granted JIT access.
   /// [roleDefinitionId] The role definition id that will be granted to the Principal.
-  JitAuthorizationPolicies({
+  const JitAuthorizationPolicies({
     required this.principalId,
     required this.roleDefinitionId,
   });

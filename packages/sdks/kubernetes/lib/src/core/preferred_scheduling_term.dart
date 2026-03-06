@@ -13,7 +13,7 @@ class PreferredSchedulingTerm {
   /// Creates a new [PreferredSchedulingTerm].
   /// [preference] A node selector term, associated with the corresponding weight.
   /// [weight] Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
-  PreferredSchedulingTerm({
+  const PreferredSchedulingTerm({
     required this.preference,
     required this.weight,
   });

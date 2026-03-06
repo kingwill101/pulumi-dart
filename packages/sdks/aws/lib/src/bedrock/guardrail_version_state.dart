@@ -26,7 +26,7 @@ class GuardrailVersionState {
   /// [skipDestroy] Whether to retain the old version of a previously deployed Guardrail. Default is `false`
   /// [timeouts] Optional.
   /// [version] Guardrail version.
-  GuardrailVersionState({
+  const GuardrailVersionState({
     this.description,
     this.guardrailArn,
     this.region,

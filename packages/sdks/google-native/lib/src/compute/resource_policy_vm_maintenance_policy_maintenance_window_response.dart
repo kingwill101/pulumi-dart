@@ -9,7 +9,7 @@ class ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse {
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse].
   /// [dailyMaintenanceWindow] Required.
-  ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse({
+  const ResourcePolicyVmMaintenancePolicyMaintenanceWindowResponse({
     required this.dailyMaintenanceWindow,
   });
 

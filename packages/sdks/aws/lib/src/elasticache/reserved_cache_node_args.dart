@@ -28,7 +28,7 @@ class ReservedCacheNodeArgs {
   /// [reservedCacheNodesOfferingId] ID of the reserved cache node offering to purchase.
   /// [tags] Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  ReservedCacheNodeArgs({
+  const ReservedCacheNodeArgs({
     this.cacheNodeCount,
     this.region,
     required this.reservedCacheNodesOfferingId,

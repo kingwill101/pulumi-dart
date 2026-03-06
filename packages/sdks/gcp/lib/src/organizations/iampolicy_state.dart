@@ -22,7 +22,7 @@ class IAMPolicyState {
   /// [etag] (Computed) The etag of the organization's IAM policy.
   /// [orgId] The organization id of the target organization.
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
-  IAMPolicyState({
+  const IAMPolicyState({
     this.etag,
     this.orgId,
     this.policyData,

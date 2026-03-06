@@ -11,7 +11,7 @@ class UserDomainGrant {
   /// Creates a new [UserDomainGrant].
   /// [id] The ID of the entity this grant applies to.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  UserDomainGrant({
+  const UserDomainGrant({
     required this.id,
     required this.permissions,
   });

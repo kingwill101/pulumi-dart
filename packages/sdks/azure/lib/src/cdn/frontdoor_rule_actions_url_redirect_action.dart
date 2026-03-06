@@ -23,7 +23,7 @@ class FrontdoorRuleActionsUrlRedirectAction {
   /// [queryString] The query string used in the redirect URL. The value must be in the &lt;key&gt;=&lt;value&gt; or &lt;key&gt;={`action_server_variable`} format and must not include the leading `?`, leave blank to preserve the incoming query string. Maximum allowed length for this field is `2048` characters. Defaults to `""`.
   /// [redirectProtocol] The protocol the request will be redirected as. Possible values include `MatchRequest`, `Http` or `Https`. Defaults to `MatchRequest`.
   /// [redirectType] The response type to return to the requestor. Possible values include `Moved`, `Found` , `TemporaryRedirect` or `PermanentRedirect`.
-  FrontdoorRuleActionsUrlRedirectAction({
+  const FrontdoorRuleActionsUrlRedirectAction({
     this.destinationFragment,
     required this.destinationHostname,
     this.destinationPath,

@@ -13,7 +13,7 @@ class GetProjectBigQueryExportArgs {
   /// Creates a new [GetProjectBigQueryExportArgs].
   /// [bigQueryExportId] Required.
   /// [project] Optional.
-  GetProjectBigQueryExportArgs({
+  const GetProjectBigQueryExportArgs({
     required this.bigQueryExportId,
     this.project,
   });

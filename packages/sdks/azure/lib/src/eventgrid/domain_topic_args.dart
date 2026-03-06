@@ -18,7 +18,7 @@ class DomainTopicArgs {
   /// [domainName] Specifies the name of the EventGrid Domain. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the EventGrid Domain Topic resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
-  DomainTopicArgs({
+  const DomainTopicArgs({
     required this.domainName,
     this.name,
     required this.resourceGroupName,

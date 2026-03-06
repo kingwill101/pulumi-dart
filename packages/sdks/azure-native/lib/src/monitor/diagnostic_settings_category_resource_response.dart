@@ -25,7 +25,7 @@ class DiagnosticSettingsCategoryResourceResponse {
   /// [name] The name of the resource
   /// [systemData] The system metadata related to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  DiagnosticSettingsCategoryResourceResponse({
+  const DiagnosticSettingsCategoryResourceResponse({
     this.categoryGroups,
     this.categoryType,
     required this.id,

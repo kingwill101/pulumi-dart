@@ -9,7 +9,7 @@ class SchemaRegistryRef {
 
   /// Creates a new [SchemaRegistryRef].
   /// [resourceId] The resource ID of the Schema Registry.
-  SchemaRegistryRef({
+  const SchemaRegistryRef({
     required this.resourceId,
   });
 

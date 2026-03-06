@@ -36,7 +36,7 @@ class KubernetesClusterMaintenanceWindowNodeOs {
   /// [startTime] The time for maintenance to begin, based on the timezone determined by `utc_offset`. Format is `HH:mm`.
   /// [utcOffset] Used to determine the timezone for cluster maintenance.
   /// [weekIndex] The week in the month used for the maintenance run. Options are `First`, `Second`, `Third`, `Fourth`, and `Last`.
-  KubernetesClusterMaintenanceWindowNodeOs({
+  const KubernetesClusterMaintenanceWindowNodeOs({
     this.dayOfMonth,
     this.dayOfWeek,
     required this.duration,

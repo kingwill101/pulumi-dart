@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse
   /// [defaultValue] A default value for an `INTEGER` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
   /// [maxValue] Inclusive maximum value of the parameter.
   /// [minValue] Inclusive minimum value of the parameter.
-  GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse({
+  const GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse({
     required this.defaultValue,
     required this.maxValue,
     required this.minValue,

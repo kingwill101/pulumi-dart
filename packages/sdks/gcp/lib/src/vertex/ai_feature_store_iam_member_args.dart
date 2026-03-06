@@ -43,7 +43,7 @@ class AiFeatureStoreIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
-  AiFeatureStoreIamMemberArgs({
+  const AiFeatureStoreIamMemberArgs({
     this.condition,
     required this.featurestore,
     required this.member,

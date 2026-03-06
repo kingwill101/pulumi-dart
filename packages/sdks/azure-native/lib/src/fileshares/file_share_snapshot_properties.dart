@@ -9,7 +9,7 @@ class FileShareSnapshotProperties {
 
   /// Creates a new [FileShareSnapshotProperties].
   /// [metadata] The metadata
-  FileShareSnapshotProperties({
+  const FileShareSnapshotProperties({
     this.metadata,
   });
 

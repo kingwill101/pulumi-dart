@@ -10,7 +10,7 @@ class GithubScopeEnvironmentDataResponse {
 
   /// Creates a new [GithubScopeEnvironmentDataResponse].
   /// [environmentType] The type of the environment data.
-  GithubScopeEnvironmentDataResponse({
+  const GithubScopeEnvironmentDataResponse({
     required this.environmentType,
   });
 

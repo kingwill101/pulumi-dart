@@ -25,7 +25,7 @@ class GetMetadataStoreResult {
   /// [name] The resource name of the MetadataStore instance.
   /// [state] State information of the MetadataStore.
   /// [updateTime] Timestamp when this MetadataStore was last updated.
-  GetMetadataStoreResult({
+  const GetMetadataStoreResult({
     required this.createTime,
     required this.description,
     required this.encryptionSpec,

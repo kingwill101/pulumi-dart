@@ -46,7 +46,7 @@ class GenaiOpenaiApiKeyModel {
   /// [url] URL of the Model
   /// [usecases] List of Usecases for the Model
   /// [versions] URL of the Model
-  GenaiOpenaiApiKeyModel({
+  const GenaiOpenaiApiKeyModel({
     this.agreements,
     this.createdAt,
     this.inferenceName,

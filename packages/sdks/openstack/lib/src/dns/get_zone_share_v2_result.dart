@@ -26,7 +26,7 @@ class GetZoneShareV2Result {
   /// [shareId] The ID of the zone share.
   /// [targetProjectId] See Argument Reference above.
   /// [zoneId] See Argument Reference above.
-  GetZoneShareV2Result({
+  const GetZoneShareV2Result({
     this.allProjects,
     required this.id,
     this.projectId,

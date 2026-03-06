@@ -13,7 +13,7 @@ class Branch {
   /// Creates a new [Branch].
   /// [actions] List of actions.
   /// [name] String of the branch name.
-  Branch({
+  const Branch({
     required this.actions,
     required this.name,
   });

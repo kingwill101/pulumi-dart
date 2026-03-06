@@ -31,7 +31,7 @@ class AssessmentTemplateArgs {
   /// [rulesPackageArns] The rules to be used during the run.
   /// [tags] Key-value map of tags for the Inspector assessment template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetArn] The assessment target ARN to attach the template to.
-  AssessmentTemplateArgs({
+  const AssessmentTemplateArgs({
     required this.duration,
     this.eventSubscriptions,
     this.name,

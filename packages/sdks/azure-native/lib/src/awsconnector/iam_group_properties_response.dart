@@ -34,7 +34,7 @@ class IamGroupPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamGroupPropertiesResponse({
+  const IamGroupPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

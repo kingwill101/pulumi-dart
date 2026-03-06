@@ -18,7 +18,7 @@ class V3FunctionCustomRuntimeConfig {
   /// [commands] Instance start command.
   /// [healthCheckConfig] Function custom health check configuration. See `health_check_config` below.
   /// [port] The listening port of the HTTP Server.
-  V3FunctionCustomRuntimeConfig({
+  const V3FunctionCustomRuntimeConfig({
     this.args,
     this.commands,
     this.healthCheckConfig,

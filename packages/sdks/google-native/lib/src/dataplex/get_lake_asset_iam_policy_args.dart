@@ -21,7 +21,7 @@ class GetLakeAssetIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [zone] Required.
-  GetLakeAssetIamPolicyArgs({
+  const GetLakeAssetIamPolicyArgs({
     required this.assetId,
     required this.lakeId,
     required this.location,

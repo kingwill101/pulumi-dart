@@ -23,7 +23,7 @@ class InstanceArgs {
   /// [location] Optional.
   /// [name] Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
   /// [project] Optional.
-  InstanceArgs({
+  const InstanceArgs({
     required this.config,
     required this.instanceId,
     this.location,

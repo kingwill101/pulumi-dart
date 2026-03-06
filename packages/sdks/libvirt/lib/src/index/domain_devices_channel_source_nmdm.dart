@@ -11,7 +11,7 @@ class DomainDevicesChannelSourceNmdm {
   /// Creates a new [DomainDevicesChannelSourceNmdm].
   /// [master] Specifies the master device in a master-slave NMDM configuration for the EGD backend.
   /// [slave] Specifies the slave device in a master-slave NMDM configuration for the EGD backend.
-  DomainDevicesChannelSourceNmdm({
+  const DomainDevicesChannelSourceNmdm({
     required this.master,
     required this.slave,
   });

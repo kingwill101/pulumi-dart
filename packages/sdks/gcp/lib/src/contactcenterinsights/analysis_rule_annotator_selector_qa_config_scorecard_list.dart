@@ -8,7 +8,7 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorQaConfigScorecardList].
   /// [qaScorecardRevisions] List of QaScorecardRevisions.
-  AnalysisRuleAnnotatorSelectorQaConfigScorecardList({
+  const AnalysisRuleAnnotatorSelectorQaConfigScorecardList({
     this.qaScorecardRevisions,
   });
 

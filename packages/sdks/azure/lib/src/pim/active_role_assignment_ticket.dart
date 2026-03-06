@@ -11,7 +11,7 @@ class ActiveRoleAssignmentTicket {
   /// Creates a new [ActiveRoleAssignmentTicket].
   /// [number] User-supplied ticket number to be included with the request. Changing this forces a new resource to be created.
   /// [system] User-supplied ticket system name to be included with the request. Changing this forces a new resource to be created.
-  ActiveRoleAssignmentTicket({
+  const ActiveRoleAssignmentTicket({
     this.number,
     this.system,
   });

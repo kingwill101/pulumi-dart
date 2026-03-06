@@ -12,7 +12,7 @@ class LinkedTemplateArtifact {
   /// Creates a new [LinkedTemplateArtifact].
   /// [path] A filesystem safe relative path of the artifact.
   /// [template] The Azure Resource Manager template.
-  LinkedTemplateArtifact({
+  const LinkedTemplateArtifact({
     required this.path,
     required this.template,
   });

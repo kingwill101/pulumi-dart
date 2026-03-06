@@ -27,7 +27,7 @@ class FeaturestoreEntityContainerResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the featurestore entity container.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  FeaturestoreEntityContainerResponse({
+  const FeaturestoreEntityContainerResponse({
     this.description,
     this.isArchived,
     required this.latestVersion,

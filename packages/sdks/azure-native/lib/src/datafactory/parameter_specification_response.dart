@@ -12,7 +12,7 @@ class ParameterSpecificationResponse {
   /// Creates a new [ParameterSpecificationResponse].
   /// [defaultValue] Default value of parameter.
   /// [type] Parameter type.
-  ParameterSpecificationResponse({
+  const ParameterSpecificationResponse({
     this.defaultValue,
     required this.type,
   });

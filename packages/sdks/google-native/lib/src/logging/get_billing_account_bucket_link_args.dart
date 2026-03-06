@@ -17,7 +17,7 @@ class GetBillingAccountBucketLinkArgs {
   /// [bucketId] Required.
   /// [linkId] Required.
   /// [location] Required.
-  GetBillingAccountBucketLinkArgs({
+  const GetBillingAccountBucketLinkArgs({
     required this.billingAccountId,
     required this.bucketId,
     required this.linkId,

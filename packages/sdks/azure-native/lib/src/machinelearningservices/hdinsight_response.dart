@@ -42,7 +42,7 @@ class HDInsightResponse {
   /// [provisioningErrors] Errors during provisioning
   /// [provisioningState] The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
   /// [resourceId] ARM resource id of the underlying compute
-  HDInsightResponse({
+  const HDInsightResponse({
     this.computeLocation,
     required this.computeType,
     required this.createdOn,

@@ -34,7 +34,7 @@ class GetAppTemplateInitContainer {
   /// [memory] The amount of memory allocated to the container.
   /// [name] The name of the Container App.
   /// [volumeMounts] A `volume_mounts` block as detailed below.
-  GetAppTemplateInitContainer({
+  const GetAppTemplateInitContainer({
     required this.args,
     required this.commands,
     required this.cpu,

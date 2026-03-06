@@ -9,7 +9,7 @@ class InstanceGcsSource {
 
   /// Creates a new [InstanceGcsSource].
   /// [uris] URIs of the GCS objects to import.
-  InstanceGcsSource({
+  const InstanceGcsSource({
     required this.uris,
   });
 

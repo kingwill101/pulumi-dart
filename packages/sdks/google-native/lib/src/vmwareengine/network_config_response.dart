@@ -21,7 +21,7 @@ class NetworkConfigResponse {
   /// [managementIpAddressLayoutVersion] The IP address layout version of the management IP address range. Possible versions include: * `managementIpAddressLayoutVersion=1`: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds as it does not support all features. * `managementIpAddressLayoutVersion=2`: Indicates the latest IP address layout used by all newly created private clouds. This version supports all current features.
   /// [vmwareEngineNetwork] Optional. The relative resource name of the VMware Engine network attached to the private cloud. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in the form: `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
-  NetworkConfigResponse({
+  const NetworkConfigResponse({
     required this.dnsServerIp,
     required this.managementCidr,
     required this.managementIpAddressLayoutVersion,

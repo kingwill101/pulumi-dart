@@ -46,7 +46,7 @@ class OrderV1State {
   /// [subStatusMessage] The sub status message of the order.
   /// [type] The type of key to be generated. Must be one of `asymmetric`, `key`.
   /// [updated] The date the order was last updated.
-  OrderV1State({
+  const OrderV1State({
     this.containerRef,
     this.created,
     this.creatorId,

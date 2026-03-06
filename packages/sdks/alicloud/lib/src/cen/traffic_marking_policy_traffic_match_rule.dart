@@ -55,7 +55,7 @@ class TrafficMarkingPolicyTrafficMatchRule {
   /// [srcPortRanges] The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
   /// [trafficMatchRuleDescription] The description information of the stream classification rule.
   /// [trafficMatchRuleName] The name of the stream classification rule.
-  TrafficMarkingPolicyTrafficMatchRule({
+  const TrafficMarkingPolicyTrafficMatchRule({
     this.addressFamily,
     this.dstCidr,
     this.dstPortRanges,

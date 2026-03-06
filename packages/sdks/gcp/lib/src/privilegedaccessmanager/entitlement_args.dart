@@ -51,7 +51,7 @@ class EntitlementArgs {
   /// [parent] Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
   /// [privilegedAccess] Privileged access that this service can be used to gate.
   /// [requesterJustificationConfig] Defines the ways in which a requester should provide the justification while requesting for access.
-  EntitlementArgs({
+  const EntitlementArgs({
     this.additionalNotificationTargets,
     this.approvalWorkflow,
     required this.eligibleUsers,

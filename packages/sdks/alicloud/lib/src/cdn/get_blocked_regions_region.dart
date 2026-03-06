@@ -14,7 +14,7 @@ class GetBlockedRegionsRegion {
   /// [continent] The region to which the country belongs.
   /// [countriesAndRegions] National region abbreviation.
   /// [countriesAndRegionsName] The name of the country and region.
-  GetBlockedRegionsRegion({
+  const GetBlockedRegionsRegion({
     required this.continent,
     required this.countriesAndRegions,
     required this.countriesAndRegionsName,

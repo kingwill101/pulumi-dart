@@ -24,7 +24,7 @@ class GetRegionNetworkEndpointGroupServerlessDeployment {
   /// [resource] The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
   /// [urlMask] A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
   /// [version] The optional resource version. The version identified by this value is platform-specific and is follows:
-  GetRegionNetworkEndpointGroupServerlessDeployment({
+  const GetRegionNetworkEndpointGroupServerlessDeployment({
     required this.platform,
     required this.resource,
     required this.urlMask,

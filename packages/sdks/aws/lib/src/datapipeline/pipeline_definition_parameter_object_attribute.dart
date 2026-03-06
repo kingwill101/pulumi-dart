@@ -11,7 +11,7 @@ class PipelineDefinitionParameterObjectAttribute {
   /// Creates a new [PipelineDefinitionParameterObjectAttribute].
   /// [key] Field identifier.
   /// [stringValue] Field value, expressed as a String.
-  PipelineDefinitionParameterObjectAttribute({
+  const PipelineDefinitionParameterObjectAttribute({
     required this.key,
     required this.stringValue,
   });

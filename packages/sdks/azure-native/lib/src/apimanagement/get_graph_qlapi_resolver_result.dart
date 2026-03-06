@@ -26,7 +26,7 @@ class GetGraphQLApiResolverResult {
   /// [name] The name of the resource
   /// [path] Path is type/field being resolved.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGraphQLApiResolverResult({
+  const GetGraphQLApiResolverResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

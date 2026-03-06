@@ -15,7 +15,7 @@ class AzureSqlProtectedItemExtendedInfoResponse {
   /// [oldestRecoveryPoint] The oldest backup copy available for this item in the service.
   /// [policyState] State of the backup policy associated with this backup item.
   /// [recoveryPointCount] Number of available backup copies associated with this backup item.
-  AzureSqlProtectedItemExtendedInfoResponse({
+  const AzureSqlProtectedItemExtendedInfoResponse({
     this.oldestRecoveryPoint,
     this.policyState,
     this.recoveryPointCount,

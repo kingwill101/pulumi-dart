@@ -12,7 +12,7 @@ class OneDashboardPageWidgetHistogramNullValue {
   /// Creates a new [OneDashboardPageWidgetHistogramNullValue].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesOverrides] (Optional) A Nested block which will take two string attributes `color` and `series_name`. This nested block is used to customize colors of individual.
-  OneDashboardPageWidgetHistogramNullValue({
+  const OneDashboardPageWidgetHistogramNullValue({
     this.nullValue,
     this.seriesOverrides,
   });

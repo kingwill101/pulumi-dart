@@ -12,7 +12,7 @@ class SecurityPostureConfigResponseContainerV1beta1 {
   /// Creates a new [SecurityPostureConfigResponseContainerV1beta1].
   /// [mode] Sets which mode to use for Security Posture features.
   /// [vulnerabilityMode] Sets which mode to use for vulnerability scanning.
-  SecurityPostureConfigResponseContainerV1beta1({
+  const SecurityPostureConfigResponseContainerV1beta1({
     required this.mode,
     required this.vulnerabilityMode,
   });

@@ -11,7 +11,7 @@ class ConnectionIAMBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ConnectionIAMBindingCondition({
+  const ConnectionIAMBindingCondition({
     this.description,
     required this.expression,
     required this.title,

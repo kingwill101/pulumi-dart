@@ -18,7 +18,7 @@ class GetCertificateMapArgs {
   /// Creates a new [GetCertificateMapArgs].
   /// [name] The name of the certificate map.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetCertificateMapArgs({
+  const GetCertificateMapArgs({
     required this.name,
     this.project,
   });

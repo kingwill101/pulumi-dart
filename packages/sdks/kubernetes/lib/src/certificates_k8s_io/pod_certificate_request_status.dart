@@ -37,7 +37,7 @@ class PodCertificateRequestStatus {
   /// [conditions] conditions applied to the request.
   /// [notAfter] notAfter is the time at which the certificate expires.  The value must be the same as the notAfter value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable.  The signer must set this field at the same time it sets certificateChain.
   /// [notBefore] notBefore is the time at which the certificate becomes valid.  The value must be the same as the notBefore value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain.
-  PodCertificateRequestStatus({
+  const PodCertificateRequestStatus({
     this.beginRefreshAt,
     this.certificateChain,
     this.conditions,

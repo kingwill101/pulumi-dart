@@ -76,7 +76,7 @@ class HyperNodeState {
   /// [vpcId] The ID of the vpc to which the sub computing node
   /// [vswitchId] The ID of the vswitch to which the sub computing node
   /// [zoneId] The zone where the hyper compute node is located
-  HyperNodeState({
+  const HyperNodeState({
     this.clusterId,
     this.createTime,
     this.dataDisks,

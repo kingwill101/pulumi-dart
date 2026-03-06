@@ -17,7 +17,7 @@ class GetManagedKubernetesClustersClusterConnections {
   /// [apiServerIntranet] API Server Intranet endpoint.
   /// [masterPublicIp] Master node SSH IP address.
   /// [serviceDomain] Service Access Domain.
-  GetManagedKubernetesClustersClusterConnections({
+  const GetManagedKubernetesClustersClusterConnections({
     required this.apiServerInternet,
     required this.apiServerIntranet,
     required this.masterPublicIp,

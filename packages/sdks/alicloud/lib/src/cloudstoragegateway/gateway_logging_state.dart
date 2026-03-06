@@ -18,7 +18,7 @@ class GatewayLoggingState {
   /// [slsLogstore] The name of the Log Store.
   /// [slsProject] The name of the Project.
   /// [status] The status of the resource. Valid values: `Enabled`, `Disable`.
-  GatewayLoggingState({
+  const GatewayLoggingState({
     this.gatewayId,
     this.slsLogstore,
     this.slsProject,

@@ -20,7 +20,7 @@ class ServiceIdentityState {
   /// [folder] The folder in which the resource belongs.
   /// [member] The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
   /// [service] The service to generate identity for.
-  ServiceIdentityState({
+  const ServiceIdentityState({
     this.email,
     this.folder,
     this.member,

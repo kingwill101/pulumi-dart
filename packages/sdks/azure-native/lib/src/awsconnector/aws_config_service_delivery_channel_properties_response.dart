@@ -25,7 +25,7 @@ class AwsConfigServiceDeliveryChannelPropertiesResponse {
   /// [s3KeyPrefix] &lt;p&gt;The prefix for the specified Amazon S3 bucket.&lt;/p&gt;
   /// [s3KmsKeyArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Key Management Service (KMS ) KMS key (KMS key) used to encrypt objects delivered by Config. Must belong to the same Region as the destination S3 bucket.&lt;/p&gt;
   /// [snsTopicARN] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to which Config sends notifications about configuration changes.&lt;/p&gt; &lt;p&gt;If you choose a topic from another account, the topic must have policies that grant access permissions to Config. For more information, see &lt;a href='https://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html'&gt;Permissions for the Amazon SNS Topic&lt;/a&gt; in the &lt;i&gt;Config Developer Guide&lt;/i&gt;.&lt;/p&gt;
-  AwsConfigServiceDeliveryChannelPropertiesResponse({
+  const AwsConfigServiceDeliveryChannelPropertiesResponse({
     this.configSnapshotDeliveryProperties,
     this.name,
     this.s3BucketName,

@@ -45,7 +45,7 @@ class GetDatabaseResult {
   /// [restoreInfo] Applicable only for restored databases. Contains information about the restore source.
   /// [state] The current database state.
   /// [versionRetentionPeriod] The period in which Cloud Spanner retains all versions of data for the database. This is the same as the value of version_retention_period database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.createTime,
     required this.databaseDialect,
     required this.defaultLeader,

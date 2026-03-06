@@ -38,7 +38,7 @@ class GetFloatingIpArgs {
   /// [status] status of the floating IP (ACTIVE/DOWN).
   /// [tags] The list of floating IP tags to filter.
   /// [tenantId] The owner of the floating IP.
-  GetFloatingIpArgs({
+  const GetFloatingIpArgs({
     this.address,
     this.description,
     this.fixedIp,

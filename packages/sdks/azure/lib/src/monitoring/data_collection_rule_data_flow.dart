@@ -20,7 +20,7 @@ class DataCollectionRuleDataFlow {
   /// [outputStream] The output stream of the transform. Only required if the data flow changes data to a different stream.
   /// [streams] Specifies a list of streams. Possible values include but not limited to `Microsoft-Event`, `Microsoft-InsightsMetrics`, `Microsoft-Perf`, `Microsoft-Syslog`, `Microsoft-WindowsEvent`, and `Microsoft-PrometheusMetrics`.
   /// [transformKql] The KQL query to transform stream data.
-  DataCollectionRuleDataFlow({
+  const DataCollectionRuleDataFlow({
     this.builtInTransform,
     required this.destinations,
     this.outputStream,

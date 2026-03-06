@@ -12,7 +12,7 @@ class HciOsProfileResponse {
   /// Creates a new [HciOsProfileResponse].
   /// [assemblyVersion] Version of assembly present on device
   /// [bootType] The boot type of the device. e.g. UEFI, Legacy etc
-  HciOsProfileResponse({
+  const HciOsProfileResponse({
     required this.assemblyVersion,
     required this.bootType,
   });

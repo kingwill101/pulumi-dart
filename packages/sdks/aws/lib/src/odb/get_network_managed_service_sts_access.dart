@@ -14,7 +14,7 @@ class GetNetworkManagedServiceStsAccess {
   /// [ipv4Addresses] Required.
   /// [status] The status of the network resource.
   /// [stsPolicyDocument] Required.
-  GetNetworkManagedServiceStsAccess({
+  const GetNetworkManagedServiceStsAccess({
     required this.domainName,
     required this.ipv4Addresses,
     required this.status,

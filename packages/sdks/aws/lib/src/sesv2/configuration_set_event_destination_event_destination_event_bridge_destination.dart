@@ -8,7 +8,7 @@ class ConfigurationSetEventDestinationEventDestinationEventBridgeDestination {
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationEventBridgeDestination].
   /// [eventBusArn] The Amazon Resource Name (ARN) of the Amazon EventBridge bus to publish email events to. Only the default bus is supported.
-  ConfigurationSetEventDestinationEventDestinationEventBridgeDestination({
+  const ConfigurationSetEventDestinationEventDestinationEventBridgeDestination({
     required this.eventBusArn,
   });
 

@@ -20,7 +20,7 @@ class EventRuleFcParameter {
   /// [functionName] The name of the function.
   /// [region] The region where Function Compute is deployed.
   /// [serviceName] The name of the Function Compute service.
-  EventRuleFcParameter({
+  const EventRuleFcParameter({
     this.arn,
     this.fcParametersId,
     this.functionName,

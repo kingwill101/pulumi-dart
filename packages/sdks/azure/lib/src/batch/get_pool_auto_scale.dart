@@ -11,7 +11,7 @@ class GetPoolAutoScale {
   /// Creates a new [GetPoolAutoScale].
   /// [evaluationInterval] The interval to wait before evaluating if the pool needs to be scaled.
   /// [formula] The autoscale formula that needs to be used for scaling the Batch pool.
-  GetPoolAutoScale({
+  const GetPoolAutoScale({
     required this.evaluationInterval,
     required this.formula,
   });

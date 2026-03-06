@@ -11,7 +11,7 @@ class GetTestResultDownloadURLResult {
   /// Creates a new [GetTestResultDownloadURLResult].
   /// [downloadUrl] The download URL.
   /// [expirationTime] Expiry date of the download URL.
-  GetTestResultDownloadURLResult({
+  const GetTestResultDownloadURLResult({
     required this.downloadUrl,
     required this.expirationTime,
   });

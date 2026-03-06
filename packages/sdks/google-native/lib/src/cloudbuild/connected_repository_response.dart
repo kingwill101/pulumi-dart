@@ -15,7 +15,7 @@ class ConnectedRepositoryResponse {
   /// [dir] Directory, relative to the source root, in which to run the build.
   /// [repository] Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
   /// [revision] The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
-  ConnectedRepositoryResponse({
+  const ConnectedRepositoryResponse({
     required this.dir,
     required this.repository,
     required this.revision,

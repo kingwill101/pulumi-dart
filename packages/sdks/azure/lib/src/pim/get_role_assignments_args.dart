@@ -21,7 +21,7 @@ class GetRoleAssignmentsArgs {
   /// [principalId] The principal ID to filter the list of Role Assignments against.
   /// [scope] The scope at which to list Role Assignments.
   /// [tenantId] The tenant ID for cross-tenant requests.
-  GetRoleAssignmentsArgs({
+  const GetRoleAssignmentsArgs({
     this.limitAtScope,
     this.principalId,
     required this.scope,

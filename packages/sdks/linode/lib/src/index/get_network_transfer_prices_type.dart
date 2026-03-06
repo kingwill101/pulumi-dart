@@ -22,7 +22,7 @@ class GetNetworkTransferPricesType {
   /// [prices] Cost in US dollars, broken down into hourly and monthly charges.
   /// [regionPrices] A list of region-specific prices for this Network Transfer Price.
   /// [transfer] The monthly outbound transfer amount, in MB.
-  GetNetworkTransferPricesType({
+  const GetNetworkTransferPricesType({
     required this.id,
     required this.label,
     required this.prices,

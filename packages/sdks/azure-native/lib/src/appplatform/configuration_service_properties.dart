@@ -13,7 +13,7 @@ class ConfigurationServiceProperties {
   /// Creates a new [ConfigurationServiceProperties].
   /// [generation] The generation of the Application Configuration Service.
   /// [settings] The settings of Application Configuration Service.
-  ConfigurationServiceProperties({
+  const ConfigurationServiceProperties({
     this.generation,
     this.settings,
   });

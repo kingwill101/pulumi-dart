@@ -48,7 +48,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKey {
   /// [queryArgument] (Optional) Use the specified query argument as an aggregate key. See RateLimit `query_argument` below for details.
   /// [queryString] (Optional) Use the request's query string as an aggregate key. See RateLimit `query_string` below for details.
   /// [uriPath] (Optional) Use the request's URI path as an aggregate key. See RateLimit `uri_path` below for details.
-  RuleGroupRuleStatementRateBasedStatementCustomKey({
+  const RuleGroupRuleStatementRateBasedStatementCustomKey({
     this.asn,
     this.cookie,
     this.forwardedIp,

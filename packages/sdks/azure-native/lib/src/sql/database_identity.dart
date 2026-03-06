@@ -12,7 +12,7 @@ class DatabaseIdentity {
   /// Creates a new [DatabaseIdentity].
   /// [type] The identity type
   /// [userAssignedIdentities] The resource ids of the user assigned identities to use
-  DatabaseIdentity({
+  const DatabaseIdentity({
     this.type,
     this.userAssignedIdentities,
   });

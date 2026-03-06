@@ -12,7 +12,7 @@ class HPAConfigResponse {
   /// Creates a new [HPAConfigResponse].
   /// [cpuUtilizationThreshold] Percent CPU utilization where HPA triggers autoscaling.
   /// [memoryUtilizationThreshold] Percent Memory utilization where HPA triggers autoscaling.
-  HPAConfigResponse({
+  const HPAConfigResponse({
     required this.cpuUtilizationThreshold,
     required this.memoryUtilizationThreshold,
   });

@@ -27,7 +27,7 @@ class SubscriptionRuleState {
   /// [sqlFilter] Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
   /// [sqlFilterCompatibilityLevel] Optional.
   /// [subscriptionId] The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
-  SubscriptionRuleState({
+  const SubscriptionRuleState({
     this.action,
     this.correlationFilter,
     this.filterType,

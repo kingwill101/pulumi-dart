@@ -17,7 +17,7 @@ class ScanRunErrorTrace {
   /// [code] Indicates the error reason code.
   /// [mostCommonHttpErrorCode] If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.
   /// [scanConfigError] If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run.
-  ScanRunErrorTrace({
+  const ScanRunErrorTrace({
     this.code,
     this.mostCommonHttpErrorCode,
     this.scanConfigError,

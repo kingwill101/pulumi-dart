@@ -30,7 +30,7 @@ class BasicEndpointGroupState {
   /// [endpointSubAddress] The sub address of the endpoint.
   /// [endpointType] The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
   /// [status] The status of the Basic Endpoint Group.
-  BasicEndpointGroupState({
+  const BasicEndpointGroupState({
     this.acceleratorId,
     this.basicEndpointGroupName,
     this.description,

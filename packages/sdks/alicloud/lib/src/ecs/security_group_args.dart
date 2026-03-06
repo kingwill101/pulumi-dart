@@ -38,7 +38,7 @@ class SecurityGroupArgs {
   /// [securityGroupType] The type of the security group. Default value: `normal`. Valid values:
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the VPC in which you want to create the security group.
-  SecurityGroupArgs({
+  const SecurityGroupArgs({
     this.description,
     this.innerAccess,
     this.innerAccessPolicy,

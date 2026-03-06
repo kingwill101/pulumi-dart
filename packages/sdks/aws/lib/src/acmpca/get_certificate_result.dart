@@ -20,7 +20,7 @@ class GetCertificateResult {
   /// [certificateChain] PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.arn,
     required this.certificate,
     required this.certificateAuthorityArn,

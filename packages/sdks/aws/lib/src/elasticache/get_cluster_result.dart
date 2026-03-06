@@ -89,7 +89,7 @@ class GetClusterResult {
   /// [snapshotWindow] Daily time range (in UTC) during which ElastiCache will
   /// [subnetGroupName] Name of the subnet group associated to the cache cluster.
   /// [tags] Tags assigned to the resource
-  GetClusterResult({
+  const GetClusterResult({
     required this.arn,
     required this.availabilityZone,
     required this.cacheNodes,

@@ -31,7 +31,7 @@ class VPNGatewayArgs {
   /// [network] The network this VPN gateway is accepting traffic for.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region this gateway should sit in.
-  VPNGatewayArgs({
+  const VPNGatewayArgs({
     this.description,
     this.name,
     required this.network,

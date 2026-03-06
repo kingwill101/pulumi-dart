@@ -59,7 +59,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
   /// [startedOn] Migration start time
   /// [state] Current state of migration
   /// [statusMessage] Status message
-  MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse({
+  const MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse({
     required this.databaseName,
     required this.endedOn,
     required this.errorCount,

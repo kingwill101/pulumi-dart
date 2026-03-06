@@ -21,7 +21,7 @@ class BucketStyleState {
   /// [content] The Image style content can contain single or multiple image processing parameters.
   /// [createTime] Image Style Creation Time
   /// [styleName] Image Style Name
-  BucketStyleState({
+  const BucketStyleState({
     this.bucket,
     this.category,
     this.content,

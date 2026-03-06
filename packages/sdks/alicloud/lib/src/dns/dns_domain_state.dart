@@ -35,7 +35,7 @@ class DnsDomainState {
   /// [remark] Remarks information for your domain name.
   /// [resourceGroupId] The Id of resource group which the dns domain belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  DnsDomainState({
+  const DnsDomainState({
     this.dnsServers,
     this.domainId,
     this.domainName,

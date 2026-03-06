@@ -18,7 +18,7 @@ class EnvPodMonitorArgs {
   /// [aliyunLang] Language environment, default is Chinese zh | en.
   /// [configYaml] Yaml configuration string.
   /// [environmentId] Environment id.
-  EnvPodMonitorArgs({
+  const EnvPodMonitorArgs({
     this.aliyunLang,
     required this.configYaml,
     required this.environmentId,

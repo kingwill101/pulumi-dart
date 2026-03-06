@@ -21,7 +21,7 @@ class BaseImageTrigger {
   /// [status] The current status of trigger.
   /// [updateTriggerEndpoint] The endpoint URL for receiving update triggers.
   /// [updateTriggerPayloadType] Type of Payload body for Base image update triggers.
-  BaseImageTrigger({
+  const BaseImageTrigger({
     required this.baseImageTriggerType,
     required this.name,
     this.status,

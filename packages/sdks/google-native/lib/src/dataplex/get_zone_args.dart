@@ -17,7 +17,7 @@ class GetZoneArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetZoneArgs({
+  const GetZoneArgs({
     required this.lakeId,
     required this.location,
     this.project,

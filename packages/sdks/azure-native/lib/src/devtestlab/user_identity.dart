@@ -21,7 +21,7 @@ class UserIdentity {
   /// [principalId] Set to the principal Id of the client JWT making the request. Service principal will not have the principal Id.
   /// [principalName] Set to the principal name / UPN of the client JWT making the request.
   /// [tenantId] Set to the tenant ID of the client JWT making the request.
-  UserIdentity({
+  const UserIdentity({
     this.appId,
     this.objectId,
     this.principalId,

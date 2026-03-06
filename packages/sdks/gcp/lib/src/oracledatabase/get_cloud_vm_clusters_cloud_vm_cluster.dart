@@ -84,7 +84,7 @@ class GetCloudVmClustersCloudVmCluster {
   /// [project] The project to which the resource belongs. If it
   /// [properties] Various properties and settings associated with Exadata VM cluster.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  GetCloudVmClustersCloudVmCluster({
+  const GetCloudVmClustersCloudVmCluster({
     required this.backupOdbSubnet,
     required this.backupSubnetCidr,
     required this.cidr,

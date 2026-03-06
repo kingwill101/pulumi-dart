@@ -17,7 +17,7 @@ class ExpressRouteCircuitPeeringMicrosoftPeeringConfig {
   /// [advertisedPublicPrefixes] A list of Advertised Public Prefixes.
   /// [customerAsn] The CustomerASN of the peering. Defaults to `0`.
   /// [routingRegistryName] The Routing Registry against which the AS number and prefixes are registered. For example: `ARIN`, `RIPE`, `AFRINIC` etc. Defaults to `NONE`.
-  ExpressRouteCircuitPeeringMicrosoftPeeringConfig({
+  const ExpressRouteCircuitPeeringMicrosoftPeeringConfig({
     this.advertisedCommunities,
     required this.advertisedPublicPrefixes,
     this.customerAsn,

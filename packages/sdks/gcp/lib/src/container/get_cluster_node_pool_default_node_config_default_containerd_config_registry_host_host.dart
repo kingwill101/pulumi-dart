@@ -29,7 +29,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost
   /// [headers] Configures the registry host headers.
   /// [host] Configures the registry host/mirror.
   /// [overridePath] Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
-  GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost({
+  const GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost({
     required this.capabilities,
     required this.cas,
     required this.clients,

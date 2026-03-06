@@ -10,7 +10,7 @@ class RecoveryConfigComposerV1beta1 {
 
   /// Creates a new [RecoveryConfigComposerV1beta1].
   /// [scheduledSnapshotsConfig] Optional. The configuration for scheduled snapshot creation mechanism.
-  RecoveryConfigComposerV1beta1({
+  const RecoveryConfigComposerV1beta1({
     this.scheduledSnapshotsConfig,
   });
 

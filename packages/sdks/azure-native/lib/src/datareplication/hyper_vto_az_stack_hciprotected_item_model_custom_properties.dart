@@ -70,7 +70,7 @@ class HyperVToAzStackHCIProtectedItemModelCustomProperties {
   /// [targetResourceGroupId] Gets or sets the target resource group ARM Id.
   /// [targetVmName] Gets or sets the target VM display name.
   /// [testNetworkId] Gets or sets the target test network Id within AzStackHCI Cluster.
-  HyperVToAzStackHCIProtectedItemModelCustomProperties({
+  const HyperVToAzStackHCIProtectedItemModelCustomProperties({
     required this.customLocationRegion,
     required this.disksToInclude,
     this.dynamicMemoryConfig,

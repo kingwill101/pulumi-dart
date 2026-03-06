@@ -27,7 +27,7 @@ class SecondaryIndexState {
   /// [instanceName] The name of the OTS instance in which table will located.
   /// [primaryKeys] A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
-  SecondaryIndexState({
+  const SecondaryIndexState({
     this.definedColumns,
     this.includeBaseData,
     this.indexName,

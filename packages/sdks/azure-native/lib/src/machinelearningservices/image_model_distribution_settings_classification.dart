@@ -123,7 +123,7 @@ class ImageModelDistributionSettingsClassification {
   /// [warmupCosineLRWarmupEpochs] Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
   /// [weightDecay] Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
   /// [weightedLoss] Weighted loss. The accepted values are 0 for no weighted loss.
-  ImageModelDistributionSettingsClassification({
+  const ImageModelDistributionSettingsClassification({
     this.amsGradient,
     this.augmentations,
     this.beta1,

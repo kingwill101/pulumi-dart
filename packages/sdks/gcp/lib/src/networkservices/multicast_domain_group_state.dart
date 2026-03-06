@@ -17,7 +17,7 @@ class MulticastDomainGroupState {
 
   /// Creates a new [MulticastDomainGroupState].
   /// [state] (Output)
-  MulticastDomainGroupState({
+  const MulticastDomainGroupState({
     this.state,
   });
 

@@ -8,7 +8,7 @@ class CxAgentSpeechToTextSettings {
 
   /// Creates a new [CxAgentSpeechToTextSettings].
   /// [enableSpeechAdaptation] Whether to use speech adaptation for speech recognition.
-  CxAgentSpeechToTextSettings({
+  const CxAgentSpeechToTextSettings({
     this.enableSpeechAdaptation,
   });
 

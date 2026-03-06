@@ -9,7 +9,7 @@ class RuleGroupRuleActionAllow {
 
   /// Creates a new [RuleGroupRuleActionAllow].
   /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.
-  RuleGroupRuleActionAllow({
+  const RuleGroupRuleActionAllow({
     this.customRequestHandling,
   });
 

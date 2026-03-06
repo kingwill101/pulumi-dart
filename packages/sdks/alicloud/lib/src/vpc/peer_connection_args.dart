@@ -66,7 +66,7 @@ class PeerConnectionArgs {
   /// [status] The status of the resource
   /// [tags] The tags of VpcPeer.
   /// [vpcId] The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
-  PeerConnectionArgs({
+  const PeerConnectionArgs({
     this.acceptingAliUid,
     required this.acceptingRegionId,
     required this.acceptingVpcId,

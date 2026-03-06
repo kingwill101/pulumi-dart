@@ -15,7 +15,7 @@ class GetSshKeysArgs {
   /// Creates a new [GetSshKeysArgs].
   /// [id] The ID of this resource.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetSshKeysArgs({
+  const GetSshKeysArgs({
     this.id,
     this.withSelector,
   });

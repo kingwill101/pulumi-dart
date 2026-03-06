@@ -57,7 +57,7 @@ class GetRepositoryResult {
   /// [sizeBytes] The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
   /// [updateTime] The time when the repository was last updated.
   /// [virtualRepositoryConfig] Configuration specific for a Virtual Repository.
-  GetRepositoryResult({
+  const GetRepositoryResult({
     required this.cleanupPolicies,
     required this.cleanupPolicyDryRun,
     required this.createTime,

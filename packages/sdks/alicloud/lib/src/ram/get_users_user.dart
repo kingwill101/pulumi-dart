@@ -17,7 +17,7 @@ class GetUsersUser {
   /// [id] The original id is user's name, but it is user id in 1.37.0+.
   /// [lastLoginDate] (Removed) Last login date of the user. Removed from version 1.79.0.
   /// [name] Name of the user.
-  GetUsersUser({
+  const GetUsersUser({
     required this.createDate,
     required this.id,
     required this.lastLoginDate,

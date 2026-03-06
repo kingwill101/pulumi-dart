@@ -20,7 +20,7 @@ class ListenerAclAttachmentArgs {
   /// [aclId] The ID list of the access policy group bound by the listener.
   /// [aclType] Access control type:
   /// [listenerId] Listener instance ID.
-  ListenerAclAttachmentArgs({
+  const ListenerAclAttachmentArgs({
     required this.aclId,
     required this.aclType,
     required this.listenerId,

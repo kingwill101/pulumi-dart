@@ -21,7 +21,7 @@ class GetDeploymentLogFileUrlArgs {
   /// [deploymentName] The name of the Deployment resource.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetDeploymentLogFileUrlArgs({
+  const GetDeploymentLogFileUrlArgs({
     required this.appName,
     required this.deploymentName,
     required this.resourceGroupName,

@@ -57,7 +57,7 @@ class ConnectorState {
   /// [selfLink] The fully qualified name of this VPC connector
   /// [state] State of the VPC access connector.
   /// [subnet] The subnet in which to house the connector
-  ConnectorState({
+  const ConnectorState({
     this.connectedProjects,
     this.ipCidrRange,
     this.machineType,

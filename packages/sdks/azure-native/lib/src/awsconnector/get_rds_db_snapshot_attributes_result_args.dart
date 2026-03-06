@@ -15,7 +15,7 @@ class GetRdsDbSnapshotAttributesResultArgs {
   /// Creates a new [GetRdsDbSnapshotAttributesResultArgs].
   /// [name] Name of RdsDBSnapshotAttributesResult
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRdsDbSnapshotAttributesResultArgs({
+  const GetRdsDbSnapshotAttributesResultArgs({
     required this.name,
     required this.resourceGroupName,
   });

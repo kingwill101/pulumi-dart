@@ -35,7 +35,7 @@ class ManagedInstanceFailoverGroupState {
   /// [readonlyEndpointFailoverPolicyEnabled] Failover policy for the read-only endpoint. Defaults to `true`.
   /// [role] The partner replication role of the Managed Instance Failover Group.
   /// [secondaryType] The type of the secondary Managed Instance. Possible values are `Geo`, `Standby`. Defaults to `Geo`.
-  ManagedInstanceFailoverGroupState({
+  const ManagedInstanceFailoverGroupState({
     this.location,
     this.managedInstanceId,
     this.name,

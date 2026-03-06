@@ -10,7 +10,7 @@ class OffPeakWindow {
 
   /// Creates a new [OffPeakWindow].
   /// [windowStartTime] &lt;p&gt;A custom start time for the off-peak window, in Coordinated Universal Time (UTC). The window length will always be 10 hours, so you can't specify an end time. For example, if you specify 11:00 P.M. UTC as a start time, the end time will automatically be set to 9:00 A.M.&lt;/p&gt;
-  OffPeakWindow({
+  const OffPeakWindow({
     this.windowStartTime,
   });
 

@@ -20,7 +20,7 @@ class GroupV3State {
   /// [domainId] The domain the group belongs to.
   /// [name] The name of the group.
   /// [region] The region in which to obtain the V3 Keystone client.
-  GroupV3State({
+  const GroupV3State({
     this.description,
     this.domainId,
     this.name,

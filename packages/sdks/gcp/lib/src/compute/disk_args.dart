@@ -205,7 +205,7 @@ class DiskArgs {
   /// [storagePool] The URL or the name of the storage pool in which the new disk is created.
   /// [type] URL of the disk type resource describing which disk type to use to
   /// [zone] A reference to the zone where the disk resides.
-  DiskArgs({
+  const DiskArgs({
     this.accessMode,
     this.architecture,
     this.asyncPrimaryDisk,

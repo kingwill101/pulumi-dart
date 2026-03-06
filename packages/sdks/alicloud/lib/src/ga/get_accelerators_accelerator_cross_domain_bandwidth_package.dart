@@ -11,7 +11,7 @@ class GetAcceleratorsAcceleratorCrossDomainBandwidthPackage {
   /// Creates a new [GetAcceleratorsAcceleratorCrossDomainBandwidthPackage].
   /// [bandwidth] Bandwidth value of cross-domain acceleration package.
   /// [instanceId] Instance ID of the cross-domain acceleration package.
-  GetAcceleratorsAcceleratorCrossDomainBandwidthPackage({
+  const GetAcceleratorsAcceleratorCrossDomainBandwidthPackage({
     required this.bandwidth,
     required this.instanceId,
   });

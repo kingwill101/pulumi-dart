@@ -8,7 +8,7 @@ class DomainOsBootDevice {
 
   /// Creates a new [DomainOsBootDevice].
   /// [dev] Specifies the device type for booting the domain.
-  DomainOsBootDevice({
+  const DomainOsBootDevice({
     required this.dev,
   });
 

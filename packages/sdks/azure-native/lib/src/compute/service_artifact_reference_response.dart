@@ -9,7 +9,7 @@ class ServiceArtifactReferenceResponse {
 
   /// Creates a new [ServiceArtifactReferenceResponse].
   /// [id] The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
-  ServiceArtifactReferenceResponse({
+  const ServiceArtifactReferenceResponse({
     this.id,
   });
 

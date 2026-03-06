@@ -30,7 +30,7 @@ class GetVpcConnectionResult {
   /// [tags] Map of key-value pairs assigned to the VPC Connection.
   /// [targetClusterArn] The Amazon Resource Name (ARN) of the cluster.
   /// [vpcId] The VPC ID of the remote client.
-  GetVpcConnectionResult({
+  const GetVpcConnectionResult({
     required this.arn,
     required this.authentication,
     required this.clientSubnets,

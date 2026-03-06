@@ -13,7 +13,7 @@ class ClusterStateChangeReason {
   /// Creates a new [ClusterStateChangeReason].
   /// [code] &lt;p&gt;The programmatic code for the state change reason.&lt;/p&gt;
   /// [message] &lt;p&gt;The descriptive message for the state change reason.&lt;/p&gt;
-  ClusterStateChangeReason({
+  const ClusterStateChangeReason({
     this.code,
     this.message,
   });

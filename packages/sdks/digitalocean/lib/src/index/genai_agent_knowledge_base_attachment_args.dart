@@ -15,7 +15,7 @@ class GenaiAgentKnowledgeBaseAttachmentArgs {
   /// Creates a new [GenaiAgentKnowledgeBaseAttachmentArgs].
   /// [agentUuid] A unique identifier for an agent.
   /// [knowledgeBaseUuid] A unique identifier for a knowledge base.
-  GenaiAgentKnowledgeBaseAttachmentArgs({
+  const GenaiAgentKnowledgeBaseAttachmentArgs({
     required this.agentUuid,
     required this.knowledgeBaseUuid,
   });

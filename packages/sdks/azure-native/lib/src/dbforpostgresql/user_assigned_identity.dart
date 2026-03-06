@@ -16,7 +16,7 @@ class UserAssignedIdentity {
   /// [principalId] Identifier of the object of the service principal associated to the user assigned managed identity.
   /// [type] Types of identities associated with a server.
   /// [userAssignedIdentities] Map of user assigned managed identities.
-  UserAssignedIdentity({
+  const UserAssignedIdentity({
     this.principalId,
     required this.type,
     this.userAssignedIdentities,

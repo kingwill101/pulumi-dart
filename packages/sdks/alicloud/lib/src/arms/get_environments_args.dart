@@ -27,7 +27,7 @@ class GetEnvironmentsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
-  GetEnvironmentsArgs({
+  const GetEnvironmentsArgs({
     this.environmentType,
     this.ids,
     this.nameRegex,

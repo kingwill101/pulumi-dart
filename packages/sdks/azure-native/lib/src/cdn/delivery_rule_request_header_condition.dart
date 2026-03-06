@@ -14,7 +14,7 @@ class DeliveryRuleRequestHeaderCondition {
   /// Creates a new [DeliveryRuleRequestHeaderCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleRequestHeaderCondition({
+  const DeliveryRuleRequestHeaderCondition({
     required this.name,
     required this.parameters,
   });

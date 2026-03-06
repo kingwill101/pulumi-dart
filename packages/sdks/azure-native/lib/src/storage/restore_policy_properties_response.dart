@@ -18,7 +18,7 @@ class RestorePolicyPropertiesResponse {
   /// [enabled] Blob restore is enabled if set to true.
   /// [lastEnabledTime] Deprecated in favor of minRestoreTime property.
   /// [minRestoreTime] Returns the minimum date and time that the restore can be started.
-  RestorePolicyPropertiesResponse({
+  const RestorePolicyPropertiesResponse({
     this.days,
     required this.enabled,
     required this.lastEnabledTime,

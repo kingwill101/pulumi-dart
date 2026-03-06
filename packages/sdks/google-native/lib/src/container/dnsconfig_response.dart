@@ -15,7 +15,7 @@ class DNSConfigResponse {
   /// [clusterDns] cluster_dns indicates which in-cluster DNS provider should be used.
   /// [clusterDnsDomain] cluster_dns_domain is the suffix used for all cluster service records.
   /// [clusterDnsScope] cluster_dns_scope indicates the scope of access to cluster DNS records.
-  DNSConfigResponse({
+  const DNSConfigResponse({
     required this.clusterDns,
     required this.clusterDnsDomain,
     required this.clusterDnsScope,

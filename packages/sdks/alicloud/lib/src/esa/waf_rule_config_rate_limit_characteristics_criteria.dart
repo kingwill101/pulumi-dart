@@ -12,7 +12,7 @@ class WafRuleConfigRateLimitCharacteristicsCriteria {
   /// [criterias] Optional.
   /// [logic] Optional.
   /// [matchType] Optional.
-  WafRuleConfigRateLimitCharacteristicsCriteria({
+  const WafRuleConfigRateLimitCharacteristicsCriteria({
     this.criterias,
     this.logic,
     this.matchType,

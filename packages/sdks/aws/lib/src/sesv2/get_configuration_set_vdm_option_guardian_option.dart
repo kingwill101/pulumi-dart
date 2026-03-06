@@ -8,7 +8,7 @@ class GetConfigurationSetVdmOptionGuardianOption {
 
   /// Creates a new [GetConfigurationSetVdmOptionGuardianOption].
   /// [optimizedSharedDelivery] Specifies the status of your VDM optimized shared delivery.
-  GetConfigurationSetVdmOptionGuardianOption({
+  const GetConfigurationSetVdmOptionGuardianOption({
     required this.optimizedSharedDelivery,
   });
 

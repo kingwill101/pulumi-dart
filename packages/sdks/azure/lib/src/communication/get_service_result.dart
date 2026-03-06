@@ -36,7 +36,7 @@ class GetServiceResult {
   /// [secondaryConnectionString] The secondary connection string of the Communication Service.
   /// [secondaryKey] The secondary key of the Communication Service.
   /// [tags] A mapping of tags assigned to the Communication Service.
-  GetServiceResult({
+  const GetServiceResult({
     required this.dataLocation,
     required this.hostname,
     required this.id,

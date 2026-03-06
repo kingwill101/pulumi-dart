@@ -9,7 +9,7 @@ class RemotePrivateLinkServiceConnectionState {
 
   /// Creates a new [RemotePrivateLinkServiceConnectionState].
   /// [status] State of Private Link Connection.
-  RemotePrivateLinkServiceConnectionState({
+  const RemotePrivateLinkServiceConnectionState({
     this.status,
   });
 

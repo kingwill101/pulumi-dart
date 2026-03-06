@@ -38,7 +38,7 @@ class GetBackupPlanResult {
   /// [resourceType] Required.
   /// [supportedResourceTypes] Required.
   /// [updateTime] Required.
-  GetBackupPlanResult({
+  const GetBackupPlanResult({
     required this.backupPlanId,
     required this.backupRules,
     required this.backupVault,

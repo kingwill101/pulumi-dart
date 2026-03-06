@@ -50,7 +50,7 @@ class GetEntitlementResult {
   /// [suspensionReasons] Enumerable of all current suspension reasons for an entitlement.
   /// [trialSettings] Settings for trial offers.
   /// [updateTime] The time at which the entitlement is updated.
-  GetEntitlementResult({
+  const GetEntitlementResult({
     required this.associationInfo,
     required this.billingAccount,
     required this.commitmentSettings,

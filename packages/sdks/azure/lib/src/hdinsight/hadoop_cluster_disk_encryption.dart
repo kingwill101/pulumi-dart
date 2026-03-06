@@ -17,7 +17,7 @@ class HadoopClusterDiskEncryption {
   /// [encryptionAtHostEnabled] This is indicator to show whether resource disk encryption is enabled.
   /// [keyVaultKeyId] The ID of the key vault key.
   /// [keyVaultManagedIdentityId] This is the resource ID of Managed Identity used to access the key vault.
-  HadoopClusterDiskEncryption({
+  const HadoopClusterDiskEncryption({
     this.encryptionAlgorithm,
     this.encryptionAtHostEnabled,
     this.keyVaultKeyId,

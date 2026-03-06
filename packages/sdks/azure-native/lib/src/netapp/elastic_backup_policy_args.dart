@@ -28,7 +28,7 @@ class ElasticBackupPolicyArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ElasticBackupPolicyArgs({
+  const ElasticBackupPolicyArgs({
     required this.accountName,
     this.backupPolicyName,
     this.location,

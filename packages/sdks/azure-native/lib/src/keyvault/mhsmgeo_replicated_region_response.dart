@@ -15,7 +15,7 @@ class MHSMGeoReplicatedRegionResponse {
   /// [isPrimary] A boolean value that indicates whether the region is the primary region or a secondary region.
   /// [name] Name of the geo replicated region.
   /// [provisioningState] Provisioning state of the geo replicated region.
-  MHSMGeoReplicatedRegionResponse({
+  const MHSMGeoReplicatedRegionResponse({
     this.isPrimary,
     this.name,
     required this.provisioningState,

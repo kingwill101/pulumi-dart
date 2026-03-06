@@ -31,7 +31,7 @@ class GetSecretVersionResult {
   /// [versionId] Unique identifier of this version of the secret.
   /// [versionStage] Optional.
   /// [versionStages] Required.
-  GetSecretVersionResult({
+  const GetSecretVersionResult({
     required this.arn,
     required this.createdDate,
     required this.id,

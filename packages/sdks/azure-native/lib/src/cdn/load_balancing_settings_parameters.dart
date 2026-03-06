@@ -15,7 +15,7 @@ class LoadBalancingSettingsParameters {
   /// [additionalLatencyInMilliseconds] The additional latency in milliseconds for probes to fall into the lowest latency bucket
   /// [sampleSize] The number of samples to consider for load balancing decisions
   /// [successfulSamplesRequired] The number of samples within the sample period that must succeed
-  LoadBalancingSettingsParameters({
+  const LoadBalancingSettingsParameters({
     this.additionalLatencyInMilliseconds,
     this.sampleSize,
     this.successfulSamplesRequired,

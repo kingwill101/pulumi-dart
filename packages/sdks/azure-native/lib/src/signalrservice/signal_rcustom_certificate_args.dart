@@ -27,7 +27,7 @@ class SignalRCustomCertificateArgs {
   /// [keyVaultSecretVersion] Certificate secret version.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  SignalRCustomCertificateArgs({
+  const SignalRCustomCertificateArgs({
     this.certificateName,
     required this.keyVaultBaseUri,
     required this.keyVaultSecretName,

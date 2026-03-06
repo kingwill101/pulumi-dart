@@ -9,7 +9,7 @@ class ConfigManagementBinauthzConfig {
 
   /// Creates a new [ConfigManagementBinauthzConfig].
   /// [enabled] Whether binauthz is enabled in this cluster.
-  ConfigManagementBinauthzConfig({
+  const ConfigManagementBinauthzConfig({
     this.enabled,
   });
 

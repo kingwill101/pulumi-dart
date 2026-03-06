@@ -22,7 +22,7 @@ class WorkloadsConfigComposerV1beta1 {
   /// [triggerer] Optional. Resources used by Airflow triggerers.
   /// [webServer] Optional. Resources used by Airflow web server.
   /// [worker] Optional. Resources used by Airflow workers.
-  WorkloadsConfigComposerV1beta1({
+  const WorkloadsConfigComposerV1beta1({
     this.scheduler,
     this.triggerer,
     this.webServer,

@@ -46,7 +46,7 @@ class TumblingWindowTrigger {
   /// [retryPolicy] Retry policy that will be applied for failed pipeline runs.
   /// [startTime] The start time for the time period for the trigger during which events are fired for windows that are ready. Only UTC time is currently supported.
   /// [type] Trigger type.
-  TumblingWindowTrigger({
+  const TumblingWindowTrigger({
     this.annotations,
     this.delay,
     this.dependsOn,

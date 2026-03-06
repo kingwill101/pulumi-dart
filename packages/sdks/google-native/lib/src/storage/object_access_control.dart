@@ -57,7 +57,7 @@ class ObjectAccessControl {
   /// [projectTeam] The project team associated with the entity, if any.
   /// [role] The access permission for the entity.
   /// [selfLink] The link to this access-control entry.
-  ObjectAccessControl({
+  const ObjectAccessControl({
     this.bucket,
     this.domain,
     this.email,

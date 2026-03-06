@@ -18,7 +18,7 @@ class StorageAccountSkuConversionStatusResponse {
   /// [skuConversionStatus] This property indicates the current sku conversion status.
   /// [startTime] This property represents the sku conversion start time.
   /// [targetSkuName] This property represents the target sku name to which the account sku is being converted asynchronously.
-  StorageAccountSkuConversionStatusResponse({
+  const StorageAccountSkuConversionStatusResponse({
     required this.endTime,
     required this.skuConversionStatus,
     required this.startTime,

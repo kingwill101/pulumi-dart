@@ -10,7 +10,7 @@ class PublishMetricAction {
 
   /// Creates a new [PublishMetricAction].
   /// [dimensions] Property dimensions
-  PublishMetricAction({
+  const PublishMetricAction({
     this.dimensions,
   });
 

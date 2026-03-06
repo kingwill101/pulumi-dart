@@ -37,7 +37,7 @@ class MongoDBResourceMongoUserDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [roles] The set of roles inherited by the User Definition.
   /// [userName] The user name for User Definition.
-  MongoDBResourceMongoUserDefinitionArgs({
+  const MongoDBResourceMongoUserDefinitionArgs({
     required this.accountName,
     this.customData,
     this.databaseName,

@@ -8,7 +8,7 @@ class GetRegionSecurityPolicyRuleMatchConfig {
 
   /// Creates a new [GetRegionSecurityPolicyRuleMatchConfig].
   /// [srcIpRanges] CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
-  GetRegionSecurityPolicyRuleMatchConfig({
+  const GetRegionSecurityPolicyRuleMatchConfig({
     required this.srcIpRanges,
   });
 

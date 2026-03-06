@@ -8,7 +8,7 @@ class ConnectionProfileOraclePrivateConnectivity {
 
   /// Creates a new [ConnectionProfileOraclePrivateConnectivity].
   /// [privateConnection] Required. The resource name (URI) of the private connection.
-  ConnectionProfileOraclePrivateConnectivity({
+  const ConnectionProfileOraclePrivateConnectivity({
     required this.privateConnection,
   });
 

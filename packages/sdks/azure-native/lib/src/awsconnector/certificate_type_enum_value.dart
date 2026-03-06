@@ -9,7 +9,7 @@ class CertificateTypeEnumValue {
 
   /// Creates a new [CertificateTypeEnumValue].
   /// [value] Property value
-  CertificateTypeEnumValue({
+  const CertificateTypeEnumValue({
     this.value,
   });
 

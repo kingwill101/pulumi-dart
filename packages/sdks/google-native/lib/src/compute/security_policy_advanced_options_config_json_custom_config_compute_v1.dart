@@ -8,7 +8,7 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1 {
 
   /// Creates a new [SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1].
   /// [contentTypes] A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
-  SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1({
+  const SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1({
     this.contentTypes,
   });
 

@@ -44,7 +44,7 @@ class RepositoryIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryId] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
-  RepositoryIamBindingState({
+  const RepositoryIamBindingState({
     this.condition,
     this.etag,
     this.location,

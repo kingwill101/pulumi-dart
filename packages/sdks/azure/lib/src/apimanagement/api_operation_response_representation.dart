@@ -28,7 +28,7 @@ class ApiOperationResponseRepresentation {
   /// [formParameters] One or more `form_parameter` block as defined above.
   /// [schemaId] The ID of an API Management Schema which represents this Response.
   /// [typeName] The Type Name defined by the Schema.
-  ApiOperationResponseRepresentation({
+  const ApiOperationResponseRepresentation({
     required this.contentType,
     this.examples,
     this.formParameters,

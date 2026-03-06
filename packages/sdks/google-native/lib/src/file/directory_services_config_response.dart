@@ -10,7 +10,7 @@ class DirectoryServicesConfigResponse {
 
   /// Creates a new [DirectoryServicesConfigResponse].
   /// [managedActiveDirectory] Configuration for Managed Service for Microsoft Active Directory.
-  DirectoryServicesConfigResponse({
+  const DirectoryServicesConfigResponse({
     required this.managedActiveDirectory,
   });
 

@@ -18,7 +18,7 @@ class FleetMemberState {
   /// [kubernetesClusterId] The ARM resource ID of the cluster that joins the Fleet. Changing this forces a new Kubernetes Fleet Member to be created.
   /// [kubernetesFleetId] Specifies the Kubernetes Fleet Id within which this Kubernetes Fleet Member should exist. Changing this forces a new Kubernetes Fleet Member to be created.
   /// [name] Specifies the name of this Kubernetes Fleet Member. Changing this forces a new Kubernetes Fleet Member to be created.
-  FleetMemberState({
+  const FleetMemberState({
     this.group,
     this.kubernetesClusterId,
     this.kubernetesFleetId,

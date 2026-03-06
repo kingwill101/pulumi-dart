@@ -89,7 +89,7 @@ class IoTHubState {
   /// [sku] A `sku` block as defined below.
   /// [tags] Optional.
   /// [type] Optional.
-  IoTHubState({
+  const IoTHubState({
     this.cloudToDevice,
     this.endpoints,
     this.enrichments,

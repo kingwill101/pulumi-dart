@@ -13,7 +13,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   /// [cachePoint] Optional.
   /// [inputVariables] Optional.
   /// [text] Required.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText({
     this.cachePoint,
     this.inputVariables,
     required this.text,

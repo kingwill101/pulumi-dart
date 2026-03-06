@@ -20,7 +20,7 @@ class ResourcePolicyAttachmentState {
   /// [name] The resource policy to be attached to the instance for scheduling start/stop
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the instance resides.
-  ResourcePolicyAttachmentState({
+  const ResourcePolicyAttachmentState({
     this.instance,
     this.name,
     this.project,

@@ -12,7 +12,7 @@ class GroupPolicyAssignmentOverride {
   /// Creates a new [GroupPolicyAssignmentOverride].
   /// [selectors] One or more `override_selector` block as defined below.
   /// [value] Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
-  GroupPolicyAssignmentOverride({
+  const GroupPolicyAssignmentOverride({
     this.selectors,
     required this.value,
   });

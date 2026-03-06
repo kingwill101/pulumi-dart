@@ -18,7 +18,7 @@ class GetFrontdoorEndpointArgs {
   /// [name] Specifies the name of the Front Door Endpoint.
   /// [profileName] The name of the Front Door Profile within which Front Door Endpoint exists.
   /// [resourceGroupName] The name of the Resource Group where the Front Door Profile exists.
-  GetFrontdoorEndpointArgs({
+  const GetFrontdoorEndpointArgs({
     required this.name,
     required this.profileName,
     required this.resourceGroupName,

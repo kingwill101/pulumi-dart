@@ -20,7 +20,7 @@ class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
   /// [name] Name of the compute instance backed up by the datasource.
   /// [totalDiskCount] The total number of disks attached to the Instance.
   /// [totalDiskSizeGb] The sum of all the disk sizes.
-  GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty({
+  const GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty({
     required this.description,
     required this.machineType,
     required this.name,

@@ -24,7 +24,7 @@ class GetVirtualMachineScheduleArgs {
   /// [name] The name of the Schedule
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualMachineName] virtualmachines
-  GetVirtualMachineScheduleArgs({
+  const GetVirtualMachineScheduleArgs({
     this.expand,
     required this.labName,
     required this.name,

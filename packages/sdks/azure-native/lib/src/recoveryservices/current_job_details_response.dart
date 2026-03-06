@@ -15,7 +15,7 @@ class CurrentJobDetailsResponse {
   /// [jobId] The ARM Id of the job being executed.
   /// [jobName] The job name.
   /// [startTime] The start time of the job.
-  CurrentJobDetailsResponse({
+  const CurrentJobDetailsResponse({
     required this.jobId,
     required this.jobName,
     required this.startTime,

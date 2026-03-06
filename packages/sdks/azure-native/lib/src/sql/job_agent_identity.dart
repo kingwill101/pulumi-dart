@@ -15,7 +15,7 @@ class JobAgentIdentity {
   /// [tenantId] The job agent identity tenant id
   /// [type] The job agent identity type
   /// [userAssignedIdentities] The resource ids of the user assigned identities to use
-  JobAgentIdentity({
+  const JobAgentIdentity({
     this.tenantId,
     required this.type,
     this.userAssignedIdentities,

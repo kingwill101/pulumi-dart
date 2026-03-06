@@ -21,7 +21,7 @@ class GetManagedPrivateEndpointArgs {
   /// [managedPrivateEndpointName] Managed private endpoint name
   /// [managedVirtualNetworkName] Managed virtual network name
   /// [resourceGroupName] The resource group name.
-  GetManagedPrivateEndpointArgs({
+  const GetManagedPrivateEndpointArgs({
     required this.factoryName,
     required this.managedPrivateEndpointName,
     required this.managedVirtualNetworkName,

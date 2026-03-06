@@ -40,7 +40,7 @@ class CertificateArgs {
   /// [pfxBlob] The base64-encoded contents of the certificate. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   /// [tags] Optional.
-  CertificateArgs({
+  const CertificateArgs({
     this.appServicePlanId,
     this.keyVaultId,
     this.keyVaultSecretId,

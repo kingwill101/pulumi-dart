@@ -9,7 +9,7 @@ class ConfigConnectorConfigResponseContainerV1beta1 {
 
   /// Creates a new [ConfigConnectorConfigResponseContainerV1beta1].
   /// [enabled] Whether Cloud Connector is enabled for this cluster.
-  ConfigConnectorConfigResponseContainerV1beta1({
+  const ConfigConnectorConfigResponseContainerV1beta1({
     required this.enabled,
   });
 

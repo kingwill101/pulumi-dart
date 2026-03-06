@@ -15,7 +15,7 @@ class GetLightsailBucketArgs {
   /// Creates a new [GetLightsailBucketArgs].
   /// [name] Name of LightsailBucket
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLightsailBucketArgs({
+  const GetLightsailBucketArgs({
     required this.name,
     required this.resourceGroupName,
   });

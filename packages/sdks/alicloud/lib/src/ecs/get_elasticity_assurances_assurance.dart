@@ -54,7 +54,7 @@ class GetElasticityAssurancesAssurance {
   /// [tags] The tag key-value pair information bound by the elastic guarantee service.
   /// [totalAssuranceTimes] The total number of flexible guarantee services.
   /// [usedAssuranceTimes] This parameter is not yet available.
-  GetElasticityAssurancesAssurance({
+  const GetElasticityAssurancesAssurance({
     required this.allocatedResources,
     required this.description,
     required this.elasticityAssuranceId,

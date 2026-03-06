@@ -9,7 +9,7 @@ class PolicyControllerTemplateLibraryConfigResponse {
 
   /// Creates a new [PolicyControllerTemplateLibraryConfigResponse].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
-  PolicyControllerTemplateLibraryConfigResponse({
+  const PolicyControllerTemplateLibraryConfigResponse({
     required this.installation,
   });
 

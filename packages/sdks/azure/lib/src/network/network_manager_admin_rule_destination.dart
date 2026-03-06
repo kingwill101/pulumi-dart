@@ -11,7 +11,7 @@ class NetworkManagerAdminRuleDestination {
   /// Creates a new [NetworkManagerAdminRuleDestination].
   /// [addressPrefix] Specifies the address prefix.
   /// [addressPrefixType] Specifies the address prefix type. Possible values are `IPPrefix` and `ServiceTag`. For more information, please see [this document](https://learn.microsoft.com/en-us/azure/virtual-network-manager/concept-security-admins#source-and-destination-types).
-  NetworkManagerAdminRuleDestination({
+  const NetworkManagerAdminRuleDestination({
     required this.addressPrefix,
     required this.addressPrefixType,
   });

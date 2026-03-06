@@ -18,7 +18,7 @@ class ListBotConnectionWithSecretsArgs {
   /// [connectionName] The name of the Bot Service Connection Setting resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Bot resource.
-  ListBotConnectionWithSecretsArgs({
+  const ListBotConnectionWithSecretsArgs({
     required this.connectionName,
     required this.resourceGroupName,
     required this.resourceName,

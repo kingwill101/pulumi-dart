@@ -13,7 +13,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
   /// Creates a new [RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort].
   /// [httpStatus] The HTTP status code used to abort the request.
   /// [percentage] The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
-  RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort({
+  const RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort({
     required this.httpStatus,
     required this.percentage,
   });

@@ -15,7 +15,7 @@ class GetDataCollectionEndpointArgs {
   /// Creates a new [GetDataCollectionEndpointArgs].
   /// [dataCollectionEndpointName] The name of the data collection endpoint. The name is case insensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDataCollectionEndpointArgs({
+  const GetDataCollectionEndpointArgs({
     required this.dataCollectionEndpointName,
     required this.resourceGroupName,
   });

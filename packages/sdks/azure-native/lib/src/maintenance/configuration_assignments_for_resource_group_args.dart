@@ -28,7 +28,7 @@ class ConfigurationAssignmentsForResourceGroupArgs {
   /// [maintenanceConfigurationId] The maintenance configuration Id
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceId] The unique resourceId
-  ConfigurationAssignmentsForResourceGroupArgs({
+  const ConfigurationAssignmentsForResourceGroupArgs({
     this.configurationAssignmentName,
     this.filter,
     this.location,

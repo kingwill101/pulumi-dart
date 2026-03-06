@@ -12,7 +12,7 @@ class DistributionViewerMtlsConfig {
   /// Creates a new [DistributionViewerMtlsConfig].
   /// [mode] The mode for viewer mTLS. Valid values: `required`, `optional`.
   /// [trustStoreConfig] The trust store configuration for viewer mTLS (maximum one).
-  DistributionViewerMtlsConfig({
+  const DistributionViewerMtlsConfig({
     this.mode,
     this.trustStoreConfig,
   });

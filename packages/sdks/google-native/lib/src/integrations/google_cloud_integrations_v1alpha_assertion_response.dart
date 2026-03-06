@@ -19,7 +19,7 @@ class GoogleCloudIntegrationsV1alphaAssertionResponse {
   /// [condition] Optional. Standard filter expression for ASSERT_CONDITION to succeed
   /// [parameter] Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
   /// [retryCount] Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-  GoogleCloudIntegrationsV1alphaAssertionResponse({
+  const GoogleCloudIntegrationsV1alphaAssertionResponse({
     required this.assertionStrategy,
     required this.condition,
     required this.parameter,

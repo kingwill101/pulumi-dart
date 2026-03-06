@@ -11,7 +11,7 @@ class TableDefinedColumn {
   /// Creates a new [TableDefinedColumn].
   /// [name] Name for defined column.
   /// [type] Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
-  TableDefinedColumn({
+  const TableDefinedColumn({
     required this.name,
     required this.type,
   });

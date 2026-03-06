@@ -11,7 +11,7 @@ class RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover {
   /// Creates a new [RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover].
   /// [objectId] The ID of the object which will act as an approver.
   /// [type] The type of object acting as an approver. Possible options are `User` and `Group`.
-  RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover({
+  const RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover({
     required this.objectId,
     required this.type,
   });

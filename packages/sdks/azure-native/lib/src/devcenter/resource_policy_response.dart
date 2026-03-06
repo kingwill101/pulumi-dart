@@ -12,7 +12,7 @@ class ResourcePolicyResponse {
   /// Creates a new [ResourcePolicyResponse].
   /// [filter] Optional. When specified, this expression is used to filter the resources.
   /// [resources] Resources that are included and shared as a part of a project policy.
-  ResourcePolicyResponse({
+  const ResourcePolicyResponse({
     this.filter,
     this.resources,
   });

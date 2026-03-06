@@ -15,7 +15,7 @@ class IPv4FirewallRule {
   /// [firewallRuleName] The rule name.
   /// [rangeEnd] The end range of IPv4.
   /// [rangeStart] The start range of IPv4.
-  IPv4FirewallRule({
+  const IPv4FirewallRule({
     this.firewallRuleName,
     this.rangeEnd,
     this.rangeStart,

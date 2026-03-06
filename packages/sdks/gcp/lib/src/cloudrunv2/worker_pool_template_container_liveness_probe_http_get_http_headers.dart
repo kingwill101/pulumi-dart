@@ -11,7 +11,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
   /// Creates a new [WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders].
   /// [port] Required. The header field name
   /// [value] Optional. The header field value
-  WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders({
+  const WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders({
     required this.port,
     this.value,
   });

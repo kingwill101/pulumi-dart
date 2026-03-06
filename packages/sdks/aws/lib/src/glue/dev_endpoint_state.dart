@@ -84,7 +84,7 @@ class DevEndpointState {
   /// [workerType] The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
   /// [yarnEndpointAddress] The YARN endpoint address used by this endpoint.
   /// [zeppelinRemoteSparkInterpreterPort] The Apache Zeppelin port for the remote Apache Spark interpreter.
-  DevEndpointState({
+  const DevEndpointState({
     this.arguments,
     this.arn,
     this.availabilityZone,

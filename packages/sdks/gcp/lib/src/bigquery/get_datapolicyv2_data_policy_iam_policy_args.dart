@@ -21,7 +21,7 @@ class GetDatapolicyv2DataPolicyIamPolicyArgs {
   /// [dataPolicyId] Used to find the parent resource to bind the IAM policy to
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
-  GetDatapolicyv2DataPolicyIamPolicyArgs({
+  const GetDatapolicyv2DataPolicyIamPolicyArgs({
     required this.dataPolicyId,
     this.location,
     this.project,

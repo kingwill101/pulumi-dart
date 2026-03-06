@@ -96,7 +96,7 @@ class AvsAssessmentsOperationArgs {
   /// [sizingCriterion] Assessment sizing criterion.
   /// [timeRange] Time Range for which the historic utilization data should be considered for
   /// [vcpuOversubscription] VCPU over subscription.
-  AvsAssessmentsOperationArgs({
+  const AvsAssessmentsOperationArgs({
     this.assessmentName,
     this.avsAssessmentScenario,
     this.azureLocation,

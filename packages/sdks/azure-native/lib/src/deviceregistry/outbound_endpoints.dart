@@ -13,7 +13,7 @@ class OutboundEndpoints {
   /// Creates a new [OutboundEndpoints].
   /// [assigned] Endpoints the device can connect to.
   /// [unassigned] Set of most recently removed endpoints.
-  OutboundEndpoints({
+  const OutboundEndpoints({
     required this.assigned,
     this.unassigned,
   });

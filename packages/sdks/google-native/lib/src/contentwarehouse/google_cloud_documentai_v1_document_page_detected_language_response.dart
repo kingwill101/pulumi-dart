@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse].
   /// [confidence] Confidence of detected language. Range `[0, 1]`.
   /// [languageCode] The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
-  GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse({
+  const GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse({
     required this.confidence,
     required this.languageCode,
   });

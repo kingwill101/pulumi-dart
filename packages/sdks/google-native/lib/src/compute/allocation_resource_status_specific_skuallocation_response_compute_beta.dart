@@ -9,7 +9,7 @@ class AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta {
 
   /// Creates a new [AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate reservation properties.
-  AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta({
+  const AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta({
     required this.sourceInstanceTemplateId,
   });
 

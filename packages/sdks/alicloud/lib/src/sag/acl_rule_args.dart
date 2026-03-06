@@ -39,7 +39,7 @@ class AclRuleArgs {
   /// [priority] The priority of the ACL rule. Value range: 1 to 100.
   /// [sourceCidr] The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
   /// [sourcePortRange] The range of the source port. Valid value: 80/80.
-  AclRuleArgs({
+  const AclRuleArgs({
     required this.aclId,
     this.description,
     required this.destCidr,

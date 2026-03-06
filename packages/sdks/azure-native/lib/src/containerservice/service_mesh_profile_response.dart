@@ -13,7 +13,7 @@ class ServiceMeshProfileResponse {
   /// Creates a new [ServiceMeshProfileResponse].
   /// [istio] Istio service mesh configuration.
   /// [mode] Mode of the service mesh.
-  ServiceMeshProfileResponse({
+  const ServiceMeshProfileResponse({
     this.istio,
     required this.mode,
   });

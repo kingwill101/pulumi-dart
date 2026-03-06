@@ -12,7 +12,7 @@ class ModelContainerAdditionalModelDataSource {
   /// Creates a new [ModelContainerAdditionalModelDataSource].
   /// [channelName] Custom name for the additional model data source object. It will be stored in `/opt/ml/additional-model-data-sources/&lt;channel_name&gt;/`.
   /// [s3DataSources] S3 location of model data to deploy. See S3 Data Source.
-  ModelContainerAdditionalModelDataSource({
+  const ModelContainerAdditionalModelDataSource({
     required this.channelName,
     required this.s3DataSources,
   });

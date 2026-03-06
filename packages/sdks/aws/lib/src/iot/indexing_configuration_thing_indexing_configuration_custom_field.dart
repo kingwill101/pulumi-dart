@@ -11,7 +11,7 @@ class IndexingConfigurationThingIndexingConfigurationCustomField {
   /// Creates a new [IndexingConfigurationThingIndexingConfigurationCustomField].
   /// [name] The name of the field.
   /// [type] The data type of the field. Valid values: `Number`, `String`, `Boolean`.
-  IndexingConfigurationThingIndexingConfigurationCustomField({
+  const IndexingConfigurationThingIndexingConfigurationCustomField({
     this.name,
     this.type,
   });

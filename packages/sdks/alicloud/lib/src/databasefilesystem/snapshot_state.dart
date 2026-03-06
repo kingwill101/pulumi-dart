@@ -24,7 +24,7 @@ class SnapshotState {
   /// [retentionDays] The retention period of the snapshot. Valid values: `1` to `65536`.
   /// [snapshotName] The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
   /// [status] The status of the Snapshot.
-  SnapshotState({
+  const SnapshotState({
     this.description,
     this.force,
     this.instanceId,

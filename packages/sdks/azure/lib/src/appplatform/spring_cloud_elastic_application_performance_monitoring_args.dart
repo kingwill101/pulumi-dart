@@ -27,7 +27,7 @@ class SpringCloudElasticApplicationPerformanceMonitoringArgs {
   /// [serverUrl] Specifies the server URL. The URL must be fully qualified, including protocol (http or https) and port.
   /// [serviceName] Specifies the service name which is used to keep all the errors and transactions of your service together and is the primary filter in the Elastic APM user interface.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
-  SpringCloudElasticApplicationPerformanceMonitoringArgs({
+  const SpringCloudElasticApplicationPerformanceMonitoringArgs({
     required this.applicationPackages,
     this.globallyEnabled,
     this.name,

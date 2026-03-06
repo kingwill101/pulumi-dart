@@ -28,7 +28,7 @@ class VoiceConnectorStreamingArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [streamingNotificationTargets] The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
-  VoiceConnectorStreamingArgs({
+  const VoiceConnectorStreamingArgs({
     required this.dataRetention,
     this.disabled,
     this.mediaInsightsConfiguration,

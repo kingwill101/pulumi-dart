@@ -14,7 +14,7 @@ class EndpointConfigurationProductionVariantManagedInstanceScaling {
   /// [maxInstanceCount] Maximum number of instances that the endpoint can provision when it scales up to accommodate an increase in traffic.
   /// [minInstanceCount] Minimum number of instances that the endpoint must retain when it scales down to accommodate a decrease in traffic.
   /// [status] Whether managed instance scaling is enabled. Valid values are `ENABLED` and `DISABLED`.
-  EndpointConfigurationProductionVariantManagedInstanceScaling({
+  const EndpointConfigurationProductionVariantManagedInstanceScaling({
     this.maxInstanceCount,
     this.minInstanceCount,
     this.status,

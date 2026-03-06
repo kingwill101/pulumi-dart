@@ -12,7 +12,7 @@ class AgentFlowDefinitionNodeConfigurationPrompt {
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPrompt].
   /// [guardrailConfiguration] Contains configurations for a guardrail to apply during query and response generation for the knowledge base in this configuration. See Guardrail Configuration for more information.
   /// [sourceConfiguration] Optional.
-  AgentFlowDefinitionNodeConfigurationPrompt({
+  const AgentFlowDefinitionNodeConfigurationPrompt({
     this.guardrailConfiguration,
     this.sourceConfiguration,
   });

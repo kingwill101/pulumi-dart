@@ -10,7 +10,7 @@ class CreatePolicyInputProperties {
 
   /// Creates a new [CreatePolicyInputProperties].
   /// [providerSpecificInput] The ReplicationProviderSettings.
-  CreatePolicyInputProperties({
+  const CreatePolicyInputProperties({
     this.providerSpecificInput,
   });
 

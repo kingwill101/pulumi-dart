@@ -19,7 +19,7 @@ class GetWorkloadIdentityPoolArgs {
   /// Creates a new [GetWorkloadIdentityPoolArgs].
   /// [project] The project in which the resource belongs. If it
   /// [workloadIdentityPoolId] The id of the pool which is the
-  GetWorkloadIdentityPoolArgs({
+  const GetWorkloadIdentityPoolArgs({
     this.project,
     required this.workloadIdentityPoolId,
   });

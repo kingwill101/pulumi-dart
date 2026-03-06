@@ -14,7 +14,7 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride {
   /// [jumboPacket] The jumbo frame size of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [networkDirect] The network direct of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [networkDirectTechnology] The network direct technology of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride({
+  const HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride({
     this.jumboPacket,
     this.networkDirect,
     this.networkDirectTechnology,

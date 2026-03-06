@@ -25,7 +25,7 @@ class GetLinodeObjectStorageBucketResult {
   /// [region] Required.
   /// [s3Endpoint] Required.
   /// [size] Required.
-  GetLinodeObjectStorageBucketResult({
+  const GetLinodeObjectStorageBucketResult({
     required this.cluster,
     required this.created,
     required this.endpointType,

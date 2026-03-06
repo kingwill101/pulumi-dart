@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1IndexStatsResponse {
   /// Creates a new [GoogleCloudAiplatformV1IndexStatsResponse].
   /// [shardsCount] The number of shards in the Index.
   /// [vectorsCount] The number of vectors in the Index.
-  GoogleCloudAiplatformV1IndexStatsResponse({
+  const GoogleCloudAiplatformV1IndexStatsResponse({
     required this.shardsCount,
     required this.vectorsCount,
   });

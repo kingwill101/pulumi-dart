@@ -9,7 +9,7 @@ class CertificateAuthorityServiceConfig {
 
   /// Creates a new [CertificateAuthorityServiceConfig].
   /// [caPool] A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
-  CertificateAuthorityServiceConfig({
+  const CertificateAuthorityServiceConfig({
     required this.caPool,
   });
 

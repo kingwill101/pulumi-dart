@@ -13,7 +13,7 @@ class GetManagedZoneArgs {
   /// Creates a new [GetManagedZoneArgs].
   /// [managedZone] Required.
   /// [project] Optional.
-  GetManagedZoneArgs({
+  const GetManagedZoneArgs({
     required this.managedZone,
     this.project,
   });

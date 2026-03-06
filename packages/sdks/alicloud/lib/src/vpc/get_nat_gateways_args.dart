@@ -52,7 +52,7 @@ class GetNatGatewaysArgs {
   /// [status] The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
   /// [tags] The tags of NAT gateway.
   /// [vpcId] The ID of the VPC.
-  GetNatGatewaysArgs({
+  const GetNatGatewaysArgs({
     this.dryRun,
     this.enableDetails,
     this.ids,

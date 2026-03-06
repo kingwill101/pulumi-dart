@@ -26,7 +26,7 @@ class GetResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Dev Center.
-  GetResult({
+  const GetResult({
     required this.devCenterUri,
     required this.id,
     required this.identities,

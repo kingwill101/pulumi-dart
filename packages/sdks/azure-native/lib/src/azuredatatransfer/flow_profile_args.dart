@@ -32,7 +32,7 @@ class FlowProfileArgs {
   /// [properties] The set of configuration properties that define the behavior and rules of the FlowProfile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  FlowProfileArgs({
+  const FlowProfileArgs({
     this.flowProfileName,
     this.identity,
     this.location,

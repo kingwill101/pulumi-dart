@@ -16,7 +16,7 @@ class ServiceMeshAnalysisMessageBaseResponse {
   /// [documentationUrl] A url pointing to the Service Mesh or Istio documentation for this specific error type.
   /// [level] Represents how severe a message is.
   /// [type] Represents the specific type of a message.
-  ServiceMeshAnalysisMessageBaseResponse({
+  const ServiceMeshAnalysisMessageBaseResponse({
     required this.documentationUrl,
     required this.level,
     required this.type,

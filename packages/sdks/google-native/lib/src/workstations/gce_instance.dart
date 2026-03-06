@@ -38,7 +38,7 @@ class GceInstance {
   /// [serviceAccountScopes] Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
   /// [shieldedInstanceConfig] Optional. A set of Compute Engine Shielded instance options.
   /// [tags] Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
-  GceInstance({
+  const GceInstance({
     this.bootDiskSizeGb,
     this.confidentialInstanceConfig,
     this.disablePublicIpAddresses,

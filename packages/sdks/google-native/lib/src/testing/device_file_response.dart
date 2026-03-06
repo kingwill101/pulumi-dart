@@ -14,7 +14,7 @@ class DeviceFileResponse {
   /// Creates a new [DeviceFileResponse].
   /// [obbFile] A reference to an opaque binary blob file.
   /// [regularFile] A reference to a regular file.
-  DeviceFileResponse({
+  const DeviceFileResponse({
     required this.obbFile,
     required this.regularFile,
   });

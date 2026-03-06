@@ -24,7 +24,7 @@ class TableImportTable {
   /// [inputFormat] The format of the source data.
   /// [inputFormatOptions] Describe the format options for the data that was imported into the target table.
   /// [s3BucketSource] Values for the S3 bucket the source file is imported from.
-  TableImportTable({
+  const TableImportTable({
     this.inputCompressionType,
     required this.inputFormat,
     this.inputFormatOptions,

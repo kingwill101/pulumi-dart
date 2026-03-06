@@ -8,7 +8,7 @@ class GetDomainClusterConfigZoneAwarenessConfig {
 
   /// Creates a new [GetDomainClusterConfigZoneAwarenessConfig].
   /// [availabilityZoneCount] Number of availability zones used.
-  GetDomainClusterConfigZoneAwarenessConfig({
+  const GetDomainClusterConfigZoneAwarenessConfig({
     required this.availabilityZoneCount,
   });
 

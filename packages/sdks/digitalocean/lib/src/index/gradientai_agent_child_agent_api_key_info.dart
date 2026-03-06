@@ -23,7 +23,7 @@ class GradientaiAgentChildAgentApiKeyInfo {
   /// [name] Name of the API Key
   /// [secretKey] Updated At timestamp for the API Key
   /// [uuid] API Key value
-  GradientaiAgentChildAgentApiKeyInfo({
+  const GradientaiAgentChildAgentApiKeyInfo({
     this.createdAt,
     this.createdBy,
     this.deletedAt,

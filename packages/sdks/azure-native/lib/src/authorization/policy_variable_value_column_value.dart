@@ -12,7 +12,7 @@ class PolicyVariableValueColumnValue {
   /// Creates a new [PolicyVariableValueColumnValue].
   /// [columnName] Column name for the variable value
   /// [columnValue] Column value for the variable value; this can be an integer, double, boolean, null or a string.
-  PolicyVariableValueColumnValue({
+  const PolicyVariableValueColumnValue({
     required this.columnName,
     required this.columnValue,
   });

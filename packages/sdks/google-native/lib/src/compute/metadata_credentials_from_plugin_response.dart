@@ -12,7 +12,7 @@ class MetadataCredentialsFromPluginResponse {
   /// Creates a new [MetadataCredentialsFromPluginResponse].
   /// [name] Plugin name.
   /// [structConfig] A text proto that conforms to a Struct type definition interpreted by the plugin.
-  MetadataCredentialsFromPluginResponse({
+  const MetadataCredentialsFromPluginResponse({
     required this.name,
     required this.structConfig,
   });

@@ -26,7 +26,7 @@ class GetPoliciesResult {
   /// [outputFile] Optional.
   /// [policies] A list of policies. Each element contains the following attributes:
   /// [policyType] The type of the policy.
-  GetPoliciesResult({
+  const GetPoliciesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

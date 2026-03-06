@@ -13,7 +13,7 @@ class GoogleCloudBillingBudgetsV1CustomPeriodResponse {
   /// Creates a new [GoogleCloudBillingBudgetsV1CustomPeriodResponse].
   /// [endDate] Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
   /// [startDate] The start date must be after January 1, 2017.
-  GoogleCloudBillingBudgetsV1CustomPeriodResponse({
+  const GoogleCloudBillingBudgetsV1CustomPeriodResponse({
     required this.endDate,
     required this.startDate,
   });

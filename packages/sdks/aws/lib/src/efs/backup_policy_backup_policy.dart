@@ -8,7 +8,7 @@ class BackupPolicyBackupPolicy {
 
   /// Creates a new [BackupPolicyBackupPolicy].
   /// [status] A status of the backup policy. Valid values: `ENABLED`, `DISABLED`.
-  BackupPolicyBackupPolicy({
+  const BackupPolicyBackupPolicy({
     required this.status,
   });
 

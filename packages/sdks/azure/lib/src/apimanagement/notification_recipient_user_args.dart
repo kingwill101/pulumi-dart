@@ -18,7 +18,7 @@ class NotificationRecipientUserArgs {
   /// [apiManagementId] The ID of the API Management Service from which to create this Notification Recipient User. Changing this forces a new API Management Notification Recipient User to be created.
   /// [notificationType] The Notification Name to be received. Changing this forces a new API Management Notification Recipient User to be created. Possible values are `AccountClosedPublisher`, `BCC`, `NewApplicationNotificationMessage`, `NewIssuePublisherNotificationMessage`, `PurchasePublisherNotificationMessage`, `QuotaLimitApproachingPublisherNotificationMessage`, and `RequestPublisherNotificationMessage`.
   /// [userId] The recipient user ID. Changing this forces a new API Management Notification Recipient User to be created.
-  NotificationRecipientUserArgs({
+  const NotificationRecipientUserArgs({
     required this.apiManagementId,
     required this.notificationType,
     required this.userId,

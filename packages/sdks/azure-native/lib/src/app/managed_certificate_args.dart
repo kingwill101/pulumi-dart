@@ -28,7 +28,7 @@ class ManagedCertificateArgs {
   /// [properties] Certificate resource specific properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ManagedCertificateArgs({
+  const ManagedCertificateArgs({
     required this.environmentName,
     this.location,
     this.managedCertificateName,

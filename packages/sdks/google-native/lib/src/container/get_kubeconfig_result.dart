@@ -7,7 +7,7 @@ class GetKubeconfigResult {
 
   /// Creates a new [GetKubeconfigResult].
   /// [kubeconfig] Required.
-  GetKubeconfigResult({
+  const GetKubeconfigResult({
     required this.kubeconfig,
   });
 

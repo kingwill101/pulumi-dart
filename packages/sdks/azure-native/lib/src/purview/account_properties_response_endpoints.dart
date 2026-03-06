@@ -12,7 +12,7 @@ class AccountPropertiesResponseEndpoints {
   /// Creates a new [AccountPropertiesResponseEndpoints].
   /// [catalog] Gets the catalog endpoint.
   /// [scan] Gets the scan endpoint.
-  AccountPropertiesResponseEndpoints({
+  const AccountPropertiesResponseEndpoints({
     required this.catalog,
     required this.scan,
   });

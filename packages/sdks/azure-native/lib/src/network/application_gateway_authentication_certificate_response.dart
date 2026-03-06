@@ -24,7 +24,7 @@ class ApplicationGatewayAuthenticationCertificateResponse {
   /// [name] Name of the authentication certificate that is unique within an Application Gateway.
   /// [provisioningState] The provisioning state of the authentication certificate resource.
   /// [type] Type of the resource.
-  ApplicationGatewayAuthenticationCertificateResponse({
+  const ApplicationGatewayAuthenticationCertificateResponse({
     this.data,
     required this.etag,
     this.id,

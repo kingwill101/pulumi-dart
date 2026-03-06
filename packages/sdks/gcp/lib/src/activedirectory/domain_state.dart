@@ -51,7 +51,7 @@ class DomainState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [reservedIpRange] The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
-  DomainState({
+  const DomainState({
     this.admin,
     this.authorizedNetworks,
     this.deletionProtection,

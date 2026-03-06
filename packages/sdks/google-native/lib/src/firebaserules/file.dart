@@ -15,7 +15,7 @@ class File {
   /// [content] Textual Content.
   /// [fingerprint] Fingerprint (e.g. github sha) associated with the `File`.
   /// [name] File name.
-  File({
+  const File({
     required this.content,
     this.fingerprint,
     required this.name,

@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysTtyCnofig {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysTtyCnofig].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysTtyCnofig({
+  const DomainFeaturesCapabilitiesSysTtyCnofig({
     this.state,
   });
 

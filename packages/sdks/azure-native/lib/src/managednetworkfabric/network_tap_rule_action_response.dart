@@ -21,7 +21,7 @@ class NetworkTapRuleActionResponse {
   /// [matchConfigurationName] The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.
   /// [truncate] Truncate. 0 indicates do not truncate.
   /// [type] Type of actions that can be performed.
-  NetworkTapRuleActionResponse({
+  const NetworkTapRuleActionResponse({
     this.destinationId,
     this.isTimestampEnabled,
     this.matchConfigurationName,

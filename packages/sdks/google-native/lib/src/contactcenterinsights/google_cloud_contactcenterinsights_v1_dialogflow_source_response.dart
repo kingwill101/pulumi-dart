@@ -12,7 +12,7 @@ class GoogleCloudContactcenterinsightsV1DialogflowSourceResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1DialogflowSourceResponse].
   /// [audioUri] Cloud Storage URI that points to a file that contains the conversation audio.
   /// [dialogflowConversation] The name of the Dialogflow conversation that this conversation resource is derived from. Format: projects/{project}/locations/{location}/conversations/{conversation}
-  GoogleCloudContactcenterinsightsV1DialogflowSourceResponse({
+  const GoogleCloudContactcenterinsightsV1DialogflowSourceResponse({
     required this.audioUri,
     required this.dialogflowConversation,
   });

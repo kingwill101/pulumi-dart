@@ -21,7 +21,7 @@ class NotificationRegistrationPropertiesResponse {
   /// [notificationEndpoints] The notification endpoints.
   /// [notificationMode] The notification mode.
   /// [provisioningState] The provisioned state of the resource.
-  NotificationRegistrationPropertiesResponse({
+  const NotificationRegistrationPropertiesResponse({
     this.includedEvents,
     this.messageScope,
     this.notificationEndpoints,

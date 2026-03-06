@@ -23,7 +23,7 @@ class FirewallPolicyAssociationResponse {
   /// [name] The name for an association.
   /// [priority] An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
   /// [shortName] The short name of the firewall policy of the association.
-  FirewallPolicyAssociationResponse({
+  const FirewallPolicyAssociationResponse({
     required this.attachmentTarget,
     required this.displayName,
     required this.firewallPolicyId,

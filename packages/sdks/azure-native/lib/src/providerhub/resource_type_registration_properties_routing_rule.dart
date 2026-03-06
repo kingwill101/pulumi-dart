@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesRoutingRule {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesRoutingRule].
   /// [hostResourceType] Hosted resource type.
-  ResourceTypeRegistrationPropertiesRoutingRule({
+  const ResourceTypeRegistrationPropertiesRoutingRule({
     this.hostResourceType,
   });
 

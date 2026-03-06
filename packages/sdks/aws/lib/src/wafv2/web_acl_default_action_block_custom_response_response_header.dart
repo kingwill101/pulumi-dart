@@ -11,7 +11,7 @@ class WebAclDefaultActionBlockCustomResponseResponseHeader {
   /// Creates a new [WebAclDefaultActionBlockCustomResponseResponseHeader].
   /// [name] Name of the custom header. For custom request header insertion, when AWS WAF inserts the header into the request, it prefixes this name `x-amzn-waf-`, to avoid confusion with the headers that are already in the request. For example, for the header name `sample`, AWS WAF inserts the header `x-amzn-waf-sample`.
   /// [value] Value of the custom header.
-  WebAclDefaultActionBlockCustomResponseResponseHeader({
+  const WebAclDefaultActionBlockCustomResponseResponseHeader({
     required this.name,
     required this.value,
   });

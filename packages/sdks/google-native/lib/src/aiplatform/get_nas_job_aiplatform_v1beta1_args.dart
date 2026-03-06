@@ -15,7 +15,7 @@ class GetNasJobAiplatformV1beta1Args {
   /// [location] Required.
   /// [nasJobId] Required.
   /// [project] Optional.
-  GetNasJobAiplatformV1beta1Args({
+  const GetNasJobAiplatformV1beta1Args({
     required this.location,
     required this.nasJobId,
     this.project,

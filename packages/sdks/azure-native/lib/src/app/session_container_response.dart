@@ -30,7 +30,7 @@ class SessionContainerResponse {
   /// [name] Custom container name.
   /// [probes] List of probes for the container.
   /// [resources] Container resource requirements.
-  SessionContainerResponse({
+  const SessionContainerResponse({
     this.args,
     this.command,
     this.env,

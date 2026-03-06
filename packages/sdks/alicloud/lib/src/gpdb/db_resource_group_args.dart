@@ -21,7 +21,7 @@ class DbResourceGroupArgs {
   /// [resourceGroupConfig] Resource group configuration.
   /// [resourceGroupName] Resource group name.
   /// [roleLists] Role List
-  DbResourceGroupArgs({
+  const DbResourceGroupArgs({
     required this.dbInstanceId,
     required this.resourceGroupConfig,
     required this.resourceGroupName,

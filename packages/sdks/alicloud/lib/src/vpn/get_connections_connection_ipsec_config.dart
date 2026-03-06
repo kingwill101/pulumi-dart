@@ -17,7 +17,7 @@ class GetConnectionsConnectionIpsecConfig {
   /// [ipsecEncAlg] IPsec Encript algorithm.
   /// [ipsecLifetime] IPsec lifetime.
   /// [ipsecPfs] DH Group.
-  GetConnectionsConnectionIpsecConfig({
+  const GetConnectionsConnectionIpsecConfig({
     this.ipsecAuthAlg,
     this.ipsecEncAlg,
     this.ipsecLifetime,

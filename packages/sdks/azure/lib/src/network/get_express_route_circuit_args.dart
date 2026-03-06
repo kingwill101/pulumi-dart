@@ -15,7 +15,7 @@ class GetExpressRouteCircuitArgs {
   /// Creates a new [GetExpressRouteCircuitArgs].
   /// [name] The name of the ExpressRoute circuit.
   /// [resourceGroupName] The Name of the Resource Group where the ExpressRoute circuit exists.
-  GetExpressRouteCircuitArgs({
+  const GetExpressRouteCircuitArgs({
     required this.name,
     required this.resourceGroupName,
   });

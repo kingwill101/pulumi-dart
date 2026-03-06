@@ -15,7 +15,7 @@ class GetSecretArgs {
   /// Creates a new [GetSecretArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [secretId] The name of the secret.
-  GetSecretArgs({
+  const GetSecretArgs({
     this.project,
     required this.secretId,
   });

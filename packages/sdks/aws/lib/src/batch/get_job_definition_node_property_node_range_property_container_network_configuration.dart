@@ -8,7 +8,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration].
   /// [assignPublicIp] Indicates whether the job has a public IP address.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration({
     required this.assignPublicIp,
   });
 

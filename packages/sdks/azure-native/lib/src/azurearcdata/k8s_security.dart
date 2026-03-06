@@ -20,7 +20,7 @@ class K8sSecurity {
   /// [adminLoginSecret] Admin login secret key
   /// [serviceCertificateSecret] Service certificate secret used
   /// [transparentDataEncryption] Transparent data encryption information.
-  K8sSecurity({
+  const K8sSecurity({
     this.activeDirectory,
     this.adminLoginSecret,
     this.serviceCertificateSecret,

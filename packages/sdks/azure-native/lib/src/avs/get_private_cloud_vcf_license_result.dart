@@ -11,7 +11,7 @@ class GetPrivateCloudVcfLicenseResult {
   /// Creates a new [GetPrivateCloudVcfLicenseResult].
   /// [kind] License kind
   /// [provisioningState] The state of the license provisioning
-  GetPrivateCloudVcfLicenseResult({
+  const GetPrivateCloudVcfLicenseResult({
     required this.kind,
     required this.provisioningState,
   });

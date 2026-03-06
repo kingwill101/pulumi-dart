@@ -18,7 +18,7 @@ class LogTailAttachmentArgs {
   /// [logtailConfigName] The Logtail configuration name, which is unique in the same project.
   /// [machineGroupName] The machine group name, which is unique in the same project.
   /// [project] The project name to the log store belongs.
-  LogTailAttachmentArgs({
+  const LogTailAttachmentArgs({
     required this.logtailConfigName,
     required this.machineGroupName,
     required this.project,

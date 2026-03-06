@@ -17,7 +17,7 @@ class VpcIpamPoolSourceResource {
   /// [resourceOwner] Owner of the resource.
   /// [resourceRegion] Region where the resource exists. Must match the `locale` of the parent IPAM Pool.
   /// [resourceType] Type of the resource. (`vpc`)
-  VpcIpamPoolSourceResource({
+  const VpcIpamPoolSourceResource({
     required this.resourceId,
     required this.resourceOwner,
     required this.resourceRegion,

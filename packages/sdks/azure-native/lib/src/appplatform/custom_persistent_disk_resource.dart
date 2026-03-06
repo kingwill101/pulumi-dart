@@ -13,7 +13,7 @@ class CustomPersistentDiskResource {
   /// Creates a new [CustomPersistentDiskResource].
   /// [customPersistentDiskProperties] Properties of the custom persistent disk resource payload.
   /// [storageId] The resource id of Azure Spring Apps Storage resource.
-  CustomPersistentDiskResource({
+  const CustomPersistentDiskResource({
     this.customPersistentDiskProperties,
     required this.storageId,
   });

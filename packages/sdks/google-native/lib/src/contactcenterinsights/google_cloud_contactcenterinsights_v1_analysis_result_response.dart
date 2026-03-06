@@ -13,7 +13,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1AnalysisResultResponse].
   /// [callAnalysisMetadata] Call-specific metadata created by the analysis.
   /// [endTime] The time at which the analysis ended.
-  GoogleCloudContactcenterinsightsV1AnalysisResultResponse({
+  const GoogleCloudContactcenterinsightsV1AnalysisResultResponse({
     required this.callAnalysisMetadata,
     required this.endTime,
   });

@@ -15,7 +15,7 @@ class GetEnvironmentDialogflowV2beta1Args {
   /// [environmentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEnvironmentDialogflowV2beta1Args({
+  const GetEnvironmentDialogflowV2beta1Args({
     required this.environmentId,
     required this.location,
     this.project,

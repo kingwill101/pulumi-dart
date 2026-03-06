@@ -21,7 +21,7 @@ class HypervNetworkMappingState {
   /// [sourceNetworkName] The Name of the primary network. Changing this forces a new resource to be created.
   /// [sourceSystemCenterVirtualMachineManagerName] Specifies the name of source System Center Virtual Machine Manager where the source network exists. Changing this forces a new resource to be created.
   /// [targetNetworkId] The id of the recovery network. Changing this forces a new resource to be created.
-  HypervNetworkMappingState({
+  const HypervNetworkMappingState({
     this.name,
     this.recoveryVaultId,
     this.sourceNetworkName,

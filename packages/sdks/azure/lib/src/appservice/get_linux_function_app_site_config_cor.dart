@@ -11,7 +11,7 @@ class GetLinuxFunctionAppSiteConfigCor {
   /// Creates a new [GetLinuxFunctionAppSiteConfigCor].
   /// [allowedOrigins] A list of origins that are allowed to make cross-origin calls.
   /// [supportCredentials] Are credentials allowed in CORS requests?
-  GetLinuxFunctionAppSiteConfigCor({
+  const GetLinuxFunctionAppSiteConfigCor({
     required this.allowedOrigins,
     required this.supportCredentials,
   });

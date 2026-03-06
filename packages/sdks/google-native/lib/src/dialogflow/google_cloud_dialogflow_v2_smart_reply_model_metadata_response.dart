@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2SmartReplyModelMetadataResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2SmartReplyModelMetadataResponse].
   /// [trainingModelType] Optional. Type of the smart reply model. If not provided, model_type is used.
-  GoogleCloudDialogflowV2SmartReplyModelMetadataResponse({
+  const GoogleCloudDialogflowV2SmartReplyModelMetadataResponse({
     required this.trainingModelType,
   });
 

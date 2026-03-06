@@ -8,7 +8,7 @@ class SecretV1Acl {
 
   /// Creates a new [SecretV1Acl].
   /// [read] Optional.
-  SecretV1Acl({
+  const SecretV1Acl({
     this.read,
   });
 

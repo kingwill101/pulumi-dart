@@ -7,7 +7,7 @@ class GetNotificationDestinationSecureUrl {
 
   /// Creates a new [GetNotificationDestinationSecureUrl].
   /// [prefix] Required.
-  GetNotificationDestinationSecureUrl({
+  const GetNotificationDestinationSecureUrl({
     required this.prefix,
   });
 

@@ -22,7 +22,7 @@ class GetModifyParameterLogsLog {
   /// [oldParameterValue] The original value of the parameter.
   /// [parameterName] The name of the parameter.
   /// [status] The status of the new value specified for the parameter. Valid values:
-  GetModifyParameterLogsLog({
+  const GetModifyParameterLogsLog({
     required this.modifyTime,
     required this.newParameterValue,
     required this.oldParameterValue,

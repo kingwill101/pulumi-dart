@@ -46,7 +46,7 @@ class ImageResponse {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uri] Location the image
-  ImageResponse({
+  const ImageResponse({
     required this.componentId,
     required this.description,
     required this.id,

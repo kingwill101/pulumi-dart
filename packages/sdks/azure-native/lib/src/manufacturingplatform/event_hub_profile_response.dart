@@ -12,7 +12,7 @@ class EventHubProfileResponse {
   /// Creates a new [EventHubProfileResponse].
   /// [adxInstanceId] Resource Id of Adx Instance
   /// [hostName] Host Name
-  EventHubProfileResponse({
+  const EventHubProfileResponse({
     required this.adxInstanceId,
     required this.hostName,
   });

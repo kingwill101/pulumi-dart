@@ -13,7 +13,7 @@ class SubscriberSource {
   /// Creates a new [SubscriberSource].
   /// [awsLogSourceResource] Amazon Security Lake supports log and event collection for natively supported AWS services. See `aws_log_source_resource` Block below.
   /// [customLogSourceResource] Amazon Security Lake supports custom source types. See `custom_log_source_resource` Block below.
-  SubscriberSource({
+  const SubscriberSource({
     this.awsLogSourceResource,
     this.customLogSourceResource,
   });

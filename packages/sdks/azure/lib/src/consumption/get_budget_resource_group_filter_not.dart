@@ -13,7 +13,7 @@ class GetBudgetResourceGroupFilterNot {
   /// Creates a new [GetBudgetResourceGroupFilterNot].
   /// [dimensions] A `dimension` block as defined below.
   /// [tags] A `tag` block as defined below.
-  GetBudgetResourceGroupFilterNot({
+  const GetBudgetResourceGroupFilterNot({
     required this.dimensions,
     required this.tags,
   });

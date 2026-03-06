@@ -26,7 +26,7 @@ class GetPrefixListArgs {
   /// [name] Name of the prefix list to select.
   /// [prefixListId] ID of the prefix list to select.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPrefixListArgs({
+  const GetPrefixListArgs({
     this.filters,
     this.name,
     this.prefixListId,

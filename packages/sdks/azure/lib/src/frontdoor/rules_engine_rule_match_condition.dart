@@ -23,7 +23,7 @@ class RulesEngineRuleMatchCondition {
   /// [transforms] can be set to one or more values out of `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `UrlDecode` and `UrlEncode`
   /// [values] (array) can contain one or more strings.
   /// [variable] can be set to `IsMobile`, `RemoteAddr`, `RequestMethod`, `QueryString`, `PostArgs`, `RequestURI`, `RequestPath`, `RequestFilename`, `RequestFilenameExtension`,`RequestHeader`,`RequestBody` or `RequestScheme`.
-  RulesEngineRuleMatchCondition({
+  const RulesEngineRuleMatchCondition({
     this.negateCondition,
     required this.operator,
     this.selector,

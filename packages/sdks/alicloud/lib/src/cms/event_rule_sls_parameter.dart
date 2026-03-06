@@ -20,7 +20,7 @@ class EventRuleSlsParameter {
   /// [project] The name of the Simple Log Service project.
   /// [region] The region where Simple Log Service is deployed.
   /// [slsParametersId] The ID of the recipient that receives alert notifications.
-  EventRuleSlsParameter({
+  const EventRuleSlsParameter({
     this.arn,
     this.logStore,
     this.project,

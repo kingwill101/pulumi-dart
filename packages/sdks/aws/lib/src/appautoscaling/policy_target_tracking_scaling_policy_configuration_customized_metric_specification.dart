@@ -25,7 +25,7 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
   /// [namespace] Namespace of the metric.
   /// [statistic] Statistic of the metric. Valid values: `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
   /// [unit] Unit of the metrics to return.
-  PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification({
+  const PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification({
     this.dimensions,
     this.metricName,
     this.metrics,

@@ -36,7 +36,7 @@ class InstanceIAMBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [role] The role that should be applied. Only one
-  InstanceIAMBindingArgs({
+  const InstanceIAMBindingArgs({
     this.condition,
     required this.instance,
     required this.members,

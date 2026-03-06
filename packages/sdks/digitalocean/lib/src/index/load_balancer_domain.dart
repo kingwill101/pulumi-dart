@@ -23,7 +23,7 @@ class LoadBalancerDomain {
   /// [name] The domain name to be used for ingressing traffic to a Global Load Balancer.
   /// [sslValidationErrorReasons] list of domain SSL validation errors
   /// [verificationErrorReasons] list of domain verification errors
-  LoadBalancerDomain({
+  const LoadBalancerDomain({
     this.certificateId,
     this.certificateName,
     this.isManaged,

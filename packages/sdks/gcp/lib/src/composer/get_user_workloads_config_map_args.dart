@@ -22,7 +22,7 @@ class GetUserWorkloadsConfigMapArgs {
   /// [name] Name of the ConfigMap.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region of the environment.
-  GetUserWorkloadsConfigMapArgs({
+  const GetUserWorkloadsConfigMapArgs({
     required this.environment,
     required this.name,
     this.project,

@@ -9,7 +9,7 @@ class ManagedClusterStorageProfileFileCSIDriver {
 
   /// Creates a new [ManagedClusterStorageProfileFileCSIDriver].
   /// [enabled] Whether to enable AzureFile CSI Driver. The default value is true.
-  ManagedClusterStorageProfileFileCSIDriver({
+  const ManagedClusterStorageProfileFileCSIDriver({
     this.enabled,
   });
 

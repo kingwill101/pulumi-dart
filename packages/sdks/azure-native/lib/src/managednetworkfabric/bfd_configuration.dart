@@ -12,7 +12,7 @@ class BfdConfiguration {
   /// Creates a new [BfdConfiguration].
   /// [intervalInMilliSeconds] Interval in milliseconds. Example: 300.
   /// [multiplier] Multiplier for the Bfd Configuration. Example: 5.
-  BfdConfiguration({
+  const BfdConfiguration({
     this.intervalInMilliSeconds,
     this.multiplier,
   });

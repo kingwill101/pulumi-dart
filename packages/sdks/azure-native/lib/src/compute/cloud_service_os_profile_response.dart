@@ -10,7 +10,7 @@ class CloudServiceOsProfileResponse {
 
   /// Creates a new [CloudServiceOsProfileResponse].
   /// [secrets] Specifies set of certificates that should be installed onto the role instances.
-  CloudServiceOsProfileResponse({
+  const CloudServiceOsProfileResponse({
     this.secrets,
   });
 

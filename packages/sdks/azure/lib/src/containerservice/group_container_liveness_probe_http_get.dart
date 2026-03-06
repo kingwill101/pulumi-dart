@@ -17,7 +17,7 @@ class GroupContainerLivenessProbeHttpGet {
   /// [path] Path to access on the HTTP server. Changing this forces a new resource to be created.
   /// [port] Number of the port to access on the container. Changing this forces a new resource to be created.
   /// [scheme] Scheme to use for connecting to the host. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
-  GroupContainerLivenessProbeHttpGet({
+  const GroupContainerLivenessProbeHttpGet({
     this.httpHeaders,
     this.path,
     this.port,

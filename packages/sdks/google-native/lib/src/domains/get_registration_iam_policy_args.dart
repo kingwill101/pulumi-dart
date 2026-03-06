@@ -17,7 +17,7 @@ class GetRegistrationIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [registrationId] Required.
-  GetRegistrationIamPolicyArgs({
+  const GetRegistrationIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

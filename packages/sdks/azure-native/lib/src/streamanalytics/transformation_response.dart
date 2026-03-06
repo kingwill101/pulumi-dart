@@ -27,7 +27,7 @@ class TransformationResponse {
   /// [streamingUnits] Specifies the number of streaming units that the streaming job uses.
   /// [type] Resource type
   /// [validStreamingUnits] Specifies the valid streaming units a streaming job can scale to.
-  TransformationResponse({
+  const TransformationResponse({
     required this.etag,
     required this.id,
     this.name,

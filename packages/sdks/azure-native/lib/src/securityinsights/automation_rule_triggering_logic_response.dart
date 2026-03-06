@@ -20,7 +20,7 @@ class AutomationRuleTriggeringLogicResponse {
   /// [isEnabled] Determines whether the automation rule is enabled or disabled.
   /// [triggersOn] Required.
   /// [triggersWhen] Required.
-  AutomationRuleTriggeringLogicResponse({
+  const AutomationRuleTriggeringLogicResponse({
     this.conditions,
     this.expirationTimeUtc,
     required this.isEnabled,

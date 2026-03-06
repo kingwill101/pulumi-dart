@@ -30,7 +30,7 @@ class WorkspacePolicyFragmentArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the policy fragment.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspacePolicyFragmentArgs({
+  const WorkspacePolicyFragmentArgs({
     this.description,
     this.format,
     this.id,

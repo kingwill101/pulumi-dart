@@ -12,7 +12,7 @@ class SpringbootsitesModelExtendedLocation {
   /// Creates a new [SpringbootsitesModelExtendedLocation].
   /// [name] The extended location name.
   /// [type] The extended location type.
-  SpringbootsitesModelExtendedLocation({
+  const SpringbootsitesModelExtendedLocation({
     this.name,
     this.type,
   });

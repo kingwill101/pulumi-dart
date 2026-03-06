@@ -87,7 +87,7 @@ class SecGroupRuleState {
   /// [remoteIpPrefix] The remote CIDR, the value needs to be a valid
   /// [securityGroupId] The security group id the rule should belong
   /// [tenantId] The owner of the security group. Required if admin
-  SecGroupRuleState({
+  const SecGroupRuleState({
     this.description,
     this.direction,
     this.ethertype,

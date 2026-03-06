@@ -14,7 +14,7 @@ class ConditionResponse {
   /// Creates a new [ConditionResponse].
   /// [actionCondition] A single action condition.
   /// [labelNameCondition] A single label name condition.
-  ConditionResponse({
+  const ConditionResponse({
     this.actionCondition,
     this.labelNameCondition,
   });

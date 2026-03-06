@@ -14,7 +14,7 @@ class SecretArchiveReferenceResponse {
   /// [keyVaultId] The resource ID of the key vault containing the secret.
   /// [secretName] The name of the secret in the key vault.
   /// [secretVersion] The version of the secret in the key vault.
-  SecretArchiveReferenceResponse({
+  const SecretArchiveReferenceResponse({
     required this.keyVaultId,
     required this.secretName,
     required this.secretVersion,

@@ -8,7 +8,7 @@ class ListDeviceRegistrationKeyResult {
 
   /// Creates a new [ListDeviceRegistrationKeyResult].
   /// [registrationKey] The registration key for the device.
-  ListDeviceRegistrationKeyResult({
+  const ListDeviceRegistrationKeyResult({
     required this.registrationKey,
   });
 

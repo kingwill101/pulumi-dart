@@ -25,7 +25,7 @@ class DescriptionResponse {
   /// [links] Links for the product system.
   /// [longDescription] Long description of the product system.
   /// [shortDescription] Short description of the product system.
-  DescriptionResponse({
+  const DescriptionResponse({
     required this.attributes,
     required this.descriptionType,
     required this.keywords,

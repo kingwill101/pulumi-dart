@@ -14,7 +14,7 @@ class RepoDomainList {
   /// [internal] Domain of internal endpoint, only in some regions.
   /// [public] Domain of public endpoint.
   /// [vpc] Domain of vpc endpoint.
-  RepoDomainList({
+  const RepoDomainList({
     this.internal,
     this.public,
     this.vpc,

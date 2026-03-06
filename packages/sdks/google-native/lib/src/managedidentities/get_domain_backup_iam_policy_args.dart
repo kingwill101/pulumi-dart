@@ -17,7 +17,7 @@ class GetDomainBackupIamPolicyArgs {
   /// [domainId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDomainBackupIamPolicyArgs({
+  const GetDomainBackupIamPolicyArgs({
     required this.backupId,
     required this.domainId,
     this.optionsRequestedPolicyVersion,

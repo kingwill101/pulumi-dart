@@ -11,7 +11,7 @@ class ConnectorWorkerConfiguration {
   /// Creates a new [ConnectorWorkerConfiguration].
   /// [arn] The Amazon Resource Name (ARN) of the worker configuration.
   /// [revision] The revision of the worker configuration.
-  ConnectorWorkerConfiguration({
+  const ConnectorWorkerConfiguration({
     required this.arn,
     required this.revision,
   });

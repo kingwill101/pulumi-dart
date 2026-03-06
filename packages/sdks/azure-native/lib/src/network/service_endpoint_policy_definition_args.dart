@@ -36,7 +36,7 @@ class ServiceEndpointPolicyDefinitionArgs {
   /// [serviceEndpointPolicyName] The name of the service endpoint policy.
   /// [serviceResources] A list of service resources.
   /// [type] The type of the resource.
-  ServiceEndpointPolicyDefinitionArgs({
+  const ServiceEndpointPolicyDefinitionArgs({
     this.description,
     this.id,
     this.name,

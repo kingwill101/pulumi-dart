@@ -19,7 +19,7 @@ class AdditionalUnattendContentResponse {
   /// [componentName] The component name. Currently, the only allowable value is
   /// [passName] The pass name. Currently, the only allowable value is OobeSystem.
   /// [settingName] Specifies the name of the setting to which the content applies. Possible values
-  AdditionalUnattendContentResponse({
+  const AdditionalUnattendContentResponse({
     this.componentName,
     this.passName,
     this.settingName,

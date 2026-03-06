@@ -15,7 +15,7 @@ class GetCloudAutonomousVmClustersResult {
   /// [cloudAutonomousVmClusters] List of Cloud Autonomous VM Clusters. The list going to contain basic information about the cloud autonomous VM clusters.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetCloudAutonomousVmClustersResult({
+  const GetCloudAutonomousVmClustersResult({
     required this.cloudAutonomousVmClusters,
     required this.id,
     required this.region,

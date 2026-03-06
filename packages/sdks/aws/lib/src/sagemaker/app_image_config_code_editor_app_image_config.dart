@@ -13,7 +13,7 @@ class AppImageConfigCodeEditorAppImageConfig {
   /// Creates a new [AppImageConfigCodeEditorAppImageConfig].
   /// [containerConfig] The configuration used to run the application image container. See Container Config details below.
   /// [fileSystemConfig] The URL where the Git repository is located. See File System Config details below.
-  AppImageConfigCodeEditorAppImageConfig({
+  const AppImageConfigCodeEditorAppImageConfig({
     this.containerConfig,
     this.fileSystemConfig,
   });

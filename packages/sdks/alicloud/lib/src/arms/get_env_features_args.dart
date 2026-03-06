@@ -21,7 +21,7 @@ class GetEnvFeaturesArgs {
   /// [ids] A list of ARMS Env Feature IDs.
   /// [nameRegex] A regex string to filter results by ARMS Env Feature name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnvFeaturesArgs({
+  const GetEnvFeaturesArgs({
     required this.environmentId,
     this.ids,
     this.nameRegex,

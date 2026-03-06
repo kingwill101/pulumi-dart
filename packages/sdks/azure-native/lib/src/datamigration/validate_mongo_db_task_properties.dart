@@ -17,7 +17,7 @@ class ValidateMongoDbTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Describes how a MongoDB data migration should be performed
   /// [taskType] Task type.
-  ValidateMongoDbTaskProperties({
+  const ValidateMongoDbTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

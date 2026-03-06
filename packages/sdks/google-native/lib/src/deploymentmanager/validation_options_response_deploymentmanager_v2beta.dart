@@ -12,7 +12,7 @@ class ValidationOptionsResponseDeploymentmanagerV2beta {
   /// Creates a new [ValidationOptionsResponseDeploymentmanagerV2beta].
   /// [schemaValidation] Customize how deployment manager will validate the resource against schema errors.
   /// [undeclaredProperties] Specify what to do with extra properties when executing a request.
-  ValidationOptionsResponseDeploymentmanagerV2beta({
+  const ValidationOptionsResponseDeploymentmanagerV2beta({
     required this.schemaValidation,
     required this.undeclaredProperties,
   });

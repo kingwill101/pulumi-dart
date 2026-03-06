@@ -11,7 +11,7 @@ class SigningProfileSignatureValidityPeriod {
   /// Creates a new [SigningProfileSignatureValidityPeriod].
   /// [type] The time unit for signature validity. Valid values: `DAYS`, `MONTHS`, `YEARS`.
   /// [value] The numerical value of the time unit for signature validity.
-  SigningProfileSignatureValidityPeriod({
+  const SigningProfileSignatureValidityPeriod({
     required this.type,
     required this.value,
   });

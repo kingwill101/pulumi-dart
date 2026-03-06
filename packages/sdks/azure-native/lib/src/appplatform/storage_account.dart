@@ -16,7 +16,7 @@ class StorageAccount {
   /// [accountKey] The account key of the Azure Storage Account.
   /// [accountName] The account name of the Azure Storage Account.
   /// [storageType] The type of the storage.
-  StorageAccount({
+  const StorageAccount({
     required this.accountKey,
     required this.accountName,
     required this.storageType,

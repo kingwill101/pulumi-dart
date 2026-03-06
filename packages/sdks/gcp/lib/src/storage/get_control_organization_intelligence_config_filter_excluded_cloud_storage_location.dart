@@ -8,7 +8,7 @@ class GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation
 
   /// Creates a new [GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation].
   /// [locations] List of locations.
-  GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation({
+  const GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation({
     required this.locations,
   });
 

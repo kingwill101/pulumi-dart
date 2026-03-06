@@ -17,7 +17,7 @@ class ConnectorLogDeliveryWorkerLogDelivery {
   /// [cloudwatchLogs] Details about delivering logs to Amazon CloudWatch Logs. See `cloudwatch_logs` Block for details.
   /// [firehose] Details about delivering logs to Amazon Kinesis Data Firehose. See `firehose` Block for details.
   /// [s3] Details about delivering logs to Amazon S3. See `s3` Block for deetails.
-  ConnectorLogDeliveryWorkerLogDelivery({
+  const ConnectorLogDeliveryWorkerLogDelivery({
     this.cloudwatchLogs,
     this.firehose,
     this.s3,

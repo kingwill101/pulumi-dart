@@ -33,7 +33,7 @@ class OpenAIProfileResponse {
   /// [gptModelSkuName] GPT Model SKU Name
   /// [gptModelVersion] GPT Model Version
   /// [id] Resource Id of OpenAI Resource
-  OpenAIProfileResponse({
+  const OpenAIProfileResponse({
     this.embeddingModelCapacity,
     this.embeddingModelName,
     this.embeddingModelSkuName,

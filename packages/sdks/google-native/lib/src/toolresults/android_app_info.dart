@@ -18,7 +18,7 @@ class AndroidAppInfo {
   /// [packageName] The package name of the app. Required.
   /// [versionCode] The internal version code of the app. Optional.
   /// [versionName] The version name of the app. Optional.
-  AndroidAppInfo({
+  const AndroidAppInfo({
     this.name,
     this.packageName,
     this.versionCode,

@@ -10,7 +10,7 @@ class MetadataComputeV1 {
 
   /// Creates a new [MetadataComputeV1].
   /// [items] Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-  MetadataComputeV1({
+  const MetadataComputeV1({
     this.items,
   });
 

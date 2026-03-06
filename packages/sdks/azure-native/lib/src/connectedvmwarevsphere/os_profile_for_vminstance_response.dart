@@ -34,7 +34,7 @@ class OsProfileForVMInstanceResponse {
   /// [toolsVersion] Gets or sets the current version of VMware Tools.
   /// [toolsVersionStatus] Gets or sets the current version status of VMware Tools installed in the guest operating system.
   /// [windowsConfiguration] Windows Configuration.
-  OsProfileForVMInstanceResponse({
+  const OsProfileForVMInstanceResponse({
     this.adminUsername,
     this.computerName,
     this.guestId,

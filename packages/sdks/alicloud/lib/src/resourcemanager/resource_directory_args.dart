@@ -22,7 +22,7 @@ class ResourceDirectoryArgs {
   /// [memberAccountDisplayNameSyncStatus] The status of the Member Display Name Synchronization feature. Valid values:
   /// [memberDeletionStatus] The status of the member deletion feature. Valid values:
   /// [status] ScpStatus
-  ResourceDirectoryArgs({
+  const ResourceDirectoryArgs({
     this.memberAccountDisplayNameSyncStatus,
     this.memberDeletionStatus,
     this.status,

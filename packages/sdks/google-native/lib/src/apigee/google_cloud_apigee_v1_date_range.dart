@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1DateRange {
   /// Creates a new [GoogleCloudApigeeV1DateRange].
   /// [end] End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
   /// [start] Start date of the data to export in the format `yyyy-mm-dd`. The date range begins at 00:00:00 UTC on the start date.
-  GoogleCloudApigeeV1DateRange({
+  const GoogleCloudApigeeV1DateRange({
     required this.end,
     required this.start,
   });

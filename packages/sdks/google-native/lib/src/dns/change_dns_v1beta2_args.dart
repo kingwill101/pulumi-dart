@@ -28,7 +28,7 @@ class ChangeDnsV1beta2Args {
   /// [kind] Optional.
   /// [managedZone] Required.
   /// [project] Optional.
-  ChangeDnsV1beta2Args({
+  const ChangeDnsV1beta2Args({
     this.additions,
     this.clientOperationId,
     this.deletions,

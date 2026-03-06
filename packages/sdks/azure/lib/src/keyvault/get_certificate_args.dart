@@ -20,7 +20,7 @@ class GetCertificateArgs {
   /// [keyVaultId] Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
   /// [name] Specifies the name of the Key Vault Certificate.
   /// [version] Specifies the version of the certificate to look up.  (Defaults to latest)
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.keyVaultId,
     required this.name,
     this.version,

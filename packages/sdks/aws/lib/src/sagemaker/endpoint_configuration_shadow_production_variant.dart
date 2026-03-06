@@ -54,7 +54,7 @@ class EndpointConfigurationShadowProductionVariant {
   /// [serverlessConfig] How an endpoint performs asynchronous inference.
   /// [variantName] Name of the variant. If omitted, the provider will assign a random, unique name.
   /// [volumeSizeInGb] Size, in GB, of the ML storage volume attached to individual inference instance associated with the production variant. Valid values between `1` and `512`.
-  EndpointConfigurationShadowProductionVariant({
+  const EndpointConfigurationShadowProductionVariant({
     this.acceleratorType,
     this.containerStartupHealthCheckTimeoutInSeconds,
     this.coreDumpConfig,

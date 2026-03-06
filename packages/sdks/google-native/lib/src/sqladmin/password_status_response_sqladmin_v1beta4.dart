@@ -12,7 +12,7 @@ class PasswordStatusResponseSqladminV1beta4 {
   /// Creates a new [PasswordStatusResponseSqladminV1beta4].
   /// [locked] If true, user does not have login privileges.
   /// [passwordExpirationTime] The expiration time of the current password.
-  PasswordStatusResponseSqladminV1beta4({
+  const PasswordStatusResponseSqladminV1beta4({
     required this.locked,
     required this.passwordExpirationTime,
   });

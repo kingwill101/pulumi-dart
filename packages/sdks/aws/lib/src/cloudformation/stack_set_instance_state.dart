@@ -45,7 +45,7 @@ class StackSetInstanceState {
   /// [stackInstanceSummaries] List of stack instances created from an organizational unit deployment target. This will only be populated when `deployment_targets` is set. See `stack_instance_summaries`.
   /// [stackSetInstanceRegion] Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
   /// [stackSetName] Name of the StackSet.
-  StackSetInstanceState({
+  const StackSetInstanceState({
     this.accountId,
     this.callAs,
     this.deploymentTargets,

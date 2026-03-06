@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse
   /// [diskSizeGb] Optional. Size in GB of the disk. Default is 100 GB.
   /// [maxNodeCount] Optional. Max configurable nodes. If max_node_count &gt; node_count, then auto-scaling is enabled.
   /// [nodeCount] Optional. Total number of nodes in the sessions created for this environment.
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse({
+  const GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse({
     required this.diskSizeGb,
     required this.maxNodeCount,
     required this.nodeCount,

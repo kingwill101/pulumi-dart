@@ -39,7 +39,7 @@ class GroupInitContainerVolume {
   /// [shareName] The Azure storage share that is to be mounted as a volume. This must be created on the storage account specified as above. Changing this forces a new resource to be created.
   /// [storageAccountKey] The access key for the Azure Storage account specified as above. Changing this forces a new resource to be created.
   /// [storageAccountName] The Azure storage account from which the volume is to be mounted. Changing this forces a new resource to be created.
-  GroupInitContainerVolume({
+  const GroupInitContainerVolume({
     this.emptyDir,
     this.gitRepo,
     required this.mountPath,

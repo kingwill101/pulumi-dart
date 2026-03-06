@@ -35,7 +35,7 @@ class GetForwardEntriesEntry {
   /// [ipProtocol] The ip protocol. Valid values: `any`,`tcp` and `udp`.
   /// [name] The forward entry name.
   /// [status] The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
-  GetForwardEntriesEntry({
+  const GetForwardEntriesEntry({
     required this.externalIp,
     required this.externalPort,
     required this.forwardEntryId,

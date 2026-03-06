@@ -13,7 +13,7 @@ class AppSpecIngressRuleMatch {
   /// Creates a new [AppSpecIngressRuleMatch].
   /// [authority] The authority (domain) to match on.
   /// [path] The path to match on.
-  AppSpecIngressRuleMatch({
+  const AppSpecIngressRuleMatch({
     this.authority,
     this.path,
   });

@@ -15,7 +15,7 @@ class GetWorkspaceArgs {
   /// Creates a new [GetWorkspaceArgs].
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

@@ -16,7 +16,7 @@ class AgentcoreMemoryStrategyConfiguration {
   /// [consolidation] Consolidation configuration for processing and organizing memory content. See `consolidation` below. Once added, this block cannot be removed without recreating the resource.
   /// [extraction] Extraction configuration for identifying and extracting relevant information. See `extraction` below. Cannot be used with `type` set to `SUMMARY_OVERRIDE`. Once added, this block cannot be removed without recreating the resource.
   /// [type] Type of custom override. Valid values: `SEMANTIC_OVERRIDE`, `SUMMARY_OVERRIDE`, `USER_PREFERENCE_OVERRIDE`. Changing this forces a new resource.
-  AgentcoreMemoryStrategyConfiguration({
+  const AgentcoreMemoryStrategyConfiguration({
     this.consolidation,
     this.extraction,
     required this.type,

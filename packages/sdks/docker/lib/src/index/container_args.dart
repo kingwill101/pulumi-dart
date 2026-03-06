@@ -220,7 +220,7 @@ class ContainerArgs {
   /// [wait] If `true`, then the Docker container is waited for being healthy state after creation. This requires your container to have a healthcheck, otherwise this provider will error. If `false`, then the container health state is not checked. Defaults to `false`.
   /// [waitTimeout] The timeout in seconds to wait the container to be healthy after creation. Defaults to `60`.
   /// [workingDir] The working directory for commands to run in.
-  ContainerArgs({
+  const ContainerArgs({
     this.attach,
     this.capabilities,
     this.cgroupParent,

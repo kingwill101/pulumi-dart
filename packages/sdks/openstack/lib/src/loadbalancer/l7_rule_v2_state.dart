@@ -48,7 +48,7 @@ class L7RuleV2State {
   /// [tenantId] Required for admins. The UUID of the tenant who owns
   /// [type] The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
   /// [value] The value to use for the comparison. For example, the file type to
-  L7RuleV2State({
+  const L7RuleV2State({
     this.adminStateUp,
     this.compareType,
     this.invert,

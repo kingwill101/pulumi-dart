@@ -12,7 +12,7 @@ class BatchProcessorResponse {
   /// Creates a new [BatchProcessorResponse].
   /// [batchSize] Size of the batch.
   /// [timeout] Timeout in milliseconds.
-  BatchProcessorResponse({
+  const BatchProcessorResponse({
     this.batchSize,
     this.timeout,
   });

@@ -57,7 +57,7 @@ class AzureSettings {
   /// [targetLocation] Gets or sets azure location.
   /// [wacc] Gets wACC percentage.
   /// [workloadDiscoverySource] Workload discovery source.
-  AzureSettings({
+  const AzureSettings({
     this.avsLaborCostPercentage,
     this.businessCaseType,
     this.comfortFactor,

@@ -15,7 +15,7 @@ class UserAssignedIdentityResponse {
   /// [clientId] The client id of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
   /// [tenantId] The tenant id of user assigned identity.
-  UserAssignedIdentityResponse({
+  const UserAssignedIdentityResponse({
     required this.clientId,
     required this.principalId,
     this.tenantId,

@@ -40,7 +40,7 @@ class GetCoreNetworkPolicyDocumentArgs {
   /// [segmentActions] A block argument, `segment_actions` define how routing works between segments. By default, attachments can only communicate with other attachments in the same segment. Detailed below.
   /// [segments] Block argument that defines the different segments in the network. Here you can provide descriptions, change defaults, and provide explicit Regional operational and route filters. The names defined for each segment are used in the `segment_actions` and `attachment_policies` section. Each segment is created, and operates, as a completely separated routing domain. By default, attachments can only communicate with other attachments in the same segment. Detailed below.
   /// [version] Version of the core network policy. Valid values: `2021.12`, `2025.11`. Default: `2021.12`.
-  GetCoreNetworkPolicyDocumentArgs({
+  const GetCoreNetworkPolicyDocumentArgs({
     this.attachmentPolicies,
     this.attachmentRoutingPolicyRules,
     required this.coreNetworkConfigurations,

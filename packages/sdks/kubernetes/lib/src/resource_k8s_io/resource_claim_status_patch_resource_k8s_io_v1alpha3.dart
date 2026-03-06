@@ -27,7 +27,7 @@ class ResourceClaimStatusPatchResourceK8sIoV1alpha3 {
   /// [allocation] Allocation is set once the claim has been allocated successfully.
   /// [deallocationRequested] Indicates that a claim is to be deallocated. While this is set, no new consumers may be added to ReservedFor.
   /// [reservedFor] ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated.
-  ResourceClaimStatusPatchResourceK8sIoV1alpha3({
+  const ResourceClaimStatusPatchResourceK8sIoV1alpha3({
     this.allocation,
     this.deallocationRequested,
     this.reservedFor,

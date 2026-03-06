@@ -14,7 +14,7 @@ class ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails {
   /// Creates a new [ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails].
   /// [availableSizeGbs] (Output)
   /// [totalSizeGbs] The total storage allocation for the ExascaleDbStorageVault, in gigabytes
-  ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails({
+  const ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails({
     this.availableSizeGbs,
     required this.totalSizeGbs,
   });

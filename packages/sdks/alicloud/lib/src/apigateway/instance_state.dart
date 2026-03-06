@@ -86,7 +86,7 @@ class InstanceState {
   /// [vpcSlbIntranetEnable] Whether the slb of the Vpc supports.
   /// [zoneId] The zone where the instance is deployed.
   /// [zoneVswitchSecurityGroups] Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
-  InstanceState({
+  const InstanceState({
     this.connectCidrBlocks,
     this.createTime,
     this.deleteVpcIpBlock,

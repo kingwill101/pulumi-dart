@@ -12,7 +12,7 @@ class ElasticFileSystemTagResponse {
   /// Creates a new [ElasticFileSystemTagResponse].
   /// [key] The tag key (String). The key can't start with ``aws:``.
   /// [value] The value of the tag key.
-  ElasticFileSystemTagResponse({
+  const ElasticFileSystemTagResponse({
     this.key,
     this.value,
   });

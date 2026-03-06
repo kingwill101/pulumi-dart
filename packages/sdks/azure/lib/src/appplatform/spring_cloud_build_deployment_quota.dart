@@ -15,7 +15,7 @@ class SpringCloudBuildDeploymentQuota {
   /// Creates a new [SpringCloudBuildDeploymentQuota].
   /// [cpu] Specifies the required cpu of the Spring Cloud Deployment. Possible Values are `500m`, `1`, `2`, `3` and `4`. Defaults to `1` if not specified.
   /// [memory] Specifies the required memory size of the Spring Cloud Deployment. Possible Values are `512Mi`, `1Gi`, `2Gi`, `3Gi`, `4Gi`, `5Gi`, `6Gi`, `7Gi`, and `8Gi`. Defaults to `1Gi` if not specified.
-  SpringCloudBuildDeploymentQuota({
+  const SpringCloudBuildDeploymentQuota({
     this.cpu,
     this.memory,
   });

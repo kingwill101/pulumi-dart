@@ -11,7 +11,7 @@ class WorkloadComplianceStatus {
   /// Creates a new [WorkloadComplianceStatus].
   /// [acknowledgedViolationCounts] Number of current orgPolicy violations which are acknowledged.
   /// [activeViolationCounts] Number of current orgPolicy violations which are not acknowledged.
-  WorkloadComplianceStatus({
+  const WorkloadComplianceStatus({
     this.acknowledgedViolationCounts,
     this.activeViolationCounts,
   });

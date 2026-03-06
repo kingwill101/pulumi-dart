@@ -17,7 +17,7 @@ class Encryption {
   /// [keySource] Enumerates the possible value of keySource for Encryption
   /// [keyVaultProperties] Properties of KeyVault
   /// [requireInfrastructureEncryption] Enable Infrastructure Encryption (Double Encryption)
-  Encryption({
+  const Encryption({
     this.keySource,
     this.keyVaultProperties,
     this.requireInfrastructureEncryption,

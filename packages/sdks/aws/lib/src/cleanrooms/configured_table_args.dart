@@ -33,7 +33,7 @@ class ConfiguredTableArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableReference] A reference to the AWS Glue table which will be used to create the configured table.
   /// [tags] Key value pairs which tag the configured table.
-  ConfiguredTableArgs({
+  const ConfiguredTableArgs({
     required this.allowedColumns,
     required this.analysisMethod,
     this.description,

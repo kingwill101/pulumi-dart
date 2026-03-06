@@ -15,7 +15,7 @@ class GetReplicationGroupArgs {
   /// Creates a new [GetReplicationGroupArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationGroupId] Identifier for the replication group.
-  GetReplicationGroupArgs({
+  const GetReplicationGroupArgs({
     this.region,
     required this.replicationGroupId,
   });

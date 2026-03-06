@@ -15,7 +15,7 @@ class GetAccountChangeKeyVaultInformationArgs {
   /// Creates a new [GetAccountChangeKeyVaultInformationArgs].
   /// [accountName] The name of the NetApp account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccountChangeKeyVaultInformationArgs({
+  const GetAccountChangeKeyVaultInformationArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

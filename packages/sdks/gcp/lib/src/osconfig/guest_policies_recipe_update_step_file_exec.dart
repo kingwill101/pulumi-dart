@@ -17,7 +17,7 @@ class GuestPoliciesRecipeUpdateStepFileExec {
   /// [args] Arguments to be passed to the provided executable.
   /// [artifactId] The id of the relevant artifact in the recipe.
   /// [localPath] The absolute path of the file on the local filesystem.
-  GuestPoliciesRecipeUpdateStepFileExec({
+  const GuestPoliciesRecipeUpdateStepFileExec({
     this.allowedExitCodes,
     this.args,
     this.artifactId,

@@ -8,7 +8,7 @@ class NetworkConnectionMonitorTestConfigurationIcmpConfiguration {
 
   /// Creates a new [NetworkConnectionMonitorTestConfigurationIcmpConfiguration].
   /// [traceRouteEnabled] Should path evaluation with trace route be enabled? Defaults to `true`.
-  NetworkConnectionMonitorTestConfigurationIcmpConfiguration({
+  const NetworkConnectionMonitorTestConfigurationIcmpConfiguration({
     this.traceRouteEnabled,
   });
 

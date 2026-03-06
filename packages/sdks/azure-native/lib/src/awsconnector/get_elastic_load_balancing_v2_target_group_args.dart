@@ -15,7 +15,7 @@ class GetElasticLoadBalancingV2TargetGroupArgs {
   /// Creates a new [GetElasticLoadBalancingV2TargetGroupArgs].
   /// [name] Name of ElasticLoadBalancingV2TargetGroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticLoadBalancingV2TargetGroupArgs({
+  const GetElasticLoadBalancingV2TargetGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

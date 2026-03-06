@@ -34,7 +34,7 @@ class PATAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  PATAuthTypeConnectionProperties({
+  const PATAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

@@ -56,7 +56,7 @@ class BatchOperationsJobState {
   /// [scheduleTime] The time that the job was scheduled.
   /// [state] State of the job.
   /// [updateTime] The timestamp at which this storage batch operation was most recently updated.
-  BatchOperationsJobState({
+  const BatchOperationsJobState({
     this.bucketList,
     this.completeTime,
     this.createTime,

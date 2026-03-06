@@ -21,7 +21,7 @@ class AutoSnapShotPolicyArgs {
   /// [repeatWeekdays] A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
   /// [retentionDays] Automatic snapshot retention days.
   /// [timePoints] The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
-  AutoSnapShotPolicyArgs({
+  const AutoSnapShotPolicyArgs({
     required this.policyName,
     required this.repeatWeekdays,
     required this.retentionDays,

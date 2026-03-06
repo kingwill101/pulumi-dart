@@ -16,7 +16,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditio
   /// [longValue] A long integer value.
   /// [stringListValues] A list of strings.
   /// [stringValue] Optional.
-  DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue({
+  const DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue({
     this.dateValue,
     this.longValue,
     this.stringListValues,

@@ -20,7 +20,7 @@ class ByteMatchSetByteMatchTuple {
   /// [positionalConstraint] Within the portion of a web request that you want to search.
   /// [targetString] The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
   /// [textTransformation] The formatting way for web request.
-  ByteMatchSetByteMatchTuple({
+  const ByteMatchSetByteMatchTuple({
     required this.fieldToMatch,
     required this.positionalConstraint,
     this.targetString,

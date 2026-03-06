@@ -18,7 +18,7 @@ class UserDetails {
   /// [secretType] Type of the secret used for authentication.
   /// [sshPubKey] SSH Public Key for the user.
   /// [userName] Name of the user.
-  UserDetails({
+  const UserDetails({
     this.secretLocation,
     required this.secretType,
     this.sshPubKey,

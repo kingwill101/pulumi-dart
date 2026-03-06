@@ -8,7 +8,7 @@ class SdkvoiceSipMediaApplicationEndpoints {
 
   /// Creates a new [SdkvoiceSipMediaApplicationEndpoints].
   /// [lambdaArn] Valid Amazon Resource Name (ARN) of the Lambda function, version, or alias. The function must be created in the same AWS Region as the SIP media application.
-  SdkvoiceSipMediaApplicationEndpoints({
+  const SdkvoiceSipMediaApplicationEndpoints({
     required this.lambdaArn,
   });
 

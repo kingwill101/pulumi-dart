@@ -23,7 +23,7 @@ class RoleManagementPolicyAuthenticationContextRuleResponse {
   /// [isEnabled] The value indicating if rule is enabled.
   /// [ruleType] The type of rule
   /// [target] The target of the current rule.
-  RoleManagementPolicyAuthenticationContextRuleResponse({
+  const RoleManagementPolicyAuthenticationContextRuleResponse({
     this.claimValue,
     this.id,
     this.isEnabled,

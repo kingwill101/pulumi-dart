@@ -46,7 +46,7 @@ class GetInstancesInstance {
   /// [status] Instance status.
   /// [tags] The tag value corresponding to the tag key.
   /// [type] The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.createTime,
     required this.destinationEndpointEngineName,
     required this.destinationRegion,

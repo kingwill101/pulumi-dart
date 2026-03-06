@@ -11,7 +11,7 @@ class WorkforcePoolIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  WorkforcePoolIamMemberCondition({
+  const WorkforcePoolIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

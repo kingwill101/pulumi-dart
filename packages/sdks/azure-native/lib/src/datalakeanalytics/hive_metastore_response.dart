@@ -32,7 +32,7 @@ class HiveMetastoreResponse {
   /// [serverUri] The serverUri for the Hive MetaStore
   /// [type] The resource type.
   /// [userName] The userName for the Hive MetaStore
-  HiveMetastoreResponse({
+  const HiveMetastoreResponse({
     required this.databaseName,
     required this.id,
     required this.name,

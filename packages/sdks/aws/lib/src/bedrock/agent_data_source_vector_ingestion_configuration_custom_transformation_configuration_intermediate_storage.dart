@@ -9,7 +9,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage].
   /// [s3Location] Configuration block for intermedia S3 storage.
-  AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage({
+  const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage({
     this.s3Location,
   });
 

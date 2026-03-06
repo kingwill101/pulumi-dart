@@ -18,7 +18,7 @@ class GetNspAssociationArgs {
   /// [associationName] The name of the NSP association.
   /// [networkSecurityPerimeterName] The name of the network security perimeter.
   /// [resourceGroupName] The name of the resource group.
-  GetNspAssociationArgs({
+  const GetNspAssociationArgs({
     required this.associationName,
     required this.networkSecurityPerimeterName,
     required this.resourceGroupName,

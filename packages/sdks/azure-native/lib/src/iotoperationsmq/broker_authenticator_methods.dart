@@ -26,7 +26,7 @@ class BrokerAuthenticatorMethods {
   /// [svid] Service Account Token Method.
   /// [usernamePassword] UsernamePassword Method.
   /// [x509] X509 Method.
-  BrokerAuthenticatorMethods({
+  const BrokerAuthenticatorMethods({
     this.custom,
     this.sat,
     this.svid,

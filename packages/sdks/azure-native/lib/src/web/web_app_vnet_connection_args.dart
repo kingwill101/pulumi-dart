@@ -34,7 +34,7 @@ class WebAppVnetConnectionArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [vnetName] Name of an existing Virtual Network.
   /// [vnetResourceId] The Virtual Network's resource ID.
-  WebAppVnetConnectionArgs({
+  const WebAppVnetConnectionArgs({
     this.certBlob,
     this.dnsServers,
     this.isSwift,

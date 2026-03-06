@@ -18,7 +18,7 @@ class ContainerNetworkInterfaceIpConfigurationResponse {
   /// [name] The name of the resource. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the container network interface IP configuration resource.
   /// [type] Sub Resource type.
-  ContainerNetworkInterfaceIpConfigurationResponse({
+  const ContainerNetworkInterfaceIpConfigurationResponse({
     required this.etag,
     this.name,
     required this.provisioningState,

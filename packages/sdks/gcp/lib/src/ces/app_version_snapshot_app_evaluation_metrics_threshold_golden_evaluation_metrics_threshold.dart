@@ -17,7 +17,7 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold].
   /// [expectationLevelMetricsThresholds] (Output)
   /// [turnLevelMetricsThresholds] (Output)
-  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold({
+  const AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold({
     this.expectationLevelMetricsThresholds,
     this.turnLevelMetricsThresholds,
   });

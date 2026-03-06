@@ -34,7 +34,7 @@ class AppSyncGraphqlApiPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  AppSyncGraphqlApiPropertiesResponse({
+  const AppSyncGraphqlApiPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

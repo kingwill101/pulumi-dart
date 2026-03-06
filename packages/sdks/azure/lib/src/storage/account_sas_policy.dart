@@ -11,7 +11,7 @@ class AccountSasPolicy {
   /// Creates a new [AccountSasPolicy].
   /// [expirationAction] The SAS expiration action. Possible values are `Log` and `Block`. Defaults to `Log`.
   /// [expirationPeriod] The SAS expiration period in format of `DD.HH:MM:SS`.
-  AccountSasPolicy({
+  const AccountSasPolicy({
     this.expirationAction,
     required this.expirationPeriod,
   });

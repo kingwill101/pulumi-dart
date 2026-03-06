@@ -13,7 +13,7 @@ class ExtensionResponse {
   /// Creates a new [ExtensionResponse].
   /// [name] The name of the extension.
   /// [properties] Extension Properties.
-  ExtensionResponse({
+  const ExtensionResponse({
     this.name,
     this.properties,
   });

@@ -33,7 +33,7 @@ class FileEventTriggerArgs {
   /// [resourceGroupName] The resource group name.
   /// [sinkInfo] Role sink info.
   /// [sourceInfo] File event source details.
-  FileEventTriggerArgs({
+  const FileEventTriggerArgs({
     this.customContextTag,
     required this.deviceName,
     required this.kind,

@@ -20,7 +20,7 @@ class FileValidationReportResponse {
   /// [fileName] The name of the file.
   /// [partialReport] Flag indicating that processing was aborted due to maximum number of errors.
   /// [rowErrors] Partial list of rows that encountered validation error.
-  FileValidationReportResponse({
+  const FileValidationReportResponse({
     required this.fileErrors,
     required this.fileName,
     required this.partialReport,

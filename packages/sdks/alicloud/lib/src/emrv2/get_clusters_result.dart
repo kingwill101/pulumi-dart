@@ -45,7 +45,7 @@ class GetClustersResult {
   /// [resourceGroupId] The resource group id of the resource.
   /// [tags] A mapping of tags to assign to the resource.
   /// [totalCount] The total count of list clusters.
-  GetClustersResult({
+  const GetClustersResult({
     this.clusterName,
     this.clusterStates,
     this.clusterTypes,

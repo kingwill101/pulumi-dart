@@ -15,7 +15,7 @@ class GetDataCollectionRuleAssociationArgs {
   /// Creates a new [GetDataCollectionRuleAssociationArgs].
   /// [associationName] The name of the association. The name is case insensitive.
   /// [resourceUri] The identifier of the resource.
-  GetDataCollectionRuleAssociationArgs({
+  const GetDataCollectionRuleAssociationArgs({
     required this.associationName,
     required this.resourceUri,
   });

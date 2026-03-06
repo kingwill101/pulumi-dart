@@ -24,7 +24,7 @@ class GetEventRulesRuleEventPattern {
   /// [nameLists] The list of event names.
   /// [product] The type of the cloud service.
   /// [sqlFilter] The SQL condition that is used to filter events.
-  GetEventRulesRuleEventPattern({
+  const GetEventRulesRuleEventPattern({
     required this.eventTypeLists,
     required this.keywordFilters,
     required this.levelLists,

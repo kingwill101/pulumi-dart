@@ -15,7 +15,7 @@ class GetDiskReplicaGroupsArgs {
   /// Creates a new [GetDiskReplicaGroupsArgs].
   /// [ids] A list of Disk Replica Group IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetDiskReplicaGroupsArgs({
+  const GetDiskReplicaGroupsArgs({
     this.ids,
     this.outputFile,
   });

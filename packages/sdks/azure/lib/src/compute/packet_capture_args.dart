@@ -35,7 +35,7 @@ class PacketCaptureArgs {
   /// [networkWatcherId] The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   /// [storageLocation] A `storage_location` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineId] The resource ID of the target Virtual Machine to capture packets from. Changing this forces a new resource to be created.
-  PacketCaptureArgs({
+  const PacketCaptureArgs({
     this.filters,
     this.maximumBytesPerPacket,
     this.maximumBytesPerSession,

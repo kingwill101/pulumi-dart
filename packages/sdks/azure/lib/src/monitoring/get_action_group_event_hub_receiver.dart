@@ -23,7 +23,7 @@ class GetActionGroupEventHubReceiver {
   /// [subscriptionId] The ID for the subscription containing this Event Hub. Default to the subscription ID of the Action Group.
   /// [tenantId] The Tenant ID for the subscription containing this Event Hub.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  GetActionGroupEventHubReceiver({
+  const GetActionGroupEventHubReceiver({
     required this.eventHubName,
     required this.eventHubNamespace,
     required this.name,

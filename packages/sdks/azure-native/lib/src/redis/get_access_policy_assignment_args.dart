@@ -18,7 +18,7 @@ class GetAccessPolicyAssignmentArgs {
   /// [accessPolicyAssignmentName] The name of the access policy assignment.
   /// [cacheName] The name of the Redis cache.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccessPolicyAssignmentArgs({
+  const GetAccessPolicyAssignmentArgs({
     required this.accessPolicyAssignmentName,
     required this.cacheName,
     required this.resourceGroupName,

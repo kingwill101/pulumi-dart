@@ -15,7 +15,7 @@ class GetDiskComputeV1Args {
   /// [disk] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetDiskComputeV1Args({
+  const GetDiskComputeV1Args({
     required this.disk,
     this.project,
     required this.zone,

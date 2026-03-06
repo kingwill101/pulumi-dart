@@ -18,7 +18,7 @@ class NetworkInterface {
   /// [internalIp] The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   /// [network] The network to connect the NIC to.
   /// [subnetwork] The subnetwork to connect the NIC to.
-  NetworkInterface({
+  const NetworkInterface({
     this.externalIp,
     this.internalIp,
     this.network,

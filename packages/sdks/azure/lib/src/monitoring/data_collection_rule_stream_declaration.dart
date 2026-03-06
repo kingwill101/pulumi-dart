@@ -12,7 +12,7 @@ class DataCollectionRuleStreamDeclaration {
   /// Creates a new [DataCollectionRuleStreamDeclaration].
   /// [columns] One or more `column` blocks as defined above.
   /// [streamName] The name of the custom stream. This name should be unique across all `stream_declaration` blocks and must begin with a prefix of `Custom-`.
-  DataCollectionRuleStreamDeclaration({
+  const DataCollectionRuleStreamDeclaration({
     required this.columns,
     required this.streamName,
   });

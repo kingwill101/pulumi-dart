@@ -25,7 +25,7 @@ class GetCertificateCertificatePolicy {
   /// [lifetimeActions] A `lifetime_action` block as defined below.
   /// [secretProperties] A `secret_properties` block as defined below.
   /// [x509CertificateProperties] An `x509_certificate_properties` block as defined below.
-  GetCertificateCertificatePolicy({
+  const GetCertificateCertificatePolicy({
     required this.issuerParameters,
     required this.keyProperties,
     required this.lifetimeActions,

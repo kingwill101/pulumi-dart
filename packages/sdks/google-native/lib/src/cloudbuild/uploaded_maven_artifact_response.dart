@@ -17,7 +17,7 @@ class UploadedMavenArtifactResponse {
   /// [fileHashes] Hash types and values of the Maven Artifact.
   /// [pushTiming] Stores timing information for pushing the specified artifact.
   /// [uri] URI of the uploaded artifact.
-  UploadedMavenArtifactResponse({
+  const UploadedMavenArtifactResponse({
     required this.fileHashes,
     required this.pushTiming,
     required this.uri,

@@ -10,7 +10,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfig {
 
   /// Creates a new [BareMetalClusterControlPlaneControlPlaneNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running the control plane.
-  BareMetalClusterControlPlaneControlPlaneNodePoolConfig({
+  const BareMetalClusterControlPlaneControlPlaneNodePoolConfig({
     required this.nodePoolConfig,
   });
 

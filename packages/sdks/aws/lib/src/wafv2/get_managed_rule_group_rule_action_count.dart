@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionCount {
 
   /// Creates a new [GetManagedRuleGroupRuleActionCount].
   /// [customRequestHandlings] Required.
-  GetManagedRuleGroupRuleActionCount({
+  const GetManagedRuleGroupRuleActionCount({
     required this.customRequestHandlings,
   });
 

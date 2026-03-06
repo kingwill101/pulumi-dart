@@ -73,7 +73,7 @@ class EffectiveDefaultSecurityAdminRuleResponse {
   /// [ruleGroups] Effective configuration groups.
   /// [sourcePortRanges] The source port ranges.
   /// [sources] The CIDR or source IP ranges.
-  EffectiveDefaultSecurityAdminRuleResponse({
+  const EffectiveDefaultSecurityAdminRuleResponse({
     required this.access,
     this.configurationDescription,
     this.configurationDisplayName,

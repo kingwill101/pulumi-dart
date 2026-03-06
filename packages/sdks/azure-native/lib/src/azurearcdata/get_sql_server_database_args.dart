@@ -18,7 +18,7 @@ class GetSqlServerDatabaseArgs {
   /// [databaseName] Name of the database
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
-  GetSqlServerDatabaseArgs({
+  const GetSqlServerDatabaseArgs({
     required this.databaseName,
     required this.resourceGroupName,
     required this.sqlServerInstanceName,

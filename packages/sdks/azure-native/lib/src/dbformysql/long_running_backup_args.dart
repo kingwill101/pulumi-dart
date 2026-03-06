@@ -29,7 +29,7 @@ class LongRunningBackupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   /// [source] Backup source
-  LongRunningBackupArgs({
+  const LongRunningBackupArgs({
     this.backupName,
     this.backupNameV2,
     this.backupType,

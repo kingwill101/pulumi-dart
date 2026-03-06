@@ -18,7 +18,7 @@ class GetSystemTopicEventSubscriptionFullUrlArgs {
   /// [eventSubscriptionName] Name of the event subscription.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [systemTopicName] Name of the system topic.
-  GetSystemTopicEventSubscriptionFullUrlArgs({
+  const GetSystemTopicEventSubscriptionFullUrlArgs({
     required this.eventSubscriptionName,
     required this.resourceGroupName,
     required this.systemTopicName,

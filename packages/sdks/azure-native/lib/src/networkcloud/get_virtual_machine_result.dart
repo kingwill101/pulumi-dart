@@ -115,7 +115,7 @@ class GetVirtualMachineResult {
   /// [vmImage] The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
   /// [vmImageRepositoryCredentials] The credentials used to login to the image repository that has access to the specified image.
   /// [volumes] The resource IDs of volumes that are attached to the virtual machine.
-  GetVirtualMachineResult({
+  const GetVirtualMachineResult({
     required this.adminUsername,
     required this.availabilityZone,
     required this.azureApiVersion,

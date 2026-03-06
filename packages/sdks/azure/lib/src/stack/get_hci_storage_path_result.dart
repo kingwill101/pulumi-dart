@@ -24,7 +24,7 @@ class GetHciStoragePathResult {
   /// [path] The file path on the disk where the Stack HCI Storage Path was created.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Stack HCI Storage Path.
-  GetHciStoragePathResult({
+  const GetHciStoragePathResult({
     required this.customLocationId,
     required this.id,
     required this.location,

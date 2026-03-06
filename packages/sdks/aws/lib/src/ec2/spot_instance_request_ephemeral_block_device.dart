@@ -16,7 +16,7 @@ class SpotInstanceRequestEphemeralBlockDevice {
   /// [deviceName] Name of the block device to mount on the instance.
   /// [noDevice] Suppresses the specified device included in the AMI's block device mapping.
   /// [virtualName] [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames) (e.g., `ephemeral0`).
-  SpotInstanceRequestEphemeralBlockDevice({
+  const SpotInstanceRequestEphemeralBlockDevice({
     required this.deviceName,
     this.noDevice,
     this.virtualName,

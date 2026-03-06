@@ -35,7 +35,7 @@ class ServiceEndpointPolicyArgs {
   /// [serviceEndpointPolicyDefinitions] A collection of service endpoint policy definitions of the service endpoint policy.
   /// [serviceEndpointPolicyName] The name of the service endpoint policy.
   /// [tags] Resource tags.
-  ServiceEndpointPolicyArgs({
+  const ServiceEndpointPolicyArgs({
     this.contextualServiceEndpointPolicies,
     this.id,
     this.location,

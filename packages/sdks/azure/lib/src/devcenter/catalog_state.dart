@@ -23,7 +23,7 @@ class CatalogState {
   /// [devCenterId] Specifies the Dev Center Id within which this Dev Center Catalog should exist. Changing this forces a new Dev Center Catalog to be created.
   /// [name] Specifies the name of this Dev Center Catalog. Changing this forces a new Dev Center to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Dev Center Catalog should exist. Changing this forces a new Dev Center to be created.
-  CatalogState({
+  const CatalogState({
     this.catalogAdogit,
     this.catalogGithub,
     this.devCenterId,

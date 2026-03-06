@@ -28,7 +28,7 @@ class DataQualityRulesetArgs {
   /// [ruleset] A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetTable] A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
-  DataQualityRulesetArgs({
+  const DataQualityRulesetArgs({
     this.description,
     this.name,
     this.region,

@@ -43,7 +43,7 @@ class Datapolicyv2DataPolicyIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  Datapolicyv2DataPolicyIamMemberState({
+  const Datapolicyv2DataPolicyIamMemberState({
     this.condition,
     this.dataPolicyId,
     this.etag,

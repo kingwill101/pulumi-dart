@@ -49,7 +49,7 @@ class VpcNatGatewayState {
   /// [udpTimeoutSeconds] The egress timeout value for UDP connections of the VPC NAT Gateway.
   /// [updatedAt] Updated at timestamp for the VPC NAT Gateway.
   /// [vpcs] The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
-  VpcNatGatewayState({
+  const VpcNatGatewayState({
     this.createdAt,
     this.egresses,
     this.icmpTimeoutSeconds,

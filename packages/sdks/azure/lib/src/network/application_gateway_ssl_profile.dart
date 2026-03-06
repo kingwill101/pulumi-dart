@@ -24,7 +24,7 @@ class ApplicationGatewaySslProfile {
   /// [trustedClientCertificateNames] The name of the Trusted Client Certificate that will be used to authenticate requests from clients.
   /// [verifyClientCertIssuerDn] Should client certificate issuer DN be verified? Defaults to `false`.
   /// [verifyClientCertificateRevocation] Specify the method to check client certificate revocation status. Possible value is `OCSP`.
-  ApplicationGatewaySslProfile({
+  const ApplicationGatewaySslProfile({
     this.id,
     required this.name,
     this.sslPolicy,

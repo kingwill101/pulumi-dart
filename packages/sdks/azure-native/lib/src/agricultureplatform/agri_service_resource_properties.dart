@@ -14,7 +14,7 @@ class AgriServiceResourceProperties {
   /// Creates a new [AgriServiceResourceProperties].
   /// [dataConnectorCredentials] Data connector credentials of AgriService instance.
   /// [installedSolutions] AgriService installed solutions.
-  AgriServiceResourceProperties({
+  const AgriServiceResourceProperties({
     this.dataConnectorCredentials,
     this.installedSolutions,
   });

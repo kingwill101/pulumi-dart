@@ -15,7 +15,7 @@ class GetPrivateCloudVcfLicenseArgs {
   /// Creates a new [GetPrivateCloudVcfLicenseArgs].
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateCloudVcfLicenseArgs({
+  const GetPrivateCloudVcfLicenseArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
   });

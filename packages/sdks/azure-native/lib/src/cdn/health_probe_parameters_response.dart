@@ -18,7 +18,7 @@ class HealthProbeParametersResponse {
   /// [probePath] The path relative to the origin that is used to determine the health of the origin.
   /// [probeProtocol] Protocol to use for health probe.
   /// [probeRequestType] The type of health probe request that is made.
-  HealthProbeParametersResponse({
+  const HealthProbeParametersResponse({
     this.probeIntervalInSeconds,
     this.probePath,
     this.probeProtocol,

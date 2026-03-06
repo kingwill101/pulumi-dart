@@ -10,7 +10,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes].
   /// [infoTypes] If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes({
     required this.infoTypes,
   });
 

@@ -23,7 +23,7 @@ class GetOidcProvidersResult {
   /// [names] A list of name of Oidc Providers.
   /// [outputFile] Optional.
   /// [providers] A list of Oidc Provider Entries. Each element contains the following attributes:
-  GetOidcProvidersResult({
+  const GetOidcProvidersResult({
     required this.id,
     required this.ids,
     this.nameRegex,

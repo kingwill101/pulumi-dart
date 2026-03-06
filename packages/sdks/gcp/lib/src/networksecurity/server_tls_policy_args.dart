@@ -44,7 +44,7 @@ class ServerTlsPolicyArgs {
   /// [name] Name of the ServerTlsPolicy resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [serverCertificate] Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
-  ServerTlsPolicyArgs({
+  const ServerTlsPolicyArgs({
     this.allowOpen,
     this.description,
     this.labels,

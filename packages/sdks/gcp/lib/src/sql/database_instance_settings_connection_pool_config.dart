@@ -12,7 +12,7 @@ class DatabaseInstanceSettingsConnectionPoolConfig {
   /// Creates a new [DatabaseInstanceSettingsConnectionPoolConfig].
   /// [connectionPoolingEnabled] True if the manager connection pooling configuration is enabled.
   /// [flags] List of connection pool configuration flags
-  DatabaseInstanceSettingsConnectionPoolConfig({
+  const DatabaseInstanceSettingsConnectionPoolConfig({
     this.connectionPoolingEnabled,
     this.flags,
   });

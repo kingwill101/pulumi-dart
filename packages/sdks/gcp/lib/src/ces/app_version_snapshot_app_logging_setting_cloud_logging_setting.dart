@@ -9,7 +9,7 @@ class AppVersionSnapshotAppLoggingSettingCloudLoggingSetting {
 
   /// Creates a new [AppVersionSnapshotAppLoggingSettingCloudLoggingSetting].
   /// [enableCloudLogging] (Output)
-  AppVersionSnapshotAppLoggingSettingCloudLoggingSetting({
+  const AppVersionSnapshotAppLoggingSettingCloudLoggingSetting({
     this.enableCloudLogging,
   });
 

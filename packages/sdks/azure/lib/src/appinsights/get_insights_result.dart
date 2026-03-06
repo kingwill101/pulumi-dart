@@ -36,7 +36,7 @@ class GetInsightsResult {
   /// [retentionInDays] The retention period in days.
   /// [tags] Tags applied to the component.
   /// [workspaceId] The id of the associated Log Analytics workspace
-  GetInsightsResult({
+  const GetInsightsResult({
     required this.appId,
     required this.applicationType,
     required this.connectionString,

@@ -15,7 +15,7 @@ class GetAppAttachPackageArgs {
   /// Creates a new [GetAppAttachPackageArgs].
   /// [appAttachPackageName] The name of the App Attach package
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAppAttachPackageArgs({
+  const GetAppAttachPackageArgs({
     required this.appAttachPackageName,
     required this.resourceGroupName,
   });

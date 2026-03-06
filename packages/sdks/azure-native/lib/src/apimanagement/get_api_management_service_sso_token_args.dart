@@ -15,7 +15,7 @@ class GetApiManagementServiceSsoTokenArgs {
   /// Creates a new [GetApiManagementServiceSsoTokenArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetApiManagementServiceSsoTokenArgs({
+  const GetApiManagementServiceSsoTokenArgs({
     required this.resourceGroupName,
     required this.serviceName,
   });

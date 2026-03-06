@@ -21,7 +21,7 @@ class EventHubResponse {
   /// [nameSpace] EventHub namespace
   /// [policyName] EventHub policy name
   /// [subscriptionId] Subscription Id
-  EventHubResponse({
+  const EventHubResponse({
     this.id,
     this.name,
     this.nameSpace,

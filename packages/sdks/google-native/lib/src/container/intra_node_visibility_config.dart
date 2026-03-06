@@ -9,7 +9,7 @@ class IntraNodeVisibilityConfig {
 
   /// Creates a new [IntraNodeVisibilityConfig].
   /// [enabled] Enables intra node visibility for this cluster.
-  IntraNodeVisibilityConfig({
+  const IntraNodeVisibilityConfig({
     this.enabled,
   });
 

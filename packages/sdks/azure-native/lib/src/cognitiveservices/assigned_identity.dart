@@ -24,7 +24,7 @@ class AssignedIdentity {
   /// [subject] The subject of this identity assignment.
   /// [tenantId] The tenant ID of the identity.
   /// [type] Enumeration of identity types, from the perspective of management.
-  AssignedIdentity({
+  const AssignedIdentity({
     required this.clientId,
     required this.kind,
     required this.principalId,

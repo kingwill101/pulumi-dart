@@ -24,7 +24,7 @@ class OwnerReferencePatch {
   /// [kind] Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [name] Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
   /// [uid] UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
-  OwnerReferencePatch({
+  const OwnerReferencePatch({
     this.apiVersion,
     this.blockOwnerDeletion,
     this.controller,

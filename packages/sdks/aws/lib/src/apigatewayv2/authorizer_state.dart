@@ -52,7 +52,7 @@ class AuthorizerState {
   /// [jwtConfiguration] Configuration of a JWT authorizer. Required for the `JWT` authorizer type.
   /// [name] Name of the authorizer. Must be between 1 and 128 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AuthorizerState({
+  const AuthorizerState({
     this.apiId,
     this.authorizerCredentialsArn,
     this.authorizerPayloadFormatVersion,

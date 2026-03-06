@@ -25,7 +25,7 @@ class SqlServerLicenseArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerLicenseName] Name of SQL Server License
   /// [tags] Resource tags.
-  SqlServerLicenseArgs({
+  const SqlServerLicenseArgs({
     this.location,
     required this.properties,
     required this.resourceGroupName,

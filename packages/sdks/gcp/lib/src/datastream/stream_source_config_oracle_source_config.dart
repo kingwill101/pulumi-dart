@@ -29,7 +29,7 @@ class StreamSourceConfigOracleSourceConfig {
   /// [maxConcurrentBackfillTasks] Maximum number of concurrent backfill tasks. The number should be non negative.
   /// [maxConcurrentCdcTasks] Maximum number of concurrent CDC tasks. The number should be non negative.
   /// [streamLargeObjects] Configuration to drop large object values.
-  StreamSourceConfigOracleSourceConfig({
+  const StreamSourceConfigOracleSourceConfig({
     this.dropLargeObjects,
     this.excludeObjects,
     this.includeObjects,

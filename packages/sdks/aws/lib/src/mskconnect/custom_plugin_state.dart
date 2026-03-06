@@ -37,7 +37,7 @@ class CustomPluginState {
   /// [state] the state of the custom plugin.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  CustomPluginState({
+  const CustomPluginState({
     this.arn,
     this.contentType,
     this.description,

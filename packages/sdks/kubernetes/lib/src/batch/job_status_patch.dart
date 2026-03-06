@@ -56,7 +56,7 @@ class JobStatusPatch {
   /// [succeeded] The number of pods which reached phase Succeeded. The value increases monotonically for a given spec. However, it may decrease in reaction to scale down of elastic indexed jobs.
   /// [terminating] The number of pods which are terminating (in phase Pending or Running and have a deletionTimestamp).
   /// [uncountedTerminatedPods] uncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters.
-  JobStatusPatch({
+  const JobStatusPatch({
     this.active,
     this.completedIndexes,
     this.completionTime,

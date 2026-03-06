@@ -8,7 +8,7 @@ class EnterpriseSnapshotPolicyStorageRule {
 
   /// Creates a new [EnterpriseSnapshotPolicyStorageRule].
   /// [enableImmediateAccess] Snapshot speed available.
-  EnterpriseSnapshotPolicyStorageRule({
+  const EnterpriseSnapshotPolicyStorageRule({
     this.enableImmediateAccess,
   });
 

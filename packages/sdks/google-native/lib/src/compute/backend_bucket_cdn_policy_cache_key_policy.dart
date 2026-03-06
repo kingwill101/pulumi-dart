@@ -12,7 +12,7 @@ class BackendBucketCdnPolicyCacheKeyPolicy {
   /// Creates a new [BackendBucketCdnPolicyCacheKeyPolicy].
   /// [includeHttpHeaders] Allows HTTP request headers (by name) to be used in the cache key.
   /// [queryStringWhitelist] Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
-  BackendBucketCdnPolicyCacheKeyPolicy({
+  const BackendBucketCdnPolicyCacheKeyPolicy({
     this.includeHttpHeaders,
     this.queryStringWhitelist,
   });

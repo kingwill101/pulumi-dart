@@ -29,7 +29,7 @@ class ManagementServerArgs {
   /// [networks] Network details to create management server (management console).
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of management server (management console).
-  ManagementServerArgs({
+  const ManagementServerArgs({
     required this.location,
     this.name,
     this.networks,

@@ -34,7 +34,7 @@ class CxToolVersionState {
   /// [parent] The tool to create a Version for.
   /// [tool] Snapshot of the tool to be associated with this version.
   /// [updateTime] Last time the tool version was created or modified.
-  CxToolVersionState({
+  const CxToolVersionState({
     this.createTime,
     this.displayName,
     this.name,

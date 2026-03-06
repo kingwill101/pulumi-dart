@@ -13,7 +13,7 @@ class ProtectionStatusDetailsResponse {
   /// Creates a new [ProtectionStatusDetailsResponse].
   /// [errorDetails] Specifies the protection status error of the resource
   /// [status] Specifies the protection status of the resource
-  ProtectionStatusDetailsResponse({
+  const ProtectionStatusDetailsResponse({
     this.errorDetails,
     this.status,
   });

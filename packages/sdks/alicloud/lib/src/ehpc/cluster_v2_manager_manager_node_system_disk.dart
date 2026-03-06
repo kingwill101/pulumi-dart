@@ -29,7 +29,7 @@ class ClusterV2ManagerManagerNodeSystemDisk {
   /// [category] Manage the system disk configuration of the node. Value range:
   /// [level] When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
   /// [size] The system disk size of the management node. Unit: GiB. Value range:
-  ClusterV2ManagerManagerNodeSystemDisk({
+  const ClusterV2ManagerManagerNodeSystemDisk({
     this.category,
     this.level,
     this.size,

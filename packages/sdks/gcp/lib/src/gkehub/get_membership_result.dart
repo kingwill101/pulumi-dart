@@ -29,7 +29,7 @@ class GetMembershipResult {
   /// [name] Required.
   /// [project] Optional.
   /// [pulumiLabels] Required.
-  GetMembershipResult({
+  const GetMembershipResult({
     required this.authorities,
     required this.effectiveLabels,
     required this.endpoints,

@@ -22,7 +22,7 @@ class InstanceProperties {
   /// [partnerProperties] partner properties
   /// [singleSignOnProperties] Single sign-on properties
   /// [user] Details of the user.
-  InstanceProperties({
+  const InstanceProperties({
     required this.marketplace,
     this.partnerProperties,
     this.singleSignOnProperties,

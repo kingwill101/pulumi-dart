@@ -83,7 +83,7 @@ class OrganizationState {
   /// [runtimeDatabaseEncryptionKeyName] Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
   /// [runtimeType_] Runtime type of the Apigee organization based on the Apigee subscription purchased.
   /// [subscriptionType] Output only. Subscription type of the Apigee organization.
-  OrganizationState({
+  const OrganizationState({
     this.analyticsRegion,
     this.apiConsumerDataEncryptionKeyName,
     this.apiConsumerDataLocation,

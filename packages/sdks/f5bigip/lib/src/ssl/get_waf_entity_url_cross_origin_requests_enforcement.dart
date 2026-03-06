@@ -17,7 +17,7 @@ class GetWafEntityUrlCrossOriginRequestsEnforcement {
   /// [originName] Specifies the name of the origin with which you want to share your data.
   /// [originPort] Specifies the port that other web applications are allowed to use to request data from your web application.
   /// [originProtocol] Specifies the protocol that other web applications are allowed to use to request data from your web application.
-  GetWafEntityUrlCrossOriginRequestsEnforcement({
+  const GetWafEntityUrlCrossOriginRequestsEnforcement({
     this.includeSubdomains,
     required this.originName,
     required this.originPort,

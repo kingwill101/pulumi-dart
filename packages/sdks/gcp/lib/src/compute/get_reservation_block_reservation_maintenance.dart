@@ -26,7 +26,7 @@ class GetReservationBlockReservationMaintenance {
   /// [schedulingType] The type of maintenance for the reservation.
   /// [subblockInfraMaintenanceOngoingCount] Number of sub-block infrastructure that has ongoing maintenance.
   /// [subblockInfraMaintenancePendingCount] Number of sub-block infrastructure that has pending maintenance.
-  GetReservationBlockReservationMaintenance({
+  const GetReservationBlockReservationMaintenance({
     required this.instanceMaintenanceOngoingCount,
     required this.instanceMaintenancePendingCount,
     required this.maintenanceOngoingCount,

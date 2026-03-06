@@ -17,7 +17,7 @@ class AppVersionSnapshotAgentModelSetting {
   /// Creates a new [AppVersionSnapshotAgentModelSetting].
   /// [model] (Output)
   /// [temperature] (Output)
-  AppVersionSnapshotAgentModelSetting({
+  const AppVersionSnapshotAgentModelSetting({
     this.model,
     this.temperature,
   });

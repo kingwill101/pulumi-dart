@@ -21,7 +21,7 @@ class HoneypotNodeArgs {
   /// [availableProbeNum] Number of probes available.
   /// [nodeName] Management node name.
   /// [securityGroupProbeIpLists] Release the collection of network segments.
-  HoneypotNodeArgs({
+  const HoneypotNodeArgs({
     this.allowHoneypotAccessInternet,
     required this.availableProbeNum,
     required this.nodeName,

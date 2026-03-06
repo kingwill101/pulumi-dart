@@ -15,7 +15,7 @@ class GetSecretsSecretReplication {
   /// Creates a new [GetSecretsSecretReplication].
   /// [autos] The Secret will automatically be replicated without any restrictions.
   /// [userManageds] The Secret will be replicated to the regions specified by the user.
-  GetSecretsSecretReplication({
+  const GetSecretsSecretReplication({
     required this.autos,
     required this.userManageds,
   });

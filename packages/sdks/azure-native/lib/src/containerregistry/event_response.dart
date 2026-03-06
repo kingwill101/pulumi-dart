@@ -17,7 +17,7 @@ class EventResponse {
   /// [eventRequestMessage] The event request message sent to the service URI.
   /// [eventResponseMessage] The event response message received from the service URI.
   /// [id] The event ID.
-  EventResponse({
+  const EventResponse({
     this.eventRequestMessage,
     this.eventResponseMessage,
     this.id,

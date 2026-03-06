@@ -31,7 +31,7 @@ class WCFRelayArgs {
   /// [requiresTransportSecurity] Returns true if transport security is needed for this relay; otherwise, false.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userMetadata] The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
-  WCFRelayArgs({
+  const WCFRelayArgs({
     required this.namespaceName,
     this.relayName,
     this.relayType,

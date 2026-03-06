@@ -24,7 +24,7 @@ class MembersArgs {
   /// [members] A set of dictionaries containing member parameters. The
   /// [poolId] The id of the pool that members will be assigned to.
   /// [region] The region in which to obtain the V2 Networking client.
-  MembersArgs({
+  const MembersArgs({
     this.members,
     required this.poolId,
     this.region,

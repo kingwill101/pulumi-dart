@@ -13,7 +13,7 @@ class OracleTableResponse {
   /// Creates a new [OracleTableResponse].
   /// [oracleColumns] Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  OracleTableResponse({
+  const OracleTableResponse({
     required this.oracleColumns,
     required this.table,
   });

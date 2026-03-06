@@ -99,7 +99,7 @@ class DatabaseState {
   /// [uid] Output only. The system-generated UUID4 for this Database.
   /// [updateTime] Output only. The timestamp at which this database was most recently updated.
   /// [versionRetentionPeriod] Output only. The period during which past versions of data are retained in the database.
-  DatabaseState({
+  const DatabaseState({
     this.appEngineIntegrationMode,
     this.cmekConfig,
     this.concurrencyMode,

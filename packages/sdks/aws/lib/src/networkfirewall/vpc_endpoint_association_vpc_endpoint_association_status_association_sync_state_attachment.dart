@@ -15,7 +15,7 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAtta
   /// [status] Required.
   /// [statusMessage] Required.
   /// [subnetId] The unique identifier of the subnet that you've specified to be used for a VPC Endpoint Association endpoint.
-  VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment({
+  const VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment({
     required this.endpointId,
     required this.status,
     required this.statusMessage,

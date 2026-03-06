@@ -57,7 +57,7 @@ class GetZoneResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zoneType] The type of this DNS zone (Public or Private).
-  GetZoneResult({
+  const GetZoneResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

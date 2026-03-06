@@ -8,7 +8,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId {
 
   /// Creates a new [CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId].
   /// [objectIdPaths] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId({
+  const CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId({
     required this.objectIdPaths,
   });
 

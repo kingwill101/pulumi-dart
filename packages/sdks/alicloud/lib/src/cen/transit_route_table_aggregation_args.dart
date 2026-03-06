@@ -37,7 +37,7 @@ class TransitRouteTableAggregationArgs {
   /// [transitRouteTableAggregationScope] The scope of networks that you want to advertise the aggregate route.
   /// [transitRouteTableAggregationScopeLists] Aggregation Route Scopes
   /// [transitRouteTableId] The list of route table IDs of the Enterprise Edition transit router.
-  TransitRouteTableAggregationArgs({
+  const TransitRouteTableAggregationArgs({
     required this.transitRouteTableAggregationCidr,
     this.transitRouteTableAggregationDescription,
     this.transitRouteTableAggregationName,

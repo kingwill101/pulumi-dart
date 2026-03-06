@@ -12,7 +12,7 @@ class AbsoluteMonthlySchedule {
   /// Creates a new [AbsoluteMonthlySchedule].
   /// [dayOfMonth] The date of the month.
   /// [intervalMonths] Specifies the number of months between each set of occurrences.
-  AbsoluteMonthlySchedule({
+  const AbsoluteMonthlySchedule({
     required this.dayOfMonth,
     required this.intervalMonths,
   });

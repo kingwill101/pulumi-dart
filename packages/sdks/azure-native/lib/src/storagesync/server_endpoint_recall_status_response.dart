@@ -16,7 +16,7 @@ class ServerEndpointRecallStatusResponse {
   /// [lastUpdatedTimestamp] Last updated timestamp
   /// [recallErrors] Array of recall errors
   /// [totalRecallErrorsCount] Total count of recall errors.
-  ServerEndpointRecallStatusResponse({
+  const ServerEndpointRecallStatusResponse({
     required this.lastUpdatedTimestamp,
     required this.recallErrors,
     required this.totalRecallErrorsCount,

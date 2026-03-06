@@ -8,7 +8,7 @@ class GetResourceTypesTypeHandlersCreate {
 
   /// Creates a new [GetResourceTypesTypeHandlersCreate].
   /// [permissions] The collection of required RAM permission information.
-  GetResourceTypesTypeHandlersCreate({
+  const GetResourceTypesTypeHandlersCreate({
     required this.permissions,
   });
 

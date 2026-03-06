@@ -26,7 +26,7 @@ class RoutineArgument {
   /// [dataType] A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
   /// [mode] Specifies whether the argument is input or output. Can be set for procedures only.
   /// [name] The name of this argument. Can be absent for function return argument.
-  RoutineArgument({
+  const RoutineArgument({
     this.argumentKind,
     this.dataType,
     this.mode,

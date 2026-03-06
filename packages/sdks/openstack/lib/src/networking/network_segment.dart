@@ -14,7 +14,7 @@ class NetworkSegment {
   /// [networkType] The type of physical network.
   /// [physicalNetwork] The physical network where this network is implemented.
   /// [segmentationId] An isolated segment on the physical network.
-  NetworkSegment({
+  const NetworkSegment({
     this.networkType,
     this.physicalNetwork,
     this.segmentationId,

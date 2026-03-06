@@ -9,7 +9,7 @@ class LanguageCodesSetResponse {
 
   /// Creates a new [LanguageCodesSetResponse].
   /// [languageCodes] The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
-  LanguageCodesSetResponse({
+  const LanguageCodesSetResponse({
     required this.languageCodes,
   });
 

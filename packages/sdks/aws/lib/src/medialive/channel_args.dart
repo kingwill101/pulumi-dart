@@ -60,7 +60,7 @@ class ChannelArgs {
   /// [startChannel] Whether to start/stop channel. Default: `false`
   /// [tags] A map of tags to assign to the channel. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpc] Settings for the VPC outputs. See VPC for more details.
-  ChannelArgs({
+  const ChannelArgs({
     this.cdiInputSpecification,
     required this.channelClass,
     required this.destinations,

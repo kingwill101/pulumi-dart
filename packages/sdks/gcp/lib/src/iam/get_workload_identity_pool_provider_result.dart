@@ -41,7 +41,7 @@ class GetWorkloadIdentityPoolProviderResult {
   /// [workloadIdentityPoolId] Required.
   /// [workloadIdentityPoolProviderId] Required.
   /// [x509s] Required.
-  GetWorkloadIdentityPoolProviderResult({
+  const GetWorkloadIdentityPoolProviderResult({
     required this.attributeCondition,
     required this.attributeMapping,
     required this.aws,

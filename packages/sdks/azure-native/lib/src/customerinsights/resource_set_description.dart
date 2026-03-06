@@ -12,7 +12,7 @@ class ResourceSetDescription {
   /// Creates a new [ResourceSetDescription].
   /// [elements] The elements included in the set.
   /// [exceptions] The elements that are not included in the set, in case elements contains '*' indicating 'all'.
-  ResourceSetDescription({
+  const ResourceSetDescription({
     this.elements,
     this.exceptions,
   });

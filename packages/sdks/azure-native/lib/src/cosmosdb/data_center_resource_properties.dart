@@ -53,7 +53,7 @@ class DataCenterResourceProperties {
   /// [provisionError] Error related to resource provisioning.
   /// [provisioningState] The status of the resource at the time the operation was called.
   /// [sku] Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2
-  DataCenterResourceProperties({
+  const DataCenterResourceProperties({
     this.authenticationMethodLdapProperties,
     this.availabilityZone,
     this.backupStorageCustomerKeyUri,

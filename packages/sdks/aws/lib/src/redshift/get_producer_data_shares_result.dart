@@ -20,7 +20,7 @@ class GetProducerDataSharesResult {
   /// [producerArn] ARN (Amazon Resource Name) of the producer.
   /// [region] Required.
   /// [status] Optional.
-  GetProducerDataSharesResult({
+  const GetProducerDataSharesResult({
     required this.dataShares,
     required this.id,
     required this.producerArn,

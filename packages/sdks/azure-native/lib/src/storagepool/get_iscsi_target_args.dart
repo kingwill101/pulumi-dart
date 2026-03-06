@@ -18,7 +18,7 @@ class GetIscsiTargetArgs {
   /// [diskPoolName] The name of the Disk Pool.
   /// [iscsiTargetName] The name of the iSCSI Target.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIscsiTargetArgs({
+  const GetIscsiTargetArgs({
     required this.diskPoolName,
     required this.iscsiTargetName,
     required this.resourceGroupName,

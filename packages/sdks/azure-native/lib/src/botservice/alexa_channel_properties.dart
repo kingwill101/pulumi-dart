@@ -12,7 +12,7 @@ class AlexaChannelProperties {
   /// Creates a new [AlexaChannelProperties].
   /// [alexaSkillId] The Alexa skill Id
   /// [isEnabled] Whether this channel is enabled for the bot
-  AlexaChannelProperties({
+  const AlexaChannelProperties({
     required this.alexaSkillId,
     required this.isEnabled,
   });

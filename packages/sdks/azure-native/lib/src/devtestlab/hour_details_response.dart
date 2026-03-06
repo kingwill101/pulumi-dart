@@ -9,7 +9,7 @@ class HourDetailsResponse {
 
   /// Creates a new [HourDetailsResponse].
   /// [minute] Minutes of the hour the schedule will run.
-  HourDetailsResponse({
+  const HourDetailsResponse({
     this.minute,
   });
 

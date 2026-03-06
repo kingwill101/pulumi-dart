@@ -18,7 +18,7 @@ class GetBackendServersResult {
   /// [ids] Required.
   /// [loadBalancerId] Required.
   /// [outputFile] Optional.
-  GetBackendServersResult({
+  const GetBackendServersResult({
     required this.backendServers,
     required this.id,
     required this.ids,

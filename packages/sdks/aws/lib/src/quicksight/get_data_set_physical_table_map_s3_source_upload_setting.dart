@@ -15,7 +15,7 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
   /// [format] Required.
   /// [startFromRow] Required.
   /// [textQualifier] Required.
-  GetDataSetPhysicalTableMapS3SourceUploadSetting({
+  const GetDataSetPhysicalTableMapS3SourceUploadSetting({
     required this.containsHeader,
     required this.delimiter,
     required this.format,

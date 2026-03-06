@@ -16,7 +16,7 @@ class SslCertArgs {
   /// [commonName] User supplied name. Must be a distinct name from the other certificates for this instance.
   /// [instance] Required.
   /// [project] Optional.
-  SslCertArgs({
+  const SslCertArgs({
     this.commonName,
     required this.instance,
     this.project,

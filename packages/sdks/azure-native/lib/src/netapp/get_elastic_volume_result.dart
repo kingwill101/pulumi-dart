@@ -37,7 +37,7 @@ class GetElasticVolumeResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] The availability zones.
-  GetElasticVolumeResult({
+  const GetElasticVolumeResult({
     required this.azureApiVersion,
     required this.eTag,
     required this.id,

@@ -16,7 +16,7 @@ class ClusterUpgradeFleetStateResponseGkehubV1alpha {
   /// [downstreamFleets] This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project number or id.
   /// [gkeState] Feature state for GKE clusters.
   /// [ignored] A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
-  ClusterUpgradeFleetStateResponseGkehubV1alpha({
+  const ClusterUpgradeFleetStateResponseGkehubV1alpha({
     required this.downstreamFleets,
     required this.gkeState,
     required this.ignored,

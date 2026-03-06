@@ -25,7 +25,7 @@ class StatusDetailsPatch {
   /// [name] The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).
   /// [retryAfterSeconds] If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.
   /// [uid] UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
-  StatusDetailsPatch({
+  const StatusDetailsPatch({
     this.causes,
     this.group,
     this.kind,

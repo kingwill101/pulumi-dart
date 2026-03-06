@@ -18,7 +18,7 @@ class GetPureStoragePolicyArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storagePolicyName] Name of the storage policy.
-  GetPureStoragePolicyArgs({
+  const GetPureStoragePolicyArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
     required this.storagePolicyName,

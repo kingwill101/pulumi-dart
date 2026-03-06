@@ -52,7 +52,7 @@ class ChannelState {
   /// [thirdPartyProvider] The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
   /// [uid] Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   /// [updateTime] The last-modified time.
-  ChannelState({
+  const ChannelState({
     this.activationToken,
     this.createTime,
     this.cryptoKeyName,

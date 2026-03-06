@@ -14,7 +14,7 @@ class InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
   /// [fieldRefFieldPath] This parameter is not available for use.
   /// [key] The name of the environment variable.
   /// [value] The value of the environment variable.
-  InstanceRefreshDesiredConfigurationContainerEnvironmentVar({
+  const InstanceRefreshDesiredConfigurationContainerEnvironmentVar({
     this.fieldRefFieldPath,
     this.key,
     this.value,

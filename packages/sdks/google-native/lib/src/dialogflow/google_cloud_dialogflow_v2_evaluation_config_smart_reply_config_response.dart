@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse {
   /// Creates a new [GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse].
   /// [allowlistDocument] The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
   /// [maxResultCount] The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
-  GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse({
+  const GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse({
     required this.allowlistDocument,
     required this.maxResultCount,
   });

@@ -21,7 +21,7 @@ class GetNatGatewaysResult {
   /// [region] Required.
   /// [tags] Required.
   /// [vpcId] Optional.
-  GetNatGatewaysResult({
+  const GetNatGatewaysResult({
     this.filters,
     required this.id,
     required this.ids,

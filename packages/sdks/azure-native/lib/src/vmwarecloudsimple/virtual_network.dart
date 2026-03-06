@@ -9,7 +9,7 @@ class VirtualNetwork {
 
   /// Creates a new [VirtualNetwork].
   /// [id] virtual network id (privateCloudId:vsphereId)
-  VirtualNetwork({
+  const VirtualNetwork({
     required this.id,
   });
 

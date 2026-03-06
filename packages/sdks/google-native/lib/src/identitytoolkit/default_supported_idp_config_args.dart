@@ -32,7 +32,7 @@ class DefaultSupportedIdpConfigArgs {
   /// [name] The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
   /// [project] Optional.
   /// [tenantId] Required.
-  DefaultSupportedIdpConfigArgs({
+  const DefaultSupportedIdpConfigArgs({
     this.appleSignInConfig,
     this.clientId,
     this.clientSecret,

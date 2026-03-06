@@ -26,7 +26,7 @@ class GetInstanceDirectoryServiceLdap {
   /// [groupsOu] The groups Organizational Unit (OU) is optional. This parameter is a hint
   /// [servers] The servers names are used for specifying the LDAP servers names.
   /// [usersOu] The users Organizational Unit (OU) is optional. This parameter is a hint
-  GetInstanceDirectoryServiceLdap({
+  const GetInstanceDirectoryServiceLdap({
     required this.domain,
     required this.groupsOu,
     required this.servers,

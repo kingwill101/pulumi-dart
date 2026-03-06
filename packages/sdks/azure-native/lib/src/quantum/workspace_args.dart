@@ -29,7 +29,7 @@ class WorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the quantum workspace resource.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.identity,
     this.location,
     this.properties,

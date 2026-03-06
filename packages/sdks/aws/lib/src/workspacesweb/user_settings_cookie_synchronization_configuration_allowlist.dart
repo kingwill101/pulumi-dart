@@ -14,7 +14,7 @@ class UserSettingsCookieSynchronizationConfigurationAllowlist {
   /// [domain] Domain of the cookie.
   /// [name] Name of the cookie.
   /// [path] Path of the cookie.
-  UserSettingsCookieSynchronizationConfigurationAllowlist({
+  const UserSettingsCookieSynchronizationConfigurationAllowlist({
     required this.domain,
     this.name,
     this.path,

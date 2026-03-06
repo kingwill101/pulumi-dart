@@ -18,7 +18,7 @@ class KvArgs {
   /// [key] The name of the key to Put, the longest 512, cannot contain spaces.
   /// [namespace] The name specified when the customer calls PutDcdnKvNamespace.
   /// [value] The content of key, up to 2M(2*1000*1000).
-  KvArgs({
+  const KvArgs({
     required this.key,
     required this.namespace,
     required this.value,

@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification].
   /// [startTimeoutMs] Time for which a bot waits before re-prompting a customer for text input.
-  V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification({
+  const V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification({
     required this.startTimeoutMs,
   });
 

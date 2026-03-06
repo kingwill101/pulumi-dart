@@ -15,7 +15,7 @@ class GetEndpointAiplatformV1beta1Args {
   /// [endpointId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEndpointAiplatformV1beta1Args({
+  const GetEndpointAiplatformV1beta1Args({
     required this.endpointId,
     required this.location,
     this.project,

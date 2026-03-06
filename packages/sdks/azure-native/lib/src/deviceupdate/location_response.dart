@@ -10,7 +10,7 @@ class LocationResponse {
   /// Creates a new [LocationResponse].
   /// [name] Optional.
   /// [role] Whether the location is primary or failover
-  LocationResponse({
+  const LocationResponse({
     this.name,
     this.role,
   });

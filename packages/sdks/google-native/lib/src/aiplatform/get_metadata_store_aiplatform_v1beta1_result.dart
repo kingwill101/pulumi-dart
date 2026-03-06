@@ -25,7 +25,7 @@ class GetMetadataStoreAiplatformV1beta1Result {
   /// [name] The resource name of the MetadataStore instance.
   /// [state] State information of the MetadataStore.
   /// [updateTime] Timestamp when this MetadataStore was last updated.
-  GetMetadataStoreAiplatformV1beta1Result({
+  const GetMetadataStoreAiplatformV1beta1Result({
     required this.createTime,
     required this.description,
     required this.encryptionSpec,

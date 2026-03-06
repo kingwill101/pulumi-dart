@@ -15,7 +15,7 @@ class GuestCredential {
   /// [password] Gets or sets the password to connect with the guest.
   /// [privateKey] Private key used to authenticate to a virtual machine through ssh.
   /// [username] Gets or sets username to connect with the guest.
-  GuestCredential({
+  const GuestCredential({
     this.password,
     this.privateKey,
     this.username,

@@ -30,7 +30,7 @@ class EventArchiveArgs {
   /// [name] Name of the archive. The archive name cannot exceed 48 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionDays] The maximum number of days to retain events in the new event archive. By default, it archives indefinitely.
-  EventArchiveArgs({
+  const EventArchiveArgs({
     this.description,
     this.eventPattern,
     required this.eventSourceArn,

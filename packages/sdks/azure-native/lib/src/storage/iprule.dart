@@ -13,7 +13,7 @@ class IPRule {
   /// Creates a new [IPRule].
   /// [action] The action of IP ACL rule.
   /// [iPAddressOrRange] Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-  IPRule({
+  const IPRule({
     this.action,
     required this.iPAddressOrRange,
   });

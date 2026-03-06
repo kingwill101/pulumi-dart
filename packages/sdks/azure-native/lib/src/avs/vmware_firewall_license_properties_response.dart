@@ -32,7 +32,7 @@ class VmwareFirewallLicensePropertiesResponse {
   /// [labels] Additional labels passed through for license reporting.
   /// [licenseKey] License key
   /// [provisioningState] The state of the license provisioning
-  VmwareFirewallLicensePropertiesResponse({
+  const VmwareFirewallLicensePropertiesResponse({
     this.broadcomContractNumber,
     this.broadcomSiteId,
     required this.cores,

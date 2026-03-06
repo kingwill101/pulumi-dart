@@ -48,7 +48,7 @@ class GetContainerResult {
   /// [status] The status of the container.
   /// [type] The container type.
   /// [updatedAt] The date the container ACL was last updated.
-  GetContainerResult({
+  const GetContainerResult({
     required this.acls,
     required this.consumers,
     required this.containerRef,

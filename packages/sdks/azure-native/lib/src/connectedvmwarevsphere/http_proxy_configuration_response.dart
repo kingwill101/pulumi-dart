@@ -9,7 +9,7 @@ class HttpProxyConfigurationResponse {
 
   /// Creates a new [HttpProxyConfigurationResponse].
   /// [httpsProxy] Gets or sets httpsProxy url.
-  HttpProxyConfigurationResponse({
+  const HttpProxyConfigurationResponse({
     this.httpsProxy,
   });
 

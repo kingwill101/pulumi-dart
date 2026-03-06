@@ -34,7 +34,7 @@ class ServicePrincipalAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  ServicePrincipalAuthTypeConnectionProperties({
+  const ServicePrincipalAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

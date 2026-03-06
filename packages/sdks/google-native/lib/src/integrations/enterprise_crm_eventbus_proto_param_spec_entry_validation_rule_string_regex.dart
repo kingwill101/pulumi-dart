@@ -12,7 +12,7 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex {
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex].
   /// [exclusive] Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
   /// [regex] The regex applied to the input value(s).
-  EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex({
+  const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex({
     this.exclusive,
     this.regex,
   });

@@ -17,7 +17,7 @@ class AuthPlatform {
   /// [configFilePath] The path of the config file containing auth settings if they come from a file.
   /// [enabled] &lt;code&gt;true&lt;/code&gt; if the Authentication / Authorization feature is enabled for the current app; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [runtimeVersion] The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
-  AuthPlatform({
+  const AuthPlatform({
     this.configFilePath,
     this.enabled,
     this.runtimeVersion,

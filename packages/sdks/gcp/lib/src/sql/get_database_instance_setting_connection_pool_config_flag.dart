@@ -11,7 +11,7 @@ class GetDatabaseInstanceSettingConnectionPoolConfigFlag {
   /// Creates a new [GetDatabaseInstanceSettingConnectionPoolConfigFlag].
   /// [name] The name of the instance.
   /// [value] Value of the flag.
-  GetDatabaseInstanceSettingConnectionPoolConfigFlag({
+  const GetDatabaseInstanceSettingConnectionPoolConfigFlag({
     required this.name,
     required this.value,
   });

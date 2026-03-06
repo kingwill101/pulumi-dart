@@ -12,7 +12,7 @@ class OpenIdAuthenticationSettingsContract {
   /// Creates a new [OpenIdAuthenticationSettingsContract].
   /// [bearerTokenSendingMethods] How to send token to the server.
   /// [openidProviderId] OAuth authorization server identifier.
-  OpenIdAuthenticationSettingsContract({
+  const OpenIdAuthenticationSettingsContract({
     this.bearerTokenSendingMethods,
     this.openidProviderId,
   });

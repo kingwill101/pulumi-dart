@@ -9,7 +9,7 @@ class ManagedClusterSecurityProfileDefenderSecurityMonitoring {
 
   /// Creates a new [ManagedClusterSecurityProfileDefenderSecurityMonitoring].
   /// [enabled] Whether to enable Defender threat detection
-  ManagedClusterSecurityProfileDefenderSecurityMonitoring({
+  const ManagedClusterSecurityProfileDefenderSecurityMonitoring({
     this.enabled,
   });
 

@@ -11,7 +11,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource {
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource].
   /// [name] The schema name in the source.
   /// [processorType] The Doc AI processor type name.
-  DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource({
+  const DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource({
     this.name,
     this.processorType,
   });

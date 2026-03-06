@@ -21,7 +21,7 @@ class GetTimeSeriesAiplatformV1beta1Args {
   /// [runId] Required.
   /// [tensorboardId] Required.
   /// [timeSeriesId] Required.
-  GetTimeSeriesAiplatformV1beta1Args({
+  const GetTimeSeriesAiplatformV1beta1Args({
     required this.experimentId,
     required this.location,
     this.project,

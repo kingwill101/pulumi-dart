@@ -15,7 +15,7 @@ class PoolSourceAuth {
   /// [secret] Defines the secret used for authenticated access to the storage source.
   /// [type] Configures the type of authentication mechanism to be used on the storage source connection.
   /// [username] Sets the username for authenticating access to the storage source.
-  PoolSourceAuth({
+  const PoolSourceAuth({
     this.secret,
     required this.type,
     required this.username,

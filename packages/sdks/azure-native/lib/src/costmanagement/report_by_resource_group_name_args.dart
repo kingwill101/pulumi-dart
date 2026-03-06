@@ -30,7 +30,7 @@ class ReportByResourceGroupNameArgs {
   /// [reportName] Report Name.
   /// [resourceGroupName] Azure Resource Group Name.
   /// [schedule] Has schedule information for the report.
-  ReportByResourceGroupNameArgs({
+  const ReportByResourceGroupNameArgs({
     required this.definition,
     required this.deliveryInfo,
     this.format,

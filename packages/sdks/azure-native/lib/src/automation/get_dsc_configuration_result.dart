@@ -59,7 +59,7 @@ class GetDscConfigurationResult {
   /// [state] Gets or sets the state of the configuration.
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetDscConfigurationResult({
+  const GetDscConfigurationResult({
     required this.azureApiVersion,
     this.creationTime,
     this.description,

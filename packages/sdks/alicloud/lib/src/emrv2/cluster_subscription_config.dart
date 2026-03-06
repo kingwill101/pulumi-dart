@@ -23,7 +23,7 @@ class ClusterSubscriptionConfig {
   /// [autoRenewDurationUnit] If paymentType is Subscription, this should be specified. Supported value: Month or Year.
   /// [paymentDuration] If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
   /// [paymentDurationUnit] If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-  ClusterSubscriptionConfig({
+  const ClusterSubscriptionConfig({
     this.autoPayOrder,
     this.autoRenew,
     this.autoRenewDuration,

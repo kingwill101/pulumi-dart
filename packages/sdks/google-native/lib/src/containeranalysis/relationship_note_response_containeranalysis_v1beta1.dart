@@ -9,7 +9,7 @@ class RelationshipNoteResponseContaineranalysisV1beta1 {
 
   /// Creates a new [RelationshipNoteResponseContaineranalysisV1beta1].
   /// [type] The type of relationship between the source and target SPDX elements
-  RelationshipNoteResponseContaineranalysisV1beta1({
+  const RelationshipNoteResponseContaineranalysisV1beta1({
     required this.type,
   });
 

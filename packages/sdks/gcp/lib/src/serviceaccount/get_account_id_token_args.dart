@@ -21,7 +21,7 @@ class GetAccountIdTokenArgs {
   /// [includeEmail] Include the verified email in the claim. Used only when using impersonation mode.
   /// [targetAudience] The audience claim for the `id_token`.
   /// [targetServiceAccount] The email of the service account being impersonated.  Used only when using impersonation mode.
-  GetAccountIdTokenArgs({
+  const GetAccountIdTokenArgs({
     this.delegates,
     this.includeEmail,
     required this.targetAudience,

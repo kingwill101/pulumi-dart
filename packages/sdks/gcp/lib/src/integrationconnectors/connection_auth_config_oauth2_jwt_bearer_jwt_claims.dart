@@ -16,7 +16,7 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
   /// [audience] Value for the "aud" claim.
   /// [issuer] Value for the "iss" claim.
   /// [subject] Value for the "sub" claim.
-  ConnectionAuthConfigOauth2JwtBearerJwtClaims({
+  const ConnectionAuthConfigOauth2JwtBearerJwtClaims({
     this.audience,
     this.issuer,
     this.subject,

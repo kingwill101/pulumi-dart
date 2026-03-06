@@ -20,7 +20,7 @@ class GetAdvancedThreatProtectionResult {
   /// [isEnabled] Indicates whether Advanced Threat Protection is enabled.
   /// [name] Resource name
   /// [type] Resource type
-  GetAdvancedThreatProtectionResult({
+  const GetAdvancedThreatProtectionResult({
     required this.azureApiVersion,
     required this.id,
     this.isEnabled,

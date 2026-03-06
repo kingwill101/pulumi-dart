@@ -25,7 +25,7 @@ class RestorePlanRestoreConfigTransformationRule {
   /// [description] The description is a user specified string description
   /// [fieldActions] A list of transformation rule actions to take against candidate
   /// [resourceFilter] This field is used to specify a set of fields that should be used to
-  RestorePlanRestoreConfigTransformationRule({
+  const RestorePlanRestoreConfigTransformationRule({
     this.description,
     required this.fieldActions,
     this.resourceFilter,

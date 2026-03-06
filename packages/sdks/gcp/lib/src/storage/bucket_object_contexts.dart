@@ -9,7 +9,7 @@ class BucketObjectContexts {
 
   /// Creates a new [BucketObjectContexts].
   /// [customs] A list of custom context key-value pairs.
-  BucketObjectContexts({
+  const BucketObjectContexts({
     required this.customs,
   });
 

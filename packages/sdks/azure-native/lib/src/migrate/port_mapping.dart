@@ -12,7 +12,7 @@ class PortMapping {
   /// Creates a new [PortMapping].
   /// [externalPort] Gets or sets the External Port.
   /// [internalPort] Gets or sets the Internal Port.
-  PortMapping({
+  const PortMapping({
     this.externalPort,
     this.internalPort,
   });

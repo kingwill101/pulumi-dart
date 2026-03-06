@@ -27,7 +27,7 @@ class DeploymentResponse {
   /// [resourceUri] Resource URI for the artifact being deployed taken from the deployable field with the same name.
   /// [undeployTime] End of the lifetime of this deployment.
   /// [userEmail] Identity of the user that triggered this deployment.
-  DeploymentResponse({
+  const DeploymentResponse({
     required this.address,
     required this.config,
     required this.deployTime,

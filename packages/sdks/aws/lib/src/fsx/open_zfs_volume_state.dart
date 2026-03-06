@@ -59,7 +59,7 @@ class OpenZfsVolumeState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userAndGroupQuotas] Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `user_and_group_quotas` Block Below.
   /// [volumeType] Optional.
-  OpenZfsVolumeState({
+  const OpenZfsVolumeState({
     this.arn,
     this.copyTagsToSnapshots,
     this.dataCompressionType,

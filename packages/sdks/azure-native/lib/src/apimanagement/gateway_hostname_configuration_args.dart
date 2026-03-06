@@ -39,7 +39,7 @@ class GatewayHostnameConfigurationArgs {
   /// [serviceName] The name of the API Management service.
   /// [tls10Enabled] Specifies if TLS 1.0 is supported
   /// [tls11Enabled] Specifies if TLS 1.1 is supported
-  GatewayHostnameConfigurationArgs({
+  const GatewayHostnameConfigurationArgs({
     this.certificateId,
     required this.gatewayId,
     this.hcId,

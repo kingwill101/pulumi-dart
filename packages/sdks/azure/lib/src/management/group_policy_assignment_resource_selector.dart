@@ -12,7 +12,7 @@ class GroupPolicyAssignmentResourceSelector {
   /// Creates a new [GroupPolicyAssignmentResourceSelector].
   /// [name] Specifies a name for the resource selector.
   /// [selectors] One or more `resource_selector` block as defined below.
-  GroupPolicyAssignmentResourceSelector({
+  const GroupPolicyAssignmentResourceSelector({
     this.name,
     required this.selectors,
   });

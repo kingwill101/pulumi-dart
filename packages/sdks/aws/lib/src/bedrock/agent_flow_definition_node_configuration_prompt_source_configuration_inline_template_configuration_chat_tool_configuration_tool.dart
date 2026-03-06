@@ -13,7 +13,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool].
   /// [cachePoint] Creates a cache checkpoint within a tool designation. See Cache Point for more information.
   /// [toolSpec] The specification for the tool. See Tool Specification for more information.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool({
     this.cachePoint,
     this.toolSpec,
   });

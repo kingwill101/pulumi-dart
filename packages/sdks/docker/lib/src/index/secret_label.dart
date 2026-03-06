@@ -11,7 +11,7 @@ class SecretLabel {
   /// Creates a new [SecretLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  SecretLabel({
+  const SecretLabel({
     required this.label,
     required this.value,
   });

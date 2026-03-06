@@ -18,7 +18,7 @@ class TagState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] Amazon Resource Name (ARN) of the ECS resource to tag.
   /// [value] Tag value.
-  TagState({
+  const TagState({
     this.key,
     this.region,
     this.resourceArn,

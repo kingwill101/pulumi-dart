@@ -8,7 +8,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature].
   /// [type] Type of Human Agent Assistant API feature to request.
-  ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature({
+  const ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature({
     this.type,
   });
 

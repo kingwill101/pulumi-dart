@@ -30,7 +30,7 @@ class GetTransitRouterPrefixListAssociationsResult {
   /// [status] Optional.
   /// [transitRouterId] Required.
   /// [transitRouterTableId] Required.
-  GetTransitRouterPrefixListAssociationsResult({
+  const GetTransitRouterPrefixListAssociationsResult({
     required this.associations,
     required this.id,
     required this.ids,

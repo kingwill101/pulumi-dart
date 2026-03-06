@@ -15,7 +15,7 @@ class EligibleApprover {
   /// [rbacPermission] RBAC permission that gives right to approve.
   /// [teamName] Name of the team that can approve.
   /// [user] Login of the user that can approve.
-  EligibleApprover({
+  const EligibleApprover({
     this.rbacPermission,
     this.teamName,
     this.user,

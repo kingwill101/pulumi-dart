@@ -15,7 +15,7 @@ class CloudRunRewrite {
   /// [region] Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
   /// [serviceId] User-defined ID of the Cloud Run service.
   /// [tag] Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
-  CloudRunRewrite({
+  const CloudRunRewrite({
     this.region,
     required this.serviceId,
     this.tag,

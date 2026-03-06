@@ -18,7 +18,7 @@ class ConfigurationState {
   /// [resourceGroupName] The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   /// [value] Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values. Changing this forces a new resource to be created.
-  ConfigurationState({
+  const ConfigurationState({
     this.name,
     this.resourceGroupName,
     this.serverName,

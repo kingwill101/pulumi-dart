@@ -13,7 +13,7 @@ class GetMonitorGroupInstancesInstanceInstance {
   /// [instanceId] Required.
   /// [instanceName] Required.
   /// [regionId] Required.
-  GetMonitorGroupInstancesInstanceInstance({
+  const GetMonitorGroupInstancesInstanceInstance({
     required this.category,
     required this.instanceId,
     required this.instanceName,

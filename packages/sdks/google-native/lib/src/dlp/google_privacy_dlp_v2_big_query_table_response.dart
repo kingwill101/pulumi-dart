@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2BigQueryTableResponse {
   /// [datasetId] Dataset ID of the table.
   /// [project] The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
   /// [tableId] Name of the table.
-  GooglePrivacyDlpV2BigQueryTableResponse({
+  const GooglePrivacyDlpV2BigQueryTableResponse({
     required this.datasetId,
     required this.project,
     required this.tableId,

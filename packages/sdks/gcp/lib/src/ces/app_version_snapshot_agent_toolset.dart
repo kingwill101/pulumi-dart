@@ -15,7 +15,7 @@ class AppVersionSnapshotAgentToolset {
   /// Creates a new [AppVersionSnapshotAgentToolset].
   /// [toolIds] (Output)
   /// [toolset] (Output)
-  AppVersionSnapshotAgentToolset({
+  const AppVersionSnapshotAgentToolset({
     this.toolIds,
     this.toolset,
   });

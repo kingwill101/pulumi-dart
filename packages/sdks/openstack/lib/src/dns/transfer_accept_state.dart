@@ -26,7 +26,7 @@ class TransferAcceptState {
   /// [region] The region in which to obtain the V2 DNS client.
   /// [valueSpecs] Map of additional options. Changing this creates a
   /// [zoneTransferRequestId] The ID of the zone transfer request.
-  TransferAcceptState({
+  const TransferAcceptState({
     this.disableStatusCheck,
     this.key,
     this.region,

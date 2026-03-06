@@ -9,7 +9,7 @@ class ProjectFailureReason {
   /// Creates a new [ProjectFailureReason].
   /// [code] Required.
   /// [message] Required.
-  ProjectFailureReason({
+  const ProjectFailureReason({
     required this.code,
     required this.message,
   });

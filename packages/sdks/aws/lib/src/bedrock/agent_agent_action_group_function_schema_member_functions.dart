@@ -9,7 +9,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctions {
 
   /// Creates a new [AgentAgentActionGroupFunctionSchemaMemberFunctions].
   /// [functions] Functions that each define an action in the action group. See `functions` Block for details.
-  AgentAgentActionGroupFunctionSchemaMemberFunctions({
+  const AgentAgentActionGroupFunctionSchemaMemberFunctions({
     this.functions,
   });
 

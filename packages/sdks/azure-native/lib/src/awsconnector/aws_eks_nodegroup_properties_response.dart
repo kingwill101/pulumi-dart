@@ -71,7 +71,7 @@ class AwsEksNodegroupPropertiesResponse {
   /// [taints] The Kubernetes taints to be applied to the nodes in the node group when they are created.
   /// [updateConfig] The node group update configuration. The node group update configuration.
   /// [version] The Kubernetes version to use for your managed nodes.
-  AwsEksNodegroupPropertiesResponse({
+  const AwsEksNodegroupPropertiesResponse({
     this.amiType,
     this.arn,
     this.capacityType,

@@ -15,7 +15,7 @@ class GetEksNodegroupArgs {
   /// Creates a new [GetEksNodegroupArgs].
   /// [name] Name of EksNodegroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEksNodegroupArgs({
+  const GetEksNodegroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

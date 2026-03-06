@@ -24,7 +24,7 @@ class ProfileArgs {
   /// [resourceGroupName] The name of the resource group in which to create the CDN Profile. Changing this forces a new resource to be created.
   /// [sku] The pricing related information of current CDN profile. Accepted values are `Standard_Akamai`, `Standard_ChinaCdn`, `Standard_Microsoft`, `Standard_Verizon` or `Premium_Verizon`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  ProfileArgs({
+  const ProfileArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

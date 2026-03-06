@@ -18,7 +18,7 @@ class ConnectPeerConfigurationBgpConfiguration {
   /// [coreNetworkAsn] Optional.
   /// [peerAddress] Connect peer address.
   /// [peerAsn] Peer ASN. Supports 2-byte and 4-byte ASNs (1 to 4294967295).
-  ConnectPeerConfigurationBgpConfiguration({
+  const ConnectPeerConfigurationBgpConfiguration({
     this.coreNetworkAddress,
     this.coreNetworkAsn,
     this.peerAddress,

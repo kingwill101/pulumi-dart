@@ -18,7 +18,7 @@ class OrchestratedVirtualMachineScaleSetOsProfile {
   /// [customData] The Base64-Encoded Custom Data which should be used for this Virtual Machine Scale Set.
   /// [linuxConfiguration] A `linux_configuration` block as documented below.
   /// [windowsConfiguration] A `windows_configuration` block as documented below.
-  OrchestratedVirtualMachineScaleSetOsProfile({
+  const OrchestratedVirtualMachineScaleSetOsProfile({
     this.customData,
     this.linuxConfiguration,
     this.windowsConfiguration,

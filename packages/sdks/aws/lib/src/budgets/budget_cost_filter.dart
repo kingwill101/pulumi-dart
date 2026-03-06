@@ -11,7 +11,7 @@ class BudgetCostFilter {
   /// Creates a new [BudgetCostFilter].
   /// [name] The name of a budget. Unique within accounts.
   /// [values] (Optional) A list of cost category values to match. At least one value is required.
-  BudgetCostFilter({
+  const BudgetCostFilter({
     required this.name,
     required this.values,
   });

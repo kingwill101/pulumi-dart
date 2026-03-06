@@ -61,7 +61,7 @@ class SparkPoolArgs {
   /// [sparkVersion] The Apache Spark version. Possible values are `3.4` and `3.5`.
   /// [synapseWorkspaceId] The ID of the Synapse Workspace where the Synapse Spark Pool should exist. Changing this forces a new Synapse Spark Pool to be created.
   /// [tags] Optional.
-  SparkPoolArgs({
+  const SparkPoolArgs({
     this.autoPause,
     this.autoScale,
     this.cacheSize,

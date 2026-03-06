@@ -11,7 +11,7 @@ class MxRecordRecord {
   /// Creates a new [MxRecordRecord].
   /// [exchange] The mail server responsible for the domain covered by the MX record.
   /// [preference] String representing the "preference” value of the MX records. Records with lower preference value take priority.
-  MxRecordRecord({
+  const MxRecordRecord({
     required this.exchange,
     required this.preference,
   });

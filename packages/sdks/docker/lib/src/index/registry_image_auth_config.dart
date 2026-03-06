@@ -14,7 +14,7 @@ class RegistryImageAuthConfig {
   /// [address] The address of the Docker registry.
   /// [password] The password for the Docker registry.
   /// [username] The username for the Docker registry.
-  RegistryImageAuthConfig({
+  const RegistryImageAuthConfig({
     required this.address,
     required this.password,
     required this.username,

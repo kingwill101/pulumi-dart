@@ -15,7 +15,7 @@ class GetScopeGkehubV1alphaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [scopeId] Required.
-  GetScopeGkehubV1alphaArgs({
+  const GetScopeGkehubV1alphaArgs({
     required this.location,
     this.project,
     required this.scopeId,

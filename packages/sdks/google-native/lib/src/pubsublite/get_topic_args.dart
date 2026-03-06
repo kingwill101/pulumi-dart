@@ -15,7 +15,7 @@ class GetTopicArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicArgs({
+  const GetTopicArgs({
     required this.location,
     this.project,
     required this.topicId,

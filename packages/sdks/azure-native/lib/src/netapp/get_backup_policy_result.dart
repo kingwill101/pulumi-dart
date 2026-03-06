@@ -56,7 +56,7 @@ class GetBackupPolicyResult {
   /// [volumeBackups] A list of volumes assigned to this policy
   /// [volumesAssigned] Volumes using current backup policy
   /// [weeklyBackupsToKeep] Weekly backups count to keep
-  GetBackupPolicyResult({
+  const GetBackupPolicyResult({
     required this.azureApiVersion,
     required this.backupPolicyId,
     this.dailyBackupsToKeep,

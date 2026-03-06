@@ -12,7 +12,7 @@ class GoogleCloudDatalabelingV1beta1AttemptResponse {
   /// Creates a new [GoogleCloudDatalabelingV1beta1AttemptResponse].
   /// [attemptTime] Required.
   /// [partialFailures] Details of errors that occurred.
-  GoogleCloudDatalabelingV1beta1AttemptResponse({
+  const GoogleCloudDatalabelingV1beta1AttemptResponse({
     required this.attemptTime,
     required this.partialFailures,
   });

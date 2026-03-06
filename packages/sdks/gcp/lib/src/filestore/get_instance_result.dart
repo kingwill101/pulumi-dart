@@ -59,7 +59,7 @@ class GetInstanceResult {
   /// [tags] Required.
   /// [tier] Required.
   /// [zone] Required.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.createTime,
     required this.deletionProtectionEnabled,
     required this.deletionProtectionReason,

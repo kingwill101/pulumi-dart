@@ -47,7 +47,7 @@ class DomainClusterConfig {
   /// [warmType] Instance type for the OpenSearch cluster's warm nodes. Valid values are `ultrawarm1.medium.search`, `ultrawarm1.large.search` and `ultrawarm1.xlarge.search`. `warm_type` can be only and must be set when `warm_enabled` is set to `true`.
   /// [zoneAwarenessConfig] Configuration block containing zone awareness settings. Detailed below.
   /// [zoneAwarenessEnabled] Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availability_zone_count` within the `zone_awareness_config` must be set to `3`.
-  DomainClusterConfig({
+  const DomainClusterConfig({
     this.coldStorageOptions,
     this.dedicatedMasterCount,
     this.dedicatedMasterEnabled,

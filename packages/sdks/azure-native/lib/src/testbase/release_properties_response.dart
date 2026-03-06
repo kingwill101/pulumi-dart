@@ -18,7 +18,7 @@ class ReleasePropertiesResponse {
   /// [buildRevision] The build revision of the OS release.
   /// [releaseName] The name of the OS release.
   /// [releaseVersionDate] The release version date of the OS release.
-  ReleasePropertiesResponse({
+  const ReleasePropertiesResponse({
     this.buildNumber,
     this.buildRevision,
     this.releaseName,

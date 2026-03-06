@@ -45,7 +45,7 @@ class InstanceEndpointConnectionPscAutoConnection {
   /// [projectId] (Output)
   /// [pscConnectionId] (Output)
   /// [serviceAttachment] (Output)
-  InstanceEndpointConnectionPscAutoConnection({
+  const InstanceEndpointConnectionPscAutoConnection({
     this.connectionType,
     this.forwardingRule,
     this.ipAddress,

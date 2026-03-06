@@ -43,7 +43,7 @@ class KafkaAzureBlobStorageSinkConnectorInfoResponse {
   /// [timeInterval] Time Interval
   /// [topics] Kafka topics list
   /// [topicsDir] Kafka topics directory
-  KafkaAzureBlobStorageSinkConnectorInfoResponse({
+  const KafkaAzureBlobStorageSinkConnectorInfoResponse({
     this.apiKey,
     this.apiSecret,
     this.authType,

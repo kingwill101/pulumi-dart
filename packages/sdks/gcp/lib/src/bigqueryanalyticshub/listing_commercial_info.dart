@@ -11,7 +11,7 @@ class ListingCommercialInfo {
 
   /// Creates a new [ListingCommercialInfo].
   /// [cloudMarketplaces] (Output)
-  ListingCommercialInfo({
+  const ListingCommercialInfo({
     this.cloudMarketplaces,
   });
 

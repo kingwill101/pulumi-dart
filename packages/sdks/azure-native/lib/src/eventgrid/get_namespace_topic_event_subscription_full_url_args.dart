@@ -21,7 +21,7 @@ class GetNamespaceTopicEventSubscriptionFullUrlArgs {
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the namespace topic.
-  GetNamespaceTopicEventSubscriptionFullUrlArgs({
+  const GetNamespaceTopicEventSubscriptionFullUrlArgs({
     required this.eventSubscriptionName,
     required this.namespaceName,
     required this.resourceGroupName,

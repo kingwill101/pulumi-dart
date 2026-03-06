@@ -15,7 +15,7 @@ class GetElasticBeanstalkConfigurationTemplateArgs {
   /// Creates a new [GetElasticBeanstalkConfigurationTemplateArgs].
   /// [name] Name of ElasticBeanstalkConfigurationTemplate
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticBeanstalkConfigurationTemplateArgs({
+  const GetElasticBeanstalkConfigurationTemplateArgs({
     required this.name,
     required this.resourceGroupName,
   });

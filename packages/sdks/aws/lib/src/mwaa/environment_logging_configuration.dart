@@ -25,7 +25,7 @@ class EnvironmentLoggingConfiguration {
   /// [taskLogs] Log configuration options for DAG tasks. See Module logging configuration for more information. Enabled by default with `INFO` log level.
   /// [webserverLogs] Log configuration options for the webservers. See Module logging configuration for more information. Disabled by default.
   /// [workerLogs] Log configuration options for the workers. See Module logging configuration for more information. Disabled by default.
-  EnvironmentLoggingConfiguration({
+  const EnvironmentLoggingConfiguration({
     this.dagProcessingLogs,
     this.schedulerLogs,
     this.taskLogs,

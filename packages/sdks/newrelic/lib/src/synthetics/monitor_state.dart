@@ -89,7 +89,7 @@ class MonitorState {
   /// [useUnsupportedLegacyRuntime] A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
   /// [validationString] Validation text for monitor to search for at given URI.
   /// [verifySsl] Monitor should validate SSL certificate chain.
-  MonitorState({
+  const MonitorState({
     this.accountId,
     this.browsers,
     this.bypassHeadRequest,

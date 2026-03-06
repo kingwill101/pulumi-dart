@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
   /// [migrateProjectName] Migrate project name.
   /// [peConnectionName] Private endpoint connection name.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs({
     required this.migrateProjectName,
     required this.peConnectionName,
     required this.resourceGroupName,

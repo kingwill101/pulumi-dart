@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1IntegrationConfig {
 
   /// Creates a new [GoogleCloudApigeeV1IntegrationConfig].
   /// [enabled] Flag that specifies whether the Integration add-on is enabled.
-  GoogleCloudApigeeV1IntegrationConfig({
+  const GoogleCloudApigeeV1IntegrationConfig({
     this.enabled,
   });
 

@@ -24,7 +24,7 @@ class SloWindowsBasedSliMetricMeanInRange {
   /// Creates a new [SloWindowsBasedSliMetricMeanInRange].
   /// [range] Range of numerical values. The computed good_service
   /// [timeSeries] A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-  SloWindowsBasedSliMetricMeanInRange({
+  const SloWindowsBasedSliMetricMeanInRange({
     required this.range,
     required this.timeSeries,
   });

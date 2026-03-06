@@ -23,7 +23,7 @@ class UserAlarmConfigAlarmConfig {
   /// [alarmType] The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
   /// [alarmValue] The alarm notification message.
   /// [alarmWeekDay] The day of the week when the alarm is triggered. The range is `1 ~ 7`.
-  UserAlarmConfigAlarmConfig({
+  const UserAlarmConfigAlarmConfig({
     this.alarmHour,
     this.alarmNotify,
     this.alarmPeriod,

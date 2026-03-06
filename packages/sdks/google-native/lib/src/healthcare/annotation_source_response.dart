@@ -10,7 +10,7 @@ class AnnotationSourceResponse {
 
   /// Creates a new [AnnotationSourceResponse].
   /// [cloudHealthcareSource] Cloud Healthcare API resource.
-  AnnotationSourceResponse({
+  const AnnotationSourceResponse({
     required this.cloudHealthcareSource,
   });
 

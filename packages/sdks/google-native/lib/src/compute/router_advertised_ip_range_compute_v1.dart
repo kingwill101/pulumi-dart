@@ -12,7 +12,7 @@ class RouterAdvertisedIpRangeComputeV1 {
   /// Creates a new [RouterAdvertisedIpRangeComputeV1].
   /// [description] User-specified description for the IP range.
   /// [range] The IP range to advertise. The value must be a CIDR-formatted string.
-  RouterAdvertisedIpRangeComputeV1({
+  const RouterAdvertisedIpRangeComputeV1({
     this.description,
     this.range,
   });

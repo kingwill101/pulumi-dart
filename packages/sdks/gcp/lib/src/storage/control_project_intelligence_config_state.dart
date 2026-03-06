@@ -30,7 +30,7 @@ class ControlProjectIntelligenceConfigState {
   /// [name] Identifier of the GCP project. For GCP project, this field can be project name or project number.
   /// [trialConfigs] The trial configuration of the Storage Intelligence resource.
   /// [updateTime] The time at which the Storage Intelligence Config resource is last updated.
-  ControlProjectIntelligenceConfigState({
+  const ControlProjectIntelligenceConfigState({
     this.editionConfig,
     this.effectiveIntelligenceConfigs,
     this.filter,

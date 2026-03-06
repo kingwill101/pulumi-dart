@@ -29,7 +29,7 @@ class GetClusterResult {
   /// [state] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetClusterResult({
+  const GetClusterResult({
     required this.autoscalingSettings,
     required this.createTime,
     required this.id,

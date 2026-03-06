@@ -15,7 +15,7 @@ class GetRegionInstantSnapshotArgs {
   /// [instantSnapshot] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionInstantSnapshotArgs({
+  const GetRegionInstantSnapshotArgs({
     required this.instantSnapshot,
     this.project,
     required this.region,

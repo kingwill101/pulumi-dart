@@ -11,7 +11,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainerEnv {
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesContainerEnv].
   /// [name] Name of the job definition.
   /// [value] Value of the environment variable.
-  JobDefinitionEksPropertiesPodPropertiesContainerEnv({
+  const JobDefinitionEksPropertiesPodPropertiesContainerEnv({
     required this.name,
     required this.value,
   });

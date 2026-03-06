@@ -65,7 +65,7 @@ class RouterBgpPeerResponseComputeV1 {
   /// [peerIpAddress] IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
   /// [peerIpv6NexthopAddress] IPv6 address of the BGP interface outside Google Cloud Platform.
   /// [routerApplianceInstance] URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
-  RouterBgpPeerResponseComputeV1({
+  const RouterBgpPeerResponseComputeV1({
     required this.advertiseMode,
     required this.advertisedGroups,
     required this.advertisedIpRanges,

@@ -20,7 +20,7 @@ class SchemaComparisonValidationResultResponse {
   /// [sourceDatabaseObjectCount] Count of source database objects
   /// [targetDatabaseObjectCount] Count of target database objects
   /// [validationErrors] List of errors that happened while performing schema compare validation
-  SchemaComparisonValidationResultResponse({
+  const SchemaComparisonValidationResultResponse({
     this.schemaDifferences,
     this.sourceDatabaseObjectCount,
     this.targetDatabaseObjectCount,

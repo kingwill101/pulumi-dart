@@ -11,7 +11,7 @@ class GetApplicationGatewayAuthenticationCertificate {
   /// Creates a new [GetApplicationGatewayAuthenticationCertificate].
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
-  GetApplicationGatewayAuthenticationCertificate({
+  const GetApplicationGatewayAuthenticationCertificate({
     required this.id,
     required this.name,
   });

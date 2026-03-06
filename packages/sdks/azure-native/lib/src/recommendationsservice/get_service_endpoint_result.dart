@@ -31,7 +31,7 @@ class GetServiceEndpointResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetServiceEndpointResult({
+  const GetServiceEndpointResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

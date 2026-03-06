@@ -28,7 +28,7 @@ class SerialPortArgs {
   /// [resourceProviderNamespace] The namespace of the resource provider.
   /// [serialPort] The name of the serial port to create.
   /// [state] Specifies whether the port is enabled for a serial console connection.
-  SerialPortArgs({
+  const SerialPortArgs({
     required this.parentResource,
     required this.parentResourceType,
     required this.resourceGroupName,

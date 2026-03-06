@@ -21,7 +21,7 @@ class ListWorkflowCallbackUrlArgs {
   /// [notAfter] The expiry time.
   /// [resourceGroupName] The resource group name.
   /// [workflowName] The workflow name.
-  ListWorkflowCallbackUrlArgs({
+  const ListWorkflowCallbackUrlArgs({
     this.keyType,
     this.notAfter,
     required this.resourceGroupName,

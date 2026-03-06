@@ -13,7 +13,7 @@ class FrontendIPConfiguration {
   /// Creates a new [FrontendIPConfiguration].
   /// [name] name for the frontend IP configuration.
   /// [properties] properties for this frontendIPConfiguration
-  FrontendIPConfiguration({
+  const FrontendIPConfiguration({
     required this.name,
     required this.properties,
   });

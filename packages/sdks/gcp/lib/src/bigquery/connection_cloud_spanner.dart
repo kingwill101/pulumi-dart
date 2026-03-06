@@ -26,7 +26,7 @@ class ConnectionCloudSpanner {
   /// [useDataBoost] If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
   /// [useParallelism] If parallelism should be used when reading from Cloud Spanner.
   /// [useServerlessAnalytics] (Optional, Deprecated)
-  ConnectionCloudSpanner({
+  const ConnectionCloudSpanner({
     required this.database,
     this.databaseRole,
     this.maxParallelism,

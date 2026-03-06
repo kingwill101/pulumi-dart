@@ -10,7 +10,7 @@ class AutoForecastHorizon {
 
   /// Creates a new [AutoForecastHorizon].
   /// [mode] Enum to determine forecast horizon selection mode.
-  AutoForecastHorizon({
+  const AutoForecastHorizon({
     required this.mode,
   });
 

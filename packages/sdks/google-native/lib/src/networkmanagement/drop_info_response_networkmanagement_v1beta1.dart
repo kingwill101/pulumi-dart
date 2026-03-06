@@ -12,7 +12,7 @@ class DropInfoResponseNetworkmanagementV1beta1 {
   /// Creates a new [DropInfoResponseNetworkmanagementV1beta1].
   /// [cause] Cause that the packet is dropped.
   /// [resourceUri] URI of the resource that caused the drop.
-  DropInfoResponseNetworkmanagementV1beta1({
+  const DropInfoResponseNetworkmanagementV1beta1({
     required this.cause,
     required this.resourceUri,
   });

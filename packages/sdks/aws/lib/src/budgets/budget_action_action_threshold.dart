@@ -11,7 +11,7 @@ class BudgetActionActionThreshold {
   /// Creates a new [BudgetActionActionThreshold].
   /// [actionThresholdType] The type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
   /// [actionThresholdValue] The threshold of a notification.
-  BudgetActionActionThreshold({
+  const BudgetActionActionThreshold({
     required this.actionThresholdType,
     required this.actionThresholdValue,
   });

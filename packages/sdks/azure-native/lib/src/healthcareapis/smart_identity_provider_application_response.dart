@@ -15,7 +15,7 @@ class SmartIdentityProviderApplicationResponse {
   /// [allowedDataActions] The actions that are permitted to be performed on FHIR resources for the application.
   /// [audience] The audience that will be used to validate bearer tokens against the given authority.
   /// [clientId] The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-  SmartIdentityProviderApplicationResponse({
+  const SmartIdentityProviderApplicationResponse({
     this.allowedDataActions,
     this.audience,
     this.clientId,

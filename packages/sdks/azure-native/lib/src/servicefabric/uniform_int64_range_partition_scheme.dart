@@ -21,7 +21,7 @@ class UniformInt64RangePartitionScheme {
   /// [highKey] The upper bound of the partition key range that
   /// [lowKey] The lower bound of the partition key range that
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
-  UniformInt64RangePartitionScheme({
+  const UniformInt64RangePartitionScheme({
     required this.count,
     required this.highKey,
     required this.lowKey,

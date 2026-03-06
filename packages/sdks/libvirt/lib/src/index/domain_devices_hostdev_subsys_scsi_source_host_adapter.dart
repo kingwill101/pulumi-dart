@@ -8,7 +8,7 @@ class DomainDevicesHostdevSubsysScsiSourceHostAdapter {
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceHostAdapter].
   /// [name] Sets the name of the SCSI host adapter for the device source.
-  DomainDevicesHostdevSubsysScsiSourceHostAdapter({
+  const DomainDevicesHostdevSubsysScsiSourceHostAdapter({
     required this.name,
   });
 

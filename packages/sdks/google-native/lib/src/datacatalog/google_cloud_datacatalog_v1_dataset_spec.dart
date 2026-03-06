@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1DatasetSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1DatasetSpec].
   /// [vertexDatasetSpec] Vertex AI Dataset specific fields
-  GoogleCloudDatacatalogV1DatasetSpec({
+  const GoogleCloudDatacatalogV1DatasetSpec({
     this.vertexDatasetSpec,
   });
 

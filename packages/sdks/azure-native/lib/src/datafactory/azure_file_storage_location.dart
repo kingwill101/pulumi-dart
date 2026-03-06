@@ -16,7 +16,7 @@ class AzureFileStorageLocation {
   /// [fileName] Specify the file name of dataset. Type: string (or Expression with resultType string).
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
-  AzureFileStorageLocation({
+  const AzureFileStorageLocation({
     this.fileName,
     this.folderPath,
     required this.type,

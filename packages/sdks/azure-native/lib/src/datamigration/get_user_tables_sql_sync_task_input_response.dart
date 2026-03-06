@@ -19,7 +19,7 @@ class GetUserTablesSqlSyncTaskInputResponse {
   /// [selectedTargetDatabases] List of target database names to collect tables for
   /// [sourceConnectionInfo] Connection information for SQL Server
   /// [targetConnectionInfo] Connection information for SQL DB
-  GetUserTablesSqlSyncTaskInputResponse({
+  const GetUserTablesSqlSyncTaskInputResponse({
     required this.selectedSourceDatabases,
     required this.selectedTargetDatabases,
     required this.sourceConnectionInfo,

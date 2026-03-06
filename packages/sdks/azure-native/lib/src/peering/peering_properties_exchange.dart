@@ -14,7 +14,7 @@ class PeeringPropertiesExchange {
   /// Creates a new [PeeringPropertiesExchange].
   /// [connections] The set of connections that constitute an exchange peering.
   /// [peerAsn] The reference of the peer ASN.
-  PeeringPropertiesExchange({
+  const PeeringPropertiesExchange({
     this.connections,
     this.peerAsn,
   });

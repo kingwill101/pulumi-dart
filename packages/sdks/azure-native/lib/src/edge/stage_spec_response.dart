@@ -20,7 +20,7 @@ class StageSpecResponse {
   /// [specification] Stage specification
   /// [taskOption] Task option for the stage
   /// [tasks] List of tasks in the stage
-  StageSpecResponse({
+  const StageSpecResponse({
     required this.name,
     this.specification,
     this.taskOption,

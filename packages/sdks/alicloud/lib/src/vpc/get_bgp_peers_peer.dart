@@ -62,7 +62,7 @@ class GetBgpPeersPeer {
   /// [routeLimit] The limit on routes.
   /// [routerId] The ID of the router.
   /// [status] The status of the BGP peer.
-  GetBgpPeersPeer({
+  const GetBgpPeersPeer({
     required this.authKey,
     required this.bfdMultiHop,
     required this.bgpGroupId,

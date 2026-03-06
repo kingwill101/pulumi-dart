@@ -18,7 +18,7 @@ class DatabaseKafkaSchemaRegistryState {
   /// [schema] The schema definition as a string.
   /// [schemaType] The schema type. Available values are: avro, json, or protobuf.
   /// [subjectName] The name of the schema subject.
-  DatabaseKafkaSchemaRegistryState({
+  const DatabaseKafkaSchemaRegistryState({
     this.clusterId,
     this.schema,
     this.schemaType,

@@ -22,7 +22,7 @@ class GetMigrationJobsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetMigrationJobsResult({
+  const GetMigrationJobsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

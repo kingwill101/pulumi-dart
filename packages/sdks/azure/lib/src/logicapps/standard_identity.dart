@@ -21,7 +21,7 @@ class StandardIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Logic App Standard. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned` (to enable both).
-  StandardIdentity({
+  const StandardIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

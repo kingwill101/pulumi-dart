@@ -13,7 +13,7 @@ class AttestationResponseContaineranalysisV1beta1 {
   /// Creates a new [AttestationResponseContaineranalysisV1beta1].
   /// [genericSignedAttestation] Required.
   /// [pgpSignedAttestation] A PGP signed attestation.
-  AttestationResponseContaineranalysisV1beta1({
+  const AttestationResponseContaineranalysisV1beta1({
     required this.genericSignedAttestation,
     required this.pgpSignedAttestation,
   });

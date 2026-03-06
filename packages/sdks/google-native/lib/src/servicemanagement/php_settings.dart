@@ -10,7 +10,7 @@ class PhpSettings {
 
   /// Creates a new [PhpSettings].
   /// [common] Some settings.
-  PhpSettings({
+  const PhpSettings({
     this.common,
   });
 

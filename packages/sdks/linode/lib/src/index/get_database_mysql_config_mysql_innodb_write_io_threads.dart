@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads({
+  const GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads({
     required this.description,
     required this.example,
     required this.maximum,

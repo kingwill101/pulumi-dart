@@ -24,7 +24,7 @@ class ManagedInstanceExternalAdministrator {
   /// [principalType] Principal Type of the sever administrator.
   /// [sid] SID (object ID) of the server administrator.
   /// [tenantId] Tenant ID of the administrator.
-  ManagedInstanceExternalAdministrator({
+  const ManagedInstanceExternalAdministrator({
     this.administratorType,
     this.azureADOnlyAuthentication,
     this.login,

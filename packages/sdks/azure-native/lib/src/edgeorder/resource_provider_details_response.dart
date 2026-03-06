@@ -9,7 +9,7 @@ class ResourceProviderDetailsResponse {
 
   /// Creates a new [ResourceProviderDetailsResponse].
   /// [resourceProviderNamespace] Resource provider namespace.
-  ResourceProviderDetailsResponse({
+  const ResourceProviderDetailsResponse({
     required this.resourceProviderNamespace,
   });
 

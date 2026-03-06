@@ -12,7 +12,7 @@ class FilterableProperty {
   /// Creates a new [FilterableProperty].
   /// [supportedValues] Values to be filtered.
   /// [type] Type of product filter.
-  FilterableProperty({
+  const FilterableProperty({
     required this.supportedValues,
     required this.type,
   });

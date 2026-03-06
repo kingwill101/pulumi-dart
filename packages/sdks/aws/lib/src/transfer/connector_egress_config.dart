@@ -9,7 +9,7 @@ class ConnectorEgressConfig {
 
   /// Creates a new [ConnectorEgressConfig].
   /// [vpcLattice] VPC Lattice configuration for routing connector traffic through customer VPCs. Fields documented below.
-  ConnectorEgressConfig({
+  const ConnectorEgressConfig({
     this.vpcLattice,
   });
 

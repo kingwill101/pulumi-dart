@@ -45,7 +45,7 @@ class OutputServicebusTopicArgs {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [systemPropertyColumns] A key-value pair of system property columns that will be attached to the outgoing messages for the Service Bus Topic Output.
   /// [topicName] The name of the Service Bus Topic.
-  OutputServicebusTopicArgs({
+  const OutputServicebusTopicArgs({
     this.authenticationMode,
     this.name,
     this.propertyColumns,

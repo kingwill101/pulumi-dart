@@ -9,7 +9,7 @@ class EndpointLoadBalancerOptionsPortRange {
   /// Creates a new [EndpointLoadBalancerOptionsPortRange].
   /// [fromPort] Required.
   /// [toPort] Required.
-  EndpointLoadBalancerOptionsPortRange({
+  const EndpointLoadBalancerOptionsPortRange({
     required this.fromPort,
     required this.toPort,
   });

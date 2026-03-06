@@ -31,7 +31,7 @@ class BackupArgs {
   /// [project] Optional.
   /// [sourceFileShare] Name of the file share in the source Filestore instance that the backup is created from.
   /// [sourceInstance] The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
-  BackupArgs({
+  const BackupArgs({
     required this.backupId,
     this.description,
     this.kmsKey,

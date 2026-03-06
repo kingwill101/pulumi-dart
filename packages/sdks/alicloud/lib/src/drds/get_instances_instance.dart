@@ -35,7 +35,7 @@ class GetInstancesInstance {
   /// [type] The DRDS Instance type.
   /// [version] The DRDS Instance version.
   /// [zoneId] Zone ID the instance belongs to.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.connectionString,
     required this.createTime,
     required this.description,

@@ -18,7 +18,7 @@ class GetMoveResourceArgs {
   /// [moveCollectionName] The Move Collection Name.
   /// [moveResourceName] The Move Resource Name.
   /// [resourceGroupName] The Resource Group Name.
-  GetMoveResourceArgs({
+  const GetMoveResourceArgs({
     required this.moveCollectionName,
     required this.moveResourceName,
     required this.resourceGroupName,

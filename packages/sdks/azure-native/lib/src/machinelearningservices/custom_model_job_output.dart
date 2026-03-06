@@ -18,7 +18,7 @@ class CustomModelJobOutput {
   /// [jobOutputType] Enum to determine the Job Output Type.
   /// [mode] Output Asset Delivery Mode.
   /// [uri] Output Asset URI.
-  CustomModelJobOutput({
+  const CustomModelJobOutput({
     this.description,
     required this.jobOutputType,
     this.mode,

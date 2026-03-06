@@ -74,7 +74,7 @@ class CertificateSigningRequestSpec {
   /// [uid] uid contains the uid of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.
   /// [usages] usages specifies a set of key usages requested in the issued certificate.
   /// [username] username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.
-  CertificateSigningRequestSpec({
+  const CertificateSigningRequestSpec({
     this.expirationSeconds,
     this.extra,
     this.groups,

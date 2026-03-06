@@ -15,7 +15,7 @@ class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy {
   /// [capabilities] The capabilities.
   /// [preflightNotifications] The preflight notifications.
   /// [preflightOptions] The preflight options.
-  ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy({
+  const ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy({
     required this.capabilities,
     this.preflightNotifications,
     required this.preflightOptions,

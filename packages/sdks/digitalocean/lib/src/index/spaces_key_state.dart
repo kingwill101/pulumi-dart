@@ -22,7 +22,7 @@ class SpacesKeyState {
   /// [grants] A grant for the key (documented below).
   /// [name] The name of the key
   /// [secretKey] The access key secret of the key
-  SpacesKeyState({
+  const SpacesKeyState({
     this.accessKey,
     this.createdAt,
     this.grants,

@@ -9,7 +9,7 @@ class ServiceServicePropertyFunctionalType {
 
   /// Creates a new [ServiceServicePropertyFunctionalType].
   /// [type] (Output)
-  ServiceServicePropertyFunctionalType({
+  const ServiceServicePropertyFunctionalType({
     this.type,
   });
 

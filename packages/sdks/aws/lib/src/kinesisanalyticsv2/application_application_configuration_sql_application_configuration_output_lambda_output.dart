@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambda
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput].
   /// [resourceArn] The ARN of the destination Lambda function to write to.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput({
     required this.resourceArn,
   });
 

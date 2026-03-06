@@ -27,7 +27,7 @@ class GetIndexsIndex {
   /// [logReduceWhiteLists] The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
   /// [maxTextLen] Maximum length of statistical field
   /// [ttl] Log index storage time
-  GetIndexsIndex({
+  const GetIndexsIndex({
     required this.id,
     required this.keys,
     required this.line,

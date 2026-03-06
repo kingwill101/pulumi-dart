@@ -73,7 +73,7 @@ class VirtualNetworkArgs {
   /// [tags] Resource tags.
   /// [virtualNetworkName] The name of the virtual network.
   /// [virtualNetworkPeerings] A list of peerings in a Virtual Network.
-  VirtualNetworkArgs({
+  const VirtualNetworkArgs({
     this.addressSpace,
     this.bgpCommunities,
     this.ddosProtectionPlan,

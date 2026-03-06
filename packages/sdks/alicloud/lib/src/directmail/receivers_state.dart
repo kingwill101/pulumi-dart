@@ -18,7 +18,7 @@ class ReceiversState {
   /// [receiversAlias] The alias of receivers. Must email address and less than 30 characters in length.
   /// [receiversName] The name of the resource. The length that cannot be repeated is 1-30 characters.
   /// [status] The status of the resource. `0` means uploading, `1` means upload completed.
-  ReceiversState({
+  const ReceiversState({
     this.description,
     this.receiversAlias,
     this.receiversName,

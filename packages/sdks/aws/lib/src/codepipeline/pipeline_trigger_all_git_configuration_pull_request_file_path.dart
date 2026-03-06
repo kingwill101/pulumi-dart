@@ -11,7 +11,7 @@ class PipelineTriggerAllGitConfigurationPullRequestFilePath {
   /// Creates a new [PipelineTriggerAllGitConfigurationPullRequestFilePath].
   /// [excludes] A list of patterns of Git repository file paths that, when a commit is pushed, are to be excluded from starting the pipeline.
   /// [includes] A list of patterns of Git repository file paths that, when a commit is pushed, are to be included as criteria that starts the pipeline.
-  PipelineTriggerAllGitConfigurationPullRequestFilePath({
+  const PipelineTriggerAllGitConfigurationPullRequestFilePath({
     this.excludes,
     this.includes,
   });

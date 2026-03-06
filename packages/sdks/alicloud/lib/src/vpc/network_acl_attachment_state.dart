@@ -13,7 +13,7 @@ class NetworkAclAttachmentState {
   /// Creates a new [NetworkAclAttachmentState].
   /// [networkAclId] The id of the network acl, the field can't be changed.
   /// [resources] List of the resources associated with the network acl. The details see Block Resources.
-  NetworkAclAttachmentState({
+  const NetworkAclAttachmentState({
     this.networkAclId,
     this.resources,
   });

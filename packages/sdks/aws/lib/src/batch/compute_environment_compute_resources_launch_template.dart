@@ -14,7 +14,7 @@ class ComputeEnvironmentComputeResourcesLaunchTemplate {
   /// [launchTemplateId] ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
   /// [launchTemplateName] Name of the launch template.
   /// [version] The version number of the launch template. Default: The default version of the launch template.
-  ComputeEnvironmentComputeResourcesLaunchTemplate({
+  const ComputeEnvironmentComputeResourcesLaunchTemplate({
     this.launchTemplateId,
     this.launchTemplateName,
     this.version,

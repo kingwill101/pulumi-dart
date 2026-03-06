@@ -87,7 +87,7 @@ class LinuxFunctionAppAuthSettingsV2 {
   /// [runtimeVersion] The Runtime Version of the Authentication and Authorisation feature of this App. Defaults to `~1`.
   /// [twitterV2] A `twitter_v2` block as defined below.
   /// [unauthenticatedAction] The action to take for requests made without authentication. Possible values include `RedirectToLoginPage`, `AllowAnonymous`, `Return401`, and `Return403`. Defaults to `RedirectToLoginPage`.
-  LinuxFunctionAppAuthSettingsV2({
+  const LinuxFunctionAppAuthSettingsV2({
     this.activeDirectoryV2,
     this.appleV2,
     this.authEnabled,

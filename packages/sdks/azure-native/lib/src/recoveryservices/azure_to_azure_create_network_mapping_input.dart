@@ -13,7 +13,7 @@ class AzureToAzureCreateNetworkMappingInput {
   /// Creates a new [AzureToAzureCreateNetworkMappingInput].
   /// [instanceType] The instance type.
   /// [primaryNetworkId] The primary azure vnet Id.
-  AzureToAzureCreateNetworkMappingInput({
+  const AzureToAzureCreateNetworkMappingInput({
     required this.instanceType,
     required this.primaryNetworkId,
   });

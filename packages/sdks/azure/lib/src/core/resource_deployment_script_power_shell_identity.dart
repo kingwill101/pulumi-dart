@@ -11,7 +11,7 @@ class ResourceDeploymentScriptPowerShellIdentity {
   /// Creates a new [ResourceDeploymentScriptPowerShellIdentity].
   /// [identityIds] Specifies the list of user-assigned managed identity IDs associated with the resource. Changing this forces a new resource to be created.
   /// [type] Type of the managed identity. The only possible value is `UserAssigned`. Changing this forces a new resource to be created.
-  ResourceDeploymentScriptPowerShellIdentity({
+  const ResourceDeploymentScriptPowerShellIdentity({
     required this.identityIds,
     required this.type,
   });

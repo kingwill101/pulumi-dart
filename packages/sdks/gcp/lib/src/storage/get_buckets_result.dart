@@ -17,7 +17,7 @@ class GetBucketsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [prefix] Optional.
   /// [project] Optional.
-  GetBucketsResult({
+  const GetBucketsResult({
     required this.buckets,
     required this.id,
     this.prefix,

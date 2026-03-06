@@ -14,7 +14,7 @@ class GetSecurityGroupRulesFilter {
   /// Creates a new [GetSecurityGroupRulesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetSecurityGroupRulesFilter({
+  const GetSecurityGroupRulesFilter({
     required this.name,
     required this.values,
   });

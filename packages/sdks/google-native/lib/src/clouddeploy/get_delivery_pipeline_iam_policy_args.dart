@@ -17,7 +17,7 @@ class GetDeliveryPipelineIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDeliveryPipelineIamPolicyArgs({
+  const GetDeliveryPipelineIamPolicyArgs({
     required this.deliveryPipelineId,
     required this.location,
     this.optionsRequestedPolicyVersion,

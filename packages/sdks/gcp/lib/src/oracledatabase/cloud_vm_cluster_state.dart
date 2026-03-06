@@ -84,7 +84,7 @@ class CloudVmClusterState {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] Various properties and settings associated with Exadata VM cluster.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  CloudVmClusterState({
+  const CloudVmClusterState({
     this.backupOdbSubnet,
     this.backupSubnetCidr,
     this.cidr,

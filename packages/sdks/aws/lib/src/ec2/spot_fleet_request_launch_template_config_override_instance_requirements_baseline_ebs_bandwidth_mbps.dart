@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsBaselineEb
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps].
   /// [max] Maximum.
   /// [min] Minimum.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps({
     this.max,
     this.min,
   });

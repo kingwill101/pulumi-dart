@@ -13,7 +13,7 @@ class FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta {
   /// Creates a new [FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta].
   /// [code] The high-level, machine-readable status of this Feature.
   /// [errors] Errors after reconciling the monitoring and logging feature if the code is not OK.
-  FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta({
+  const FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta({
     required this.code,
     required this.errors,
   });

@@ -11,7 +11,7 @@ class ProviderFeaturesNetapp {
   /// Creates a new [ProviderFeaturesNetapp].
   /// [deleteBackupsOnBackupVaultDestroy] When enabled, backups will be deleted when the `azure.netapp.BackupVault` resource is destroyed
   /// [preventVolumeDestruction] When enabled, the volume will not be destroyed, safeguarding from severe data loss
-  ProviderFeaturesNetapp({
+  const ProviderFeaturesNetapp({
     this.deleteBackupsOnBackupVaultDestroy,
     this.preventVolumeDestruction,
   });

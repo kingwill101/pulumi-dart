@@ -39,7 +39,7 @@ class DatasetMysqlState {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset MySQL.
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [tableName] The table name of the Data Factory Dataset MySQL.
-  DatasetMysqlState({
+  const DatasetMysqlState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

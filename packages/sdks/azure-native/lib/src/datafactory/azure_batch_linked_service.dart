@@ -51,7 +51,7 @@ class AzureBatchLinkedService {
   /// [poolName] The Azure Batch pool name. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureBatchLinkedService({
+  const AzureBatchLinkedService({
     this.accessKey,
     required this.accountName,
     this.annotations,

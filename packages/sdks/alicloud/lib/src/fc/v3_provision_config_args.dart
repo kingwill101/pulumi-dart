@@ -32,7 +32,7 @@ class V3ProvisionConfigArgs {
   /// [scheduledActions] Timing policy configuration See `scheduled_actions` below.
   /// [target] Number of reserved target resources. The value range is [0,10000].
   /// [targetTrackingPolicies] Metric tracking scaling policy configuration See `target_tracking_policies` below.
-  V3ProvisionConfigArgs({
+  const V3ProvisionConfigArgs({
     this.alwaysAllocateCpu,
     this.alwaysAllocateGpu,
     required this.functionName,

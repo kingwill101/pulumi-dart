@@ -30,7 +30,7 @@ class NspProfileArgs {
   /// [profileName] The name of the NSP profile.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NspProfileArgs({
+  const NspProfileArgs({
     this.id,
     this.location,
     this.name,

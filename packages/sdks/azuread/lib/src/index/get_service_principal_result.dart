@@ -94,7 +94,7 @@ class GetServicePrincipalResult {
   /// [signInAudience] The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
   /// [tags] A list of tags applied to the service principal.
   /// [type] Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
-  GetServicePrincipalResult({
+  const GetServicePrincipalResult({
     required this.accountEnabled,
     required this.alternativeNames,
     required this.appRoleAssignmentRequired,

@@ -17,7 +17,7 @@ class GetEventSubscriptionArgs {
   /// [eventSubscriptionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEventSubscriptionArgs({
+  const GetEventSubscriptionArgs({
     required this.connectionId,
     required this.eventSubscriptionId,
     required this.location,

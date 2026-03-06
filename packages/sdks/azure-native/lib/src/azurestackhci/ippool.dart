@@ -18,7 +18,7 @@ class IPPool {
   /// [ipPoolType] Type of the IP Pool [vm, vippool]
   /// [name] Name of the IP-Pool
   /// [start] Start of the IP address pool
-  IPPool({
+  const IPPool({
     this.end,
     this.ipPoolType,
     this.name,

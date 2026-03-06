@@ -12,7 +12,7 @@ class GetKubernetesVersionsArgs {
 
   /// Creates a new [GetKubernetesVersionsArgs].
   /// [customLocationResourceUri] The fully qualified Azure Resource Manager identifier of the custom location resource.
-  GetKubernetesVersionsArgs({
+  const GetKubernetesVersionsArgs({
     required this.customLocationResourceUri,
   });
 

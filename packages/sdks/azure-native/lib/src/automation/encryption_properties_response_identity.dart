@@ -9,7 +9,7 @@ class EncryptionPropertiesResponseIdentity {
 
   /// Creates a new [EncryptionPropertiesResponseIdentity].
   /// [userAssignedIdentity] The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  EncryptionPropertiesResponseIdentity({
+  const EncryptionPropertiesResponseIdentity({
     this.userAssignedIdentity,
   });
 

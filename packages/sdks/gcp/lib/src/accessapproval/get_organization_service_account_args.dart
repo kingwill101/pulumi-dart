@@ -12,7 +12,7 @@ class GetOrganizationServiceAccountArgs {
 
   /// Creates a new [GetOrganizationServiceAccountArgs].
   /// [organizationId] The organization ID the service account was created for.
-  GetOrganizationServiceAccountArgs({
+  const GetOrganizationServiceAccountArgs({
     required this.organizationId,
   });
 

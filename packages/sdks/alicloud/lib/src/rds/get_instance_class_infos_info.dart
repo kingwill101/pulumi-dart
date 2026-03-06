@@ -32,7 +32,7 @@ class GetInstanceClassInfosInfo {
   /// [maxIops] The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
   /// [memoryClass] The memory capacity that is supported by the instance type. Unit: GB.
   /// [referencePrice] The fee that you must pay for the instance type. Unit: cent (USD).
-  GetInstanceClassInfosInfo({
+  const GetInstanceClassInfosInfo({
     this.classCode,
     this.classGroup,
     this.cpu,

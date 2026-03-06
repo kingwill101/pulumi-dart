@@ -36,7 +36,7 @@ class ScaleSetPacketCaptureState {
   /// [networkWatcherId] The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   /// [storageLocation] A `storage_location` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineScaleSetId] The resource ID of the Virtual Machine Scale Set to capture packets from. Changing this forces a new resource to be created.
-  ScaleSetPacketCaptureState({
+  const ScaleSetPacketCaptureState({
     this.filters,
     this.machineScope,
     this.maximumBytesPerPacket,

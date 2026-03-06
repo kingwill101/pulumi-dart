@@ -29,7 +29,7 @@ class ApplicationLivenessV2 {
   /// [periodSeconds] The interval at which the health check is performed.
   /// [tcpSocket] The liveness check settings of the container. See `tcp_socket` below.
   /// [timeoutSeconds] The timeout period of the health check.
-  ApplicationLivenessV2({
+  const ApplicationLivenessV2({
     this.exec,
     this.failureThreshold,
     this.httpGet,

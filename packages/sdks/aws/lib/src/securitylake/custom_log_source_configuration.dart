@@ -13,7 +13,7 @@ class CustomLogSourceConfiguration {
   /// Creates a new [CustomLogSourceConfiguration].
   /// [crawlerConfiguration] The configuration for the Glue Crawler for the third-party custom source.
   /// [providerIdentity] The identity of the log provider for the third-party custom source.
-  CustomLogSourceConfiguration({
+  const CustomLogSourceConfiguration({
     required this.crawlerConfiguration,
     required this.providerIdentity,
   });

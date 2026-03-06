@@ -32,7 +32,7 @@ class DatabaseInstanceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region where the Firebase Realtime database resides.
   /// [type] The database type.
-  DatabaseInstanceArgs({
+  const DatabaseInstanceArgs({
     this.desiredState,
     required this.instanceId,
     this.project,

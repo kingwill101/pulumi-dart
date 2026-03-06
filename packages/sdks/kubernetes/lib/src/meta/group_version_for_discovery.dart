@@ -12,7 +12,7 @@ class GroupVersionForDiscovery {
   /// Creates a new [GroupVersionForDiscovery].
   /// [groupVersion] groupVersion specifies the API group and version in the form "group/version"
   /// [version] version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion.
-  GroupVersionForDiscovery({
+  const GroupVersionForDiscovery({
     required this.groupVersion,
     required this.version,
   });

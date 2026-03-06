@@ -34,7 +34,7 @@ class Ec2FlowLogPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2FlowLogPropertiesResponse({
+  const Ec2FlowLogPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

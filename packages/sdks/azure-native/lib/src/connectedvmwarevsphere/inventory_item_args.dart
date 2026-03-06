@@ -33,7 +33,7 @@ class InventoryItemArgs {
   /// [moRefId] Gets or sets the MoRef (Managed Object Reference) ID for the inventory item.
   /// [resourceGroupName] The Resource Group Name.
   /// [vcenterName] Name of the vCenter.
-  InventoryItemArgs({
+  const InventoryItemArgs({
     this.inventoryItemName,
     required this.inventoryType,
     this.kind,

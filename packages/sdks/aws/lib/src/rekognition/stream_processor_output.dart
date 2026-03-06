@@ -13,7 +13,7 @@ class StreamProcessorOutput {
   /// Creates a new [StreamProcessorOutput].
   /// [kinesisDataStream] The Amazon Kinesis Data Streams stream to which the Amazon Rekognition stream processor streams the analysis results. See `kinesis_data_stream`.
   /// [s3Destination] The Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation. See `s3_destination`.
-  StreamProcessorOutput({
+  const StreamProcessorOutput({
     this.kinesisDataStream,
     this.s3Destination,
   });

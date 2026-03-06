@@ -12,7 +12,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOption {
   /// [flowTimeouts] Required.
   /// [ruleOrder] Required.
   /// [streamExceptionPolicy] Required.
-  GetFirewallPolicyFirewallPolicyStatefulEngineOption({
+  const GetFirewallPolicyFirewallPolicyStatefulEngineOption({
     required this.flowTimeouts,
     required this.ruleOrder,
     required this.streamExceptionPolicy,

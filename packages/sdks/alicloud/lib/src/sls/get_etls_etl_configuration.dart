@@ -30,7 +30,7 @@ class GetEtlsEtlConfiguration {
   /// [script] Processing script.
   /// [sinks] Processing result output target list.
   /// [toTime] Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
-  GetEtlsEtlConfiguration({
+  const GetEtlsEtlConfiguration({
     required this.fromTime,
     required this.lang,
     required this.logstore,

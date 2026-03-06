@@ -10,7 +10,7 @@ class ServiceTemplateContainerSourceCode {
 
   /// Creates a new [ServiceTemplateContainerSourceCode].
   /// [cloudStorageSource] Cloud Storage source.
-  ServiceTemplateContainerSourceCode({
+  const ServiceTemplateContainerSourceCode({
     this.cloudStorageSource,
   });
 

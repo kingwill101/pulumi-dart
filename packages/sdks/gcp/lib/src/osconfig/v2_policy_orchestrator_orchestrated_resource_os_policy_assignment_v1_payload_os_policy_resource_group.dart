@@ -25,7 +25,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup].
   /// [inventoryFilters] List of inventory filters for the resource group.
   /// [resources] Required. List of resources configured for this resource group.
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup({
     this.inventoryFilters,
     required this.resources,
   });

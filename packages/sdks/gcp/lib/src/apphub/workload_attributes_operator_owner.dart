@@ -11,7 +11,7 @@ class WorkloadAttributesOperatorOwner {
   /// Creates a new [WorkloadAttributesOperatorOwner].
   /// [displayName] Contact's name.
   /// [email] Email address of the contacts.
-  WorkloadAttributesOperatorOwner({
+  const WorkloadAttributesOperatorOwner({
     this.displayName,
     required this.email,
   });

@@ -21,7 +21,7 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
   /// Creates a new [OrganizationSecurityPolicyRuleMatchConfigLayer4Config].
   /// [ipProtocol] The IP protocol to which this rule applies. The protocol
   /// [ports] An optional list of ports to which this rule applies. This field
-  OrganizationSecurityPolicyRuleMatchConfigLayer4Config({
+  const OrganizationSecurityPolicyRuleMatchConfigLayer4Config({
     required this.ipProtocol,
     this.ports,
   });

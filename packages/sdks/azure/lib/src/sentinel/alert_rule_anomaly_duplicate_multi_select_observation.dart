@@ -17,7 +17,7 @@ class AlertRuleAnomalyDuplicateMultiSelectObservation {
   /// [name] The name of the multi select observation.
   /// [supportedValues] A list of supported values of the multi select observation.
   /// [values] A list of values of the multi select observation.
-  AlertRuleAnomalyDuplicateMultiSelectObservation({
+  const AlertRuleAnomalyDuplicateMultiSelectObservation({
     this.description,
     required this.name,
     this.supportedValues,

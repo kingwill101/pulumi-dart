@@ -9,7 +9,7 @@ class AdministratorPropertiesResponse {
 
   /// Creates a new [AdministratorPropertiesResponse].
   /// [userName] The administrator user name.
-  AdministratorPropertiesResponse({
+  const AdministratorPropertiesResponse({
     this.userName,
   });
 

@@ -15,7 +15,7 @@ class ResourceGroupState {
   /// [arn] The resource group ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags that are used to select the EC2 instances to be included in an Amazon Inspector assessment target.
-  ResourceGroupState({
+  const ResourceGroupState({
     this.arn,
     this.region,
     this.tags,

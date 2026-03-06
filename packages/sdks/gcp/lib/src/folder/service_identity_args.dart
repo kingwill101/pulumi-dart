@@ -17,7 +17,7 @@ class ServiceIdentityArgs {
   /// Creates a new [ServiceIdentityArgs].
   /// [folder] The folder in which the resource belongs.
   /// [service] The service to generate identity for.
-  ServiceIdentityArgs({
+  const ServiceIdentityArgs({
     required this.folder,
     required this.service,
   });

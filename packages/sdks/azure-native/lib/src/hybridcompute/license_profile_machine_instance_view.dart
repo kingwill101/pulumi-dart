@@ -23,7 +23,7 @@ class LicenseProfileMachineInstanceView {
   /// [productType] Indicates the product type of the license.
   /// [softwareAssuranceCustomer] Specifies if this machine is licensed as part of a Software Assurance agreement.
   /// [subscriptionStatus] Indicates the subscription status of the product.
-  LicenseProfileMachineInstanceView({
+  const LicenseProfileMachineInstanceView({
     this.esuProfile,
     this.productFeatures,
     this.productType,

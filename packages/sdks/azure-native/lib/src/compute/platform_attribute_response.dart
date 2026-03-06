@@ -12,7 +12,7 @@ class PlatformAttributeResponse {
   /// Creates a new [PlatformAttributeResponse].
   /// [name] This property specifies the name of the platformAttribute. It is read-only.
   /// [value] This property specifies the value of the corresponding name property. It is read-only.
-  PlatformAttributeResponse({
+  const PlatformAttributeResponse({
     required this.name,
     required this.value,
   });

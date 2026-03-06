@@ -39,7 +39,7 @@ class GetConnectorVpcaccessV1beta1Result {
   /// [network] Name of a VPC network.
   /// [state] State of the VPC access connector.
   /// [subnet] The subnet in which to house the VPC Access Connector.
-  GetConnectorVpcaccessV1beta1Result({
+  const GetConnectorVpcaccessV1beta1Result({
     required this.connectedProjects,
     required this.ipCidrRange,
     required this.machineType,

@@ -10,7 +10,7 @@ class EventState {
 
   /// Creates a new [EventState].
   /// [events] An event to insert into Insights. Multiple event blocks can be defined. See Events below for details.
-  EventState({
+  const EventState({
     this.events,
   });
 

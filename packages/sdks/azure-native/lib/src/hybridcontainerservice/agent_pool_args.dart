@@ -68,7 +68,7 @@ class AgentPoolArgs {
   /// [status] HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
   /// [tags] Resource tags
   /// [vmSize] VmSize - The size of the agent pool VMs.
-  AgentPoolArgs({
+  const AgentPoolArgs({
     this.agentPoolName,
     this.availabilityZones,
     this.cloudProviderProfile,

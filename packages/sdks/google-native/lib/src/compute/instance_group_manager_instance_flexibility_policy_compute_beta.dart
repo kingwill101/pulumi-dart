@@ -8,7 +8,7 @@ class InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta {
 
   /// Creates a new [InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta].
   /// [instanceSelectionLists] Named instance selections configuring properties that the group will use when creating new VMs.
-  InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta({
+  const InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta({
     this.instanceSelectionLists,
   });
 

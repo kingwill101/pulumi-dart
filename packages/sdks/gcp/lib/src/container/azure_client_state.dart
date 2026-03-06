@@ -34,7 +34,7 @@ class AzureClientState {
   /// [project] The project for the resource
   /// [tenantId] The Azure Active Directory Tenant ID.
   /// [uid] Output only. A globally unique identifier for the client.
-  AzureClientState({
+  const AzureClientState({
     this.applicationId,
     this.certificate,
     this.createTime,

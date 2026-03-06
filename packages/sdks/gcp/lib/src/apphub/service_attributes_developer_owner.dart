@@ -11,7 +11,7 @@ class ServiceAttributesDeveloperOwner {
   /// Creates a new [ServiceAttributesDeveloperOwner].
   /// [displayName] Contact's name.
   /// [email] Required. Email address of the contacts.
-  ServiceAttributesDeveloperOwner({
+  const ServiceAttributesDeveloperOwner({
     this.displayName,
     required this.email,
   });

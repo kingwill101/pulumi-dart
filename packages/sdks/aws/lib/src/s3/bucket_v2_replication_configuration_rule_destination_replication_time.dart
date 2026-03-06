@@ -11,7 +11,7 @@ class BucketV2ReplicationConfigurationRuleDestinationReplicationTime {
   /// Creates a new [BucketV2ReplicationConfigurationRuleDestinationReplicationTime].
   /// [minutes] Threshold within which objects are to be replicated. The only valid value is `15`.
   /// [status] Status of RTC. Either `Enabled` or `Disabled`.
-  BucketV2ReplicationConfigurationRuleDestinationReplicationTime({
+  const BucketV2ReplicationConfigurationRuleDestinationReplicationTime({
     this.minutes,
     this.status,
   });

@@ -9,7 +9,7 @@ class OIDC {
 
   /// Creates a new [OIDC].
   /// [issuer] &lt;p&gt;The issuer URL for the OIDC identity provider.&lt;/p&gt;
-  OIDC({
+  const OIDC({
     this.issuer,
   });
 

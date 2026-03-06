@@ -27,7 +27,7 @@ class GetAmiIdsResult {
   /// [owners] Required.
   /// [region] Required.
   /// [sortAscending] Optional.
-  GetAmiIdsResult({
+  const GetAmiIdsResult({
     this.executableUsers,
     this.filters,
     required this.id,

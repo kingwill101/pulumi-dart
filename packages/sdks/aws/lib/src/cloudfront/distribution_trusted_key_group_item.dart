@@ -11,7 +11,7 @@ class DistributionTrustedKeyGroupItem {
   /// Creates a new [DistributionTrustedKeyGroupItem].
   /// [keyGroupId] ID of the key group that contains the public keys.
   /// [keyPairIds] Set of active CloudFront key pairs associated with the signer account
-  DistributionTrustedKeyGroupItem({
+  const DistributionTrustedKeyGroupItem({
     this.keyGroupId,
     this.keyPairIds,
   });

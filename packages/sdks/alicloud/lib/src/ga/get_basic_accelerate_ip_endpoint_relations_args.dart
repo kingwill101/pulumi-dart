@@ -27,7 +27,7 @@ class GetBasicAccelerateIpEndpointRelationsArgs {
   /// [ids] A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
-  GetBasicAccelerateIpEndpointRelationsArgs({
+  const GetBasicAccelerateIpEndpointRelationsArgs({
     this.accelerateIpId,
     required this.acceleratorId,
     this.endpointId,

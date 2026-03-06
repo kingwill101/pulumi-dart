@@ -8,7 +8,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField {
 
   /// Creates a new [PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField].
   /// [name] Name describing the field.
-  PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField({
+  const PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField({
     required this.name,
   });
 

@@ -20,7 +20,7 @@ class DataSetPhysicalTableMap {
   /// [physicalTableMapId] Key of the physical table map.
   /// [relationalTable] A physical table type for relational data sources. See relational_table.
   /// [s3Source] A physical table type for as S3 data source. See s3_source.
-  DataSetPhysicalTableMap({
+  const DataSetPhysicalTableMap({
     this.customSql,
     required this.physicalTableMapId,
     this.relationalTable,

@@ -14,7 +14,7 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchHeaderMatchPattern {
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedHeaders] An array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
   /// [includedHeaders] An array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
-  RuleGroupRuleStatementByteMatchStatementFieldToMatchHeaderMatchPattern({
+  const RuleGroupRuleStatementByteMatchStatementFieldToMatchHeaderMatchPattern({
     this.all,
     this.excludedHeaders,
     this.includedHeaders,

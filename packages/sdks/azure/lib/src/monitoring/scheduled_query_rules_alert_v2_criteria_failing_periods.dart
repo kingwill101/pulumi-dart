@@ -15,7 +15,7 @@ class ScheduledQueryRulesAlertV2CriteriaFailingPeriods {
   /// Creates a new [ScheduledQueryRulesAlertV2CriteriaFailingPeriods].
   /// [minimumFailingPeriodsToTriggerAlert] Specifies the number of violations to trigger an alert. Should be smaller or equal to `number_of_evaluation_periods`. Possible value is integer between 1 and 6.
   /// [numberOfEvaluationPeriods] Specifies the number of aggregated look-back points. The look-back time window is calculated based on the aggregation granularity `window_duration` and the selected number of aggregated points. Possible value is integer between 1 and 6.
-  ScheduledQueryRulesAlertV2CriteriaFailingPeriods({
+  const ScheduledQueryRulesAlertV2CriteriaFailingPeriods({
     required this.minimumFailingPeriodsToTriggerAlert,
     required this.numberOfEvaluationPeriods,
   });

@@ -9,7 +9,7 @@ class Mtls {
 
   /// Creates a new [Mtls].
   /// [enabled] Boolean indicating whether the mutual TLS authentication is enabled
-  Mtls({
+  const Mtls({
     this.enabled,
   });
 

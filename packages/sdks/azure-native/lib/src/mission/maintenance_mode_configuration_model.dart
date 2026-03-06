@@ -16,7 +16,7 @@ class MaintenanceModeConfigurationModel {
   /// [justification] Justification for entering or exiting Maintenance Mode
   /// [mode] Current mode of Maintenance Mode Configuration
   /// [principals] The user, group or service principal object affected by Maintenance Mode
-  MaintenanceModeConfigurationModel({
+  const MaintenanceModeConfigurationModel({
     this.justification,
     required this.mode,
     this.principals,

@@ -7,7 +7,7 @@ class FeaturesTemplateDeployment {
 
   /// Creates a new [FeaturesTemplateDeployment].
   /// [deleteNestedItemsDuringDeletion] Required.
-  FeaturesTemplateDeployment({
+  const FeaturesTemplateDeployment({
     required this.deleteNestedItemsDuringDeletion,
   });
 

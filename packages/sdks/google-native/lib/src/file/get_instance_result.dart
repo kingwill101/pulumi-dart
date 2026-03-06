@@ -47,7 +47,7 @@ class GetInstanceResult {
   /// [statusMessage] Additional information about the instance state, if available.
   /// [suspensionReasons] Field indicates all the reasons the instance is in "SUSPENDED" state.
   /// [tier] The service tier of the instance.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.createTime,
     required this.description,
     required this.etag,

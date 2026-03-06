@@ -10,7 +10,7 @@ class AccountKeyDatastoreCredentialsResponse {
 
   /// Creates a new [AccountKeyDatastoreCredentialsResponse].
   /// [credentialsType] Enum to determine the datastore credentials type.
-  AccountKeyDatastoreCredentialsResponse({
+  const AccountKeyDatastoreCredentialsResponse({
     required this.credentialsType,
   });
 

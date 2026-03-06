@@ -50,7 +50,7 @@ class GetConnectionProfileResult {
   /// [privateConnectivity] Private connectivity.
   /// [staticServiceIpConnectivity] Static Service IP connectivity.
   /// [updateTime] The update time of the resource.
-  GetConnectionProfileResult({
+  const GetConnectionProfileResult({
     required this.bigqueryProfile,
     required this.createTime,
     required this.displayName,

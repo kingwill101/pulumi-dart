@@ -9,7 +9,7 @@ class SamlSsoInfoResponseCloudidentityV1beta1 {
 
   /// Creates a new [SamlSsoInfoResponseCloudidentityV1beta1].
   /// [inboundSamlSsoProfile] Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
-  SamlSsoInfoResponseCloudidentityV1beta1({
+  const SamlSsoInfoResponseCloudidentityV1beta1({
     required this.inboundSamlSsoProfile,
   });
 

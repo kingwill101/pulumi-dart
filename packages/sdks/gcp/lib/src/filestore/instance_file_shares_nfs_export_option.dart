@@ -36,7 +36,7 @@ class InstanceFileSharesNfsExportOption {
   /// [ipRanges] List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
   /// [network] The source VPC network for `ip_ranges`.
   /// [squashMode] Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
-  InstanceFileSharesNfsExportOption({
+  const InstanceFileSharesNfsExportOption({
     this.accessMode,
     this.anonGid,
     this.anonUid,

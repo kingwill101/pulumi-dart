@@ -41,7 +41,7 @@ class ConsentStoreState {
   /// [labels] User-supplied key-value pairs used to organize Consent stores.
   /// [name] The name of this ConsentStore, for example:
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  ConsentStoreState({
+  const ConsentStoreState({
     this.dataset,
     this.defaultConsentTtl,
     this.effectiveLabels,

@@ -37,7 +37,7 @@ class ApplicationPermissionScopeArgs {
   /// [userConsentDescription] Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
   /// [userConsentDisplayName] Display name for the delegated permission that appears in the end user consent experience.
   /// [value] The value that is used for the `scp` claim in OAuth access tokens.
-  ApplicationPermissionScopeArgs({
+  const ApplicationPermissionScopeArgs({
     required this.adminConsentDescription,
     required this.adminConsentDisplayName,
     required this.applicationId,

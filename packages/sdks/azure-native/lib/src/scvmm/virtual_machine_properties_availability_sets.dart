@@ -12,7 +12,7 @@ class VirtualMachinePropertiesAvailabilitySets {
   /// Creates a new [VirtualMachinePropertiesAvailabilitySets].
   /// [id] Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
   /// [name] Gets or sets the name of the availability set.
-  VirtualMachinePropertiesAvailabilitySets({
+  const VirtualMachinePropertiesAvailabilitySets({
     this.id,
     this.name,
   });

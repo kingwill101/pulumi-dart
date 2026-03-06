@@ -13,7 +13,7 @@ class BinaryAuthorizationConfigResponse {
   /// Creates a new [BinaryAuthorizationConfigResponse].
   /// [evaluationMode] Optional. Mode of operation for binauthz policy evaluation.
   /// [policyBindings] Optional. Binauthz policies that apply to this cluster.
-  BinaryAuthorizationConfigResponse({
+  const BinaryAuthorizationConfigResponse({
     required this.evaluationMode,
     required this.policyBindings,
   });

@@ -37,7 +37,7 @@ class AssessmentContaineranalysisV1alpha1 {
   /// [shortDescription] A one sentence description of this Vex.
   /// [state] Provides the state of this Vulnerability assessment.
   /// [vulnerabilityId] The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
-  AssessmentContaineranalysisV1alpha1({
+  const AssessmentContaineranalysisV1alpha1({
     this.cve,
     this.impacts,
     this.justification,

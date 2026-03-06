@@ -12,7 +12,7 @@ class CertManagerPrivateKey {
   /// Creates a new [CertManagerPrivateKey].
   /// [algorithm] algorithm for private key.
   /// [rotationPolicy] cert-manager private key rotationPolicy.
-  CertManagerPrivateKey({
+  const CertManagerPrivateKey({
     required this.algorithm,
     required this.rotationPolicy,
   });

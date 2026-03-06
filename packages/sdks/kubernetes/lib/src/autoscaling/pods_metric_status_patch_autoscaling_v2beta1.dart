@@ -16,7 +16,7 @@ class PodsMetricStatusPatchAutoscalingV2beta1 {
   /// [currentAverageValue] currentAverageValue is the current value of the average of the metric across all relevant pods (as a quantity)
   /// [metricName] metricName is the name of the metric in question
   /// [selector] selector is the string-encoded form of a standard kubernetes label selector for the given metric When set in the PodsMetricSource, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
-  PodsMetricStatusPatchAutoscalingV2beta1({
+  const PodsMetricStatusPatchAutoscalingV2beta1({
     this.currentAverageValue,
     this.metricName,
     this.selector,

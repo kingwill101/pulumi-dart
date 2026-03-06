@@ -12,7 +12,7 @@ class PatientIdHealthcareV1beta1 {
   /// Creates a new [PatientIdHealthcareV1beta1].
   /// [type] ID type. For example, MRN or NHS.
   /// [value] The patient's unique identifier.
-  PatientIdHealthcareV1beta1({
+  const PatientIdHealthcareV1beta1({
     this.type,
     this.value,
   });

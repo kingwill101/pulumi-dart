@@ -10,7 +10,7 @@ class SpotInstanceRequestEnclaveOptions {
 
   /// Creates a new [SpotInstanceRequestEnclaveOptions].
   /// [enabled] Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
-  SpotInstanceRequestEnclaveOptions({
+  const SpotInstanceRequestEnclaveOptions({
     this.enabled,
   });
 

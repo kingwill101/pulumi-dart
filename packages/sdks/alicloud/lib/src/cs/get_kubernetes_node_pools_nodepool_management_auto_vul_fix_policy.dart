@@ -11,7 +11,7 @@ class GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy {
   /// Creates a new [GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy].
   /// [restartNode] Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
   /// [vulLevel] The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-  GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy({
+  const GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy({
     required this.restartNode,
     required this.vulLevel,
   });

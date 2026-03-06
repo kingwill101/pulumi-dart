@@ -13,7 +13,7 @@ class MapperPolicy {
   /// Creates a new [MapperPolicy].
   /// [mode] Mode of running the CDC: batch vs continuous.
   /// [recurrence] Defines the frequency and interval for running the CDC for batch mode.
-  MapperPolicy({
+  const MapperPolicy({
     this.mode,
     this.recurrence,
   });

@@ -22,7 +22,7 @@ class UserWorkloadsSecretState {
   /// [name] Name of the Kubernetes Secret.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region for the environment.
-  UserWorkloadsSecretState({
+  const UserWorkloadsSecretState({
     this.data,
     this.environment,
     this.name,

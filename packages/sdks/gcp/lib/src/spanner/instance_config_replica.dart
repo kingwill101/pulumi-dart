@@ -18,7 +18,7 @@ class InstanceConfigReplica {
   /// [defaultLeaderLocation] If true, this location is designated as the default leader location where
   /// [location] The location of the serving resources, e.g. "us-central1".
   /// [type] Indicates the type of replica.  See the [replica types
-  InstanceConfigReplica({
+  const InstanceConfigReplica({
     this.defaultLeaderLocation,
     this.location,
     this.type,

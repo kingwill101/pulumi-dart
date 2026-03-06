@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters].
   /// [recordRowPath] The path to the top-level parent that contains the records.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters({
     required this.recordRowPath,
   });
 

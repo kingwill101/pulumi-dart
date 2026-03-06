@@ -25,7 +25,7 @@ class ManagedHardwareSecurityModuleRoleDefinitionArgs {
   /// [name] The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
   /// [permissions] One or more `permission` blocks as defined below.
   /// [roleName] Specify a display name for this Key Vault Managed Hardware Security Module Role Definition.
-  ManagedHardwareSecurityModuleRoleDefinitionArgs({
+  const ManagedHardwareSecurityModuleRoleDefinitionArgs({
     this.description,
     required this.managedHsmId,
     this.name,

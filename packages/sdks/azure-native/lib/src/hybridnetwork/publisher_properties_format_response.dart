@@ -12,7 +12,7 @@ class PublisherPropertiesFormatResponse {
   /// Creates a new [PublisherPropertiesFormatResponse].
   /// [provisioningState] The provisioning state of the publisher resource.
   /// [scope] The publisher scope.
-  PublisherPropertiesFormatResponse({
+  const PublisherPropertiesFormatResponse({
     required this.provisioningState,
     this.scope,
   });

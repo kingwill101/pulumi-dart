@@ -15,7 +15,7 @@ class GetBackupRunSqladminV1beta4Args {
   /// [id] Required.
   /// [instance] Required.
   /// [project] Optional.
-  GetBackupRunSqladminV1beta4Args({
+  const GetBackupRunSqladminV1beta4Args({
     required this.id,
     required this.instance,
     this.project,

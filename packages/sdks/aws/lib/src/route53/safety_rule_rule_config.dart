@@ -14,7 +14,7 @@ class SafetyRuleRuleConfig {
   /// [inverted] Logical negation of the rule.
   /// [threshold] Number of controls that must be set when you specify an `ATLEAST` type rule.
   /// [type] Rule type. Valid values are `ATLEAST`, `AND`, and `OR`.
-  SafetyRuleRuleConfig({
+  const SafetyRuleRuleConfig({
     required this.inverted,
     required this.threshold,
     required this.type,

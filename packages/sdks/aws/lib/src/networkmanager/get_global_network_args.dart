@@ -15,7 +15,7 @@ class GetGlobalNetworkArgs {
   /// Creates a new [GetGlobalNetworkArgs].
   /// [globalNetworkId] ID of the specific global network to retrieve.
   /// [tags] Map of resource tags.
-  GetGlobalNetworkArgs({
+  const GetGlobalNetworkArgs({
     required this.globalNetworkId,
     this.tags,
   });

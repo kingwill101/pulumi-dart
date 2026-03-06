@@ -8,7 +8,7 @@ class AccountAnalyticalStorage {
 
   /// Creates a new [AccountAnalyticalStorage].
   /// [schemaType] The schema type of the Analytical Storage for this Cosmos DB account. Possible values are `FullFidelity` and `WellDefined`.
-  AccountAnalyticalStorage({
+  const AccountAnalyticalStorage({
     required this.schemaType,
   });
 

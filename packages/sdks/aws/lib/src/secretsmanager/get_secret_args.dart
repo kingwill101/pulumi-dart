@@ -21,7 +21,7 @@ class GetSecretArgs {
   /// [name] Name of the secret to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags of the secret.
-  GetSecretArgs({
+  const GetSecretArgs({
     this.arn,
     this.name,
     this.region,

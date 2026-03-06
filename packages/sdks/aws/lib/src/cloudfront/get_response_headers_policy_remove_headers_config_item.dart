@@ -8,7 +8,7 @@ class GetResponseHeadersPolicyRemoveHeadersConfigItem {
 
   /// Creates a new [GetResponseHeadersPolicyRemoveHeadersConfigItem].
   /// [header] The HTTP header name.
-  GetResponseHeadersPolicyRemoveHeadersConfigItem({
+  const GetResponseHeadersPolicyRemoveHeadersConfigItem({
     required this.header,
   });
 

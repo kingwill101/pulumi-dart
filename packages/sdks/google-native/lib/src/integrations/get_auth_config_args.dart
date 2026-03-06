@@ -17,7 +17,7 @@ class GetAuthConfigArgs {
   /// [location] Required.
   /// [productId] Required.
   /// [project] Optional.
-  GetAuthConfigArgs({
+  const GetAuthConfigArgs({
     required this.authConfigId,
     required this.location,
     required this.productId,

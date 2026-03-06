@@ -11,7 +11,7 @@ class ManagedKubernetesAuditLogConfig {
   /// Creates a new [ManagedKubernetesAuditLogConfig].
   /// [enabled] Whether to enable audit logging. Valid values: `true`, `false`.
   /// [slsProjectName] The SLS project to which the Logstore storing the cluster audit logs belongs.
-  ManagedKubernetesAuditLogConfig({
+  const ManagedKubernetesAuditLogConfig({
     this.enabled,
     this.slsProjectName,
   });

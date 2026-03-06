@@ -28,7 +28,7 @@ class GetRoutingIntentResult {
   /// [provisioningState] The provisioning state of the RoutingIntent resource.
   /// [routingPolicies] List of routing policies.
   /// [type] Resource type.
-  GetRoutingIntentResult({
+  const GetRoutingIntentResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

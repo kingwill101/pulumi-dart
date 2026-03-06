@@ -17,7 +17,7 @@ class AccountEncryptionResponse {
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
   /// [keyVaultProperties] Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  AccountEncryptionResponse({
+  const AccountEncryptionResponse({
     this.identity,
     this.keySource,
     this.keyVaultProperties,

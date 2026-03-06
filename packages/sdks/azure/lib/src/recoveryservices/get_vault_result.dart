@@ -26,7 +26,7 @@ class GetVaultResult {
   /// [resourceGroupName] Required.
   /// [sku] The vault's current SKU.
   /// [tags] A mapping of tags assigned to the resource.
-  GetVaultResult({
+  const GetVaultResult({
     required this.id,
     required this.identities,
     required this.location,

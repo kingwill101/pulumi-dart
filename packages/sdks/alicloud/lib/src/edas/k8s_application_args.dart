@@ -104,7 +104,7 @@ class K8sApplicationArgs {
   /// [requestsMCpu] When the application is created, the CPU quota of the application instance, unit: number of millcores, similar to request_cpu
   /// [requestsMem] When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
   /// [webContainer] The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
-  K8sApplicationArgs({
+  const K8sApplicationArgs({
     this.applicationDescriotion,
     required this.applicationName,
     required this.clusterId,

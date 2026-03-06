@@ -31,7 +31,7 @@ class SingleNodeVirtualInstanceSingleServerConfiguration {
   /// [subnetId] The resource ID of the Subnet for the SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
   /// [virtualMachineConfiguration] A `virtual_machine_configuration` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineResourceNames] A `virtual_machine_resource_names` block as defined below. Changing this forces a new resource to be created.
-  SingleNodeVirtualInstanceSingleServerConfiguration({
+  const SingleNodeVirtualInstanceSingleServerConfiguration({
     required this.appResourceGroupName,
     this.databaseType,
     this.diskVolumeConfigurations,

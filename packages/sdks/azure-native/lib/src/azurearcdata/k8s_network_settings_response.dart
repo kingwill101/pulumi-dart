@@ -15,7 +15,7 @@ class K8sNetworkSettingsResponse {
   /// [forceencryption] If 1, then SQL Server forces all connections to be encrypted. By default, this option is 0
   /// [tlsciphers] Specifies which ciphers are allowed by SQL Server for TLS
   /// [tlsprotocols] A comma-separated list of which TLS protocols are allowed by SQL Server
-  K8sNetworkSettingsResponse({
+  const K8sNetworkSettingsResponse({
     this.forceencryption,
     this.tlsciphers,
     this.tlsprotocols,

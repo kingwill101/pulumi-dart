@@ -45,7 +45,7 @@ class RecommendationEngineMediaRecommendationEngineConfig {
   /// [optimizationObjectiveConfig] Name and value of the custom threshold for cvr optimization_objective.
   /// [trainingState] The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
   /// [type] The type of engine. e.g., `recommended-for-you`.
-  RecommendationEngineMediaRecommendationEngineConfig({
+  const RecommendationEngineMediaRecommendationEngineConfig({
     this.engineFeaturesConfig,
     this.optimizationObjective,
     this.optimizationObjectiveConfig,

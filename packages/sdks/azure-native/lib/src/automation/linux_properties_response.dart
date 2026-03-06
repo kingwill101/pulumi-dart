@@ -18,7 +18,7 @@ class LinuxPropertiesResponse {
   /// [includedPackageClassifications] Update classifications included in the software update configuration.
   /// [includedPackageNameMasks] packages included from the software update configuration.
   /// [rebootSetting] Reboot setting for the software update configuration.
-  LinuxPropertiesResponse({
+  const LinuxPropertiesResponse({
     this.excludedPackageNameMasks,
     this.includedPackageClassifications,
     this.includedPackageNameMasks,

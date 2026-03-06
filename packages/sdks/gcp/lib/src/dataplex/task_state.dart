@@ -82,7 +82,7 @@ class TaskState {
   /// [triggerSpec] Configuration for the cluster
   /// [uid] (Output)
   /// [updateTime] (Output)
-  TaskState({
+  const TaskState({
     this.createTime,
     this.description,
     this.displayName,

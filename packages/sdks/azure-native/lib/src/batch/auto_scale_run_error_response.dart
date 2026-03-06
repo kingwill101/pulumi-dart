@@ -15,7 +15,7 @@ class AutoScaleRunErrorResponse {
   /// [code] An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
   /// [details] Additional details about the error.
   /// [message] A message describing the error, intended to be suitable for display in a user interface.
-  AutoScaleRunErrorResponse({
+  const AutoScaleRunErrorResponse({
     required this.code,
     this.details,
     required this.message,

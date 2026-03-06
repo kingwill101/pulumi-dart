@@ -15,7 +15,7 @@ class MetricValueStatusAutoscalingV2beta2 {
   /// [averageUtilization] currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
   /// [averageValue] averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
   /// [value] value is the current value of the metric (as a quantity).
-  MetricValueStatusAutoscalingV2beta2({
+  const MetricValueStatusAutoscalingV2beta2({
     this.averageUtilization,
     this.averageValue,
     this.value,

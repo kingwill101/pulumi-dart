@@ -52,7 +52,7 @@ class ProjectEnvironment {
   /// [privilegedMode] Whether to enable running the Docker daemon inside a Docker container. Defaults to
   /// [registryCredential] Configuration block. Detailed below.
   /// [type] Type of build environment to use for related builds. Valid values: `WINDOWS_CONTAINER` (deprecated), `LINUX_CONTAINER`,
-  ProjectEnvironment({
+  const ProjectEnvironment({
     this.certificate,
     required this.computeType,
     this.dockerServer,

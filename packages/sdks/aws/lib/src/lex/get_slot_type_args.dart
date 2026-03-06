@@ -18,7 +18,7 @@ class GetSlotTypeArgs {
   /// [name] Name of the slot type. The name is case sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the slot type.
-  GetSlotTypeArgs({
+  const GetSlotTypeArgs({
     required this.name,
     this.region,
     this.version,

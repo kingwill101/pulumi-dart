@@ -18,7 +18,7 @@ class GetRegionalSecretsArgs {
   /// [filter] Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all regional secrets are listed from the specified location.
   /// [location] The location of the regional secret.
   /// [project] The ID of the project.
-  GetRegionalSecretsArgs({
+  const GetRegionalSecretsArgs({
     this.filter,
     required this.location,
     this.project,

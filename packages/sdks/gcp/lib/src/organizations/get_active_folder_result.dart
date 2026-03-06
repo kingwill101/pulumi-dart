@@ -17,7 +17,7 @@ class GetActiveFolderResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The resource name of the Folder. This uniquely identifies the folder.
   /// [parent] Required.
-  GetActiveFolderResult({
+  const GetActiveFolderResult({
     this.apiMethod,
     required this.displayName,
     required this.id,

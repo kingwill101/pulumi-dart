@@ -31,7 +31,7 @@ class PrivateCloudNetworkConfig {
   /// [managementIpAddressLayoutVersion] (Output)
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network attached to the private cloud.
   /// [vmwareEngineNetworkCanonical] (Output)
-  PrivateCloudNetworkConfig({
+  const PrivateCloudNetworkConfig({
     this.dnsServerIp,
     required this.managementCidr,
     this.managementIpAddressLayoutVersion,

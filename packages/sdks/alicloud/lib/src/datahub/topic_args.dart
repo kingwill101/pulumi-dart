@@ -37,7 +37,7 @@ class TopicArgs {
   /// [recordSchema] Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
   /// [recordType] The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
   /// [shardCount] The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
-  TopicArgs({
+  const TopicArgs({
     this.comment,
     this.lifeCycle,
     this.name,

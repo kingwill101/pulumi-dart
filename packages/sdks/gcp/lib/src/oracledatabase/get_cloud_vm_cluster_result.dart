@@ -48,7 +48,7 @@ class GetCloudVmClusterResult {
   /// [project] Optional.
   /// [properties] Required.
   /// [pulumiLabels] Required.
-  GetCloudVmClusterResult({
+  const GetCloudVmClusterResult({
     required this.backupOdbSubnet,
     required this.backupSubnetCidr,
     required this.cidr,

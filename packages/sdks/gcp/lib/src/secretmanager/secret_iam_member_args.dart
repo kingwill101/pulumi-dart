@@ -40,7 +40,7 @@ class SecretIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [secretId] Used to find the parent resource to bind the IAM policy to
-  SecretIamMemberArgs({
+  const SecretIamMemberArgs({
     this.condition,
     required this.member,
     this.project,

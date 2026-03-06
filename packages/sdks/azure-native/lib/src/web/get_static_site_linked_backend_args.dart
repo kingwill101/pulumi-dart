@@ -18,7 +18,7 @@ class GetStaticSiteLinkedBackendArgs {
   /// [linkedBackendName] Name of the linked backend that should be retrieved
   /// [name] Name of the static site
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetStaticSiteLinkedBackendArgs({
+  const GetStaticSiteLinkedBackendArgs({
     required this.linkedBackendName,
     required this.name,
     required this.resourceGroupName,

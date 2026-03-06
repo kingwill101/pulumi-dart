@@ -46,7 +46,7 @@ class GetNetworkArgs {
   /// [tags] The list of network tags to filter.
   /// [tenantId] The owner of the network.
   /// [transparentVlan] The VLAN transparent attribute for the
-  GetNetworkArgs({
+  const GetNetworkArgs({
     this.description,
     this.external,
     this.matchingSubnetCidr,

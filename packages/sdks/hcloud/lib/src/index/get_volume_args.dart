@@ -29,7 +29,7 @@ class GetVolumeArgs {
   /// [serverId] (Optional, int) Server ID the volume is attached to
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [withStatuses] List only volumes with the specified status, could contain `creating` or `available`.
-  GetVolumeArgs({
+  const GetVolumeArgs({
     this.id,
     this.location,
     this.name,

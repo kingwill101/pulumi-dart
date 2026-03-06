@@ -12,7 +12,7 @@ class HttpRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1 {
   /// Creates a new [HttpRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1].
   /// [fixedDelay] Specify a fixed delay before forwarding the request.
   /// [percentage] The percentage of traffic on which delay will be injected. The value must be between [0, 100]
-  HttpRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1({
+  const HttpRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1({
     required this.fixedDelay,
     required this.percentage,
   });

@@ -28,7 +28,7 @@ class GetPolicyResult {
   /// [name] The friendly name of the policy.
   /// [policyId] Required.
   /// [type] The type of policy values can be `AISERVICES_OPT_OUT_POLICY | BACKUP_POLICY | CHATBOT_POLICY | DECLARATIVE_POLICY_EC2 | RESOURCE_CONTROL_POLICY | SERVICE_CONTROL_POLICY | TAG_POLICY`
-  GetPolicyResult({
+  const GetPolicyResult({
     required this.arn,
     required this.awsManaged,
     required this.content,

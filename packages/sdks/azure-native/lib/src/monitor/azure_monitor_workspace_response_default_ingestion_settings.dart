@@ -12,7 +12,7 @@ class AzureMonitorWorkspaceResponseDefaultIngestionSettings {
   /// Creates a new [AzureMonitorWorkspaceResponseDefaultIngestionSettings].
   /// [dataCollectionEndpointResourceId] The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
   /// [dataCollectionRuleResourceId] The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
-  AzureMonitorWorkspaceResponseDefaultIngestionSettings({
+  const AzureMonitorWorkspaceResponseDefaultIngestionSettings({
     required this.dataCollectionEndpointResourceId,
     required this.dataCollectionRuleResourceId,
   });

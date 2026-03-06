@@ -12,7 +12,7 @@ class RuntimeAcceleratorConfigResponse {
   /// Creates a new [RuntimeAcceleratorConfigResponse].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Accelerator model.
-  RuntimeAcceleratorConfigResponse({
+  const RuntimeAcceleratorConfigResponse({
     required this.coreCount,
     required this.type,
   });

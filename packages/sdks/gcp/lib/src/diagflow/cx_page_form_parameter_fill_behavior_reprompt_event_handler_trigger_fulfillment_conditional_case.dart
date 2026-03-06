@@ -9,7 +9,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
 
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase].
   /// [cases] A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-  CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase({
+  const CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase({
     this.cases,
   });
 

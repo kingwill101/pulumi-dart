@@ -15,7 +15,7 @@ class GetDevCenterArgs {
   /// Creates a new [GetDevCenterArgs].
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDevCenterArgs({
+  const GetDevCenterArgs({
     required this.devCenterName,
     required this.resourceGroupName,
   });

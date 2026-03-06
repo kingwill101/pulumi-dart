@@ -34,7 +34,7 @@ class GetGroupMetricRulesResult {
   /// [outputFile] Optional.
   /// [rules] Required.
   /// [status] Optional.
-  GetGroupMetricRulesResult({
+  const GetGroupMetricRulesResult({
     this.dimensions,
     this.enableState,
     this.groupId,

@@ -25,7 +25,7 @@ class NetworkRuleSet {
   /// [ipRules] Sets the IP ACL rules
   /// [resourceAccessRules] Sets the resource access rules
   /// [virtualNetworkRules] Sets the virtual network rules
-  NetworkRuleSet({
+  const NetworkRuleSet({
     this.bypass,
     required this.defaultAction,
     this.ipRules,

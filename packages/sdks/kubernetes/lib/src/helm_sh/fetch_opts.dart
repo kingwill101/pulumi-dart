@@ -51,7 +51,7 @@ class FetchOpts {
   /// [username] Chart repository username.
   /// [verify] Verify the package against its signature.
   /// [version] Specific version of a chart. Without this, the latest version is fetched.
-  FetchOpts({
+  const FetchOpts({
     this.caFile,
     this.certFile,
     this.destination,

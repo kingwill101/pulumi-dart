@@ -11,7 +11,7 @@ class ScaleSetOsProfileWindowsConfigWinrm {
   /// Creates a new [ScaleSetOsProfileWindowsConfigWinrm].
   /// [certificateUrl] Specifies URL of the certificate with which new Virtual Machines is provisioned.
   /// [protocol] Specifies the protocol of listener
-  ScaleSetOsProfileWindowsConfigWinrm({
+  const ScaleSetOsProfileWindowsConfigWinrm({
     this.certificateUrl,
     required this.protocol,
   });

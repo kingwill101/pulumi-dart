@@ -16,7 +16,7 @@ class ScheduledReleaseRecordResponse {
   /// [compilationResult] The name of the created compilation result, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   /// [errorStatus] The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
   /// [releaseTime] The timestamp of this release attempt.
-  ScheduledReleaseRecordResponse({
+  const ScheduledReleaseRecordResponse({
     required this.compilationResult,
     required this.errorStatus,
     required this.releaseTime,

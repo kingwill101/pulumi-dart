@@ -8,7 +8,7 @@ class JobConfigOutput {
 
   /// Creates a new [JobConfigOutput].
   /// [uri] URI for the output file(s). For example, gs://my-bucket/outputs/.
-  JobConfigOutput({
+  const JobConfigOutput({
     this.uri,
   });
 

@@ -21,7 +21,7 @@ class AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig {
   /// [languageCode] (Required) The identifier for this object. Format specified above.
   /// [speakingRate] (Output)
   /// [voice] (Output)
-  AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig({
+  const AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig({
     required this.languageCode,
     this.speakingRate,
     this.voice,

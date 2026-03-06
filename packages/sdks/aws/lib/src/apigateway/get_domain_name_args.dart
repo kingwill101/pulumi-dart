@@ -21,7 +21,7 @@ class GetDomainNameArgs {
   /// [domainNameId] The identifier for the domain name resource. Supported only for private custom domain names.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags for the resource.
-  GetDomainNameArgs({
+  const GetDomainNameArgs({
     required this.domainName,
     this.domainNameId,
     this.region,

@@ -18,7 +18,7 @@ class PacketCaptureStorageLocationResponse {
   /// [localPath] This path is valid if 'Continuous Capture' is provided with 'true' or 'false' and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures.
   /// [storageId] The ID of the storage account to save the packet capture session. Required if no localPath or filePath is provided.
   /// [storagePath] The URI of the storage path to save the packet capture. Must be a well-formed URI describing the location to save the packet capture.
-  PacketCaptureStorageLocationResponse({
+  const PacketCaptureStorageLocationResponse({
     this.filePath,
     this.localPath,
     this.storageId,

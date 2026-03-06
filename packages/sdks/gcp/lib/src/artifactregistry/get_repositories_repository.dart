@@ -23,7 +23,7 @@ class GetRepositoriesRepository {
   /// [id] An identifier for the resource with format `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
   /// [repositoryId] The last part of the repository name, for example: `"repo1"`
   /// [updateTime] The time when the repository was last updated.
-  GetRepositoriesRepository({
+  const GetRepositoriesRepository({
     required this.createTime,
     required this.description,
     required this.format,

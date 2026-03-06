@@ -9,7 +9,7 @@ class EncryptionKey {
 
   /// Creates a new [EncryptionKey].
   /// [gcpKmsEncryptionKey] Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-  EncryptionKey({
+  const EncryptionKey({
     this.gcpKmsEncryptionKey,
   });
 

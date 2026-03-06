@@ -23,7 +23,7 @@ class Ipv4CidrBlockArgs {
   /// [secondaryCidrBlock] Additional network segment information.
   /// [secondaryCidrMask] Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
   /// [vpcId] The ID of the VPC.
-  Ipv4CidrBlockArgs({
+  const Ipv4CidrBlockArgs({
     this.ipv4IpamPoolId,
     this.secondaryCidrBlock,
     this.secondaryCidrMask,

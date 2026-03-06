@@ -15,7 +15,7 @@ class VirtualNetworkGatewaySkuResponse {
   /// [capacity] The capacity.
   /// [name] Gateway SKU name.
   /// [tier] Gateway SKU tier.
-  VirtualNetworkGatewaySkuResponse({
+  const VirtualNetworkGatewaySkuResponse({
     required this.capacity,
     this.name,
     this.tier,

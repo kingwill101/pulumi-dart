@@ -24,7 +24,7 @@ class PublicCertificateArgs {
   /// [certificateLocation] The location of the certificate. Possible values are `CurrentUserMy`, `LocalMachineMy` and `Unknown`. Changing this forces a new App Service Public Certificate to be created.
   /// [certificateName] The name of the public certificate. Changing this forces a new App Service Public Certificate to be created.
   /// [resourceGroupName] The name of the Resource Group where the App Service Public Certificate should exist. Changing this forces a new App Service Public Certificate to be created.
-  PublicCertificateArgs({
+  const PublicCertificateArgs({
     required this.appServiceName,
     required this.blob,
     required this.certificateLocation,

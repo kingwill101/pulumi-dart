@@ -21,7 +21,7 @@ class RestorePlanRestoreConfigTransformationRuleFieldAction {
   /// [op] Specifies the operation to perform.
   /// [path] A string containing a JSON-Pointer value that references a
   /// [value] A string that specifies the desired value in string format
-  RestorePlanRestoreConfigTransformationRuleFieldAction({
+  const RestorePlanRestoreConfigTransformationRuleFieldAction({
     this.fromPath,
     required this.op,
     this.path,

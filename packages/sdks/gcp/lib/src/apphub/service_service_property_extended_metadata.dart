@@ -15,7 +15,7 @@ class ServiceServicePropertyExtendedMetadata {
   /// Creates a new [ServiceServicePropertyExtendedMetadata].
   /// [key] (Output)
   /// [values] (Output)
-  ServiceServicePropertyExtendedMetadata({
+  const ServiceServicePropertyExtendedMetadata({
     this.key,
     this.values,
   });

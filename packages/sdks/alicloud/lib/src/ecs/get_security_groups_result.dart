@@ -40,7 +40,7 @@ class GetSecurityGroupsResult {
   /// [tags] A map of tags assigned to the ECS instance.
   /// [totalCount] Required.
   /// [vpcId] The ID of the VPC that owns the security group.
-  GetSecurityGroupsResult({
+  const GetSecurityGroupsResult({
     this.enableDetails,
     required this.groups,
     required this.id,

@@ -9,7 +9,7 @@ class DockerRepositoryConfigResponse {
 
   /// Creates a new [DockerRepositoryConfigResponse].
   /// [immutableTags] The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
-  DockerRepositoryConfigResponse({
+  const DockerRepositoryConfigResponse({
     required this.immutableTags,
   });
 

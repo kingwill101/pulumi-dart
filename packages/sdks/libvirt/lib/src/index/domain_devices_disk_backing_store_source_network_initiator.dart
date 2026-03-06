@@ -9,7 +9,7 @@ class DomainDevicesDiskBackingStoreSourceNetworkInitiator {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  DomainDevicesDiskBackingStoreSourceNetworkInitiator({
+  const DomainDevicesDiskBackingStoreSourceNetworkInitiator({
     this.iqn,
   });
 

@@ -9,7 +9,7 @@ class GetClusterNodePoolDefault {
 
   /// Creates a new [GetClusterNodePoolDefault].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  GetClusterNodePoolDefault({
+  const GetClusterNodePoolDefault({
     required this.nodeConfigDefaults,
   });
 

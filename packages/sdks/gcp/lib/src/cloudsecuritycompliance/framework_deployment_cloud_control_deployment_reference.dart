@@ -10,7 +10,7 @@ class FrameworkDeploymentCloudControlDeploymentReference {
 
   /// Creates a new [FrameworkDeploymentCloudControlDeploymentReference].
   /// [cloudControlDeployment] (Output)
-  FrameworkDeploymentCloudControlDeploymentReference({
+  const FrameworkDeploymentCloudControlDeploymentReference({
     this.cloudControlDeployment,
   });
 

@@ -9,7 +9,7 @@ class UnhealthyReplicaInfoResponse {
 
   /// Creates a new [UnhealthyReplicaInfoResponse].
   /// [availabilityGroupName] The name of the availability group
-  UnhealthyReplicaInfoResponse({
+  const UnhealthyReplicaInfoResponse({
     this.availabilityGroupName,
   });
 

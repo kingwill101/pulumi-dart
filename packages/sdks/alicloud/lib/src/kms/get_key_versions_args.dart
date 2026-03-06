@@ -18,7 +18,7 @@ class GetKeyVersionsArgs {
   /// [ids] A list of KMS KeyVersion IDs.
   /// [keyId] The id of kms key.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetKeyVersionsArgs({
+  const GetKeyVersionsArgs({
     this.ids,
     required this.keyId,
     this.outputFile,

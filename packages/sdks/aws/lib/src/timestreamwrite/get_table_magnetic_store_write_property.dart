@@ -12,7 +12,7 @@ class GetTableMagneticStoreWriteProperty {
   /// Creates a new [GetTableMagneticStoreWriteProperty].
   /// [enableMagneticStoreWrites] Flag that is set based on if magnetic store writes are enabled.
   /// [magneticStoreRejectedDataLocations] Object containing the following attributes to describe error reports for records rejected during magnetic store writes.
-  GetTableMagneticStoreWriteProperty({
+  const GetTableMagneticStoreWriteProperty({
     required this.enableMagneticStoreWrites,
     required this.magneticStoreRejectedDataLocations,
   });

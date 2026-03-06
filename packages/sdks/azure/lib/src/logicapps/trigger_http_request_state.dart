@@ -28,7 +28,7 @@ class TriggerHttpRequestState {
   /// [name] Specifies the name of the HTTP Request Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   /// [relativePath] Specifies the Relative Path used for this Request.
   /// [schema] A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
-  TriggerHttpRequestState({
+  const TriggerHttpRequestState({
     this.callbackUrl,
     this.logicAppId,
     this.method,

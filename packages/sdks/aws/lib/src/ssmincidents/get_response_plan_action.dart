@@ -9,7 +9,7 @@ class GetResponsePlanAction {
 
   /// Creates a new [GetResponsePlanAction].
   /// [ssmAutomations] The Systems Manager automation document to start as the runbook at the beginning of the incident. The following values are supported:
-  GetResponsePlanAction({
+  const GetResponsePlanAction({
     required this.ssmAutomations,
   });
 

@@ -9,7 +9,7 @@ class DeviceConfig {
 
   /// Creates a new [DeviceConfig].
   /// [binaryData] The device configuration data.
-  DeviceConfig({
+  const DeviceConfig({
     this.binaryData,
   });
 

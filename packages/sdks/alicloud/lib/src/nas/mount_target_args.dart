@@ -39,7 +39,7 @@ class MountTargetArgs {
   /// [status] The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
   /// [vpcId] VPC ID.
   /// [vswitchId] The ID of the switch.
-  MountTargetArgs({
+  const MountTargetArgs({
     this.accessGroupName,
     this.dualStack,
     required this.fileSystemId,

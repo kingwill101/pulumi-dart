@@ -8,7 +8,7 @@ class ApplicationSettingsTransactionTracerSql {
 
   /// Creates a new [ApplicationSettingsTransactionTracerSql].
   /// [recordSql] The level of SQL recording. Valid values ar `OBFUSCATED`,`OFF`,`RAW` (Mandatory attribute when `sql` block is provided).
-  ApplicationSettingsTransactionTracerSql({
+  const ApplicationSettingsTransactionTracerSql({
     required this.recordSql,
   });
 

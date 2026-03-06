@@ -23,7 +23,7 @@ class GetDateTimeVariableResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [value] The value of the Automation Variable in the [RFC3339 Section 5.6 Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6).
-  GetDateTimeVariableResult({
+  const GetDateTimeVariableResult({
     required this.automationAccountName,
     required this.description,
     required this.encrypted,

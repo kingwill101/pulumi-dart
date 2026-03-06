@@ -12,7 +12,7 @@ class ServicePrincipalProfileResponse {
   /// Creates a new [ServicePrincipalProfileResponse].
   /// [clientId] The client ID used for the cluster.
   /// [clientSecret] The client secret used for the cluster.
-  ServicePrincipalProfileResponse({
+  const ServicePrincipalProfileResponse({
     this.clientId,
     this.clientSecret,
   });

@@ -24,7 +24,7 @@ class VolumeArgs {
   /// [name] Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   /// [sizeInGib] Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   /// [volumeGroupId] Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
-  VolumeArgs({
+  const VolumeArgs({
     this.createSource,
     this.name,
     required this.sizeInGib,

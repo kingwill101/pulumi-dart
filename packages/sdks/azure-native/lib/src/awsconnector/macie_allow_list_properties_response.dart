@@ -34,7 +34,7 @@ class MacieAllowListPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  MacieAllowListPropertiesResponse({
+  const MacieAllowListPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

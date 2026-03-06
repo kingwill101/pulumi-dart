@@ -25,7 +25,7 @@ class DynamicTagGroupArgs {
   /// [matchExpresses] The conditional expressions used to create an application group based on the tag. See `match_express` below.
   /// [tagKey] The tag keys of the cloud resources.
   /// [templateIdLists] The IDs of the alert templates.
-  DynamicTagGroupArgs({
+  const DynamicTagGroupArgs({
     required this.contactGroupLists,
     this.matchExpressFilterRelation,
     required this.matchExpresses,

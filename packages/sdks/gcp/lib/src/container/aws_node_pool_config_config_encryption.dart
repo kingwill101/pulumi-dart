@@ -8,7 +8,7 @@ class AwsNodePoolConfigConfigEncryption {
 
   /// Creates a new [AwsNodePoolConfigConfigEncryption].
   /// [kmsKeyArn] The ARN of the AWS KMS key used to encrypt node pool configuration.
-  AwsNodePoolConfigConfigEncryption({
+  const AwsNodePoolConfigConfigEncryption({
     required this.kmsKeyArn,
   });
 

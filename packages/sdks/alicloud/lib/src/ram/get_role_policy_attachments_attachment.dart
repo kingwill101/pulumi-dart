@@ -20,7 +20,7 @@ class GetRolePolicyAttachmentsAttachment {
   /// [id] The ID of the resource supplied above. The value is formulated as `role:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;role_name&gt;`.
   /// [policyName] The name of the policy.
   /// [policyType] Policy type.- Custom: Custom policy.- System: System policy.
-  GetRolePolicyAttachmentsAttachment({
+  const GetRolePolicyAttachmentsAttachment({
     required this.attachDate,
     required this.description,
     required this.id,

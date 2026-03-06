@@ -37,7 +37,7 @@ class Dapr {
   /// [httpReadBufferSize] Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
   /// [logLevel] Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
   /// [maxConcurrency] Maximum number of concurrent requests, events handled by the Dapr sidecar
-  Dapr({
+  const Dapr({
     this.appHealth,
     this.appId,
     this.appPort,

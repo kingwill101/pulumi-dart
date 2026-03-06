@@ -13,7 +13,7 @@ class GuardrailTopicPolicyConfig {
   /// Creates a new [GuardrailTopicPolicyConfig].
   /// [tierConfigs] Configuration block for the topic policy tier. See Tier Config for more information.
   /// [topicsConfigs] List of topic configs in topic policy. See Topics Config for more information.
-  GuardrailTopicPolicyConfig({
+  const GuardrailTopicPolicyConfig({
     this.tierConfigs,
     this.topicsConfigs,
   });

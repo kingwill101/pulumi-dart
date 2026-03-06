@@ -18,7 +18,7 @@ class GetEnterpriseProxiesResult {
   /// [outputFile] Optional.
   /// [proxies] Required.
   /// [tid] Optional.
-  GetEnterpriseProxiesResult({
+  const GetEnterpriseProxiesResult({
     required this.id,
     required this.ids,
     this.outputFile,

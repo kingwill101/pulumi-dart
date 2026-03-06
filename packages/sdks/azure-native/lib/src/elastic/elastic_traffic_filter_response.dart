@@ -28,7 +28,7 @@ class ElasticTrafficFilterResponse {
   /// [region] Region of the elastic filter
   /// [rules] Rules in the elastic filter
   /// [type] Type of the elastic filter
-  ElasticTrafficFilterResponse({
+  const ElasticTrafficFilterResponse({
     this.description,
     this.id,
     this.includeByDefault,

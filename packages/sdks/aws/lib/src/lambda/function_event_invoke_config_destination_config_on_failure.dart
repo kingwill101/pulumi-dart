@@ -8,7 +8,7 @@ class FunctionEventInvokeConfigDestinationConfigOnFailure {
 
   /// Creates a new [FunctionEventInvokeConfigDestinationConfigOnFailure].
   /// [destination] ARN of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
-  FunctionEventInvokeConfigDestinationConfigOnFailure({
+  const FunctionEventInvokeConfigDestinationConfigOnFailure({
     required this.destination,
   });
 

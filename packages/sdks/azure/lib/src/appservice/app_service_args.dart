@@ -77,7 +77,7 @@ class AppServiceArgs {
   /// [sourceControl] A `source_control` block as defined below.
   /// [storageAccounts] One or more `storage_account` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  AppServiceArgs({
+  const AppServiceArgs({
     required this.appServicePlanId,
     this.appSettings,
     this.authSettings,

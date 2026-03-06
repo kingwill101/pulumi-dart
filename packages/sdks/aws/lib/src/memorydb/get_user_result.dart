@@ -29,7 +29,7 @@ class GetUserResult {
   /// [region] Required.
   /// [tags] Map of tags assigned to the user.
   /// [userName] Required.
-  GetUserResult({
+  const GetUserResult({
     required this.accessString,
     required this.arn,
     required this.authenticationModes,

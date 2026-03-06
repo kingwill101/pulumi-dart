@@ -41,7 +41,7 @@ class FluxConfigurationGitRepository {
   /// [syncIntervalInSeconds] Specifies the interval at which to re-reconcile the cluster git repository source with the remote. Defaults to `600`.
   /// [timeoutInSeconds] Specifies the maximum time to attempt to reconcile the cluster git repository source with the remote. Defaults to `600`.
   /// [url] Specifies the URL to sync for the flux configuration git repository. It must start with `http://`, `https://`, `git@` or `ssh://`.
-  FluxConfigurationGitRepository({
+  const FluxConfigurationGitRepository({
     this.httpsCaCertBase64,
     this.httpsKeyBase64,
     this.httpsUser,

@@ -26,7 +26,7 @@ class LongTermRetentionPolicy {
   /// [retentionPolicyType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// [weeklySchedule] Weekly retention schedule of the protection policy.
   /// [yearlySchedule] Yearly retention schedule of the protection policy.
-  LongTermRetentionPolicy({
+  const LongTermRetentionPolicy({
     this.dailySchedule,
     this.monthlySchedule,
     required this.retentionPolicyType,

@@ -12,7 +12,7 @@ class AssignmentReportResourceComplianceReasonResponse {
   /// Creates a new [AssignmentReportResourceComplianceReasonResponse].
   /// [code] Code for the compliance of the guest configuration assignment resource.
   /// [phrase] Reason for the compliance of the guest configuration assignment resource.
-  AssignmentReportResourceComplianceReasonResponse({
+  const AssignmentReportResourceComplianceReasonResponse({
     required this.code,
     required this.phrase,
   });

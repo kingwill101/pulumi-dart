@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMe
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

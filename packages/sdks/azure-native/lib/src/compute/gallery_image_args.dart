@@ -76,7 +76,7 @@ class GalleryImageArgs {
   /// [releaseNoteUri] The release note uri.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  GalleryImageArgs({
+  const GalleryImageArgs({
     this.allowUpdateImage,
     this.architecture,
     this.description,

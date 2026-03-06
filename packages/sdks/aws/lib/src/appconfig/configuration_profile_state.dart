@@ -46,7 +46,7 @@ class ConfigurationProfileState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] Type of configurations contained in the profile. Valid values: `AWS.AppConfig.FeatureFlags` and `AWS.Freeform`.  Default: `AWS.Freeform`.
   /// [validators] Set of methods for validating the configuration. Maximum of 2. See Validator below for more details.
-  ConfigurationProfileState({
+  const ConfigurationProfileState({
     this.applicationId,
     this.arn,
     this.configurationProfileId,

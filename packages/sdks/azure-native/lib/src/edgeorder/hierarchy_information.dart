@@ -21,7 +21,7 @@ class HierarchyInformation {
   /// [productFamilyName] Represents product family name that uniquely identifies product family.
   /// [productLineName] Represents product line name that uniquely identifies product line.
   /// [productName] Represents product name that uniquely identifies product.
-  HierarchyInformation({
+  const HierarchyInformation({
     this.configurationIdDisplayName,
     this.configurationName,
     this.productFamilyName,

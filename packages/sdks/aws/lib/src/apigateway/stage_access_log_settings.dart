@@ -12,7 +12,7 @@ class StageAccessLogSettings {
   /// Creates a new [StageAccessLogSettings].
   /// [destinationArn] ARN of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
   /// [format] Formatting and values recorded in the logs.
-  StageAccessLogSettings({
+  const StageAccessLogSettings({
     required this.destinationArn,
     required this.format,
   });

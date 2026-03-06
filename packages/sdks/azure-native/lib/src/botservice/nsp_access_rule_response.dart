@@ -13,7 +13,7 @@ class NspAccessRuleResponse {
   /// Creates a new [NspAccessRuleResponse].
   /// [name] Name of the access rule
   /// [properties] Properties of Access Rule
-  NspAccessRuleResponse({
+  const NspAccessRuleResponse({
     this.name,
     required this.properties,
   });

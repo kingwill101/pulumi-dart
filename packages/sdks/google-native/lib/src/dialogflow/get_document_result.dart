@@ -36,7 +36,7 @@ class GetDocumentResult {
   /// [name] Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
   /// [rawContent] The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
   /// [state] The current state of the document.
-  GetDocumentResult({
+  const GetDocumentResult({
     required this.contentUri,
     required this.displayName,
     required this.enableAutoReload,

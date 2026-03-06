@@ -24,7 +24,7 @@ class GetWorkspaceArgs {
   /// [tags] Tags for the WorkSpace.
   /// [userName] User name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspace_id`.
   /// [workspaceId] ID of the WorkSpace. You cannot combine this parameter with `directory_id`.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     this.directoryId,
     this.region,
     this.tags,

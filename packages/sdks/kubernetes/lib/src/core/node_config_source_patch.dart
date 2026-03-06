@@ -10,7 +10,7 @@ class NodeConfigSourcePatch {
 
   /// Creates a new [NodeConfigSourcePatch].
   /// [configMap] ConfigMap is a reference to a Node's ConfigMap
-  NodeConfigSourcePatch({
+  const NodeConfigSourcePatch({
     this.configMap,
   });
 

@@ -10,7 +10,7 @@ class RecoveryConfigResponse {
 
   /// Creates a new [RecoveryConfigResponse].
   /// [scheduledSnapshotsConfig] Optional. The configuration for scheduled snapshot creation mechanism.
-  RecoveryConfigResponse({
+  const RecoveryConfigResponse({
     required this.scheduledSnapshotsConfig,
   });
 

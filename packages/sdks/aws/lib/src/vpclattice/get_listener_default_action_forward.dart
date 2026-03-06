@@ -8,7 +8,7 @@ class GetListenerDefaultActionForward {
 
   /// Creates a new [GetListenerDefaultActionForward].
   /// [targetGroups] Required.
-  GetListenerDefaultActionForward({
+  const GetListenerDefaultActionForward({
     required this.targetGroups,
   });
 

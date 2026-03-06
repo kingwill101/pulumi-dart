@@ -33,7 +33,7 @@ class PrivateEndpointConnectionResponse {
   /// [provisioningState] Provisioning state of the private endpoint.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.groupId,
     required this.id,
     required this.name,

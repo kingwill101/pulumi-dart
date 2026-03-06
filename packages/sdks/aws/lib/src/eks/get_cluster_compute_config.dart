@@ -14,7 +14,7 @@ class GetClusterComputeConfig {
   /// [enabled] Whether zonal shift is enabled.
   /// [nodePools] List of node pools for the EKS Auto Mode compute capability.
   /// [nodeRoleArn] The ARN of the IAM Role EKS will assign to EC2 Managed Instances in your EKS Auto Mode cluster.
-  GetClusterComputeConfig({
+  const GetClusterComputeConfig({
     required this.enabled,
     required this.nodePools,
     required this.nodeRoleArn,

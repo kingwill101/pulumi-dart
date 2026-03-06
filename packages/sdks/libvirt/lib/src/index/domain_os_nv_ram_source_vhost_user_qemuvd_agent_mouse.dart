@@ -8,7 +8,7 @@ class DomainOsNvRamSourceVhostUserQemuvdAgentMouse {
 
   /// Creates a new [DomainOsNvRamSourceVhostUserQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainOsNvRamSourceVhostUserQemuvdAgentMouse({
+  const DomainOsNvRamSourceVhostUserQemuvdAgentMouse({
     required this.mode,
   });
 

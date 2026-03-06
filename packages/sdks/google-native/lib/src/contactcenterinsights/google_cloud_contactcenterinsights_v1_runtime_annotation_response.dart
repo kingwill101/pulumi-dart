@@ -47,7 +47,7 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse {
   /// [smartComposeSuggestion] Agent Assist Smart Compose suggestion data.
   /// [smartReply] Agent Assist Smart Reply data.
   /// [startBoundary] The boundary in the conversation where the annotation starts, inclusive.
-  GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse({
+  const GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse({
     required this.annotationId,
     required this.answerFeedback,
     required this.articleSuggestion,

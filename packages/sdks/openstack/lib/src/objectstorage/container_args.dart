@@ -73,7 +73,7 @@ class ContainerArgs {
   /// [storagePolicy] The storage policy to be used for the
   /// [versioning] A boolean that can enable or disable object
   /// [versioningLegacy] Enable legacy object versioning. The
-  ContainerArgs({
+  const ContainerArgs({
     this.containerRead,
     this.containerSyncKey,
     this.containerSyncTo,

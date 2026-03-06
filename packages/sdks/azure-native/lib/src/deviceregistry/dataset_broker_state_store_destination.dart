@@ -14,7 +14,7 @@ class DatasetBrokerStateStoreDestination {
   /// Creates a new [DatasetBrokerStateStoreDestination].
   /// [configuration] The MQTT broker state store destination configuration.
   /// [target] The set of supported dataset destinations for an asset.
-  DatasetBrokerStateStoreDestination({
+  const DatasetBrokerStateStoreDestination({
     required this.configuration,
     required this.target,
   });

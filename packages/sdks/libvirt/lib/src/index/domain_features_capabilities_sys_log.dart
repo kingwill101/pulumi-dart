@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysLog {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysLog].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysLog({
+  const DomainFeaturesCapabilitiesSysLog({
     this.state,
   });
 

@@ -8,7 +8,7 @@ class ResolverSyncConfigLambdaConflictHandlerConfig {
 
   /// Creates a new [ResolverSyncConfigLambdaConflictHandlerConfig].
   /// [lambdaConflictHandlerArn] ARN for the Lambda function to use as the Conflict Handler.
-  ResolverSyncConfigLambdaConflictHandlerConfig({
+  const ResolverSyncConfigLambdaConflictHandlerConfig({
     this.lambdaConflictHandlerArn,
   });
 

@@ -14,7 +14,7 @@ class GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase {
   /// [isDeleted] Whether the knowledge base is deleted
   /// [name] Name of the knowledge base
   /// [uuid] Knowledge base UUID
-  GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase({
+  const GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase({
     required this.isDeleted,
     required this.name,
     required this.uuid,

@@ -10,7 +10,7 @@ class BackendBucketParams {
 
   /// Creates a new [BackendBucketParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the backend bucket. Tag keys and values have the
-  BackendBucketParams({
+  const BackendBucketParams({
     this.resourceManagerTags,
   });
 

@@ -15,7 +15,7 @@ class DomainDevicesGraphicDbus {
   /// [address] Configures the address for the D-Bus connection in the graphics configuration.
   /// [gl] Sets the OpenGL settings for the D-Bus graphics configuration.
   /// [p2p] Enables or disables peer-to-peer memory access in D-Bus for graphics.
-  DomainDevicesGraphicDbus({
+  const DomainDevicesGraphicDbus({
     this.address,
     this.gl,
     this.p2p,

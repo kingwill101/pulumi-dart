@@ -8,7 +8,7 @@ class Plan {
 
   /// Creates a new [Plan].
   /// [accessibility] Plan accessibility
-  Plan({
+  const Plan({
     this.accessibility,
   });
 

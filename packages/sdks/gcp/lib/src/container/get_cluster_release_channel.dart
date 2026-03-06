@@ -13,7 +13,7 @@ class GetClusterReleaseChannel {
 
   /// Creates a new [GetClusterReleaseChannel].
   /// [channel] The selected release channel. Accepted values are:
-  GetClusterReleaseChannel({
+  const GetClusterReleaseChannel({
     required this.channel,
   });
 

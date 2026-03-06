@@ -10,7 +10,7 @@ class GetVirtualNetworkGatewayBgpPeerStatusResult {
 
   /// Creates a new [GetVirtualNetworkGatewayBgpPeerStatusResult].
   /// [value] List of BGP peers.
-  GetVirtualNetworkGatewayBgpPeerStatusResult({
+  const GetVirtualNetworkGatewayBgpPeerStatusResult({
     this.value,
   });
 

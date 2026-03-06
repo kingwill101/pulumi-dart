@@ -49,7 +49,7 @@ class GetPartnerDestinationResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [tags] Tags of the resource.
   /// [type] Type of the resource.
-  GetPartnerDestinationResult({
+  const GetPartnerDestinationResult({
     this.activationState,
     required this.azureApiVersion,
     this.endpointBaseUrl,

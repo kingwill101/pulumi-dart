@@ -21,7 +21,7 @@ class TenantRoleUserAttachmentState {
   /// Creates a new [TenantRoleUserAttachmentState].
   /// [accountId] Account UID
   /// [tenantRole] Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
-  TenantRoleUserAttachmentState({
+  const TenantRoleUserAttachmentState({
     this.accountId,
     this.tenantRole,
   });

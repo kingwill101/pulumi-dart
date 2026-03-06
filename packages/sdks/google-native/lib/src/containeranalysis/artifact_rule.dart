@@ -8,7 +8,7 @@ class ArtifactRule {
 
   /// Creates a new [ArtifactRule].
   /// [artifactRule] Optional.
-  ArtifactRule({
+  const ArtifactRule({
     this.artifactRule,
   });
 

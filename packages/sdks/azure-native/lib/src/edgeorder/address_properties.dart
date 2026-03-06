@@ -17,7 +17,7 @@ class AddressProperties {
   /// [addressClassification] Type of address based on its usage context.
   /// [contactDetails] Contact details for the address.
   /// [shippingAddress] Shipping details for the address.
-  AddressProperties({
+  const AddressProperties({
     this.addressClassification,
     this.contactDetails,
     this.shippingAddress,

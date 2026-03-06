@@ -12,7 +12,7 @@ class CustomerMetadataResponse {
   /// Creates a new [CustomerMetadataResponse].
   /// [billingAccountId] Customer billing account id
   /// [billingProfileId] Customer billing profile id
-  CustomerMetadataResponse({
+  const CustomerMetadataResponse({
     required this.billingAccountId,
     required this.billingProfileId,
   });

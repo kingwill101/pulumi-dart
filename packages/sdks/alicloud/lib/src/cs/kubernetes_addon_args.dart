@@ -24,7 +24,7 @@ class KubernetesAddonArgs {
   /// [config] The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
   /// [name] The name of addon.
   /// [version] The current version of addon.
-  KubernetesAddonArgs({
+  const KubernetesAddonArgs({
     this.cleanupCloudResources,
     required this.clusterId,
     this.config,

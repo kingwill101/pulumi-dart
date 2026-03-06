@@ -15,7 +15,7 @@ class ListVirtualNetworkGatewayRadiusSecretsArgs {
   /// Creates a new [ListVirtualNetworkGatewayRadiusSecretsArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  ListVirtualNetworkGatewayRadiusSecretsArgs({
+  const ListVirtualNetworkGatewayRadiusSecretsArgs({
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,
   });

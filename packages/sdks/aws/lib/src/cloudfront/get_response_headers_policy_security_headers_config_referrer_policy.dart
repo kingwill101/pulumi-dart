@@ -11,7 +11,7 @@ class GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy {
   /// Creates a new [GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy].
   /// [override] Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
   /// [referrerPolicy] Value of the Referrer-Policy HTTP response header. Valid Values: `no-referrer` | `no-referrer-when-downgrade` | `origin` | `origin-when-cross-origin` | `same-origin` | `strict-origin` | `strict-origin-when-cross-origin` | `unsafe-url`
-  GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy({
+  const GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy({
     required this.override,
     required this.referrerPolicy,
   });

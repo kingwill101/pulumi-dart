@@ -16,7 +16,7 @@ class DocumentAiProcessorDefaultVersionArgs {
   /// Creates a new [DocumentAiProcessorDefaultVersionArgs].
   /// [processor] The processor to set the version on.
   /// [version] The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
-  DocumentAiProcessorDefaultVersionArgs({
+  const DocumentAiProcessorDefaultVersionArgs({
     required this.processor,
     required this.version,
   });

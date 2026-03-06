@@ -35,7 +35,7 @@ class ContentArgs {
   /// [path] The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
   /// [project] Optional.
   /// [sqlScript] Sql Script related configurations.
-  ContentArgs({
+  const ContentArgs({
     required this.dataText,
     this.description,
     this.labels,

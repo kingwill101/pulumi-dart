@@ -11,7 +11,7 @@ class VpcEndpointDnsEntry {
   /// Creates a new [VpcEndpointDnsEntry].
   /// [dnsName] The DNS name.
   /// [hostedZoneId] The ID of the private hosted zone.
-  VpcEndpointDnsEntry({
+  const VpcEndpointDnsEntry({
     this.dnsName,
     this.hostedZoneId,
   });

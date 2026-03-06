@@ -96,7 +96,7 @@ class ToolClientFunctionParameters {
   /// [title] The title of the schema.
   /// [type] The type of the data.
   /// [uniqueItems] Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-  ToolClientFunctionParameters({
+  const ToolClientFunctionParameters({
     this.additionalProperties,
     this.anyOf,
     this.default_,

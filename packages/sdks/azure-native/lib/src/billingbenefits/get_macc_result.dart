@@ -107,7 +107,7 @@ class GetMaccResult {
   /// [systemId] This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetMaccResult({
+  const GetMaccResult({
     this.allowContributors,
     this.automaticShortfall,
     this.automaticShortfallSuppressReason,

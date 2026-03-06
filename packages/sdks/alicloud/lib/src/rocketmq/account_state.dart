@@ -18,7 +18,7 @@ class AccountState {
   /// [instanceId] The instance ID.
   /// [password] The password of the account.
   /// [username] The username of the account.
-  AccountState({
+  const AccountState({
     this.accountStatus,
     this.instanceId,
     this.password,

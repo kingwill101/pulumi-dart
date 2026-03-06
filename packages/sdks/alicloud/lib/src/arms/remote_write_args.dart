@@ -15,7 +15,7 @@ class RemoteWriteArgs {
   /// Creates a new [RemoteWriteArgs].
   /// [clusterId] The ID of the Prometheus instance.
   /// [remoteWriteYaml] The details of the Remote Write configuration item. Specify the value in the YAML format.
-  RemoteWriteArgs({
+  const RemoteWriteArgs({
     required this.clusterId,
     required this.remoteWriteYaml,
   });

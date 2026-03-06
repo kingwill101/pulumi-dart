@@ -21,7 +21,7 @@ class NotificationSettings {
   /// [status] If notifications are enabled for this schedule (i.e. Enabled, Disabled).
   /// [timeInMinutes] Time in minutes before event at which notification will be sent.
   /// [webhookUrl] The webhook URL to which the notification will be sent.
-  NotificationSettings({
+  const NotificationSettings({
     this.emailRecipient,
     this.notificationLocale,
     this.status,

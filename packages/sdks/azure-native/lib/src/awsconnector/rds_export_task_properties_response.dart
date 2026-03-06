@@ -34,7 +34,7 @@ class RdsExportTaskPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  RdsExportTaskPropertiesResponse({
+  const RdsExportTaskPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

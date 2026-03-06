@@ -31,7 +31,7 @@ class DeploymentSettingArgs {
   /// [deploymentSettingsName] Name of Deployment Setting
   /// [operationType] The intended operation for a cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DeploymentSettingArgs({
+  const DeploymentSettingArgs({
     required this.arcNodeResourceIds,
     required this.clusterName,
     required this.deploymentConfiguration,

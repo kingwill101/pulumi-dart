@@ -38,7 +38,7 @@ class GetIpamIpamScopesScope {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the resource.
   /// [tags] The tag of the resource.
-  GetIpamIpamScopesScope({
+  const GetIpamIpamScopesScope({
     required this.createTime,
     required this.id,
     required this.ipamId,

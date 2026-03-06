@@ -17,7 +17,7 @@ class GetDbInstancePlansPlanPlanConfigScaleIn {
   /// [planCronTime] The Cron Time of the plan.
   /// [planTaskStatus] The Status of the plan Task.
   /// [segmentNodeNum] The segment Node Num of the Plan.
-  GetDbInstancePlansPlanPlanConfigScaleIn({
+  const GetDbInstancePlansPlanPlanConfigScaleIn({
     required this.executeTime,
     required this.planCronTime,
     required this.planTaskStatus,

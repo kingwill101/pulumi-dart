@@ -16,7 +16,7 @@ class EstimatedVMPricesResponse {
   /// [billingCurrency] Three lettered code specifying the currency of the VM price. Example: USD
   /// [unitOfMeasure] The unit of time measurement for the specified VM price. Example: OneHour
   /// [values] The list of estimated prices for using a VM of a particular OS type, tier, etc.
-  EstimatedVMPricesResponse({
+  const EstimatedVMPricesResponse({
     required this.billingCurrency,
     required this.unitOfMeasure,
     required this.values,

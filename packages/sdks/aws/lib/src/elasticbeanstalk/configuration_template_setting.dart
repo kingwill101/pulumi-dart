@@ -14,7 +14,7 @@ class ConfigurationTemplateSetting {
   /// [namespace] Required.
   /// [resource] Optional.
   /// [value] Required.
-  ConfigurationTemplateSetting({
+  const ConfigurationTemplateSetting({
     required this.name,
     required this.namespace,
     this.resource,

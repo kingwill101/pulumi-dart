@@ -12,7 +12,7 @@ class AccessReviewReviewerResponse {
   /// Creates a new [AccessReviewReviewerResponse].
   /// [principalId] The id of the reviewer(user/servicePrincipal)
   /// [principalType] The identity type : user/servicePrincipal
-  AccessReviewReviewerResponse({
+  const AccessReviewReviewerResponse({
     this.principalId,
     required this.principalType,
   });

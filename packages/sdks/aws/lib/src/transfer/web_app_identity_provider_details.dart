@@ -9,7 +9,7 @@ class WebAppIdentityProviderDetails {
 
   /// Creates a new [WebAppIdentityProviderDetails].
   /// [identityCenterConfig] Block that describes the values to use for the IAM Identity Center settings. See Identity center config below.
-  WebAppIdentityProviderDetails({
+  const WebAppIdentityProviderDetails({
     this.identityCenterConfig,
   });
 

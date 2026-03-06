@@ -15,7 +15,7 @@ class GetPeeringServiceArgs {
   /// Creates a new [GetPeeringServiceArgs].
   /// [peeringServiceName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
-  GetPeeringServiceArgs({
+  const GetPeeringServiceArgs({
     required this.peeringServiceName,
     required this.resourceGroupName,
   });

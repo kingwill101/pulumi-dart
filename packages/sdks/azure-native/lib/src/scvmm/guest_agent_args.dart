@@ -29,7 +29,7 @@ class GuestAgentArgs {
   /// [provisioningAction] Gets or sets the guest agent provisioning action.
   /// [resourceGroupName] The name of the resource group.
   /// [virtualMachineName] Name of the vm.
-  GuestAgentArgs({
+  const GuestAgentArgs({
     this.credentials,
     this.guestAgentName,
     this.httpProxyConfig,

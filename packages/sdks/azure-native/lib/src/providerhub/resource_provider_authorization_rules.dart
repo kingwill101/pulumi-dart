@@ -9,7 +9,7 @@ class ResourceProviderAuthorizationRules {
 
   /// Creates a new [ResourceProviderAuthorizationRules].
   /// [asyncOperationPollingRules] The async operation polling rules.
-  ResourceProviderAuthorizationRules({
+  const ResourceProviderAuthorizationRules({
     this.asyncOperationPollingRules,
   });
 

@@ -16,7 +16,7 @@ class PolicySecurityServicePolicyDataPolicyOption {
   /// [networkAclCommonPolicy] Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
   /// [networkFirewallPolicy] Defines the deployment model to use for the firewall policy.  See the `network_firewall_policy` block.
   /// [thirdPartyFirewallPolicy] Optional.
-  PolicySecurityServicePolicyDataPolicyOption({
+  const PolicySecurityServicePolicyDataPolicyOption({
     this.networkAclCommonPolicy,
     this.networkFirewallPolicy,
     this.thirdPartyFirewallPolicy,

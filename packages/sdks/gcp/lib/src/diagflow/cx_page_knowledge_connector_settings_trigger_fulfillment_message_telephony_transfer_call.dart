@@ -8,7 +8,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransfer
 
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall].
   /// [phoneNumber] Transfer the call to a phone number in E.164 format.
-  CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall({
+  const CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall({
     required this.phoneNumber,
   });
 

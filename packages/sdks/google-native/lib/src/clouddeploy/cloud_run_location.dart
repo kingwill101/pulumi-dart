@@ -9,7 +9,7 @@ class CloudRunLocation {
 
   /// Creates a new [CloudRunLocation].
   /// [location] The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
-  CloudRunLocation({
+  const CloudRunLocation({
     required this.location,
   });
 

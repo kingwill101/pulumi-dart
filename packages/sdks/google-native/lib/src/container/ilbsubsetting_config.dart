@@ -9,7 +9,7 @@ class ILBSubsettingConfig {
 
   /// Creates a new [ILBSubsettingConfig].
   /// [enabled] Enables l4 ILB subsetting for this cluster.
-  ILBSubsettingConfig({
+  const ILBSubsettingConfig({
     this.enabled,
   });
 

@@ -19,7 +19,7 @@ class WorkflowIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Logic App Workflow.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Logic App Workflow.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Logic App Workflow. Possible values are `SystemAssigned`, `UserAssigned`.
-  WorkflowIdentity({
+  const WorkflowIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

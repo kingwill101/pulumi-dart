@@ -33,7 +33,7 @@ class GatewayHostNameConfigurationState {
   /// [requestClientCertificateEnabled] Whether the API Management Gateway requests a client certificate.
   /// [tls10Enabled] Whether TLS 1.0 is supported.
   /// [tls11Enabled] Whether TLS 1.1 is supported.
-  GatewayHostNameConfigurationState({
+  const GatewayHostNameConfigurationState({
     this.apiManagementId,
     this.certificateId,
     this.gatewayName,

@@ -19,7 +19,7 @@ class GetVMwareCollectorResult {
   /// [name] Required.
   /// [properties] Required.
   /// [type] Required.
-  GetVMwareCollectorResult({
+  const GetVMwareCollectorResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

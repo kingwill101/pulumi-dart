@@ -30,7 +30,7 @@ class NasJobArgs {
   /// [location] Optional.
   /// [nasJobSpec] The specification of a NasJob.
   /// [project] Optional.
-  NasJobArgs({
+  const NasJobArgs({
     required this.displayName,
     this.enableRestrictedImageTraining,
     this.encryptionSpec,

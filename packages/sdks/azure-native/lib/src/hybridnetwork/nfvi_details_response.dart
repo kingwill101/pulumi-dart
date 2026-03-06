@@ -12,7 +12,7 @@ class NfviDetailsResponse {
   /// Creates a new [NfviDetailsResponse].
   /// [name] The nfvi name.
   /// [type] The nfvi type.
-  NfviDetailsResponse({
+  const NfviDetailsResponse({
     this.name,
     this.type,
   });

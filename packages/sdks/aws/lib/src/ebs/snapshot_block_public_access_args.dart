@@ -15,7 +15,7 @@ class SnapshotBlockPublicAccessArgs {
   /// Creates a new [SnapshotBlockPublicAccessArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] The mode in which to enable "Block public access for snapshots" for the region. Allowed values are `block-all-sharing`, `block-new-sharing`, `unblocked`.
-  SnapshotBlockPublicAccessArgs({
+  const SnapshotBlockPublicAccessArgs({
     this.region,
     required this.state,
   });

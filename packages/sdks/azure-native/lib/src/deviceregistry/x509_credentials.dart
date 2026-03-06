@@ -9,7 +9,7 @@ class X509Credentials {
 
   /// Creates a new [X509Credentials].
   /// [certificateSecretName] The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-  X509Credentials({
+  const X509Credentials({
     required this.certificateSecretName,
   });
 

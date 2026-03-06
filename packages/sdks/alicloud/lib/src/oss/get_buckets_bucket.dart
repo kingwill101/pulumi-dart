@@ -66,7 +66,7 @@ class GetBucketsBucket {
   /// [tags] A mapping of tags.
   /// [versioning] If present , the versioning state has been set on the bucket. It contains the following attribute.
   /// [website] A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
-  GetBucketsBucket({
+  const GetBucketsBucket({
     required this.acl,
     required this.corsRules,
     required this.creationDate,

@@ -12,7 +12,7 @@ class CustomLocationPropertiesAuthentication {
   /// Creates a new [CustomLocationPropertiesAuthentication].
   /// [type] The type of the Custom Locations authentication
   /// [value] The kubeconfig value.
-  CustomLocationPropertiesAuthentication({
+  const CustomLocationPropertiesAuthentication({
     this.type,
     this.value,
   });

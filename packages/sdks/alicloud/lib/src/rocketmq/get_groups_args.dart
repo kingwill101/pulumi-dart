@@ -29,7 +29,7 @@ class GetGroupsArgs {
   /// [nameRegex] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A map of tags assigned to the Ons instance.
-  GetGroupsArgs({
+  const GetGroupsArgs({
     this.groupIdRegex,
     this.groupType,
     this.ids,

@@ -15,7 +15,7 @@ class GroupPolicyAttachmentArgs {
   /// Creates a new [GroupPolicyAttachmentArgs].
   /// [group] The group the policy should be applied to
   /// [policyArn] The ARN of the policy you want to apply
-  GroupPolicyAttachmentArgs({
+  const GroupPolicyAttachmentArgs({
     required this.group,
     required this.policyArn,
   });

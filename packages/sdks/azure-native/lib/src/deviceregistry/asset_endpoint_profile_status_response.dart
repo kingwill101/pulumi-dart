@@ -10,7 +10,7 @@ class AssetEndpointProfileStatusResponse {
 
   /// Creates a new [AssetEndpointProfileStatusResponse].
   /// [errors] Array object to transfer and persist errors that originate from the Edge.
-  AssetEndpointProfileStatusResponse({
+  const AssetEndpointProfileStatusResponse({
     required this.errors,
   });
 

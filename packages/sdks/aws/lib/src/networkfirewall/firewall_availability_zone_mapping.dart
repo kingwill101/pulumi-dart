@@ -8,7 +8,7 @@ class FirewallAvailabilityZoneMapping {
 
   /// Creates a new [FirewallAvailabilityZoneMapping].
   /// [availabilityZoneId] The ID of the Availability Zone where the firewall endpoint is located..
-  FirewallAvailabilityZoneMapping({
+  const FirewallAvailabilityZoneMapping({
     required this.availabilityZoneId,
   });
 

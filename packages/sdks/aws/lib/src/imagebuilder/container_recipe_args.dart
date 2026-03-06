@@ -59,7 +59,7 @@ class ContainerRecipeArgs {
   /// [targetRepository] The destination repository for the container image. Detailed below.
   /// [version] Version of the container recipe.
   /// [workingDirectory] The working directory to be used during build and test workflows.
-  ContainerRecipeArgs({
+  const ContainerRecipeArgs({
     required this.components,
     required this.containerType,
     this.description,

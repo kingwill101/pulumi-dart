@@ -42,7 +42,7 @@ class NetworkPeeringResponseComputeBeta {
   /// [stackType] Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
   /// [state] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
   /// [stateDetails] Details about the current state of the peering.
-  NetworkPeeringResponseComputeBeta({
+  const NetworkPeeringResponseComputeBeta({
     required this.autoCreateRoutes,
     required this.exchangeSubnetRoutes,
     required this.exportCustomRoutes,

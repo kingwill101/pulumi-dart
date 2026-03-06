@@ -54,7 +54,7 @@ class SlotAuthSettings {
   /// [tokenStoreEnabled] If enabled the module will durably store platform-specific security tokens that are obtained during login flows. Defaults to `false`.
   /// [twitter] A `twitter` block as defined below.
   /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app. Possible values are `AllowAnonymous` and `RedirectToLoginPage`.
-  SlotAuthSettings({
+  const SlotAuthSettings({
     this.activeDirectory,
     this.additionalLoginParams,
     this.allowedExternalRedirectUrls,

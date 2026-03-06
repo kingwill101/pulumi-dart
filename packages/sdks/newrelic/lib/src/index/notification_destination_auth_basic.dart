@@ -11,7 +11,7 @@ class NotificationDestinationAuthBasic {
   /// Creates a new [NotificationDestinationAuthBasic].
   /// [password] Specifies an authentication password for use with a destination.
   /// [user] The username of the basic auth.
-  NotificationDestinationAuthBasic({
+  const NotificationDestinationAuthBasic({
     required this.password,
     required this.user,
   });

@@ -21,7 +21,7 @@ class InstanceHostConfig {
   /// [gitHttp] (Output)
   /// [gitSsh] (Output)
   /// [html] (Output)
-  InstanceHostConfig({
+  const InstanceHostConfig({
     this.api,
     this.gitHttp,
     this.gitSsh,

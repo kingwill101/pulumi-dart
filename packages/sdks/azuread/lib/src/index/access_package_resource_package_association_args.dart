@@ -18,7 +18,7 @@ class AccessPackageResourcePackageAssociationArgs {
   /// [accessPackageId] The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
   /// [accessType] The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
   /// [catalogResourceAssociationId] The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
-  AccessPackageResourcePackageAssociationArgs({
+  const AccessPackageResourcePackageAssociationArgs({
     required this.accessPackageId,
     this.accessType,
     required this.catalogResourceAssociationId,

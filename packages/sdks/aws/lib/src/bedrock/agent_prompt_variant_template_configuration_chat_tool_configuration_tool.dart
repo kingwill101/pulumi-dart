@@ -13,7 +13,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationTool {
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationTool].
   /// [cachePoint] Creates a cache checkpoint within a tool designation. See Cache Point for more information.
   /// [toolSpec] The specification for the tool. See Tool Specification for more information.
-  AgentPromptVariantTemplateConfigurationChatToolConfigurationTool({
+  const AgentPromptVariantTemplateConfigurationChatToolConfigurationTool({
     this.cachePoint,
     this.toolSpec,
   });

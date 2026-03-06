@@ -24,7 +24,7 @@ class GetDevCenterCatalogImageDefinitionBuildDetailsArgs {
   /// [devCenterName] The name of the devcenter.
   /// [imageDefinitionName] The name of the Image Definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDevCenterCatalogImageDefinitionBuildDetailsArgs({
+  const GetDevCenterCatalogImageDefinitionBuildDetailsArgs({
     required this.buildName,
     required this.catalogName,
     required this.devCenterName,

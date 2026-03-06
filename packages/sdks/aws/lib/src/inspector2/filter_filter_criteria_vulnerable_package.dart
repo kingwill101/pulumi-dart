@@ -37,7 +37,7 @@ class FilterFilterCriteriaVulnerablePackage {
   /// [sourceLambdaLayerArn] (Optional) The ARN of the package's source lambda layer. Documented below.
   /// [sourceLayerHash] (Optional) The source layer hash of the package. Documented below.
   /// [version] (Optional) The version of the package. Documented below.
-  FilterFilterCriteriaVulnerablePackage({
+  const FilterFilterCriteriaVulnerablePackage({
     this.architecture,
     this.epoches,
     this.filePath,

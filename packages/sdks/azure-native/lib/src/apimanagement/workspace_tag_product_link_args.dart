@@ -27,7 +27,7 @@ class WorkspaceTagProductLinkArgs {
   /// [serviceName] The name of the API Management service.
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceTagProductLinkArgs({
+  const WorkspaceTagProductLinkArgs({
     required this.productId,
     this.productLinkId,
     required this.resourceGroupName,

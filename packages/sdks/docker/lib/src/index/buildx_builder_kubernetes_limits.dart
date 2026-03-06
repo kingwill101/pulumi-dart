@@ -14,7 +14,7 @@ class BuildxBuilderKubernetesLimits {
   /// [cpu] CPU limit for the Kubernetes pod.
   /// [ephemeralStorage] Ephemeral storage limit for the Kubernetes pod.
   /// [memory] Memory limit for the Kubernetes pod.
-  BuildxBuilderKubernetesLimits({
+  const BuildxBuilderKubernetesLimits({
     this.cpu,
     this.ephemeralStorage,
     this.memory,

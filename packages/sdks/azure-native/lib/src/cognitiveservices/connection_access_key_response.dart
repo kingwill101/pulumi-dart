@@ -9,7 +9,7 @@ class ConnectionAccessKeyResponse {
   /// Creates a new [ConnectionAccessKeyResponse].
   /// [accessKeyId] Optional.
   /// [secretAccessKey] Optional.
-  ConnectionAccessKeyResponse({
+  const ConnectionAccessKeyResponse({
     this.accessKeyId,
     this.secretAccessKey,
   });

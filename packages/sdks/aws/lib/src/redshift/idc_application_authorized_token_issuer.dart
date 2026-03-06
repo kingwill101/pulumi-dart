@@ -11,7 +11,7 @@ class IdcApplicationAuthorizedTokenIssuer {
   /// Creates a new [IdcApplicationAuthorizedTokenIssuer].
   /// [authorizedAudiencesLists] List of audiences for the authorized token issuer for integrating Amazon Redshift with IDC Identity Center.
   /// [trustedTokenIssuerArn] ARN for the authorized token issuer for integrating Amazon Redshift with IDC Identity Center.
-  IdcApplicationAuthorizedTokenIssuer({
+  const IdcApplicationAuthorizedTokenIssuer({
     this.authorizedAudiencesLists,
     this.trustedTokenIssuerArn,
   });

@@ -10,7 +10,7 @@ class RoleBasedBuiltInAuthorizationPolicy {
 
   /// Creates a new [RoleBasedBuiltInAuthorizationPolicy].
   /// [type] Authorization scheme type.
-  RoleBasedBuiltInAuthorizationPolicy({
+  const RoleBasedBuiltInAuthorizationPolicy({
     required this.type,
   });
 

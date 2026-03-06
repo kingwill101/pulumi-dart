@@ -22,7 +22,7 @@ class GetGreyTagRoutesRoute {
   /// [greyTagRouteName] The name of GreyTagRoute.
   /// [id] The ID of the GreyTagRoute.
   /// [scRules] The grayscale rule created for SpringCloud Application.
-  GetGreyTagRoutesRoute({
+  const GetGreyTagRoutesRoute({
     required this.description,
     required this.dubboRules,
     required this.greyTagRouteName,

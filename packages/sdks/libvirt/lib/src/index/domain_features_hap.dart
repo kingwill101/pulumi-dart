@@ -8,7 +8,7 @@ class DomainFeaturesHap {
 
   /// Creates a new [DomainFeaturesHap].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHap({
+  const DomainFeaturesHap({
     this.state,
   });
 

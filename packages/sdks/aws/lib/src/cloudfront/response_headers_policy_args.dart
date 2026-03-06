@@ -35,7 +35,7 @@ class ResponseHeadersPolicyArgs {
   /// [removeHeadersConfig] A configuration for a set of HTTP headers to remove from the HTTP response. Object that contains an attribute `items` that contains a list of headers. See Remove Header for more information.
   /// [securityHeadersConfig] A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.
   /// [serverTimingHeadersConfig] A configuration for enabling the Server-Timing header in HTTP responses sent from CloudFront. See Server Timing Headers Config for more information.
-  ResponseHeadersPolicyArgs({
+  const ResponseHeadersPolicyArgs({
     this.comment,
     this.corsConfig,
     this.customHeadersConfig,

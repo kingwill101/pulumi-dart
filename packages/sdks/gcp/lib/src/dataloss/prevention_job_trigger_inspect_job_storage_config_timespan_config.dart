@@ -22,7 +22,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig {
   /// [endTime] Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
   /// [startTime] Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
   /// [timestampField] Specification of the field containing the timestamp of scanned items.
-  PreventionJobTriggerInspectJobStorageConfigTimespanConfig({
+  const PreventionJobTriggerInspectJobStorageConfigTimespanConfig({
     this.enableAutoPopulationOfTimespanConfig,
     this.endTime,
     this.startTime,

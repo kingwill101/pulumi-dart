@@ -52,7 +52,7 @@ class ManagedHsmPropertiesResponse {
   /// [softDeleteRetentionInDays] Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
   /// [statusMessage] Resource Status Message.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
-  ManagedHsmPropertiesResponse({
+  const ManagedHsmPropertiesResponse({
     this.enablePurgeProtection,
     this.enableSoftDelete,
     required this.hsmUri,

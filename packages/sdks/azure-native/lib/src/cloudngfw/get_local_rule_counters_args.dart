@@ -20,7 +20,7 @@ class GetLocalRuleCountersArgs {
   /// [localRulestackName] LocalRulestack resource name
   /// [priority] Local Rule priority
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLocalRuleCountersArgs({
+  const GetLocalRuleCountersArgs({
     this.firewallName,
     required this.localRulestackName,
     required this.priority,

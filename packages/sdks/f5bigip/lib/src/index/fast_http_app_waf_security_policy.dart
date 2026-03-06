@@ -8,7 +8,7 @@ class FastHttpAppWafSecurityPolicy {
 
   /// Creates a new [FastHttpAppWafSecurityPolicy].
   /// [enable] Setting `true` will enable FAST to create WAF Security Policy.
-  FastHttpAppWafSecurityPolicy({
+  const FastHttpAppWafSecurityPolicy({
     required this.enable,
   });
 

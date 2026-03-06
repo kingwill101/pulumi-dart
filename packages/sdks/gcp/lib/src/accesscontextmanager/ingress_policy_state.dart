@@ -15,7 +15,7 @@ class IngressPolicyState {
   /// [accessPolicyId] The name of the Access Policy this resource belongs to.
   /// [ingressPolicyName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
-  IngressPolicyState({
+  const IngressPolicyState({
     this.accessPolicyId,
     this.ingressPolicyName,
     this.resource,

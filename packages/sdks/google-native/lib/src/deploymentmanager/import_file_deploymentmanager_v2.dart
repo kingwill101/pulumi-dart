@@ -11,7 +11,7 @@ class ImportFileDeploymentmanagerV2 {
   /// Creates a new [ImportFileDeploymentmanagerV2].
   /// [content] The contents of the file.
   /// [name] The name of the file.
-  ImportFileDeploymentmanagerV2({
+  const ImportFileDeploymentmanagerV2({
     this.content,
     this.name,
   });

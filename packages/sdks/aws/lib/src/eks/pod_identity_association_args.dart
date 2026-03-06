@@ -35,7 +35,7 @@ class PodIdentityAssociationArgs {
   /// [serviceAccount] The name of the Kubernetes service account inside the cluster to associate the IAM credentials with.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetRoleArn] The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `role_arn`.
-  PodIdentityAssociationArgs({
+  const PodIdentityAssociationArgs({
     required this.clusterName,
     this.disableSessionTags,
     required this.namespace,

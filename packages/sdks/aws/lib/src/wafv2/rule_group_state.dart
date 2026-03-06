@@ -50,7 +50,7 @@ class RuleGroupState {
   /// [tags] An array of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [visibilityConfig] Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
-  RuleGroupState({
+  const RuleGroupState({
     this.arn,
     this.capacity,
     this.customResponseBodies,

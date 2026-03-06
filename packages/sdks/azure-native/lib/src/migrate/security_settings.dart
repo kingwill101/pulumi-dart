@@ -12,7 +12,7 @@ class SecuritySettings {
   /// Creates a new [SecuritySettings].
   /// [serverSecurityCostPerServerPerYear] Physical servers per administrator.
   /// [sqlServerSecurityCostPerServerPerYear] Virtual machines per administrator.
-  SecuritySettings({
+  const SecuritySettings({
     required this.serverSecurityCostPerServerPerYear,
     required this.sqlServerSecurityCostPerServerPerYear,
   });

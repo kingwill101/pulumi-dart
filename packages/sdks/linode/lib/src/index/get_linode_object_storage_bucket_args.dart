@@ -18,7 +18,7 @@ class GetLinodeObjectStorageBucketArgs {
   /// [cluster] The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
   /// [label] The name of this bucket.
   /// [region] The ID of the region this bucket is in. Required if `cluster` is not configured.
-  GetLinodeObjectStorageBucketArgs({
+  const GetLinodeObjectStorageBucketArgs({
     this.cluster,
     required this.label,
     this.region,

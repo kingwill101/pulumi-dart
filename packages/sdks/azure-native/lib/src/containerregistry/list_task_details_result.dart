@@ -69,7 +69,7 @@ class ListTaskDetailsResult {
   /// [timeout] Run timeout in seconds.
   /// [trigger] The properties that describe all triggers for the task.
   /// [type] The type of the resource.
-  ListTaskDetailsResult({
+  const ListTaskDetailsResult({
     this.agentConfiguration,
     this.agentPoolName,
     required this.creationDate,

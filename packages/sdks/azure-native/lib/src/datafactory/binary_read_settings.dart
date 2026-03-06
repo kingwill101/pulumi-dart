@@ -14,7 +14,7 @@ class BinaryReadSettings {
   /// Creates a new [BinaryReadSettings].
   /// [compressionProperties] Compression settings.
   /// [type] The read setting type.
-  BinaryReadSettings({
+  const BinaryReadSettings({
     this.compressionProperties,
     required this.type,
   });

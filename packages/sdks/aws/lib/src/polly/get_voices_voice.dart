@@ -26,7 +26,7 @@ class GetVoicesVoice {
   /// [languageName] Human readable name of the language in English.
   /// [name] Name of the voice.
   /// [supportedEngines] Specifies which engines are supported by a given voice.
-  GetVoicesVoice({
+  const GetVoicesVoice({
     required this.additionalLanguageCodes,
     required this.gender,
     required this.id,

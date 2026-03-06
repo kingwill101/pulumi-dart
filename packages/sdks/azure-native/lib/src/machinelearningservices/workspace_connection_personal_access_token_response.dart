@@ -7,7 +7,7 @@ class WorkspaceConnectionPersonalAccessTokenResponse {
 
   /// Creates a new [WorkspaceConnectionPersonalAccessTokenResponse].
   /// [pat] Optional.
-  WorkspaceConnectionPersonalAccessTokenResponse({
+  const WorkspaceConnectionPersonalAccessTokenResponse({
     this.pat,
   });
 

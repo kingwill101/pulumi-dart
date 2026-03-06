@@ -15,7 +15,7 @@ class ListWebAppSitePushSettingsArgs {
   /// Creates a new [ListWebAppSitePushSettingsArgs].
   /// [name] Name of web app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppSitePushSettingsArgs({
+  const ListWebAppSitePushSettingsArgs({
     required this.name,
     required this.resourceGroupName,
   });

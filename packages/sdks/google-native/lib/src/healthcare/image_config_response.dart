@@ -9,7 +9,7 @@ class ImageConfigResponse {
 
   /// Creates a new [ImageConfigResponse].
   /// [textRedactionMode] Determines how to redact text from image.
-  ImageConfigResponse({
+  const ImageConfigResponse({
     required this.textRedactionMode,
   });
 

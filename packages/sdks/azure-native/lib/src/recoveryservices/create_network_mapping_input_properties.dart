@@ -16,7 +16,7 @@ class CreateNetworkMappingInputProperties {
   /// [fabricSpecificDetails] Fabric specific input properties.
   /// [recoveryFabricName] Recovery fabric Name.
   /// [recoveryNetworkId] Recovery network Id.
-  CreateNetworkMappingInputProperties({
+  const CreateNetworkMappingInputProperties({
     this.fabricSpecificDetails,
     this.recoveryFabricName,
     required this.recoveryNetworkId,

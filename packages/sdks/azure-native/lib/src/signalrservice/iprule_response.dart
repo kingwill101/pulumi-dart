@@ -12,7 +12,7 @@ class IPRuleResponse {
   /// Creates a new [IPRuleResponse].
   /// [action] Azure Networking ACL Action.
   /// [value] An IP or CIDR or ServiceTag
-  IPRuleResponse({
+  const IPRuleResponse({
     this.action,
     this.value,
   });

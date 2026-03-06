@@ -46,7 +46,7 @@ class EnrollmentArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [messageBus] Resource name of the message bus identifying the source of the messages. It
   /// [project] The ID of the project in which the resource belongs.
-  EnrollmentArgs({
+  const EnrollmentArgs({
     this.annotations,
     required this.celMatch,
     required this.destination,

@@ -13,7 +13,7 @@ class GetSslPolicyComputeV1Args {
   /// Creates a new [GetSslPolicyComputeV1Args].
   /// [project] Optional.
   /// [sslPolicy] Required.
-  GetSslPolicyComputeV1Args({
+  const GetSslPolicyComputeV1Args({
     this.project,
     required this.sslPolicy,
   });

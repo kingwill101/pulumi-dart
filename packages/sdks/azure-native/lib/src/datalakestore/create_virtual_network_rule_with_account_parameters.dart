@@ -12,7 +12,7 @@ class CreateVirtualNetworkRuleWithAccountParameters {
   /// Creates a new [CreateVirtualNetworkRuleWithAccountParameters].
   /// [name] The unique name of the virtual network rule to create.
   /// [subnetId] The resource identifier for the subnet.
-  CreateVirtualNetworkRuleWithAccountParameters({
+  const CreateVirtualNetworkRuleWithAccountParameters({
     required this.name,
     required this.subnetId,
   });

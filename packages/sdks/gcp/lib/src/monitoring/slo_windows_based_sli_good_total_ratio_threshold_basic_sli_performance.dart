@@ -39,7 +39,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
   /// [locations] An optional set of locations to which this SLI is relevant.
   /// [methods] An optional set of RPCs to which this SLI is relevant.
   /// [versions] The set of API versions to which this SLI is relevant.
-  SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance({
+  const SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance({
     this.availability,
     this.latency,
     this.locations,

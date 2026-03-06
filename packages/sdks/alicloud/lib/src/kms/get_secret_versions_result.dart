@@ -27,7 +27,7 @@ class GetSecretVersionsResult {
   /// [secretName] The name of the secret.
   /// [versionStage] Optional.
   /// [versions] A list of KMS Secret Versions. Each element contains the following attributes:
-  GetSecretVersionsResult({
+  const GetSecretVersionsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

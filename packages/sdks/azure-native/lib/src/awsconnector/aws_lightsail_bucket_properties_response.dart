@@ -38,7 +38,7 @@ class AwsLightsailBucketPropertiesResponse {
   /// [resourcesReceivingAccess] The names of the Lightsail resources for which to set bucket access.
   /// [tags] An array of key-value pairs to apply to this resource.
   /// [url] The URL of the bucket.
-  AwsLightsailBucketPropertiesResponse({
+  const AwsLightsailBucketPropertiesResponse({
     this.ableToUpdateBundle,
     this.accessRules,
     this.bucketArn,

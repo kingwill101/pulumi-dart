@@ -15,7 +15,7 @@ class ActorResponseCloudsupportV2beta {
   /// [displayName] The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
   /// [email] The email address of the actor. If not provided, it is inferred from credentials supplied during case creation. If the authenticated principal does not have an email address, one must be provided. When a name is provided, an email must also be provided. This will be obfuscated if the user is a Google Support agent.
   /// [googleSupport] Whether the actor is a Google support actor.
-  ActorResponseCloudsupportV2beta({
+  const ActorResponseCloudsupportV2beta({
     required this.displayName,
     required this.email,
     required this.googleSupport,

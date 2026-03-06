@@ -12,7 +12,7 @@ class EntityReference {
   /// Creates a new [EntityReference].
   /// [referenceName] The name of this referenced entity.
   /// [type] The type of this referenced entity.
-  EntityReference({
+  const EntityReference({
     this.referenceName,
     this.type,
   });

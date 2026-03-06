@@ -20,7 +20,7 @@ class GetDataSetArgs {
   /// [dataSetId] Identifier for the data set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
-  GetDataSetArgs({
+  const GetDataSetArgs({
     this.awsAccountId,
     required this.dataSetId,
     this.region,

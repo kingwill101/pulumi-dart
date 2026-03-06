@@ -15,7 +15,7 @@ class ConfigManagementHierarchyControllerConfigGkehubV1alpha {
   /// [enableHierarchicalResourceQuota] Whether hierarchical resource quota is enabled in this cluster.
   /// [enablePodTreeLabels] Whether pod tree labels are enabled in this cluster.
   /// [enabled] Whether Hierarchy Controller is enabled in this cluster.
-  ConfigManagementHierarchyControllerConfigGkehubV1alpha({
+  const ConfigManagementHierarchyControllerConfigGkehubV1alpha({
     this.enableHierarchicalResourceQuota,
     this.enablePodTreeLabels,
     this.enabled,

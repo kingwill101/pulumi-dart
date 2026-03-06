@@ -11,7 +11,7 @@ class ConsentStoreIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ConsentStoreIamMemberCondition({
+  const ConsentStoreIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

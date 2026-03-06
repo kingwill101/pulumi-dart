@@ -14,7 +14,7 @@ class RoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificati
   /// [additionalRecipients] The additional recipients to notify
   /// [defaultRecipients] Whether the default recipients are notified
   /// [notificationLevel] What level of notifications are sent
-  RoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications({
+  const RoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications({
     this.additionalRecipients,
     required this.defaultRecipients,
     required this.notificationLevel,

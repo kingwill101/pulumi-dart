@@ -39,7 +39,7 @@ class TableArgs {
   /// [tableName] The name of the table.
   /// [totalRetentionInDays] The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
   /// [workspaceName] The name of the workspace.
-  TableArgs({
+  const TableArgs({
     this.plan,
     required this.resourceGroupName,
     this.restoredLogs,

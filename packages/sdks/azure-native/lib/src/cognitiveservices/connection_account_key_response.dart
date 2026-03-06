@@ -8,7 +8,7 @@ class ConnectionAccountKeyResponse {
 
   /// Creates a new [ConnectionAccountKeyResponse].
   /// [key] Optional.
-  ConnectionAccountKeyResponse({
+  const ConnectionAccountKeyResponse({
     this.key,
   });
 

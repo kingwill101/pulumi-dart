@@ -8,7 +8,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputText {
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnUserInputInputText].
   /// [text] The natural language text to be processed. Text length must not exceed 256 characters.
-  CxTestCaseTestCaseConversationTurnUserInputInputText({
+  const CxTestCaseTestCaseConversationTurnUserInputInputText({
     required this.text,
   });
 

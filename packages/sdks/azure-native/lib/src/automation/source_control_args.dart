@@ -43,7 +43,7 @@ class SourceControlArgs {
   /// [securityToken] The authorization token for the repo of the source control.
   /// [sourceControlName] The source control name.
   /// [sourceType] The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
-  SourceControlArgs({
+  const SourceControlArgs({
     this.autoSync,
     required this.automationAccountName,
     this.branch,

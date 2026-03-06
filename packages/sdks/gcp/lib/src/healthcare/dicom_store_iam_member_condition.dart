@@ -11,7 +11,7 @@ class DicomStoreIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DicomStoreIamMemberCondition({
+  const DicomStoreIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -34,7 +34,7 @@ class PublicIPAddressResourceSettingsResponse {
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
   /// [zones] Gets or sets public IP zones.
-  PublicIPAddressResourceSettingsResponse({
+  const PublicIPAddressResourceSettingsResponse({
     this.domainNameLabel,
     this.fqdn,
     this.publicIpAllocationMethod,

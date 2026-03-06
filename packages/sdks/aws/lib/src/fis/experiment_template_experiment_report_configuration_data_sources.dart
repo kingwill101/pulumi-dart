@@ -9,7 +9,7 @@ class ExperimentTemplateExperimentReportConfigurationDataSources {
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationDataSources].
   /// [cloudwatchDashboards] The data sources for the experiment report. See below.
-  ExperimentTemplateExperimentReportConfigurationDataSources({
+  const ExperimentTemplateExperimentReportConfigurationDataSources({
     this.cloudwatchDashboards,
   });
 

@@ -21,7 +21,7 @@ class GetDataMaskingPolicyArgs {
   /// [databaseName] The name of the database.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetDataMaskingPolicyArgs({
+  const GetDataMaskingPolicyArgs({
     required this.dataMaskingPolicyName,
     required this.databaseName,
     required this.resourceGroupName,

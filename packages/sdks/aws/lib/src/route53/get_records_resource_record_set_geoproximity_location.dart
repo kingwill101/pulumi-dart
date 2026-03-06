@@ -18,7 +18,7 @@ class GetRecordsResourceRecordSetGeoproximityLocation {
   /// [bias] The bias increases or decreases the size of the geographic region from which Route 53 routes traffic to a resource.
   /// [coordinates] Contains the longitude and latitude for a geographic region.
   /// [localZoneGroup] An AWS Local Zone Group.
-  GetRecordsResourceRecordSetGeoproximityLocation({
+  const GetRecordsResourceRecordSetGeoproximityLocation({
     required this.awsRegion,
     required this.bias,
     required this.coordinates,

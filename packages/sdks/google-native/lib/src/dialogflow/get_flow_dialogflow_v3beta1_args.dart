@@ -19,7 +19,7 @@ class GetFlowDialogflowV3beta1Args {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetFlowDialogflowV3beta1Args({
+  const GetFlowDialogflowV3beta1Args({
     required this.agentId,
     required this.flowId,
     this.languageCode,

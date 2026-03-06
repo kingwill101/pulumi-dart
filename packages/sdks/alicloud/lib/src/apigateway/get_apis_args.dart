@@ -24,7 +24,7 @@ class GetApisArgs {
   /// [ids] A list of API IDs.
   /// [nameRegex] A regex string to filter results by API name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetApisArgs({
+  const GetApisArgs({
     this.apiId,
     this.groupId,
     this.ids,

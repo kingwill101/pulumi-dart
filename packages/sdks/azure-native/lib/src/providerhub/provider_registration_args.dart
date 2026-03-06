@@ -18,7 +18,7 @@ class ProviderRegistrationArgs {
   /// [kind] Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [properties] Optional.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  ProviderRegistrationArgs({
+  const ProviderRegistrationArgs({
     this.kind,
     this.properties,
     this.providerNamespace,

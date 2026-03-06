@@ -22,7 +22,7 @@ class KubernetesClusterNodePoolUpgradeSettings {
   /// [maxUnavailable] The maximum number or percentage of nodes which can be unavailable during the upgrade.
   /// [nodeSoakDurationInMinutes] The amount of time in minutes to wait after draining a node and before reimaging and moving on to next node.
   /// [undrainableNodeBehavior] Specifies the action when a node is undrainable during upgrade. Possible values are `Cordon` and `Schedule`. Unsetting this after configuring it will force a new resource to be created.
-  KubernetesClusterNodePoolUpgradeSettings({
+  const KubernetesClusterNodePoolUpgradeSettings({
     this.drainTimeoutInMinutes,
     this.maxSurge,
     this.maxUnavailable,

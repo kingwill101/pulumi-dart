@@ -9,7 +9,7 @@ class ModelState {
 
   /// Creates a new [ModelState].
   /// [published] Indicates if this model has been published.
-  ModelState({
+  const ModelState({
     this.published,
   });
 

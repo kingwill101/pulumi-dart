@@ -15,7 +15,7 @@ class GetBudgetResourceGroupArgs {
   /// Creates a new [GetBudgetResourceGroupArgs].
   /// [name] The name of this Consumption Budget.
   /// [resourceGroupId] The ID of the subscription.
-  GetBudgetResourceGroupArgs({
+  const GetBudgetResourceGroupArgs({
     required this.name,
     required this.resourceGroupId,
   });

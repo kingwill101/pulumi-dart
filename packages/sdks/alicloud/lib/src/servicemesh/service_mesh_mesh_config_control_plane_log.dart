@@ -14,7 +14,7 @@ class ServiceMeshMeshConfigControlPlaneLog {
   /// [enabled] Enable CNI
   /// [logTtlInDay] Lifecycle of logs has been collected to Alibaba Cloud SLS
   /// [project] The name of the SLS Project to which the control plane logs are collected.
-  ServiceMeshMeshConfigControlPlaneLog({
+  const ServiceMeshMeshConfigControlPlaneLog({
     required this.enabled,
     this.logTtlInDay,
     this.project,

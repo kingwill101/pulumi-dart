@@ -26,7 +26,7 @@ class FederatedIdentityCredentialArgs {
   /// [parentId] Specifies parent ID of User Assigned Identity for this Federated Identity Credential. Changing this forces a new Federated Identity Credential to be created.
   /// [resourceGroupName] Optional.
   /// [subject] Specifies the subject for this Federated Identity Credential.
-  FederatedIdentityCredentialArgs({
+  const FederatedIdentityCredentialArgs({
     required this.audience,
     required this.issuer,
     this.name,

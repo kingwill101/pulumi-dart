@@ -17,7 +17,7 @@ class LoadBalancerIntranetIntranet {
   /// [port] The SLB Port.
   /// [protocol] The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
   /// [targetPort] The Container port.
-  LoadBalancerIntranetIntranet({
+  const LoadBalancerIntranetIntranet({
     this.httpsCertId,
     this.port,
     this.protocol,

@@ -55,7 +55,7 @@ class GetVirtualNetworkGatewayVpnClientConfiguration {
   /// [revokedCertificates] One or more `revoked_certificate` blocks which
   /// [rootCertificates] One or more `root_certificate` blocks which are
   /// [vpnClientProtocols] List of the protocols supported by the vpn client.
-  GetVirtualNetworkGatewayVpnClientConfiguration({
+  const GetVirtualNetworkGatewayVpnClientConfiguration({
     required this.aadAudience,
     required this.aadIssuer,
     required this.aadTenant,

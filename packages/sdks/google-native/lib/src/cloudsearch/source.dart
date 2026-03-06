@@ -13,7 +13,7 @@ class Source {
   /// Creates a new [Source].
   /// [name] Source name for content indexed by the Indexing API.
   /// [predefinedSource] Predefined content source for Google Apps.
-  Source({
+  const Source({
     this.name,
     this.predefinedSource,
   });

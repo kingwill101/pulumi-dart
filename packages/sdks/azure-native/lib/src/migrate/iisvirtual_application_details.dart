@@ -13,7 +13,7 @@ class IISVirtualApplicationDetails {
   /// Creates a new [IISVirtualApplicationDetails].
   /// [directories] Gets or sets the list of directories.
   /// [path] Second level entity for virtual directories.
-  IISVirtualApplicationDetails({
+  const IISVirtualApplicationDetails({
     this.directories,
     this.path,
   });

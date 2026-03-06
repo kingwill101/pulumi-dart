@@ -13,7 +13,7 @@ class AsyncOptionsResponse {
   /// Creates a new [AsyncOptionsResponse].
   /// [methodMatch] Method regex where this policy will apply.
   /// [pollingOptions] Deployment manager will poll instances for this API resource setting a RUNNING state, and blocking until polling conditions tell whether the resource is completed or failed.
-  AsyncOptionsResponse({
+  const AsyncOptionsResponse({
     required this.methodMatch,
     required this.pollingOptions,
   });

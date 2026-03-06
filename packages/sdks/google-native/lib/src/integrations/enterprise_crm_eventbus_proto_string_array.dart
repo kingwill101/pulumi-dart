@@ -7,7 +7,7 @@ class EnterpriseCrmEventbusProtoStringArray {
 
   /// Creates a new [EnterpriseCrmEventbusProtoStringArray].
   /// [values] Optional.
-  EnterpriseCrmEventbusProtoStringArray({
+  const EnterpriseCrmEventbusProtoStringArray({
     this.values,
   });
 

@@ -13,7 +13,7 @@ class InterfacePublic {
   /// Creates a new [InterfacePublic].
   /// [ipv4] IPv4 addresses for this interface.
   /// [ipv6] IPv6 addresses for this interface.
-  InterfacePublic({
+  const InterfacePublic({
     this.ipv4,
     this.ipv6,
   });

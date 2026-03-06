@@ -10,7 +10,7 @@ class StateInfoResponse {
 
   /// Creates a new [StateInfoResponse].
   /// [updateInfo] Describes ongoing update on the cluster when cluster state is UPDATING.
-  StateInfoResponse({
+  const StateInfoResponse({
     required this.updateInfo,
   });
 

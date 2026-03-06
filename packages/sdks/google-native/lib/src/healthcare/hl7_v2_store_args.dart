@@ -35,7 +35,7 @@ class Hl7V2StoreArgs {
   /// [parserConfig] The configuration for the parser. It determines how the server parses the messages.
   /// [project] Optional.
   /// [rejectDuplicateMessage] Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
-  Hl7V2StoreArgs({
+  const Hl7V2StoreArgs({
     required this.datasetId,
     this.hl7V2StoreId,
     this.labels,

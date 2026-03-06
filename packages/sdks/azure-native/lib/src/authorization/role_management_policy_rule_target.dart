@@ -24,7 +24,7 @@ class RoleManagementPolicyRuleTarget {
   /// [level] The assignment level to which rule is applied.
   /// [operations] The type of operation.
   /// [targetObjects] The list of target objects.
-  RoleManagementPolicyRuleTarget({
+  const RoleManagementPolicyRuleTarget({
     this.caller,
     this.enforcedSettings,
     this.inheritableSettings,

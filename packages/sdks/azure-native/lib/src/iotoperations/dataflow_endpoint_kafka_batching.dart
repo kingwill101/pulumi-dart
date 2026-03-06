@@ -18,7 +18,7 @@ class DataflowEndpointKafkaBatching {
   /// [maxBytes] Maximum number of bytes in a batch.
   /// [maxMessages] Maximum number of messages in a batch.
   /// [mode] Mode for batching.
-  DataflowEndpointKafkaBatching({
+  const DataflowEndpointKafkaBatching({
     this.latencyMs,
     this.maxBytes,
     this.maxMessages,

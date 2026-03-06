@@ -29,7 +29,7 @@ class CustomService {
   /// [image] Describes the Image Specifications
   /// [name] Name of the Custom Service
   /// [volumes] Configuring the volumes for the container
-  CustomService({
+  const CustomService({
     this.docker,
     this.endpoints,
     this.environmentVariables,

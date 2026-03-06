@@ -9,7 +9,7 @@ class HostIP {
 
   /// Creates a new [HostIP].
   /// [ip] IP is the IP address assigned to the host
-  HostIP({
+  const HostIP({
     required this.ip,
   });
 

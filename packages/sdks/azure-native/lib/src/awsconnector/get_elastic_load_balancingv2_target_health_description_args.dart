@@ -15,7 +15,7 @@ class GetElasticLoadBalancingv2TargetHealthDescriptionArgs {
   /// Creates a new [GetElasticLoadBalancingv2TargetHealthDescriptionArgs].
   /// [name] Name of ElasticLoadBalancingv2TargetHealthDescription
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticLoadBalancingv2TargetHealthDescriptionArgs({
+  const GetElasticLoadBalancingv2TargetHealthDescriptionArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -16,7 +16,7 @@ class GitLabEnterpriseConfigResponse {
   /// [hostUri] Immutable. The URI of the GitlabEnterprise host.
   /// [serviceDirectoryConfig] The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
   /// [sslCa] The SSL certificate to use in requests to GitLab Enterprise instances.
-  GitLabEnterpriseConfigResponse({
+  const GitLabEnterpriseConfigResponse({
     required this.hostUri,
     required this.serviceDirectoryConfig,
     required this.sslCa,

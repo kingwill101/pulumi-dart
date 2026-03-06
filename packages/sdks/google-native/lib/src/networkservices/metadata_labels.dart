@@ -12,7 +12,7 @@ class MetadataLabels {
   /// Creates a new [MetadataLabels].
   /// [labelName] Label name presented as key in xDS Node Metadata.
   /// [labelValue] Label value presented as value corresponding to the above key, in xDS Node Metadata.
-  MetadataLabels({
+  const MetadataLabels({
     required this.labelName,
     required this.labelValue,
   });

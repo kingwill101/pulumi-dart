@@ -28,7 +28,7 @@ class ArcMachineArgs {
   /// [name] The name of the Arc machine. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Arc Machine should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Arc Machine.
-  ArcMachineArgs({
+  const ArcMachineArgs({
     this.identity,
     required this.kind,
     this.location,

@@ -15,7 +15,7 @@ class ElasticVolumeBackupProperties {
   /// [elasticBackupPolicyResourceId] ResourceId used to identify Elastic Backup Policy
   /// [elasticBackupVaultResourceId] ResourceId used to identify Elastic Backup Vault
   /// [policyEnforcement] The property to decide policy is enforced or not on the volume
-  ElasticVolumeBackupProperties({
+  const ElasticVolumeBackupProperties({
     this.elasticBackupPolicyResourceId,
     this.elasticBackupVaultResourceId,
     this.policyEnforcement,

@@ -18,7 +18,7 @@ class GetShareArgs {
   /// [accountName] The name of the share account.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share to retrieve.
-  GetShareArgs({
+  const GetShareArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.shareName,

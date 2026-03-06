@@ -18,7 +18,7 @@ class BareMetalLoadBalancerAddressPool {
   /// [avoidBuggyIps] If true, avoid using IPs ending in .0 or .255. This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
   /// [manualAssign] If true, prevent IP addresses from being automatically assigned.
   /// [pool] The name of the address pool.
-  BareMetalLoadBalancerAddressPool({
+  const BareMetalLoadBalancerAddressPool({
     required this.addresses,
     this.avoidBuggyIps,
     this.manualAssign,

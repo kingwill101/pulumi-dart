@@ -9,7 +9,7 @@ class NetworkInsightsAnalysisExplanationPortRange {
   /// Creates a new [NetworkInsightsAnalysisExplanationPortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisExplanationPortRange({
+  const NetworkInsightsAnalysisExplanationPortRange({
     this.from,
     this.to,
   });

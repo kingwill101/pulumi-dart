@@ -13,7 +13,7 @@ class AnalyticsApplicationInputsSchemaRecordFormat {
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordFormat].
   /// [mappingParameters] The Mapping Information for the record format.
   /// [recordFormatType] The type of Record Format. Can be `CSV` or `JSON`.
-  AnalyticsApplicationInputsSchemaRecordFormat({
+  const AnalyticsApplicationInputsSchemaRecordFormat({
     this.mappingParameters,
     this.recordFormatType,
   });

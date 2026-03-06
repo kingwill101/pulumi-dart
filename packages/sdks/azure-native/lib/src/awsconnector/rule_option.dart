@@ -12,7 +12,7 @@ class RuleOption {
   /// Creates a new [RuleOption].
   /// [keyword] Property keyword
   /// [settings] Property settings
-  RuleOption({
+  const RuleOption({
     this.keyword,
     this.settings,
   });

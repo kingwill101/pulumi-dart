@@ -9,7 +9,7 @@ class PipelineTriggerProperties {
 
   /// Creates a new [PipelineTriggerProperties].
   /// [sourceTrigger] The source trigger properties of the pipeline.
-  PipelineTriggerProperties({
+  const PipelineTriggerProperties({
     this.sourceTrigger,
   });
 

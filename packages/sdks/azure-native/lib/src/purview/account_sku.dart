@@ -12,7 +12,7 @@ class AccountSku {
   /// Creates a new [AccountSku].
   /// [capacity] Gets or sets the sku capacity.
   /// [name] Gets or sets the sku name.
-  AccountSku({
+  const AccountSku({
     this.capacity,
     this.name,
   });

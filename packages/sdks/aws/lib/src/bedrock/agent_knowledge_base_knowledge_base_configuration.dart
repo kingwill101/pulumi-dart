@@ -20,7 +20,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfiguration {
   /// [sqlKnowledgeBaseConfiguration] Configurations for a knowledge base connected to an SQL database. See `sql_knowledge_base_configuration` block for details.
   /// [type] Type of data that the data source is converted into for the knowledge base. Valid Values: `VECTOR`, `KENDRA`, `SQL`.
   /// [vectorKnowledgeBaseConfiguration] Details about the model that's used to convert the data source into vector embeddings. See `vector_knowledge_base_configuration` block for details.
-  AgentKnowledgeBaseKnowledgeBaseConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfiguration({
     this.kendraKnowledgeBaseConfiguration,
     this.sqlKnowledgeBaseConfiguration,
     required this.type,

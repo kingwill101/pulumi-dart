@@ -30,7 +30,7 @@ class RouteTableArgs {
   /// [resourceGroupName] The name of the resource group in which to create the route table. Changing this forces a new resource to be created.
   /// [routes] A list of objects representing routes. Each object accepts the arguments documented below.
   /// [tags] A mapping of tags to assign to the resource.
-  RouteTableArgs({
+  const RouteTableArgs({
     this.bgpRoutePropagationEnabled,
     this.location,
     this.name,

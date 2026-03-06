@@ -25,7 +25,7 @@ class GoogleCloudDocumentaiV1DocumentPageTable {
   /// [headerRows] Header rows of the table.
   /// [layout] Layout for Table.
   /// [provenance] The history of this table.
-  GoogleCloudDocumentaiV1DocumentPageTable({
+  const GoogleCloudDocumentaiV1DocumentPageTable({
     this.bodyRows,
     this.detectedLanguages,
     this.headerRows,

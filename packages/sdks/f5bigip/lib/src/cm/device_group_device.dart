@@ -11,7 +11,7 @@ class DeviceGroupDevice {
   /// Creates a new [DeviceGroupDevice].
   /// [name] Is the name of the device Group
   /// [setSyncLeader] Name of origin
-  DeviceGroupDevice({
+  const DeviceGroupDevice({
     this.name,
     this.setSyncLeader,
   });

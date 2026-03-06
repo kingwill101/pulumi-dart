@@ -14,7 +14,7 @@ class RegistryImageBuildUlimit {
   /// [hard] soft limit
   /// [name] type of ulimit, e.g. `nofile`
   /// [soft] hard limit
-  RegistryImageBuildUlimit({
+  const RegistryImageBuildUlimit({
     required this.hard,
     required this.name,
     required this.soft,

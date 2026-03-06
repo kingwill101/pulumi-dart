@@ -8,7 +8,7 @@ class GetAuthoritySubordinateConfigPemIssuerChain {
 
   /// Creates a new [GetAuthoritySubordinateConfigPemIssuerChain].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.
-  GetAuthoritySubordinateConfigPemIssuerChain({
+  const GetAuthoritySubordinateConfigPemIssuerChain({
     required this.pemCertificates,
   });
 

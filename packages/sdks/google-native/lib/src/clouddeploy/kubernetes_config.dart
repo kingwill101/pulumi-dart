@@ -14,7 +14,7 @@ class KubernetesConfig {
   /// Creates a new [KubernetesConfig].
   /// [gatewayServiceMesh] Kubernetes Gateway API service mesh configuration.
   /// [serviceNetworking] Kubernetes Service networking configuration.
-  KubernetesConfig({
+  const KubernetesConfig({
     this.gatewayServiceMesh,
     this.serviceNetworking,
   });

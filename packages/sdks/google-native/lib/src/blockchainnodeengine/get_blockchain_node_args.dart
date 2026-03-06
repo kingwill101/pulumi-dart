@@ -15,7 +15,7 @@ class GetBlockchainNodeArgs {
   /// [blockchainNodeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBlockchainNodeArgs({
+  const GetBlockchainNodeArgs({
     required this.blockchainNodeId,
     required this.location,
     this.project,

@@ -24,7 +24,7 @@ class ArchiveVersionArgs {
   /// [packageType] The type of the package resource.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ArchiveVersionArgs({
+  const ArchiveVersionArgs({
     required this.archiveName,
     this.archiveVersionName,
     required this.packageType,

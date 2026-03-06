@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha({
     required this.name,
   });
 

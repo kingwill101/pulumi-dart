@@ -12,7 +12,7 @@ class ClusterCustomerManagedKeyState {
   /// Creates a new [ClusterCustomerManagedKeyState].
   /// [keyVaultKeyId] The ID of the Key Vault Key to use for encryption.
   /// [logAnalyticsClusterId] The ID of the Log Analytics Cluster. Changing this forces a new Log Analytics Cluster Customer Managed Key to be created.
-  ClusterCustomerManagedKeyState({
+  const ClusterCustomerManagedKeyState({
     this.keyVaultKeyId,
     this.logAnalyticsClusterId,
   });

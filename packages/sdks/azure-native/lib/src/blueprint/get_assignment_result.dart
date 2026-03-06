@@ -56,7 +56,7 @@ class GetAssignmentResult {
   /// [scope] The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
   /// [status] Status of blueprint assignment. This field is readonly.
   /// [type] Type of this resource.
-  GetAssignmentResult({
+  const GetAssignmentResult({
     required this.azureApiVersion,
     this.blueprintId,
     this.description,

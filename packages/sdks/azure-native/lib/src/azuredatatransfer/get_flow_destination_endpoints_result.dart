@@ -8,7 +8,7 @@ class GetFlowDestinationEndpointsResult {
 
   /// Creates a new [GetFlowDestinationEndpointsResult].
   /// [endpoints] The destination endpoints for the flow stream
-  GetFlowDestinationEndpointsResult({
+  const GetFlowDestinationEndpointsResult({
     this.endpoints,
   });
 

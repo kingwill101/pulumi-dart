@@ -12,7 +12,7 @@ class GitHubOrganization {
   /// Creates a new [GitHubOrganization].
   /// [repositories] Optional list of repositories in which the pool should be created.
   /// [url] The GitHub organization URL in which the pool should be created.
-  GitHubOrganization({
+  const GitHubOrganization({
     this.repositories,
     required this.url,
   });

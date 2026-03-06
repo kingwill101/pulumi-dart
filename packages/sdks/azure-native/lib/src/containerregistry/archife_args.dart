@@ -30,7 +30,7 @@ class ArchifeArgs {
   /// [registryName] The name of the container registry.
   /// [repositoryEndpointPrefix] Optional.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ArchifeArgs({
+  const ArchifeArgs({
     this.archiveName,
     this.packageSource,
     required this.packageType,

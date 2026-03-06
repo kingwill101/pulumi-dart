@@ -14,7 +14,7 @@ class HttpRouteMatchRule {
   /// Creates a new [HttpRouteMatchRule].
   /// [headers] headers and their values to match in request.
   /// [path] Path to match for routing.
-  HttpRouteMatchRule({
+  const HttpRouteMatchRule({
     this.headers,
     required this.path,
   });

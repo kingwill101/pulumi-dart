@@ -21,7 +21,7 @@ class GetSqlPoolWorkloadGroupArgs {
   /// [sqlPoolName] SQL pool name
   /// [workloadGroupName] The name of the workload group.
   /// [workspaceName] The name of the workspace.
-  GetSqlPoolWorkloadGroupArgs({
+  const GetSqlPoolWorkloadGroupArgs({
     required this.resourceGroupName,
     required this.sqlPoolName,
     required this.workloadGroupName,

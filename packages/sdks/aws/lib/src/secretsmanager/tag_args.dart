@@ -21,7 +21,7 @@ class TagArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretId] ID of the AWS Secrets Manager secret to tag.
   /// [value] Tag value.
-  TagArgs({
+  const TagArgs({
     required this.key,
     this.region,
     required this.secretId,

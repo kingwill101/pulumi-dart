@@ -27,7 +27,7 @@ class ModelArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApi] ID of the associated REST API
   /// [schema] Schema of the model in a JSON form
-  ModelArgs({
+  const ModelArgs({
     required this.contentType,
     this.description,
     this.name,

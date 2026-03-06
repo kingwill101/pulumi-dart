@@ -11,7 +11,7 @@ class GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn {
   /// [columnId] Required.
   /// [columnName] Required.
   /// [expression] Required.
-  GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn({
+  const GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn({
     required this.columnId,
     required this.columnName,
     required this.expression,

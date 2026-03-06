@@ -14,7 +14,7 @@ class ManagementPolicyRuleFiltersMatchBlobIndexTag {
   /// [name] The filter tag name used for tag based filtering for blob objects.
   /// [operation] The comparison operator which is used for object comparison and filtering. Possible value is `==`. Defaults to `==`.
   /// [value] The filter tag value used for tag based filtering for blob objects.
-  ManagementPolicyRuleFiltersMatchBlobIndexTag({
+  const ManagementPolicyRuleFiltersMatchBlobIndexTag({
     required this.name,
     this.operation,
     required this.value,

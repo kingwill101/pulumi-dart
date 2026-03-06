@@ -22,7 +22,7 @@ class AiEndpointIamBindingArgs {
   /// [members] Required.
   /// [project] Optional.
   /// [role] Required.
-  AiEndpointIamBindingArgs({
+  const AiEndpointIamBindingArgs({
     this.condition,
     required this.endpoint,
     this.location,

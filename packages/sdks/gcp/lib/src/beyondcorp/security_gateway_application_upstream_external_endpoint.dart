@@ -11,7 +11,7 @@ class SecurityGatewayApplicationUpstreamExternalEndpoint {
   /// Creates a new [SecurityGatewayApplicationUpstreamExternalEndpoint].
   /// [hostname] Hostname of the endpoint.
   /// [port] Port of the endpoint.
-  SecurityGatewayApplicationUpstreamExternalEndpoint({
+  const SecurityGatewayApplicationUpstreamExternalEndpoint({
     required this.hostname,
     required this.port,
   });

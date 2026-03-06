@@ -15,7 +15,7 @@ class GetAddressGroupNetworksecurityV1beta1Args {
   /// [addressGroupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAddressGroupNetworksecurityV1beta1Args({
+  const GetAddressGroupNetworksecurityV1beta1Args({
     required this.addressGroupId,
     required this.location,
     this.project,

@@ -34,7 +34,7 @@ class MachineImageArgs {
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceInstance] The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-  MachineImageArgs({
+  const MachineImageArgs({
     this.description,
     this.guestFlush,
     this.machineImageEncryptionKey,

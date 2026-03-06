@@ -18,7 +18,7 @@ class GetConnectorArgs {
   /// [connectorName] The name of the connector.
   /// [hubName] The name of the hub.
   /// [resourceGroupName] The name of the resource group.
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.connectorName,
     required this.hubName,
     required this.resourceGroupName,

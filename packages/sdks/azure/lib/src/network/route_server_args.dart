@@ -38,7 +38,7 @@ class RouteServerArgs {
   /// [sku] The SKU of the Route Server. The only possible value is `Standard`. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet that the Route Server will reside. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  RouteServerArgs({
+  const RouteServerArgs({
     this.branchToBranchTrafficEnabled,
     this.hubRoutingPreference,
     this.location,

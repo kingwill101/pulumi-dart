@@ -17,7 +17,7 @@ class GalleryInVMAccessControlProfileProperties {
   /// [applicableHostEndpoint] This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
   /// [description] The description of this gallery inVMAccessControlProfile resources. This property is updatable.
   /// [osType] This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
-  GalleryInVMAccessControlProfileProperties({
+  const GalleryInVMAccessControlProfileProperties({
     required this.applicableHostEndpoint,
     this.description,
     required this.osType,

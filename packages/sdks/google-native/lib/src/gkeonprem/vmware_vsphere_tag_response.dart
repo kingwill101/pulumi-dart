@@ -12,7 +12,7 @@ class VmwareVsphereTagResponse {
   /// Creates a new [VmwareVsphereTagResponse].
   /// [category] The Vsphere tag category.
   /// [tag] The Vsphere tag name.
-  VmwareVsphereTagResponse({
+  const VmwareVsphereTagResponse({
     required this.category,
     required this.tag,
   });

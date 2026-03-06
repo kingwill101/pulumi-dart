@@ -8,7 +8,7 @@ class GetClusterPodSecurityPolicyConfig {
 
   /// Creates a new [GetClusterPodSecurityPolicyConfig].
   /// [enabled] Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
-  GetClusterPodSecurityPolicyConfig({
+  const GetClusterPodSecurityPolicyConfig({
     required this.enabled,
   });
 

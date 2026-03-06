@@ -14,7 +14,7 @@ class DataSourceDynamodbConfigDeltaSyncConfig {
   /// [baseTableTtl] The number of minutes that an Item is stored in the data source.
   /// [deltaSyncTableName] The table name.
   /// [deltaSyncTableTtl] The number of minutes that a Delta Sync log entry is stored in the Delta Sync table.
-  DataSourceDynamodbConfigDeltaSyncConfig({
+  const DataSourceDynamodbConfigDeltaSyncConfig({
     this.baseTableTtl,
     required this.deltaSyncTableName,
     this.deltaSyncTableTtl,

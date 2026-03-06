@@ -33,7 +33,7 @@ class UrlMapResponseAppengineV1beta {
   /// [securityLevel] Security (HTTPS) enforcement for this URL.
   /// [staticFiles] Returns the contents of a file, such as an image, as the response.
   /// [urlRegex] URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
-  UrlMapResponseAppengineV1beta({
+  const UrlMapResponseAppengineV1beta({
     required this.apiEndpoint,
     required this.authFailAction,
     required this.login,

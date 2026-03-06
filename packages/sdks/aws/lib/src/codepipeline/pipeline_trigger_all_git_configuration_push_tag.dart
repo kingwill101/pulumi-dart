@@ -11,7 +11,7 @@ class PipelineTriggerAllGitConfigurationPushTag {
   /// Creates a new [PipelineTriggerAllGitConfigurationPushTag].
   /// [excludes] A list of patterns of Git tags that, when pushed, are to be excluded from starting the pipeline.
   /// [includes] A list of patterns of Git tags that, when pushed, are to be included as criteria that starts the pipeline.
-  PipelineTriggerAllGitConfigurationPushTag({
+  const PipelineTriggerAllGitConfigurationPushTag({
     this.excludes,
     this.includes,
   });

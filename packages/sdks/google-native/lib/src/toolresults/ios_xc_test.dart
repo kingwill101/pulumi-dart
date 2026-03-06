@@ -12,7 +12,7 @@ class IosXcTest {
   /// Creates a new [IosXcTest].
   /// [bundleId] Bundle ID of the app.
   /// [xcodeVersion] Xcode version that the test was run with.
-  IosXcTest({
+  const IosXcTest({
     this.bundleId,
     this.xcodeVersion,
   });

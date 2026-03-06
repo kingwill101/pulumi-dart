@@ -14,7 +14,7 @@ class ParameterValidationDataprocV1beta2 {
   /// Creates a new [ParameterValidationDataprocV1beta2].
   /// [regex] Validation based on regular expressions.
   /// [values] Validation based on a list of allowed values.
-  ParameterValidationDataprocV1beta2({
+  const ParameterValidationDataprocV1beta2({
     this.regex,
     this.values,
   });

@@ -16,7 +16,7 @@ class ManagedOpArgs {
   /// Creates a new [ManagedOpArgs].
   /// [managedOpsName] Name of the resource.
   /// [properties] The resource-specific properties for this resource.
-  ManagedOpArgs({
+  const ManagedOpArgs({
     this.managedOpsName,
     this.properties,
   });

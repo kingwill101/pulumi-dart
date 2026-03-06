@@ -25,7 +25,7 @@ class IntegrationAccountPartnerArgs {
   /// [metadata] A JSON mapping of any Metadata for this Logic App Integration Account Partner.
   /// [name] The name which should be used for this Logic App Integration Account Partner. Changing this forces a new Logic App Integration Account Partner to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Partner should exist. Changing this forces a new Logic App Integration Account Partner to be created.
-  IntegrationAccountPartnerArgs({
+  const IntegrationAccountPartnerArgs({
     required this.businessIdentities,
     required this.integrationAccountName,
     this.metadata,

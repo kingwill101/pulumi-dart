@@ -20,7 +20,7 @@ class VnetConfigurationResponse {
   /// [trustSubnet] Trust Subnet
   /// [unTrustSubnet] Untrust Subnet
   /// [vnet] Azure Virtual Network
-  VnetConfigurationResponse({
+  const VnetConfigurationResponse({
     this.ipOfTrustSubnetForUdr,
     required this.trustSubnet,
     required this.unTrustSubnet,

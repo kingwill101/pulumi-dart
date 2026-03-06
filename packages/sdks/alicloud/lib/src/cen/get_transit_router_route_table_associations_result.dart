@@ -31,7 +31,7 @@ class GetTransitRouterRouteTableAssociationsResult {
   /// [transitRouterAttachmentResourceId] Optional.
   /// [transitRouterAttachmentResourceType] Optional.
   /// [transitRouterRouteTableId] ID of the transit router route table.
-  GetTransitRouterRouteTableAssociationsResult({
+  const GetTransitRouterRouteTableAssociationsResult({
     required this.associations,
     required this.id,
     required this.ids,

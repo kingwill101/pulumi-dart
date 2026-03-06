@@ -13,7 +13,7 @@ class InsightsDatasetConfigIdentity {
   /// Creates a new [InsightsDatasetConfigIdentity].
   /// [name] (Output)
   /// [type] Type of identity to use for the DatasetConfig.
-  InsightsDatasetConfigIdentity({
+  const InsightsDatasetConfigIdentity({
     this.name,
     required this.type,
   });

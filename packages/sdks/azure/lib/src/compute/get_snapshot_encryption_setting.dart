@@ -13,7 +13,7 @@ class GetSnapshotEncryptionSetting {
   /// [diskEncryptionKeys] Required.
   /// [enabled] Required.
   /// [keyEncryptionKeys] Required.
-  GetSnapshotEncryptionSetting({
+  const GetSnapshotEncryptionSetting({
     required this.diskEncryptionKeys,
     required this.enabled,
     required this.keyEncryptionKeys,

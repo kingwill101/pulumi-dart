@@ -19,7 +19,7 @@ class GetPipelineDefinitionArgs {
   /// [parameterValues] Parameter values used in the pipeline definition. See below
   /// [pipelineId] ID of the pipeline.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPipelineDefinitionArgs({
+  const GetPipelineDefinitionArgs({
     this.parameterValues,
     required this.pipelineId,
     this.region,

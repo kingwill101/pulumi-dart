@@ -18,7 +18,7 @@ class GoogleCloudDialogflowV2EvaluationConfig {
   /// [datasets] Datasets used for evaluation.
   /// [smartComposeConfig] Configuration for smart compose model evalution.
   /// [smartReplyConfig] Configuration for smart reply model evalution.
-  GoogleCloudDialogflowV2EvaluationConfig({
+  const GoogleCloudDialogflowV2EvaluationConfig({
     required this.datasets,
     this.smartComposeConfig,
     this.smartReplyConfig,

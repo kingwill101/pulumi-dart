@@ -41,7 +41,7 @@ class CapacityProviderArgs {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcConfig] Configuration block for VPC settings. See VPC Config below.
-  CapacityProviderArgs({
+  const CapacityProviderArgs({
     this.capacityProviderScalingConfigs,
     this.instanceRequirements,
     this.kmsKeyArn,

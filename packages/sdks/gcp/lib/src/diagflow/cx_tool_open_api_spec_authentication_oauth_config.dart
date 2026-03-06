@@ -27,7 +27,7 @@ class CxToolOpenApiSpecAuthenticationOauthConfig {
   /// [scopes] Optional. The OAuth scopes to grant.
   /// [secretVersionForClientSecret] Optional. The name of the SecretManager secret version resource storing the client secret.
   /// [tokenEndpoint] The token endpoint in the OAuth provider to exchange for an access token.
-  CxToolOpenApiSpecAuthenticationOauthConfig({
+  const CxToolOpenApiSpecAuthenticationOauthConfig({
     required this.clientId,
     this.clientSecret,
     required this.oauthGrantType,

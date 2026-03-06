@@ -17,7 +17,7 @@ class MigrateMySqlAzureDbForMySqlSyncTaskInput {
   /// [selectedDatabases] Databases to migrate
   /// [sourceConnectionInfo] Connection information for source MySQL
   /// [targetConnectionInfo] Connection information for target Azure Database for MySQL
-  MigrateMySqlAzureDbForMySqlSyncTaskInput({
+  const MigrateMySqlAzureDbForMySqlSyncTaskInput({
     required this.selectedDatabases,
     required this.sourceConnectionInfo,
     required this.targetConnectionInfo,

@@ -12,7 +12,7 @@ class ScopeRbacRoleBindingRole {
   /// Creates a new [ScopeRbacRoleBindingRole].
   /// [customRole] CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
   /// [predefinedRole] PredefinedRole is an ENUM representation of the default Kubernetes Roles
-  ScopeRbacRoleBindingRole({
+  const ScopeRbacRoleBindingRole({
     this.customRole,
     this.predefinedRole,
   });

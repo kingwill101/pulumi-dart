@@ -16,7 +16,7 @@ class RegionBackendServiceConsistentHashHttpCookie {
   /// [name] Name of the cookie.
   /// [path] Path to set for the cookie.
   /// [ttl] Lifetime of the cookie.
-  RegionBackendServiceConsistentHashHttpCookie({
+  const RegionBackendServiceConsistentHashHttpCookie({
     this.name,
     this.path,
     this.ttl,

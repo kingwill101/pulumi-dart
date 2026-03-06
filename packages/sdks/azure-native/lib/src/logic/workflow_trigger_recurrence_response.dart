@@ -25,7 +25,7 @@ class WorkflowTriggerRecurrenceResponse {
   /// [schedule] The recurrence schedule.
   /// [startTime] The start time.
   /// [timeZone] The time zone.
-  WorkflowTriggerRecurrenceResponse({
+  const WorkflowTriggerRecurrenceResponse({
     this.endTime,
     this.frequency,
     this.interval,

@@ -15,7 +15,7 @@ class GetDiscoveredAssetArgs {
   /// Creates a new [GetDiscoveredAssetArgs].
   /// [discoveredAssetName] Discovered Asset name parameter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiscoveredAssetArgs({
+  const GetDiscoveredAssetArgs({
     required this.discoveredAssetName,
     required this.resourceGroupName,
   });

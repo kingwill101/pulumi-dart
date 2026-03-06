@@ -18,7 +18,7 @@ class RegisteredClusterNodes {
   /// [clusterNodeFqdn] The cluster node name.
   /// [isSharedDiskVirtualNode] A value indicating whether this represents virtual entity hosting all the shared disks.
   /// [machineId] The machine ID.
-  RegisteredClusterNodes({
+  const RegisteredClusterNodes({
     this.biosId,
     this.clusterNodeFqdn,
     this.isSharedDiskVirtualNode,

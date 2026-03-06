@@ -14,7 +14,7 @@ class GetWorkerPoolInstanceSplitStatus {
   /// [percent] Specifies percent of the instance split to this Revision.
   /// [revision] Revision to which this instance split is assigned.
   /// [type] The allocation type for this instance split.
-  GetWorkerPoolInstanceSplitStatus({
+  const GetWorkerPoolInstanceSplitStatus({
     required this.percent,
     required this.revision,
     required this.type,

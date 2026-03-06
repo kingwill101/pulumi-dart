@@ -9,7 +9,7 @@ class ScheduledQueryTargetConfiguration {
 
   /// Creates a new [ScheduledQueryTargetConfiguration].
   /// [timestreamConfiguration] Configuration block for information needed to write data into the Timestream database and table. See below.
-  ScheduledQueryTargetConfiguration({
+  const ScheduledQueryTargetConfiguration({
     required this.timestreamConfiguration,
   });
 

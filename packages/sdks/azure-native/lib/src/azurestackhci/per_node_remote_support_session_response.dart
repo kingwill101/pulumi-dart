@@ -21,7 +21,7 @@ class PerNodeRemoteSupportSessionResponse {
   /// [nodeName] Name of the node
   /// [sessionEndTime] Remote Support Session EndTime on the Node
   /// [sessionStartTime] Remote Support Session StartTime on the Node
-  PerNodeRemoteSupportSessionResponse({
+  const PerNodeRemoteSupportSessionResponse({
     required this.accessLevel,
     required this.duration,
     required this.nodeName,

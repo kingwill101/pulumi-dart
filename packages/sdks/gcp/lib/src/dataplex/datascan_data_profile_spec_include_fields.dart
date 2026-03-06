@@ -10,7 +10,7 @@ class DatascanDataProfileSpecIncludeFields {
 
   /// Creates a new [DatascanDataProfileSpecIncludeFields].
   /// [fieldNames] Expected input is a list of fully qualified names of fields as in the schema.
-  DatascanDataProfileSpecIncludeFields({
+  const DatascanDataProfileSpecIncludeFields({
     this.fieldNames,
   });
 

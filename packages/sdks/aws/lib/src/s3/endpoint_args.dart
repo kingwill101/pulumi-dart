@@ -27,7 +27,7 @@ class EndpointArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupId] Identifier of the EC2 Security Group.
   /// [subnetId] Identifier of the EC2 Subnet.
-  EndpointArgs({
+  const EndpointArgs({
     this.accessType,
     this.customerOwnedIpv4Pool,
     required this.outpostId,

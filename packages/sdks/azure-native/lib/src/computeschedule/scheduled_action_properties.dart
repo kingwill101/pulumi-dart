@@ -29,7 +29,7 @@ class ScheduledActionProperties {
   /// [resourceType] The type of resource the scheduled action is targeting
   /// [schedule] The schedule the scheduled action is supposed to follow
   /// [startTime] The time which the scheduled action is supposed to start running
-  ScheduledActionProperties({
+  const ScheduledActionProperties({
     required this.actionType,
     this.disabled,
     this.endTime,

@@ -16,7 +16,7 @@ class StagingSettings {
   /// [enableCompression] Specifies whether to use compression when copying data via an interim staging. Default value is false. Type: boolean (or Expression with resultType boolean).
   /// [linkedServiceName] Staging linked service reference.
   /// [path] The path to storage for storing the interim data. Type: string (or Expression with resultType string).
-  StagingSettings({
+  const StagingSettings({
     this.enableCompression,
     required this.linkedServiceName,
     this.path,

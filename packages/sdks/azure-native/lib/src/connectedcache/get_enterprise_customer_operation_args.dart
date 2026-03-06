@@ -15,7 +15,7 @@ class GetEnterpriseCustomerOperationArgs {
   /// Creates a new [GetEnterpriseCustomerOperationArgs].
   /// [customerResourceName] Name of the Customer resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEnterpriseCustomerOperationArgs({
+  const GetEnterpriseCustomerOperationArgs({
     required this.customerResourceName,
     required this.resourceGroupName,
   });

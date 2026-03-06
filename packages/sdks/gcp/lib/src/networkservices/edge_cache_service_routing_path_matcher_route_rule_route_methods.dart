@@ -9,7 +9,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods].
   /// [allowedMethods] The non-empty set of HTTP methods that are allowed for this route.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods({
     this.allowedMethods,
   });
 

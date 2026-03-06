@@ -15,7 +15,7 @@ class GetDnsResolverArgs {
   /// Creates a new [GetDnsResolverArgs].
   /// [dnsResolverName] The name of the DNS resolver.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDnsResolverArgs({
+  const GetDnsResolverArgs({
     required this.dnsResolverName,
     required this.resourceGroupName,
   });

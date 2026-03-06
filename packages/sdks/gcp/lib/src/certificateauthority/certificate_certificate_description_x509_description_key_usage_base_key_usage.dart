@@ -32,7 +32,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage {
   /// [encipherOnly] The key may be used to encipher only.
   /// [keyAgreement] The key may be used in a key agreement protocol.
   /// [keyEncipherment] The key may be used to encipher other keys.
-  CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage({
+  const CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage({
     this.certSign,
     this.contentCommitment,
     this.crlSign,

@@ -7,7 +7,7 @@ class SlsaBuilder {
 
   /// Creates a new [SlsaBuilder].
   /// [id] Optional.
-  SlsaBuilder({
+  const SlsaBuilder({
     this.id,
   });
 

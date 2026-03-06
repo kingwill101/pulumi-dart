@@ -14,7 +14,7 @@ class DomainDevicesHostdevCapsNetRoute {
   /// [address] Sets the destination address for the routing configuration of the host device.
   /// [family] Specifies the address family for the routing capabilities (IPv4 or IPv6) of the host device.
   /// [gateway] Configures the gateway address for the routing capability associated with the host device.
-  DomainDevicesHostdevCapsNetRoute({
+  const DomainDevicesHostdevCapsNetRoute({
     this.address,
     this.family,
     this.gateway,

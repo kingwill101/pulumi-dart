@@ -13,7 +13,7 @@ class ManagedIdentity {
   /// Creates a new [ManagedIdentity].
   /// [type] The type of managed identity for the workspace
   /// [userAssignedIdentities] The user assigned managed identities.
-  ManagedIdentity({
+  const ManagedIdentity({
     this.type,
     this.userAssignedIdentities,
   });

@@ -14,7 +14,7 @@ class ChannelHlsIngestIngestEndpoint {
   /// [password] The password
   /// [url] The URL
   /// [username] The username
-  ChannelHlsIngestIngestEndpoint({
+  const ChannelHlsIngestIngestEndpoint({
     this.password,
     this.url,
     this.username,

@@ -18,7 +18,7 @@ class TritonModelJobOutputResponse {
   /// [jobOutputType] Enum to determine the Job Output Type.
   /// [mode] Output Asset Delivery Mode.
   /// [uri] Output Asset URI.
-  TritonModelJobOutputResponse({
+  const TritonModelJobOutputResponse({
     this.description,
     required this.jobOutputType,
     this.mode,

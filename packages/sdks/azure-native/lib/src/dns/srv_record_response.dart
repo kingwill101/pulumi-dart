@@ -18,7 +18,7 @@ class SrvRecordResponse {
   /// [priority] The priority value for this SRV record.
   /// [target] The target domain name for this SRV record.
   /// [weight] The weight value for this SRV record.
-  SrvRecordResponse({
+  const SrvRecordResponse({
     this.port,
     this.priority,
     this.target,

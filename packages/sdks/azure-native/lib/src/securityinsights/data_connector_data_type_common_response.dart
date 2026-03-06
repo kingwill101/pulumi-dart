@@ -9,7 +9,7 @@ class DataConnectorDataTypeCommonResponse {
 
   /// Creates a new [DataConnectorDataTypeCommonResponse].
   /// [state] Describe whether this data type connection is enabled or not.
-  DataConnectorDataTypeCommonResponse({
+  const DataConnectorDataTypeCommonResponse({
     required this.state,
   });
 

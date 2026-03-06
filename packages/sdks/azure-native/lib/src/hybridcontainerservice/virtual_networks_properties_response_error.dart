@@ -9,7 +9,7 @@ class VirtualNetworksPropertiesResponseError {
   /// Creates a new [VirtualNetworksPropertiesResponseError].
   /// [code] Optional.
   /// [message] Optional.
-  VirtualNetworksPropertiesResponseError({
+  const VirtualNetworksPropertiesResponseError({
     this.code,
     this.message,
   });

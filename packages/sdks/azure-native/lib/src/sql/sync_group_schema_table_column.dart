@@ -15,7 +15,7 @@ class SyncGroupSchemaTableColumn {
   /// [dataSize] Data size of the column.
   /// [dataType] Data type of the column.
   /// [quotedName] Quoted name of sync group table column.
-  SyncGroupSchemaTableColumn({
+  const SyncGroupSchemaTableColumn({
     this.dataSize,
     this.dataType,
     this.quotedName,

@@ -18,7 +18,7 @@ class GetLocationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [zoneMappings] A `zone_mappings` block as defined below.
-  GetLocationResult({
+  const GetLocationResult({
     required this.displayName,
     required this.id,
     required this.location,

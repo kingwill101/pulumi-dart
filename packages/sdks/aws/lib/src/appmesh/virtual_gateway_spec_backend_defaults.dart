@@ -9,7 +9,7 @@ class VirtualGatewaySpecBackendDefaults {
 
   /// Creates a new [VirtualGatewaySpecBackendDefaults].
   /// [clientPolicy] Default client policy for virtual gateway backends.
-  VirtualGatewaySpecBackendDefaults({
+  const VirtualGatewaySpecBackendDefaults({
     this.clientPolicy,
   });
 

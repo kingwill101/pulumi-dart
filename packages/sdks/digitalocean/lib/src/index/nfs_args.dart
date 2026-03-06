@@ -26,7 +26,7 @@ class NfsArgs {
   /// [size] The size of the NFS share in GiB. Minimum size is 50 GiB.
   /// [tags] Optional.
   /// [vpcId] The ID of the VPC where the NFS share will be created.
-  NfsArgs({
+  const NfsArgs({
     this.name,
     this.performanceTier,
     required this.region,

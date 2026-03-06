@@ -23,7 +23,7 @@ class GetWorkspaceSettingResult {
   /// [scope] All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
   /// [type] Resource type
   /// [workspaceId] The full Azure ID of the workspace to save the data in
-  GetWorkspaceSettingResult({
+  const GetWorkspaceSettingResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

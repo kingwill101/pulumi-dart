@@ -24,7 +24,7 @@ class Header {
   /// [protocol] Property protocol
   /// [source] Property source
   /// [sourcePort] Property sourcePort
-  Header({
+  const Header({
     this.destination,
     this.destinationPort,
     this.direction,

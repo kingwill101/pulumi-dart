@@ -96,7 +96,7 @@ class GetEndpointResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [urlSigningKeys] List of keys used to validate the signed URL hashes.
   /// [webApplicationFirewallPolicyLink] Defines the Web Application Firewall policy for the endpoint (if applicable)
-  GetEndpointResult({
+  const GetEndpointResult({
     required this.azureApiVersion,
     this.contentTypesToCompress,
     required this.customDomains,

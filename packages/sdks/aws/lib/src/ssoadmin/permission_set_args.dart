@@ -30,7 +30,7 @@ class PermissionSetArgs {
   /// [relayState] The relay state URL used to redirect users within the application during the federation authentication process.
   /// [sessionDuration] The length of time that the application user sessions are valid in the ISO-8601 standard. Default: `PT1H`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  PermissionSetArgs({
+  const PermissionSetArgs({
     this.description,
     required this.instanceArn,
     this.name,

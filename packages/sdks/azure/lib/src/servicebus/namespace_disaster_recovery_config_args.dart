@@ -21,7 +21,7 @@ class NamespaceDisasterRecoveryConfigArgs {
   /// [name] Specifies the name of the Disaster Recovery Config. This is the alias DNS name that will be created. Changing this forces a new resource to be created.
   /// [partnerNamespaceId] The ID of the Service Bus Namespace to replicate to.
   /// [primaryNamespaceId] The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.
-  NamespaceDisasterRecoveryConfigArgs({
+  const NamespaceDisasterRecoveryConfigArgs({
     this.aliasAuthorizationRuleId,
     this.name,
     required this.partnerNamespaceId,

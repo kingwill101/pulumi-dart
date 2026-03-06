@@ -24,7 +24,7 @@ class NfsExportOptionsResponseFileV1beta1 {
   /// [ipRanges] List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
   /// [securityFlavors] The security flavors allowed for mount operations. The default is AUTH_SYS.
   /// [squashMode] Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
-  NfsExportOptionsResponseFileV1beta1({
+  const NfsExportOptionsResponseFileV1beta1({
     required this.accessMode,
     required this.anonGid,
     required this.anonUid,

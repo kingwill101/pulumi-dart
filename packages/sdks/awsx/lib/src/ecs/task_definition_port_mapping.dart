@@ -21,7 +21,7 @@ class TaskDefinitionPortMapping {
   /// [name] Optional.
   /// [protocol] Optional.
   /// [targetGroup] Optional.
-  TaskDefinitionPortMapping({
+  const TaskDefinitionPortMapping({
     this.appProtocol,
     this.containerPort,
     this.containerPortRange,

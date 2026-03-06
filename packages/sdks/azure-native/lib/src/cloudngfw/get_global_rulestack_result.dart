@@ -56,7 +56,7 @@ class GetGlobalRulestackResult {
   /// [securityServices] Security Profile
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGlobalRulestackResult({
+  const GetGlobalRulestackResult({
     this.associatedSubscriptions,
     required this.azureApiVersion,
     this.defaultMode,

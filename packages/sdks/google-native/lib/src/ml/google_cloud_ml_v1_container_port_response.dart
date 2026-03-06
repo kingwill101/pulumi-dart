@@ -9,7 +9,7 @@ class GoogleCloudMlV1ContainerPortResponse {
 
   /// Creates a new [GoogleCloudMlV1ContainerPortResponse].
   /// [containerPort] Number of the port to expose on the container. This must be a valid port number: 0 &lt; PORT_NUMBER &lt; 65536.
-  GoogleCloudMlV1ContainerPortResponse({
+  const GoogleCloudMlV1ContainerPortResponse({
     required this.containerPort,
   });
 

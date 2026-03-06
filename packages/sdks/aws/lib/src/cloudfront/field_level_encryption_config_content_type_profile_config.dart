@@ -12,7 +12,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfig {
   /// Creates a new [FieldLevelEncryptionConfigContentTypeProfileConfig].
   /// [contentTypeProfiles] Object that contains an attribute `items` that contains the list of configurations for a field-level encryption content type-profile. See Content Type Profile.
   /// [forwardWhenContentTypeIsUnknown] specifies what to do when an unknown content type is provided for the profile. If true, content is forwarded without being encrypted when the content type is unknown. If false (the default), an error is returned when the content type is unknown.
-  FieldLevelEncryptionConfigContentTypeProfileConfig({
+  const FieldLevelEncryptionConfigContentTypeProfileConfig({
     required this.contentTypeProfiles,
     required this.forwardWhenContentTypeIsUnknown,
   });

@@ -19,7 +19,7 @@ class ComponentContainer {
   /// [isArchived] Is the asset archived?
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ComponentContainer({
+  const ComponentContainer({
     this.description,
     this.isArchived,
     this.properties,

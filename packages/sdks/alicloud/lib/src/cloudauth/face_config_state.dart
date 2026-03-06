@@ -15,7 +15,7 @@ class FaceConfigState {
   /// [bizName] Scene name.
   /// [bizType] Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   /// [gmtModified] Last Modified Date.
-  FaceConfigState({
+  const FaceConfigState({
     this.bizName,
     this.bizType,
     this.gmtModified,

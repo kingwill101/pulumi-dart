@@ -18,7 +18,7 @@ class ComputeInstanceLastOperationResponse {
   /// [operationStatus] Operation status.
   /// [operationTime] Time of the last operation.
   /// [operationTrigger] Trigger of operation.
-  ComputeInstanceLastOperationResponse({
+  const ComputeInstanceLastOperationResponse({
     this.operationName,
     this.operationStatus,
     this.operationTime,

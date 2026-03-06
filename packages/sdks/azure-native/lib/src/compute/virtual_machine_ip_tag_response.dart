@@ -12,7 +12,7 @@ class VirtualMachineIpTagResponse {
   /// Creates a new [VirtualMachineIpTagResponse].
   /// [ipTagType] IP tag type. Example: FirstPartyUsage.
   /// [tag] IP tag associated with the public IP. Example: SQL, Storage etc.
-  VirtualMachineIpTagResponse({
+  const VirtualMachineIpTagResponse({
     this.ipTagType,
     this.tag,
   });

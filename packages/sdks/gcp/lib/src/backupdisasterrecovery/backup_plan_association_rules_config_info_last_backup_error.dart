@@ -13,7 +13,7 @@ class BackupPlanAssociationRulesConfigInfoLastBackupError {
   /// Creates a new [BackupPlanAssociationRulesConfigInfoLastBackupError].
   /// [code] (Output)
   /// [message] (Output)
-  BackupPlanAssociationRulesConfigInfoLastBackupError({
+  const BackupPlanAssociationRulesConfigInfoLastBackupError({
     this.code,
     this.message,
   });

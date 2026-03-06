@@ -23,7 +23,7 @@ class AppregistryApplicationArgs {
   /// [name] Name of the application. The name must be unique within an AWS region.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags assigned to the Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AppregistryApplicationArgs({
+  const AppregistryApplicationArgs({
     this.description,
     this.name,
     this.region,

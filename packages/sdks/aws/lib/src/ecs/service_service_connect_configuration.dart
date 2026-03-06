@@ -19,7 +19,7 @@ class ServiceServiceConnectConfiguration {
   /// [logConfiguration] Log configuration for the container. See below.
   /// [namespace] Namespace name or ARN of the `aws.servicediscovery.HttpNamespace` for use with Service Connect.
   /// [services] List of Service Connect service objects. See below.
-  ServiceServiceConnectConfiguration({
+  const ServiceServiceConnectConfiguration({
     required this.enabled,
     this.logConfiguration,
     this.namespace,

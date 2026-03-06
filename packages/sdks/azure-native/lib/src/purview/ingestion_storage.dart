@@ -9,7 +9,7 @@ class IngestionStorage {
 
   /// Creates a new [IngestionStorage].
   /// [publicNetworkAccess] Gets or sets the public network access setting
-  IngestionStorage({
+  const IngestionStorage({
     this.publicNetworkAccess,
   });
 

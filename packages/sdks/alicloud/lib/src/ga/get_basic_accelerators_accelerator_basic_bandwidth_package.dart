@@ -14,7 +14,7 @@ class GetBasicAcceleratorsAcceleratorBasicBandwidthPackage {
   /// [bandwidth] The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
   /// [bandwidthType] The type of the bandwidth that is provided by the basic bandwidth plan.
   /// [instanceId] The ID of the cross-region acceleration bandwidth plan.
-  GetBasicAcceleratorsAcceleratorBasicBandwidthPackage({
+  const GetBasicAcceleratorsAcceleratorBasicBandwidthPackage({
     required this.bandwidth,
     required this.bandwidthType,
     required this.instanceId,

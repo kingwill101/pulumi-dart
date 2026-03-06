@@ -15,7 +15,7 @@ class NetworkIpDhcpRange {
   /// [end] Sets the end IP address of the DHCP allocation range.
   /// [lease] Configures lease settings for DHCP host entries.
   /// [start] Sets the start IP address of the DHCP allocation range.
-  NetworkIpDhcpRange({
+  const NetworkIpDhcpRange({
     this.end,
     this.lease,
     this.start,

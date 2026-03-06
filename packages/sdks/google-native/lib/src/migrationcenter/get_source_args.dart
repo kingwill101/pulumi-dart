@@ -15,7 +15,7 @@ class GetSourceArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetSourceArgs({
+  const GetSourceArgs({
     required this.location,
     this.project,
     required this.sourceId,

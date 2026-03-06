@@ -44,7 +44,7 @@ class GuestConfigurationNavigationResponse {
   /// [kind] Kind of the guest configuration. For example:DSC
   /// [name] Name of the guest configuration.
   /// [version] Version of the guest configuration.
-  GuestConfigurationNavigationResponse({
+  const GuestConfigurationNavigationResponse({
     required this.assignmentSource,
     this.assignmentType,
     this.configurationParameter,

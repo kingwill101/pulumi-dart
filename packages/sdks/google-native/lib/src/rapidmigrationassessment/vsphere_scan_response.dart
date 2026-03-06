@@ -9,7 +9,7 @@ class VSphereScanResponse {
 
   /// Creates a new [VSphereScanResponse].
   /// [coreSource] reference to the corresponding VSphere Scan in MC Source.
-  VSphereScanResponse({
+  const VSphereScanResponse({
     required this.coreSource,
   });
 

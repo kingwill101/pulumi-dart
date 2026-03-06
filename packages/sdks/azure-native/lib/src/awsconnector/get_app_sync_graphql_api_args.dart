@@ -15,7 +15,7 @@ class GetAppSyncGraphqlApiArgs {
   /// Creates a new [GetAppSyncGraphqlApiArgs].
   /// [name] Name of AppSyncGraphqlApi
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAppSyncGraphqlApiArgs({
+  const GetAppSyncGraphqlApiArgs({
     required this.name,
     required this.resourceGroupName,
   });

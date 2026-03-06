@@ -20,7 +20,7 @@ class RepositoryInitialConfig {
   /// [gitignores] List of gitignore template names user can choose from.
   /// [license] License template name user can choose from.
   /// [readme] README template name.
-  RepositoryInitialConfig({
+  const RepositoryInitialConfig({
     this.defaultBranch,
     this.gitignores,
     this.license,

@@ -38,7 +38,7 @@ class TenantInboundSamlConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [spConfig] SAML SP (Service Provider) configuration when the project acts as the relying party to receive
   /// [tenant] The name of the tenant where this inbound SAML config resource exists
-  TenantInboundSamlConfigArgs({
+  const TenantInboundSamlConfigArgs({
     required this.displayName,
     this.enabled,
     required this.idpConfig,

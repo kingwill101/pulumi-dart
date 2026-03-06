@@ -15,7 +15,7 @@ class GetStoragePoolTypesArgs {
   /// [project] Optional.
   /// [storagePoolType] Required.
   /// [zone] Required.
-  GetStoragePoolTypesArgs({
+  const GetStoragePoolTypesArgs({
     this.project,
     required this.storagePoolType,
     required this.zone,

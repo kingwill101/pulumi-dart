@@ -12,7 +12,7 @@ class PostRenderer {
   /// Creates a new [PostRenderer].
   /// [args] Arguments to pass to the post-renderer command.
   /// [command] Path to an executable to be used for post rendering.
-  PostRenderer({
+  const PostRenderer({
     this.args,
     required this.command,
   });

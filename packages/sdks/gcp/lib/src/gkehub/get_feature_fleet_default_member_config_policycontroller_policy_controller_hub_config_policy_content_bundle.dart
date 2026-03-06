@@ -10,7 +10,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle].
   /// [bundle] Required.
   /// [exemptedNamespaces] The set of namespaces to be exempted from the bundle.
-  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle({
+  const GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle({
     required this.bundle,
     required this.exemptedNamespaces,
   });

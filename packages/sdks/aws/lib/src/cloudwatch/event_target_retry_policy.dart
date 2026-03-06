@@ -11,7 +11,7 @@ class EventTargetRetryPolicy {
   /// Creates a new [EventTargetRetryPolicy].
   /// [maximumEventAgeInSeconds] The age in seconds to continue to make retry attempts.
   /// [maximumRetryAttempts] maximum number of retry attempts to make before the request fails
-  EventTargetRetryPolicy({
+  const EventTargetRetryPolicy({
     this.maximumEventAgeInSeconds,
     this.maximumRetryAttempts,
   });

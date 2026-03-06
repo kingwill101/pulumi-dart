@@ -16,7 +16,7 @@ class QuotaPlanQuotaParameter {
   /// [elasticReservedCu] The value of elastic Reserved CUs.
   /// [maxCu] The value of maxCU in Reserved CUs.
   /// [minCu] The value of minCU in Reserved CUs.
-  QuotaPlanQuotaParameter({
+  const QuotaPlanQuotaParameter({
     required this.elasticReservedCu,
     this.maxCu,
     this.minCu,

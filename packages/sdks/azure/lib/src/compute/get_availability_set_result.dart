@@ -27,7 +27,7 @@ class GetAvailabilitySetResult {
   /// [platformUpdateDomainCount] The number of update domains that are used.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the resource.
-  GetAvailabilitySetResult({
+  const GetAvailabilitySetResult({
     required this.id,
     required this.location,
     required this.managed,

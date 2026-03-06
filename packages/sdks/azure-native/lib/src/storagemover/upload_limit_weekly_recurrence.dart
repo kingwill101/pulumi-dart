@@ -20,7 +20,7 @@ class UploadLimitWeeklyRecurrence {
   /// [endTime] The end time of the schedule recurrence. Full hour and 30-minute intervals are supported.
   /// [limitInMbps] The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.
   /// [startTime] The start time of the schedule recurrence. Full hour and 30-minute intervals are supported.
-  UploadLimitWeeklyRecurrence({
+  const UploadLimitWeeklyRecurrence({
     required this.days,
     required this.endTime,
     required this.limitInMbps,

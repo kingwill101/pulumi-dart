@@ -20,7 +20,7 @@ class GetTaskDefinitionVolumeDockerVolumeConfiguration {
   /// [driverOpts] Map of Docker driver specific options.
   /// [labels] Map of custom metadata to add to your Docker volume.
   /// [scope] Scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are scoped as `shared` persist after the task stops.
-  GetTaskDefinitionVolumeDockerVolumeConfiguration({
+  const GetTaskDefinitionVolumeDockerVolumeConfiguration({
     required this.autoprovision,
     required this.driver,
     required this.driverOpts,

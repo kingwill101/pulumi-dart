@@ -83,7 +83,7 @@ class DocumentArgs {
   /// [textExtractionEnabled] If true, text extraction will be performed.
   /// [title] Title that describes the document. This can be the top heading or text that describes the document.
   /// [updater] The user who lastly updates the document.
-  DocumentArgs({
+  const DocumentArgs({
     this.cloudAiDocument,
     this.cloudAiDocumentOption,
     this.contentCategory,

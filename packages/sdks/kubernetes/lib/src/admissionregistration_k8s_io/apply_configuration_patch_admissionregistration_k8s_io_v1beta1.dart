@@ -36,7 +36,7 @@ class ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1 {
 
   /// Creates a new [ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1].
   /// [expression] expression will be evaluated by CEL to create an apply configuration. ref: https://github.com/google/cel-spec
-  ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1({
+  const ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1({
     this.expression,
   });
 

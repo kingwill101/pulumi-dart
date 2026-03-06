@@ -24,7 +24,7 @@ class GetQueuesArgs {
   /// [nameRegex] A regex string to filter results by Queue name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [virtualHostName] The name of the virtual host.
-  GetQueuesArgs({
+  const GetQueuesArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

@@ -11,7 +11,7 @@ class InsightFiltersCreatedAtDateRange {
   /// Creates a new [InsightFiltersCreatedAtDateRange].
   /// [unit] A date range unit for the date filter. Valid values: `DAYS`.
   /// [value] A date range value for the date filter, provided as an Integer.
-  InsightFiltersCreatedAtDateRange({
+  const InsightFiltersCreatedAtDateRange({
     required this.unit,
     required this.value,
   });

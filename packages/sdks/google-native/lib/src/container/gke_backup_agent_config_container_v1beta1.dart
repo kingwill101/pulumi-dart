@@ -9,7 +9,7 @@ class GkeBackupAgentConfigContainerV1beta1 {
 
   /// Creates a new [GkeBackupAgentConfigContainerV1beta1].
   /// [enabled] Whether the Backup for GKE agent is enabled for this cluster.
-  GkeBackupAgentConfigContainerV1beta1({
+  const GkeBackupAgentConfigContainerV1beta1({
     this.enabled,
   });
 

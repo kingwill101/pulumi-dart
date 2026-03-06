@@ -8,7 +8,7 @@ class LoadBalancerMinimumLoadBalancerCapacity {
 
   /// Creates a new [LoadBalancerMinimumLoadBalancerCapacity].
   /// [capacityUnits] The number of capacity units.
-  LoadBalancerMinimumLoadBalancerCapacity({
+  const LoadBalancerMinimumLoadBalancerCapacity({
     required this.capacityUnits,
   });
 

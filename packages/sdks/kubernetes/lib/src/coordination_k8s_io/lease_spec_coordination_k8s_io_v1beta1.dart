@@ -21,7 +21,7 @@ class LeaseSpecCoordinationK8sIoV1beta1 {
   /// [leaseDurationSeconds] leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.
   /// [leaseTransitions] leaseTransitions is the number of transitions of a lease between holders.
   /// [renewTime] renewTime is a time when the current holder of a lease has last updated the lease.
-  LeaseSpecCoordinationK8sIoV1beta1({
+  const LeaseSpecCoordinationK8sIoV1beta1({
     this.acquireTime,
     this.holderIdentity,
     this.leaseDurationSeconds,

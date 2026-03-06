@@ -11,7 +11,7 @@ class GetClusterAnonymousAuthenticationConfig {
 
   /// Creates a new [GetClusterAnonymousAuthenticationConfig].
   /// [mode] Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
-  GetClusterAnonymousAuthenticationConfig({
+  const GetClusterAnonymousAuthenticationConfig({
     required this.mode,
   });
 

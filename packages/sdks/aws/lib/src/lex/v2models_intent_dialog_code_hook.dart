@@ -8,7 +8,7 @@ class V2modelsIntentDialogCodeHook {
 
   /// Creates a new [V2modelsIntentDialogCodeHook].
   /// [enabled] Enables the dialog code hook so that it processes user requests.
-  V2modelsIntentDialogCodeHook({
+  const V2modelsIntentDialogCodeHook({
     required this.enabled,
   });
 

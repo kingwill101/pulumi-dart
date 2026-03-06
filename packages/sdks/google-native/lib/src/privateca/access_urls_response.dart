@@ -12,7 +12,7 @@ class AccessUrlsResponse {
   /// Creates a new [AccessUrlsResponse].
   /// [caCertificateAccessUrl] The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
   /// [crlAccessUrls] The URLs where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated.
-  AccessUrlsResponse({
+  const AccessUrlsResponse({
     required this.caCertificateAccessUrl,
     required this.crlAccessUrls,
   });

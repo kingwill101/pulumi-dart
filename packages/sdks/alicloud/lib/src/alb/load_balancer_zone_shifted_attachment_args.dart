@@ -18,7 +18,7 @@ class LoadBalancerZoneShiftedAttachmentArgs {
   /// [loadBalancerId] The ID of the load balancing instance.
   /// [vswitchId] The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
   /// [zoneId] The ID of the zone.
-  LoadBalancerZoneShiftedAttachmentArgs({
+  const LoadBalancerZoneShiftedAttachmentArgs({
     required this.loadBalancerId,
     required this.vswitchId,
     required this.zoneId,

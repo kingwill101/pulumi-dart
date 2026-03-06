@@ -19,7 +19,7 @@ class ContainerV1AclRead {
   /// [projectAccess] Whether the container is accessible project wide.
   /// [updatedAt] The date the container was last updated.
   /// [users] The list of user IDs, which are allowed to access the
-  ContainerV1AclRead({
+  const ContainerV1AclRead({
     this.createdAt,
     this.projectAccess,
     this.updatedAt,

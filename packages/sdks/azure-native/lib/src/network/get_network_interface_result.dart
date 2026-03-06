@@ -107,7 +107,7 @@ class GetNetworkInterfaceResult {
   /// [virtualMachine] The reference to a virtual machine.
   /// [vnetEncryptionSupported] Whether the virtual machine this nic is attached to supports encryption.
   /// [workloadType] WorkloadType of the NetworkInterface for BareMetal resources
-  GetNetworkInterfaceResult({
+  const GetNetworkInterfaceResult({
     this.auxiliaryMode,
     this.auxiliarySku,
     required this.azureApiVersion,

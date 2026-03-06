@@ -8,7 +8,7 @@ class ConfigurationSetTrackingOptions {
 
   /// Creates a new [ConfigurationSetTrackingOptions].
   /// [customRedirectDomain] Custom subdomain that is used to redirect email recipients to the Amazon SES event tracking domain.
-  ConfigurationSetTrackingOptions({
+  const ConfigurationSetTrackingOptions({
     this.customRedirectDomain,
   });
 

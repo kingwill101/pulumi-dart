@@ -34,7 +34,7 @@ class GetInsightsAccountResult {
   /// [scanSchedule] Schedule for automated scanning. Use 'daily' to enable daily scans, or 'none' to disable scheduled scanning. Defaults to 'none'.
   /// [scheduledScanEnabled] Whether scheduled scanning is enabled.
   /// [tags] Key-value tags to associate with the insights account.
-  GetInsightsAccountResult({
+  const GetInsightsAccountResult({
     required this.accountName,
     required this.environment,
     required this.insightsAccountId,

@@ -10,7 +10,7 @@ class SSEDescriptionResponse {
 
   /// Creates a new [SSEDescriptionResponse].
   /// [status] &lt;p&gt;The current state of server-side encryption:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLING&lt;/code&gt; - Server-side encryption is being enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLED&lt;/code&gt; - Server-side encryption is enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLING&lt;/code&gt; - Server-side encryption is being disabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLED&lt;/code&gt; - Server-side encryption is disabled.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  SSEDescriptionResponse({
+  const SSEDescriptionResponse({
     this.status,
   });
 

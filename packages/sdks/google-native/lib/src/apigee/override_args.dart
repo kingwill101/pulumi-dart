@@ -23,7 +23,7 @@ class OverrideArgs {
   /// [name] ID of the trace configuration override specified as a system-generated UUID.
   /// [organizationId] Required.
   /// [samplingConfig] Trace configuration to override.
-  OverrideArgs({
+  const OverrideArgs({
     this.apiProxy,
     required this.environmentId,
     this.name,

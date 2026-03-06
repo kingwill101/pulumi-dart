@@ -26,7 +26,7 @@ class GetNetworkResult {
   /// [mostRecent] Optional.
   /// [name] Name of the Network.
   /// [withSelector] Optional.
-  GetNetworkResult({
+  const GetNetworkResult({
     required this.deleteProtection,
     required this.exposeRoutesToVswitch,
     required this.id,

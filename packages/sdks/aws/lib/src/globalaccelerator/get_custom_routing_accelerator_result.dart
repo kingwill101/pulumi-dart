@@ -29,7 +29,7 @@ class GetCustomRoutingAcceleratorResult {
   /// [ipSets] Required.
   /// [name] Required.
   /// [tags] Required.
-  GetCustomRoutingAcceleratorResult({
+  const GetCustomRoutingAcceleratorResult({
     required this.arn,
     required this.attributes,
     required this.dnsName,

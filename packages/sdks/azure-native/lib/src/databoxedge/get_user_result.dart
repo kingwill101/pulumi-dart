@@ -33,7 +33,7 @@ class GetUserResult {
   /// [systemData] Metadata pertaining to creation and last modification of User
   /// [type] The hierarchical type of the object.
   /// [userType] Type of the user.
-  GetUserResult({
+  const GetUserResult({
     required this.azureApiVersion,
     this.encryptedPassword,
     required this.id,

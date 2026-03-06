@@ -44,7 +44,7 @@ class FactoryArgs {
   /// [repoConfiguration] Git repo information of the factory.
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
-  FactoryArgs({
+  const FactoryArgs({
     this.encryption,
     this.factoryName,
     this.globalParameters,

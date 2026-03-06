@@ -18,7 +18,7 @@ class GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs {
   /// [cacheNodeResourceName] Name of the ConnectedCache resource
   /// [customerResourceName] Name of the Customer resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs({
+  const GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs({
     required this.cacheNodeResourceName,
     required this.customerResourceName,
     required this.resourceGroupName,

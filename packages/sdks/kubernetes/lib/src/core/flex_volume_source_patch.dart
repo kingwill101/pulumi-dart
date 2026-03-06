@@ -22,7 +22,7 @@ class FlexVolumeSourcePatch {
   /// [options] options is Optional: this field holds extra command options if any.
   /// [readOnly] readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   /// [secretRef] secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
-  FlexVolumeSourcePatch({
+  const FlexVolumeSourcePatch({
     this.driver,
     this.fsType,
     this.options,

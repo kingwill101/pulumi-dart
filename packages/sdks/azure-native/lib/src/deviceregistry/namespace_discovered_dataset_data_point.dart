@@ -21,7 +21,7 @@ class NamespaceDiscoveredDatasetDataPoint {
   /// [lastUpdatedOn] UTC timestamp indicating when the data point was added or modified.
   /// [name] The name of the data point.
   /// [typeRef] URI or type definition ID.
-  NamespaceDiscoveredDatasetDataPoint({
+  const NamespaceDiscoveredDatasetDataPoint({
     this.dataPointConfiguration,
     required this.dataSource,
     this.lastUpdatedOn,

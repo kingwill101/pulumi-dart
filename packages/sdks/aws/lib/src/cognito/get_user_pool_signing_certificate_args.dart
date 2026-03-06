@@ -15,7 +15,7 @@ class GetUserPoolSigningCertificateArgs {
   /// Creates a new [GetUserPoolSigningCertificateArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] Cognito user pool ID.
-  GetUserPoolSigningCertificateArgs({
+  const GetUserPoolSigningCertificateArgs({
     this.region,
     required this.userPoolId,
   });

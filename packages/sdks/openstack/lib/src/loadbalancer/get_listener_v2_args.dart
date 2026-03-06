@@ -35,7 +35,7 @@ class GetListenerV2Args {
   /// [protocolPort] The port on which the requested listener accepts client traffic.
   /// [region] The region in which to obtain the V2 Load Balancer client.
   /// [tags] A set of tags applied to the loadbalancer's listener.
-  GetListenerV2Args({
+  const GetListenerV2Args({
     this.listenerId,
     this.loadbalancerId,
     this.name,

@@ -14,7 +14,7 @@ class AttachedClusterFleet {
   /// Creates a new [AttachedClusterFleet].
   /// [membership] (Output)
   /// [project] The number of the Fleet host project where this cluster will be registered.
-  AttachedClusterFleet({
+  const AttachedClusterFleet({
     this.membership,
     required this.project,
   });

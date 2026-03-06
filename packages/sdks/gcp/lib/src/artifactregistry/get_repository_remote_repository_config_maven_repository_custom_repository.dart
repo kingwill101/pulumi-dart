@@ -8,7 +8,7 @@ class GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository].
   /// [uri] Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
-  GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository({
+  const GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository({
     required this.uri,
   });
 

@@ -9,7 +9,7 @@ class CharacterMaskConfig {
 
   /// Creates a new [CharacterMaskConfig].
   /// [maskingCharacter] Character to mask the sensitive values. If not supplied, defaults to "*".
-  CharacterMaskConfig({
+  const CharacterMaskConfig({
     this.maskingCharacter,
   });
 

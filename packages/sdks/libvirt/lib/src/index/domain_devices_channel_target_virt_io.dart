@@ -11,7 +11,7 @@ class DomainDevicesChannelTargetVirtIo {
   /// Creates a new [DomainDevicesChannelTargetVirtIo].
   /// [name] This field configures the name of the VirtIO channel target.
   /// [state] This field sets the state of the VirtIO channel target, indicating if it is enabled or disabled.
-  DomainDevicesChannelTargetVirtIo({
+  const DomainDevicesChannelTargetVirtIo({
     this.name,
     this.state,
   });

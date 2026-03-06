@@ -18,7 +18,7 @@ class GetCreatorArgs {
   /// [accountName] The name of the Maps Account.
   /// [creatorName] The name of the Maps Creator instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCreatorArgs({
+  const GetCreatorArgs({
     required this.accountName,
     required this.creatorName,
     required this.resourceGroupName,

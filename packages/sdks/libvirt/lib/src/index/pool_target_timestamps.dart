@@ -14,7 +14,7 @@ class PoolTargetTimestamps {
   /// [atime] Configures the last access time for the storage pool target.
   /// [ctime] Sets the last metadata change time for the storage pool target.
   /// [mtime] Specifies the last modification time for the storage pool target.
-  PoolTargetTimestamps({
+  const PoolTargetTimestamps({
     required this.atime,
     required this.ctime,
     required this.mtime,

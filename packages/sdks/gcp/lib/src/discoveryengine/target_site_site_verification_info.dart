@@ -12,7 +12,7 @@ class TargetSiteSiteVerificationInfo {
   /// Creates a new [TargetSiteSiteVerificationInfo].
   /// [siteVerificationState] Site verification state indicating the ownership and validity.
   /// [verifyTime] Latest site verification time.
-  TargetSiteSiteVerificationInfo({
+  const TargetSiteSiteVerificationInfo({
     this.siteVerificationState,
     this.verifyTime,
   });

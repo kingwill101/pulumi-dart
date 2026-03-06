@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesServiceNow {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesServiceNow].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesServiceNow({
+  const FlowSourceFlowConfigSourceConnectorPropertiesServiceNow({
     required this.object_,
   });
 

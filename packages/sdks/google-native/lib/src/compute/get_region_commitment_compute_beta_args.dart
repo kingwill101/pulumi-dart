@@ -15,7 +15,7 @@ class GetRegionCommitmentComputeBetaArgs {
   /// [commitment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionCommitmentComputeBetaArgs({
+  const GetRegionCommitmentComputeBetaArgs({
     required this.commitment,
     this.project,
     required this.region,

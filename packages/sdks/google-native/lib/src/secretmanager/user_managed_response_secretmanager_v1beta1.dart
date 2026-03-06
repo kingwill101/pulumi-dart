@@ -10,7 +10,7 @@ class UserManagedResponseSecretmanagerV1beta1 {
 
   /// Creates a new [UserManagedResponseSecretmanagerV1beta1].
   /// [replicas] The list of Replicas for this Secret. Cannot be empty.
-  UserManagedResponseSecretmanagerV1beta1({
+  const UserManagedResponseSecretmanagerV1beta1({
     required this.replicas,
   });
 

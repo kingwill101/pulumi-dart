@@ -44,7 +44,7 @@ class DefenseRuleState {
   /// [ruleName] The rule name.
   /// [ruleStatus] Protection rule status.
   /// [templateId] The protection template ID of the protection rule to be created.
-  DefenseRuleState({
+  const DefenseRuleState({
     this.config,
     this.defenseOrigin,
     this.defenseScene,

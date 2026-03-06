@@ -41,7 +41,7 @@ class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse {
   /// [scope] A space-delimited list of requested scope permissions.
   /// [tokenEndpoint] The token url endpoint to send the token request to.
   /// [tokenParams] The token parameters sent along with the token request.
-  GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse({
+  const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse({
     required this.accessToken,
     required this.applyReauthPolicy,
     required this.authCode,

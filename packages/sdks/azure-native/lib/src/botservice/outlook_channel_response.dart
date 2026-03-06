@@ -19,7 +19,7 @@ class OutlookChannelResponse {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [provisioningState] Provisioning state of the resource
-  OutlookChannelResponse({
+  const OutlookChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

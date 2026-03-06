@@ -11,7 +11,7 @@ class ChannelEncoderSettingsTimecodeConfig {
   /// Creates a new [ChannelEncoderSettingsTimecodeConfig].
   /// [source] The source for the timecode that will be associated with the events outputs.
   /// [syncThreshold] Threshold in frames beyond which output timecode is resynchronized to the input timecode.
-  ChannelEncoderSettingsTimecodeConfig({
+  const ChannelEncoderSettingsTimecodeConfig({
     required this.source,
     this.syncThreshold,
   });

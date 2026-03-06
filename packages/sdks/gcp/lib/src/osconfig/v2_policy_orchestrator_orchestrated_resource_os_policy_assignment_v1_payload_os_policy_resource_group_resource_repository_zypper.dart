@@ -20,7 +20,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// [displayName] The display name of the repository.
   /// [gpgKeys] URIs of GPG keys.
   /// [id] Required. A one word, unique name for this repository. This is the `repo
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper({
     required this.baseUrl,
     this.displayName,
     this.gpgKeys,

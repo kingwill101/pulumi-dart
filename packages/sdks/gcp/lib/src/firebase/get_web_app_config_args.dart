@@ -18,7 +18,7 @@ class GetWebAppConfigArgs {
   /// Creates a new [GetWebAppConfigArgs].
   /// [project] The ID of the project in which the resource belongs. If it
   /// [webAppId] the id of the firebase web app
-  GetWebAppConfigArgs({
+  const GetWebAppConfigArgs({
     this.project,
     required this.webAppId,
   });

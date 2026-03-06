@@ -13,7 +13,7 @@ class FleetManagedNamespaceStatusResponse {
   /// Creates a new [FleetManagedNamespaceStatusResponse].
   /// [lastOperationError] The last operation error of the fleet managed namespace
   /// [lastOperationId] The last operation ID for the fleet managed namespace
-  FleetManagedNamespaceStatusResponse({
+  const FleetManagedNamespaceStatusResponse({
     required this.lastOperationError,
     required this.lastOperationId,
   });

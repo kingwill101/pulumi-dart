@@ -18,7 +18,7 @@ class GetGroupArgs {
   /// [name] The name of this Container Group instance.
   /// [resourceGroupName] The name of the Resource Group where the Container Group instance exists.
   /// [zones] A list of Availability Zones in which this Container Group is located.
-  GetGroupArgs({
+  const GetGroupArgs({
     required this.name,
     required this.resourceGroupName,
     this.zones,

@@ -28,7 +28,7 @@ class VMwareCbtContainerMappingInput {
   /// [storageAccountId] The storage account ARM Id.
   /// [storageAccountSasSecretName] The secret name of the storage account.
   /// [targetLocation] The target location.
-  VMwareCbtContainerMappingInput({
+  const VMwareCbtContainerMappingInput({
     required this.instanceType,
     this.keyVaultId,
     this.keyVaultUri,

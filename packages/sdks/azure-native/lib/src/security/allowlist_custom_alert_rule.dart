@@ -16,7 +16,7 @@ class AllowlistCustomAlertRule {
   /// [allowlistValues] The values to allow. The format of the values depends on the rule type.
   /// [isEnabled] Status of the custom alert.
   /// [ruleType] The type of the custom alert rule.
-  AllowlistCustomAlertRule({
+  const AllowlistCustomAlertRule({
     required this.allowlistValues,
     required this.isEnabled,
     required this.ruleType,

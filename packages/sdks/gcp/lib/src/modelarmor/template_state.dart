@@ -49,7 +49,7 @@ class TemplateState {
   /// [templateId] Id of the requesting object
   /// [templateMetadata] Message describing TemplateMetadata
   /// [updateTime] Update time stamp
-  TemplateState({
+  const TemplateState({
     this.createTime,
     this.effectiveLabels,
     this.filterConfig,

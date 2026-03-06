@@ -15,7 +15,7 @@ class GetEventhubNamespaceArgs {
   /// Creates a new [GetEventhubNamespaceArgs].
   /// [name] The name of the EventHub Namespace.
   /// [resourceGroupName] The Name of the Resource Group where the EventHub Namespace exists.
-  GetEventhubNamespaceArgs({
+  const GetEventhubNamespaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

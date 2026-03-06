@@ -16,7 +16,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock {
   /// [gateway] The network gateway used by the VMware Admin Cluster.
   /// [ips] The node's network configurations used by the VMware Admin Cluster.
   /// [netmask] The netmask used by the VMware Admin Cluster.
-  VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock({
+  const VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock({
     required this.gateway,
     required this.ips,
     required this.netmask,

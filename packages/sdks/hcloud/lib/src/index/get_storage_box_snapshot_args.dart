@@ -21,7 +21,7 @@ class GetStorageBoxSnapshotArgs {
   /// [name] Name of the Storage Box Snapshot.
   /// [storageBoxId] ID of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
-  GetStorageBoxSnapshotArgs({
+  const GetStorageBoxSnapshotArgs({
     this.id,
     this.name,
     required this.storageBoxId,

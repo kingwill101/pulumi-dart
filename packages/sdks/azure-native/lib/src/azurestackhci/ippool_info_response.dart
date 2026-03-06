@@ -12,7 +12,7 @@ class IPPoolInfoResponse {
   /// Creates a new [IPPoolInfoResponse].
   /// [available] Number of IP addresses available in the IP Pool
   /// [used] Number of IP addresses allocated from the IP Pool
-  IPPoolInfoResponse({
+  const IPPoolInfoResponse({
     required this.available,
     required this.used,
   });

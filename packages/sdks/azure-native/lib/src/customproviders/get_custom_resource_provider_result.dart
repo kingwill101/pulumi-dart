@@ -39,7 +39,7 @@ class GetCustomResourceProviderResult {
   /// [tags] Resource tags
   /// [type] Resource type
   /// [validations] A list of validations to run on the custom resource provider's requests.
-  GetCustomResourceProviderResult({
+  const GetCustomResourceProviderResult({
     this.actions,
     required this.azureApiVersion,
     required this.id,

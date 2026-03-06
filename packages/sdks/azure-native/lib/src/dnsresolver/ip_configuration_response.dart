@@ -16,7 +16,7 @@ class IpConfigurationResponse {
   /// [privateIpAddress] Private IP address of the IP configuration.
   /// [privateIpAllocationMethod] Private IP address allocation method.
   /// [subnet] The reference to the subnet bound to the IP configuration.
-  IpConfigurationResponse({
+  const IpConfigurationResponse({
     this.privateIpAddress,
     this.privateIpAllocationMethod,
     required this.subnet,

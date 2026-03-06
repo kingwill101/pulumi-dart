@@ -24,7 +24,7 @@ class GetVbrPconnAssociationsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [vbrId] The ID of the VBR instance.
-  GetVbrPconnAssociationsResult({
+  const GetVbrPconnAssociationsResult({
     required this.associations,
     required this.id,
     required this.ids,

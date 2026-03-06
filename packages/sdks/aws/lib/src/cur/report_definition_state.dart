@@ -48,7 +48,7 @@ class ReportDefinitionState {
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeUnit] The frequency on which report data are measured and displayed.  Valid values are: `DAILY`, `HOURLY`, `MONTHLY`.
-  ReportDefinitionState({
+  const ReportDefinitionState({
     this.additionalArtifacts,
     this.additionalSchemaElements,
     this.arn,

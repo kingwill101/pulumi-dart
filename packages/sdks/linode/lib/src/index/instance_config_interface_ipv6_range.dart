@@ -11,7 +11,7 @@ class InstanceConfigInterfaceIpv6Range {
   /// Creates a new [InstanceConfigInterfaceIpv6Range].
   /// [assignedRange] The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
   /// [range] A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-  InstanceConfigInterfaceIpv6Range({
+  const InstanceConfigInterfaceIpv6Range({
     this.assignedRange,
     this.range,
   });

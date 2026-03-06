@@ -40,7 +40,7 @@ class DatasetIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  DatasetIamMemberState({
+  const DatasetIamMemberState({
     this.condition,
     this.datasetId,
     this.etag,

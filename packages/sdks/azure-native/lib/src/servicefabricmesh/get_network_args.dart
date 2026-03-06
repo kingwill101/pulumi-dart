@@ -15,7 +15,7 @@ class GetNetworkArgs {
   /// Creates a new [GetNetworkArgs].
   /// [networkResourceName] The identity of the network.
   /// [resourceGroupName] Azure resource group name
-  GetNetworkArgs({
+  const GetNetworkArgs({
     required this.networkResourceName,
     required this.resourceGroupName,
   });

@@ -17,7 +17,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitin
   /// [imageResponseCard] Optional.
   /// [plainTextMessage] Optional.
   /// [ssmlMessage] Optional.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation({
     this.customPayload,
     this.imageResponseCard,
     this.plainTextMessage,

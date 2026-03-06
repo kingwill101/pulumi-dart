@@ -48,7 +48,7 @@ class GetJobResult {
   /// [state] The detailed state of a job.
   /// [trainingInput] Input parameters to create a training job.
   /// [trainingOutput] The current training job result.
-  GetJobResult({
+  const GetJobResult({
     required this.createTime,
     required this.endTime,
     required this.errorMessage,

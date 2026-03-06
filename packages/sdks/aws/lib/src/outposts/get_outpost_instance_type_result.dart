@@ -16,7 +16,7 @@ class GetOutpostInstanceTypeResult {
   /// [instanceType] Required.
   /// [preferredInstanceTypes] Optional.
   /// [region] Required.
-  GetOutpostInstanceTypeResult({
+  const GetOutpostInstanceTypeResult({
     required this.arn,
     required this.id,
     required this.instanceType,

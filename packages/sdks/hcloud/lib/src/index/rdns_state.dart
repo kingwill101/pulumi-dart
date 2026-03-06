@@ -24,7 +24,7 @@ class RdnsState {
   /// [loadBalancerId] The Load Balancer the `ip_address` belongs to.
   /// [primaryIpId] The Primary IP the `ip_address` belongs to.
   /// [serverId] The server the `ip_address` belongs to.
-  RdnsState({
+  const RdnsState({
     this.dnsPtr,
     this.floatingIpId,
     this.ipAddress,

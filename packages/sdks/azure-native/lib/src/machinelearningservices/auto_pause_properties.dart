@@ -10,7 +10,7 @@ class AutoPauseProperties {
   /// Creates a new [AutoPauseProperties].
   /// [delayInMinutes] Optional.
   /// [enabled] Optional.
-  AutoPauseProperties({
+  const AutoPauseProperties({
     this.delayInMinutes,
     this.enabled,
   });

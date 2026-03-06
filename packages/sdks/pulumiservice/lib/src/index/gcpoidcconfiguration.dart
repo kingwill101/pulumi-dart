@@ -23,7 +23,7 @@ class GCPOIDCConfiguration {
   /// [serviceAccount] The email address of the service account to use.
   /// [tokenLifetime] The lifetime of the temporary credentials in “XhYmZs” format.
   /// [workloadPoolId] The ID of the workload pool to use.
-  GCPOIDCConfiguration({
+  const GCPOIDCConfiguration({
     required this.projectId,
     required this.providerId,
     this.region,

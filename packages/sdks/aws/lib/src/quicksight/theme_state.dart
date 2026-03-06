@@ -55,7 +55,7 @@ class ThemeState {
   /// [themeId] Identifier of the theme.
   /// [versionDescription] A description of the current theme version being created/updated.
   /// [versionNumber] The version number of the theme version.
-  ThemeState({
+  const ThemeState({
     this.arn,
     this.awsAccountId,
     this.baseThemeId,

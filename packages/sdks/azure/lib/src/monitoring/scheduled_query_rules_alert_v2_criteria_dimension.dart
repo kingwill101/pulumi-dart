@@ -14,7 +14,7 @@ class ScheduledQueryRulesAlertV2CriteriaDimension {
   /// [name] Name of the dimension.
   /// [operator] Operator for dimension values. Possible values are `Exclude`,and `Include`.
   /// [values] List of dimension values. Use a wildcard `*` to collect all.
-  ScheduledQueryRulesAlertV2CriteriaDimension({
+  const ScheduledQueryRulesAlertV2CriteriaDimension({
     required this.name,
     required this.operator,
     required this.values,

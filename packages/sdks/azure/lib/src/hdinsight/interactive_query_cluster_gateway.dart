@@ -13,7 +13,7 @@ class InteractiveQueryClusterGateway {
   /// Creates a new [InteractiveQueryClusterGateway].
   /// [password] The password used for the Ambari Portal.
   /// [username] The username used for the Ambari Portal. Changing this forces a new resource to be created.
-  InteractiveQueryClusterGateway({
+  const InteractiveQueryClusterGateway({
     required this.password,
     required this.username,
   });

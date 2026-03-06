@@ -37,7 +37,7 @@ class GetHttpRouteResult {
   /// [rules] Rules that define how traffic is routed and handled. Rules will be matched sequentially based on the RouteMatch specified for the rule.
   /// [selfLink] Server-defined URL of this resource
   /// [updateTime] The timestamp when the resource was updated.
-  GetHttpRouteResult({
+  const GetHttpRouteResult({
     required this.createTime,
     required this.description,
     required this.gateways,

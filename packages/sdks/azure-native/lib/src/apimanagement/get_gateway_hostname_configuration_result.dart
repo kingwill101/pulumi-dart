@@ -35,7 +35,7 @@ class GetGatewayHostnameConfigurationResult {
   /// [tls10Enabled] Specifies if TLS 1.0 is supported
   /// [tls11Enabled] Specifies if TLS 1.1 is supported
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGatewayHostnameConfigurationResult({
+  const GetGatewayHostnameConfigurationResult({
     required this.azureApiVersion,
     this.certificateId,
     this.hostname,

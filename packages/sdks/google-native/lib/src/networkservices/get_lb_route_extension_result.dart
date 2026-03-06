@@ -31,7 +31,7 @@ class GetLbRouteExtensionResult {
   /// [loadBalancingScheme] All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
   /// [name] Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
   /// [updateTime] The timestamp when the resource was updated.
-  GetLbRouteExtensionResult({
+  const GetLbRouteExtensionResult({
     required this.createTime,
     required this.description,
     required this.extensionChains,

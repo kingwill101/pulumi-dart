@@ -23,7 +23,7 @@ class GetAclsResult {
   /// [nameRegex] Optional.
   /// [names] A list of Sag Acls names.
   /// [outputFile] Optional.
-  GetAclsResult({
+  const GetAclsResult({
     required this.acls,
     required this.id,
     required this.ids,

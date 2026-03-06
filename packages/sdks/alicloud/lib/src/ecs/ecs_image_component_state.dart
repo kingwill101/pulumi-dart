@@ -51,7 +51,7 @@ class EcsImageComponentState {
   /// [resourceGroupId] The ID of the enterprise resource group to which the created image component belongs.
   /// [systemType] The operating system supported by the component.
   /// [tags] List of label key-value pairs.
-  EcsImageComponentState({
+  const EcsImageComponentState({
     this.componentType,
     this.componentVersion,
     this.content,

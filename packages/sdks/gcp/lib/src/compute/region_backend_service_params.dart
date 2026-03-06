@@ -10,7 +10,7 @@ class RegionBackendServiceParams {
 
   /// Creates a new [RegionBackendServiceParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the region backend service. Tag keys and values have the
-  RegionBackendServiceParams({
+  const RegionBackendServiceParams({
     this.resourceManagerTags,
   });
 

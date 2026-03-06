@@ -17,7 +17,7 @@ class NoteAttestationAuthority {
 
   /// Creates a new [NoteAttestationAuthority].
   /// [hint] This submessage provides human-readable hints about the purpose of
-  NoteAttestationAuthority({
+  const NoteAttestationAuthority({
     required this.hint,
   });
 

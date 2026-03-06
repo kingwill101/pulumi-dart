@@ -13,7 +13,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   /// Creates a new [GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway].
   /// [appGateway] AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
   /// [type] The type of hosting used by the gateway.
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway({
+  const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway({
     required this.appGateway,
     required this.type,
   });

@@ -9,7 +9,7 @@ class BareMetalSrIovConfigResponse {
 
   /// Creates a new [BareMetalSrIovConfigResponse].
   /// [enabled] Whether to install the SR-IOV operator.
-  BareMetalSrIovConfigResponse({
+  const BareMetalSrIovConfigResponse({
     required this.enabled,
   });
 

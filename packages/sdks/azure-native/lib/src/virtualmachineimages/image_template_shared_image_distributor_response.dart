@@ -36,7 +36,7 @@ class ImageTemplateSharedImageDistributorResponse {
   /// [targetRegions] The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
   /// [type] Type of distribution.
   /// [versioning] Describes how to generate new x.y.z version number for distribution.
-  ImageTemplateSharedImageDistributorResponse({
+  const ImageTemplateSharedImageDistributorResponse({
     this.artifactTags,
     this.excludeFromLatest,
     required this.galleryImageId,

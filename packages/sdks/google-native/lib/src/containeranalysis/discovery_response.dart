@@ -9,7 +9,7 @@ class DiscoveryResponse {
 
   /// Creates a new [DiscoveryResponse].
   /// [analysisKind] The kind of analysis that is handled by this discovery.
-  DiscoveryResponse({
+  const DiscoveryResponse({
     required this.analysisKind,
   });
 

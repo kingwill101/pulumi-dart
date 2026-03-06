@@ -12,7 +12,7 @@ class XssMatchSetXssMatchTuple {
   /// Creates a new [XssMatchSetXssMatchTuple].
   /// [fieldToMatch] Specifies where in a web request to look for cross-site scripting attacks.
   /// [textTransformation] Which text transformation, if any, to perform on the web request before inspecting the request for cross-site scripting attacks.
-  XssMatchSetXssMatchTuple({
+  const XssMatchSetXssMatchTuple({
     required this.fieldToMatch,
     required this.textTransformation,
   });

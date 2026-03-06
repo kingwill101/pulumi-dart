@@ -13,7 +13,7 @@ class OnErrorDeployment {
   /// Creates a new [OnErrorDeployment].
   /// [deploymentName] The deployment to be used on error case.
   /// [type] The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-  OnErrorDeployment({
+  const OnErrorDeployment({
     this.deploymentName,
     this.type,
   });

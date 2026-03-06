@@ -19,7 +19,7 @@ class DestinationEndpoint {
   /// [csp] The CSP of the remote IP prefix.
   /// [state] (Output)
   /// [updateTime] (Output)
-  DestinationEndpoint({
+  const DestinationEndpoint({
     required this.asn,
     required this.csp,
     this.state,

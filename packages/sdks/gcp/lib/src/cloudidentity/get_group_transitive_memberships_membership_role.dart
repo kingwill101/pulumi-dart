@@ -8,7 +8,7 @@ class GetGroupTransitiveMembershipsMembershipRole {
 
   /// Creates a new [GetGroupTransitiveMembershipsMembershipRole].
   /// [role] The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
-  GetGroupTransitiveMembershipsMembershipRole({
+  const GetGroupTransitiveMembershipsMembershipRole({
     required this.role,
   });
 

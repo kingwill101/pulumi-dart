@@ -16,7 +16,7 @@ class ManagedClusterIngressProfileWebAppRouting {
   /// [dnsZoneResourceIds] Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
   /// [enabled] Whether to enable the Application Routing add-on.
   /// [nginx] Configuration for the default NginxIngressController. See more at https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-configuration#the-default-nginx-ingress-controller.
-  ManagedClusterIngressProfileWebAppRouting({
+  const ManagedClusterIngressProfileWebAppRouting({
     this.dnsZoneResourceIds,
     this.enabled,
     this.nginx,

@@ -21,7 +21,7 @@ class ApplicationGatewaySslCertificate {
   /// [keyVaultSecretId] Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
   /// [name] Name of the SSL certificate that is unique within an Application Gateway.
   /// [password] Password for the pfx file specified in data. Only applicable in PUT request.
-  ApplicationGatewaySslCertificate({
+  const ApplicationGatewaySslCertificate({
     this.data,
     this.id,
     this.keyVaultSecretId,

@@ -19,7 +19,7 @@ class BlobRestoreStatusResponse {
   /// [parameters] Blob restore request parameters.
   /// [restoreId] Id for tracking blob restore request.
   /// [status] The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed.
-  BlobRestoreStatusResponse({
+  const BlobRestoreStatusResponse({
     required this.failureReason,
     required this.parameters,
     required this.restoreId,

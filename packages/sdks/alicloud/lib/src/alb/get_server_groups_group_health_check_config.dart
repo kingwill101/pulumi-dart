@@ -41,7 +41,7 @@ class GetServerGroupsGroupHealthCheckConfig {
   /// [healthCheckTimeout] The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
   /// [healthyThreshold] The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
   /// [unhealthyThreshold] The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
-  GetServerGroupsGroupHealthCheckConfig({
+  const GetServerGroupsGroupHealthCheckConfig({
     required this.healthCheckCodes,
     required this.healthCheckConnectPort,
     required this.healthCheckEnabled,

@@ -35,7 +35,7 @@ class ImageImportArgs {
   /// [licenseType] The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
   /// [osType] The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
   /// [platform] The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-  ImageImportArgs({
+  const ImageImportArgs({
     this.architecture,
     this.bootMode,
     this.description,

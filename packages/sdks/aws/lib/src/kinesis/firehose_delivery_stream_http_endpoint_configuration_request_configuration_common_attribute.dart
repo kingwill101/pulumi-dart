@@ -11,7 +11,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonA
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute].
   /// [name] The name of the HTTP endpoint common attribute.
   /// [value] The value of the HTTP endpoint common attribute.
-  FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute({
+  const FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute({
     required this.name,
     required this.value,
   });

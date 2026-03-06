@@ -11,7 +11,7 @@ class ResponsePlanActionSsmAutomationParameter {
   /// Creates a new [ResponsePlanActionSsmAutomationParameter].
   /// [name] The name of parameter.
   /// [values] The values for the associated parameter name.
-  ResponsePlanActionSsmAutomationParameter({
+  const ResponsePlanActionSsmAutomationParameter({
     required this.name,
     required this.values,
   });

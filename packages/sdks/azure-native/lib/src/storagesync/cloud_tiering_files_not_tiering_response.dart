@@ -16,7 +16,7 @@ class CloudTieringFilesNotTieringResponse {
   /// [errors] Array of tiering errors
   /// [lastUpdatedTimestamp] Last updated timestamp
   /// [totalFileCount] Last cloud tiering result (HResult)
-  CloudTieringFilesNotTieringResponse({
+  const CloudTieringFilesNotTieringResponse({
     required this.errors,
     required this.lastUpdatedTimestamp,
     required this.totalFileCount,

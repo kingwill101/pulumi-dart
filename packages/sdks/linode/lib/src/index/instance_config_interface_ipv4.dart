@@ -11,7 +11,7 @@ class InstanceConfigInterfaceIpv4 {
   /// Creates a new [InstanceConfigInterfaceIpv4].
   /// [nat11] The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
   /// [vpc] The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
-  InstanceConfigInterfaceIpv4({
+  const InstanceConfigInterfaceIpv4({
     this.nat11,
     this.vpc,
   });

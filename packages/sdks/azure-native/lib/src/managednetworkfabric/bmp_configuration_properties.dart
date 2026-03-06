@@ -40,7 +40,7 @@ class BmpConfigurationProperties {
   /// [stationName] Name of the station.
   /// [stationNetwork] Network of the station
   /// [stationPort] Port of the station. Default value is 5000.
-  BmpConfigurationProperties({
+  const BmpConfigurationProperties({
     this.exportPolicy,
     this.monitoredAddressFamilies,
     this.monitoredNetworks,

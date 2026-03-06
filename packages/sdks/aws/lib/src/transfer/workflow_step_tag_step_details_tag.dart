@@ -10,7 +10,7 @@ class WorkflowStepTagStepDetailsTag {
   /// Creates a new [WorkflowStepTagStepDetailsTag].
   /// [key] Required.
   /// [value] The value that corresponds to the key.
-  WorkflowStepTagStepDetailsTag({
+  const WorkflowStepTagStepDetailsTag({
     required this.key,
     required this.value,
   });

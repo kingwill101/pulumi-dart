@@ -9,7 +9,7 @@ class ResourceProviderEndpointFeaturesRule {
 
   /// Creates a new [ResourceProviderEndpointFeaturesRule].
   /// [requiredFeaturesPolicy] The required feature policy.
-  ResourceProviderEndpointFeaturesRule({
+  const ResourceProviderEndpointFeaturesRule({
     required this.requiredFeaturesPolicy,
   });
 

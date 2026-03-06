@@ -24,7 +24,7 @@ class GetDynamicTagGroupsGroup {
   /// [matchExpresses] The label generates a matching expression that applies the grouping. See the following `Block match_express`.
   /// [status] The status of the resource. Valid values: `RUNNING`, `FINISH`.
   /// [tagKey] The tag key of the tag.
-  GetDynamicTagGroupsGroup({
+  const GetDynamicTagGroupsGroup({
     required this.dynamicTagRuleId,
     required this.id,
     required this.matchExpressFilterRelation,

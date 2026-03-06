@@ -24,7 +24,7 @@ class InternalCheckerResponse {
   /// [network] The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
   /// [peerProjectId] The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
   /// [state] The current operational state of the internal checker.
-  InternalCheckerResponse({
+  const InternalCheckerResponse({
     required this.displayName,
     required this.gcpZone,
     required this.name,

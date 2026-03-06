@@ -17,7 +17,7 @@ class GetRegionInstanceTemplateArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [view] Optional.
-  GetRegionInstanceTemplateArgs({
+  const GetRegionInstanceTemplateArgs({
     required this.instanceTemplate,
     this.project,
     required this.region,

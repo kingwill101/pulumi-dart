@@ -25,7 +25,7 @@ class GetTableResult {
   /// [signedIdentifiers] List of stored access policies specified on the table.
   /// [tableName] Table name under the specified account
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTableResult({
+  const GetTableResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

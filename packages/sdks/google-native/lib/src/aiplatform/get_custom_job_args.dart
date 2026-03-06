@@ -15,7 +15,7 @@ class GetCustomJobArgs {
   /// [customJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCustomJobArgs({
+  const GetCustomJobArgs({
     required this.customJobId,
     required this.location,
     this.project,

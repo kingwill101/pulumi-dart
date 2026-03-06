@@ -23,7 +23,7 @@ class GradientaiAgentChatbot {
   /// [primaryColor] Primary color for the chatbot
   /// [secondaryColor] Secondary color for the chatbot
   /// [startingMessage] Starting message for the chatbot
-  GradientaiAgentChatbot({
+  const GradientaiAgentChatbot({
     this.buttonBackgroundColor,
     this.logo,
     this.name,

@@ -15,7 +15,7 @@ class ParameterMetadataEnumOptionResponse {
   /// [description] Optional. The description to display for the enum option.
   /// [label] Optional. The label to display for the enum option.
   /// [value] The value of the enum option.
-  ParameterMetadataEnumOptionResponse({
+  const ParameterMetadataEnumOptionResponse({
     required this.description,
     required this.label,
     required this.value,

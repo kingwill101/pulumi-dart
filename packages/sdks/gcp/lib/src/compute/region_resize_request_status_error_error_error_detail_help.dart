@@ -11,7 +11,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetailHelp {
 
   /// Creates a new [RegionResizeRequestStatusErrorErrorErrorDetailHelp].
   /// [links] (Output)
-  RegionResizeRequestStatusErrorErrorErrorDetailHelp({
+  const RegionResizeRequestStatusErrorErrorErrorDetailHelp({
     this.links,
   });
 

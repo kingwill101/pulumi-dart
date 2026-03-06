@@ -22,7 +22,7 @@ class GetHostEcsLevelInfosResult {
   /// [outputFile] Optional.
   /// [storageType] Required.
   /// [zoneId] Required.
-  GetHostEcsLevelInfosResult({
+  const GetHostEcsLevelInfosResult({
     required this.dbType,
     required this.id,
     this.imageCategory,

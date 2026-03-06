@@ -18,7 +18,7 @@ class SchedulerResource {
   /// [cpu] Optional. CPU request and limit for a single Airflow scheduler replica.
   /// [memoryGb] Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
   /// [storageGb] Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
-  SchedulerResource({
+  const SchedulerResource({
     this.count,
     this.cpu,
     this.memoryGb,

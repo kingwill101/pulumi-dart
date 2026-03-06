@@ -27,7 +27,7 @@ class GetHl7V2StoreHealthcareV1beta1Result {
   /// [notificationConfigs] A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
   /// [parserConfig] The configuration for the parser. It determines how the server parses the messages.
   /// [rejectDuplicateMessage] Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
-  GetHl7V2StoreHealthcareV1beta1Result({
+  const GetHl7V2StoreHealthcareV1beta1Result({
     required this.labels,
     required this.name,
     required this.notificationConfig,

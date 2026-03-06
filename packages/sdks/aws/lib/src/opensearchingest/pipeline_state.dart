@@ -56,7 +56,7 @@ class PipelineState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [vpcOptions] Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpc_options` below.
-  PipelineState({
+  const PipelineState({
     this.bufferOptions,
     this.encryptionAtRestOptions,
     this.ingestEndpointUrls,

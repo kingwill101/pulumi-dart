@@ -16,7 +16,7 @@ class DeploymentAutoScaleProfile {
   /// [maxCapacity] Specify the maximum number of NGINX capacity units for this NGINX Deployment.
   /// [minCapacity] Specify the minimum number of NGINX capacity units for this NGINX Deployment.
   /// [name] Specify the name of the autoscaling profile.
-  DeploymentAutoScaleProfile({
+  const DeploymentAutoScaleProfile({
     required this.maxCapacity,
     required this.minCapacity,
     required this.name,

@@ -12,7 +12,7 @@ class DedicatedHostAllocatableVMResponse {
   /// Creates a new [DedicatedHostAllocatableVMResponse].
   /// [count] Maximum number of VMs of size vmSize that can fit in the dedicated host's remaining capacity.
   /// [vmSize] VM size in terms of which the unutilized capacity is represented.
-  DedicatedHostAllocatableVMResponse({
+  const DedicatedHostAllocatableVMResponse({
     this.count,
     this.vmSize,
   });

@@ -11,7 +11,7 @@ class GetDomainAutoTuneOptionMaintenanceScheduleDuration {
   /// Creates a new [GetDomainAutoTuneOptionMaintenanceScheduleDuration].
   /// [unit] Unit of time.
   /// [value] Duration of an Auto-Tune maintenance window.
-  GetDomainAutoTuneOptionMaintenanceScheduleDuration({
+  const GetDomainAutoTuneOptionMaintenanceScheduleDuration({
     required this.unit,
     required this.value,
   });

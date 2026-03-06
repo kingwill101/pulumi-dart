@@ -21,7 +21,7 @@ class GetAcceleratorSpareIpAttachmentsArgs {
   /// [ids] A list of Accelerator Spare Ip Attachment IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
-  GetAcceleratorSpareIpAttachmentsArgs({
+  const GetAcceleratorSpareIpAttachmentsArgs({
     required this.acceleratorId,
     this.ids,
     this.outputFile,

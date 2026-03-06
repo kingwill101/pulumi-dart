@@ -12,7 +12,7 @@ class LinkedResourceResponse {
   /// Creates a new [LinkedResourceResponse].
   /// [id] The ARM id of the linked resource.
   /// [location] The location of the linked resource.
-  LinkedResourceResponse({
+  const LinkedResourceResponse({
     this.id,
     this.location,
   });

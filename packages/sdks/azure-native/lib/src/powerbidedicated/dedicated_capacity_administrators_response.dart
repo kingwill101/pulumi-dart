@@ -9,7 +9,7 @@ class DedicatedCapacityAdministratorsResponse {
 
   /// Creates a new [DedicatedCapacityAdministratorsResponse].
   /// [members] An array of administrator user identities.
-  DedicatedCapacityAdministratorsResponse({
+  const DedicatedCapacityAdministratorsResponse({
     this.members,
   });
 

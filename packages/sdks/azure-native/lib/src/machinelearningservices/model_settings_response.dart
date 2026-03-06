@@ -8,7 +8,7 @@ class ModelSettingsResponse {
 
   /// Creates a new [ModelSettingsResponse].
   /// [modelId] The unique model identifier that this ServerlessEndpoint should provision.
-  ModelSettingsResponse({
+  const ModelSettingsResponse({
     this.modelId,
   });
 

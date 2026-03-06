@@ -16,7 +16,7 @@ class ReportScheduleResponse {
   /// [recurrence] The schedule recurrence.
   /// [recurrencePeriod] Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
   /// [status] The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
-  ReportScheduleResponse({
+  const ReportScheduleResponse({
     required this.recurrence,
     this.recurrencePeriod,
     this.status,

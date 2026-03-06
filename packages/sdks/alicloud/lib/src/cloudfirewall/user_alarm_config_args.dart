@@ -28,7 +28,7 @@ class UserAlarmConfigArgs {
   /// [lang] Optional.
   /// [notifyConfigs] Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
   /// [useDefaultContact] Optional.
-  UserAlarmConfigArgs({
+  const UserAlarmConfigArgs({
     required this.alarmConfigs,
     this.alarmLang,
     this.contactConfigs,

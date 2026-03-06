@@ -9,7 +9,7 @@ class TypeEnumValueResponse {
 
   /// Creates a new [TypeEnumValueResponse].
   /// [value] Property value
-  TypeEnumValueResponse({
+  const TypeEnumValueResponse({
     this.value,
   });
 

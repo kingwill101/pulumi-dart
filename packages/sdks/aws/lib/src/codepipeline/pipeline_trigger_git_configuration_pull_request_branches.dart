@@ -11,7 +11,7 @@ class PipelineTriggerGitConfigurationPullRequestBranches {
   /// Creates a new [PipelineTriggerGitConfigurationPullRequestBranches].
   /// [excludes] A list of patterns of Git branches that, when a commit is pushed, are to be excluded from starting the pipeline.
   /// [includes] A list of patterns of Git branches that, when a commit is pushed, are to be included as criteria that starts the pipeline.
-  PipelineTriggerGitConfigurationPullRequestBranches({
+  const PipelineTriggerGitConfigurationPullRequestBranches({
     this.excludes,
     this.includes,
   });

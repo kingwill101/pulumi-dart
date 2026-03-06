@@ -68,7 +68,7 @@ class AlertChannelConfig {
   /// [teams] A set of teams for targeting notifications. Multiple values are comma separated.
   /// [url] Your organization's Slack URL.
   /// [userId] The user ID for use with the user channel type.
-  AlertChannelConfig({
+  const AlertChannelConfig({
     this.apiKey,
     this.authPassword,
     this.authType,

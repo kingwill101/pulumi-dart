@@ -41,7 +41,7 @@ class SpringCloudConfigurationServiceRepository {
   /// [strictHostKeyChecking] Specifies whether enable the strict host key checking.
   /// [uri] Specifies the URI of the repository.
   /// [username] Specifies the username of git repository basic auth.
-  SpringCloudConfigurationServiceRepository({
+  const SpringCloudConfigurationServiceRepository({
     this.caCertificateId,
     this.hostKey,
     this.hostKeyAlgorithm,

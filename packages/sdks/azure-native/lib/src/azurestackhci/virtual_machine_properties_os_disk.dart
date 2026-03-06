@@ -9,7 +9,7 @@ class VirtualMachinePropertiesOsDisk {
 
   /// Creates a new [VirtualMachinePropertiesOsDisk].
   /// [id] Resource ID of the OS disk
-  VirtualMachinePropertiesOsDisk({
+  const VirtualMachinePropertiesOsDisk({
     this.id,
   });
 

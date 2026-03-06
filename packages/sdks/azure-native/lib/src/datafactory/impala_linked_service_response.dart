@@ -67,7 +67,7 @@ class ImpalaLinkedServiceResponse {
   /// [useSystemTrustStore] Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
   /// [username] The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
   /// [version] Version of the linked service.
-  ImpalaLinkedServiceResponse({
+  const ImpalaLinkedServiceResponse({
     this.allowHostNameCNMismatch,
     this.allowSelfSignedServerCert,
     this.annotations,

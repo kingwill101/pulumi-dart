@@ -21,7 +21,7 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
   /// [logGroupName] The name of the log group in Amazon CloudWatch Logs where you want to publish your logs.
   /// [logStreamNamePrefix] Prefix for the CloudWatch log stream name.
   /// [logTypes] The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See log_types for more details.
-  ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration({
+  const ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration({
     required this.enabled,
     this.encryptionKeyArn,
     this.logGroupName,

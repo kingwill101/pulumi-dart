@@ -9,7 +9,7 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl].
   /// [iam] Optional.
   /// [scram] Optional.
-  ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl({
+  const ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl({
     this.iam,
     this.scram,
   });

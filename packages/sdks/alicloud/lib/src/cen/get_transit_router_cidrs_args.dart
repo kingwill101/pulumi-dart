@@ -24,7 +24,7 @@ class GetTransitRouterCidrsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [transitRouterCidrId] The ID of the transit router cidr.
   /// [transitRouterId] The ID of the transit router.
-  GetTransitRouterCidrsArgs({
+  const GetTransitRouterCidrsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -40,7 +40,7 @@ class GetClustersResult {
   /// [names] A list of name of Clusters.
   /// [outputFile] Optional.
   /// [profile] ACK managed cluster profile.
-  GetClustersResult({
+  const GetClustersResult({
     this.clusterId,
     this.clusterName,
     this.clusterSpec,

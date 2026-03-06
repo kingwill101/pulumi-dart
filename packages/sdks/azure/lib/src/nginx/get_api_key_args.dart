@@ -15,7 +15,7 @@ class GetApiKeyArgs {
   /// Creates a new [GetApiKeyArgs].
   /// [name] The name of the NGINX Dataplane API Key.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the API key is associated with.
-  GetApiKeyArgs({
+  const GetApiKeyArgs({
     required this.name,
     required this.nginxDeploymentId,
   });

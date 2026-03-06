@@ -18,7 +18,7 @@ class BoundObjectReferencePatch {
   /// [kind] Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
   /// [name] Name of the referent.
   /// [uid] UID of the referent.
-  BoundObjectReferencePatch({
+  const BoundObjectReferencePatch({
     this.apiVersion,
     this.kind,
     this.name,

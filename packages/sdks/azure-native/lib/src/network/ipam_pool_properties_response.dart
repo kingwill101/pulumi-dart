@@ -23,7 +23,7 @@ class IpamPoolPropertiesResponse {
   /// [ipAddressType] List of IP address type for the IpamPool.
   /// [parentPoolName] String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
   /// [provisioningState] Provisioning states of a resource.
-  IpamPoolPropertiesResponse({
+  const IpamPoolPropertiesResponse({
     required this.addressPrefixes,
     this.description,
     this.displayName,

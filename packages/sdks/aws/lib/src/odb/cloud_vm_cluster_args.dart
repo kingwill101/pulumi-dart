@@ -81,7 +81,7 @@ class CloudVmClusterArgs {
   /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [timezone] The configured time zone of the VM cluster. Changing this will create a new resource.
-  CloudVmClusterArgs({
+  const CloudVmClusterArgs({
     this.cloudExadataInfrastructureArn,
     this.cloudExadataInfrastructureId,
     this.clusterName,

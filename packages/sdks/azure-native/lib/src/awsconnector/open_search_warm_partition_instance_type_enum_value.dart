@@ -9,7 +9,7 @@ class OpenSearchWarmPartitionInstanceTypeEnumValue {
 
   /// Creates a new [OpenSearchWarmPartitionInstanceTypeEnumValue].
   /// [value] Property value
-  OpenSearchWarmPartitionInstanceTypeEnumValue({
+  const OpenSearchWarmPartitionInstanceTypeEnumValue({
     this.value,
   });
 

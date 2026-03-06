@@ -10,7 +10,7 @@ class ExternalDocumentationPatch {
   /// Creates a new [ExternalDocumentationPatch].
   /// [description] Optional.
   /// [url] Optional.
-  ExternalDocumentationPatch({
+  const ExternalDocumentationPatch({
     this.description,
     this.url,
   });

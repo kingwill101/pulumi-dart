@@ -15,7 +15,7 @@ class RemotePath {
   /// [externalHostName] The Path to a ONTAP Host
   /// [serverName] The name of a server on the ONTAP Host
   /// [volumeName] The name of a volume on the server
-  RemotePath({
+  const RemotePath({
     required this.externalHostName,
     required this.serverName,
     required this.volumeName,

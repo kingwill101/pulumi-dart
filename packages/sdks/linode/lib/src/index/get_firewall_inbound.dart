@@ -25,7 +25,7 @@ class GetFirewallInbound {
   /// [label] The label of the underlying entity this device references.
   /// [ports] A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
   /// [protocol] The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-  GetFirewallInbound({
+  const GetFirewallInbound({
     required this.action,
     required this.description,
     required this.ipv4s,

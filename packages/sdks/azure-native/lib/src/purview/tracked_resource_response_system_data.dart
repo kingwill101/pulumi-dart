@@ -24,7 +24,7 @@ class TrackedResourceResponseSystemData {
   /// [lastModifiedAt] The timestamp of the last modification the resource (UTC).
   /// [lastModifiedBy] The identity that last modified the resource.
   /// [lastModifiedByType] The type of identity that last modified the resource.
-  TrackedResourceResponseSystemData({
+  const TrackedResourceResponseSystemData({
     required this.createdAt,
     required this.createdBy,
     required this.createdByType,

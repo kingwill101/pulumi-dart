@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlWaitTimeout {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlWaitTimeout({
+  const GetDatabaseMysqlConfigMysqlWaitTimeout({
     required this.description,
     required this.example,
     required this.maximum,

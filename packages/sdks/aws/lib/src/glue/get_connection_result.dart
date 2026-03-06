@@ -41,7 +41,7 @@ class GetConnectionResult {
   /// [physicalConnectionRequirements] A map of physical connection requirements, such as VPC and SecurityGroup.
   /// [region] Required.
   /// [tags] Tags assigned to the resource
-  GetConnectionResult({
+  const GetConnectionResult({
     required this.arn,
     required this.athenaProperties,
     required this.catalogId,

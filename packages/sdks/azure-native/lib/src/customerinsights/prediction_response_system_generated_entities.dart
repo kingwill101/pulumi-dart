@@ -15,7 +15,7 @@ class PredictionResponseSystemGeneratedEntities {
   /// [generatedInteractionTypes] Generated interaction types.
   /// [generatedKpis] Generated KPIs.
   /// [generatedLinks] Generated links.
-  PredictionResponseSystemGeneratedEntities({
+  const PredictionResponseSystemGeneratedEntities({
     this.generatedInteractionTypes,
     this.generatedKpis,
     this.generatedLinks,

@@ -11,7 +11,7 @@ class BaselineParameters {
   /// Creates a new [BaselineParameters].
   /// [key] The key of the parameter.
   /// [value] The value of the parameter.
-  BaselineParameters({
+  const BaselineParameters({
     required this.key,
     required this.value,
   });

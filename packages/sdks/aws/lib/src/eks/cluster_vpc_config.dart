@@ -26,7 +26,7 @@ class ClusterVpcConfig {
   /// [securityGroupIds] List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
   /// [subnetIds] List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
   /// [vpcId] ID of the VPC associated with your cluster.
-  ClusterVpcConfig({
+  const ClusterVpcConfig({
     this.clusterSecurityGroupId,
     this.endpointPrivateAccess,
     this.endpointPublicAccess,

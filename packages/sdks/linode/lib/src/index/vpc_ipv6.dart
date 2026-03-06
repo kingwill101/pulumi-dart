@@ -15,7 +15,7 @@ class VpcIpv6 {
   /// [allocatedRange] The IPv6 range assigned to this VPC.
   /// [allocationClass] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [range] The IPv6 range assigned to this VPC.
-  VpcIpv6({
+  const VpcIpv6({
     this.allocatedRange,
     this.allocationClass,
     this.range,

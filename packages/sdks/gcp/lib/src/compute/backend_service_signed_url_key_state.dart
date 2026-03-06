@@ -21,7 +21,7 @@ class BackendServiceSignedUrlKeyState {
   /// [keyValue] 128-bit key value used for signing the URL. The key value must be a
   /// [name] Name of the signed URL key.
   /// [project] The ID of the project in which the resource belongs.
-  BackendServiceSignedUrlKeyState({
+  const BackendServiceSignedUrlKeyState({
     this.backendService,
     this.keyValue,
     this.name,

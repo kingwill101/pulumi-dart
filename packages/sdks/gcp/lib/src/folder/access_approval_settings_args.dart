@@ -30,7 +30,7 @@ class AccessApprovalSettingsArgs {
   /// [enrolledServices] A list of Google Cloud Services for which the given resource has Access Approval enrolled.
   /// [folderId] ID of the folder of the access approval settings.
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
-  AccessApprovalSettingsArgs({
+  const AccessApprovalSettingsArgs({
     this.activeKeyVersion,
     required this.enrolledServices,
     required this.folderId,

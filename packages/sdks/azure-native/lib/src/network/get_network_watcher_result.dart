@@ -29,7 +29,7 @@ class GetNetworkWatcherResult {
   /// [provisioningState] The provisioning state of the network watcher resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkWatcherResult({
+  const GetNetworkWatcherResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

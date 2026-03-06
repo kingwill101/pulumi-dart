@@ -72,7 +72,7 @@ class AppSpecJob {
   /// [runCommand] An optional run command to override the component's default.
   /// [sourceDir] An optional path to the working directory to use for the build.
   /// [termination] Contains a component's termination parameters.
-  AppSpecJob({
+  const AppSpecJob({
     this.alerts,
     this.bitbucket,
     this.buildCommand,

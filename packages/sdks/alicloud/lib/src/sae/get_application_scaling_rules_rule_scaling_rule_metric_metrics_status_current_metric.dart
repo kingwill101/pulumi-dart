@@ -14,7 +14,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric 
   /// [currentValue] The current value.
   /// [name] The name of the trigger condition.
   /// [type] The metric type. Associated with monitoring indicators.
-  GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric({
+  const GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric({
     required this.currentValue,
     required this.name,
     required this.type,

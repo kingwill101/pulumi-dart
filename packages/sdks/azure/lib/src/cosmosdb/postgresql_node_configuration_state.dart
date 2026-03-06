@@ -15,7 +15,7 @@ class PostgresqlNodeConfigurationState {
   /// [clusterId] The resource ID of the Azure Cosmos DB for PostgreSQL Cluster where we want to change configuration. Changing this forces a new resource to be created.
   /// [name] The name of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   /// [value] The value of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster.
-  PostgresqlNodeConfigurationState({
+  const PostgresqlNodeConfigurationState({
     this.clusterId,
     this.name,
     this.value,

@@ -13,7 +13,7 @@ class EnvironmentCertificateCertificateKeyVault {
   /// Creates a new [EnvironmentCertificateCertificateKeyVault].
   /// [identity] The managed identity to authenticate with Azure Key Vault. Possible values are the resource ID of user-assigned identity, and `System` for system-assigned identity. Defaults to `System`. Changing this forces a new resource to be created.
   /// [keyVaultSecretId] The ID of the Key Vault Secret containing the certificate. Changing this forces a new resource to be created.
-  EnvironmentCertificateCertificateKeyVault({
+  const EnvironmentCertificateCertificateKeyVault({
     this.identity,
     required this.keyVaultSecretId,
   });

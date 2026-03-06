@@ -30,7 +30,7 @@ class HostAccountArgs {
   /// [password] The password of the host account.
   /// [privateKey] The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
   /// [protocolName] The protocol used by the host account. Valid values: SSH,RDP
-  HostAccountArgs({
+  const HostAccountArgs({
     required this.hostAccountName,
     required this.hostId,
     required this.instanceId,

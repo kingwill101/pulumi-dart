@@ -93,7 +93,7 @@ class RoutineArgs {
   /// [routineType] The type of routine.
   /// [securityMode] Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
   /// [sparkOptions] Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
-  RoutineArgs({
+  const RoutineArgs({
     this.arguments,
     this.dataGovernanceType,
     required this.datasetId,

@@ -18,7 +18,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetric
   /// [period] The period of the metric in seconds.
   /// [stat] Statistic of the metrics to return.
   /// [unit] Unit of the metrics to return.
-  PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat({
+  const PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat({
     required this.metric,
     this.period,
     required this.stat,

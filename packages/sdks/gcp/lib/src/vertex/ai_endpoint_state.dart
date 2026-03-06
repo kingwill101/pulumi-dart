@@ -87,7 +87,7 @@ class AiEndpointState {
   /// [region] The region for the resource
   /// [trafficSplit] A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
   /// [updateTime] Output only. Timestamp when this Endpoint was last updated.
-  AiEndpointState({
+  const AiEndpointState({
     this.createTime,
     this.dedicatedEndpointDns,
     this.dedicatedEndpointEnabled,

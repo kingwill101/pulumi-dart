@@ -43,7 +43,7 @@ class PolicyExemptionArgs {
   /// [policyExemptionName] The name of the policy exemption to delete.
   /// [resourceSelectors] The resource selector list to filter policies by resource properties.
   /// [scope] The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  PolicyExemptionArgs({
+  const PolicyExemptionArgs({
     this.assignmentScopeValidation,
     this.description,
     this.displayName,

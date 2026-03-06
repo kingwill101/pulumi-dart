@@ -11,7 +11,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode].
   /// [code] An integer value containing ICMP code.
   /// [type] An integer value containing ICMP type.
-  PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode({
+  const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode({
     this.code,
     this.type,
   });

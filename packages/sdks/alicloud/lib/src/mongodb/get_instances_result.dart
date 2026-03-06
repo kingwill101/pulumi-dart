@@ -39,7 +39,7 @@ class GetInstancesResult {
   /// [outputFile] Optional.
   /// [status] The instance status.
   /// [tags] (Available since v1.66.0) The details of the resource tags.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.availabilityZone,
     this.enableDetails,
     required this.id,

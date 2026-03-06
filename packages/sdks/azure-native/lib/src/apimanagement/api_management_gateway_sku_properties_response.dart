@@ -12,7 +12,7 @@ class ApiManagementGatewaySkuPropertiesResponse {
   /// Creates a new [ApiManagementGatewaySkuPropertiesResponse].
   /// [capacity] Capacity of the SKU (number of deployed units of the SKU)
   /// [name] Name of the Sku.
-  ApiManagementGatewaySkuPropertiesResponse({
+  const ApiManagementGatewaySkuPropertiesResponse({
     this.capacity,
     required this.name,
   });

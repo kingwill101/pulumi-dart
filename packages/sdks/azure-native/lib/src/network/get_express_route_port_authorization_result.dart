@@ -32,7 +32,7 @@ class GetExpressRoutePortAuthorizationResult {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the authorization resource.
   /// [type] Type of the resource.
-  GetExpressRoutePortAuthorizationResult({
+  const GetExpressRoutePortAuthorizationResult({
     required this.authorizationKey,
     required this.authorizationUseStatus,
     required this.azureApiVersion,

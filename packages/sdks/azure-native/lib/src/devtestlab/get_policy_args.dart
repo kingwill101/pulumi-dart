@@ -24,7 +24,7 @@ class GetPolicyArgs {
   /// [name] The name of the Schedule
   /// [policySetName] policysets
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     this.expand,
     required this.labName,
     required this.name,

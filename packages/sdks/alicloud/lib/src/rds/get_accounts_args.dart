@@ -24,7 +24,7 @@ class GetAccountsArgs {
   /// [nameRegex] A regex string to filter results by Account name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Available`, `Unavailable`.
-  GetAccountsArgs({
+  const GetAccountsArgs({
     required this.dbInstanceId,
     this.ids,
     this.nameRegex,

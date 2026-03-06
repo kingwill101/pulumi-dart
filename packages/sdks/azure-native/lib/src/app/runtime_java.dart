@@ -13,7 +13,7 @@ class RuntimeJava {
   /// Creates a new [RuntimeJava].
   /// [enableMetrics] Enable jmx core metrics for the java app
   /// [javaAgent] Diagnostic capabilities achieved by java agent
-  RuntimeJava({
+  const RuntimeJava({
     this.enableMetrics,
     this.javaAgent,
   });

@@ -10,7 +10,7 @@ class GrafeasV1beta1DeploymentDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1DeploymentDetailsResponse].
   /// [deployment] Deployment history for the resource.
-  GrafeasV1beta1DeploymentDetailsResponse({
+  const GrafeasV1beta1DeploymentDetailsResponse({
     required this.deployment,
   });
 

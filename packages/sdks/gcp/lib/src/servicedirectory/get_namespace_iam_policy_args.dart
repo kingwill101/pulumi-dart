@@ -12,7 +12,7 @@ class GetNamespaceIamPolicyArgs {
 
   /// Creates a new [GetNamespaceIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
-  GetNamespaceIamPolicyArgs({
+  const GetNamespaceIamPolicyArgs({
     required this.name,
   });
 

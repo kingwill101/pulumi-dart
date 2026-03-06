@@ -32,7 +32,7 @@ class AclArgs {
   /// [resourceName] The name of the resource on which you want to grant permissions.
   /// [resourceType] The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
   /// [username] The username of the account.
-  AclArgs({
+  const AclArgs({
     required this.actions,
     required this.decision,
     required this.instanceId,

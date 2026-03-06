@@ -12,7 +12,7 @@ class DomainDevicesSerialSourcePipe {
   /// Creates a new [DomainDevicesSerialSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesSerialSourcePipe({
+  const DomainDevicesSerialSourcePipe({
     required this.path,
     this.secLabels,
   });

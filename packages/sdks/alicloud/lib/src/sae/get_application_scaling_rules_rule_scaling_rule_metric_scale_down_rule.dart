@@ -14,7 +14,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
   /// [disabled] Whether shrinkage is prohibited.
   /// [stabilizationWindowSeconds] Shrinkage cooling time.
   /// [step] Elastic shrinkage step. The maximum number of instances per unit time.
-  GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule({
+  const GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule({
     required this.disabled,
     required this.stabilizationWindowSeconds,
     required this.step,

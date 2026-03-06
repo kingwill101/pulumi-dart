@@ -14,7 +14,7 @@ class ParquetReadSettings {
   /// Creates a new [ParquetReadSettings].
   /// [compressionProperties] Compression settings.
   /// [type] The read setting type.
-  ParquetReadSettings({
+  const ParquetReadSettings({
     this.compressionProperties,
     required this.type,
   });

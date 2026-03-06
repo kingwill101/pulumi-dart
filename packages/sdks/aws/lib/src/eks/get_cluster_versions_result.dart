@@ -27,7 +27,7 @@ class GetClusterVersionsResult {
   /// [includeAll] Optional.
   /// [region] Required.
   /// [versionStatus] Status of the EKS cluster version.
-  GetClusterVersionsResult({
+  const GetClusterVersionsResult({
     this.clusterType,
     required this.clusterVersions,
     this.clusterVersionsOnlies,

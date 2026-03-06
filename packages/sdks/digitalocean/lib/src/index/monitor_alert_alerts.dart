@@ -11,7 +11,7 @@ class MonitorAlertAlerts {
   /// Creates a new [MonitorAlertAlerts].
   /// [emails] List of email addresses to sent notifications to
   /// [slacks] Optional.
-  MonitorAlertAlerts({
+  const MonitorAlertAlerts({
     this.emails,
     this.slacks,
   });

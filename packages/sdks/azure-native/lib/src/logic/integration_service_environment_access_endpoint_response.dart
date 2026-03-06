@@ -9,7 +9,7 @@ class IntegrationServiceEnvironmentAccessEndpointResponse {
 
   /// Creates a new [IntegrationServiceEnvironmentAccessEndpointResponse].
   /// [type] The access endpoint type.
-  IntegrationServiceEnvironmentAccessEndpointResponse({
+  const IntegrationServiceEnvironmentAccessEndpointResponse({
     this.type,
   });
 

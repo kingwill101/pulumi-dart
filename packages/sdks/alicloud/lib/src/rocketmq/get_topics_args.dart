@@ -26,7 +26,7 @@ class GetTopicsArgs {
   /// [nameRegex] A regex string to filter results by the topic name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A map of tags assigned to the Ons instance.
-  GetTopicsArgs({
+  const GetTopicsArgs({
     this.enableDetails,
     this.ids,
     required this.instanceId,

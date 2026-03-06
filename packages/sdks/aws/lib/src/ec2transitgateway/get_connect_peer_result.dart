@@ -43,7 +43,7 @@ class GetConnectPeerResult {
   /// [transitGatewayAddress] The IP address assigned to Transit Gateway, which is used as tunnel endpoint.
   /// [transitGatewayAttachmentId] The Transit Gateway Connect
   /// [transitGatewayConnectPeerId] Required.
-  GetConnectPeerResult({
+  const GetConnectPeerResult({
     required this.arn,
     required this.bgpAsn,
     required this.bgpPeerAddress,

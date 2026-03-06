@@ -11,7 +11,7 @@ class SlrArgs {
 
   /// Creates a new [SlrArgs].
   /// [productName] Required.
-  SlrArgs({
+  const SlrArgs({
     required this.productName,
   });
 

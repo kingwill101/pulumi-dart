@@ -17,7 +17,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
   /// [critical] Indicates whether or not this extension is critical (i.e., if the client does not know how to
   /// [objectId] Describes values that are relevant in a CA certificate.
   /// [value] The value of this X.509 extension. A base64-encoded string.
-  CaPoolIssuancePolicyBaselineValuesAdditionalExtension({
+  const CaPoolIssuancePolicyBaselineValuesAdditionalExtension({
     required this.critical,
     required this.objectId,
     required this.value,

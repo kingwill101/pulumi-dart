@@ -21,7 +21,7 @@ class GetClusterMaintenancePolicy {
   /// [createTime] Output only. The time when the policy was created.
   /// [updateTime] Output only. The time when the policy was last updated.
   /// [weeklyMaintenanceWindows] Optional. Maintenance window that is applied to resources covered by this policy.
-  GetClusterMaintenancePolicy({
+  const GetClusterMaintenancePolicy({
     required this.createTime,
     required this.updateTime,
     required this.weeklyMaintenanceWindows,

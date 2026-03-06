@@ -14,7 +14,7 @@ class BucketWebsiteIndexDocument {
   /// [suffix] The default home page.
   /// [supportSubDir] Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
   /// [type] After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
-  BucketWebsiteIndexDocument({
+  const BucketWebsiteIndexDocument({
     this.suffix,
     this.supportSubDir,
     this.type,

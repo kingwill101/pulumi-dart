@@ -51,7 +51,7 @@ class ClientTlsPolicyState {
   /// [serverValidationCas] Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
   /// [sni] Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   /// [updateTime] Time the ClientTlsPolicy was updated in UTC.
-  ClientTlsPolicyState({
+  const ClientTlsPolicyState({
     this.clientCertificate,
     this.createTime,
     this.description,

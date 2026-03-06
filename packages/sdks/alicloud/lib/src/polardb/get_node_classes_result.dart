@@ -31,7 +31,7 @@ class GetNodeClassesResult {
   /// [payType] Required.
   /// [regionId] Optional.
   /// [zoneId] The Zone to launch the PolarDB cluster.
-  GetNodeClassesResult({
+  const GetNodeClassesResult({
     this.category,
     required this.classes,
     this.dbNodeClass,

@@ -13,7 +13,7 @@ class UnitOperationProvision {
   /// Creates a new [UnitOperationProvision].
   /// [inputVariables] Set of input variables. Maximum 100. (optional)
   /// [release] Reference to the Release object to use for the Unit. (optional).
-  UnitOperationProvision({
+  const UnitOperationProvision({
     this.inputVariables,
     this.release,
   });

@@ -13,7 +13,7 @@ class GetServersServerNetwork {
   /// [ip] Required.
   /// [macAddress] Required.
   /// [networkId] Required.
-  GetServersServerNetwork({
+  const GetServersServerNetwork({
     required this.aliasIps,
     required this.ip,
     required this.macAddress,

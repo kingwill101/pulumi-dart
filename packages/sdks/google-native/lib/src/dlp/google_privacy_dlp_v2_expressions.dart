@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2Expressions {
   /// Creates a new [GooglePrivacyDlpV2Expressions].
   /// [conditions] Conditions to apply to the expression.
   /// [logicalOperator] The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
-  GooglePrivacyDlpV2Expressions({
+  const GooglePrivacyDlpV2Expressions({
     this.conditions,
     this.logicalOperator,
   });

@@ -31,7 +31,7 @@ class ServiceTemplateSpecVolume {
   /// [name] Volume's name.
   /// [nfs] A filesystem backed by a Network File System share. This filesystem requires the
   /// [secret] The secret's value will be presented as the content of a file whose
-  ServiceTemplateSpecVolume({
+  const ServiceTemplateSpecVolume({
     this.csi,
     this.emptyDir,
     required this.name,

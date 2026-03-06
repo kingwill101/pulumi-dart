@@ -25,7 +25,7 @@ class EndpointAttachmentArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [serviceAttachment] The path of the service attachment
-  EndpointAttachmentArgs({
+  const EndpointAttachmentArgs({
     this.description,
     required this.endpointAttachmentId,
     this.labels,

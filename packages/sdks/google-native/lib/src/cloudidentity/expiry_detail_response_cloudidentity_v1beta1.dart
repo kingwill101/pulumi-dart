@@ -9,7 +9,7 @@ class ExpiryDetailResponseCloudidentityV1beta1 {
 
   /// Creates a new [ExpiryDetailResponseCloudidentityV1beta1].
   /// [expireTime] The time at which the `MembershipRole` will expire.
-  ExpiryDetailResponseCloudidentityV1beta1({
+  const ExpiryDetailResponseCloudidentityV1beta1({
     required this.expireTime,
   });
 

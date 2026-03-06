@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationRetrieval {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationRetrieval].
   /// [serviceConfiguration] Optional.
-  AgentFlowDefinitionNodeConfigurationRetrieval({
+  const AgentFlowDefinitionNodeConfigurationRetrieval({
     this.serviceConfiguration,
   });
 

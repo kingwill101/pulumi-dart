@@ -32,7 +32,7 @@ class PolicyVMWorkloadProtectionPolicy {
   /// [retentionWeekly] A `retention_weekly` block as defined below.
   /// [retentionYearly] A `retention_yearly` block as defined below.
   /// [simpleRetention] A `simple_retention` block as defined below.
-  PolicyVMWorkloadProtectionPolicy({
+  const PolicyVMWorkloadProtectionPolicy({
     required this.backup,
     required this.policyType,
     this.retentionDaily,

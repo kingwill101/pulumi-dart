@@ -10,7 +10,7 @@ class AgentFlowDefinitionNodeConfigurationConditionCondition {
   /// Creates a new [AgentFlowDefinitionNodeConfigurationConditionCondition].
   /// [expression] Optional.
   /// [name] A name for the flow.
-  AgentFlowDefinitionNodeConfigurationConditionCondition({
+  const AgentFlowDefinitionNodeConfigurationConditionCondition({
     this.expression,
     required this.name,
   });

@@ -15,7 +15,7 @@ class ProfessionalServicePropertiesResponseTerm {
   /// [endDate] The end date of the current term
   /// [startDate] The start date of the current term
   /// [termUnit] The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
-  ProfessionalServicePropertiesResponseTerm({
+  const ProfessionalServicePropertiesResponseTerm({
     this.endDate,
     this.startDate,
     this.termUnit,

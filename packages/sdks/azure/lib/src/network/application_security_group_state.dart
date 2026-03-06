@@ -18,7 +18,7 @@ class ApplicationSecurityGroupState {
   /// [name] Specifies the name of the Application Security Group. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Application Security Group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  ApplicationSecurityGroupState({
+  const ApplicationSecurityGroupState({
     this.location,
     this.name,
     this.resourceGroupName,

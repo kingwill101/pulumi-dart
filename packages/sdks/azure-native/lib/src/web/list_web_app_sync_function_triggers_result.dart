@@ -11,7 +11,7 @@ class ListWebAppSyncFunctionTriggersResult {
   /// Creates a new [ListWebAppSyncFunctionTriggersResult].
   /// [key] Secret key.
   /// [triggerUrl] Trigger URL.
-  ListWebAppSyncFunctionTriggersResult({
+  const ListWebAppSyncFunctionTriggersResult({
     this.key,
     this.triggerUrl,
   });

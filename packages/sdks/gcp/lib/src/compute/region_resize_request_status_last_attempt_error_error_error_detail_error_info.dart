@@ -17,7 +17,7 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo {
   /// [domain] (Output)
   /// [metadatas] (Output)
   /// [reason] (Output)
-  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo({
+  const RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo({
     this.domain,
     this.metadatas,
     this.reason,

@@ -22,7 +22,7 @@ class HciDeploymentSettingArgs {
   /// [scaleUnits] One or more `scale_unit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [stackHciClusterId] The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [version] The deployment template version. The format must be a set of numbers separated by dots such as `10.0.0.0`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingArgs({
+  const HciDeploymentSettingArgs({
     required this.arcResourceIds,
     required this.scaleUnits,
     required this.stackHciClusterId,

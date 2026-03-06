@@ -9,7 +9,7 @@ class GetClustersClusterTag {
   /// Creates a new [GetClustersClusterTag].
   /// [key] Required.
   /// [value] Required.
-  GetClustersClusterTag({
+  const GetClustersClusterTag({
     required this.key,
     required this.value,
   });

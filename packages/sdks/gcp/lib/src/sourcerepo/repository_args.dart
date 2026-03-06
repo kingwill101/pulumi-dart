@@ -26,7 +26,7 @@ class RepositoryArgs {
   /// [name] Resource name of the repository, of the form `{{repo}}`.
   /// [project] The ID of the project in which the resource belongs.
   /// [pubsubConfigs] How this repository publishes a change in the repository through Cloud Pub/Sub.
-  RepositoryArgs({
+  const RepositoryArgs({
     this.createIgnoreAlreadyExists,
     this.name,
     this.project,

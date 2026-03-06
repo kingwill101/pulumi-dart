@@ -12,7 +12,7 @@ class UserAccessRightResponse {
   /// Creates a new [UserAccessRightResponse].
   /// [accessType] Type of access to be allowed for the user.
   /// [userId] User ID (already existing in the device).
-  UserAccessRightResponse({
+  const UserAccessRightResponse({
     required this.accessType,
     required this.userId,
   });

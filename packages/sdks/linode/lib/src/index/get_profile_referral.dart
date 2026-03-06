@@ -23,7 +23,7 @@ class GetProfileReferral {
   /// [pending] The number of pending signups for the referral code. To receive credit the signups must be completed.
   /// [total] The number of users who have signed up with the referral code.
   /// [url] The referral URL.
-  GetProfileReferral({
+  const GetProfileReferral({
     required this.code,
     required this.completed,
     required this.credit,

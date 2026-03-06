@@ -30,7 +30,7 @@ class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey {
   /// [rawKey] A 256-bit [customer-supplied encryption key]
   /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
   /// [sha256] The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-  InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey({
+  const InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
     this.rawKey,

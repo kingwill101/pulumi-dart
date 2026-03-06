@@ -18,7 +18,7 @@ class PlacementGroupArgs {
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [name] Name of the Placement Group.
   /// [type] Type of the Placement Group.
-  PlacementGroupArgs({
+  const PlacementGroupArgs({
     this.labels,
     this.name,
     required this.type,

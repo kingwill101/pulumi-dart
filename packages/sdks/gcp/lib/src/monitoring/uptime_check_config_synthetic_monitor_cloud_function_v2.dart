@@ -8,7 +8,7 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
 
   /// Creates a new [UptimeCheckConfigSyntheticMonitorCloudFunctionV2].
   /// [name] A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-  UptimeCheckConfigSyntheticMonitorCloudFunctionV2({
+  const UptimeCheckConfigSyntheticMonitorCloudFunctionV2({
     required this.name,
   });
 

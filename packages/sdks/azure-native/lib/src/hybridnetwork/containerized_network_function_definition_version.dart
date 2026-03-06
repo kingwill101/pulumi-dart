@@ -20,7 +20,7 @@ class ContainerizedNetworkFunctionDefinitionVersion {
   /// [description] The network function definition version description.
   /// [networkFunctionTemplate] Containerized network function template.
   /// [networkFunctionType] The network function type.
-  ContainerizedNetworkFunctionDefinitionVersion({
+  const ContainerizedNetworkFunctionDefinitionVersion({
     this.deployParameters,
     this.description,
     this.networkFunctionTemplate,

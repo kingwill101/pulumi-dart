@@ -16,7 +16,7 @@ class ImageUpdateTriggerResponse {
   /// [id] The unique ID of the trigger.
   /// [images] The list of image updates that caused the build.
   /// [timestamp] The timestamp when the image update happened.
-  ImageUpdateTriggerResponse({
+  const ImageUpdateTriggerResponse({
     this.id,
     this.images,
     this.timestamp,

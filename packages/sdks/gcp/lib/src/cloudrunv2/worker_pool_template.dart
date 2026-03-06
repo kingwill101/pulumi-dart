@@ -57,7 +57,7 @@ class WorkerPoolTemplate {
   /// [serviceAccount] Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccess] VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
-  WorkerPoolTemplate({
+  const WorkerPoolTemplate({
     this.annotations,
     this.containers,
     this.encryptionKey,

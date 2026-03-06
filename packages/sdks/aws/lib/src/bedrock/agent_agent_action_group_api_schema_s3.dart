@@ -11,7 +11,7 @@ class AgentAgentActionGroupApiSchemaS3 {
   /// Creates a new [AgentAgentActionGroupApiSchemaS3].
   /// [s3BucketName] Name of the S3 bucket.
   /// [s3ObjectKey] S3 object key containing the resource.
-  AgentAgentActionGroupApiSchemaS3({
+  const AgentAgentActionGroupApiSchemaS3({
     this.s3BucketName,
     this.s3ObjectKey,
   });

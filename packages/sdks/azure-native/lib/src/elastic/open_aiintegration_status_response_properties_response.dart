@@ -9,7 +9,7 @@ class OpenAIIntegrationStatusResponsePropertiesResponse {
 
   /// Creates a new [OpenAIIntegrationStatusResponsePropertiesResponse].
   /// [status] Status of the OpenAI Integration
-  OpenAIIntegrationStatusResponsePropertiesResponse({
+  const OpenAIIntegrationStatusResponsePropertiesResponse({
     this.status,
   });
 

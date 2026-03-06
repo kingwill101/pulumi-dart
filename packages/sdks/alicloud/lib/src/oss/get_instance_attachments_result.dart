@@ -26,7 +26,7 @@ class GetInstanceAttachmentsResult {
   /// [names] A list of vpc names.
   /// [outputFile] Optional.
   /// [vpcIds] A list of vpc ids.
-  GetInstanceAttachmentsResult({
+  const GetInstanceAttachmentsResult({
     required this.attachments,
     required this.id,
     required this.instanceName,

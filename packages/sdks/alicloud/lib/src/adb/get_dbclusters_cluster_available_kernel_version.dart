@@ -14,7 +14,7 @@ class GetDBClustersClusterAvailableKernelVersion {
   /// [expireDate] The maintenance expiration time of the version
   /// [kernelVersion] The minor version. Example: 3.1.9.
   /// [releaseDate] The time when the minor version was released.
-  GetDBClustersClusterAvailableKernelVersion({
+  const GetDBClustersClusterAvailableKernelVersion({
     required this.expireDate,
     required this.kernelVersion,
     required this.releaseDate,

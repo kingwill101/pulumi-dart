@@ -22,7 +22,7 @@ class MysqlProfile {
   /// [port] Port for the MySQL connection, default value is 3306.
   /// [sslConfig] SSL configuration for the MySQL connection.
   /// [username] Username for the MySQL connection.
-  MysqlProfile({
+  const MysqlProfile({
     required this.hostname,
     required this.password,
     this.port,

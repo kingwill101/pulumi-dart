@@ -28,7 +28,7 @@ class ProductFeatureResponse {
   /// [error] The errors that were encountered during the feature enrollment or disenrollment.
   /// [name] Product feature name.
   /// [subscriptionStatus] Indicates the current status of the product features.
-  ProductFeatureResponse({
+  const ProductFeatureResponse({
     required this.billingEndDate,
     required this.billingStartDate,
     required this.disenrollmentDate,

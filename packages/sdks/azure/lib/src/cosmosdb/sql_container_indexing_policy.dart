@@ -24,7 +24,7 @@ class SqlContainerIndexingPolicy {
   /// [includedPaths] One or more `included_path` blocks as defined below. Either `included_path` or `excluded_path` must contain the `path` `/*`
   /// [indexingMode] Indicates the indexing mode. Possible values include: `consistent` and `none`. Defaults to `consistent`.
   /// [spatialIndices] One or more `spatial_index` blocks as defined below.
-  SqlContainerIndexingPolicy({
+  const SqlContainerIndexingPolicy({
     this.compositeIndices,
     this.excludedPaths,
     this.includedPaths,

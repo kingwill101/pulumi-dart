@@ -26,7 +26,7 @@ class MilvusInstanceComponent {
   /// [diskSizeType] Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
   /// [replica] The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
   /// [type] The component type. Different types need to be configured according to different versions.
-  MilvusInstanceComponent({
+  const MilvusInstanceComponent({
     required this.cuNum,
     this.cuType,
     this.diskSizeType,

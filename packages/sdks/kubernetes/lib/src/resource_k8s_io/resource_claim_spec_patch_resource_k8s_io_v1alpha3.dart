@@ -17,7 +17,7 @@ class ResourceClaimSpecPatchResourceK8sIoV1alpha3 {
   /// Creates a new [ResourceClaimSpecPatchResourceK8sIoV1alpha3].
   /// [controller] Controller is the name of the DRA driver that is meant to handle allocation of this claim. If empty, allocation is handled by the scheduler while scheduling a pod.
   /// [devices] Devices defines how to request devices.
-  ResourceClaimSpecPatchResourceK8sIoV1alpha3({
+  const ResourceClaimSpecPatchResourceK8sIoV1alpha3({
     this.controller,
     this.devices,
   });

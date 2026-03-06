@@ -80,7 +80,7 @@ class SubnetPoolArgs {
   /// [shared] Indicates whether this subnetpool is shared across
   /// [tags] A set of string tags for the subnetpool.
   /// [valueSpecs] Map of additional options.
-  SubnetPoolArgs({
+  const SubnetPoolArgs({
     this.addressScopeId,
     this.defaultPrefixlen,
     this.defaultQuota,

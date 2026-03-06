@@ -9,7 +9,7 @@ class ProductPropertiesResponse {
 
   /// Creates a new [ProductPropertiesResponse].
   /// [version] The version.
-  ProductPropertiesResponse({
+  const ProductPropertiesResponse({
     this.version,
   });
 

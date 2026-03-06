@@ -12,7 +12,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse {
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse].
   /// [type] Immutable. The type of the Setting. .
   /// [value] The value of the Setting.
-  GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse({
     required this.type,
     required this.value,
   });

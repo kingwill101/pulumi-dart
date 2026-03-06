@@ -15,7 +15,7 @@ class NetworkInterfaceSecurityGroupAssociationArgs {
   /// Creates a new [NetworkInterfaceSecurityGroupAssociationArgs].
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
   /// [networkSecurityGroupId] The ID of the Network Security Group which should be attached to the Network Interface. Changing this forces a new resource to be created.
-  NetworkInterfaceSecurityGroupAssociationArgs({
+  const NetworkInterfaceSecurityGroupAssociationArgs({
     required this.networkInterfaceId,
     required this.networkSecurityGroupId,
   });

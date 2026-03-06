@@ -8,7 +8,7 @@ class FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions {
 
   /// Creates a new [FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions].
   /// [defaultDocumentIdFormat] The method for setting up document ID. Valid values: `FIREHOSE_DEFAULT`, `NO_DOCUMENT_ID`.
-  FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions({
+  const FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions({
     required this.defaultDocumentIdFormat,
   });
 

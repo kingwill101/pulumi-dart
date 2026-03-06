@@ -69,7 +69,7 @@ class ConnectionState {
   /// [name] The resource name of the connection in the form of:
   /// [project] The ID of the project in which the resource belongs.
   /// [spark] Container for connection properties to execute stored procedures for Apache Spark. resources.
-  ConnectionState({
+  const ConnectionState({
     this.aws,
     this.azure,
     this.cloudResource,

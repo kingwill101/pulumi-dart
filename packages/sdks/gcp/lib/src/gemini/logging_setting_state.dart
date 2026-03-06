@@ -44,7 +44,7 @@ class LoggingSettingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Update time stamp.
-  LoggingSettingState({
+  const LoggingSettingState({
     this.createTime,
     this.effectiveLabels,
     this.labels,

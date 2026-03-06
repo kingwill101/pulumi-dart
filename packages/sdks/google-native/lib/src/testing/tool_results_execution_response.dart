@@ -15,7 +15,7 @@ class ToolResultsExecutionResponse {
   /// [executionId] A tool results execution ID.
   /// [historyId] A tool results history ID.
   /// [project] The cloud project that owns the tool results execution.
-  ToolResultsExecutionResponse({
+  const ToolResultsExecutionResponse({
     required this.executionId,
     required this.historyId,
     required this.project,

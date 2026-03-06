@@ -18,7 +18,7 @@ class GetVendorSkuPreviewArgs {
   /// [previewSubscription] Preview subscription ID.
   /// [skuName] The name of the vendor sku.
   /// [vendorName] The name of the vendor.
-  GetVendorSkuPreviewArgs({
+  const GetVendorSkuPreviewArgs({
     required this.previewSubscription,
     required this.skuName,
     required this.vendorName,

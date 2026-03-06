@@ -20,7 +20,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsCritical {
   /// [statistics] The statistical methods for Warn-level alerts.
   /// [threshold] The threshold for Warn-level alerts.
   /// [times] The number of consecutive triggers.
-  GetServiceMetricAlarmRulesRuleEscalationsCritical({
+  const GetServiceMetricAlarmRulesRuleEscalationsCritical({
     required this.comparisonOperator,
     required this.preCondition,
     required this.statistics,

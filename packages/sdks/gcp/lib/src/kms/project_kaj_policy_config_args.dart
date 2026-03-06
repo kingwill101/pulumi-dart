@@ -20,7 +20,7 @@ class ProjectKajPolicyConfigArgs {
   /// Creates a new [ProjectKajPolicyConfigArgs].
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [project] The ID of the project in which the resource belongs.
-  ProjectKajPolicyConfigArgs({
+  const ProjectKajPolicyConfigArgs({
     this.defaultKeyAccessJustificationPolicy,
     this.project,
   });

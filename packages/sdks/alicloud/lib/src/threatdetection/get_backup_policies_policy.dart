@@ -29,7 +29,7 @@ class GetBackupPoliciesPolicy {
   /// [policyVersion] The version of the anti-ransomware policy.
   /// [status] The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
   /// [uuidLists] The UUIDs of the servers to which the anti-ransomware policy is applied.
-  GetBackupPoliciesPolicy({
+  const GetBackupPoliciesPolicy({
     required this.backupPolicyId,
     required this.backupPolicyName,
     required this.id,

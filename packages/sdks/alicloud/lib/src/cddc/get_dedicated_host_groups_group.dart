@@ -91,7 +91,7 @@ class GetDedicatedHostGroupsGroup {
   /// [text] The Text of the Dedicated Host Group.
   /// [vpcId] The virtual private cloud (VPC) ID of the dedicated cluster.
   /// [zoneIdLists] The ZoneIDList of the Dedicated Host Group.
-  GetDedicatedHostGroupsGroup({
+  const GetDedicatedHostGroupsGroup({
     required this.allocationPolicy,
     required this.bastionInstanceId,
     required this.cpuAllocateRation,

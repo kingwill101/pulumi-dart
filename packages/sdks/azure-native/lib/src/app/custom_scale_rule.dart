@@ -20,7 +20,7 @@ class CustomScaleRule {
   /// [identity] The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
   /// [metadata] Metadata properties to describe custom scale rule.
   /// [type] Type of the custom scale rule
-  CustomScaleRule({
+  const CustomScaleRule({
     this.auth,
     this.identity,
     this.metadata,

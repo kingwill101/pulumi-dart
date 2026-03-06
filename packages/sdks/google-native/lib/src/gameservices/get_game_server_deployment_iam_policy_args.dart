@@ -17,7 +17,7 @@ class GetGameServerDeploymentIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetGameServerDeploymentIamPolicyArgs({
+  const GetGameServerDeploymentIamPolicyArgs({
     required this.gameServerDeploymentId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -18,7 +18,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
   /// Creates a new [AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec].
   /// [metricName] The resource metric name.
   /// [target] The target resource utilization in percentage (1% - 100%) for the given
-  AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec({
+  const AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec({
     required this.metricName,
     this.target,
   });

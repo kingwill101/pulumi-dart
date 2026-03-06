@@ -8,7 +8,7 @@ class MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguratio
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration].
   /// [insightsTarget] Kinesis Data Stream to deliver results.
-  MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration({
+  const MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration({
     required this.insightsTarget,
   });
 

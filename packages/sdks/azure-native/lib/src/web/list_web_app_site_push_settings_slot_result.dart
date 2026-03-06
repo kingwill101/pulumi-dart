@@ -32,7 +32,7 @@ class ListWebAppSitePushSettingsSlotResult {
   /// [tagWhitelistJson] Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
   /// [tagsRequiringAuth] Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
   /// [type] Resource type.
-  ListWebAppSitePushSettingsSlotResult({
+  const ListWebAppSitePushSettingsSlotResult({
     this.dynamicTagsJson,
     required this.id,
     required this.isPushEnabled,

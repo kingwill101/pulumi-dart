@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize({
+  const GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize({
     required this.description,
     required this.example,
     required this.maximum,

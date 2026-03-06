@@ -141,7 +141,7 @@ class BucketObjectArgs {
   /// [timeStorageClassUpdated] The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
   /// [updated] The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
-  BucketObjectArgs({
+  const BucketObjectArgs({
     this.acl,
     required this.bucket,
     this.cacheControl,

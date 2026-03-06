@@ -26,7 +26,7 @@ class AssessmentReportState {
   /// [name] Name of the assessment report.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Current status of the specified assessment report. Valid values are `COMPLETE`, `IN_PROGRESS`, and `FAILED`.
-  AssessmentReportState({
+  const AssessmentReportState({
     this.assessmentId,
     this.author,
     this.description,

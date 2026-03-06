@@ -41,7 +41,7 @@ class BucketState {
   /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [url] URL of the bucket.
-  BucketState({
+  const BucketState({
     this.arn,
     this.availabilityZone,
     this.bundleId,

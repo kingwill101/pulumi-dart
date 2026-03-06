@@ -21,7 +21,7 @@ class ListArgs {
   /// [items] The items in the custom list, which are displayed as an array.
   /// [kind] The type of the custom list.
   /// [name] The name of the custom list.
-  ListArgs({
+  const ListArgs({
     this.description,
     this.items,
     this.kind,

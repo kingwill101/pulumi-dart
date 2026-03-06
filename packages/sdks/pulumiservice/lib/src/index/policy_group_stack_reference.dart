@@ -12,7 +12,7 @@ class PolicyGroupStackReference {
   /// Creates a new [PolicyGroupStackReference].
   /// [name] The name of the stack.
   /// [routingProject] The routing project name (also known as project name).
-  PolicyGroupStackReference({
+  const PolicyGroupStackReference({
     required this.name,
     required this.routingProject,
   });

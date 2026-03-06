@@ -18,7 +18,7 @@ class ComponentCondition {
   /// [message] Message about the condition for a component. For example, information about a health check.
   /// [status] Status of the condition for a component. Valid values for "Healthy": "True", "False", or "Unknown".
   /// [type] Type of condition for a component. Valid value: "Healthy"
-  ComponentCondition({
+  const ComponentCondition({
     this.error,
     this.message,
     required this.status,

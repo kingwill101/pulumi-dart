@@ -17,7 +17,7 @@ class GetSnapshotArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [snapshotId] Required.
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     required this.instanceId,
     required this.location,
     this.project,

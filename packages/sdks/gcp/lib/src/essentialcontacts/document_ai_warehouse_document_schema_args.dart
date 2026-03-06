@@ -26,7 +26,7 @@ class DocumentAiWarehouseDocumentSchemaArgs {
   /// [location] The location of the resource.
   /// [projectNumber] The unique identifier of the project.
   /// [propertyDefinitions] Defines the metadata for a schema property.
-  DocumentAiWarehouseDocumentSchemaArgs({
+  const DocumentAiWarehouseDocumentSchemaArgs({
     required this.displayName,
     this.documentIsFolder,
     required this.location,

@@ -12,7 +12,7 @@ class NodeAddress {
   /// Creates a new [NodeAddress].
   /// [address] The node address.
   /// [type] Node address type, one of Hostname, ExternalIP or InternalIP.
-  NodeAddress({
+  const NodeAddress({
     required this.address,
     required this.type,
   });

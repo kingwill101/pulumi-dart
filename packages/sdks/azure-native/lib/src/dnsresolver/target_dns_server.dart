@@ -12,7 +12,7 @@ class TargetDnsServer {
   /// Creates a new [TargetDnsServer].
   /// [ipAddress] DNS server IP address.
   /// [port] DNS server port.
-  TargetDnsServer({
+  const TargetDnsServer({
     required this.ipAddress,
     this.port,
   });

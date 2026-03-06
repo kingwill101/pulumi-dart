@@ -20,7 +20,7 @@ class GroupAssociationState {
   /// [groupId] ID of the Group.
   /// [groupName] Name of the group that the canary will be associated with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupAssociationState({
+  const GroupAssociationState({
     this.canaryArn,
     this.groupArn,
     this.groupId,

@@ -9,7 +9,7 @@ class ApplicationApplicationConfigurationEnvironmentProperties {
 
   /// Creates a new [ApplicationApplicationConfigurationEnvironmentProperties].
   /// [propertyGroups] Describes the execution property groups.
-  ApplicationApplicationConfigurationEnvironmentProperties({
+  const ApplicationApplicationConfigurationEnvironmentProperties({
     required this.propertyGroups,
   });
 

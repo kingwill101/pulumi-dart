@@ -59,7 +59,7 @@ class TargetResponse {
   /// [targetId] Resource id of the `Target`.
   /// [uid] Unique identifier of the `Target`.
   /// [updateTime] Most recent time at which the `Target` was updated.
-  TargetResponse({
+  const TargetResponse({
     required this.annotations,
     required this.anthosCluster,
     required this.createTime,

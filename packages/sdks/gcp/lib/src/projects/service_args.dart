@@ -29,7 +29,7 @@ class ServiceArgs {
   /// [disableOnDestroy] Optional.
   /// [project] The project ID. If not provided, the provider project
   /// [service] The service to enable.
-  ServiceArgs({
+  const ServiceArgs({
     this.checkIfServiceHasUsageOnDestroy,
     this.disableDependentServices,
     this.disableOnDestroy,

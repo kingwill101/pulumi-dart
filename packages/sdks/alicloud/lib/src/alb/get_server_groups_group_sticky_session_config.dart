@@ -17,7 +17,7 @@ class GetServerGroupsGroupStickySessionConfig {
   /// [cookieTimeout] The timeout period of a cookie. The timeout period of a cookie.
   /// [stickySessionEnabled] Indicates whether sticky session is enabled.
   /// [stickySessionType] The method that is used to handle a cookie.
-  GetServerGroupsGroupStickySessionConfig({
+  const GetServerGroupsGroupStickySessionConfig({
     required this.cookie,
     required this.cookieTimeout,
     required this.stickySessionEnabled,

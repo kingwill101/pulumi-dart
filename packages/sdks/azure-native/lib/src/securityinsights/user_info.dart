@@ -9,7 +9,7 @@ class UserInfo {
 
   /// Creates a new [UserInfo].
   /// [objectId] The object id of the user.
-  UserInfo({
+  const UserInfo({
     this.objectId,
   });
 

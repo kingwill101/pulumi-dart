@@ -13,7 +13,7 @@ class ProjectSecondarySourceBuildStatusConfig {
   /// Creates a new [ProjectSecondarySourceBuildStatusConfig].
   /// [context] Specifies the context of the build status CodeBuild sends to the source provider. The usage of
   /// [targetUrl] Specifies the target url of the build status CodeBuild sends to the source provider. The
-  ProjectSecondarySourceBuildStatusConfig({
+  const ProjectSecondarySourceBuildStatusConfig({
     this.context,
     this.targetUrl,
   });

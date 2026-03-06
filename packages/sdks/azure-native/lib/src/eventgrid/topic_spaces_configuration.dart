@@ -34,7 +34,7 @@ class TopicSpacesConfiguration {
   /// [routingEnrichments] Routing enrichments for topic spaces configuration
   /// [routingIdentityInfo] Routing identity info for topic spaces configuration.
   /// [state] Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
-  TopicSpacesConfiguration({
+  const TopicSpacesConfiguration({
     this.customDomains,
     this.maximumClientSessionsPerAuthenticationName,
     this.maximumSessionExpiryInHours,

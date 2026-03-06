@@ -87,7 +87,7 @@ class GetCertificateResult {
   /// [thumbprint] Certificate thumbprint.
   /// [type] Resource type.
   /// [valid] Is the certificate valid?.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.azureApiVersion,
     this.canonicalName,
     required this.cerBlob,

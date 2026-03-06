@@ -79,7 +79,7 @@ class ScheduledQueryRuleArgs {
   /// [tags] Resource tags.
   /// [targetResourceTypes] List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert
   /// [windowSize] The period of time (in ISO 8601 duration format) on which the Alert query will be executed (bin size). Relevant and required only for rules of the kind LogAlert.
-  ScheduledQueryRuleArgs({
+  const ScheduledQueryRuleArgs({
     this.actions,
     this.autoMitigate,
     this.checkWorkspaceAlertsStorageConfigured,

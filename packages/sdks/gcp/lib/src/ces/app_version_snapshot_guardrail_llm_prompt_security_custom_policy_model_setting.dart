@@ -17,7 +17,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting {
   /// Creates a new [AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting].
   /// [model] (Output)
   /// [temperature] (Output)
-  AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting({
+  const AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting({
     this.model,
     this.temperature,
   });

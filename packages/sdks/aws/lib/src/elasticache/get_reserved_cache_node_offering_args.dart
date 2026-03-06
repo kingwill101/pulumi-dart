@@ -31,7 +31,7 @@ class GetReservedCacheNodeOfferingArgs {
   /// [offeringType] Offering type of this reserved cache node.
   /// [productDescription] Engine type for the reserved cache node.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetReservedCacheNodeOfferingArgs({
+  const GetReservedCacheNodeOfferingArgs({
     required this.cacheNodeType,
     required this.duration,
     required this.offeringType,

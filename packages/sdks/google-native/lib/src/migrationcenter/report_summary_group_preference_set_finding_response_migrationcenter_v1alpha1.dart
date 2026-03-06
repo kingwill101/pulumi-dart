@@ -56,7 +56,7 @@ class ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1 {
   /// [soleTenantFinding] A set of findings that applies to Stole-Tenant machines in the input.
   /// [topPriority] Text describing the business priority specified for this Preference Set
   /// [vmwareEngineFinding] A set of findings that applies to VMWare machines in the input.
-  ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1({
+  const ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1({
     required this.description,
     required this.displayName,
     required this.machineFinding,

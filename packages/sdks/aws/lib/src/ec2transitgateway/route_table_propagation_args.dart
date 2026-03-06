@@ -18,7 +18,7 @@ class RouteTablePropagationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
-  RouteTablePropagationArgs({
+  const RouteTablePropagationArgs({
     this.region,
     required this.transitGatewayAttachmentId,
     required this.transitGatewayRouteTableId,

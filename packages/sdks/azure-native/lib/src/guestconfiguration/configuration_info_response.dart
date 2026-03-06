@@ -12,7 +12,7 @@ class ConfigurationInfoResponse {
   /// Creates a new [ConfigurationInfoResponse].
   /// [name] Name of the configuration.
   /// [version] Version of the configuration.
-  ConfigurationInfoResponse({
+  const ConfigurationInfoResponse({
     required this.name,
     required this.version,
   });

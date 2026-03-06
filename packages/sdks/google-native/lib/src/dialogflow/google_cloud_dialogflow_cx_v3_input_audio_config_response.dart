@@ -31,7 +31,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse {
   /// [phraseHints] Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
   /// [sampleRateHertz] Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
   /// [singleUtterance] Optional. If `false` (default), recognition does not cease until the client closes the stream. If `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the client should close the stream and start a new request with a new stream as needed. Note: This setting is relevant only for streaming methods.
-  GoogleCloudDialogflowCxV3InputAudioConfigResponse({
+  const GoogleCloudDialogflowCxV3InputAudioConfigResponse({
     required this.audioEncoding,
     required this.bargeInConfig,
     required this.enableWordInfo,

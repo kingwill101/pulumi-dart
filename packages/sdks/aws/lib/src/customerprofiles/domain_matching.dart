@@ -20,7 +20,7 @@ class DomainMatching {
   /// [enabled] The flag that enables the matching process of duplicate profiles.
   /// [exportingConfig] A block that specifies the configuration for exporting Identity Resolution results. Documented below.
   /// [jobSchedule] A block that specifies the day and time when you want to start the Identity Resolution Job every week. Documented below.
-  DomainMatching({
+  const DomainMatching({
     this.autoMerging,
     required this.enabled,
     this.exportingConfig,

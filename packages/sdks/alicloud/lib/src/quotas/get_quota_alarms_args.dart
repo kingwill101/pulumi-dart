@@ -34,7 +34,7 @@ class GetQuotaAlarmsArgs {
   /// [quotaActionCode] The Quota Action Code.
   /// [quotaAlarmName] The name of Quota Alarm.
   /// [quotaDimensions] The Quota Dimensions.
-  GetQuotaAlarmsArgs({
+  const GetQuotaAlarmsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

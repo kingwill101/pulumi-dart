@@ -14,7 +14,7 @@ class GetInstanceTypesMasterInstanceType {
   /// [cpuSize] Cpu size of the instance type.
   /// [instanceType] The hbase instance type of create hbase cluster instance.
   /// [memSize] Mem size of the instance type.
-  GetInstanceTypesMasterInstanceType({
+  const GetInstanceTypesMasterInstanceType({
     required this.cpuSize,
     required this.instanceType,
     required this.memSize,

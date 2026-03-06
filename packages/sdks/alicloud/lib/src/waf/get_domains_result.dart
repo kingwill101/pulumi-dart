@@ -30,7 +30,7 @@ class GetDomainsResult {
   /// [names] A list of WAF domain names.
   /// [outputFile] Optional.
   /// [resourceGroupId] The ID of the resource group to which the queried domain belongs in Resource Management.
-  GetDomainsResult({
+  const GetDomainsResult({
     required this.domains,
     this.enableDetails,
     required this.id,

@@ -12,7 +12,7 @@ class ProxyServerPropertiesResponse {
   /// Creates a new [ProxyServerPropertiesResponse].
   /// [ip] Proxy server IP
   /// [port] Proxy server port
-  ProxyServerPropertiesResponse({
+  const ProxyServerPropertiesResponse({
     this.ip,
     this.port,
   });

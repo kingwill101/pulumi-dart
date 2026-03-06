@@ -39,7 +39,7 @@ class GetRoleAssignmentArtifactResult {
   /// [resourceGroup] RoleAssignment will be scope to this resourceGroup. If empty, it scopes to the subscription.
   /// [roleDefinitionId] Azure resource ID of the RoleDefinition.
   /// [type] Type of this resource.
-  GetRoleAssignmentArtifactResult({
+  const GetRoleAssignmentArtifactResult({
     required this.azureApiVersion,
     this.dependsOn,
     this.description,

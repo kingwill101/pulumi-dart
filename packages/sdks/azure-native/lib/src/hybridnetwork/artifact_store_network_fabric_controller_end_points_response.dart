@@ -10,7 +10,7 @@ class ArtifactStoreNetworkFabricControllerEndPointsResponse {
 
   /// Creates a new [ArtifactStoreNetworkFabricControllerEndPointsResponse].
   /// [networkFabricControllerIds] list of network fabric controllers.
-  ArtifactStoreNetworkFabricControllerEndPointsResponse({
+  const ArtifactStoreNetworkFabricControllerEndPointsResponse({
     this.networkFabricControllerIds,
   });
 

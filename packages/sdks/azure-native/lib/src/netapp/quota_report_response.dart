@@ -24,7 +24,7 @@ class QuotaReportResponse {
   /// [quotaLimitUsedInKiBs] Specifies the current usage in kibibytes for the user/group quota.
   /// [quotaTarget] UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running &lt;wmic useraccount where name='user-name' get sid&gt;
   /// [quotaType] Type of quota
-  QuotaReportResponse({
+  const QuotaReportResponse({
     this.isDerivedQuota,
     this.percentageUsed,
     this.quotaLimitTotalInKiBs,

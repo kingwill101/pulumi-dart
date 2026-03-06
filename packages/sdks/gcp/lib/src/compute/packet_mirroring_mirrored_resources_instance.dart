@@ -8,7 +8,7 @@ class PacketMirroringMirroredResourcesInstance {
 
   /// Creates a new [PacketMirroringMirroredResourcesInstance].
   /// [url] The URL of the instances where this rule should be active.
-  PacketMirroringMirroredResourcesInstance({
+  const PacketMirroringMirroredResourcesInstance({
     required this.url,
   });
 

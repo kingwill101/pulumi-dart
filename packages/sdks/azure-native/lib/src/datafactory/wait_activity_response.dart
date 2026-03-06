@@ -33,7 +33,7 @@ class WaitActivityResponse {
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
   /// [waitTimeInSeconds] Duration in seconds. Type: integer (or Expression with resultType integer).
-  WaitActivityResponse({
+  const WaitActivityResponse({
     this.dependsOn,
     this.description,
     required this.name,

@@ -18,7 +18,7 @@ class OsPolicyAssignmentRollout {
   /// Creates a new [OsPolicyAssignmentRollout].
   /// [disruptionBudget] The maximum number (or percentage) of VMs
   /// [minWaitDuration] This determines the minimum duration of
-  OsPolicyAssignmentRollout({
+  const OsPolicyAssignmentRollout({
     required this.disruptionBudget,
     required this.minWaitDuration,
   });

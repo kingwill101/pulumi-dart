@@ -12,7 +12,7 @@ class GooRepository {
   /// Creates a new [GooRepository].
   /// [name] The name of the repository.
   /// [url] The url of the repository.
-  GooRepository({
+  const GooRepository({
     required this.name,
     required this.url,
   });

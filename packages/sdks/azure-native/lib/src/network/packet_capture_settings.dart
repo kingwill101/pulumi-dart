@@ -15,7 +15,7 @@ class PacketCaptureSettings {
   /// [fileCount] Number of file count. Default value of count is 10 and maximum number is 10000.
   /// [fileSizeInBytes] Number of bytes captured per packet. Default value in bytes 104857600 (100MB) and maximum in bytes 4294967295 (4GB).
   /// [sessionTimeLimitInSeconds] Maximum duration of the capture session in seconds is 604800s (7 days) for a file. Default value in second 86400s (1 day).
-  PacketCaptureSettings({
+  const PacketCaptureSettings({
     this.fileCount,
     this.fileSizeInBytes,
     this.sessionTimeLimitInSeconds,

@@ -18,7 +18,7 @@ class GetExposureControlFeatureValueArgs {
   /// [featureName] The feature name.
   /// [featureType] The feature type.
   /// [locationId] The location identifier.
-  GetExposureControlFeatureValueArgs({
+  const GetExposureControlFeatureValueArgs({
     this.featureName,
     this.featureType,
     required this.locationId,

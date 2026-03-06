@@ -15,7 +15,7 @@ class DefaultAutoScalingConfigurationVersionArgs {
   /// Creates a new [DefaultAutoScalingConfigurationVersionArgs].
   /// [autoScalingConfigurationArn] The ARN of the App Runner auto scaling configuration that you want to set as the default.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DefaultAutoScalingConfigurationVersionArgs({
+  const DefaultAutoScalingConfigurationVersionArgs({
     required this.autoScalingConfigurationArn,
     this.region,
   });

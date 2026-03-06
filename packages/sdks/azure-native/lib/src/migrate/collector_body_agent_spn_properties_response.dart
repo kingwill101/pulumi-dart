@@ -20,7 +20,7 @@ class CollectorBodyAgentSpnPropertiesResponse {
   /// [authority] AAD Authority URL which was used to request the token for the service principal.
   /// [objectId] Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
   /// [tenantId] Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  CollectorBodyAgentSpnPropertiesResponse({
+  const CollectorBodyAgentSpnPropertiesResponse({
     this.applicationId,
     this.audience,
     this.authority,

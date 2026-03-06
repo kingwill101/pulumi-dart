@@ -11,7 +11,7 @@ class DomainDevicesDiskMirrorSourceCookiesCookie {
   /// Creates a new [DomainDevicesDiskMirrorSourceCookiesCookie].
   /// [name] Sets the name of the cookie for use in the backing store source configuration.
   /// [value] Sets the value associated with the cookie defined in the backing store source.
-  DomainDevicesDiskMirrorSourceCookiesCookie({
+  const DomainDevicesDiskMirrorSourceCookiesCookie({
     required this.name,
     required this.value,
   });

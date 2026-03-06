@@ -24,7 +24,7 @@ class AzureIaaSVMProtectedItemExtendedInfoResponse {
   /// [oldestRecoveryPointInVault] The oldest backup copy available for this backup item in vault tier
   /// [policyInconsistent] Specifies if backup policy associated with the backup item is inconsistent.
   /// [recoveryPointCount] Number of backup copies available for this backup item.
-  AzureIaaSVMProtectedItemExtendedInfoResponse({
+  const AzureIaaSVMProtectedItemExtendedInfoResponse({
     this.newestRecoveryPointInArchive,
     this.oldestRecoveryPoint,
     this.oldestRecoveryPointInArchive,

@@ -34,7 +34,7 @@ class GetStudioApplicationsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the Application.
-  GetStudioApplicationsResult({
+  const GetStudioApplicationsResult({
     required this.applications,
     required this.id,
     required this.ids,

@@ -13,7 +13,7 @@ class TriggerPipelineReferenceResponse {
   /// Creates a new [TriggerPipelineReferenceResponse].
   /// [parameters] Pipeline parameters.
   /// [pipelineReference] Pipeline reference.
-  TriggerPipelineReferenceResponse({
+  const TriggerPipelineReferenceResponse({
     this.parameters,
     this.pipelineReference,
   });

@@ -22,7 +22,7 @@ class InsightState {
   /// [groupByAttribute] The attribute used to group the findings for the insight e.g., if an insight is grouped by `ResourceId`, then the insight produces a list of resource identifiers.
   /// [name] The name of the custom insight.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InsightState({
+  const InsightState({
     this.arn,
     this.filters,
     this.groupByAttribute,

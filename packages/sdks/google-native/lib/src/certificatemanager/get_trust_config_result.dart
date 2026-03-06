@@ -28,7 +28,7 @@ class GetTrustConfigResult {
   /// [name] A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
   /// [trustStores] Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
   /// [updateTime] The last update timestamp of a TrustConfig.
-  GetTrustConfigResult({
+  const GetTrustConfigResult({
     required this.createTime,
     required this.description,
     required this.etag,

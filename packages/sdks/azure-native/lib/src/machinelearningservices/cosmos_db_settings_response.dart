@@ -8,7 +8,7 @@ class CosmosDbSettingsResponse {
 
   /// Creates a new [CosmosDbSettingsResponse].
   /// [collectionsThroughput] The throughput of the collections in cosmosdb database
-  CosmosDbSettingsResponse({
+  const CosmosDbSettingsResponse({
     this.collectionsThroughput,
   });
 

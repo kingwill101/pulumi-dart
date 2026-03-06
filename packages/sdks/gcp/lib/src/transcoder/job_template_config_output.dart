@@ -8,7 +8,7 @@ class JobTemplateConfigOutput {
 
   /// Creates a new [JobTemplateConfigOutput].
   /// [uri] URI for the output file(s). For example, gs://my-bucket/outputs/.
-  JobTemplateConfigOutput({
+  const JobTemplateConfigOutput({
     this.uri,
   });
 

@@ -10,7 +10,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 
   /// Creates a new [PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput({
+  const PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput({
     this.properties,
   });
 

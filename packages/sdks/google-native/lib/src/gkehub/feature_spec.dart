@@ -14,7 +14,7 @@ class FeatureSpec {
   /// Creates a new [FeatureSpec].
   /// [defaultConfig] Specifies default membership spec. Users can override the default in the member_configs for each member.
   /// [provisionGoogleCa] Immutable. Specifies CA configuration.
-  FeatureSpec({
+  const FeatureSpec({
     this.defaultConfig,
     this.provisionGoogleCa,
   });

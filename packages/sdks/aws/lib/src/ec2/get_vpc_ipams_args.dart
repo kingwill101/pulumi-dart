@@ -21,7 +21,7 @@ class GetVpcIpamsArgs {
   /// [filters] Custom filter block as described below.
   /// [ipamIds] IDs of the IPAM resources to query for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetVpcIpamsArgs({
+  const GetVpcIpamsArgs({
     this.filters,
     this.ipamIds,
     this.region,

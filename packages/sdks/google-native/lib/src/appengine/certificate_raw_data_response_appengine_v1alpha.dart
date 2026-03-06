@@ -12,7 +12,7 @@ class CertificateRawDataResponseAppengineV1alpha {
   /// Creates a new [CertificateRawDataResponseAppengineV1alpha].
   /// [privateKey] Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
   /// [publicCertificate] PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
-  CertificateRawDataResponseAppengineV1alpha({
+  const CertificateRawDataResponseAppengineV1alpha({
     required this.privateKey,
     required this.publicCertificate,
   });

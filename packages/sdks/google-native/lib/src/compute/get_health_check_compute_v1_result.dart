@@ -60,7 +60,7 @@ class GetHealthCheckComputeV1Result {
   /// [timeoutSec] How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
   /// [type] Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-  GetHealthCheckComputeV1Result({
+  const GetHealthCheckComputeV1Result({
     required this.checkIntervalSec,
     required this.creationTimestamp,
     required this.description,

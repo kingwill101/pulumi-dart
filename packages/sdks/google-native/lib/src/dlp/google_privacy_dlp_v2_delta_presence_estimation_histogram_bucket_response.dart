@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
   /// [bucketValues] Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20.
   /// [maxProbability] Always greater than or equal to min_probability.
   /// [minProbability] Between 0 and 1.
-  GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse({
+  const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse({
     required this.bucketSize,
     required this.bucketValueCount,
     required this.bucketValues,

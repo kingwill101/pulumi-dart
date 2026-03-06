@@ -25,7 +25,7 @@ class Hl7StoreNotificationConfigs {
   /// Creates a new [Hl7StoreNotificationConfigs].
   /// [filter] Restricts notifications sent for messages matching a filter. If this is empty, all messages
   /// [pubsubTopic] The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-  Hl7StoreNotificationConfigs({
+  const Hl7StoreNotificationConfigs({
     this.filter,
     required this.pubsubTopic,
   });

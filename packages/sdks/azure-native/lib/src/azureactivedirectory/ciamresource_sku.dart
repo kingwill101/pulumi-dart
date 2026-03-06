@@ -12,7 +12,7 @@ class CIAMResourceSKU {
   /// Creates a new [CIAMResourceSKU].
   /// [name] The name of the SKU for the tenant.
   /// [tier] The tier of the tenant.
-  CIAMResourceSKU({
+  const CIAMResourceSKU({
     required this.name,
     required this.tier,
   });

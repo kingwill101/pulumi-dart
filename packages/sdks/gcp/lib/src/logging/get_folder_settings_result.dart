@@ -34,7 +34,7 @@ class GetFolderSettingsResult {
   /// [loggingServiceAccountId] The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
   /// [name] The resource name of the settings.
   /// [storageLocation] The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-  GetFolderSettingsResult({
+  const GetFolderSettingsResult({
     required this.disableDefaultSink,
     required this.folder,
     required this.id,

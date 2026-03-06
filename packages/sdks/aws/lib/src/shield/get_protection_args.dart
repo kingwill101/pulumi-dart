@@ -17,7 +17,7 @@ class GetProtectionArgs {
   /// Creates a new [GetProtectionArgs].
   /// [protectionId] Unique identifier for the protection.
   /// [resourceArn] ARN (Amazon Resource Name) of the resource being protected.
-  GetProtectionArgs({
+  const GetProtectionArgs({
     this.protectionId,
     this.resourceArn,
   });

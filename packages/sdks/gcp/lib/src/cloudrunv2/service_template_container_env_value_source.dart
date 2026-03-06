@@ -10,7 +10,7 @@ class ServiceTemplateContainerEnvValueSource {
 
   /// Creates a new [ServiceTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  ServiceTemplateContainerEnvValueSource({
+  const ServiceTemplateContainerEnvValueSource({
     this.secretKeyRef,
   });
 

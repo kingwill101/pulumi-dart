@@ -14,7 +14,7 @@ class V2modelsIntentOutputContext {
   /// [name] Name of the output context.
   /// [timeToLiveInSeconds] Amount of time, in seconds, that the output context should remain active. The time is figured from the first time the context is sent to the user.
   /// [turnsToLive] Number of conversation turns that the output context should remain active. The number of turns is counted from the first time that the context is sent to the user.
-  V2modelsIntentOutputContext({
+  const V2modelsIntentOutputContext({
     required this.name,
     required this.timeToLiveInSeconds,
     required this.turnsToLive,

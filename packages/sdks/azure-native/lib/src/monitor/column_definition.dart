@@ -12,7 +12,7 @@ class ColumnDefinition {
   /// Creates a new [ColumnDefinition].
   /// [name] The name of the column.
   /// [type] The type of the column data.
-  ColumnDefinition({
+  const ColumnDefinition({
     this.name,
     this.type,
   });

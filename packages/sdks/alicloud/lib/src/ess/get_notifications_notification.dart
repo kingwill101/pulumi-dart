@@ -17,7 +17,7 @@ class GetNotificationsNotification {
   /// [notificationArn] The Alibaba Cloud Resource Name (ARN) for the notification object.
   /// [notificationTypes] The notification types of Auto Scaling events and resource changes.
   /// [scalingGroupId] Scaling group id the notifications belong to.
-  GetNotificationsNotification({
+  const GetNotificationsNotification({
     required this.id,
     required this.notificationArn,
     required this.notificationTypes,

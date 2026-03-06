@@ -35,7 +35,7 @@ class GetUdmSnapshotsResult {
   /// [snapshots] A list of Udm Snapshot Entries. Each element contains the following attributes:
   /// [sourceType] Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
   /// [startTime] Start Time
-  GetUdmSnapshotsResult({
+  const GetUdmSnapshotsResult({
     this.diskId,
     required this.endTime,
     required this.id,

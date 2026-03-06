@@ -18,7 +18,7 @@ class BucketAutoclass {
   /// [terminalStorageClass] The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
   /// [terminalStorageClassUpdateTime] A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
   /// [toggleTime] A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
-  BucketAutoclass({
+  const BucketAutoclass({
     this.enabled,
     this.terminalStorageClass,
     this.terminalStorageClassUpdateTime,

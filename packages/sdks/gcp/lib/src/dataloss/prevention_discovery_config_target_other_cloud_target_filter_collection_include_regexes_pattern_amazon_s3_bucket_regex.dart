@@ -12,7 +12,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex].
   /// [awsAccountRegex] The AWS account regex
   /// [bucketNameRegex] Regex to test the bucket name against. If empty, all buckets match.
-  PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex({
     this.awsAccountRegex,
     this.bucketNameRegex,
   });

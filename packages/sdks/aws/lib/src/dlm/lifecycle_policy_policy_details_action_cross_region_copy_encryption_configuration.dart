@@ -9,7 +9,7 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration {
   /// Creates a new [LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration].
   /// [cmkArn] Optional.
   /// [encrypted] Optional.
-  LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration({
+  const LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration({
     this.cmkArn,
     this.encrypted,
   });

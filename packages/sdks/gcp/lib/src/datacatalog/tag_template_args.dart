@@ -30,7 +30,7 @@ class TagTemplateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Template location region.
   /// [tagTemplateId] The id of the tag template to create.
-  TagTemplateArgs({
+  const TagTemplateArgs({
     this.displayName,
     required this.fields,
     this.forceDelete,

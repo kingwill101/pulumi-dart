@@ -14,7 +14,7 @@ class GetDirectoryRoleTemplatesRoleTemplate {
   /// [description] The description of the directory role template.
   /// [displayName] The display name of the directory role template.
   /// [objectId] The object ID of the directory role template.
-  GetDirectoryRoleTemplatesRoleTemplate({
+  const GetDirectoryRoleTemplatesRoleTemplate({
     required this.description,
     required this.displayName,
     required this.objectId,

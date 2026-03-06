@@ -33,7 +33,7 @@ class HealthProbeSettingsModelResponse {
   /// [protocol] Protocol scheme to use for this probe
   /// [resourceState] Resource status.
   /// [type] Resource type.
-  HealthProbeSettingsModelResponse({
+  const HealthProbeSettingsModelResponse({
     this.enabledState,
     this.healthProbeMethod,
     this.id,

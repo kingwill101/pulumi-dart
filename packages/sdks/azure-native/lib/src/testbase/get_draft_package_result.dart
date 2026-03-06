@@ -112,7 +112,7 @@ class GetDraftPackageResult {
   /// [useSample] Specifies whether a sample package should be used instead of the one uploaded by the user.
   /// [version] Application version
   /// [workingPath] The relative path for a temporarily folder for package creation work.
-  GetDraftPackageResult({
+  const GetDraftPackageResult({
     this.appFileName,
     this.applicationName,
     required this.azureApiVersion,

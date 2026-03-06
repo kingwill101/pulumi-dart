@@ -27,7 +27,7 @@ class GetConfigurationResult {
   /// [name] Required.
   /// [region] Required.
   /// [serverProperties] Contents of the server.properties file.
-  GetConfigurationResult({
+  const GetConfigurationResult({
     required this.arn,
     required this.description,
     required this.id,

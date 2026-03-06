@@ -15,7 +15,7 @@ class GetCostAllocationRuleArgs {
   /// Creates a new [GetCostAllocationRuleArgs].
   /// [billingAccountId] BillingAccount ID
   /// [ruleName] Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
-  GetCostAllocationRuleArgs({
+  const GetCostAllocationRuleArgs({
     required this.billingAccountId,
     required this.ruleName,
   });

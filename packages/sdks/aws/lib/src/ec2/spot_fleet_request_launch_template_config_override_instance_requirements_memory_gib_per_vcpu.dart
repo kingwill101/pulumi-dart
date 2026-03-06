@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibP
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu].
   /// [max] Maximum. May be a decimal number, e.g. `0.5`.
   /// [min] Minimum. May be a decimal number, e.g. `0.5`.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu({
     this.max,
     this.min,
   });

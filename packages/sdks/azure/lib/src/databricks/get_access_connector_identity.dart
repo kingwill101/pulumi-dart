@@ -17,7 +17,7 @@ class GetAccessConnectorIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   /// [type] The type of Managed Service Identity that is configured on this Access Connector.
-  GetAccessConnectorIdentity({
+  const GetAccessConnectorIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

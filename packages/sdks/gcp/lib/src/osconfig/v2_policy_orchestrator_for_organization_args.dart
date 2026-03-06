@@ -59,7 +59,7 @@ class V2PolicyOrchestratorForOrganizationArgs {
   /// [organizationId] Part of `parent`. Required. The parent resource name in the form of:
   /// [policyOrchestratorId] Required. The logical identifier of the policy orchestrator, with the following
   /// [state] Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
-  V2PolicyOrchestratorForOrganizationArgs({
+  const V2PolicyOrchestratorForOrganizationArgs({
     required this.action,
     this.description,
     this.labels,

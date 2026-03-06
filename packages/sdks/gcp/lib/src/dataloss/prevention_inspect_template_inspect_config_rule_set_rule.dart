@@ -15,7 +15,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRule {
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRule].
   /// [exclusionRule] The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
   /// [hotwordRule] Hotword-based detection rule.
-  PreventionInspectTemplateInspectConfigRuleSetRule({
+  const PreventionInspectTemplateInspectConfigRuleSetRule({
     this.exclusionRule,
     this.hotwordRule,
   });

@@ -20,7 +20,7 @@ class GetSubscriptionFeatureRegistrationResult {
   /// [name] Azure resource name.
   /// [properties] Required.
   /// [type] Azure resource type.
-  GetSubscriptionFeatureRegistrationResult({
+  const GetSubscriptionFeatureRegistrationResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

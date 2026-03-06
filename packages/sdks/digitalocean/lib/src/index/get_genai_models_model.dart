@@ -40,7 +40,7 @@ class GetGenaiModelsModel {
   /// [url] URL of the Model
   /// [uuid] UUID of the Model
   /// [versions] List of Versions for the Model
-  GetGenaiModelsModel({
+  const GetGenaiModelsModel({
     required this.agreements,
     required this.createdAt,
     required this.id,

@@ -36,7 +36,7 @@ class GetNamespaceResult {
   /// [namespaceId] The Redshift Namespace ID.
   /// [namespaceName] Required.
   /// [region] Required.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     required this.adminUsername,
     required this.arn,
     required this.dbName,

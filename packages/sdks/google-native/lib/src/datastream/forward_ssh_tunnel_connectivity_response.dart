@@ -21,7 +21,7 @@ class ForwardSshTunnelConnectivityResponse {
   /// [port] Port for the SSH tunnel, default value is 22.
   /// [privateKey] Input only. SSH private key.
   /// [username] Username for the SSH tunnel.
-  ForwardSshTunnelConnectivityResponse({
+  const ForwardSshTunnelConnectivityResponse({
     required this.hostname,
     required this.password,
     required this.port,

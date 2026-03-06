@@ -15,7 +15,7 @@ class ServiceConnectionPolicyPscConnectionError {
   /// [code] The status code, which should be an enum value of [google.rpc.Code][].
   /// [details] (Output)
   /// [message] A developer-facing error message.
-  ServiceConnectionPolicyPscConnectionError({
+  const ServiceConnectionPolicyPscConnectionError({
     this.code,
     this.details,
     this.message,

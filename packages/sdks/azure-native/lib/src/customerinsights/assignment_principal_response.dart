@@ -15,7 +15,7 @@ class AssignmentPrincipalResponse {
   /// [principalId] The principal id being assigned to.
   /// [principalMetadata] Other metadata for the principal.
   /// [principalType] The Type of the principal ID.
-  AssignmentPrincipalResponse({
+  const AssignmentPrincipalResponse({
     required this.principalId,
     this.principalMetadata,
     required this.principalType,

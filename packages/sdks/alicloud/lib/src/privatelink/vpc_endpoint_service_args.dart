@@ -44,7 +44,7 @@ class VpcEndpointServiceArgs {
   /// [serviceSupportIpv6] Specifies whether to enable IPv6 for the endpoint service. Valid values:
   /// [tags] The list of tags.
   /// [zoneAffinityEnabled] Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-  VpcEndpointServiceArgs({
+  const VpcEndpointServiceArgs({
     this.addressIpVersion,
     this.autoAcceptConnection,
     this.connectBandwidth,

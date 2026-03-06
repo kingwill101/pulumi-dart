@@ -13,7 +13,7 @@ class NetworkingIpAssignmentState {
   /// Creates a new [NetworkingIpAssignmentState].
   /// [assignments] A list of IP/Linode assignments to apply.
   /// [region] The region where the IP addresses will be assigned.
-  NetworkingIpAssignmentState({
+  const NetworkingIpAssignmentState({
     this.assignments,
     this.region,
   });

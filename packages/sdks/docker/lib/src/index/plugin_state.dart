@@ -37,7 +37,7 @@ class PluginState {
   /// [grantPermissions] Grant specific permissions only
   /// [name] Docker Plugin name
   /// [pluginReference] Docker Plugin Reference
-  PluginState({
+  const PluginState({
     this.alias,
     this.enableTimeout,
     this.enabled,

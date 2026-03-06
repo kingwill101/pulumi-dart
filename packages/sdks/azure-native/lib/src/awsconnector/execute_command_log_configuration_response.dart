@@ -21,7 +21,7 @@ class ExecuteCommandLogConfigurationResponse {
   /// [s3BucketName] The name of the S3 bucket to send logs to.  The S3 bucket must already be created.
   /// [s3EncryptionEnabled] Determines whether to use encryption on the S3 logs. If not specified, encryption is not used.
   /// [s3KeyPrefix] An optional folder in the S3 bucket to place logs in.
-  ExecuteCommandLogConfigurationResponse({
+  const ExecuteCommandLogConfigurationResponse({
     this.cloudWatchEncryptionEnabled,
     this.cloudWatchLogGroupName,
     this.s3BucketName,

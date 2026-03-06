@@ -25,7 +25,7 @@ class RegionNetworkFirewallPolicyAssociationArgs {
   /// [name] The name for an association.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location of this resource.
-  RegionNetworkFirewallPolicyAssociationArgs({
+  const RegionNetworkFirewallPolicyAssociationArgs({
     required this.attachmentTarget,
     required this.firewallPolicy,
     this.name,

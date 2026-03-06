@@ -29,7 +29,7 @@ class GetApiReleaseResult {
   /// [notes] Release Notes
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedDateTime] The time the API release was updated.
-  GetApiReleaseResult({
+  const GetApiReleaseResult({
     this.apiId,
     required this.azureApiVersion,
     required this.createdDateTime,

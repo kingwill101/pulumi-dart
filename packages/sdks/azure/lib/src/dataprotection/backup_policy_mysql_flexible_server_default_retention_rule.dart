@@ -9,7 +9,7 @@ class BackupPolicyMysqlFlexibleServerDefaultRetentionRule {
 
   /// Creates a new [BackupPolicyMysqlFlexibleServerDefaultRetentionRule].
   /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
-  BackupPolicyMysqlFlexibleServerDefaultRetentionRule({
+  const BackupPolicyMysqlFlexibleServerDefaultRetentionRule({
     required this.lifeCycles,
   });
 

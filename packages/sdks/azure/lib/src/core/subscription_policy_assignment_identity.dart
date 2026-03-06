@@ -19,7 +19,7 @@ class SubscriptionPolicyAssignmentIdentity {
   /// [principalId] The Principal ID of the Policy Assignment for this Subscription.
   /// [tenantId] The Tenant ID of the Policy Assignment for this Subscription.
   /// [type] The Type of Managed Identity which should be added to this Policy Definition. Possible values are `SystemAssigned` or `UserAssigned`.
-  SubscriptionPolicyAssignmentIdentity({
+  const SubscriptionPolicyAssignmentIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

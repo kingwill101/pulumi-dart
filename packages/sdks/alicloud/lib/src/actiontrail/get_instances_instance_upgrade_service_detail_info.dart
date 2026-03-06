@@ -8,7 +8,7 @@ class GetInstancesInstanceUpgradeServiceDetailInfo {
 
   /// Creates a new [GetInstancesInstanceUpgradeServiceDetailInfo].
   /// [current2OpenSourceVersion] The Current2OpenSourceVersion of the instance.
-  GetInstancesInstanceUpgradeServiceDetailInfo({
+  const GetInstancesInstanceUpgradeServiceDetailInfo({
     required this.current2OpenSourceVersion,
   });
 

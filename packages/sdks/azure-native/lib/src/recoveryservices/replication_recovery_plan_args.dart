@@ -22,7 +22,7 @@ class ReplicationRecoveryPlanArgs {
   /// [recoveryPlanName] Recovery plan name.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  ReplicationRecoveryPlanArgs({
+  const ReplicationRecoveryPlanArgs({
     required this.properties,
     this.recoveryPlanName,
     required this.resourceGroupName,

@@ -13,7 +13,7 @@ class ImageTemplateIdentity {
   /// Creates a new [ImageTemplateIdentity].
   /// [type] The type of identity used for the image template. The type 'None' will remove any identities from the image template.
   /// [userAssignedIdentities] The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  ImageTemplateIdentity({
+  const ImageTemplateIdentity({
     this.type,
     this.userAssignedIdentities,
   });

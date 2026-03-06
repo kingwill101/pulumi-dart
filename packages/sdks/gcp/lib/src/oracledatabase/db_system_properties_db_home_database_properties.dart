@@ -33,7 +33,7 @@ class DbSystemPropertiesDbHomeDatabaseProperties {
   /// [dbBackupConfig] Backup Options for the Database.
   /// [dbVersion] The Oracle Database version.
   /// [state] (Output)
-  DbSystemPropertiesDbHomeDatabaseProperties({
+  const DbSystemPropertiesDbHomeDatabaseProperties({
     this.databaseManagementConfig,
     this.dbBackupConfig,
     required this.dbVersion,

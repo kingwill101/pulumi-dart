@@ -22,7 +22,7 @@ class ImageDefinitionBuildTaskGroupResponse {
   /// [startTime] Start time of the task group.
   /// [status] The status of the task group.
   /// [tasks] The list of tasks executed during the task group.
-  ImageDefinitionBuildTaskGroupResponse({
+  const ImageDefinitionBuildTaskGroupResponse({
     required this.endTime,
     required this.name,
     required this.startTime,

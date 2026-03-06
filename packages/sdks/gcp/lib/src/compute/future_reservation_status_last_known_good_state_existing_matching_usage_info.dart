@@ -11,7 +11,7 @@ class FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo {
   /// Creates a new [FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo].
   /// [count] Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
   /// [timeStamp] Timestamp when the matching usage was calculated.
-  FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo({
+  const FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo({
     this.count,
     this.timeStamp,
   });

@@ -9,7 +9,7 @@ class EncryptionPreferencesResponse {
 
   /// Creates a new [EncryptionPreferencesResponse].
   /// [doubleEncryptionStatus] Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-  EncryptionPreferencesResponse({
+  const EncryptionPreferencesResponse({
     this.doubleEncryptionStatus,
   });
 

@@ -9,7 +9,7 @@ class CreationData {
 
   /// Creates a new [CreationData].
   /// [sourceResourceId] This is the ARM ID of the source object to be used to create the target object.
-  CreationData({
+  const CreationData({
     this.sourceResourceId,
   });
 

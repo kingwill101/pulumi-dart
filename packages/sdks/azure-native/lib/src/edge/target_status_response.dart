@@ -16,7 +16,7 @@ class TargetStatusResponse {
   /// [componentStatuses] Component statuses
   /// [name] Target name
   /// [status] Target status
-  TargetStatusResponse({
+  const TargetStatusResponse({
     this.componentStatuses,
     this.name,
     this.status,

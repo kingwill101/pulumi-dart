@@ -18,7 +18,7 @@ class GetVirtualNetworkGatewayBgpPeerStatusArgs {
   /// [peer] The IP address of the peer to retrieve the status of.
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  GetVirtualNetworkGatewayBgpPeerStatusArgs({
+  const GetVirtualNetworkGatewayBgpPeerStatusArgs({
     this.peer,
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,

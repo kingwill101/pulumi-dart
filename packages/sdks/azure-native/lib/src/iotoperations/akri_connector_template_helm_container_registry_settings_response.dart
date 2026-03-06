@@ -13,7 +13,7 @@ class AkriConnectorTemplateHelmContainerRegistrySettingsResponse {
   /// Creates a new [AkriConnectorTemplateHelmContainerRegistrySettingsResponse].
   /// [authSecretRef] Optional reference to a secret in the same namespace to use for pulling the Helm chart.
   /// [registry] The registry to use for the Helm chart.
-  AkriConnectorTemplateHelmContainerRegistrySettingsResponse({
+  const AkriConnectorTemplateHelmContainerRegistrySettingsResponse({
     this.authSecretRef,
     required this.registry,
   });

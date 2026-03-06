@@ -16,7 +16,7 @@ class BucketResponseHeaderArgs {
   /// Creates a new [BucketResponseHeaderArgs].
   /// [bucket] The name of the bucket
   /// [rules] The container that holds the response header rules. See `rule` below.
-  BucketResponseHeaderArgs({
+  const BucketResponseHeaderArgs({
     required this.bucket,
     this.rules,
   });

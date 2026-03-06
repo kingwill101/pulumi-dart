@@ -45,7 +45,7 @@ class VNetPeeringArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [useRemoteGateways] If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
   /// [workspaceName] The name of the workspace.
-  VNetPeeringArgs({
+  const VNetPeeringArgs({
     this.allowForwardedTraffic,
     this.allowGatewayTransit,
     this.allowVirtualNetworkAccess,

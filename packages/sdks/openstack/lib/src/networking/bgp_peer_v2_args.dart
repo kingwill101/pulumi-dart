@@ -39,7 +39,7 @@ class BgpPeerV2Args {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [remoteAs] The AS number of the BGP peer. Changing this
   /// [tenantId] The tenant/project ID. Required if admin privileges
-  BgpPeerV2Args({
+  const BgpPeerV2Args({
     this.authType,
     this.name,
     this.password,

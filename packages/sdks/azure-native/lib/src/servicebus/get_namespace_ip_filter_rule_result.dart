@@ -26,7 +26,7 @@ class GetNamespaceIpFilterRuleResult {
   /// [ipMask] IP Mask
   /// [name] Resource name
   /// [type] Resource type
-  GetNamespaceIpFilterRuleResult({
+  const GetNamespaceIpFilterRuleResult({
     this.action,
     required this.azureApiVersion,
     this.filterName,

@@ -12,7 +12,7 @@ class WorkspaceConnectionUsernamePassword {
   /// [password] Optional.
   /// [securityToken] Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
   /// [username] Optional.
-  WorkspaceConnectionUsernamePassword({
+  const WorkspaceConnectionUsernamePassword({
     this.password,
     this.securityToken,
     this.username,

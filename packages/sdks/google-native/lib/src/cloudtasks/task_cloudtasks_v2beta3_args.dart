@@ -40,7 +40,7 @@ class TaskCloudtasksV2beta3Args {
   /// [queueId] Required.
   /// [responseView] The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
   /// [scheduleTime] The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
-  TaskCloudtasksV2beta3Args({
+  const TaskCloudtasksV2beta3Args({
     this.appEngineHttpRequest,
     this.dispatchDeadline,
     this.httpRequest,

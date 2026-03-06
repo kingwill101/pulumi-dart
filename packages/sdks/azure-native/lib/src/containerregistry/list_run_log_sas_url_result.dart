@@ -11,7 +11,7 @@ class ListRunLogSasUrlResult {
   /// Creates a new [ListRunLogSasUrlResult].
   /// [logArtifactLink] The link to logs in registry for a run on a azure container registry.
   /// [logLink] The link to logs for a run on a azure container registry.
-  ListRunLogSasUrlResult({
+  const ListRunLogSasUrlResult({
     this.logArtifactLink,
     this.logLink,
   });

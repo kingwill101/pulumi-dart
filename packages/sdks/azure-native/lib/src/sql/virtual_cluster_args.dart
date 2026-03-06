@@ -24,7 +24,7 @@ class VirtualClusterArgs {
   /// [tags] Resource tags.
   /// [version] Virtual cluster version.
   /// [virtualClusterName] The name of the virtual cluster.
-  VirtualClusterArgs({
+  const VirtualClusterArgs({
     this.location,
     required this.resourceGroupName,
     this.tags,

@@ -13,7 +13,7 @@ class MultiAccountDeliveryChannelDeliveryChannelFilter {
   /// Creates a new [MultiAccountDeliveryChannelDeliveryChannelFilter].
   /// [accountScopes] The account scopes of the delivery channel.
   /// [resourceTypes] An array of effective resource types for the delivery channel.
-  MultiAccountDeliveryChannelDeliveryChannelFilter({
+  const MultiAccountDeliveryChannelDeliveryChannelFilter({
     required this.accountScopes,
     this.resourceTypes,
   });

@@ -9,7 +9,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey].
   /// [apiKey] Required.
   /// [apiSecretKey] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey({
     required this.apiKey,
     this.apiSecretKey,
   });

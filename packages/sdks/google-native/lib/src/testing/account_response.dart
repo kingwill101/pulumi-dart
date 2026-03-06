@@ -9,7 +9,7 @@ class AccountResponse {
 
   /// Creates a new [AccountResponse].
   /// [googleAuto] An automatic google login account.
-  AccountResponse({
+  const AccountResponse({
     required this.googleAuto,
   });
 

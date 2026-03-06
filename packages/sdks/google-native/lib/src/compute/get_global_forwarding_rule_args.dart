@@ -13,7 +13,7 @@ class GetGlobalForwardingRuleArgs {
   /// Creates a new [GetGlobalForwardingRuleArgs].
   /// [forwardingRule] Required.
   /// [project] Optional.
-  GetGlobalForwardingRuleArgs({
+  const GetGlobalForwardingRuleArgs({
     required this.forwardingRule,
     this.project,
   });

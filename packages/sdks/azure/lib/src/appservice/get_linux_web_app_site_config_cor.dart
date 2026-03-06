@@ -11,7 +11,7 @@ class GetLinuxWebAppSiteConfigCor {
   /// Creates a new [GetLinuxWebAppSiteConfigCor].
   /// [allowedOrigins] A list of origins that should be allowed to make cross-origin calls.
   /// [supportCredentials] Whether CORS requests with credentials are allowed.
-  GetLinuxWebAppSiteConfigCor({
+  const GetLinuxWebAppSiteConfigCor({
     required this.allowedOrigins,
     required this.supportCredentials,
   });

@@ -8,7 +8,7 @@ class GetDedicatedHostGroupsGroupZoneIdList {
 
   /// Creates a new [GetDedicatedHostGroupsGroupZoneIdList].
   /// [zoneIdLists] The ZoneIDList of the Dedicated Host Group.
-  GetDedicatedHostGroupsGroupZoneIdList({
+  const GetDedicatedHostGroupsGroupZoneIdList({
     required this.zoneIdLists,
   });
 

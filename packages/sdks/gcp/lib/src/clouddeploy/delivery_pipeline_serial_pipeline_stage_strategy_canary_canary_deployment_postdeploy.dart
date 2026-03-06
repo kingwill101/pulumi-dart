@@ -8,7 +8,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeplo
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy].
   /// [actions] Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy({
     this.actions,
   });
 

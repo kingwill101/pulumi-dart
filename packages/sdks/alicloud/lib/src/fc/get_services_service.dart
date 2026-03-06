@@ -38,7 +38,7 @@ class GetServicesService {
   /// [nasConfig] A list of one element about the nas configuration.
   /// [role] FC service role ARN.
   /// [vpcConfig] A list of one element containing information about accessible VPC resources. It contains the following attributes:
-  GetServicesService({
+  const GetServicesService({
     required this.creationTime,
     required this.description,
     required this.id,

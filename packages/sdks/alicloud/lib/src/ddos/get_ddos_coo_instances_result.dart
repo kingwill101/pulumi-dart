@@ -22,7 +22,7 @@ class GetDdosCooInstancesResult {
   /// [nameRegex] Optional.
   /// [names] A list of instance names.
   /// [outputFile] Optional.
-  GetDdosCooInstancesResult({
+  const GetDdosCooInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

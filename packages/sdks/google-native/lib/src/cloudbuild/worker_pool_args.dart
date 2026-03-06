@@ -26,7 +26,7 @@ class WorkerPoolArgs {
   /// [privatePoolV1Config] Legacy Private Pool configuration.
   /// [project] Optional.
   /// [workerPoolId] Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-  WorkerPoolArgs({
+  const WorkerPoolArgs({
     this.annotations,
     this.displayName,
     this.location,

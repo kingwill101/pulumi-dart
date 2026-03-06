@@ -15,7 +15,7 @@ class GetApplicationDefinitionArgs {
   /// Creates a new [GetApplicationDefinitionArgs].
   /// [applicationDefinitionName] The name of the managed application definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApplicationDefinitionArgs({
+  const GetApplicationDefinitionArgs({
     required this.applicationDefinitionName,
     required this.resourceGroupName,
   });

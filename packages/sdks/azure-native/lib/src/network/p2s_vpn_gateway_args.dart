@@ -44,7 +44,7 @@ class P2sVpnGatewayArgs {
   /// [virtualHub] The VirtualHub to which the gateway belongs.
   /// [vpnGatewayScaleUnit] The scale unit for this p2s vpn gateway.
   /// [vpnServerConfiguration] The VpnServerConfiguration to which the p2sVpnGateway is attached to.
-  P2sVpnGatewayArgs({
+  const P2sVpnGatewayArgs({
     this.customDnsServers,
     this.gatewayName,
     this.id,

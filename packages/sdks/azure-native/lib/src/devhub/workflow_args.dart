@@ -64,7 +64,7 @@ class WorkflowArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workflowName] The name of the workflow resource.
-  WorkflowArgs({
+  const WorkflowArgs({
     this.appName,
     this.builderVersion,
     this.dockerfileGenerationMode,

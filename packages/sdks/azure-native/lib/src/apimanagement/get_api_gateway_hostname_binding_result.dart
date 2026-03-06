@@ -38,7 +38,7 @@ class GetApiGatewayHostnameBindingResult {
   /// [provisioningState] The current provisioning state of the API Management gateway hostname binding.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiGatewayHostnameBindingResult({
+  const GetApiGatewayHostnameBindingResult({
     required this.azureApiVersion,
     required this.certificate,
     required this.eTag,

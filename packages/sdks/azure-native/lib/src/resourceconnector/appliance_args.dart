@@ -38,7 +38,7 @@ class ApplianceArgs {
   /// [resourceName] Appliances name.
   /// [tags] Resource tags.
   /// [version] Version of the Appliance
-  ApplianceArgs({
+  const ApplianceArgs({
     this.distro,
     this.identity,
     this.infrastructureConfig,

@@ -11,7 +11,7 @@ class AssignmentDynamicScopeFilterTag {
   /// Creates a new [AssignmentDynamicScopeFilterTag].
   /// [tag] Specifies the tag to filter by.
   /// [values] Specifies a list of values the defined tag can have.
-  AssignmentDynamicScopeFilterTag({
+  const AssignmentDynamicScopeFilterTag({
     required this.tag,
     required this.values,
   });

@@ -12,7 +12,7 @@ class FullTextPathResponse {
   /// Creates a new [FullTextPathResponse].
   /// [language] The language of the full text field in the document.
   /// [path] The path to the full text field in the document.
-  FullTextPathResponse({
+  const FullTextPathResponse({
     this.language,
     required this.path,
   });

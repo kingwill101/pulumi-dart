@@ -9,7 +9,7 @@ class ProjectFleet {
 
   /// Creates a new [ProjectFleet].
   /// [fleetArn] &lt;p&gt;Specifies the compute fleet ARN for the build project.&lt;/p&gt;
-  ProjectFleet({
+  const ProjectFleet({
     this.fleetArn,
   });
 

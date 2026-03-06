@@ -12,7 +12,7 @@ class ThreatIntelligenceKillChainPhase {
   /// Creates a new [ThreatIntelligenceKillChainPhase].
   /// [killChainName] Kill chainName name
   /// [phaseName] Phase name
-  ThreatIntelligenceKillChainPhase({
+  const ThreatIntelligenceKillChainPhase({
     this.killChainName,
     this.phaseName,
   });

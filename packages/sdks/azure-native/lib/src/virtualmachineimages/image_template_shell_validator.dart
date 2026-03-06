@@ -22,7 +22,7 @@ class ImageTemplateShellValidator {
   /// [scriptUri] URI of the shell script to be run for validation. It can be a github link, Azure Storage URI, etc
   /// [sha256Checksum] SHA256 checksum of the shell script provided in the scriptUri field
   /// [type] The type of validation you want to use on the Image. For example, "Shell" can be shell validation
-  ImageTemplateShellValidator({
+  const ImageTemplateShellValidator({
     this.inline,
     this.name,
     this.scriptUri,

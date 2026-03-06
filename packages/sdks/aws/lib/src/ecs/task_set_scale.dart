@@ -11,7 +11,7 @@ class TaskSetScale {
   /// Creates a new [TaskSetScale].
   /// [unit] The unit of measure for the scale value. Default: `PERCENT`.
   /// [value] The value, specified as a percent total of a service's `desiredCount`, to scale the task set. Defaults to `0` if not specified. Accepted values are numbers between 0.0 and 100.0.
-  TaskSetScale({
+  const TaskSetScale({
     this.unit,
     this.value,
   });

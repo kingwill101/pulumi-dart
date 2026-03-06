@@ -29,7 +29,7 @@ class GetInstancesResult {
   /// [outputFile] Optional.
   /// [status] Status of the CEN instance, including "Creating", "Active" and "Deleting".
   /// [tags] A map of tags assigned to the Cen Instance.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

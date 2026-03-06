@@ -21,7 +21,7 @@ class LifecyclePolicyPolicyDetailExclusionRulesAmis {
   /// [regions] Configures AWS Regions that are excluded from the lifecycle action.
   /// [sharedAccounts] Specifies AWS accounts whose resources are excluded from the lifecycle action.
   /// [tagMap] Lists tags that should be excluded from lifecycle actions for the AMIs that have them.
-  LifecyclePolicyPolicyDetailExclusionRulesAmis({
+  const LifecyclePolicyPolicyDetailExclusionRulesAmis({
     this.isPublic,
     this.lastLaunched,
     this.regions,

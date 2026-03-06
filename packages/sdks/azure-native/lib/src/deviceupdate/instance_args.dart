@@ -35,7 +35,7 @@ class InstanceArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The resource group name.
   /// [tags] Resource tags.
-  InstanceArgs({
+  const InstanceArgs({
     required this.accountName,
     this.diagnosticStorageProperties,
     this.enableDiagnostics,

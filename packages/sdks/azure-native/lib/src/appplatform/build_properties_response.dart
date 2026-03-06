@@ -37,7 +37,7 @@ class BuildPropertiesResponse {
   /// [relativePath] The relative path of source code
   /// [resourceRequests] The customized build resource for this build
   /// [triggeredBuildResult] The build result triggered by this build
-  BuildPropertiesResponse({
+  const BuildPropertiesResponse({
     this.agentPool,
     this.apms,
     this.builder,

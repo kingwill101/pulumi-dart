@@ -41,7 +41,7 @@ class GetEcsKeyPairsKeyPairInstance {
   /// [regionId] The region ID of the instance.
   /// [status] The status of the instance.
   /// [vswitchId] The ID of the vSwitch.
-  GetEcsKeyPairsKeyPairInstance({
+  const GetEcsKeyPairsKeyPairInstance({
     required this.availabilityZone,
     required this.description,
     required this.imageId,

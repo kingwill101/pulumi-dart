@@ -27,7 +27,7 @@ class GetStandardSiteConfigIpRestriction {
   /// [priority] The priority for this IP Restriction. Restrictions are enforced in priority order.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
-  GetStandardSiteConfigIpRestriction({
+  const GetStandardSiteConfigIpRestriction({
     required this.action,
     required this.headers,
     required this.ipAddress,

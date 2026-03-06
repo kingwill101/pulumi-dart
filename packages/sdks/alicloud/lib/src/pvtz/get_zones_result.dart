@@ -37,7 +37,7 @@ class GetZonesResult {
   /// [resourceGroupId] The ID of the resource group to which the zone belongs.
   /// [searchMode] Optional.
   /// [zones] A list of Zone. Each element contains the following attributes:
-  GetZonesResult({
+  const GetZonesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

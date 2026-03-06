@@ -18,7 +18,7 @@ class GetHypervClusterControllerClusterArgs {
   /// [clusterName] Cluster ARM name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
-  GetHypervClusterControllerClusterArgs({
+  const GetHypervClusterControllerClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
     required this.siteName,

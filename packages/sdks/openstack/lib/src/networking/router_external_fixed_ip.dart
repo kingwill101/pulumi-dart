@@ -11,7 +11,7 @@ class RouterExternalFixedIp {
   /// Creates a new [RouterExternalFixedIp].
   /// [ipAddress] The IP address to set on the router.
   /// [subnetId] Subnet in which the fixed IP belongs to.
-  RouterExternalFixedIp({
+  const RouterExternalFixedIp({
     this.ipAddress,
     this.subnetId,
   });

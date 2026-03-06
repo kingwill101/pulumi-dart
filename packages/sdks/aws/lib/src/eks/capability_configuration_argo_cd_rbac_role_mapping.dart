@@ -12,7 +12,7 @@ class CapabilityConfigurationArgoCdRbacRoleMapping {
   /// Creates a new [CapabilityConfigurationArgoCdRbacRoleMapping].
   /// [identities] List of identities. See `identity` below.
   /// [role] ArgoCD role. Valid values: `ADMIN`, `EDITOR`, `VIEWER`.
-  CapabilityConfigurationArgoCdRbacRoleMapping({
+  const CapabilityConfigurationArgoCdRbacRoleMapping({
     required this.identities,
     required this.role,
   });

@@ -32,7 +32,7 @@ class KustoTableDataSetArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share to add the data set to.
   /// [tableLevelSharingProperties] Table level sharing properties for kusto database
-  KustoTableDataSetArgs({
+  const KustoTableDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.kind,

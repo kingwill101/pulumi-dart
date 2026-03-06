@@ -9,7 +9,7 @@ class StorageConfiguration {
 
   /// Creates a new [StorageConfiguration].
   /// [partitionSize] Partition size.
-  StorageConfiguration({
+  const StorageConfiguration({
     this.partitionSize,
   });
 

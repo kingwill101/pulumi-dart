@@ -26,7 +26,7 @@ class InboundEndpointsResponse {
   /// [endpointType] Type of connection endpoint.
   /// [trustSettings] Defines server trust settings for the endpoint.
   /// [version] Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
-  InboundEndpointsResponse({
+  const InboundEndpointsResponse({
     this.additionalConfiguration,
     required this.address,
     this.authentication,

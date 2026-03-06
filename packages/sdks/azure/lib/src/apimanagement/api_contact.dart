@@ -14,7 +14,7 @@ class ApiContact {
   /// [email] The email address of the contact person/organization.
   /// [name] The name of the contact person/organization.
   /// [url] Absolute URL of the contact information.
-  ApiContact({
+  const ApiContact({
     this.email,
     this.name,
     this.url,

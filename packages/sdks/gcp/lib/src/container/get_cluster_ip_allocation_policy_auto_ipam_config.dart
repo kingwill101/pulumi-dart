@@ -8,7 +8,7 @@ class GetClusterIpAllocationPolicyAutoIpamConfig {
 
   /// Creates a new [GetClusterIpAllocationPolicyAutoIpamConfig].
   /// [enabled] The flag that enables Auto IPAM on this cluster.
-  GetClusterIpAllocationPolicyAutoIpamConfig({
+  const GetClusterIpAllocationPolicyAutoIpamConfig({
     required this.enabled,
   });
 

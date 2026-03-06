@@ -12,7 +12,7 @@ class DataDiskStorageTypeInfoResponse {
   /// Creates a new [DataDiskStorageTypeInfoResponse].
   /// [lun] Disk Lun
   /// [storageType] Disk Storage Type
-  DataDiskStorageTypeInfoResponse({
+  const DataDiskStorageTypeInfoResponse({
     this.lun,
     this.storageType,
   });

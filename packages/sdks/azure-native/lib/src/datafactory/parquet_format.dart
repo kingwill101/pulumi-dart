@@ -16,7 +16,7 @@ class ParquetFormat {
   /// [deserializer] Deserializer. Type: string (or Expression with resultType string).
   /// [serializer] Serializer. Type: string (or Expression with resultType string).
   /// [type] Type of dataset storage format.
-  ParquetFormat({
+  const ParquetFormat({
     this.deserializer,
     this.serializer,
     required this.type,

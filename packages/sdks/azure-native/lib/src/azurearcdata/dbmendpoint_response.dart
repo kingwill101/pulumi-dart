@@ -33,7 +33,7 @@ class DBMEndpointResponse {
   /// [isEncryptionEnabled] Is Encryption enabled
   /// [port] The port number that the endpoint is listening on.
   /// [role] Mirroring Role
-  DBMEndpointResponse({
+  const DBMEndpointResponse({
     required this.certificateName,
     required this.connectionAuth,
     required this.encryptionAlgorithm,

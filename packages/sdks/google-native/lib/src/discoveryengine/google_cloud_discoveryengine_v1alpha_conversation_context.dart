@@ -12,7 +12,7 @@ class GoogleCloudDiscoveryengineV1alphaConversationContext {
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaConversationContext].
   /// [activeDocument] The current active document the user opened. It contains the document resource reference.
   /// [contextDocuments] The current list of documents the user is seeing. It contains the document resource references.
-  GoogleCloudDiscoveryengineV1alphaConversationContext({
+  const GoogleCloudDiscoveryengineV1alphaConversationContext({
     this.activeDocument,
     this.contextDocuments,
   });

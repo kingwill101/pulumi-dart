@@ -26,7 +26,7 @@ class GetIpRangesResult {
   /// [services] Required.
   /// [syncToken] Publication time of the IP ranges, in Unix epoch time format
   /// [url] Optional.
-  GetIpRangesResult({
+  const GetIpRangesResult({
     required this.cidrBlocks,
     required this.createDate,
     required this.id,

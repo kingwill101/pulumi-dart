@@ -31,7 +31,7 @@ class DataIntegrationArgs {
   /// [scheduleConfig] A block that defines the name of the data and how often it should be pulled from the source. The Schedule Config block is documented below.
   /// [sourceUri] Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
   /// [tags] Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DataIntegrationArgs({
+  const DataIntegrationArgs({
     this.description,
     required this.kmsKey,
     this.name,

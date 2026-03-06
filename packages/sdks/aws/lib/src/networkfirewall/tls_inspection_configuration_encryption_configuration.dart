@@ -11,7 +11,7 @@ class TlsInspectionConfigurationEncryptionConfiguration {
   /// Creates a new [TlsInspectionConfigurationEncryptionConfiguration].
   /// [keyId] ARN of the Amazon Web Services Key Management Service (KMS) customer managed key.
   /// [type] Type of KMS key to use for encryption of your Network Firewall resources. Valid values: `AWS_OWNED_KMS_KEY`, `CUSTOMER_KMS`.
-  TlsInspectionConfigurationEncryptionConfiguration({
+  const TlsInspectionConfigurationEncryptionConfiguration({
     required this.keyId,
     required this.type,
   });

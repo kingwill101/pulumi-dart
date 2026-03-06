@@ -24,7 +24,7 @@ class GetApplicationGroupsArgs {
   /// [ids] A list of Application Group IDs. Its element value is same as Application Group Name.
   /// [nameRegex] A regex string to filter results by Application Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetApplicationGroupsArgs({
+  const GetApplicationGroupsArgs({
     required this.applicationName,
     this.deployRegionId,
     this.ids,

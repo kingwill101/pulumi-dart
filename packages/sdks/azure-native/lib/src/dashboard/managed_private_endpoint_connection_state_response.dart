@@ -12,7 +12,7 @@ class ManagedPrivateEndpointConnectionStateResponse {
   /// Creates a new [ManagedPrivateEndpointConnectionStateResponse].
   /// [description] Gets or sets the reason for approval/rejection of the connection.
   /// [status] The approval/rejection status of managed private endpoint connection.
-  ManagedPrivateEndpointConnectionStateResponse({
+  const ManagedPrivateEndpointConnectionStateResponse({
     required this.description,
     required this.status,
   });

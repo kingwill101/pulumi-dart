@@ -24,7 +24,7 @@ class ThroughputPoolAccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [throughputPoolAccountName] Cosmos DB global database account in a Throughput Pool
   /// [throughputPoolName] Cosmos DB Throughput Pool name.
-  ThroughputPoolAccountArgs({
+  const ThroughputPoolAccountArgs({
     this.accountLocation,
     this.accountResourceIdentifier,
     required this.resourceGroupName,

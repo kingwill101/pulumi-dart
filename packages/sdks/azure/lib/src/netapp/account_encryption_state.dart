@@ -24,7 +24,7 @@ class AccountEncryptionState {
   /// [netappAccountId] The ID of the NetApp account where volume under it will have customer managed keys-based encryption enabled.
   /// [systemAssignedIdentityPrincipalId] The ID of the System Assigned Manged Identity. Conflicts with `user_assigned_identity_id`.
   /// [userAssignedIdentityId] The ID of the User Assigned Managed Identity. Conflicts with `system_assigned_identity_principal_id`.
-  AccountEncryptionState({
+  const AccountEncryptionState({
     this.crossTenantKeyVaultResourceId,
     this.encryptionKey,
     this.federatedClientId,

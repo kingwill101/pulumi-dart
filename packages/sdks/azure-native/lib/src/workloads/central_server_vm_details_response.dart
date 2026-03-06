@@ -16,7 +16,7 @@ class CentralServerVmDetailsResponse {
   /// [storageDetails] Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage.
   /// [type] Defines the type of central server VM.
   /// [virtualMachineId] The virtual machine id.
-  CentralServerVmDetailsResponse({
+  const CentralServerVmDetailsResponse({
     required this.storageDetails,
     required this.type,
     required this.virtualMachineId,

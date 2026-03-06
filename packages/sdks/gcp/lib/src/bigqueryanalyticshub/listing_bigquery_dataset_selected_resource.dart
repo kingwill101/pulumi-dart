@@ -13,7 +13,7 @@ class ListingBigqueryDatasetSelectedResource {
   /// Creates a new [ListingBigqueryDatasetSelectedResource].
   /// [routine] Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
   /// [table] Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-  ListingBigqueryDatasetSelectedResource({
+  const ListingBigqueryDatasetSelectedResource({
     this.routine,
     this.table,
   });

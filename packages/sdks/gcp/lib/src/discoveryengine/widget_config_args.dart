@@ -48,7 +48,7 @@ class WidgetConfigArgs {
   /// [uiBranding] Describes search widget UI branding settings, such as the widget title, logo,
   /// [uiSettings] Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// [widgetConfigId] The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
-  WidgetConfigArgs({
+  const WidgetConfigArgs({
     this.accessSettings,
     this.collectionId,
     required this.engineId,

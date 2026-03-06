@@ -15,7 +15,7 @@ class GetWafPolicyArgs {
   /// Creates a new [GetWafPolicyArgs].
   /// [policyId] ID of the WAF policy deployed in the BIG-IP.
   /// [policyJson] Exported WAF policy JSON
-  GetWafPolicyArgs({
+  const GetWafPolicyArgs({
     required this.policyId,
     this.policyJson,
   });

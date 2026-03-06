@@ -12,7 +12,7 @@ class DefenderFoDatabasesAwsOfferingDatabasesDspm {
   /// Creates a new [DefenderFoDatabasesAwsOfferingDatabasesDspm].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is databases data security posture management (DSPM) protection enabled
-  DefenderFoDatabasesAwsOfferingDatabasesDspm({
+  const DefenderFoDatabasesAwsOfferingDatabasesDspm({
     this.cloudRoleArn,
     this.enabled,
   });

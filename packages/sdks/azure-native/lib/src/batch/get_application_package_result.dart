@@ -42,7 +42,7 @@ class GetApplicationPackageResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApplicationPackageResult({
+  const GetApplicationPackageResult({
     required this.azureApiVersion,
     required this.etag,
     required this.format,

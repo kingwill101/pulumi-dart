@@ -12,7 +12,7 @@ class DirectoryPath {
   /// Creates a new [DirectoryPath].
   /// [physical] Gets or sets the physical path of the directory on the web server.
   /// [virtual] Gets or sets the virtual path for the directory.
-  DirectoryPath({
+  const DirectoryPath({
     this.physical,
     this.virtual,
   });

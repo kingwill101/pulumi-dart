@@ -41,7 +41,7 @@ class DetailResponseContaineranalysisV1alpha1 {
   /// [severityName] The severity (eg: distro assigned severity) for this vulnerability.
   /// [source] The source from which the information in this Detail was obtained.
   /// [vendor] The vendor of the product. e.g. "google"
-  DetailResponseContaineranalysisV1alpha1({
+  const DetailResponseContaineranalysisV1alpha1({
     required this.cpeUri,
     required this.description,
     required this.fixedLocation,

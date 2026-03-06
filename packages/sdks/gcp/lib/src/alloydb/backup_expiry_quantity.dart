@@ -13,7 +13,7 @@ class BackupExpiryQuantity {
   /// Creates a new [BackupExpiryQuantity].
   /// [retentionCount] (Output)
   /// [totalRetentionCount] (Output)
-  BackupExpiryQuantity({
+  const BackupExpiryQuantity({
     this.retentionCount,
     this.totalRetentionCount,
   });

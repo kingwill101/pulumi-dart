@@ -9,7 +9,7 @@ class NodeLabelsContainerV1beta1 {
 
   /// Creates a new [NodeLabelsContainerV1beta1].
   /// [labels] Map of node label keys and node label values.
-  NodeLabelsContainerV1beta1({
+  const NodeLabelsContainerV1beta1({
     this.labels,
   });
 

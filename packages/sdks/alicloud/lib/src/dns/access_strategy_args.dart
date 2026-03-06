@@ -66,7 +66,7 @@ class AccessStrategyArgs {
   /// [lines] The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
   /// [strategyMode] The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
   /// [strategyName] The name of the access policy.
-  AccessStrategyArgs({
+  const AccessStrategyArgs({
     this.accessMode,
     required this.defaultAddrPoolType,
     required this.defaultAddrPools,

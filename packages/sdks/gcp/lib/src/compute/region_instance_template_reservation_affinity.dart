@@ -13,7 +13,7 @@ class RegionInstanceTemplateReservationAffinity {
   /// Creates a new [RegionInstanceTemplateReservationAffinity].
   /// [specificReservation] Specifies the label selector for the reservation to use..
   /// [type] The type of reservation from which this instance can consume resources.
-  RegionInstanceTemplateReservationAffinity({
+  const RegionInstanceTemplateReservationAffinity({
     this.specificReservation,
     required this.type,
   });

@@ -33,7 +33,7 @@ class DomainSysInfoSmbios {
   /// [oemStrings] Configures OEM strings within the SMBIOS information.
   /// [processors] Sets processor information in the SMBIOS configuration.
   /// [system] Configures system information for the SMBIOS configuration.
-  DomainSysInfoSmbios({
+  const DomainSysInfoSmbios({
     this.baseBoards,
     this.bios,
     this.chassis,

@@ -8,7 +8,7 @@ class DomainFeaturesKvmPollControl {
 
   /// Creates a new [DomainFeaturesKvmPollControl].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesKvmPollControl({
+  const DomainFeaturesKvmPollControl({
     this.state,
   });
 

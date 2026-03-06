@@ -21,7 +21,7 @@ class BgpIpState {
   /// [memberUid] The member to which the asset belongs.
   /// [resourceGroupId] Field `resource_group_id` has been deprecated from provider version 1.259.0.
   /// [status] The status of the IP address.
-  BgpIpState({
+  const BgpIpState({
     this.instanceId,
     this.ip,
     this.memberUid,

@@ -17,7 +17,7 @@ class PerformanceThresholdResponse {
   /// [basicSliPerformance] BasicSli to evaluate to judge window quality.
   /// [performance] RequestBasedSli to evaluate to judge window quality.
   /// [threshold] If window performance &gt;= threshold, the window is counted as good.
-  PerformanceThresholdResponse({
+  const PerformanceThresholdResponse({
     required this.basicSliPerformance,
     required this.performance,
     required this.threshold,

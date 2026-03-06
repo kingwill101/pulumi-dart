@@ -11,7 +11,7 @@ class ExpressGatewayServicePrimaryContainerEnvironment {
   /// Creates a new [ExpressGatewayServicePrimaryContainerEnvironment].
   /// [name] Name of the environment variable.
   /// [value] Value of the environment variable.
-  ExpressGatewayServicePrimaryContainerEnvironment({
+  const ExpressGatewayServicePrimaryContainerEnvironment({
     required this.name,
     required this.value,
   });

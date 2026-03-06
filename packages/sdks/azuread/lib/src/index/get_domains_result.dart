@@ -26,7 +26,7 @@ class GetDomainsResult {
   /// [onlyInitial] Optional.
   /// [onlyRoot] Optional.
   /// [supportsServices] Optional.
-  GetDomainsResult({
+  const GetDomainsResult({
     this.adminManaged,
     required this.domains,
     required this.id,

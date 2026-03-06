@@ -10,7 +10,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge {
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge].
   /// [errorHandlingConfig] Optional.
   /// [object_] Required.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge({
     this.errorHandlingConfig,
     required this.object_,
   });

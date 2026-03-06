@@ -12,7 +12,7 @@ class Port {
   /// Creates a new [Port].
   /// [port] The port number.
   /// [protocol] The protocol associated with the port.
-  Port({
+  const Port({
     required this.port,
     this.protocol,
   });

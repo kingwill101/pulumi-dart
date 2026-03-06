@@ -26,7 +26,7 @@ class GetDedicatedIpPoolResult {
   /// [region] Required.
   /// [scalingMode] (Optional) IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`.
   /// [tags] A map of tags attached to the pool.
-  GetDedicatedIpPoolResult({
+  const GetDedicatedIpPoolResult({
     required this.arn,
     required this.dedicatedIps,
     required this.id,

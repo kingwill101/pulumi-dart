@@ -11,7 +11,7 @@ class AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping {
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping].
   /// [metadataField] Name of the field in which Amazon Bedrock stores metadata about the vector store.
   /// [textField] Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
-  AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping({
+  const AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping({
     required this.metadataField,
     required this.textField,
   });

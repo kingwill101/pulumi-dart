@@ -13,7 +13,7 @@ class EnvironmentLoggingConfigurationDagProcessingLogs {
   /// [cloudWatchLogGroupArn] Optional.
   /// [enabled] Enabling or disabling the collection of logs
   /// [logLevel] Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
-  EnvironmentLoggingConfigurationDagProcessingLogs({
+  const EnvironmentLoggingConfigurationDagProcessingLogs({
     this.cloudWatchLogGroupArn,
     this.enabled,
     this.logLevel,

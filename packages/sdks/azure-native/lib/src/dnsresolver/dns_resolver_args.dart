@@ -25,7 +25,7 @@ class DnsResolverArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [virtualNetwork] The reference to the virtual network. This cannot be changed after creation.
-  DnsResolverArgs({
+  const DnsResolverArgs({
     this.dnsResolverName,
     this.location,
     required this.resourceGroupName,

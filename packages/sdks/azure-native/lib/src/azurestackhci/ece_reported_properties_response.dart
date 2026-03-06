@@ -13,7 +13,7 @@ class EceReportedPropertiesResponse {
   /// Creates a new [EceReportedPropertiesResponse].
   /// [deploymentStatus] Deployment status of AzureStackHCI Cluster Deployment.
   /// [validationStatus] validation status of AzureStackHCI Cluster Deployment.
-  EceReportedPropertiesResponse({
+  const EceReportedPropertiesResponse({
     required this.deploymentStatus,
     required this.validationStatus,
   });

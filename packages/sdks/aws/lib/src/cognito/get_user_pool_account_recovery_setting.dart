@@ -8,7 +8,7 @@ class GetUserPoolAccountRecoverySetting {
 
   /// Creates a new [GetUserPoolAccountRecoverySetting].
   /// [recoveryMechanisms] Required.
-  GetUserPoolAccountRecoverySetting({
+  const GetUserPoolAccountRecoverySetting({
     required this.recoveryMechanisms,
   });
 

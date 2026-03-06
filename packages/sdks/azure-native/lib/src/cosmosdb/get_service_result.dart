@@ -21,7 +21,7 @@ class GetServiceResult {
   /// [name] The name of the database account.
   /// [properties] Services response resource.
   /// [type] The type of Azure resource.
-  GetServiceResult({
+  const GetServiceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

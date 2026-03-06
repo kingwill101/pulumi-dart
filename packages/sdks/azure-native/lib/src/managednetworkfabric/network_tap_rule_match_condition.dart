@@ -24,7 +24,7 @@ class NetworkTapRuleMatchCondition {
   /// [portCondition] Defines the port condition that needs to be matched.
   /// [protocolTypes] List of the protocols that need to be matched.
   /// [vlanMatchCondition] Vlan match condition that needs to be matched.
-  NetworkTapRuleMatchCondition({
+  const NetworkTapRuleMatchCondition({
     this.encapsulationType,
     this.ipCondition,
     this.portCondition,

@@ -18,7 +18,7 @@ class AssociatedRuleArgs {
   /// [associatedSettingName] The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
   /// [status] Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
   /// [tagKeys] List of tag keys for the associated resource tag rule.
-  AssociatedRuleArgs({
+  const AssociatedRuleArgs({
     required this.associatedSettingName,
     required this.status,
     this.tagKeys,

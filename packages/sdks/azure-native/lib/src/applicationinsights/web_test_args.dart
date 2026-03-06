@@ -62,7 +62,7 @@ class WebTestArgs {
   /// [validationRules] The collection of validation rule properties
   /// [webTestKind] The kind of web test this is, valid choices are ping, multistep and standard.
   /// [webTestName] User defined name if this WebTest.
-  WebTestArgs({
+  const WebTestArgs({
     this.configuration,
     this.description,
     this.enabled,

@@ -29,7 +29,7 @@ class NamespaceDiscoveredDatasetResponse {
   /// [lastUpdatedOn] Timestamp (in UTC) indicating when the dataset was added or modified.
   /// [name] Name of the dataset.
   /// [typeRef] URI or type definition ID.
-  NamespaceDiscoveredDatasetResponse({
+  const NamespaceDiscoveredDatasetResponse({
     this.dataPoints,
     this.dataSource,
     this.datasetConfiguration,

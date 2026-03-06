@@ -21,7 +21,7 @@ class GetAkriConnectorArgs {
   /// [connectorName] Name of AkriConnector resource.
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAkriConnectorArgs({
+  const GetAkriConnectorArgs({
     required this.akriConnectorTemplateName,
     required this.connectorName,
     required this.instanceName,

@@ -43,7 +43,7 @@ class GetStoragePoolTypesResult {
   /// [storagePoolType] Required.
   /// [supportedDiskTypes] Required.
   /// [zone] Required.
-  GetStoragePoolTypesResult({
+  const GetStoragePoolTypesResult({
     required this.creationTimestamp,
     required this.deprecateds,
     required this.description,

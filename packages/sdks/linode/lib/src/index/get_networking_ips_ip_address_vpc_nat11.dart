@@ -14,7 +14,7 @@ class GetNetworkingIpsIpAddressVpcNat11 {
   /// [address] The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
   /// [subnetId] The `id` of the VPC Subnet for this Interface.
   /// [vpcId] The `id` of the VPC configured for this Interface.
-  GetNetworkingIpsIpAddressVpcNat11({
+  const GetNetworkingIpsIpAddressVpcNat11({
     required this.address,
     required this.subnetId,
     required this.vpcId,

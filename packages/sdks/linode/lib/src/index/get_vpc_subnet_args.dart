@@ -15,7 +15,7 @@ class GetVpcSubnetArgs {
   /// Creates a new [GetVpcSubnetArgs].
   /// [id] The unique id of this VPC subnet.
   /// [vpcId] The id of the parent VPC for this VPC Subnet.
-  GetVpcSubnetArgs({
+  const GetVpcSubnetArgs({
     required this.id,
     required this.vpcId,
   });

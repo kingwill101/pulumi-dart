@@ -18,7 +18,7 @@ class GetAccessRulesResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [rules] Required.
-  GetAccessRulesResult({
+  const GetAccessRulesResult({
     required this.accessGroupId,
     required this.id,
     required this.ids,

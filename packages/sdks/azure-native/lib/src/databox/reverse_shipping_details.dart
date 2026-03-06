@@ -14,7 +14,7 @@ class ReverseShippingDetails {
   /// Creates a new [ReverseShippingDetails].
   /// [contactDetails] Contact Info.
   /// [shippingAddress] Shipping address where customer wishes to receive the device.
-  ReverseShippingDetails({
+  const ReverseShippingDetails({
     this.contactDetails,
     this.shippingAddress,
   });

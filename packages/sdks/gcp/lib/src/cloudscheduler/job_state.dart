@@ -71,7 +71,7 @@ class JobState {
   /// [schedule] Describes the schedule on which the job will be executed.
   /// [state] State of the job.
   /// [timeZone] Specifies the time zone to be used in interpreting schedule.
-  JobState({
+  const JobState({
     this.appEngineHttpTarget,
     this.attemptDeadline,
     this.description,

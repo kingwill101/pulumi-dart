@@ -14,7 +14,7 @@ class DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn {
   /// [columnId] A unique ID to identify a calculated column. During a dataset update, if the column ID of a calculated column matches that of an existing calculated column, Amazon QuickSight preserves the existing calculated column.
   /// [columnName] Column name.
   /// [expression] An expression that defines the calculated column.
-  DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn({
+  const DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn({
     required this.columnId,
     required this.columnName,
     required this.expression,

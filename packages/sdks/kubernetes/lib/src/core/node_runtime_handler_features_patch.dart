@@ -12,7 +12,7 @@ class NodeRuntimeHandlerFeaturesPatch {
   /// Creates a new [NodeRuntimeHandlerFeaturesPatch].
   /// [recursiveReadOnlyMounts] RecursiveReadOnlyMounts is set to true if the runtime handler supports RecursiveReadOnlyMounts.
   /// [userNamespaces] UserNamespaces is set to true if the runtime handler supports UserNamespaces, including for volumes.
-  NodeRuntimeHandlerFeaturesPatch({
+  const NodeRuntimeHandlerFeaturesPatch({
     this.recursiveReadOnlyMounts,
     this.userNamespaces,
   });

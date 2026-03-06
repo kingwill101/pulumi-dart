@@ -12,7 +12,7 @@ class NFSResponse {
   /// Creates a new [NFSResponse].
   /// [remotePath] Remote source path exported from the NFS, e.g., "/share".
   /// [server] The IP address of the NFS.
-  NFSResponse({
+  const NFSResponse({
     required this.remotePath,
     required this.server,
   });

@@ -15,7 +15,7 @@ class UserMetadataResponse {
   /// [additionalDeveloperUserCount] Optional. The number of additional developer users the instance owner has purchased.
   /// [additionalStandardUserCount] Optional. The number of additional standard users the instance owner has purchased.
   /// [additionalViewerUserCount] Optional. The number of additional viewer users the instance owner has purchased.
-  UserMetadataResponse({
+  const UserMetadataResponse({
     required this.additionalDeveloperUserCount,
     required this.additionalStandardUserCount,
     required this.additionalViewerUserCount,

@@ -8,7 +8,7 @@ class ListStorageAccountServiceSASResult {
 
   /// Creates a new [ListStorageAccountServiceSASResult].
   /// [serviceSasToken] List service SAS credentials of specific resource.
-  ListStorageAccountServiceSASResult({
+  const ListStorageAccountServiceSASResult({
     required this.serviceSasToken,
   });
 

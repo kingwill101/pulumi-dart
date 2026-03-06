@@ -15,7 +15,7 @@ class ListWebAppAzureStorageAccountsArgs {
   /// Creates a new [ListWebAppAzureStorageAccountsArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppAzureStorageAccountsArgs({
+  const ListWebAppAzureStorageAccountsArgs({
     required this.name,
     required this.resourceGroupName,
   });

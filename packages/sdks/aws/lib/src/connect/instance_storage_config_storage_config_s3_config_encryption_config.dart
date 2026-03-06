@@ -11,7 +11,7 @@ class InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig {
   /// Creates a new [InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig].
   /// [encryptionType] The type of encryption. Valid Values: `KMS`.
   /// [keyId] The full ARN of the encryption key. Be sure to provide the full ARN of the encryption key, not just the ID.
-  InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig({
+  const InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig({
     required this.encryptionType,
     required this.keyId,
   });

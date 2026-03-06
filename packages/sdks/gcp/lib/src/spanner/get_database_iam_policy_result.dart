@@ -20,7 +20,7 @@ class GetDatabaseIamPolicyResult {
   /// [instance] Required.
   /// [policyData] (Computed) The policy data
   /// [project] Required.
-  GetDatabaseIamPolicyResult({
+  const GetDatabaseIamPolicyResult({
     required this.database,
     required this.etag,
     required this.id,

@@ -32,7 +32,7 @@ class V2OrganizationMuteConfigArgs {
   /// [muteConfigId] Unique identifier provided by the client within the parent scope.
   /// [organization] The organization whose Cloud Security Command Center the Mute
   /// [type] The type of the mute config.
-  V2OrganizationMuteConfigArgs({
+  const V2OrganizationMuteConfigArgs({
     this.description,
     required this.filter,
     this.location,

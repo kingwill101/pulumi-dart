@@ -12,7 +12,7 @@ class EnclaveAddressSpacesModelResponse {
   /// Creates a new [EnclaveAddressSpacesModelResponse].
   /// [enclaveAddressSpace] Enclave Address Space
   /// [managedAddressSpace] Managed Address Space
-  EnclaveAddressSpacesModelResponse({
+  const EnclaveAddressSpacesModelResponse({
     this.enclaveAddressSpace,
     this.managedAddressSpace,
   });

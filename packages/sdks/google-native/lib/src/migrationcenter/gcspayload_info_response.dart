@@ -12,7 +12,7 @@ class GCSPayloadInfoResponse {
   /// Creates a new [GCSPayloadInfoResponse].
   /// [format] The import job format.
   /// [path] The payload path in Google Cloud Storage.
-  GCSPayloadInfoResponse({
+  const GCSPayloadInfoResponse({
     required this.format,
     required this.path,
   });

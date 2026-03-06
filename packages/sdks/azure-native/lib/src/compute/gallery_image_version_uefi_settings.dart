@@ -13,7 +13,7 @@ class GalleryImageVersionUefiSettings {
   /// Creates a new [GalleryImageVersionUefiSettings].
   /// [additionalSignatures] Additional UEFI key signatures that will be added to the image in addition to the signature templates
   /// [signatureTemplateNames] The name of the template(s) that contains default UEFI key signatures that will be added to the image.
-  GalleryImageVersionUefiSettings({
+  const GalleryImageVersionUefiSettings({
     this.additionalSignatures,
     this.signatureTemplateNames,
   });

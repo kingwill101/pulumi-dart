@@ -8,7 +8,7 @@ class DomainDevicesChannelProtocol {
 
   /// Creates a new [DomainDevicesChannelProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesChannelProtocol({
+  const DomainDevicesChannelProtocol({
     required this.type,
   });
 

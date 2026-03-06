@@ -14,7 +14,7 @@ class RegistryTaskTimerTrigger {
   /// [enabled] Should the trigger be enabled? Defaults to `true`.
   /// [name] The name which should be used for this trigger.
   /// [schedule] The CRON expression for the task schedule.
-  RegistryTaskTimerTrigger({
+  const RegistryTaskTimerTrigger({
     this.enabled,
     required this.name,
     required this.schedule,

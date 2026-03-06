@@ -19,7 +19,7 @@ class StorageDescriptorResponse {
   /// [locationUri] Cloud Storage folder URI where the table data is stored, starting with "gs://".
   /// [outputFormat] The fully qualified Java class name of the output format.
   /// [serdeInfo] Serializer and deserializer information.
-  StorageDescriptorResponse({
+  const StorageDescriptorResponse({
     required this.inputFormat,
     required this.locationUri,
     required this.outputFormat,

@@ -18,7 +18,7 @@ class GetNotificationHubArgs {
   /// [namespaceName] Namespace name
   /// [notificationHubName] Notification Hub name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNotificationHubArgs({
+  const GetNotificationHubArgs({
     required this.namespaceName,
     required this.notificationHubName,
     required this.resourceGroupName,

@@ -11,7 +11,7 @@ class ListSaasResourceAccessTokenResult {
   /// Creates a new [ListSaasResourceAccessTokenResult].
   /// [publisherOfferBaseUri] The Publisher Offer Base Uri
   /// [token] The generated token
-  ListSaasResourceAccessTokenResult({
+  const ListSaasResourceAccessTokenResult({
     this.publisherOfferBaseUri,
     this.token,
   });

@@ -40,7 +40,7 @@ class DataConnectServiceArgs {
   /// [location] The region in which the service resides, e.g. "us-central1" or "asia-east1".
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] Required. The ID to use for the service, which will become the final component of the
-  DataConnectServiceArgs({
+  const DataConnectServiceArgs({
     this.annotations,
     this.deletionPolicy,
     this.displayName,

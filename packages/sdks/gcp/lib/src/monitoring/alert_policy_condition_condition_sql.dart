@@ -37,7 +37,7 @@ class AlertPolicyConditionConditionSql {
   /// [minutes] Used to schedule the query to run every so many minutes.
   /// [query] The Log Analytics SQL query to run, as a string.  The query must
   /// [rowCountTest] A test that checks if the number of rows in the result set violates some threshold.
-  AlertPolicyConditionConditionSql({
+  const AlertPolicyConditionConditionSql({
     this.booleanTest,
     this.daily,
     this.hourly,

@@ -24,7 +24,7 @@ class StorageMoverArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
   /// [tags] Resource tags.
-  StorageMoverArgs({
+  const StorageMoverArgs({
     this.description,
     this.location,
     required this.resourceGroupName,

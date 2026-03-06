@@ -9,7 +9,7 @@ class StatefulRuleOptionsResponse {
 
   /// Creates a new [StatefulRuleOptionsResponse].
   /// [ruleOrder] Property ruleOrder
-  StatefulRuleOptionsResponse({
+  const StatefulRuleOptionsResponse({
     this.ruleOrder,
   });
 

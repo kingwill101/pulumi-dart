@@ -21,7 +21,7 @@ class CanonicalProfileDefinitionResponseProperties {
   /// [rank] The rank.
   /// [type] Type of canonical property value.
   /// [value] Value of the canonical property.
-  CanonicalProfileDefinitionResponseProperties({
+  const CanonicalProfileDefinitionResponseProperties({
     this.profileName,
     this.profilePropertyName,
     this.rank,

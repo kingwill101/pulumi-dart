@@ -65,7 +65,7 @@ class GetCatalogTableResult {
   /// [transactionId] Optional.
   /// [viewExpandedText] If the table is a view, the expanded text of the view; otherwise null.
   /// [viewOriginalText] If the table is a view, the original text of the view; otherwise null.
-  GetCatalogTableResult({
+  const GetCatalogTableResult({
     required this.arn,
     required this.catalogId,
     required this.databaseName,

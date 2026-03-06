@@ -56,7 +56,7 @@ class ExecutionTemplate {
   /// [serviceAccount] The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
   /// [tensorboard] The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
   /// [vertexAiParameters] Parameters used in Vertex AI JobType executions.
-  ExecutionTemplate({
+  const ExecutionTemplate({
     this.acceleratorConfig,
     this.containerImageUri,
     this.dataprocParameters,

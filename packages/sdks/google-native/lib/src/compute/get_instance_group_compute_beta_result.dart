@@ -43,7 +43,7 @@ class GetInstanceGroupComputeBetaResult {
   /// [size] The total number of instances in the instance group.
   /// [subnetwork] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
   /// [zone] The URL of the zone where the instance group is located (for zonal resources).
-  GetInstanceGroupComputeBetaResult({
+  const GetInstanceGroupComputeBetaResult({
     required this.creationTimestamp,
     required this.description,
     required this.fingerprint,

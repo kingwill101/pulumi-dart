@@ -9,7 +9,7 @@ class ManagedPrometheusConfigResponseContainerV1beta1 {
 
   /// Creates a new [ManagedPrometheusConfigResponseContainerV1beta1].
   /// [enabled] Enable Managed Collection.
-  ManagedPrometheusConfigResponseContainerV1beta1({
+  const ManagedPrometheusConfigResponseContainerV1beta1({
     required this.enabled,
   });
 

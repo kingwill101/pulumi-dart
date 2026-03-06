@@ -18,7 +18,7 @@ class GetFleetMemberArgs {
   /// [fleetMemberName] The name of the Fleet member resource.
   /// [fleetName] The name of the Fleet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFleetMemberArgs({
+  const GetFleetMemberArgs({
     required this.fleetMemberName,
     required this.fleetName,
     required this.resourceGroupName,

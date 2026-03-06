@@ -31,7 +31,7 @@ class ProjectCatalogArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [syncType] Indicates the type of sync that is configured for the catalog.
   /// [tags] Resource tags.
-  ProjectCatalogArgs({
+  const ProjectCatalogArgs({
     this.adoGit,
     this.catalogName,
     this.gitHub,

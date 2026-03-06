@@ -97,7 +97,7 @@ class TargetHttpsProxyArgs {
   /// [sslPolicy] A reference to the SslPolicy resource that will be associated with
   /// [tlsEarlyData] Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
   /// [urlMap] A reference to the UrlMap resource that defines the mapping from URL
-  TargetHttpsProxyArgs({
+  const TargetHttpsProxyArgs({
     this.certificateManagerCertificates,
     this.certificateMap,
     this.description,

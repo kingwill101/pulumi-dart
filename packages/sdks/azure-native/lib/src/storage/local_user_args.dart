@@ -50,7 +50,7 @@ class LocalUserArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [sshAuthorizedKeys] Optional, local user ssh authorized keys for SFTP.
   /// [username] The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
-  LocalUserArgs({
+  const LocalUserArgs({
     required this.accountName,
     this.allowAclAuthorization,
     this.extendedGroups,

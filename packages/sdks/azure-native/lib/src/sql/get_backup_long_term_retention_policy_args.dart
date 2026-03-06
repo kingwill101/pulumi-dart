@@ -21,7 +21,7 @@ class GetBackupLongTermRetentionPolicyArgs {
   /// [policyName] The policy name. Should always be Default.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetBackupLongTermRetentionPolicyArgs({
+  const GetBackupLongTermRetentionPolicyArgs({
     required this.databaseName,
     required this.policyName,
     required this.resourceGroupName,

@@ -74,7 +74,7 @@ class GetNodeGroupResult {
   /// [taints] List of objects containing information about taints applied to the nodes in the EKS Node Group.
   /// [updateConfigs] Required.
   /// [version] Kubernetes version.
-  GetNodeGroupResult({
+  const GetNodeGroupResult({
     required this.amiType,
     required this.arn,
     required this.capacityType,

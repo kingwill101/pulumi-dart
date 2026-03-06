@@ -17,7 +17,7 @@ class JobTemplateVolume {
   /// [name] The name of the volume.
   /// [storageName] The name of the storage to use for the volume.
   /// [storageType] The type of storage to use for the volume. Possible values are `AzureFile`, `EmptyDir`, `NfsAzureFile` and `Secret`. Defaults to `EmptyDir`.
-  JobTemplateVolume({
+  const JobTemplateVolume({
     this.mountOptions,
     required this.name,
     this.storageName,

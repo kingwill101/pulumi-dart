@@ -16,7 +16,7 @@ class KeyVaultKeyReferenceResponse {
   /// [keyName] The private key name in key vault.
   /// [keyVault] The key vault reference.
   /// [keyVersion] The private key version in key vault.
-  KeyVaultKeyReferenceResponse({
+  const KeyVaultKeyReferenceResponse({
     required this.keyName,
     required this.keyVault,
     this.keyVersion,

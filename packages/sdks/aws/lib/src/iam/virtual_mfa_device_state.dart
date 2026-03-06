@@ -36,7 +36,7 @@ class VirtualMfaDeviceState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userName] Name of the IAM user associated with this virtual MFA device.
   /// [virtualMfaDeviceName] Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
-  VirtualMfaDeviceState({
+  const VirtualMfaDeviceState({
     this.arn,
     this.base32StringSeed,
     this.enableDate,

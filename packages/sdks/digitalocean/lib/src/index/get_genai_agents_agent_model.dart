@@ -46,7 +46,7 @@ class GetGenaiAgentsAgentModel {
   /// [url] URL of the Model
   /// [usecases] List of Usecases for the Model
   /// [versions] URL of the Model
-  GetGenaiAgentsAgentModel({
+  const GetGenaiAgentsAgentModel({
     this.agreements,
     required this.createdAt,
     this.inferenceName,

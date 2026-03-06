@@ -13,7 +13,7 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings 
   /// Creates a new [TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings].
   /// [nonCurrentDays] Data objects marked for deletion are deleted after this many days.
   /// [unreferencedDays] Unreferenced data objects are marked for deletion after this many days.
-  TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings({
+  const TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings({
     required this.nonCurrentDays,
     required this.unreferencedDays,
   });

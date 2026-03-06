@@ -15,7 +15,7 @@ class CatalogTableStorageDescriptorSchemaReference {
   /// [schemaId] Configuration block that contains schema identity fields. Either this or the `schema_version_id` has to be provided. See `schema_id` below.
   /// [schemaVersionId] Unique ID assigned to a version of the schema. Either this or the `schema_id` has to be provided.
   /// [schemaVersionNumber] Version number of the schema.
-  CatalogTableStorageDescriptorSchemaReference({
+  const CatalogTableStorageDescriptorSchemaReference({
     this.schemaId,
     this.schemaVersionId,
     required this.schemaVersionNumber,

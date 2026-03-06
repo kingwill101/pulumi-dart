@@ -26,7 +26,7 @@ class ZoneShareV2Args {
   /// [region] The region in which to obtain the V2 DNS client. If
   /// [targetProjectId] The ID of the target project with which the
   /// [zoneId] The ID of the DNS zone to be shared.
-  ZoneShareV2Args({
+  const ZoneShareV2Args({
     this.projectId,
     this.region,
     required this.targetProjectId,

@@ -14,7 +14,7 @@ class GetVirtualMachineManagerInventoryItemsInventoryItem {
   /// [id] The ID of the System Center Virtual Machine Manager Inventory Item.
   /// [name] The name of the System Center Virtual Machine Manager Inventory Item.
   /// [uuid] The UUID of the System Center Virtual Machine Manager Inventory Item that is assigned by System Center Virtual Machine Manager.
-  GetVirtualMachineManagerInventoryItemsInventoryItem({
+  const GetVirtualMachineManagerInventoryItemsInventoryItem({
     required this.id,
     required this.name,
     required this.uuid,

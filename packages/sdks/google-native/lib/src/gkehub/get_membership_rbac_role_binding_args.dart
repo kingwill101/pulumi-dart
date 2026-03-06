@@ -17,7 +17,7 @@ class GetMembershipRbacRoleBindingArgs {
   /// [membershipId] Required.
   /// [project] Optional.
   /// [rbacrolebindingId] Required.
-  GetMembershipRbacRoleBindingArgs({
+  const GetMembershipRbacRoleBindingArgs({
     required this.location,
     required this.membershipId,
     this.project,

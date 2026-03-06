@@ -17,7 +17,7 @@ class GetInfrastructureConfigurationPlacement {
   /// [hostId] ID of the Dedicated Host on which build and test instances run.
   /// [hostResourceGroupArn] ARN of the host resource group in which to launch build and test instances.
   /// [tenancy] Placement tenancy of the instance.
-  GetInfrastructureConfigurationPlacement({
+  const GetInfrastructureConfigurationPlacement({
     required this.availabilityZone,
     required this.hostId,
     required this.hostResourceGroupArn,

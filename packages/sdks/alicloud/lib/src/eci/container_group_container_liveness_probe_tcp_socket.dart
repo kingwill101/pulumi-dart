@@ -7,7 +7,7 @@ class ContainerGroupContainerLivenessProbeTcpSocket {
 
   /// Creates a new [ContainerGroupContainerLivenessProbeTcpSocket].
   /// [port] Optional.
-  ContainerGroupContainerLivenessProbeTcpSocket({
+  const ContainerGroupContainerLivenessProbeTcpSocket({
     this.port,
   });
 

@@ -26,7 +26,7 @@ class GetVpcEndpointZonesZone {
   /// [vswitchId] The vSwitch id.
   /// [zoneDomain] The Zone Domain.
   /// [zoneId] The Zone Id.
-  GetVpcEndpointZonesZone({
+  const GetVpcEndpointZonesZone({
     required this.eniId,
     required this.eniIp,
     required this.id,

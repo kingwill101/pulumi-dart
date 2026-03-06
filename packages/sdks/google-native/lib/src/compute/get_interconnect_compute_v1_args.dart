@@ -13,7 +13,7 @@ class GetInterconnectComputeV1Args {
   /// Creates a new [GetInterconnectComputeV1Args].
   /// [interconnect] Required.
   /// [project] Optional.
-  GetInterconnectComputeV1Args({
+  const GetInterconnectComputeV1Args({
     required this.interconnect,
     this.project,
   });

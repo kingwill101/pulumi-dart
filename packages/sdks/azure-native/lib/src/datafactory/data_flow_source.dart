@@ -27,7 +27,7 @@ class DataFlowSource {
   /// [linkedService] Linked service reference.
   /// [name] Transformation name.
   /// [schemaLinkedService] Schema linked service reference.
-  DataFlowSource({
+  const DataFlowSource({
     this.dataset,
     this.description,
     this.flowlet,

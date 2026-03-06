@@ -12,7 +12,7 @@ class Port {
   /// Creates a new [Port].
   /// [backendPort] Backend port of the target virtual machine.
   /// [transportProtocol] Protocol type of the port.
-  Port({
+  const Port({
     this.backendPort,
     this.transportProtocol,
   });

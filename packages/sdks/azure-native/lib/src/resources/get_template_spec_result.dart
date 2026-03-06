@@ -41,7 +41,7 @@ class GetTemplateSpecResult {
   /// [tags] Resource tags.
   /// [type] Type of this resource.
   /// [versions] High-level information about the versions within this Template Spec. The keys are the version names. Only populated if the $expand query parameter is set to 'versions'.
-  GetTemplateSpecResult({
+  const GetTemplateSpecResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

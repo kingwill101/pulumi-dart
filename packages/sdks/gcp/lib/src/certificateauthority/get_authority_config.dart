@@ -17,7 +17,7 @@ class GetAuthorityConfig {
   /// [subjectConfigs] Specifies some of the values in a certificate that are related to the subject.
   /// [subjectKeyIds] When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
   /// [x509Configs] Describes how some of the technical X.509 fields in a certificate should be populated.
-  GetAuthorityConfig({
+  const GetAuthorityConfig({
     required this.subjectConfigs,
     required this.subjectKeyIds,
     required this.x509Configs,

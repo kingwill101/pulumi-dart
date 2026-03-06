@@ -11,7 +11,7 @@ class ProjectEnvironmentTypeUserRoleAssignment {
   /// Creates a new [ProjectEnvironmentTypeUserRoleAssignment].
   /// [roles] A list of roles to assign to the `user_id`.
   /// [userId] The user object ID that is assigned roles.
-  ProjectEnvironmentTypeUserRoleAssignment({
+  const ProjectEnvironmentTypeUserRoleAssignment({
     required this.roles,
     required this.userId,
   });

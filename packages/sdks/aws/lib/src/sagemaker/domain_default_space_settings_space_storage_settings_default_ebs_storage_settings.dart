@@ -11,7 +11,7 @@ class DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
   /// Creates a new [DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings].
   /// [defaultEbsVolumeSizeInGb] The default size of the EBS storage volume for a private space.
   /// [maximumEbsVolumeSizeInGb] The maximum size of the EBS storage volume for a private space.
-  DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings({
+  const DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings({
     required this.defaultEbsVolumeSizeInGb,
     required this.maximumEbsVolumeSizeInGb,
   });

@@ -21,7 +21,7 @@ class GetDomainTopicEventSubscriptionArgs {
   /// [eventSubscriptionName] Name of the event subscription to be found.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the domain topic.
-  GetDomainTopicEventSubscriptionArgs({
+  const GetDomainTopicEventSubscriptionArgs({
     required this.domainName,
     required this.eventSubscriptionName,
     required this.resourceGroupName,

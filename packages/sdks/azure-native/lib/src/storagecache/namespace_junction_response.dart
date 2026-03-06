@@ -18,7 +18,7 @@ class NamespaceJunctionResponse {
   /// [nfsAccessPolicy] Name of the access policy applied to this junction.
   /// [nfsExport] NFS export where targetPath exists.
   /// [targetPath] Path in Storage Target to which namespacePath points.
-  NamespaceJunctionResponse({
+  const NamespaceJunctionResponse({
     this.namespacePath,
     this.nfsAccessPolicy,
     this.nfsExport,

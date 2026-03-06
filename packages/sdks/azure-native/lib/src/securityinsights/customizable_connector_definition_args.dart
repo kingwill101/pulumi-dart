@@ -36,7 +36,7 @@ class CustomizableConnectorDefinitionArgs {
   /// [lastModifiedUtc] Gets or sets the connector definition last modified date in UTC format.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  CustomizableConnectorDefinitionArgs({
+  const CustomizableConnectorDefinitionArgs({
     this.connectionsConfig,
     required this.connectorUiConfig,
     this.createdTimeUtc,

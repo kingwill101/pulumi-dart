@@ -12,7 +12,7 @@ class InstanceAggregatedAssociationOverviewResponse {
   /// Creates a new [InstanceAggregatedAssociationOverviewResponse].
   /// [detailedStatus] &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;
   /// [instanceAssociationStatusAggregatedCount] &lt;p&gt;The number of associations for the managed nodes.&lt;/p&gt;
-  InstanceAggregatedAssociationOverviewResponse({
+  const InstanceAggregatedAssociationOverviewResponse({
     this.detailedStatus,
     this.instanceAssociationStatusAggregatedCount,
   });

@@ -53,7 +53,7 @@ class GeminiGcpEnablementSettingState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Update time stamp.
   /// [webGroundingType] Web grounding type.
-  GeminiGcpEnablementSettingState({
+  const GeminiGcpEnablementSettingState({
     this.createTime,
     this.disableWebGrounding,
     this.effectiveLabels,

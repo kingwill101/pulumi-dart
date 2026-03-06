@@ -29,7 +29,7 @@ class AssessmentDelegationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Amazon Resource Name (ARN) of the IAM role.
   /// [roleType] Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
-  AssessmentDelegationArgs({
+  const AssessmentDelegationArgs({
     required this.assessmentId,
     this.comment,
     required this.controlSetId,

@@ -23,7 +23,7 @@ class GetLaunchConfigurationRootBlockDevice {
   /// [throughput] Throughput of the volume.
   /// [volumeSize] Size of the volume.
   /// [volumeType] Type of the volume.
-  GetLaunchConfigurationRootBlockDevice({
+  const GetLaunchConfigurationRootBlockDevice({
     required this.deleteOnTermination,
     required this.encrypted,
     required this.iops,

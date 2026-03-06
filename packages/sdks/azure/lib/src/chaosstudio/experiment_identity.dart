@@ -19,7 +19,7 @@ class ExperimentIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The Type of Managed Identity which should be added to this Policy Definition. Possible values are `SystemAssigned` and `UserAssigned`.
-  ExperimentIdentity({
+  const ExperimentIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

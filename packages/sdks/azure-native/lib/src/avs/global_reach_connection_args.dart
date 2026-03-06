@@ -30,7 +30,7 @@ class GlobalReachConnectionArgs {
   /// [peerExpressRouteCircuit] Identifier of the ExpressRoute Circuit to peer with in the global reach
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GlobalReachConnectionArgs({
+  const GlobalReachConnectionArgs({
     this.authorizationKey,
     this.expressRouteId,
     this.globalReachConnectionName,

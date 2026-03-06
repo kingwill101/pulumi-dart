@@ -20,7 +20,7 @@ class AwsCloudFrontDistributionPropertiesResponse {
   /// [domainName] Property domainName
   /// [id] Property id
   /// [tags] A complex type that contains zero or more ``Tag`` elements.
-  AwsCloudFrontDistributionPropertiesResponse({
+  const AwsCloudFrontDistributionPropertiesResponse({
     this.distributionConfig,
     this.domainName,
     this.id,

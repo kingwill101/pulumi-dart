@@ -31,7 +31,7 @@ class BackupInstanceKubernetesClusterArgs {
   /// [name] The name which should be used for this Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
   /// [snapshotResourceGroupName] The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-  BackupInstanceKubernetesClusterArgs({
+  const BackupInstanceKubernetesClusterArgs({
     this.backupDatasourceParameters,
     required this.backupPolicyId,
     required this.kubernetesClusterId,

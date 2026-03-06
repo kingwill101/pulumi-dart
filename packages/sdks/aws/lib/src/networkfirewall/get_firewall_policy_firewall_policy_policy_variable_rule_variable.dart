@@ -10,7 +10,7 @@ class GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable {
   /// Creates a new [GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable].
   /// [ipSets] Required.
   /// [key] Required.
-  GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable({
+  const GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable({
     required this.ipSets,
     required this.key,
   });

@@ -9,7 +9,7 @@ class ServiceAccountResponse {
 
   /// Creates a new [ServiceAccountResponse].
   /// [email] Email address of the service account.
-  ServiceAccountResponse({
+  const ServiceAccountResponse({
     required this.email,
   });
 

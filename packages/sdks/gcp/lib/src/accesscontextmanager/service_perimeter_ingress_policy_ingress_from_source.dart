@@ -26,7 +26,7 @@ class ServicePerimeterIngressPolicyIngressFromSource {
   /// Creates a new [ServicePerimeterIngressPolicyIngressFromSource].
   /// [accessLevel] An `AccessLevel` resource name that allow resources within the
   /// [resource] A Google Cloud resource that is allowed to ingress the perimeter.
-  ServicePerimeterIngressPolicyIngressFromSource({
+  const ServicePerimeterIngressPolicyIngressFromSource({
     this.accessLevel,
     this.resource,
   });

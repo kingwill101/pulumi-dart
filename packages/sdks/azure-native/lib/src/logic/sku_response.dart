@@ -13,7 +13,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [name] The name.
   /// [plan] The reference to plan.
-  SkuResponse({
+  const SkuResponse({
     required this.name,
     this.plan,
   });

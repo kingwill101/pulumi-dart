@@ -18,7 +18,7 @@ class GrantRoleArgs {
   /// [grantRole] The name of the role that is added to `role`.
   /// [role] The name of the role that is granted a new membership.
   /// [withAdminOption] Giving ability to grant membership to others or not for `role`. (Default: false)
-  GrantRoleArgs({
+  const GrantRoleArgs({
     required this.grantRole,
     required this.role,
     this.withAdminOption,

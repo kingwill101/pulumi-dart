@@ -20,7 +20,7 @@ class CertificateTemplatePredefinedValuesKeyUsage {
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.
   /// [extendedKeyUsage] Detailed scenarios in which a key may be used.
   /// [unknownExtendedKeyUsages] Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-  CertificateTemplatePredefinedValuesKeyUsage({
+  const CertificateTemplatePredefinedValuesKeyUsage({
     this.baseKeyUsage,
     this.extendedKeyUsage,
     this.unknownExtendedKeyUsages,

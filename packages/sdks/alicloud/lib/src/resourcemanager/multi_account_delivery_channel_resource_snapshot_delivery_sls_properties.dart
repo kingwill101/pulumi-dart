@@ -7,7 +7,7 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties {
 
   /// Creates a new [MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties].
   /// [oversizedDataOssTargetArn] Optional.
-  MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties({
+  const MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties({
     this.oversizedDataOssTargetArn,
   });
 

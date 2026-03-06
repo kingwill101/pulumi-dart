@@ -27,7 +27,7 @@ class SmsPreferencesState {
   /// [monthlySpendLimit] The maximum amount in USD that you are willing to spend each month to send SMS messages.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [usageReportS3Bucket] The name of the Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS.
-  SmsPreferencesState({
+  const SmsPreferencesState({
     this.defaultSenderId,
     this.defaultSmsType,
     this.deliveryStatusIamRoleArn,

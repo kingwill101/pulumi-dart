@@ -23,7 +23,7 @@ class GetAttributeDefinitionResult {
   /// [dataMappingDefaultValue] Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
   /// [description] Optional. A description of the attribute.
   /// [name] Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
-  GetAttributeDefinitionResult({
+  const GetAttributeDefinitionResult({
     required this.allowedValues,
     required this.category,
     required this.consentDefaultValues,

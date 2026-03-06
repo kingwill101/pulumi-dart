@@ -153,7 +153,7 @@ class AzureIntegrationsState {
   /// [virtualNetworks] for Azure Virtual networks. See Integration blocks below for details.
   /// [vms] Azure VMs. See Integration blocks below for details.
   /// [vpnGateway] Azure VPN Gateway. See Integration blocks below for details.
-  AzureIntegrationsState({
+  const AzureIntegrationsState({
     this.accountId,
     this.apiManagement,
     this.appGateway,

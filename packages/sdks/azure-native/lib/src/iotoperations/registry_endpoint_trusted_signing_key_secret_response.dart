@@ -13,7 +13,7 @@ class RegistryEndpointTrustedSigningKeySecretResponse {
   /// Creates a new [RegistryEndpointTrustedSigningKeySecretResponse].
   /// [secretRef] The name of the secret.
   /// [type] RegistryEndpointTrustedSigningKeyType values
-  RegistryEndpointTrustedSigningKeySecretResponse({
+  const RegistryEndpointTrustedSigningKeySecretResponse({
     required this.secretRef,
     required this.type,
   });

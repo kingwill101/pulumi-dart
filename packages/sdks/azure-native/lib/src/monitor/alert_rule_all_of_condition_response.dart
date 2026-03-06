@@ -10,7 +10,7 @@ class AlertRuleAllOfConditionResponse {
 
   /// Creates a new [AlertRuleAllOfConditionResponse].
   /// [allOf] The list of Activity Log Alert rule conditions.
-  AlertRuleAllOfConditionResponse({
+  const AlertRuleAllOfConditionResponse({
     required this.allOf,
   });
 

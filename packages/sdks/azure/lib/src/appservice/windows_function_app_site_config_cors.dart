@@ -11,7 +11,7 @@ class WindowsFunctionAppSiteConfigCors {
   /// Creates a new [WindowsFunctionAppSiteConfigCors].
   /// [allowedOrigins] Specifies a list of origins that should be allowed to make cross-origin calls.
   /// [supportCredentials] Are credentials allowed in CORS requests? Defaults to `false`.
-  WindowsFunctionAppSiteConfigCors({
+  const WindowsFunctionAppSiteConfigCors({
     this.allowedOrigins,
     this.supportCredentials,
   });

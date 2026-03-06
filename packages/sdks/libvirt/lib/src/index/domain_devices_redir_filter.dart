@@ -9,7 +9,7 @@ class DomainDevicesRedirFilter {
 
   /// Creates a new [DomainDevicesRedirFilter].
   /// [usbs] Sets the parameters for the USB device redirection filter.
-  DomainDevicesRedirFilter({
+  const DomainDevicesRedirFilter({
     this.usbs,
   });
 

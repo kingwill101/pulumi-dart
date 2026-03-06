@@ -15,7 +15,7 @@ class ConnectionMonitorTcpConfiguration {
   /// [destinationPortBehavior] Destination port behavior.
   /// [disableTraceRoute] Value indicating whether path evaluation with trace route should be disabled.
   /// [port] The port to connect to.
-  ConnectionMonitorTcpConfiguration({
+  const ConnectionMonitorTcpConfiguration({
     this.destinationPortBehavior,
     this.disableTraceRoute,
     this.port,

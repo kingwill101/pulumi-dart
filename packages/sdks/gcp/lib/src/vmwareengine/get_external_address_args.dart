@@ -15,7 +15,7 @@ class GetExternalAddressArgs {
   /// Creates a new [GetExternalAddressArgs].
   /// [name] Name of the resource.
   /// [parent] The resource name of the private cloud that this cluster belongs.
-  GetExternalAddressArgs({
+  const GetExternalAddressArgs({
     required this.name,
     required this.parent,
   });

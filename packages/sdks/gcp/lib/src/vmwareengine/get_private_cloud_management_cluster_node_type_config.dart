@@ -16,7 +16,7 @@ class GetPrivateCloudManagementClusterNodeTypeConfig {
   /// [customCoreCount] Customized number of cores available to each node of the type.
   /// [nodeCount] The number of nodes of this type in the cluster.
   /// [nodeTypeId] Required.
-  GetPrivateCloudManagementClusterNodeTypeConfig({
+  const GetPrivateCloudManagementClusterNodeTypeConfig({
     required this.customCoreCount,
     required this.nodeCount,
     required this.nodeTypeId,

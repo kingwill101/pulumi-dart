@@ -11,7 +11,7 @@ class DedicatedHostNetworkAttribute {
   /// Creates a new [DedicatedHostNetworkAttribute].
   /// [slbUdpTimeout] The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
   /// [udpTimeout] The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
-  DedicatedHostNetworkAttribute({
+  const DedicatedHostNetworkAttribute({
     this.slbUdpTimeout,
     this.udpTimeout,
   });

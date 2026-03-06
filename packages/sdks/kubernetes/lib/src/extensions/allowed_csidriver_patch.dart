@@ -9,7 +9,7 @@ class AllowedCSIDriverPatch {
 
   /// Creates a new [AllowedCSIDriverPatch].
   /// [name] Name is the registered name of the CSI driver
-  AllowedCSIDriverPatch({
+  const AllowedCSIDriverPatch({
     this.name,
   });
 

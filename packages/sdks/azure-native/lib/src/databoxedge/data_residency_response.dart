@@ -9,7 +9,7 @@ class DataResidencyResponse {
 
   /// Creates a new [DataResidencyResponse].
   /// [type] DataResidencyType enum
-  DataResidencyResponse({
+  const DataResidencyResponse({
     this.type,
   });
 

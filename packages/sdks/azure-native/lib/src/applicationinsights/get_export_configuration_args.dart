@@ -18,7 +18,7 @@ class GetExportConfigurationArgs {
   /// [exportId] The Continuous Export configuration ID. This is unique within a Application Insights component.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  GetExportConfigurationArgs({
+  const GetExportConfigurationArgs({
     required this.exportId,
     required this.resourceGroupName,
     required this.resourceName,

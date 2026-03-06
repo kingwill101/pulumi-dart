@@ -22,7 +22,7 @@ class NetworkFirewallPolicyAssociationArgs {
   /// [firewallPolicy] The firewall policy of the resource.
   /// [name] The name for an association.
   /// [project] The ID of the project in which the resource belongs.
-  NetworkFirewallPolicyAssociationArgs({
+  const NetworkFirewallPolicyAssociationArgs({
     required this.attachmentTarget,
     required this.firewallPolicy,
     this.name,

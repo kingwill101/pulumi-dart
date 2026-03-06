@@ -10,7 +10,7 @@ class VirtualMachineAdditionalCapabilities {
 
   /// Creates a new [VirtualMachineAdditionalCapabilities].
   /// [installGpuDrivers] Flag to pre-install dedicated GPU drivers.
-  VirtualMachineAdditionalCapabilities({
+  const VirtualMachineAdditionalCapabilities({
     this.installGpuDrivers,
   });
 

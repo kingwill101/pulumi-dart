@@ -26,7 +26,7 @@ class GetKubernetesClusterKubeConfig {
   /// [host] The URL of the API server on the Kubernetes master node.
   /// [rawConfig] The full contents of the Kubernetes cluster's kubeconfig file.
   /// [token] The DigitalOcean API access token used by clients to access the cluster.
-  GetKubernetesClusterKubeConfig({
+  const GetKubernetesClusterKubeConfig({
     required this.clientCertificate,
     required this.clientKey,
     required this.clusterCaCertificate,

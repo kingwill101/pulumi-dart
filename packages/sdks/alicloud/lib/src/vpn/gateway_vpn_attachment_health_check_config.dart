@@ -26,7 +26,7 @@ class GatewayVpnAttachmentHealthCheckConfig {
   /// [retry] Number of retries for health check.
   /// [sip] SOURCE IP.
   /// [status] The negotiation status of Tunnel.
-  GatewayVpnAttachmentHealthCheckConfig({
+  const GatewayVpnAttachmentHealthCheckConfig({
     this.dip,
     this.enable,
     this.interval,

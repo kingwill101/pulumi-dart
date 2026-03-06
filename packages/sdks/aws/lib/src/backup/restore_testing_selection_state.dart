@@ -34,7 +34,7 @@ class RestoreTestingSelectionState {
   /// [restoreMetadataOverrides] Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
   /// [restoreTestingPlanName] The name of the restore testing plan.
   /// [validationWindowHours] The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
-  RestoreTestingSelectionState({
+  const RestoreTestingSelectionState({
     this.iamRoleArn,
     this.name,
     this.protectedResourceArns,

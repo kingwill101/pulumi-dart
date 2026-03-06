@@ -11,7 +11,7 @@ class NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig 
   /// Creates a new [NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig].
   /// [port] The port number to send traffic to.
   /// [publicIpAddress] The Public IP Address to send the traffic to.
-  NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig({
+  const NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig({
     required this.port,
     required this.publicIpAddress,
   });

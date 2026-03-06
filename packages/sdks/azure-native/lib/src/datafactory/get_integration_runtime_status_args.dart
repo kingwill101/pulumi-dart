@@ -18,7 +18,7 @@ class GetIntegrationRuntimeStatusArgs {
   /// [factoryName] The factory name.
   /// [integrationRuntimeName] The integration runtime name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationRuntimeStatusArgs({
+  const GetIntegrationRuntimeStatusArgs({
     required this.factoryName,
     required this.integrationRuntimeName,
     required this.resourceGroupName,

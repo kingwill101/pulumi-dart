@@ -18,7 +18,7 @@ class GetDataFlowArgs {
   /// [dataFlowName] The data flow name.
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
-  GetDataFlowArgs({
+  const GetDataFlowArgs({
     required this.dataFlowName,
     required this.factoryName,
     required this.resourceGroupName,

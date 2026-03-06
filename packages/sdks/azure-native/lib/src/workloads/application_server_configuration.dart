@@ -16,7 +16,7 @@ class ApplicationServerConfiguration {
   /// [instanceCount] The number of app server instances.
   /// [subnetId] The subnet id.
   /// [virtualMachineConfiguration] Gets or sets the virtual machine configuration.
-  ApplicationServerConfiguration({
+  const ApplicationServerConfiguration({
     required this.instanceCount,
     required this.subnetId,
     required this.virtualMachineConfiguration,

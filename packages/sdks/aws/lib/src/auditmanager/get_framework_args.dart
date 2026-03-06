@@ -17,7 +17,7 @@ class GetFrameworkArgs {
   /// [frameworkType] Required.
   /// [name] Name of the framework.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetFrameworkArgs({
+  const GetFrameworkArgs({
     required this.frameworkType,
     required this.name,
     this.region,

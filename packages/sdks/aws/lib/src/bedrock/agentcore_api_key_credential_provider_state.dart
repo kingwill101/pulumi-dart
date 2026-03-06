@@ -35,7 +35,7 @@ class AgentcoreApiKeyCredentialProviderState {
   /// [credentialProviderArn] ARN of the API Key credential provider.
   /// [name] Name of the API Key credential provider. Forces replacement when changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AgentcoreApiKeyCredentialProviderState({
+  const AgentcoreApiKeyCredentialProviderState({
     this.apiKey,
     this.apiKeySecretArns,
     this.apiKeyWo,

@@ -30,7 +30,7 @@ class TimeSeriesQueryResponse {
   /// [timeSeriesFilterRatio] Parameters to fetch a ratio between two time series filters.
   /// [timeSeriesQueryLanguage] A query used to fetch time series with MQL.
   /// [unitOverride] The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
-  TimeSeriesQueryResponse({
+  const TimeSeriesQueryResponse({
     required this.opsAnalyticsQuery,
     required this.outputFullDuration,
     required this.prometheusQuery,

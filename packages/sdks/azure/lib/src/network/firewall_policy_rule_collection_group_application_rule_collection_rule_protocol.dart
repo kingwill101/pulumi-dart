@@ -11,7 +11,7 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol {
   /// Creates a new [FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol].
   /// [port] Port number of the protocol. Range is 0-64000.
   /// [type] Protocol type. Possible values are `Http` and `Https`.
-  FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol({
+  const FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol({
     required this.port,
     required this.type,
   });

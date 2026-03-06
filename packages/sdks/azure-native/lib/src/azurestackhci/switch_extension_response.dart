@@ -15,7 +15,7 @@ class SwitchExtensionResponse {
   /// [extensionEnabled] This represents whether extension is enabled on virtualSwitch.
   /// [extensionName] This will show extension name for virtualSwitch.
   /// [switchId] Unique identifier for virtualSwitch.
-  SwitchExtensionResponse({
+  const SwitchExtensionResponse({
     required this.extensionEnabled,
     required this.extensionName,
     required this.switchId,

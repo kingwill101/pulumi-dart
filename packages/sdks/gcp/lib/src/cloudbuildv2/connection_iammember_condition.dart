@@ -11,7 +11,7 @@ class ConnectionIAMMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ConnectionIAMMemberCondition({
+  const ConnectionIAMMemberCondition({
     this.description,
     required this.expression,
     required this.title,

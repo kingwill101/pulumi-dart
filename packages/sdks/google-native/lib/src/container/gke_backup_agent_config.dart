@@ -9,7 +9,7 @@ class GkeBackupAgentConfig {
 
   /// Creates a new [GkeBackupAgentConfig].
   /// [enabled] Whether the Backup for GKE agent is enabled for this cluster.
-  GkeBackupAgentConfig({
+  const GkeBackupAgentConfig({
     this.enabled,
   });
 

@@ -13,7 +13,7 @@ class ExampleMessage {
   /// Creates a new [ExampleMessage].
   /// [chunks] Content of the message as a series of chunks.
   /// [role] The role within the conversation, e.g., user, agent.
-  ExampleMessage({
+  const ExampleMessage({
     this.chunks,
     this.role,
   });

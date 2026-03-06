@@ -21,7 +21,7 @@ class GetDataPolicyResult {
   /// [dataPolicyType] Type of data policy.
   /// [name] Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
   /// [policyTag] Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-  GetDataPolicyResult({
+  const GetDataPolicyResult({
     required this.dataMaskingPolicy,
     required this.dataPolicyId,
     required this.dataPolicyType,

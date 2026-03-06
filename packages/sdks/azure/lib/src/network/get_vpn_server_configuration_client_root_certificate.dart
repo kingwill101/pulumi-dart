@@ -11,7 +11,7 @@ class GetVpnServerConfigurationClientRootCertificate {
   /// Creates a new [GetVpnServerConfigurationClientRootCertificate].
   /// [name] The Name of the VPN Server Configuration.
   /// [publicCertData] The Public Key Data associated with the Certificate.
-  GetVpnServerConfigurationClientRootCertificate({
+  const GetVpnServerConfigurationClientRootCertificate({
     required this.name,
     required this.publicCertData,
   });

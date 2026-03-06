@@ -27,7 +27,7 @@ class RoleState {
   /// [roleId] This ID of Resource Manager role. The value is set to `role_name`.
   /// [roleName] Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
   /// [updateDate] Role update time.
-  RoleState({
+  const RoleState({
     this.arn,
     this.assumeRolePolicyDocument,
     this.description,

@@ -24,7 +24,7 @@ class GetNetworkSecurityPerimeterLoggingConfigurationResult {
   /// [name] Resource name.
   /// [properties] Properties of the NSP logging configuration.
   /// [type] Resource type.
-  GetNetworkSecurityPerimeterLoggingConfigurationResult({
+  const GetNetworkSecurityPerimeterLoggingConfigurationResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

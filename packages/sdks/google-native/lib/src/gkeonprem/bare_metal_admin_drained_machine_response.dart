@@ -9,7 +9,7 @@ class BareMetalAdminDrainedMachineResponse {
 
   /// Creates a new [BareMetalAdminDrainedMachineResponse].
   /// [nodeIp] Drained machine IP address.
-  BareMetalAdminDrainedMachineResponse({
+  const BareMetalAdminDrainedMachineResponse({
     required this.nodeIp,
   });
 

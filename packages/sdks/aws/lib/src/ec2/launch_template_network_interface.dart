@@ -73,7 +73,7 @@ class LaunchTemplateNetworkInterface {
   /// [privateIpAddress] The primary private IPv4 address.
   /// [securityGroups] A list of security group IDs to associate.
   /// [subnetId] The VPC Subnet ID to associate.
-  LaunchTemplateNetworkInterface({
+  const LaunchTemplateNetworkInterface({
     this.associateCarrierIpAddress,
     this.associatePublicIpAddress,
     this.connectionTrackingSpecification,

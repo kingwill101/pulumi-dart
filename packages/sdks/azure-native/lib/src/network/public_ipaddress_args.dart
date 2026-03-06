@@ -80,7 +80,7 @@ class PublicIPAddressArgs {
   /// [sku] The public IP address SKU.
   /// [tags] Resource tags.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  PublicIPAddressArgs({
+  const PublicIPAddressArgs({
     this.ddosSettings,
     this.deleteOption,
     this.dnsSettings,

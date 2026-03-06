@@ -21,7 +21,7 @@ class GetGatewaySmbUsersArgs {
   /// [ids] A list of Gateway SMB User IDs.
   /// [nameRegex] A regex string to filter results by Gateway SMB username.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetGatewaySmbUsersArgs({
+  const GetGatewaySmbUsersArgs({
     required this.gatewayId,
     this.ids,
     this.nameRegex,

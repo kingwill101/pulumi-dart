@@ -45,7 +45,7 @@ class TriggerBlobEventState {
   /// [name] Specifies the name of the Data Factory Blob Event Trigger. Changing this forces a new resource to be created.
   /// [pipelines] One or more `pipeline` blocks as defined below.
   /// [storageAccountId] The ID of Storage Account in which blob event will be listened. Changing this forces a new resource.
-  TriggerBlobEventState({
+  const TriggerBlobEventState({
     this.activated,
     this.additionalProperties,
     this.annotations,

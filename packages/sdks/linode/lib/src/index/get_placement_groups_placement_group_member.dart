@@ -11,7 +11,7 @@ class GetPlacementGroupsPlacementGroupMember {
   /// Creates a new [GetPlacementGroupsPlacementGroupMember].
   /// [isCompliant] Whether this Linode is currently compliant with the group's placement group type.
   /// [linodeId] The unique identifier for the Linode being migrated out of the placement group.
-  GetPlacementGroupsPlacementGroupMember({
+  const GetPlacementGroupsPlacementGroupMember({
     required this.isCompliant,
     required this.linodeId,
   });

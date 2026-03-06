@@ -40,7 +40,7 @@ class GetPipelineResult {
   /// [state] The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.
   /// [type] The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
   /// [workload] Workload information for creating new jobs.
-  GetPipelineResult({
+  const GetPipelineResult({
     required this.createTime,
     required this.displayName,
     required this.jobCount,

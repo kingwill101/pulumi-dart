@@ -32,7 +32,7 @@ class VMwareV2FabricSpecificDetailsResponse {
   /// [serviceEndpoint] The service endpoint.
   /// [serviceResourceId] The service resource Id.
   /// [vmwareSiteId] The ARM Id of the VMware site.
-  VMwareV2FabricSpecificDetailsResponse({
+  const VMwareV2FabricSpecificDetailsResponse({
     required this.instanceType,
     required this.migrationSolutionId,
     required this.physicalSiteId,

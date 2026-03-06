@@ -29,7 +29,7 @@ class BastionHostInstanceLdapAuthServer {
   /// [port] Required.
   /// [server] Required.
   /// [standbyServer] Optional.
-  BastionHostInstanceLdapAuthServer({
+  const BastionHostInstanceLdapAuthServer({
     required this.account,
     required this.baseDn,
     this.emailMapping,

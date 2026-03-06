@@ -10,7 +10,7 @@ class MultitenantDistributionCacheBehaviorAllowedMethods {
   /// Creates a new [MultitenantDistributionCacheBehaviorAllowedMethods].
   /// [cachedMethods] Controls whether CloudFront caches the response to requests using the specified HTTP methods.
   /// [items] Required.
-  MultitenantDistributionCacheBehaviorAllowedMethods({
+  const MultitenantDistributionCacheBehaviorAllowedMethods({
     required this.cachedMethods,
     required this.items,
   });

@@ -21,7 +21,7 @@ class ContextRuleResponse {
   /// [provided] A list of full type names of provided contexts.
   /// [requested] A list of full type names of requested contexts.
   /// [selector] Selects the methods to which this rule applies. Refer to selector for syntax details.
-  ContextRuleResponse({
+  const ContextRuleResponse({
     required this.allowedRequestExtensions,
     required this.allowedResponseExtensions,
     required this.provided,

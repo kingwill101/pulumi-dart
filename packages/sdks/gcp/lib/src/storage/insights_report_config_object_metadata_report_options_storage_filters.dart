@@ -8,7 +8,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
 
   /// Creates a new [InsightsReportConfigObjectMetadataReportOptionsStorageFilters].
   /// [bucket] The filter to use when specifying which bucket to generate inventory reports for.
-  InsightsReportConfigObjectMetadataReportOptionsStorageFilters({
+  const InsightsReportConfigObjectMetadataReportOptionsStorageFilters({
     this.bucket,
   });
 

@@ -9,7 +9,7 @@ class UniqueKey {
 
   /// Creates a new [UniqueKey].
   /// [paths] List of paths must be unique for each document in the Azure Cosmos DB service
-  UniqueKey({
+  const UniqueKey({
     this.paths,
   });
 

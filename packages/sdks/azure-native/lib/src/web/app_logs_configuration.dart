@@ -10,7 +10,7 @@ class AppLogsConfiguration {
   /// Creates a new [AppLogsConfiguration].
   /// [destination] Optional.
   /// [logAnalyticsConfiguration] Optional.
-  AppLogsConfiguration({
+  const AppLogsConfiguration({
     this.destination,
     this.logAnalyticsConfiguration,
   });

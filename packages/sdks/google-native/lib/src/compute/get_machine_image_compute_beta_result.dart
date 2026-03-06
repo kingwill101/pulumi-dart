@@ -59,7 +59,7 @@ class GetMachineImageComputeBetaResult {
   /// [status] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
   /// [storageLocations] The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
   /// [totalStorageBytes] Total size of the storage used by the machine image.
-  GetMachineImageComputeBetaResult({
+  const GetMachineImageComputeBetaResult({
     required this.creationTimestamp,
     required this.description,
     required this.guestFlush,

@@ -13,7 +13,7 @@ class GetAppAppengineV1betaArgs {
   /// Creates a new [GetAppAppengineV1betaArgs].
   /// [appId] Required.
   /// [includeExtraData] Optional.
-  GetAppAppengineV1betaArgs({
+  const GetAppAppengineV1betaArgs({
     required this.appId,
     this.includeExtraData,
   });

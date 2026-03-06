@@ -25,7 +25,7 @@ class Ec2SecurityGroupArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Ec2SecurityGroupArgs({
+  const Ec2SecurityGroupArgs({
     this.location,
     this.name,
     this.properties,

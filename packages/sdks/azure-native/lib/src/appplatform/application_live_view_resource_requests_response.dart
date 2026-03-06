@@ -15,7 +15,7 @@ class ApplicationLiveViewResourceRequestsResponse {
   /// [cpu] Cpu quantity allocated to each Application Live View component instance. 1 core can be represented by 1 or 1000m.
   /// [instanceCount] Desired instance count of Application Live View component instance.
   /// [memory] Memory quantity allocated to each Application Live View component instance. 1 GB can be represented by 1Gi or 1024Mi.
-  ApplicationLiveViewResourceRequestsResponse({
+  const ApplicationLiveViewResourceRequestsResponse({
     required this.cpu,
     required this.instanceCount,
     required this.memory,

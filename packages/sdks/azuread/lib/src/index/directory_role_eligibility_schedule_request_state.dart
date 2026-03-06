@@ -18,7 +18,7 @@ class DirectoryRoleEligibilityScheduleRequestState {
   /// [justification] Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
   /// [principalId] The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
   /// [roleDefinitionId] The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
-  DirectoryRoleEligibilityScheduleRequestState({
+  const DirectoryRoleEligibilityScheduleRequestState({
     this.directoryScopeId,
     this.justification,
     this.principalId,

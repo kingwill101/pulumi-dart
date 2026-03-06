@@ -21,7 +21,7 @@ class GetCertificatesResult {
   /// [includePending] Optional.
   /// [keyVaultId] The Key Vault ID.
   /// [names] List containing names of certificates that exist in this Key Vault.
-  GetCertificatesResult({
+  const GetCertificatesResult({
     required this.certificates,
     required this.id,
     this.includePending,

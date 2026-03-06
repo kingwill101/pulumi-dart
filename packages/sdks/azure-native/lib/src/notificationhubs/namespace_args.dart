@@ -57,7 +57,7 @@ class NamespaceArgs {
   /// [status] Namespace status.
   /// [tags] Resource tags.
   /// [zoneRedundancy] Namespace SKU name.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.dataCenter,
     this.location,
     this.namespaceName,

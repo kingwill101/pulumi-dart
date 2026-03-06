@@ -46,7 +46,7 @@ class MigrationStatusDetailsResponse {
   /// [migrationState] Current State of Migration.
   /// [pendingLogBackupsCount] Total pending log backups.
   /// [restoreBlockingReason] Restore blocking reason, if any
-  MigrationStatusDetailsResponse({
+  const MigrationStatusDetailsResponse({
     required this.activeBackupSets,
     required this.blobContainerName,
     required this.completeRestoreErrorMessage,

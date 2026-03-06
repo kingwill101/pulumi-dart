@@ -39,7 +39,7 @@ class AvailabilityGroupListenerArgs {
   /// [port] Listener port.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlVirtualMachineGroupName] Name of the SQL virtual machine group.
-  AvailabilityGroupListenerArgs({
+  const AvailabilityGroupListenerArgs({
     this.availabilityGroupConfiguration,
     this.availabilityGroupListenerName,
     this.availabilityGroupName,

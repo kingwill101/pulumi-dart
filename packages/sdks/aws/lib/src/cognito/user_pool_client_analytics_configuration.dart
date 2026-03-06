@@ -20,7 +20,7 @@ class UserPoolClientAnalyticsConfiguration {
   /// [externalId] ID for the Analytics Configuration. Conflicts with `application_arn`.
   /// [roleArn] ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics. Conflicts with `application_arn`.
   /// [userDataShared] If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
-  UserPoolClientAnalyticsConfiguration({
+  const UserPoolClientAnalyticsConfiguration({
     this.applicationArn,
     this.applicationId,
     this.externalId,

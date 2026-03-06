@@ -9,7 +9,7 @@ class AutoSnapshotAddOnResponse {
 
   /// Creates a new [AutoSnapshotAddOnResponse].
   /// [snapshotTimeOfDay] The daily time when an automatic snapshot will be created.
-  AutoSnapshotAddOnResponse({
+  const AutoSnapshotAddOnResponse({
     this.snapshotTimeOfDay,
   });
 

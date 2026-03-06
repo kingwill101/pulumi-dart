@@ -30,7 +30,7 @@ class GetEnterpriseUsersArgs {
   /// [searchKey] The keyword used to query users.
   /// [status] The status of the user.
   /// [tid] The ID of the tenant in DMS Enterprise.
-  GetEnterpriseUsersArgs({
+  const GetEnterpriseUsersArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

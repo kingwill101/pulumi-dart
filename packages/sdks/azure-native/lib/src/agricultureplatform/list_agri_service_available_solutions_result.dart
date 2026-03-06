@@ -10,7 +10,7 @@ class ListAgriServiceAvailableSolutionsResult {
 
   /// Creates a new [ListAgriServiceAvailableSolutionsResult].
   /// [solutions] Agri solutions list.
-  ListAgriServiceAvailableSolutionsResult({
+  const ListAgriServiceAvailableSolutionsResult({
     required this.solutions,
   });
 

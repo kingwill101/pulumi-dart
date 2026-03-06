@@ -17,7 +17,7 @@ class DomainOsNvRamSourceVhostUserDevSecLabel {
   /// [labelSkip] Determines whether to skip the label check for the security label in the UNIX socket.
   /// [model] Sets the model type for the security label in the UNIX domain socket configuration.
   /// [relabel] Enables or disables relabeling for the security label in the UNIX domain socket.
-  DomainOsNvRamSourceVhostUserDevSecLabel({
+  const DomainOsNvRamSourceVhostUserDevSecLabel({
     this.label,
     this.labelSkip,
     this.model,

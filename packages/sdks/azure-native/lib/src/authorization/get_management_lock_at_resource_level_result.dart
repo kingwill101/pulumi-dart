@@ -32,7 +32,7 @@ class GetManagementLockAtResourceLevelResult {
   /// [owners] The owners of the lock.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type of the lock - Microsoft.Authorization/locks.
-  GetManagementLockAtResourceLevelResult({
+  const GetManagementLockAtResourceLevelResult({
     required this.azureApiVersion,
     required this.id,
     required this.level,

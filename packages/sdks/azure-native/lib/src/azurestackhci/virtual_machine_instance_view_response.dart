@@ -10,7 +10,7 @@ class VirtualMachineInstanceViewResponse {
 
   /// Creates a new [VirtualMachineInstanceViewResponse].
   /// [vmAgent] The VM Config Agent running on the virtual machine.
-  VirtualMachineInstanceViewResponse({
+  const VirtualMachineInstanceViewResponse({
     this.vmAgent,
   });
 

@@ -133,7 +133,7 @@ class GetNetworkInsightsAnalysisExplanation {
   /// [vpcs] Required.
   /// [vpnConnections] Required.
   /// [vpnGateways] Required.
-  GetNetworkInsightsAnalysisExplanation({
+  const GetNetworkInsightsAnalysisExplanation({
     required this.aclRules,
     required this.acls,
     required this.address,

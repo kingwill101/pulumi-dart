@@ -21,7 +21,7 @@ class ArcConfiguration {
   /// [artifactsStorageType] Optional.
   /// [frontEndServiceConfiguration] Optional.
   /// [kubeConfig] Optional.
-  ArcConfiguration({
+  const ArcConfiguration({
     this.artifactStorageAccessMode,
     this.artifactStorageClassName,
     this.artifactStorageMountPath,

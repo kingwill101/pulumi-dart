@@ -15,7 +15,7 @@ class DevToolPortalComponentResponse {
   /// [instances] Collection of instances belong to Dev Tool Portal.
   /// [name] Required.
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
-  DevToolPortalComponentResponse({
+  const DevToolPortalComponentResponse({
     required this.instances,
     required this.name,
     required this.resourceRequests,

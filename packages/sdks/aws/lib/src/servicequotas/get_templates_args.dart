@@ -15,7 +15,7 @@ class GetTemplatesArgs {
   /// Creates a new [GetTemplatesArgs].
   /// [awsRegion] AWS Region to which the quota increases apply.
   /// [region] AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
-  GetTemplatesArgs({
+  const GetTemplatesArgs({
     this.awsRegion,
     this.region,
   });

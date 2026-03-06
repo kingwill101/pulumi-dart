@@ -15,7 +15,7 @@ class GetUserSettingsWithLocationArgs {
   /// Creates a new [GetUserSettingsWithLocationArgs].
   /// [location] The provider location
   /// [userSettingsName] The name of the user settings
-  GetUserSettingsWithLocationArgs({
+  const GetUserSettingsWithLocationArgs({
     required this.location,
     required this.userSettingsName,
   });

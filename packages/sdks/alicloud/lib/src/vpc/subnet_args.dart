@@ -31,7 +31,7 @@ class SubnetArgs {
   /// [vpcId] Optional.
   /// [vswitchName] Optional.
   /// [zoneId] Optional.
-  SubnetArgs({
+  const SubnetArgs({
     this.availabilityZone,
     this.cidrBlock,
     this.description,

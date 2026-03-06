@@ -17,7 +17,7 @@ class EnvgroupArgs {
   /// [hostnames] Host names for this environment group.
   /// [name] ID of the environment group.
   /// [organizationId] Required.
-  EnvgroupArgs({
+  const EnvgroupArgs({
     required this.hostnames,
     this.name,
     required this.organizationId,

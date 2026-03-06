@@ -16,7 +16,7 @@ class LogAnalyticsSignalGroupResponse {
   /// [authenticationSetting] Reference to the name of the authentication setting which is used for querying the data source
   /// [logAnalyticsWorkspaceResourceId] Log Analytics Workspace resource ID
   /// [signalAssignments] Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
-  LogAnalyticsSignalGroupResponse({
+  const LogAnalyticsSignalGroupResponse({
     required this.authenticationSetting,
     required this.logAnalyticsWorkspaceResourceId,
     this.signalAssignments,

@@ -65,7 +65,7 @@ class RegionCommitmentArgs {
   /// [region] URL of the region where this commitment may be used.
   /// [resources] A list of commitment amounts for particular resources.
   /// [type] The type of commitment, which affects the discount rate and the eligible resources.
-  RegionCommitmentArgs({
+  const RegionCommitmentArgs({
     this.autoRenew,
     this.category,
     this.description,

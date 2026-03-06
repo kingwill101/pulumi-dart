@@ -22,7 +22,7 @@ class TaskDefinitionLinuxParameters {
   /// [sharedMemorySize] Optional.
   /// [swappiness] Optional.
   /// [tmpfs] Optional.
-  TaskDefinitionLinuxParameters({
+  const TaskDefinitionLinuxParameters({
     this.capabilities,
     this.devices,
     this.initProcessEnabled,

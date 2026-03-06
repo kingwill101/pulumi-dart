@@ -22,7 +22,7 @@ class GetRepositoryIamPolicyArgs {
   /// [location] The location for the Repository.
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryId] Used to find the parent resource to bind the IAM policy to
-  GetRepositoryIamPolicyArgs({
+  const GetRepositoryIamPolicyArgs({
     this.location,
     this.project,
     required this.repositoryId,

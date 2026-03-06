@@ -21,7 +21,7 @@ class RemoteSupportPropertiesResponse {
   /// [remoteSupportNodeSettings] Required.
   /// [remoteSupportSessionDetails] Required.
   /// [remoteSupportType] Remote Support Type for cluster
-  RemoteSupportPropertiesResponse({
+  const RemoteSupportPropertiesResponse({
     required this.accessLevel,
     required this.expirationTimeStamp,
     required this.remoteSupportNodeSettings,

@@ -15,7 +15,7 @@ class RolePolicyAttachmentArgs {
   /// Creates a new [RolePolicyAttachmentArgs].
   /// [policyArn] The ARN of the policy you want to apply
   /// [role] The name of the IAM role to which the policy should be applied
-  RolePolicyAttachmentArgs({
+  const RolePolicyAttachmentArgs({
     required this.policyArn,
     required this.role,
   });

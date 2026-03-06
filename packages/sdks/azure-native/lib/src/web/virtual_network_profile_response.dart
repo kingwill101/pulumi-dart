@@ -18,7 +18,7 @@ class VirtualNetworkProfileResponse {
   /// [name] Name of the Virtual Network (read-only).
   /// [subnet] Subnet within the Virtual Network.
   /// [type] Resource type of the Virtual Network (read-only).
-  VirtualNetworkProfileResponse({
+  const VirtualNetworkProfileResponse({
     required this.id,
     required this.name,
     this.subnet,

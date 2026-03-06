@@ -21,7 +21,7 @@ class BgpConnectionState {
   /// [peerIp] The peer IP address for the Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
   /// [virtualHubId] The ID of the Virtual Hub within which this Bgp connection should be created. Changing this forces a new resource to be created.
   /// [virtualNetworkConnectionId] The ID of virtual network connection.
-  BgpConnectionState({
+  const BgpConnectionState({
     this.name,
     this.peerAsn,
     this.peerIp,

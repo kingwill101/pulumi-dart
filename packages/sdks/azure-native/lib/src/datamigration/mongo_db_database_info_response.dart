@@ -28,7 +28,7 @@ class MongoDbDatabaseInfoResponse {
   /// [name] The unqualified name of the database or collection
   /// [qualifiedName] The qualified name of the database or collection. For a collection, this is the database-qualified name.
   /// [supportsSharding] Whether the database has sharding enabled. Note that the migration task will enable sharding on the target if necessary.
-  MongoDbDatabaseInfoResponse({
+  const MongoDbDatabaseInfoResponse({
     required this.averageDocumentSize,
     required this.collections,
     required this.dataSize,

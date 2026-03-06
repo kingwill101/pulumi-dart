@@ -89,7 +89,7 @@ class DataSourceParameters {
   /// [sqlServer] Parameters for connecting to SQL Server.
   /// [teradata] Parameters for connecting to Teradata.
   /// [twitter] Parameters for connecting to Twitter.
-  DataSourceParameters({
+  const DataSourceParameters({
     this.amazonElasticsearch,
     this.athena,
     this.aurora,

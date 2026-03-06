@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsIamAccessKeyStatus {
   /// Creates a new [InsightFiltersResourceAwsIamAccessKeyStatus].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsIamAccessKeyStatus({
+  const InsightFiltersResourceAwsIamAccessKeyStatus({
     required this.comparison,
     required this.value,
   });

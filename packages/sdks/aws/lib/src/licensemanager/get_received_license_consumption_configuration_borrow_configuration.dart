@@ -11,7 +11,7 @@ class GetReceivedLicenseConsumptionConfigurationBorrowConfiguration {
   /// Creates a new [GetReceivedLicenseConsumptionConfigurationBorrowConfiguration].
   /// [allowEarlyCheckIn] Indicates whether early check-ins are allowed.
   /// [maxTimeToLiveInMinutes] Maximum time for the provisional configuration, in minutes.
-  GetReceivedLicenseConsumptionConfigurationBorrowConfiguration({
+  const GetReceivedLicenseConsumptionConfigurationBorrowConfiguration({
     required this.allowEarlyCheckIn,
     required this.maxTimeToLiveInMinutes,
   });

@@ -16,7 +16,7 @@ class ApiManagementServiceIdentity {
   /// Creates a new [ApiManagementServiceIdentity].
   /// [type] The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity
-  ApiManagementServiceIdentity({
+  const ApiManagementServiceIdentity({
     required this.type,
     this.userAssignedIdentities,
   });

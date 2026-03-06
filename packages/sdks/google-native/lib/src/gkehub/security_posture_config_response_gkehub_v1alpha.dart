@@ -12,7 +12,7 @@ class SecurityPostureConfigResponseGkehubV1alpha {
   /// Creates a new [SecurityPostureConfigResponseGkehubV1alpha].
   /// [mode] Sets which mode to use for Security Posture features.
   /// [vulnerabilityMode] Sets which mode to use for vulnerability scanning.
-  SecurityPostureConfigResponseGkehubV1alpha({
+  const SecurityPostureConfigResponseGkehubV1alpha({
     required this.mode,
     required this.vulnerabilityMode,
   });

@@ -12,7 +12,7 @@ class GetNetworkTransferPricesTypeRegionPrice {
   /// [hourly] Required.
   /// [id] The ID representing the Network Transfer Price.
   /// [monthly] Required.
-  GetNetworkTransferPricesTypeRegionPrice({
+  const GetNetworkTransferPricesTypeRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

@@ -8,7 +8,7 @@ class WorkflowAccessControlContent {
 
   /// Creates a new [WorkflowAccessControlContent].
   /// [allowedCallerIpAddressRanges] A list of the allowed caller IP address ranges.
-  WorkflowAccessControlContent({
+  const WorkflowAccessControlContent({
     required this.allowedCallerIpAddressRanges,
   });
 

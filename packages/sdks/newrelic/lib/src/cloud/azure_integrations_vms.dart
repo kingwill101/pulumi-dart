@@ -11,7 +11,7 @@ class AzureIntegrationsVms {
   /// Creates a new [AzureIntegrationsVms].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsVms({
+  const AzureIntegrationsVms({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

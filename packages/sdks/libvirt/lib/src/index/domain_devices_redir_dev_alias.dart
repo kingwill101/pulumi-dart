@@ -8,7 +8,7 @@ class DomainDevicesRedirDevAlias {
 
   /// Creates a new [DomainDevicesRedirDevAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesRedirDevAlias({
+  const DomainDevicesRedirDevAlias({
     required this.name,
   });
 

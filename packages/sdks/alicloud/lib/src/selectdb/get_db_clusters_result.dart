@@ -17,7 +17,7 @@ class GetDbClustersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Required.
   /// [outputFile] Optional.
-  GetDbClustersResult({
+  const GetDbClustersResult({
     required this.clusters,
     required this.id,
     required this.ids,

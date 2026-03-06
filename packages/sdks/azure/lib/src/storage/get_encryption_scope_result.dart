@@ -18,7 +18,7 @@ class GetEncryptionScopeResult {
   /// [name] Required.
   /// [source] The source of the Storage Encryption Scope.
   /// [storageAccountId] Required.
-  GetEncryptionScopeResult({
+  const GetEncryptionScopeResult({
     required this.id,
     required this.keyVaultKeyId,
     required this.name,

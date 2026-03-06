@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevDbus {
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesInterfaceSourceVhostUserChardevDbus({
+  const DomainDevicesInterfaceSourceVhostUserChardevDbus({
     this.channel,
   });
 

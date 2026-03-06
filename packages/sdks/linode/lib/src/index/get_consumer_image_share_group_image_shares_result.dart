@@ -21,7 +21,7 @@ class GetConsumerImageShareGroupImageSharesResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [tokenUuid] Required.
-  GetConsumerImageShareGroupImageSharesResult({
+  const GetConsumerImageShareGroupImageSharesResult({
     this.filters,
     required this.id,
     this.imageShares,

@@ -11,7 +11,7 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
   /// Creates a new [GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader].
   /// [name] The name of the Cloud Run Service.
   /// [value] The header field value.
-  GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader({
+  const GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader({
     required this.name,
     required this.value,
   });

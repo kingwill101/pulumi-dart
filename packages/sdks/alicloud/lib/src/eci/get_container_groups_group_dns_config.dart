@@ -15,7 +15,7 @@ class GetContainerGroupsGroupDnsConfig {
   /// [nameServers] The list of DNS server IP addresses.
   /// [options] The list of objects. Each object is a name-value pair. The value is optional.
   /// [searches] The list of DNS lookup domains.
-  GetContainerGroupsGroupDnsConfig({
+  const GetContainerGroupsGroupDnsConfig({
     required this.nameServers,
     required this.options,
     required this.searches,

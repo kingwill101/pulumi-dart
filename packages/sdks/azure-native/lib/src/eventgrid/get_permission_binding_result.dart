@@ -38,7 +38,7 @@ class GetPermissionBindingResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [topicSpaceName] The name of the Topic Space resource that the permission is bound to.
   /// [type] Type of the resource.
-  GetPermissionBindingResult({
+  const GetPermissionBindingResult({
     required this.azureApiVersion,
     this.clientGroupName,
     this.description,

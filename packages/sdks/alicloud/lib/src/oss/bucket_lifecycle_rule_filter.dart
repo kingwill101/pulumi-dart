@@ -15,7 +15,7 @@ class BucketLifecycleRuleFilter {
   /// [not] The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
   /// [objectSizeGreaterThan] Minimum object size (in bytes) to which the rule applies.
   /// [objectSizeLessThan] Maximum object size (in bytes) to which the rule applies.
-  BucketLifecycleRuleFilter({
+  const BucketLifecycleRuleFilter({
     this.not,
     this.objectSizeGreaterThan,
     this.objectSizeLessThan,

@@ -13,7 +13,7 @@ class JavaScriptFunctionBinding {
   /// Creates a new [JavaScriptFunctionBinding].
   /// [script] The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
   /// [type] Indicates the function binding type.
-  JavaScriptFunctionBinding({
+  const JavaScriptFunctionBinding({
     this.script,
     required this.type,
   });

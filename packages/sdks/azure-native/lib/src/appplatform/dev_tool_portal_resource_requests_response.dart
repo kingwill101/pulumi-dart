@@ -15,7 +15,7 @@ class DevToolPortalResourceRequestsResponse {
   /// [cpu] Cpu quantity allocated to each Dev Tool Portal instance. 1 core can be represented by 1 or 1000m
   /// [instanceCount] Desired instance count of Dev Tool Portal.
   /// [memory] Memory quantity allocated to each Dev Tool Portal instance. 1 GB can be represented by 1Gi or 1024Mi.
-  DevToolPortalResourceRequestsResponse({
+  const DevToolPortalResourceRequestsResponse({
     required this.cpu,
     required this.instanceCount,
     required this.memory,

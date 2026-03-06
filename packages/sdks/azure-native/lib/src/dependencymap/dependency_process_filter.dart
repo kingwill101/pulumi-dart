@@ -10,7 +10,7 @@ class DependencyProcessFilter {
 
   /// Creates a new [DependencyProcessFilter].
   /// [processNameFilter] Process name filter
-  DependencyProcessFilter({
+  const DependencyProcessFilter({
     this.processNameFilter,
   });
 

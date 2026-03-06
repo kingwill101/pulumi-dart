@@ -9,7 +9,7 @@ class VolumeReplicationHybridReplicationUserCommand {
 
   /// Creates a new [VolumeReplicationHybridReplicationUserCommand].
   /// [commands] (Output)
-  VolumeReplicationHybridReplicationUserCommand({
+  const VolumeReplicationHybridReplicationUserCommand({
     this.commands,
   });
 

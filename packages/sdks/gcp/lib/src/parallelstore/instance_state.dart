@@ -127,7 +127,7 @@ class InstanceState {
   /// [reservedIpRange] Immutable. Contains the id of the allocated IP address range
   /// [state] The instance state.
   /// [updateTime] The time when the instance was updated.
-  InstanceState({
+  const InstanceState({
     this.accessPoints,
     this.capacityGib,
     this.createTime,

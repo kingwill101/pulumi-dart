@@ -35,7 +35,7 @@ class LocalUserState {
   /// [sshKeyEnabled] Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   /// [sshPasswordEnabled] Specifies whether SSH Password Authentication is enabled. Defaults to `false`.
   /// [storageAccountId] The ID of the Storage Account that this Storage Account Local User resides in. Changing this forces a new Storage Account Local User to be created.
-  LocalUserState({
+  const LocalUserState({
     this.homeDirectory,
     this.name,
     this.password,

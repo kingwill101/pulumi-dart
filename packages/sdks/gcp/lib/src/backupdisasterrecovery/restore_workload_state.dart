@@ -61,7 +61,7 @@ class RestoreWorkloadState {
   /// [regionDiskTargetEnvironment] Optional. The destination environment for regional disk restoration.
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID
   /// [targetResources] Output only. Details of the target resource created/modified as part of restore.
-  RestoreWorkloadState({
+  const RestoreWorkloadState({
     this.backupId,
     this.backupVaultId,
     this.clearOverridesFieldMask,

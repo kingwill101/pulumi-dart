@@ -34,7 +34,7 @@ class GetInstanceTypesArgs {
   /// [supportLocalStorage] Whether the current storage disk is local or not.
   /// [supportNodeTypes] The specific supported node type list.
   /// [zoneId] The supported resources of specific zoneId.
-  GetInstanceTypesArgs({
+  const GetInstanceTypesArgs({
     required this.clusterType,
     required this.destinationResource,
     required this.instanceChargeType,

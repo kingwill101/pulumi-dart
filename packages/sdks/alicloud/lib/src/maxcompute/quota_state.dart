@@ -34,7 +34,7 @@ class QuotaState {
   /// [partNickName] Quota partial nickname, supports English letters and numbers, up to 24 characters
   /// [paymentType] Payment type. Valid values: Subscription/PayAsYouGo
   /// [subQuotaInfoLists] Secondary Quota list
-  QuotaState({
+  const QuotaState({
     this.commodityCode,
     this.commodityData,
     this.partNickName,

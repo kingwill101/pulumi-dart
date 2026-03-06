@@ -37,7 +37,7 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
   /// [keyAlgorithm] Key algorithm to use when generating the key pair. This key pair will be used to create
   /// [lifetime] Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
   /// [rotationWindowPercentage] Rotation window percentage indicating when certificate rotation should be initiated based
-  GetWorkloadIdentityPoolInlineCertificateIssuanceConfig({
+  const GetWorkloadIdentityPoolInlineCertificateIssuanceConfig({
     required this.caPools,
     required this.keyAlgorithm,
     required this.lifetime,

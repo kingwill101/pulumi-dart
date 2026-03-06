@@ -14,7 +14,7 @@ class GetApplicationGatewayHttpListenerCustomErrorConfiguration {
   /// [customErrorPageUrl] Error page URL of the application gateway custom error.
   /// [id] The ID of the Rewrite Rule Set
   /// [statusCode] Status code of the application gateway custom error.
-  GetApplicationGatewayHttpListenerCustomErrorConfiguration({
+  const GetApplicationGatewayHttpListenerCustomErrorConfiguration({
     required this.customErrorPageUrl,
     required this.id,
     required this.statusCode,

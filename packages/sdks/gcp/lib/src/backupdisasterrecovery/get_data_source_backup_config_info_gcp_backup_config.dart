@@ -17,7 +17,7 @@ class GetDataSourceBackupConfigInfoGcpBackupConfig {
   /// [backupPlanAssociation] The name of the backup plan association.
   /// [backupPlanDescription] The description of the backup plan.
   /// [backupPlanRules] The names of the backup plan rules which point to this backupvault
-  GetDataSourceBackupConfigInfoGcpBackupConfig({
+  const GetDataSourceBackupConfigInfoGcpBackupConfig({
     required this.backupPlan,
     required this.backupPlanAssociation,
     required this.backupPlanDescription,

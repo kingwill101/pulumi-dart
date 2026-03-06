@@ -14,7 +14,7 @@ class ParameterValidationResponse {
   /// Creates a new [ParameterValidationResponse].
   /// [regex] Validation based on regular expressions.
   /// [values] Validation based on a list of allowed values.
-  ParameterValidationResponse({
+  const ParameterValidationResponse({
     required this.regex,
     required this.values,
   });

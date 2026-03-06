@@ -39,7 +39,7 @@ class VolumeAttachmentArgs {
   /// [skipDestroy] Set this to true if you do not wish
   /// [stopInstanceBeforeDetaching] Set this to true to ensure that the target instance is stopped
   /// [volumeId] ID of the Volume to be attached
-  VolumeAttachmentArgs({
+  const VolumeAttachmentArgs({
     required this.deviceName,
     this.forceDetach,
     required this.instanceId,

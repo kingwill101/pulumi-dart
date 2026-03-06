@@ -17,7 +17,7 @@ class GetConnectorIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetConnectorIamPolicyArgs({
+  const GetConnectorIamPolicyArgs({
     required this.connectorId,
     required this.location,
     this.optionsRequestedPolicyVersion,

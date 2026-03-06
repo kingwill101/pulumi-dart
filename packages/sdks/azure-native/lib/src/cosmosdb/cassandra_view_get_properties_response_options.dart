@@ -12,7 +12,7 @@ class CassandraViewGetPropertiesResponseOptions {
   /// Creates a new [CassandraViewGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
   /// [throughput] Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  CassandraViewGetPropertiesResponseOptions({
+  const CassandraViewGetPropertiesResponseOptions({
     this.autoscaleSettings,
     this.throughput,
   });

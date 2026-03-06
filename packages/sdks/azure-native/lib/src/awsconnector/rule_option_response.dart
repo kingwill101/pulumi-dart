@@ -12,7 +12,7 @@ class RuleOptionResponse {
   /// Creates a new [RuleOptionResponse].
   /// [keyword] Property keyword
   /// [settings] Property settings
-  RuleOptionResponse({
+  const RuleOptionResponse({
     this.keyword,
     this.settings,
   });

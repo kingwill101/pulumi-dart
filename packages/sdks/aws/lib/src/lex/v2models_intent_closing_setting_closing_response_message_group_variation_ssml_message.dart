@@ -8,7 +8,7 @@ class V2modelsIntentClosingSettingClosingResponseMessageGroupVariationSsmlMessag
 
   /// Creates a new [V2modelsIntentClosingSettingClosingResponseMessageGroupVariationSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentClosingSettingClosingResponseMessageGroupVariationSsmlMessage({
+  const V2modelsIntentClosingSettingClosingResponseMessageGroupVariationSsmlMessage({
     required this.value,
   });
 

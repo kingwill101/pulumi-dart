@@ -27,7 +27,7 @@ class ExperimentPlanState {
   /// [resourceId] The ID of the resource.
   /// [tags] The tag of the resource.
   /// [templateId] The ID of the template.
-  ExperimentPlanState({
+  const ExperimentPlanState({
     this.createTime,
     this.externalParams,
     this.planName,

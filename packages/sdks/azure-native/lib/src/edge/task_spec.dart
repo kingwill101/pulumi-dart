@@ -15,7 +15,7 @@ class TaskSpec {
   /// [name] Name of Task
   /// [specification] Task specification
   /// [targetId] Target ARM id
-  TaskSpec({
+  const TaskSpec({
     required this.name,
     required this.specification,
     this.targetId,

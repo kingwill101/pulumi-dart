@@ -53,7 +53,7 @@ class GetImageResult {
   /// [status] Current status of the image
   /// [tags] A set of tags applied to the image
   /// [type] Type of the image.
-  GetImageResult({
+  const GetImageResult({
     required this.created,
     required this.description,
     required this.distribution,

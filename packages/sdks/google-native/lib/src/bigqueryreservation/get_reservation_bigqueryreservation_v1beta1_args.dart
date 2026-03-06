@@ -15,7 +15,7 @@ class GetReservationBigqueryreservationV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [reservationId] Required.
-  GetReservationBigqueryreservationV1beta1Args({
+  const GetReservationBigqueryreservationV1beta1Args({
     required this.location,
     this.project,
     required this.reservationId,

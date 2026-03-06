@@ -15,7 +15,7 @@ class GetL2NetworkArgs {
   /// Creates a new [GetL2NetworkArgs].
   /// [l2NetworkName] The name of the L2 network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetL2NetworkArgs({
+  const GetL2NetworkArgs({
     required this.l2NetworkName,
     required this.resourceGroupName,
   });

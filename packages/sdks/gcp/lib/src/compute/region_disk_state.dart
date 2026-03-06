@@ -180,7 +180,7 @@ class RegionDiskState {
   /// [sourceSnapshotId] The unique ID of the snapshot used to create this disk. This value
   /// [type] URL of the disk type resource describing which disk type to use to
   /// [users] Links to the users of the disk (attached instances) in form:
-  RegionDiskState({
+  const RegionDiskState({
     this.accessMode,
     this.asyncPrimaryDisk,
     this.createSnapshotBeforeDestroy,

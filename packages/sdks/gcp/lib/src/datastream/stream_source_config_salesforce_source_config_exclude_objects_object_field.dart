@@ -8,7 +8,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField {
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField].
   /// [name] Field name.
-  StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField({
+  const StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField({
     this.name,
   });
 

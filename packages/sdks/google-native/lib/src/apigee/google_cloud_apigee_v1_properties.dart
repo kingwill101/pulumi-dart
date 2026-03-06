@@ -10,7 +10,7 @@ class GoogleCloudApigeeV1Properties {
 
   /// Creates a new [GoogleCloudApigeeV1Properties].
   /// [property] List of all properties in the object
-  GoogleCloudApigeeV1Properties({
+  const GoogleCloudApigeeV1Properties({
     this.property,
   });
 

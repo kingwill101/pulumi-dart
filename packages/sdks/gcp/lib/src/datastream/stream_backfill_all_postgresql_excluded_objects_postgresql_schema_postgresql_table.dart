@@ -13,7 +13,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable 
   /// Creates a new [StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable].
   /// [postgresqlColumns] PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable({
+  const StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable({
     this.postgresqlColumns,
     required this.table,
   });

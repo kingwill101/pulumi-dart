@@ -15,7 +15,7 @@ class GetSecretArgs {
   /// Creates a new [GetSecretArgs].
   /// [resourceGroupName] Azure resource group name
   /// [secretResourceName] The name of the secret resource.
-  GetSecretArgs({
+  const GetSecretArgs({
     required this.resourceGroupName,
     required this.secretResourceName,
   });

@@ -11,7 +11,7 @@ class ExternalCredentials {
   /// [audience] Required.
   /// [identityToken] Required.
   /// [serviceAccountEmail] Required.
-  ExternalCredentials({
+  const ExternalCredentials({
     required this.audience,
     required this.identityToken,
     required this.serviceAccountEmail,

@@ -9,7 +9,7 @@ class GetJobQueueComputeEnvironmentOrder {
   /// Creates a new [GetJobQueueComputeEnvironmentOrder].
   /// [computeEnvironment] Required.
   /// [order] Required.
-  GetJobQueueComputeEnvironmentOrder({
+  const GetJobQueueComputeEnvironmentOrder({
     required this.computeEnvironment,
     required this.order,
   });

@@ -22,7 +22,7 @@ class NetworkFirewallPolicyAssociationState {
   /// [name] The name for an association.
   /// [project] The ID of the project in which the resource belongs.
   /// [shortName] The short name of the firewall policy of the association.
-  NetworkFirewallPolicyAssociationState({
+  const NetworkFirewallPolicyAssociationState({
     this.attachmentTarget,
     this.firewallPolicy,
     this.name,

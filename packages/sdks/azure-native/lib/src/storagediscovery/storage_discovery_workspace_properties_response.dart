@@ -22,7 +22,7 @@ class StorageDiscoveryWorkspacePropertiesResponse {
   /// [scopes] The scopes of the storage discovery workspace.
   /// [sku] The storage discovery sku
   /// [workspaceRoots] The view level storage discovery data estate
-  StorageDiscoveryWorkspacePropertiesResponse({
+  const StorageDiscoveryWorkspacePropertiesResponse({
     this.description,
     required this.provisioningState,
     required this.scopes,

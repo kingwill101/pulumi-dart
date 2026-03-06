@@ -12,7 +12,7 @@ class GetInstanceTypeRegionPrice {
   /// [hourly] Required.
   /// [id] Label used to identify instance type
   /// [monthly] Required.
-  GetInstanceTypeRegionPrice({
+  const GetInstanceTypeRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

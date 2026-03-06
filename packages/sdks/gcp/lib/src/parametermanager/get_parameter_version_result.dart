@@ -33,7 +33,7 @@ class GetParameterVersionResult {
   /// [parameterVersionId] Required.
   /// [project] Required.
   /// [updateTime] The time at which the Parameter Version was last updated.
-  GetParameterVersionResult({
+  const GetParameterVersionResult({
     required this.createTime,
     required this.disabled,
     required this.id,

@@ -13,7 +13,7 @@ class GetMachineImageComputeBetaArgs {
   /// Creates a new [GetMachineImageComputeBetaArgs].
   /// [machineImage] Required.
   /// [project] Optional.
-  GetMachineImageComputeBetaArgs({
+  const GetMachineImageComputeBetaArgs({
     required this.machineImage,
     this.project,
   });

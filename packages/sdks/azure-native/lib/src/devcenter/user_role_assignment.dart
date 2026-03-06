@@ -9,7 +9,7 @@ class UserRoleAssignment {
 
   /// Creates a new [UserRoleAssignment].
   /// [roles] A map of roles to assign to the parent user.
-  UserRoleAssignment({
+  const UserRoleAssignment({
     this.roles,
   });
 

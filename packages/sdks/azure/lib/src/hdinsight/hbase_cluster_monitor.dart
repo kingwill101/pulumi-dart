@@ -11,7 +11,7 @@ class HBaseClusterMonitor {
   /// Creates a new [HBaseClusterMonitor].
   /// [logAnalyticsWorkspaceId] The Operations Management Suite (OMS) workspace ID.
   /// [primaryKey] The Operations Management Suite (OMS) workspace key.
-  HBaseClusterMonitor({
+  const HBaseClusterMonitor({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

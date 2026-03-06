@@ -26,7 +26,7 @@ class GetAssetResult {
   /// [rackElevation] Position of an asset in a rack measured in rack units.
   /// [rackId] Rack ID of the asset.
   /// [region] Required.
-  GetAssetResult({
+  const GetAssetResult({
     required this.arn,
     required this.assetId,
     required this.assetType,

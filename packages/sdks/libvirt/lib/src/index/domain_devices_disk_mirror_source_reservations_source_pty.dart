@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorSourceReservationsSourcePty {
   /// Creates a new [DomainDevicesDiskMirrorSourceReservationsSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.
   /// [secLabels] This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  DomainDevicesDiskMirrorSourceReservationsSourcePty({
+  const DomainDevicesDiskMirrorSourceReservationsSourcePty({
     required this.path,
     this.secLabels,
   });

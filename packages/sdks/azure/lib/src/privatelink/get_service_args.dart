@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [name] The name of the private link service.
   /// [resourceGroupName] The name of the resource group in which the private link service resides.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

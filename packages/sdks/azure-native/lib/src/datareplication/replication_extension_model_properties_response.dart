@@ -13,7 +13,7 @@ class ReplicationExtensionModelPropertiesResponse {
   /// Creates a new [ReplicationExtensionModelPropertiesResponse].
   /// [customProperties] Replication extension model custom properties.
   /// [provisioningState] Gets or sets the provisioning state of the replication extension.
-  ReplicationExtensionModelPropertiesResponse({
+  const ReplicationExtensionModelPropertiesResponse({
     required this.customProperties,
     required this.provisioningState,
   });

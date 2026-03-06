@@ -12,7 +12,7 @@ class RegistryTaskScheduleRunNowArgs {
 
   /// Creates a new [RegistryTaskScheduleRunNowArgs].
   /// [containerRegistryTaskId] The ID of the Container Registry Task that to be scheduled. Changing this forces a new Container Registry Task Schedule to be created.
-  RegistryTaskScheduleRunNowArgs({
+  const RegistryTaskScheduleRunNowArgs({
     required this.containerRegistryTaskId,
   });
 

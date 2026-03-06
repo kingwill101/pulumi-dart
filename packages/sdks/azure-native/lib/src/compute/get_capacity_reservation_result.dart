@@ -58,7 +58,7 @@ class GetCapacityReservationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachinesAssociated] A list of all virtual machine resource ids that are associated with the capacity reservation.
   /// [zones] The availability zones.
-  GetCapacityReservationResult({
+  const GetCapacityReservationResult({
     required this.azureApiVersion,
     required this.id,
     required this.instanceView,

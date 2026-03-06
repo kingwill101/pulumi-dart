@@ -28,7 +28,7 @@ class GetFactoryGitHubAccessTokenArgs {
   /// [gitHubClientId] GitHub application client ID.
   /// [gitHubClientSecret] GitHub bring your own app client secret information.
   /// [resourceGroupName] The resource group name.
-  GetFactoryGitHubAccessTokenArgs({
+  const GetFactoryGitHubAccessTokenArgs({
     required this.factoryName,
     required this.gitHubAccessCode,
     required this.gitHubAccessTokenBaseUrl,

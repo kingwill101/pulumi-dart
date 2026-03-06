@@ -12,7 +12,7 @@ class TerminalSettingsResponse {
   /// Creates a new [TerminalSettingsResponse].
   /// [fontSize] Size of terminal font.
   /// [fontStyle] Style of terminal font.
-  TerminalSettingsResponse({
+  const TerminalSettingsResponse({
     this.fontSize,
     this.fontStyle,
   });

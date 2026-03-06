@@ -43,7 +43,7 @@ class GetGroupsGroup {
   /// [name] Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
   /// [parent] The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
   /// [updateTime] The time when the Group was last updated.
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.additionalGroupKeys,
     required this.createTime,
     required this.description,

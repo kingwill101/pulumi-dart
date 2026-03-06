@@ -32,7 +32,7 @@ class ServerArgs {
   /// [resourceGroupName] The name of the Resource Group where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
   /// [storageSku] Sku of the storage associated with the resource, Possible values are `standard` and `basic`. Changing this forces a new Fluid Relay Server to be created.
   /// [tags] A mapping of tags which should be assigned to the Fluid Relay Server.
-  ServerArgs({
+  const ServerArgs({
     this.customerManagedKey,
     this.identity,
     this.location,

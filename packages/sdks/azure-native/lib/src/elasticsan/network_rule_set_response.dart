@@ -10,7 +10,7 @@ class NetworkRuleSetResponse {
 
   /// Creates a new [NetworkRuleSetResponse].
   /// [virtualNetworkRules] The list of virtual network rules.
-  NetworkRuleSetResponse({
+  const NetworkRuleSetResponse({
     this.virtualNetworkRules,
   });
 

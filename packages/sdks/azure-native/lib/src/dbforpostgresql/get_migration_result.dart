@@ -101,7 +101,7 @@ class GetMigrationResult {
   /// [targetDbServerResourceId] Identifier of the target database server resource.
   /// [triggerCutover] Indicates if cutover must be triggered for the entire migration.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetMigrationResult({
+  const GetMigrationResult({
     required this.azureApiVersion,
     this.cancel,
     required this.currentStatus,

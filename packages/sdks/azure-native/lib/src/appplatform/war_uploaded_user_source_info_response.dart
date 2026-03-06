@@ -25,7 +25,7 @@ class WarUploadedUserSourceInfoResponse {
   /// [serverVersion] Server version, currently only Apache Tomcat is supported
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  WarUploadedUserSourceInfoResponse({
+  const WarUploadedUserSourceInfoResponse({
     this.jvmOptions,
     this.relativePath,
     this.runtimeVersion,

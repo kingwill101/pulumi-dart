@@ -128,7 +128,7 @@ class GetInterconnectAttachmentResult {
   /// [subnetLength] Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility.
   /// [type] The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
   /// [vlanTag8021q] The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
-  GetInterconnectAttachmentResult({
+  const GetInterconnectAttachmentResult({
     required this.adminEnabled,
     required this.bandwidth,
     required this.candidateIpv6Subnets,

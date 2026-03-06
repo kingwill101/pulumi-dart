@@ -19,7 +19,7 @@ class AllocationResult {
   /// [allocationTimestamp] AllocationTimestamp stores the time when the resources were allocated. This field is not guaranteed to be set, in which case that time is unknown.
   /// [devices] Devices is the result of allocating devices.
   /// [nodeSelector] NodeSelector defines where the allocated resources are available. If unset, they are available everywhere.
-  AllocationResult({
+  const AllocationResult({
     this.allocationTimestamp,
     this.devices,
     this.nodeSelector,

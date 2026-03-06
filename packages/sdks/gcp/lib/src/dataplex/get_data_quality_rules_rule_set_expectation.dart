@@ -8,7 +8,7 @@ class GetDataQualityRulesRuleSetExpectation {
 
   /// Creates a new [GetDataQualityRulesRuleSetExpectation].
   /// [values] Expected values for the column value.
-  GetDataQualityRulesRuleSetExpectation({
+  const GetDataQualityRulesRuleSetExpectation({
     required this.values,
   });
 

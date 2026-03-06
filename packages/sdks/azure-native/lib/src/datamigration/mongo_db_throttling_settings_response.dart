@@ -15,7 +15,7 @@ class MongoDbThrottlingSettingsResponse {
   /// [maxParallelism] The maximum number of work items (e.g. collection copies) that will be processed in parallel
   /// [minFreeCpu] The percentage of CPU time that the migrator will try to avoid using, from 0 to 100
   /// [minFreeMemoryMb] The number of megabytes of RAM that the migrator will try to avoid using
-  MongoDbThrottlingSettingsResponse({
+  const MongoDbThrottlingSettingsResponse({
     this.maxParallelism,
     this.minFreeCpu,
     this.minFreeMemoryMb,

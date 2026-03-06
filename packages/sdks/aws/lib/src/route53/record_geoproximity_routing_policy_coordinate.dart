@@ -9,7 +9,7 @@ class RecordGeoproximityRoutingPolicyCoordinate {
   /// Creates a new [RecordGeoproximityRoutingPolicyCoordinate].
   /// [latitude] Required.
   /// [longitude] Required.
-  RecordGeoproximityRoutingPolicyCoordinate({
+  const RecordGeoproximityRoutingPolicyCoordinate({
     required this.latitude,
     required this.longitude,
   });

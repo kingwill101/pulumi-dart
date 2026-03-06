@@ -12,7 +12,7 @@ class ParamKindPatch {
   /// Creates a new [ParamKindPatch].
   /// [apiVersion] APIVersion is the API group version the resources belong to. In format of "group/version". Required.
   /// [kind] Kind is the API kind the resources belong to. Required.
-  ParamKindPatch({
+  const ParamKindPatch({
     this.apiVersion,
     this.kind,
   });

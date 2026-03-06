@@ -33,7 +33,7 @@ class GetHoneypotNodesResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetHoneypotNodesResult({
+  const GetHoneypotNodesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

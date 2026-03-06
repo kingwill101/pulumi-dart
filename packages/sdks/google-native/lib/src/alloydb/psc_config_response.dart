@@ -9,7 +9,7 @@ class PscConfigResponse {
 
   /// Creates a new [PscConfigResponse].
   /// [pscEnabled] Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
-  PscConfigResponse({
+  const PscConfigResponse({
     required this.pscEnabled,
   });
 

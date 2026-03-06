@@ -25,7 +25,7 @@ class Macie2JobSummaryArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Macie2JobSummaryArgs({
+  const Macie2JobSummaryArgs({
     this.location,
     this.name,
     this.properties,

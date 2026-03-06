@@ -12,7 +12,7 @@ class WorkspaceSku {
   /// Creates a new [WorkspaceSku].
   /// [capacityReservationLevel] The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
   /// [name] The name of the SKU.
-  WorkspaceSku({
+  const WorkspaceSku({
     this.capacityReservationLevel,
     required this.name,
   });

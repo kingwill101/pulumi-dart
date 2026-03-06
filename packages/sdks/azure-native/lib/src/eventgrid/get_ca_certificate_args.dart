@@ -18,7 +18,7 @@ class GetCaCertificateArgs {
   /// [caCertificateName] Name of the CA certificate.
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetCaCertificateArgs({
+  const GetCaCertificateArgs({
     required this.caCertificateName,
     required this.namespaceName,
     required this.resourceGroupName,

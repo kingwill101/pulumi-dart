@@ -8,7 +8,7 @@ class InstanceGroupManagerResourcePolicies {
 
   /// Creates a new [InstanceGroupManagerResourcePolicies].
   /// [workloadPolicy] The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
-  InstanceGroupManagerResourcePolicies({
+  const InstanceGroupManagerResourcePolicies({
     this.workloadPolicy,
   });
 

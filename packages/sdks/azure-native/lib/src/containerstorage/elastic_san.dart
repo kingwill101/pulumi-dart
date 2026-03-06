@@ -13,7 +13,7 @@ class ElasticSan {
   /// Creates a new [ElasticSan].
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool
   /// [skuName] Sku name
-  ElasticSan({
+  const ElasticSan({
     this.encryption,
     this.skuName,
   });

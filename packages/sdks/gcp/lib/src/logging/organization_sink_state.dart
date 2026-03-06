@@ -54,7 +54,7 @@ class OrganizationSinkState {
   /// [name] The name of the logging sink.
   /// [orgId] The numeric ID of the organization to be exported to the sink.
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
-  OrganizationSinkState({
+  const OrganizationSinkState({
     this.bigqueryOptions,
     this.description,
     this.destination,

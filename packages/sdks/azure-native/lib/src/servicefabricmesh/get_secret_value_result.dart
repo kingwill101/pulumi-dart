@@ -29,7 +29,7 @@ class GetSecretValueResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   /// [value] The actual value of the secret.
-  GetSecretValueResult({
+  const GetSecretValueResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

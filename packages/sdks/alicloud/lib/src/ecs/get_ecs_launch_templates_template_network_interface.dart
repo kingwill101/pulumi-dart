@@ -20,7 +20,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterface {
   /// [primaryIp] The primary private IP address of the ENI.
   /// [securityGroupId] The security group ID must be one in the same VPC.
   /// [vswitchId] The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-  GetEcsLaunchTemplatesTemplateNetworkInterface({
+  const GetEcsLaunchTemplatesTemplateNetworkInterface({
     required this.description,
     required this.name,
     required this.primaryIp,

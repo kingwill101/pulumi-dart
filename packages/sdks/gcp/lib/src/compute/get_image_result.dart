@@ -69,7 +69,7 @@ class GetImageResult {
   /// [sourceDiskId] The ID value of the disk used to create this image.
   /// [sourceImageId] The ID value of the image used to create this image.
   /// [status] The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
-  GetImageResult({
+  const GetImageResult({
     required this.archiveSizeBytes,
     required this.creationTimestamp,
     required this.description,

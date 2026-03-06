@@ -18,7 +18,7 @@ class GetPlanMemberArgs {
   /// [memberName] The name of a devcenter plan member.
   /// [planName] The name of the devcenter plan.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPlanMemberArgs({
+  const GetPlanMemberArgs({
     required this.memberName,
     required this.planName,
     required this.resourceGroupName,

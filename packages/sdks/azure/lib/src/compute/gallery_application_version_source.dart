@@ -11,7 +11,7 @@ class GalleryApplicationVersionSource {
   /// Creates a new [GalleryApplicationVersionSource].
   /// [defaultConfigurationLink] The Storage Blob URI of the default configuration. Changing this forces a new resource to be created.
   /// [mediaLink] The Storage Blob URI of the source application package. Changing this forces a new resource to be created.
-  GalleryApplicationVersionSource({
+  const GalleryApplicationVersionSource({
     this.defaultConfigurationLink,
     required this.mediaLink,
   });

@@ -20,7 +20,7 @@ class SqlUserDefinedFunctionGetPropertiesResponseResource {
   /// [id] Name of the Cosmos DB SQL userDefinedFunction
   /// [rid] A system generated property. A unique identifier.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
-  SqlUserDefinedFunctionGetPropertiesResponseResource({
+  const SqlUserDefinedFunctionGetPropertiesResponseResource({
     this.body,
     required this.etag,
     required this.id,

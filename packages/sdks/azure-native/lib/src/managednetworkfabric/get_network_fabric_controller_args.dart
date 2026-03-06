@@ -15,7 +15,7 @@ class GetNetworkFabricControllerArgs {
   /// Creates a new [GetNetworkFabricControllerArgs].
   /// [networkFabricControllerName] Name of the Network Fabric Controller.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkFabricControllerArgs({
+  const GetNetworkFabricControllerArgs({
     required this.networkFabricControllerName,
     required this.resourceGroupName,
   });

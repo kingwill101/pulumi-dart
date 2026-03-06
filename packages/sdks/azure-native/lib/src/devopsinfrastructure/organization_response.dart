@@ -18,7 +18,7 @@ class OrganizationResponse {
   /// [parallelism] How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
   /// [projects] Optional list of projects in which the pool should be created.
   /// [url] The Azure DevOps organization URL in which the pool should be created.
-  OrganizationResponse({
+  const OrganizationResponse({
     this.openAccess,
     this.parallelism,
     this.projects,

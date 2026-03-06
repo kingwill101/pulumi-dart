@@ -15,7 +15,7 @@ class GetConfigurationStoreArgs {
   /// Creates a new [GetConfigurationStoreArgs].
   /// [configStoreName] The name of the configuration store.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
-  GetConfigurationStoreArgs({
+  const GetConfigurationStoreArgs({
     required this.configStoreName,
     required this.resourceGroupName,
   });

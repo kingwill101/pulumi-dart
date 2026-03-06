@@ -11,7 +11,7 @@ class DeliveryPipelineIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DeliveryPipelineIamBindingCondition({
+  const DeliveryPipelineIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

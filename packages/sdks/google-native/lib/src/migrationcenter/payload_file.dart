@@ -12,7 +12,7 @@ class PayloadFile {
   /// Creates a new [PayloadFile].
   /// [data] The file data.
   /// [name] The file name.
-  PayloadFile({
+  const PayloadFile({
     this.data,
     this.name,
   });

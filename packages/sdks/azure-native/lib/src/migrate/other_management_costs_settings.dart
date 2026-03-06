@@ -15,7 +15,7 @@ class OtherManagementCostsSettings {
   /// [dataProtectionCostPerServerPerYear] Data Protection Cost Per Server Per Year.
   /// [monitoringCostPerServerPerYear] Monitoring Cost Per Server Per Year.
   /// [patchingCostPerServerPerYear] Patching Cost Per Server Per Year.
-  OtherManagementCostsSettings({
+  const OtherManagementCostsSettings({
     required this.dataProtectionCostPerServerPerYear,
     required this.monitoringCostPerServerPerYear,
     required this.patchingCostPerServerPerYear,

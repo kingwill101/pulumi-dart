@@ -16,7 +16,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   /// [passwordField] Details about your login page password field. See `password_field` for more details.
   /// [payloadType] The payload type for your login endpoint, either JSON or form encoded.
   /// [usernameField] Details about your login page username field. See `username_field` for more details.
-  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection({
+  const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection({
     required this.passwordField,
     required this.payloadType,
     required this.usernameField,

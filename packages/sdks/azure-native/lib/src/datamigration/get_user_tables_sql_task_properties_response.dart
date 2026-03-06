@@ -35,7 +35,7 @@ class GetUserTablesSqlTaskPropertiesResponse {
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskId] Task id
   /// [taskType] Task type.
-  GetUserTablesSqlTaskPropertiesResponse({
+  const GetUserTablesSqlTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

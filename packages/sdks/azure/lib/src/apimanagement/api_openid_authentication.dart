@@ -11,7 +11,7 @@ class ApiOpenidAuthentication {
   /// Creates a new [ApiOpenidAuthentication].
   /// [bearerTokenSendingMethods] How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
   /// [openidProviderName] OpenID Connect provider identifier. The name of an OpenID Connect Provider.
-  ApiOpenidAuthentication({
+  const ApiOpenidAuthentication({
     this.bearerTokenSendingMethods,
     required this.openidProviderName,
   });

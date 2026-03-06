@@ -15,7 +15,7 @@ class GetScheduleArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [scheduleId] Required.
-  GetScheduleArgs({
+  const GetScheduleArgs({
     required this.location,
     this.project,
     required this.scheduleId,

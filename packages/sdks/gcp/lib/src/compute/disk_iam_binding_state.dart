@@ -43,7 +43,7 @@ class DiskIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [zone] A reference to the zone where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
-  DiskIamBindingState({
+  const DiskIamBindingState({
     this.condition,
     this.etag,
     this.members,

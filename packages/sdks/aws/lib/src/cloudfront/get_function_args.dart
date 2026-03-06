@@ -15,7 +15,7 @@ class GetFunctionArgs {
   /// Creates a new [GetFunctionArgs].
   /// [name] Name of the CloudFront function.
   /// [stage] Function’s stage, either `DEVELOPMENT` or `LIVE`.
-  GetFunctionArgs({
+  const GetFunctionArgs({
     required this.name,
     required this.stage,
   });

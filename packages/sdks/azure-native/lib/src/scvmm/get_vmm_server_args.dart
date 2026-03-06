@@ -15,7 +15,7 @@ class GetVmmServerArgs {
   /// Creates a new [GetVmmServerArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [vmmServerName] Name of the VMMServer.
-  GetVmmServerArgs({
+  const GetVmmServerArgs({
     required this.resourceGroupName,
     required this.vmmServerName,
   });

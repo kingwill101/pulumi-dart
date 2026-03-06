@@ -49,7 +49,7 @@ class LabArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [support] The properties of any lab support message associated with this lab
   /// [tags] The tags of the resource.
-  LabArgs({
+  const LabArgs({
     this.announcement,
     this.environmentPermission,
     this.extendedProperties,

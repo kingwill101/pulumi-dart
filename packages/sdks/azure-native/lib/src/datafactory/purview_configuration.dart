@@ -9,7 +9,7 @@ class PurviewConfiguration {
 
   /// Creates a new [PurviewConfiguration].
   /// [purviewResourceId] Purview resource id.
-  PurviewConfiguration({
+  const PurviewConfiguration({
     this.purviewResourceId,
   });
 

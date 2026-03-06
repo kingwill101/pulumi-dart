@@ -17,7 +17,7 @@ class ClusterShardNode {
   /// [createTime] The date and time when the node was created. Example: `2022-01-01T21:00:00Z`.
   /// [endpoints] Optional.
   /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  ClusterShardNode({
+  const ClusterShardNode({
     this.availabilityZone,
     this.createTime,
     this.endpoints,

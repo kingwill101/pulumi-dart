@@ -14,7 +14,7 @@ class NodePoolNodeConfigSoleTenantConfigNodeAffinity {
   /// [key] .
   /// [operator] .
   /// [values] .
-  NodePoolNodeConfigSoleTenantConfigNodeAffinity({
+  const NodePoolNodeConfigSoleTenantConfigNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

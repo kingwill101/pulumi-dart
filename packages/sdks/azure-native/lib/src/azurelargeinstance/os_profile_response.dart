@@ -18,7 +18,7 @@ class OsProfileResponse {
   /// [osType] This property allows you to specify the type of the OS.
   /// [sshPublicKey] Specifies the SSH public key used to access the operating system.
   /// [version] Specifies version of operating system.
-  OsProfileResponse({
+  const OsProfileResponse({
     this.computerName,
     this.osType,
     this.sshPublicKey,

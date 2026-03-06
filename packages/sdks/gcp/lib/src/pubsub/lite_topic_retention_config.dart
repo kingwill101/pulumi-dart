@@ -16,7 +16,7 @@ class LiteTopicRetentionConfig {
   /// Creates a new [LiteTopicRetentionConfig].
   /// [perPartitionBytes] The provisioned storage, in bytes, per partition. If the number of bytes stored
   /// [period] How long a published message is retained. If unset, messages will be retained as
-  LiteTopicRetentionConfig({
+  const LiteTopicRetentionConfig({
     required this.perPartitionBytes,
     this.period,
   });

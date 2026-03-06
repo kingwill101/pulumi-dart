@@ -13,7 +13,7 @@ class Step {
   /// Creates a new [Step].
   /// [branches] List of branches.
   /// [name] String of the step name.
-  Step({
+  const Step({
     required this.branches,
     required this.name,
   });

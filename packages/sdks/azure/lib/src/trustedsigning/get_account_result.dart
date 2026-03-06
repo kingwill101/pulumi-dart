@@ -24,7 +24,7 @@ class GetAccountResult {
   /// [resourceGroupName] Required.
   /// [skuName] The sku name of the Trusted Signing Account.
   /// [tags] A mapping of tags assigned to the Trusted Signing Account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accountUri,
     required this.id,
     required this.location,

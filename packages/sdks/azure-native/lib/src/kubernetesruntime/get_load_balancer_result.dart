@@ -36,7 +36,7 @@ class GetLoadBalancerResult {
   /// [serviceSelector] A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLoadBalancerResult({
+  const GetLoadBalancerResult({
     required this.addresses,
     required this.advertiseMode,
     required this.azureApiVersion,

@@ -11,7 +11,7 @@ class AlertProcessingRuleActionGroupConditionTargetResource {
   /// Creates a new [AlertProcessingRuleActionGroupConditionTargetResource].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   /// [values] A list of values to match for a given condition. The values should be valid resource IDs.
-  AlertProcessingRuleActionGroupConditionTargetResource({
+  const AlertProcessingRuleActionGroupConditionTargetResource({
     required this.operator,
     required this.values,
   });

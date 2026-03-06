@@ -17,7 +17,7 @@ class RuleScope {
   /// [complianceResourceTypes] A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `compliance_resource_id`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
   /// [tagKey] The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.
   /// [tagValue] The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule.
-  RuleScope({
+  const RuleScope({
     this.complianceResourceId,
     this.complianceResourceTypes,
     this.tagKey,

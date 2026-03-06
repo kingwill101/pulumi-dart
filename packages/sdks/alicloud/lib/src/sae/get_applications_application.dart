@@ -165,7 +165,7 @@ class GetApplicationsApplication {
   /// [vswitchId] The vswitch id.
   /// [warStartOptions] WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
   /// [webContainer] The version of tomcat that the deployment package depends on. Image type applications are not supported.
-  GetApplicationsApplication({
+  const GetApplicationsApplication({
     required this.acrAssumeRoleArn,
     required this.acrInstanceId,
     required this.appDescription,

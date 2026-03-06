@@ -241,7 +241,7 @@ class VpnConnectionState {
   /// [vgwTelemetries] Telemetry for the VPN tunnels. Detailed below.
   /// [vpnConcentratorId] ID of the VPN concentrator to associate with the VPN connection.
   /// [vpnGatewayId] The ID of the Virtual Private Gateway.
-  VpnConnectionState({
+  const VpnConnectionState({
     this.arn,
     this.coreNetworkArn,
     this.coreNetworkAttachmentArn,

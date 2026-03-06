@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration {
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration].
   /// [commonAttributes] Describes the metadata sent to the HTTP endpoint destination. See `common_attributes` block below for details.
   /// [contentEncoding] Kinesis Data Firehose uses the content encoding to compress the body of a request before sending the request to the destination. Valid values are `NONE` and `GZIP`.  Default value is `NONE`.
-  FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration({
+  const FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration({
     this.commonAttributes,
     this.contentEncoding,
   });

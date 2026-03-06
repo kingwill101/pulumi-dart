@@ -15,7 +15,7 @@ class Parameter {
   /// [asPath] List of AS paths.
   /// [community] List of BGP communities.
   /// [routePrefix] List of route prefixes.
-  Parameter({
+  const Parameter({
     this.asPath,
     this.community,
     this.routePrefix,

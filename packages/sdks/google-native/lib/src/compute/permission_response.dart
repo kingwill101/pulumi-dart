@@ -34,7 +34,7 @@ class PermissionResponse {
   /// [notPorts] Negate of ports. Specifies exclusions.
   /// [paths] HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
   /// [ports] Port names or numbers.
-  PermissionResponse({
+  const PermissionResponse({
     required this.constraints,
     required this.hosts,
     required this.methods,

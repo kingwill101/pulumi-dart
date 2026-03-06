@@ -16,7 +16,7 @@ class InTotoSlsaProvenanceV1ContaineranalysisV1beta1 {
   /// [predicateType] Optional.
   /// [subject] Optional.
   /// [type] InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
-  InTotoSlsaProvenanceV1ContaineranalysisV1beta1({
+  const InTotoSlsaProvenanceV1ContaineranalysisV1beta1({
     this.predicate,
     this.predicateType,
     this.subject,

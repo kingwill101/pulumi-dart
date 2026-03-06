@@ -18,7 +18,7 @@ class GetPrivateStoreCollectionOfferArgs {
   /// [collectionId] The collection ID
   /// [offerId] The offer ID to update or delete
   /// [privateStoreId] The store ID - must use the tenant ID
-  GetPrivateStoreCollectionOfferArgs({
+  const GetPrivateStoreCollectionOfferArgs({
     required this.collectionId,
     required this.offerId,
     required this.privateStoreId,

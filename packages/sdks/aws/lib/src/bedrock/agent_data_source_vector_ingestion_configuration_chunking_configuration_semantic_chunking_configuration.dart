@@ -14,7 +14,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticCh
   /// [breakpointPercentileThreshold] The dissimilarity threshold for splitting chunks.
   /// [bufferSize] The buffer size.
   /// [maxToken] The maximum number of tokens a chunk can contain.
-  AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration({
     required this.breakpointPercentileThreshold,
     required this.bufferSize,
     required this.maxToken,

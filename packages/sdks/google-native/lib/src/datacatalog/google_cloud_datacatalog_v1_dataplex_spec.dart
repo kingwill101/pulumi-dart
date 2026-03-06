@@ -19,7 +19,7 @@ class GoogleCloudDatacatalogV1DataplexSpec {
   /// [compressionFormat] Compression format of the data, e.g., zip, gzip etc.
   /// [dataFormat] Format of the data.
   /// [project] Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
-  GoogleCloudDatacatalogV1DataplexSpec({
+  const GoogleCloudDatacatalogV1DataplexSpec({
     this.asset,
     this.compressionFormat,
     this.dataFormat,

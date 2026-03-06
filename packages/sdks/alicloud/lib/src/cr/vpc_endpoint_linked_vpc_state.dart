@@ -26,7 +26,7 @@ class VpcEndpointLinkedVpcState {
   /// [status] The status of the Vpc Endpoint Linked Vpc.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch.
-  VpcEndpointLinkedVpcState({
+  const VpcEndpointLinkedVpcState({
     this.enableCreateDnsRecordInPvzt,
     this.instanceId,
     this.moduleName,

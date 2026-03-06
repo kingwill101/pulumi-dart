@@ -15,7 +15,7 @@ class PortRange {
   /// [portEnd] The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
   /// [portStart] The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
   /// [protocol] The network protocol of the port.
-  PortRange({
+  const PortRange({
     this.portEnd,
     this.portStart,
     this.protocol,

@@ -41,7 +41,7 @@ class DatabaseArgs {
   /// [properties] Key-value map of custom metadata properties for the database definition.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] Name of the workgroup.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.aclConfiguration,
     this.bucket,
     this.comment,

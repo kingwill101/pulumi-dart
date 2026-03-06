@@ -11,7 +11,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
   /// Creates a new [V3CustomDomainRouteConfigRouteRewriteConfigRegexRule].
   /// [match] Matching Rules
   /// [replacement] Replace Rules
-  V3CustomDomainRouteConfigRouteRewriteConfigRegexRule({
+  const V3CustomDomainRouteConfigRouteRewriteConfigRegexRule({
     this.match,
     this.replacement,
   });

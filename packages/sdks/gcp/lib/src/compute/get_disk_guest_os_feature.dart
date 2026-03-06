@@ -9,7 +9,7 @@ class GetDiskGuestOsFeature {
 
   /// Creates a new [GetDiskGuestOsFeature].
   /// [type] URL of the disk type resource describing which disk type to use to
-  GetDiskGuestOsFeature({
+  const GetDiskGuestOsFeature({
     required this.type,
   });
 

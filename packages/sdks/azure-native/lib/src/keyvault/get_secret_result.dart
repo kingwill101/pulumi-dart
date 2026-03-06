@@ -27,7 +27,7 @@ class GetSecretResult {
   /// [properties] Properties of the secret
   /// [tags] Tags assigned to the key vault resource.
   /// [type] Resource type of the key vault resource.
-  GetSecretResult({
+  const GetSecretResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

@@ -14,7 +14,7 @@ class DefaultObjectACLState {
   /// Creates a new [DefaultObjectACLState].
   /// [bucket] The name of the bucket it applies to.
   /// [roleEntities] List of role/entity pairs in the form `ROLE:entity`.
-  DefaultObjectACLState({
+  const DefaultObjectACLState({
     this.bucket,
     this.roleEntities,
   });

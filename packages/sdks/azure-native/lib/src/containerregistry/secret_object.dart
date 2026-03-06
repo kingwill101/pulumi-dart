@@ -15,7 +15,7 @@ class SecretObject {
   /// Creates a new [SecretObject].
   /// [type] The type of the secret object which determines how the value of the secret object has to be
   /// [value] The value of the secret. The format of this value will be determined
-  SecretObject({
+  const SecretObject({
     this.type,
     this.value,
   });

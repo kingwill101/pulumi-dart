@@ -18,7 +18,7 @@ class HeaderActionParametersResponse {
   /// [headerName] Name of the header to modify
   /// [typeName] Expected value is 'DeliveryRuleHeaderActionParameters'.
   /// [value] Value for the specified action
-  HeaderActionParametersResponse({
+  const HeaderActionParametersResponse({
     required this.headerAction,
     required this.headerName,
     required this.typeName,

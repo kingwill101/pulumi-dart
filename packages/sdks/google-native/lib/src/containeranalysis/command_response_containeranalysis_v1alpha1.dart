@@ -21,7 +21,7 @@ class CommandResponseContaineranalysisV1alpha1 {
   /// [env] Environment variables set before running this Command.
   /// [name] Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
   /// [waitFor] The ID(s) of the Command(s) that this Command depends on.
-  CommandResponseContaineranalysisV1alpha1({
+  const CommandResponseContaineranalysisV1alpha1({
     required this.args,
     required this.dir,
     required this.env,

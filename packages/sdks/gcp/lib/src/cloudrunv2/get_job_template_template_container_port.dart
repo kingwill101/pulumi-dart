@@ -11,7 +11,7 @@ class GetJobTemplateTemplateContainerPort {
   /// Creates a new [GetJobTemplateTemplateContainerPort].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 &lt; containerPort &lt; 65536.
   /// [name] The name of the Cloud Run v2 Job.
-  GetJobTemplateTemplateContainerPort({
+  const GetJobTemplateTemplateContainerPort({
     required this.containerPort,
     required this.name,
   });

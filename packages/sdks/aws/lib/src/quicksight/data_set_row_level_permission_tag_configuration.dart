@@ -12,7 +12,7 @@ class DataSetRowLevelPermissionTagConfiguration {
   /// Creates a new [DataSetRowLevelPermissionTagConfiguration].
   /// [status] The status of row-level security tags. If enabled, the status is `ENABLED`. If disabled, the status is `DISABLED`.
   /// [tagRules] A set of rules associated with row-level security, such as the tag names and columns that they are assigned to. See tag_rules.
-  DataSetRowLevelPermissionTagConfiguration({
+  const DataSetRowLevelPermissionTagConfiguration({
     this.status,
     required this.tagRules,
   });

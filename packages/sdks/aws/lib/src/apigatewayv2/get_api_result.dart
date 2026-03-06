@@ -56,7 +56,7 @@ class GetApiResult {
   /// [routeSelectionExpression] The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
   /// [tags] Map of resource tags.
   /// [version] Version identifier for the API.
-  GetApiResult({
+  const GetApiResult({
     required this.apiEndpoint,
     required this.apiId,
     required this.apiKeySelectionExpression,

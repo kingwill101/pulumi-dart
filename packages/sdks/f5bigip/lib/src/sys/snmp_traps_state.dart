@@ -48,7 +48,7 @@ class SnmpTrapsState {
   /// [securityLevel] Specifies whether or not traffic is encrypted and whether or not authentication is required.
   /// [securityName] Security name used in conjunction with SNMPv3.
   /// [version] SNMP version used for sending the trap.
-  SnmpTrapsState({
+  const SnmpTrapsState({
     this.authPasswordencrypted,
     this.authProtocol,
     this.community,

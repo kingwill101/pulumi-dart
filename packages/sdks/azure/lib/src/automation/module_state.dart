@@ -19,7 +19,7 @@ class ModuleState {
   /// [moduleLink] A `module_link` block as defined below.
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
-  ModuleState({
+  const ModuleState({
     this.automationAccountName,
     this.moduleLink,
     this.name,

@@ -16,7 +16,7 @@ class GetCryptoKeyIamPolicyResult {
   /// [etag] (Computed) The etag of the IAM policy.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
-  GetCryptoKeyIamPolicyResult({
+  const GetCryptoKeyIamPolicyResult({
     required this.cryptoKeyId,
     required this.etag,
     required this.id,

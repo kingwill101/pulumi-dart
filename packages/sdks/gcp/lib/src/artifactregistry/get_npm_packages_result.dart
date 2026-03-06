@@ -19,7 +19,7 @@ class GetNpmPackagesResult {
   /// [npmPackages] A list of all retrieved Artifact Registry Npm packages. Structure is defined below.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetNpmPackagesResult({
+  const GetNpmPackagesResult({
     required this.id,
     required this.location,
     required this.npmPackages,

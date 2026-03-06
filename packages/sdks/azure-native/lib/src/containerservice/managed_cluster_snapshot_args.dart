@@ -28,7 +28,7 @@ class ManagedClusterSnapshotArgs {
   /// [resourceName] The name of the managed cluster resource.
   /// [snapshotType] The type of a snapshot. The default is NodePool.
   /// [tags] Resource tags.
-  ManagedClusterSnapshotArgs({
+  const ManagedClusterSnapshotArgs({
     this.creationData,
     this.location,
     required this.resourceGroupName,

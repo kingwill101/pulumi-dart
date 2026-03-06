@@ -20,7 +20,7 @@ class GetScimServerCredentialsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetScimServerCredentialsResult({
+  const GetScimServerCredentialsResult({
     required this.credentials,
     required this.directoryId,
     required this.id,

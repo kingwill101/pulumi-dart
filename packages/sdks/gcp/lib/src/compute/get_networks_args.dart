@@ -12,7 +12,7 @@ class GetNetworksArgs {
 
   /// Creates a new [GetNetworksArgs].
   /// [project] The name of the project.
-  GetNetworksArgs({
+  const GetNetworksArgs({
     this.project,
   });
 

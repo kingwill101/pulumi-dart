@@ -9,7 +9,7 @@ class MultiTarget {
 
   /// Creates a new [MultiTarget].
   /// [targetIds] The target_ids of this multiTarget.
-  MultiTarget({
+  const MultiTarget({
     required this.targetIds,
   });
 

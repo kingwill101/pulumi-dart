@@ -9,7 +9,7 @@ class EventCodeEnumValue {
 
   /// Creates a new [EventCodeEnumValue].
   /// [value] Property value
-  EventCodeEnumValue({
+  const EventCodeEnumValue({
     this.value,
   });
 

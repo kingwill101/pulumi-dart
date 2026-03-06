@@ -17,7 +17,7 @@ class GetClusterShardNode {
   /// [createTime] The date and time when the node was created. Example: `2022-01-01T21:00:00Z`.
   /// [endpoints] Required.
   /// [name] Name of the cluster.
-  GetClusterShardNode({
+  const GetClusterShardNode({
     required this.availabilityZone,
     required this.createTime,
     required this.endpoints,

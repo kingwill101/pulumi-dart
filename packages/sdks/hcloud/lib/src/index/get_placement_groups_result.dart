@@ -17,7 +17,7 @@ class GetPlacementGroupsResult {
   /// [mostRecent] Optional.
   /// [placementGroups] (list) List of all matching placement groups. See `data.hcloud_placement_group` for schema.
   /// [withSelector] Optional.
-  GetPlacementGroupsResult({
+  const GetPlacementGroupsResult({
     required this.id,
     this.mostRecent,
     required this.placementGroups,

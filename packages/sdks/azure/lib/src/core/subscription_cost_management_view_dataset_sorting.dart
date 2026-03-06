@@ -11,7 +11,7 @@ class SubscriptionCostManagementViewDatasetSorting {
   /// Creates a new [SubscriptionCostManagementViewDatasetSorting].
   /// [direction] Direction of sort. Possible values are `Ascending` and `Descending`.
   /// [name] The name of the column to sort.
-  SubscriptionCostManagementViewDatasetSorting({
+  const SubscriptionCostManagementViewDatasetSorting({
     required this.direction,
     required this.name,
   });

@@ -18,7 +18,7 @@ class DeploymentStacksWhatIfChangeResponse {
   /// [denySettingsChange] Predicted changes to the deployment stack deny settings.
   /// [deploymentScopeChange] Predicted changes to the deployment scope for the deployment stack.
   /// [resourceChanges] List of resource changes predicted by What-If operation.
-  DeploymentStacksWhatIfChangeResponse({
+  const DeploymentStacksWhatIfChangeResponse({
     required this.denySettingsChange,
     this.deploymentScopeChange,
     required this.resourceChanges,

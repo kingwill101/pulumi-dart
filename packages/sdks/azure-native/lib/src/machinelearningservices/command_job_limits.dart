@@ -12,7 +12,7 @@ class CommandJobLimits {
   /// Creates a new [CommandJobLimits].
   /// [jobLimitsType] Expected value is 'Command'.
   /// [timeout] The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-  CommandJobLimits({
+  const CommandJobLimits({
     required this.jobLimitsType,
     this.timeout,
   });

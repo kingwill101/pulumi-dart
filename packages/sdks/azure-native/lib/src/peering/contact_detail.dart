@@ -15,7 +15,7 @@ class ContactDetail {
   /// [email] The e-mail address of the contact.
   /// [phone] The phone number of the contact.
   /// [role] The role of the contact.
-  ContactDetail({
+  const ContactDetail({
     this.email,
     this.phone,
     this.role,

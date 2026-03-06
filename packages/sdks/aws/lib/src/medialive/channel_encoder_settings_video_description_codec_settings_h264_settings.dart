@@ -124,7 +124,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings {
   /// [syntax] Produces a bitstream compliant with SMPTE RP-2027.
   /// [temporalAq] Makes adjustments within each frame based on temporal variation of content complexity.
   /// [timecodeInsertion] Determines how timecodes should be inserted into the video elementary stream.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings({
     this.adaptiveQuantization,
     this.afdSignaling,
     this.bitrate,

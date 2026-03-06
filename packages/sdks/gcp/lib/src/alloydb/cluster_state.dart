@@ -160,7 +160,7 @@ class ClusterState {
   /// [subscriptionType] The subscrition type of cluster.
   /// [trialMetadatas] Contains information and all metadata related to TRIAL clusters.
   /// [uid] The system-generated UID of the resource.
-  ClusterState({
+  const ClusterState({
     this.annotations,
     this.automatedBackupPolicy,
     this.backupSources,

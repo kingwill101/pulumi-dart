@@ -72,7 +72,7 @@ class CloudAutonomousVmClusterArgs {
   /// [timeZone] The time zone of the Autonomous VM cluster. Changing this will force terraform to create new resource.
   /// [timeouts] Optional.
   /// [totalContainerDatabases] The total number of Autonomous Container Databases that can be created with the allocated local storage. Changing this will force terraform to create new resource.
-  CloudAutonomousVmClusterArgs({
+  const CloudAutonomousVmClusterArgs({
     required this.autonomousDataStorageSizeInTbs,
     this.cloudExadataInfrastructureArn,
     this.cloudExadataInfrastructureId,

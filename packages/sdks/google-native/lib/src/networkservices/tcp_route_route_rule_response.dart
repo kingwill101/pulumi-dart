@@ -14,7 +14,7 @@ class TcpRouteRouteRuleResponse {
   /// Creates a new [TcpRouteRouteRuleResponse].
   /// [action] The detailed rule defining how to route matched traffic.
   /// [matches] Optional. RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
-  TcpRouteRouteRuleResponse({
+  const TcpRouteRouteRuleResponse({
     required this.action,
     required this.matches,
   });

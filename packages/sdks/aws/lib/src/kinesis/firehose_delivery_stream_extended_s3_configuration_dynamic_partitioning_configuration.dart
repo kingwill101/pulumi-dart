@@ -13,7 +13,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurat
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration].
   /// [enabled] Enables or disables dynamic partitioning. Defaults to `false`.
   /// [retryDuration] Total amount of seconds Firehose spends on retries. Valid values between 0 and 7200. Default is 300.
-  FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration({
+  const FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration({
     this.enabled,
     this.retryDuration,
   });

@@ -47,7 +47,7 @@ class NetworkAttachmentResponse {
   /// [ipv6Address] The IPv6 address of the virtual machine.
   /// [macAddress] The MAC address of the interface for the virtual machine that corresponds to this network attachment.
   /// [networkAttachmentName] The associated network's interface name.
-  NetworkAttachmentResponse({
+  const NetworkAttachmentResponse({
     required this.attachedNetworkId,
     this.defaultGateway,
     required this.ipAllocationMethod,

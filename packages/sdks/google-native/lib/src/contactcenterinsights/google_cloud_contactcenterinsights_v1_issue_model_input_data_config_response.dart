@@ -15,7 +15,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
   /// [filter] A filter to reduce the conversations used for training the model to a specific subset.
   /// [medium] Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
   /// [trainingConversationsCount] Number of conversations used in training. Output only.
-  GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse({
+  const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse({
     required this.filter,
     required this.medium,
     required this.trainingConversationsCount,

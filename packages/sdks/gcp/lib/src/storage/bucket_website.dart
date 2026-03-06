@@ -13,7 +13,7 @@ class BucketWebsite {
   /// Creates a new [BucketWebsite].
   /// [mainPageSuffix] Behaves as the bucket's directory index where
   /// [notFoundPage] The custom object to return when a requested
-  BucketWebsite({
+  const BucketWebsite({
     this.mainPageSuffix,
     this.notFoundPage,
   });

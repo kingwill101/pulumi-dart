@@ -15,7 +15,7 @@ class GetUrlListArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [urlListId] Required.
-  GetUrlListArgs({
+  const GetUrlListArgs({
     required this.location,
     this.project,
     required this.urlListId,

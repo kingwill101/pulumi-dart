@@ -18,7 +18,7 @@ class GetSqlRoleDefinitionArgs {
   /// [accountName] The name of the Cosmos DB Account.
   /// [resourceGroupName] The name of the Resource Group in which the Cosmos DB SQL Role Definition is created.
   /// [roleDefinitionId] The GUID as the name of the Cosmos DB SQL Role Definition.
-  GetSqlRoleDefinitionArgs({
+  const GetSqlRoleDefinitionArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.roleDefinitionId,

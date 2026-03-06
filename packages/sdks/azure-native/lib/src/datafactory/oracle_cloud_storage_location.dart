@@ -22,7 +22,7 @@ class OracleCloudStorageLocation {
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
   /// [version] Specify the version of Oracle Cloud Storage. Type: string (or Expression with resultType string).
-  OracleCloudStorageLocation({
+  const OracleCloudStorageLocation({
     this.bucketName,
     this.fileName,
     this.folderPath,

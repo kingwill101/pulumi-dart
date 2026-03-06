@@ -30,7 +30,7 @@ class ControlActivityResponse {
   /// [state] Activity state. This is an optional property and if not provided, the state will be Active by default.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  ControlActivityResponse({
+  const ControlActivityResponse({
     this.dependsOn,
     this.description,
     required this.name,

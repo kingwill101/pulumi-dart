@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2QuasiIdField {
   /// Creates a new [GooglePrivacyDlpV2QuasiIdField].
   /// [customTag] A auxiliary field.
   /// [field] Identifies the column.
-  GooglePrivacyDlpV2QuasiIdField({
+  const GooglePrivacyDlpV2QuasiIdField({
     this.customTag,
     this.field,
   });

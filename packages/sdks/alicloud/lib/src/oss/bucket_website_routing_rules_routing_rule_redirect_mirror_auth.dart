@@ -17,7 +17,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
   /// [accessKeySecret] Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
   /// [authType] Authentication type of mirror return Source
   /// [region] Signature Region
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth({
     this.accessKeyId,
     this.accessKeySecret,
     this.authType,

@@ -45,7 +45,7 @@ class LoadBalancerBackendAddressPoolArgs {
   /// [syncMode] Backend address synchronous mode for the backend pool
   /// [tunnelInterfaces] An array of gateway load balancer tunnel interfaces.
   /// [virtualNetwork] A reference to a virtual network.
-  LoadBalancerBackendAddressPoolArgs({
+  const LoadBalancerBackendAddressPoolArgs({
     this.backendAddressPoolName,
     this.drainPeriodInSeconds,
     this.id,

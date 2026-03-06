@@ -21,7 +21,7 @@ class PipelineDestinationAuthenticationConfig {
   /// Creates a new [PipelineDestinationAuthenticationConfig].
   /// [googleOidc] Represents a config used to authenticate with a Google OIDC token using
   /// [oauthToken] Contains information needed for generating an
-  PipelineDestinationAuthenticationConfig({
+  const PipelineDestinationAuthenticationConfig({
     this.googleOidc,
     this.oauthToken,
   });

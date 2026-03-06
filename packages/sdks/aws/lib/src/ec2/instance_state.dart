@@ -208,7 +208,7 @@ class InstanceState {
   /// [userDataReplaceOnChange] When used in combination with `user_data` or `user_data_base64` will trigger a destroy and recreate of the EC2 instance when set to `true`. Defaults to `false` if not set.
   /// [volumeTags] Map of tags to assign, at instance-creation time, to root and EBS volumes.
   /// [vpcSecurityGroupIds] List of security group IDs to associate with.
-  InstanceState({
+  const InstanceState({
     this.ami,
     this.arn,
     this.associatePublicIpAddress,

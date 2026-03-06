@@ -35,7 +35,7 @@ class BucketIAMMemberArgs {
   /// [condition] An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  BucketIAMMemberArgs({
+  const BucketIAMMemberArgs({
     required this.bucket,
     this.condition,
     required this.member,

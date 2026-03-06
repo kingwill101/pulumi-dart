@@ -41,7 +41,7 @@ class RegionalParameterArgs {
   /// [location] The location of the regional parameter. eg us-central1
   /// [parameterId] This must be unique within the project.
   /// [project] The ID of the project in which the resource belongs.
-  RegionalParameterArgs({
+  const RegionalParameterArgs({
     this.format,
     this.kmsKey,
     this.labels,

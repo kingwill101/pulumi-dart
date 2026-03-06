@@ -18,7 +18,7 @@ class ShardingOptionResponse {
   /// [manualSharding] Shards test cases into the specified groups of packages, classes, and/or methods.
   /// [smartSharding] Shards test based on previous test case timing records.
   /// [uniformSharding] Uniformly shards test cases given a total number of shards.
-  ShardingOptionResponse({
+  const ShardingOptionResponse({
     required this.manualSharding,
     required this.smartSharding,
     required this.uniformSharding,

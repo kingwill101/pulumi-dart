@@ -10,7 +10,7 @@ class ManagedZonePrivateVisibilityConfigGkeCluster {
 
   /// Creates a new [ManagedZonePrivateVisibilityConfigGkeCluster].
   /// [gkeClusterName] The resource name of the cluster to bind this ManagedZone to.
-  ManagedZonePrivateVisibilityConfigGkeCluster({
+  const ManagedZonePrivateVisibilityConfigGkeCluster({
     required this.gkeClusterName,
   });
 

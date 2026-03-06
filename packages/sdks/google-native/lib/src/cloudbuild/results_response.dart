@@ -38,7 +38,7 @@ class ResultsResponse {
   /// [npmPackages] Npm packages uploaded to Artifact Registry at the end of the build.
   /// [numArtifacts] Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
   /// [pythonPackages] Python artifacts uploaded to Artifact Registry at the end of the build.
-  ResultsResponse({
+  const ResultsResponse({
     required this.artifactManifest,
     required this.artifactTiming,
     required this.buildStepImages,

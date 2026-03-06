@@ -24,7 +24,7 @@ class GetKeyPairsResult {
   /// [outputFile] Optional.
   /// [pairs] Required.
   /// [version] Required.
-  GetKeyPairsResult({
+  const GetKeyPairsResult({
     required this.id,
     required this.ids,
     this.keyPairName,

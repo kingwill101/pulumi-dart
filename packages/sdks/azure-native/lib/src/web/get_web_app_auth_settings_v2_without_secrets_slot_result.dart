@@ -40,7 +40,7 @@ class GetWebAppAuthSettingsV2WithoutSecretsSlotResult {
   /// [name] Resource Name.
   /// [platform] The configuration settings of the platform of App Service Authentication/Authorization.
   /// [type] Resource type.
-  GetWebAppAuthSettingsV2WithoutSecretsSlotResult({
+  const GetWebAppAuthSettingsV2WithoutSecretsSlotResult({
     required this.azureApiVersion,
     this.globalValidation,
     this.httpSettings,

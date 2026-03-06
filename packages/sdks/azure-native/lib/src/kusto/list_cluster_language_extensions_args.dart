@@ -15,7 +15,7 @@ class ListClusterLanguageExtensionsArgs {
   /// Creates a new [ListClusterLanguageExtensionsArgs].
   /// [clusterName] The name of the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListClusterLanguageExtensionsArgs({
+  const ListClusterLanguageExtensionsArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

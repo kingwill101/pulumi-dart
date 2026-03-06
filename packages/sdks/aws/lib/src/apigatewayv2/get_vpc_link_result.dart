@@ -27,7 +27,7 @@ class GetVpcLinkResult {
   /// [subnetIds] List of subnets attached to the VPC Link.
   /// [tags] VPC Link Tags.
   /// [vpcLinkId] Required.
-  GetVpcLinkResult({
+  const GetVpcLinkResult({
     required this.arn,
     required this.id,
     required this.name,

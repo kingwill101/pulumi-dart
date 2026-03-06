@@ -23,7 +23,7 @@ class WorkspaceCollectionArgs {
   /// [sku] Optional.
   /// [tags] Optional.
   /// [workspaceCollectionName] Power BI Embedded Workspace Collection name
-  WorkspaceCollectionArgs({
+  const WorkspaceCollectionArgs({
     this.location,
     required this.resourceGroupName,
     this.sku,

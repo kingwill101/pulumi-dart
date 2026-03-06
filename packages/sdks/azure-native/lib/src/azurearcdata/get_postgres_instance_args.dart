@@ -15,7 +15,7 @@ class GetPostgresInstanceArgs {
   /// Creates a new [GetPostgresInstanceArgs].
   /// [postgresInstanceName] Name of Postgres Instance
   /// [resourceGroupName] The name of the Azure resource group
-  GetPostgresInstanceArgs({
+  const GetPostgresInstanceArgs({
     required this.postgresInstanceName,
     required this.resourceGroupName,
   });

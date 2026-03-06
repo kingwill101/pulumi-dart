@@ -21,7 +21,7 @@ class ProductArgs {
   /// [productName] The name of the product
   /// [productType] The type of the product
   /// [providerName] The provider name of the product
-  ProductArgs({
+  const ProductArgs({
     this.description,
     required this.productName,
     required this.productType,

@@ -14,7 +14,7 @@ class ComputeInstanceSsh {
   /// [port] Describes the port for connecting through SSH.
   /// [publicKey] Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
   /// [username] The admin username of this Machine Learning Compute Instance.
-  ComputeInstanceSsh({
+  const ComputeInstanceSsh({
     this.port,
     required this.publicKey,
     this.username,

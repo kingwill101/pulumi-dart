@@ -33,7 +33,7 @@ class ContainerNetworkInterfaceResponse {
   /// [name] The name of the resource. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the container network interface resource.
   /// [type] Sub Resource type.
-  ContainerNetworkInterfaceResponse({
+  const ContainerNetworkInterfaceResponse({
     this.container,
     required this.containerNetworkInterfaceConfiguration,
     required this.etag,

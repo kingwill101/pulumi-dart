@@ -13,7 +13,7 @@ class QueuingPolicyResponse {
   /// Creates a new [QueuingPolicyResponse].
   /// [validUntilDuration] Relative deadline for waiting for capacity.
   /// [validUntilTime] Absolute deadline for waiting for capacity in RFC3339 text format.
-  QueuingPolicyResponse({
+  const QueuingPolicyResponse({
     required this.validUntilDuration,
     required this.validUntilTime,
   });

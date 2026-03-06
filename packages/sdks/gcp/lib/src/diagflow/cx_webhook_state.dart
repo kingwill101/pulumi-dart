@@ -45,7 +45,7 @@ class CxWebhookState {
   /// [serviceDirectory] Configuration for a Service Directory service.
   /// [startFlow] Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   /// [timeout] Webhook execution timeout.
-  CxWebhookState({
+  const CxWebhookState({
     this.disabled,
     this.displayName,
     this.enableSpellCorrection,

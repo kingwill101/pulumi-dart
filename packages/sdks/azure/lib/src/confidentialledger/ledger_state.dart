@@ -35,7 +35,7 @@ class LedgerState {
   /// [name] Specifies the name of the Confidential Ledger. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Confidential Ledger exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Confidential Ledger.
-  LedgerState({
+  const LedgerState({
     this.azureadBasedServicePrincipals,
     this.certificateBasedSecurityPrincipals,
     this.identityServiceEndpoint,

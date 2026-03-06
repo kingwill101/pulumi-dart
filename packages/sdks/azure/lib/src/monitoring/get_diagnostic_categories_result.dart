@@ -19,7 +19,7 @@ class GetDiagnosticCategoriesResult {
   /// [logCategoryTypes] A list of the supported log category types of this resource to send to the destination.
   /// [metrics] A list of the Metric Categories supported for this Resource.
   /// [resourceId] Required.
-  GetDiagnosticCategoriesResult({
+  const GetDiagnosticCategoriesResult({
     required this.id,
     required this.logCategoryGroups,
     required this.logCategoryTypes,

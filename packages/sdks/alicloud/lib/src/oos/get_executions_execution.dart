@@ -68,7 +68,7 @@ class GetExecutionsExecution {
   /// [templateName] The name of execution template.
   /// [templateVersion] The version of execution template.
   /// [updateDate] The time when the template was updated.
-  GetExecutionsExecution({
+  const GetExecutionsExecution({
     required this.category,
     required this.counters,
     required this.createDate,

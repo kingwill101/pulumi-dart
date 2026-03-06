@@ -15,7 +15,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuth
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig].
   /// [serviceAccount] (Output)
-  AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig({
+  const AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig({
     this.serviceAccount,
   });
 

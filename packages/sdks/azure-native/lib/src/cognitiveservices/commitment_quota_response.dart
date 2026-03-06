@@ -12,7 +12,7 @@ class CommitmentQuotaResponse {
   /// Creates a new [CommitmentQuotaResponse].
   /// [quantity] Commitment quota quantity.
   /// [unit] Commitment quota unit.
-  CommitmentQuotaResponse({
+  const CommitmentQuotaResponse({
     this.quantity,
     this.unit,
   });

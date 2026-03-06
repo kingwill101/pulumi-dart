@@ -112,7 +112,7 @@ class GetBucketObjectResult {
   /// [timeDeleted] The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
   /// [timeStorageClassUpdated] The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
   /// [updated] The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
-  GetBucketObjectResult({
+  const GetBucketObjectResult({
     required this.acl,
     required this.bucket,
     required this.cacheControl,

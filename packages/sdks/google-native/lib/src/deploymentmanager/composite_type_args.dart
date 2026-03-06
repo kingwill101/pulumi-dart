@@ -27,7 +27,7 @@ class CompositeTypeArgs {
   /// [name] Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
   /// [project] Optional.
   /// [templateContents] Files for the template type.
-  CompositeTypeArgs({
+  const CompositeTypeArgs({
     this.description,
     this.id,
     this.labels,

@@ -11,7 +11,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
   /// Creates a new [ClusterMonitoringConfigAdvancedDatapathObservabilityConfig].
   /// [enableMetrics] Whether or not to enable advanced datapath metrics.
   /// [enableRelay] Whether or not Relay is enabled.
-  ClusterMonitoringConfigAdvancedDatapathObservabilityConfig({
+  const ClusterMonitoringConfigAdvancedDatapathObservabilityConfig({
     required this.enableMetrics,
     required this.enableRelay,
   });

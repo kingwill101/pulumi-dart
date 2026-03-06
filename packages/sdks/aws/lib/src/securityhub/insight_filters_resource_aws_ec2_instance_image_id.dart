@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsEc2InstanceImageId {
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceImageId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsEc2InstanceImageId({
+  const InsightFiltersResourceAwsEc2InstanceImageId({
     required this.comparison,
     required this.value,
   });

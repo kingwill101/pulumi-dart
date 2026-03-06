@@ -15,7 +15,7 @@ class GetInterconnectAttachmentArgs {
   /// [interconnectAttachment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetInterconnectAttachmentArgs({
+  const GetInterconnectAttachmentArgs({
     required this.interconnectAttachment,
     this.project,
     required this.region,

@@ -18,7 +18,7 @@ class PipeSourceParametersActivemqBrokerParameters {
   /// [credentials] The credentials needed to access the resource. Detailed below.
   /// [maximumBatchingWindowInSeconds] The maximum length of a time to wait for events. Maximum value of 300.
   /// [queueName] The name of the destination queue to consume. Maximum length of 1000.
-  PipeSourceParametersActivemqBrokerParameters({
+  const PipeSourceParametersActivemqBrokerParameters({
     this.batchSize,
     required this.credentials,
     this.maximumBatchingWindowInSeconds,

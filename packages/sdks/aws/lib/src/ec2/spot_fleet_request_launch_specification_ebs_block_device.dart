@@ -23,7 +23,7 @@ class SpotFleetRequestLaunchSpecificationEbsBlockDevice {
   /// [throughput] Optional.
   /// [volumeSize] Optional.
   /// [volumeType] Optional.
-  SpotFleetRequestLaunchSpecificationEbsBlockDevice({
+  const SpotFleetRequestLaunchSpecificationEbsBlockDevice({
     this.deleteOnTermination,
     required this.deviceName,
     this.encrypted,

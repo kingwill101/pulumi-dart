@@ -27,7 +27,7 @@ class DeploymentResourcePropertiesResponse {
   /// [provisioningState] Provisioning state of the Deployment
   /// [source] Uploaded source information of the deployment.
   /// [status] Status of the Deployment
-  DeploymentResourcePropertiesResponse({
+  const DeploymentResourcePropertiesResponse({
     this.active,
     this.deploymentSettings,
     required this.instances,

@@ -9,7 +9,7 @@ class CertificateAuthorityConfiguration {
 
   /// Creates a new [CertificateAuthorityConfiguration].
   /// [keyType] Crypto type: ECC.
-  CertificateAuthorityConfiguration({
+  const CertificateAuthorityConfiguration({
     required this.keyType,
   });
 

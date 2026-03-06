@@ -18,7 +18,7 @@ class GetContainerRecipeArgs {
   /// [arn] ARN of the container recipe.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the container recipe.
-  GetContainerRecipeArgs({
+  const GetContainerRecipeArgs({
     required this.arn,
     this.region,
     this.tags,

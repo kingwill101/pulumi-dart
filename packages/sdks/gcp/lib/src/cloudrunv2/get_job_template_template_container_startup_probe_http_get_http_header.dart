@@ -11,7 +11,7 @@ class GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
   /// Creates a new [GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader].
   /// [name] The name of the Cloud Run v2 Job.
   /// [value] The header field value.
-  GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader({
+  const GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader({
     required this.name,
     required this.value,
   });

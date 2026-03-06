@@ -24,7 +24,7 @@ class GetManagedPrivateEndpointResult {
   /// [name] The resource name.
   /// [properties] Managed private endpoint properties.
   /// [type] The resource type.
-  GetManagedPrivateEndpointResult({
+  const GetManagedPrivateEndpointResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

@@ -18,7 +18,7 @@ class ByteMatchSetArgs {
   /// Creates a new [ByteMatchSetArgs].
   /// [byteMatchTuples] Specifies the bytes (typically a string that corresponds
   /// [name] The name or description of the Byte Match Set.
-  ByteMatchSetArgs({
+  const ByteMatchSetArgs({
     this.byteMatchTuples,
     this.name,
   });

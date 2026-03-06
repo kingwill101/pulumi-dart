@@ -8,7 +8,7 @@ class ApplicationAttachmentsConfiguration {
 
   /// Creates a new [ApplicationAttachmentsConfiguration].
   /// [attachmentsControlMode] Status information about whether file upload functionality is activated or deactivated for your end user. Valid values are `ENABLED` and `DISABLED`.
-  ApplicationAttachmentsConfiguration({
+  const ApplicationAttachmentsConfiguration({
     required this.attachmentsControlMode,
   });
 

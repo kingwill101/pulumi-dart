@@ -55,7 +55,7 @@ class SourceControlConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlConfigurationName] Name of the Source Control Configuration.
   /// [sshKnownHostsContents] Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
-  SourceControlConfigurationArgs({
+  const SourceControlConfigurationArgs({
     required this.clusterName,
     required this.clusterResourceName,
     required this.clusterRp,

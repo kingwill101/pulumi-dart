@@ -11,7 +11,7 @@ class FunctionServiceConfigSecretVolumeVersion {
   /// Creates a new [FunctionServiceConfigSecretVolumeVersion].
   /// [path] Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
   /// [version] Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
-  FunctionServiceConfigSecretVolumeVersion({
+  const FunctionServiceConfigSecretVolumeVersion({
     required this.path,
     required this.version,
   });

@@ -16,7 +16,7 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback {
   /// [description] The description of the app version.
   /// [disabled] (Output)
   /// [pythonCode] (Output)
-  AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback({
+  const AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback({
     this.description,
     this.disabled,
     this.pythonCode,

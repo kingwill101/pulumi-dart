@@ -12,7 +12,7 @@ class ClusterSystemAddonsConfig {
 
   /// Creates a new [ClusterSystemAddonsConfig].
   /// [ingress] Config for the Ingress add-on which allows customers to create an Ingress
-  ClusterSystemAddonsConfig({
+  const ClusterSystemAddonsConfig({
     this.ingress,
   });
 

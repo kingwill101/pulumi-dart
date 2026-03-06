@@ -22,7 +22,7 @@ class AmazonS3CompatibleLocationResponse {
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
   /// [version] Specify the version of Amazon S3 Compatible. Type: string (or Expression with resultType string).
-  AmazonS3CompatibleLocationResponse({
+  const AmazonS3CompatibleLocationResponse({
     this.bucketName,
     this.fileName,
     this.folderPath,

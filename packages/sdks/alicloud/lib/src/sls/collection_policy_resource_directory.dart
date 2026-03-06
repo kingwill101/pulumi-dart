@@ -11,7 +11,7 @@ class CollectionPolicyResourceDirectory {
   /// Creates a new [CollectionPolicyResourceDirectory].
   /// [accountGroupType] Supports the all (select all) mode and custom mode under this Resource Directory.
   /// [members] The list of member accounts when the Resource Directory is configured in custom mode.
-  CollectionPolicyResourceDirectory({
+  const CollectionPolicyResourceDirectory({
     this.accountGroupType,
     this.members,
   });

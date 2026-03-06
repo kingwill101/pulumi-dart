@@ -11,7 +11,7 @@ class KubernetesClusterMaintenanceWindowNotAllowed {
   /// Creates a new [KubernetesClusterMaintenanceWindowNotAllowed].
   /// [end] The end of a time span, formatted as an RFC3339 string.
   /// [start] The start of a time span, formatted as an RFC3339 string.
-  KubernetesClusterMaintenanceWindowNotAllowed({
+  const KubernetesClusterMaintenanceWindowNotAllowed({
     required this.end,
     required this.start,
   });

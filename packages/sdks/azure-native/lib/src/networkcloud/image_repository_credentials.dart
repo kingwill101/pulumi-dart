@@ -14,7 +14,7 @@ class ImageRepositoryCredentials {
   /// [password] The password or token used to access an image in the target repository.
   /// [registryUrl] The URL of the authentication server used to validate the repository credentials.
   /// [username] The username used to access an image in the target repository.
-  ImageRepositoryCredentials({
+  const ImageRepositoryCredentials({
     required this.password,
     required this.registryUrl,
     required this.username,

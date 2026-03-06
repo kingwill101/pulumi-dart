@@ -21,7 +21,7 @@ class ServiceTrustState {
   /// [password] The password of the inbound trust set in the on-premise Active Directory Domain Service.
   /// [trustedDomainDnsIps] Specifies a list of DNS IPs that are used to resolve the on-premise Active Directory Domain Service.
   /// [trustedDomainFqdn] The FQDN of the on-premise Active Directory Domain Service.
-  ServiceTrustState({
+  const ServiceTrustState({
     this.domainServiceId,
     this.name,
     this.password,

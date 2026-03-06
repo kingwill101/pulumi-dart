@@ -21,7 +21,7 @@ class GetResolverDnsForwardingRulesetResult {
   /// [privateDnsResolverOutboundEndpointIds] The IDs list of the Private DNS Resolver Outbound Endpoints that are linked to the Private DNS Resolver Dns Forwarding Ruleset.
   /// [resourceGroupName] Required.
   /// [tags] The tags assigned to the Private DNS Resolver Dns Forwarding Ruleset.
-  GetResolverDnsForwardingRulesetResult({
+  const GetResolverDnsForwardingRulesetResult({
     required this.id,
     required this.location,
     required this.name,

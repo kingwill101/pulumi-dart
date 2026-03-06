@@ -21,7 +21,7 @@ class GetPageArgs {
   /// [location] Required.
   /// [pageId] Required.
   /// [project] Optional.
-  GetPageArgs({
+  const GetPageArgs({
     required this.agentId,
     required this.flowId,
     this.languageCode,

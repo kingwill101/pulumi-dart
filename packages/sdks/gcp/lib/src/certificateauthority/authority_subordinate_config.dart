@@ -17,7 +17,7 @@ class AuthoritySubordinateConfig {
   /// Creates a new [AuthoritySubordinateConfig].
   /// [certificateAuthority] This can refer to a CertificateAuthority that was used to create a
   /// [pemIssuerChain] Contains the PEM certificate chain for the issuers of this CertificateAuthority,
-  AuthoritySubordinateConfig({
+  const AuthoritySubordinateConfig({
     this.certificateAuthority,
     this.pemIssuerChain,
   });

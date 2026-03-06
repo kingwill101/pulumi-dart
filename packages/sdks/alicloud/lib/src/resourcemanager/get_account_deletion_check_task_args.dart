@@ -12,7 +12,7 @@ class GetAccountDeletionCheckTaskArgs {
 
   /// Creates a new [GetAccountDeletionCheckTaskArgs].
   /// [accountId] The ID of the member that you want to delete.
-  GetAccountDeletionCheckTaskArgs({
+  const GetAccountDeletionCheckTaskArgs({
     required this.accountId,
   });
 

@@ -17,7 +17,7 @@ class DatasetBinarySftpServerLocation {
   /// [dynamicPathEnabled] Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   /// [filename] The filename of the file on the SFTP server.
   /// [path] The folder path to the file on the SFTP server.
-  DatasetBinarySftpServerLocation({
+  const DatasetBinarySftpServerLocation({
     this.dynamicFilenameEnabled,
     this.dynamicPathEnabled,
     required this.filename,

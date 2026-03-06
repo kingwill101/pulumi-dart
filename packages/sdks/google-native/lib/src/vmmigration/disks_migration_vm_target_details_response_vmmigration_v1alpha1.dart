@@ -9,7 +9,7 @@ class DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1 {
 
   /// Creates a new [DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1].
   /// [vmUri] The URI of the Compute Engine VM.
-  DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1({
+  const DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1({
     required this.vmUri,
   });
 

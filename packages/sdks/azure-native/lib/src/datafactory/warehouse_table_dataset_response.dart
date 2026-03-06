@@ -37,7 +37,7 @@ class WarehouseTableDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [table] The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  WarehouseTableDatasetResponse({
+  const WarehouseTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

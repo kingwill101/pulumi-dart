@@ -45,7 +45,7 @@ class SkuSettingResponse {
   /// [requiredQuotaIds] The required quota ids.
   /// [size] The size.
   /// [tier] The tier.
-  SkuSettingResponse({
+  const SkuSettingResponse({
     this.capabilities,
     this.capacity,
     this.costs,

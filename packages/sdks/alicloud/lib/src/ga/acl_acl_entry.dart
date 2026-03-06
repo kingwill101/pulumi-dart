@@ -11,7 +11,7 @@ class AclAclEntry {
   /// Creates a new [AclAclEntry].
   /// [entry] The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
   /// [entryDescription] The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
-  AclAclEntry({
+  const AclAclEntry({
     this.entry,
     this.entryDescription,
   });

@@ -23,7 +23,7 @@ class BareMetalNodePoolStatusCondition {
   /// [reason] Machine-readable message indicating details about last transition.
   /// [state] (Output)
   /// [type] Type of the condition.
-  BareMetalNodePoolStatusCondition({
+  const BareMetalNodePoolStatusCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

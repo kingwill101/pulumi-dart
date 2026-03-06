@@ -15,7 +15,7 @@ class ServiceNasConfig {
   /// [groupId] The group id of your NAS file system.
   /// [mountPoints] Config the NAS mount points.See `mount_points` below.
   /// [userId] The user id of your NAS file system.
-  ServiceNasConfig({
+  const ServiceNasConfig({
     required this.groupId,
     required this.mountPoints,
     required this.userId,

@@ -17,7 +17,7 @@ class FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration {
   /// [s3ErrorOutputPrefix] The table specific S3 error output prefix. All the errors that occurred while delivering to this table will be prefixed with this value in S3 destination.
   /// [tableName] The name of the Apache Iceberg Table.
   /// [uniqueKeys] A list of unique keys for a given Apache Iceberg table. Firehose will use these for running Create, Update, or Delete operations on the given Iceberg table.
-  FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration({
+  const FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration({
     required this.databaseName,
     this.s3ErrorOutputPrefix,
     required this.tableName,

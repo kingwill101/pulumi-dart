@@ -63,7 +63,7 @@ class GetIoMAMPolicyByNameResult {
   /// [tags] Resource Tags
   /// [touchId] Optional.
   /// [type] Resource type
-  GetIoMAMPolicyByNameResult({
+  const GetIoMAMPolicyByNameResult({
     this.accessRecheckOfflineTimeout,
     this.accessRecheckOnlineTimeout,
     this.appSharingFromLevel,

@@ -18,7 +18,7 @@ class GatewayLoadBalancerTunnelInterfaceResponse {
   /// [port] Port of gateway load balancer tunnel interface.
   /// [protocol] Protocol of gateway load balancer tunnel interface.
   /// [type] Traffic type of gateway load balancer tunnel interface.
-  GatewayLoadBalancerTunnelInterfaceResponse({
+  const GatewayLoadBalancerTunnelInterfaceResponse({
     this.identifier,
     this.port,
     this.protocol,

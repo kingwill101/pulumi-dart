@@ -24,7 +24,7 @@ class ClusterArgs {
   /// [clusterName] Cluster name.
   /// [network] Cluster network information. See `network` below.
   /// [profile] Cluster attributes. Valid values: 'Default', 'XFlow'.
-  ClusterArgs({
+  const ClusterArgs({
     this.argocdEnabled,
     this.clusterName,
     required this.network,

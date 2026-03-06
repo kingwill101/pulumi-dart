@@ -26,7 +26,7 @@ class RuntimeManagementConfigState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [runtimeVersionArn] ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
   /// [updateRuntimeOn] Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
-  RuntimeManagementConfigState({
+  const RuntimeManagementConfigState({
     this.functionArn,
     this.functionName,
     this.qualifier,

@@ -15,7 +15,7 @@ class AttachedNetworkState {
   /// [devCenterId] The ID of the associated Dev Center. Changing this forces a new resource to be created.
   /// [name] Specifies the name of this Dev Center Attached Network. Changing this forces a new resource to be created.
   /// [networkConnectionId] The ID of the Dev Center Network Connection you want to attach. Changing this forces a new resource to be created.
-  AttachedNetworkState({
+  const AttachedNetworkState({
     this.devCenterId,
     this.name,
     this.networkConnectionId,

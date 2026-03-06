@@ -20,7 +20,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut].
   /// [distributionFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// [range] Range of numerical values. The computed good_service
-  SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut({
+  const SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut({
     required this.distributionFilter,
     required this.range,
   });

@@ -19,7 +19,7 @@ class ExecutionPropertiesResponse {
   /// [specification] Execution specification
   /// [status] Status of Execution
   /// [workflowVersionId] Workflow version of execution
-  ExecutionPropertiesResponse({
+  const ExecutionPropertiesResponse({
     required this.provisioningState,
     this.specification,
     required this.status,

@@ -32,7 +32,7 @@ class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
   /// [ipv6Address] IPv6 address.
   /// [ipv6AddressHcStatus] The health status of the private IPv6 address of the ALB instance.
   /// [ipv6LocalAddresses] The IPv6 link-local addresses.
-  GetLoadBalancersBalancerZoneMappingLoadBalancerAddress({
+  const GetLoadBalancersBalancerZoneMappingLoadBalancerAddress({
     required this.address,
     required this.allocationId,
     required this.eipType,

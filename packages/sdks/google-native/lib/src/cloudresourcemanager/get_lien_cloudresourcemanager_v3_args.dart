@@ -11,7 +11,7 @@ class GetLienCloudresourcemanagerV3Args {
 
   /// Creates a new [GetLienCloudresourcemanagerV3Args].
   /// [lienId] Required.
-  GetLienCloudresourcemanagerV3Args({
+  const GetLienCloudresourcemanagerV3Args({
     required this.lienId,
   });
 

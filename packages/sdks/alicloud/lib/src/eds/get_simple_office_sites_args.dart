@@ -21,7 +21,7 @@ class GetSimpleOfficeSitesArgs {
   /// [nameRegex] A regex string to filter results by Simple Office Site name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
-  GetSimpleOfficeSitesArgs({
+  const GetSimpleOfficeSitesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

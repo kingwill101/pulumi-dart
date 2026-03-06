@@ -23,7 +23,7 @@ class GetNamespacesResult {
   /// [names] A list of namespace names.
   /// [namespaces] A list of matched Container Registry namespaces. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetNamespacesResult({
+  const GetNamespacesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

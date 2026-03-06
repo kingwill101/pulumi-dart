@@ -91,7 +91,7 @@ class CasterState {
   /// [urgentImageUrl] Prepare the URL of the picture material.
   /// [urgentLiveStreamUrl] The prepared live stream URL.
   /// [urgentMaterialId] Prepared video, media library material ID. If this parameter is set to null, the standby configuration is cleared by default.
-  CasterState({
+  const CasterState({
     this.autoSwitchUrgentConfig,
     this.autoSwitchUrgentOn,
     this.callbackUrl,

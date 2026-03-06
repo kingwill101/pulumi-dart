@@ -44,7 +44,7 @@ class GetBgpGroupsGroup {
   /// [routeLimit] Routing limits.
   /// [routerId] The ID of the VBR.
   /// [status] The status of the resource.
-  GetBgpGroupsGroup({
+  const GetBgpGroupsGroup({
     required this.authKey,
     required this.bgpGroupName,
     required this.description,

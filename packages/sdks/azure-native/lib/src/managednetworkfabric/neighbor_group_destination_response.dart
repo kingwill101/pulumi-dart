@@ -12,7 +12,7 @@ class NeighborGroupDestinationResponse {
   /// Creates a new [NeighborGroupDestinationResponse].
   /// [ipv4Addresses] Array of IPv4 Addresses.
   /// [ipv6Addresses] Array of IPv6 Addresses.
-  NeighborGroupDestinationResponse({
+  const NeighborGroupDestinationResponse({
     this.ipv4Addresses,
     this.ipv6Addresses,
   });

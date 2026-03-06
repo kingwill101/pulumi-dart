@@ -33,7 +33,7 @@ class PartnerAttachmentArgs {
   /// [redundancyZone] The redundancy zone for the NaaS
   /// [region] The region where the Partner Attachment will be created
   /// [vpcIds] The list of VPC IDs to attach the Partner Attachment to
-  PartnerAttachmentArgs({
+  const PartnerAttachmentArgs({
     this.bgp,
     required this.connectionBandwidthInMbps,
     required this.naasProvider,

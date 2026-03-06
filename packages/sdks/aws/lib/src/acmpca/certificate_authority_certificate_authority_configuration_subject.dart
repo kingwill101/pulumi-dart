@@ -44,7 +44,7 @@ class CertificateAuthorityCertificateAuthorityConfigurationSubject {
   /// [state] State in which the subject of the certificate is located. Must be less than or equal to 128 characters in length.
   /// [surname] Family name. In the US and the UK for example, the surname of an individual is ordered last. In Asian cultures the surname is typically ordered first. Must be less than or equal to 40 characters in length.
   /// [title] Title such as Mr. or Ms. which is pre-pended to the name to refer formally to the certificate subject. Must be less than or equal to 64 characters in length.
-  CertificateAuthorityCertificateAuthorityConfigurationSubject({
+  const CertificateAuthorityCertificateAuthorityConfigurationSubject({
     this.commonName,
     this.country,
     this.distinguishedNameQualifier,

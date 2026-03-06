@@ -54,7 +54,7 @@ class GetNetworkConnectionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNetworkConnectionResult({
+  const GetNetworkConnectionResult({
     required this.azureApiVersion,
     required this.domainJoinType,
     this.domainName,

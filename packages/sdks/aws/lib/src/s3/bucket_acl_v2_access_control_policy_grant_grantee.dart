@@ -20,7 +20,7 @@ class BucketAclV2AccessControlPolicyGrantGrantee {
   /// [id] Canonical user ID of the grantee.
   /// [type] Type of grantee. Valid values: `CanonicalUser`, `AmazonCustomerByEmail`, `Group`.
   /// [uri] URI of the grantee group.
-  BucketAclV2AccessControlPolicyGrantGrantee({
+  const BucketAclV2AccessControlPolicyGrantGrantee({
     this.displayName,
     this.emailAddress,
     this.id,

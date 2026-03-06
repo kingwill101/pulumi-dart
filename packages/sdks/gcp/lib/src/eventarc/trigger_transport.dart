@@ -10,7 +10,7 @@ class TriggerTransport {
 
   /// Creates a new [TriggerTransport].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-  TriggerTransport({
+  const TriggerTransport({
     this.pubsub,
   });
 

@@ -25,7 +25,7 @@ class GetPartnerTenantResult {
   /// [name] Unique resource name of the PartnerTenant. The name is ignored when creating PartnerTenant.
   /// [partnerMetadata] Optional. Metadata provided by the Partner associated with PartnerTenant.
   /// [updateTime] Timestamp when the resource was last modified.
-  GetPartnerTenantResult({
+  const GetPartnerTenantResult({
     required this.createTime,
     required this.displayName,
     required this.group,

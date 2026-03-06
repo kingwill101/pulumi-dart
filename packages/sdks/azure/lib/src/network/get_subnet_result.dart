@@ -37,7 +37,7 @@ class GetSubnetResult {
   /// [routeTableId] The ID of the Route Table associated with this subnet.
   /// [serviceEndpoints] A list of Service Endpoints within this subnet.
   /// [virtualNetworkName] Required.
-  GetSubnetResult({
+  const GetSubnetResult({
     required this.addressPrefix,
     required this.addressPrefixes,
     required this.defaultOutboundAccessEnabled,

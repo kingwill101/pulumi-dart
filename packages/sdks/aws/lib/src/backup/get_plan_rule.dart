@@ -32,7 +32,7 @@ class GetPlanRule {
   /// [startWindow] Required.
   /// [targetLogicallyAirGappedBackupVaultArn] Required.
   /// [targetVaultName] Required.
-  GetPlanRule({
+  const GetPlanRule({
     required this.completionWindow,
     required this.copyActions,
     required this.enableContinuousBackup,

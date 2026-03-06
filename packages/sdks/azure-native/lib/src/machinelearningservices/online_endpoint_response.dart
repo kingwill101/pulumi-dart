@@ -37,7 +37,7 @@ class OnlineEndpointResponse {
   /// [scoringUri] Endpoint URI.
   /// [swaggerUri] Endpoint Swagger URI.
   /// [traffic] Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
-  OnlineEndpointResponse({
+  const OnlineEndpointResponse({
     required this.authMode,
     this.compute,
     this.description,

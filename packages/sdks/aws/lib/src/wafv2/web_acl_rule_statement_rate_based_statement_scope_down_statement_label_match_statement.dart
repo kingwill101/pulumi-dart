@@ -11,7 +11,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement].
   /// [key] String to match against.
   /// [scope] Specify whether you want to match using the label name or just the namespace. Valid values are `LABEL` or `NAMESPACE`.
-  WebAclRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement({
+  const WebAclRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement({
     required this.key,
     required this.scope,
   });

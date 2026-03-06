@@ -21,7 +21,7 @@ class ConnectionDetails {
   /// [linkIdentifier] Gets or sets link identifier.
   /// [memberName] Gets or sets member name.
   /// [privateIpAddress] Gets or sets private IP address.
-  ConnectionDetails({
+  const ConnectionDetails({
     this.groupId,
     this.id,
     this.linkIdentifier,

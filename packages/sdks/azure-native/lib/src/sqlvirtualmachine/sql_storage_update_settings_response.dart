@@ -15,7 +15,7 @@ class SqlStorageUpdateSettingsResponse {
   /// [diskConfigurationType] Disk configuration to apply to SQL Server.
   /// [diskCount] Virtual machine disk count.
   /// [startingDeviceId] Device id of the first disk to be updated.
-  SqlStorageUpdateSettingsResponse({
+  const SqlStorageUpdateSettingsResponse({
     this.diskConfigurationType,
     this.diskCount,
     this.startingDeviceId,

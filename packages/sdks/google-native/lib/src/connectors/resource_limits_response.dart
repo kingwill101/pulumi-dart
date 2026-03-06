@@ -12,7 +12,7 @@ class ResourceLimitsResponse {
   /// Creates a new [ResourceLimitsResponse].
   /// [cpu] CPU limit.
   /// [memory] Memory limit.
-  ResourceLimitsResponse({
+  const ResourceLimitsResponse({
     required this.cpu,
     required this.memory,
   });

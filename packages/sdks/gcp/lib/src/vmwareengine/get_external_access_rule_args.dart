@@ -15,7 +15,7 @@ class GetExternalAccessRuleArgs {
   /// Creates a new [GetExternalAccessRuleArgs].
   /// [name] Name of the resource.
   /// [parent] The resource name of the network policy that this cluster belongs.
-  GetExternalAccessRuleArgs({
+  const GetExternalAccessRuleArgs({
     required this.name,
     required this.parent,
   });

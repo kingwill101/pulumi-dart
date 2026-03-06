@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [name] Name of the resource.
   /// [parent] The resource name of the private cloud that this cluster belongs.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.name,
     required this.parent,
   });

@@ -15,7 +15,7 @@ class GetSecurityPartnerProviderArgs {
   /// Creates a new [GetSecurityPartnerProviderArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [securityPartnerProviderName] The name of the Security Partner Provider.
-  GetSecurityPartnerProviderArgs({
+  const GetSecurityPartnerProviderArgs({
     required this.resourceGroupName,
     required this.securityPartnerProviderName,
   });

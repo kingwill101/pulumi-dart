@@ -23,7 +23,7 @@ class NfsSnapshotState {
   /// [shareId] The ID of the NFS share to snapshot.
   /// [size] The size of the snapshot in GiB.
   /// [status] Optional.
-  NfsSnapshotState({
+  const NfsSnapshotState({
     this.createdAt,
     this.name,
     this.region,

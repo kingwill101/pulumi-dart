@@ -9,7 +9,7 @@ class MonitoringProfileResponse {
 
   /// Creates a new [MonitoringProfileResponse].
   /// [id] Resource Id of Application Insights Resource
-  MonitoringProfileResponse({
+  const MonitoringProfileResponse({
     required this.id,
   });
 

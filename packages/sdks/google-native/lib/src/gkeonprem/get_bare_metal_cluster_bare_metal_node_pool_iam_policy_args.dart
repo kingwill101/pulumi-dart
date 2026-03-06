@@ -19,7 +19,7 @@ class GetBareMetalClusterBareMetalNodePoolIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetBareMetalClusterBareMetalNodePoolIamPolicyArgs({
+  const GetBareMetalClusterBareMetalNodePoolIamPolicyArgs({
     required this.bareMetalClusterId,
     required this.bareMetalNodePoolId,
     required this.location,

@@ -33,7 +33,7 @@ class RestorePointSourceVMOSDiskResponse {
   /// [name] Gets the disk name.
   /// [osType] Gets the Operating System type.
   /// [writeAcceleratorEnabled] Shows true if the disk is write-accelerator enabled.
-  RestorePointSourceVMOSDiskResponse({
+  const RestorePointSourceVMOSDiskResponse({
     required this.caching,
     this.diskRestorePoint,
     required this.diskSizeGB,

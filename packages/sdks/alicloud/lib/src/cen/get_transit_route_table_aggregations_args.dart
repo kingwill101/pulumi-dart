@@ -27,7 +27,7 @@ class GetTransitRouteTableAggregationsArgs {
   /// [status] The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
   /// [transitRouteTableAggregationCidr] The destination CIDR block of the aggregate route.
   /// [transitRouteTableId] The ID of the route table of the Enterprise Edition transit router.
-  GetTransitRouteTableAggregationsArgs({
+  const GetTransitRouteTableAggregationsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

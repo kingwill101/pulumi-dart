@@ -24,7 +24,7 @@ class AzureFunctionReceiver {
   /// [managedIdentity] The principal id of the managed identity. The value can be "None", "SystemAssigned"
   /// [name] The name of the azure function receiver. Names must be unique across all receivers within an action group.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  AzureFunctionReceiver({
+  const AzureFunctionReceiver({
     required this.functionAppResourceId,
     required this.functionName,
     required this.httpTriggerUrl,

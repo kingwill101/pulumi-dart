@@ -13,7 +13,7 @@ class GetSnapshotComputeBetaArgs {
   /// Creates a new [GetSnapshotComputeBetaArgs].
   /// [project] Optional.
   /// [snapshot] Required.
-  GetSnapshotComputeBetaArgs({
+  const GetSnapshotComputeBetaArgs({
     this.project,
     required this.snapshot,
   });

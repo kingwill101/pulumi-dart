@@ -24,7 +24,7 @@ class TriggeredBuildResultResponse {
   /// [lastTransitionStatus] The last transition status of this build result
   /// [lastTransitionTime] The last transition time of this build result
   /// [provisioningState] The provisioning state of this build result
-  TriggeredBuildResultResponse({
+  const TriggeredBuildResultResponse({
     this.id,
     this.image,
     this.lastTransitionReason,

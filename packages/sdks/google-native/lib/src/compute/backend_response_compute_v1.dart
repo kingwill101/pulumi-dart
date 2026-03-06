@@ -42,7 +42,7 @@ class BackendResponseComputeV1 {
   /// [maxRatePerEndpoint] Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
   /// [maxRatePerInstance] Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
   /// [maxUtilization] Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
-  BackendResponseComputeV1({
+  const BackendResponseComputeV1({
     required this.balancingMode,
     required this.capacityScaler,
     required this.description,

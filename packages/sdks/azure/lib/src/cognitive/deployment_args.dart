@@ -32,7 +32,7 @@ class DeploymentArgs {
   /// [raiPolicyName] The name of RAI policy.
   /// [sku] A `sku` block as defined below.
   /// [versionUpgradeOption] Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`.
-  DeploymentArgs({
+  const DeploymentArgs({
     required this.cognitiveAccountId,
     this.dynamicThrottlingEnabled,
     required this.model,

@@ -12,7 +12,7 @@ class DotNetComponentConfigurationPropertyResponse {
   /// Creates a new [DotNetComponentConfigurationPropertyResponse].
   /// [propertyName] The name of the property
   /// [value] The value of the property
-  DotNetComponentConfigurationPropertyResponse({
+  const DotNetComponentConfigurationPropertyResponse({
     this.propertyName,
     this.value,
   });

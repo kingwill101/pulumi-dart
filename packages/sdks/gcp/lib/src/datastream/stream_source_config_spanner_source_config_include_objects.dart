@@ -10,7 +10,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjects {
 
   /// Creates a new [StreamSourceConfigSpannerSourceConfigIncludeObjects].
   /// [schemas] Spanner schemas in the database
-  StreamSourceConfigSpannerSourceConfigIncludeObjects({
+  const StreamSourceConfigSpannerSourceConfigIncludeObjects({
     required this.schemas,
   });
 

@@ -23,7 +23,7 @@ class ProvisionedConcurrencyConfigState {
   /// [qualifier] Lambda Function version or Lambda Alias name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
-  ProvisionedConcurrencyConfigState({
+  const ProvisionedConcurrencyConfigState({
     this.functionName,
     this.provisionedConcurrentExecutions,
     this.qualifier,

@@ -17,7 +17,7 @@ class GetDatabaseSystemVersionsVersion {
   /// [name] The name of the Oracle Database version.
   /// [pluggableDatabaseSupported] Indicates if this version of the Oracle Database software supports pluggable databases.
   /// [version] The value of the Oracle Database version.
-  GetDatabaseSystemVersionsVersion({
+  const GetDatabaseSystemVersionsVersion({
     required this.latestVersion,
     required this.name,
     required this.pluggableDatabaseSupported,

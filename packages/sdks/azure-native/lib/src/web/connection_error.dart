@@ -21,7 +21,7 @@ class ConnectionError {
   /// [location] Resource location
   /// [message] Description of the status
   /// [tags] Resource tags
-  ConnectionError({
+  const ConnectionError({
     this.code,
     this.etag,
     this.location,

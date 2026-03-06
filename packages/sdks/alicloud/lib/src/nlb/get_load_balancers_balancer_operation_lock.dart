@@ -11,7 +11,7 @@ class GetLoadBalancersBalancerOperationLock {
   /// Creates a new [GetLoadBalancersBalancerOperationLock].
   /// [lockReason] The reason why the NLB instance is locked.
   /// [lockType] The type of lock.
-  GetLoadBalancersBalancerOperationLock({
+  const GetLoadBalancersBalancerOperationLock({
     required this.lockReason,
     required this.lockType,
   });

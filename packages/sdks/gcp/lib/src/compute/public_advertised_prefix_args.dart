@@ -49,7 +49,7 @@ class PublicAdvertisedPrefixArgs {
   /// [name] Name of the resource. The name must be 1-63 characters long, and
   /// [pdpScope] Specifies how child public delegated prefix will be scoped. pdpScope
   /// [project] The ID of the project in which the resource belongs.
-  PublicAdvertisedPrefixArgs({
+  const PublicAdvertisedPrefixArgs({
     this.description,
     this.dnsVerificationIp,
     required this.ipCidrRange,

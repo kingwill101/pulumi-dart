@@ -13,7 +13,7 @@ class GetFeatureSpecClusterupgradeGkeUpgradeOverride {
   /// Creates a new [GetFeatureSpecClusterupgradeGkeUpgradeOverride].
   /// [postConditions] Post conditions to override for the specified upgrade.
   /// [upgrades] Which upgrade to override.
-  GetFeatureSpecClusterupgradeGkeUpgradeOverride({
+  const GetFeatureSpecClusterupgradeGkeUpgradeOverride({
     required this.postConditions,
     required this.upgrades,
   });

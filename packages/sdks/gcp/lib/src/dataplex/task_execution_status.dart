@@ -15,7 +15,7 @@ class TaskExecutionStatus {
   /// Creates a new [TaskExecutionStatus].
   /// [latestJobs] (Output)
   /// [updateTime] (Output)
-  TaskExecutionStatus({
+  const TaskExecutionStatus({
     this.latestJobs,
     this.updateTime,
   });

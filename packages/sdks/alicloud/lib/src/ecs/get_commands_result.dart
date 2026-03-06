@@ -30,7 +30,7 @@ class GetCommandsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [type] Optional.
-  GetCommandsResult({
+  const GetCommandsResult({
     this.commandProvider,
     required this.commands,
     this.contentEncoding,

@@ -20,7 +20,7 @@ class CloudSqlProperties {
   /// [database] Database name.
   /// [instanceId] Cloud SQL instance ID in the form `project:location:instance`.
   /// [type] Type of the Cloud SQL database.
-  CloudSqlProperties({
+  const CloudSqlProperties({
     this.credential,
     this.database,
     this.instanceId,

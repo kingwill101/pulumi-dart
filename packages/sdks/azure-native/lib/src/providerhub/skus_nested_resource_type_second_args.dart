@@ -27,7 +27,7 @@ class SkusNestedResourceTypeSecondArgs {
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
   /// [sku] The SKU.
-  SkusNestedResourceTypeSecondArgs({
+  const SkusNestedResourceTypeSecondArgs({
     required this.nestedResourceTypeFirst,
     required this.nestedResourceTypeSecond,
     this.properties,

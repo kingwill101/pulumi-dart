@@ -14,7 +14,7 @@ class GetInstanceGuestAttributesQueryValue {
   /// [key] Key of the guest_attribute.
   /// [namespace] Namespace of the guest_attribute.
   /// [value] Value of the guest_attribute.
-  GetInstanceGuestAttributesQueryValue({
+  const GetInstanceGuestAttributesQueryValue({
     required this.key,
     required this.namespace,
     required this.value,

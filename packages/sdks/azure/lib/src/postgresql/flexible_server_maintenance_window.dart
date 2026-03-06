@@ -16,7 +16,7 @@ class FlexibleServerMaintenanceWindow {
   /// [dayOfWeek] The day of week for maintenance window, where the week starts on a Sunday, i.e. Sunday = `0`, Monday = `1`. Defaults to `0`.
   /// [startHour] The start hour for maintenance window. Defaults to `0`.
   /// [startMinute] The start minute for maintenance window. Defaults to `0`.
-  FlexibleServerMaintenanceWindow({
+  const FlexibleServerMaintenanceWindow({
     this.dayOfWeek,
     this.startHour,
     this.startMinute,

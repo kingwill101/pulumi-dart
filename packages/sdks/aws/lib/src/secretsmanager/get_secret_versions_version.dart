@@ -17,7 +17,7 @@ class GetSecretVersionsVersion {
   /// [lastAccessedDate] Date that this version of the secret was last accessed.
   /// [versionId] Unique version identifier of this version of the secret.
   /// [versionStages] List of staging labels attached to the version.
-  GetSecretVersionsVersion({
+  const GetSecretVersionsVersion({
     required this.createdTime,
     required this.lastAccessedDate,
     required this.versionId,

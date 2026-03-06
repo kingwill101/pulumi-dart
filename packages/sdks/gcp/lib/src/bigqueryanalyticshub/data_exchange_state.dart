@@ -51,7 +51,7 @@ class DataExchangeState {
   /// [primaryContact] Email or URL of the primary point of contact of the data exchange.
   /// [project] The ID of the project in which the resource belongs.
   /// [sharingEnvironmentConfig] Configurable data sharing environment option for a data exchange.
-  DataExchangeState({
+  const DataExchangeState({
     this.dataExchangeId,
     this.description,
     this.discoveryType,

@@ -20,7 +20,7 @@ class PrivateEndpointConnectionForPrivateLinkHubBasicResponse {
   /// [privateEndpoint] The private endpoint which the connection belongs to.
   /// [privateLinkServiceConnectionState] Connection state of the private endpoint connection.
   /// [provisioningState] Provisioning state of the private endpoint connection.
-  PrivateEndpointConnectionForPrivateLinkHubBasicResponse({
+  const PrivateEndpointConnectionForPrivateLinkHubBasicResponse({
     required this.id,
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,

@@ -14,7 +14,7 @@ class FirewallPolicyManagedRuleOverrideRuleExclusion {
   /// [matchVariable] The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
   /// [operator] Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
   /// [selector] Selector for the value in the `match_variable` attribute this exclusion applies to.
-  FirewallPolicyManagedRuleOverrideRuleExclusion({
+  const FirewallPolicyManagedRuleOverrideRuleExclusion({
     required this.matchVariable,
     required this.operator,
     required this.selector,

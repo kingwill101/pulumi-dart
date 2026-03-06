@@ -60,7 +60,7 @@ class ProvisionedClustersResponsePropertiesResponse {
   /// [provisioningState] Required.
   /// [status] HybridAKSClusterStatus defines the observed state of HybridAKSCluster
   /// [windowsProfile] WindowsProfile - Profile for Windows VMs in the Provisioned Cluster.
-  ProvisionedClustersResponsePropertiesResponse({
+  const ProvisionedClustersResponsePropertiesResponse({
     this.aadProfile,
     this.addonProfiles,
     this.agentPoolProfiles,

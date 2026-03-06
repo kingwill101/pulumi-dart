@@ -13,7 +13,7 @@ class GetDatabaseEncryptionConfig {
   /// Creates a new [GetDatabaseEncryptionConfig].
   /// [kmsKeyName] Fully qualified name of the KMS key to use to encrypt this database. This key must exist
   /// [kmsKeyNames] Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
-  GetDatabaseEncryptionConfig({
+  const GetDatabaseEncryptionConfig({
     required this.kmsKeyName,
     required this.kmsKeyNames,
   });

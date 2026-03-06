@@ -66,7 +66,7 @@ class KpiArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [thresHolds] The KPI thresholds.
   /// [unit] The unit of measurement for the KPI.
-  KpiArgs({
+  const KpiArgs({
     this.aliases,
     required this.calculationWindow,
     this.calculationWindowFieldName,

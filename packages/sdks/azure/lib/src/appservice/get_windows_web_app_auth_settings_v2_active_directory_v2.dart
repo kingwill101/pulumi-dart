@@ -41,7 +41,7 @@ class GetWindowsWebAppAuthSettingsV2ActiveDirectoryV2 {
   /// [loginParameters] A map of key-value pairs sent to the Authorisation Endpoint when a user logs in.
   /// [tenantAuthEndpoint] The Azure Tenant Endpoint for the Authenticating Tenant. e.g. `https://login.microsoftonline.com/{tenant-guid}/v2.0/`
   /// [wwwAuthenticationDisabled] Is the www-authenticate provider omitted from the request?
-  GetWindowsWebAppAuthSettingsV2ActiveDirectoryV2({
+  const GetWindowsWebAppAuthSettingsV2ActiveDirectoryV2({
     required this.allowedApplications,
     required this.allowedAudiences,
     required this.allowedGroups,

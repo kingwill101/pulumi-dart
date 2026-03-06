@@ -14,7 +14,7 @@ class GetSubnetsFilter {
   /// Creates a new [GetSubnetsFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetSubnetsFilter({
+  const GetSubnetsFilter({
     required this.name,
     required this.values,
   });

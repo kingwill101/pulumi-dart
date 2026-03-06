@@ -25,7 +25,7 @@ class PrivateEndpointConnectionByNameArgs {
   /// [properties] The connection state of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  PrivateEndpointConnectionByNameArgs({
+  const PrivateEndpointConnectionByNameArgs({
     this.id,
     this.privateEndpointConnectionName,
     this.properties,

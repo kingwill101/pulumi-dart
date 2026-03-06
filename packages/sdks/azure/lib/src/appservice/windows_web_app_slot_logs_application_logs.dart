@@ -12,7 +12,7 @@ class WindowsWebAppSlotLogsApplicationLogs {
   /// Creates a new [WindowsWebAppSlotLogsApplicationLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
   /// [fileSystemLevel] Log level. Possible values include: `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
-  WindowsWebAppSlotLogsApplicationLogs({
+  const WindowsWebAppSlotLogsApplicationLogs({
     this.azureBlobStorage,
     required this.fileSystemLevel,
   });

@@ -15,7 +15,7 @@ class GetFeaturestoreArgs {
   /// [featurestoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeaturestoreArgs({
+  const GetFeaturestoreArgs({
     required this.featurestoreId,
     required this.location,
     this.project,

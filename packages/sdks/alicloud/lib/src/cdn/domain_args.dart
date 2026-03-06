@@ -52,7 +52,7 @@ class DomainArgs {
   /// [sourceType] Optional.
   /// [sources] Optional.
   /// [videoSeekEnable] Optional.
-  DomainArgs({
+  const DomainArgs({
     this.authConfig,
     this.blockIps,
     this.cacheConfigs,

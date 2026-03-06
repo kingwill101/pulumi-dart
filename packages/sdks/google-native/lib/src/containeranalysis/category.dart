@@ -12,7 +12,7 @@ class Category {
   /// Creates a new [Category].
   /// [categoryId] The identifier of the category.
   /// [name] The localized name of the category.
-  Category({
+  const Category({
     this.categoryId,
     this.name,
   });

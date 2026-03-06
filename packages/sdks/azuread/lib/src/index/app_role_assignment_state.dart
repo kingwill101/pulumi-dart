@@ -24,7 +24,7 @@ class AppRoleAssignmentState {
   /// [principalType] The object type of the principal to which the app role is assigned.
   /// [resourceDisplayName] The display name of the application representing the resource.
   /// [resourceObjectId] The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
-  AppRoleAssignmentState({
+  const AppRoleAssignmentState({
     this.appRoleId,
     this.principalDisplayName,
     this.principalObjectId,

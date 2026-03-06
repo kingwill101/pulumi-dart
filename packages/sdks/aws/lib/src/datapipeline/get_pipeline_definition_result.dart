@@ -25,7 +25,7 @@ class GetPipelineDefinitionResult {
   /// [pipelineId] Required.
   /// [pipelineObjects] Objects defined in the pipeline. See below
   /// [region] Required.
-  GetPipelineDefinitionResult({
+  const GetPipelineDefinitionResult({
     required this.id,
     required this.parameterObjects,
     this.parameterValues,

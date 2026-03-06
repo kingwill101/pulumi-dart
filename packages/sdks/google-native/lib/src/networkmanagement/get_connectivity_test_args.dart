@@ -13,7 +13,7 @@ class GetConnectivityTestArgs {
   /// Creates a new [GetConnectivityTestArgs].
   /// [connectivityTestId] Required.
   /// [project] Optional.
-  GetConnectivityTestArgs({
+  const GetConnectivityTestArgs({
     required this.connectivityTestId,
     this.project,
   });

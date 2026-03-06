@@ -14,7 +14,7 @@ class LocalNetworkGatewayBgpSettings {
   /// [asn] The BGP speaker's ASN.
   /// [bgpPeeringAddress] The BGP peering address and BGP identifier of this BGP speaker.
   /// [peerWeight] The weight added to routes learned from this BGP speaker.
-  LocalNetworkGatewayBgpSettings({
+  const LocalNetworkGatewayBgpSettings({
     required this.asn,
     required this.bgpPeeringAddress,
     this.peerWeight,

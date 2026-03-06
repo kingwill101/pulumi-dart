@@ -12,7 +12,7 @@ class SchedulerAcceleratorConfigResponse {
   /// Creates a new [SchedulerAcceleratorConfigResponse].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Type of this accelerator.
-  SchedulerAcceleratorConfigResponse({
+  const SchedulerAcceleratorConfigResponse({
     required this.coreCount,
     required this.type,
   });

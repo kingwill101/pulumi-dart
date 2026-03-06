@@ -70,7 +70,7 @@ class FirewallState {
   /// [transitGatewayOwnerAccountId] The AWS account ID that owns the transit gateway.
   /// [updateToken] A string token used when updating a firewall.
   /// [vpcId] Required when creating a VPC attached firewall. The unique identifier of the VPC where AWS Network Firewall should create the firewall.
-  FirewallState({
+  const FirewallState({
     this.arn,
     this.availabilityZoneChangeProtection,
     this.availabilityZoneMappings,

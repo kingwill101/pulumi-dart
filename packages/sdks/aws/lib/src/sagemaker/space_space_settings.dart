@@ -32,7 +32,7 @@ class SpaceSpaceSettings {
   /// [jupyterServerAppSettings] The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
   /// [kernelGatewayAppSettings] The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
   /// [spaceStorageSettings] The storage settings. See `space_storage_settings` Block below.
-  SpaceSpaceSettings({
+  const SpaceSpaceSettings({
     this.appType,
     this.codeEditorAppSettings,
     this.customFileSystems,

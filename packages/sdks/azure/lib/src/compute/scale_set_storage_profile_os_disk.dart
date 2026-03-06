@@ -28,7 +28,7 @@ class ScaleSetStorageProfileOsDisk {
   /// [name] Specifies the disk name. Must be specified when using unmanaged disk ('managed_disk_type' property not set).
   /// [osType] Specifies the operating system Type, valid values are windows, Linux.
   /// [vhdContainers] Specifies the VHD URI. Cannot be used when `image` or `managed_disk_type` is specified.
-  ScaleSetStorageProfileOsDisk({
+  const ScaleSetStorageProfileOsDisk({
     this.caching,
     required this.createOption,
     this.image,

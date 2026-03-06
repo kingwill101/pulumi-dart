@@ -20,7 +20,7 @@ class GetTargetProjectResult {
   /// [name] The name of the target project.
   /// [project] The target project ID (number) or project name.
   /// [updateTime] The last time the target project resource was updated.
-  GetTargetProjectResult({
+  const GetTargetProjectResult({
     required this.createTime,
     required this.description,
     required this.name,

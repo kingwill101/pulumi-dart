@@ -8,7 +8,7 @@ class UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows {
 
   /// Creates a new [UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows].
   /// [customAuthMode] Mode of threat protection operation in custom authentication. Valid values are `AUDIT` or `ENFORCED`. The default value is `AUDIT`.
-  UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows({
+  const UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows({
     this.customAuthMode,
   });
 

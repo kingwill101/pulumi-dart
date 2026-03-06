@@ -15,7 +15,7 @@ class GetStorageApplianceArgs {
   /// Creates a new [GetStorageApplianceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageApplianceName] The name of the storage appliance.
-  GetStorageApplianceArgs({
+  const GetStorageApplianceArgs({
     required this.resourceGroupName,
     required this.storageApplianceName,
   });

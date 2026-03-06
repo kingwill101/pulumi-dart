@@ -10,7 +10,7 @@ class ApigatewayGatewayConfig {
 
   /// Creates a new [ApigatewayGatewayConfig].
   /// [backendConfig] Backend settings that are applied to all backends of the Gateway.
-  ApigatewayGatewayConfig({
+  const ApigatewayGatewayConfig({
     required this.backendConfig,
   });
 

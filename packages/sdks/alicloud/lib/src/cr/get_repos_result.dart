@@ -28,7 +28,7 @@ class GetReposResult {
   /// [namespace] Name of container registry namespace where repo is located.
   /// [outputFile] Optional.
   /// [repos] A list of matched Container Registry Namespaces. Each element contains the following attributes:
-  GetReposResult({
+  const GetReposResult({
     this.enableDetails,
     required this.id,
     required this.ids,

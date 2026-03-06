@@ -25,7 +25,7 @@ class GetApplicationLiveViewResult {
   /// [properties] Application Live View properties payload
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetApplicationLiveViewResult({
+  const GetApplicationLiveViewResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -14,7 +14,7 @@ class HelmMappingRuleProfileOptions {
   /// Creates a new [HelmMappingRuleProfileOptions].
   /// [installOptions] The helm deployment install options
   /// [upgradeOptions] The helm deployment upgrade options
-  HelmMappingRuleProfileOptions({
+  const HelmMappingRuleProfileOptions({
     this.installOptions,
     this.upgradeOptions,
   });

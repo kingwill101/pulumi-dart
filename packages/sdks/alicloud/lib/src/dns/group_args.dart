@@ -12,7 +12,7 @@ class GroupArgs {
 
   /// Creates a new [GroupArgs].
   /// [name] Name of the domain group.
-  GroupArgs({
+  const GroupArgs({
     this.name,
   });
 

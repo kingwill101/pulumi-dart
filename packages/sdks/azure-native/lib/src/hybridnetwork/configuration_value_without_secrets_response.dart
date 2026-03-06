@@ -32,7 +32,7 @@ class ConfigurationValueWithoutSecretsResponse {
   /// [provisioningState] The provisioning state of the site resource.
   /// [publisherName] The publisher name for the configuration group schema.
   /// [publisherScope] The scope of the publisher.
-  ConfigurationValueWithoutSecretsResponse({
+  const ConfigurationValueWithoutSecretsResponse({
     required this.configurationGroupSchemaName,
     required this.configurationGroupSchemaOfferingLocation,
     this.configurationGroupSchemaResourceReference,

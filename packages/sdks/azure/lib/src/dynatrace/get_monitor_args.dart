@@ -15,7 +15,7 @@ class GetMonitorArgs {
   /// Creates a new [GetMonitorArgs].
   /// [name] Name of the Dynatrace monitor.
   /// [resourceGroupName] The name of the Resource Group where the Dynatrace monitor should exist.
-  GetMonitorArgs({
+  const GetMonitorArgs({
     required this.name,
     required this.resourceGroupName,
   });

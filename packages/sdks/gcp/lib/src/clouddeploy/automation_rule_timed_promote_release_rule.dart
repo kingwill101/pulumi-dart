@@ -22,7 +22,7 @@ class AutomationRuleTimedPromoteReleaseRule {
   /// [id] Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
   /// [schedule] Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
   /// [timeZone] Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
-  AutomationRuleTimedPromoteReleaseRule({
+  const AutomationRuleTimedPromoteReleaseRule({
     this.destinationPhase,
     this.destinationTargetId,
     required this.id,

@@ -34,7 +34,7 @@ class GetContactFlowModuleResult {
   /// [state] Type of Contact Flow Module Module. Values are either `ACTIVE` or `ARCHIVED`.
   /// [status] Status of the Contact Flow Module Module. Values are either `PUBLISHED` or `SAVED`.
   /// [tags] Map of tags to assign to the Contact Flow Module.
-  GetContactFlowModuleResult({
+  const GetContactFlowModuleResult({
     required this.arn,
     required this.contactFlowModuleId,
     required this.content,

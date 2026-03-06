@@ -13,7 +13,7 @@ class TlsPropertiesResponse {
   /// Creates a new [TlsPropertiesResponse].
   /// [certificate] The certificate used to configure HTTPS for the login server.
   /// [status] Indicates whether HTTPS is enabled for the login server.
-  TlsPropertiesResponse({
+  const TlsPropertiesResponse({
     required this.certificate,
     required this.status,
   });

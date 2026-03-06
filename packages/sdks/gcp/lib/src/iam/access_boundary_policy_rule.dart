@@ -13,7 +13,7 @@ class AccessBoundaryPolicyRule {
   /// Creates a new [AccessBoundaryPolicyRule].
   /// [accessBoundaryRule] An access boundary rule in an IAM policy.
   /// [description] The description of the rule.
-  AccessBoundaryPolicyRule({
+  const AccessBoundaryPolicyRule({
     this.accessBoundaryRule,
     this.description,
   });

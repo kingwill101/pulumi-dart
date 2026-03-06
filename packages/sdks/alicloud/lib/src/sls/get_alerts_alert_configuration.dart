@@ -83,7 +83,7 @@ class GetAlertsAlertConfiguration {
   /// [threshold] Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
   /// [type] Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
   /// [version] Fixed as 2.0.
-  GetAlertsAlertConfiguration({
+  const GetAlertsAlertConfiguration({
     required this.annotations,
     required this.autoAnnotation,
     required this.conditionConfiguration,

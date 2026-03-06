@@ -18,7 +18,7 @@ class DefinitionEligibleAuthorization {
   /// [principalDisplayName] The display name of the Azure Active Directory Principal.
   /// [principalId] Principal ID of the security group/service principal/user that would be assigned permissions to the projected subscription.
   /// [roleDefinitionId] The Principal ID of the Azure built-in role that defines the permissions that the Azure Active Directory will have on the projected scope.
-  DefinitionEligibleAuthorization({
+  const DefinitionEligibleAuthorization({
     this.justInTimeAccessPolicy,
     this.principalDisplayName,
     required this.principalId,

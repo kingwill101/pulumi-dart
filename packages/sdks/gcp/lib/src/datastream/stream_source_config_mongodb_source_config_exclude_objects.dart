@@ -10,7 +10,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjects {
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigExcludeObjects].
   /// [databases] MongoDB databases in the cluster.
-  StreamSourceConfigMongodbSourceConfigExcludeObjects({
+  const StreamSourceConfigMongodbSourceConfigExcludeObjects({
     this.databases,
   });
 

@@ -9,7 +9,7 @@ class X12MessageIdentifier {
 
   /// Creates a new [X12MessageIdentifier].
   /// [messageId] The message id.
-  X12MessageIdentifier({
+  const X12MessageIdentifier({
     required this.messageId,
   });
 

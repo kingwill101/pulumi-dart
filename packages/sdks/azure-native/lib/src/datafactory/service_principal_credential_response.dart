@@ -26,7 +26,7 @@ class ServicePrincipalCredentialResponse {
   /// [servicePrincipalKey] The key of the service principal used to authenticate.
   /// [tenant] The ID of the tenant to which the service principal belongs
   /// [type] Type of credential.
-  ServicePrincipalCredentialResponse({
+  const ServicePrincipalCredentialResponse({
     this.annotations,
     this.description,
     this.servicePrincipalId,

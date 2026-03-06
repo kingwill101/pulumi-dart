@@ -14,7 +14,7 @@ class ResourceDeploymentScriptPowerShellEnvironmentVariable {
   /// [name] Specifies the name of the environment variable.
   /// [secureValue] Specifies the value of the secure environment variable.
   /// [value] Specifies the value of the environment variable.
-  ResourceDeploymentScriptPowerShellEnvironmentVariable({
+  const ResourceDeploymentScriptPowerShellEnvironmentVariable({
     required this.name,
     this.secureValue,
     this.value,

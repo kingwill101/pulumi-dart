@@ -19,7 +19,7 @@ class GetTransferProjectServieAccountResult {
   /// [member] The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   /// [project] Required.
   /// [subjectId] Unique identifier for the service account.
-  GetTransferProjectServieAccountResult({
+  const GetTransferProjectServieAccountResult({
     required this.email,
     required this.id,
     required this.member,

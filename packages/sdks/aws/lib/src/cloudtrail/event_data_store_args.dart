@@ -43,7 +43,7 @@ class EventDataStoreArgs {
   /// [suspend] Specifies whether to stop ingesting new events into the event data store. If set to `true`, ingestion is suspended while maintaining the ability to query existing events. If set to `false`, ingestion is active.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [terminationProtectionEnabled] Specifies whether termination protection is enabled for the event data store. If termination protection is enabled, you cannot delete the event data store until termination protection is disabled. Default: `true`.
-  EventDataStoreArgs({
+  const EventDataStoreArgs({
     this.advancedEventSelectors,
     this.billingMode,
     this.kmsKeyId,

@@ -33,7 +33,7 @@ class ControlPolicyArgs {
   /// [effectScope] The effective scope of the access control policy. Valid values:
   /// [policyDocument] The new document of the access control policy.
   /// [tags] The tags.
-  ControlPolicyArgs({
+  const ControlPolicyArgs({
     required this.controlPolicyName,
     this.description,
     required this.effectScope,

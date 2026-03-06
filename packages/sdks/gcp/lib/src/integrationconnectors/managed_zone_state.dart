@@ -44,7 +44,7 @@ class ManagedZoneState {
   /// [targetProject] The name of the Target Project.
   /// [targetVpc] The name of the Target Project VPC Network.
   /// [updateTime] Time the Namespace was updated in UTC.
-  ManagedZoneState({
+  const ManagedZoneState({
     this.createTime,
     this.description,
     this.dns,

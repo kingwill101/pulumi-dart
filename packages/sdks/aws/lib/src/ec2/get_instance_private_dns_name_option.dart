@@ -14,7 +14,7 @@ class GetInstancePrivateDnsNameOption {
   /// [enableResourceNameDnsARecord] Indicates whether to respond to DNS queries for instance hostnames with DNS A records.
   /// [enableResourceNameDnsAaaaRecord] Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.
   /// [hostnameType] Type of hostname for EC2 instances.
-  GetInstancePrivateDnsNameOption({
+  const GetInstancePrivateDnsNameOption({
     required this.enableResourceNameDnsARecord,
     required this.enableResourceNameDnsAaaaRecord,
     required this.hostnameType,

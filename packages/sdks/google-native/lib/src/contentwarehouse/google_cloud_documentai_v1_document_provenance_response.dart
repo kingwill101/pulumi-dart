@@ -16,7 +16,7 @@ class GoogleCloudDocumentaiV1DocumentProvenanceResponse {
   /// [parents] References to the original elements that are replaced.
   /// [revision] The index of the revision that produced this element.
   /// [type] The type of provenance operation.
-  GoogleCloudDocumentaiV1DocumentProvenanceResponse({
+  const GoogleCloudDocumentaiV1DocumentProvenanceResponse({
     required this.parents,
     required this.revision,
     required this.type,

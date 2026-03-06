@@ -140,7 +140,7 @@ class InstanceArgs {
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [type] The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
   /// [watchdogEnabled] The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
-  InstanceArgs({
+  const InstanceArgs({
     this.alerts,
     this.authorizedKeys,
     this.authorizedUsers,

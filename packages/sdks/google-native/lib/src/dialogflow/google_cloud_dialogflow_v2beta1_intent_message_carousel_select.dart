@@ -10,7 +10,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect].
   /// [items] Carousel items.
-  GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect({
+  const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect({
     required this.items,
   });
 

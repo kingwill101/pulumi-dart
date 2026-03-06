@@ -13,7 +13,7 @@ class ListQueryKeyBySearchServiceResult {
   /// Creates a new [ListQueryKeyBySearchServiceResult].
   /// [nextLink] Request URL that can be used to query next page of query keys. Returned when the total number of requested query keys exceed maximum page size.
   /// [value] The query keys for the Azure AI Search service.
-  ListQueryKeyBySearchServiceResult({
+  const ListQueryKeyBySearchServiceResult({
     required this.nextLink,
     required this.value,
   });

@@ -25,7 +25,7 @@ class ManagedInstanceStartStopScheduleState {
   /// [nextRunAction] Next action to be executed (Start or Stop).
   /// [schedules] A `schedule` block as defined below.
   /// [timezoneId] Specifies the time zone of the schedule. Defaults to `UTC`.
-  ManagedInstanceStartStopScheduleState({
+  const ManagedInstanceStartStopScheduleState({
     this.description,
     this.managedInstanceId,
     this.nextExecutionTime,

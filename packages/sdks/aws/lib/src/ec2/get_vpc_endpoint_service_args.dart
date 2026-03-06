@@ -30,7 +30,7 @@ class GetVpcEndpointServiceArgs {
   /// [serviceRegions] AWS regions in which to look for services.
   /// [serviceType] Service type, `Gateway` or `Interface`.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
-  GetVpcEndpointServiceArgs({
+  const GetVpcEndpointServiceArgs({
     this.filters,
     this.service,
     this.serviceName,

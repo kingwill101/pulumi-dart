@@ -18,7 +18,7 @@ class GetPrivateLinkScopedResourceArgs {
   /// [name] The name of the scoped resource object.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
-  GetPrivateLinkScopedResourceArgs({
+  const GetPrivateLinkScopedResourceArgs({
     required this.name,
     required this.resourceGroupName,
     required this.scopeName,

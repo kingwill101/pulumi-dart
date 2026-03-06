@@ -35,7 +35,7 @@ class GetWorkloadClassifierResult {
   /// [name] Resource name.
   /// [startTime] The workload classifier start time for classification.
   /// [type] Resource type.
-  GetWorkloadClassifierResult({
+  const GetWorkloadClassifierResult({
     required this.azureApiVersion,
     this.context,
     this.endTime,

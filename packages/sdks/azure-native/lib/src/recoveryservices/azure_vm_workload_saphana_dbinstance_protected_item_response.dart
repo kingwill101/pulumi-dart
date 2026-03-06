@@ -110,7 +110,7 @@ class AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse {
   /// [sourceResourceId] ARM ID of the resource to be backed up.
   /// [vaultId] ID of the vault which protects this item
   /// [workloadType] Type of workload this item represents.
-  AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse({
+  const AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse({
     required this.backupManagementType,
     this.backupSetName,
     this.containerName,

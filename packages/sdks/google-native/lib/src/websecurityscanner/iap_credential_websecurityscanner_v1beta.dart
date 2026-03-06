@@ -10,7 +10,7 @@ class IapCredentialWebsecurityscannerV1beta {
 
   /// Creates a new [IapCredentialWebsecurityscannerV1beta].
   /// [iapTestServiceAccountInfo] Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
-  IapCredentialWebsecurityscannerV1beta({
+  const IapCredentialWebsecurityscannerV1beta({
     this.iapTestServiceAccountInfo,
   });
 

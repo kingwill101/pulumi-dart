@@ -29,7 +29,7 @@ class TestIssue {
   /// [stackTrace] Deprecated in favor of stack trace fields inside specific warnings.
   /// [type] Type of issue. Required.
   /// [warning] Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
-  TestIssue({
+  const TestIssue({
     this.category,
     this.errorMessage,
     this.severity,

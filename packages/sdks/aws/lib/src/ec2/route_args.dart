@@ -60,7 +60,7 @@ class RouteArgs {
   /// [transitGatewayId] Identifier of an EC2 Transit Gateway.
   /// [vpcEndpointId] Identifier of a VPC Endpoint.
   /// [vpcPeeringConnectionId] Identifier of a VPC peering connection.
-  RouteArgs({
+  const RouteArgs({
     this.carrierGatewayId,
     this.coreNetworkArn,
     this.destinationCidrBlock,

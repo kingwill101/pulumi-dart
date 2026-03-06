@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3GcsDestinationResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3GcsDestinationResponse].
   /// [uri] The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
-  GoogleCloudDialogflowCxV3GcsDestinationResponse({
+  const GoogleCloudDialogflowCxV3GcsDestinationResponse({
     required this.uri,
   });
 

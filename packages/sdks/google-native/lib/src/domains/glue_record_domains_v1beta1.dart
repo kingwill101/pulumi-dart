@@ -15,7 +15,7 @@ class GlueRecordDomainsV1beta1 {
   /// [hostName] Domain name of the host in Punycode format.
   /// [ipv4Addresses] List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
   /// [ipv6Addresses] List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
-  GlueRecordDomainsV1beta1({
+  const GlueRecordDomainsV1beta1({
     required this.hostName,
     this.ipv4Addresses,
     this.ipv6Addresses,

@@ -46,7 +46,7 @@ class DocumentDialogflowV2beta1Args {
   /// [name] Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
   /// [project] Optional.
   /// [rawContent] The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
-  DocumentDialogflowV2beta1Args({
+  const DocumentDialogflowV2beta1Args({
     this.content,
     this.contentUri,
     required this.displayName,

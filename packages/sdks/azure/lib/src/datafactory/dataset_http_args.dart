@@ -48,7 +48,7 @@ class DatasetHttpArgs {
   /// [requestBody] The body for the HTTP request.
   /// [requestMethod] The HTTP method for the HTTP request. (e.g. GET, POST)
   /// [schemaColumns] A `schema_column` block as defined below.
-  DatasetHttpArgs({
+  const DatasetHttpArgs({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

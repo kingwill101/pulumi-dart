@@ -18,7 +18,7 @@ class GetVpcEndpointZonesArgs {
   /// [endpointId] The ID of the Vpc Endpoint.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
-  GetVpcEndpointZonesArgs({
+  const GetVpcEndpointZonesArgs({
     required this.endpointId,
     this.outputFile,
     this.status,

@@ -13,7 +13,7 @@ class MaintenanceWindowProperties {
   /// Creates a new [MaintenanceWindowProperties].
   /// [dayOfWeek] Day of the week.
   /// [hour] The update start hour of the day. (0 - 23)
-  MaintenanceWindowProperties({
+  const MaintenanceWindowProperties({
     this.dayOfWeek,
     this.hour,
   });

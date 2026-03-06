@@ -14,7 +14,7 @@ class TargetCopySetting {
   /// Creates a new [TargetCopySetting].
   /// [copyAfter] It can be CustomCopyOption or ImmediateCopyOption.
   /// [dataStore] Info of target datastore
-  TargetCopySetting({
+  const TargetCopySetting({
     required this.copyAfter,
     required this.dataStore,
   });

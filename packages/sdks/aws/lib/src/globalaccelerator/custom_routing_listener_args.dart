@@ -16,7 +16,7 @@ class CustomRoutingListenerArgs {
   /// Creates a new [CustomRoutingListenerArgs].
   /// [acceleratorArn] The Amazon Resource Name (ARN) of a custom routing accelerator.
   /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-  CustomRoutingListenerArgs({
+  const CustomRoutingListenerArgs({
     required this.acceleratorArn,
     required this.portRanges,
   });

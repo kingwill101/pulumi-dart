@@ -16,7 +16,7 @@ class CreateProtectionContainerMappingInputProperties {
   /// [policyId] Applicable policy.
   /// [providerSpecificInput] Provider specific input for pairing.
   /// [targetProtectionContainerId] The target unique protection container name.
-  CreateProtectionContainerMappingInputProperties({
+  const CreateProtectionContainerMappingInputProperties({
     this.policyId,
     this.providerSpecificInput,
     this.targetProtectionContainerId,

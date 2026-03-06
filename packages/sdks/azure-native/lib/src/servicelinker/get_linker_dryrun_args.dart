@@ -15,7 +15,7 @@ class GetLinkerDryrunArgs {
   /// Creates a new [GetLinkerDryrunArgs].
   /// [dryrunName] The name of dryrun.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
-  GetLinkerDryrunArgs({
+  const GetLinkerDryrunArgs({
     required this.dryrunName,
     required this.resourceUri,
   });

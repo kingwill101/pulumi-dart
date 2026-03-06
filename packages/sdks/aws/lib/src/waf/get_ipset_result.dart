@@ -10,7 +10,7 @@ class GetIpsetResult {
   /// Creates a new [GetIpsetResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetIpsetResult({
+  const GetIpsetResult({
     required this.id,
     required this.name,
   });

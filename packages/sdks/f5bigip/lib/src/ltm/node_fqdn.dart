@@ -20,7 +20,7 @@ class NodeFqdn {
   /// [downinterval] Specifies the number of attempts to resolve a domain name. The default is 5.
   /// [interval] Specifies the amount of time before sending the next DNS query. Default is 3600. This needs to be specified inside the fqdn (fully qualified domain name).
   /// [name] Name of the node
-  NodeFqdn({
+  const NodeFqdn({
     this.addressFamily,
     this.autopopulate,
     this.downinterval,

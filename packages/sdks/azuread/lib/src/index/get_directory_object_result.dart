@@ -12,7 +12,7 @@ class GetDirectoryObjectResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [objectId] Required.
   /// [type] Required.
-  GetDirectoryObjectResult({
+  const GetDirectoryObjectResult({
     required this.id,
     required this.objectId,
     required this.type,

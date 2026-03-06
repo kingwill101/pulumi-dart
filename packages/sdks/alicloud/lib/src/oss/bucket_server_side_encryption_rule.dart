@@ -14,7 +14,7 @@ class BucketServerSideEncryptionRule {
   /// [kmsDataEncryption] The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
   /// [kmsMasterKeyId] The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
   /// [sseAlgorithm] The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
-  BucketServerSideEncryptionRule({
+  const BucketServerSideEncryptionRule({
     this.kmsDataEncryption,
     this.kmsMasterKeyId,
     required this.sseAlgorithm,

@@ -20,7 +20,7 @@ class SpringCloudBuilderState {
   /// [name] The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
   /// [stack] A `stack` block as defined below.
-  SpringCloudBuilderState({
+  const SpringCloudBuilderState({
     this.buildPackGroups,
     this.name,
     this.springCloudServiceId,

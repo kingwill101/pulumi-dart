@@ -47,7 +47,7 @@ class AzureDataExplorerConnectionProperties {
   /// [eventHubNamespaceResourceId] The resource ID of the EventHub namespace.
   /// [identity] Managed identity properties for the time series database connection resource.
   /// [recordPropertyAndItemRemovals] Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
-  AzureDataExplorerConnectionProperties({
+  const AzureDataExplorerConnectionProperties({
     required this.adxDatabaseName,
     required this.adxEndpointUri,
     this.adxRelationshipLifecycleEventsTableName,

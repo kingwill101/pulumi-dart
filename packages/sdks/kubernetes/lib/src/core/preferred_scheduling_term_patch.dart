@@ -13,7 +13,7 @@ class PreferredSchedulingTermPatch {
   /// Creates a new [PreferredSchedulingTermPatch].
   /// [preference] A node selector term, associated with the corresponding weight.
   /// [weight] Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
-  PreferredSchedulingTermPatch({
+  const PreferredSchedulingTermPatch({
     this.preference,
     this.weight,
   });

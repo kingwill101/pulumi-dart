@@ -56,7 +56,7 @@ class CertificateTemplatePredefinedValuesNameConstraints {
   /// [permittedEmailAddresses] Contains the permitted email addresses. The value can be a particular
   /// [permittedIpRanges] Contains the permitted IP ranges. For IPv4 addresses, the ranges
   /// [permittedUris] Contains the permitted URIs that apply to the host part of the name.
-  CertificateTemplatePredefinedValuesNameConstraints({
+  const CertificateTemplatePredefinedValuesNameConstraints({
     required this.critical,
     this.excludedDnsNames,
     this.excludedEmailAddresses,

@@ -11,7 +11,7 @@ class GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField {
   /// Creates a new [GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField].
   /// [name] The name of the Region Security Policy.
   /// [values] Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-  GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField({
+  const GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField({
     required this.name,
     required this.values,
   });

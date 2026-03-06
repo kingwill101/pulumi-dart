@@ -33,7 +33,7 @@ class InMageRcmFailbackMobilityAgentDetailsResponse {
   /// [latestVersion] The latest agent version available.
   /// [reasonsBlockingUpgrade] The whether update is possible or not.
   /// [version] The agent version.
-  InMageRcmFailbackMobilityAgentDetailsResponse({
+  const InMageRcmFailbackMobilityAgentDetailsResponse({
     required this.agentVersionExpiryDate,
     required this.driverVersion,
     required this.driverVersionExpiryDate,

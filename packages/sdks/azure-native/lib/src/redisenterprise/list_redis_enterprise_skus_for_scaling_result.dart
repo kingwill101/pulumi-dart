@@ -10,7 +10,7 @@ class ListRedisEnterpriseSkusForScalingResult {
 
   /// Creates a new [ListRedisEnterpriseSkusForScalingResult].
   /// [skus] List of SKUS available to scale up or scale down.
-  ListRedisEnterpriseSkusForScalingResult({
+  const ListRedisEnterpriseSkusForScalingResult({
     this.skus,
   });
 

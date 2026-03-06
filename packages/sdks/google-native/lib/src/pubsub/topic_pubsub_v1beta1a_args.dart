@@ -12,7 +12,7 @@ class TopicPubsubV1beta1aArgs {
 
   /// Creates a new [TopicPubsubV1beta1aArgs].
   /// [name] Name of the topic.
-  TopicPubsubV1beta1aArgs({
+  const TopicPubsubV1beta1aArgs({
     this.name,
   });
 

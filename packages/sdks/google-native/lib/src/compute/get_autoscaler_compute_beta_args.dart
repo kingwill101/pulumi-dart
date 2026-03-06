@@ -15,7 +15,7 @@ class GetAutoscalerComputeBetaArgs {
   /// [autoscaler] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetAutoscalerComputeBetaArgs({
+  const GetAutoscalerComputeBetaArgs({
     required this.autoscaler,
     this.project,
     required this.zone,

@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2ColorResponse {
   /// [blue] The amount of blue in the color as a value in the interval [0, 1].
   /// [green] The amount of green in the color as a value in the interval [0, 1].
   /// [red] The amount of red in the color as a value in the interval [0, 1].
-  GooglePrivacyDlpV2ColorResponse({
+  const GooglePrivacyDlpV2ColorResponse({
     required this.blue,
     required this.green,
     required this.red,

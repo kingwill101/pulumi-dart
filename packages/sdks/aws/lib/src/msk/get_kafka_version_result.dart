@@ -17,7 +17,7 @@ class GetKafkaVersionResult {
   /// [region] Required.
   /// [status] Status of the MSK Kafka version eg. `ACTIVE` or `DEPRECATED`.
   /// [version] Required.
-  GetKafkaVersionResult({
+  const GetKafkaVersionResult({
     required this.id,
     this.preferredVersions,
     required this.region,

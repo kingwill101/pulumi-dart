@@ -9,7 +9,7 @@ class GetOntapStorageVirtualMachineEndpointManagement {
   /// Creates a new [GetOntapStorageVirtualMachineEndpointManagement].
   /// [dnsName] Required.
   /// [ipAddresses] Required.
-  GetOntapStorageVirtualMachineEndpointManagement({
+  const GetOntapStorageVirtualMachineEndpointManagement({
     required this.dnsName,
     required this.ipAddresses,
   });

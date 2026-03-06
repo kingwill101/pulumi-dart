@@ -7,7 +7,7 @@ class EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse].
   /// [stringValues] Required.
-  EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse({
+  const EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse({
     required this.stringValues,
   });
 

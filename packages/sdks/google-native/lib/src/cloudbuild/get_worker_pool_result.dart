@@ -36,7 +36,7 @@ class GetWorkerPoolResult {
   /// [state] `WorkerPool` state.
   /// [uid] A unique identifier for the `WorkerPool`.
   /// [updateTime] Time at which the request to update the `WorkerPool` was received.
-  GetWorkerPoolResult({
+  const GetWorkerPoolResult({
     required this.annotations,
     required this.createTime,
     required this.deleteTime,

@@ -35,7 +35,7 @@ class SingleServerConfigurationResponse {
   /// [networkConfiguration] Network configuration for the server
   /// [subnetId] The subnet id.
   /// [virtualMachineConfiguration] Gets or sets the virtual machine configuration.
-  SingleServerConfigurationResponse({
+  const SingleServerConfigurationResponse({
     required this.appResourceGroup,
     this.customResourceNames,
     this.databaseType,

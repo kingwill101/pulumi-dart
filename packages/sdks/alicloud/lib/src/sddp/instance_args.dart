@@ -51,7 +51,7 @@ class InstanceArgs {
   /// [sddpVersion] The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
   /// [udCbool] Whether to use OSS. Valid values: `yes`,`no`.
   /// [udc] OSS Size.
-  InstanceArgs({
+  const InstanceArgs({
     this.dataphin,
     this.dataphinCount,
     this.logistics,

@@ -39,7 +39,7 @@ class L2ConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [vlanId] The VLAN ID for the L2 connection.
-  L2ConnectionArgs({
+  const L2ConnectionArgs({
     required this.edgeSite,
     required this.groundStation,
     required this.groundStationPartnerRouter,

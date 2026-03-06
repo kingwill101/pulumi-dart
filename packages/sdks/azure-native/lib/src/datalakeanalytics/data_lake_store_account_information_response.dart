@@ -18,7 +18,7 @@ class DataLakeStoreAccountInformationResponse {
   /// [name] The resource name.
   /// [suffix] The optional suffix for the Data Lake Store account.
   /// [type] The resource type.
-  DataLakeStoreAccountInformationResponse({
+  const DataLakeStoreAccountInformationResponse({
     required this.id,
     required this.name,
     required this.suffix,

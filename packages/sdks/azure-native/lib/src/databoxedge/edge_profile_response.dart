@@ -10,7 +10,7 @@ class EdgeProfileResponse {
 
   /// Creates a new [EdgeProfileResponse].
   /// [subscription] Edge Profile Subscription
-  EdgeProfileResponse({
+  const EdgeProfileResponse({
     this.subscription,
   });
 

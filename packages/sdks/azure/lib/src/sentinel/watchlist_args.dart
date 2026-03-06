@@ -30,7 +30,7 @@ class WatchlistArgs {
   /// [labels] Specifies a list of labels related to this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. Changing this forces a new Sentinel Watchlist to be created.
   /// [name] The name which should be used for this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
-  WatchlistArgs({
+  const WatchlistArgs({
     this.defaultDuration,
     this.description,
     required this.displayName,

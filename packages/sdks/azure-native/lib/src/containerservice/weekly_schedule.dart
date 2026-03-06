@@ -12,7 +12,7 @@ class WeeklySchedule {
   /// Creates a new [WeeklySchedule].
   /// [dayOfWeek] Specifies on which day of the week the maintenance occurs.
   /// [intervalWeeks] Specifies the number of weeks between each set of occurrences.
-  WeeklySchedule({
+  const WeeklySchedule({
     required this.dayOfWeek,
     required this.intervalWeeks,
   });

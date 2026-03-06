@@ -17,7 +17,7 @@ class GetServiceDeploymentConfigurationLifecycleHook {
   /// [hookTargetArn] ARN of the Lambda function to invoke
   /// [lifecycleStages] Deployment stages when hook is invoked
   /// [roleArn] ARN of the IAM role that allows ECS to manage the target groups.
-  GetServiceDeploymentConfigurationLifecycleHook({
+  const GetServiceDeploymentConfigurationLifecycleHook({
     required this.hookDetails,
     required this.hookTargetArn,
     required this.lifecycleStages,

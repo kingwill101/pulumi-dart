@@ -39,7 +39,7 @@ class GetResolverFirewallDomainListResult {
   /// [region] Required.
   /// [status] The status of the domain list.
   /// [statusMessage] Additional information about the status of the list, if available.
-  GetResolverFirewallDomainListResult({
+  const GetResolverFirewallDomainListResult({
     required this.arn,
     required this.creationTime,
     required this.creatorRequestId,

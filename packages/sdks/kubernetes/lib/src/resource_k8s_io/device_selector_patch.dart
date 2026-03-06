@@ -10,7 +10,7 @@ class DeviceSelectorPatch {
 
   /// Creates a new [DeviceSelectorPatch].
   /// [cel] CEL contains a CEL expression for selecting a device.
-  DeviceSelectorPatch({
+  const DeviceSelectorPatch({
     this.cel,
   });
 

@@ -14,7 +14,7 @@ class GetInstanceTypeGpus {
   /// [manufacturer] Required.
   /// [memorySize] Size of the instance memory, in MiB.
   /// [name] Required.
-  GetInstanceTypeGpus({
+  const GetInstanceTypeGpus({
     required this.count,
     required this.manufacturer,
     required this.memorySize,

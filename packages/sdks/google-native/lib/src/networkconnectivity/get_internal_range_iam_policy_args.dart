@@ -17,7 +17,7 @@ class GetInternalRangeIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetInternalRangeIamPolicyArgs({
+  const GetInternalRangeIamPolicyArgs({
     required this.internalRangeId,
     required this.location,
     this.optionsRequestedPolicyVersion,

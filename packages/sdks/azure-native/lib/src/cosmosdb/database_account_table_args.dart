@@ -25,7 +25,7 @@ class DatabaseAccountTableArgs {
   /// [resource] The standard JSON format of a Table
   /// [resourceGroupName] Name of an Azure resource group.
   /// [tableName] Cosmos DB table name.
-  DatabaseAccountTableArgs({
+  const DatabaseAccountTableArgs({
     required this.accountName,
     required this.options,
     required this.resource,

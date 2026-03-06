@@ -34,7 +34,7 @@ class NamespaceIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
-  NamespaceIamMemberState({
+  const NamespaceIamMemberState({
     this.condition,
     this.etag,
     this.member,

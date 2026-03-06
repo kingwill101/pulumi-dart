@@ -10,7 +10,7 @@ class AddressDetails {
 
   /// Creates a new [AddressDetails].
   /// [forwardAddress] Customer address and contact details.
-  AddressDetails({
+  const AddressDetails({
     required this.forwardAddress,
   });
 

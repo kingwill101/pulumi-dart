@@ -18,7 +18,7 @@ class GetDedicatedHostGroupArgs {
   /// [expand] The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated hosts under the dedicated host group. 'UserData' is not supported for dedicated host group.
   /// [hostGroupName] The name of the dedicated host group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDedicatedHostGroupArgs({
+  const GetDedicatedHostGroupArgs({
     this.expand,
     required this.hostGroupName,
     required this.resourceGroupName,

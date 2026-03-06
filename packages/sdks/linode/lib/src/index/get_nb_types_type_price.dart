@@ -9,7 +9,7 @@ class GetNbTypesTypePrice {
   /// Creates a new [GetNbTypesTypePrice].
   /// [hourly] Required.
   /// [monthly] Required.
-  GetNbTypesTypePrice({
+  const GetNbTypesTypePrice({
     required this.hourly,
     required this.monthly,
   });

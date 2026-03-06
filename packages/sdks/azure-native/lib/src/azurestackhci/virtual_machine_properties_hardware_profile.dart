@@ -17,7 +17,7 @@ class VirtualMachinePropertiesHardwareProfile {
   /// [memoryMB] RAM in MB for the virtual machine
   /// [processors] number of processors for the virtual machine
   /// [vmSize] Optional.
-  VirtualMachinePropertiesHardwareProfile({
+  const VirtualMachinePropertiesHardwareProfile({
     this.dynamicMemoryConfig,
     this.memoryMB,
     this.processors,

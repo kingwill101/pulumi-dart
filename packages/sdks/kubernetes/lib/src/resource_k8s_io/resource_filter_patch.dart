@@ -13,7 +13,7 @@ class ResourceFilterPatch {
   /// Creates a new [ResourceFilterPatch].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
   /// [namedResources] NamedResources describes a resource filter using the named resources model.
-  ResourceFilterPatch({
+  const ResourceFilterPatch({
     this.driverName,
     this.namedResources,
   });

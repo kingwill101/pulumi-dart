@@ -33,7 +33,7 @@ class AlertRuleResourceArgs {
   /// [creationTime] The creation time of the alert rule resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watcherName] The database watcher name.
-  AlertRuleResourceArgs({
+  const AlertRuleResourceArgs({
     required this.alertRuleResourceId,
     this.alertRuleResourceName,
     required this.alertRuleTemplateId,

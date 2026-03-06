@@ -22,7 +22,7 @@ class QueueingPolicy {
   /// [validInterval] An absolute time interval within which resources may be created.
   /// [validUntilDuration] A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
   /// [validUntilTime] An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
-  QueueingPolicy({
+  const QueueingPolicy({
     this.validAfterDuration,
     this.validAfterTime,
     this.validInterval,

@@ -14,7 +14,7 @@ class GetExperienceConfigurationContentSourceConfiguration {
   /// [dataSourceIds] Identifiers of the data sources you want to use for your Amazon Kendra Experience.
   /// [directPutContent] Whether to use documents you indexed directly using the `BatchPutDocument API`.
   /// [faqIds] Identifier of the FAQs that you want to use for your Amazon Kendra Experience.
-  GetExperienceConfigurationContentSourceConfiguration({
+  const GetExperienceConfigurationContentSourceConfiguration({
     required this.dataSourceIds,
     required this.directPutContent,
     required this.faqIds,

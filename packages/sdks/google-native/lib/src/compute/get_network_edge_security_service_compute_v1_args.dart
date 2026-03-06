@@ -15,7 +15,7 @@ class GetNetworkEdgeSecurityServiceComputeV1Args {
   /// [networkEdgeSecurityService] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNetworkEdgeSecurityServiceComputeV1Args({
+  const GetNetworkEdgeSecurityServiceComputeV1Args({
     required this.networkEdgeSecurityService,
     this.project,
     required this.region,

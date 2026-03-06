@@ -9,7 +9,7 @@ class UserMultiFactorAuthRule {
 
   /// Creates a new [UserMultiFactorAuthRule].
   /// [rules] A list of authentication plugins that the user must
-  UserMultiFactorAuthRule({
+  const UserMultiFactorAuthRule({
     required this.rules,
   });
 

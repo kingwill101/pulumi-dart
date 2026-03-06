@@ -15,7 +15,7 @@ class GetAuthorizedCertificateAppengineV1alphaArgs {
   /// [appId] Required.
   /// [authorizedCertificateId] Required.
   /// [view] Optional.
-  GetAuthorizedCertificateAppengineV1alphaArgs({
+  const GetAuthorizedCertificateAppengineV1alphaArgs({
     required this.appId,
     required this.authorizedCertificateId,
     this.view,

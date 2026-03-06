@@ -11,7 +11,7 @@ class GetAclsAclAclEntry {
   /// Creates a new [GetAclsAclAclEntry].
   /// [entry] The IP entry that you want to add to the ACL.
   /// [entryDescription] The description of the IP entry.
-  GetAclsAclAclEntry({
+  const GetAclsAclAclEntry({
     required this.entry,
     required this.entryDescription,
   });

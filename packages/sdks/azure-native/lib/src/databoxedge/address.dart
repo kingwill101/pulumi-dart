@@ -27,7 +27,7 @@ class Address {
   /// [country] The country name.
   /// [postalCode] The postal code.
   /// [state] The state name.
-  Address({
+  const Address({
     this.addressLine1,
     this.addressLine2,
     this.addressLine3,

@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationPrefixList {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationPrefixList({
+  const NetworkInsightsAnalysisExplanationPrefixList({
     this.arn,
     this.id,
     this.name,

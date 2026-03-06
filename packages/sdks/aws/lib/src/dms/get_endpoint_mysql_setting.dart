@@ -25,7 +25,7 @@ class GetEndpointMysqlSetting {
   /// [serverTimezone] Required.
   /// [serviceAccessRoleArn] Required.
   /// [targetDbType] Required.
-  GetEndpointMysqlSetting({
+  const GetEndpointMysqlSetting({
     required this.afterConnectScript,
     required this.authenticationMethod,
     required this.cleanSourceMetadataOnMismatch,

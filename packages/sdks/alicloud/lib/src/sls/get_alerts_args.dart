@@ -21,7 +21,7 @@ class GetAlertsArgs {
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project Name
-  GetAlertsArgs({
+  const GetAlertsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

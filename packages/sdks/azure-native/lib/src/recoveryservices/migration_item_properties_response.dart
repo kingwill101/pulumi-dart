@@ -70,7 +70,7 @@ class MigrationItemPropertiesResponse {
   /// [replicationStatus] The replication status.
   /// [testMigrateState] The test migrate state.
   /// [testMigrateStateDescription] The test migrate state description.
-  MigrationItemPropertiesResponse({
+  const MigrationItemPropertiesResponse({
     required this.allowedOperations,
     required this.criticalJobHistory,
     required this.currentJob,

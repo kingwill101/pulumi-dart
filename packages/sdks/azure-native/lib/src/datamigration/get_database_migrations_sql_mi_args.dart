@@ -23,7 +23,7 @@ class GetDatabaseMigrationsSqlMiArgs {
   /// [migrationOperationId] Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [targetDbName] The name of the target database.
-  GetDatabaseMigrationsSqlMiArgs({
+  const GetDatabaseMigrationsSqlMiArgs({
     this.expand,
     required this.managedInstanceName,
     this.migrationOperationId,

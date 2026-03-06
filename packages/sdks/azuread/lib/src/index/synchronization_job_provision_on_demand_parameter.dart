@@ -12,7 +12,7 @@ class SynchronizationJobProvisionOnDemandParameter {
   /// Creates a new [SynchronizationJobProvisionOnDemandParameter].
   /// [ruleId] The identifier of the synchronization rule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
   /// [subjects] One or more `subject` blocks as documented below.
-  SynchronizationJobProvisionOnDemandParameter({
+  const SynchronizationJobProvisionOnDemandParameter({
     required this.ruleId,
     required this.subjects,
   });

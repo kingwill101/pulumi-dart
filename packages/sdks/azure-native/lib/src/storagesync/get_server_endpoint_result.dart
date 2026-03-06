@@ -88,7 +88,7 @@ class GetServerEndpointResult {
   /// [tierFilesOlderThanDays] Tier files older than days.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [volumeFreeSpacePercent] Level of free space to be maintained by Cloud Tiering if it is enabled.
-  GetServerEndpointResult({
+  const GetServerEndpointResult({
     required this.azureApiVersion,
     this.cloudTiering,
     required this.cloudTieringStatus,

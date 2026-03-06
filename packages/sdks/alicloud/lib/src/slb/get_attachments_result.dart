@@ -19,7 +19,7 @@ class GetAttachmentsResult {
   /// [loadBalancerId] Required.
   /// [outputFile] Optional.
   /// [slbAttachments] A list of SLB attachments. Each element contains the following attributes:
-  GetAttachmentsResult({
+  const GetAttachmentsResult({
     required this.id,
     this.instanceIds,
     required this.loadBalancerId,

@@ -46,7 +46,7 @@ class GetTemplateScratchesScratch {
   /// [status] The status of the resource.
   /// [templateScratchId] The ID of the Template Scratch.
   /// [templateScratchType] The type of the Template Scratch.
-  GetTemplateScratchesScratch({
+  const GetTemplateScratchesScratch({
     required this.createTime,
     required this.description,
     required this.id,

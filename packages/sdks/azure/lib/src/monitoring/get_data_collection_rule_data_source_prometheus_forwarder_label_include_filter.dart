@@ -11,7 +11,7 @@ class GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter {
   /// Creates a new [GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter].
   /// [label] The label of the filter. This label should be unique across all `label_include_fileter` block. Possible value is `microsoft_metrics_include_label`.
   /// [value] The value of the filter.
-  GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter({
+  const GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter({
     required this.label,
     required this.value,
   });

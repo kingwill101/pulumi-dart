@@ -43,7 +43,7 @@ class AiReasoningEngineState {
   /// [region] The region of the reasoning engine. eg us-central1
   /// [spec] Optional. Configurations of the ReasoningEngine.
   /// [updateTime] The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
-  AiReasoningEngineState({
+  const AiReasoningEngineState({
     this.createTime,
     this.description,
     this.displayName,

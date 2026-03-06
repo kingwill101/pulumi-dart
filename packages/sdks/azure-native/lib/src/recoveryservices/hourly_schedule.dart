@@ -15,7 +15,7 @@ class HourlySchedule {
   /// [interval] Interval at which backup needs to be triggered. For hourly the value
   /// [scheduleWindowDuration] To specify duration of the backup window
   /// [scheduleWindowStartTime] To specify start time of the backup window
-  HourlySchedule({
+  const HourlySchedule({
     this.interval,
     this.scheduleWindowDuration,
     this.scheduleWindowStartTime,

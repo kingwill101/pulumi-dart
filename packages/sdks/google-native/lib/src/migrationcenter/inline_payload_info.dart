@@ -14,7 +14,7 @@ class InlinePayloadInfo {
   /// Creates a new [InlinePayloadInfo].
   /// [format] The import job format.
   /// [payload] List of payload files.
-  InlinePayloadInfo({
+  const InlinePayloadInfo({
     this.format,
     this.payload,
   });

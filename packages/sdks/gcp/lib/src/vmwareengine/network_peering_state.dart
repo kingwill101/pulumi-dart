@@ -66,7 +66,7 @@ class NetworkPeeringState {
   /// [updateTime] Last updated time of this resource.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in the form:
-  NetworkPeeringState({
+  const NetworkPeeringState({
     this.createTime,
     this.description,
     this.exportCustomRoutes,

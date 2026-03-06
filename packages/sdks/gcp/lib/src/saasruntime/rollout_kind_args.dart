@@ -65,7 +65,7 @@ class RolloutKindArgs {
   /// [unitFilter] CEL(https://github.com/google/cel-spec) formatted filter string against
   /// [unitKind] UnitKind that this rollout kind corresponds to. Rollouts stemming from this
   /// [updateUnitKindStrategy] The config for updating the unit kind. By default, the unit kind will be
-  RolloutKindArgs({
+  const RolloutKindArgs({
     this.annotations,
     this.errorBudget,
     this.labels,

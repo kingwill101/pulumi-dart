@@ -14,7 +14,7 @@ class UrlSigningActionResponse {
   /// Creates a new [UrlSigningActionResponse].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  UrlSigningActionResponse({
+  const UrlSigningActionResponse({
     required this.name,
     required this.parameters,
   });

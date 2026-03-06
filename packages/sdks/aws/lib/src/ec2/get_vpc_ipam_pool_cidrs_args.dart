@@ -19,7 +19,7 @@ class GetVpcIpamPoolCidrsArgs {
   /// [filters] Custom filter block as described below.
   /// [ipamPoolId] ID of the IPAM pool you would like the list of provisioned CIDRs.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetVpcIpamPoolCidrsArgs({
+  const GetVpcIpamPoolCidrsArgs({
     this.filters,
     required this.ipamPoolId,
     this.region,

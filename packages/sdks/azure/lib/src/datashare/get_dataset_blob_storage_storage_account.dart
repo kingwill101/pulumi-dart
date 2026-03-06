@@ -14,7 +14,7 @@ class GetDatasetBlobStorageStorageAccount {
   /// [name] The name of this Data Share Blob Storage Dataset.
   /// [resourceGroupName] The resource group name of the storage account to be shared with the receiver.
   /// [subscriptionId] The subscription id of the storage account to be shared with the receiver.
-  GetDatasetBlobStorageStorageAccount({
+  const GetDatasetBlobStorageStorageAccount({
     required this.name,
     required this.resourceGroupName,
     required this.subscriptionId,

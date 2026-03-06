@@ -14,7 +14,7 @@ class ValidationReportResponse {
   /// Creates a new [ValidationReportResponse].
   /// [fileValidations] List of errors found in files.
   /// [jobErrors] List of job level errors.
-  ValidationReportResponse({
+  const ValidationReportResponse({
     required this.fileValidations,
     required this.jobErrors,
   });

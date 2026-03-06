@@ -17,7 +17,7 @@ class GetSlsGroupsGroupSlsGroupConfig {
   /// [slsProject] The name of the Project.
   /// [slsRegion] The Sls Region.
   /// [slsUserId] The ID of the Sls User.
-  GetSlsGroupsGroupSlsGroupConfig({
+  const GetSlsGroupsGroupSlsGroupConfig({
     required this.slsLogstore,
     required this.slsProject,
     required this.slsRegion,

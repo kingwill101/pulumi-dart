@@ -15,7 +15,7 @@ class AssignmentOsTypeResponse {
   /// [osArchitecture] Targets VM instances with OS Inventory enabled and having the following OS architecture.
   /// [osShortName] Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
   /// [osVersion] Targets VM instances with OS Inventory enabled and having the following following OS version.
-  AssignmentOsTypeResponse({
+  const AssignmentOsTypeResponse({
     required this.osArchitecture,
     required this.osShortName,
     required this.osVersion,

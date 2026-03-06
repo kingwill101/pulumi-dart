@@ -27,7 +27,7 @@ class ProjectState {
   /// [sourcePlatform] The platform type of the migration source. Possible values are `MongoDb`, `MySQL`, `PostgreSql`, `SQL` and `Unknown`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assigned to the resource.
   /// [targetPlatform] The platform type of the migration target. Possible values are `AzureDbForMySql`, `AzureDbForPostgreSql`, `MongoDb`, `SQLDB`, `SQLMI` and `Unknown`. Changing this forces a new resource to be created.
-  ProjectState({
+  const ProjectState({
     this.location,
     this.name,
     this.resourceGroupName,

@@ -9,7 +9,7 @@ class ListenerRuleTransformHostHeaderRewriteConfig {
 
   /// Creates a new [ListenerRuleTransformHostHeaderRewriteConfig].
   /// [rewrite] Block for host header rewrite configuration. Only one block is accepted. See Rewrite Blocks below.
-  ListenerRuleTransformHostHeaderRewriteConfig({
+  const ListenerRuleTransformHostHeaderRewriteConfig({
     this.rewrite,
   });
 

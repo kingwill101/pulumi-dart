@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [accountName] The name of the account.
   /// [resourceGroupName] The resource group name.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

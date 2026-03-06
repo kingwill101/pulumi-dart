@@ -26,7 +26,7 @@ class GetRepositoryResult {
   /// [remoteUri] Git Clone HTTPS URI.
   /// [updateTime] Server assigned timestamp for when the connection was updated.
   /// [webhookId] External ID of the webhook created for the repository.
-  GetRepositoryResult({
+  const GetRepositoryResult({
     required this.annotations,
     required this.createTime,
     required this.etag,

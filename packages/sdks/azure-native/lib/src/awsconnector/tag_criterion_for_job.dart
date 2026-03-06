@@ -14,7 +14,7 @@ class TagCriterionForJob {
   /// Creates a new [TagCriterionForJob].
   /// [comparator] &lt;p&gt;The operator to use in the condition. Valid values are EQ (equals) and NE (not equals).&lt;/p&gt;
   /// [tagValues] &lt;p&gt;The tag keys, tag values, or tag key and value pairs to use in the condition.&lt;/p&gt;
-  TagCriterionForJob({
+  const TagCriterionForJob({
     this.comparator,
     this.tagValues,
   });

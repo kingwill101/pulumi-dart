@@ -24,7 +24,7 @@ class DeploymentConditionPatchAppsV1beta2 {
   /// [reason] The reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of deployment condition.
-  DeploymentConditionPatchAppsV1beta2({
+  const DeploymentConditionPatchAppsV1beta2({
     this.lastTransitionTime,
     this.lastUpdateTime,
     this.message,

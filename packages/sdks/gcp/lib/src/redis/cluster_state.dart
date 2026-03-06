@@ -169,7 +169,7 @@ class ClusterState {
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster.
   /// [uid] System assigned, unique identifier for the cluster.
   /// [zoneDistributionConfig] Immutable. Zone distribution config for Memorystore Redis cluster.
-  ClusterState({
+  const ClusterState({
     this.authorizationMode,
     this.automatedBackupConfig,
     this.availableMaintenanceVersions,

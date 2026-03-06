@@ -25,7 +25,7 @@ class GetEntityTypeDialogflowV2beta1Result {
   /// [entities] Optional. The collection of entity entries associated with the entity type.
   /// [kind] Indicates the kind of entity type.
   /// [name] The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
-  GetEntityTypeDialogflowV2beta1Result({
+  const GetEntityTypeDialogflowV2beta1Result({
     required this.autoExpansionMode,
     required this.displayName,
     required this.enableFuzzyExtraction,

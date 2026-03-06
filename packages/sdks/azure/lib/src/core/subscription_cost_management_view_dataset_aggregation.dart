@@ -11,7 +11,7 @@ class SubscriptionCostManagementViewDatasetAggregation {
   /// Creates a new [SubscriptionCostManagementViewDatasetAggregation].
   /// [columnName] The name of the column to aggregate. Changing this forces a new Cost Management View for a Subscription to be created.
   /// [name] The name which should be used for this aggregation. Changing this forces a new Cost Management View for a Subscription to be created.
-  SubscriptionCostManagementViewDatasetAggregation({
+  const SubscriptionCostManagementViewDatasetAggregation({
     required this.columnName,
     required this.name,
   });

@@ -94,7 +94,7 @@ class GetMigratingVmVmmigrationV1alpha1Result {
   /// [targetDefaults] The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
   /// [updateTime] The last time the migrating VM resource was updated.
   /// [vmwareSourceVmDetails] Details of the VM from a Vmware source.
-  GetMigratingVmVmmigrationV1alpha1Result({
+  const GetMigratingVmVmmigrationV1alpha1Result({
     required this.awsSourceVmDetails,
     required this.azureSourceVmDetails,
     required this.computeEngineDisksTargetDefaults,

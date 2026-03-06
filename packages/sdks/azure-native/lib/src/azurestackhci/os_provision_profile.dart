@@ -30,7 +30,7 @@ class OsProvisionProfile {
   /// [osType] Type of the operating system.
   /// [osVersion] Version of the operating system.
   /// [vsrVersion] Validated Solution Recipe version to be used for the job
-  OsProvisionProfile({
+  const OsProvisionProfile({
     this.gpgPubKey,
     this.imageHash,
     this.operationType,

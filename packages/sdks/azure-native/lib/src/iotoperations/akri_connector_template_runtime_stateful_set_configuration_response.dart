@@ -37,7 +37,7 @@ class AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse {
   /// [secrets] Connector secrets that will be mounted onto all connector instances.
   /// [statefulSetConfigurationSettings] The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
   /// [trustSettings] Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
-  AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse({
+  const AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse({
     this.additionalConfiguration,
     this.allocation,
     required this.managedConfigurationType,

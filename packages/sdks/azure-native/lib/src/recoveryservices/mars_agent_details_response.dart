@@ -34,7 +34,7 @@ class MarsAgentDetailsResponse {
   /// [lastHeartbeatUtc] The last heartbeat received from the Mars agent.
   /// [name] The Mars agent name.
   /// [version] The version.
-  MarsAgentDetailsResponse({
+  const MarsAgentDetailsResponse({
     required this.biosId,
     required this.fabricObjectId,
     required this.fqdn,

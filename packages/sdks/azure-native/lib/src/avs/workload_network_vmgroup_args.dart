@@ -27,7 +27,7 @@ class WorkloadNetworkVMGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [revision] NSX revision number.
   /// [vmGroupId] ID of the VM group.
-  WorkloadNetworkVMGroupArgs({
+  const WorkloadNetworkVMGroupArgs({
     this.displayName,
     this.members,
     required this.privateCloudName,

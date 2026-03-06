@@ -9,7 +9,7 @@ class NamedResourcesAllocationResultPatch {
 
   /// Creates a new [NamedResourcesAllocationResultPatch].
   /// [name] Name is the name of the selected resource instance.
-  NamedResourcesAllocationResultPatch({
+  const NamedResourcesAllocationResultPatch({
     this.name,
   });
 

@@ -18,7 +18,7 @@ class GetWindowsWebAppBackup {
   /// [name] The name of this Windows Web App.
   /// [schedules] A `schedule` block as defined below.
   /// [storageAccountUrl] The SAS URL to the container.
-  GetWindowsWebAppBackup({
+  const GetWindowsWebAppBackup({
     required this.enabled,
     required this.name,
     required this.schedules,

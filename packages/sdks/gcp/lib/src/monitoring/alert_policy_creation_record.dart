@@ -13,7 +13,7 @@ class AlertPolicyCreationRecord {
   /// Creates a new [AlertPolicyCreationRecord].
   /// [mutateTime] (Output)
   /// [mutatedBy] (Output)
-  AlertPolicyCreationRecord({
+  const AlertPolicyCreationRecord({
     this.mutateTime,
     this.mutatedBy,
   });

@@ -15,7 +15,7 @@ class GetAppIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] The type of managed identity to assign.
-  GetAppIdentity({
+  const GetAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

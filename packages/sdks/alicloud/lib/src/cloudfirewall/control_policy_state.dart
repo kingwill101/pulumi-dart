@@ -99,7 +99,7 @@ class ControlPolicyState {
   /// [sourceIp] The source IP address of the request.
   /// [sourceType] The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
   /// [startTime] The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
-  ControlPolicyState({
+  const ControlPolicyState({
     this.aclAction,
     this.aclUuid,
     this.applicationName,

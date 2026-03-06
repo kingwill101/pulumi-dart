@@ -37,7 +37,7 @@ class ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse({
+  const ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

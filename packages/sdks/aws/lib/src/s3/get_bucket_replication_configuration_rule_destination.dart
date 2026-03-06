@@ -24,7 +24,7 @@ class GetBucketReplicationConfigurationRuleDestination {
   /// [metrics] Required.
   /// [replicationTimes] Required.
   /// [storageClass] Required.
-  GetBucketReplicationConfigurationRuleDestination({
+  const GetBucketReplicationConfigurationRuleDestination({
     required this.accessControlTranslations,
     required this.account,
     required this.bucket,

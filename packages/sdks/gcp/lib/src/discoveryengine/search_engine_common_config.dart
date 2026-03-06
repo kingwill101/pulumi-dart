@@ -8,7 +8,7 @@ class SearchEngineCommonConfig {
 
   /// Creates a new [SearchEngineCommonConfig].
   /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
-  SearchEngineCommonConfig({
+  const SearchEngineCommonConfig({
     this.companyName,
   });
 

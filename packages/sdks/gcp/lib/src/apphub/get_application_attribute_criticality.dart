@@ -8,7 +8,7 @@ class GetApplicationAttributeCriticality {
 
   /// Creates a new [GetApplicationAttributeCriticality].
   /// [type] Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
-  GetApplicationAttributeCriticality({
+  const GetApplicationAttributeCriticality({
     required this.type,
   });
 

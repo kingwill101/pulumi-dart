@@ -25,7 +25,7 @@ class GetOrchestratedVirtualMachineScaleSetResult {
   /// [name] The name of the public IP address configuration
   /// [networkInterfaces] A list of `network_interface` blocks as defined below.
   /// [resourceGroupName] Required.
-  GetOrchestratedVirtualMachineScaleSetResult({
+  const GetOrchestratedVirtualMachineScaleSetResult({
     required this.id,
     required this.identities,
     required this.location,

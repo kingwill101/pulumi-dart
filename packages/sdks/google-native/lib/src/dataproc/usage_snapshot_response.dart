@@ -27,7 +27,7 @@ class UsageSnapshotResponse {
   /// [shuffleStorageGb] Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
   /// [shuffleStorageGbPremium] Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
   /// [snapshotTime] Optional. The timestamp of the usage snapshot.
-  UsageSnapshotResponse({
+  const UsageSnapshotResponse({
     required this.acceleratorType,
     required this.milliAccelerator,
     required this.milliDcu,

@@ -29,7 +29,7 @@ class DeploymentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The resource model definition representing SKU
   /// [tags] Resource tags.
-  DeploymentArgs({
+  const DeploymentArgs({
     required this.accountName,
     this.deploymentName,
     this.properties,

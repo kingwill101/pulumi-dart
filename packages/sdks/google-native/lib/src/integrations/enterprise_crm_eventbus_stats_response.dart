@@ -22,7 +22,7 @@ class EnterpriseCrmEventbusStatsResponse {
   /// [errorRate] Average error rate.
   /// [qps] Queries per second.
   /// [warningRate] Average warning rate.
-  EnterpriseCrmEventbusStatsResponse({
+  const EnterpriseCrmEventbusStatsResponse({
     required this.dimensions,
     required this.durationInSeconds,
     required this.errorRate,

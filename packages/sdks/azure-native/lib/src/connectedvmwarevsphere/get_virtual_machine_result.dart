@@ -117,7 +117,7 @@ class GetVirtualMachineResult {
   /// [uuid] Gets or sets a unique identifier for this resource.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
   /// [vmId] Gets or sets a unique identifier for the vm resource.
-  GetVirtualMachineResult({
+  const GetVirtualMachineResult({
     required this.azureApiVersion,
     required this.customResourceName,
     this.extendedLocation,

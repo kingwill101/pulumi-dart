@@ -31,7 +31,7 @@ class GetTransitRouteTableAggregationsResult {
   /// [transitRouteTableAggregationCidr] The destination CIDR block of the aggregate route.
   /// [transitRouteTableAggregations] A list of Cen Transit Route Table Aggregations. Each element contains the following attributes:
   /// [transitRouteTableId] The ID of the route table of the Enterprise Edition transit router.
-  GetTransitRouteTableAggregationsResult({
+  const GetTransitRouteTableAggregationsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

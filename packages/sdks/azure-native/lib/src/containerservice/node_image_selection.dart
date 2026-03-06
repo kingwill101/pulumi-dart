@@ -9,7 +9,7 @@ class NodeImageSelection {
 
   /// Creates a new [NodeImageSelection].
   /// [type] The node image upgrade type.
-  NodeImageSelection({
+  const NodeImageSelection({
     required this.type,
   });
 

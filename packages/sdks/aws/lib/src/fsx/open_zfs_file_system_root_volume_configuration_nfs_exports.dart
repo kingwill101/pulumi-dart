@@ -9,7 +9,7 @@ class OpenZfsFileSystemRootVolumeConfigurationNfsExports {
 
   /// Creates a new [OpenZfsFileSystemRootVolumeConfigurationNfsExports].
   /// [clientConfigurations] A list of configuration objects that contain the client and options for mounting the OpenZFS file system. Maximum of 25 items. See `client_configurations` Block for details.
-  OpenZfsFileSystemRootVolumeConfigurationNfsExports({
+  const OpenZfsFileSystemRootVolumeConfigurationNfsExports({
     required this.clientConfigurations,
   });
 

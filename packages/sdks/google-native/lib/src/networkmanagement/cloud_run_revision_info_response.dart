@@ -18,7 +18,7 @@ class CloudRunRevisionInfoResponse {
   /// [location] Location in which this revision is deployed.
   /// [serviceUri] URI of Cloud Run service this revision belongs to.
   /// [uri] URI of a Cloud Run revision.
-  CloudRunRevisionInfoResponse({
+  const CloudRunRevisionInfoResponse({
     required this.displayName,
     required this.location,
     required this.serviceUri,

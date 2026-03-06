@@ -11,7 +11,7 @@ class GetLinkBandwidth {
   /// Creates a new [GetLinkBandwidth].
   /// [downloadSpeed] Download speed in Mbps.
   /// [uploadSpeed] Upload speed in Mbps.
-  GetLinkBandwidth({
+  const GetLinkBandwidth({
     required this.downloadSpeed,
     required this.uploadSpeed,
   });

@@ -15,7 +15,7 @@ class GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse {
   /// [clicked] Indicates whether an answer or item was clicked by the human agent.
   /// [correctnessLevel] The correctness level of an answer.
   /// [displayed] Indicates whether an answer or item was displayed to the human agent in the agent desktop UI.
-  GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse({
+  const GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse({
     required this.clicked,
     required this.correctnessLevel,
     required this.displayed,

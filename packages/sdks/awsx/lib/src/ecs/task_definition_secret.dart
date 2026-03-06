@@ -9,7 +9,7 @@ class TaskDefinitionSecret {
   /// Creates a new [TaskDefinitionSecret].
   /// [name] Required.
   /// [valueFrom] Required.
-  TaskDefinitionSecret({
+  const TaskDefinitionSecret({
     required this.name,
     required this.valueFrom,
   });

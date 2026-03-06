@@ -9,7 +9,7 @@ class DataCatalogConfigResponseMetastoreV1alpha {
 
   /// Creates a new [DataCatalogConfigResponseMetastoreV1alpha].
   /// [enabled] Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
-  DataCatalogConfigResponseMetastoreV1alpha({
+  const DataCatalogConfigResponseMetastoreV1alpha({
     required this.enabled,
   });
 

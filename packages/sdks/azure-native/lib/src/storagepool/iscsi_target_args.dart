@@ -38,7 +38,7 @@ class IscsiTargetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [staticAcls] Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
   /// [targetIqn] iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
-  IscsiTargetArgs({
+  const IscsiTargetArgs({
     required this.aclMode,
     required this.diskPoolName,
     this.iscsiTargetName,

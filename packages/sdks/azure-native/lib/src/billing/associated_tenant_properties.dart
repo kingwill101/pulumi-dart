@@ -18,7 +18,7 @@ class AssociatedTenantProperties {
   /// [displayName] The name of the associated tenant.
   /// [provisioningManagementState] The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
   /// [tenantId] The ID that uniquely identifies a tenant.
-  AssociatedTenantProperties({
+  const AssociatedTenantProperties({
     this.billingManagementState,
     this.displayName,
     this.provisioningManagementState,

@@ -10,7 +10,7 @@ class ElasticExportPolicyResponse {
 
   /// Creates a new [ElasticExportPolicyResponse].
   /// [rules] Export policy rule
-  ElasticExportPolicyResponse({
+  const ElasticExportPolicyResponse({
     this.rules,
   });
 

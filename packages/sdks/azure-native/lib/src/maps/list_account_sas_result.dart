@@ -8,7 +8,7 @@ class ListAccountSasResult {
 
   /// Creates a new [ListAccountSasResult].
   /// [accountSasToken] The shared access signature access token.
-  ListAccountSasResult({
+  const ListAccountSasResult({
     required this.accountSasToken,
   });
 

@@ -13,7 +13,7 @@ class UrlSigningKey {
   /// Creates a new [UrlSigningKey].
   /// [keyId] Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
   /// [keySourceParameters] Defines the parameters for using customer key vault for Url Signing Key.
-  UrlSigningKey({
+  const UrlSigningKey({
     required this.keyId,
     required this.keySourceParameters,
   });

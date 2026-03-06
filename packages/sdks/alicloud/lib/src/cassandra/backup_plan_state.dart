@@ -24,7 +24,7 @@ class BackupPlanState {
   /// [clusterId] The ID of the cluster for the backup.
   /// [dataCenterId] The ID of the data center for the backup in the cluster.
   /// [retentionPeriod] The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
-  BackupPlanState({
+  const BackupPlanState({
     this.active,
     this.backupPeriod,
     this.backupTime,

@@ -33,7 +33,7 @@ class CertificateArgs {
   /// [name] Gets or sets the name of the certificate.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [thumbprint] Gets or sets the thumbprint of the certificate.
-  CertificateArgs({
+  const CertificateArgs({
     required this.automationAccountName,
     required this.base64Value,
     this.certificateName,

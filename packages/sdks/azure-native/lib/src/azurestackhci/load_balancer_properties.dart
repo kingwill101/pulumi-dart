@@ -22,7 +22,7 @@ class LoadBalancerProperties {
   /// [frontendIPConfigurations] Frontend IPs for the loadbalancer.
   /// [loadBalancingRules] load balancer rules
   /// [probes] load balancer health probes
-  LoadBalancerProperties({
+  const LoadBalancerProperties({
     this.backendAddressPools,
     required this.frontendIPConfigurations,
     this.loadBalancingRules,

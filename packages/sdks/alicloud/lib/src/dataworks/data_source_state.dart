@@ -42,7 +42,7 @@ class DataSourceState {
   /// [projectId] The ID of the project to which the data source belongs.
   /// [qualifiedName] Business Unique Key of Data Source
   /// [type] The type of data source. For a list of data source types, see the values listed in the API documentation.
-  DataSourceState({
+  const DataSourceState({
     this.connectionProperties,
     this.connectionPropertiesMode,
     this.createTime,

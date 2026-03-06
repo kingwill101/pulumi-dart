@@ -14,7 +14,7 @@ class GetPrincipalApplicationAssignmentsApplicationAssignment {
   /// [applicationArn] ARN of the application.
   /// [principalId] An identifier for an object in IAM Identity Center, such as a user or group.
   /// [principalType] Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
-  GetPrincipalApplicationAssignmentsApplicationAssignment({
+  const GetPrincipalApplicationAssignmentsApplicationAssignment({
     required this.applicationArn,
     required this.principalId,
     required this.principalType,

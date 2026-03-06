@@ -12,7 +12,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
   /// Creates a new [ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig].
   /// [fqdns] List of fully-qualified-domain-names. IPv4s and port specification are supported.
   /// [gcpSecretManagerCertificateConfig] Parameters for configuring a certificate hosted in GCP SecretManager.
-  ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig({
+  const ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig({
     required this.fqdns,
     required this.gcpSecretManagerCertificateConfig,
   });

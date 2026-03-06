@@ -8,7 +8,7 @@ class DomainDevicesDiskSourceNetworkReconnect {
 
   /// Creates a new [DomainDevicesDiskSourceNetworkReconnect].
   /// [delay] Sets the delay duration before attempting to reconnect to a network storage source after a failure.
-  DomainDevicesDiskSourceNetworkReconnect({
+  const DomainDevicesDiskSourceNetworkReconnect({
     required this.delay,
   });
 

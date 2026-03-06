@@ -14,7 +14,7 @@ class GetDbInstancesInstanceDbInstanceIpArray {
   /// [dbInstanceIpArrayAttribute] The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
   /// [dbInstanceIpArrayName] IP ADDRESS whitelist group name.
   /// [securityIps] IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-  GetDbInstancesInstanceDbInstanceIpArray({
+  const GetDbInstancesInstanceDbInstanceIpArray({
     this.dbInstanceIpArrayAttribute,
     this.dbInstanceIpArrayName,
     this.securityIps,

@@ -12,7 +12,7 @@ class SingleClusterRouting {
   /// Creates a new [SingleClusterRouting].
   /// [allowTransactionalWrites] Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
   /// [clusterId] The cluster to which read/write requests should be routed.
-  SingleClusterRouting({
+  const SingleClusterRouting({
     this.allowTransactionalWrites,
     this.clusterId,
   });

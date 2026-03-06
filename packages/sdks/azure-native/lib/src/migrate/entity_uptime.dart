@@ -12,7 +12,7 @@ class EntityUptime {
   /// Creates a new [EntityUptime].
   /// [daysPerMonth] Gets the days per month.
   /// [hoursPerDay] Gets the hours per day.
-  EntityUptime({
+  const EntityUptime({
     this.daysPerMonth,
     this.hoursPerDay,
   });

@@ -28,7 +28,7 @@ class GetClusterVersionsArgs {
   /// [includeAll] Whether to include all kubernetes versions in the response.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [versionStatus] Status of the EKS cluster versions to list.
-  GetClusterVersionsArgs({
+  const GetClusterVersionsArgs({
     this.clusterType,
     this.clusterVersionsOnlies,
     this.defaultOnly,

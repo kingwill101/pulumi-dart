@@ -28,7 +28,7 @@ class GetInstancesInstance {
   /// [status] The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
   /// [subscriptionType] Required.
   /// [trial] Indicates whether this is a trial instance.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.endDate,
     required this.id,
     required this.inDebt,

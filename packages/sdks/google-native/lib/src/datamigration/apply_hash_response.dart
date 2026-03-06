@@ -9,7 +9,7 @@ class ApplyHashResponse {
 
   /// Creates a new [ApplyHashResponse].
   /// [uuidFromBytes] Optional. Generate UUID from the data's byte array
-  ApplyHashResponse({
+  const ApplyHashResponse({
     required this.uuidFromBytes,
   });
 

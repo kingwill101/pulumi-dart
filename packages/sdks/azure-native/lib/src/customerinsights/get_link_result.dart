@@ -59,7 +59,7 @@ class GetLinkResult {
   /// [targetEntityTypeName] Name of the target Entity Type.
   /// [tenantId] The hub name.
   /// [type] Resource type.
-  GetLinkResult({
+  const GetLinkResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

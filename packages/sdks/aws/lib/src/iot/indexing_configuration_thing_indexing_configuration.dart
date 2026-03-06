@@ -29,7 +29,7 @@ class IndexingConfigurationThingIndexingConfiguration {
   /// [namedShadowIndexingMode] [Named shadow](https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html) indexing mode. Valid values: `ON`, `OFF`. Default: `OFF`.
   /// [thingConnectivityIndexingMode] Thing connectivity indexing mode. Valid values: `STATUS`, `OFF`. Default: `OFF`.
   /// [thingIndexingMode] Thing indexing mode. Valid values: `REGISTRY`, `REGISTRY_AND_SHADOW`, `OFF`.
-  IndexingConfigurationThingIndexingConfiguration({
+  const IndexingConfigurationThingIndexingConfiguration({
     this.customFields,
     this.deviceDefenderIndexingMode,
     this.filter,

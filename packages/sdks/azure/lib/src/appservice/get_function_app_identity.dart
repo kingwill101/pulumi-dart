@@ -17,7 +17,7 @@ class GetFunctionAppIdentity {
   /// [principalId] The ID of the Managed Identity assigned to the Function App.
   /// [tenantId] The ID of the Tenant where the Managed Identity assigned to the Function App is located.
   /// [type] The identity type of the Managed Identity assigned to the Function App.
-  GetFunctionAppIdentity({
+  const GetFunctionAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

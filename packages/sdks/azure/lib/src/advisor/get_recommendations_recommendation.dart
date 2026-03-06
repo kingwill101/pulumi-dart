@@ -32,7 +32,7 @@ class GetRecommendationsRecommendation {
   /// [resourceType] The type of the identified resource of the Advisor Recommendation.
   /// [suppressionNames] A list of Advisor Suppression names of the Advisor Recommendation.
   /// [updatedTime] The most recent time that Advisor checked the validity of the recommendation..
-  GetRecommendationsRecommendation({
+  const GetRecommendationsRecommendation({
     required this.category,
     required this.description,
     required this.impact,

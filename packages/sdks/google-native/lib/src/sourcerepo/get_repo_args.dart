@@ -13,7 +13,7 @@ class GetRepoArgs {
   /// Creates a new [GetRepoArgs].
   /// [project] Optional.
   /// [repoId] Required.
-  GetRepoArgs({
+  const GetRepoArgs({
     this.project,
     required this.repoId,
   });

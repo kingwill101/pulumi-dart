@@ -12,7 +12,7 @@ class PrefixListIdResponse {
   /// Creates a new [PrefixListIdResponse].
   /// [description] &lt;p&gt;A description for the security group rule that references this prefix list ID.&lt;/p&gt; &lt;p&gt;Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*&lt;/p&gt;
   /// [prefixListId] &lt;p&gt;The ID of the prefix.&lt;/p&gt;
-  PrefixListIdResponse({
+  const PrefixListIdResponse({
     this.description,
     this.prefixListId,
   });

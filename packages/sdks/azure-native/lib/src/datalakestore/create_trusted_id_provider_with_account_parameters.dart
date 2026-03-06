@@ -12,7 +12,7 @@ class CreateTrustedIdProviderWithAccountParameters {
   /// Creates a new [CreateTrustedIdProviderWithAccountParameters].
   /// [idProvider] The URL of this trusted identity provider.
   /// [name] The unique name of the trusted identity provider to create.
-  CreateTrustedIdProviderWithAccountParameters({
+  const CreateTrustedIdProviderWithAccountParameters({
     required this.idProvider,
     required this.name,
   });

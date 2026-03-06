@@ -33,7 +33,7 @@ class ApplicationScalingRuleScalingRuleMetricMetric {
   /// [slbLogStore] The log store of the Log Service.
   /// [slbProject] The project of the Log Service.
   /// [vport] SLB listening port.
-  ApplicationScalingRuleScalingRuleMetricMetric({
+  const ApplicationScalingRuleScalingRuleMetricMetric({
     this.metricTargetAverageUtilization,
     this.metricType,
     this.slbId,

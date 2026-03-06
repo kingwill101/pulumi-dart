@@ -9,7 +9,7 @@ class RoutingRuleConditionMatchHeaders {
 
   /// Creates a new [RoutingRuleConditionMatchHeaders].
   /// [anyOf] Configuration of the headers to be matched. There is a match if any of the header name and header value globs are matched. See below.
-  RoutingRuleConditionMatchHeaders({
+  const RoutingRuleConditionMatchHeaders({
     required this.anyOf,
   });
 

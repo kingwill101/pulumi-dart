@@ -16,7 +16,7 @@ class Frontend {
   /// [replicas] Replicas is desired number of frontend replicas of the given distributed MQTT broker.
   /// [temporaryResourceLimits] Defines the limits for resources of the frontend instances of the MQTT broker.
   /// [workers] Number of logical frontend workers per pod.
-  Frontend({
+  const Frontend({
     required this.replicas,
     this.temporaryResourceLimits,
     this.workers,

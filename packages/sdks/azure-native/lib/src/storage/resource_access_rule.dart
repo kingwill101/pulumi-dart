@@ -12,7 +12,7 @@ class ResourceAccessRule {
   /// Creates a new [ResourceAccessRule].
   /// [resourceId] Resource Id
   /// [tenantId] Tenant Id
-  ResourceAccessRule({
+  const ResourceAccessRule({
     this.resourceId,
     this.tenantId,
   });

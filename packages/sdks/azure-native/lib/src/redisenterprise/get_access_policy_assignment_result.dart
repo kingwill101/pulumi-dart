@@ -27,7 +27,7 @@ class GetAccessPolicyAssignmentResult {
   /// [provisioningState] Current provisioning status of the access policy assignment.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [user] The user associated with the access policy.
-  GetAccessPolicyAssignmentResult({
+  const GetAccessPolicyAssignmentResult({
     required this.accessPolicyName,
     required this.azureApiVersion,
     required this.id,

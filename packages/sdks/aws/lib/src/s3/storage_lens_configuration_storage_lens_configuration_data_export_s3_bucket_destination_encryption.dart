@@ -12,7 +12,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption].
   /// [sseKms] SSE-KMS encryption. See SSE KMS below for more details.
   /// [sseS3s] SSE-S3 encryption. An empty configuration block `{}` should be used.
-  StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption({
+  const StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption({
     this.sseKms,
     this.sseS3s,
   });

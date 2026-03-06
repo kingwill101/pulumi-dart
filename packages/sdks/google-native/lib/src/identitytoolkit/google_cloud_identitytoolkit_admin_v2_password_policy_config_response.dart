@@ -19,7 +19,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse {
   /// [lastUpdateTime] The last time the password policy on the project was updated.
   /// [passwordPolicyEnforcementState] Which enforcement mode to use for the password policy.
   /// [passwordPolicyVersions] Must be of length 1. Contains the strength attributes for the password policy.
-  GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse({
     required this.forceUpgradeOnSignin,
     required this.lastUpdateTime,
     required this.passwordPolicyEnforcementState,

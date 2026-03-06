@@ -9,7 +9,7 @@ class ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment {
 
   /// Creates a new [ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment].
   /// [roles] A map of roles to assign to the environment creator.
-  ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment({
+  const ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment({
     this.roles,
   });
 

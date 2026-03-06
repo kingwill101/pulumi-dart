@@ -30,7 +30,7 @@ class GetCustomRoutingEndpointsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetCustomRoutingEndpointsResult({
+  const GetCustomRoutingEndpointsResult({
     required this.acceleratorId,
     required this.customRoutingEndpoints,
     this.endpointGroupId,

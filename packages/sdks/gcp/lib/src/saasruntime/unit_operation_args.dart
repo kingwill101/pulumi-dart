@@ -59,7 +59,7 @@ class UnitOperationArgs {
   /// [unitOperationId] The ID value for the new unit operation.
   /// [upgrade] Upgrade is the unit operation that upgrades a provisioned unit, which may
   /// [waitForCompletion] If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
-  UnitOperationArgs({
+  const UnitOperationArgs({
     this.annotations,
     this.deprovision,
     this.labels,

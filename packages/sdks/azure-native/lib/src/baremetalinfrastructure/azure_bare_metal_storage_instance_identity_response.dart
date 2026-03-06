@@ -15,7 +15,7 @@ class AzureBareMetalStorageInstanceIdentityResponse {
   /// [principalId] The principal ID of Azure Bare Metal Storage Instance identity. This property will only be provided for a system assigned identity.
   /// [tenantId] The tenant ID associated with the Azure Bare Metal Storage Instance. This property will only be provided for a system assigned identity.
   /// [type] The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
-  AzureBareMetalStorageInstanceIdentityResponse({
+  const AzureBareMetalStorageInstanceIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

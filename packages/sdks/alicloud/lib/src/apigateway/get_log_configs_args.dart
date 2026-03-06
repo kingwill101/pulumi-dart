@@ -18,7 +18,7 @@ class GetLogConfigsArgs {
   /// [ids] A list of Log Config IDs.
   /// [logType] The type the of log. Valid values: `PROVIDER`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetLogConfigsArgs({
+  const GetLogConfigsArgs({
     this.ids,
     this.logType,
     this.outputFile,

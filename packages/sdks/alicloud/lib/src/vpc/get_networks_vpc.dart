@@ -68,7 +68,7 @@ class GetNetworksVpc {
   /// [vpcName] The name of the VPC.
   /// [vrouterId] ID of the VRouter.
   /// [vswitchIds] List of vSwitch IDs in the specified VPC
-  GetNetworksVpc({
+  const GetNetworksVpc({
     required this.cidrBlock,
     required this.creationTime,
     required this.description,

@@ -13,7 +13,7 @@ class JavaScriptFunctionBindingResponse {
   /// Creates a new [JavaScriptFunctionBindingResponse].
   /// [script] The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
   /// [type] Indicates the function binding type.
-  JavaScriptFunctionBindingResponse({
+  const JavaScriptFunctionBindingResponse({
     this.script,
     required this.type,
   });

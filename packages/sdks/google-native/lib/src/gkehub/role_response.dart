@@ -9,7 +9,7 @@ class RoleResponse {
 
   /// Creates a new [RoleResponse].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  RoleResponse({
+  const RoleResponse({
     required this.predefinedRole,
   });
 

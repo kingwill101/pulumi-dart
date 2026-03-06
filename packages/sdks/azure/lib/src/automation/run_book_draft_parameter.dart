@@ -20,7 +20,7 @@ class RunBookDraftParameter {
   /// [mandatory] Whether this parameter is mandatory.
   /// [position] Specifies the position of the parameter.
   /// [type] Specifies the type of this parameter.
-  RunBookDraftParameter({
+  const RunBookDraftParameter({
     this.defaultValue,
     required this.key,
     this.mandatory,

@@ -26,7 +26,7 @@ class GetTrafficMarkingPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
   /// [transitRouterId] The ID of the transit router.
-  GetTrafficMarkingPoliciesArgs({
+  const GetTrafficMarkingPoliciesArgs({
     this.description,
     this.ids,
     this.nameRegex,

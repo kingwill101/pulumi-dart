@@ -9,7 +9,7 @@ class ToolExitCodeResponse {
 
   /// Creates a new [ToolExitCodeResponse].
   /// [number] Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
-  ToolExitCodeResponse({
+  const ToolExitCodeResponse({
     required this.number,
   });
 

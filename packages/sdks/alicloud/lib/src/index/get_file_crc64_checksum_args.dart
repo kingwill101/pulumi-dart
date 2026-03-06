@@ -14,7 +14,7 @@ class GetFileCrc64ChecksumArgs {
   /// Creates a new [GetFileCrc64ChecksumArgs].
   /// [filename] The name of the file to be computed crc64 checksum.
   /// [outputFile] Optional.
-  GetFileCrc64ChecksumArgs({
+  const GetFileCrc64ChecksumArgs({
     required this.filename,
     this.outputFile,
   });

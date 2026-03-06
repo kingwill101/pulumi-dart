@@ -57,7 +57,7 @@ class TransferSpec {
   /// [sourceAgentPoolName] Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
   /// [transferManifest] A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
   /// [transferOptions] If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
-  TransferSpec({
+  const TransferSpec({
     this.awsS3CompatibleDataSource,
     this.awsS3DataSource,
     this.azureBlobStorageDataSource,

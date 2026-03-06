@@ -12,7 +12,7 @@ class FileSystemOptions {
 
   /// Creates a new [FileSystemOptions].
   /// [enableOplock] Whether to enable the OpLock function. Value:
-  FileSystemOptions({
+  const FileSystemOptions({
     this.enableOplock,
   });
 

@@ -20,7 +20,7 @@ class JobPubsubTarget {
   /// [attributes] Attributes for PubsubMessage.
   /// [data] The message payload for PubsubMessage.
   /// [topicName] The full resource name for the Cloud Pub/Sub topic to which
-  JobPubsubTarget({
+  const JobPubsubTarget({
     this.attributes,
     this.data,
     required this.topicName,

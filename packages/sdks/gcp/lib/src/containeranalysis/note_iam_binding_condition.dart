@@ -11,7 +11,7 @@ class NoteIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  NoteIamBindingCondition({
+  const NoteIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

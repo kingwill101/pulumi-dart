@@ -11,7 +11,7 @@ class WindowsVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault {
   /// Creates a new [WindowsVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault].
   /// [secretUrl] The URL to the Key Vault Secret which stores the protected settings.
   /// [sourceVaultId] The ID of the source Key Vault.
-  WindowsVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault({
+  const WindowsVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault({
     required this.secretUrl,
     required this.sourceVaultId,
   });

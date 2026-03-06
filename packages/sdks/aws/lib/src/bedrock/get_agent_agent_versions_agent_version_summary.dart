@@ -27,7 +27,7 @@ class GetAgentAgentVersionsAgentVersionSummary {
   /// [description] Description of the version of the agent.
   /// [guardrailConfigurations] Optional.
   /// [updatedAt] Time at which the version was last updated.
-  GetAgentAgentVersionsAgentVersionSummary({
+  const GetAgentAgentVersionsAgentVersionSummary({
     required this.agentName,
     required this.agentStatus,
     required this.agentVersion,

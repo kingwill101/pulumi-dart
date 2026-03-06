@@ -18,7 +18,7 @@ class AutomaticOSUpgradePolicy {
   /// [enableAutomaticOSUpgrade] Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. &lt;br /&gt;&lt;br /&gt; If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
   /// [osRollingUpgradeDeferral] Defer OS upgrades on the TVMs if they are running tasks.
   /// [useRollingUpgradePolicy] Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
-  AutomaticOSUpgradePolicy({
+  const AutomaticOSUpgradePolicy({
     this.disableAutomaticRollback,
     this.enableAutomaticOSUpgrade,
     this.osRollingUpgradeDeferral,

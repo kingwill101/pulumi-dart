@@ -16,7 +16,7 @@ class TopicSchemaSettings {
   /// Creates a new [TopicSchemaSettings].
   /// [encoding] The encoding of messages validated against schema.
   /// [schema] The name of the schema that messages published should be
-  TopicSchemaSettings({
+  const TopicSchemaSettings({
     this.encoding,
     required this.schema,
   });

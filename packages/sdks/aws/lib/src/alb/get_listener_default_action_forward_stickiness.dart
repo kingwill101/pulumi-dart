@@ -9,7 +9,7 @@ class GetListenerDefaultActionForwardStickiness {
   /// Creates a new [GetListenerDefaultActionForwardStickiness].
   /// [duration] Required.
   /// [enabled] Required.
-  GetListenerDefaultActionForwardStickiness({
+  const GetListenerDefaultActionForwardStickiness({
     required this.duration,
     required this.enabled,
   });

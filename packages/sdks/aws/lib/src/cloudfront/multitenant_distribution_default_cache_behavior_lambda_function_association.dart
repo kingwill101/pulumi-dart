@@ -14,7 +14,7 @@ class MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation {
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   /// [includeBody] When set to true, the request body is exposed to the Lambda function. Default: `false`.
   /// [lambdaFunctionArn] ARN of the Lambda function.
-  MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation({
+  const MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation({
     required this.eventType,
     this.includeBody,
     required this.lambdaFunctionArn,

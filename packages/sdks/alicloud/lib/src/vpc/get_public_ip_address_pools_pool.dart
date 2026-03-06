@@ -41,7 +41,7 @@ class GetPublicIpAddressPoolsPool {
   /// [totalIpNum] The total number of IP addresses in the Vpc Public Ip Address Pool.
   /// [usedIpNum] The number of occupied IP addresses in the Vpc Public Ip Address Pool.
   /// [userType] The user type.
-  GetPublicIpAddressPoolsPool({
+  const GetPublicIpAddressPoolsPool({
     required this.createTime,
     required this.description,
     required this.id,

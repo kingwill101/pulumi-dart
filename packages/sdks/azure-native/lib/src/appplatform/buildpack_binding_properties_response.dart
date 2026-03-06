@@ -16,7 +16,7 @@ class BuildpackBindingPropertiesResponse {
   /// [bindingType] Buildpack Binding Type
   /// [launchProperties] The object describes the buildpack binding launch properties
   /// [provisioningState] State of the Buildpack Binding.
-  BuildpackBindingPropertiesResponse({
+  const BuildpackBindingPropertiesResponse({
     this.bindingType,
     this.launchProperties,
     required this.provisioningState,

@@ -33,7 +33,7 @@ class FeatureMembershipState {
   /// [mesh] Service mesh specific spec. Structure is documented below.
   /// [policycontroller] Policy Controller-specific spec. Structure is documented below.
   /// [project] The project of the feature
-  FeatureMembershipState({
+  const FeatureMembershipState({
     this.configmanagement,
     this.feature,
     this.location,

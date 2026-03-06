@@ -10,7 +10,7 @@ class TenantClient {
 
   /// Creates a new [TenantClient].
   /// [permissions] Configuration related to restricting a user's ability to affect their account.
-  TenantClient({
+  const TenantClient({
     this.permissions,
   });
 

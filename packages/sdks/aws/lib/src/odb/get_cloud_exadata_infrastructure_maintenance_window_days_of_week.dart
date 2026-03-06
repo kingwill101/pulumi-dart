@@ -7,7 +7,7 @@ class GetCloudExadataInfrastructureMaintenanceWindowDaysOfWeek {
 
   /// Creates a new [GetCloudExadataInfrastructureMaintenanceWindowDaysOfWeek].
   /// [name] Required.
-  GetCloudExadataInfrastructureMaintenanceWindowDaysOfWeek({
+  const GetCloudExadataInfrastructureMaintenanceWindowDaysOfWeek({
     required this.name,
   });
 

@@ -25,7 +25,7 @@ class WorkloadNetworkDhcpRelayResponse {
   /// [revision] NSX revision number.
   /// [segments] NSX Segments consuming DHCP.
   /// [serverAddresses] DHCP Relay Addresses. Max 3.
-  WorkloadNetworkDhcpRelayResponse({
+  const WorkloadNetworkDhcpRelayResponse({
     required this.dhcpType,
     this.displayName,
     required this.provisioningState,

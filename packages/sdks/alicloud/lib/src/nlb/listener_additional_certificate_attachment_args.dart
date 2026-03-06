@@ -18,7 +18,7 @@ class ListenerAdditionalCertificateAttachmentArgs {
   /// [certificateId] The ID of additional certificates.
   /// [dryRun] Specifies whether to perform a dry run, without performing the actual request. Valid values:
   /// [listenerId] The listener ID. You must specify the ID of a listener that uses SSL over TCP.
-  ListenerAdditionalCertificateAttachmentArgs({
+  const ListenerAdditionalCertificateAttachmentArgs({
     required this.certificateId,
     this.dryRun,
     required this.listenerId,

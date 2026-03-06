@@ -104,7 +104,7 @@ class EdgeCacheOriginState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [retryConditions] Specifies one or more retry conditions for the configured origin.
   /// [timeout] The connection and HTTP timeout configuration for this origin.
-  EdgeCacheOriginState({
+  const EdgeCacheOriginState({
     this.awsV4Authentication,
     this.description,
     this.effectiveLabels,

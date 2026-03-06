@@ -178,7 +178,7 @@ class GetDatabaseAccountResult {
   /// [type] The type of Azure resource.
   /// [virtualNetworkRules] List of Virtual Network ACL rules configured for the Cosmos DB account.
   /// [writeLocations] An array that contains the write location for the Cosmos DB account.
-  GetDatabaseAccountResult({
+  const GetDatabaseAccountResult({
     this.analyticalStorageConfiguration,
     this.apiProperties,
     required this.azureApiVersion,

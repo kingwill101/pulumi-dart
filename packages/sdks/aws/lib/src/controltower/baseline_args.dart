@@ -33,7 +33,7 @@ class BaselineArgs {
   /// [tags] Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetIdentifier] The ARN of the target on which the baseline will be enabled. Only OUs are supported as targets.
   /// [timeouts] Optional.
-  BaselineArgs({
+  const BaselineArgs({
     required this.baselineIdentifier,
     required this.baselineVersion,
     this.parameters,

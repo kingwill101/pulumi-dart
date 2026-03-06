@@ -15,7 +15,7 @@ class EnterpriseKnowledgeGraphProperties {
   /// [description] The description of the EnterpriseKnowledgeGraph
   /// [metadata] Specifies the metadata  of the resource.
   /// [provisioningState] The state of EnterpriseKnowledgeGraph provisioning
-  EnterpriseKnowledgeGraphProperties({
+  const EnterpriseKnowledgeGraphProperties({
     this.description,
     this.metadata,
     this.provisioningState,

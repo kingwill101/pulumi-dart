@@ -10,7 +10,7 @@ class SqlVmSettingsResponse {
 
   /// Creates a new [SqlVmSettingsResponse].
   /// [instanceSeries] Gets or sets the Azure VM families (calling instance series to keep it
-  SqlVmSettingsResponse({
+  const SqlVmSettingsResponse({
     this.instanceSeries,
   });
 

@@ -31,7 +31,7 @@ class GetBackendAddressPoolResult {
   /// [loadbalancerId] Required.
   /// [name] The name of the Backend Address.
   /// [outboundRules] A list of the Load Balancing Outbound Rules associated with this Backend Address Pool.
-  GetBackendAddressPoolResult({
+  const GetBackendAddressPoolResult({
     required this.backendAddresses,
     required this.backendIpConfigurations,
     required this.id,

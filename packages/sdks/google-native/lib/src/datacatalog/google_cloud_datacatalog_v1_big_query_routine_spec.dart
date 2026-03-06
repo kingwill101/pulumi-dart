@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1BigQueryRoutineSpec].
   /// [importedLibraries] Paths of the imported libraries.
-  GoogleCloudDatacatalogV1BigQueryRoutineSpec({
+  const GoogleCloudDatacatalogV1BigQueryRoutineSpec({
     this.importedLibraries,
   });
 

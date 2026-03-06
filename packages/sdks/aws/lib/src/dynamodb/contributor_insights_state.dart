@@ -18,7 +18,7 @@ class ContributorInsightsState {
   /// [mode] argument to specify the [CloudWatch contributor insights mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/contributorinsights_HowItWorks.html#contributorinsights_HowItWorks.Modes)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] The name of the table to enable contributor insights
-  ContributorInsightsState({
+  const ContributorInsightsState({
     this.indexName,
     this.mode,
     this.region,

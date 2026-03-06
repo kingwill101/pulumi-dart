@@ -18,7 +18,7 @@ class GetManagedEnvironmentsStorageArgs {
   /// [environmentName] Name of the Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
-  GetManagedEnvironmentsStorageArgs({
+  const GetManagedEnvironmentsStorageArgs({
     required this.environmentName,
     required this.resourceGroupName,
     required this.storageName,

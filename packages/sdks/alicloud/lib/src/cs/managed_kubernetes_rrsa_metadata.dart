@@ -17,7 +17,7 @@ class ManagedKubernetesRrsaMetadata {
   /// [ramOidcProviderArn] The arn of OIDC provider that was registered in RAM.
   /// [ramOidcProviderName] The name of OIDC Provider that was registered in RAM.
   /// [rrsaOidcIssuerUrl] The issuer URL of RRSA OIDC Token.
-  ManagedKubernetesRrsaMetadata({
+  const ManagedKubernetesRrsaMetadata({
     this.enabled,
     this.ramOidcProviderArn,
     this.ramOidcProviderName,

@@ -44,7 +44,7 @@ class ClusterEndpointArgs {
   /// [readWriteMode] Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
   /// [sslAutoRotate] Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
   /// [sslEnabled] Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
-  ClusterEndpointArgs({
+  const ClusterEndpointArgs({
     this.autoAddNewNodes,
     this.connectionPrefix,
     required this.dbClusterId,

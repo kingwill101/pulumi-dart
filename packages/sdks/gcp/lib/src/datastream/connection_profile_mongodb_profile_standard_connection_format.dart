@@ -9,7 +9,7 @@ class ConnectionProfileMongodbProfileStandardConnectionFormat {
 
   /// Creates a new [ConnectionProfileMongodbProfileStandardConnectionFormat].
   /// [directConnection] Specifies whether the client connects directly to the
-  ConnectionProfileMongodbProfileStandardConnectionFormat({
+  const ConnectionProfileMongodbProfileStandardConnectionFormat({
     this.directConnection,
   });
 

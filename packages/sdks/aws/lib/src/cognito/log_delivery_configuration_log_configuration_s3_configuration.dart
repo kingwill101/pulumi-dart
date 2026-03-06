@@ -8,7 +8,7 @@ class LogDeliveryConfigurationLogConfigurationS3Configuration {
 
   /// Creates a new [LogDeliveryConfigurationLogConfigurationS3Configuration].
   /// [bucketArn] The ARN of the S3 bucket to which the logs should be delivered.
-  LogDeliveryConfigurationLogConfigurationS3Configuration({
+  const LogDeliveryConfigurationLogConfigurationS3Configuration({
     this.bucketArn,
   });
 

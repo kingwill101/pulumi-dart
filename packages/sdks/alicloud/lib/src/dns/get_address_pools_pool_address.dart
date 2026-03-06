@@ -20,7 +20,7 @@ class GetAddressPoolsPoolAddress {
   /// [lbaWeight] The weight of the address.
   /// [mode] The type of the address.
   /// [remark] The description of the address.
-  GetAddressPoolsPoolAddress({
+  const GetAddressPoolsPoolAddress({
     required this.address,
     required this.attributeInfo,
     required this.lbaWeight,

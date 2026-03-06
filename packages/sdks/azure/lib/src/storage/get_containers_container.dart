@@ -14,7 +14,7 @@ class GetContainersContainer {
   /// [dataPlaneId] The data plane ID of the Storage Container.
   /// [name] The name of this Storage Container.
   /// [resourceManagerId] The resource manager ID of the Storage Container.
-  GetContainersContainer({
+  const GetContainersContainer({
     required this.dataPlaneId,
     required this.name,
     required this.resourceManagerId,

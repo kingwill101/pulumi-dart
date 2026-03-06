@@ -8,7 +8,7 @@ class FleetUpdateStrategyStageGroup {
 
   /// Creates a new [FleetUpdateStrategyStageGroup].
   /// [name] The name which should be used for this group.
-  FleetUpdateStrategyStageGroup({
+  const FleetUpdateStrategyStageGroup({
     required this.name,
   });
 

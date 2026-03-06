@@ -19,7 +19,7 @@ class GetTaskArgs {
   /// [queueId] Required.
   /// [responseView] Optional.
   /// [taskId] Required.
-  GetTaskArgs({
+  const GetTaskArgs({
     required this.location,
     this.project,
     required this.queueId,

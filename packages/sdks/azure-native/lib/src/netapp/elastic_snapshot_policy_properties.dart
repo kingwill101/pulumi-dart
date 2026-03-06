@@ -25,7 +25,7 @@ class ElasticSnapshotPolicyProperties {
   /// [monthlySchedule] Schedule for monthly snapshots
   /// [policyStatus] Configures if the snapshot policy is enabled on the volumes connected to the policy.
   /// [weeklySchedule] Schedule for weekly snapshots
-  ElasticSnapshotPolicyProperties({
+  const ElasticSnapshotPolicyProperties({
     this.dailySchedule,
     this.hourlySchedule,
     this.monthlySchedule,

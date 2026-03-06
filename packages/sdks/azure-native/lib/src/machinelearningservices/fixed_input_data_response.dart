@@ -22,7 +22,7 @@ class FixedInputDataResponse {
   /// [inputDataType] Monitoring input data type enum.
   /// [jobInputType] [Required] Specifies the type of job.
   /// [uri] [Required] Input Asset URI.
-  FixedInputDataResponse({
+  const FixedInputDataResponse({
     this.columns,
     this.dataContext,
     required this.inputDataType,

@@ -98,7 +98,7 @@ class LandingZoneConfigurationResourcePropertiesResponse {
   /// [sandboxMgMetadata] The assigned policies of the 'Sandbox' management group and indicator to create it or not.
   /// [tags] Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
   /// [topLevelMgMetadata] The assigned policies of the parent management group.
-  LandingZoneConfigurationResourcePropertiesResponse({
+  const LandingZoneConfigurationResourcePropertiesResponse({
     required this.authoringStatus,
     required this.azureBastionCreationOption,
     this.azureBastionSubnetCidrBlock,

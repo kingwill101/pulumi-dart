@@ -48,7 +48,7 @@ class GetAvailabilityZoneResult {
   /// [state] Required.
   /// [zoneId] Required.
   /// [zoneType] Type of zone. Values are `availability-zone`, `local-zone`, and `wavelength-zone`.
-  GetAvailabilityZoneResult({
+  const GetAvailabilityZoneResult({
     this.allAvailabilityZones,
     this.filters,
     required this.groupLongName,

@@ -79,7 +79,7 @@ class ServingConfigRetailV2betaArgs {
   /// [servingConfigId] Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
   /// [solutionTypes] Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
   /// [twowaySynonymsControlIds] Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
-  ServingConfigRetailV2betaArgs({
+  const ServingConfigRetailV2betaArgs({
     this.boostControlIds,
     required this.catalogId,
     required this.displayName,

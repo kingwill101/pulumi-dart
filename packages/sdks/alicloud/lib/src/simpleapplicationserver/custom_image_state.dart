@@ -23,7 +23,7 @@ class CustomImageState {
   /// [instanceId] The ID of the instance.
   /// [status] The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
   /// [systemSnapshotId] The ID of the system snapshot.
-  CustomImageState({
+  const CustomImageState({
     this.customImageName,
     this.description,
     this.instanceId,

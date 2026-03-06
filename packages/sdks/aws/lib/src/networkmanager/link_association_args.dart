@@ -18,7 +18,7 @@ class LinkAssociationArgs {
   /// [deviceId] ID of the device.
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
-  LinkAssociationArgs({
+  const LinkAssociationArgs({
     required this.deviceId,
     required this.globalNetworkId,
     required this.linkId,

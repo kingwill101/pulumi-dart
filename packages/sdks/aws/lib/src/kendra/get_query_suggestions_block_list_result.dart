@@ -52,7 +52,7 @@ class GetQuerySuggestionsBlockListResult {
   /// [status] Current status of the block list. When the value is `ACTIVE`, the block list is ready for use.
   /// [tags] Metadata that helps organize the block list you create.
   /// [updatedAt] Date and time that the block list was last updated.
-  GetQuerySuggestionsBlockListResult({
+  const GetQuerySuggestionsBlockListResult({
     required this.arn,
     required this.createdAt,
     required this.description,

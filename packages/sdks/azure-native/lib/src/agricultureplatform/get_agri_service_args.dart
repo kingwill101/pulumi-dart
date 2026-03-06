@@ -15,7 +15,7 @@ class GetAgriServiceArgs {
   /// Creates a new [GetAgriServiceArgs].
   /// [agriServiceResourceName] The name of the AgriService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAgriServiceArgs({
+  const GetAgriServiceArgs({
     required this.agriServiceResourceName,
     required this.resourceGroupName,
   });

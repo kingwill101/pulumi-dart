@@ -14,7 +14,7 @@ class GetDiskAccessResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] Required.
-  GetDiskAccessResult({
+  const GetDiskAccessResult({
     required this.id,
     required this.name,
     required this.resourceGroupName,

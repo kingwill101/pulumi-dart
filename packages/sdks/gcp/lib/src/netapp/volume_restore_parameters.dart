@@ -15,7 +15,7 @@ class VolumeRestoreParameters {
   /// Creates a new [VolumeRestoreParameters].
   /// [sourceBackup] Full name of the backup to use for creating this volume.
   /// [sourceSnapshot] Full name of the snapshot to use for creating this volume.
-  VolumeRestoreParameters({
+  const VolumeRestoreParameters({
     this.sourceBackup,
     this.sourceSnapshot,
   });

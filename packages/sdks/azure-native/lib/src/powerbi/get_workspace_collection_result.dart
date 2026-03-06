@@ -28,7 +28,7 @@ class GetWorkspaceCollectionResult {
   /// [sku] Optional.
   /// [tags] Optional.
   /// [type] Resource type
-  GetWorkspaceCollectionResult({
+  const GetWorkspaceCollectionResult({
     required this.azureApiVersion,
     this.id,
     this.location,

@@ -11,7 +11,7 @@ class WindowsWebAppSlotSiteConfigCors {
   /// Creates a new [WindowsWebAppSlotSiteConfigCors].
   /// [allowedOrigins] Specifies a list of origins that should be allowed to make cross-origin calls.
   /// [supportCredentials] Whether CORS requests with credentials are allowed. Defaults to `false`
-  WindowsWebAppSlotSiteConfigCors({
+  const WindowsWebAppSlotSiteConfigCors({
     this.allowedOrigins,
     this.supportCredentials,
   });

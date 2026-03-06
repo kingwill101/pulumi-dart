@@ -13,7 +13,7 @@ class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
   /// Creates a new [PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource].
   /// [importUriPrefix] Directory path where all the Whistle files are located.
   /// [uri] Main configuration file which has the entrypoint or the root function.
-  PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource({
+  const PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource({
     required this.importUriPrefix,
     required this.uri,
   });

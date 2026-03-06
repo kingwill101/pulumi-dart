@@ -14,7 +14,7 @@ class GetUsersUserFirewallGrant {
   /// [id] The ID of entity this grant applies to.
   /// [label] The current label of the entity this grant applies to, for display purposes.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  GetUsersUserFirewallGrant({
+  const GetUsersUserFirewallGrant({
     required this.id,
     required this.label,
     required this.permissions,

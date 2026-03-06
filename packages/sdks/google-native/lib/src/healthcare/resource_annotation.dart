@@ -9,7 +9,7 @@ class ResourceAnnotation {
 
   /// Creates a new [ResourceAnnotation].
   /// [label] A description of the annotation record.
-  ResourceAnnotation({
+  const ResourceAnnotation({
     this.label,
   });
 

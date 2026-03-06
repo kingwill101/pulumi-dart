@@ -18,7 +18,7 @@ class GoogleCloudDocumentaiV1DocumentPageMatrix {
   /// [data] The matrix data.
   /// [rows] Number of rows in the matrix.
   /// [type] This encodes information about what data type the matrix uses. For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of OpenCV primitive data types, please refer to https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
-  GoogleCloudDocumentaiV1DocumentPageMatrix({
+  const GoogleCloudDocumentaiV1DocumentPageMatrix({
     this.cols,
     this.data,
     this.rows,

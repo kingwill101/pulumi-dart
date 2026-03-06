@@ -12,7 +12,7 @@ class ListLocalRulestackAdvancedSecurityObjectsResult {
   /// Creates a new [ListLocalRulestackAdvancedSecurityObjectsResult].
   /// [nextLink] next link
   /// [value] response value
-  ListLocalRulestackAdvancedSecurityObjectsResult({
+  const ListLocalRulestackAdvancedSecurityObjectsResult({
     this.nextLink,
     required this.value,
   });

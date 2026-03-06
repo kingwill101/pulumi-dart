@@ -34,7 +34,7 @@ class GetEmailIdentityResult {
   /// [tags] Key-value mapping of resource tags.
   /// [verificationStatus] The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
   /// [verifiedForSendingStatus] Specifies whether or not the identity is verified.
-  GetEmailIdentityResult({
+  const GetEmailIdentityResult({
     required this.arn,
     required this.configurationSetName,
     required this.dkimSigningAttributes,

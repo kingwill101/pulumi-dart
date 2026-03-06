@@ -43,7 +43,7 @@ class GoogleBigQueryObjectDataset {
   /// [table] The table name of the Google BigQuery. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using database + table properties instead.
   /// [type] Type of dataset.
-  GoogleBigQueryObjectDataset({
+  const GoogleBigQueryObjectDataset({
     this.annotations,
     this.dataset,
     this.description,

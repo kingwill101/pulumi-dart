@@ -42,7 +42,7 @@ class RecommendationEngineArgs {
   /// [location] The geographic location where the data store should reside. The value can
   /// [mediaRecommendationEngineConfig] Configurations for a Media Recommendation Engine. Only applicable on the data stores
   /// [project] The ID of the project in which the resource belongs.
-  RecommendationEngineArgs({
+  const RecommendationEngineArgs({
     this.commonConfig,
     required this.dataStoreIds,
     required this.displayName,

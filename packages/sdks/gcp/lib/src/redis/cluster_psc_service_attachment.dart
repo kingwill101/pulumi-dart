@@ -13,7 +13,7 @@ class ClusterPscServiceAttachment {
   /// Creates a new [ClusterPscServiceAttachment].
   /// [connectionType] (Output)
   /// [serviceAttachment] (Output)
-  ClusterPscServiceAttachment({
+  const ClusterPscServiceAttachment({
     this.connectionType,
     this.serviceAttachment,
   });

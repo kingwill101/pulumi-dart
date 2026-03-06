@@ -18,7 +18,7 @@ class GoogleCloudMlV1PredictionOutputResponse {
   /// [nodeHours] Node hours used by the batch prediction job.
   /// [outputPath] The output Google Cloud Storage location provided at the job creation time.
   /// [predictionCount] The number of generated predictions.
-  GoogleCloudMlV1PredictionOutputResponse({
+  const GoogleCloudMlV1PredictionOutputResponse({
     required this.errorCount,
     required this.nodeHours,
     required this.outputPath,

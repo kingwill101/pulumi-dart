@@ -15,7 +15,7 @@ class GetContactCenterArgs {
   /// [contactCenterId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetContactCenterArgs({
+  const GetContactCenterArgs({
     required this.contactCenterId,
     required this.location,
     this.project,

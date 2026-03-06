@@ -41,7 +41,7 @@ class AppGroupAppArgs {
   /// [organizationId] Required.
   /// [scopes] Scopes to apply to the AppGroup app. The specified scopes must already exist for the API product that you associate with the AppGroup app.
   /// [status] Status of the App. Valid values include `approved` or `revoked`.
-  AppGroupAppArgs({
+  const AppGroupAppArgs({
     this.apiProducts,
     this.appGroup,
     this.appId,

@@ -18,7 +18,7 @@ class AppServiceBackup {
   /// [name] Specifies the name for this Backup.
   /// [schedule] A `schedule` block as defined below.
   /// [storageAccountUrl] The SAS URL to a Storage Container where Backups should be saved.
-  AppServiceBackup({
+  const AppServiceBackup({
     this.enabled,
     required this.name,
     required this.schedule,

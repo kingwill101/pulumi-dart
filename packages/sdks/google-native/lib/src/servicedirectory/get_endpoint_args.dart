@@ -19,7 +19,7 @@ class GetEndpointArgs {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     required this.endpointId,
     required this.location,
     required this.namespaceId,

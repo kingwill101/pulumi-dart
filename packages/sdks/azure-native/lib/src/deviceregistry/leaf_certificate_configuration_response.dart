@@ -9,7 +9,7 @@ class LeafCertificateConfigurationResponse {
 
   /// Creates a new [LeafCertificateConfigurationResponse].
   /// [validityPeriodInDays] The validity period in days.
-  LeafCertificateConfigurationResponse({
+  const LeafCertificateConfigurationResponse({
     required this.validityPeriodInDays,
   });
 

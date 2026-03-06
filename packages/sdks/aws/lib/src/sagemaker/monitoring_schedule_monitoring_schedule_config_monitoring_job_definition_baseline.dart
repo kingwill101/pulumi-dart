@@ -13,7 +13,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline 
   /// [baseliningJobName] Optional.
   /// [constraintsResource] Optional.
   /// [statisticsResource] Optional.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline({
     this.baseliningJobName,
     this.constraintsResource,
     this.statisticsResource,

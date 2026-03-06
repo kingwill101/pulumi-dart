@@ -17,7 +17,7 @@ class GetRegistryImageManifestsManifest {
   /// [mediaType] The media type of the manifest.
   /// [os] The operating system supported by the manifest.
   /// [sha256Digest] The content digest of the manifest, as stored in the registry.
-  GetRegistryImageManifestsManifest({
+  const GetRegistryImageManifestsManifest({
     required this.architecture,
     required this.mediaType,
     required this.os,

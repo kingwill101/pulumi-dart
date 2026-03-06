@@ -8,7 +8,7 @@ class GetEcsDisksDiskOperationLock {
 
   /// Creates a new [GetEcsDisksDiskOperationLock].
   /// [lockReason] The reason why the disk was locked.
-  GetEcsDisksDiskOperationLock({
+  const GetEcsDisksDiskOperationLock({
     required this.lockReason,
   });
 

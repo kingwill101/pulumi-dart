@@ -15,7 +15,7 @@ class GoogleCloudDocumentaiV1DocumentShardInfoResponse {
   /// [shardCount] Total number of shards.
   /// [shardIndex] The 0-based index of this shard.
   /// [textOffset] The index of the first character in Document.text in the overall document global text.
-  GoogleCloudDocumentaiV1DocumentShardInfoResponse({
+  const GoogleCloudDocumentaiV1DocumentShardInfoResponse({
     required this.shardCount,
     required this.shardIndex,
     required this.textOffset,

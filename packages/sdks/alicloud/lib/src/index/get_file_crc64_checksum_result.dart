@@ -15,7 +15,7 @@ class GetFileCrc64ChecksumResult {
   /// [filename] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
-  GetFileCrc64ChecksumResult({
+  const GetFileCrc64ChecksumResult({
     required this.checksum,
     required this.filename,
     required this.id,

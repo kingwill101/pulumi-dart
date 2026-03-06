@@ -7,7 +7,7 @@ class InstanceAdminSettings {
 
   /// Creates a new [InstanceAdminSettings].
   /// [allowedEmailDomains] Optional.
-  InstanceAdminSettings({
+  const InstanceAdminSettings({
     this.allowedEmailDomains,
   });
 

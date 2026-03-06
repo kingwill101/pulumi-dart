@@ -10,7 +10,7 @@ class BrokerAuthenticationProperties {
 
   /// Creates a new [BrokerAuthenticationProperties].
   /// [authenticationMethods] Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported.
-  BrokerAuthenticationProperties({
+  const BrokerAuthenticationProperties({
     required this.authenticationMethods,
   });
 

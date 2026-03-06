@@ -18,7 +18,7 @@ class GetNamespaceAuthorizationRuleArgs {
   /// [name] The name of the EventHub Authorization Rule resource.
   /// [namespaceName] Specifies the name of the EventHub Namespace.
   /// [resourceGroupName] The name of the resource group in which the EventHub Namespace exists.
-  GetNamespaceAuthorizationRuleArgs({
+  const GetNamespaceAuthorizationRuleArgs({
     required this.name,
     required this.namespaceName,
     required this.resourceGroupName,

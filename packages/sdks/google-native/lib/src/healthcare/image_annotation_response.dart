@@ -13,7 +13,7 @@ class ImageAnnotationResponse {
   /// Creates a new [ImageAnnotationResponse].
   /// [boundingPolys] The list of polygons outlining the sensitive regions in the image.
   /// [frameIndex] 0-based index of the image frame. For example, an image frame in a DICOM instance.
-  ImageAnnotationResponse({
+  const ImageAnnotationResponse({
     required this.boundingPolys,
     required this.frameIndex,
   });

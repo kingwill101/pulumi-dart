@@ -23,7 +23,7 @@ class CustomDomainArgs {
   /// [name] Specifies the name of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   /// [webPubsubCustomCertificateId] Specifies the Web PubSub Custom Certificate ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   /// [webPubsubId] Specifies the Web PubSub ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
-  CustomDomainArgs({
+  const CustomDomainArgs({
     required this.domainName,
     this.name,
     required this.webPubsubCustomCertificateId,

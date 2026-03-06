@@ -10,7 +10,7 @@ class GetProjectCatalogImageDefinitionErrorDetailsResult {
 
   /// Creates a new [GetProjectCatalogImageDefinitionErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
-  GetProjectCatalogImageDefinitionErrorDetailsResult({
+  const GetProjectCatalogImageDefinitionErrorDetailsResult({
     required this.errors,
   });
 

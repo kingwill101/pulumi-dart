@@ -8,7 +8,7 @@ class GetFlowSourceAddressesResult {
 
   /// Creates a new [GetFlowSourceAddressesResult].
   /// [sourceAddresses] A source IP address or CIDR range
-  GetFlowSourceAddressesResult({
+  const GetFlowSourceAddressesResult({
     this.sourceAddresses,
   });
 

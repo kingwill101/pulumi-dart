@@ -11,7 +11,7 @@ class ClusterNetworkPolicy {
   /// Creates a new [ClusterNetworkPolicy].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
-  ClusterNetworkPolicy({
+  const ClusterNetworkPolicy({
     required this.enabled,
     this.provider,
   });

@@ -19,7 +19,7 @@ class ResourceDescriptor {
   /// [mediaType] Optional.
   /// [name] Optional.
   /// [uri] Optional.
-  ResourceDescriptor({
+  const ResourceDescriptor({
     this.annotations,
     this.content,
     this.digest,

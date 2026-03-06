@@ -20,7 +20,7 @@ class GetConsumerGroupsGroup {
   /// [instanceId] ID of the ALIKAFKA Instance that owns the consumer groups.
   /// [remark] The remark of the consumer group.
   /// [tags] A mapping of tags to assign to the consumer group.
-  GetConsumerGroupsGroup({
+  const GetConsumerGroupsGroup({
     required this.consumerId,
     required this.id,
     required this.instanceId,

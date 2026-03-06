@@ -16,7 +16,7 @@ class PieChartDataSet {
   /// [minAlignmentPeriod] Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
   /// [sliceNameTemplate] Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
   /// [timeSeriesQuery] The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
-  PieChartDataSet({
+  const PieChartDataSet({
     this.minAlignmentPeriod,
     this.sliceNameTemplate,
     required this.timeSeriesQuery,

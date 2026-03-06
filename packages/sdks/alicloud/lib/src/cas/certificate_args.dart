@@ -34,7 +34,7 @@ class CertificateArgs {
   /// [signCert] Optional.
   /// [signPrivateKey] Optional.
   /// [tags] Optional.
-  CertificateArgs({
+  const CertificateArgs({
     this.cert,
     this.certificateName,
     this.encryptCert,

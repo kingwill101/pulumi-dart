@@ -7,7 +7,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess].
   /// [type] Required.
-  GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess({
+  const GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess({
     required this.type,
   });
 

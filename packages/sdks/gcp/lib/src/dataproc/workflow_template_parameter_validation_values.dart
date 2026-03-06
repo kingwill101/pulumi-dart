@@ -8,7 +8,7 @@ class WorkflowTemplateParameterValidationValues {
 
   /// Creates a new [WorkflowTemplateParameterValidationValues].
   /// [values] Required. List of allowed values for the parameter.
-  WorkflowTemplateParameterValidationValues({
+  const WorkflowTemplateParameterValidationValues({
     required this.values,
   });
 

@@ -32,7 +32,7 @@ class GetIntentDialogflowV3beta1Result {
   /// [parameters] The collection of parameters associated with the intent.
   /// [priority] The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
   /// [trainingPhrases] The collection of training phrases the agent is trained on to identify the intent.
-  GetIntentDialogflowV3beta1Result({
+  const GetIntentDialogflowV3beta1Result({
     required this.description,
     required this.displayName,
     required this.isFallback,

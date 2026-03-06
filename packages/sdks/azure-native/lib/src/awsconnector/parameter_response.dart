@@ -15,7 +15,7 @@ class ParameterResponse {
   /// [parameterKey] The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
   /// [parameterName] The name of the parameter.
   /// [parameterValue] The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
-  ParameterResponse({
+  const ParameterResponse({
     this.parameterKey,
     this.parameterName,
     this.parameterValue,

@@ -12,7 +12,7 @@ class BucketPublicAccessBlockState {
   /// Creates a new [BucketPublicAccessBlockState].
   /// [blockPublicAccess] Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
   /// [bucket] The name of the bucket.
-  BucketPublicAccessBlockState({
+  const BucketPublicAccessBlockState({
     this.blockPublicAccess,
     this.bucket,
   });

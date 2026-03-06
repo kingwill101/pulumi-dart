@@ -27,7 +27,7 @@ class GetCustomLinesArgs {
   /// [lang] The lang.
   /// [nameRegex] A regex string to filter results by Custom Line name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetCustomLinesArgs({
+  const GetCustomLinesArgs({
     required this.domainName,
     this.enableDetails,
     this.ids,

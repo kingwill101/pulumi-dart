@@ -21,7 +21,7 @@ class GlobalForwardingRuleMetadataFilter {
   /// Creates a new [GlobalForwardingRuleMetadataFilter].
   /// [filterLabels] The list of label value pairs that must match labels in the
   /// [filterMatchCriteria] Specifies how individual filterLabel matches within the list of
-  GlobalForwardingRuleMetadataFilter({
+  const GlobalForwardingRuleMetadataFilter({
     required this.filterLabels,
     required this.filterMatchCriteria,
   });

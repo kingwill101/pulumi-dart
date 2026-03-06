@@ -27,7 +27,7 @@ class ConnectionProfileOracleProfile {
   /// [port] Port for the Oracle connection.
   /// [secretManagerStoredPassword] A reference to a Secret Manager resource name storing the user's password.
   /// [username] Username for the Oracle connection.
-  ConnectionProfileOracleProfile({
+  const ConnectionProfileOracleProfile({
     this.connectionAttributes,
     required this.databaseService,
     required this.hostname,

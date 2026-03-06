@@ -17,7 +17,7 @@ class ServiceBusTopicEventSubscriptionDestination {
   /// [deliveryAttributeMappings] Delivery attribute details.
   /// [endpointType] Type of the endpoint for the event subscription destination.
   /// [resourceId] The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
-  ServiceBusTopicEventSubscriptionDestination({
+  const ServiceBusTopicEventSubscriptionDestination({
     this.deliveryAttributeMappings,
     required this.endpointType,
     this.resourceId,

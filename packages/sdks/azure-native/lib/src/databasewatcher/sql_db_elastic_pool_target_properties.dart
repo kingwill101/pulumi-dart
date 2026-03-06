@@ -29,7 +29,7 @@ class SqlDbElasticPoolTargetProperties {
   /// [targetAuthenticationType] The type of authentication to use when connecting to a target.
   /// [targetType] Discriminator property for TargetProperties.
   /// [targetVault] To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-  SqlDbElasticPoolTargetProperties({
+  const SqlDbElasticPoolTargetProperties({
     required this.anchorDatabaseResourceId,
     required this.connectionServerName,
     this.readIntent,

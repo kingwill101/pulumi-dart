@@ -15,7 +15,7 @@ class GetRdsEventSubscriptionArgs {
   /// Creates a new [GetRdsEventSubscriptionArgs].
   /// [name] Name of RdsEventSubscription
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRdsEventSubscriptionArgs({
+  const GetRdsEventSubscriptionArgs({
     required this.name,
     required this.resourceGroupName,
   });

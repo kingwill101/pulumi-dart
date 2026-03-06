@@ -18,7 +18,7 @@ class GetGradientaiOpenaiApiKeysResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [openaiApiKeys] Required.
   /// [sorts] Optional.
-  GetGradientaiOpenaiApiKeysResult({
+  const GetGradientaiOpenaiApiKeysResult({
     this.filters,
     required this.id,
     required this.openaiApiKeys,

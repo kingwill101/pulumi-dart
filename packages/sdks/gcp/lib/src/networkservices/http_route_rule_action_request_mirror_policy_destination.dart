@@ -14,7 +14,7 @@ class HttpRouteRuleActionRequestMirrorPolicyDestination {
   /// Creates a new [HttpRouteRuleActionRequestMirrorPolicyDestination].
   /// [serviceName] The URL of a BackendService to route traffic to.
   /// [weight] Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-  HttpRouteRuleActionRequestMirrorPolicyDestination({
+  const HttpRouteRuleActionRequestMirrorPolicyDestination({
     this.serviceName,
     this.weight,
   });

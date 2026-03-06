@@ -11,7 +11,7 @@ class FirewallPolicyRuleSecureTagResponseComputeBeta {
   /// Creates a new [FirewallPolicyRuleSecureTagResponseComputeBeta].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
-  FirewallPolicyRuleSecureTagResponseComputeBeta({
+  const FirewallPolicyRuleSecureTagResponseComputeBeta({
     required this.name,
     required this.state,
   });

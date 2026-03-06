@@ -180,7 +180,7 @@ class GroupArgs {
   /// [waitForCapacityTimeout] Maximum
   /// [waitForElbCapacity] Setting this will cause Pulumi to wait
   /// [warmPool] If this block is configured, add a [Warm Pool](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
-  GroupArgs({
+  const GroupArgs({
     this.availabilityZoneDistribution,
     this.availabilityZones,
     this.capacityRebalance,

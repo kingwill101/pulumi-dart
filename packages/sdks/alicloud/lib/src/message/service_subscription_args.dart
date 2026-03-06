@@ -44,7 +44,7 @@ class ServiceSubscriptionArgs {
   /// [stsRoleArn] The STS RoleArn.
   /// [subscriptionName] Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
   /// [topicName] The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
-  ServiceSubscriptionArgs({
+  const ServiceSubscriptionArgs({
     this.dlqPolicy,
     required this.endpoint,
     this.filterTag,

@@ -21,7 +21,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
   /// [projectAllowlists] A list of Projects from which the forwarding rule will target the service attachment.
   /// [pscAutomationConfigs] PSC config that is used to automatically create PSC endpoints in the user projects.
   /// [serviceAttachment] (Output)
-  AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig({
+  const AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig({
     required this.enablePrivateServiceConnect,
     this.projectAllowlists,
     this.pscAutomationConfigs,

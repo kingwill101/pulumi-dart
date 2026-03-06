@@ -19,7 +19,7 @@ class IndexDocumentMetadataConfigurationUpdate {
   /// [relevance] A block that provides manual tuning parameters to determine how the field affects the search results. Detailed below
   /// [search] A block that provides information about how the field is used during a search. Documented below. Detailed below
   /// [type] The data type of the index field. Valid values are `STRING_VALUE`, `STRING_LIST_VALUE`, `LONG_VALUE`, `DATE_VALUE`.
-  IndexDocumentMetadataConfigurationUpdate({
+  const IndexDocumentMetadataConfigurationUpdate({
     required this.name,
     this.relevance,
     this.search,

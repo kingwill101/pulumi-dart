@@ -10,7 +10,7 @@ class BucketLifecycleResponse {
 
   /// Creates a new [BucketLifecycleResponse].
   /// [rule] A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-  BucketLifecycleResponse({
+  const BucketLifecycleResponse({
     required this.rule,
   });
 

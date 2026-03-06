@@ -77,7 +77,7 @@ class ServerlessCacheState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [userGroupId] The identifier of the UserGroup to be associated with the serverless cache. Available for Redis and Valkey. Default is NULL.
-  ServerlessCacheState({
+  const ServerlessCacheState({
     this.arn,
     this.cacheUsageLimits,
     this.createTime,

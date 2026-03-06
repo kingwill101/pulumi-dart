@@ -34,7 +34,7 @@ class EfsMountTargetPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EfsMountTargetPropertiesResponse({
+  const EfsMountTargetPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

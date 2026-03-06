@@ -8,7 +8,7 @@ class OutboundConnectionConnectionPropertiesCrossClusterSearch {
 
   /// Creates a new [OutboundConnectionConnectionPropertiesCrossClusterSearch].
   /// [skipUnavailable] Skips unavailable clusters and can only be used for cross-cluster searches. Accepted values are `ENABLED` or `DISABLED`.
-  OutboundConnectionConnectionPropertiesCrossClusterSearch({
+  const OutboundConnectionConnectionPropertiesCrossClusterSearch({
     this.skipUnavailable,
   });
 

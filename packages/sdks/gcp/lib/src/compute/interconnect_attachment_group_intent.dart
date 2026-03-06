@@ -9,7 +9,7 @@ class InterconnectAttachmentGroupIntent {
 
   /// Creates a new [InterconnectAttachmentGroupIntent].
   /// [availabilitySla] Which SLA the user intends this group to support.
-  InterconnectAttachmentGroupIntent({
+  const InterconnectAttachmentGroupIntent({
     this.availabilitySla,
   });
 

@@ -13,7 +13,7 @@ class GetMuteConfigArgs {
   /// Creates a new [GetMuteConfigArgs].
   /// [muteConfigId] Required.
   /// [project] Optional.
-  GetMuteConfigArgs({
+  const GetMuteConfigArgs({
     required this.muteConfigId,
     this.project,
   });

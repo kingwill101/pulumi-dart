@@ -15,7 +15,7 @@ class GetReservationComputeBetaArgs {
   /// [project] Optional.
   /// [reservation] Required.
   /// [zone] Required.
-  GetReservationComputeBetaArgs({
+  const GetReservationComputeBetaArgs({
     this.project,
     required this.reservation,
     required this.zone,

@@ -18,7 +18,7 @@ class GetCommunityEndpointArgs {
   /// [communityEndpointName] The name of the Community Endpoint Resource
   /// [communityName] The name of the communityResource Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCommunityEndpointArgs({
+  const GetCommunityEndpointArgs({
     required this.communityEndpointName,
     required this.communityName,
     required this.resourceGroupName,

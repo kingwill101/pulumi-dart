@@ -9,7 +9,7 @@ class StorageTierEnumValue {
 
   /// Creates a new [StorageTierEnumValue].
   /// [value] Property value
-  StorageTierEnumValue({
+  const StorageTierEnumValue({
     this.value,
   });
 

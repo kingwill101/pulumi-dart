@@ -18,7 +18,7 @@ class DeviceState {
   /// [mirrorIp] IP address used for state mirroring
   /// [mirrorSecondaryIp] Secondary IP address used for state mirroring
   /// [name] Address of the Device which needs to be Deviceensed
-  DeviceState({
+  const DeviceState({
     this.configsyncIp,
     this.mirrorIp,
     this.mirrorSecondaryIp,

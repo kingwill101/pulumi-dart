@@ -41,7 +41,7 @@ class DiscoveryConfigArgs {
   /// [project] Optional.
   /// [status] A status for this configuration.
   /// [targets] Target to match against for determining what to scan and how frequently.
-  DiscoveryConfigArgs({
+  const DiscoveryConfigArgs({
     this.actions,
     this.configId,
     this.displayName,

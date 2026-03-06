@@ -25,7 +25,7 @@ class RelationshipArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [relationshipName] Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  RelationshipArgs({
+  const RelationshipArgs({
     required this.azureMonitorWorkspaceName,
     required this.healthModelName,
     this.properties,

@@ -18,7 +18,7 @@ class GetConnectionArgs {
   /// [connectionName] Connection name
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
-  GetConnectionArgs({
+  const GetConnectionArgs({
     required this.connectionName,
     required this.resourceGroupName,
     this.subscriptionId,

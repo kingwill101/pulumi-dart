@@ -27,7 +27,7 @@ class RedisCacheArgs {
   /// [description] The description of the API Management Redis Cache.
   /// [name] The name which should be used for this API Management Redis Cache. Changing this forces a new API Management Redis Cache to be created.
   /// [redisCacheId] The resource ID of the Cache for Redis.
-  RedisCacheArgs({
+  const RedisCacheArgs({
     required this.apiManagementId,
     this.cacheLocation,
     required this.connectionString,

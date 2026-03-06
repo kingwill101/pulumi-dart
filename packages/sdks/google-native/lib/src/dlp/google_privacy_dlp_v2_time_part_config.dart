@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2TimePartConfig {
 
   /// Creates a new [GooglePrivacyDlpV2TimePartConfig].
   /// [partToExtract] The part of the time to keep.
-  GooglePrivacyDlpV2TimePartConfig({
+  const GooglePrivacyDlpV2TimePartConfig({
     this.partToExtract,
   });
 

@@ -27,7 +27,7 @@ class GetAlarmContactsResult {
   /// [nameRegex] Optional.
   /// [names] A list of alarm contact names.
   /// [outputFile] Optional.
-  GetAlarmContactsResult({
+  const GetAlarmContactsResult({
     this.chanelType,
     this.chanelValue,
     required this.contacts,

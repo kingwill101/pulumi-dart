@@ -37,7 +37,7 @@ class KeypairState {
   /// [region] The region in which to obtain the V2 Compute client.
   /// [userId] This allows administrative users to operate key-pairs
   /// [valueSpecs] Map of additional options.
-  KeypairState({
+  const KeypairState({
     this.fingerprint,
     this.name,
     this.privateKey,

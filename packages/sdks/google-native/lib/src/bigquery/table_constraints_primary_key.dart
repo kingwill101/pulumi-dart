@@ -8,7 +8,7 @@ class TableConstraintsPrimaryKey {
 
   /// Creates a new [TableConstraintsPrimaryKey].
   /// [columns] Optional.
-  TableConstraintsPrimaryKey({
+  const TableConstraintsPrimaryKey({
     this.columns,
   });
 

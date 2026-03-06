@@ -21,7 +21,7 @@ class CommitmentResourceStatusCancellationInformationResponse {
   /// [cancellationCap] An optional,the cancellation cap for how much commitments can be canceled in a rolling 365 per billing account.
   /// [cancellationFee] An optional, cancellation fee.
   /// [cancellationFeeExpirationTimestamp] An optional, cancellation fee expiration time. RFC3339 text format.
-  CommitmentResourceStatusCancellationInformationResponse({
+  const CommitmentResourceStatusCancellationInformationResponse({
     required this.canceledCommitment,
     required this.canceledCommitmentLastUpdatedTimestamp,
     required this.cancellationCap,

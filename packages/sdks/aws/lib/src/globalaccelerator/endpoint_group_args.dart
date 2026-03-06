@@ -42,7 +42,7 @@ class EndpointGroupArgs {
   /// [portOverrides] Override specific listener ports used to route traffic to endpoints that are part of this endpoint group. Fields documented below.
   /// [thresholdCount] The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
   /// [trafficDialPercentage] The percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
-  EndpointGroupArgs({
+  const EndpointGroupArgs({
     this.endpointConfigurations,
     this.endpointGroupRegion,
     this.healthCheckIntervalSeconds,

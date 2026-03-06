@@ -31,7 +31,7 @@ class KmsKeyProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  KmsKeyProperties({
+  const KmsKeyProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

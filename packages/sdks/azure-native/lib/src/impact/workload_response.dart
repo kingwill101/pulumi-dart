@@ -12,7 +12,7 @@ class WorkloadResponse {
   /// Creates a new [WorkloadResponse].
   /// [context] the scenario for the workload
   /// [toolset] Tool used to interact with Azure. SDK, AzPortal, etc.., Other
-  WorkloadResponse({
+  const WorkloadResponse({
     this.context,
     this.toolset,
   });

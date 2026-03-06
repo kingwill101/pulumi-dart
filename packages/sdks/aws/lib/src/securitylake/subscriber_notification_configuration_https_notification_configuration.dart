@@ -23,7 +23,7 @@ class SubscriberNotificationConfigurationHttpsNotificationConfiguration {
   /// [endpoint] The subscription endpoint in Security Lake.
   /// [httpMethod] The HTTP method used for the notification subscription.
   /// [targetRoleArn] The Amazon Resource Name (ARN) of the EventBridge API destinations IAM role that you created.
-  SubscriberNotificationConfigurationHttpsNotificationConfiguration({
+  const SubscriberNotificationConfigurationHttpsNotificationConfiguration({
     this.authorizationApiKeyName,
     this.authorizationApiKeyValue,
     required this.endpoint,

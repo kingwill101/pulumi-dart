@@ -18,7 +18,7 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySla {
   /// Creates a new [InterconnectAttachmentGroupConfiguredAvailabilitySla].
   /// [effectiveSla] (Output)
   /// [intendedSlaBlockers] (Output)
-  InterconnectAttachmentGroupConfiguredAvailabilitySla({
+  const InterconnectAttachmentGroupConfiguredAvailabilitySla({
     this.effectiveSla,
     this.intendedSlaBlockers,
   });

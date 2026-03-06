@@ -56,7 +56,7 @@ class BrokerListenerArgs {
   /// [serviceType] The Kubernetes Service type to deploy for Listener.
   /// [tags] Resource tags.
   /// [tls] Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
-  BrokerListenerArgs({
+  const BrokerListenerArgs({
     this.authenticationEnabled,
     this.authorizationEnabled,
     required this.brokerName,

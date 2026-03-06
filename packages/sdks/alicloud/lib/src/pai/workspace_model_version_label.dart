@@ -11,7 +11,7 @@ class WorkspaceModelVersionLabel {
   /// Creates a new [WorkspaceModelVersionLabel].
   /// [key] label key.
   /// [value] label value.
-  WorkspaceModelVersionLabel({
+  const WorkspaceModelVersionLabel({
     this.key,
     this.value,
   });

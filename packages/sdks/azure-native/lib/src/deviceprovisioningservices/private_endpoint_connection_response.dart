@@ -23,7 +23,7 @@ class PrivateEndpointConnectionResponse {
   /// [properties] The properties of a private endpoint connection
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type.
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.id,
     required this.name,
     required this.properties,

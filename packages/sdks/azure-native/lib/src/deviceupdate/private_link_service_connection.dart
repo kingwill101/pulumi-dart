@@ -15,7 +15,7 @@ class PrivateLinkServiceConnection {
   /// [groupIds] List of group IDs.
   /// [name] Private link service connection name.
   /// [requestMessage] Request message.
-  PrivateLinkServiceConnection({
+  const PrivateLinkServiceConnection({
     this.groupIds,
     this.name,
     this.requestMessage,

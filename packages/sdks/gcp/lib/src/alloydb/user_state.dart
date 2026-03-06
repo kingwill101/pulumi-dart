@@ -38,7 +38,7 @@ class UserState {
   /// [passwordWoVersion] Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// [userId] The database role name of the user.
   /// [userType] The type of this user.
-  UserState({
+  const UserState({
     this.cluster,
     this.databaseRoles,
     this.name,

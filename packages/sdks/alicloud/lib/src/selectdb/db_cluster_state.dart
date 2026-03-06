@@ -62,7 +62,7 @@ class DbClusterState {
   /// [status] The current status of the resource.
   /// [vpcId] The ID of the VPC for the cluster.
   /// [zoneId] The ID of zone for the cluster.
-  DbClusterState({
+  const DbClusterState({
     this.cacheSize,
     this.cpu,
     this.createTime,

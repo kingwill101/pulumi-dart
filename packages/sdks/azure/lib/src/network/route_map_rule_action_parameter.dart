@@ -14,7 +14,7 @@ class RouteMapRuleActionParameter {
   /// [asPaths] A list of AS paths.
   /// [communities] A list of BGP communities.
   /// [routePrefixes] A list of route prefixes.
-  RouteMapRuleActionParameter({
+  const RouteMapRuleActionParameter({
     this.asPaths,
     this.communities,
     this.routePrefixes,

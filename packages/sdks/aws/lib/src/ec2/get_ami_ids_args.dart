@@ -40,7 +40,7 @@ class GetAmiIdsArgs {
   /// [owners] List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g., `amazon`, `aws-marketplace`, `microsoft`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sortAscending] Used to sort AMIs by creation time.
-  GetAmiIdsArgs({
+  const GetAmiIdsArgs({
     this.executableUsers,
     this.filters,
     this.includeDeprecated,

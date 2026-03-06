@@ -27,7 +27,7 @@ class GetAutoSnapShotPoliciesResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetAutoSnapShotPoliciesResult({
+  const GetAutoSnapShotPoliciesResult({
     required this.autoSnapShotPolicies,
     required this.id,
     required this.ids,

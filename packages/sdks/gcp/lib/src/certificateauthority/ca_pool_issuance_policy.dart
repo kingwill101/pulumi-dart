@@ -41,7 +41,7 @@ class CaPoolIssuancePolicy {
   /// [baselineValues] A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
   /// [identityConstraints] Describes constraints on identities that may appear in Certificates issued through this CaPool.
   /// [maximumLifetime] The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
-  CaPoolIssuancePolicy({
+  const CaPoolIssuancePolicy({
     this.allowedIssuanceModes,
     this.allowedKeyTypes,
     this.backdateDuration,

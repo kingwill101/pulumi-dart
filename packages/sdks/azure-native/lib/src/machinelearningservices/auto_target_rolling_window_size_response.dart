@@ -10,7 +10,7 @@ class AutoTargetRollingWindowSizeResponse {
 
   /// Creates a new [AutoTargetRollingWindowSizeResponse].
   /// [mode] Target rolling windows size mode.
-  AutoTargetRollingWindowSizeResponse({
+  const AutoTargetRollingWindowSizeResponse({
     required this.mode,
   });
 

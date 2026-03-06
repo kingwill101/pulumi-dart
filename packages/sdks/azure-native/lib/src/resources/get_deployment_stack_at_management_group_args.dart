@@ -15,7 +15,7 @@ class GetDeploymentStackAtManagementGroupArgs {
   /// Creates a new [GetDeploymentStackAtManagementGroupArgs].
   /// [deploymentStackName] Name of the deployment stack.
   /// [managementGroupId] The name of the management group. The name is case insensitive.
-  GetDeploymentStackAtManagementGroupArgs({
+  const GetDeploymentStackAtManagementGroupArgs({
     required this.deploymentStackName,
     required this.managementGroupId,
   });

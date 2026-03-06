@@ -25,7 +25,7 @@ class AppAttachPackageArgs {
   /// [properties] Detailed properties for App Attach Package
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  AppAttachPackageArgs({
+  const AppAttachPackageArgs({
     this.appAttachPackageName,
     this.location,
     required this.properties,

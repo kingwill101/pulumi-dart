@@ -21,7 +21,7 @@ class NetworkInterfaceAttachmentArgs {
   /// [networkInterfaceId] The ENI ID to attach.
   /// [trunkNetworkInstanceId] Optional.
   /// [waitForNetworkConfigurationReady] Optional.
-  NetworkInterfaceAttachmentArgs({
+  const NetworkInterfaceAttachmentArgs({
     required this.instanceId,
     this.networkCardIndex,
     required this.networkInterfaceId,

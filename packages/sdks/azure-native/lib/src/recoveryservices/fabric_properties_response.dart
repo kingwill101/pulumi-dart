@@ -33,7 +33,7 @@ class FabricPropertiesResponse {
   /// [healthErrorDetails] Fabric health error details.
   /// [internalIdentifier] Dra Registration Id.
   /// [rolloverEncryptionDetails] Rollover encryption details for the fabric.
-  FabricPropertiesResponse({
+  const FabricPropertiesResponse({
     this.bcdrState,
     this.customDetails,
     this.encryptionDetails,

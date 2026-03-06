@@ -17,7 +17,7 @@ class SparkClusterMetastores {
   /// [ambari] An `ambari` block as defined below.
   /// [hive] A `hive` block as defined below.
   /// [oozie] An `oozie` block as defined below.
-  SparkClusterMetastores({
+  const SparkClusterMetastores({
     this.ambari,
     this.hive,
     this.oozie,

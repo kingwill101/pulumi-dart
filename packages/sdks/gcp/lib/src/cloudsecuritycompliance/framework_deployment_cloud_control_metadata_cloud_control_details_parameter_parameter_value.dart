@@ -24,7 +24,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
   /// [oneofValue] Sub-parameter values.
   /// [stringListValue] A list of strings.
   /// [stringValue] Represents a string value.
-  FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue({
+  const FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue({
     this.boolValue,
     this.numberValue,
     this.oneofValue,

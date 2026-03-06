@@ -17,7 +17,7 @@ class ConnectionTypeField {
   /// [isOptional] Whether to set the isOptional flag of the connection field definition.
   /// [name] The name which should be used for this connection field definition.
   /// [type] The type of the connection field definition.
-  ConnectionTypeField({
+  const ConnectionTypeField({
     this.isEncrypted,
     this.isOptional,
     required this.name,

@@ -60,7 +60,7 @@ class GetRegionInstantSnapshotResult {
   /// [sourceDiskId] The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.
   /// [status] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
   /// [zone] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetRegionInstantSnapshotResult({
+  const GetRegionInstantSnapshotResult({
     required this.architecture,
     required this.creationTimestamp,
     required this.description,

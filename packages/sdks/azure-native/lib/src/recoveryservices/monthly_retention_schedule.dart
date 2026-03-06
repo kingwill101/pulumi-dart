@@ -24,7 +24,7 @@ class MonthlyRetentionSchedule {
   /// [retentionScheduleFormatType] Retention schedule format type for monthly retention policy.
   /// [retentionScheduleWeekly] Weekly retention format for monthly retention policy.
   /// [retentionTimes] Retention times of retention policy.
-  MonthlyRetentionSchedule({
+  const MonthlyRetentionSchedule({
     this.retentionDuration,
     this.retentionScheduleDaily,
     this.retentionScheduleFormatType,

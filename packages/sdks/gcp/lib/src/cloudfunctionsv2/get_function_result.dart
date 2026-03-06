@@ -42,7 +42,7 @@ class GetFunctionResult {
   /// [state] Required.
   /// [updateTime] Required.
   /// [url] Required.
-  GetFunctionResult({
+  const GetFunctionResult({
     required this.buildConfigs,
     required this.description,
     required this.effectiveLabels,

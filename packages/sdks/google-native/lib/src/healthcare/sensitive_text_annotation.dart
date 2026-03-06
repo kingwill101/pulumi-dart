@@ -9,7 +9,7 @@ class SensitiveTextAnnotation {
 
   /// Creates a new [SensitiveTextAnnotation].
   /// [details] Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --&gt; {findings_1, findings_2, findings_3}
-  SensitiveTextAnnotation({
+  const SensitiveTextAnnotation({
     this.details,
   });
 

@@ -19,7 +19,7 @@ class GetLakeTaskIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [taskId] Required.
-  GetLakeTaskIamPolicyArgs({
+  const GetLakeTaskIamPolicyArgs({
     required this.lakeId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -36,7 +36,7 @@ class DataSet {
   /// [plotType] How this data should be plotted on the chart.
   /// [targetAxis] Optional. The target axis to use for plotting the metric.
   /// [timeSeriesQuery] Fields for querying time series data from the Stackdriver metrics API.
-  DataSet({
+  const DataSet({
     this.breakdowns,
     this.dimensions,
     this.legendTemplate,

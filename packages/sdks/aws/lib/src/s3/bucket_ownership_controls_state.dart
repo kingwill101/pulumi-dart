@@ -16,7 +16,7 @@ class BucketOwnershipControlsState {
   /// [bucket] Name of the bucket that you want to associate this access point with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rule] Configuration block(s) with Ownership Controls rules. Detailed below.
-  BucketOwnershipControlsState({
+  const BucketOwnershipControlsState({
     this.bucket,
     this.region,
     this.rule,

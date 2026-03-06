@@ -25,7 +25,7 @@ class TransitRouterMulticastDomainArgs {
   /// [transitRouterId] The ID of the forwarding router instance.
   /// [transitRouterMulticastDomainDescription] The description of the multicast domain.
   /// [transitRouterMulticastDomainName] The name of the multicast domain.
-  TransitRouterMulticastDomainArgs({
+  const TransitRouterMulticastDomainArgs({
     this.options,
     this.tags,
     required this.transitRouterId,

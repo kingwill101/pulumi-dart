@@ -18,7 +18,7 @@ class UserSetResponse {
   /// [id] The object id of the user.
   /// [isBackup] The value indicating whether the user is a backup fallback approver
   /// [userType] The type of user.
-  UserSetResponse({
+  const UserSetResponse({
     this.description,
     this.id,
     this.isBackup,

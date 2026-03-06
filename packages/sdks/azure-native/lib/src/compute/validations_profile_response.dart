@@ -16,7 +16,7 @@ class ValidationsProfileResponse {
   /// [executedValidations] Optional.
   /// [platformAttributes] This specifies the pub, offer, sku and version of the image version metadata
   /// [validationEtag] The published time of the image version
-  ValidationsProfileResponse({
+  const ValidationsProfileResponse({
     this.executedValidations,
     this.platformAttributes,
     this.validationEtag,

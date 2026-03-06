@@ -35,7 +35,7 @@ class SharedAccessAuthorizationRulePropertiesResponse {
   /// [revision] Gets the revision number for the rule
   /// [rights] Gets or sets the rights associated with the rule.
   /// [secondaryKey] Gets a base64-encoded 256-bit primary key for signing and
-  SharedAccessAuthorizationRulePropertiesResponse({
+  const SharedAccessAuthorizationRulePropertiesResponse({
     required this.claimType,
     required this.claimValue,
     required this.createdTime,

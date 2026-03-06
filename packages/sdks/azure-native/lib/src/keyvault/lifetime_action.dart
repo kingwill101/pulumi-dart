@@ -13,7 +13,7 @@ class LifetimeAction {
   /// Creates a new [LifetimeAction].
   /// [action] The action of key rotation policy lifetimeAction.
   /// [trigger] The trigger of key rotation policy lifetimeAction.
-  LifetimeAction({
+  const LifetimeAction({
     this.action,
     this.trigger,
   });

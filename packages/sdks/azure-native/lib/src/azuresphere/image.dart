@@ -15,7 +15,7 @@ class Image {
   /// [image] Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
   /// [imageId] Image ID
   /// [regionalDataBoundary] Regional data boundary for an image
-  Image({
+  const Image({
     this.image,
     this.imageId,
     this.regionalDataBoundary,

@@ -12,7 +12,7 @@ class JavaComponentPropertiesResponseScale {
   /// Creates a new [JavaComponentPropertiesResponseScale].
   /// [maxReplicas] Optional. Maximum number of Java component replicas
   /// [minReplicas] Optional. Minimum number of Java component replicas. Defaults to 1 if not set
-  JavaComponentPropertiesResponseScale({
+  const JavaComponentPropertiesResponseScale({
     this.maxReplicas,
     this.minReplicas,
   });

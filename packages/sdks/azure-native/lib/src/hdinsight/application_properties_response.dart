@@ -48,7 +48,7 @@ class ApplicationPropertiesResponse {
   /// [provisioningState] The provisioning state of the application.
   /// [sshEndpoints] The list of application SSH endpoints.
   /// [uninstallScriptActions] The list of uninstall script actions.
-  ApplicationPropertiesResponse({
+  const ApplicationPropertiesResponse({
     required this.applicationState,
     this.applicationType,
     this.computeProfile,

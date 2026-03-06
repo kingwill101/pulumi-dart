@@ -38,7 +38,7 @@ class TrafficManagerAzureEndpointState {
   /// [subnets] One or more `subnet` blocks as defined below. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Azure Resource which should be used as a target.
   /// [weight] Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
-  TrafficManagerAzureEndpointState({
+  const TrafficManagerAzureEndpointState({
     this.alwaysServeEnabled,
     this.customHeaders,
     this.enabled,

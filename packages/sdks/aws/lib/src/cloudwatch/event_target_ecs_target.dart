@@ -48,7 +48,7 @@ class EventTargetEcsTarget {
   /// [tags] A map of tags to assign to ecs resources.
   /// [taskCount] The number of tasks to create based on the TaskDefinition. Defaults to `1`.
   /// [taskDefinitionArn] The ARN of the task definition to use if the event target is an Amazon ECS cluster.
-  EventTargetEcsTarget({
+  const EventTargetEcsTarget({
     this.capacityProviderStrategies,
     this.enableEcsManagedTags,
     this.enableExecuteCommand,

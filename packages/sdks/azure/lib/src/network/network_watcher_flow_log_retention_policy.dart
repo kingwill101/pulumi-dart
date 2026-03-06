@@ -11,7 +11,7 @@ class NetworkWatcherFlowLogRetentionPolicy {
   /// Creates a new [NetworkWatcherFlowLogRetentionPolicy].
   /// [days] The number of days to retain flow log records.
   /// [enabled] Boolean flag to enable/disable retention.
-  NetworkWatcherFlowLogRetentionPolicy({
+  const NetworkWatcherFlowLogRetentionPolicy({
     required this.days,
     required this.enabled,
   });

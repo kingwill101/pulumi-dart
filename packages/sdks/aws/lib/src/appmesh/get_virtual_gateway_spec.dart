@@ -14,7 +14,7 @@ class GetVirtualGatewaySpec {
   /// [backendDefaults] Required.
   /// [listeners] Required.
   /// [loggings] Required.
-  GetVirtualGatewaySpec({
+  const GetVirtualGatewaySpec({
     required this.backendDefaults,
     required this.listeners,
     required this.loggings,

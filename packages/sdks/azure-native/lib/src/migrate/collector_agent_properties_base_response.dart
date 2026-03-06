@@ -19,7 +19,7 @@ class CollectorAgentPropertiesBaseResponse {
   /// [lastHeartbeatUtc] Gets the collector last heartbeat time.
   /// [spnDetails] Gets or sets the SPN details.
   /// [version] Gets the collector agent version.
-  CollectorAgentPropertiesBaseResponse({
+  const CollectorAgentPropertiesBaseResponse({
     this.id,
     this.lastHeartbeatUtc,
     this.spnDetails,

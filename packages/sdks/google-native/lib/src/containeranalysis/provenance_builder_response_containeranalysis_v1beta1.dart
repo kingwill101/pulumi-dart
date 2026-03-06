@@ -10,7 +10,7 @@ class ProvenanceBuilderResponseContaineranalysisV1beta1 {
   /// Creates a new [ProvenanceBuilderResponseContaineranalysisV1beta1].
   /// [builderDependencies] Required.
   /// [version] Required.
-  ProvenanceBuilderResponseContaineranalysisV1beta1({
+  const ProvenanceBuilderResponseContaineranalysisV1beta1({
     required this.builderDependencies,
     required this.version,
   });

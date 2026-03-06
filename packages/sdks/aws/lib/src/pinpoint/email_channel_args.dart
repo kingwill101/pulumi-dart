@@ -33,7 +33,7 @@ class EmailChannelArgs {
   /// [orchestrationSendingRoleArn] The ARN of an IAM role for Amazon Pinpoint to use to send email from your campaigns or journeys through Amazon SES.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] *Deprecated* The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
-  EmailChannelArgs({
+  const EmailChannelArgs({
     required this.applicationId,
     this.configurationSet,
     this.enabled,

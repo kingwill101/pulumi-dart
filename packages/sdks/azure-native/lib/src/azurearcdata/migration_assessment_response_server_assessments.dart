@@ -16,7 +16,7 @@ class MigrationAssessmentResponseServerAssessments {
   /// [impactedObjects] Optional.
   /// [issueCategory] Optional.
   /// [moreInformation] Optional.
-  MigrationAssessmentResponseServerAssessments({
+  const MigrationAssessmentResponseServerAssessments({
     this.appliesToMigrationTargetPlatform,
     this.featureId,
     this.impactedObjects,

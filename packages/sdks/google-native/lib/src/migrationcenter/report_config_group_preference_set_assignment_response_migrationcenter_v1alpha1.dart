@@ -12,7 +12,7 @@ class ReportConfigGroupPreferenceSetAssignmentResponseMigrationcenterV1alpha1 {
   /// Creates a new [ReportConfigGroupPreferenceSetAssignmentResponseMigrationcenterV1alpha1].
   /// [group] Name of the group.
   /// [preferenceSet] Name of the Preference Set.
-  ReportConfigGroupPreferenceSetAssignmentResponseMigrationcenterV1alpha1({
+  const ReportConfigGroupPreferenceSetAssignmentResponseMigrationcenterV1alpha1({
     required this.group,
     required this.preferenceSet,
   });

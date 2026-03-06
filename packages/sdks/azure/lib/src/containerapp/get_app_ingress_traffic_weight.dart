@@ -17,7 +17,7 @@ class GetAppIngressTrafficWeight {
   /// [latestRevision] This traffic Weight relates to the latest stable Container Revision.
   /// [percentage] The percentage of traffic which should be sent this revision.
   /// [revisionSuffix] The suffix string to which this `traffic_weight` applies.
-  GetAppIngressTrafficWeight({
+  const GetAppIngressTrafficWeight({
     required this.label,
     required this.latestRevision,
     required this.percentage,

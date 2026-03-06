@@ -25,7 +25,7 @@ class GetBuildServiceBuilderResult {
   /// [properties] Property of the Builder resource.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetBuildServiceBuilderResult({
+  const GetBuildServiceBuilderResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

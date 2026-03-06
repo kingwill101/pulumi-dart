@@ -17,7 +17,7 @@ class DomainDevicesDiskMirrorSourceNetworkHost {
   /// [port] Specifies the port number for the iSCSI host connection.
   /// [socket] Sets the socket configuration for the iSCSI host connection.
   /// [transport] Specifies the transport method used for the iSCSI host connection.
-  DomainDevicesDiskMirrorSourceNetworkHost({
+  const DomainDevicesDiskMirrorSourceNetworkHost({
     this.name,
     this.port,
     this.socket,

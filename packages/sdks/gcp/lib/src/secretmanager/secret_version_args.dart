@@ -45,7 +45,7 @@ class SecretVersionArgs {
   /// [secretData] The secret data. Must be no larger than 64KiB.
   /// [secretDataWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [secretDataWoVersion] Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  SecretVersionArgs({
+  const SecretVersionArgs({
     this.deletionPolicy,
     this.enabled,
     this.isSecretDataBase64,

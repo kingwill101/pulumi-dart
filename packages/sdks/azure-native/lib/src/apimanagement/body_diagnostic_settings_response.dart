@@ -9,7 +9,7 @@ class BodyDiagnosticSettingsResponse {
 
   /// Creates a new [BodyDiagnosticSettingsResponse].
   /// [bytes] Number of request body bytes to log.
-  BodyDiagnosticSettingsResponse({
+  const BodyDiagnosticSettingsResponse({
     this.bytes,
   });
 

@@ -28,7 +28,7 @@ class CutoverStepResponse {
   /// [previousReplicationCycle] A replication cycle prior cutover step.
   /// [shuttingDownSourceVm] Shutting down VM step.
   /// [startTime] The time the step has started.
-  CutoverStepResponse({
+  const CutoverStepResponse({
     required this.endTime,
     required this.finalSync,
     required this.instantiatingMigratedVm,

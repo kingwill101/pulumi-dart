@@ -9,7 +9,7 @@ class InstanceMetadataTagsStateEnumValue {
 
   /// Creates a new [InstanceMetadataTagsStateEnumValue].
   /// [value] Property value
-  InstanceMetadataTagsStateEnumValue({
+  const InstanceMetadataTagsStateEnumValue({
     this.value,
   });
 

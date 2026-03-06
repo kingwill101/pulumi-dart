@@ -23,7 +23,7 @@ class P2SConnectionConfiguration {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [vpnClientAddressPool] The reference to the address space resource which represents Address space for P2S VpnClient.
-  P2SConnectionConfiguration({
+  const P2SConnectionConfiguration({
     this.enableInternetSecurity,
     this.id,
     this.name,

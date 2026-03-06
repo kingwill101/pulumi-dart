@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular 
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular].
   /// [apiKey] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular({
     required this.apiKey,
   });
 

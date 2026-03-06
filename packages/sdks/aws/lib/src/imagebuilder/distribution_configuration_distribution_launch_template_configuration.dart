@@ -14,7 +14,7 @@ class DistributionConfigurationDistributionLaunchTemplateConfiguration {
   /// [accountId] The account ID that this configuration applies to.
   /// [default_] Indicates whether to set the specified Amazon EC2 launch template as the default launch template. Defaults to `true`.
   /// [launchTemplateId] The ID of the Amazon EC2 launch template to use.
-  DistributionConfigurationDistributionLaunchTemplateConfiguration({
+  const DistributionConfigurationDistributionLaunchTemplateConfiguration({
     this.accountId,
     this.default_,
     required this.launchTemplateId,

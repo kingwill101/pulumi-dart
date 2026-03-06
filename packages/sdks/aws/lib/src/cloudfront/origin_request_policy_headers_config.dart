@@ -10,7 +10,7 @@ class OriginRequestPolicyHeadersConfig {
   /// Creates a new [OriginRequestPolicyHeadersConfig].
   /// [headerBehavior] Optional.
   /// [headers] Optional.
-  OriginRequestPolicyHeadersConfig({
+  const OriginRequestPolicyHeadersConfig({
     this.headerBehavior,
     this.headers,
   });

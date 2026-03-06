@@ -51,7 +51,7 @@ class ResolverFirewallRuleState {
   /// [priority] The setting that determines the processing order of the rule in the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.
   /// [qType] The query type you want the rule to evaluate. Additional details can be found [here](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ResolverFirewallRuleState({
+  const ResolverFirewallRuleState({
     this.action,
     this.blockOverrideDnsType,
     this.blockOverrideDomain,

@@ -17,7 +17,7 @@ class TrackingProfileDefinitionResponse {
   /// [businessProcess] The business process reference.
   /// [schema] The tracking definition schema uri.
   /// [trackingDefinitions] The tracking definitions.
-  TrackingProfileDefinitionResponse({
+  const TrackingProfileDefinitionResponse({
     this.businessProcess,
     this.schema,
     this.trackingDefinitions,

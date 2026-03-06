@@ -10,7 +10,7 @@ class DataBaseMigrationResponse {
 
   /// Creates a new [DataBaseMigrationResponse].
   /// [assessment] Migration assessments related configuration.
-  DataBaseMigrationResponse({
+  const DataBaseMigrationResponse({
     this.assessment,
   });
 

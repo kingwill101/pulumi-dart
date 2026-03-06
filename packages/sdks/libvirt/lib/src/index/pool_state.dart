@@ -49,7 +49,7 @@ class PoolState {
   /// [target] Target path and permissions for the storage pool
   /// [type] Specifies the type of the storage pool being defined.
   /// [uuid] Sets the universally unique identifier for the storage pool.
-  PoolState({
+  const PoolState({
     this.allocation,
     this.allocationUnit,
     this.available,

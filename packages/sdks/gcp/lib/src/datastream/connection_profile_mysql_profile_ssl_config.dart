@@ -35,7 +35,7 @@ class ConnectionProfileMysqlProfileSslConfig {
   /// [clientCertificateSet] (Output)
   /// [clientKey] PEM-encoded private key associated with the Client Certificate.
   /// [clientKeySet] (Output)
-  ConnectionProfileMysqlProfileSslConfig({
+  const ConnectionProfileMysqlProfileSslConfig({
     this.caCertificate,
     this.caCertificateSet,
     this.clientCertificate,

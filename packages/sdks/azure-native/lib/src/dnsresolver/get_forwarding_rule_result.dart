@@ -41,7 +41,7 @@ class GetForwardingRuleResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [targetDnsServers] DNS servers to forward the DNS query to.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetForwardingRuleResult({
+  const GetForwardingRuleResult({
     required this.azureApiVersion,
     required this.domainName,
     required this.etag,

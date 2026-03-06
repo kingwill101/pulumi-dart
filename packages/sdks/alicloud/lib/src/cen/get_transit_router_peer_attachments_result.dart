@@ -33,7 +33,7 @@ class GetTransitRouterPeerAttachmentsResult {
   /// [status] The status of the transit router attachment.
   /// [transitRouterAttachmentId] ID of the transit router attachment.
   /// [transitRouterId] ID of the transit router.
-  GetTransitRouterPeerAttachmentsResult({
+  const GetTransitRouterPeerAttachmentsResult({
     required this.attachments,
     required this.cenId,
     required this.id,

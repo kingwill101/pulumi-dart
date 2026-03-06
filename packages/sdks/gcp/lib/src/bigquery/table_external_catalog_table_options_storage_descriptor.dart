@@ -25,7 +25,7 @@ class TableExternalCatalogTableOptionsStorageDescriptor {
   /// [locationUri] The physical location of the table (e.g.
   /// [outputFormat] Specifies the fully qualified class name of the
   /// [serdeInfo] Serializer and deserializer information. Structure
-  TableExternalCatalogTableOptionsStorageDescriptor({
+  const TableExternalCatalogTableOptionsStorageDescriptor({
     this.inputFormat,
     this.locationUri,
     this.outputFormat,

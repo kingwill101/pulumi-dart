@@ -23,7 +23,7 @@ class PipeTargetParametersRedshiftDataParameters {
   /// [sqls] List of SQL statements text to run, each of maximum length of 100,000.
   /// [statementName] The name of the SQL statement. You can name the SQL statement when you create it to identify the query.
   /// [withEvent] Indicates whether to send an event back to EventBridge after the SQL statement runs.
-  PipeTargetParametersRedshiftDataParameters({
+  const PipeTargetParametersRedshiftDataParameters({
     required this.database,
     this.dbUser,
     this.secretManagerArn,

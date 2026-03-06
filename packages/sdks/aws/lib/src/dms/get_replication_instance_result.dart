@@ -59,7 +59,7 @@ class GetReplicationInstanceResult {
   /// [replicationSubnetGroupId] A subnet group to associate with the replication instance.
   /// [tags] Required.
   /// [vpcSecurityGroupIds] A set of VPC security group IDs that are used with the replication instance.
-  GetReplicationInstanceResult({
+  const GetReplicationInstanceResult({
     required this.allocatedStorage,
     required this.autoMinorVersionUpgrade,
     required this.availabilityZone,

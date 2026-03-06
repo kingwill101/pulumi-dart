@@ -27,7 +27,7 @@ class ServiceConfigurationArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceConfigurationName] The service name.
   /// [serviceName] Name of the service.
-  ServiceConfigurationArgs({
+  const ServiceConfigurationArgs({
     required this.endpointName,
     this.port,
     this.resourceId,

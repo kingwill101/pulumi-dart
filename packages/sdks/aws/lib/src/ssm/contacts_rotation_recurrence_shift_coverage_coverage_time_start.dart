@@ -11,7 +11,7 @@ class ContactsRotationRecurrenceShiftCoverageCoverageTimeStart {
   /// Creates a new [ContactsRotationRecurrenceShiftCoverageCoverageTimeStart].
   /// [hourOfDay] (Required) The hour of the day.
   /// [minuteOfHour] (Required) The minutes of the hour.
-  ContactsRotationRecurrenceShiftCoverageCoverageTimeStart({
+  const ContactsRotationRecurrenceShiftCoverageCoverageTimeStart({
     required this.hourOfDay,
     required this.minuteOfHour,
   });

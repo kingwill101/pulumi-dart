@@ -16,7 +16,7 @@ class VirtualMachineExtensionHandlerInstanceViewResponse {
   /// [status] The extension handler status.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  VirtualMachineExtensionHandlerInstanceViewResponse({
+  const VirtualMachineExtensionHandlerInstanceViewResponse({
     this.status,
     this.type,
     this.typeHandlerVersion,

@@ -8,7 +8,7 @@ class ForwardingRuleRuleConditionPathConfig {
 
   /// Creates a new [ForwardingRuleRuleConditionPathConfig].
   /// [values] The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-  ForwardingRuleRuleConditionPathConfig({
+  const ForwardingRuleRuleConditionPathConfig({
     this.values,
   });
 

@@ -12,7 +12,7 @@ class DiskEncryptionStatusSqladminV1beta4 {
   /// Creates a new [DiskEncryptionStatusSqladminV1beta4].
   /// [kind] This is always `sql#diskEncryptionStatus`.
   /// [kmsKeyVersionName] KMS key version used to encrypt the Cloud SQL instance resource
-  DiskEncryptionStatusSqladminV1beta4({
+  const DiskEncryptionStatusSqladminV1beta4({
     this.kind,
     this.kmsKeyVersionName,
   });

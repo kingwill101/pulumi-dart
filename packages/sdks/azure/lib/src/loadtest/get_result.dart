@@ -33,7 +33,7 @@ class GetResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Load Test Service.
-  GetResult({
+  const GetResult({
     required this.dataPlaneUri,
     required this.description,
     required this.encryptions,

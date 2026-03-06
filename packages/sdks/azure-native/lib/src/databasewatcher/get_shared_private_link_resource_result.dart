@@ -39,7 +39,7 @@ class GetSharedPrivateLinkResourceResult {
   /// [status] Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSharedPrivateLinkResourceResult({
+  const GetSharedPrivateLinkResourceResult({
     required this.azureApiVersion,
     this.dnsZone,
     required this.groupId,

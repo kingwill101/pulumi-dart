@@ -29,7 +29,7 @@ class AclState {
   /// [resourceName] The name of the resource on which you want to grant permissions.
   /// [resourceType] The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
   /// [username] The username of the account.
-  AclState({
+  const AclState({
     this.actions,
     this.decision,
     this.instanceId,

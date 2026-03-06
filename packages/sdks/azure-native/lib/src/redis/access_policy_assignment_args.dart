@@ -27,7 +27,7 @@ class AccessPolicyAssignmentArgs {
   /// [objectId] Object Id to assign access policy to
   /// [objectIdAlias] User friendly name for object id. Also represents username for token based authentication
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AccessPolicyAssignmentArgs({
+  const AccessPolicyAssignmentArgs({
     this.accessPolicyAssignmentName,
     required this.accessPolicyName,
     required this.cacheName,

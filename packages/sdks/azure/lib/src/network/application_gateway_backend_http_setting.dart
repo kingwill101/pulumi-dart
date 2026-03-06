@@ -55,7 +55,7 @@ class ApplicationGatewayBackendHttpSetting {
   /// [protocol] The Protocol which should be used. Possible values are `Http` and `Https`.
   /// [requestTimeout] The request timeout in seconds, which must be between 1 and 86400 seconds. Defaults to `30`.
   /// [trustedRootCertificateNames] A list of `trusted_root_certificate` names.
-  ApplicationGatewayBackendHttpSetting({
+  const ApplicationGatewayBackendHttpSetting({
     this.affinityCookieName,
     this.authenticationCertificates,
     this.connectionDraining,

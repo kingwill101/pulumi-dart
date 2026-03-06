@@ -12,7 +12,7 @@ class GoogleDatastoreAdminV1IndexedPropertyResponse {
   /// Creates a new [GoogleDatastoreAdminV1IndexedPropertyResponse].
   /// [direction] The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
   /// [name] The property name to index.
-  GoogleDatastoreAdminV1IndexedPropertyResponse({
+  const GoogleDatastoreAdminV1IndexedPropertyResponse({
     required this.direction,
     required this.name,
   });

@@ -13,7 +13,7 @@ class NatGatewayConfiguration {
   /// Creates a new [NatGatewayConfiguration].
   /// [elasticIpAllocationIds] A list of EIP allocation IDs to assign to the NAT Gateways. Optional. If specified, the number of supplied values must match the chosen strategy (either one, or the number of availability zones).
   /// [strategy] The strategy for deploying NAT Gateways.
-  NatGatewayConfiguration({
+  const NatGatewayConfiguration({
     this.elasticIpAllocationIds,
     required this.strategy,
   });

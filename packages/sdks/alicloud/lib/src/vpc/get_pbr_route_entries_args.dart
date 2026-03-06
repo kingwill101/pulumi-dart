@@ -18,7 +18,7 @@ class GetPbrRouteEntriesArgs {
   /// [ids] A list of VPN Pbr Route Entries IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [vpnGatewayId] The ID of the VPN gateway.
-  GetPbrRouteEntriesArgs({
+  const GetPbrRouteEntriesArgs({
     this.ids,
     this.outputFile,
     required this.vpnGatewayId,

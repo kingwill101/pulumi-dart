@@ -29,7 +29,7 @@ class RepositoryState {
   /// [pubsubConfigs] How this repository publishes a change in the repository through Cloud Pub/Sub.
   /// [size] The disk usage of the repo, in bytes.
   /// [url] URL to clone the repository from Google Cloud Source Repositories.
-  RepositoryState({
+  const RepositoryState({
     this.createIgnoreAlreadyExists,
     this.name,
     this.project,

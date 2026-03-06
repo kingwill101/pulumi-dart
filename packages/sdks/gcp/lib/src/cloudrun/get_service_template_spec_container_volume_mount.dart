@@ -15,7 +15,7 @@ class GetServiceTemplateSpecContainerVolumeMount {
   /// [mountPath] Path within the container at which the volume should be mounted.  Must
   /// [name] The name of the Cloud Run Service.
   /// [subPath] Path within the volume from which the container's volume should be mounted.
-  GetServiceTemplateSpecContainerVolumeMount({
+  const GetServiceTemplateSpecContainerVolumeMount({
     required this.mountPath,
     required this.name,
     required this.subPath,

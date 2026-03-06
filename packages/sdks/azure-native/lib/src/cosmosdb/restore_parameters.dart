@@ -32,7 +32,7 @@ class RestoreParameters {
   /// [restoreWithTtlDisabled] Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
   /// [sourceBackupLocation] The source backup location for restore.
   /// [tablesToRestore] List of specific tables available for restore.
-  RestoreParameters({
+  const RestoreParameters({
     this.databasesToRestore,
     this.gremlinDatabasesToRestore,
     this.restoreMode,

@@ -35,7 +35,7 @@ class HciExtensionState {
   /// [settings] The json formatted public settings for the extension.
   /// [type] Specifies the type of the extension. For example `CustomScriptExtension` or `AzureMonitorLinuxAgent`. Changing this forces a new resource to be created.
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  HciExtensionState({
+  const HciExtensionState({
     this.arcSettingId,
     this.autoUpgradeMinorVersionEnabled,
     this.automaticUpgradeEnabled,

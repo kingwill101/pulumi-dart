@@ -10,7 +10,7 @@ class TlsRouteRouteActionNetworkservicesV1beta1 {
 
   /// Creates a new [TlsRouteRouteActionNetworkservicesV1beta1].
   /// [destinations] The destination services to which traffic should be forwarded. At least one destination service is required.
-  TlsRouteRouteActionNetworkservicesV1beta1({
+  const TlsRouteRouteActionNetworkservicesV1beta1({
     required this.destinations,
   });
 

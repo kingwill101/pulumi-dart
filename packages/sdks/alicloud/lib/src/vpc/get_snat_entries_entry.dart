@@ -26,7 +26,7 @@ class GetSnatEntriesEntry {
   /// [sourceCidr] The source CIDR block of the Snat Entry.
   /// [sourceVswitchId] The source vswitch ID.
   /// [status] The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
-  GetSnatEntriesEntry({
+  const GetSnatEntriesEntry({
     required this.id,
     required this.snatEntryId,
     required this.snatEntryName,

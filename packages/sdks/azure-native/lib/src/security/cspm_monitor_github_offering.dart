@@ -10,7 +10,7 @@ class CspmMonitorGithubOffering {
 
   /// Creates a new [CspmMonitorGithubOffering].
   /// [offeringType] The type of the security offering.
-  CspmMonitorGithubOffering({
+  const CspmMonitorGithubOffering({
     required this.offeringType,
   });
 

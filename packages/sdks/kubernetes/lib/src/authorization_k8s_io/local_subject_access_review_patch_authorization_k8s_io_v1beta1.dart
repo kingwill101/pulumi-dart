@@ -23,7 +23,7 @@ class LocalSubjectAccessReviewPatchAuthorizationK8sIoV1beta1 {
   /// [metadata] Optional.
   /// [spec] Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
   /// [status] Status is filled in by the server and indicates whether the request is allowed or not
-  LocalSubjectAccessReviewPatchAuthorizationK8sIoV1beta1({
+  const LocalSubjectAccessReviewPatchAuthorizationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

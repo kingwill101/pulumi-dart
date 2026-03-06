@@ -29,7 +29,7 @@ class ApiKeyArgs {
   /// [project] The project for the resource
   /// [restrictions] Key restrictions.
   /// [serviceAccountEmail] The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
-  ApiKeyArgs({
+  const ApiKeyArgs({
     this.displayName,
     this.name,
     this.project,

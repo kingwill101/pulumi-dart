@@ -7,7 +7,7 @@ class ClusterAddonsConfigKalmConfig {
 
   /// Creates a new [ClusterAddonsConfigKalmConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigKalmConfig({
+  const ClusterAddonsConfigKalmConfig({
     required this.enabled,
   });
 

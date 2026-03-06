@@ -39,7 +39,7 @@ class GetHoneypotPresetsResult {
   /// [pageSize] Optional.
   /// [presetName] Honeypot template custom name.
   /// [presets] A list of Honeypot Preset Entries. Each element contains the following attributes:
-  GetHoneypotPresetsResult({
+  const GetHoneypotPresetsResult({
     this.currentPage,
     this.enableDetails,
     this.honeypotImageName,

@@ -18,7 +18,7 @@ class ListWebAppFunctionSecretsArgs {
   /// [functionName] Function name.
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppFunctionSecretsArgs({
+  const ListWebAppFunctionSecretsArgs({
     required this.functionName,
     required this.name,
     required this.resourceGroupName,

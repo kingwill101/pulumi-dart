@@ -8,7 +8,7 @@ class LinuxVirtualMachineScaleSetAdditionalCapabilities {
 
   /// Creates a new [LinuxVirtualMachineScaleSetAdditionalCapabilities].
   /// [ultraSsdEnabled] Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine Scale Set? Possible values are `true` or `false`. Defaults to `false`. Changing this forces a new resource to be created.
-  LinuxVirtualMachineScaleSetAdditionalCapabilities({
+  const LinuxVirtualMachineScaleSetAdditionalCapabilities({
     this.ultraSsdEnabled,
   });
 

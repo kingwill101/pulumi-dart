@@ -14,7 +14,7 @@ class DynamicGroupMetadataResponseCloudidentityV1beta1 {
   /// Creates a new [DynamicGroupMetadataResponseCloudidentityV1beta1].
   /// [queries] Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
   /// [status] Status of the dynamic group.
-  DynamicGroupMetadataResponseCloudidentityV1beta1({
+  const DynamicGroupMetadataResponseCloudidentityV1beta1({
     required this.queries,
     required this.status,
   });

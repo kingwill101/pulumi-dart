@@ -15,7 +15,7 @@ class FcmV1Credential {
   /// [clientEmail] Gets or sets client email.
   /// [privateKey] Gets or sets private key.
   /// [projectId] Gets or sets project id.
-  FcmV1Credential({
+  const FcmV1Credential({
     required this.clientEmail,
     required this.privateKey,
     required this.projectId,

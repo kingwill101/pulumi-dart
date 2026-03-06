@@ -22,7 +22,7 @@ class ProviderInstanceArgs {
   /// [providerInstanceName] Name of the provider instance.
   /// [providerSettings] Defines the provider specific properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ProviderInstanceArgs({
+  const ProviderInstanceArgs({
     required this.monitorName,
     this.providerInstanceName,
     this.providerSettings,

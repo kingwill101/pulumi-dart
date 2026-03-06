@@ -10,7 +10,7 @@ class ValidationCheckStatusResponse {
 
   /// Creates a new [ValidationCheckStatusResponse].
   /// [result] Individual checks which failed as part of the Preflight check execution.
-  ValidationCheckStatusResponse({
+  const ValidationCheckStatusResponse({
     required this.result,
   });
 

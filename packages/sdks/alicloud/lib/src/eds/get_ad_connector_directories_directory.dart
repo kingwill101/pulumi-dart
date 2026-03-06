@@ -63,7 +63,7 @@ class GetAdConnectorDirectoriesDirectory {
   /// [trustPassword] The trust password.
   /// [vpcId] The ID of the vpc.
   /// [vswitchIds] List of vSwitch IDs in the directory.
-  GetAdConnectorDirectoriesDirectory({
+  const GetAdConnectorDirectoriesDirectory({
     required this.adConnectorDirectoryId,
     required this.adConnectors,
     required this.createTime,

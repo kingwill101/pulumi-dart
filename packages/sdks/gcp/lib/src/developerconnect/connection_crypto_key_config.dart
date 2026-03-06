@@ -10,7 +10,7 @@ class ConnectionCryptoKeyConfig {
 
   /// Creates a new [ConnectionCryptoKeyConfig].
   /// [keyReference] Required. The name of the key which is used to encrypt/decrypt customer data. For key
-  ConnectionCryptoKeyConfig({
+  const ConnectionCryptoKeyConfig({
     required this.keyReference,
   });
 

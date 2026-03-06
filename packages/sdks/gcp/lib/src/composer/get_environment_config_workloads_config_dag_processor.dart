@@ -17,7 +17,7 @@ class GetEnvironmentConfigWorkloadsConfigDagProcessor {
   /// [cpu] CPU request and limit for DAG processor.
   /// [memoryGb] Memory (GB) request and limit for DAG processor.
   /// [storageGb] Storage (GB) request and limit for DAG processor.
-  GetEnvironmentConfigWorkloadsConfigDagProcessor({
+  const GetEnvironmentConfigWorkloadsConfigDagProcessor({
     required this.count,
     required this.cpu,
     required this.memoryGb,

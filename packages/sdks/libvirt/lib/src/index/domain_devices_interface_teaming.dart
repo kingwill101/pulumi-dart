@@ -11,7 +11,7 @@ class DomainDevicesInterfaceTeaming {
   /// Creates a new [DomainDevicesInterfaceTeaming].
   /// [persistent] Specifies if the teaming configuration is persistent across reboots.
   /// [type] Defines the type of teaming used for the PCI device.
-  DomainDevicesInterfaceTeaming({
+  const DomainDevicesInterfaceTeaming({
     this.persistent,
     required this.type,
   });

@@ -19,7 +19,7 @@ class BareMetalAdminClusterValidationCheck {
   /// [options] (Output)
   /// [scenario] (Output)
   /// [statuses] (Output)
-  BareMetalAdminClusterValidationCheck({
+  const BareMetalAdminClusterValidationCheck({
     this.options,
     this.scenario,
     this.statuses,

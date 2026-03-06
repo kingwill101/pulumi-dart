@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1SecurityActionHttpHeader {
   /// Creates a new [GoogleCloudApigeeV1SecurityActionHttpHeader].
   /// [name] The header name to be sent to the target.
   /// [value] The header value to be sent to the target.
-  GoogleCloudApigeeV1SecurityActionHttpHeader({
+  const GoogleCloudApigeeV1SecurityActionHttpHeader({
     this.name,
     this.value,
   });

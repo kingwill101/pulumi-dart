@@ -24,7 +24,7 @@ class GetHostGroupsArgs {
   /// [instanceId] Specify the New Host Group Where the Bastion Host ID of.
   /// [nameRegex] A regex string to filter results by Host Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetHostGroupsArgs({
+  const GetHostGroupsArgs({
     this.hostGroupName,
     this.ids,
     required this.instanceId,

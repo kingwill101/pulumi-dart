@@ -12,7 +12,7 @@ class CreateMonitorActionResponse {
   /// Creates a new [CreateMonitorActionResponse].
   /// [actionType] Expected value is 'CreateMonitor'.
   /// [monitorDefinition] [Required] Defines the monitor.
-  CreateMonitorActionResponse({
+  const CreateMonitorActionResponse({
     required this.actionType,
     required this.monitorDefinition,
   });

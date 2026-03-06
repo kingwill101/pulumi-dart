@@ -13,7 +13,7 @@ class GetPublicAdvertisedPrefixArgs {
   /// Creates a new [GetPublicAdvertisedPrefixArgs].
   /// [project] Optional.
   /// [publicAdvertisedPrefix] Required.
-  GetPublicAdvertisedPrefixArgs({
+  const GetPublicAdvertisedPrefixArgs({
     this.project,
     required this.publicAdvertisedPrefix,
   });

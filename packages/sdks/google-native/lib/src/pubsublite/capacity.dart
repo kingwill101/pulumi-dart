@@ -12,7 +12,7 @@ class Capacity {
   /// Creates a new [Capacity].
   /// [publishMibPerSec] Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
   /// [subscribeMibPerSec] Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.
-  Capacity({
+  const Capacity({
     this.publishMibPerSec,
     this.subscribeMibPerSec,
   });

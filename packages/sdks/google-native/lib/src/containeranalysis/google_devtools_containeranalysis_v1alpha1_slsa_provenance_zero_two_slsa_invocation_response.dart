@@ -16,7 +16,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
   /// [configSource] Describes where the config file that kicked off the build came from.
   /// [environment] Any other builder-controlled inputs necessary for correctly evaluating the build.
   /// [parameters] Collection of all external inputs that influenced the build on top of invocation.configSource.
-  GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse({
+  const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse({
     required this.configSource,
     required this.environment,
     required this.parameters,

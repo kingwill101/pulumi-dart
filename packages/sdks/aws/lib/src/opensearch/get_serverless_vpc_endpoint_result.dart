@@ -27,7 +27,7 @@ class GetServerlessVpcEndpointResult {
   /// [subnetIds] The IDs of the subnets from which you access OpenSearch Serverless.
   /// [vpcEndpointId] Required.
   /// [vpcId] The ID of the VPC from which you access OpenSearch Serverless.
-  GetServerlessVpcEndpointResult({
+  const GetServerlessVpcEndpointResult({
     required this.createdDate,
     required this.id,
     required this.name,

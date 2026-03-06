@@ -24,7 +24,7 @@ class ClientKeyArgs {
   /// [notBefore] The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
   /// [password] To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
   /// [privateKeyDataFile] The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
-  ClientKeyArgs({
+  const ClientKeyArgs({
     required this.aapName,
     this.notAfter,
     this.notBefore,

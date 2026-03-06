@@ -8,7 +8,7 @@ class RecommendationPreferencesExternalMetricsPreference {
 
   /// Creates a new [RecommendationPreferencesExternalMetricsPreference].
   /// [source] The source options for external metrics preferences. Valid values: `Datadog`, `Dynatrace`, `NewRelic`, `Instana`.
-  RecommendationPreferencesExternalMetricsPreference({
+  const RecommendationPreferencesExternalMetricsPreference({
     required this.source,
   });
 

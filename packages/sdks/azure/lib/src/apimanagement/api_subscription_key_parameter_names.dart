@@ -11,7 +11,7 @@ class ApiSubscriptionKeyParameterNames {
   /// Creates a new [ApiSubscriptionKeyParameterNames].
   /// [header] The name of the HTTP Header which should be used for the Subscription Key.
   /// [query] The name of the QueryString parameter which should be used for the Subscription Key.
-  ApiSubscriptionKeyParameterNames({
+  const ApiSubscriptionKeyParameterNames({
     required this.header,
     required this.query,
   });

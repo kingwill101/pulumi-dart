@@ -17,7 +17,7 @@ class InstanceIamPolicyArgs {
   /// [name] Optional.
   /// [policyData] Required.
   /// [project] Optional.
-  InstanceIamPolicyArgs({
+  const InstanceIamPolicyArgs({
     this.location,
     this.name,
     required this.policyData,

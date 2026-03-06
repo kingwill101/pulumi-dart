@@ -17,7 +17,7 @@ class PoolSourceAdapterParentAddrAddress {
   /// [domain] Defines the domain associated with the parent address of the adapter.
   /// [function] Configures the function field for the address of the adapter's parent device.
   /// [slot] Indicates the slot number for the adapter's parent address.
-  PoolSourceAdapterParentAddrAddress({
+  const PoolSourceAdapterParentAddrAddress({
     this.bus,
     this.domain,
     this.function,

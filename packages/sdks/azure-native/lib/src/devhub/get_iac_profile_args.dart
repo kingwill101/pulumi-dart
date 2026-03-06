@@ -15,7 +15,7 @@ class GetIacProfileArgs {
   /// Creates a new [GetIacProfileArgs].
   /// [iacProfileName] The name of the IacProfile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIacProfileArgs({
+  const GetIacProfileArgs({
     required this.iacProfileName,
     required this.resourceGroupName,
   });

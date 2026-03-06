@@ -34,7 +34,7 @@ class SsmParameterPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SsmParameterPropertiesResponse({
+  const SsmParameterPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

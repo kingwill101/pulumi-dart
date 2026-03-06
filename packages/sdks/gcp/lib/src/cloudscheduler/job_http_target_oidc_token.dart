@@ -13,7 +13,7 @@ class JobHttpTargetOidcToken {
   /// Creates a new [JobHttpTargetOidcToken].
   /// [audience] Audience to be used when generating OIDC token. If not specified,
   /// [serviceAccountEmail] Service account email to be used for generating OAuth token.
-  JobHttpTargetOidcToken({
+  const JobHttpTargetOidcToken({
     this.audience,
     required this.serviceAccountEmail,
   });

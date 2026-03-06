@@ -20,7 +20,7 @@ class EntityInsightItemResponse {
   /// [queryId] The query id of the insight
   /// [queryTimeInterval] The Time interval that the query actually executed on.
   /// [tableQueryResults] Query results for table insights query.
-  EntityInsightItemResponse({
+  const EntityInsightItemResponse({
     this.chartQueryResults,
     this.queryId,
     this.queryTimeInterval,

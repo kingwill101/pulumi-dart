@@ -27,7 +27,7 @@ class CertificatePropertiesResponse {
   /// [subject] The certificate's subject name.
   /// [thumbprint] The certificate's thumbprint.
   /// [updated] The certificate's last update date and time.
-  CertificatePropertiesResponse({
+  const CertificatePropertiesResponse({
     this.certificate,
     required this.created,
     required this.expiry,

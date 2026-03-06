@@ -13,7 +13,7 @@ class ListEffectiveConnectivityConfigurationResult {
   /// Creates a new [ListEffectiveConnectivityConfigurationResult].
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   /// [value] Gets a page of NetworkManagerEffectiveConnectivityConfiguration
-  ListEffectiveConnectivityConfigurationResult({
+  const ListEffectiveConnectivityConfigurationResult({
     this.skipToken,
     this.value,
   });

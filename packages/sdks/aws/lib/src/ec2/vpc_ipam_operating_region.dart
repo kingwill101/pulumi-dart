@@ -8,7 +8,7 @@ class VpcIpamOperatingRegion {
 
   /// Creates a new [VpcIpamOperatingRegion].
   /// [regionName] The name of the Region you want to add to the IPAM.
-  VpcIpamOperatingRegion({
+  const VpcIpamOperatingRegion({
     required this.regionName,
   });
 

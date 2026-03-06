@@ -14,7 +14,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// [description] Description of the column that helps the query engine understand the contents of the column.
   /// [inclusion] Whether to include or exclude the column during query generation. Valid values `INCLUDE`, `EXCLUDE`.
   /// [name] Name of the column for which the other fields in this object apply.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn({
     this.description,
     this.inclusion,
     this.name,

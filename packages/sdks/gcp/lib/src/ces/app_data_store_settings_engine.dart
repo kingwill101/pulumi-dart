@@ -15,7 +15,7 @@ class AppDataStoreSettingsEngine {
   /// Creates a new [AppDataStoreSettingsEngine].
   /// [name] Identifier. The unique identifier of the app.
   /// [type] The type of the engine.
-  AppDataStoreSettingsEngine({
+  const AppDataStoreSettingsEngine({
     this.name,
     this.type,
   });

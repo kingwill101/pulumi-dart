@@ -18,7 +18,7 @@ class ErrorModelResponse {
   /// [details] Gets or sets the details.
   /// [message] Gets or sets the messages.
   /// [target] Gets or sets the target.
-  ErrorModelResponse({
+  const ErrorModelResponse({
     required this.code,
     required this.details,
     required this.message,

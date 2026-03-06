@@ -9,7 +9,7 @@ class ManagedClusterStorageProfileDiskCSIDriverResponse {
 
   /// Creates a new [ManagedClusterStorageProfileDiskCSIDriverResponse].
   /// [enabled] Whether to enable AzureDisk CSI Driver. The default value is true.
-  ManagedClusterStorageProfileDiskCSIDriverResponse({
+  const ManagedClusterStorageProfileDiskCSIDriverResponse({
     this.enabled,
   });
 

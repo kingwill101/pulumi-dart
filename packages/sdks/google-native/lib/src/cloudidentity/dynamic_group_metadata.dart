@@ -10,7 +10,7 @@ class DynamicGroupMetadata {
 
   /// Creates a new [DynamicGroupMetadata].
   /// [queries] Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
-  DynamicGroupMetadata({
+  const DynamicGroupMetadata({
     this.queries,
   });
 

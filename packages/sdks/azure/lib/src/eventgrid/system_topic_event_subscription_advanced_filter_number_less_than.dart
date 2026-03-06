@@ -10,7 +10,7 @@ class SystemTopicEventSubscriptionAdvancedFilterNumberLessThan {
   /// Creates a new [SystemTopicEventSubscriptionAdvancedFilterNumberLessThan].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
   /// [value] Required.
-  SystemTopicEventSubscriptionAdvancedFilterNumberLessThan({
+  const SystemTopicEventSubscriptionAdvancedFilterNumberLessThan({
     required this.key,
     required this.value,
   });

@@ -39,7 +39,7 @@ class UsernamePasswordAuthTypeConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  UsernamePasswordAuthTypeConnectionPropertiesResponse({
+  const UsernamePasswordAuthTypeConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

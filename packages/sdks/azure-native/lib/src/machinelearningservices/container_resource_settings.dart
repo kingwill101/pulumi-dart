@@ -17,7 +17,7 @@ class ContainerResourceSettings {
   /// [cpu] Number of vCPUs request/limit for container. More info:
   /// [gpu] Number of Nvidia GPU cards request/limit for container. More info:
   /// [memory] Memory size request/limit for container. More info:
-  ContainerResourceSettings({
+  const ContainerResourceSettings({
     this.cpu,
     this.gpu,
     this.memory,

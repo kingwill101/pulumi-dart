@@ -49,7 +49,7 @@ class GetSecretArgs {
   /// [region] The region in which to obtain the V1 KeyManager client.
   /// [secretType] The Secret type. For more information see
   /// [updatedAtFilter] Date filter to select the Secret with
-  GetSecretArgs({
+  const GetSecretArgs({
     this.aclOnly,
     this.algorithm,
     this.bitLength,

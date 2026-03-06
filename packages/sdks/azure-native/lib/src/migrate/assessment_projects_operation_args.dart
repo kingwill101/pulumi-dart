@@ -46,7 +46,7 @@ class AssessmentProjectsOperationArgs {
   /// [publicNetworkAccess] This value can be set to 'enabled' to avoid breaking changes on existing
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  AssessmentProjectsOperationArgs({
+  const AssessmentProjectsOperationArgs({
     this.assessmentSolutionId,
     this.customerStorageAccountArmId,
     this.customerWorkspaceId,

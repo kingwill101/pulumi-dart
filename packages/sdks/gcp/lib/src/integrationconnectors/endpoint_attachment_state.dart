@@ -47,7 +47,7 @@ class EndpointAttachmentState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [serviceAttachment] The path of the service attachment.
   /// [updateTime] Time the Namespace was updated in UTC.
-  EndpointAttachmentState({
+  const EndpointAttachmentState({
     this.createTime,
     this.description,
     this.effectiveLabels,

@@ -34,7 +34,7 @@ class GetTrafficPolicyDocumentRule {
   /// [regions] Optional.
   /// [secondary] Configuration block for the rule or endpoint that you want to route traffic to whenever the primary resources are not available. Only valid for `failover` type. See below
   /// [type] Type of the rule.
-  GetTrafficPolicyDocumentRule({
+  const GetTrafficPolicyDocumentRule({
     this.geoProximityLocations,
     required this.id,
     this.items,

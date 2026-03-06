@@ -13,7 +13,7 @@ class GetSecretArgs {
   /// Creates a new [GetSecretArgs].
   /// [project] Optional.
   /// [secretId] Required.
-  GetSecretArgs({
+  const GetSecretArgs({
     this.project,
     required this.secretId,
   });

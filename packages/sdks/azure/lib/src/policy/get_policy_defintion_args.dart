@@ -20,7 +20,7 @@ class GetPolicyDefintionArgs {
   /// [displayName] Specifies the display name of the Policy Definition. Conflicts with `name`.
   /// [managementGroupName] Only retrieve Policy Definitions from this Management Group.
   /// [name] Specifies the name of the Policy Definition. Conflicts with `display_name`.
-  GetPolicyDefintionArgs({
+  const GetPolicyDefintionArgs({
     this.displayName,
     this.managementGroupName,
     this.name,

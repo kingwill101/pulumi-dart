@@ -21,7 +21,7 @@ class StorageAccountStaticWebsiteArgs {
   /// [error404Document] The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
   /// [indexDocument] The webpage that Azure Storage serves for requests to the root of a website or any sub-folder. For example, 'index.html'. The value is case-sensitive.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  StorageAccountStaticWebsiteArgs({
+  const StorageAccountStaticWebsiteArgs({
     required this.accountName,
     this.error404Document,
     this.indexDocument,

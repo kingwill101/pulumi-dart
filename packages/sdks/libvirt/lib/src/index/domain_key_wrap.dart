@@ -9,7 +9,7 @@ class DomainKeyWrap {
 
   /// Creates a new [DomainKeyWrap].
   /// [ciphers] Defines the cipher algorithms used for key wrapping in the domain.
-  DomainKeyWrap({
+  const DomainKeyWrap({
     this.ciphers,
   });
 

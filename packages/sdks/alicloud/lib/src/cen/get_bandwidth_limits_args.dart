@@ -15,7 +15,7 @@ class GetBandwidthLimitsArgs {
   /// Creates a new [GetBandwidthLimitsArgs].
   /// [instanceIds] A list of CEN instances IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBandwidthLimitsArgs({
+  const GetBandwidthLimitsArgs({
     this.instanceIds,
     this.outputFile,
   });

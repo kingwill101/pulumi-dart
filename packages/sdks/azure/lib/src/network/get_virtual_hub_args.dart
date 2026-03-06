@@ -15,7 +15,7 @@ class GetVirtualHubArgs {
   /// Creates a new [GetVirtualHubArgs].
   /// [name] The name of the Virtual Hub.
   /// [resourceGroupName] The Name of the Resource Group where the Virtual Hub exists.
-  GetVirtualHubArgs({
+  const GetVirtualHubArgs({
     required this.name,
     required this.resourceGroupName,
   });

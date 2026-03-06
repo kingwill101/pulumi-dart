@@ -24,7 +24,7 @@ class ApplicationPackageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   /// [versionName] The version of the application.
-  ApplicationPackageArgs({
+  const ApplicationPackageArgs({
     required this.accountName,
     required this.applicationName,
     required this.resourceGroupName,

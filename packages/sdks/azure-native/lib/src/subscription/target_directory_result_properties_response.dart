@@ -18,7 +18,7 @@ class TargetDirectoryResultPropertiesResponse {
   /// [destinationTenantId] Destination Tenant Id where Subscription will be accepted.
   /// [expiresOn] Subscription Initiate Request Expiry time
   /// [status] Subscription Status.
-  TargetDirectoryResultPropertiesResponse({
+  const TargetDirectoryResultPropertiesResponse({
     required this.destinationOwnerId,
     required this.destinationTenantId,
     required this.expiresOn,

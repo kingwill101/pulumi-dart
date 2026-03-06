@@ -12,7 +12,7 @@ class HpcClusterState {
   /// Creates a new [HpcClusterState].
   /// [description] The description of ECS Hpc Cluster.
   /// [name] The name of ECS Hpc Cluster.
-  HpcClusterState({
+  const HpcClusterState({
     this.description,
     this.name,
   });

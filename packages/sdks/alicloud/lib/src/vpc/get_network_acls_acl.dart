@@ -35,7 +35,7 @@ class GetNetworkAclsAcl {
   /// [resources] The associated resource.
   /// [status] The state of the network ACL.
   /// [vpcId] The ID of the associated VPC.
-  GetNetworkAclsAcl({
+  const GetNetworkAclsAcl({
     required this.description,
     required this.egressAclEntries,
     required this.id,

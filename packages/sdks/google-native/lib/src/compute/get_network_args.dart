@@ -13,7 +13,7 @@ class GetNetworkArgs {
   /// Creates a new [GetNetworkArgs].
   /// [network] Required.
   /// [project] Optional.
-  GetNetworkArgs({
+  const GetNetworkArgs({
     required this.network,
     this.project,
   });

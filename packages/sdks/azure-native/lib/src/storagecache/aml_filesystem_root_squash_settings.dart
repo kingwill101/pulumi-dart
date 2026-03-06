@@ -18,7 +18,7 @@ class AmlFilesystemRootSquashSettings {
   /// [noSquashNidLists] Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
   /// [squashGID] Group ID to squash to.
   /// [squashUID] User ID to squash to.
-  AmlFilesystemRootSquashSettings({
+  const AmlFilesystemRootSquashSettings({
     this.mode,
     this.noSquashNidLists,
     this.squashGID,

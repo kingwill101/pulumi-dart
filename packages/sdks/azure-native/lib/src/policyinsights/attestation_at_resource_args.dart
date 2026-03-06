@@ -43,7 +43,7 @@ class AttestationAtResourceArgs {
   /// [policyAssignmentId] The resource ID of the policy assignment that the attestation is setting the state for.
   /// [policyDefinitionReferenceId] The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition.
   /// [resourceId] Resource ID.
-  AttestationAtResourceArgs({
+  const AttestationAtResourceArgs({
     this.assessmentDate,
     this.attestationName,
     this.comments,

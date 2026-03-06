@@ -14,7 +14,7 @@ class GetAppServiceConnectionString {
   /// [name] The name of the App Service.
   /// [type] The type of the Connection String.
   /// [value] The value for the Connection String.
-  GetAppServiceConnectionString({
+  const GetAppServiceConnectionString({
     required this.name,
     required this.type,
     required this.value,

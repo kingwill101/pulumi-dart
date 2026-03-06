@@ -17,7 +17,7 @@ class CloudRepoSourceContextResponseContaineranalysisV1beta1 {
   /// [aliasContext] An alias, which may be a branch or tag.
   /// [repoId] The ID of the repo.
   /// [revisionId] A revision ID.
-  CloudRepoSourceContextResponseContaineranalysisV1beta1({
+  const CloudRepoSourceContextResponseContaineranalysisV1beta1({
     required this.aliasContext,
     required this.repoId,
     required this.revisionId,

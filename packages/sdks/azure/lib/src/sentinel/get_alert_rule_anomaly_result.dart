@@ -62,7 +62,7 @@ class GetAlertRuleAnomalyResult {
   /// [tactics] A list of categories of attacks by which to classify the rule.
   /// [techniques] A list of techniques of attacks by which to classify the rule.
   /// [thresholdObservations] A list of `threshold_observation` blocks as defined below.
-  GetAlertRuleAnomalyResult({
+  const GetAlertRuleAnomalyResult({
     required this.anomalySettingsVersion,
     required this.anomalyVersion,
     required this.description,

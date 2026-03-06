@@ -33,7 +33,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// [goo] Represents a Goo package repository. These are added to a repo file
   /// [yum] Represents a single yum package repository. These are added to a
   /// [zypper] Represents a single zypper package repository. These are added to a
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository({
     this.apt,
     this.goo,
     this.yum,

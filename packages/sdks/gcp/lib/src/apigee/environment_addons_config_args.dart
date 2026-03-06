@@ -16,7 +16,7 @@ class EnvironmentAddonsConfigArgs {
   /// Creates a new [EnvironmentAddonsConfigArgs].
   /// [analyticsEnabled] Flag to enable/disable Analytics.
   /// [envId] The Apigee environment group associated with the Apigee environment,
-  EnvironmentAddonsConfigArgs({
+  const EnvironmentAddonsConfigArgs({
     this.analyticsEnabled,
     required this.envId,
   });

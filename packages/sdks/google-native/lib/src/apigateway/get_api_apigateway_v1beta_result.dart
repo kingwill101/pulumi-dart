@@ -26,7 +26,7 @@ class GetApiApigatewayV1betaResult {
   /// [name] Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
   /// [state] State of the API.
   /// [updateTime] Updated time.
-  GetApiApigatewayV1betaResult({
+  const GetApiApigatewayV1betaResult({
     required this.createTime,
     required this.displayName,
     required this.labels,

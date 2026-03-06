@@ -13,7 +13,7 @@ class GetEnvironmentArgs {
   /// Creates a new [GetEnvironmentArgs].
   /// [environmentId] Required.
   /// [organizationId] Required.
-  GetEnvironmentArgs({
+  const GetEnvironmentArgs({
     required this.environmentId,
     required this.organizationId,
   });

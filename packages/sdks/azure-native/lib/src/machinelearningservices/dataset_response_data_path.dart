@@ -34,7 +34,7 @@ class DatasetResponseDataPath {
   /// [paths] List of files expanded from a file GLOB specified
   /// [relativePath] Relative path in the data store
   /// [sqlDataPath] Sql Query/Table/Stored Procedure details.
-  DatasetResponseDataPath({
+  const DatasetResponseDataPath({
     this.additionalProperties,
     required this.azureFilePath,
     required this.datastoreName,

@@ -31,7 +31,7 @@ class OpenApiImageCacheState {
   /// [status] Optional.
   /// [vswitchId] Optional.
   /// [zoneId] Optional.
-  OpenApiImageCacheState({
+  const OpenApiImageCacheState({
     this.containerGroupId,
     this.eipInstanceId,
     this.imageCacheName,

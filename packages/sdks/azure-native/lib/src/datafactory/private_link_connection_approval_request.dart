@@ -14,7 +14,7 @@ class PrivateLinkConnectionApprovalRequest {
   /// Creates a new [PrivateLinkConnectionApprovalRequest].
   /// [privateEndpoint] The resource of private endpoint.
   /// [privateLinkServiceConnectionState] The state of a private link connection
-  PrivateLinkConnectionApprovalRequest({
+  const PrivateLinkConnectionApprovalRequest({
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
   });

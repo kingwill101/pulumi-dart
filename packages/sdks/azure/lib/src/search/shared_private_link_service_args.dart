@@ -26,7 +26,7 @@ class SharedPrivateLinkServiceArgs {
   /// [searchServiceId] Specify the id of the Azure Search Service. Changing this forces a new resource to be created.
   /// [subresourceName] Specify the sub resource name which the Azure Search Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] Specify the ID of the Shared Private Link Enabled Remote Resource which this Azure Search Private Endpoint should be connected to. Changing this forces a new resource to be created.
-  SharedPrivateLinkServiceArgs({
+  const SharedPrivateLinkServiceArgs({
     this.name,
     this.requestMessage,
     required this.searchServiceId,

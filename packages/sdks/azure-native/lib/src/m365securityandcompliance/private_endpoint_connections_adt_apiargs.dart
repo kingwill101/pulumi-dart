@@ -22,7 +22,7 @@ class PrivateEndpointConnectionsAdtAPIArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  PrivateEndpointConnectionsAdtAPIArgs({
+  const PrivateEndpointConnectionsAdtAPIArgs({
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,
     required this.resourceGroupName,

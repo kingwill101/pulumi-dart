@@ -16,7 +16,7 @@ class ContinuousDeploymentPolicyTrafficConfig {
   /// [singleHeaderConfig] Determines which HTTP requests are sent to the staging distribution. See `single_header_config`.
   /// [singleWeightConfig] Contains the percentage of traffic to send to the staging distribution. See `single_weight_config`.
   /// [type] Type of traffic configuration. Valid values are `SingleWeight` and `SingleHeader`.
-  ContinuousDeploymentPolicyTrafficConfig({
+  const ContinuousDeploymentPolicyTrafficConfig({
     this.singleHeaderConfig,
     this.singleWeightConfig,
     required this.type,

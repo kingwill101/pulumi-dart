@@ -47,7 +47,7 @@ class EnvironmentEC2Args {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  EnvironmentEC2Args({
+  const EnvironmentEC2Args({
     this.automaticStopTimeMinutes,
     this.connectionType,
     this.description,

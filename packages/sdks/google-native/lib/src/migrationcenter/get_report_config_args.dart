@@ -15,7 +15,7 @@ class GetReportConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [reportConfigId] Required.
-  GetReportConfigArgs({
+  const GetReportConfigArgs({
     required this.location,
     this.project,
     required this.reportConfigId,

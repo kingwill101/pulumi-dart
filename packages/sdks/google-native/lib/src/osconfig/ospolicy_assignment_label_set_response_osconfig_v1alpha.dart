@@ -9,7 +9,7 @@ class OSPolicyAssignmentLabelSetResponseOsconfigV1alpha {
 
   /// Creates a new [OSPolicyAssignmentLabelSetResponseOsconfigV1alpha].
   /// [labels] Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
-  OSPolicyAssignmentLabelSetResponseOsconfigV1alpha({
+  const OSPolicyAssignmentLabelSetResponseOsconfigV1alpha({
     required this.labels,
   });
 

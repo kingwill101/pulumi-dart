@@ -18,7 +18,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData {
   /// [objectPath] Required.
   /// [successResponseHandlingConfig] Determines how Amazon AppFlow handles the success response that it gets from the connector after placing data. See Success Response Handling Config for more details.
   /// [writeOperationType] Optional.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData({
     this.errorHandlingConfig,
     this.idFieldNames,
     required this.objectPath,

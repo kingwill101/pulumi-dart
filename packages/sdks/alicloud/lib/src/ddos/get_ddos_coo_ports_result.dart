@@ -26,7 +26,7 @@ class GetDdosCooPortsResult {
   /// [instanceId] The Ddoscoo instance ID.
   /// [outputFile] Optional.
   /// [ports] A list of DdosCoo Ports. Each element contains the following attributes:
-  GetDdosCooPortsResult({
+  const GetDdosCooPortsResult({
     this.frontendPort,
     this.frontendProtocol,
     required this.id,

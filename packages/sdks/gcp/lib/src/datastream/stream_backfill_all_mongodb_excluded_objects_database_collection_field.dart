@@ -8,7 +8,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField {
 
   /// Creates a new [StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField].
   /// [field] Field name.
-  StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField({
+  const StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField({
     this.field,
   });
 

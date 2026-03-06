@@ -9,7 +9,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode {
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode].
   /// [s3] Configuration block for the Amazon S3 object that contains the source code for the agent runtime. See `s3` below.
-  AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode({
+  const AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode({
     this.s3,
   });
 

@@ -8,7 +8,7 @@ class DomainFeaturesKvmHintDedicated {
 
   /// Creates a new [DomainFeaturesKvmHintDedicated].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesKvmHintDedicated({
+  const DomainFeaturesKvmHintDedicated({
     this.state,
   });
 

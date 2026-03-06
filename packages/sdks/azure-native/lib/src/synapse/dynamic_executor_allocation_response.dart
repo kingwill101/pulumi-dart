@@ -15,7 +15,7 @@ class DynamicExecutorAllocationResponse {
   /// [enabled] Indicates whether Dynamic Executor Allocation is enabled or not.
   /// [maxExecutors] The maximum number of executors alloted
   /// [minExecutors] The minimum number of executors alloted
-  DynamicExecutorAllocationResponse({
+  const DynamicExecutorAllocationResponse({
     this.enabled,
     this.maxExecutors,
     this.minExecutors,

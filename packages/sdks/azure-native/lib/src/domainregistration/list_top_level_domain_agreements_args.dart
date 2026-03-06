@@ -18,7 +18,7 @@ class ListTopLevelDomainAgreementsArgs {
   /// [forTransfer] If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain transfer as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [includePrivacy] If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain privacy as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [name] Name of the top-level domain.
-  ListTopLevelDomainAgreementsArgs({
+  const ListTopLevelDomainAgreementsArgs({
     this.forTransfer,
     this.includePrivacy,
     required this.name,

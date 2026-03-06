@@ -12,7 +12,7 @@ class Sku {
   /// Creates a new [Sku].
   /// [name] SKU name.
   /// [tier] The SKU tier. This is based on the SKU name.
-  Sku({
+  const Sku({
     this.name,
     this.tier,
   });

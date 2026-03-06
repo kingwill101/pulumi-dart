@@ -24,7 +24,7 @@ class SuppressionListArgs {
   /// [listName] The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [suppressionListName] The name of the suppression list.
-  SuppressionListArgs({
+  const SuppressionListArgs({
     required this.domainName,
     required this.emailServiceName,
     this.listName,

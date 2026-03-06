@@ -30,7 +30,7 @@ class ManagedClusterApplicationTypeVersionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Azure resource tags.
   /// [version] The application type version.
-  ManagedClusterApplicationTypeVersionArgs({
+  const ManagedClusterApplicationTypeVersionArgs({
     required this.appPackageUrl,
     required this.applicationTypeName,
     required this.clusterName,

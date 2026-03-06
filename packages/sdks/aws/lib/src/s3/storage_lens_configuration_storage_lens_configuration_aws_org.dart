@@ -8,7 +8,7 @@ class StorageLensConfigurationStorageLensConfigurationAwsOrg {
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAwsOrg].
   /// [arn] The Amazon Resource Name (ARN) of the Amazon Web Services organization.
-  StorageLensConfigurationStorageLensConfigurationAwsOrg({
+  const StorageLensConfigurationStorageLensConfigurationAwsOrg({
     required this.arn,
   });
 

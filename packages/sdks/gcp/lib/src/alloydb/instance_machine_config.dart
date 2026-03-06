@@ -13,7 +13,7 @@ class InstanceMachineConfig {
   /// Creates a new [InstanceMachineConfig].
   /// [cpuCount] The number of CPU's in the VM instance.
   /// [machineType] Machine type of the VM instance.
-  InstanceMachineConfig({
+  const InstanceMachineConfig({
     this.cpuCount,
     this.machineType,
   });

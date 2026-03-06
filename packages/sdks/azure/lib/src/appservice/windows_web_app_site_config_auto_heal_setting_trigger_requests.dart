@@ -11,7 +11,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTriggerRequests {
   /// Creates a new [WindowsWebAppSiteConfigAutoHealSettingTriggerRequests].
   /// [count] The number of requests in the specified `interval` to trigger this rule.
   /// [interval] The interval in `hh:mm:ss`.
-  WindowsWebAppSiteConfigAutoHealSettingTriggerRequests({
+  const WindowsWebAppSiteConfigAutoHealSettingTriggerRequests({
     required this.count,
     required this.interval,
   });

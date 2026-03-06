@@ -15,7 +15,7 @@ class DocumentProcessorPropertiesResponse {
   /// [provisioningState] The managed resource provisioning state.
   /// [spoTenantId] The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
   /// [spoTenantUrl] The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
-  DocumentProcessorPropertiesResponse({
+  const DocumentProcessorPropertiesResponse({
     required this.provisioningState,
     required this.spoTenantId,
     required this.spoTenantUrl,

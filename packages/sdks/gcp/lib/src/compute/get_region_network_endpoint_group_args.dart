@@ -21,7 +21,7 @@ class GetRegionNetworkEndpointGroupArgs {
   /// [project] The ID of the project to list versions in. If it is not provided, the provider project is used.
   /// [region] A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
   /// [selfLink] The Network Endpoint Group self_link.
-  GetRegionNetworkEndpointGroupArgs({
+  const GetRegionNetworkEndpointGroupArgs({
     this.name,
     this.project,
     this.region,

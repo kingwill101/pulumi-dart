@@ -12,7 +12,7 @@ class SetTablePrimaryKeyResponse {
   /// Creates a new [SetTablePrimaryKeyResponse].
   /// [primaryKey] Optional. Name for the primary key
   /// [primaryKeyColumns] List of column names for the primary key
-  SetTablePrimaryKeyResponse({
+  const SetTablePrimaryKeyResponse({
     required this.primaryKey,
     required this.primaryKeyColumns,
   });

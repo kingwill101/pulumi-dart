@@ -19,7 +19,7 @@ class GetSubnetsResult {
   /// [ids] List of all the subnet ids found.
   /// [region] Required.
   /// [tags] Required.
-  GetSubnetsResult({
+  const GetSubnetsResult({
     this.filters,
     required this.id,
     required this.ids,

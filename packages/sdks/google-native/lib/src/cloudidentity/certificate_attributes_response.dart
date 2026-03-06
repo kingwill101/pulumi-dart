@@ -34,7 +34,7 @@ class CertificateAttributesResponse {
   /// [validationState] Validation state of this certificate.
   /// [validityExpirationTime] Certificate not valid at or after this timestamp.
   /// [validityStartTime] Certificate not valid before this timestamp.
-  CertificateAttributesResponse({
+  const CertificateAttributesResponse({
     required this.certificateTemplate,
     required this.fingerprint,
     required this.issuer,

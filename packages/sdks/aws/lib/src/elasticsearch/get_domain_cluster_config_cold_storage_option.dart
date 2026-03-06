@@ -8,7 +8,7 @@ class GetDomainClusterConfigColdStorageOption {
 
   /// Creates a new [GetDomainClusterConfigColdStorageOption].
   /// [enabled] Whether node to node encryption is enabled.
-  GetDomainClusterConfigColdStorageOption({
+  const GetDomainClusterConfigColdStorageOption({
     required this.enabled,
   });
 

@@ -13,7 +13,7 @@ class GetPolicyIamPolicyArgs {
   /// Creates a new [GetPolicyIamPolicyArgs].
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetPolicyIamPolicyArgs({
+  const GetPolicyIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
   });

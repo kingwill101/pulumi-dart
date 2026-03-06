@@ -14,7 +14,7 @@ class ApiEventConfigAuthProviderCognitoConfig {
   /// [appIdClientRegex] Regular expression for matching the client ID.
   /// [awsRegion] AWS region where the user pool is located.
   /// [userPoolId] ID of the Cognito user pool.
-  ApiEventConfigAuthProviderCognitoConfig({
+  const ApiEventConfigAuthProviderCognitoConfig({
     this.appIdClientRegex,
     required this.awsRegion,
     required this.userPoolId,

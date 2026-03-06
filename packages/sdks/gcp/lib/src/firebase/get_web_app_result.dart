@@ -26,7 +26,7 @@ class GetWebAppResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The fully qualified resource name of the App, for example:
   /// [project] Optional.
-  GetWebAppResult({
+  const GetWebAppResult({
     required this.apiKeyId,
     required this.appId,
     required this.appUrls,

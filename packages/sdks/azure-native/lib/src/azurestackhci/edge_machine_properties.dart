@@ -30,7 +30,7 @@ class EdgeMachineProperties {
   /// [ownershipVoucherDetails] Ownership voucher details for provisioned machine.
   /// [provisioningDetails] Details for device provisioning.
   /// [siteDetails] Service fetches common configuration from site.
-  EdgeMachineProperties({
+  const EdgeMachineProperties({
     this.arcGatewayResourceId,
     this.arcMachineResourceGroupId,
     this.arcMachineResourceId,

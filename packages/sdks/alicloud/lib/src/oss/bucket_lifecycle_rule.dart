@@ -43,7 +43,7 @@ class BucketLifecycleRule {
   /// [prefix] The prefix in the names of the objects to which the lifecycle rule does not apply.
   /// [tags] Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
   /// [transitions] Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
-  BucketLifecycleRule({
+  const BucketLifecycleRule({
     this.abortMultipartUploads,
     required this.enabled,
     this.expirations,

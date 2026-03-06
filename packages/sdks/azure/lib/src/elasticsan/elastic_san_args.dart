@@ -40,7 +40,7 @@ class ElasticSanArgs {
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the Elastic SAN resource.
   /// [zones] Logical zone for the Elastic SAN resource. Changing this forces a new resource to be created.
-  ElasticSanArgs({
+  const ElasticSanArgs({
     required this.baseSizeInTib,
     this.extendedSizeInTib,
     this.location,

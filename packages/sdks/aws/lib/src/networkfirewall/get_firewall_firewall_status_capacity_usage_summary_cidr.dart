@@ -15,7 +15,7 @@ class GetFirewallFirewallStatusCapacityUsageSummaryCidr {
   /// [availableCidrCount] Available number of CIDR blocks available for use by the IP set references in a firewall.
   /// [ipSetReferences] The list of IP set references used by a firewall.
   /// [utilizedCidrCount] Number of CIDR blocks used by the IP set references in a firewall.
-  GetFirewallFirewallStatusCapacityUsageSummaryCidr({
+  const GetFirewallFirewallStatusCapacityUsageSummaryCidr({
     required this.availableCidrCount,
     required this.ipSetReferences,
     required this.utilizedCidrCount,

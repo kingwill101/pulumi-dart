@@ -11,7 +11,7 @@ class GetBundlesBundleDisk {
   /// Creates a new [GetBundlesBundleDisk].
   /// [diskSize] The disk size attribute of the bundle.
   /// [diskType] The disk type attribute of the bundle.
-  GetBundlesBundleDisk({
+  const GetBundlesBundleDisk({
     required this.diskSize,
     required this.diskType,
   });

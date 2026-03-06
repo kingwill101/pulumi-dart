@@ -119,7 +119,7 @@ class AppServiceSiteConfig {
   /// [vnetRouteAllEnabled] Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied? Defaults to `false`.
   /// [websocketsEnabled] Should WebSockets be enabled?
   /// [windowsFxVersion] The Windows Docker container image (`DOCKER|&lt;user/image:tag&gt;`)
-  AppServiceSiteConfig({
+  const AppServiceSiteConfig({
     this.acrUseManagedIdentityCredentials,
     this.acrUserManagedIdentityClientId,
     this.alwaysOn,

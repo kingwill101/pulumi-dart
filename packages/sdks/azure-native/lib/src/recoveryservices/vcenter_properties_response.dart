@@ -40,7 +40,7 @@ class VCenterPropertiesResponse {
   /// [port] The port number for discovery.
   /// [processServerId] The process server Id.
   /// [runAsAccountId] The account Id which has privileges to discover the vCenter.
-  VCenterPropertiesResponse({
+  const VCenterPropertiesResponse({
     this.discoveryStatus,
     this.fabricArmResourceName,
     this.friendlyName,

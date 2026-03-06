@@ -25,7 +25,7 @@ class GetFirewallTemplateResult {
   /// [outboundPolicy] The default behavior for outbound traffic. This can be overridden by individual firewall rules.
   /// [outbounds] A list of firewall rules specifying allowed outbound network traffic.
   /// [slug] Required.
-  GetFirewallTemplateResult({
+  const GetFirewallTemplateResult({
     required this.id,
     required this.inboundPolicy,
     required this.inbounds,

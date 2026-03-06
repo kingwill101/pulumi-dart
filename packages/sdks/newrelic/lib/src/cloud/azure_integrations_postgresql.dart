@@ -11,7 +11,7 @@ class AzureIntegrationsPostgresql {
   /// Creates a new [AzureIntegrationsPostgresql].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsPostgresql({
+  const AzureIntegrationsPostgresql({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

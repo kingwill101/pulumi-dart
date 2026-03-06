@@ -85,7 +85,7 @@ class MulticastDomainActivationNetworkservicesState {
   /// [trafficSpec] Specifies the traffic volume and multicast group scale parameters that are
   /// [uniqueId] The Google-generated UUID for the resource. This value is
   /// [updateTime] The timestamp when the multicast domain activation was most
-  MulticastDomainActivationNetworkservicesState({
+  const MulticastDomainActivationNetworkservicesState({
     this.adminNetwork,
     this.createTime,
     this.description,

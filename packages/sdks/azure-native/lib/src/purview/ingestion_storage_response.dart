@@ -15,7 +15,7 @@ class IngestionStorageResponse {
   /// [id] Gets or sets the Id.
   /// [primaryEndpoint] Gets or sets the primary endpoint.
   /// [publicNetworkAccess] Gets or sets the public network access setting
-  IngestionStorageResponse({
+  const IngestionStorageResponse({
     required this.id,
     required this.primaryEndpoint,
     this.publicNetworkAccess,

@@ -25,7 +25,7 @@ class DataflowEndpointKafkaAuthenticationResponse {
   /// [systemAssignedManagedIdentitySettings] System-assigned managed identity authentication.
   /// [userAssignedManagedIdentitySettings] User-assigned managed identity authentication.
   /// [x509CertificateSettings] X.509 certificate authentication.
-  DataflowEndpointKafkaAuthenticationResponse({
+  const DataflowEndpointKafkaAuthenticationResponse({
     required this.method,
     this.saslSettings,
     this.systemAssignedManagedIdentitySettings,

@@ -35,7 +35,7 @@ class ChannelArgs {
   /// [resourceName] The name of the Bot resource.
   /// [sku] Gets or sets the SKU of the resource.
   /// [tags] Contains resource tags defined as key/value pairs.
-  ChannelArgs({
+  const ChannelArgs({
     this.channelName,
     this.kind,
     this.location,

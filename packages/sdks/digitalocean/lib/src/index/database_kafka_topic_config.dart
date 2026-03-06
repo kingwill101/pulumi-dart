@@ -75,7 +75,7 @@ class DatabaseKafkaTopicConfig {
   /// [segmentIndexBytes] The maximum size, in bytes, of the offset index.
   /// [segmentJitterMs] The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
   /// [segmentMs] The maximum time, in ms, before the topic log will flush to disk.
-  DatabaseKafkaTopicConfig({
+  const DatabaseKafkaTopicConfig({
     this.cleanupPolicy,
     this.compressionType,
     this.deleteRetentionMs,

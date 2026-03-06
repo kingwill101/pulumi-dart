@@ -9,7 +9,7 @@ class RelationshipNoteResponse {
 
   /// Creates a new [RelationshipNoteResponse].
   /// [type] The type of relationship between the source and target SPDX elements
-  RelationshipNoteResponse({
+  const RelationshipNoteResponse({
     required this.type,
   });
 

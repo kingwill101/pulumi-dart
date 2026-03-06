@@ -67,7 +67,7 @@ class SigningJobState {
   /// [source] The S3 bucket that contains the object to sign. See Source below for details.
   /// [status] Status of the signing job.
   /// [statusReason] String value that contains the status reason.
-  SigningJobState({
+  const SigningJobState({
     this.completedAt,
     this.createdAt,
     this.destination,

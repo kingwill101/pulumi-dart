@@ -25,7 +25,7 @@ class IngressSettings {
   /// [sendTimeoutInSeconds] Ingress send time out in seconds.
   /// [sessionAffinity] Type of the affinity, set this to Cookie to enable session affinity.
   /// [sessionCookieMaxAge] Time in seconds until the cookie expires.
-  IngressSettings({
+  const IngressSettings({
     this.backendProtocol,
     this.clientAuth,
     this.readTimeoutInSeconds,

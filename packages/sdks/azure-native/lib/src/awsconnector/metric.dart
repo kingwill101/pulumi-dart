@@ -16,7 +16,7 @@ class Metric {
   /// [dimensions] The metric dimensions that you want to be used for the metric that the alarm will watch.
   /// [metricName] The name of the metric that you want the alarm to watch. This is a required field.
   /// [namespace] The namespace of the metric that the alarm will watch.
-  Metric({
+  const Metric({
     this.dimensions,
     this.metricName,
     this.namespace,

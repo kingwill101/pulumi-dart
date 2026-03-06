@@ -22,7 +22,7 @@ class TimeSeriesDatabaseConnectionArgs {
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
   /// [timeSeriesDatabaseConnectionName] Name of time series database connection.
-  TimeSeriesDatabaseConnectionArgs({
+  const TimeSeriesDatabaseConnectionArgs({
     this.properties,
     required this.resourceGroupName,
     required this.resourceName,

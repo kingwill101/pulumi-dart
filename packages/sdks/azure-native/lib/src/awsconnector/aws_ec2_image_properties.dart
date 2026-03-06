@@ -119,7 +119,7 @@ class AwsEc2ImageProperties {
   /// [tpmSupport] &lt;p&gt;If the image is configured for NitroTPM support, the value is &lt;code&gt;v2.0&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'&gt;NitroTPM&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   /// [usageOperation] &lt;p&gt;The operation of the Amazon EC2 instance and the billing code that is associated with the AMI. &lt;code&gt;usageOperation&lt;/code&gt; corresponds to the &lt;a href='https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#Lineitem-details-O-Operation'&gt;lineitem/Operation&lt;/a&gt; column on your Amazon Web Services Cost and Usage Report and in the &lt;a href='https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html'&gt;Amazon Web Services Price List API&lt;/a&gt;. You can view these fields on the &lt;b&gt;Instances&lt;/b&gt; or &lt;b&gt;AMIs&lt;/b&gt; pages in the Amazon EC2 console, or in the responses that are returned by the &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html'&gt;DescribeImages&lt;/a&gt; command in the Amazon EC2 API, or the &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html'&gt;describe-images&lt;/a&gt; command in the CLI.&lt;/p&gt;
   /// [virtualizationType] &lt;p&gt;The type of virtualization of the AMI.&lt;/p&gt;
-  AwsEc2ImageProperties({
+  const AwsEc2ImageProperties({
     this.architecture,
     this.blockDeviceMappings,
     this.bootMode,

@@ -43,7 +43,7 @@ class RoutingCosmosDBSqlApiProperties {
   /// [resourceGroup] The name of the resource group of the cosmos DB account.
   /// [secondaryKey] The secondary key of the cosmos DB account.
   /// [subscriptionId] The subscription identifier of the cosmos DB account.
-  RoutingCosmosDBSqlApiProperties({
+  const RoutingCosmosDBSqlApiProperties({
     this.authenticationType,
     required this.containerName,
     required this.databaseName,

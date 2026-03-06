@@ -15,7 +15,7 @@ class GetConversationDialogflowV2beta1Args {
   /// [conversationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConversationDialogflowV2beta1Args({
+  const GetConversationDialogflowV2beta1Args({
     required this.conversationId,
     required this.location,
     this.project,

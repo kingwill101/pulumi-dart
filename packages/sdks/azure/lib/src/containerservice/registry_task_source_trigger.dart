@@ -27,7 +27,7 @@ class RegistryTaskSourceTrigger {
   /// [name] The name which should be used for this trigger.
   /// [repositoryUrl] The full URL to the source code repository.
   /// [sourceType] The type of the source control service. Possible values are `Github` and `VisualStudioTeamService`.
-  RegistryTaskSourceTrigger({
+  const RegistryTaskSourceTrigger({
     this.authentication,
     this.branch,
     this.enabled,

@@ -15,7 +15,7 @@ class GetCostCategoryArgs {
   /// Creates a new [GetCostCategoryArgs].
   /// [costCategoryArn] Unique name for the Cost Category.
   /// [tags] Configuration block for the specific `Tag` to use for `Expression`. See below.
-  GetCostCategoryArgs({
+  const GetCostCategoryArgs({
     required this.costCategoryArn,
     this.tags,
   });

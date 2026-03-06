@@ -10,7 +10,7 @@ class PluginInstanceAuthConfigGoogleServiceAccountConfig {
 
   /// Creates a new [PluginInstanceAuthConfigGoogleServiceAccountConfig].
   /// [serviceAccount] The service account to be used for authenticating request.
-  PluginInstanceAuthConfigGoogleServiceAccountConfig({
+  const PluginInstanceAuthConfigGoogleServiceAccountConfig({
     required this.serviceAccount,
   });
 

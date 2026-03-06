@@ -10,7 +10,7 @@ class Role {
 
   /// Creates a new [Role].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  Role({
+  const Role({
     this.predefinedRole,
   });
 

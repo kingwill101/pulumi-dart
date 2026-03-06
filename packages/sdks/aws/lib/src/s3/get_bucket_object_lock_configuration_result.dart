@@ -22,7 +22,7 @@ class GetBucketObjectLockConfigurationResult {
   /// [objectLockEnabled] Indicates whether this bucket has an Object Lock configuration enabled.
   /// [region] Required.
   /// [rules] Object lock rule for the specified object. See Rule below.
-  GetBucketObjectLockConfigurationResult({
+  const GetBucketObjectLockConfigurationResult({
     required this.bucket,
     this.expectedBucketOwner,
     required this.id,

@@ -23,7 +23,7 @@ class GetBackupPoliciesPolicy {
   /// [preferredBackupPeriods] DBCluster Backup period.
   /// [preferredBackupTime] Backup Time, UTC time.
   /// [status] The status of the resource.
-  GetBackupPoliciesPolicy({
+  const GetBackupPoliciesPolicy({
     required this.backupRetentionPeriod,
     required this.dbClusterId,
     required this.id,

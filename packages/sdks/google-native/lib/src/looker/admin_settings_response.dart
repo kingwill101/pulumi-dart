@@ -9,7 +9,7 @@ class AdminSettingsResponse {
 
   /// Creates a new [AdminSettingsResponse].
   /// [allowedEmailDomains] Email domain allowlist for the instance.
-  AdminSettingsResponse({
+  const AdminSettingsResponse({
     required this.allowedEmailDomains,
   });
 

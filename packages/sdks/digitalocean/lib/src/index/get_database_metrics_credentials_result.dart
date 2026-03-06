@@ -14,7 +14,7 @@ class GetDatabaseMetricsCredentialsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [password] The password for accessing database metrics. This is marked as sensitive.
   /// [username] The username for accessing database metrics.
-  GetDatabaseMetricsCredentialsResult({
+  const GetDatabaseMetricsCredentialsResult({
     required this.id,
     required this.password,
     required this.username,

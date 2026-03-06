@@ -15,7 +15,7 @@ class GetInstanceGroupComputeBetaArgs {
   /// [instanceGroup] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstanceGroupComputeBetaArgs({
+  const GetInstanceGroupComputeBetaArgs({
     required this.instanceGroup,
     this.project,
     required this.zone,

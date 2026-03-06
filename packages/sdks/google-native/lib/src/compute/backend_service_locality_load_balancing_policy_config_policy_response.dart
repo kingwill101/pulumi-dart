@@ -9,7 +9,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse {
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse].
   /// [name] The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
-  BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse({
+  const BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse({
     required this.name,
   });
 

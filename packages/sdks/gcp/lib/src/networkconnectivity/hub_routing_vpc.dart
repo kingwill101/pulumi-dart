@@ -8,7 +8,7 @@ class HubRoutingVpc {
 
   /// Creates a new [HubRoutingVpc].
   /// [uri] The URI of the VPC network.
-  HubRoutingVpc({
+  const HubRoutingVpc({
     this.uri,
   });
 

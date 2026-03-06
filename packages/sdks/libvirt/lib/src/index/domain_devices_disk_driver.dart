@@ -70,7 +70,7 @@ class DomainDevicesDiskDriver {
   /// [queues] Configures the number of queues for the disk driver, enhancing parallel processing.
   /// [rerrorPolicy] Sets the policy for handling read errors encountered by the disk driver.
   /// [type] Configures the driver type to control how the disk interfaces with the system.
-  DomainDevicesDiskDriver({
+  const DomainDevicesDiskDriver({
     this.ats,
     this.cache,
     this.copyOnRead,

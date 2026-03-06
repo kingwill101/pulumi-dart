@@ -12,7 +12,7 @@ class MetadataFilterLabelMatchResponseComputeV1 {
   /// Creates a new [MetadataFilterLabelMatchResponseComputeV1].
   /// [name] Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
   /// [value] The value of the label must match the specified value. value can have a maximum length of 1024 characters.
-  MetadataFilterLabelMatchResponseComputeV1({
+  const MetadataFilterLabelMatchResponseComputeV1({
     required this.name,
     required this.value,
   });

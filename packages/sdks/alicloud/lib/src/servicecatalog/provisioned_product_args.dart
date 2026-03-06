@@ -34,7 +34,7 @@ class ProvisionedProductArgs {
   /// [provisionedProductName] The name of the instance.The length is 1~128 characters.
   /// [stackRegionId] The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  ProvisionedProductArgs({
+  const ProvisionedProductArgs({
     this.parameters,
     this.portfolioId,
     required this.productId,

@@ -27,7 +27,7 @@ class ListCatalogDeviceInsightsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [skip] The number of result items to skip.
   /// [top] The number of result items to return.
-  ListCatalogDeviceInsightsArgs({
+  const ListCatalogDeviceInsightsArgs({
     required this.catalogName,
     this.filter,
     this.maxpagesize,

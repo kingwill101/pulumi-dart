@@ -26,7 +26,7 @@ class BareMetalLoadBalancerConfig {
   /// [metalLbConfig] Configuration for MetalLB load balancers.
   /// [portConfig] Configures the ports that the load balancer will listen on.
   /// [vipConfig] The VIPs used by the load balancer.
-  BareMetalLoadBalancerConfig({
+  const BareMetalLoadBalancerConfig({
     this.bgpLbConfig,
     this.manualLbConfig,
     this.metalLbConfig,

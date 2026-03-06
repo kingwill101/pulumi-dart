@@ -12,7 +12,7 @@ class ManualCertMethod {
   /// Creates a new [ManualCertMethod].
   /// [secretName] secret containing TLS cert.
   /// [secretNamespace] namespace of secret; omit to use default namespace.
-  ManualCertMethod({
+  const ManualCertMethod({
     required this.secretName,
     this.secretNamespace,
   });

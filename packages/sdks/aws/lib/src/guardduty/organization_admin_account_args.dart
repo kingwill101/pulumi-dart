@@ -15,7 +15,7 @@ class OrganizationAdminAccountArgs {
   /// Creates a new [OrganizationAdminAccountArgs].
   /// [adminAccountId] AWS account identifier to designate as a delegated administrator for GuardDuty.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationAdminAccountArgs({
+  const OrganizationAdminAccountArgs({
     required this.adminAccountId,
     this.region,
   });

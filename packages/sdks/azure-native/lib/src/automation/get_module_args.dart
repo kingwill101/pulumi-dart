@@ -18,7 +18,7 @@ class GetModuleArgs {
   /// [automationAccountName] The name of the automation account.
   /// [moduleName] The module name.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetModuleArgs({
+  const GetModuleArgs({
     required this.automationAccountName,
     required this.moduleName,
     required this.resourceGroupName,

@@ -16,7 +16,7 @@ class AddonHcxPropertiesResponse {
   /// [addonType] Addon type
   /// [offer] The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
   /// [provisioningState] The state of the addon provisioning
-  AddonHcxPropertiesResponse({
+  const AddonHcxPropertiesResponse({
     required this.addonType,
     required this.offer,
     required this.provisioningState,

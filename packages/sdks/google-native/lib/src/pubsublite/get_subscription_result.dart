@@ -19,7 +19,7 @@ class GetSubscriptionResult {
   /// [exportConfig] If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
   /// [name] The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
   /// [topic] The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.deliveryConfig,
     required this.exportConfig,
     required this.name,

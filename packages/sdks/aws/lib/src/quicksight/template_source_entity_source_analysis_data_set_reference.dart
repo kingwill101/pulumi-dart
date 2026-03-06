@@ -11,7 +11,7 @@ class TemplateSourceEntitySourceAnalysisDataSetReference {
   /// Creates a new [TemplateSourceEntitySourceAnalysisDataSetReference].
   /// [dataSetArn] Dataset Amazon Resource Name (ARN).
   /// [dataSetPlaceholder] Dataset placeholder.
-  TemplateSourceEntitySourceAnalysisDataSetReference({
+  const TemplateSourceEntitySourceAnalysisDataSetReference({
     required this.dataSetArn,
     required this.dataSetPlaceholder,
   });

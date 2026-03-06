@@ -23,7 +23,7 @@ class CustomClassArgs {
   /// [location] Optional.
   /// [name] The resource name of the custom class.
   /// [project] Optional.
-  CustomClassArgs({
+  const CustomClassArgs({
     required this.customClassId,
     this.items,
     this.location,

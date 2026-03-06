@@ -11,7 +11,7 @@ class AppTemplateContainerStartupProbeHeader {
   /// Creates a new [AppTemplateContainerStartupProbeHeader].
   /// [name] The HTTP Header Name.
   /// [value] The HTTP Header value.
-  AppTemplateContainerStartupProbeHeader({
+  const AppTemplateContainerStartupProbeHeader({
     required this.name,
     required this.value,
   });

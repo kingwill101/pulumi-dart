@@ -24,7 +24,7 @@ class GetReplicationNetworkMappingResult {
   /// [name] Resource Name
   /// [properties] The Network Mapping Properties.
   /// [type] Resource Type
-  GetReplicationNetworkMappingResult({
+  const GetReplicationNetworkMappingResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

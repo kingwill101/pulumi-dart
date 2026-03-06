@@ -16,7 +16,7 @@ class LogAnalyticsDestinationResponse {
   /// [name] A friendly name for the destination.
   /// [workspaceId] The Customer ID of the Log Analytics workspace.
   /// [workspaceResourceId] The resource ID of the Log Analytics workspace.
-  LogAnalyticsDestinationResponse({
+  const LogAnalyticsDestinationResponse({
     this.name,
     required this.workspaceId,
     this.workspaceResourceId,

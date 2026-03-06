@@ -19,7 +19,7 @@ class QuotaScheduleArgs {
   /// [nickname] The nickname of level-1 compute quota.
   /// [scheduleLists] schedule list See `schedule_list` below.
   /// [timezone] Time zone, reference value: UTC +8
-  QuotaScheduleArgs({
+  const QuotaScheduleArgs({
     required this.nickname,
     this.scheduleLists,
     required this.timezone,

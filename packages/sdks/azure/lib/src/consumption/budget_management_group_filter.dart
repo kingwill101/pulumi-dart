@@ -13,7 +13,7 @@ class BudgetManagementGroupFilter {
   /// Creates a new [BudgetManagementGroupFilter].
   /// [dimensions] One or more `dimension` blocks as defined below to filter the budget on.
   /// [tags] One or more `tag` blocks as defined below to filter the budget on.
-  BudgetManagementGroupFilter({
+  const BudgetManagementGroupFilter({
     this.dimensions,
     this.tags,
   });

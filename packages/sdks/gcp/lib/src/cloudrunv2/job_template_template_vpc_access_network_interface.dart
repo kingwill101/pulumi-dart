@@ -18,7 +18,7 @@ class JobTemplateTemplateVpcAccessNetworkInterface {
   /// [network] The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
   /// [subnetwork] The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
   /// [tags] Network tags applied to this Cloud Run job.
-  JobTemplateTemplateVpcAccessNetworkInterface({
+  const JobTemplateTemplateVpcAccessNetworkInterface({
     this.network,
     this.subnetwork,
     this.tags,

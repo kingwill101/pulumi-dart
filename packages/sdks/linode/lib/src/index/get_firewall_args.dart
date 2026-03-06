@@ -12,7 +12,7 @@ class GetFirewallArgs {
 
   /// Creates a new [GetFirewallArgs].
   /// [id] The Firewall's ID.
-  GetFirewallArgs({
+  const GetFirewallArgs({
     required this.id,
   });
 

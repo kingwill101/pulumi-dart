@@ -28,7 +28,7 @@ class IssuePropertiesResponse {
   /// [severity] The issue severity
   /// [status] The issue status
   /// [title] The issue title
-  IssuePropertiesResponse({
+  const IssuePropertiesResponse({
     required this.impactTime,
     required this.investigations,
     required this.investigationsCount,

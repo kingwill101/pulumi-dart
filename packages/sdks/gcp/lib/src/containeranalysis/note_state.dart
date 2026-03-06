@@ -52,7 +52,7 @@ class NoteState {
   /// [relatedUrls] URLs associated with this note and related metadata.
   /// [shortDescription] A one sentence description of the note.
   /// [updateTime] The time this note was last updated.
-  NoteState({
+  const NoteState({
     this.attestationAuthority,
     this.createTime,
     this.expirationTime,

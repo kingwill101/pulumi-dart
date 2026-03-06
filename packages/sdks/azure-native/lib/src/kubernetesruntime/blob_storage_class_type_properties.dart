@@ -16,7 +16,7 @@ class BlobStorageClassTypeProperties {
   /// [azureStorageAccountKey] Azure Storage Account Key
   /// [azureStorageAccountName] Azure Storage Account Name
   /// [type] Type of a storage class
-  BlobStorageClassTypeProperties({
+  const BlobStorageClassTypeProperties({
     required this.azureStorageAccountKey,
     required this.azureStorageAccountName,
     required this.type,

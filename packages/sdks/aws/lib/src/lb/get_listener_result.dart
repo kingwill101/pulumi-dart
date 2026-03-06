@@ -33,7 +33,7 @@ class GetListenerResult {
   /// [region] Required.
   /// [sslPolicy] Required.
   /// [tags] Required.
-  GetListenerResult({
+  const GetListenerResult({
     required this.alpnPolicy,
     required this.arn,
     required this.certificateArn,

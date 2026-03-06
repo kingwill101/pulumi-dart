@@ -24,7 +24,7 @@ class GetApplicationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The Batch application name.
   /// [resourceGroupName] Required.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.accountName,
     required this.allowUpdates,
     required this.defaultVersion,

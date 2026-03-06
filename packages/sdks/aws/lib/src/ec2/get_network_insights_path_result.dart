@@ -54,7 +54,7 @@ class GetNetworkInsightsPathResult {
   /// [sourceArn] ARN of the source.
   /// [sourceIp] IP address of the AWS resource that is the source of the path.
   /// [tags] Map of tags assigned to the resource.
-  GetNetworkInsightsPathResult({
+  const GetNetworkInsightsPathResult({
     required this.arn,
     required this.destination,
     required this.destinationArn,

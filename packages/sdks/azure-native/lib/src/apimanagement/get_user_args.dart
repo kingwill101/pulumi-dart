@@ -18,7 +18,7 @@ class GetUserArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
-  GetUserArgs({
+  const GetUserArgs({
     required this.resourceGroupName,
     required this.serviceName,
     required this.userId,

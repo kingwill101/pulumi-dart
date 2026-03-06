@@ -15,7 +15,7 @@ class S3BucketSource {
   /// [s3Bucket] The S3 bucket that is being imported from.
   /// [s3BucketOwner] The account number of the S3 bucket that is being imported from. If the bucket is owned by the requester this is optional.
   /// [s3KeyPrefix] The key prefix shared by all S3 Objects that are being imported.
-  S3BucketSource({
+  const S3BucketSource({
     this.s3Bucket,
     this.s3BucketOwner,
     this.s3KeyPrefix,

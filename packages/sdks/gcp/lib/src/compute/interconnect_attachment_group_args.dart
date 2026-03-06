@@ -43,7 +43,7 @@ class InterconnectAttachmentGroupArgs {
   /// [interconnectGroup] The URL of an InterconnectGroup that groups these Attachments'
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be
   /// [project] The ID of the project in which the resource belongs.
-  InterconnectAttachmentGroupArgs({
+  const InterconnectAttachmentGroupArgs({
     this.attachments,
     this.description,
     required this.intent,

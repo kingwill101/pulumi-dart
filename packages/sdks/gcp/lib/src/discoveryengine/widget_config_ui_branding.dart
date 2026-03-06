@@ -10,7 +10,7 @@ class WidgetConfigUiBranding {
 
   /// Creates a new [WidgetConfigUiBranding].
   /// [logo] Logo image.
-  WidgetConfigUiBranding({
+  const WidgetConfigUiBranding({
     this.logo,
   });
 

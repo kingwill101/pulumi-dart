@@ -12,7 +12,7 @@ class HighAvailability {
   /// Creates a new [HighAvailability].
   /// [mode] High availability mode for a server.
   /// [standbyAvailabilityZone] Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
-  HighAvailability({
+  const HighAvailability({
     this.mode,
     this.standbyAvailabilityZone,
   });

@@ -16,7 +16,7 @@ class KeyVaultParameterReference {
   /// [keyVault] Azure Key Vault reference.
   /// [secretName] Azure Key Vault secret name.
   /// [secretVersion] Azure Key Vault secret version.
-  KeyVaultParameterReference({
+  const KeyVaultParameterReference({
     required this.keyVault,
     required this.secretName,
     this.secretVersion,

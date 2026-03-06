@@ -30,7 +30,7 @@ class Subject {
   /// [postalCode] The postal code of the subject.
   /// [province] The province, territory, or regional state of the subject.
   /// [streetAddress] The street address of the subject.
-  Subject({
+  const Subject({
     this.commonName,
     this.countryCode,
     this.locality,

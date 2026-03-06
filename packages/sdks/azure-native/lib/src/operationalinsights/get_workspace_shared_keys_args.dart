@@ -15,7 +15,7 @@ class GetWorkspaceSharedKeysArgs {
   /// Creates a new [GetWorkspaceSharedKeysArgs].
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
   /// [workspaceName] Name of the Log Analytics Workspace.
-  GetWorkspaceSharedKeysArgs({
+  const GetWorkspaceSharedKeysArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

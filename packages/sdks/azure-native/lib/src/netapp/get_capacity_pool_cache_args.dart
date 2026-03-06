@@ -21,7 +21,7 @@ class GetCapacityPoolCacheArgs {
   /// [cacheName] The name of the cache resource.
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCapacityPoolCacheArgs({
+  const GetCapacityPoolCacheArgs({
     required this.accountName,
     required this.cacheName,
     required this.poolName,

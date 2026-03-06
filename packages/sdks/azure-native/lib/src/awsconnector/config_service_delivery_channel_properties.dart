@@ -31,7 +31,7 @@ class ConfigServiceDeliveryChannelProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ConfigServiceDeliveryChannelProperties({
+  const ConfigServiceDeliveryChannelProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

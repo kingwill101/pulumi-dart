@@ -12,7 +12,7 @@ class LinkResponse {
   /// Creates a new [LinkResponse].
   /// [linkType] Type of link.
   /// [linkUrl] Url of the link.
-  LinkResponse({
+  const LinkResponse({
     required this.linkType,
     required this.linkUrl,
   });

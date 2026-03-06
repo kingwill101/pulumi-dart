@@ -19,7 +19,7 @@ class GetRouteSpec {
   /// [httpRoutes] Required.
   /// [priority] Required.
   /// [tcpRoutes] Required.
-  GetRouteSpec({
+  const GetRouteSpec({
     required this.grpcRoutes,
     required this.http2Routes,
     required this.httpRoutes,

@@ -24,7 +24,7 @@ class NetworkState {
   /// [ensRegionId] Ens node IDExample value: cn-beijing-telecom.
   /// [networkName] Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
   /// [status] The status of the network instance. Pending: Configuring, Available: Available.
-  NetworkState({
+  const NetworkState({
     this.cidrBlock,
     this.createTime,
     this.description,

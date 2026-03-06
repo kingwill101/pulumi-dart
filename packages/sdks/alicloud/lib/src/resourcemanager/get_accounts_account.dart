@@ -47,7 +47,7 @@ class GetAccountsAccount {
   /// [status] The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of the member.
-  GetAccountsAccount({
+  const GetAccountsAccount({
     required this.accountId,
     required this.accountName,
     required this.deletionStatus,

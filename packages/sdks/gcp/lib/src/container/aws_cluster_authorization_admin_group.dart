@@ -8,7 +8,7 @@ class AwsClusterAuthorizationAdminGroup {
 
   /// Creates a new [AwsClusterAuthorizationAdminGroup].
   /// [group] The name of the group, e.g. `my-group@domain.com`.
-  AwsClusterAuthorizationAdminGroup({
+  const AwsClusterAuthorizationAdminGroup({
     required this.group,
   });
 

@@ -17,7 +17,7 @@ class GetInstanceQueryInsightsConfig {
   /// [queryStringLength] Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
   /// [recordApplicationTags] Record application tags for an instance. This flag is turned "on" by default.
   /// [recordClientAddress] Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
-  GetInstanceQueryInsightsConfig({
+  const GetInstanceQueryInsightsConfig({
     required this.queryPlansPerMinute,
     required this.queryStringLength,
     required this.recordApplicationTags,

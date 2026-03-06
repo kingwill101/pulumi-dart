@@ -86,7 +86,7 @@ class RouterState {
   /// [tenantId] The owner of the floating IP. Required if admin wants
   /// [valueSpecs] Map of additional driver-specific options.
   /// [vendorOptions] Map of additional vendor-specific options.
-  RouterState({
+  const RouterState({
     this.adminStateUp,
     this.allTags,
     this.availabilityZoneHints,

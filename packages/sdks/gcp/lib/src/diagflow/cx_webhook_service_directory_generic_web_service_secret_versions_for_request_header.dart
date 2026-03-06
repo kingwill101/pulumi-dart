@@ -12,7 +12,7 @@ class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader {
   /// Creates a new [CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader].
   /// [key] The identifier for this object. Format specified above.
   /// [secretVersion] The SecretManager secret version resource storing the header value.
-  CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader({
+  const CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader({
     required this.key,
     required this.secretVersion,
   });

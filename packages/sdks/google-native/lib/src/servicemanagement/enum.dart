@@ -28,7 +28,7 @@ class Enum {
   /// [options] Protocol buffer options.
   /// [sourceContext] The source context.
   /// [syntax] The source syntax.
-  Enum({
+  const Enum({
     this.edition,
     this.enumvalue,
     this.name,

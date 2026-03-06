@@ -10,7 +10,7 @@ class ListApplicationAllowedUpgradePlansResult {
 
   /// Creates a new [ListApplicationAllowedUpgradePlansResult].
   /// [value] The array of plans.
-  ListApplicationAllowedUpgradePlansResult({
+  const ListApplicationAllowedUpgradePlansResult({
     this.value,
   });
 

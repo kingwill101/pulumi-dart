@@ -10,7 +10,7 @@ class RowLayoutResponse {
 
   /// Creates a new [RowLayoutResponse].
   /// [rows] The rows of content to display.
-  RowLayoutResponse({
+  const RowLayoutResponse({
     required this.rows,
   });
 

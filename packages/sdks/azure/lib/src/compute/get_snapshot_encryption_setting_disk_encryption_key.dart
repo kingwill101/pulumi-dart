@@ -9,7 +9,7 @@ class GetSnapshotEncryptionSettingDiskEncryptionKey {
   /// Creates a new [GetSnapshotEncryptionSettingDiskEncryptionKey].
   /// [secretUrl] Required.
   /// [sourceVaultId] Required.
-  GetSnapshotEncryptionSettingDiskEncryptionKey({
+  const GetSnapshotEncryptionSettingDiskEncryptionKey({
     required this.secretUrl,
     required this.sourceVaultId,
   });

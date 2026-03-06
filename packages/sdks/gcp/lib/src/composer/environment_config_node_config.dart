@@ -45,7 +45,7 @@ class EnvironmentConfigNodeConfig {
   /// [subnetwork] The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
   /// [tags] The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
   /// [zone] The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  EnvironmentConfigNodeConfig({
+  const EnvironmentConfigNodeConfig({
     this.composerInternalIpv4CidrBlock,
     this.composerNetworkAttachment,
     this.diskSizeGb,

@@ -15,7 +15,7 @@ class ConnectionArgs {
   /// Creates a new [ConnectionArgs].
   /// [connectionPrefix] Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
   /// [dbClusterId] The Id of cluster that can run database.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.connectionPrefix,
     required this.dbClusterId,
   });

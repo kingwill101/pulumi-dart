@@ -11,7 +11,7 @@ class GatewayRouteSpecHttpRouteActionRewritePrefix {
   /// Creates a new [GatewayRouteSpecHttpRouteActionRewritePrefix].
   /// [defaultPrefix] Default prefix used to replace the incoming route prefix when rewritten. Valid values: `ENABLED`, `DISABLED`.
   /// [value] Value used to replace the incoming route prefix when rewritten.
-  GatewayRouteSpecHttpRouteActionRewritePrefix({
+  const GatewayRouteSpecHttpRouteActionRewritePrefix({
     this.defaultPrefix,
     this.value,
   });

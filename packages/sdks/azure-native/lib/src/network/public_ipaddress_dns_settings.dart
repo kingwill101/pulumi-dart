@@ -19,7 +19,7 @@ class PublicIPAddressDnsSettings {
   /// [domainNameLabelScope] The domain name label scope. If a domain name label and a domain name label scope are specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system with a hashed value includes in FQDN.
   /// [fqdn] The Fully Qualified Domain Name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
   /// [reverseFqdn] The reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
-  PublicIPAddressDnsSettings({
+  const PublicIPAddressDnsSettings({
     this.domainNameLabel,
     this.domainNameLabelScope,
     this.fqdn,

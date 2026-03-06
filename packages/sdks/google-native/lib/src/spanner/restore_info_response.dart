@@ -13,7 +13,7 @@ class RestoreInfoResponse {
   /// Creates a new [RestoreInfoResponse].
   /// [backupInfo] Information about the backup used to restore the database. The backup may no longer exist.
   /// [sourceType] The type of the restore source.
-  RestoreInfoResponse({
+  const RestoreInfoResponse({
     required this.backupInfo,
     required this.sourceType,
   });

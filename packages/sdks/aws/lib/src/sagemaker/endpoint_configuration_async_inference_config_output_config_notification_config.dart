@@ -14,7 +14,7 @@ class EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig {
   /// [errorTopic] SNS topic to post a notification to when inference fails. If no topic is provided, no notification is sent on failure.
   /// [includeInferenceResponseIns] SNS topics where you want the inference response to be included. Valid values are `SUCCESS_NOTIFICATION_TOPIC` and `ERROR_NOTIFICATION_TOPIC`.
   /// [successTopic] SNS topic to post a notification to when inference completes successfully. If no topic is provided, no notification is sent on success.
-  EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig({
+  const EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig({
     this.errorTopic,
     this.includeInferenceResponseIns,
     this.successTopic,

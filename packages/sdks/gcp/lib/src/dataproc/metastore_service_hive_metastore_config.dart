@@ -31,7 +31,7 @@ class MetastoreServiceHiveMetastoreConfig {
   /// [endpointProtocol] The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
   /// [kerberosConfig] Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
   /// [version] The Hive metastore schema version.
-  MetastoreServiceHiveMetastoreConfig({
+  const MetastoreServiceHiveMetastoreConfig({
     this.auxiliaryVersions,
     this.configOverrides,
     this.endpointProtocol,

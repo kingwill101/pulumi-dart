@@ -10,7 +10,7 @@ class GetLaunchTemplateInstanceMarketOption {
   /// Creates a new [GetLaunchTemplateInstanceMarketOption].
   /// [marketType] Required.
   /// [spotOptions] Required.
-  GetLaunchTemplateInstanceMarketOption({
+  const GetLaunchTemplateInstanceMarketOption({
     required this.marketType,
     required this.spotOptions,
   });

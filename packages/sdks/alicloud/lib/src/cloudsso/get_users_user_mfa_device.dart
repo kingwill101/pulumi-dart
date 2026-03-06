@@ -17,7 +17,7 @@ class GetUsersUserMfaDevice {
   /// [deviceName] The MFA Device Name.
   /// [deviceType] The MFA Device Type.
   /// [effectiveTime] The Effective Time of MFA Device.
-  GetUsersUserMfaDevice({
+  const GetUsersUserMfaDevice({
     required this.deviceId,
     required this.deviceName,
     required this.deviceType,

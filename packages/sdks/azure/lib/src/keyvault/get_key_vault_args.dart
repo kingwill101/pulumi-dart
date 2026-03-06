@@ -15,7 +15,7 @@ class GetKeyVaultArgs {
   /// Creates a new [GetKeyVaultArgs].
   /// [name] Specifies the name of the Key Vault.
   /// [resourceGroupName] The name of the Resource Group in which the Key Vault exists.
-  GetKeyVaultArgs({
+  const GetKeyVaultArgs({
     required this.name,
     required this.resourceGroupName,
   });

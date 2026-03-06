@@ -16,7 +16,7 @@ class AzureDatabricksDeltaLakeExportCommandResponse {
   /// [dateFormat] Specify the date format for the csv in Azure Databricks Delta Lake Copy. Type: string (or Expression with resultType string).
   /// [timestampFormat] Specify the timestamp format for the csv in Azure Databricks Delta Lake Copy. Type: string (or Expression with resultType string).
   /// [type] The export setting type.
-  AzureDatabricksDeltaLakeExportCommandResponse({
+  const AzureDatabricksDeltaLakeExportCommandResponse({
     this.dateFormat,
     this.timestampFormat,
     required this.type,

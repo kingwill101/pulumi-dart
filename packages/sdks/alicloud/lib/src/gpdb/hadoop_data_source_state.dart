@@ -59,7 +59,7 @@ class HadoopDataSourceState {
   /// [mapReduceConf] The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
   /// [status] Data Source Status
   /// [yarnConf] The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
-  HadoopDataSourceState({
+  const HadoopDataSourceState({
     this.createTime,
     this.dataSourceDescription,
     this.dataSourceId,

@@ -11,7 +11,7 @@ class BackendServiceFabricClusterServerX509Name {
   /// Creates a new [BackendServiceFabricClusterServerX509Name].
   /// [issuerCertificateThumbprint] The thumbprint for the issuer of the certificate.
   /// [name] The common name of the certificate.
-  BackendServiceFabricClusterServerX509Name({
+  const BackendServiceFabricClusterServerX509Name({
     required this.issuerCertificateThumbprint,
     required this.name,
   });

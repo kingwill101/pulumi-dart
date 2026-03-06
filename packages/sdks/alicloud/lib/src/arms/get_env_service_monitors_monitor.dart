@@ -26,7 +26,7 @@ class GetEnvServiceMonitorsMonitor {
   /// [namespace] The namespace.
   /// [regionId] The region ID.
   /// [status] The status of the ServiceMonitor.
-  GetEnvServiceMonitorsMonitor({
+  const GetEnvServiceMonitorsMonitor({
     required this.configYaml,
     required this.envServiceMonitorName,
     required this.environmentId,

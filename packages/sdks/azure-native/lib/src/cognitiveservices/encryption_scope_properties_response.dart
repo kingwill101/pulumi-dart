@@ -19,7 +19,7 @@ class EncryptionScopePropertiesResponse {
   /// [keyVaultProperties] Properties of KeyVault
   /// [provisioningState] Gets the status of the resource at the time the operation was called.
   /// [state] The encryptionScope state.
-  EncryptionScopePropertiesResponse({
+  const EncryptionScopePropertiesResponse({
     this.keySource,
     this.keyVaultProperties,
     required this.provisioningState,

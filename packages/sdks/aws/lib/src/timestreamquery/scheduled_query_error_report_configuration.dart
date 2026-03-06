@@ -9,7 +9,7 @@ class ScheduledQueryErrorReportConfiguration {
 
   /// Creates a new [ScheduledQueryErrorReportConfiguration].
   /// [s3Configuration] Configuration block for the S3 configuration for the error reports. See below.
-  ScheduledQueryErrorReportConfiguration({
+  const ScheduledQueryErrorReportConfiguration({
     required this.s3Configuration,
   });
 

@@ -13,7 +13,7 @@ class GetBudgetBillingbudgetsV1beta1Args {
   /// Creates a new [GetBudgetBillingbudgetsV1beta1Args].
   /// [billingAccountId] Required.
   /// [budgetId] Required.
-  GetBudgetBillingbudgetsV1beta1Args({
+  const GetBudgetBillingbudgetsV1beta1Args({
     required this.billingAccountId,
     required this.budgetId,
   });

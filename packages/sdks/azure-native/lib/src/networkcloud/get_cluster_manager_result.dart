@@ -68,7 +68,7 @@ class GetClusterManagerResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmSize] Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
-  GetClusterManagerResult({
+  const GetClusterManagerResult({
     this.analyticsWorkspaceId,
     this.availabilityZones,
     required this.azureApiVersion,

@@ -33,7 +33,7 @@ class AppCheckDeviceCheckConfigState {
   /// [privateKeySet] Whether the privateKey field was previously set. Since App Check will never return the
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
-  AppCheckDeviceCheckConfigState({
+  const AppCheckDeviceCheckConfigState({
     this.appId,
     this.keyId,
     this.name,

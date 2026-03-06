@@ -20,7 +20,7 @@ class FastUdpAppPoolMember {
   /// [port] port number of serviceport to be used for FAST-Generated Pool.
   /// [priorityGroup] priorityGroup value to be used for FAST-Generated Pool.
   /// [shareNodes] shareNodes value to be used for FAST-Generated Pool.
-  FastUdpAppPoolMember({
+  const FastUdpAppPoolMember({
     required this.addresses,
     this.connectionLimit,
     this.port,

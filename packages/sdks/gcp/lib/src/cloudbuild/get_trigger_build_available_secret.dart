@@ -9,7 +9,7 @@ class GetTriggerBuildAvailableSecret {
 
   /// Creates a new [GetTriggerBuildAvailableSecret].
   /// [secretManagers] Pairs a secret environment variable with a SecretVersion in Secret Manager.
-  GetTriggerBuildAvailableSecret({
+  const GetTriggerBuildAvailableSecret({
     required this.secretManagers,
   });
 

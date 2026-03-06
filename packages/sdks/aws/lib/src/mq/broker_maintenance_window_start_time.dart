@@ -14,7 +14,7 @@ class BrokerMaintenanceWindowStartTime {
   /// [dayOfWeek] Day of the week, e.g., `MONDAY`, `TUESDAY`, or `WEDNESDAY`.
   /// [timeOfDay] Time, in 24-hour format, e.g., `02:00`.
   /// [timeZone] Time zone in either the Country/City format or the UTC offset format, e.g., `CET`.
-  BrokerMaintenanceWindowStartTime({
+  const BrokerMaintenanceWindowStartTime({
     required this.dayOfWeek,
     required this.timeOfDay,
     required this.timeZone,

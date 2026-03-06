@@ -15,7 +15,7 @@ class GetRegionCommitmentComputeV1Args {
   /// [commitment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionCommitmentComputeV1Args({
+  const GetRegionCommitmentComputeV1Args({
     required this.commitment,
     this.project,
     required this.region,

@@ -24,7 +24,7 @@ class GetTrafficMirrorFiltersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
   /// [trafficMirrorFilterName] The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-  GetTrafficMirrorFiltersArgs({
+  const GetTrafficMirrorFiltersArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

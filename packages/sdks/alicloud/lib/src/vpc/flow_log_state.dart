@@ -65,7 +65,7 @@ class FlowLogState {
   /// [tags] The tag of the current instance resource.
   /// [trafficPaths] The collected flow path. Value:
   /// [trafficType] The type of traffic collected. Valid values:
-  FlowLogState({
+  const FlowLogState({
     this.aggregationInterval,
     this.businessStatus,
     this.createTime,

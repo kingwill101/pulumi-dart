@@ -59,7 +59,7 @@ class GetImageResult {
   /// [totalSize] The total size of the image in all available regions.
   /// [type] How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
   /// [vendor] The upstream distribution vendor. `None` for private Images.
-  GetImageResult({
+  const GetImageResult({
     required this.capabilities,
     required this.created,
     required this.createdBy,

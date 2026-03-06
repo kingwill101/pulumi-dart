@@ -29,7 +29,7 @@ class EnterpriseKnowledgeGraphArgs {
   /// [resourceName] The name of the EnterpriseKnowledgeGraph resource.
   /// [sku] Gets or sets the SKU of the resource.
   /// [tags] Contains resource tags defined as key/value pairs.
-  EnterpriseKnowledgeGraphArgs({
+  const EnterpriseKnowledgeGraphArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

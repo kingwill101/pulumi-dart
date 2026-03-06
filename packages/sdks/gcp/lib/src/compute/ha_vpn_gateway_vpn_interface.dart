@@ -20,7 +20,7 @@ class HaVpnGatewayVpnInterface {
   /// [id] The numeric ID of this VPN gateway interface.
   /// [interconnectAttachment] URL of the interconnect attachment resource. When the value
   /// [ipAddress] (Output)
-  HaVpnGatewayVpnInterface({
+  const HaVpnGatewayVpnInterface({
     this.id,
     this.interconnectAttachment,
     this.ipAddress,

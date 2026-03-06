@@ -54,7 +54,7 @@ class WorkforcePoolProviderScimTenantState {
   /// [serviceAgent] Service Agent created by SCIM Tenant API. SCIM tokens created under
   /// [state] The current state of the scim tenant.
   /// [workforcePoolId] The ID of the workforce pool.
-  WorkforcePoolProviderScimTenantState({
+  const WorkforcePoolProviderScimTenantState({
     this.baseUri,
     this.claimMapping,
     this.description,

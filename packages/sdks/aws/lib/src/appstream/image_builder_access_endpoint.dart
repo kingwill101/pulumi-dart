@@ -11,7 +11,7 @@ class ImageBuilderAccessEndpoint {
   /// Creates a new [ImageBuilderAccessEndpoint].
   /// [endpointType] Type of interface endpoint. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html).
   /// [vpceId] Identifier (ID) of the interface VPC endpoint.
-  ImageBuilderAccessEndpoint({
+  const ImageBuilderAccessEndpoint({
     required this.endpointType,
     this.vpceId,
   });

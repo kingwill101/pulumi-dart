@@ -41,7 +41,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse {
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskId] task id
   /// [taskType] Task type.
-  MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse({
+  const MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     this.createdOn,

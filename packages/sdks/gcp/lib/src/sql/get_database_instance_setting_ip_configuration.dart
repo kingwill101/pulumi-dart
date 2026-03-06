@@ -36,7 +36,7 @@ class GetDatabaseInstanceSettingIpConfiguration {
   /// [serverCaMode] Specify how the server certificate's Certificate Authority is hosted.
   /// [serverCaPool] The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
   /// [sslMode] Specify how SSL connection should be enforced in DB connections.
-  GetDatabaseInstanceSettingIpConfiguration({
+  const GetDatabaseInstanceSettingIpConfiguration({
     required this.allocatedIpRange,
     required this.authorizedNetworks,
     required this.customSubjectAlternativeNames,

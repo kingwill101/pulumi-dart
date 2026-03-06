@@ -25,7 +25,7 @@ class RepositoryWorkflowConfigInvocationConfig {
   /// [serviceAccount] Optional. The service account to run workflow invocations under.
   /// [transitiveDependenciesIncluded] Optional. When set to true, transitive dependencies of included actions will be executed.
   /// [transitiveDependentsIncluded] Optional. When set to true, transitive dependents of included actions will be executed.
-  RepositoryWorkflowConfigInvocationConfig({
+  const RepositoryWorkflowConfigInvocationConfig({
     this.fullyRefreshIncrementalTablesEnabled,
     this.includedTags,
     this.includedTargets,

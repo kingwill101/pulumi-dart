@@ -11,7 +11,7 @@ class AccessPolicyAssociationAccessScope {
   /// Creates a new [AccessPolicyAssociationAccessScope].
   /// [namespaces] The namespaces to which the access scope applies when type is namespace.
   /// [type] Valid values are `namespace` or `cluster`.
-  AccessPolicyAssociationAccessScope({
+  const AccessPolicyAssociationAccessScope({
     this.namespaces,
     required this.type,
   });

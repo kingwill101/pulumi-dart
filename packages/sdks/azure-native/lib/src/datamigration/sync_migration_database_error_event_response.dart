@@ -15,7 +15,7 @@ class SyncMigrationDatabaseErrorEventResponse {
   /// [eventText] Event text.
   /// [eventTypeString] Event type.
   /// [timestampString] String value of timestamp.
-  SyncMigrationDatabaseErrorEventResponse({
+  const SyncMigrationDatabaseErrorEventResponse({
     required this.eventText,
     required this.eventTypeString,
     required this.timestampString,

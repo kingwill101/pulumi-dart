@@ -14,7 +14,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
   /// [isValueSecret] Specifies whether to enable authentication.
   /// [key] The key of the request path.
   /// [value] The key of the request path.
-  ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter({
+  const ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter({
     this.isValueSecret,
     this.key,
     this.value,

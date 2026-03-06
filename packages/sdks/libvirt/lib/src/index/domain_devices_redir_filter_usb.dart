@@ -20,7 +20,7 @@ class DomainDevicesRedirFilterUsb {
   /// [product] Sets the product ID of the USB device for the redirection filter.
   /// [vendor] Specifies the vendor ID of the USB device for the redirection filter.
   /// [version] Sets the version of the USB device for the redirection filter.
-  DomainDevicesRedirFilterUsb({
+  const DomainDevicesRedirFilterUsb({
     required this.allow,
     this.class_,
     this.product,

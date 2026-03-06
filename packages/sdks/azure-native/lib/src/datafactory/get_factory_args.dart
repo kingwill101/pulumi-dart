@@ -15,7 +15,7 @@ class GetFactoryArgs {
   /// Creates a new [GetFactoryArgs].
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
-  GetFactoryArgs({
+  const GetFactoryArgs({
     required this.factoryName,
     required this.resourceGroupName,
   });

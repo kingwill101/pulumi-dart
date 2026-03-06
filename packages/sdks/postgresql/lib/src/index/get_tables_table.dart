@@ -14,7 +14,7 @@ class GetTablesTable {
   /// [objectName] The table name.
   /// [schemaName] The parent schema.
   /// [tableType] The table type as defined in ``information_schema.tables``.
-  GetTablesTable({
+  const GetTablesTable({
     required this.objectName,
     required this.schemaName,
     required this.tableType,

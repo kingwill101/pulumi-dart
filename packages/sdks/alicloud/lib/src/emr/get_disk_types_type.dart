@@ -14,7 +14,7 @@ class GetDiskTypesType {
   /// [max] The maximum value of the data disk to supported the specific instance type
   /// [min] The mininum value of the data disk to supported the specific instance type
   /// [value] The value of the data disk or system disk
-  GetDiskTypesType({
+  const GetDiskTypesType({
     required this.max,
     required this.min,
     required this.value,

@@ -9,7 +9,7 @@ class FhirServiceExportConfiguration {
 
   /// Creates a new [FhirServiceExportConfiguration].
   /// [storageAccountName] The name of the default export storage account.
-  FhirServiceExportConfiguration({
+  const FhirServiceExportConfiguration({
     this.storageAccountName,
   });
 

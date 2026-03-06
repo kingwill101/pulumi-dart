@@ -13,7 +13,7 @@ class SoftwareUpdateConfigurationTasksResponse {
   /// Creates a new [SoftwareUpdateConfigurationTasksResponse].
   /// [postTask] Post task properties.
   /// [preTask] Pre task properties.
-  SoftwareUpdateConfigurationTasksResponse({
+  const SoftwareUpdateConfigurationTasksResponse({
     this.postTask,
     this.preTask,
   });

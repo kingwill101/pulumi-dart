@@ -21,7 +21,7 @@ class ClusterRoleAssociationArgs {
   /// [featureName] Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Amazon Resource Name (ARN) of the IAM Role to associate with the DB Cluster.
-  ClusterRoleAssociationArgs({
+  const ClusterRoleAssociationArgs({
     required this.dbClusterIdentifier,
     this.featureName,
     this.region,

@@ -53,7 +53,7 @@ class GetEngineResult {
   /// [similarDocumentsConfig] Additional config specs for a `similar-items` engine.
   /// [solutionType] The solutions of the engine.
   /// [updateTime] Timestamp the Recommendation Engine was last updated.
-  GetEngineResult({
+  const GetEngineResult({
     required this.chatEngineConfig,
     required this.chatEngineMetadata,
     required this.commonConfig,

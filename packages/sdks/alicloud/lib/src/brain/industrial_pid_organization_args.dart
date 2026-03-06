@@ -15,7 +15,7 @@ class IndustrialPidOrganizationArgs {
   /// Creates a new [IndustrialPidOrganizationArgs].
   /// [parentPidOrganizationId] The ID of parent pid organization.
   /// [pidOrganizationName] The name of pid organization.
-  IndustrialPidOrganizationArgs({
+  const IndustrialPidOrganizationArgs({
     this.parentPidOrganizationId,
     required this.pidOrganizationName,
   });

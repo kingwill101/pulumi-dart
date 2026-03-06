@@ -8,7 +8,7 @@ class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig 
 
   /// Creates a new [SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig].
   /// [dataprocCluster] Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-  SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig({
+  const SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig({
     this.dataprocCluster,
   });
 

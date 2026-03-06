@@ -24,7 +24,7 @@ class AccessReviewScope {
   /// [inactiveDuration] Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
   /// [includeAccessBelowResource] Flag to indicate whether to expand nested memberships or not.
   /// [includeInheritedAccess] Flag to indicate whether to expand nested memberships or not.
-  AccessReviewScope({
+  const AccessReviewScope({
     this.excludeResourceId,
     this.excludeRoleDefinitionId,
     this.expandNestedMemberships,

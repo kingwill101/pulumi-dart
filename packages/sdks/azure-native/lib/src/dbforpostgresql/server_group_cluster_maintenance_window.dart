@@ -18,7 +18,7 @@ class ServerGroupClusterMaintenanceWindow {
   /// [dayOfWeek] Preferred day of the week for maintenance window.
   /// [startHour] Start hour within preferred day of the week for maintenance window.
   /// [startMinute] Start minute within the start hour for maintenance window.
-  ServerGroupClusterMaintenanceWindow({
+  const ServerGroupClusterMaintenanceWindow({
     this.customWindow,
     this.dayOfWeek,
     this.startHour,

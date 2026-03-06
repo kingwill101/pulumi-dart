@@ -14,7 +14,7 @@ class RoutingIntentRoutingPolicy {
   /// [destinations] A list of destinations which this routing policy is applicable to. Possible values are `Internet` and `PrivateTraffic`.
   /// [name] The unique name for the routing policy.
   /// [nextHop] The resource ID of the next hop on which this routing policy is applicable to.
-  RoutingIntentRoutingPolicy({
+  const RoutingIntentRoutingPolicy({
     required this.destinations,
     required this.name,
     required this.nextHop,

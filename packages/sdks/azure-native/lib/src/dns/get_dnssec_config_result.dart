@@ -32,7 +32,7 @@ class GetDnssecConfigResult {
   /// [signingKeys] The list of signing keys.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDnssecConfigResult({
+  const GetDnssecConfigResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

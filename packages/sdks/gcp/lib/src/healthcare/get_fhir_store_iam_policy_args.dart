@@ -15,7 +15,7 @@ class GetFhirStoreIamPolicyArgs {
 
   /// Creates a new [GetFhirStoreIamPolicyArgs].
   /// [fhirStoreId] The FHIR store ID, in the form
-  GetFhirStoreIamPolicyArgs({
+  const GetFhirStoreIamPolicyArgs({
     required this.fhirStoreId,
   });
 

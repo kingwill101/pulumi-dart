@@ -13,7 +13,7 @@ class GetPlacementGroupsPlacementGroupMigrations {
   /// Creates a new [GetPlacementGroupsPlacementGroupMigrations].
   /// [inbounds] A list of the Linodes the system is migrating into the placement group.
   /// [outbounds] A list of the Linodes the system is migrating out of the placement group.
-  GetPlacementGroupsPlacementGroupMigrations({
+  const GetPlacementGroupsPlacementGroupMigrations({
     required this.inbounds,
     required this.outbounds,
   });

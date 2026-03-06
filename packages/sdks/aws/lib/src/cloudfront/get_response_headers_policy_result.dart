@@ -39,7 +39,7 @@ class GetResponseHeadersPolicyResult {
   /// [removeHeadersConfigs] Object that contains an attribute `items` that contains a list of Remove Headers. See Remove Header for more information.
   /// [securityHeadersConfigs] A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.
   /// [serverTimingHeadersConfigs] (Optional) Configuration for enabling the Server-Timing header in HTTP responses sent from CloudFront. See Server Timing Headers Config for more information.
-  GetResponseHeadersPolicyResult({
+  const GetResponseHeadersPolicyResult({
     required this.arn,
     required this.comment,
     required this.corsConfigs,

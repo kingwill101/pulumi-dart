@@ -35,7 +35,7 @@ class DebugSessionArgs {
   /// [timeout] Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
   /// [tracesize] Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
   /// [validity] Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
-  DebugSessionArgs({
+  const DebugSessionArgs({
     required this.apiId,
     this.count,
     required this.environmentId,

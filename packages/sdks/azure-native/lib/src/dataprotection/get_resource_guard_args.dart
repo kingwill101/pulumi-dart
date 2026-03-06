@@ -15,7 +15,7 @@ class GetResourceGuardArgs {
   /// Creates a new [GetResourceGuardArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceGuardsName] The name of ResourceGuard
-  GetResourceGuardArgs({
+  const GetResourceGuardArgs({
     required this.resourceGroupName,
     required this.resourceGuardsName,
   });

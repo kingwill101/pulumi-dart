@@ -24,7 +24,7 @@ class GetCertificatesArgs {
   /// [instanceId] WAF instance ID.
   /// [nameRegex] A regex string to filter results by Certificate name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetCertificatesArgs({
+  const GetCertificatesArgs({
     this.domain,
     this.ids,
     required this.instanceId,

@@ -15,7 +15,7 @@ class LabNetworkProfileResponse {
   /// [loadBalancerId] The external load balancer resource id
   /// [publicIpId] The external public IP resource id
   /// [subnetId] The external subnet resource id
-  LabNetworkProfileResponse({
+  const LabNetworkProfileResponse({
     this.loadBalancerId,
     this.publicIpId,
     this.subnetId,

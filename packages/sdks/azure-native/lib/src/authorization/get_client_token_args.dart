@@ -12,7 +12,7 @@ class GetClientTokenArgs {
 
   /// Creates a new [GetClientTokenArgs].
   /// [endpoint] Optional authentication endpoint. Defaults to the endpoint of Azure Resource Manager.
-  GetClientTokenArgs({
+  const GetClientTokenArgs({
     this.endpoint,
   });
 

@@ -11,7 +11,7 @@ class GetInsightsDatasetConfigLink {
   /// Creates a new [GetInsightsDatasetConfigLink].
   /// [dataset] Dataset name for the linked DatasetConfig.
   /// [linked] State of the linked DatasetConfig.
-  GetInsightsDatasetConfigLink({
+  const GetInsightsDatasetConfigLink({
     required this.dataset,
     required this.linked,
   });

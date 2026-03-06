@@ -134,7 +134,7 @@ class JSONSchemaPropsApiextensionsK8sIoV1beta1 {
   /// [xKubernetesListType] x-kubernetes-list-type annotates an array to further describe its topology. This extension must only be used on lists and may have 3 possible values:
   /// [xKubernetesMapType] x-kubernetes-map-type annotates an object to further describe its topology. This extension must only be used when type is object and may have 2 possible values:
   /// [xKubernetesPreserveUnknownFields] x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
-  JSONSchemaPropsApiextensionsK8sIoV1beta1({
+  const JSONSchemaPropsApiextensionsK8sIoV1beta1({
     this.ref,
     this.schema,
     this.additionalItems,

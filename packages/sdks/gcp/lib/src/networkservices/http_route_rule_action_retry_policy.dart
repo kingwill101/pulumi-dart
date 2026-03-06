@@ -14,7 +14,7 @@ class HttpRouteRuleActionRetryPolicy {
   /// [numRetries] Specifies the allowed number of retries.
   /// [perTryTimeout] Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   /// [retryConditions] Specifies one or more conditions when this retry policy applies.
-  HttpRouteRuleActionRetryPolicy({
+  const HttpRouteRuleActionRetryPolicy({
     this.numRetries,
     this.perTryTimeout,
     this.retryConditions,

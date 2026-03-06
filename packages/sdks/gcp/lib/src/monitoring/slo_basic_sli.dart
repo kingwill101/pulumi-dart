@@ -39,7 +39,7 @@ class SloBasicSli {
   /// [locations] An optional set of locations to which this SLI is relevant.
   /// [methods] An optional set of RPCs to which this SLI is relevant.
   /// [versions] The set of API versions to which this SLI is relevant.
-  SloBasicSli({
+  const SloBasicSli({
     this.availability,
     this.latency,
     this.locations,

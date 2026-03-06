@@ -24,7 +24,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentials {
   /// [scope] A space-delimited list of requested scope permissions.
   /// [tokenEndpoint] The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
   /// [tokenParams] Token parameters for the auth request.
-  AuthConfigDecryptedCredentialOauth2ClientCredentials({
+  const AuthConfigDecryptedCredentialOauth2ClientCredentials({
     this.clientId,
     this.clientSecret,
     this.requestType,

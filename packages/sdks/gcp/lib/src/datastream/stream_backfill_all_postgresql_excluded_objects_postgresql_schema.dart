@@ -13,7 +13,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
   /// Creates a new [StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema].
   /// [postgresqlTables] Tables in the schema.
   /// [schema] Database name.
-  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema({
+  const StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema({
     this.postgresqlTables,
     required this.schema,
   });

@@ -8,7 +8,7 @@ class DomainDevicesHostdevCapsMiscSource {
 
   /// Creates a new [DomainDevicesHostdevCapsMiscSource].
   /// [char] Defines character-specific attributes for the source of the miscellaneous capabilities.
-  DomainDevicesHostdevCapsMiscSource({
+  const DomainDevicesHostdevCapsMiscSource({
     required this.char,
   });
 

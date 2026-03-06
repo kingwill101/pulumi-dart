@@ -23,7 +23,7 @@ class GetAntiBruteForceRulesResult {
   /// [names] A list of name of Anti Brute Force Rules.
   /// [outputFile] Optional.
   /// [rules] A list of Anti Brute Force Rule Entries. Each element contains the following attributes:
-  GetAntiBruteForceRulesResult({
+  const GetAntiBruteForceRulesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

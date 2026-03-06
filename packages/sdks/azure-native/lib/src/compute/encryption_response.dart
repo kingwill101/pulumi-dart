@@ -12,7 +12,7 @@ class EncryptionResponse {
   /// Creates a new [EncryptionResponse].
   /// [diskEncryptionSetId] ResourceId of the disk encryption set to use for enabling encryption at rest.
   /// [type] The type of key used to encrypt the data of the disk.
-  EncryptionResponse({
+  const EncryptionResponse({
     this.diskEncryptionSetId,
     this.type,
   });

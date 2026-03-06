@@ -31,7 +31,7 @@ class InvitationRecordResponse {
   /// [kind] Type of account
   /// [metadata] Metadata of the record
   /// [status] Status of the invitation
-  InvitationRecordResponse({
+  const InvitationRecordResponse({
     this.acceptedAt,
     this.authType,
     this.email,

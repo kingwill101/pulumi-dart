@@ -20,7 +20,7 @@ class ControlProjectIntelligenceConfigArgs {
   /// [editionConfig] Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
   /// [filter] Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// [name] Identifier of the GCP project. For GCP project, this field can be project name or project number.
-  ControlProjectIntelligenceConfigArgs({
+  const ControlProjectIntelligenceConfigArgs({
     this.editionConfig,
     this.filter,
     this.name,

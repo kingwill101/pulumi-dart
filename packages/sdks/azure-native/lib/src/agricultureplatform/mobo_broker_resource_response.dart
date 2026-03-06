@@ -10,7 +10,7 @@ class MoboBrokerResourceResponse {
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] The fully qualified resource ID of the MoboBroker resource.
-  MoboBrokerResourceResponse({
+  const MoboBrokerResourceResponse({
     required this.id,
   });
 

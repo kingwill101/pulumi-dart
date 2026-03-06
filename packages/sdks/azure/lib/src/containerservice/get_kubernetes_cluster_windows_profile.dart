@@ -8,7 +8,7 @@ class GetKubernetesClusterWindowsProfile {
 
   /// Creates a new [GetKubernetesClusterWindowsProfile].
   /// [adminUsername] The username associated with the administrator account of the Windows VMs.
-  GetKubernetesClusterWindowsProfile({
+  const GetKubernetesClusterWindowsProfile({
     required this.adminUsername,
   });
 

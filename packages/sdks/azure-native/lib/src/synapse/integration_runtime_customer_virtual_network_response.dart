@@ -9,7 +9,7 @@ class IntegrationRuntimeCustomerVirtualNetworkResponse {
 
   /// Creates a new [IntegrationRuntimeCustomerVirtualNetworkResponse].
   /// [subnetId] The ID of subnet to which Azure-SSIS integration runtime will join.
-  IntegrationRuntimeCustomerVirtualNetworkResponse({
+  const IntegrationRuntimeCustomerVirtualNetworkResponse({
     this.subnetId,
   });
 

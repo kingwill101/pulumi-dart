@@ -20,7 +20,7 @@ class Eviction {
   /// [deleteOptions] DeleteOptions may be provided
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] ObjectMeta describes the pod that is being evicted.
-  Eviction({
+  const Eviction({
     this.apiVersion,
     this.deleteOptions,
     this.kind,

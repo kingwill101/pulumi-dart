@@ -19,7 +19,7 @@ class GcpOrganizationalDataOrganization {
   /// [organizationMembershipType] The multi cloud account's membership type in the organization
   /// [serviceAccountEmailAddress] The service account email address which represents the organization level permissions container.
   /// [workloadIdentityProviderId] The GCP workload identity provider id which represents the permissions required to auto provision security connectors
-  GcpOrganizationalDataOrganization({
+  const GcpOrganizationalDataOrganization({
     this.excludedProjectNumbers,
     required this.organizationMembershipType,
     this.serviceAccountEmailAddress,

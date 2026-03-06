@@ -26,7 +26,7 @@ class WindowsFileSystemSelfManagedActiveDirectory {
   /// [organizationalUnitDistinguishedName] The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
   /// [password] The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. Conflicts with `domain_join_service_account_secret`.
   /// [username] The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. Conflicts with `domain_join_service_account_secret`.
-  WindowsFileSystemSelfManagedActiveDirectory({
+  const WindowsFileSystemSelfManagedActiveDirectory({
     required this.dnsIps,
     this.domainJoinServiceAccountSecret,
     required this.domainName,

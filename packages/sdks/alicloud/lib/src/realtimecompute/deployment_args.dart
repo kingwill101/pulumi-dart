@@ -57,7 +57,7 @@ class DeploymentArgs {
   /// [namespace] Namespace name
   /// [resourceId] Workspace resource ID
   /// [streamingResourceSetting] Resource settings for streaming mode See `streaming_resource_setting` below.
-  DeploymentArgs({
+  const DeploymentArgs({
     required this.artifact,
     this.batchResourceSetting,
     required this.deploymentName,

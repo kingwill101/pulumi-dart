@@ -67,7 +67,7 @@ class GetSnapshotResult {
   /// [tags] Map of tags for the resource.
   /// [volumeId] Volume ID (e.g., vol-59fcb34e).
   /// [volumeSize] Size of the drive in GiBs.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.arn,
     required this.dataEncryptionKeyId,
     required this.description,

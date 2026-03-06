@@ -18,7 +18,7 @@ class GetInventoryItemArgs {
   /// [inventoryItemName] Name of the inventoryItem.
   /// [resourceGroupName] The name of the resource group.
   /// [vmmServerName] Name of the VMMServer.
-  GetInventoryItemArgs({
+  const GetInventoryItemArgs({
     required this.inventoryItemName,
     required this.resourceGroupName,
     required this.vmmServerName,

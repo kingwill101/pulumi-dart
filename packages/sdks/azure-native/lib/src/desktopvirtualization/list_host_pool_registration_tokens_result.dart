@@ -13,7 +13,7 @@ class ListHostPoolRegistrationTokensResult {
   /// Creates a new [ListHostPoolRegistrationTokensResult].
   /// [nextLink] Link to the next page of results.
   /// [value] List of RegistrationToken definitions.
-  ListHostPoolRegistrationTokensResult({
+  const ListHostPoolRegistrationTokensResult({
     required this.nextLink,
     this.value,
   });

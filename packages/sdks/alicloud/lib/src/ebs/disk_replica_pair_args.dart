@@ -79,7 +79,7 @@ class DiskReplicaPairArgs {
   /// [rpo] The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
   /// [sourceZoneId] The ID of the zone to which the production site belongs.
   /// [tags] The tag of the resource
-  DiskReplicaPairArgs({
+  const DiskReplicaPairArgs({
     this.bandwidth,
     this.description,
     required this.destinationDiskId,

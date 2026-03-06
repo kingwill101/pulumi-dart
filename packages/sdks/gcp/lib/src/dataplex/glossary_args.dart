@@ -31,7 +31,7 @@ class GlossaryArgs {
   /// [labels] User-defined labels for the Glossary.
   /// [location] The location where the glossary should reside.
   /// [project] The ID of the project in which the resource belongs.
-  GlossaryArgs({
+  const GlossaryArgs({
     this.description,
     this.displayName,
     required this.glossaryId,

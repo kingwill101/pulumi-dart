@@ -23,7 +23,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule {
   /// [displayName] The display name of the Security Health Analytics custom module. This
   /// [id] (Output)
   /// [moduleEnablementState] The state of enablement for the module at its level of the resource hierarchy.
-  PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule({
+  const PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule({
     required this.config,
     this.displayName,
     this.id,

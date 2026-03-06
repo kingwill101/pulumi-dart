@@ -53,7 +53,7 @@ class GetVirtualNetworkResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmSwitchName] name of the network switch to be used for VMs
-  GetVirtualNetworkResult({
+  const GetVirtualNetworkResult({
     required this.azureApiVersion,
     this.dhcpOptions,
     this.extendedLocation,

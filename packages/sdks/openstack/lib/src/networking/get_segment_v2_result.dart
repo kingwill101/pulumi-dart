@@ -40,7 +40,7 @@ class GetSegmentV2Result {
   /// [segmentId] See Argument Reference above.
   /// [segmentationId] See Argument Reference above.
   /// [updatedAt] The date and time when the network segment was last updated.
-  GetSegmentV2Result({
+  const GetSegmentV2Result({
     required this.createdAt,
     required this.description,
     required this.id,

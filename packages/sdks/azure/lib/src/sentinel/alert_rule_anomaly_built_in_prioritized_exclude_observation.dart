@@ -17,7 +17,7 @@ class AlertRuleAnomalyBuiltInPrioritizedExcludeObservation {
   /// [exclude] The excluded value per `description`.
   /// [name] The Name of the built-in Anomaly Alert Rule.
   /// [prioritize] The prioritized value per `description`.
-  AlertRuleAnomalyBuiltInPrioritizedExcludeObservation({
+  const AlertRuleAnomalyBuiltInPrioritizedExcludeObservation({
     this.description,
     this.exclude,
     this.name,

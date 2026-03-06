@@ -12,7 +12,7 @@ class BlueprintStatusResponse {
   /// Creates a new [BlueprintStatusResponse].
   /// [lastModified] Last modified time of this blueprint definition.
   /// [timeCreated] Creation time of this blueprint definition.
-  BlueprintStatusResponse({
+  const BlueprintStatusResponse({
     required this.lastModified,
     required this.timeCreated,
   });

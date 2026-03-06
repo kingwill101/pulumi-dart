@@ -32,7 +32,7 @@ class AzureBareMetalStorageInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageProperties] Specifies the storage properties for the AzureBareMetalStorage instance.
   /// [tags] Resource tags.
-  AzureBareMetalStorageInstanceArgs({
+  const AzureBareMetalStorageInstanceArgs({
     this.azureBareMetalStorageInstanceName,
     this.azureBareMetalStorageInstanceUniqueIdentifier,
     this.identity,

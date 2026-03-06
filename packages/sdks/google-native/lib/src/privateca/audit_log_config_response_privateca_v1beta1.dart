@@ -12,7 +12,7 @@ class AuditLogConfigResponsePrivatecaV1beta1 {
   /// Creates a new [AuditLogConfigResponsePrivatecaV1beta1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigResponsePrivatecaV1beta1({
+  const AuditLogConfigResponsePrivatecaV1beta1({
     required this.exemptedMembers,
     required this.logType,
   });

@@ -14,7 +14,7 @@ class GetPrivateCloudManagementCluster {
   /// [hosts] The list of the hosts in the management cluster.
   /// [id] The ID of the management cluster.
   /// [size] The size of the management cluster.
-  GetPrivateCloudManagementCluster({
+  const GetPrivateCloudManagementCluster({
     required this.hosts,
     required this.id,
     required this.size,

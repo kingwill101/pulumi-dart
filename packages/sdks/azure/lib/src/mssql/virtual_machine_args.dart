@@ -64,7 +64,7 @@ class VirtualMachineArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualMachineId] The ID of the Virtual Machine. Changing this forces a new resource to be created.
   /// [wsfcDomainCredential] A `wsfc_domain_credential` block as defined below
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     this.assessment,
     this.autoBackup,
     this.autoPatching,

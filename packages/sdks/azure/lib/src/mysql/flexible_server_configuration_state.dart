@@ -18,7 +18,7 @@ class FlexibleServerConfigurationState {
   /// [resourceGroupName] The name of the resource group in which the MySQL Flexible Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   /// [value] Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values.
-  FlexibleServerConfigurationState({
+  const FlexibleServerConfigurationState({
     this.name,
     this.resourceGroupName,
     this.serverName,

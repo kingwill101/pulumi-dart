@@ -47,7 +47,7 @@ class IoTRoleArgs {
   /// [resourceGroupName] The resource group name.
   /// [roleStatus] Role status.
   /// [shareMappings] Mount points of shares in role(s).
-  IoTRoleArgs({
+  const IoTRoleArgs({
     this.computeResource,
     required this.deviceName,
     required this.hostPlatform,

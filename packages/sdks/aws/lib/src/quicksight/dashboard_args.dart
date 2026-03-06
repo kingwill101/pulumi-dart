@@ -48,7 +48,7 @@ class DashboardArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [themeArn] The Amazon Resource Name (ARN) of the theme that is being used for this dashboard. The theme ARN must exist in the same AWS account where you create the dashboard.
   /// [versionDescription] A description of the current dashboard version being created/updated.
-  DashboardArgs({
+  const DashboardArgs({
     this.awsAccountId,
     required this.dashboardId,
     this.dashboardPublishOptions,

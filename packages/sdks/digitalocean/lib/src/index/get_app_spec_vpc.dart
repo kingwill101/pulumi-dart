@@ -8,7 +8,7 @@ class GetAppSpecVpc {
 
   /// Creates a new [GetAppSpecVpc].
   /// [id] The ID of the dedicated egress IP.
-  GetAppSpecVpc({
+  const GetAppSpecVpc({
     required this.id,
   });
 

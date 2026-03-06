@@ -21,7 +21,7 @@ class ConfigMapNodeConfigSource {
   /// [namespace] Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.
   /// [resourceVersion] ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
   /// [uid] UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
-  ConfigMapNodeConfigSource({
+  const ConfigMapNodeConfigSource({
     required this.kubeletConfigKey,
     required this.name,
     required this.namespace,

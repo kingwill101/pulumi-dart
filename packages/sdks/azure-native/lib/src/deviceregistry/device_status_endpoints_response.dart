@@ -10,7 +10,7 @@ class DeviceStatusEndpointsResponse {
 
   /// Creates a new [DeviceStatusEndpointsResponse].
   /// [inbound] KeyValue pair representing status of inbound endpoints.
-  DeviceStatusEndpointsResponse({
+  const DeviceStatusEndpointsResponse({
     required this.inbound,
   });
 

@@ -22,7 +22,7 @@ class IdentityProviderConfigArgs {
   /// [oidc] Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  IdentityProviderConfigArgs({
+  const IdentityProviderConfigArgs({
     required this.clusterName,
     required this.oidc,
     this.region,

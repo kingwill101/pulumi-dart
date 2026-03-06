@@ -21,7 +21,7 @@ class GetMasterSlaveServerGroupsArgs {
   /// [loadBalancerId] ID of the SLB.
   /// [nameRegex] A regex string to filter results by master slave server group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMasterSlaveServerGroupsArgs({
+  const GetMasterSlaveServerGroupsArgs({
     this.ids,
     required this.loadBalancerId,
     this.nameRegex,

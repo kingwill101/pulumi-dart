@@ -21,7 +21,7 @@ class RuleCompilationDiagnosticPosition {
   /// [endLine] (Output)
   /// [startColumn] (Output)
   /// [startLine] (Output)
-  RuleCompilationDiagnosticPosition({
+  const RuleCompilationDiagnosticPosition({
     this.endColumn,
     this.endLine,
     this.startColumn,

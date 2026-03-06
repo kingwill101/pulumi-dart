@@ -51,7 +51,7 @@ class GetElasticsearchResult {
   /// [resourceGroupName] Required.
   /// [skuName] The name of the SKU used for this Elasticsearch.
   /// [tags] A mapping of tags assigned to the Elasticsearch.
-  GetElasticsearchResult({
+  const GetElasticsearchResult({
     required this.elasticCloudDeploymentId,
     required this.elasticCloudEmailAddress,
     required this.elasticCloudSsoDefaultUrl,

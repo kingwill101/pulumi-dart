@@ -8,7 +8,7 @@ class GcpIntegrationsRouter {
 
   /// Creates a new [GcpIntegrationsRouter].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsRouter({
+  const GcpIntegrationsRouter({
     this.metricsPollingInterval,
   });
 

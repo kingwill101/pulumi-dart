@@ -28,7 +28,7 @@ class GetManagedInstancePrivateEndpointConnectionResult {
   /// [privateLinkServiceConnectionState] Connection State of the Private Endpoint Connection.
   /// [provisioningState] State of the Private Endpoint Connection.
   /// [type] Resource type.
-  GetManagedInstancePrivateEndpointConnectionResult({
+  const GetManagedInstancePrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

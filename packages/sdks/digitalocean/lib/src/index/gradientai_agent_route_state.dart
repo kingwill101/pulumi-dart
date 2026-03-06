@@ -23,7 +23,7 @@ class GradientaiAgentRouteState {
   /// [rollback] Optional.
   /// [routeName] A name for the route.
   /// [uuid] The UUID of the linkage
-  GradientaiAgentRouteState({
+  const GradientaiAgentRouteState({
     this.childAgentUuid,
     this.ifCase,
     this.parentAgentUuid,

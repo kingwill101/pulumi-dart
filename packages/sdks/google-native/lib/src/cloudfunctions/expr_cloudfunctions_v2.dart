@@ -18,7 +18,7 @@ class ExprCloudfunctionsV2 {
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [location] Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
   /// [title] Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-  ExprCloudfunctionsV2({
+  const ExprCloudfunctionsV2({
     this.description,
     this.expression,
     this.location,

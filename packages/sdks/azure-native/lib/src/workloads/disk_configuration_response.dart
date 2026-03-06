@@ -10,7 +10,7 @@ class DiskConfigurationResponse {
 
   /// Creates a new [DiskConfigurationResponse].
   /// [diskVolumeConfigurations] The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
-  DiskConfigurationResponse({
+  const DiskConfigurationResponse({
     this.diskVolumeConfigurations,
   });
 

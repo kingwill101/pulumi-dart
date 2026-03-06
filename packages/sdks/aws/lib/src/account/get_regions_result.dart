@@ -17,7 +17,7 @@ class GetRegionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [regionOptStatusContains] Required.
   /// [regions] The regions for a given account
-  GetRegionsResult({
+  const GetRegionsResult({
     required this.accountId,
     required this.id,
     required this.regionOptStatusContains,

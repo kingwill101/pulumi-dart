@@ -11,7 +11,7 @@ class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAcc
   /// Creates a new [EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig].
   /// [type] Authentication type Lambda uses to access the schema registry.
   /// [uri] URI of the secret (Secrets Manager secret ARN) used to authenticate with the schema registry.
-  EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig({
+  const EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig({
     this.type,
     this.uri,
   });

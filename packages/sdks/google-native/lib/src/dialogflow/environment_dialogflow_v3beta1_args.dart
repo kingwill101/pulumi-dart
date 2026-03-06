@@ -36,7 +36,7 @@ class EnvironmentDialogflowV3beta1Args {
   /// [testCasesConfig] The test cases config for continuous tests of this environment.
   /// [versionConfigs] A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
   /// [webhookConfig] The webhook configuration for this environment.
-  EnvironmentDialogflowV3beta1Args({
+  const EnvironmentDialogflowV3beta1Args({
     required this.agentId,
     this.description,
     required this.displayName,

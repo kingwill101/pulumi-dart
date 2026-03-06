@@ -73,7 +73,7 @@ class ServiceMetadata {
   /// [resourceVersion] (Output)
   /// [selfLink] (Output)
   /// [uid] (Output)
-  ServiceMetadata({
+  const ServiceMetadata({
     this.annotations,
     this.effectiveAnnotations,
     this.effectiveLabels,

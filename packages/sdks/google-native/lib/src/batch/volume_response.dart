@@ -23,7 +23,7 @@ class VolumeResponse {
   /// [mountOptions] For Google Cloud Storage (GCS), mount options are the options supported by the gcsfuse tool (https://github.com/GoogleCloudPlatform/gcsfuse). For existing persistent disks, mount options provided by the mount command (https://man7.org/linux/man-pages/man8/mount.8.html) except writing are supported. This is due to restrictions of multi-writer mode (https://cloud.google.com/compute/docs/disks/sharing-disks-between-vms). For other attached disks and Network File System (NFS), mount options are these supported by the mount command (https://man7.org/linux/man-pages/man8/mount.8.html).
   /// [mountPath] The mount path for the volume, e.g. /mnt/disks/share.
   /// [nfs] A Network File System (NFS) volume. For example, a Filestore file share.
-  VolumeResponse({
+  const VolumeResponse({
     required this.deviceName,
     required this.gcs,
     required this.mountOptions,

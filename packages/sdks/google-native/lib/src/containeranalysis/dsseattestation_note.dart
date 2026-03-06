@@ -9,7 +9,7 @@ class DSSEAttestationNote {
 
   /// Creates a new [DSSEAttestationNote].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.
-  DSSEAttestationNote({
+  const DSSEAttestationNote({
     this.hint,
   });
 

@@ -23,7 +23,7 @@ class V2FunctionCustomHealthCheckConfig {
   /// [periodSeconds] Health check cycle.
   /// [successThreshold] The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
   /// [timeoutSeconds] Health check timeout.
-  V2FunctionCustomHealthCheckConfig({
+  const V2FunctionCustomHealthCheckConfig({
     this.failureThreshold,
     this.httpGetUrl,
     this.initialDelaySeconds,

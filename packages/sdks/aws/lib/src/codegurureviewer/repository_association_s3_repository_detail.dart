@@ -11,7 +11,7 @@ class RepositoryAssociationS3RepositoryDetail {
   /// Creates a new [RepositoryAssociationS3RepositoryDetail].
   /// [bucketName] The name of the S3 bucket used for associating a new S3 repository. Note: The name must begin with `codeguru-reviewer-`.
   /// [codeArtifacts] Optional.
-  RepositoryAssociationS3RepositoryDetail({
+  const RepositoryAssociationS3RepositoryDetail({
     this.bucketName,
     this.codeArtifacts,
   });

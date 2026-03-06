@@ -137,7 +137,7 @@ class GetVirtualMachineResult {
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [userName] The user name of the virtual machine.
   /// [virtualMachineCreationSource] Tells source of creation of lab virtual machine. Output property only.
-  GetVirtualMachineResult({
+  const GetVirtualMachineResult({
     this.allowClaim,
     required this.applicableSchedule,
     required this.artifactDeploymentStatus,

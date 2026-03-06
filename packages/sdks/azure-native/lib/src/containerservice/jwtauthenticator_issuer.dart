@@ -12,7 +12,7 @@ class JWTAuthenticatorIssuer {
   /// Creates a new [JWTAuthenticatorIssuer].
   /// [audiences] The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
   /// [url] The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
-  JWTAuthenticatorIssuer({
+  const JWTAuthenticatorIssuer({
     required this.audiences,
     required this.url,
   });

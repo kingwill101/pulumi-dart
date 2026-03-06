@@ -21,7 +21,7 @@ class VaultPropertiesResponseMoveDetails {
   /// [sourceResourceId] Source Resource of the Resource Move Operation
   /// [startTimeUtc] Start Time of the Resource Move Operation
   /// [targetResourceId] Target Resource of the Resource Move Operation
-  VaultPropertiesResponseMoveDetails({
+  const VaultPropertiesResponseMoveDetails({
     required this.completionTimeUtc,
     required this.operationId,
     required this.sourceResourceId,

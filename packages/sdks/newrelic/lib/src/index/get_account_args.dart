@@ -17,7 +17,7 @@ class GetAccountArgs {
   /// [accountId] The unique identifier of the account in New Relic. This must be an integer.
   /// [name] The name of the account in New Relic. This must be a string.
   /// [scope] Optional.
-  GetAccountArgs({
+  const GetAccountArgs({
     this.accountId,
     this.name,
     this.scope,

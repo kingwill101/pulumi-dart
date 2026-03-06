@@ -11,7 +11,7 @@ class UserVolumeGrant {
   /// Creates a new [UserVolumeGrant].
   /// [id] The ID of the entity this grant applies to.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  UserVolumeGrant({
+  const UserVolumeGrant({
     required this.id,
     required this.permissions,
   });

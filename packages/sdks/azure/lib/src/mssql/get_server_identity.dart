@@ -17,7 +17,7 @@ class GetServerIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Microsoft SQL Server.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Microsoft SQL Server.
   /// [type] The type of Managed Service Identity that is configured on this Microsoft SQL Server.
-  GetServerIdentity({
+  const GetServerIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

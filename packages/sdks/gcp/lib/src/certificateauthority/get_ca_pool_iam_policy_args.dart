@@ -23,7 +23,7 @@ class GetCaPoolIamPolicyArgs {
   /// [caPool] Used to find the parent resource to bind the IAM policy to
   /// [location] Location of the CaPool. A full list of valid locations can be found by
   /// [project] The ID of the project in which the resource belongs.
-  GetCaPoolIamPolicyArgs({
+  const GetCaPoolIamPolicyArgs({
     required this.caPool,
     this.location,
     this.project,

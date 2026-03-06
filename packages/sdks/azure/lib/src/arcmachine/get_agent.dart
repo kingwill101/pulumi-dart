@@ -28,7 +28,7 @@ class GetAgent {
   /// [incomingConnectionsPorts] Specifies the list of ports that the agent will be able to listen on.
   /// [proxyBypasses] List of service names which should not use the specified proxy server.
   /// [proxyUrl] Specifies the URL of the proxy to be used.
-  GetAgent({
+  const GetAgent({
     required this.extensionsAllowLists,
     required this.extensionsBlockLists,
     required this.extensionsEnabled,

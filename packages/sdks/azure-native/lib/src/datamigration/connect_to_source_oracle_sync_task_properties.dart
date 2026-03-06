@@ -17,7 +17,7 @@ class ConnectToSourceOracleSyncTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Task input
   /// [taskType] Task type.
-  ConnectToSourceOracleSyncTaskProperties({
+  const ConnectToSourceOracleSyncTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

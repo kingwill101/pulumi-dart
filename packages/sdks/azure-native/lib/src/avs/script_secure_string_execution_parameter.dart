@@ -16,7 +16,7 @@ class ScriptSecureStringExecutionParameter {
   /// [name] The parameter name
   /// [secureValue] A secure value for the passed parameter, not to be stored in logs
   /// [type] script execution parameter type
-  ScriptSecureStringExecutionParameter({
+  const ScriptSecureStringExecutionParameter({
     required this.name,
     this.secureValue,
     required this.type,

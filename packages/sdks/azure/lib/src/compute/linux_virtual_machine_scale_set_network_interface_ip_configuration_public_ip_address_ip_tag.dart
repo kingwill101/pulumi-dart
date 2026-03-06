@@ -11,7 +11,7 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressI
   /// Creates a new [LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag].
   /// [tag] The IP Tag associated with the Public IP, such as `SQL` or `Storage`. Changing this forces a new resource to be created.
   /// [type] The Type of IP Tag, such as `FirstPartyUsage`. Changing this forces a new resource to be created.
-  LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag({
+  const LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag({
     required this.tag,
     required this.type,
   });

@@ -12,7 +12,7 @@ class CertificateDetails {
   /// Creates a new [CertificateDetails].
   /// [caIdentifier] The CA identifier of the CA certificate used for the DB instance's server certificate.
   /// [validTill] The expiration date of the DB instance’s server certificate.
-  CertificateDetails({
+  const CertificateDetails({
     this.caIdentifier,
     this.validTill,
   });

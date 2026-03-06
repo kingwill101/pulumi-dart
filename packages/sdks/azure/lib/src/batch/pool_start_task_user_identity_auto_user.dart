@@ -11,7 +11,7 @@ class PoolStartTaskUserIdentityAutoUser {
   /// Creates a new [PoolStartTaskUserIdentityAutoUser].
   /// [elevationLevel] The elevation level of the user identity under which the start task runs. Possible values are `Admin` or `NonAdmin`. Defaults to `NonAdmin`.
   /// [scope] The scope of the user identity under which the start task runs. Possible values are `Task` or `Pool`. Defaults to `Task`.
-  PoolStartTaskUserIdentityAutoUser({
+  const PoolStartTaskUserIdentityAutoUser({
     this.elevationLevel,
     this.scope,
   });

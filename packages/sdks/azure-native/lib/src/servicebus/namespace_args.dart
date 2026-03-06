@@ -56,7 +56,7 @@ class NamespaceArgs {
   /// [sku] Properties of SKU
   /// [tags] Resource tags
   /// [zoneRedundant] This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.alternateName,
     this.disableLocalAuth,
     this.encryption,

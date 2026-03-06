@@ -17,7 +17,7 @@ class ClientArgs {
   /// Creates a new [ClientArgs].
   /// [brand] Identifier of the brand to which this client
   /// [displayName] Human-friendly name given to the OAuth client.
-  ClientArgs({
+  const ClientArgs({
     required this.brand,
     required this.displayName,
   });

@@ -14,7 +14,7 @@ class FirehoseDeliveryStreamServerSideEncryption {
   /// [enabled] Whether to enable encryption at rest. Default is `false`.
   /// [keyArn] Amazon Resource Name (ARN) of the encryption key. Required when `key_type` is `CUSTOMER_MANAGED_CMK`.
   /// [keyType] Type of encryption key. Default is `AWS_OWNED_CMK`. Valid values are `AWS_OWNED_CMK` and `CUSTOMER_MANAGED_CMK`
-  FirehoseDeliveryStreamServerSideEncryption({
+  const FirehoseDeliveryStreamServerSideEncryption({
     this.enabled,
     this.keyArn,
     this.keyType,

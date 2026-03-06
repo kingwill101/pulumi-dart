@@ -21,7 +21,7 @@ class TableReplicationState {
   /// [rule] Replication rules. See Rule below for more details.
   /// [tableArn] ARN referencing the Table that owns this replication configuration.
   /// [versionToken] Optional.
-  TableReplicationState({
+  const TableReplicationState({
     this.region,
     this.role,
     this.rule,

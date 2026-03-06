@@ -44,7 +44,7 @@ class GetVirtualPhysicalConnectionsArgs {
   /// [virtualPhysicalConnectionStatus] The business status of the shared line. Value:
   /// [vlanIds] The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
   /// [vpconnAliUid] The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
-  GetVirtualPhysicalConnectionsArgs({
+  const GetVirtualPhysicalConnectionsArgs({
     this.businessStatus,
     this.ids,
     this.isConfirmed,

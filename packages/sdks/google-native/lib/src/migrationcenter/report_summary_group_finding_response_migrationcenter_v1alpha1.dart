@@ -23,7 +23,7 @@ class ReportSummaryGroupFindingResponseMigrationcenterV1alpha1 {
   /// [displayName] Display Name for the Group.
   /// [overlappingAssetCount] This field is deprecated, do not rely on it having a value.
   /// [preferenceSetFindings] Findings for each of the PreferenceSets for this group.
-  ReportSummaryGroupFindingResponseMigrationcenterV1alpha1({
+  const ReportSummaryGroupFindingResponseMigrationcenterV1alpha1({
     required this.assetAggregateStats,
     required this.description,
     required this.displayName,

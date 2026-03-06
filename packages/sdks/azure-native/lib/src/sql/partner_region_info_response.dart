@@ -12,7 +12,7 @@ class PartnerRegionInfoResponse {
   /// Creates a new [PartnerRegionInfoResponse].
   /// [location] Geo location of the partner managed instances.
   /// [replicationRole] Replication role of the partner managed instances.
-  PartnerRegionInfoResponse({
+  const PartnerRegionInfoResponse({
     this.location,
     required this.replicationRole,
   });

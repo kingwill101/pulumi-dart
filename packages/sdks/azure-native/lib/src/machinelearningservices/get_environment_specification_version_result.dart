@@ -25,7 +25,7 @@ class GetEnvironmentSpecificationVersionResult {
   /// [properties] [Required] Additional attributes of the entity.
   /// [systemData] System data associated with resource provider
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEnvironmentSpecificationVersionResult({
+  const GetEnvironmentSpecificationVersionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

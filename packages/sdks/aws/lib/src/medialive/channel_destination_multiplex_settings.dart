@@ -11,7 +11,7 @@ class ChannelDestinationMultiplexSettings {
   /// Creates a new [ChannelDestinationMultiplexSettings].
   /// [multiplexId] The ID of the Multiplex that the encoder is providing output to.
   /// [programName] The program name of the Multiplex program that the encoder is providing output to.
-  ChannelDestinationMultiplexSettings({
+  const ChannelDestinationMultiplexSettings({
     required this.multiplexId,
     required this.programName,
   });

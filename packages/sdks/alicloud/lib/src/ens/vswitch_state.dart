@@ -27,7 +27,7 @@ class VswitchState {
   /// [networkId] The ID of the network to which the vSwitch that you want to create belongs.
   /// [status] The status of the vSwitch.
   /// [vswitchName] The name of the vSwitch.
-  VswitchState({
+  const VswitchState({
     this.cidrBlock,
     this.createTime,
     this.description,

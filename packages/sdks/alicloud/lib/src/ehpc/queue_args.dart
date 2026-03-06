@@ -53,7 +53,7 @@ class QueueArgs {
   /// [minCount] The minimum number of compute nodes that the queue must contain.
   /// [queueName] The queue name.
   /// [vswitchIds] The vSwitches available for use by compute nodes in the queue.
-  QueueArgs({
+  const QueueArgs({
     this.clusterId,
     this.computeNodes,
     this.enableScaleIn,

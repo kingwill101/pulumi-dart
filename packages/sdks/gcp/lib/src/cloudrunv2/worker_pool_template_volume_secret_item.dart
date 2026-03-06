@@ -14,7 +14,7 @@ class WorkerPoolTemplateVolumeSecretItem {
   /// [mode] Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
   /// [path] The relative path of the secret in the container.
   /// [version] The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
-  WorkerPoolTemplateVolumeSecretItem({
+  const WorkerPoolTemplateVolumeSecretItem({
     this.mode,
     required this.path,
     this.version,

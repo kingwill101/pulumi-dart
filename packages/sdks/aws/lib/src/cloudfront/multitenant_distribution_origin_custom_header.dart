@@ -11,7 +11,7 @@ class MultitenantDistributionOriginCustomHeader {
   /// Creates a new [MultitenantDistributionOriginCustomHeader].
   /// [headerName] Name of the header.
   /// [headerValue] Value for the header.
-  MultitenantDistributionOriginCustomHeader({
+  const MultitenantDistributionOriginCustomHeader({
     required this.headerName,
     required this.headerValue,
   });

@@ -28,7 +28,7 @@ class GetSmartagFlowLogsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] Optional.
-  GetSmartagFlowLogsResult({
+  const GetSmartagFlowLogsResult({
     this.description,
     required this.id,
     required this.ids,

@@ -15,7 +15,7 @@ class Taint {
   /// [effect] Property effect
   /// [key] Property key
   /// [value] Property value
-  Taint({
+  const Taint({
     this.effect,
     this.key,
     this.value,

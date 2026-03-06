@@ -9,7 +9,7 @@ class DataprocParameters {
 
   /// Creates a new [DataprocParameters].
   /// [cluster] URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
-  DataprocParameters({
+  const DataprocParameters({
     this.cluster,
   });
 

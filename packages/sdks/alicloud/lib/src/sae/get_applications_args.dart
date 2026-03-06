@@ -39,7 +39,7 @@ class GetApplicationsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [reverse] The reverse.
   /// [status] The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
-  GetApplicationsArgs({
+  const GetApplicationsArgs({
     this.appName,
     this.enableDetails,
     this.fieldType,

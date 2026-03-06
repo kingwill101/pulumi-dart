@@ -52,7 +52,7 @@ class PoolArgs {
   /// [stopOnDisconnect] Stop on disconnect configuration settings for Dev Boxes created in this pool.
   /// [tags] Resource tags.
   /// [virtualNetworkType] Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
-  PoolArgs({
+  const PoolArgs({
     required this.devBoxDefinitionName,
     this.displayName,
     required this.licenseType,

@@ -18,7 +18,7 @@ class Expr {
   /// [expression] Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
   /// [location] An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
   /// [title] An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-  Expr({
+  const Expr({
     this.description,
     this.expression,
     this.location,

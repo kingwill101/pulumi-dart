@@ -53,7 +53,7 @@ class BasicAcceleratorArgs {
   /// [promotionOptionNo] The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
   /// [resourceGroupId] The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   /// [tags] A mapping of tags to assign to the resource.
-  BasicAcceleratorArgs({
+  const BasicAcceleratorArgs({
     this.autoPay,
     this.autoRenew,
     this.autoRenewDuration,

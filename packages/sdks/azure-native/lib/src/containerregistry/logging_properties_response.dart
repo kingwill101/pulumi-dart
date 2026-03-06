@@ -12,7 +12,7 @@ class LoggingPropertiesResponse {
   /// Creates a new [LoggingPropertiesResponse].
   /// [auditLogStatus] Indicates whether audit logs are enabled on the connected registry.
   /// [logLevel] The verbosity of logs persisted on the connected registry.
-  LoggingPropertiesResponse({
+  const LoggingPropertiesResponse({
     this.auditLogStatus,
     this.logLevel,
   });

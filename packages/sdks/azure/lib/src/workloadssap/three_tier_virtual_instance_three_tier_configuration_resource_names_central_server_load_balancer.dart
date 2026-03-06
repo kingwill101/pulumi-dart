@@ -17,7 +17,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLo
   /// [frontendIpConfigurationNames] A list of Frontend IP Configuration names. Changing this forces a new resource to be created.
   /// [healthProbeNames] A list of Health Probe names. Changing this forces a new resource to be created.
   /// [name] The full resource name of the Load Balancer. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer({
+  const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer({
     this.backendPoolNames,
     this.frontendIpConfigurationNames,
     this.healthProbeNames,

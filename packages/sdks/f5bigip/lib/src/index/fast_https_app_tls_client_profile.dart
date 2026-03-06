@@ -11,7 +11,7 @@ class FastHttpsAppTlsClientProfile {
   /// Creates a new [FastHttpsAppTlsClientProfile].
   /// [tlsCertName] Name of existing BIG-IP SSL certificate to be used for FAST-Generated TLS Server Profile.
   /// [tlsKeyName] Name of existing BIG-IP SSL Key to be used for FAST-Generated TLS Server Profile.
-  FastHttpsAppTlsClientProfile({
+  const FastHttpsAppTlsClientProfile({
     required this.tlsCertName,
     required this.tlsKeyName,
   });

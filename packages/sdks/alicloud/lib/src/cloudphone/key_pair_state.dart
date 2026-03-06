@@ -12,7 +12,7 @@ class KeyPairState {
   /// Creates a new [KeyPairState].
   /// [keyPairName] ADB key pair name.
   /// [publicKeyBody] The public key of the key pair.
-  KeyPairState({
+  const KeyPairState({
     this.keyPairName,
     this.publicKeyBody,
   });

@@ -9,7 +9,7 @@ class ElasticSmbPropertiesResponse {
 
   /// Creates a new [ElasticSmbPropertiesResponse].
   /// [smbEncryption] Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
-  ElasticSmbPropertiesResponse({
+  const ElasticSmbPropertiesResponse({
     this.smbEncryption,
   });
 

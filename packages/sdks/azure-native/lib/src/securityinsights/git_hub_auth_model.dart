@@ -13,7 +13,7 @@ class GitHubAuthModel {
   /// Creates a new [GitHubAuthModel].
   /// [installationId] The GitHubApp auth installation id.
   /// [type] Type of paging
-  GitHubAuthModel({
+  const GitHubAuthModel({
     this.installationId,
     required this.type,
   });

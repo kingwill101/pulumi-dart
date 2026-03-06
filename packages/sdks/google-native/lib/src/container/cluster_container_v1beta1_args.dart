@@ -245,7 +245,7 @@ class ClusterContainerV1beta1Args {
   /// [workloadCertificates] Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
   /// [workloadIdentityConfig] Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
   /// [zone] Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-  ClusterContainerV1beta1Args({
+  const ClusterContainerV1beta1Args({
     this.addonsConfig,
     this.authenticatorGroupsConfig,
     this.autopilot,

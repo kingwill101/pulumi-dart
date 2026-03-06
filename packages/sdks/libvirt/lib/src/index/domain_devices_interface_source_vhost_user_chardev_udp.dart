@@ -17,7 +17,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevUdp {
   /// [bindService] Specifies the service attribute for binding in the UDP settings.
   /// [connectHost] Configures the host address used for the connection in the UDP settings.
   /// [connectService] Defines the service attribute for the connection in the UDP settings.
-  DomainDevicesInterfaceSourceVhostUserChardevUdp({
+  const DomainDevicesInterfaceSourceVhostUserChardevUdp({
     required this.bindHost,
     required this.bindService,
     required this.connectHost,

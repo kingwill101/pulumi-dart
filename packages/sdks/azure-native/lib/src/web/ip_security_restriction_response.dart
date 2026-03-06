@@ -57,7 +57,7 @@ class IpSecurityRestrictionResponse {
   /// [tag] Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   /// [vnetSubnetResourceId] Virtual network resource id
   /// [vnetTrafficTag] (internal) Vnet traffic tag
-  IpSecurityRestrictionResponse({
+  const IpSecurityRestrictionResponse({
     this.action,
     this.description,
     this.headers,

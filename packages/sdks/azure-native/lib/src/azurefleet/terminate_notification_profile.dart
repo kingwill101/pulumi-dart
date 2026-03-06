@@ -15,7 +15,7 @@ class TerminateNotificationProfile {
   /// Creates a new [TerminateNotificationProfile].
   /// [enable] Specifies whether the Terminate Scheduled event is enabled or disabled.
   /// [notBeforeTimeout] Configurable length of time a Virtual Machine being deleted will have to
-  TerminateNotificationProfile({
+  const TerminateNotificationProfile({
     this.enable,
     this.notBeforeTimeout,
   });

@@ -18,7 +18,7 @@ class LibraryInfo {
   /// [name] Name of the library.
   /// [path] Storage blob path of library.
   /// [type] Type of the library.
-  LibraryInfo({
+  const LibraryInfo({
     this.containerName,
     this.name,
     this.path,

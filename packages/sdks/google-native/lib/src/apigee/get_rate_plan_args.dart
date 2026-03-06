@@ -15,7 +15,7 @@ class GetRatePlanArgs {
   /// [apiproductId] Required.
   /// [organizationId] Required.
   /// [rateplanId] Required.
-  GetRatePlanArgs({
+  const GetRatePlanArgs({
     required this.apiproductId,
     required this.organizationId,
     required this.rateplanId,

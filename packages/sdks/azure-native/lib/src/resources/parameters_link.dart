@@ -12,7 +12,7 @@ class ParametersLink {
   /// Creates a new [ParametersLink].
   /// [contentVersion] If included, must match the ContentVersion in the template.
   /// [uri] The URI of the parameters file.
-  ParametersLink({
+  const ParametersLink({
     this.contentVersion,
     required this.uri,
   });

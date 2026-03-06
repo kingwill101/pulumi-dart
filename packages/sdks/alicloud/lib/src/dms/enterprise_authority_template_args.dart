@@ -18,7 +18,7 @@ class EnterpriseAuthorityTemplateArgs {
   /// [authorityTemplateName] Permission Template name.
   /// [description] Permission template description information.
   /// [tid] Tenant ID.
-  EnterpriseAuthorityTemplateArgs({
+  const EnterpriseAuthorityTemplateArgs({
     required this.authorityTemplateName,
     this.description,
     required this.tid,

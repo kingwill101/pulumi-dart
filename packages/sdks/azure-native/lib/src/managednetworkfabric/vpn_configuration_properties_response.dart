@@ -23,7 +23,7 @@ class VpnConfigurationPropertiesResponse {
   /// [optionAProperties] option A properties
   /// [optionBProperties] option B properties
   /// [peeringOption] Peering option list.
-  VpnConfigurationPropertiesResponse({
+  const VpnConfigurationPropertiesResponse({
     required this.administrativeState,
     this.networkToNetworkInterconnectId,
     this.optionAProperties,

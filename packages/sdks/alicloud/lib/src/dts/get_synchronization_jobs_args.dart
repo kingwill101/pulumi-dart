@@ -23,7 +23,7 @@ class GetSynchronizationJobsArgs {
   /// [nameRegex] A regex string to filter results by synchronization job name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
-  GetSynchronizationJobsArgs({
+  const GetSynchronizationJobsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

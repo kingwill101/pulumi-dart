@@ -28,7 +28,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
   /// [nullRatio] Ratio of rows with null value against total scanned rows.
   /// [stringProfile] String type field information.
   /// [topNValues] The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
-  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse({
+  const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse({
     required this.distinctRatio,
     required this.doubleProfile,
     required this.integerProfile,

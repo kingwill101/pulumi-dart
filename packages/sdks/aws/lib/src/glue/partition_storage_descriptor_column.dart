@@ -13,7 +13,7 @@ class PartitionStorageDescriptorColumn {
   /// [comment] Free-form text comment.
   /// [name] Required.
   /// [type] The datatype of data in the Column.
-  PartitionStorageDescriptorColumn({
+  const PartitionStorageDescriptorColumn({
     this.comment,
     required this.name,
     this.type,

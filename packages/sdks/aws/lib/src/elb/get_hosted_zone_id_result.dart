@@ -10,7 +10,7 @@ class GetHostedZoneIdResult {
   /// Creates a new [GetHostedZoneIdResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetHostedZoneIdResult({
+  const GetHostedZoneIdResult({
     required this.id,
     required this.region,
   });

@@ -18,7 +18,7 @@ class SmsReceiverResponse {
   /// [name] The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
   /// [phoneNumber] The phone number of the SMS receiver.
   /// [status] The status of the receiver.
-  SmsReceiverResponse({
+  const SmsReceiverResponse({
     required this.countryCode,
     required this.name,
     required this.phoneNumber,

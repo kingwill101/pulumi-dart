@@ -24,7 +24,7 @@ class GetCredentialOperationResult {
   /// [name] The resource name.
   /// [properties] Properties of credentials.
   /// [type] The resource type.
-  GetCredentialOperationResult({
+  const GetCredentialOperationResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

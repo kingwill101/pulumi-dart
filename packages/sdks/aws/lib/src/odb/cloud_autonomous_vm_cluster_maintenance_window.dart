@@ -25,7 +25,7 @@ class CloudAutonomousVmClusterMaintenanceWindow {
   /// [months] The months when maintenance can be performed. Changing this will force terraform to create new resource.
   /// [preference] The preference for the maintenance window scheduling. Changing this will force terraform to create new resource.
   /// [weeksOfMonths] Indicates whether to skip release updates during maintenance. Changing this will force terraform to create new resource.
-  CloudAutonomousVmClusterMaintenanceWindow({
+  const CloudAutonomousVmClusterMaintenanceWindow({
     this.daysOfWeeks,
     this.hoursOfDays,
     this.leadTimeInWeeks,

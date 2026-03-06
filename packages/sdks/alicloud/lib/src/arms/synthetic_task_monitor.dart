@@ -14,7 +14,7 @@ class SyntheticTaskMonitor {
   /// [cityCode] The city code of monitor.
   /// [clientType] The type of monitor.
   /// [operatorCode] The operator code of monitor.
-  SyntheticTaskMonitor({
+  const SyntheticTaskMonitor({
     required this.cityCode,
     required this.clientType,
     required this.operatorCode,

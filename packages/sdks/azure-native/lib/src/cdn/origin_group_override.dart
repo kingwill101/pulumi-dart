@@ -13,7 +13,7 @@ class OriginGroupOverride {
   /// Creates a new [OriginGroupOverride].
   /// [forwardingProtocol] Protocol this rule will use when forwarding traffic to backends.
   /// [originGroup] defines the OriginGroup that would override the DefaultOriginGroup on route.
-  OriginGroupOverride({
+  const OriginGroupOverride({
     this.forwardingProtocol,
     this.originGroup,
   });

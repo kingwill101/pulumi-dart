@@ -53,7 +53,7 @@ class GetFirewallsFirewall {
   /// [status] The status of the firewall.
   /// [tags] An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [updated] When this firewall was last updated.
-  GetFirewallsFirewall({
+  const GetFirewallsFirewall({
     required this.created,
     required this.devices,
     required this.disabled,

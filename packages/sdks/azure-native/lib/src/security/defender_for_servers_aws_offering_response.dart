@@ -37,7 +37,7 @@ class DefenderForServersAwsOfferingResponse {
   /// [subPlan] configuration for the servers offering subPlan
   /// [vaAutoProvisioning] The Vulnerability Assessment autoprovisioning configuration
   /// [vmScanners] The Microsoft Defender for Server VM scanning configuration
-  DefenderForServersAwsOfferingResponse({
+  const DefenderForServersAwsOfferingResponse({
     this.arcAutoProvisioning,
     this.defenderForServers,
     required this.description,

@@ -60,7 +60,7 @@ class MigrateSqlServerSqlMITaskOutputMigrationLevelResponse {
   /// [status] Current status of migration
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Target server version
-  MigrateSqlServerSqlMITaskOutputMigrationLevelResponse({
+  const MigrateSqlServerSqlMITaskOutputMigrationLevelResponse({
     required this.agentJobs,
     required this.databases,
     required this.endedOn,

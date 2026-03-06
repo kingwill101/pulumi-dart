@@ -17,7 +17,7 @@ class GetMonitorDefaultKeyResult {
   /// [createdBy] The user that created the API key.
   /// [key] The value of the API key.
   /// [name] The name of the API key.
-  GetMonitorDefaultKeyResult({
+  const GetMonitorDefaultKeyResult({
     this.created,
     this.createdBy,
     required this.key,

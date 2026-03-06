@@ -9,7 +9,7 @@ class GetGradientaiAgentsSort {
   /// Creates a new [GetGradientaiAgentsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiAgentsSort({
+  const GetGradientaiAgentsSort({
     this.direction,
     required this.key,
   });

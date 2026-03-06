@@ -21,7 +21,7 @@ class GetDeploymentWebApplicationFirewallStatus {
   /// [botSignaturesPackages] Indicates the version of the bot signatures package used by NGINX App Protect.
   /// [componentVersions] Indicates the version of the WAF Engine and Nginx WAF Module used by NGINX App Protect.
   /// [threatCampaignsPackages] Indicates the version of the threat campaigns package used by NGINX App Protect.
-  GetDeploymentWebApplicationFirewallStatus({
+  const GetDeploymentWebApplicationFirewallStatus({
     required this.attackSignaturesPackages,
     required this.botSignaturesPackages,
     required this.componentVersions,

@@ -21,7 +21,7 @@ class ResourceSetArgs {
   /// [resourceSets] Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
   /// [tags] Optional.
   /// [timeouts] Optional.
-  ResourceSetArgs({
+  const ResourceSetArgs({
     this.region,
     this.resourceSets,
     this.tags,

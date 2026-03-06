@@ -17,7 +17,7 @@ class UserIdentityInfo {
   /// [firstName] The first name. This is required if you are using Amazon Connect or SAML for identity management. Minimum length of 1. Maximum length of 100.
   /// [lastName] The last name. This is required if you are using Amazon Connect or SAML for identity management. Minimum length of 1. Maximum length of 100.
   /// [secondaryEmail] The secondary email address. If present, email notifications will be sent to this email address instead of the primary one.
-  UserIdentityInfo({
+  const UserIdentityInfo({
     this.email,
     this.firstName,
     this.lastName,

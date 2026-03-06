@@ -53,7 +53,7 @@ class RunCommandArgs {
   /// [source] A `source` block as defined below. The source of the run command script.
   /// [tags] A mapping of tags which should be assigned to the Virtual Machine Run Command.
   /// [virtualMachineId] Specifies the Virtual Machine ID within which this Virtual Machine Run Command should exist. Changing this forces a new Virtual Machine Run Command to be created.
-  RunCommandArgs({
+  const RunCommandArgs({
     this.errorBlobManagedIdentity,
     this.errorBlobUri,
     this.location,

@@ -9,7 +9,7 @@ class AccountSku {
 
   /// Creates a new [AccountSku].
   /// [name] Name of the SKU.
-  AccountSku({
+  const AccountSku({
     required this.name,
   });
 

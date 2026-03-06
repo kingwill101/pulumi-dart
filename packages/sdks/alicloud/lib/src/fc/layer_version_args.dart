@@ -32,7 +32,7 @@ class LayerVersionArgs {
   /// [ossObjectName] The name of the OSS object (ZIP package) that contains the function code.
   /// [skipDestroy] Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
   /// [zipFile] The ZIP package of the function code that is encoded in the Base64 format.
-  LayerVersionArgs({
+  const LayerVersionArgs({
     required this.compatibleRuntimes,
     this.description,
     required this.layerName,

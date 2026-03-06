@@ -28,7 +28,7 @@ class RouteTableArgs {
   /// [routes] A list of route objects. Their keys are documented below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The VPC ID.
-  RouteTableArgs({
+  const RouteTableArgs({
     this.propagatingVgws,
     this.region,
     this.routes,

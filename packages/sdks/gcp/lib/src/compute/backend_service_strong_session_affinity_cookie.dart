@@ -16,7 +16,7 @@ class BackendServiceStrongSessionAffinityCookie {
   /// [name] Name of the cookie.
   /// [path] Path to set for the cookie.
   /// [ttl] Lifetime of the cookie.
-  BackendServiceStrongSessionAffinityCookie({
+  const BackendServiceStrongSessionAffinityCookie({
     this.name,
     this.path,
     this.ttl,

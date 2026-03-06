@@ -12,7 +12,7 @@ class FirewallPolicyCertificateAuthority {
   /// Creates a new [FirewallPolicyCertificateAuthority].
   /// [keyVaultSecretId] Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
   /// [name] Name of the CA certificate.
-  FirewallPolicyCertificateAuthority({
+  const FirewallPolicyCertificateAuthority({
     this.keyVaultSecretId,
     this.name,
   });

@@ -23,7 +23,7 @@ class GetDropletAutoscaleConfig {
   /// [targetCpuUtilization] CPU target threshold
   /// [targetMemoryUtilization] Memory target threshold
   /// [targetNumberInstances] Target number of members
-  GetDropletAutoscaleConfig({
+  const GetDropletAutoscaleConfig({
     required this.cooldownMinutes,
     required this.maxInstances,
     required this.minInstances,

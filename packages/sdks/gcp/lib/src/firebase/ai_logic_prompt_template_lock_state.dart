@@ -23,7 +23,7 @@ class AiLogicPromptTemplateLockState {
   /// [name] The resource name of the prompt template.
   /// [project] The ID of the project in which the resource belongs.
   /// [templateId] The ID of the prompt template.
-  AiLogicPromptTemplateLockState({
+  const AiLogicPromptTemplateLockState({
     this.location,
     this.locked,
     this.name,

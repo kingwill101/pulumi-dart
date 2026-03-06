@@ -8,7 +8,7 @@ class DataRepositoryAssociationS3AutoImportPolicy {
 
   /// Creates a new [DataRepositoryAssociationS3AutoImportPolicy].
   /// [events] A list of file event types to automatically export to your linked S3 bucket or import from the linked S3 bucket. Valid values are `NEW`, `CHANGED`, `DELETED`. Max of 3.
-  DataRepositoryAssociationS3AutoImportPolicy({
+  const DataRepositoryAssociationS3AutoImportPolicy({
     this.events,
   });
 

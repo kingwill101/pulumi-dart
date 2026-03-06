@@ -37,7 +37,7 @@ class JobArgs {
   /// [restoreStrategy] Restore strategy See `restore_strategy` below.
   /// [status] job status See `status` below.
   /// [stopStrategy] Optional.
-  JobArgs({
+  const JobArgs({
     this.deploymentId,
     this.localVariables,
     required this.namespace,

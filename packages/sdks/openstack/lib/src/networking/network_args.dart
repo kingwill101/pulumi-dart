@@ -88,7 +88,7 @@ class NetworkArgs {
   /// [tenantId] The owner of the network. Required if admin wants to
   /// [transparentVlan] Specifies whether the network resource has the
   /// [valueSpecs] Map of additional options.
-  NetworkArgs({
+  const NetworkArgs({
     this.adminStateUp,
     this.availabilityZoneHints,
     this.description,

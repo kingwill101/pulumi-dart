@@ -21,7 +21,7 @@ class GetNodeDeviceInfoResult {
   /// [name] Device name from `libvirt.getNodeDevices` data source (e.g., `pci_0000_00_1f_2`).
   /// [parent] Parent device name in the device hierarchy.
   /// [path] Sysfs path to the device.
-  GetNodeDeviceInfoResult({
+  const GetNodeDeviceInfoResult({
     required this.capability,
     required this.id,
     required this.name,

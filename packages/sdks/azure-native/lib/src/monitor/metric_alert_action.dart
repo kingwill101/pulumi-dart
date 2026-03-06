@@ -12,7 +12,7 @@ class MetricAlertAction {
   /// Creates a new [MetricAlertAction].
   /// [actionGroupId] the id of the action group to use.
   /// [webHookProperties] This field allows specifying custom properties, which would be appended to the alert payload sent as input to the webhook.
-  MetricAlertAction({
+  const MetricAlertAction({
     this.actionGroupId,
     this.webHookProperties,
   });

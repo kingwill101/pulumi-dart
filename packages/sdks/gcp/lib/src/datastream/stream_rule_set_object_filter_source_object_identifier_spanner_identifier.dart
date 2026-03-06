@@ -11,7 +11,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier].
   /// [schema] The schema name.
   /// [table] The table name.
-  StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier({
     this.schema,
     required this.table,
   });

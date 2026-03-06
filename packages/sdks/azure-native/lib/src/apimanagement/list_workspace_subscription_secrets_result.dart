@@ -11,7 +11,7 @@ class ListWorkspaceSubscriptionSecretsResult {
   /// Creates a new [ListWorkspaceSubscriptionSecretsResult].
   /// [primaryKey] Subscription primary key.
   /// [secondaryKey] Subscription secondary key.
-  ListWorkspaceSubscriptionSecretsResult({
+  const ListWorkspaceSubscriptionSecretsResult({
     this.primaryKey,
     this.secondaryKey,
   });

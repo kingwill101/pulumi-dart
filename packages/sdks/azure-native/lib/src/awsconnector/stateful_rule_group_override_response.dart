@@ -9,7 +9,7 @@ class StatefulRuleGroupOverrideResponse {
 
   /// Creates a new [StatefulRuleGroupOverrideResponse].
   /// [action] Property action
-  StatefulRuleGroupOverrideResponse({
+  const StatefulRuleGroupOverrideResponse({
     this.action,
   });
 

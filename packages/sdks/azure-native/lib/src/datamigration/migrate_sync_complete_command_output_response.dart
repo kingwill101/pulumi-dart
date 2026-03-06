@@ -13,7 +13,7 @@ class MigrateSyncCompleteCommandOutputResponse {
   /// Creates a new [MigrateSyncCompleteCommandOutputResponse].
   /// [errors] List of errors that happened during the command execution
   /// [id] Result identifier
-  MigrateSyncCompleteCommandOutputResponse({
+  const MigrateSyncCompleteCommandOutputResponse({
     required this.errors,
     required this.id,
   });

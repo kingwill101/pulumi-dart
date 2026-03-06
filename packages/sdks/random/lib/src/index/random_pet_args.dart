@@ -21,7 +21,7 @@ class RandomPetArgs {
   /// [length] The length (in words) of the pet name. Defaults to 2
   /// [prefix] A string to prefix the name with.
   /// [separator] The character to separate words in the pet name. Defaults to "-"
-  RandomPetArgs({
+  const RandomPetArgs({
     this.keepers,
     this.length,
     this.prefix,

@@ -43,7 +43,7 @@ class SqlPoolArgs {
   /// [storageAccountType] The storage account type that will be used to store backups for this Synapse SQL Pool. Possible values are `LRS` or `GRS`. Changing this forces a new Synapse SQL Pool to be created.
   /// [synapseWorkspaceId] The ID of Synapse Workspace within which this SQL Pool should be created. Changing this forces a new Synapse SQL Pool to be created.
   /// [tags] A mapping of tags which should be assigned to the Synapse SQL Pool.
-  SqlPoolArgs({
+  const SqlPoolArgs({
     this.collation,
     this.createMode,
     this.dataEncrypted,

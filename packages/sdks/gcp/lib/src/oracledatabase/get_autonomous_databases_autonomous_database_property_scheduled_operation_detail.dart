@@ -28,7 +28,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail {
   /// [dayOfWeek] Possible values:
   /// [startTimes] Represents a time of day. The date and time zone are either not significant
   /// [stopTimes] Represents a time of day. The date and time zone are either not significant
-  GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail({
+  const GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail({
     required this.dayOfWeek,
     required this.startTimes,
     required this.stopTimes,

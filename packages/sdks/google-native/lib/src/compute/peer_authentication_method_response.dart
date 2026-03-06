@@ -10,7 +10,7 @@ class PeerAuthenticationMethodResponse {
 
   /// Creates a new [PeerAuthenticationMethodResponse].
   /// [mtls] Set if mTLS is used for peer authentication.
-  PeerAuthenticationMethodResponse({
+  const PeerAuthenticationMethodResponse({
     required this.mtls,
   });
 

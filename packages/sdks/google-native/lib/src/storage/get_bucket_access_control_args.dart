@@ -15,7 +15,7 @@ class GetBucketAccessControlArgs {
   /// [bucket] Required.
   /// [entity] Required.
   /// [userProject] Optional.
-  GetBucketAccessControlArgs({
+  const GetBucketAccessControlArgs({
     required this.bucket,
     required this.entity,
     this.userProject,

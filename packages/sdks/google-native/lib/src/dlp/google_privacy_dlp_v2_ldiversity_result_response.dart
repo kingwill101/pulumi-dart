@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2LDiversityResultResponse {
 
   /// Creates a new [GooglePrivacyDlpV2LDiversityResultResponse].
   /// [sensitiveValueFrequencyHistogramBuckets] Histogram of l-diversity equivalence class sensitive value frequencies.
-  GooglePrivacyDlpV2LDiversityResultResponse({
+  const GooglePrivacyDlpV2LDiversityResultResponse({
     required this.sensitiveValueFrequencyHistogramBuckets,
   });
 

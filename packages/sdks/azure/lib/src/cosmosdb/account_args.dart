@@ -103,7 +103,7 @@ class AccountArgs {
   /// [restore] Optional.
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNetworkRules] Optional.
-  AccountArgs({
+  const AccountArgs({
     this.accessKeyMetadataWritesEnabled,
     this.analyticalStorage,
     this.analyticalStorageEnabled,

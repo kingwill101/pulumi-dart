@@ -31,7 +31,7 @@ class AzureTableOutputDataSource {
   /// [rowKey] This element indicates the name of a column from the SELECT statement in the query that will be used as the row key for the Azure Table. Required on PUT (CreateOrReplace) requests.
   /// [table] The name of the Azure Table. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  AzureTableOutputDataSource({
+  const AzureTableOutputDataSource({
     this.accountKey,
     this.accountName,
     this.batchSize,

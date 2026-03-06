@@ -18,7 +18,7 @@ class GetScriptDagNode {
   /// [id] Node identifier that is unique within the node's graph.
   /// [lineNumber] Line number of the node.
   /// [nodeType] Type of node this is.
-  GetScriptDagNode({
+  const GetScriptDagNode({
     required this.args,
     required this.id,
     this.lineNumber,

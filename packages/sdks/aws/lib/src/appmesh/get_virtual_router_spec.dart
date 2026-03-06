@@ -8,7 +8,7 @@ class GetVirtualRouterSpec {
 
   /// Creates a new [GetVirtualRouterSpec].
   /// [listeners] Required.
-  GetVirtualRouterSpec({
+  const GetVirtualRouterSpec({
     required this.listeners,
   });
 

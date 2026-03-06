@@ -62,7 +62,7 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
   /// [taskExecutionStrategy] Optional. The policy dictating the execution strategy of this task.
   /// [taskId] The identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_id`).
   /// [taskTemplate] Optional. Used to define task-template name if task is of type task-template
-  GoogleCloudIntegrationsV1alphaTaskConfig({
+  const GoogleCloudIntegrationsV1alphaTaskConfig({
     this.description,
     this.displayName,
     this.errorCatcherId,

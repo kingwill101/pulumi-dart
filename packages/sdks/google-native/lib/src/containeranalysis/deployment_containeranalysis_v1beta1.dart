@@ -25,7 +25,7 @@ class DeploymentContaineranalysisV1beta1 {
   /// [platform] Platform hosting this deployment.
   /// [undeployTime] End of the lifetime of this deployment.
   /// [userEmail] Identity of the user that triggered this deployment.
-  DeploymentContaineranalysisV1beta1({
+  const DeploymentContaineranalysisV1beta1({
     this.address,
     this.config,
     required this.deployTime,

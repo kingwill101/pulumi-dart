@@ -9,7 +9,7 @@ class ExportDatasetConfigurationResponse {
 
   /// Creates a new [ExportDatasetConfigurationResponse].
   /// [columns] Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
-  ExportDatasetConfigurationResponse({
+  const ExportDatasetConfigurationResponse({
     this.columns,
   });
 

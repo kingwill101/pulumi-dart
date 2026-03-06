@@ -40,7 +40,7 @@ class SpringCloudGatewayRouteConfigArgs {
   /// [springCloudAppId] The ID of the Spring Cloud App.
   /// [springCloudGatewayId] The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Route Config to be created.
   /// [ssoValidationEnabled] Should the sso validation be enabled in app level?
-  SpringCloudGatewayRouteConfigArgs({
+  const SpringCloudGatewayRouteConfigArgs({
     this.filters,
     this.name,
     this.openApi,

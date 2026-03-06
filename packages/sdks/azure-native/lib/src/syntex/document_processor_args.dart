@@ -25,7 +25,7 @@ class DocumentProcessorArgs {
   /// [properties] Document processor properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DocumentProcessorArgs({
+  const DocumentProcessorArgs({
     this.location,
     this.processorName,
     this.properties,

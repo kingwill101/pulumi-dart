@@ -18,7 +18,7 @@ class SecuritySettingsResponse {
   /// [encryptionSettings] Customer Managed Key details of the resource.
   /// [immutabilitySettings] Immutability Settings at vault level
   /// [softDeleteSettings] Soft delete related settings
-  SecuritySettingsResponse({
+  const SecuritySettingsResponse({
     this.encryptionSettings,
     this.immutabilitySettings,
     this.softDeleteSettings,

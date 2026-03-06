@@ -8,7 +8,7 @@ class BucketReplicationConfigRuleDestinationEncryptionConfiguration {
 
   /// Creates a new [BucketReplicationConfigRuleDestinationEncryptionConfiguration].
   /// [replicaKmsKeyId] ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket.
-  BucketReplicationConfigRuleDestinationEncryptionConfiguration({
+  const BucketReplicationConfigRuleDestinationEncryptionConfiguration({
     required this.replicaKmsKeyId,
   });
 

@@ -19,7 +19,7 @@ class ScheduleResponse {
   /// [effectiveUntil] Scheduling effective until time. Date-Time in ISO-8601 format without timezone suffix.
   /// [recurrences] List of recurrences.
   /// [timeZone] Scheduling time zone.
-  ScheduleResponse({
+  const ScheduleResponse({
     this.effectiveFrom,
     this.effectiveUntil,
     this.recurrences,

@@ -36,7 +36,7 @@ class RemoteAdbDataSourceArgs {
   /// [remoteDbInstanceId] The instanceId of the remote instance which provide data.
   /// [userName] The user name used to connect to the remote instance
   /// [userPassword] The user password used to connect to the remote instance
-  RemoteAdbDataSourceArgs({
+  const RemoteAdbDataSourceArgs({
     this.dataSourceName,
     required this.localDatabase,
     required this.localDbInstanceId,

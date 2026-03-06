@@ -25,7 +25,7 @@ class RegionNetworkFirewallPolicyAssociationState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location of this resource.
   /// [shortName] The short name of the firewall policy of the association.
-  RegionNetworkFirewallPolicyAssociationState({
+  const RegionNetworkFirewallPolicyAssociationState({
     this.attachmentTarget,
     this.firewallPolicy,
     this.name,

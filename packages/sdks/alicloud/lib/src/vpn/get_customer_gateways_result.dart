@@ -23,7 +23,7 @@ class GetCustomerGatewaysResult {
   /// [nameRegex] Optional.
   /// [names] names of VPN customer gateway.
   /// [outputFile] Optional.
-  GetCustomerGatewaysResult({
+  const GetCustomerGatewaysResult({
     required this.gateways,
     required this.id,
     required this.ids,

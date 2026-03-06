@@ -33,7 +33,7 @@ class ServiceArgs {
   /// [quantity] Windows IoT Device Service device allocation,
   /// [resourceGroupName] The name of the resource group that contains the Windows IoT Device Service.
   /// [tags] Resource tags.
-  ServiceArgs({
+  const ServiceArgs({
     this.adminDomainName,
     this.billingDomainName,
     this.deviceName,

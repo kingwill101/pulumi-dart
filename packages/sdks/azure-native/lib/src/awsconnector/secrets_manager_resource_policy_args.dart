@@ -25,7 +25,7 @@ class SecretsManagerResourcePolicyArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  SecretsManagerResourcePolicyArgs({
+  const SecretsManagerResourcePolicyArgs({
     this.location,
     this.name,
     this.properties,

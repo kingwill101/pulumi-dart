@@ -42,7 +42,7 @@ class GetConnectionResult {
   /// [state] State of the connection.
   /// [tags] Map of tags for the resource.
   /// [vlanId] The VLAN ID.
-  GetConnectionResult({
+  const GetConnectionResult({
     required this.arn,
     required this.awsDevice,
     required this.bandwidth,

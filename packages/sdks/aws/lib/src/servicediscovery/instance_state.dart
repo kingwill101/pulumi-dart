@@ -18,7 +18,7 @@ class InstanceState {
   /// [instanceId] The ID of the service instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceId] The ID of the service that you want to use to create the instance.
-  InstanceState({
+  const InstanceState({
     this.attributes,
     this.instanceId,
     this.region,

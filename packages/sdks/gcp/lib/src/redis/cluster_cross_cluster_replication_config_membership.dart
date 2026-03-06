@@ -13,7 +13,7 @@ class ClusterCrossClusterReplicationConfigMembership {
   /// Creates a new [ClusterCrossClusterReplicationConfigMembership].
   /// [primaryClusters] Details of the primary cluster that is used as the replication source for all the secondary clusters.
   /// [secondaryClusters] List of secondary clusters that are replicating from the primary cluster.
-  ClusterCrossClusterReplicationConfigMembership({
+  const ClusterCrossClusterReplicationConfigMembership({
     this.primaryClusters,
     this.secondaryClusters,
   });

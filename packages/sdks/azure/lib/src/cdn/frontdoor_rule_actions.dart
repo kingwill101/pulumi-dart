@@ -25,7 +25,7 @@ class FrontdoorRuleActions {
   /// [routeConfigurationOverrideAction] A `route_configuration_override_action` block as defined below.
   /// [urlRedirectAction] A `url_redirect_action` block as defined below. You may **not** have a `url_redirect_action` **and** a `url_rewrite_action` defined in the same `actions` block.
   /// [urlRewriteAction] A `url_rewrite_action` block as defined below. You may **not** have a `url_rewrite_action` **and** a `url_redirect_action` defined in the same `actions` block.
-  FrontdoorRuleActions({
+  const FrontdoorRuleActions({
     this.requestHeaderActions,
     this.responseHeaderActions,
     this.routeConfigurationOverrideAction,

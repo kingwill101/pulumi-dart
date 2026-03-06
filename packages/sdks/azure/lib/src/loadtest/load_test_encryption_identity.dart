@@ -13,7 +13,7 @@ class LoadTestEncryptionIdentity {
   /// Creates a new [LoadTestEncryptionIdentity].
   /// [identityId] The User Assigned Identity ID that should be assigned to this Load Test Encryption. Changing this forces a new Load Test to be created.
   /// [type] Specifies the type of Managed Identity that should be assigned to this Load Test Encryption. Possible values are `SystemAssigned` or `UserAssigned`. Changing this forces a new Load Test to be created.
-  LoadTestEncryptionIdentity({
+  const LoadTestEncryptionIdentity({
     required this.identityId,
     required this.type,
   });

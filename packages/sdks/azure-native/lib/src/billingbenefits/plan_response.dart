@@ -21,7 +21,7 @@ class PlanResponse {
   /// [promotionCode] A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
   /// [publisher] The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
   /// [version] The version of the desired product/artifact.
-  PlanResponse({
+  const PlanResponse({
     required this.name,
     required this.product,
     this.promotionCode,

@@ -87,7 +87,7 @@ class RegionHealthCheckArgs {
   /// [tcpHealthCheck] A nested object resource.
   /// [timeoutSec] How long (in seconds) to wait before claiming failure.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many
-  RegionHealthCheckArgs({
+  const RegionHealthCheckArgs({
     this.checkIntervalSec,
     this.description,
     this.grpcHealthCheck,

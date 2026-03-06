@@ -57,7 +57,7 @@ class TemplateApplicationsState {
   /// [quotaApplicationDetails] List of quota application details.
   /// [quotaCategory] The quota type. Value:
   /// [reason] Reason for quota application.
-  TemplateApplicationsState({
+  const TemplateApplicationsState({
     this.aliyunUids,
     this.desireValue,
     this.dimensions,

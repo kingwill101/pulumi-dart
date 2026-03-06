@@ -11,7 +11,7 @@ class AppHostingTrafficCurrent {
 
   /// Creates a new [AppHostingTrafficCurrent].
   /// [splits] (Output)
-  AppHostingTrafficCurrent({
+  const AppHostingTrafficCurrent({
     this.splits,
   });
 

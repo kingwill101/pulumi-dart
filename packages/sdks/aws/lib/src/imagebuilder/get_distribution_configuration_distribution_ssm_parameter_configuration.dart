@@ -14,7 +14,7 @@ class GetDistributionConfigurationDistributionSsmParameterConfiguration {
   /// [amiAccountId] The AWS account ID that own the parameter in the given region.
   /// [dataType] The data type of the SSM parameter.
   /// [parameterName] Name of the SSM parameter used to store the AMI ID after distribution.
-  GetDistributionConfigurationDistributionSsmParameterConfiguration({
+  const GetDistributionConfigurationDistributionSsmParameterConfiguration({
     required this.amiAccountId,
     required this.dataType,
     required this.parameterName,

@@ -11,7 +11,7 @@ class ResiliencyPolicyPolicyAz {
   /// Creates a new [ResiliencyPolicyPolicyAz].
   /// [rpo] Recovery Point Objective (RPO) as a Go duration.
   /// [rto] Recovery Time Objective (RTO) as a Go duration.
-  ResiliencyPolicyPolicyAz({
+  const ResiliencyPolicyPolicyAz({
     required this.rpo,
     required this.rto,
   });

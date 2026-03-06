@@ -35,7 +35,7 @@ class GetKeyResult {
   /// [publicKeyData] The public key data. Only provided in `GetServiceAccountKey` responses.
   /// [validAfterTime] The key can be used after this timestamp.
   /// [validBeforeTime] The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for the private key signing operation. The public key could still be used for verification for a few hours after this time.
-  GetKeyResult({
+  const GetKeyResult({
     required this.disabled,
     required this.keyAlgorithm,
     required this.keyOrigin,

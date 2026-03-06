@@ -81,7 +81,7 @@ class NodeGroupArgs {
   /// [specType] Node group spec types include the following:
   /// [storagePerformanceLevel] Performance levels of the cloud disk. Includes the following values:
   /// [storageSize] Storage size, measured in GiB.
-  NodeGroupArgs({
+  const NodeGroupArgs({
     this.autoRenew,
     this.cu,
     this.description,

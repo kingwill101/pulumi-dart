@@ -13,7 +13,7 @@ class ServiceGroupProperties {
   /// Creates a new [ServiceGroupProperties].
   /// [displayName] The display name of the serviceGroup. For example, ServiceGroupTest1
   /// [parent] The details of the parent serviceGroup.
-  ServiceGroupProperties({
+  const ServiceGroupProperties({
     this.displayName,
     this.parent,
   });

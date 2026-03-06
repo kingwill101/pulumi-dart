@@ -20,7 +20,7 @@ class GetSubscribedRuleGroupArgs {
   /// [metricName] Name of the WAF rule group.
   /// [name] Name of the WAF rule group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetSubscribedRuleGroupArgs({
+  const GetSubscribedRuleGroupArgs({
     this.metricName,
     this.name,
     this.region,

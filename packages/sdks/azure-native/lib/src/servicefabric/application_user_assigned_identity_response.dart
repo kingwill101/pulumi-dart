@@ -11,7 +11,7 @@ class ApplicationUserAssignedIdentityResponse {
   /// Creates a new [ApplicationUserAssignedIdentityResponse].
   /// [name] The friendly name of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
-  ApplicationUserAssignedIdentityResponse({
+  const ApplicationUserAssignedIdentityResponse({
     required this.name,
     required this.principalId,
   });

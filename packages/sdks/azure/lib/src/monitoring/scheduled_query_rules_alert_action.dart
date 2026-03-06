@@ -14,7 +14,7 @@ class ScheduledQueryRulesAlertAction {
   /// [actionGroups] List of action group reference resource IDs.
   /// [customWebhookPayload] Custom payload to be sent for all webhook payloads in alerting action.
   /// [emailSubject] Custom subject override for all email ids in Azure action group.
-  ScheduledQueryRulesAlertAction({
+  const ScheduledQueryRulesAlertAction({
     required this.actionGroups,
     this.customWebhookPayload,
     this.emailSubject,

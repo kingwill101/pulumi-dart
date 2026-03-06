@@ -22,7 +22,7 @@ class ConfigurationAssignmentFilterProperties {
   /// [resourceGroups] List of allowed resource groups.
   /// [resourceTypes] List of allowed resources.
   /// [tagSettings] Tag settings for the VM.
-  ConfigurationAssignmentFilterProperties({
+  const ConfigurationAssignmentFilterProperties({
     this.locations,
     this.osTypes,
     this.resourceGroups,

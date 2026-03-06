@@ -7,7 +7,7 @@ class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
 
   /// Creates a new [ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig({
+  const ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig({
     required this.enabled,
   });
 

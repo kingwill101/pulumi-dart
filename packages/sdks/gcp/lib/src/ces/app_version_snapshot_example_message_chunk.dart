@@ -39,7 +39,7 @@ class AppVersionSnapshotExampleMessageChunk {
   /// [toolCalls] (Output)
   /// [toolResponses] (Output)
   /// [updatedVariables] (Output)
-  AppVersionSnapshotExampleMessageChunk({
+  const AppVersionSnapshotExampleMessageChunk({
     this.agentTransfers,
     this.images,
     this.text,

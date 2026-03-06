@@ -9,7 +9,7 @@ class VolumeCreate {
 
   /// Creates a new [VolumeCreate].
   /// [content] Upload content from a URL or local file
-  VolumeCreate({
+  const VolumeCreate({
     required this.content,
   });
 

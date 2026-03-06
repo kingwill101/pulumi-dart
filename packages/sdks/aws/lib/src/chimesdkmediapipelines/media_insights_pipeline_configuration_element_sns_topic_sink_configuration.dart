@@ -8,7 +8,7 @@ class MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration {
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration].
   /// [insightsTarget] SNS topic to deliver results.
-  MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration({
+  const MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration({
     required this.insightsTarget,
   });
 

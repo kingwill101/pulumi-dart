@@ -9,7 +9,7 @@ class IdcApplicationServiceIntegrationLakeFormation {
 
   /// Creates a new [IdcApplicationServiceIntegrationLakeFormation].
   /// [lakeFormationQuery] Lake formation scope.
-  IdcApplicationServiceIntegrationLakeFormation({
+  const IdcApplicationServiceIntegrationLakeFormation({
     this.lakeFormationQuery,
   });
 

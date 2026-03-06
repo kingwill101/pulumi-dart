@@ -9,7 +9,7 @@ class NsgReferenceResponse {
 
   /// Creates a new [NsgReferenceResponse].
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
-  NsgReferenceResponse({
+  const NsgReferenceResponse({
     required this.sourceArmResourceId,
   });
 

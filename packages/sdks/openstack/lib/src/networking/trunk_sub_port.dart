@@ -14,7 +14,7 @@ class TrunkSubPort {
   /// [portId] The ID of the port to be made a subport of the trunk.
   /// [segmentationId] The numeric id of the subport segment.
   /// [segmentationType] The segmentation technology to use, e.g., "vlan".
-  TrunkSubPort({
+  const TrunkSubPort({
     required this.portId,
     required this.segmentationId,
     required this.segmentationType,

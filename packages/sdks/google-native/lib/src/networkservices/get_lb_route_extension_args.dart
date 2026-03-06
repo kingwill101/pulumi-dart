@@ -15,7 +15,7 @@ class GetLbRouteExtensionArgs {
   /// [lbRouteExtensionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetLbRouteExtensionArgs({
+  const GetLbRouteExtensionArgs({
     required this.lbRouteExtensionId,
     required this.location,
     this.project,

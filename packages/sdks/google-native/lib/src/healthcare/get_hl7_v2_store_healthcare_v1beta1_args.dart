@@ -17,7 +17,7 @@ class GetHl7V2StoreHealthcareV1beta1Args {
   /// [hl7V2StoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetHl7V2StoreHealthcareV1beta1Args({
+  const GetHl7V2StoreHealthcareV1beta1Args({
     required this.datasetId,
     required this.hl7V2StoreId,
     required this.location,

@@ -15,7 +15,7 @@ class GetOsPolicyAssignmentOsconfigV1alphaArgs {
   /// [location] Required.
   /// [osPolicyAssignmentId] Required.
   /// [project] Optional.
-  GetOsPolicyAssignmentOsconfigV1alphaArgs({
+  const GetOsPolicyAssignmentOsconfigV1alphaArgs({
     required this.location,
     required this.osPolicyAssignmentId,
     this.project,

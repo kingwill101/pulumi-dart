@@ -12,7 +12,7 @@ class Scope {
   /// Creates a new [Scope].
   /// [kubernetesNamespace] Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched.
   /// [kubernetesServiceAccount] Optional. Matches a single Kubernetes service account, e.g. `my-namespace:my-service-account`. `kubernetes_service_account` scope is always more specific than `kubernetes_namespace` scope for the same namespace.
-  Scope({
+  const Scope({
     this.kubernetesNamespace,
     this.kubernetesServiceAccount,
   });

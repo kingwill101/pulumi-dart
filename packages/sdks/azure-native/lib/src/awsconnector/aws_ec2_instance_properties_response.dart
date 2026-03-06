@@ -206,7 +206,7 @@ class AwsEc2InstancePropertiesResponse {
   /// [usageOperationUpdateTime] &lt;p&gt;The time that the usage operation was last updated.&lt;/p&gt;
   /// [virtualizationType] &lt;p&gt;The virtualization type of the instance.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The ID of the VPC in which the instance is running.&lt;/p&gt;
-  AwsEc2InstancePropertiesResponse({
+  const AwsEc2InstancePropertiesResponse({
     this.amiLaunchIndex,
     this.architecture,
     this.blockDeviceMappings,

@@ -21,7 +21,7 @@ class GetFoldersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [parentFolderPath] The parent folder path.
   /// [projectId] The ID of the project.
-  GetFoldersArgs({
+  const GetFoldersArgs({
     this.ids,
     this.outputFile,
     required this.parentFolderPath,

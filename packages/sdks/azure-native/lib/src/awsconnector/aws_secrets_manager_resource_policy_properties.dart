@@ -18,7 +18,7 @@ class AwsSecretsManagerResourcePolicyProperties {
   /// [id] Property id
   /// [resourcePolicy] Property resourcePolicy
   /// [secretId] Property secretId
-  AwsSecretsManagerResourcePolicyProperties({
+  const AwsSecretsManagerResourcePolicyProperties({
     this.blockPublicPolicy,
     this.id,
     this.resourcePolicy,

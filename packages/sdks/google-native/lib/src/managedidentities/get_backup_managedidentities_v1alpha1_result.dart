@@ -29,7 +29,7 @@ class GetBackupManagedidentitiesV1alpha1Result {
   /// [statusMessage] Additional information about the current status of this backup, if available.
   /// [type] Indicates whether it’s an on-demand backup or scheduled.
   /// [updateTime] Last update time.
-  GetBackupManagedidentitiesV1alpha1Result({
+  const GetBackupManagedidentitiesV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.labels,

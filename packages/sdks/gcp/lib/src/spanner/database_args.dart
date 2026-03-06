@@ -49,7 +49,7 @@ class DatabaseArgs {
   /// [name] A unique identifier for the database, which cannot be changed after the
   /// [project] The ID of the project in which the resource belongs.
   /// [versionRetentionPeriod] The retention period for the database. The retention period must be between 1 hour
-  DatabaseArgs({
+  const DatabaseArgs({
     this.databaseDialect,
     this.ddls,
     this.defaultTimeZone,

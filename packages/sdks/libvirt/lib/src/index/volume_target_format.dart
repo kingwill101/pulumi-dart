@@ -8,7 +8,7 @@ class VolumeTargetFormat {
 
   /// Creates a new [VolumeTargetFormat].
   /// [type] Specifies the type of the backing store format used for the storage volume.
-  VolumeTargetFormat({
+  const VolumeTargetFormat({
     required this.type,
   });
 

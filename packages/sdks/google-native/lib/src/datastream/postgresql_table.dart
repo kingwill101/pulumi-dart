@@ -13,7 +13,7 @@ class PostgresqlTable {
   /// Creates a new [PostgresqlTable].
   /// [postgresqlColumns] PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  PostgresqlTable({
+  const PostgresqlTable({
     this.postgresqlColumns,
     this.table,
   });

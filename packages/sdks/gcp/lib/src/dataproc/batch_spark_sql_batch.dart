@@ -14,7 +14,7 @@ class BatchSparkSqlBatch {
   /// [jarFileUris] HCFS URIs of jar files to be added to the Spark CLASSPATH.
   /// [queryFileUri] The HCFS URI of the script that contains Spark SQL queries to execute.
   /// [queryVariables] Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
-  BatchSparkSqlBatch({
+  const BatchSparkSqlBatch({
     this.jarFileUris,
     this.queryFileUri,
     this.queryVariables,

@@ -14,7 +14,7 @@ class ManagedComputeIdentityResponse {
   /// Creates a new [ManagedComputeIdentityResponse].
   /// [computeIdentityType] Monitor compute identity type enum.
   /// [identity] The identity which will be leveraged by the monitoring jobs.
-  ManagedComputeIdentityResponse({
+  const ManagedComputeIdentityResponse({
     required this.computeIdentityType,
     this.identity,
   });

@@ -33,7 +33,7 @@ class ResolverRuleArgs {
   /// [ruleType] Rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetIps] Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).
-  ResolverRuleArgs({
+  const ResolverRuleArgs({
     required this.domainName,
     this.name,
     this.region,

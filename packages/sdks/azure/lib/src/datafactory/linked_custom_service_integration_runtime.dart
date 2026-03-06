@@ -11,7 +11,7 @@ class LinkedCustomServiceIntegrationRuntime {
   /// Creates a new [LinkedCustomServiceIntegrationRuntime].
   /// [name] The integration runtime reference to associate with the Data Factory Linked Service.
   /// [parameters] A map of parameters to associate with the integration runtime.
-  LinkedCustomServiceIntegrationRuntime({
+  const LinkedCustomServiceIntegrationRuntime({
     required this.name,
     this.parameters,
   });

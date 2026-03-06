@@ -12,7 +12,7 @@ class FlexibleRuntimeSettingsResponseAppengineV1beta {
   /// Creates a new [FlexibleRuntimeSettingsResponseAppengineV1beta].
   /// [operatingSystem] The operating system of the application runtime.
   /// [runtimeVersion] The runtime version of an App Engine flexible application.
-  FlexibleRuntimeSettingsResponseAppengineV1beta({
+  const FlexibleRuntimeSettingsResponseAppengineV1beta({
     required this.operatingSystem,
     required this.runtimeVersion,
   });

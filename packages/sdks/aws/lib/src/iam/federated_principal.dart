@@ -9,7 +9,7 @@ class FederatedPrincipal {
 
   /// Creates a new [FederatedPrincipal].
   /// [federated] The federated principal identifier.
-  FederatedPrincipal({
+  const FederatedPrincipal({
     required this.federated,
   });
 

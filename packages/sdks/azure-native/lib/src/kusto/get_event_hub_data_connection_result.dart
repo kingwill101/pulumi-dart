@@ -60,7 +60,7 @@ class GetEventHubDataConnectionResult {
   /// [retrievalStartDate] When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEventHubDataConnectionResult({
+  const GetEventHubDataConnectionResult({
     required this.azureApiVersion,
     this.compression,
     required this.consumerGroup,

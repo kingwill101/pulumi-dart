@@ -13,7 +13,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
   /// [repInterval] Optional.
   /// [serviceName] Optional.
   /// [serviceProviderName] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings({
     this.outputSdt,
     this.repInterval,
     this.serviceName,

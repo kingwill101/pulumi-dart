@@ -15,7 +15,7 @@ class DeviceResponse {
   /// [containerPath] The path inside the container at which to expose the host device.
   /// [hostPath] The path for the device on the host container instance.
   /// [permissions] The explicit permissions to provide to the container for the device. By default, the container has permissions for ``read``, ``write``, and ``mknod`` for the device.
-  DeviceResponse({
+  const DeviceResponse({
     this.containerPath,
     this.hostPath,
     this.permissions,

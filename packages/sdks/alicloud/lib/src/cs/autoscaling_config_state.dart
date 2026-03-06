@@ -57,7 +57,7 @@ class AutoscalingConfigState {
   /// [skipNodesWithSystemPods] If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
   /// [unneededDuration] Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
   /// [utilizationThreshold] The scale-in a threshold. Default is `0.5`.
-  AutoscalingConfigState({
+  const AutoscalingConfigState({
     this.clusterId,
     this.coolDownDuration,
     this.daemonsetEvictionForNodes,

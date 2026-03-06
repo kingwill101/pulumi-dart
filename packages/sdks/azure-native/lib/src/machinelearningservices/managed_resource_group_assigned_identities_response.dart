@@ -9,7 +9,7 @@ class ManagedResourceGroupAssignedIdentitiesResponse {
 
   /// Creates a new [ManagedResourceGroupAssignedIdentitiesResponse].
   /// [principalId] Identity principal Id
-  ManagedResourceGroupAssignedIdentitiesResponse({
+  const ManagedResourceGroupAssignedIdentitiesResponse({
     required this.principalId,
   });
 

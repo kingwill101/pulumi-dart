@@ -24,7 +24,7 @@ class InstanceDataDisk {
   /// [encryptKeyId] The ID of the KMS key used by the cloud disk.
   /// [encrypted] Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
   /// [size] Data disk size, unit: GB.
-  InstanceDataDisk({
+  const InstanceDataDisk({
     this.category,
     this.diskId,
     this.encryptKeyId,

@@ -13,7 +13,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1AliasContext].
   /// [kind] The alias kind.
   /// [name] The alias name.
-  GoogleDevtoolsContaineranalysisV1alpha1AliasContext({
+  const GoogleDevtoolsContaineranalysisV1alpha1AliasContext({
     this.kind,
     this.name,
   });

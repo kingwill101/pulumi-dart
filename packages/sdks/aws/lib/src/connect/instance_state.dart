@@ -58,7 +58,7 @@ class InstanceState {
   /// [status] The state of the instance.
   /// [tags] Tags to apply to the Instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  InstanceState({
+  const InstanceState({
     this.arn,
     this.autoResolveBestVoicesEnabled,
     this.contactFlowLogsEnabled,

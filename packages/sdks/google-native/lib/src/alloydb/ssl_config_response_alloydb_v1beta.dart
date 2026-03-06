@@ -12,7 +12,7 @@ class SslConfigResponseAlloydbV1beta {
   /// Creates a new [SslConfigResponseAlloydbV1beta].
   /// [caSource] Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
   /// [sslMode] Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
-  SslConfigResponseAlloydbV1beta({
+  const SslConfigResponseAlloydbV1beta({
     required this.caSource,
     required this.sslMode,
   });

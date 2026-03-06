@@ -10,7 +10,7 @@ class CustomRuleList {
 
   /// Creates a new [CustomRuleList].
   /// [rules] List of rules
-  CustomRuleList({
+  const CustomRuleList({
     this.rules,
   });
 

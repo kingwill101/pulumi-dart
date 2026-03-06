@@ -25,7 +25,7 @@ class VirtualHubConnectionArgs {
   /// [remoteVirtualNetworkId] The ID of the Virtual Network which the Virtual Hub should be connected to. Changing this forces a new resource to be created.
   /// [routing] A `routing` block as defined below.
   /// [virtualHubId] The ID of the Virtual Hub within which this connection should be created. Changing this forces a new resource to be created.
-  VirtualHubConnectionArgs({
+  const VirtualHubConnectionArgs({
     this.internetSecurityEnabled,
     this.name,
     required this.remoteVirtualNetworkId,

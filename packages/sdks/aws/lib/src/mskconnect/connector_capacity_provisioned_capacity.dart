@@ -11,7 +11,7 @@ class ConnectorCapacityProvisionedCapacity {
   /// Creates a new [ConnectorCapacityProvisionedCapacity].
   /// [mcuCount] The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
   /// [workerCount] The number of workers that are allocated to the connector.
-  ConnectorCapacityProvisionedCapacity({
+  const ConnectorCapacityProvisionedCapacity({
     this.mcuCount,
     required this.workerCount,
   });

@@ -25,7 +25,7 @@ class GetMoveResourceResult {
   /// [properties] Defines the move resource properties.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetMoveResourceResult({
+  const GetMoveResourceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

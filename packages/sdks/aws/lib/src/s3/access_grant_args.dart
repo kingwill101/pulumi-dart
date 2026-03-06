@@ -35,7 +35,7 @@ class AccessGrantArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3PrefixType] If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AccessGrantArgs({
+  const AccessGrantArgs({
     this.accessGrantsLocationConfiguration,
     required this.accessGrantsLocationId,
     this.accountId,

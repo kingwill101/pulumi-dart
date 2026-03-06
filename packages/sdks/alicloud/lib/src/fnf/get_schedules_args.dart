@@ -24,7 +24,7 @@ class GetSchedulesArgs {
   /// [limit] The number of resource queries.
   /// [nameRegex] A regex string to filter results by Schedule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetSchedulesArgs({
+  const GetSchedulesArgs({
     required this.flowName,
     this.ids,
     this.limit,

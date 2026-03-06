@@ -18,7 +18,7 @@ class EnablerState {
   /// [accountIds] Set of account IDs.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTypes] Type of resources to scan.
-  EnablerState({
+  const EnablerState({
     this.accountIds,
     this.region,
     this.resourceTypes,

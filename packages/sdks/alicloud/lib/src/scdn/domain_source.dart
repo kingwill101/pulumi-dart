@@ -23,7 +23,7 @@ class DomainSource {
   /// [port] Port.
   /// [priority] Priority.
   /// [type] The Origin Server Type. Valid Values:
-  DomainSource({
+  const DomainSource({
     required this.content,
     this.enabled,
     required this.port,

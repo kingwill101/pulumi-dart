@@ -12,7 +12,7 @@ class GetTransferProjectServieAccountArgs {
 
   /// Creates a new [GetTransferProjectServieAccountArgs].
   /// [project] The project ID. If it is not provided, the provider project is used.
-  GetTransferProjectServieAccountArgs({
+  const GetTransferProjectServieAccountArgs({
     this.project,
   });
 

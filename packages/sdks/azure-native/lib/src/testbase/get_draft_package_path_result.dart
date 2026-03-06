@@ -20,7 +20,7 @@ class GetDraftPackagePathResult {
   /// [expirationTime] Expiry date of the SAS token.
   /// [sasToken] A SAS token for the storage account to access workspace.
   /// [workingPath] The relative path for a temporary folder for package creation work.
-  GetDraftPackagePathResult({
+  const GetDraftPackagePathResult({
     required this.baseUrl,
     required this.draftPackagePath,
     required this.expirationTime,

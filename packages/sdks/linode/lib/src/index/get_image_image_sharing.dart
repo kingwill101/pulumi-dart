@@ -13,7 +13,7 @@ class GetImageImageSharing {
   /// Creates a new [GetImageImageSharing].
   /// [sharedBy] Details about who the image is shared by.
   /// [sharedWith] Details about who the image is shared with.
-  GetImageImageSharing({
+  const GetImageImageSharing({
     required this.sharedBy,
     required this.sharedWith,
   });

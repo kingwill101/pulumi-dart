@@ -32,7 +32,7 @@ class BucketLoggingV2Args {
   /// [targetGrants] Set of configuration blocks with information for granting permissions. See below.
   /// [targetObjectKeyFormat] Amazon S3 key format for log objects. See below.
   /// [targetPrefix] Prefix for all log object keys.
-  BucketLoggingV2Args({
+  const BucketLoggingV2Args({
     required this.bucket,
     this.expectedBucketOwner,
     this.region,

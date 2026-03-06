@@ -13,7 +13,7 @@ class GetSecurityProfileArgs {
   /// Creates a new [GetSecurityProfileArgs].
   /// [organizationId] Required.
   /// [securityProfileId] Required.
-  GetSecurityProfileArgs({
+  const GetSecurityProfileArgs({
     required this.organizationId,
     required this.securityProfileId,
   });

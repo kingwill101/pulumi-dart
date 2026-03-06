@@ -19,7 +19,7 @@ class OnlineExperimentationWorkspaceProperties {
   /// [encryption] The encryption configuration for the online experimentation workspace resource.
   /// [logAnalyticsWorkspaceResourceId] The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
   /// [logsExporterStorageAccountResourceId] The resource identifier of storage account where logs are exported from Log Analytics workspace. online experimentation workspace uses it generating experiment analysis results.
-  OnlineExperimentationWorkspaceProperties({
+  const OnlineExperimentationWorkspaceProperties({
     required this.appConfigurationResourceId,
     this.encryption,
     required this.logAnalyticsWorkspaceResourceId,

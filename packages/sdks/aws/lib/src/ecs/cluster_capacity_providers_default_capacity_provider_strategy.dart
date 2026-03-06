@@ -14,7 +14,7 @@ class ClusterCapacityProvidersDefaultCapacityProviderStrategy {
   /// [base] The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
   /// [capacityProvider] Name of the capacity provider.
   /// [weight] The relative percentage of the total number of launched tasks that should use the specified capacity provider. The `weight` value is taken into consideration after the `base` count of tasks has been satisfied. Defaults to `0`.
-  ClusterCapacityProvidersDefaultCapacityProviderStrategy({
+  const ClusterCapacityProvidersDefaultCapacityProviderStrategy({
     this.base,
     required this.capacityProvider,
     this.weight,

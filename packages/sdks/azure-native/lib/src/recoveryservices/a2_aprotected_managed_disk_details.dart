@@ -90,7 +90,7 @@ class A2AProtectedManagedDiskDetails {
   /// [resyncRequired] A value indicating whether resync is required for this disk.
   /// [secretIdentifier] The secret URL / identifier (BEK).
   /// [tfoDiskName] The test failover name for the managed disk.
-  A2AProtectedManagedDiskDetails({
+  const A2AProtectedManagedDiskDetails({
     this.allowedDiskLevelOperation,
     this.dataPendingAtSourceAgentInMB,
     this.dataPendingInStagingStorageAccountInMB,

@@ -33,7 +33,7 @@ class ResourceShareAccepterState {
   /// [shareId] The ID of the resource share as displayed in the console.
   /// [shareName] The name of the resource share.
   /// [status] The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
-  ResourceShareAccepterState({
+  const ResourceShareAccepterState({
     this.invitationArn,
     this.receiverAccountId,
     this.region,

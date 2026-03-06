@@ -70,7 +70,7 @@ class GetLabResult {
   /// [title] The title of the lab.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachineProfile] The profile used for creating lab virtual machines.
-  GetLabResult({
+  const GetLabResult({
     required this.autoShutdownProfile,
     required this.azureApiVersion,
     required this.connectionProfile,

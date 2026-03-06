@@ -54,7 +54,7 @@ class ApacheTomcatAKSWorkloadDeployment {
   /// [monitoringProperties] Class for app insight monitoring properties.
   /// [requests] Resource Requirements.
   /// [targetPlatformIdentity] Gets or sets the target platform managed identity.
-  ApacheTomcatAKSWorkloadDeployment({
+  const ApacheTomcatAKSWorkloadDeployment({
     this.automationArtifactProperties,
     this.bindings,
     this.buildContainerImages,

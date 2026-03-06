@@ -58,7 +58,7 @@ class ProjectSinkState {
   /// [project] The ID of the project to create the sink in. If omitted, the project associated with the provider is
   /// [uniqueWriterIdentity] Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
-  ProjectSinkState({
+  const ProjectSinkState({
     this.bigqueryOptions,
     this.customWriterIdentity,
     this.description,

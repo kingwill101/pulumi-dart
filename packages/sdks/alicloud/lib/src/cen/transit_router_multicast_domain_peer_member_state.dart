@@ -24,7 +24,7 @@ class TransitRouterMulticastDomainPeerMemberState {
   /// [peerTransitRouterMulticastDomainId] The IDs of the inter-region multicast domains.
   /// [status] The status of the multicast resource. Valid values:
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
-  TransitRouterMulticastDomainPeerMemberState({
+  const TransitRouterMulticastDomainPeerMemberState({
     this.dryRun,
     this.groupIpAddress,
     this.peerTransitRouterMulticastDomainId,

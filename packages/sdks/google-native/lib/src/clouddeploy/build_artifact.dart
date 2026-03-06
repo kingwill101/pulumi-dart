@@ -12,7 +12,7 @@ class BuildArtifact {
   /// Creates a new [BuildArtifact].
   /// [image] Image name in Skaffold configuration.
   /// [tag] Image tag to use. This will generally be the full path to an image, such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
-  BuildArtifact({
+  const BuildArtifact({
     this.image,
     this.tag,
   });

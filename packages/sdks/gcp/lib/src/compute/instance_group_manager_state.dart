@@ -144,7 +144,7 @@ class InstanceGroupManagerState {
   /// [waitForInstances] Whether to wait for all instances to be created/updated before
   /// [waitForInstancesStatus] When used with `wait_for_instances` it specifies the status to wait for.
   /// [zone] The zone that instances in this group should be created
-  InstanceGroupManagerState({
+  const InstanceGroupManagerState({
     this.allInstancesConfig,
     this.autoHealingPolicies,
     this.baseInstanceName,

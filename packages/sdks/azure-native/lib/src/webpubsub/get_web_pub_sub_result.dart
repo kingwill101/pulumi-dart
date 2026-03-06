@@ -113,7 +113,7 @@ class GetWebPubSubResult {
   /// [tls] TLS settings for the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version of the resource. Probably you need the same or higher version of client SDKs.
-  GetWebPubSubResult({
+  const GetWebPubSubResult({
     required this.azureApiVersion,
     this.disableAadAuth,
     this.disableLocalAuth,

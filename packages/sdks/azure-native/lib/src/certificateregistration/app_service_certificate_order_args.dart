@@ -47,7 +47,7 @@ class AppServiceCertificateOrderArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [tags] Resource tags.
   /// [validityInYears] Duration in years (must be 1).
-  AppServiceCertificateOrderArgs({
+  const AppServiceCertificateOrderArgs({
     this.autoRenew,
     this.certificateOrderName,
     this.certificates,

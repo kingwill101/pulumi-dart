@@ -9,7 +9,7 @@ class AadDiagnosticSettingEnabledLogRetentionPolicy {
   /// Creates a new [AadDiagnosticSettingEnabledLogRetentionPolicy].
   /// [days] Optional.
   /// [enabled] Optional.
-  AadDiagnosticSettingEnabledLogRetentionPolicy({
+  const AadDiagnosticSettingEnabledLogRetentionPolicy({
     this.days,
     this.enabled,
   });

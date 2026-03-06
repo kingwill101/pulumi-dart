@@ -17,7 +17,7 @@ class PoolTargetPermissions {
   /// [label] Configures the label associated with the target permissions for the storage pool.
   /// [mode] Defines the mode (file permissions) for the storage pool target.
   /// [owner] Specifies the owner of the permissions for the storage pool target.
-  PoolTargetPermissions({
+  const PoolTargetPermissions({
     this.group,
     this.label,
     this.mode,

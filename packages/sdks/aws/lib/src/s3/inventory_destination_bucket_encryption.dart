@@ -12,7 +12,7 @@ class InventoryDestinationBucketEncryption {
   /// Creates a new [InventoryDestinationBucketEncryption].
   /// [sseKms] Specifies to use server-side encryption with AWS KMS-managed keys to encrypt the inventory file (documented below).
   /// [sseS3] Specifies to use server-side encryption with Amazon S3-managed keys (SSE-S3) to encrypt the inventory file.
-  InventoryDestinationBucketEncryption({
+  const InventoryDestinationBucketEncryption({
     this.sseKms,
     this.sseS3,
   });

@@ -18,7 +18,7 @@ class GetFavoriteArgs {
   /// [favoriteId] The Id of a specific favorite defined in the Application Insights component
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  GetFavoriteArgs({
+  const GetFavoriteArgs({
     required this.favoriteId,
     required this.resourceGroupName,
     required this.resourceName,

@@ -71,7 +71,7 @@ class CertificateState {
   /// [status] The status of the CA certificate.
   /// [tags] The tag of the resource.
   /// [years] The validity period of the CA certificate, in years.
-  CertificateState({
+  const CertificateState({
     this.algorithm,
     this.aliasName,
     this.certificateType,

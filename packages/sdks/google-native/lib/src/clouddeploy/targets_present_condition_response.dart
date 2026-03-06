@@ -15,7 +15,7 @@ class TargetsPresentConditionResponse {
   /// [missingTargets] The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
   /// [status] True if there aren't any missing Targets.
   /// [updateTime] Last time the condition was updated.
-  TargetsPresentConditionResponse({
+  const TargetsPresentConditionResponse({
     required this.missingTargets,
     required this.status,
     required this.updateTime,

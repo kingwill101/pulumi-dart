@@ -18,7 +18,7 @@ class MongoDbErrorResponse {
   /// [count] The number of times the error or warning has occurred
   /// [message] The localized, human-readable message that describes the error or warning
   /// [type] The type of error or warning
-  MongoDbErrorResponse({
+  const MongoDbErrorResponse({
     this.code,
     this.count,
     this.message,

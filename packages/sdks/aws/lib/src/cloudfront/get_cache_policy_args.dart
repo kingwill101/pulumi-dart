@@ -15,7 +15,7 @@ class GetCachePolicyArgs {
   /// Creates a new [GetCachePolicyArgs].
   /// [id] Identifier for the cache policy.
   /// [name] Unique name to identify the cache policy.
-  GetCachePolicyArgs({
+  const GetCachePolicyArgs({
     this.id,
     this.name,
   });

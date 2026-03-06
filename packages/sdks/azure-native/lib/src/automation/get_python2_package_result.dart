@@ -57,7 +57,7 @@ class GetPython2PackageResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource.
   /// [version] Gets the version of the module.
-  GetPython2PackageResult({
+  const GetPython2PackageResult({
     this.activityCount,
     required this.azureApiVersion,
     this.creationTime,

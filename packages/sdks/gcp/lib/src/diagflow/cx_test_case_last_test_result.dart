@@ -26,7 +26,7 @@ class CxTestCaseLastTestResult {
   /// [name] The unique identifier of the page.
   /// [testResult] Whether the test case passed in the agent environment.
   /// [testTime] The time that the test was run. A timestamp in RFC3339 text format.
-  CxTestCaseLastTestResult({
+  const CxTestCaseLastTestResult({
     this.conversationTurns,
     this.environment,
     this.name,

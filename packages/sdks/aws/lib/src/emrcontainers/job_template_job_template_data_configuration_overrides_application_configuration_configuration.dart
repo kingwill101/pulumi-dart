@@ -11,7 +11,7 @@ class JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationCo
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration].
   /// [classification] The classification within a configuration.
   /// [properties] A set of properties specified within a configuration classification.
-  JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration({
+  const JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration({
     this.classification,
     this.properties,
   });

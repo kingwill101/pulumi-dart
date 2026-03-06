@@ -64,7 +64,7 @@ class ChangeSetState {
   /// [templateUrl] The template url.
   /// [timeoutInMinutes] Timeout In Minutes.
   /// [usePreviousParameters] The use previous parameters.
-  ChangeSetState({
+  const ChangeSetState({
     this.changeSetName,
     this.changeSetType,
     this.description,

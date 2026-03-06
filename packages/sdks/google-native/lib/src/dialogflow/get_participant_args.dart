@@ -17,7 +17,7 @@ class GetParticipantArgs {
   /// [location] Required.
   /// [participantId] Required.
   /// [project] Optional.
-  GetParticipantArgs({
+  const GetParticipantArgs({
     required this.conversationId,
     required this.location,
     required this.participantId,

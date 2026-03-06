@@ -18,7 +18,7 @@ class InstanceIamPolicyArgs {
   /// [instance] The name or relative resource id of the instance to manage IAM policies for.
   /// [policyData] Required.
   /// [project] Optional.
-  InstanceIamPolicyArgs({
+  const InstanceIamPolicyArgs({
     required this.instance,
     required this.policyData,
     this.project,

@@ -19,7 +19,7 @@ class SourceControlGithubActionConfiguration {
   /// [containerConfiguration] A `container_configuration` block as defined above.
   /// [generateWorkflowFile] Whether to generate the GitHub work flow file. Defaults to `true`. Changing this forces a new resource to be created.
   /// [linuxAction] Denotes this action uses a Linux base image.
-  SourceControlGithubActionConfiguration({
+  const SourceControlGithubActionConfiguration({
     this.codeConfiguration,
     this.containerConfiguration,
     this.generateWorkflowFile,

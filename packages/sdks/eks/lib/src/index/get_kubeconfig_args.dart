@@ -22,7 +22,7 @@ class GetKubeconfigArgs {
   /// [self] Required.
   /// [profileName] AWS credential profile name to always use instead of the default AWS credential provider chain.
   /// [roleArn] Role ARN to assume instead of the default AWS credential provider chain.
-  GetKubeconfigArgs({
+  const GetKubeconfigArgs({
     required this.self,
     this.profileName,
     this.roleArn,

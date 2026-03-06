@@ -126,7 +126,7 @@ class DistributionState {
   /// [viewerMtlsConfig] The viewer mTLS configuration for this distribution (maximum one).
   /// [waitForDeployment] If enabled, the resource will wait for the distribution status to change from `InProgress` to `Deployed`. Setting this to`false` will skip the process. Default: `true`.
   /// [webAclId] Unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution. To specify a web ACL created using the latest version of AWS WAF (WAFv2), use the ACL ARN, for example `aws_wafv2_web_acl.example.arn`. To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example `aws_waf_web_acl.example.id`. The WAF Web ACL must exist in the WAF Global (CloudFront) region and the credentials configuring this argument must have `waf:GetWebACL` permissions assigned.
-  DistributionState({
+  const DistributionState({
     this.aliases,
     this.anycastIpListId,
     this.arn,

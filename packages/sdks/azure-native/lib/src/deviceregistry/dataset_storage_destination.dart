@@ -14,7 +14,7 @@ class DatasetStorageDestination {
   /// Creates a new [DatasetStorageDestination].
   /// [configuration] The storage destination configuration.
   /// [target] The set of supported dataset destinations for an asset.
-  DatasetStorageDestination({
+  const DatasetStorageDestination({
     required this.configuration,
     required this.target,
   });

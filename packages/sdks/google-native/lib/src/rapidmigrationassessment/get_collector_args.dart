@@ -15,7 +15,7 @@ class GetCollectorArgs {
   /// [collectorId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCollectorArgs({
+  const GetCollectorArgs({
     required this.collectorId,
     required this.location,
     this.project,

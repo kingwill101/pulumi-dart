@@ -31,7 +31,7 @@ class DefaultNetworkAclArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetIds] List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DefaultNetworkAclArgs({
+  const DefaultNetworkAclArgs({
     required this.defaultNetworkAclId,
     this.egress,
     this.ingress,

@@ -54,7 +54,7 @@ class PrivateDnsArgs {
   /// [standbyVswitchId] Standby zone switch ID
   /// [standbyVswitchIp] Standby zone switch IP address
   /// [vpcId] The ID of the VPC.
-  PrivateDnsArgs({
+  const PrivateDnsArgs({
     required this.accessInstanceName,
     this.domainNameLists,
     required this.firewallTypes,

@@ -8,7 +8,7 @@ class EventTargetSqsTarget {
 
   /// Creates a new [EventTargetSqsTarget].
   /// [messageGroupId] The FIFO message group ID to use as the target.
-  EventTargetSqsTarget({
+  const EventTargetSqsTarget({
     this.messageGroupId,
   });
 

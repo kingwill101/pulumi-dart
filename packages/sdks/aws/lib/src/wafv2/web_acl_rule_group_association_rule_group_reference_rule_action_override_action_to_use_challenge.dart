@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseC
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge].
   /// [customRequestHandling] Custom handling for challenge requests. See below.
-  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge({
+  const WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallenge({
     this.customRequestHandling,
   });
 

@@ -13,7 +13,7 @@ class DiskRestorePointInstanceViewResponse {
   /// Creates a new [DiskRestorePointInstanceViewResponse].
   /// [id] Disk restore point Id.
   /// [replicationStatus] The disk restore point replication status information.
-  DiskRestorePointInstanceViewResponse({
+  const DiskRestorePointInstanceViewResponse({
     this.id,
     this.replicationStatus,
   });

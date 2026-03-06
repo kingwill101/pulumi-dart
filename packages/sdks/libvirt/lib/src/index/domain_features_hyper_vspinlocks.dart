@@ -8,7 +8,7 @@ class DomainFeaturesHyperVSpinlocks {
 
   /// Creates a new [DomainFeaturesHyperVSpinlocks].
   /// [retries] Configures the number of retries for spinlocks in Hyper-V.
-  DomainFeaturesHyperVSpinlocks({
+  const DomainFeaturesHyperVSpinlocks({
     this.retries,
   });
 

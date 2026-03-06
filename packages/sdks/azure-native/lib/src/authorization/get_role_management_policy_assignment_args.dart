@@ -15,7 +15,7 @@ class GetRoleManagementPolicyAssignmentArgs {
   /// Creates a new [GetRoleManagementPolicyAssignmentArgs].
   /// [roleManagementPolicyAssignmentName] The name of format {guid_guid} the role management policy assignment to get.
   /// [scope] The scope of the role management policy.
-  GetRoleManagementPolicyAssignmentArgs({
+  const GetRoleManagementPolicyAssignmentArgs({
     required this.roleManagementPolicyAssignmentName,
     required this.scope,
   });

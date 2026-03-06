@@ -8,7 +8,7 @@ class ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration {
 
   /// Creates a new [ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration].
   /// [remoteWriteUrl] The Prometheus remote write URL for sending metrics. Only supported in EMR 7.1.0 and later versions.
-  ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration({
+  const ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration({
     this.remoteWriteUrl,
   });
 

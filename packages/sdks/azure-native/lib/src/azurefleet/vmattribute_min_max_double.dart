@@ -12,7 +12,7 @@ class VMAttributeMinMaxDouble {
   /// Creates a new [VMAttributeMinMaxDouble].
   /// [max] Maximum value. Double.MaxValue(1.7976931348623157E+308)
   /// [min] Minimum value. default 0. Double.MinValue()
-  VMAttributeMinMaxDouble({
+  const VMAttributeMinMaxDouble({
     this.max,
     this.min,
   });

@@ -15,7 +15,7 @@ class GetTestBaseAccountArgs {
   /// Creates a new [GetTestBaseAccountArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetTestBaseAccountArgs({
+  const GetTestBaseAccountArgs({
     required this.resourceGroupName,
     required this.testBaseAccountName,
   });

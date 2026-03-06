@@ -57,7 +57,7 @@ class DataProductState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] System generated unique ID.
   /// [updateTime] Last update timestamp.
-  DataProductState({
+  const DataProductState({
     this.accessGroups,
     this.assetCount,
     this.createTime,

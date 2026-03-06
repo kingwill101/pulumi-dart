@@ -28,7 +28,7 @@ class GetAppConnectorResult {
   /// [pulumiLabels] Required.
   /// [region] Optional.
   /// [state] Required.
-  GetAppConnectorResult({
+  const GetAppConnectorResult({
     required this.displayName,
     required this.effectiveLabels,
     required this.id,

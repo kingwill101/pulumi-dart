@@ -23,7 +23,7 @@ class EventSubscriptionWebhookEndpoint {
   /// [maxEventsPerBatch] Maximum number of events per batch.
   /// [preferredBatchSizeInKilobytes] Preferred batch size in Kilobytes.
   /// [url] Specifies the url of the webhook where the Event Subscription will receive events.
-  EventSubscriptionWebhookEndpoint({
+  const EventSubscriptionWebhookEndpoint({
     this.activeDirectoryAppIdOrUri,
     this.activeDirectoryTenantId,
     this.baseUrl,

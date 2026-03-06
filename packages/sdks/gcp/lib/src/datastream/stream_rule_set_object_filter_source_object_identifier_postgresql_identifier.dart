@@ -11,7 +11,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier {
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier].
   /// [schema] The schema name.
   /// [table] The table name.
-  StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier({
     required this.schema,
     required this.table,
   });

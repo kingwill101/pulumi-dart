@@ -52,7 +52,7 @@ class ConcurLinkedServiceResponse {
   /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
   /// [username] The user name that you use to access Concur Service.
   /// [version] Version of the linked service.
-  ConcurLinkedServiceResponse({
+  const ConcurLinkedServiceResponse({
     this.annotations,
     required this.clientId,
     this.connectVia,

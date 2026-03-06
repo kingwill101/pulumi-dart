@@ -46,7 +46,7 @@ class GetVirtualRouterResult {
   /// [type] Resource type.
   /// [virtualRouterAsn] VirtualRouter ASN.
   /// [virtualRouterIps] VirtualRouter IPs.
-  GetVirtualRouterResult({
+  const GetVirtualRouterResult({
     required this.azureApiVersion,
     required this.etag,
     this.hostedGateway,

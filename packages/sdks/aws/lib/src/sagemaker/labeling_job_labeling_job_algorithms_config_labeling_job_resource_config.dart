@@ -12,7 +12,7 @@ class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig {
   /// Creates a new [LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig].
   /// [volumeKmsKeyId] ID of the key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training and inference jobs used for automated data labeling.
   /// [vpcConfig] VPC that SageMaker jobs, hosted models, and compute resources have access to. Fields are documented below.
-  LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig({
+  const LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig({
     this.volumeKmsKeyId,
     this.vpcConfig,
   });

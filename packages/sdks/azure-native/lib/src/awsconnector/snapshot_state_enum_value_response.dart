@@ -9,7 +9,7 @@ class SnapshotStateEnumValueResponse {
 
   /// Creates a new [SnapshotStateEnumValueResponse].
   /// [value] Property value
-  SnapshotStateEnumValueResponse({
+  const SnapshotStateEnumValueResponse({
     this.value,
   });
 

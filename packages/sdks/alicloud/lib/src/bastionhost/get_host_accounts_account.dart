@@ -29,7 +29,7 @@ class GetHostAccountsAccount {
   /// [instanceId] Specifies the database where you want to create your hosting account's host bastion host ID of.
   /// [privateKeyFingerprint] The situation where the private keys of the fingerprint information.
   /// [protocolName] Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
-  GetHostAccountsAccount({
+  const GetHostAccountsAccount({
     required this.hasPassword,
     required this.hostAccountId,
     required this.hostAccountName,

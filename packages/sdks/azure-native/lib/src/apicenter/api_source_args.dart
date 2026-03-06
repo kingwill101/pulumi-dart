@@ -34,7 +34,7 @@ class ApiSourceArgs {
   /// [targetEnvironmentId] The target environment resource ID.
   /// [targetLifecycleStage] The target lifecycle stage.
   /// [workspaceName] The name of the workspace.
-  ApiSourceArgs({
+  const ApiSourceArgs({
     this.apiSourceName,
     this.azureApiManagementSource,
     this.importSpecification,

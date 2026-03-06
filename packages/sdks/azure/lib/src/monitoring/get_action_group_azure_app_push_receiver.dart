@@ -11,7 +11,7 @@ class GetActionGroupAzureAppPushReceiver {
   /// Creates a new [GetActionGroupAzureAppPushReceiver].
   /// [emailAddress] The email address of this receiver.
   /// [name] Specifies the name of the Action Group.
-  GetActionGroupAzureAppPushReceiver({
+  const GetActionGroupAzureAppPushReceiver({
     required this.emailAddress,
     required this.name,
   });

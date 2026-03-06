@@ -17,7 +17,7 @@ class GetAutomationArgs {
   /// [deliveryPipelineId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAutomationArgs({
+  const GetAutomationArgs({
     required this.automationId,
     required this.deliveryPipelineId,
     required this.location,

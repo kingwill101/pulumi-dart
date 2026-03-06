@@ -8,7 +8,7 @@ class ThemeConfigurationSheetTileLayoutGutter {
 
   /// Creates a new [ThemeConfigurationSheetTileLayoutGutter].
   /// [show] This Boolean value controls whether to display a gutter space between sheet tiles.
-  ThemeConfigurationSheetTileLayoutGutter({
+  const ThemeConfigurationSheetTileLayoutGutter({
     this.show,
   });
 

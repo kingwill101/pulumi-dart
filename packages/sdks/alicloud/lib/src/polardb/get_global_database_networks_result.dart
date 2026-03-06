@@ -33,7 +33,7 @@ class GetGlobalDatabaseNetworksResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the Global Database Network.
-  GetGlobalDatabaseNetworksResult({
+  const GetGlobalDatabaseNetworksResult({
     this.dbClusterId,
     this.description,
     this.gdnId,

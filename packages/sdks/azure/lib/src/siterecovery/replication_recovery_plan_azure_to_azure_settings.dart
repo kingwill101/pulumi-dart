@@ -21,7 +21,7 @@ class ReplicationRecoveryPlanAzureToAzureSettings {
   /// [primaryZone] The Availability Zone in which the VM is located. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   /// [recoveryEdgeZone] The Edge Zone within the Azure Region where the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   /// [recoveryZone] The Availability Zone in which the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
-  ReplicationRecoveryPlanAzureToAzureSettings({
+  const ReplicationRecoveryPlanAzureToAzureSettings({
     this.primaryEdgeZone,
     this.primaryZone,
     this.recoveryEdgeZone,

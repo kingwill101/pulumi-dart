@@ -20,7 +20,7 @@ class GetTopicsResult {
   /// [names] A list of topic names.
   /// [outputFile] Optional.
   /// [topics] A list of topics. Each element contains the following attributes:
-  GetTopicsResult({
+  const GetTopicsResult({
     required this.id,
     this.namePrefix,
     required this.names,

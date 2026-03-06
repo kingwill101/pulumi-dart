@@ -23,7 +23,7 @@ class LinkedStorageAccountArgs {
   /// [storageAccountIds] The storage account resource ids to be linked.
   /// [workspaceId] The resource ID of the Log Analytics Workspace. Changing this forces a new Log Analytics Linked Storage Account to be created.
   /// [workspaceResourceId] Optional.
-  LinkedStorageAccountArgs({
+  const LinkedStorageAccountArgs({
     required this.dataSourceType,
     required this.resourceGroupName,
     required this.storageAccountIds,

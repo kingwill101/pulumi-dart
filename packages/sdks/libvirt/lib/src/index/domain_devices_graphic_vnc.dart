@@ -42,7 +42,7 @@ class DomainDevicesGraphicVnc {
   /// [sharePolicy] Sets the share policy for the VNC server, determining how multiple connections are handled.
   /// [socket] Configures the path of the Unix socket for VNC connections, allowing for secured access.
   /// [webSocket] Enables websocket connections to the VNC server, allowing for browser-based access.
-  DomainDevicesGraphicVnc({
+  const DomainDevicesGraphicVnc({
     this.autoPort,
     this.connected,
     this.keymap,

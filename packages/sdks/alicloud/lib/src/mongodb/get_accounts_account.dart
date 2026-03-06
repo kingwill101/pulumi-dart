@@ -23,7 +23,7 @@ class GetAccountsAccount {
   /// [id] The ID of the Account. The value formats as `&lt;instance_id&gt;:&lt;account_name&gt;`.
   /// [instanceId] The id of the instance to which the account belongs.
   /// [status] The status of the account. Valid values: `Unavailable`, `Available`.
-  GetAccountsAccount({
+  const GetAccountsAccount({
     required this.accountDescription,
     required this.accountName,
     required this.characterType,

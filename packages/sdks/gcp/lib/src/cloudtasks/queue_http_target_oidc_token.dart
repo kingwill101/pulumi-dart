@@ -13,7 +13,7 @@ class QueueHttpTargetOidcToken {
   /// Creates a new [QueueHttpTargetOidcToken].
   /// [audience] Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   /// [serviceAccountEmail] Service account email to be used for generating OIDC token.
-  QueueHttpTargetOidcToken({
+  const QueueHttpTargetOidcToken({
     this.audience,
     required this.serviceAccountEmail,
   });

@@ -25,7 +25,7 @@ class DiscoveryRuleArgs {
   /// [healthModelName] Name of health model resource
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DiscoveryRuleArgs({
+  const DiscoveryRuleArgs({
     required this.azureMonitorWorkspaceName,
     this.discoveryRuleName,
     required this.healthModelName,

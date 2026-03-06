@@ -63,7 +63,7 @@ class TaskArgs {
   /// [taskName] The name of the container registry task.
   /// [timeout] Run timeout in seconds.
   /// [trigger] The properties that describe all triggers for the task.
-  TaskArgs({
+  const TaskArgs({
     this.agentConfiguration,
     this.agentPoolName,
     this.credentials,

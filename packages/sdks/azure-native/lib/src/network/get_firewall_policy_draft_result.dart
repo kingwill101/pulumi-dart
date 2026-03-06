@@ -58,7 +58,7 @@ class GetFirewallPolicyDraftResult {
   /// [threatIntelMode] The operation mode for Threat Intelligence.
   /// [threatIntelWhitelist] ThreatIntel Whitelist for Firewall Policy.
   /// [type] Resource type.
-  GetFirewallPolicyDraftResult({
+  const GetFirewallPolicyDraftResult({
     required this.azureApiVersion,
     this.basePolicy,
     this.dnsSettings,

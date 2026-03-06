@@ -17,7 +17,7 @@ class SpringCloudServiceConfigServerGitSettingSshAuth {
   /// [hostKeyAlgorithm] The host key algorithm, should be `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`, or `ecdsa-sha2-nistp521`. Required only if `host-key` exists.
   /// [privateKey] The SSH private key to access the Git repository, required when the URI starts with `git@` or `ssh://`.
   /// [strictHostKeyCheckingEnabled] Indicates whether the Config Server instance will fail to start if the host_key does not match. Defaults to `true`.
-  SpringCloudServiceConfigServerGitSettingSshAuth({
+  const SpringCloudServiceConfigServerGitSettingSshAuth({
     this.hostKey,
     this.hostKeyAlgorithm,
     required this.privateKey,

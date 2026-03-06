@@ -37,7 +37,7 @@ class FileSystemAssociationState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [username] The user name of the user credential that has permission to access the root share of the Amazon FSx file system. The user account must belong to the Amazon FSx delegated admin user group.
-  FileSystemAssociationState({
+  const FileSystemAssociationState({
     this.arn,
     this.auditDestinationArn,
     this.cacheAttributes,

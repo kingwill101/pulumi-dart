@@ -29,7 +29,7 @@ class GetAlidnsInstancesInstance {
   /// [paymentType] (Available in 1.124.1+) The payment type of alidns instance.
   /// [versionCode] Paid package version.
   /// [versionName] Paid package version name.
-  GetAlidnsInstancesInstance({
+  const GetAlidnsInstancesInstance({
     required this.dnsSecurity,
     required this.domain,
     required this.domainNumbers,

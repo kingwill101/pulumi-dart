@@ -9,7 +9,7 @@ class GetDataCollectionRuleDataSourceDataImport {
 
   /// Creates a new [GetDataCollectionRuleDataSourceDataImport].
   /// [eventHubDataSources] An `event_hub_data_source` block as defined below.
-  GetDataCollectionRuleDataSourceDataImport({
+  const GetDataCollectionRuleDataSourceDataImport({
     required this.eventHubDataSources,
   });
 

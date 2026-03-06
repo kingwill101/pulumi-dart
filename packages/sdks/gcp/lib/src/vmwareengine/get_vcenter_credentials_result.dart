@@ -16,7 +16,7 @@ class GetVcenterCredentialsResult {
   /// [parent] Required.
   /// [password] The password of the Vcenter Credential.
   /// [username] The username of the Vcenter Credential.
-  GetVcenterCredentialsResult({
+  const GetVcenterCredentialsResult({
     required this.id,
     required this.parent,
     required this.password,

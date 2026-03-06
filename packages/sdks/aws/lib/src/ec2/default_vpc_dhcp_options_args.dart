@@ -18,7 +18,7 @@ class DefaultVpcDhcpOptionsArgs {
   /// [ownerId] The ID of the AWS account that owns the DHCP options set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   /// [tags] A map of tags to assign to the resource.
-  DefaultVpcDhcpOptionsArgs({
+  const DefaultVpcDhcpOptionsArgs({
     this.ownerId,
     this.region,
     this.tags,

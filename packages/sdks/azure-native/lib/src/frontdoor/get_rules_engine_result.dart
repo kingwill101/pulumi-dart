@@ -25,7 +25,7 @@ class GetRulesEngineResult {
   /// [resourceState] Resource status.
   /// [rules] A list of rules that define a particular Rules Engine Configuration.
   /// [type] Resource type.
-  GetRulesEngineResult({
+  const GetRulesEngineResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -78,7 +78,7 @@ class GetBastionHostResult {
   /// [type] Resource type.
   /// [virtualNetwork] Reference to an existing virtual network required for Developer Bastion Host only.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  GetBastionHostResult({
+  const GetBastionHostResult({
     required this.azureApiVersion,
     this.disableCopyPaste,
     this.dnsName,

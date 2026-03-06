@@ -53,7 +53,7 @@ class EnvironmentEC2State {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of the environment (e.g., `ssh` or `ec2`).
-  EnvironmentEC2State({
+  const EnvironmentEC2State({
     this.arn,
     this.automaticStopTimeMinutes,
     this.connectionType,

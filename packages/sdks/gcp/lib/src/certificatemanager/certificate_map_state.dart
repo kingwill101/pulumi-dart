@@ -45,7 +45,7 @@ class CertificateMapState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
-  CertificateMapState({
+  const CertificateMapState({
     this.createTime,
     this.description,
     this.effectiveLabels,

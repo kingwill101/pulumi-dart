@@ -13,7 +13,7 @@ class OriginGroupsResponse {
   /// Creates a new [OriginGroupsResponse].
   /// [items] The items (origin groups) in a distribution.
   /// [quantity] The number of origin groups.
-  OriginGroupsResponse({
+  const OriginGroupsResponse({
     this.items,
     this.quantity,
   });

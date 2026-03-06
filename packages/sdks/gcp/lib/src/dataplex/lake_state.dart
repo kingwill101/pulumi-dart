@@ -64,7 +64,7 @@ class LakeState {
   /// [state] Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   /// [uid] Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
   /// [updateTime] Output only. The time when the lake was last updated.
-  LakeState({
+  const LakeState({
     this.assetStatuses,
     this.createTime,
     this.description,

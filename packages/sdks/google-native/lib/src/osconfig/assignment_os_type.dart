@@ -15,7 +15,7 @@ class AssignmentOsType {
   /// [osArchitecture] Targets VM instances with OS Inventory enabled and having the following OS architecture.
   /// [osShortName] Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
   /// [osVersion] Targets VM instances with OS Inventory enabled and having the following following OS version.
-  AssignmentOsType({
+  const AssignmentOsType({
     this.osArchitecture,
     this.osShortName,
     this.osVersion,

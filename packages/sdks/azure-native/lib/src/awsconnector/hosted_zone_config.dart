@@ -9,7 +9,7 @@ class HostedZoneConfig {
 
   /// Creates a new [HostedZoneConfig].
   /// [comment] Any comments that you want to include about the hosted zone.
-  HostedZoneConfig({
+  const HostedZoneConfig({
     this.comment,
   });
 

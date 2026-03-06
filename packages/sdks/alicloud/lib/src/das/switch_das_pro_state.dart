@@ -18,7 +18,7 @@ class SwitchDasProState {
   /// [sqlRetention] The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
   /// [status] Whether the database instance has DAS professional.
   /// [userId] The ID of the Alibaba Cloud account that is used to create the database instance.
-  SwitchDasProState({
+  const SwitchDasProState({
     this.instanceId,
     this.sqlRetention,
     this.status,

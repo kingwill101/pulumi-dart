@@ -18,7 +18,7 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse {
   /// [quasiIds] Quasi-identifier columns.
   /// [relativeFrequency] The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
   /// [table] Auxiliary table location.
-  GooglePrivacyDlpV2AuxiliaryTableResponse({
+  const GooglePrivacyDlpV2AuxiliaryTableResponse({
     required this.quasiIds,
     required this.relativeFrequency,
     required this.table,

@@ -28,7 +28,7 @@ class BucketCnameArgs {
   /// [domain] User-defined domain name
   /// [force] Whether to force overwrite certificate.
   /// [previousCertId] The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
-  BucketCnameArgs({
+  const BucketCnameArgs({
     required this.bucket,
     this.certificate,
     this.deleteCertificate,

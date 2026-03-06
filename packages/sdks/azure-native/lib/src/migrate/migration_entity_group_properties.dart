@@ -21,7 +21,7 @@ class MigrationEntityGroupProperties {
   /// [associatedAssessmentId] Associated Assessment Id
   /// [associatedWaveIds] associated Wave Id
   /// [migrationPath] Migration path
-  MigrationEntityGroupProperties({
+  const MigrationEntityGroupProperties({
     required this.applicationDisplayName,
     required this.applicationId,
     this.associatedAssessmentId,

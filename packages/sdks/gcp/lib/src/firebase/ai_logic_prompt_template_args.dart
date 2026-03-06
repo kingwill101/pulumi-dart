@@ -26,7 +26,7 @@ class AiLogicPromptTemplateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [templateId] The unique ID of the PromptTemplate, which is the final component of the
   /// [templateString] The DotPrompt raw template string.
-  AiLogicPromptTemplateArgs({
+  const AiLogicPromptTemplateArgs({
     this.displayName,
     required this.location,
     this.project,

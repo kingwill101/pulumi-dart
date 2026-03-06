@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
   /// Creates a new [GooglePrivacyDlpV2DiscoveryTableModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when tables are modified. Defaults to never.
   /// [types] The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
-  GooglePrivacyDlpV2DiscoveryTableModifiedCadence({
+  const GooglePrivacyDlpV2DiscoveryTableModifiedCadence({
     this.frequency,
     this.types,
   });

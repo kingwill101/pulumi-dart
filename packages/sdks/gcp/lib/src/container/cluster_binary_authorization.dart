@@ -11,7 +11,7 @@ class ClusterBinaryAuthorization {
   /// Creates a new [ClusterBinaryAuthorization].
   /// [enabled] Enable Binary Authorization for this cluster.
   /// [evaluationMode] Mode of operation for Binary Authorization policy evaluation.
-  ClusterBinaryAuthorization({
+  const ClusterBinaryAuthorization({
     this.enabled,
     this.evaluationMode,
   });

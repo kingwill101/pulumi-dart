@@ -16,7 +16,7 @@ class UpdateStageResponse {
   /// [afterStageWaitInSeconds] The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
   /// [groups] Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
   /// [name] The name of the stage. Must be unique within the UpdateRun.
-  UpdateStageResponse({
+  const UpdateStageResponse({
     this.afterStageWaitInSeconds,
     this.groups,
     required this.name,

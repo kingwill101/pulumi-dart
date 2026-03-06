@@ -27,7 +27,7 @@ class ChannelEncoderSettingsVideoDescription {
   /// [scalingBehavior] Behavior on how to scale.
   /// [sharpness] Changes the strength of the anti-alias filter used for scaling.
   /// [width] Output video width in pixels.
-  ChannelEncoderSettingsVideoDescription({
+  const ChannelEncoderSettingsVideoDescription({
     this.codecSettings,
     this.height,
     required this.name,

@@ -14,7 +14,7 @@ class DatasetMqttDestinationResponse {
   /// Creates a new [DatasetMqttDestinationResponse].
   /// [configuration] The MQTT destination configuration.
   /// [target] The set of supported dataset destinations for an asset.
-  DatasetMqttDestinationResponse({
+  const DatasetMqttDestinationResponse({
     required this.configuration,
     required this.target,
   });

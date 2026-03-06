@@ -12,7 +12,7 @@ class BackendTlsPropertiesResponse {
   /// Creates a new [BackendTlsPropertiesResponse].
   /// [validateCertificateChain] Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
   /// [validateCertificateName] Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for this backend host.
-  BackendTlsPropertiesResponse({
+  const BackendTlsPropertiesResponse({
     this.validateCertificateChain,
     this.validateCertificateName,
   });

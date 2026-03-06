@@ -10,7 +10,7 @@ class SmbFileShareCacheAttributes {
 
   /// Creates a new [SmbFileShareCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  SmbFileShareCacheAttributes({
+  const SmbFileShareCacheAttributes({
     this.cacheStaleTimeoutInSeconds,
   });
 

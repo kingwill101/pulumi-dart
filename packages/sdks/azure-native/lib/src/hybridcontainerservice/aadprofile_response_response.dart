@@ -24,7 +24,7 @@ class AADProfileResponseResponse {
   /// [managed] Whether to enable managed AAD.
   /// [serverAppID] The server AAD application ID.
   /// [tenantID] The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  AADProfileResponseResponse({
+  const AADProfileResponseResponse({
     this.adminGroupObjectIDs,
     this.clientAppID,
     this.enableAzureRbac,

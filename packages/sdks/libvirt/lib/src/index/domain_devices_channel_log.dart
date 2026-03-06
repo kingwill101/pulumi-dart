@@ -11,7 +11,7 @@ class DomainDevicesChannelLog {
   /// Creates a new [DomainDevicesChannelLog].
   /// [append] Indicates whether to append log data to the existing log file.
   /// [file] Defines the file path where channel logs will be written.
-  DomainDevicesChannelLog({
+  const DomainDevicesChannelLog({
     this.append,
     required this.file,
   });

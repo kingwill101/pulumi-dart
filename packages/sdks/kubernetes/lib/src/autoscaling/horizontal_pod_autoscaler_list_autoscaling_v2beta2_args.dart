@@ -23,7 +23,7 @@ class HorizontalPodAutoscalerListAutoscalingV2beta2Args {
   /// [items] items is the list of horizontal pod autoscaler objects.
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] metadata is the standard list metadata.
-  HorizontalPodAutoscalerListAutoscalingV2beta2Args({
+  const HorizontalPodAutoscalerListAutoscalingV2beta2Args({
     this.apiVersion,
     required this.items,
     this.kind,

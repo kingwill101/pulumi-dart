@@ -24,7 +24,7 @@ class IacTemplatePropertiesResponse {
   /// [sourceResourceId] the source store of the template
   /// [templateDetails] Optional.
   /// [templateName] Template Name
-  IacTemplatePropertiesResponse({
+  const IacTemplatePropertiesResponse({
     this.instanceName,
     this.instanceStage,
     this.quickStartTemplateType,

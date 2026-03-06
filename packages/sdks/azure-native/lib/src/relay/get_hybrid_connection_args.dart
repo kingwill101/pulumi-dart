@@ -18,7 +18,7 @@ class GetHybridConnectionArgs {
   /// [hybridConnectionName] The hybrid connection name.
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHybridConnectionArgs({
+  const GetHybridConnectionArgs({
     required this.hybridConnectionName,
     required this.namespaceName,
     required this.resourceGroupName,

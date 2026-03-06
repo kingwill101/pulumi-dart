@@ -29,7 +29,7 @@ class RoleAssignmentArgs {
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [roleId] The role to assign.
   /// [userId] The user to assign the role to.
-  RoleAssignmentArgs({
+  const RoleAssignmentArgs({
     this.domainId,
     this.groupId,
     this.projectId,

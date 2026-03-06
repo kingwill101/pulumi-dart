@@ -75,7 +75,7 @@ class GetAlidnsDomainsDomain {
   /// [tags] A mapping of tags to assign to the resource.
   /// [versionCode] Cloud analysis version code.
   /// [versionName] Cloud analysis version name of the domain.
-  GetAlidnsDomainsDomain({
+  const GetAlidnsDomainsDomain({
     required this.aliDomain,
     required this.availableTtls,
     required this.dnsServers,

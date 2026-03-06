@@ -17,7 +17,7 @@ class GetBucketObjectContextCustom {
   /// [key] An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
   /// [updateTime] The time when context was last updated in RFC 3339 format.
   /// [value] The value associated with this context. This field holds the primary information for the given context key.
-  GetBucketObjectContextCustom({
+  const GetBucketObjectContextCustom({
     required this.createTime,
     required this.key,
     required this.updateTime,

@@ -54,7 +54,7 @@ class CxPlaybookState {
   /// [referencedTools] The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
   /// [tokenCount] Estimated number of tokes current playbook takes when sent to the LLM.
   /// [updateTime] Last time the playbook version was updated.
-  CxPlaybookState({
+  const CxPlaybookState({
     this.createTime,
     this.displayName,
     this.goal,

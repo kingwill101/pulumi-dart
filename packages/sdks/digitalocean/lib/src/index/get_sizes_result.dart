@@ -18,7 +18,7 @@ class GetSizesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sizes] Required.
   /// [sorts] Optional.
-  GetSizesResult({
+  const GetSizesResult({
     this.filters,
     required this.id,
     required this.sizes,

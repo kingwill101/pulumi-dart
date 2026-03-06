@@ -14,7 +14,7 @@ class SyntheticTaskCommonSettingCustomHostHost {
   /// [domain] Domain Name.
   /// [ipType] IpType.
   /// [ips] The IP list.
-  SyntheticTaskCommonSettingCustomHostHost({
+  const SyntheticTaskCommonSettingCustomHostHost({
     required this.domain,
     required this.ipType,
     required this.ips,

@@ -28,7 +28,7 @@ class NamespaceDiscoveredManagementGroup {
   /// [managementGroupConfiguration] Stringified JSON that contains connector-specific configuration for the management group.
   /// [name] Name of the management group.
   /// [typeRef] URI or type definition ID.
-  NamespaceDiscoveredManagementGroup({
+  const NamespaceDiscoveredManagementGroup({
     this.actions,
     this.defaultTimeoutInSeconds,
     this.defaultTopic,

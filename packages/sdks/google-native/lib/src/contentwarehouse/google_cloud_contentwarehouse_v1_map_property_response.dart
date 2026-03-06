@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1MapPropertyResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1MapPropertyResponse].
   /// [fields] Unordered map of dynamically typed values.
-  GoogleCloudContentwarehouseV1MapPropertyResponse({
+  const GoogleCloudContentwarehouseV1MapPropertyResponse({
     required this.fields,
   });
 

@@ -85,7 +85,7 @@ class ComputeInstancePropertiesResponse {
   /// [subnet] Virtual network subnet resource ID the compute nodes belong to.
   /// [versions] ComputeInstance version.
   /// [vmSize] Virtual Machine Size
-  ComputeInstancePropertiesResponse({
+  const ComputeInstancePropertiesResponse({
     this.applicationSharingPolicy,
     required this.applications,
     this.computeInstanceAuthorizationType,

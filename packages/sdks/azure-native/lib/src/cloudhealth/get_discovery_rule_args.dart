@@ -18,7 +18,7 @@ class GetDiscoveryRuleArgs {
   /// [discoveryRuleName] Name of the discovery rule. Must be unique within a health model.
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiscoveryRuleArgs({
+  const GetDiscoveryRuleArgs({
     required this.discoveryRuleName,
     required this.healthModelName,
     required this.resourceGroupName,

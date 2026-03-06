@@ -12,7 +12,7 @@ class MapperPolicyRecurrenceResponse {
   /// Creates a new [MapperPolicyRecurrenceResponse].
   /// [frequency] Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
   /// [interval] Actual interval value as per chosen frequency.
-  MapperPolicyRecurrenceResponse({
+  const MapperPolicyRecurrenceResponse({
     this.frequency,
     this.interval,
   });

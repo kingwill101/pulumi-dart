@@ -48,7 +48,7 @@ class LaunchTemplateDataDisk {
   /// [performanceLevel] Optional.
   /// [size] The size of the data disk.
   /// [snapshotId] The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-  LaunchTemplateDataDisk({
+  const LaunchTemplateDataDisk({
     this.category,
     this.deleteWithInstance,
     this.description,

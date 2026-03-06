@@ -17,7 +17,7 @@ class GetVmwareClusterIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [vmwareClusterId] Required.
-  GetVmwareClusterIamPolicyArgs({
+  const GetVmwareClusterIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

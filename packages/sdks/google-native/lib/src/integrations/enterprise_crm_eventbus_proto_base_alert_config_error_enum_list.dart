@@ -11,7 +11,7 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   /// Creates a new [EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList].
   /// [enumStrings] Optional.
   /// [filterType] Optional.
-  EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList({
+  const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList({
     this.enumStrings,
     this.filterType,
   });

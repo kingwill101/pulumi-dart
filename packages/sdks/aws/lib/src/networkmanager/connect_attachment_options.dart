@@ -8,7 +8,7 @@ class ConnectAttachmentOptions {
 
   /// Creates a new [ConnectAttachmentOptions].
   /// [protocol] Protocol used for the attachment connection. Valid values: `GRE`, `NO_ENCAP`.
-  ConnectAttachmentOptions({
+  const ConnectAttachmentOptions({
     this.protocol,
   });
 

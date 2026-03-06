@@ -42,7 +42,7 @@ class ScriptArgs {
   /// [scriptName] The name of the Kusto database script.
   /// [scriptUrl] The url to the KQL script blob file. Must not be used together with scriptContent property
   /// [scriptUrlSasToken] The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
-  ScriptArgs({
+  const ScriptArgs({
     required this.clusterName,
     this.continueOnErrors,
     required this.databaseName,

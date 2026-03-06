@@ -14,7 +14,7 @@ class GetRulesRuleTarget {
   /// [endpoint] The endpoint.
   /// [targetId] The id of target.
   /// [type] The type of target.
-  GetRulesRuleTarget({
+  const GetRulesRuleTarget({
     required this.endpoint,
     required this.targetId,
     required this.type,

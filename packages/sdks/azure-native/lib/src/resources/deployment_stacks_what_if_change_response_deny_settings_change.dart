@@ -17,7 +17,7 @@ class DeploymentStacksWhatIfChangeResponseDenySettingsChange {
   /// [after] The predicted value after the deployment is executed.
   /// [before] The predicted value before the deployment is executed.
   /// [delta] The predicted changes to the properties."
-  DeploymentStacksWhatIfChangeResponseDenySettingsChange({
+  const DeploymentStacksWhatIfChangeResponseDenySettingsChange({
     this.after,
     this.before,
     this.delta,

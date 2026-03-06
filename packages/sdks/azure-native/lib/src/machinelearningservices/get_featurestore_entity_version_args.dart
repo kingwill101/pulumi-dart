@@ -21,7 +21,7 @@ class GetFeaturestoreEntityVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetFeaturestoreEntityVersionArgs({
+  const GetFeaturestoreEntityVersionArgs({
     required this.name,
     required this.resourceGroupName,
     required this.version,

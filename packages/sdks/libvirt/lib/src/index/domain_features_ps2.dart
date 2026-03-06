@@ -8,7 +8,7 @@ class DomainFeaturesPs2 {
 
   /// Creates a new [DomainFeaturesPs2].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesPs2({
+  const DomainFeaturesPs2({
     this.state,
   });
 

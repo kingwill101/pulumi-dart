@@ -52,7 +52,7 @@ class TrailDeprecatedArgs {
   /// [status] Optional.
   /// [trailName] Optional.
   /// [trailRegion] Optional.
-  TrailDeprecatedArgs({
+  const TrailDeprecatedArgs({
     this.dataEventTrailRegion,
     this.eventRw,
     this.eventSelectors,

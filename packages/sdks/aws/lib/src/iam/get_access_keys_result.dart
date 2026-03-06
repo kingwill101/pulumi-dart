@@ -15,7 +15,7 @@ class GetAccessKeysResult {
   /// [accessKeys] List of the IAM access keys associated with the specified user. See below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [user] Required.
-  GetAccessKeysResult({
+  const GetAccessKeysResult({
     required this.accessKeys,
     required this.id,
     required this.user,

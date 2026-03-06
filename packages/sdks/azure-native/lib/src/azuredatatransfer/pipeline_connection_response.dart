@@ -29,7 +29,7 @@ class PipelineConnectionResponse {
   /// [properties] Connection properties inside pipeline
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Connection type inside pipeline
-  PipelineConnectionResponse({
+  const PipelineConnectionResponse({
     required this.etag,
     required this.id,
     required this.location,

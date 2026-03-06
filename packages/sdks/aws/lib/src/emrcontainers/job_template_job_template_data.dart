@@ -22,7 +22,7 @@ class JobTemplateJobTemplateData {
   /// [jobDriver] Specify the driver that the job runs on. Exactly one of the two available job drivers is required, either sparkSqlJobDriver or sparkSubmitJobDriver.
   /// [jobTags] The tags assigned to jobs started using the job template.
   /// [releaseLabel] The release version of Amazon EMR.
-  JobTemplateJobTemplateData({
+  const JobTemplateJobTemplateData({
     this.configurationOverrides,
     required this.executionRoleArn,
     required this.jobDriver,

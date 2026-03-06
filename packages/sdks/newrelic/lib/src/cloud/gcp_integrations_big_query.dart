@@ -11,7 +11,7 @@ class GcpIntegrationsBigQuery {
   /// Creates a new [GcpIntegrationsBigQuery].
   /// [fetchTags] to fetch tags of the resource
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsBigQuery({
+  const GcpIntegrationsBigQuery({
     this.fetchTags,
     this.metricsPollingInterval,
   });

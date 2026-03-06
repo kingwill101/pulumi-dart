@@ -25,7 +25,7 @@ class MirroringEndpointGroupAssociation {
   /// [name] (Output)
   /// [network] (Output)
   /// [state] (Output)
-  MirroringEndpointGroupAssociation({
+  const MirroringEndpointGroupAssociation({
     this.name,
     this.network,
     this.state,

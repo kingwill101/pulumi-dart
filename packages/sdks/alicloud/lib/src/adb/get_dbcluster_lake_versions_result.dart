@@ -29,7 +29,7 @@ class GetDBClusterLakeVersionsResult {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the resource.
   /// [versions] A list of Adb Db Clusters. Each element contains the following attributes:
-  GetDBClusterLakeVersionsResult({
+  const GetDBClusterLakeVersionsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

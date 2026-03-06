@@ -30,7 +30,7 @@ class GetIpamIpamsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  GetIpamIpamsArgs({
+  const GetIpamIpamsArgs({
     this.ids,
     this.ipamId,
     this.ipamName,

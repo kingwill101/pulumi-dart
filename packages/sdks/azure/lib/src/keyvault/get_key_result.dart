@@ -57,7 +57,7 @@ class GetKeyResult {
   /// [versionlessId] The Base ID of the Key Vault Key.
   /// [x] The EC X component of this Key Vault Key.
   /// [y] The EC Y component of this Key Vault Key.
-  GetKeyResult({
+  const GetKeyResult({
     required this.curve,
     required this.e,
     required this.id,

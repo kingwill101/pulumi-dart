@@ -8,7 +8,7 @@ class ResourceConfigurationResourceConfigurationDefinitionArnResource {
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionArnResource].
   /// [arn] The ARN of the Resource for this configuration.
-  ResourceConfigurationResourceConfigurationDefinitionArnResource({
+  const ResourceConfigurationResourceConfigurationDefinitionArnResource({
     required this.arn,
   });
 

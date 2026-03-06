@@ -21,7 +21,7 @@ class GetTaskDefinitionVolumeEfsVolumeConfiguration {
   /// [rootDirectory] The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
   /// [transitEncryption] Whether or not to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is used. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
   /// [transitEncryptionPort] Port to use for transit encryption. If you do not specify a transit encryption port, it will use the port selection strategy that the Amazon EFS mount helper uses.
-  GetTaskDefinitionVolumeEfsVolumeConfiguration({
+  const GetTaskDefinitionVolumeEfsVolumeConfiguration({
     required this.authorizationConfigs,
     required this.fileSystemId,
     required this.rootDirectory,

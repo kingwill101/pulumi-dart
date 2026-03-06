@@ -9,7 +9,7 @@ class VpcConfiguration {
 
   /// Creates a new [VpcConfiguration].
   /// [vpcId] If this field is specified, this access point will only allow connections from the specified VPC ID.
-  VpcConfiguration({
+  const VpcConfiguration({
     this.vpcId,
   });
 

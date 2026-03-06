@@ -51,7 +51,7 @@ class ExpressRouteCircuitPeeringArgs {
   /// [secondaryPeerAddressPrefix] A subnet for the secondary link.
   /// [sharedKey] The shared key. Can be a maximum of 25 characters.
   /// [vlanId] A valid VLAN ID to establish this peering on.
-  ExpressRouteCircuitPeeringArgs({
+  const ExpressRouteCircuitPeeringArgs({
     required this.expressRouteCircuitName,
     this.ipv4Enabled,
     this.ipv6,

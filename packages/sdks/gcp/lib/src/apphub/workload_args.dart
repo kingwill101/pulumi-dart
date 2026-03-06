@@ -36,7 +36,7 @@ class WorkloadArgs {
   /// [location] Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   /// [project] The ID of the project in which the resource belongs.
   /// [workloadId] The Workload identifier.
-  WorkloadArgs({
+  const WorkloadArgs({
     required this.applicationId,
     this.attributes,
     this.description,

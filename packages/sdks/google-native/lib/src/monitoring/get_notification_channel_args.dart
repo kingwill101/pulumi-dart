@@ -13,7 +13,7 @@ class GetNotificationChannelArgs {
   /// Creates a new [GetNotificationChannelArgs].
   /// [notificationChannelId] Required.
   /// [project] Optional.
-  GetNotificationChannelArgs({
+  const GetNotificationChannelArgs({
     required this.notificationChannelId,
     this.project,
   });

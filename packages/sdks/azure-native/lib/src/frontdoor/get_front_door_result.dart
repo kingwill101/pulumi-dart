@@ -73,7 +73,7 @@ class GetFrontDoorResult {
   /// [rulesEngines] Rules Engine Configurations available to routing rules.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetFrontDoorResult({
+  const GetFrontDoorResult({
     required this.azureApiVersion,
     this.backendPools,
     this.backendPoolsSettings,

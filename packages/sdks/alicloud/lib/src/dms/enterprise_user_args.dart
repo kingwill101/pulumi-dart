@@ -36,7 +36,7 @@ class EnterpriseUserArgs {
   /// [tid] The tenant ID.
   /// [uid] The Alibaba Cloud unique ID (UID) of the user to add.
   /// [userName] The nickname of the user.
-  EnterpriseUserArgs({
+  const EnterpriseUserArgs({
     this.maxExecuteCount,
     this.maxResultCount,
     this.mobile,

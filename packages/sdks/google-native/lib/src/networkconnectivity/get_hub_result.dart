@@ -38,7 +38,7 @@ class GetHubResult {
   /// [state] The current lifecycle state of this hub.
   /// [uniqueId] The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
   /// [updateTime] The time the hub was last updated.
-  GetHubResult({
+  const GetHubResult({
     required this.createTime,
     required this.description,
     required this.labels,

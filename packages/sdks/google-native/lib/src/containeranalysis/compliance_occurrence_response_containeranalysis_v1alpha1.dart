@@ -13,7 +13,7 @@ class ComplianceOccurrenceResponseContaineranalysisV1alpha1 {
   /// Creates a new [ComplianceOccurrenceResponseContaineranalysisV1alpha1].
   /// [nonComplianceReason] The reason for non compliance of these files.
   /// [nonCompliantFiles] A list of files which are violating compliance checks.
-  ComplianceOccurrenceResponseContaineranalysisV1alpha1({
+  const ComplianceOccurrenceResponseContaineranalysisV1alpha1({
     required this.nonComplianceReason,
     required this.nonCompliantFiles,
   });

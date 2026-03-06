@@ -12,7 +12,7 @@ class GetRegionArgs {
 
   /// Creates a new [GetRegionArgs].
   /// [id] The code name of the region to select.
-  GetRegionArgs({
+  const GetRegionArgs({
     required this.id,
   });
 

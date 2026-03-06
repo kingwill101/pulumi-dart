@@ -15,7 +15,7 @@ class KubeClientSettings {
   /// [burst] Maximum burst for throttle. Default value is 120.
   /// [qps] Maximum queries per second (QPS) to the API server from this client. Default value is 50.
   /// [timeout] Maximum time in seconds to wait before cancelling a HTTP request to the Kubernetes server. Default value is 32.
-  KubeClientSettings({
+  const KubeClientSettings({
     this.burst,
     this.qps,
     this.timeout,

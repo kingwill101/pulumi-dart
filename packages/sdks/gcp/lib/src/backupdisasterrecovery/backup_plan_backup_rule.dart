@@ -16,7 +16,7 @@ class BackupPlanBackupRule {
   /// [backupRetentionDays] Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
   /// [ruleId] The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
   /// [standardSchedule] StandardSchedule defines a schedule that runs within the confines of a defined window of days.
-  BackupPlanBackupRule({
+  const BackupPlanBackupRule({
     required this.backupRetentionDays,
     required this.ruleId,
     required this.standardSchedule,

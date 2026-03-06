@@ -13,7 +13,7 @@ class DiskRestorePointReplicationStatusResponse {
   /// Creates a new [DiskRestorePointReplicationStatusResponse].
   /// [completionPercent] Replication completion percentage.
   /// [status] The resource status information.
-  DiskRestorePointReplicationStatusResponse({
+  const DiskRestorePointReplicationStatusResponse({
     this.completionPercent,
     this.status,
   });

@@ -17,7 +17,7 @@ class LoadBalancerInternetInternet {
   /// [port] The SLB Port.
   /// [protocol] The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
   /// [targetPort] The Container port.
-  LoadBalancerInternetInternet({
+  const LoadBalancerInternetInternet({
     this.httpsCertId,
     this.port,
     this.protocol,

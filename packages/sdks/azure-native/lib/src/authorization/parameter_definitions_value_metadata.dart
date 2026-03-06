@@ -18,7 +18,7 @@ class ParameterDefinitionsValueMetadata {
   /// [description] The description of the parameter.
   /// [displayName] The display name for the parameter.
   /// [strongType] Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
-  ParameterDefinitionsValueMetadata({
+  const ParameterDefinitionsValueMetadata({
     this.assignPermissions,
     this.description,
     this.displayName,

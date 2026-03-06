@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceGooGetResponse {
 
   /// Creates a new [OSPolicyResourcePackageResourceGooGetResponse].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceGooGetResponse({
+  const OSPolicyResourcePackageResourceGooGetResponse({
     required this.name,
   });
 

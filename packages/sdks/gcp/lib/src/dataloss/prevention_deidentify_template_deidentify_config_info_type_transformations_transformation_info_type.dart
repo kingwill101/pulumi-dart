@@ -16,7 +16,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   /// [name] Name of the information type.
   /// [sensitivityScore] Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// [version] Version name for this InfoType.
-  PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType({
+  const PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType({
     required this.name,
     this.sensitivityScore,
     this.version,

@@ -16,7 +16,7 @@ class ClusterParameterGroupParameter {
   /// [applyMethod] "immediate" (default), or "pending-reboot". Some
   /// [name] The name of the DB parameter.
   /// [value] The value of the DB parameter.
-  ClusterParameterGroupParameter({
+  const ClusterParameterGroupParameter({
     this.applyMethod,
     required this.name,
     required this.value,

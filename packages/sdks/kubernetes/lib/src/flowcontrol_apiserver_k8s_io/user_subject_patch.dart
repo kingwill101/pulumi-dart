@@ -9,7 +9,7 @@ class UserSubjectPatch {
 
   /// Creates a new [UserSubjectPatch].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
-  UserSubjectPatch({
+  const UserSubjectPatch({
     this.name,
   });
 

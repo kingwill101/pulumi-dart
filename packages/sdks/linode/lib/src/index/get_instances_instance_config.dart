@@ -41,7 +41,7 @@ class GetInstancesInstanceConfig {
   /// [rootDevice] The root device to boot.
   /// [runLevel] Defines the state of your Linode after booting.
   /// [virtMode] Controls the virtualization mode.
-  GetInstancesInstanceConfig({
+  const GetInstancesInstanceConfig({
     required this.comments,
     required this.devices,
     required this.helpers,

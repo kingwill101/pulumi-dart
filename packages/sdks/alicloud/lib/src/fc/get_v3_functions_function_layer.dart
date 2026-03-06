@@ -11,7 +11,7 @@ class GetV3FunctionsFunctionLayer {
   /// Creates a new [GetV3FunctionsFunctionLayer].
   /// [arn] The resource identifier of the layer version.
   /// [size] The size of the layer code package. Unit: bytes.
-  GetV3FunctionsFunctionLayer({
+  const GetV3FunctionsFunctionLayer({
     required this.arn,
     required this.size,
   });

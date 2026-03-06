@@ -14,7 +14,7 @@ class LedgerAzureadBasedServicePrincipal {
   /// [ledgerRoleName] Specifies the Ledger Role to grant this AzureAD Service Principal. Possible values are `Administrator`, `Contributor` and `Reader`.
   /// [principalId] Specifies the Principal ID of the AzureAD Service Principal.
   /// [tenantId] Specifies the Tenant ID for this AzureAD Service Principal.
-  LedgerAzureadBasedServicePrincipal({
+  const LedgerAzureadBasedServicePrincipal({
     required this.ledgerRoleName,
     required this.principalId,
     required this.tenantId,

@@ -21,7 +21,7 @@ class SlsaProvenanceResponseContaineranalysisV1alpha1 {
   /// [materials] The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
   /// [metadata] metadata is the metadata of the provenance
   /// [recipe] Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
-  SlsaProvenanceResponseContaineranalysisV1alpha1({
+  const SlsaProvenanceResponseContaineranalysisV1alpha1({
     required this.builder,
     required this.materials,
     required this.metadata,

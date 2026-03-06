@@ -13,7 +13,7 @@ class DatabaseHiveOptions {
   /// Creates a new [DatabaseHiveOptions].
   /// [locationUri] Cloud Storage folder URI where the database data is stored, starting with "gs://".
   /// [parameters] Stores user supplied Hive database parameters. An object containing a
-  DatabaseHiveOptions({
+  const DatabaseHiveOptions({
     this.locationUri,
     this.parameters,
   });

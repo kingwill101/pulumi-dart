@@ -11,7 +11,7 @@ class GetInterfacePublicIpv6Range {
   /// Creates a new [GetInterfacePublicIpv6Range].
   /// [range] The IPv6 range.
   /// [routeTarget] The route target for this IPv6 range.
-  GetInterfacePublicIpv6Range({
+  const GetInterfacePublicIpv6Range({
     required this.range,
     required this.routeTarget,
   });

@@ -9,7 +9,7 @@ class GetProfilingGroupProfilingStatusLatestAggregatedProfile {
   /// Creates a new [GetProfilingGroupProfilingStatusLatestAggregatedProfile].
   /// [period] Required.
   /// [start] Required.
-  GetProfilingGroupProfilingStatusLatestAggregatedProfile({
+  const GetProfilingGroupProfilingStatusLatestAggregatedProfile({
     required this.period,
     required this.start,
   });

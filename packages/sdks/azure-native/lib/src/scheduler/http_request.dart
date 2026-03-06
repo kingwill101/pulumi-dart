@@ -21,7 +21,7 @@ class HttpRequest {
   /// [headers] Gets or sets the headers.
   /// [method] Gets or sets the method of the request.
   /// [uri] Gets or sets the URI of the request.
-  HttpRequest({
+  const HttpRequest({
     this.authentication,
     this.body,
     this.headers,

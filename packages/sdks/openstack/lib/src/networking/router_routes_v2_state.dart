@@ -20,7 +20,7 @@ class RouterRoutesV2State {
   /// [region] The region in which to obtain the V2 networking client.
   /// [routerId] ID of the router these routing entries belong to.
   /// [routes] A set of routing entries to add to the router.
-  RouterRoutesV2State({
+  const RouterRoutesV2State({
     this.region,
     this.routerId,
     this.routes,

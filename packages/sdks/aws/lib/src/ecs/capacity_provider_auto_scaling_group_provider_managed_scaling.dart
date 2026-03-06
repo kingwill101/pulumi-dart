@@ -22,7 +22,7 @@ class CapacityProviderAutoScalingGroupProviderManagedScaling {
   /// [minimumScalingStepSize] Minimum step adjustment size. A number between 1 and 10,000.
   /// [status] Whether auto scaling is managed by ECS. Valid values are `ENABLED` and `DISABLED`.
   /// [targetCapacity] Target utilization for the capacity provider. A number between 1 and 100.
-  CapacityProviderAutoScalingGroupProviderManagedScaling({
+  const CapacityProviderAutoScalingGroupProviderManagedScaling({
     this.instanceWarmupPeriod,
     this.maximumScalingStepSize,
     this.minimumScalingStepSize,

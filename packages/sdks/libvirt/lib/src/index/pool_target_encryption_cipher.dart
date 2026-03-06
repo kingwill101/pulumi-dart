@@ -17,7 +17,7 @@ class PoolTargetEncryptionCipher {
   /// [mode] Defines the mode for the encryption cipher of the storage volume.
   /// [name] Sets the name of the encryption cipher for the storage volume.
   /// [size] Sets the size of the encryption cipher for the storage volume.
-  PoolTargetEncryptionCipher({
+  const PoolTargetEncryptionCipher({
     required this.hash,
     required this.mode,
     required this.name,

@@ -19,7 +19,7 @@ class IPConfigurationPropertiesResponse {
   /// [prefixLength] prefixLength for network interface
   /// [privateIPAddress] PrivateIPAddress - Private IP address of the IP configuration.
   /// [subnet] Subnet - Name of Subnet bound to the IP configuration.
-  IPConfigurationPropertiesResponse({
+  const IPConfigurationPropertiesResponse({
     required this.gateway,
     required this.prefixLength,
     this.privateIPAddress,

@@ -12,7 +12,7 @@ class UserPassword {
   /// Creates a new [UserPassword].
   /// [password] The initial password for the user.
   /// [user] The database username.
-  UserPassword({
+  const UserPassword({
     this.password,
     this.user,
   });

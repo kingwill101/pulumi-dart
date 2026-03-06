@@ -48,7 +48,7 @@ class DatasetBinaryState {
   /// [name] Specifies the name of the Data Factory Binary Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] Specifies a list of parameters to associate with the Data Factory Binary Dataset.
   /// [sftpServerLocation] A `sftp_server_location` block as defined below.
-  DatasetBinaryState({
+  const DatasetBinaryState({
     this.additionalProperties,
     this.annotations,
     this.azureBlobStorageLocation,

@@ -8,7 +8,7 @@ class WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument {
 
   /// Creates a new [WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument({
+  const WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
 

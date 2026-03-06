@@ -17,7 +17,7 @@ class ConnectionProfileError {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  ConnectionProfileError({
+  const ConnectionProfileError({
     this.code,
     this.details,
     this.message,

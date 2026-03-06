@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse].
   /// [bigqueryConnectionSpec] Fields specific to BigQuery connections.
-  GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse({
+  const GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse({
     required this.bigqueryConnectionSpec,
   });
 

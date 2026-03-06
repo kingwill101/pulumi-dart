@@ -35,7 +35,7 @@ class GetWorkspaceCustomParameter {
   /// [storageAccountSkuName] Storage account SKU name.
   /// [virtualNetworkId] The ID of a Virtual Network where this Databricks Cluster should be created.
   /// [vnetAddressPrefix] Address prefix for Managed virtual network.
-  GetWorkspaceCustomParameter({
+  const GetWorkspaceCustomParameter({
     required this.machineLearningWorkspaceId,
     required this.natGatewayName,
     required this.noPublicIp,

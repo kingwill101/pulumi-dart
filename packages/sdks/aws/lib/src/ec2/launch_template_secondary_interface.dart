@@ -26,7 +26,7 @@ class LaunchTemplateSecondaryInterface {
   /// [privateIpAddressCount] Number of private IPv4 addresses to assign to the secondary interface.
   /// [privateIpAddresses] Private IPv4 addresses to assign to the secondary interface.
   /// [secondarySubnetId] ID of the secondary subnet.
-  LaunchTemplateSecondaryInterface({
+  const LaunchTemplateSecondaryInterface({
     this.deleteOnTermination,
     this.deviceIndex,
     this.interfaceType,

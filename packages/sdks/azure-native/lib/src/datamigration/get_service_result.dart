@@ -49,7 +49,7 @@ class GetServiceResult {
   /// [type] Required.
   /// [virtualNicId] The ID of the Microsoft.Network/networkInterfaces resource which the service have
   /// [virtualSubnetId] The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
-  GetServiceResult({
+  const GetServiceResult({
     this.autoStopDelay,
     required this.azureApiVersion,
     this.deleteResourcesOnStop,

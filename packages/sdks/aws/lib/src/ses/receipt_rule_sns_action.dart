@@ -14,7 +14,7 @@ class ReceiptRuleSnsAction {
   /// [encoding] The encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
   /// [position] The position of the action in the receipt rule
   /// [topicArn] The ARN of an SNS topic to notify
-  ReceiptRuleSnsAction({
+  const ReceiptRuleSnsAction({
     this.encoding,
     required this.position,
     required this.topicArn,

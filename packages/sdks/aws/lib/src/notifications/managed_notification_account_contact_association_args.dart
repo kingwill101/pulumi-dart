@@ -15,7 +15,7 @@ class ManagedNotificationAccountContactAssociationArgs {
   /// Creates a new [ManagedNotificationAccountContactAssociationArgs].
   /// [contactIdentifier] A unique value of an Account Contact Type to associate with the ManagedNotificationConfiguration. Valid values: `ACCOUNT_PRIMARY`, `ACCOUNT_ALTERNATE_BILLING`, `ACCOUNT_ALTERNATE_OPERATIONS`, `ACCOUNT_ALTERNATE_SECURITY`.
   /// [managedNotificationConfigurationArn] ARN of the managed notification configuration to associate the account contact with.
-  ManagedNotificationAccountContactAssociationArgs({
+  const ManagedNotificationAccountContactAssociationArgs({
     required this.contactIdentifier,
     required this.managedNotificationConfigurationArn,
   });

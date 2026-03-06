@@ -15,7 +15,7 @@ class AgentAgentMemoryConfiguration {
   /// [enabledMemoryTypes] The type of memory being stored by the agent. See [AWS API documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_MemoryConfiguration.html) for possible values.
   /// [sessionSummaryConfigurations] Configuration block for `SESSION_SUMMARY` memory type enabled for the agent. See `session_summary_configuration` Block for details.
   /// [storageDays] The number of days the agent is configured to retain the conversational context. Minimum value of 0, maximum value of 30.
-  AgentAgentMemoryConfiguration({
+  const AgentAgentMemoryConfiguration({
     required this.enabledMemoryTypes,
     required this.sessionSummaryConfigurations,
     required this.storageDays,

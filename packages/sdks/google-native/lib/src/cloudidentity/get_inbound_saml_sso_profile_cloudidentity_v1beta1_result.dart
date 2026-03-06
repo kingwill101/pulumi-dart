@@ -22,7 +22,7 @@ class GetInboundSamlSsoProfileCloudidentityV1beta1Result {
   /// [idpConfig] SAML identity provider configuration.
   /// [name] [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile.
   /// [spConfig] SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
-  GetInboundSamlSsoProfileCloudidentityV1beta1Result({
+  const GetInboundSamlSsoProfileCloudidentityV1beta1Result({
     required this.customer,
     required this.displayName,
     required this.idpConfig,

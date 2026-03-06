@@ -7,7 +7,7 @@ class ServerGroupRules {
 
   /// Creates a new [ServerGroupRules].
   /// [maxServerPerHost] Optional.
-  ServerGroupRules({
+  const ServerGroupRules({
     this.maxServerPerHost,
   });
 

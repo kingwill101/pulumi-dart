@@ -8,7 +8,7 @@ class AwsNodePoolConfigInstancePlacement {
 
   /// Creates a new [AwsNodePoolConfigInstancePlacement].
   /// [tenancy] The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
-  AwsNodePoolConfigInstancePlacement({
+  const AwsNodePoolConfigInstancePlacement({
     this.tenancy,
   });
 

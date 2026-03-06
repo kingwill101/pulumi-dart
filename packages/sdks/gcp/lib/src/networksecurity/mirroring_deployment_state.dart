@@ -73,7 +73,7 @@ class MirroringDeploymentState {
   /// [reconciling] The current state of the resource does not match the user's intended state,
   /// [state] The current state of the deployment.
   /// [updateTime] The timestamp when the resource was most recently updated.
-  MirroringDeploymentState({
+  const MirroringDeploymentState({
     this.createTime,
     this.description,
     this.effectiveLabels,

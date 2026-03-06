@@ -39,7 +39,7 @@ class AutomationRuleState {
   /// [ruleStatus] Whether the rule is active after it is created.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  AutomationRuleState({
+  const AutomationRuleState({
     this.actions,
     this.arn,
     this.criteria,

@@ -19,7 +19,7 @@ class LogTransformerArgs {
   /// [logGroupArn] Log group ARN to set the transformer for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transformerConfigs] Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformer_config` below for details.
-  LogTransformerArgs({
+  const LogTransformerArgs({
     required this.logGroupArn,
     this.region,
     required this.transformerConfigs,

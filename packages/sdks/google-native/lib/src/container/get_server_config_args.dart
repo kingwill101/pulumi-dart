@@ -17,7 +17,7 @@ class GetServerConfigArgs {
   /// [project] Optional.
   /// [projectId] Optional.
   /// [zone] Optional.
-  GetServerConfigArgs({
+  const GetServerConfigArgs({
     required this.location,
     this.project,
     this.projectId,

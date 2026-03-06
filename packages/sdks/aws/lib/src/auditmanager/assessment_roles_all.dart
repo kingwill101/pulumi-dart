@@ -11,7 +11,7 @@ class AssessmentRolesAll {
   /// Creates a new [AssessmentRolesAll].
   /// [roleArn] Amazon Resource Name (ARN) of the IAM role.
   /// [roleType] Type of customer persona. For assessment creation, type must always be `PROCESS_OWNER`.
-  AssessmentRolesAll({
+  const AssessmentRolesAll({
     required this.roleArn,
     required this.roleType,
   });

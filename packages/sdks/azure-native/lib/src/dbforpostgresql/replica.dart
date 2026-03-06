@@ -15,7 +15,7 @@ class Replica {
   /// [promoteMode] Type of operation to apply on the read replica. This property is write only. Standalone means that the read replica will be promoted to a standalone server, and will become a completely independent entity from the replication set. Switchover means that the read replica will roles with the primary server.
   /// [promoteOption] Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only.
   /// [role] Role of the server in a replication set.
-  Replica({
+  const Replica({
     this.promoteMode,
     this.promoteOption,
     this.role,

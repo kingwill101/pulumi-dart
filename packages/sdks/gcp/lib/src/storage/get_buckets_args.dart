@@ -15,7 +15,7 @@ class GetBucketsArgs {
   /// Creates a new [GetBucketsArgs].
   /// [prefix] Filter results to buckets whose names begin with this prefix.
   /// [project] The ID of the project. If it is not provided, the provider project is used.
-  GetBucketsArgs({
+  const GetBucketsArgs({
     this.prefix,
     this.project,
   });

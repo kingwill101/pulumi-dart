@@ -11,7 +11,7 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
   /// Creates a new [GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
   /// [repositoryPath] Specific repository from the base.
-  GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository({
+  const GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository({
     required this.repositoryBase,
     required this.repositoryPath,
   });

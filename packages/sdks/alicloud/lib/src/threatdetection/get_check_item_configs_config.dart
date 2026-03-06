@@ -40,7 +40,7 @@ class GetCheckItemConfigsConfig {
   /// [riskLevel] The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
   /// [sectionIds] The IDs of the sections associated with the check items.
   /// [vendor] The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
-  GetCheckItemConfigsConfig({
+  const GetCheckItemConfigsConfig({
     required this.checkId,
     required this.checkShowName,
     required this.checkType,

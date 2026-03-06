@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
   /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.searchServiceName,

@@ -15,7 +15,7 @@ class BrokerAuthenticatorMethodSvid {
   /// [agentSocketPath] Mounted socket path for spiffe agent.
   /// [identityMaxRetry] Maximum number of re-tries to fetch identity.
   /// [identityWaitRetryMs] Maximum time to wait before fetching identity again.
-  BrokerAuthenticatorMethodSvid({
+  const BrokerAuthenticatorMethodSvid({
     required this.agentSocketPath,
     this.identityMaxRetry,
     this.identityWaitRetryMs,

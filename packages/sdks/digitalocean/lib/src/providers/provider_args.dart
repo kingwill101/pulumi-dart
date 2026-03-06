@@ -36,7 +36,7 @@ class ProviderArgs {
   /// [spacesEndpoint] The URL to use for the DigitalOcean Spaces API.
   /// [spacesSecretKey] The secret access key for Spaces API operations.
   /// [token] The token key for API operations.
-  ProviderArgs({
+  const ProviderArgs({
     this.apiEndpoint,
     this.httpRetryMax,
     this.httpRetryWaitMax,

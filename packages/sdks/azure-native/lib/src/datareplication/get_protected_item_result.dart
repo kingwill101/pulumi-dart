@@ -24,7 +24,7 @@ class GetProtectedItemResult {
   /// [properties] Protected item model properties.
   /// [systemData] Required.
   /// [type] Gets or sets the type of the resource.
-  GetProtectedItemResult({
+  const GetProtectedItemResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

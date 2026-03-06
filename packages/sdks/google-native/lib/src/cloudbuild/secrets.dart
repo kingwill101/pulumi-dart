@@ -14,7 +14,7 @@ class Secrets {
   /// Creates a new [Secrets].
   /// [inline] Secrets encrypted with KMS key and the associated secret environment variable.
   /// [secretManager] Secrets in Secret Manager and associated secret environment variable.
-  Secrets({
+  const Secrets({
     this.inline,
     this.secretManager,
   });

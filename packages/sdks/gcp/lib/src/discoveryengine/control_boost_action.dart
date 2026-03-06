@@ -19,7 +19,7 @@ class ControlBoostAction {
   /// [filter] The filter to apply to the search results.
   /// [fixedBoost] The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
   /// [interpolationBoostSpec] The interpolation boost specification to apply to the search results.
-  ControlBoostAction({
+  const ControlBoostAction({
     required this.dataStore,
     required this.filter,
     this.fixedBoost,

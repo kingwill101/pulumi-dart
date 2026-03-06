@@ -29,7 +29,7 @@ class CertificateConfigSubjectConfigSubject {
   /// [postalCode] The postal code of the subject.
   /// [province] The province, territory, or regional state of the subject.
   /// [streetAddress] The street address of the subject.
-  CertificateConfigSubjectConfigSubject({
+  const CertificateConfigSubjectConfigSubject({
     required this.commonName,
     this.countryCode,
     this.locality,

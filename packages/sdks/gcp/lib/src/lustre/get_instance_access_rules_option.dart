@@ -22,7 +22,7 @@ class GetInstanceAccessRulesOption {
   /// [defaultSquashGid] The GID to map the root user to when root squashing is enabled
   /// [defaultSquashMode] Set to "ROOT_SQUASH" to enable root squashing by default.
   /// [defaultSquashUid] The UID to map the root user to when root squashing is enabled
-  GetInstanceAccessRulesOption({
+  const GetInstanceAccessRulesOption({
     required this.accessRules,
     required this.defaultSquashGid,
     required this.defaultSquashMode,

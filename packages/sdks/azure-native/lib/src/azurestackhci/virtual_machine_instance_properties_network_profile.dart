@@ -10,7 +10,7 @@ class VirtualMachineInstancePropertiesNetworkProfile {
 
   /// Creates a new [VirtualMachineInstancePropertiesNetworkProfile].
   /// [networkInterfaces] NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-  VirtualMachineInstancePropertiesNetworkProfile({
+  const VirtualMachineInstancePropertiesNetworkProfile({
     this.networkInterfaces,
   });
 

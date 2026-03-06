@@ -10,7 +10,7 @@ class TCPSocketActionResponse {
 
   /// Creates a new [TCPSocketActionResponse].
   /// [type] The type of the action to take to perform the health check.
-  TCPSocketActionResponse({
+  const TCPSocketActionResponse({
     required this.type,
   });
 

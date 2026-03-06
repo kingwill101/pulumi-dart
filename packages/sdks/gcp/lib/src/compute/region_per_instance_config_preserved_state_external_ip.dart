@@ -18,7 +18,7 @@ class RegionPerInstanceConfigPreservedStateExternalIp {
   /// [autoDelete] These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
   /// [interfaceName] The identifier for this object. Format specified above.
   /// [ipAddress] Ip address representation
-  RegionPerInstanceConfigPreservedStateExternalIp({
+  const RegionPerInstanceConfigPreservedStateExternalIp({
     this.autoDelete,
     required this.interfaceName,
     this.ipAddress,

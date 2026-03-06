@@ -27,7 +27,7 @@ class ServiceConnectionPolicyPscConfig {
   /// [limit] Max number of PSC connections for this policy.
   /// [producerInstanceLocation] ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
   /// [subnetworks] IDs of the subnetworks or fully qualified identifiers for the subnetworks
-  ServiceConnectionPolicyPscConfig({
+  const ServiceConnectionPolicyPscConfig({
     this.allowedGoogleProducersResourceHierarchyLevels,
     this.limit,
     this.producerInstanceLocation,

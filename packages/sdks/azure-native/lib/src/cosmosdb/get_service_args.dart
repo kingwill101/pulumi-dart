@@ -18,7 +18,7 @@ class GetServiceArgs {
   /// [accountName] Cosmos DB database account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] Cosmos DB service name.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.serviceName,

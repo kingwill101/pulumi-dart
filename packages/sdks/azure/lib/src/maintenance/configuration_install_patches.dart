@@ -16,7 +16,7 @@ class ConfigurationInstallPatches {
   /// [linuxes] A `linux` block as defined above. This property only applies when `scope` is set to `InGuestPatch`
   /// [reboot] Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. Possible values are `Always`, `IfRequired` and `Never`. This property only applies when `scope` is set to `InGuestPatch`.
   /// [windows] A `windows` block as defined above. This property only applies when `scope` is set to `InGuestPatch`
-  ConfigurationInstallPatches({
+  const ConfigurationInstallPatches({
     this.linuxes,
     this.reboot,
     this.windows,

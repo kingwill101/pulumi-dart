@@ -11,7 +11,7 @@ class LakeIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  LakeIamMemberCondition({
+  const LakeIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

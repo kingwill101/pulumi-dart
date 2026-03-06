@@ -33,7 +33,7 @@ class GetBasicEndpointsArgs {
   /// [nameRegex] A regex string to filter results by Global Accelerator Basic Endpoints name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
-  GetBasicEndpointsArgs({
+  const GetBasicEndpointsArgs({
     required this.endpointGroupId,
     this.endpointId,
     this.endpointType,

@@ -11,7 +11,7 @@ class BotIntent {
   /// Creates a new [BotIntent].
   /// [intentName] The name of the intent. Must be less than or equal to 100 characters in length.
   /// [intentVersion] The version of the intent. Must be less than or equal to 64 characters in length.
-  BotIntent({
+  const BotIntent({
     required this.intentName,
     required this.intentVersion,
   });

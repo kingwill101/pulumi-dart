@@ -13,7 +13,7 @@ class DefenderForServersGcpOfferingResponseVaAutoProvisioning {
   /// Creates a new [DefenderForServersGcpOfferingResponseVaAutoProvisioning].
   /// [configuration] configuration for Vulnerability Assessment autoprovisioning
   /// [enabled] Is Vulnerability Assessment auto provisioning enabled
-  DefenderForServersGcpOfferingResponseVaAutoProvisioning({
+  const DefenderForServersGcpOfferingResponseVaAutoProvisioning({
     this.configuration,
     this.enabled,
   });

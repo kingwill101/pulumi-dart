@@ -32,7 +32,7 @@ class ClusterArgs {
   /// [serviceConnectDefaults] Default Service Connect namespace. See `service_connect_defaults` Block for details.
   /// [settings] Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. See `setting` Block for details.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ClusterArgs({
+  const ClusterArgs({
     this.configuration,
     this.name,
     this.region,

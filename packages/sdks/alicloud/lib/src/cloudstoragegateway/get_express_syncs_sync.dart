@@ -28,7 +28,7 @@ class GetExpressSyncsSync {
   /// [expressSyncName] The name of the Express Sync.
   /// [id] Required.
   /// [mnsTopic] The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
-  GetExpressSyncsSync({
+  const GetExpressSyncsSync({
     required this.bucketName,
     required this.bucketPrefix,
     required this.bucketRegion,

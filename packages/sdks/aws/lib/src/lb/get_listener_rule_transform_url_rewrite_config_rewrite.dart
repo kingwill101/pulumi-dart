@@ -11,7 +11,7 @@ class GetListenerRuleTransformUrlRewriteConfigRewrite {
   /// Creates a new [GetListenerRuleTransformUrlRewriteConfigRewrite].
   /// [regex] Regular expression to match in the input string.
   /// [replace] Replacement string to use when rewriting the matched input.
-  GetListenerRuleTransformUrlRewriteConfigRewrite({
+  const GetListenerRuleTransformUrlRewriteConfigRewrite({
     required this.regex,
     required this.replace,
   });

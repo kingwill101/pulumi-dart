@@ -17,7 +17,7 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
   /// [proxyConfigId] Required.
-  GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs({
+  const GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs({
     this.optionsRequestedPolicyVersion,
     required this.organizationId,
     required this.partnerTenantId,

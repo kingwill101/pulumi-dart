@@ -9,7 +9,7 @@ class GetOpenAIStatusResult {
 
   /// Creates a new [GetOpenAIStatusResult].
   /// [properties] Status of the OpenAI Integration
-  GetOpenAIStatusResult({
+  const GetOpenAIStatusResult({
     required this.properties,
   });
 

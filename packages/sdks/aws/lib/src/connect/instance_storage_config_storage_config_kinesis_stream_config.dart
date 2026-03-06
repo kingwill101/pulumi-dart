@@ -8,7 +8,7 @@ class InstanceStorageConfigStorageConfigKinesisStreamConfig {
 
   /// Creates a new [InstanceStorageConfigStorageConfigKinesisStreamConfig].
   /// [streamArn] The Amazon Resource Name (ARN) of the data stream.
-  InstanceStorageConfigStorageConfigKinesisStreamConfig({
+  const InstanceStorageConfigStorageConfigKinesisStreamConfig({
     required this.streamArn,
   });
 

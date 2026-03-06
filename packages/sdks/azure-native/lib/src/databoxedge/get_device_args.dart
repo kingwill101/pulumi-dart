@@ -15,7 +15,7 @@ class GetDeviceArgs {
   /// Creates a new [GetDeviceArgs].
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
-  GetDeviceArgs({
+  const GetDeviceArgs({
     required this.deviceName,
     required this.resourceGroupName,
   });

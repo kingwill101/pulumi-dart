@@ -7,7 +7,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   /// Creates a new [ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList].
   /// [values] Required.
-  ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList({
+  const ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList({
     required this.values,
   });
 

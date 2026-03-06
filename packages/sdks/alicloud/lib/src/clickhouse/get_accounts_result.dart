@@ -28,7 +28,7 @@ class GetAccountsResult {
   /// [names] A list of Account names.
   /// [outputFile] Optional.
   /// [status] The status of the resource.
-  GetAccountsResult({
+  const GetAccountsResult({
     required this.accounts,
     required this.dbClusterId,
     required this.id,

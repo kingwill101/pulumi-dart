@@ -85,7 +85,7 @@ class AuthzExtensionState {
   /// [timeout] Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
   /// [updateTime] The timestamp when the resource was updated.
   /// [wireFormat] Specifies the communication protocol used by the callout extension
-  AuthzExtensionState({
+  const AuthzExtensionState({
     this.authority,
     this.createTime,
     this.description,

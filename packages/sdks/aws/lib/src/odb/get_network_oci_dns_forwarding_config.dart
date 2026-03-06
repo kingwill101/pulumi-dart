@@ -9,7 +9,7 @@ class GetNetworkOciDnsForwardingConfig {
   /// Creates a new [GetNetworkOciDnsForwardingConfig].
   /// [domainName] Required.
   /// [ociDnsListenerIp] Required.
-  GetNetworkOciDnsForwardingConfig({
+  const GetNetworkOciDnsForwardingConfig({
     required this.domainName,
     required this.ociDnsListenerIp,
   });

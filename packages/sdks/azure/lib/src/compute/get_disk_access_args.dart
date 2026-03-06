@@ -15,7 +15,7 @@ class GetDiskAccessArgs {
   /// Creates a new [GetDiskAccessArgs].
   /// [name] The name of this Disk Access.
   /// [resourceGroupName] The name of the Resource Group where the Disk Access exists.
-  GetDiskAccessArgs({
+  const GetDiskAccessArgs({
     required this.name,
     required this.resourceGroupName,
   });

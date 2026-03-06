@@ -12,7 +12,7 @@ class CryptoKeyPrimary {
   /// Creates a new [CryptoKeyPrimary].
   /// [name] The resource name for the CryptoKey.
   /// [state] (Output)
-  CryptoKeyPrimary({
+  const CryptoKeyPrimary({
     this.name,
     this.state,
   });

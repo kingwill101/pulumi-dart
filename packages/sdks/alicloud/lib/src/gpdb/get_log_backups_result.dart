@@ -29,7 +29,7 @@ class GetLogBackupsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [startTime] Optional.
-  GetLogBackupsResult({
+  const GetLogBackupsResult({
     required this.dbInstanceId,
     this.endTime,
     required this.id,

@@ -24,7 +24,7 @@ class MoverTargetEndpointArgs {
   /// [storageAccountId] Specifies the ID of the storage account for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   /// [storageContainerName] Specifies the name of the storage blob container for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the storage mover for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
-  MoverTargetEndpointArgs({
+  const MoverTargetEndpointArgs({
     this.description,
     this.name,
     required this.storageAccountId,

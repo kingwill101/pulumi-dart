@@ -26,7 +26,7 @@ class GetRouteResult {
   /// [labels] Labels.
   /// [name] The resource's name.
   /// [updateTime] The update time of the resource.
-  GetRouteResult({
+  const GetRouteResult({
     required this.createTime,
     required this.destinationAddress,
     required this.destinationPort,

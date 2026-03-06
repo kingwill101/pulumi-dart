@@ -8,7 +8,7 @@ class GetLocalReferenceResult {
 
   /// Creates a new [GetLocalReferenceResult].
   /// [outputs] The outputs displayed from Terraform state.
-  GetLocalReferenceResult({
+  const GetLocalReferenceResult({
     required this.outputs,
   });
 

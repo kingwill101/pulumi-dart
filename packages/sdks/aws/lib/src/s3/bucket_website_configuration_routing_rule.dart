@@ -13,7 +13,7 @@ class BucketWebsiteConfigurationRoutingRule {
   /// Creates a new [BucketWebsiteConfigurationRoutingRule].
   /// [condition] Configuration block for describing a condition that must be met for the specified redirect to apply. See below.
   /// [redirect] Configuration block for redirect information. See below.
-  BucketWebsiteConfigurationRoutingRule({
+  const BucketWebsiteConfigurationRoutingRule({
     this.condition,
     required this.redirect,
   });

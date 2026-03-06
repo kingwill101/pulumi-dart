@@ -12,7 +12,7 @@ class DatabaseDbState {
   /// Creates a new [DatabaseDbState].
   /// [clusterId] The ID of the original source database cluster.
   /// [name] The name for the database.
-  DatabaseDbState({
+  const DatabaseDbState({
     this.clusterId,
     this.name,
   });

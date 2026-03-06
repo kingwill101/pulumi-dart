@@ -12,7 +12,7 @@ class AppServicePlanConfiguration {
   /// Creates a new [AppServicePlanConfiguration].
   /// [capacity] The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
   /// [tier] The App Service plan tier.
-  AppServicePlanConfiguration({
+  const AppServicePlanConfiguration({
     this.capacity,
     this.tier,
   });

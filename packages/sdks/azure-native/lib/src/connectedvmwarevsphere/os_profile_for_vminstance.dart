@@ -25,7 +25,7 @@ class OsProfileForVMInstance {
   /// [guestId] Gets or sets the guestId.
   /// [osType] Gets or sets the type of the os.
   /// [windowsConfiguration] Windows Configuration.
-  OsProfileForVMInstance({
+  const OsProfileForVMInstance({
     this.adminPassword,
     this.adminUsername,
     this.computerName,

@@ -18,7 +18,7 @@ class GetProjectCatalogSyncErrorDetailsArgs {
   /// [catalogName] The name of the Catalog.
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectCatalogSyncErrorDetailsArgs({
+  const GetProjectCatalogSyncErrorDetailsArgs({
     required this.catalogName,
     required this.projectName,
     required this.resourceGroupName,

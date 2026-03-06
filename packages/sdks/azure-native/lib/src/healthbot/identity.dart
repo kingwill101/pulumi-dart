@@ -14,7 +14,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  Identity({
+  const Identity({
     this.type,
     this.userAssignedIdentities,
   });

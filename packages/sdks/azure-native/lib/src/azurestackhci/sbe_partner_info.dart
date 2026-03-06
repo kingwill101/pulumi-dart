@@ -18,7 +18,7 @@ class SbePartnerInfo {
   /// [credentialList] SBE credentials list for AzureStackHCI cluster deployment.
   /// [partnerProperties] List of SBE partner properties for AzureStackHCI cluster deployment.
   /// [sbeDeploymentInfo] SBE package and manifest information for the solution Builder Extension staged for AzureStackHCI cluster deployment.
-  SbePartnerInfo({
+  const SbePartnerInfo({
     this.credentialList,
     this.partnerProperties,
     this.sbeDeploymentInfo,

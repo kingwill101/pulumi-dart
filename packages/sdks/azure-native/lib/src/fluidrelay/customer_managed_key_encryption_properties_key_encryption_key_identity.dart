@@ -13,7 +13,7 @@ class CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity {
   /// Creates a new [CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity].
   /// [identityType] Values can be SystemAssigned or UserAssigned
   /// [userAssignedIdentityResourceId] user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
-  CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity({
+  const CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity({
     this.identityType,
     this.userAssignedIdentityResourceId,
   });

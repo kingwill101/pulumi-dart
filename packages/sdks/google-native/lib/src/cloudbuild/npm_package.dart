@@ -12,7 +12,7 @@ class NpmPackage {
   /// Creates a new [NpmPackage].
   /// [packagePath] Path to the package.json. e.g. workspace/path/to/package
   /// [repository] Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
-  NpmPackage({
+  const NpmPackage({
     this.packagePath,
     this.repository,
   });

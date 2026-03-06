@@ -32,7 +32,7 @@ class UserState {
   /// [tags] Key-value mapping of tags for the IAM user. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uniqueId] The [unique ID][1] assigned by AWS.
-  UserState({
+  const UserState({
     this.arn,
     this.forceDestroy,
     this.name,

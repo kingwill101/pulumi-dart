@@ -7,7 +7,7 @@ class GetClusterAddonsConfigGcsFuseCsiDriverConfig {
 
   /// Creates a new [GetClusterAddonsConfigGcsFuseCsiDriverConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigGcsFuseCsiDriverConfig({
+  const GetClusterAddonsConfigGcsFuseCsiDriverConfig({
     required this.enabled,
   });
 

@@ -19,7 +19,7 @@ class SharedAccessSignatureAuthorizationRule {
   /// [primaryKey] The primary key.
   /// [rights] The permissions assigned to the shared access policy.
   /// [secondaryKey] The secondary key.
-  SharedAccessSignatureAuthorizationRule({
+  const SharedAccessSignatureAuthorizationRule({
     required this.keyName,
     this.primaryKey,
     required this.rights,

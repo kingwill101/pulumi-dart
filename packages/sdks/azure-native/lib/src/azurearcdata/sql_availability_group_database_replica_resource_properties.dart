@@ -9,7 +9,7 @@ class SqlAvailabilityGroupDatabaseReplicaResourceProperties {
 
   /// Creates a new [SqlAvailabilityGroupDatabaseReplicaResourceProperties].
   /// [databaseName] the database name.
-  SqlAvailabilityGroupDatabaseReplicaResourceProperties({
+  const SqlAvailabilityGroupDatabaseReplicaResourceProperties({
     this.databaseName,
   });
 

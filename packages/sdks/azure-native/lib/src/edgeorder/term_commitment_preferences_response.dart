@@ -12,7 +12,7 @@ class TermCommitmentPreferencesResponse {
   /// Creates a new [TermCommitmentPreferencesResponse].
   /// [preferredTermCommitmentDuration] Customer preferred Term Duration.
   /// [preferredTermCommitmentType] Term Commitment Type
-  TermCommitmentPreferencesResponse({
+  const TermCommitmentPreferencesResponse({
     this.preferredTermCommitmentDuration,
     required this.preferredTermCommitmentType,
   });

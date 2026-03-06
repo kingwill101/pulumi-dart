@@ -10,7 +10,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetail {
   /// Creates a new [GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetail].
   /// [additionalDetailType] Required.
   /// [components] Required.
-  GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetail({
+  const GetNetworkInsightsAnalysisReturnPathComponentAdditionalDetail({
     required this.additionalDetailType,
     required this.components,
   });

@@ -17,7 +17,7 @@ class DomainDevicesInterfaceSourceEthernetIp {
   /// [family] Defines the address family (IPv4 or IPv6) for the interface's IP configuration.
   /// [peer] Sets the peer IP address for communication over the interface.
   /// [prefix] Configures the prefix length for the IP address subnet.
-  DomainDevicesInterfaceSourceEthernetIp({
+  const DomainDevicesInterfaceSourceEthernetIp({
     required this.address,
     this.family,
     this.peer,

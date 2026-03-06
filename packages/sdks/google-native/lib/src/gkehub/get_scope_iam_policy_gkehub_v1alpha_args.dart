@@ -17,7 +17,7 @@ class GetScopeIamPolicyGkehubV1alphaArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [scopeId] Required.
-  GetScopeIamPolicyGkehubV1alphaArgs({
+  const GetScopeIamPolicyGkehubV1alphaArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

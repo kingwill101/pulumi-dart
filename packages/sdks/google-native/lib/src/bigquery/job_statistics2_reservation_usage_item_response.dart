@@ -11,7 +11,7 @@ class JobStatistics2ReservationUsageItemResponse {
   /// Creates a new [JobStatistics2ReservationUsageItemResponse].
   /// [name] [Output only] Reservation name or "unreserved" for on-demand resources usage.
   /// [slotMs] [Output only] Slot-milliseconds the job spent in the given reservation.
-  JobStatistics2ReservationUsageItemResponse({
+  const JobStatistics2ReservationUsageItemResponse({
     required this.name,
     required this.slotMs,
   });

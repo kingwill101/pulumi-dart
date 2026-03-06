@@ -18,7 +18,7 @@ class AclEntryAttachmentState {
   /// [description] The description of the entry.
   /// [entry] The CIDR blocks.
   /// [status] The Status of the resource.
-  AclEntryAttachmentState({
+  const AclEntryAttachmentState({
     this.aclId,
     this.description,
     this.entry,

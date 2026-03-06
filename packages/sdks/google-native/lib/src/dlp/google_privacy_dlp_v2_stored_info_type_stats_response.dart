@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2StoredInfoTypeStatsResponse].
   /// [largeCustomDictionary] StoredInfoType where findings are defined by a dictionary of phrases.
-  GooglePrivacyDlpV2StoredInfoTypeStatsResponse({
+  const GooglePrivacyDlpV2StoredInfoTypeStatsResponse({
     required this.largeCustomDictionary,
   });
 

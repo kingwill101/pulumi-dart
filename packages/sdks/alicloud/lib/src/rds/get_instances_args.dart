@@ -47,7 +47,7 @@ class GetInstancesArgs {
   /// [tags] A map of tags assigned to the DB instances.
   /// [vpcId] Used to retrieve instances belong to specified VPC.
   /// [vswitchId] Used to retrieve instances belong to specified `vswitch` resources.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.connectionMode,
     this.dbType,
     this.enableDetails,

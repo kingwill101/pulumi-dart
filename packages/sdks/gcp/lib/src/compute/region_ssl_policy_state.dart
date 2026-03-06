@@ -67,7 +67,7 @@ class RegionSslPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region where the regional SSL policy resides.
   /// [selfLink] The URI of the created resource.
-  RegionSslPolicyState({
+  const RegionSslPolicyState({
     this.creationTimestamp,
     this.customFeatures,
     this.description,

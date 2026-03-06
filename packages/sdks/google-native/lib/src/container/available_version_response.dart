@@ -12,7 +12,7 @@ class AvailableVersionResponse {
   /// Creates a new [AvailableVersionResponse].
   /// [reason] Reason for availability.
   /// [version] Kubernetes version.
-  AvailableVersionResponse({
+  const AvailableVersionResponse({
     required this.reason,
     required this.version,
   });

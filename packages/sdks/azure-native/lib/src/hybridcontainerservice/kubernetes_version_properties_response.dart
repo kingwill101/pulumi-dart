@@ -16,7 +16,7 @@ class KubernetesVersionPropertiesResponse {
   /// [isPreview] Whether this version is in preview mode.
   /// [patchVersions] Patch versions of a Kubernetes release
   /// [version] major.minor version of Kubernetes release
-  KubernetesVersionPropertiesResponse({
+  const KubernetesVersionPropertiesResponse({
     required this.isPreview,
     required this.patchVersions,
     required this.version,

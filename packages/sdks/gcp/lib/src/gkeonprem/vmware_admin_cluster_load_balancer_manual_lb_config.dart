@@ -24,7 +24,7 @@ class VmwareAdminClusterLoadBalancerManualLbConfig {
   /// [ingressHttpNodePort] NodePort for ingress service's http. The ingress service in the admin
   /// [ingressHttpsNodePort] NodePort for ingress service's https. The ingress service in the admin
   /// [konnectivityServerNodePort] NodePort for konnectivity server service running as a sidecar in each
-  VmwareAdminClusterLoadBalancerManualLbConfig({
+  const VmwareAdminClusterLoadBalancerManualLbConfig({
     this.addonsNodePort,
     this.controlPlaneNodePort,
     this.ingressHttpNodePort,

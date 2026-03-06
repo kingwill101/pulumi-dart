@@ -15,7 +15,7 @@ class GetAuthorizedApplicationArgs {
   /// Creates a new [GetAuthorizedApplicationArgs].
   /// [applicationId] The application ID.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  GetAuthorizedApplicationArgs({
+  const GetAuthorizedApplicationArgs({
     required this.applicationId,
     required this.providerNamespace,
   });

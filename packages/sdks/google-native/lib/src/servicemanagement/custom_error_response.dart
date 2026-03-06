@@ -13,7 +13,7 @@ class CustomErrorResponse {
   /// Creates a new [CustomErrorResponse].
   /// [rules] The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
   /// [types] The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
-  CustomErrorResponse({
+  const CustomErrorResponse({
     required this.rules,
     required this.types,
   });

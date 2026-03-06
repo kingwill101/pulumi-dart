@@ -8,7 +8,7 @@ class MulticastGroupConsumerActivationLogConfig {
 
   /// Creates a new [MulticastGroupConsumerActivationLogConfig].
   /// [enabled] Whether to enable logging or not.
-  MulticastGroupConsumerActivationLogConfig({
+  const MulticastGroupConsumerActivationLogConfig({
     this.enabled,
   });
 

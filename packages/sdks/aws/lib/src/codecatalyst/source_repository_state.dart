@@ -23,7 +23,7 @@ class SourceRepositoryState {
   /// [projectName] The name of the project in the CodeCatalyst space.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceName] The name of the CodeCatalyst space.
-  SourceRepositoryState({
+  const SourceRepositoryState({
     this.description,
     this.name,
     this.projectName,

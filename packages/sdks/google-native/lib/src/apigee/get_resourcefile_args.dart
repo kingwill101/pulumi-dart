@@ -17,7 +17,7 @@ class GetResourcefileArgs {
   /// [name] Required.
   /// [organizationId] Required.
   /// [type] Required.
-  GetResourcefileArgs({
+  const GetResourcefileArgs({
     required this.environmentId,
     required this.name,
     required this.organizationId,

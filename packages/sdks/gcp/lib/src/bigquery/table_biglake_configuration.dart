@@ -21,7 +21,7 @@ class TableBiglakeConfiguration {
   /// [fileFormat] The file format the table data is stored in.
   /// [storageUri] The fully qualified location prefix of the external folder where table data
   /// [tableFormat] The table format the metadata only snapshots are stored in.
-  TableBiglakeConfiguration({
+  const TableBiglakeConfiguration({
     required this.connectionId,
     required this.fileFormat,
     required this.storageUri,

@@ -11,7 +11,7 @@ class AlertCompoundConditionComponentCondition {
   /// Creates a new [AlertCompoundConditionComponentCondition].
   /// [alias] The identifier that will be used in the compound alert condition's `trigger_expression` (e.g., 'a', 'b', 'c', 'd', 'e').
   /// [id] The ID of the existing alert condition to use as a component.
-  AlertCompoundConditionComponentCondition({
+  const AlertCompoundConditionComponentCondition({
     required this.alias,
     required this.id,
   });

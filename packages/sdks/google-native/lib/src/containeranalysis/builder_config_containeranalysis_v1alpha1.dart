@@ -7,7 +7,7 @@ class BuilderConfigContaineranalysisV1alpha1 {
 
   /// Creates a new [BuilderConfigContaineranalysisV1alpha1].
   /// [id] Optional.
-  BuilderConfigContaineranalysisV1alpha1({
+  const BuilderConfigContaineranalysisV1alpha1({
     this.id,
   });
 

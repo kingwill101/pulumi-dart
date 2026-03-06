@@ -21,7 +21,7 @@ class MethodMap {
   /// [get] The action identifier for the get method to be used for this collection
   /// [setIamPolicy] The action identifier for the setIamPolicy method to be used for this collection
   /// [update] The action identifier for the update method to be used for this collection
-  MethodMap({
+  const MethodMap({
     this.create,
     this.delete,
     this.get,

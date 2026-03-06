@@ -10,7 +10,7 @@ class OperationErrorResponseDeploymentmanagerV2 {
 
   /// Creates a new [OperationErrorResponseDeploymentmanagerV2].
   /// [errors] The array of errors encountered while processing this operation.
-  OperationErrorResponseDeploymentmanagerV2({
+  const OperationErrorResponseDeploymentmanagerV2({
     required this.errors,
   });
 

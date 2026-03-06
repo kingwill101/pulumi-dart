@@ -17,7 +17,7 @@ class OrganizationConfigurationDatasources {
   /// [kubernetes] Enable Kubernetes Audit Logs Monitoring automatically for new member accounts.
   /// [malwareProtection] Enable Malware Protection automatically for new member accounts.
   /// [s3Logs] Enable S3 Protection automatically for new member accounts.
-  OrganizationConfigurationDatasources({
+  const OrganizationConfigurationDatasources({
     this.kubernetes,
     this.malwareProtection,
     this.s3Logs,

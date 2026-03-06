@@ -9,7 +9,7 @@ class DomainDefaultUserSettingsCustomFileSystemConfig {
 
   /// Creates a new [DomainDefaultUserSettingsCustomFileSystemConfig].
   /// [efsFileSystemConfig] The default EBS storage settings for a private space. See `efs_file_system_config` Block below.
-  DomainDefaultUserSettingsCustomFileSystemConfig({
+  const DomainDefaultUserSettingsCustomFileSystemConfig({
     this.efsFileSystemConfig,
   });
 

@@ -83,7 +83,7 @@ class VmwareClusterArgs {
   /// [vcenter] VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
   /// [vmTrackingEnabled] Enable VM tracking.
   /// [vmwareClusterId] User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
-  VmwareClusterArgs({
+  const VmwareClusterArgs({
     required this.adminClusterMembership,
     this.annotations,
     this.antiAffinityGroups,

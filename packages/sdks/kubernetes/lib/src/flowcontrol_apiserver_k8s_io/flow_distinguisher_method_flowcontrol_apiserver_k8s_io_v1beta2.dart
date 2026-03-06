@@ -9,7 +9,7 @@ class FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta2 {
 
   /// Creates a new [FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta2].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta2({
+  const FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta2({
     required this.type,
   });
 

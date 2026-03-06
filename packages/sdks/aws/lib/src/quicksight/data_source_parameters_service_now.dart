@@ -8,7 +8,7 @@ class DataSourceParametersServiceNow {
 
   /// Creates a new [DataSourceParametersServiceNow].
   /// [siteBaseUrl] The base URL of the Jira instance's site to which to connect.
-  DataSourceParametersServiceNow({
+  const DataSourceParametersServiceNow({
     required this.siteBaseUrl,
   });
 

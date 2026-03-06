@@ -35,7 +35,7 @@ class AccountV1State {
   /// [projectId] The project ID of the corresponding account. If
   /// [quotaBytes] The number of bytes allowed for the account.
   /// [region] The region in which to create the account. If omitted,
-  AccountV1State({
+  const AccountV1State({
     this.bytesUsed,
     this.containerCount,
     this.headers,

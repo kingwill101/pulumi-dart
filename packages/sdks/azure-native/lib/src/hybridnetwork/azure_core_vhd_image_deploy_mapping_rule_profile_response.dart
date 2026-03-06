@@ -13,7 +13,7 @@ class AzureCoreVhdImageDeployMappingRuleProfileResponse {
   /// Creates a new [AzureCoreVhdImageDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.
   /// [vhdImageMappingRuleProfile] The vhd mapping rule profile.
-  AzureCoreVhdImageDeployMappingRuleProfileResponse({
+  const AzureCoreVhdImageDeployMappingRuleProfileResponse({
     this.applicationEnablement,
     this.vhdImageMappingRuleProfile,
   });

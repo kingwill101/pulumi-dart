@@ -28,7 +28,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse {
   /// [passed] Whether the rule passed or failed.
   /// [passedCount] The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
   /// [rule] The rule specified in the DataQualitySpec, as is.
-  GoogleCloudDataplexV1DataQualityRuleResultResponse({
+  const GoogleCloudDataplexV1DataQualityRuleResultResponse({
     required this.evaluatedCount,
     required this.failingRowsQuery,
     required this.nullCount,

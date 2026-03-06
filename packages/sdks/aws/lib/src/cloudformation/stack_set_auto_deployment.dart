@@ -11,7 +11,7 @@ class StackSetAutoDeployment {
   /// Creates a new [StackSetAutoDeployment].
   /// [enabled] Whether or not auto-deployment is enabled.
   /// [retainStacksOnAccountRemoval] Whether or not to retain stacks when the account is removed.
-  StackSetAutoDeployment({
+  const StackSetAutoDeployment({
     this.enabled,
     this.retainStacksOnAccountRemoval,
   });

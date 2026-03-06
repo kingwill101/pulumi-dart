@@ -12,7 +12,7 @@ class AzureResourceManagerUserAssignedIdentityResponse {
   /// Creates a new [AzureResourceManagerUserAssignedIdentityResponse].
   /// [clientId] The active directory client identifier for this principal.
   /// [principalId] The active directory identifier for this principal.
-  AzureResourceManagerUserAssignedIdentityResponse({
+  const AzureResourceManagerUserAssignedIdentityResponse({
     this.clientId,
     this.principalId,
   });

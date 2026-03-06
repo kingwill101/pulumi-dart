@@ -22,7 +22,7 @@ class ConfigurationProfileHCRPAssignmentArgs {
   /// [machineName] The name of the Arc machine.
   /// [properties] Properties of the configuration profile assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ConfigurationProfileHCRPAssignmentArgs({
+  const ConfigurationProfileHCRPAssignmentArgs({
     this.configurationProfileAssignmentName,
     required this.machineName,
     this.properties,

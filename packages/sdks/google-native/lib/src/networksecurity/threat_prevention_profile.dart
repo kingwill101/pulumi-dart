@@ -14,7 +14,7 @@ class ThreatPreventionProfile {
   /// Creates a new [ThreatPreventionProfile].
   /// [severityOverrides] Optional. Configuration for overriding threats actions by severity match.
   /// [threatOverrides] Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
-  ThreatPreventionProfile({
+  const ThreatPreventionProfile({
     this.severityOverrides,
     this.threatOverrides,
   });

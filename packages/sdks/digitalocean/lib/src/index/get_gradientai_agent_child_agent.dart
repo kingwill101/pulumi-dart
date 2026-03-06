@@ -50,7 +50,7 @@ class GetGradientaiAgentChildAgent {
   /// [name] Name of the Agent
   /// [projectId] Project ID of the Agent
   /// [region] Region where the Agent is deployed
-  GetGradientaiAgentChildAgent({
+  const GetGradientaiAgentChildAgent({
     required this.agentId,
     this.anthropicApiKeys,
     this.apiKeyInfos,

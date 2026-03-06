@@ -56,7 +56,7 @@ class InstantSnapshotState {
   /// [sourceDisk] A reference to the disk used to create this instant snapshot.
   /// [sourceDiskId] The ID value of the disk used to create this InstantSnapshot.
   /// [zone] A reference to the zone where the disk is located.
-  InstantSnapshotState({
+  const InstantSnapshotState({
     this.creationTimestamp,
     this.description,
     this.diskSizeGb,

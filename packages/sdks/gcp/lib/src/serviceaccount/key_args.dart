@@ -35,7 +35,7 @@ class KeyArgs {
   /// [publicKeyData] Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
   /// [publicKeyType] The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   /// [serviceAccountId] The Service account id of the Key. This can be a string in the format
-  KeyArgs({
+  const KeyArgs({
     this.keepers,
     this.keyAlgorithm,
     this.privateKeyType,

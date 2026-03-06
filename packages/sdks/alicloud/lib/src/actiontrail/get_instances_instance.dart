@@ -94,7 +94,7 @@ class GetInstancesInstance {
   /// [vpcId] The ID of attaching VPC to instance.
   /// [vswitchId] The ID of attaching vswitch to instance.
   /// [zoneId] The ID of attaching zone to instance.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.allowedLists,
     required this.config,
     required this.createTime,

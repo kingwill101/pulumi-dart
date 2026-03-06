@@ -19,7 +19,7 @@ class IdentityResponse {
   /// [tenantId] The tenant ID of resource.
   /// [type] The identity type.
   /// [userAssignedIdentities] Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

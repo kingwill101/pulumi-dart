@@ -18,7 +18,7 @@ class IpMatchCondition {
   /// [ipPrefixValues] The list of IP Prefixes that need to be matched.
   /// [prefixType] IP Prefix Type that needs to be matched.
   /// [type] IP Address type that needs to be matched.
-  IpMatchCondition({
+  const IpMatchCondition({
     this.ipGroupNames,
     this.ipPrefixValues,
     this.prefixType,

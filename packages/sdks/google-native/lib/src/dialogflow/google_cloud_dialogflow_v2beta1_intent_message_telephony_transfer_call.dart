@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall].
   /// [phoneNumber] The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall({
+  const GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall({
     required this.phoneNumber,
   });
 

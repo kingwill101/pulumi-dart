@@ -47,7 +47,7 @@ class AppAuthorizationState {
   /// [tenants] Contains information about an application tenant, such as the application display name and identifier.
   /// [timeouts] Optional.
   /// [updatedAt] Optional.
-  AppAuthorizationState({
+  const AppAuthorizationState({
     this.app,
     this.appBundleArn,
     this.arn,

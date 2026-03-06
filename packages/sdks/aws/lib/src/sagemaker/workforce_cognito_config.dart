@@ -11,7 +11,7 @@ class WorkforceCognitoConfig {
   /// Creates a new [WorkforceCognitoConfig].
   /// [clientId] The client ID for your Amazon Cognito user pool.
   /// [userPool] ID for your Amazon Cognito user pool.
-  WorkforceCognitoConfig({
+  const WorkforceCognitoConfig({
     required this.clientId,
     required this.userPool,
   });

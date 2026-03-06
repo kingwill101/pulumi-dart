@@ -28,7 +28,7 @@ class ServiceLevelArgs {
   /// [guid] The GUID of the entity (e.g, APM Service, Browser application, Workload, etc.) that you want to relate this SLI to. Note that changing the GUID will force a new resource.
   /// [name] A short name for the SLI that will help anyone understand what it is about.
   /// [objective] The objective of the SLI, only one can be defined.
-  ServiceLevelArgs({
+  const ServiceLevelArgs({
     this.description,
     required this.events,
     required this.guid,

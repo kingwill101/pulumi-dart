@@ -13,7 +13,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
 
   /// Creates a new [ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig({
+  const ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig({
     required this.gpuDriverVersion,
   });
 

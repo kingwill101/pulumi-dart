@@ -24,7 +24,7 @@ class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
   /// [launchPermissions] Nested list of EC2 launch permissions.
   /// [name] Name of the distribution configuration.
   /// [targetAccountIds] Set of target AWS Account identifiers.
-  GetDistributionConfigurationDistributionAmiDistributionConfiguration({
+  const GetDistributionConfigurationDistributionAmiDistributionConfiguration({
     required this.amiTags,
     required this.description,
     required this.kmsKeyId,

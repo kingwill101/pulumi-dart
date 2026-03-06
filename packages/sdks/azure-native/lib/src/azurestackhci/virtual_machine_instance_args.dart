@@ -50,7 +50,7 @@ class VirtualMachineInstanceArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [securityProfile] SecurityProfile - Specifies the security settings for the virtual machine instance.
   /// [storageProfile] StorageProfile - contains information about the disks and storage information for the virtual machine instance
-  VirtualMachineInstanceArgs({
+  const VirtualMachineInstanceArgs({
     this.createFromLocal,
     this.extendedLocation,
     this.hardwareProfile,

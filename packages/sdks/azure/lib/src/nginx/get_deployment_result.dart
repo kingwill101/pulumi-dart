@@ -73,7 +73,7 @@ class GetDeploymentResult {
   /// [sku] The NGINX Deployment SKU.
   /// [tags] A mapping of tags assigned to the NGINX Deployment.
   /// [webApplicationFirewalls] A `web_application_firewall` block as defined below.
-  GetDeploymentResult({
+  const GetDeploymentResult({
     required this.autoScaleProfiles,
     required this.automaticUpgradeChannel,
     required this.capacity,

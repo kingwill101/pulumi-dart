@@ -14,7 +14,7 @@ class CrossAccountAttachmentResource {
   /// [cidrBlock] IP address range, in CIDR format, that is specified as resource.
   /// [endpointId] The endpoint ID for the endpoint that is specified as a AWS resource.
   /// [region] The AWS Region where a shared endpoint resource is located.
-  CrossAccountAttachmentResource({
+  const CrossAccountAttachmentResource({
     this.cidrBlock,
     this.endpointId,
     this.region,

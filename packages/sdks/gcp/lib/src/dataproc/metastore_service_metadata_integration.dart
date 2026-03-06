@@ -10,7 +10,7 @@ class MetastoreServiceMetadataIntegration {
 
   /// Creates a new [MetastoreServiceMetadataIntegration].
   /// [dataCatalogConfig] The integration config for the Data Catalog service.
-  MetastoreServiceMetadataIntegration({
+  const MetastoreServiceMetadataIntegration({
     required this.dataCatalogConfig,
   });
 

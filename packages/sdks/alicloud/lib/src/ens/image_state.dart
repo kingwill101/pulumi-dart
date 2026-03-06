@@ -24,7 +24,7 @@ class ImageState {
   /// [instanceId] The ID of the instance.
   /// [status] The state of the image.
   /// [targetOssRegionId] The region of the target OSS where the image is to be stored.
-  ImageState({
+  const ImageState({
     this.createTime,
     this.deleteAfterImageUpload,
     this.imageName,

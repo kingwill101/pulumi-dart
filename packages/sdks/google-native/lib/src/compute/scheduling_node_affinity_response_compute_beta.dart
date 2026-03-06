@@ -15,7 +15,7 @@ class SchedulingNodeAffinityResponseComputeBeta {
   /// [key] Corresponds to the label key of Node resource.
   /// [operator] Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
   /// [values] Corresponds to the label values of Node resource.
-  SchedulingNodeAffinityResponseComputeBeta({
+  const SchedulingNodeAffinityResponseComputeBeta({
     required this.key,
     required this.operator,
     required this.values,

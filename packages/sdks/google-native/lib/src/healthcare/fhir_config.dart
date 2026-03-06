@@ -13,7 +13,7 @@ class FhirConfig {
   /// Creates a new [FhirConfig].
   /// [defaultKeepExtensions] The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
   /// [fieldMetadataList] Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
-  FhirConfig({
+  const FhirConfig({
     this.defaultKeepExtensions,
     this.fieldMetadataList,
   });

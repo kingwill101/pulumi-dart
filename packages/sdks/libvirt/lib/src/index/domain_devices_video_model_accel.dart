@@ -14,7 +14,7 @@ class DomainDevicesVideoModelAccel {
   /// [accel2d] Enables or disables 2D acceleration for the video device.
   /// [accel3d] Enables or disables 3D acceleration for the video device.
   /// [renderNode] Defines the render node for the video device's acceleration features.
-  DomainDevicesVideoModelAccel({
+  const DomainDevicesVideoModelAccel({
     this.accel2d,
     this.accel3d,
     this.renderNode,

@@ -13,7 +13,7 @@ class OSPolicyResourcePackageResourceRPMOsconfigV1alpha {
   /// Creates a new [OSPolicyResourcePackageResourceRPMOsconfigV1alpha].
   /// [pullDeps] Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
   /// [source] An rpm package.
-  OSPolicyResourcePackageResourceRPMOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceRPMOsconfigV1alpha({
     this.pullDeps,
     required this.source,
   });

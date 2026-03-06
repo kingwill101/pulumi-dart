@@ -33,7 +33,7 @@ class GetManagedClusterApplicationTypeVersionResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Azure resource tags.
   /// [type] Azure resource type.
-  GetManagedClusterApplicationTypeVersionResult({
+  const GetManagedClusterApplicationTypeVersionResult({
     required this.appPackageUrl,
     required this.azureApiVersion,
     required this.id,

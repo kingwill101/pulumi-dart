@@ -21,7 +21,7 @@ class GetCloudExadataInfrastructureArgs {
   /// [cloudExadataInfrastructureId] The ID of the ExadataInfrastructure.
   /// [location] The location of the resource.
   /// [project] The project to which the resource belongs. If it
-  GetCloudExadataInfrastructureArgs({
+  const GetCloudExadataInfrastructureArgs({
     required this.cloudExadataInfrastructureId,
     required this.location,
     this.project,

@@ -44,7 +44,7 @@ class DiskPoolArgs {
   /// [sku] Determines the SKU of the Disk Pool
   /// [subnetId] Azure Resource ID of a Subnet for the Disk Pool.
   /// [tags] Resource tags.
-  DiskPoolArgs({
+  const DiskPoolArgs({
     this.additionalCapabilities,
     this.availabilityZones,
     this.diskPoolName,

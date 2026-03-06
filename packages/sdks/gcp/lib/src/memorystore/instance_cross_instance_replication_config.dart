@@ -33,7 +33,7 @@ class InstanceCrossInstanceReplicationConfig {
   /// [primaryInstance] This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
   /// [secondaryInstances] List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
   /// [updateTime] (Output)
-  InstanceCrossInstanceReplicationConfig({
+  const InstanceCrossInstanceReplicationConfig({
     this.instanceRole,
     this.memberships,
     this.primaryInstance,

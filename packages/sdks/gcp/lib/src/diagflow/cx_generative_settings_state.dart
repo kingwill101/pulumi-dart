@@ -37,7 +37,7 @@ class CxGenerativeSettingsState {
   /// [llmModelSettings] LLM model settings.
   /// [name] The unique identifier of the generativeSettings.
   /// [parent] The agent to create a flow for.
-  CxGenerativeSettingsState({
+  const CxGenerativeSettingsState({
     this.fallbackSettings,
     this.generativeSafetySettings,
     this.knowledgeConnectorSettings,

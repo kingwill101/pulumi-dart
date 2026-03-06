@@ -16,7 +16,7 @@ class SchedulingNodeAffinityVmmigrationV1alpha1 {
   /// [key] The label key of Node resource to reference.
   /// [operator] The operator to use for the node resources specified in the `values` parameter.
   /// [values] Corresponds to the label values of Node resource.
-  SchedulingNodeAffinityVmmigrationV1alpha1({
+  const SchedulingNodeAffinityVmmigrationV1alpha1({
     this.key,
     this.operator,
     this.values,

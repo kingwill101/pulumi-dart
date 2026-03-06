@@ -15,7 +15,7 @@ class RouteSpecGrpcRouteMatchMetadata {
   /// [invert] If `true`, the match is on the opposite of the `match` criteria. Default is `false`.
   /// [match] Data to match from the request.
   /// [name] Name of the route. Must be between 1 and 50 characters in length.
-  RouteSpecGrpcRouteMatchMetadata({
+  const RouteSpecGrpcRouteMatchMetadata({
     this.invert,
     this.match,
     required this.name,

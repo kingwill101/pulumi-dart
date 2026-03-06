@@ -24,7 +24,7 @@ class GetIpv6InternetBandwidthsArgs {
   /// [ipv6InternetBandwidthId] The ID of the Ipv6 Internet Bandwidth.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
-  GetIpv6InternetBandwidthsArgs({
+  const GetIpv6InternetBandwidthsArgs({
     this.ids,
     this.ipv6AddressId,
     this.ipv6InternetBandwidthId,

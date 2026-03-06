@@ -56,7 +56,7 @@ class ShareArgs {
   /// [shareType] The share type name. If you omit this parameter, the default
   /// [size] The share size, in GBs. The requested share size cannot be greater
   /// [snapshotId] The UUID of the share's base snapshot. Changing this creates
-  ShareArgs({
+  const ShareArgs({
     this.availabilityZone,
     this.description,
     this.isPublic,

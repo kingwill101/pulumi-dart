@@ -15,7 +15,7 @@ class SharedKeyPropertiesResponse {
   /// [provisioningState] The provisioning state of the SharedKey resource.
   /// [sharedKey] The value of the shared key for the vpn link connection.
   /// [sharedKeyLength] The length of the shared key for the vpn link connection.
-  SharedKeyPropertiesResponse({
+  const SharedKeyPropertiesResponse({
     required this.provisioningState,
     this.sharedKey,
     this.sharedKeyLength,

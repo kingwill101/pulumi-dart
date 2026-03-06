@@ -11,7 +11,7 @@ class GetKubernetesClusterClusterAutoscalerConfiguration {
   /// [expanders] Optional.
   /// [scaleDownUnneededTime] Optional.
   /// [scaleDownUtilizationThreshold] Optional.
-  GetKubernetesClusterClusterAutoscalerConfiguration({
+  const GetKubernetesClusterClusterAutoscalerConfiguration({
     this.expanders,
     this.scaleDownUnneededTime,
     this.scaleDownUtilizationThreshold,

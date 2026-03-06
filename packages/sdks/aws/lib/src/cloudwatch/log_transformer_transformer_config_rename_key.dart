@@ -9,7 +9,7 @@ class LogTransformerTransformerConfigRenameKey {
 
   /// Creates a new [LogTransformerTransformerConfigRenameKey].
   /// [entries] Objects containing the information about the keys to rename. You must include at least one entry, and five at most. See `rename_keys` `entry` below for details.
-  LogTransformerTransformerConfigRenameKey({
+  const LogTransformerTransformerConfigRenameKey({
     required this.entries,
   });
 

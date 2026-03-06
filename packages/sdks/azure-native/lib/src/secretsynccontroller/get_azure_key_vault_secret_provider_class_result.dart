@@ -46,7 +46,7 @@ class GetAzureKeyVaultSecretProviderClassResult {
   /// [tags] Resource tags.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAzureKeyVaultSecretProviderClassResult({
+  const GetAzureKeyVaultSecretProviderClassResult({
     required this.azureApiVersion,
     required this.clientId,
     this.extendedLocation,

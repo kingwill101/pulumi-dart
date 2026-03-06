@@ -12,7 +12,7 @@ class CapacityReservationGroup {
   /// Creates a new [CapacityReservationGroup].
   /// [offer] Offer used by this capacity reservation group.
   /// [reservedCapacity] [Required] Specifies the amount of capacity to reserve.
-  CapacityReservationGroup({
+  const CapacityReservationGroup({
     this.offer,
     required this.reservedCapacity,
   });

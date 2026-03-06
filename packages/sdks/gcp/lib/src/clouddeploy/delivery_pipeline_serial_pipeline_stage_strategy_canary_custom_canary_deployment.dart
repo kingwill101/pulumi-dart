@@ -9,7 +9,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment].
   /// [phaseConfigs] Required. Configuration for each phase in the canary deployment in the order executed.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment({
     required this.phaseConfigs,
   });
 

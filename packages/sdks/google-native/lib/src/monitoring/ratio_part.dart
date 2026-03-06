@@ -13,7 +13,7 @@ class RatioPart {
   /// Creates a new [RatioPart].
   /// [aggregation] By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
   /// [filter] The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-  RatioPart({
+  const RatioPart({
     this.aggregation,
     required this.filter,
   });

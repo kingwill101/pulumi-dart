@@ -21,7 +21,7 @@ class GetQueueIamPolicyArgs {
   /// [location] The location of the queue Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetQueueIamPolicyArgs({
+  const GetQueueIamPolicyArgs({
     this.location,
     required this.name,
     this.project,

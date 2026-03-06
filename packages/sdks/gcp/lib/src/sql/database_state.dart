@@ -41,7 +41,7 @@ class DatabaseState {
   /// [name] The name of the database in the Cloud SQL instance.
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
-  DatabaseState({
+  const DatabaseState({
     this.charset,
     this.collation,
     this.deletionPolicy,

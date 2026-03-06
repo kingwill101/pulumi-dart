@@ -22,7 +22,7 @@ class FaultSimulationResponse {
   /// [simulationId] unique identifier for the fault simulation.
   /// [startTime] The start time of the fault simulation.
   /// [status] Fault simulation status
-  FaultSimulationResponse({
+  const FaultSimulationResponse({
     this.details,
     this.endTime,
     this.simulationId,

@@ -18,7 +18,7 @@ class GetSharedPrivateLinkResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sharedPrivateLinkResourceName] The Shared Private Link resource name.
   /// [watcherName] The database watcher name.
-  GetSharedPrivateLinkResourceArgs({
+  const GetSharedPrivateLinkResourceArgs({
     required this.resourceGroupName,
     required this.sharedPrivateLinkResourceName,
     required this.watcherName,

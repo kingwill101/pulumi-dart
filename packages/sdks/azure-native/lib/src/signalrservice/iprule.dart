@@ -12,7 +12,7 @@ class IPRule {
   /// Creates a new [IPRule].
   /// [action] Azure Networking ACL Action.
   /// [value] An IP or CIDR or ServiceTag
-  IPRule({
+  const IPRule({
     this.action,
     this.value,
   });

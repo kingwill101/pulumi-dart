@@ -8,7 +8,7 @@ class GetAppSpecEgress {
 
   /// Creates a new [GetAppSpecEgress].
   /// [type] The type of the environment variable, `GENERAL` or `SECRET`.
-  GetAppSpecEgress({
+  const GetAppSpecEgress({
     this.type,
   });
 

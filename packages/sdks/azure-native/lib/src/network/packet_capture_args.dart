@@ -53,7 +53,7 @@ class PacketCaptureArgs {
   /// [targetType] Target type of the resource provided.
   /// [timeLimitInSeconds] Maximum duration of the capture session in seconds.
   /// [totalBytesPerSession] Maximum size of the capture output.
-  PacketCaptureArgs({
+  const PacketCaptureArgs({
     this.bytesToCapturePerPacket,
     this.captureSettings,
     this.continuousCapture,

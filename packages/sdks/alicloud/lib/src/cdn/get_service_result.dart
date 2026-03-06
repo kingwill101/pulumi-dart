@@ -24,7 +24,7 @@ class GetServiceResult {
   /// [internetChargeType] Optional.
   /// [openingTime] The time when the CDN service was activated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format.
   /// [status] The current service enable status.
-  GetServiceResult({
+  const GetServiceResult({
     required this.changingAffectTime,
     required this.changingChargeType,
     this.enable,

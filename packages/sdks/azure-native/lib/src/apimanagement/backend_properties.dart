@@ -10,7 +10,7 @@ class BackendProperties {
 
   /// Creates a new [BackendProperties].
   /// [serviceFabricCluster] Backend Service Fabric Cluster Properties
-  BackendProperties({
+  const BackendProperties({
     this.serviceFabricCluster,
   });
 

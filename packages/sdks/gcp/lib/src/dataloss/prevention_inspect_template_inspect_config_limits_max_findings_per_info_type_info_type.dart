@@ -17,7 +17,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
   /// [name] Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
   /// [sensitivityScore] Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// [version] Version name for this InfoType.
-  PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType({
+  const PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType({
     required this.name,
     this.sensitivityScore,
     this.version,

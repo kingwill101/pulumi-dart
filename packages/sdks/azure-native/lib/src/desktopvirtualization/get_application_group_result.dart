@@ -69,7 +69,7 @@ class GetApplicationGroupResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workspaceArmPath] Workspace arm path of ApplicationGroup.
-  GetApplicationGroupResult({
+  const GetApplicationGroupResult({
     required this.applicationGroupType,
     required this.azureApiVersion,
     required this.cloudPcResource,

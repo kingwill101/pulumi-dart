@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceDir {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceDir].
   /// [dir] Defines the specific directory path for the backing store source configuration.
-  DomainDevicesDiskMirrorBackingStoreSourceDir({
+  const DomainDevicesDiskMirrorBackingStoreSourceDir({
     this.dir,
   });
 

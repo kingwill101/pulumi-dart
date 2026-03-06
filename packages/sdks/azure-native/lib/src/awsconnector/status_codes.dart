@@ -12,7 +12,7 @@ class StatusCodes {
   /// Creates a new [StatusCodes].
   /// [items] The items (status codes) for an origin group.
   /// [quantity] The number of status codes.
-  StatusCodes({
+  const StatusCodes({
     this.items,
     this.quantity,
   });

@@ -26,7 +26,7 @@ class ReplicationGroupNodeGroupConfiguration {
   /// [replicaCount] Number of replica nodes in this node group.
   /// [replicaOutpostArns] List of ARNs of the Outposts for the replica nodes.
   /// [slots] Keyspace for this node group. Format is `start-end` (e.g., `0-5460`). For Redis (cluster mode disabled) replication groups, this value is ignored.
-  ReplicationGroupNodeGroupConfiguration({
+  const ReplicationGroupNodeGroupConfiguration({
     this.nodeGroupId,
     this.primaryAvailabilityZone,
     this.primaryOutpostArn,

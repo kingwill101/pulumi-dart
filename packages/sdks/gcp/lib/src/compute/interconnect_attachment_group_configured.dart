@@ -12,7 +12,7 @@ class InterconnectAttachmentGroupConfigured {
 
   /// Creates a new [InterconnectAttachmentGroupConfigured].
   /// [availabilitySlas] (Output)
-  InterconnectAttachmentGroupConfigured({
+  const InterconnectAttachmentGroupConfigured({
     this.availabilitySlas,
   });
 

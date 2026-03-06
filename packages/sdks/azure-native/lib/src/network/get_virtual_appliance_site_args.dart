@@ -18,7 +18,7 @@ class GetVirtualApplianceSiteArgs {
   /// [networkVirtualApplianceName] The name of the Network Virtual Appliance.
   /// [resourceGroupName] The name of the resource group.
   /// [siteName] The name of the site.
-  GetVirtualApplianceSiteArgs({
+  const GetVirtualApplianceSiteArgs({
     required this.networkVirtualApplianceName,
     required this.resourceGroupName,
     required this.siteName,

@@ -9,7 +9,7 @@ class ArtifactProfileResponse {
 
   /// Creates a new [ArtifactProfileResponse].
   /// [endpoint] Endpoint is the URL to upload artifacts to.
-  ArtifactProfileResponse({
+  const ArtifactProfileResponse({
     required this.endpoint,
   });
 

@@ -21,7 +21,7 @@ class WorkspacePolicyFragmentState {
   /// [name] Specifies the name of the API Management Workspace Policy Fragment. Changing this forces a new resource to be created.
   /// [xmlContent] Specifies the XML content of the API Management Workspace Policy Fragment.
   /// [xmlFormat] Specifies the XML format of the API Management Workspace Policy Fragment. Possible values are `xml` or `rawxml`. Defaults to `xml`.
-  WorkspacePolicyFragmentState({
+  const WorkspacePolicyFragmentState({
     this.apiManagementWorkspaceId,
     this.description,
     this.name,

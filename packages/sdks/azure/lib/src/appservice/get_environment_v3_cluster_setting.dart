@@ -11,7 +11,7 @@ class GetEnvironmentV3ClusterSetting {
   /// Creates a new [GetEnvironmentV3ClusterSetting].
   /// [name] The name of this v3 App Service Environment.
   /// [value] The value for the Cluster Setting.
-  GetEnvironmentV3ClusterSetting({
+  const GetEnvironmentV3ClusterSetting({
     required this.name,
     required this.value,
   });

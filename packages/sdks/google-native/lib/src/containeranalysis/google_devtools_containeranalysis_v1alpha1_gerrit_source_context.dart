@@ -19,7 +19,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
   /// [gerritProject] The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
   /// [hostUri] The URI of a running Gerrit instance.
   /// [revisionId] A revision (commit) ID.
-  GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext({
+  const GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext({
     this.aliasContext,
     this.gerritProject,
     this.hostUri,

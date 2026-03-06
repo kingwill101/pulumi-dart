@@ -19,7 +19,7 @@ class IdentityResponse {
   /// [tenantId] The tenant ID of the resource identity.  This property will only be provided for a system assigned identity
   /// [type] The identity type. This is the only required field when adding a system or user assigned identity to a resource.
   /// [userAssignedIdentities] The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

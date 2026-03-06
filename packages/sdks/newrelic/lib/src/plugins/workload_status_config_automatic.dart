@@ -16,7 +16,7 @@ class WorkloadStatusConfigAutomatic {
   /// [enabled] Whether the automatic status configuration is enabled or not.
   /// [remainingEntitiesRule] An additional meta-rule that can consider all entities that haven't been evaluated by any other rule.
   /// [rules] A list of rules.
-  WorkloadStatusConfigAutomatic({
+  const WorkloadStatusConfigAutomatic({
     required this.enabled,
     this.remainingEntitiesRule,
     this.rules,

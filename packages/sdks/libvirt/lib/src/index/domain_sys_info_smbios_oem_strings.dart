@@ -8,7 +8,7 @@ class DomainSysInfoSmbiosOemStrings {
 
   /// Creates a new [DomainSysInfoSmbiosOemStrings].
   /// [entries] Defines individual entries for the OEM strings in the SMBIOS configuration.
-  DomainSysInfoSmbiosOemStrings({
+  const DomainSysInfoSmbiosOemStrings({
     this.entries,
   });
 

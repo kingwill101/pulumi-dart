@@ -15,7 +15,7 @@ class ServicePerimetersState {
   /// Creates a new [ServicePerimetersState].
   /// [parent] The AccessPolicy this ServicePerimeter lives in.
   /// [servicePerimeters] The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
-  ServicePerimetersState({
+  const ServicePerimetersState({
     this.parent,
     this.servicePerimeters,
   });

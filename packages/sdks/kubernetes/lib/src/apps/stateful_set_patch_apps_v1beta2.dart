@@ -39,7 +39,7 @@ class StatefulSetPatchAppsV1beta2 {
   /// [metadata] Optional.
   /// [spec] Spec defines the desired identities of pods in this set.
   /// [status] Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
-  StatefulSetPatchAppsV1beta2({
+  const StatefulSetPatchAppsV1beta2({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -14,7 +14,7 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProject
   /// [billingAccountId] Billing account id to be used for the project.
   /// [parent] organizations/{org} or folders/{folder}
   /// [projectDisplayName] Display name of the project to be created.
-  FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig({
+  const FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig({
     required this.billingAccountId,
     required this.parent,
     required this.projectDisplayName,

@@ -21,7 +21,7 @@ class GetBookmarkRelationArgs {
   /// [relationName] Relation Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetBookmarkRelationArgs({
+  const GetBookmarkRelationArgs({
     required this.bookmarkId,
     required this.relationName,
     required this.resourceGroupName,

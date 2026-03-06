@@ -164,7 +164,7 @@ class GetCloudAutonomousVmClusterResult {
   /// [timeOrdsCertificateExpires] The expiration date and time of the Oracle REST Data Services (ORDS)certificate.
   /// [timeZone] The time zone of the Autonomous VM cluster.
   /// [totalContainerDatabases] The total number of Autonomous Container Databases that can be created with the allocated local storage.
-  GetCloudAutonomousVmClusterResult({
+  const GetCloudAutonomousVmClusterResult({
     required this.arn,
     required this.autonomousDataStoragePercentage,
     required this.autonomousDataStorageSizeInTbs,

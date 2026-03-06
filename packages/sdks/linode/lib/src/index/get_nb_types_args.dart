@@ -16,7 +16,7 @@ class GetNbTypesArgs {
   /// [filters] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetNbTypesArgs({
+  const GetNbTypesArgs({
     this.filters,
     this.order,
     this.orderBy,

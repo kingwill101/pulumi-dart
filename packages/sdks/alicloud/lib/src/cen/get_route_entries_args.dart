@@ -21,7 +21,7 @@ class GetRouteEntriesArgs {
   /// [instanceId] ID of the CEN instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [routeTableId] ID of the route table of the VPC or VBR.
-  GetRouteEntriesArgs({
+  const GetRouteEntriesArgs({
     this.cidrBlock,
     required this.instanceId,
     this.outputFile,

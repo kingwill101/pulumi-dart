@@ -14,7 +14,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions].
   /// [conditions] Conditions to apply to the expression
   /// [logicalOperator] The operator to apply to the collection of conditions
-  PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions({
+  const PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions({
     this.conditions,
     this.logicalOperator,
   });

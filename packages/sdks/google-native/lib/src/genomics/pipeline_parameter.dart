@@ -19,7 +19,7 @@ class PipelineParameter {
   /// [description] Human-readable description.
   /// [localCopy] If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
   /// [name] Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
-  PipelineParameter({
+  const PipelineParameter({
     this.defaultValue,
     this.description,
     this.localCopy,

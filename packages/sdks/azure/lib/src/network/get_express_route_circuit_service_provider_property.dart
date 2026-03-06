@@ -14,7 +14,7 @@ class GetExpressRouteCircuitServiceProviderProperty {
   /// [bandwidthInMbps] The bandwidth in Mbps of the ExpressRoute circuit.
   /// [peeringLocation] The name of the peering location and **not** the Azure resource location.
   /// [serviceProviderName] The name of the ExpressRoute Service Provider.
-  GetExpressRouteCircuitServiceProviderProperty({
+  const GetExpressRouteCircuitServiceProviderProperty({
     required this.bandwidthInMbps,
     required this.peeringLocation,
     required this.serviceProviderName,

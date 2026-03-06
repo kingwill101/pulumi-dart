@@ -40,7 +40,7 @@ class NetworkConfig {
   /// [userNote] User note field, it can be used by customers to add additional information for the BMS Ops team .
   /// [vlanAttachments] List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
   /// [vlanSameProject] Whether the VLAN attachment pair is located in the same project.
-  NetworkConfig({
+  const NetworkConfig({
     this.bandwidth,
     this.cidr,
     this.gcpService,

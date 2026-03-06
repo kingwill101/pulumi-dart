@@ -11,7 +11,7 @@ class CatalogTableOpenTableFormatInputIcebergInput {
   /// Creates a new [CatalogTableOpenTableFormatInputIcebergInput].
   /// [metadataOperation] A required metadata operation. Can only be set to CREATE.
   /// [version] The table version for the Iceberg table. Defaults to 2.
-  CatalogTableOpenTableFormatInputIcebergInput({
+  const CatalogTableOpenTableFormatInputIcebergInput({
     required this.metadataOperation,
     this.version,
   });

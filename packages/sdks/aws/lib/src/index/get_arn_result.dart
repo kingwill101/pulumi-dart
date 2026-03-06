@@ -26,7 +26,7 @@ class GetArnResult {
   /// [region] Region the resource resides in.
   /// [resource] Content of this part of the ARN varies by service.
   /// [service] The [service namespace](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) that identifies the AWS product.
-  GetArnResult({
+  const GetArnResult({
     required this.account,
     required this.arn,
     required this.id,

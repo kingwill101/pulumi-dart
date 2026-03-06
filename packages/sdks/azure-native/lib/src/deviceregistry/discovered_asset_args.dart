@@ -76,7 +76,7 @@ class DiscoveredAssetArgs {
   /// [softwareRevision] Revision number of the software.
   /// [tags] Resource tags.
   /// [version] An integer that is incremented each time the resource is modified.
-  DiscoveredAssetArgs({
+  const DiscoveredAssetArgs({
     required this.assetEndpointProfileRef,
     this.datasets,
     this.defaultDatasetsConfiguration,

@@ -22,7 +22,7 @@ class InMageRcmPolicyDetailsResponse {
   /// [enableMultiVmSync] A value indicating whether multi-VM sync has to be enabled.
   /// [instanceType] Gets the class type. Overridden in derived classes.
   /// [recoveryPointHistoryInMinutes] The duration in minutes until which the recovery points need to be stored.
-  InMageRcmPolicyDetailsResponse({
+  const InMageRcmPolicyDetailsResponse({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     this.enableMultiVmSync,

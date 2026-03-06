@@ -21,7 +21,7 @@ class GetCipherTextArgs {
   /// [keyId] Globally unique key ID for the customer master key.
   /// [plaintext] Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCipherTextArgs({
+  const GetCipherTextArgs({
     this.context,
     required this.keyId,
     required this.plaintext,

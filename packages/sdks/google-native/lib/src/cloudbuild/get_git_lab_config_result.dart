@@ -30,7 +30,7 @@ class GetGitLabConfigResult {
   /// [secrets] Secret Manager secrets needed by the config.
   /// [username] Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
   /// [webhookKey] UUID included in webhook requests. The UUID is used to look up the corresponding config.
-  GetGitLabConfigResult({
+  const GetGitLabConfigResult({
     required this.connectedRepositories,
     required this.createTime,
     required this.enterpriseConfig,

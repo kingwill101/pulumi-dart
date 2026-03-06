@@ -31,7 +31,7 @@ class Ec2VolumeProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2VolumeProperties({
+  const Ec2VolumeProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

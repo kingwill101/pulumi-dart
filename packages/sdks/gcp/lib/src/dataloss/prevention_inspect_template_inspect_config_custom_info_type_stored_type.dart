@@ -9,7 +9,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
 
   /// Creates a new [PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType].
   /// [name] Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-  PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType({
+  const PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType({
     required this.name,
   });
 

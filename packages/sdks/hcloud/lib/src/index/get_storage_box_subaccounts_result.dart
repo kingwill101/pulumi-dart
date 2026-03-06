@@ -18,7 +18,7 @@ class GetStorageBoxSubaccountsResult {
   /// [storageBoxId] ID of the Storage Box.
   /// [subaccounts] Required.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetStorageBoxSubaccountsResult({
+  const GetStorageBoxSubaccountsResult({
     required this.id,
     required this.storageBoxId,
     required this.subaccounts,

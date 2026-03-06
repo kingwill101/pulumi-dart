@@ -44,7 +44,7 @@ class NetworkOptimizationArgs {
   /// [smartRouting] Whether to enable smart routing service, default is disabled. Value range:
   /// [uploadMaxFilesize] Maximum upload file size, in MB, value range: 100～500.
   /// [websocket] Whether to enable Websocket, default is enabled. Value range:
-  NetworkOptimizationArgs({
+  const NetworkOptimizationArgs({
     this.grpc,
     this.http2Origin,
     this.rule,

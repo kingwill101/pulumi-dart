@@ -26,7 +26,7 @@ class NetworkManagerRoutingRuleArgs {
   /// [name] The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
   /// [nextHop] A `next_hop` block as defined below.
   /// [ruleCollectionId] The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.
-  NetworkManagerRoutingRuleArgs({
+  const NetworkManagerRoutingRuleArgs({
     this.description,
     required this.destination,
     this.name,

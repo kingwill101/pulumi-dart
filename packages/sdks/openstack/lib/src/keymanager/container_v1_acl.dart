@@ -8,7 +8,7 @@ class ContainerV1Acl {
 
   /// Creates a new [ContainerV1Acl].
   /// [read] Optional.
-  ContainerV1Acl({
+  const ContainerV1Acl({
     this.read,
   });
 

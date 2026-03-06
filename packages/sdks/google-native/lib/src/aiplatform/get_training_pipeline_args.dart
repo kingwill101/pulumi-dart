@@ -15,7 +15,7 @@ class GetTrainingPipelineArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [trainingPipelineId] Required.
-  GetTrainingPipelineArgs({
+  const GetTrainingPipelineArgs({
     required this.location,
     this.project,
     required this.trainingPipelineId,

@@ -18,7 +18,7 @@ class GetTemplateSpecVersionArgs {
   /// [name] The name of this Template Spec.
   /// [resourceGroupName] The name of the Resource Group where the Template Spec exists.
   /// [version] The Version Name of the Template Spec.
-  GetTemplateSpecVersionArgs({
+  const GetTemplateSpecVersionArgs({
     required this.name,
     required this.resourceGroupName,
     required this.version,

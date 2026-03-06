@@ -18,7 +18,7 @@ class GetTransitRouterAvailableResourcesResult {
   /// [outputFile] Optional.
   /// [resources] A list of Cen Transit Router Available Resources. Each element contains the following attributes:
   /// [supportMulticast] (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
-  GetTransitRouterAvailableResourcesResult({
+  const GetTransitRouterAvailableResourcesResult({
     required this.id,
     this.outputFile,
     required this.resources,

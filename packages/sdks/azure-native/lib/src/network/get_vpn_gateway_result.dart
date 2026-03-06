@@ -59,7 +59,7 @@ class GetVpnGatewayResult {
   /// [type] Resource type.
   /// [virtualHub] The VirtualHub to which the gateway belongs.
   /// [vpnGatewayScaleUnit] The scale unit for this vpn gateway.
-  GetVpnGatewayResult({
+  const GetVpnGatewayResult({
     required this.azureApiVersion,
     this.bgpSettings,
     this.connections,

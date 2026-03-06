@@ -26,7 +26,7 @@ class GetCustomLinesResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetCustomLinesResult({
+  const GetCustomLinesResult({
     required this.domainName,
     this.enableDetails,
     required this.id,

@@ -18,7 +18,7 @@ class EnvServiceMonitorArgs {
   /// [aliyunLang] Language environment, default is Chinese zh | en.
   /// [configYaml] Yaml configuration string.
   /// [environmentId] Environment id.
-  EnvServiceMonitorArgs({
+  const EnvServiceMonitorArgs({
     this.aliyunLang,
     required this.configYaml,
     required this.environmentId,

@@ -28,7 +28,7 @@ class ServicePrincipalCertificateAuthInfo {
   /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting
   /// [principalId] Principal Id for servicePrincipal auth.
   /// [roles] Optional, this value specifies the Azure roles to be assigned. Automatically
-  ServicePrincipalCertificateAuthInfo({
+  const ServicePrincipalCertificateAuthInfo({
     this.authMode,
     required this.authType,
     required this.certificate,

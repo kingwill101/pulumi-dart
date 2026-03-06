@@ -25,7 +25,7 @@ class OneDashboardRawArgs {
   /// [name] The title of the dashboard.
   /// [pages] A nested block that describes a page. See Nested page blocks below for details.
   /// [permissions] Determines who can see the dashboard in an account. Valid values are `private`, `public_read_only`, or `public_read_write`. Defaults to `public_read_only`.
-  OneDashboardRawArgs({
+  const OneDashboardRawArgs({
     this.accountId,
     this.description,
     this.name,

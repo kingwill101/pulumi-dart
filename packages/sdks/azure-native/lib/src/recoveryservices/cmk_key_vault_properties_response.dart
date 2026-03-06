@@ -9,7 +9,7 @@ class CmkKeyVaultPropertiesResponse {
 
   /// Creates a new [CmkKeyVaultPropertiesResponse].
   /// [keyUri] The key uri of the Customer Managed Key
-  CmkKeyVaultPropertiesResponse({
+  const CmkKeyVaultPropertiesResponse({
     this.keyUri,
   });
 

@@ -18,7 +18,7 @@ class MulticastDomainAssociationState {
   /// [subnetId] The ID of the subnet to associate with the transit gateway multicast domain.
   /// [transitGatewayAttachmentId] The ID of the transit gateway attachment.
   /// [transitGatewayMulticastDomainId] The ID of the transit gateway multicast domain.
-  MulticastDomainAssociationState({
+  const MulticastDomainAssociationState({
     this.region,
     this.subnetId,
     this.transitGatewayAttachmentId,

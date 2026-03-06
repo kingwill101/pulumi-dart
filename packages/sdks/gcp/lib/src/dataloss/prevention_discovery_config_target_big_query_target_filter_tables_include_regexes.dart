@@ -10,7 +10,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes {
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes].
   /// [patterns] The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
-  PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes({
+  const PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes({
     this.patterns,
   });
 

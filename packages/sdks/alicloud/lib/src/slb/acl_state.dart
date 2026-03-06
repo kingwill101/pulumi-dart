@@ -22,7 +22,7 @@ class AclState {
   /// [name] Name of the access control list.
   /// [resourceGroupId] Resource group ID.
   /// [tags] A mapping of tags to assign to the resource.
-  AclState({
+  const AclState({
     this.entryLists,
     this.ipVersion,
     this.name,

@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceAPTResponse {
 
   /// Creates a new [OSPolicyResourcePackageResourceAPTResponse].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceAPTResponse({
+  const OSPolicyResourcePackageResourceAPTResponse({
     required this.name,
   });
 

@@ -26,7 +26,7 @@ class MonitoringSettingPropertiesResponse {
   /// [error] Error when apply Monitoring Setting changes.
   /// [provisioningState] State of the Monitoring Setting.
   /// [traceEnabled] Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not
-  MonitoringSettingPropertiesResponse({
+  const MonitoringSettingPropertiesResponse({
     this.appInsightsAgentVersions,
     this.appInsightsInstrumentationKey,
     this.appInsightsSamplingRate,

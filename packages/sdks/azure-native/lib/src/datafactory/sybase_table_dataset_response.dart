@@ -37,7 +37,7 @@ class SybaseTableDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableName] The Sybase table name. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  SybaseTableDatasetResponse({
+  const SybaseTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

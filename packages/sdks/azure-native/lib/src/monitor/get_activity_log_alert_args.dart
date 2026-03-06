@@ -15,7 +15,7 @@ class GetActivityLogAlertArgs {
   /// Creates a new [GetActivityLogAlertArgs].
   /// [activityLogAlertName] The name of the Activity Log Alert rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetActivityLogAlertArgs({
+  const GetActivityLogAlertArgs({
     required this.activityLogAlertName,
     required this.resourceGroupName,
   });

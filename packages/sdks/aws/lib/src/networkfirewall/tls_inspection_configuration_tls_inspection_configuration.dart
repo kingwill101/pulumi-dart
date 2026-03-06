@@ -9,7 +9,7 @@ class TlsInspectionConfigurationTlsInspectionConfiguration {
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfiguration].
   /// [serverCertificateConfiguration] Server certificate configurations that are associated with the TLS configuration. Detailed below.
-  TlsInspectionConfigurationTlsInspectionConfiguration({
+  const TlsInspectionConfigurationTlsInspectionConfiguration({
     required this.serverCertificateConfiguration,
   });
 

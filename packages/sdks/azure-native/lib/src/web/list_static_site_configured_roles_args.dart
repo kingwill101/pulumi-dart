@@ -15,7 +15,7 @@ class ListStaticSiteConfiguredRolesArgs {
   /// Creates a new [ListStaticSiteConfiguredRolesArgs].
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListStaticSiteConfiguredRolesArgs({
+  const ListStaticSiteConfiguredRolesArgs({
     required this.name,
     required this.resourceGroupName,
   });

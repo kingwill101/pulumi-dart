@@ -15,7 +15,7 @@ class GetEc2SnapshotArgs {
   /// Creates a new [GetEc2SnapshotArgs].
   /// [name] Name of Ec2Snapshot
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2SnapshotArgs({
+  const GetEc2SnapshotArgs({
     required this.name,
     required this.resourceGroupName,
   });

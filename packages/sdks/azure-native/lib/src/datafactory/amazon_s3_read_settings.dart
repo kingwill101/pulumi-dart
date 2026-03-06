@@ -46,7 +46,7 @@ class AmazonS3ReadSettings {
   /// [type] The read setting type.
   /// [wildcardFileName] AmazonS3 wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] AmazonS3 wildcardFolderPath. Type: string (or Expression with resultType string).
-  AmazonS3ReadSettings({
+  const AmazonS3ReadSettings({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

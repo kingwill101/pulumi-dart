@@ -16,7 +16,7 @@ class GetGroupMembershipsMembershipMemberKey {
   /// Creates a new [GetGroupMembershipsMembershipMemberKey].
   /// [id] The ID of the entity. For Google-managed entities, the id is the email address of an existing
   /// [namespace] The namespace in which the entity exists.
-  GetGroupMembershipsMembershipMemberKey({
+  const GetGroupMembershipsMembershipMemberKey({
     required this.id,
     required this.namespace,
   });

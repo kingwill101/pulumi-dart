@@ -14,7 +14,7 @@ class AppSpecMaintenance {
   /// [archive] Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
   /// [enabled] Indicates whether maintenance mode should be enabled for the app.
   /// [offlinePageUrl] A custom offline page to display when maintenance mode is enabled or the app is archived.
-  AppSpecMaintenance({
+  const AppSpecMaintenance({
     this.archive,
     this.enabled,
     this.offlinePageUrl,

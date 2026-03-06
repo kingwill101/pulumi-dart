@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2OrgConfig {
   /// Creates a new [GooglePrivacyDlpV2OrgConfig].
   /// [location] The data to scan: folder, org, or project
   /// [project] The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
-  GooglePrivacyDlpV2OrgConfig({
+  const GooglePrivacyDlpV2OrgConfig({
     this.location,
     this.project,
   });

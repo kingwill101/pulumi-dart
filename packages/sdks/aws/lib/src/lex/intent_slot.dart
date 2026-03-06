@@ -42,7 +42,7 @@ class IntentSlot {
   /// [slotType] The type of the slot, either a custom slot type that you defined or one of
   /// [slotTypeVersion] The version of the slot type. Must be less than or equal to 64 characters in length.
   /// [valueElicitationPrompt] The prompt that Amazon Lex uses to elicit the slot value
-  IntentSlot({
+  const IntentSlot({
     this.description,
     required this.name,
     this.priority,

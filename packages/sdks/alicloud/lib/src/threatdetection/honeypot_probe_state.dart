@@ -46,7 +46,7 @@ class HoneypotProbeState {
   /// [status] The status of the resource
   /// [uuid] Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
   /// [vpcId] The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
-  HoneypotProbeState({
+  const HoneypotProbeState({
     this.arp,
     this.controlNodeId,
     this.displayName,

@@ -12,7 +12,7 @@ class ClusterDesiredPropertiesResponse {
   /// Creates a new [ClusterDesiredPropertiesResponse].
   /// [diagnosticLevel] Desired level of diagnostic data emitted by the cluster.
   /// [windowsServerSubscription] Desired state of Windows Server Subscription.
-  ClusterDesiredPropertiesResponse({
+  const ClusterDesiredPropertiesResponse({
     this.diagnosticLevel,
     this.windowsServerSubscription,
   });

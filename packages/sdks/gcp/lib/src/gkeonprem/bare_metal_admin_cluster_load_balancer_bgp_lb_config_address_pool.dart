@@ -18,7 +18,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
   /// [avoidBuggyIps] This avoids buggy consumer devices mistakenly
   /// [manualAssign] If true, prevent IP addresses from being automatically assigned.
   /// [pool] (Optional)
-  BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool({
     this.addresses,
     this.avoidBuggyIps,
     this.manualAssign,

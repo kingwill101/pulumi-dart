@@ -17,7 +17,7 @@ class GetCostCategoryRuleRuleAndNot {
   /// [costCategories] Configuration block for the filter that's based on `CostCategory` values. See below.
   /// [dimensions] Configuration block for the specific `Dimension` to use for `Expression`. See below.
   /// [tags] Configuration block for the specific `Tag` to use for `Expression`. See below.
-  GetCostCategoryRuleRuleAndNot({
+  const GetCostCategoryRuleRuleAndNot({
     required this.costCategories,
     required this.dimensions,
     required this.tags,

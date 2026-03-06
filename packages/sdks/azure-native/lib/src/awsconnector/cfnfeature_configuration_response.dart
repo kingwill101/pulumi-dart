@@ -16,7 +16,7 @@ class CFNFeatureConfigurationResponse {
   /// [additionalConfiguration] Property additionalConfiguration
   /// [name] Property name
   /// [status] Property status
-  CFNFeatureConfigurationResponse({
+  const CFNFeatureConfigurationResponse({
     this.additionalConfiguration,
     this.name,
     this.status,

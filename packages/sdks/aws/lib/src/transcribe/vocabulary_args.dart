@@ -29,7 +29,7 @@ class VocabularyArgs {
   /// [tags] A map of tags to assign to the Vocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vocabularyFileUri] The Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
   /// [vocabularyName] The name of the Vocabulary.
-  VocabularyArgs({
+  const VocabularyArgs({
     required this.languageCode,
     this.phrases,
     this.region,

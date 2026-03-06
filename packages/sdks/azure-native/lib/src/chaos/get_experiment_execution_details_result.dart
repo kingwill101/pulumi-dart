@@ -33,7 +33,7 @@ class GetExperimentExecutionDetailsResult {
   /// [status] The status of the execution.
   /// [stoppedAt] String that represents the stop date time.
   /// [type] String of the resource type.
-  GetExperimentExecutionDetailsResult({
+  const GetExperimentExecutionDetailsResult({
     required this.failureReason,
     required this.id,
     required this.lastActionAt,

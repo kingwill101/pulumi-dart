@@ -17,7 +17,7 @@ class DefinitionEligibleAuthorizationJustInTimeAccessPolicy {
   /// [approvers] An `approver` block as defined below.
   /// [maximumActivationDuration] The maximum access duration in ISO 8601 format for just-in-time access requests. Defaults to `PT8H`.
   /// [multiFactorAuthProvider] The multi-factor authorization provider to be used for just-in-time access requests. Possible value is `Azure`.
-  DefinitionEligibleAuthorizationJustInTimeAccessPolicy({
+  const DefinitionEligibleAuthorizationJustInTimeAccessPolicy({
     this.approvers,
     this.maximumActivationDuration,
     this.multiFactorAuthProvider,

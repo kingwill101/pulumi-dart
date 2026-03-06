@@ -48,7 +48,7 @@ class GetResult {
   /// [totalVolumeSizeInGib] Total size of the provisioned Volumes in GiB.
   /// [volumeGroupCount] Total number of volume groups in this Elastic SAN resource.
   /// [zones] Logical zone for the Elastic SAN resource.
-  GetResult({
+  const GetResult({
     required this.baseSizeInTib,
     required this.extendedSizeInTib,
     required this.id,

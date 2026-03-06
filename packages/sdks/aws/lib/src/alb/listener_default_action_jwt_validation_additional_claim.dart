@@ -14,7 +14,7 @@ class ListenerDefaultActionJwtValidationAdditionalClaim {
   /// [format] Format of the claim value. Valid values are `single-string`, `string-array` and `space-separated-values`.
   /// [name] Name of the claim to validate. `exp`, `iss`, `nbf`, or `iat` cannot be specified because they are validated by default.
   /// [values] List of expected values of the claim.
-  ListenerDefaultActionJwtValidationAdditionalClaim({
+  const ListenerDefaultActionJwtValidationAdditionalClaim({
     required this.format,
     required this.name,
     required this.values,

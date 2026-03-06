@@ -57,7 +57,7 @@ class AirflowState {
   /// [workerServerlessReplicas] Worker Node extension
   /// [workspaceId] DMS workspace ID
   /// [zoneId] Zone ID in the region
-  AirflowState({
+  const AirflowState({
     this.airflowId,
     this.airflowName,
     this.appSpec,

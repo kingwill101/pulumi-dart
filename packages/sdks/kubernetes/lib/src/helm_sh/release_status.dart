@@ -26,7 +26,7 @@ class ReleaseStatus {
   /// [revision] Version is an int32 which represents the version of the release.
   /// [status] Status of the release.
   /// [version] A SemVer 2 conformant version string of the chart.
-  ReleaseStatus({
+  const ReleaseStatus({
     this.appVersion,
     this.chart,
     this.name,

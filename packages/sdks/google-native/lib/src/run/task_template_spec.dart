@@ -10,7 +10,7 @@ class TaskTemplateSpec {
 
   /// Creates a new [TaskTemplateSpec].
   /// [spec] Optional. Specification of the desired behavior of the task.
-  TaskTemplateSpec({
+  const TaskTemplateSpec({
     this.spec,
   });
 

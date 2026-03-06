@@ -56,7 +56,7 @@ class GetArtifactSourceResult {
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [uri] The artifact source's URI.
-  GetArtifactSourceResult({
+  const GetArtifactSourceResult({
     this.armTemplateFolderPath,
     required this.azureApiVersion,
     this.branchRef,

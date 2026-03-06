@@ -31,7 +31,7 @@ class ImageTemplatePowerShellValidatorResponse {
   /// [sha256Checksum] SHA256 checksum of the power shell script provided in the scriptUri field above
   /// [type] The type of validation you want to use on the Image. For example, "Shell" can be shell validation
   /// [validExitCodes] Valid exit codes for the PowerShell script. [Default: 0]
-  ImageTemplatePowerShellValidatorResponse({
+  const ImageTemplatePowerShellValidatorResponse({
     this.inline,
     this.name,
     this.runAsSystem,

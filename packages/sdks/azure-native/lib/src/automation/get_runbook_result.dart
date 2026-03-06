@@ -71,7 +71,7 @@ class GetRunbookResult {
   /// [state] Gets or sets the state of the runbook.
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetRunbookResult({
+  const GetRunbookResult({
     required this.azureApiVersion,
     this.creationTime,
     this.description,

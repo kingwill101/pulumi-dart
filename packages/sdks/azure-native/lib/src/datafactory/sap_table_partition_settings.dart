@@ -18,7 +18,7 @@ class SapTablePartitionSettings {
   /// [partitionColumnName] The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   /// [partitionLowerBound] The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   /// [partitionUpperBound] The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  SapTablePartitionSettings({
+  const SapTablePartitionSettings({
     this.maxPartitionsNumber,
     this.partitionColumnName,
     this.partitionLowerBound,

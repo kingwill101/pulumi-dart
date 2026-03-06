@@ -15,7 +15,7 @@ class RoleMapping {
   /// [groups] A list of groups within Kubernetes to which the role is mapped.
   /// [roleArn] The ARN of the IAM role to add.
   /// [username] The user name within Kubernetes to map to the IAM role. By default, the user name is the ARN of the IAM role.
-  RoleMapping({
+  const RoleMapping({
     required this.groups,
     required this.roleArn,
     required this.username,

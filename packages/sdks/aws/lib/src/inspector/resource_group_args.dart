@@ -15,7 +15,7 @@ class ResourceGroupArgs {
   /// Creates a new [ResourceGroupArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags that are used to select the EC2 instances to be included in an Amazon Inspector assessment target.
-  ResourceGroupArgs({
+  const ResourceGroupArgs({
     this.region,
     required this.tags,
   });

@@ -7,7 +7,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   /// Creates a new [ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool].
   /// [value] Required.
-  ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool({
+  const ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool({
     required this.value,
   });
 

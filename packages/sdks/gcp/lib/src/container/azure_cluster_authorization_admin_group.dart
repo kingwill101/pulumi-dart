@@ -8,7 +8,7 @@ class AzureClusterAuthorizationAdminGroup {
 
   /// Creates a new [AzureClusterAuthorizationAdminGroup].
   /// [group] The name of the group, e.g. `my-group@domain.com`.
-  AzureClusterAuthorizationAdminGroup({
+  const AzureClusterAuthorizationAdminGroup({
     required this.group,
   });
 

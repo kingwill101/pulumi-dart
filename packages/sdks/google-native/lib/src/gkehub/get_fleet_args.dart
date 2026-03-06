@@ -15,7 +15,7 @@ class GetFleetArgs {
   /// [fleetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFleetArgs({
+  const GetFleetArgs({
     required this.fleetId,
     required this.location,
     this.project,

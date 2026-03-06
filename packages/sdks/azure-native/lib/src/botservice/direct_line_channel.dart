@@ -20,7 +20,7 @@ class DirectLineChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Direct Line channel resource
-  DirectLineChannel({
+  const DirectLineChannel({
     required this.channelName,
     this.etag,
     this.location,

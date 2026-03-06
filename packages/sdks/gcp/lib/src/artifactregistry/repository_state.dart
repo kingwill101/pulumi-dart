@@ -111,7 +111,7 @@ class RepositoryState {
   /// [updateTime] The time when the repository was last updated.
   /// [virtualRepositoryConfig] Configuration specific for a Virtual Repository.
   /// [vulnerabilityScanningConfig] Configuration for vulnerability scanning of artifacts stored in this repository.
-  RepositoryState({
+  const RepositoryState({
     this.cleanupPolicies,
     this.cleanupPolicyDryRun,
     this.createTime,

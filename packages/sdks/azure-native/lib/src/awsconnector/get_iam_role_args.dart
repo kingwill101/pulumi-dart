@@ -15,7 +15,7 @@ class GetIamRoleArgs {
   /// Creates a new [GetIamRoleArgs].
   /// [name] Name of IamRole
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamRoleArgs({
+  const GetIamRoleArgs({
     required this.name,
     required this.resourceGroupName,
   });

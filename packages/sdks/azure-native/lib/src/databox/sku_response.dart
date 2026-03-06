@@ -18,7 +18,7 @@ class SkuResponse {
   /// [family] The sku family.
   /// [model] The model name.
   /// [name] The sku name.
-  SkuResponse({
+  const SkuResponse({
     this.displayName,
     this.family,
     required this.model,

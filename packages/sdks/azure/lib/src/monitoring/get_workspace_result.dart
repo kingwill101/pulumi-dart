@@ -30,7 +30,7 @@ class GetWorkspaceResult {
   /// [queryEndpoint] The query endpoint for the Azure Monitor Workspace.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags that are assigned to the Workspace.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.defaultDataCollectionEndpointId,
     required this.defaultDataCollectionRuleId,
     required this.id,

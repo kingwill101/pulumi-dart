@@ -35,7 +35,7 @@ class ProjectCloudresourcemanagerV1beta1Args {
   /// [projectId] The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
   /// [projectNumber] The number uniquely identifying the project. Example: `415104041262` Read-only.
   /// [useLegacyStack] A now unused experiment opt-out option.
-  ProjectCloudresourcemanagerV1beta1Args({
+  const ProjectCloudresourcemanagerV1beta1Args({
     this.createTime,
     this.labels,
     this.lifecycleState,

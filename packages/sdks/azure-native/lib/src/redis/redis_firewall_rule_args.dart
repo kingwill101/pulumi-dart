@@ -24,7 +24,7 @@ class RedisFirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [ruleName] The name of the firewall rule.
   /// [startIP] lowest IP address included in the range
-  RedisFirewallRuleArgs({
+  const RedisFirewallRuleArgs({
     required this.cacheName,
     required this.endIP,
     required this.resourceGroupName,

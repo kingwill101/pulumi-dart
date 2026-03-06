@@ -17,7 +17,7 @@ class ServiceTenantAccess {
   /// [primaryKey] Primary access key for the tenant access information contract.
   /// [secondaryKey] Secondary access key for the tenant access information contract.
   /// [tenantId] The identifier for the tenant access information contract.
-  ServiceTenantAccess({
+  const ServiceTenantAccess({
     required this.enabled,
     this.primaryKey,
     this.secondaryKey,

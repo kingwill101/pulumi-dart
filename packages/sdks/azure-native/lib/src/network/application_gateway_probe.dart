@@ -46,7 +46,7 @@ class ApplicationGatewayProbe {
   /// [protocol] The protocol used for the probe.
   /// [timeout] The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
   /// [unhealthyThreshold] The probe retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold. Acceptable values are from 1 second to 20.
-  ApplicationGatewayProbe({
+  const ApplicationGatewayProbe({
     this.host,
     this.id,
     this.interval,

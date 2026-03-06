@@ -80,7 +80,7 @@ class LinkedServiceSftpArgs {
   /// [privateKeyPath] The absolute path to the private key file that the self-hosted integration runtime can access.
   /// [skipHostKeyValidation] Whether to validate host key fingerprint while connecting. If set to `false`, `host_key_fingerprint` must also be set.
   /// [username] The username used to log on to the SFTP server.
-  LinkedServiceSftpArgs({
+  const LinkedServiceSftpArgs({
     this.additionalProperties,
     this.annotations,
     required this.authenticationType,

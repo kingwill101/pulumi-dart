@@ -21,7 +21,7 @@ class GetServerGroupsArgs {
   /// [loadBalancerId] ID of the SLB.
   /// [nameRegex] A regex string to filter results by VServer group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetServerGroupsArgs({
+  const GetServerGroupsArgs({
     this.ids,
     required this.loadBalancerId,
     this.nameRegex,

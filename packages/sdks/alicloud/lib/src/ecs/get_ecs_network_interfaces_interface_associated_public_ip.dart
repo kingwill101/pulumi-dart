@@ -8,7 +8,7 @@ class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
 
   /// Creates a new [GetEcsNetworkInterfacesInterfaceAssociatedPublicIp].
   /// [publicIpAddress] The EIP of the ENI.
-  GetEcsNetworkInterfacesInterfaceAssociatedPublicIp({
+  const GetEcsNetworkInterfacesInterfaceAssociatedPublicIp({
     required this.publicIpAddress,
   });
 

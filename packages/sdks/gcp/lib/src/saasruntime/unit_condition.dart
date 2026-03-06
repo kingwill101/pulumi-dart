@@ -28,7 +28,7 @@ class UnitCondition {
   /// [reason] Brief reason for the condition's last transition.
   /// [status] Status of the condition.
   /// [type] Name of a supported variable type. Supported types are string, int, bool.
-  UnitCondition({
+  const UnitCondition({
     required this.lastTransitionTime,
     required this.message,
     required this.reason,

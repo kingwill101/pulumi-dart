@@ -9,7 +9,7 @@ class MonitoringSubscriptionMonitoringSubscription {
 
   /// Creates a new [MonitoringSubscriptionMonitoringSubscription].
   /// [realtimeMetricsSubscriptionConfig] A subscription configuration for additional CloudWatch metrics. See below.
-  MonitoringSubscriptionMonitoringSubscription({
+  const MonitoringSubscriptionMonitoringSubscription({
     required this.realtimeMetricsSubscriptionConfig,
   });
 

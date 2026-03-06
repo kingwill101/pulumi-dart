@@ -14,7 +14,7 @@ class WafRuleRateLimitStatus {
   /// [code] The HTTP status code returned.
   /// [count] The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
   /// [ratio] The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
-  WafRuleRateLimitStatus({
+  const WafRuleRateLimitStatus({
     this.code,
     this.count,
     this.ratio,

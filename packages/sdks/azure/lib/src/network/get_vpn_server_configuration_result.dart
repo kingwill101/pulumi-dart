@@ -46,7 +46,7 @@ class GetVpnServerConfigurationResult {
   /// [tags] A mapping of tags to assign to the VPN Server Configuration.
   /// [vpnAuthenticationTypes] The list of Authentication Types applicable for the VPN Server Configuration.
   /// [vpnProtocols] The list of VPN Protocols to use for the VPN Server Configuration.
-  GetVpnServerConfigurationResult({
+  const GetVpnServerConfigurationResult({
     required this.azureActiveDirectoryAuthentications,
     required this.clientRevokedCertificates,
     required this.clientRootCertificates,

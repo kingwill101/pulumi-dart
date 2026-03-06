@@ -15,7 +15,7 @@ class HeaderActionResponse {
   /// [headerActionType] Which type of manipulation to apply to the header.
   /// [headerName] The name of the header this action will apply to.
   /// [value] The value to update the given header name with. This value is not used if the actionType is Delete.
-  HeaderActionResponse({
+  const HeaderActionResponse({
     required this.headerActionType,
     required this.headerName,
     this.value,

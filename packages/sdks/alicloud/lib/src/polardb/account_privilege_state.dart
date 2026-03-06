@@ -18,7 +18,7 @@ class AccountPrivilegeState {
   /// [accountPrivilege] The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
   /// [dbClusterId] The Id of cluster in which account belongs.
   /// [dbNames] List of specified database name.
-  AccountPrivilegeState({
+  const AccountPrivilegeState({
     this.accountName,
     this.accountPrivilege,
     this.dbClusterId,

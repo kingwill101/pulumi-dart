@@ -12,7 +12,7 @@ class UsernamePasswordCredentials {
   /// Creates a new [UsernamePasswordCredentials].
   /// [passwordSecretName] The name of the secret containing the password.
   /// [usernameSecretName] The name of the secret containing the username.
-  UsernamePasswordCredentials({
+  const UsernamePasswordCredentials({
     required this.passwordSecretName,
     required this.usernameSecretName,
   });

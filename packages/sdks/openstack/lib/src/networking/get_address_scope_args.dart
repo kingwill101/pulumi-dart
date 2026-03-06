@@ -27,7 +27,7 @@ class GetAddressScopeArgs {
   /// [projectId] The owner of the address-scope.
   /// [region] The region in which to obtain the V2 Neutron client.
   /// [shared] Indicates whether this address-scope is shared across
-  GetAddressScopeArgs({
+  const GetAddressScopeArgs({
     this.ipVersion,
     this.name,
     this.projectId,

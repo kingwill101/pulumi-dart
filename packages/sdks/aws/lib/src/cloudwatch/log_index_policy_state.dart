@@ -15,7 +15,7 @@ class LogIndexPolicyState {
   /// [logGroupName] Log group name to set the policy for.
   /// [policyDocument] JSON policy document. This is a JSON formatted string.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogIndexPolicyState({
+  const LogIndexPolicyState({
     this.logGroupName,
     this.policyDocument,
     this.region,

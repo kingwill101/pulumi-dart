@@ -12,7 +12,7 @@ class VolumeDevicePatch {
   /// Creates a new [VolumeDevicePatch].
   /// [devicePath] devicePath is the path inside of the container that the device will be mapped to.
   /// [name] name must match the name of a persistentVolumeClaim in the pod
-  VolumeDevicePatch({
+  const VolumeDevicePatch({
     this.devicePath,
     this.name,
   });

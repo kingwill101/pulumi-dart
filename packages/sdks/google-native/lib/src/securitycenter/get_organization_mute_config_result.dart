@@ -26,7 +26,7 @@ class GetOrganizationMuteConfigResult {
   /// [mostRecentEditor] Email address of the user who last edited the mute config. This field is set by the server and will be ignored if provided on config creation or update.
   /// [name] This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
   /// [updateTime] The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
-  GetOrganizationMuteConfigResult({
+  const GetOrganizationMuteConfigResult({
     required this.createTime,
     required this.description,
     required this.displayName,

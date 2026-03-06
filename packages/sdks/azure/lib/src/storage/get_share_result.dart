@@ -27,7 +27,7 @@ class GetShareResult {
   /// [resourceManagerId] Required.
   /// [storageAccountId] Optional.
   /// [storageAccountName] Optional.
-  GetShareResult({
+  const GetShareResult({
     this.acls,
     required this.id,
     required this.metadata,

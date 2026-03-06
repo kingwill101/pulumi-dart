@@ -17,7 +17,7 @@ class DataflowEndpointDataLakeStorage {
   /// [authentication] Authentication configuration. NOTE - only authentication property is allowed per entry.
   /// [batching] Azure Data Lake endpoint batching configuration.
   /// [host] Host of the Azure Data Lake in the form of &lt;account&gt;.blob.core.windows.net .
-  DataflowEndpointDataLakeStorage({
+  const DataflowEndpointDataLakeStorage({
     required this.authentication,
     this.batching,
     required this.host,

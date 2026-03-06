@@ -15,7 +15,7 @@ class GetDomainIdentityArgs {
   /// Creates a new [GetDomainIdentityArgs].
   /// [domain] Name of the domain
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDomainIdentityArgs({
+  const GetDomainIdentityArgs({
     required this.domain,
     this.region,
   });

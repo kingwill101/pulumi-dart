@@ -15,7 +15,7 @@ class FunctionSourceRepository {
   /// Creates a new [FunctionSourceRepository].
   /// [deployedUrl] The URL pointing to the hosted repository where the function was defined at the time of deployment.
   /// [url] The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
-  FunctionSourceRepository({
+  const FunctionSourceRepository({
     this.deployedUrl,
     required this.url,
   });

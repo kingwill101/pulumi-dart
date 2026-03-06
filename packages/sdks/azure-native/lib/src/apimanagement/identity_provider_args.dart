@@ -51,7 +51,7 @@ class IdentityProviderArgs {
   /// [signinTenant] The TenantId to use instead of Common when logging into Active Directory
   /// [signupPolicyName] Signup Policy Name. Only applies to AAD B2C Identity Provider.
   /// [type] Identity Provider Type identifier.
-  IdentityProviderArgs({
+  const IdentityProviderArgs({
     this.allowedTenants,
     this.authority,
     required this.clientId,

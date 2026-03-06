@@ -8,7 +8,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload {
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload].
   /// [payload] The inline schema payload content.
-  AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload({
+  const AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload({
     required this.payload,
   });
 

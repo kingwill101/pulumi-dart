@@ -42,7 +42,7 @@ class DeveloperArgs {
   /// [lastName] Last name of the developer.
   /// [organizationId] Required.
   /// [userName] User name of the developer. Not used by Apigee hybrid.
-  DeveloperArgs({
+  const DeveloperArgs({
     this.accessType,
     this.appFamily,
     this.apps,

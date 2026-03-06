@@ -15,7 +15,7 @@ class GetDiscoveryConfigArgs {
   /// [discoveryConfigId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDiscoveryConfigArgs({
+  const GetDiscoveryConfigArgs({
     required this.discoveryConfigId,
     required this.location,
     this.project,

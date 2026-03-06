@@ -12,7 +12,7 @@ class PermissionConstraint {
   /// Creates a new [PermissionConstraint].
   /// [key] Key of the constraint.
   /// [values] A list of allowed values.
-  PermissionConstraint({
+  const PermissionConstraint({
     this.key,
     this.values,
   });

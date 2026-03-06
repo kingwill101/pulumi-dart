@@ -15,7 +15,7 @@ class ProviderArgs {
   /// Creates a new [ProviderArgs].
   /// [host] The build daemon's address.
   /// [registries] Optional.
-  ProviderArgs({
+  const ProviderArgs({
     this.host,
     this.registries,
   });

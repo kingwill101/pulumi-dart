@@ -33,7 +33,7 @@ class GetAccessGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [type] Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
   /// [useutcDateTime] Specifies whether the time to return is in UTC. Valid values: true and false.
-  GetAccessGroupsArgs({
+  const GetAccessGroupsArgs({
     this.accessGroupName,
     this.accessGroupType,
     this.description,

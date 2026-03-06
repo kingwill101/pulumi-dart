@@ -8,7 +8,7 @@ class IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess {
 
   /// Creates a new [IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess].
   /// [authorization] Determines whether read/write scope is enabled or disabled.
-  IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess({
+  const IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess({
     required this.authorization,
   });
 

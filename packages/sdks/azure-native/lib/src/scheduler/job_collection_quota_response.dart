@@ -15,7 +15,7 @@ class JobCollectionQuotaResponse {
   /// [maxJobCount] Gets or set the maximum job count.
   /// [maxJobOccurrence] Gets or sets the maximum job occurrence.
   /// [maxRecurrence] Gets or set the maximum recurrence.
-  JobCollectionQuotaResponse({
+  const JobCollectionQuotaResponse({
     this.maxJobCount,
     this.maxJobOccurrence,
     this.maxRecurrence,

@@ -44,7 +44,7 @@ class NGroupArgs {
   /// [tags] The resource tags.
   /// [updateProfile] Used by the customer to specify the way to update the Container Groups in NGroup.
   /// [zones] The zones for the container group.
-  NGroupArgs({
+  const NGroupArgs({
     this.containerGroupProfiles,
     this.elasticProfile,
     this.identity,

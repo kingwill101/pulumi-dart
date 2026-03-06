@@ -35,7 +35,7 @@ class GetProjectResult {
   /// [purpose] The purpose of the project, (Default: "Web Application")
   /// [resources] A set of uniform resource names (URNs) for the resources associated with the project
   /// [updatedAt] The date and time when the project was last updated, (ISO8601)
-  GetProjectResult({
+  const GetProjectResult({
     required this.createdAt,
     required this.description,
     required this.environment,

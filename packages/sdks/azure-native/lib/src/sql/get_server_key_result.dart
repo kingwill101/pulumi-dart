@@ -35,7 +35,7 @@ class GetServerKeyResult {
   /// [subregion] Subregion of the server key.
   /// [thumbprint] Thumbprint of the server key.
   /// [type] Resource type.
-  GetServerKeyResult({
+  const GetServerKeyResult({
     required this.autoRotationEnabled,
     required this.azureApiVersion,
     required this.creationDate,

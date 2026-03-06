@@ -56,7 +56,7 @@ class PropertyDefinitionResponse {
   /// [maxLength] Max length of string. Used only if type is string.
   /// [propertyId] The ID associated with the property.
   /// [schemaItemPropLink] URL encoded schema.org item prop link for the property.
-  PropertyDefinitionResponse({
+  const PropertyDefinitionResponse({
     this.arrayValueSeparator,
     required this.dataSourcePrecedenceRules,
     this.enumValidValues,

@@ -18,7 +18,7 @@ class GetSyncAgentArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server on which the sync agent is hosted.
   /// [syncAgentName] The name of the sync agent.
-  GetSyncAgentArgs({
+  const GetSyncAgentArgs({
     required this.resourceGroupName,
     required this.serverName,
     required this.syncAgentName,

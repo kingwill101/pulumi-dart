@@ -18,7 +18,7 @@ class GetRolesResult {
   /// [nameRegex] Optional.
   /// [names] Set of Names of the matched IAM roles.
   /// [pathPrefix] Optional.
-  GetRolesResult({
+  const GetRolesResult({
     required this.arns,
     required this.id,
     this.nameRegex,

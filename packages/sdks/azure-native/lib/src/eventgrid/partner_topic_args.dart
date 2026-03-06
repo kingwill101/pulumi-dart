@@ -49,7 +49,7 @@ class PartnerTopicArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [source] Source associated with this partner topic. This represents a unique partner resource.
   /// [tags] Tags of the resource.
-  PartnerTopicArgs({
+  const PartnerTopicArgs({
     this.activationState,
     this.eventTypeInfo,
     this.expirationTimeIfNotActivatedUtc,

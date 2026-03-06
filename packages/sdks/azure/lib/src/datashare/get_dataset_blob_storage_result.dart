@@ -30,7 +30,7 @@ class GetDatasetBlobStorageResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The name of the storage account to be shared with the receiver.
   /// [storageAccounts] A `storage_account` block as defined below.
-  GetDatasetBlobStorageResult({
+  const GetDatasetBlobStorageResult({
     required this.containerName,
     required this.dataShareId,
     required this.displayName,

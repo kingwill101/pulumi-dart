@@ -12,7 +12,7 @@ class ListPrivateStoreSubscriptionsContextArgs {
 
   /// Creates a new [ListPrivateStoreSubscriptionsContextArgs].
   /// [privateStoreId] The store ID - must use the tenant ID
-  ListPrivateStoreSubscriptionsContextArgs({
+  const ListPrivateStoreSubscriptionsContextArgs({
     required this.privateStoreId,
   });
 

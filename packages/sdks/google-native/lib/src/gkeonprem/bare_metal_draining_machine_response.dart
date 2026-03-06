@@ -12,7 +12,7 @@ class BareMetalDrainingMachineResponse {
   /// Creates a new [BareMetalDrainingMachineResponse].
   /// [nodeIp] Draining machine IP address.
   /// [podCount] The count of pods yet to drain.
-  BareMetalDrainingMachineResponse({
+  const BareMetalDrainingMachineResponse({
     required this.nodeIp,
     required this.podCount,
   });

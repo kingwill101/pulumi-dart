@@ -95,7 +95,7 @@ class GetMigrationJobsJob {
   /// [sourceEndpointUserName] The username of database account.
   /// [status] The status of the resource.
   /// [structureInitialization] Whether to perform a database table structure to migrate or initialization.
-  GetMigrationJobsJob({
+  const GetMigrationJobsJob({
     required this.dataInitialization,
     required this.dataSynchronization,
     required this.dbList,

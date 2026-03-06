@@ -34,7 +34,7 @@ class PrincipalAccessBoundaryPolicyArgs {
   /// [location] The location the principal access boundary policy is in.
   /// [organization] The parent organization of the principal access boundary policy.
   /// [principalAccessBoundaryPolicyId] The ID to use to create the principal access boundary policy.
-  PrincipalAccessBoundaryPolicyArgs({
+  const PrincipalAccessBoundaryPolicyArgs({
     this.annotations,
     this.details,
     this.displayName,

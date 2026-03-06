@@ -9,7 +9,7 @@ class GetGradientaiModelsSort {
   /// Creates a new [GetGradientaiModelsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiModelsSort({
+  const GetGradientaiModelsSort({
     this.direction,
     required this.key,
   });

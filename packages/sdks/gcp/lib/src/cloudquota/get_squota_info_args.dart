@@ -18,7 +18,7 @@ class GetSQuotaInfoArgs {
   /// [parent] The parent of the quota info. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
   /// [quotaId] The id of the quota, which is unique within the service.
   /// [service] The name of the service in which the quota is defined.
-  GetSQuotaInfoArgs({
+  const GetSQuotaInfoArgs({
     required this.parent,
     required this.quotaId,
     required this.service,

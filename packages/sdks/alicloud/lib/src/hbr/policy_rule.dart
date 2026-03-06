@@ -44,7 +44,7 @@ class PolicyRule {
   /// [schedule] This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
   /// [tagFilters] This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
   /// [vaultId] Vault ID
-  PolicyRule({
+  const PolicyRule({
     this.archiveDays,
     this.backupType,
     this.dataSourceFilters,

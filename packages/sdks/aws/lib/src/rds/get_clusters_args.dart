@@ -16,7 +16,7 @@ class GetClustersArgs {
   /// Creates a new [GetClustersArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetClustersArgs({
+  const GetClustersArgs({
     this.filters,
     this.region,
   });

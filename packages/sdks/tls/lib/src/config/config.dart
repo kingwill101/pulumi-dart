@@ -28,5 +28,5 @@ class TlsConfig {
 
 }
 
-final config = TlsConfig();
+const config = TlsConfig();
 

@@ -9,7 +9,7 @@ class GetNamedLocationIp {
   /// Creates a new [GetNamedLocationIp].
   /// [ipRanges] Required.
   /// [trusted] Required.
-  GetNamedLocationIp({
+  const GetNamedLocationIp({
     required this.ipRanges,
     required this.trusted,
   });

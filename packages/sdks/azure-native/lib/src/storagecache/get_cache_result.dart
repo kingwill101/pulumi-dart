@@ -87,7 +87,7 @@ class GetCacheResult {
   /// [upgradeSettings] Upgrade settings of the cache.
   /// [upgradeStatus] Upgrade status of the cache.
   /// [zones] Availability zones for resources. This field should only contain a single element in the array.
-  GetCacheResult({
+  const GetCacheResult({
     required this.azureApiVersion,
     this.cacheSizeGB,
     this.directoryServicesSettings,

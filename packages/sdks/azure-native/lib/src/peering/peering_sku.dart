@@ -9,7 +9,7 @@ class PeeringSku {
 
   /// Creates a new [PeeringSku].
   /// [name] The name of the peering SKU.
-  PeeringSku({
+  const PeeringSku({
     this.name,
   });
 

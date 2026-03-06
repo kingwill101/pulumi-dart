@@ -19,7 +19,7 @@ class VirtualMachinePropertiesWindowsConfiguration {
   /// [provisionVMAgent] Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
   /// [ssh] SSH Configuration
   /// [timeZone] TimeZone for the virtual machine
-  VirtualMachinePropertiesWindowsConfiguration({
+  const VirtualMachinePropertiesWindowsConfiguration({
     this.enableAutomaticUpdates,
     this.provisionVMAgent,
     this.ssh,

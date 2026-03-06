@@ -13,7 +13,7 @@ class InstanceGroupManagerResizeRequestStatusResponse {
   /// Creates a new [InstanceGroupManagerResizeRequestStatusResponse].
   /// [error] Errors encountered during the queueing or provisioning phases of the ResizeRequest.
   /// [queuingPolicy] Constraints for the time when the instances start provisioning. Always exposed as absolute time.
-  InstanceGroupManagerResizeRequestStatusResponse({
+  const InstanceGroupManagerResizeRequestStatusResponse({
     required this.error,
     required this.queuingPolicy,
   });

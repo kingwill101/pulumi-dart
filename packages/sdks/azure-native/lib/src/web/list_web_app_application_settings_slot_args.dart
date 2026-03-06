@@ -18,7 +18,7 @@ class ListWebAppApplicationSettingsSlotArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will get the application settings for the production slot.
-  ListWebAppApplicationSettingsSlotArgs({
+  const ListWebAppApplicationSettingsSlotArgs({
     required this.name,
     required this.resourceGroupName,
     required this.slot,

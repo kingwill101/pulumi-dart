@@ -19,7 +19,7 @@ class VMwareV2FabricCreationInput {
   /// [migrationSolutionId] The ARM Id of the migration solution.
   /// [physicalSiteId] The ARM Id of the physical site.
   /// [vmwareSiteId] The ARM Id of the VMware site.
-  VMwareV2FabricCreationInput({
+  const VMwareV2FabricCreationInput({
     required this.instanceType,
     required this.migrationSolutionId,
     this.physicalSiteId,

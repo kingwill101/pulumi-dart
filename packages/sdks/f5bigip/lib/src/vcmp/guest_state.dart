@@ -51,7 +51,7 @@ class GuestState {
   /// [state] Specifies the state of the vCMP guest on the system. options : [`configured`,`provisioned`,`deployed`].
   /// [virtualDisk] Virtual disk associated with vCMP guest.
   /// [vlans] Specifies the list of VLANs the vCMP guest uses to communicate with other guests, the host, and with the external network. The naming format must be the combination of the partition + name. For example /Common/my-vlan
-  GuestState({
+  const GuestState({
     this.allowedSlots,
     this.coresPerSlot,
     this.deleteVirtualDisk,

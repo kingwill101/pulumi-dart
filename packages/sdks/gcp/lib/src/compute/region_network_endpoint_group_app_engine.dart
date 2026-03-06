@@ -24,7 +24,7 @@ class RegionNetworkEndpointGroupAppEngine {
   /// [service] Optional serving service.
   /// [urlMask] A template to parse service and version fields from a request URL.
   /// [version] Optional serving version.
-  RegionNetworkEndpointGroupAppEngine({
+  const RegionNetworkEndpointGroupAppEngine({
     this.service,
     this.urlMask,
     this.version,

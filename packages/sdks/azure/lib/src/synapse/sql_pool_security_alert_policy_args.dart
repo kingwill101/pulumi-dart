@@ -33,7 +33,7 @@ class SqlPoolSecurityAlertPolicyArgs {
   /// [sqlPoolId] Specifies the ID of the Synapse SQL Pool. Changing this forces a new resource to be created.
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all Threat Detection audit logs.
-  SqlPoolSecurityAlertPolicyArgs({
+  const SqlPoolSecurityAlertPolicyArgs({
     this.disabledAlerts,
     this.emailAccountAdminsEnabled,
     this.emailAddresses,

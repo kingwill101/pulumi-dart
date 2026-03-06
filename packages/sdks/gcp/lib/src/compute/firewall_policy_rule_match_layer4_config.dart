@@ -13,7 +13,7 @@ class FirewallPolicyRuleMatchLayer4Config {
   /// Creates a new [FirewallPolicyRuleMatchLayer4Config].
   /// [ipProtocol] The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
   /// [ports] An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
-  FirewallPolicyRuleMatchLayer4Config({
+  const FirewallPolicyRuleMatchLayer4Config({
     required this.ipProtocol,
     this.ports,
   });

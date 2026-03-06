@@ -53,7 +53,7 @@ class GetPersistentResourceResult {
   /// [startTime] Time when the PersistentResource for the first time entered the `RUNNING` state.
   /// [state] The detailed state of a Study.
   /// [updateTime] Time when the PersistentResource was most recently updated.
-  GetPersistentResourceResult({
+  const GetPersistentResourceResult({
     required this.createTime,
     required this.displayName,
     required this.encryptionSpec,

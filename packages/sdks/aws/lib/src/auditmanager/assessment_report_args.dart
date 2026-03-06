@@ -23,7 +23,7 @@ class AssessmentReportArgs {
   /// [description] Description of the assessment report.
   /// [name] Name of the assessment report.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AssessmentReportArgs({
+  const AssessmentReportArgs({
     required this.assessmentId,
     this.description,
     this.name,

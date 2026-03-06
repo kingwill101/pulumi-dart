@@ -106,7 +106,7 @@ class GetAutoImportJobResult {
   /// [totalConflicts] Total conflicts encountered during full scan.
   /// [totalErrors] Total errors encountered during full scan.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAutoImportJobResult({
+  const GetAutoImportJobResult({
     this.adminStatus,
     this.autoImportPrefixes,
     required this.azureApiVersion,

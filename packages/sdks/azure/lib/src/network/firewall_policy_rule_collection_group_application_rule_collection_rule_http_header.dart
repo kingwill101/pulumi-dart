@@ -11,7 +11,7 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleHttpHeader {
   /// Creates a new [FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleHttpHeader].
   /// [name] Specifies the name of the header.
   /// [value] Specifies the value of the value.
-  FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleHttpHeader({
+  const FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleHttpHeader({
     required this.name,
     required this.value,
   });

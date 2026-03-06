@@ -11,7 +11,7 @@ class GetTlsInspectCaCertificatesCertificate {
   /// Creates a new [GetTlsInspectCaCertificatesCertificate].
   /// [caCertId] CA certificate ID
   /// [id] The ID of the resource supplied above.
-  GetTlsInspectCaCertificatesCertificate({
+  const GetTlsInspectCaCertificatesCertificate({
     required this.caCertId,
     required this.id,
   });

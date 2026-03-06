@@ -21,7 +21,7 @@ class GetProjectCatalogImageDefinitionErrorDetailsArgs {
   /// [imageDefinitionName] The name of the Image Definition.
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectCatalogImageDefinitionErrorDetailsArgs({
+  const GetProjectCatalogImageDefinitionErrorDetailsArgs({
     required this.catalogName,
     required this.imageDefinitionName,
     required this.projectName,

@@ -15,7 +15,7 @@ class GroupMembershipArgs {
   /// Creates a new [GroupMembershipArgs].
   /// [groupName] Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
   /// [userNames] Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-  GroupMembershipArgs({
+  const GroupMembershipArgs({
     required this.groupName,
     required this.userNames,
   });

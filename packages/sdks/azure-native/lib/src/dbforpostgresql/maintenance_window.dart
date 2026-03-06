@@ -18,7 +18,7 @@ class MaintenanceWindow {
   /// [dayOfWeek] Day of the week to be used for maintenance window.
   /// [startHour] Start hour to be used for maintenance window.
   /// [startMinute] Start minute to be used for maintenance window.
-  MaintenanceWindow({
+  const MaintenanceWindow({
     this.customWindow,
     this.dayOfWeek,
     this.startHour,

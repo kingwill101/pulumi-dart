@@ -22,7 +22,7 @@ class RelatedResourceResponse {
   /// [lastModifiedAt] The last update time of this relation (in UTC)
   /// [origin] The source that related the resource to the issue
   /// [relevance] The resource's relevance status
-  RelatedResourceResponse({
+  const RelatedResourceResponse({
     required this.addedAt,
     required this.id,
     required this.lastModifiedAt,

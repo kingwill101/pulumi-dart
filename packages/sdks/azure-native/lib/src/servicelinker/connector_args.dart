@@ -51,7 +51,7 @@ class ConnectorArgs {
   /// [subscriptionId] The ID of the target subscription.
   /// [targetService] The target service properties
   /// [vNetSolution] The VNet solution.
-  ConnectorArgs({
+  const ConnectorArgs({
     this.authInfo,
     this.clientType,
     this.configurationInfo,

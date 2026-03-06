@@ -22,7 +22,7 @@ class GetAnnotationSpecSetResult {
   /// [description] Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
   /// [displayName] The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
   /// [name] The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-  GetAnnotationSpecSetResult({
+  const GetAnnotationSpecSetResult({
     required this.annotationSpecs,
     required this.blockingResources,
     required this.description,

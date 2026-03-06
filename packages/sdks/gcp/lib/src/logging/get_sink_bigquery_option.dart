@@ -8,7 +8,7 @@ class GetSinkBigqueryOption {
 
   /// Creates a new [GetSinkBigqueryOption].
   /// [usePartitionedTables] Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
-  GetSinkBigqueryOption({
+  const GetSinkBigqueryOption({
     required this.usePartitionedTables,
   });
 

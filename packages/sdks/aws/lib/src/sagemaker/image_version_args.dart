@@ -42,7 +42,7 @@ class ImageVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [releaseNotes] The maintainer description of the image version.
   /// [vendorGuidance] The stability of the image version, specified by the maintainer. Valid values are: `NOT_PROVIDED`, `STABLE`, `TO_BE_ARCHIVED`, and `ARCHIVED`.
-  ImageVersionArgs({
+  const ImageVersionArgs({
     this.aliases,
     required this.baseImage,
     this.horovod,

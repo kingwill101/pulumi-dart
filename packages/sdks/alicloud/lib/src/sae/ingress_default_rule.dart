@@ -14,7 +14,7 @@ class IngressDefaultRule {
   /// [appId] Target application ID.
   /// [appName] Target application name.
   /// [containerPort] Application backend port.
-  IngressDefaultRule({
+  const IngressDefaultRule({
     this.appId,
     this.appName,
     this.containerPort,

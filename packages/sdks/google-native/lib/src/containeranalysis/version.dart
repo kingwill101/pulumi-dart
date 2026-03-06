@@ -25,7 +25,7 @@ class Version {
   /// [kind] Distinguishes between sentinel MIN/MAX versions and normal versions.
   /// [name] Required only when version kind is NORMAL. The main part of the version name.
   /// [revision] The iteration of the package build from the above version.
-  Version({
+  const Version({
     this.epoch,
     this.fullName,
     this.inclusive,

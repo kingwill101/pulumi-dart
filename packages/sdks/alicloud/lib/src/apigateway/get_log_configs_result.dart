@@ -18,7 +18,7 @@ class GetLogConfigsResult {
   /// [ids] Required.
   /// [logType] Optional.
   /// [outputFile] Optional.
-  GetLogConfigsResult({
+  const GetLogConfigsResult({
     required this.configs,
     required this.id,
     required this.ids,

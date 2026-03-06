@@ -11,7 +11,7 @@ class GetRouteSpecGrpcRouteTimeout {
   /// Creates a new [GetRouteSpecGrpcRouteTimeout].
   /// [idles] Required.
   /// [perRequests] Required.
-  GetRouteSpecGrpcRouteTimeout({
+  const GetRouteSpecGrpcRouteTimeout({
     required this.idles,
     required this.perRequests,
   });

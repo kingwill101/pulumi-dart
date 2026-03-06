@@ -20,7 +20,7 @@ class AppHostingBuildError {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  AppHostingBuildError({
+  const AppHostingBuildError({
     this.code,
     this.details,
     this.message,

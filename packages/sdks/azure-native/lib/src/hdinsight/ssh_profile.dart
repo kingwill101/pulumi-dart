@@ -10,7 +10,7 @@ class SshProfile {
 
   /// Creates a new [SshProfile].
   /// [publicKeys] The list of SSH public keys.
-  SshProfile({
+  const SshProfile({
     this.publicKeys,
   });
 

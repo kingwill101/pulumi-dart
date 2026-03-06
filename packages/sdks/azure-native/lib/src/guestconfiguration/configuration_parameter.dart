@@ -12,7 +12,7 @@ class ConfigurationParameter {
   /// Creates a new [ConfigurationParameter].
   /// [name] Name of the configuration parameter.
   /// [value] Value of the configuration parameter.
-  ConfigurationParameter({
+  const ConfigurationParameter({
     this.name,
     this.value,
   });

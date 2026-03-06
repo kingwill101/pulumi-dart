@@ -32,7 +32,7 @@ class GetDesktopsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policyGroupId] The policy group id of the Desktop.
   /// [status] The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
-  GetDesktopsArgs({
+  const GetDesktopsArgs({
     this.desktopName,
     this.endUserIds,
     this.ids,

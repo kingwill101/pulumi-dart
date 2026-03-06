@@ -49,7 +49,7 @@ class VirtualNetworkSubnet {
   /// [securityGroup] The Network Security Group to associate with the subnet. (Referenced by `id`, ie. `azurerm_network_security_group.example.id`)
   /// [serviceEndpointPolicyIds] The list of IDs of Service Endpoint Policies to associate with the subnet.
   /// [serviceEndpoints] The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage`, `Microsoft.Storage.Global` and `Microsoft.Web`.
-  VirtualNetworkSubnet({
+  const VirtualNetworkSubnet({
     required this.addressPrefixes,
     this.defaultOutboundAccessEnabled,
     this.delegation,

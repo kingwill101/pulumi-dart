@@ -8,7 +8,7 @@ class DomainConfigurationTlsConfig {
 
   /// Creates a new [DomainConfigurationTlsConfig].
   /// [securityPolicy] The security policy for a domain configuration.
-  DomainConfigurationTlsConfig({
+  const DomainConfigurationTlsConfig({
     this.securityPolicy,
   });
 

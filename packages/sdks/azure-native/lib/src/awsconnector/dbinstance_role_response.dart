@@ -12,7 +12,7 @@ class DBInstanceRoleResponse {
   /// Creates a new [DBInstanceRoleResponse].
   /// [featureName] The name of the feature associated with the AWS Identity and Access Management (IAM) role. IAM roles that are associated with a DB instance grant permission for the DB instance to access other AWS services on your behalf. For the list of supported feature names, see the ``SupportedFeatureNames`` description in [DBEngineVersion](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBEngineVersion.html) in the *Amazon RDS API Reference*.
   /// [roleArn] The Amazon Resource Name (ARN) of the IAM role that is associated with the DB instance.
-  DBInstanceRoleResponse({
+  const DBInstanceRoleResponse({
     this.featureName,
     this.roleArn,
   });

@@ -8,7 +8,7 @@ class VpnConnectionDetailCloudRouter {
 
   /// Creates a new [VpnConnectionDetailCloudRouter].
   /// [name] The resource name of VPN connection
-  VpnConnectionDetailCloudRouter({
+  const VpnConnectionDetailCloudRouter({
     this.name,
   });
 

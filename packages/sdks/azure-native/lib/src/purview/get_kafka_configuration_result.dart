@@ -42,7 +42,7 @@ class GetKafkaConfigurationResult {
   /// [name] Gets or sets the name.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Gets or sets the type.
-  GetKafkaConfigurationResult({
+  const GetKafkaConfigurationResult({
     required this.azureApiVersion,
     this.consumerGroup,
     this.credentials,

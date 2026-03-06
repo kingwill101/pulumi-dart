@@ -44,7 +44,7 @@ class GetFunctionBuildConfig {
   /// [serviceAccount] The fully-qualified name of the service account to be used for building the container.
   /// [sources] The location of the function source code.
   /// [workerPool] Name of the Cloud Build Custom Worker Pool that should be used to build the function.
-  GetFunctionBuildConfig({
+  const GetFunctionBuildConfig({
     required this.automaticUpdatePolicies,
     required this.build,
     required this.dockerRepository,

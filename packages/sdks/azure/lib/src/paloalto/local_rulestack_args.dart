@@ -39,7 +39,7 @@ class LocalRulestackArgs {
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Networks Rulestack should exist. Changing this forces a new Palo Alto Networks Rulestack to be created.
   /// [urlFilteringProfile] The setting to use for the URL Filtering Profile. Possible values include `BestPractice`, and `Custom`.
   /// [vulnerabilityProfile] The setting to use for the Vulnerability Profile. Possible values include `BestPractice`, and `Custom`.
-  LocalRulestackArgs({
+  const LocalRulestackArgs({
     this.antiSpywareProfile,
     this.antiVirusProfile,
     this.description,

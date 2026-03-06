@@ -10,7 +10,7 @@ class EncryptionProperties {
 
   /// Creates a new [EncryptionProperties].
   /// [keyVaultProperties] Key vault properties.
-  EncryptionProperties({
+  const EncryptionProperties({
     this.keyVaultProperties,
   });
 

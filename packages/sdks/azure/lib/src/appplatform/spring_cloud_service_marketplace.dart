@@ -14,7 +14,7 @@ class SpringCloudServiceMarketplace {
   /// [plan] Specifies the plan ID of the 3rd Party Artifact that is being procured.
   /// [product] Specifies the 3rd Party artifact that is being procured.
   /// [publisher] Specifies the publisher ID of the 3rd Party Artifact that is being procured.
-  SpringCloudServiceMarketplace({
+  const SpringCloudServiceMarketplace({
     required this.plan,
     required this.product,
     required this.publisher,

@@ -11,7 +11,7 @@ class DataLakeConfigurationLifecycleConfigurationTransition {
   /// Creates a new [DataLakeConfigurationLifecycleConfigurationTransition].
   /// [days] Number of days before data transition to a different S3 Storage Class in the Amazon Security Lake object.
   /// [storageClass] The range of storage classes that you can choose from based on the data access, resiliency, and cost requirements of your workloads.
-  DataLakeConfigurationLifecycleConfigurationTransition({
+  const DataLakeConfigurationLifecycleConfigurationTransition({
     this.days,
     this.storageClass,
   });

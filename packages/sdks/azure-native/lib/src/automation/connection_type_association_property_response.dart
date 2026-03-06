@@ -9,7 +9,7 @@ class ConnectionTypeAssociationPropertyResponse {
 
   /// Creates a new [ConnectionTypeAssociationPropertyResponse].
   /// [name] Gets or sets the name of the connection type.
-  ConnectionTypeAssociationPropertyResponse({
+  const ConnectionTypeAssociationPropertyResponse({
     this.name,
   });
 

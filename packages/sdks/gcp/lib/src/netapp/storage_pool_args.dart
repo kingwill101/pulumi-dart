@@ -91,7 +91,7 @@ class StoragePoolArgs {
   /// [totalThroughputMibps] Optional. Custom Performance Total Throughput of the pool (in MiB/s).
   /// [type] Type of the storage pool.
   /// [zone] Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
-  StoragePoolArgs({
+  const StoragePoolArgs({
     this.activeDirectory,
     this.allowAutoTiering,
     required this.capacityGib,

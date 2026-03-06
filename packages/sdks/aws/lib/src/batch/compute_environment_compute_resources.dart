@@ -58,7 +58,7 @@ class ComputeEnvironmentComputeResources {
   /// [subnets] A list of VPC subnets into which the compute resources are launched.
   /// [tags] Key-value pair tags to be applied to resources that are launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
   /// [type] The type of compute environment. Valid items are `EC2`, `SPOT`, `FARGATE` or `FARGATE_SPOT`.
-  ComputeEnvironmentComputeResources({
+  const ComputeEnvironmentComputeResources({
     this.allocationStrategy,
     this.bidPercentage,
     this.desiredVcpus,

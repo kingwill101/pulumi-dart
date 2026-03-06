@@ -63,7 +63,7 @@ class GetServerlessCacheResult {
   /// [status] The current status of the serverless cache.
   /// [subnetIds] A list of the identifiers of the subnets where the VPC endpoint for the serverless cache are deployed.
   /// [userGroupId] The identifier of the UserGroup associated with the serverless cache. Available for Redis only.
-  GetServerlessCacheResult({
+  const GetServerlessCacheResult({
     required this.arn,
     required this.cacheUsageLimits,
     required this.createTime,

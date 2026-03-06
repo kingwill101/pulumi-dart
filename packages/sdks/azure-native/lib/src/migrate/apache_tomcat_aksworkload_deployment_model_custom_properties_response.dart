@@ -14,7 +14,7 @@ class ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse {
   /// Creates a new [ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse].
   /// [apacheTomcatAksWorkloadDeploymentProperties] ApacheTomcat web application.
   /// [instanceType] Gets or sets the instance type.
-  ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse({
+  const ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse({
     this.apacheTomcatAksWorkloadDeploymentProperties,
     required this.instanceType,
   });

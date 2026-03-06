@@ -24,7 +24,7 @@ class VirtualNetworkResponse {
   /// [name] {VirtualNetworkName}
   /// [privateCloudId] The Private Cloud id
   /// [type] {resourceProviderNamespace}/{resourceType}
-  VirtualNetworkResponse({
+  const VirtualNetworkResponse({
     required this.assignable,
     required this.id,
     required this.location,

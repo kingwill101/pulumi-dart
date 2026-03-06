@@ -11,7 +11,7 @@ class SwaggerGatewayResponse {
   /// [responseParameters] Optional.
   /// [responseTemplates] Optional.
   /// [statusCode] Optional.
-  SwaggerGatewayResponse({
+  const SwaggerGatewayResponse({
     this.responseParameters,
     this.responseTemplates,
     this.statusCode,

@@ -15,7 +15,7 @@ class StorageSourceManifestResponse {
   /// [bucket] Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// [generation] Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
   /// [object_] Cloud Storage object containing the source manifest. This object must be a JSON file.
-  StorageSourceManifestResponse({
+  const StorageSourceManifestResponse({
     required this.bucket,
     required this.generation,
     required this.object_,

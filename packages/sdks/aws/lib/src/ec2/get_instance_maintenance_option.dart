@@ -8,7 +8,7 @@ class GetInstanceMaintenanceOption {
 
   /// Creates a new [GetInstanceMaintenanceOption].
   /// [autoRecovery] Automatic recovery behavior of the instance.
-  GetInstanceMaintenanceOption({
+  const GetInstanceMaintenanceOption({
     required this.autoRecovery,
   });
 

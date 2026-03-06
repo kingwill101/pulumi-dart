@@ -12,7 +12,7 @@ class ErrorInfoResponse {
   /// Creates a new [ErrorInfoResponse].
   /// [code] Error code.
   /// [message] Error message.
-  ErrorInfoResponse({
+  const ErrorInfoResponse({
     required this.code,
     required this.message,
   });

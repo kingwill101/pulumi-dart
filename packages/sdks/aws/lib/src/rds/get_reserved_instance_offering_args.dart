@@ -27,7 +27,7 @@ class GetReservedInstanceOfferingArgs {
   /// [offeringType] Offering type of this reserved DB instance. Valid values are `No Upfront`, `Partial Upfront`, `All Upfront`.
   /// [productDescription] Description of the reserved DB instance. Example values are `postgresql`, `aurora-postgresql`, `mysql`, `aurora-mysql`, `mariadb`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetReservedInstanceOfferingArgs({
+  const GetReservedInstanceOfferingArgs({
     required this.dbInstanceClass,
     required this.duration,
     required this.multiAz,

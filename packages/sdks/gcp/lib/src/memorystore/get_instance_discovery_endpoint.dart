@@ -16,7 +16,7 @@ class GetInstanceDiscoveryEndpoint {
   /// [address] Output only. IP address of the exposed endpoint clients connect to.
   /// [network] Output only. The network where the IP address of the discovery endpoint will be
   /// [port] Output only. The port number of the exposed endpoint.
-  GetInstanceDiscoveryEndpoint({
+  const GetInstanceDiscoveryEndpoint({
     required this.address,
     required this.network,
     required this.port,

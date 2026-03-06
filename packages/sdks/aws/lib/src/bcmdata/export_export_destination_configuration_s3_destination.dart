@@ -18,7 +18,7 @@ class ExportExportDestinationConfigurationS3Destination {
   /// [s3OutputConfigurations] Output configuration for the data export. See the `s3_output_configurations` argument reference below.
   /// [s3Prefix] S3 path prefix you want prepended to the name of your data export.
   /// [s3Region] S3 bucket region.
-  ExportExportDestinationConfigurationS3Destination({
+  const ExportExportDestinationConfigurationS3Destination({
     required this.s3Bucket,
     this.s3OutputConfigurations,
     required this.s3Prefix,

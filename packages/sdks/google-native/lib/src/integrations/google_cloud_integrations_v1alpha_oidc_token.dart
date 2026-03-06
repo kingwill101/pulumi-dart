@@ -18,7 +18,7 @@ class GoogleCloudIntegrationsV1alphaOidcToken {
   /// [serviceAccountEmail] The service account email to be used as the identity for the token.
   /// [token] ID token obtained for the service account
   /// [tokenExpireTime] The approximate time until the token retrieved is valid.
-  GoogleCloudIntegrationsV1alphaOidcToken({
+  const GoogleCloudIntegrationsV1alphaOidcToken({
     this.audience,
     this.serviceAccountEmail,
     this.token,

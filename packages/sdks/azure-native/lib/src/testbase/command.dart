@@ -48,7 +48,7 @@ class Command {
   /// [restartAfter] Specifies whether to restart the VM after the command executed.
   /// [runAsInteractive] Specifies whether to run the command in interactive mode.
   /// [runElevated] Specifies whether to run the command as administrator.
-  Command({
+  const Command({
     required this.action,
     this.alwaysRun,
     this.applyUpdateBefore,

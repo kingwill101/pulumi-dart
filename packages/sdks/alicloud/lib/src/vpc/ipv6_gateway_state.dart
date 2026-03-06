@@ -42,7 +42,7 @@ class Ipv6GatewayState {
   /// [status] The status of the resource. Valid values: Available, Pending and Deleting.
   /// [tags] The tags for the resource.
   /// [vpcId] The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
-  Ipv6GatewayState({
+  const Ipv6GatewayState({
     this.businessStatus,
     this.createTime,
     this.description,

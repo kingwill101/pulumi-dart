@@ -126,7 +126,7 @@ class SqlAssessmentV2OperationArgs {
   /// [sizingCriterion] Assessment sizing criterion.
   /// [sqlServerLicense] SQL server license.
   /// [timeRange] Time Range for which the historic utilization data should be considered for
-  SqlAssessmentV2OperationArgs({
+  const SqlAssessmentV2OperationArgs({
     this.assessmentName,
     this.assessmentType,
     this.asyncCommitModeIntent,

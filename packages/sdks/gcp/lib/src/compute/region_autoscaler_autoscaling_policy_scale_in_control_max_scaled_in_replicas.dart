@@ -13,7 +13,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas {
   /// Creates a new [RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas].
   /// [fixed] Specifies a fixed number of VM instances. This must be a positive
   /// [percent] Specifies a percentage of instances between 0 to 100%, inclusive.
-  RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas({
+  const RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas({
     this.fixed,
     this.percent,
   });

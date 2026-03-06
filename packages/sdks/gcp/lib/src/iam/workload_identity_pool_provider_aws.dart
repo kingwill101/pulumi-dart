@@ -8,7 +8,7 @@ class WorkloadIdentityPoolProviderAws {
 
   /// Creates a new [WorkloadIdentityPoolProviderAws].
   /// [accountId] The AWS account ID.
-  WorkloadIdentityPoolProviderAws({
+  const WorkloadIdentityPoolProviderAws({
     required this.accountId,
   });
 

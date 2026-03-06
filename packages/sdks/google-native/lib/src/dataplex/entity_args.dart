@@ -54,7 +54,7 @@ class EntityArgs {
   /// [system] Immutable. Identifies the storage system of the entity data.
   /// [type] Immutable. The type of entity.
   /// [zone] Optional.
-  EntityArgs({
+  const EntityArgs({
     required this.asset,
     required this.dataPath,
     this.dataPathPattern,

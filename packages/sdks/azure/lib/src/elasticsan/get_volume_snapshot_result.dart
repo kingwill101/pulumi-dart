@@ -21,7 +21,7 @@ class GetVolumeSnapshotResult {
   /// [sourceVolumeSizeInGib] The size of source volume.
   /// [volumeGroupId] Required.
   /// [volumeName] The source volume name of the Snapshot.
-  GetVolumeSnapshotResult({
+  const GetVolumeSnapshotResult({
     required this.id,
     required this.name,
     required this.sourceId,

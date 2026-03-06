@@ -14,7 +14,7 @@ class EventPermissionCondition {
   /// [key] Key for the condition. Valid values: `aws:PrincipalOrgID`.
   /// [type] Type of condition. Value values: `StringEquals`.
   /// [value] Value for the key.
-  EventPermissionCondition({
+  const EventPermissionCondition({
     required this.key,
     required this.type,
     required this.value,

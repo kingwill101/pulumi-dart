@@ -10,7 +10,7 @@ class BareMetalMaintenanceStatusResponse {
 
   /// Creates a new [BareMetalMaintenanceStatusResponse].
   /// [machineDrainStatus] The maintenance status of node machines.
-  BareMetalMaintenanceStatusResponse({
+  const BareMetalMaintenanceStatusResponse({
     required this.machineDrainStatus,
   });
 

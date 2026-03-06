@@ -19,7 +19,7 @@ class GetGroupsGroupAdditionalGroupKey {
   /// Creates a new [GetGroupsGroupAdditionalGroupKey].
   /// [id] The ID of the entity.
   /// [namespace] The namespace in which the entity exists.
-  GetGroupsGroupAdditionalGroupKey({
+  const GetGroupsGroupAdditionalGroupKey({
     required this.id,
     required this.namespace,
   });

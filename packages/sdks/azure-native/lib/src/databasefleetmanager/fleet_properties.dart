@@ -9,7 +9,7 @@ class FleetProperties {
 
   /// Creates a new [FleetProperties].
   /// [description] Fleet description.
-  FleetProperties({
+  const FleetProperties({
     this.description,
   });
 

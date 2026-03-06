@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1FloatArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1FloatArrayResponse].
   /// [values] List of float values.
-  GoogleCloudContentwarehouseV1FloatArrayResponse({
+  const GoogleCloudContentwarehouseV1FloatArrayResponse({
     required this.values,
   });
 

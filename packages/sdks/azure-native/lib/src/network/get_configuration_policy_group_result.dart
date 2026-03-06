@@ -38,7 +38,7 @@ class GetConfigurationPolicyGroupResult {
   /// [priority] Priority for VpnServerConfigurationPolicyGroup.
   /// [provisioningState] The provisioning state of the VpnServerConfigurationPolicyGroup resource.
   /// [type] Resource type.
-  GetConfigurationPolicyGroupResult({
+  const GetConfigurationPolicyGroupResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

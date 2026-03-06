@@ -12,7 +12,7 @@ class OfflineConfigurationResponse {
   /// Creates a new [OfflineConfigurationResponse].
   /// [lastBackupName] Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
   /// [offline] Offline migration
-  OfflineConfigurationResponse({
+  const OfflineConfigurationResponse({
     this.lastBackupName,
     this.offline,
   });

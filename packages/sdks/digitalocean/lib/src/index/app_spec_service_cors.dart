@@ -24,7 +24,7 @@ class AppSpecServiceCors {
   /// [allowOrigins] The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
   /// [exposeHeaders] The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
   /// [maxAge] An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-  AppSpecServiceCors({
+  const AppSpecServiceCors({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

@@ -16,7 +16,7 @@ class AzureResourceSignalGroupResponse {
   /// [authenticationSetting] Reference to the name of the authentication setting which is used for querying the data source
   /// [azureResourceId] Azure resource ID
   /// [signalAssignments] Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
-  AzureResourceSignalGroupResponse({
+  const AzureResourceSignalGroupResponse({
     required this.authenticationSetting,
     required this.azureResourceId,
     this.signalAssignments,

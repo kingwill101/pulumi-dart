@@ -9,7 +9,7 @@ class AllowedFlexVolumePatch {
 
   /// Creates a new [AllowedFlexVolumePatch].
   /// [driver] driver is the name of the Flexvolume driver.
-  AllowedFlexVolumePatch({
+  const AllowedFlexVolumePatch({
     this.driver,
   });
 

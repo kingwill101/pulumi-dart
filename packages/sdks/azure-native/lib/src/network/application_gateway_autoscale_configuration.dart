@@ -12,7 +12,7 @@ class ApplicationGatewayAutoscaleConfiguration {
   /// Creates a new [ApplicationGatewayAutoscaleConfiguration].
   /// [maxCapacity] Upper bound on number of Application Gateway capacity.
   /// [minCapacity] Lower bound on number of Application Gateway capacity.
-  ApplicationGatewayAutoscaleConfiguration({
+  const ApplicationGatewayAutoscaleConfiguration({
     this.maxCapacity,
     required this.minCapacity,
   });

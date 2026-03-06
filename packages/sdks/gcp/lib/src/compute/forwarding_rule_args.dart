@@ -262,7 +262,7 @@ class ForwardingRuleArgs {
   /// [sourceIpRanges] If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
   /// [subnetwork] This field identifies the subnetwork that the load balanced IP should
   /// [target] The URL of the target resource to receive the matched traffic.  For
-  ForwardingRuleArgs({
+  const ForwardingRuleArgs({
     this.allPorts,
     this.allowGlobalAccess,
     this.allowPscGlobalAccess,

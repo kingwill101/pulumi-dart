@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustSd {
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustSd].
   /// [secretName] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustSd({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustSd({
     required this.secretName,
   });
 

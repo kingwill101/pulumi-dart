@@ -35,7 +35,7 @@ class SigningProfileArgs {
   /// [signingMaterial] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signing_material` Block below for details.
   /// [signingParameters] Map of key-value pairs for signing. These can include any information that you want to use during signing.
   /// [tags] A list of tags associated with the signing profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  SigningProfileArgs({
+  const SigningProfileArgs({
     this.name,
     this.namePrefix,
     required this.platformId,

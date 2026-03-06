@@ -29,7 +29,7 @@ class BackupPolicyKubernetesClusterState {
   /// [retentionRules] One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   /// [vaultName] The name of the Backup Vault where the Backup Policy Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-  BackupPolicyKubernetesClusterState({
+  const BackupPolicyKubernetesClusterState({
     this.backupRepeatingTimeIntervals,
     this.defaultRetentionRule,
     this.name,

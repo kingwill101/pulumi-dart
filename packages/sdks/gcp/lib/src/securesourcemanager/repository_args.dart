@@ -40,7 +40,7 @@ class RepositoryArgs {
   /// [location] The location for the Repository.
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryId] The ID for the Repository.
-  RepositoryArgs({
+  const RepositoryArgs({
     this.deletionPolicy,
     this.description,
     this.initialConfig,

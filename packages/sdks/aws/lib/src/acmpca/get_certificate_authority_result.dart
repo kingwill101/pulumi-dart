@@ -49,7 +49,7 @@ class GetCertificateAuthorityResult {
   /// [tags] Key-value map of user-defined tags that are attached to the certificate authority.
   /// [type] Type of the certificate authority.
   /// [usageMode] Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly.
-  GetCertificateAuthorityResult({
+  const GetCertificateAuthorityResult({
     required this.arn,
     required this.certificate,
     required this.certificateChain,

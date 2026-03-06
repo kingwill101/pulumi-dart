@@ -21,7 +21,7 @@ class ApiDeploymentParameterMetadataResponse {
   /// [isRequired] Indicates whether its required.
   /// [type] The type.
   /// [visibility] The visibility.
-  ApiDeploymentParameterMetadataResponse({
+  const ApiDeploymentParameterMetadataResponse({
     this.description,
     this.displayName,
     this.isRequired,

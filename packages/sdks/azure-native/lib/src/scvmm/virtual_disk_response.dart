@@ -49,7 +49,7 @@ class VirtualDiskResponse {
   /// [vhdFormatType] Gets the disk vhd format type.
   /// [vhdType] Gets or sets the disk vhd type.
   /// [volumeType] Gets or sets the disk volume type.
-  VirtualDiskResponse({
+  const VirtualDiskResponse({
     this.bus,
     this.busType,
     this.createDiffDisk,

@@ -22,7 +22,7 @@ class AmazonS3Location {
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
   /// [version] Specify the version of amazon S3. Type: string (or Expression with resultType string).
-  AmazonS3Location({
+  const AmazonS3Location({
     this.bucketName,
     this.fileName,
     this.folderPath,

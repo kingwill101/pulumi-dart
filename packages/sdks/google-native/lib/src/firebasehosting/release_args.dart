@@ -25,7 +25,7 @@ class ReleaseArgs {
   /// [siteId] Required.
   /// [type] Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
   /// [versionName] The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
-  ReleaseArgs({
+  const ReleaseArgs({
     required this.channelId,
     this.message,
     this.project,

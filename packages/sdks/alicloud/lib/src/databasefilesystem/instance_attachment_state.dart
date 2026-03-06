@@ -15,7 +15,7 @@ class InstanceAttachmentState {
   /// [ecsId] The ID of the ECS instance.
   /// [instanceId] The ID of the Database File System.
   /// [status] The status of Instance Attachment.
-  InstanceAttachmentState({
+  const InstanceAttachmentState({
     this.ecsId,
     this.instanceId,
     this.status,

@@ -21,7 +21,7 @@ class JWTAuthenticatorProperties {
   /// [claimValidationRules] The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
   /// [issuer] The JWT OIDC issuer details.
   /// [userValidationRules] The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-  JWTAuthenticatorProperties({
+  const JWTAuthenticatorProperties({
     required this.claimMappings,
     this.claimValidationRules,
     required this.issuer,

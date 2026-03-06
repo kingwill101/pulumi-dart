@@ -34,7 +34,7 @@ class LoggingSettingBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
-  LoggingSettingBindingArgs({
+  const LoggingSettingBindingArgs({
     this.labels,
     this.location,
     required this.loggingSettingId,

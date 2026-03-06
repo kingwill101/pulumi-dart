@@ -8,7 +8,7 @@ class GetAccountVirtualNetworkRule {
 
   /// Creates a new [GetAccountVirtualNetworkRule].
   /// [id] The ID of the virtual network subnet.
-  GetAccountVirtualNetworkRule({
+  const GetAccountVirtualNetworkRule({
     required this.id,
   });
 

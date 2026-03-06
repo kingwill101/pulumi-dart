@@ -45,7 +45,7 @@ class RandomStringState {
   /// [result] The generated random string.
   /// [special] Include special characters in the result. These are `!@#$%&*()-_=+[]{}&lt;&gt;:?`. Default value is `true`.
   /// [upper] Include uppercase alphabet characters in the result. Default value is `true`.
-  RandomStringState({
+  const RandomStringState({
     this.keepers,
     this.length,
     this.lower,

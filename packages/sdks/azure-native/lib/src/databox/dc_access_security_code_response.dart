@@ -12,7 +12,7 @@ class DcAccessSecurityCodeResponse {
   /// Creates a new [DcAccessSecurityCodeResponse].
   /// [forwardDCAccessCode] Forward Dc access security code.
   /// [reverseDCAccessCode] Reverse Dc access security code.
-  DcAccessSecurityCodeResponse({
+  const DcAccessSecurityCodeResponse({
     this.forwardDCAccessCode,
     this.reverseDCAccessCode,
   });

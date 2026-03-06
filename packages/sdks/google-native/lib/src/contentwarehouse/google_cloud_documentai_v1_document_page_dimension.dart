@@ -15,7 +15,7 @@ class GoogleCloudDocumentaiV1DocumentPageDimension {
   /// [height] Page height.
   /// [unit] Dimension unit.
   /// [width] Page width.
-  GoogleCloudDocumentaiV1DocumentPageDimension({
+  const GoogleCloudDocumentaiV1DocumentPageDimension({
     this.height,
     this.unit,
     this.width,

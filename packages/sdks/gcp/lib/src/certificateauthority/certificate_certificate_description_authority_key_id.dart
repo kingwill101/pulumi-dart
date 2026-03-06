@@ -9,7 +9,7 @@ class CertificateCertificateDescriptionAuthorityKeyId {
 
   /// Creates a new [CertificateCertificateDescriptionAuthorityKeyId].
   /// [keyId] (Output)
-  CertificateCertificateDescriptionAuthorityKeyId({
+  const CertificateCertificateDescriptionAuthorityKeyId({
     this.keyId,
   });
 

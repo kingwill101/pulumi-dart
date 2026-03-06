@@ -20,7 +20,7 @@ class DefenderForStorageSettingProperties {
   /// [malwareScanning] Properties of Malware Scanning.
   /// [overrideSubscriptionLevelSettings] Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
   /// [sensitiveDataDiscovery] Properties of Sensitive Data Discovery.
-  DefenderForStorageSettingProperties({
+  const DefenderForStorageSettingProperties({
     this.isEnabled,
     this.malwareScanning,
     this.overrideSubscriptionLevelSettings,

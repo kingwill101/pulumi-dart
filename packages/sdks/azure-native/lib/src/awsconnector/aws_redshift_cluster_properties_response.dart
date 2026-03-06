@@ -174,7 +174,7 @@ class AwsRedshiftClusterPropertiesResponse {
   /// [snapshotIdentifier] The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.
   /// [tags] The list of tags for the cluster parameter group.
   /// [vpcSecurityGroupIds] A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
-  AwsRedshiftClusterPropertiesResponse({
+  const AwsRedshiftClusterPropertiesResponse({
     this.allowVersionUpgrade,
     this.aquaConfigurationStatus,
     this.automatedSnapshotRetentionPeriod,

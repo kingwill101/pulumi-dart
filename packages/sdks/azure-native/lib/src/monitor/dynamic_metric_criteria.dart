@@ -42,7 +42,7 @@ class DynamicMetricCriteria {
   /// [operator] The operator used to compare the metric value against the threshold.
   /// [skipMetricValidation] Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
   /// [timeAggregation] the criteria time aggregation types.
-  DynamicMetricCriteria({
+  const DynamicMetricCriteria({
     required this.alertSensitivity,
     required this.criterionType,
     this.dimensions,

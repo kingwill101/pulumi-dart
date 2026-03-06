@@ -78,7 +78,7 @@ class AwsClusterState {
   /// [uid] Output only. A globally unique identifier for the cluster.
   /// [updateTime] Output only. The time at which this cluster was last updated.
   /// [workloadIdentityConfigs] Output only. Workload Identity settings.
-  AwsClusterState({
+  const AwsClusterState({
     this.annotations,
     this.authorization,
     this.awsRegion,

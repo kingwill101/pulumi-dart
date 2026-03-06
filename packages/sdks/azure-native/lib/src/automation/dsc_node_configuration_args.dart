@@ -35,7 +35,7 @@ class DscNodeConfigurationArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [source] Gets or sets the source.
   /// [tags] Gets or sets the tags attached to the resource.
-  DscNodeConfigurationArgs({
+  const DscNodeConfigurationArgs({
     required this.automationAccountName,
     required this.configuration,
     this.incrementNodeConfigurationBuild,

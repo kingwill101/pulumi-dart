@@ -26,7 +26,7 @@ class GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse {
   /// [label] Optional. The user created label for a particular error catcher. Optional.
   /// [position] Optional. Informs the front-end application where to draw this error catcher config on the UI.
   /// [startErrorTasks] The set of start tasks that are to be executed for the error catch flow
-  GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse({
+  const GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse({
     required this.description,
     required this.errorCatcherId,
     required this.errorCatcherNumber,

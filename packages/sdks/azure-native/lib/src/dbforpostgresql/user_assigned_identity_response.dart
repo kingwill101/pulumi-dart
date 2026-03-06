@@ -22,7 +22,7 @@ class UserAssignedIdentityResponse {
   /// [tenantId] Identifier of the tenant of a server.
   /// [type] Types of identities associated with a server.
   /// [userAssignedIdentities] Map of user assigned managed identities.
-  UserAssignedIdentityResponse({
+  const UserAssignedIdentityResponse({
     required this.clientId,
     required this.principalId,
     this.tenantId,

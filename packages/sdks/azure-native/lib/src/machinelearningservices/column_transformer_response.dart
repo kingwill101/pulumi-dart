@@ -13,7 +13,7 @@ class ColumnTransformerResponse {
   /// Creates a new [ColumnTransformerResponse].
   /// [fields] Fields to apply transformer logic on.
   /// [parameters] Different properties to be passed to transformer.
-  ColumnTransformerResponse({
+  const ColumnTransformerResponse({
     this.fields,
     this.parameters,
   });

@@ -22,7 +22,7 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
   /// Creates a new [Datapolicyv2DataPolicyDataMaskingPolicy].
   /// [predefinedExpression] A predefined masking expression.
   /// [routine] The name of the BigQuery routine that contains the custom masking
-  Datapolicyv2DataPolicyDataMaskingPolicy({
+  const Datapolicyv2DataPolicyDataMaskingPolicy({
     this.predefinedExpression,
     this.routine,
   });

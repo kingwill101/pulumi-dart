@@ -24,7 +24,7 @@ class GkeWorkloadResponse {
   /// [project] The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
   /// [topLevelControllerName] The name of this workload.
   /// [topLevelControllerType] The type of this workload (for example, "Deployment" or "DaemonSet")
-  GkeWorkloadResponse({
+  const GkeWorkloadResponse({
     required this.clusterName,
     required this.location,
     required this.namespaceName,

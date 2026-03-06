@@ -17,7 +17,7 @@ class NetappVolumeAttachmentState {
   /// [name] The name which should be used for this Azure VMware Solution Private Cloud Netapp File Volume Attachment. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
   /// [netappVolumeId] The netapp file volume for this Azure VMware Solution Private Cloud Netapp File Volume Attachment to connect to. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
   /// [vmwareClusterId] The vmware cluster for this Azure VMware Solution Private Cloud Netapp File Volume Attachment to associated to. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
-  NetappVolumeAttachmentState({
+  const NetappVolumeAttachmentState({
     this.name,
     this.netappVolumeId,
     this.vmwareClusterId,

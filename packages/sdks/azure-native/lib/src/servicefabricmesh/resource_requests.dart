@@ -12,7 +12,7 @@ class ResourceRequests {
   /// Creates a new [ResourceRequests].
   /// [cpu] Requested number of CPU cores. At present, only full cores are supported.
   /// [memoryInGB] The memory request in GB for this container.
-  ResourceRequests({
+  const ResourceRequests({
     required this.cpu,
     required this.memoryInGB,
   });

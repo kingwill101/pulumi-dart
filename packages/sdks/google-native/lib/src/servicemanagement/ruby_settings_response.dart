@@ -10,7 +10,7 @@ class RubySettingsResponse {
 
   /// Creates a new [RubySettingsResponse].
   /// [common] Some settings.
-  RubySettingsResponse({
+  const RubySettingsResponse({
     required this.common,
   });
 

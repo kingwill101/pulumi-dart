@@ -18,7 +18,7 @@ class StrongIdResponse {
   /// [displayName] Localized display name.
   /// [keyPropertyNames] The properties which make up the unique ID.
   /// [strongIdName] The Name identifying the strong ID.
-  StrongIdResponse({
+  const StrongIdResponse({
     this.description,
     this.displayName,
     required this.keyPropertyNames,

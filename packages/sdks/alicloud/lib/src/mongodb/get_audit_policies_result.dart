@@ -16,7 +16,7 @@ class GetAuditPoliciesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [policies] Required.
-  GetAuditPoliciesResult({
+  const GetAuditPoliciesResult({
     required this.dbInstanceId,
     required this.id,
     this.outputFile,

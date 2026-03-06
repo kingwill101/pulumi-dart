@@ -24,7 +24,7 @@ class CloudEndpointLastChangeEnumerationStatusResponse {
   /// [namespaceSizeBytes] Namespace size in bytes
   /// [nextRunTimestamp] Timestamp of when change enumeration is expected to run again
   /// [startedTimestamp] Timestamp when change enumeration started
-  CloudEndpointLastChangeEnumerationStatusResponse({
+  const CloudEndpointLastChangeEnumerationStatusResponse({
     required this.completedTimestamp,
     required this.namespaceDirectoriesCount,
     required this.namespaceFilesCount,

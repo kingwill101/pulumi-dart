@@ -39,7 +39,7 @@ class GetControlPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [proto] The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
   /// [source] The source address in the access control policy.
-  GetControlPoliciesArgs({
+  const GetControlPoliciesArgs({
     this.aclAction,
     this.aclUuid,
     this.description,

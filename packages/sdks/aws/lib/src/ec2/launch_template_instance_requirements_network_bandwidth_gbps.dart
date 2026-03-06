@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsNetworkBandwidthGbps {
   /// Creates a new [LaunchTemplateInstanceRequirementsNetworkBandwidthGbps].
   /// [max] Maximum.
   /// [min] Minimum.
-  LaunchTemplateInstanceRequirementsNetworkBandwidthGbps({
+  const LaunchTemplateInstanceRequirementsNetworkBandwidthGbps({
     this.max,
     this.min,
   });

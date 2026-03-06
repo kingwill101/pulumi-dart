@@ -9,7 +9,7 @@ class AlertPolicyConditionConditionSqlMinutes {
 
   /// Creates a new [AlertPolicyConditionConditionSqlMinutes].
   /// [periodicity] Number of minutes between runs. The interval must be greater than or
-  AlertPolicyConditionConditionSqlMinutes({
+  const AlertPolicyConditionConditionSqlMinutes({
     required this.periodicity,
   });
 

@@ -42,7 +42,7 @@ class SnapshotCopyArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetCustomAvailabilityZone] The external custom Availability Zone.
   /// [targetDbSnapshotIdentifier] The Identifier for the snapshot.
-  SnapshotCopyArgs({
+  const SnapshotCopyArgs({
     this.copyTags,
     this.destinationRegion,
     this.kmsKeyId,

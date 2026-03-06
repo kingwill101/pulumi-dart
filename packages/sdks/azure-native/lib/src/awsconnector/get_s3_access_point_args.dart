@@ -15,7 +15,7 @@ class GetS3AccessPointArgs {
   /// Creates a new [GetS3AccessPointArgs].
   /// [name] Name of S3AccessPoint
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetS3AccessPointArgs({
+  const GetS3AccessPointArgs({
     required this.name,
     required this.resourceGroupName,
   });

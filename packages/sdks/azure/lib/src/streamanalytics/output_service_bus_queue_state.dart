@@ -42,7 +42,7 @@ class OutputServiceBusQueueState {
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authentication_mode` is `ConnectionString`.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [systemPropertyColumns] A key-value pair of system property columns that will be attached to the outgoing messages for the Service Bus Queue Output.
-  OutputServiceBusQueueState({
+  const OutputServiceBusQueueState({
     this.authenticationMode,
     this.name,
     this.propertyColumns,

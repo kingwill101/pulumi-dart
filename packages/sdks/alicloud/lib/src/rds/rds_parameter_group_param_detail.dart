@@ -11,7 +11,7 @@ class RdsParameterGroupParamDetail {
   /// Creates a new [RdsParameterGroupParamDetail].
   /// [paramName] The name of a parameter.
   /// [paramValue] The value of a parameter.
-  RdsParameterGroupParamDetail({
+  const RdsParameterGroupParamDetail({
     required this.paramName,
     required this.paramValue,
   });

@@ -16,7 +16,7 @@ class AppImageConfigCodeEditorAppImageConfigFileSystemConfig {
   /// [defaultGid] The default POSIX group ID (GID). If not specified, defaults to `100`. Valid values are `0` and `100`.
   /// [defaultUid] The default POSIX user ID (UID). If not specified, defaults to `1000`. Valid values are `0` and `1000`.
   /// [mountPath] The path within the image to mount the user's EFS home directory. The directory should be empty. If not specified, defaults to `/home/sagemaker-user`.
-  AppImageConfigCodeEditorAppImageConfigFileSystemConfig({
+  const AppImageConfigCodeEditorAppImageConfigFileSystemConfig({
     this.defaultGid,
     this.defaultUid,
     this.mountPath,

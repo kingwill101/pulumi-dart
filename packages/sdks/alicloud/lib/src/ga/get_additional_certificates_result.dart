@@ -23,7 +23,7 @@ class GetAdditionalCertificatesResult {
   /// [ids] Required.
   /// [listenerId] The ID of the listener. Only HTTPS listeners support this parameter.
   /// [outputFile] Optional.
-  GetAdditionalCertificatesResult({
+  const GetAdditionalCertificatesResult({
     required this.acceleratorId,
     required this.certificates,
     required this.id,

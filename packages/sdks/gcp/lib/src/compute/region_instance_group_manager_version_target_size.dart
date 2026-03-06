@@ -13,7 +13,7 @@ class RegionInstanceGroupManagerVersionTargetSize {
   /// Creates a new [RegionInstanceGroupManagerVersionTargetSize].
   /// [fixed] , The number of instances which are managed for this version. Conflicts with `percent`.
   /// [percent] , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-  RegionInstanceGroupManagerVersionTargetSize({
+  const RegionInstanceGroupManagerVersionTargetSize({
     this.fixed,
     this.percent,
   });

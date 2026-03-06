@@ -24,7 +24,7 @@ class GetAnalyticsItemArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
   /// [scopePath] Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
-  GetAnalyticsItemArgs({
+  const GetAnalyticsItemArgs({
     this.id,
     this.name,
     required this.resourceGroupName,

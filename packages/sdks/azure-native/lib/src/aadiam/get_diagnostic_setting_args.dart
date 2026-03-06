@@ -12,7 +12,7 @@ class GetDiagnosticSettingArgs {
 
   /// Creates a new [GetDiagnosticSettingArgs].
   /// [name] The name of the diagnostic setting.
-  GetDiagnosticSettingArgs({
+  const GetDiagnosticSettingArgs({
     required this.name,
   });
 

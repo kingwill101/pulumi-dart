@@ -50,7 +50,7 @@ class GetParametersParameter {
   /// [updatedBy] The user who updated the common parameter.
   /// [updatedDate] The time when the common parameter was updated.
   /// [value] (Available since v1.231.0) The value of the common parameter. **Note:** `value` takes effect only if `enable_details` is set to `true`.
-  GetParametersParameter({
+  const GetParametersParameter({
     required this.constraints,
     required this.createTime,
     required this.createdBy,

@@ -36,7 +36,7 @@ class DataDriftMonitoringSignalResponse {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [referenceData] [Required] The data to calculate drift against.
   /// [signalType] Expected value is 'DataDrift'.
-  DataDriftMonitoringSignalResponse({
+  const DataDriftMonitoringSignalResponse({
     this.featureDataTypeOverride,
     this.featureImportanceSettings,
     this.features,

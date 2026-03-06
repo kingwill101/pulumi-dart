@@ -18,7 +18,7 @@ class LambdaFunctionAssociationArgs {
   /// [functionArn] Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
   /// [instanceId] The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LambdaFunctionAssociationArgs({
+  const LambdaFunctionAssociationArgs({
     required this.functionArn,
     required this.instanceId,
     this.region,

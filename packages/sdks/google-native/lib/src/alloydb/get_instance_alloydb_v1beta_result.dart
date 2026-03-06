@@ -81,7 +81,7 @@ class GetInstanceAlloydbV1betaResult {
   /// [updatePolicy] Update policy that will be applied during instance update. This field is not persisted when you update the instance. To use a non-default update policy, you must specify explicitly specify the value in each update request.
   /// [updateTime] Update time stamp
   /// [writableNode] This is set for the read-write VM of the PRIMARY instance only.
-  GetInstanceAlloydbV1betaResult({
+  const GetInstanceAlloydbV1betaResult({
     required this.annotations,
     required this.availabilityType,
     required this.clientConnectionConfig,

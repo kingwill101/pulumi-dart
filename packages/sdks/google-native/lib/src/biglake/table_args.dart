@@ -31,7 +31,7 @@ class TableArgs {
   /// [project] Optional.
   /// [tableId] Required. The ID to use for the table, which will become the final component of the table's resource name.
   /// [type] The table type.
-  TableArgs({
+  const TableArgs({
     required this.catalogId,
     required this.databaseId,
     this.etag,

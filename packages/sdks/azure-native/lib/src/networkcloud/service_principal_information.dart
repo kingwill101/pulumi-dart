@@ -17,7 +17,7 @@ class ServicePrincipalInformation {
   /// [password] The password of the service principal.
   /// [principalId] The principal ID, also known as the object ID, of the service principal.
   /// [tenantId] The tenant ID, also known as the directory ID, of the tenant in which the service principal is created.
-  ServicePrincipalInformation({
+  const ServicePrincipalInformation({
     required this.applicationId,
     required this.password,
     required this.principalId,

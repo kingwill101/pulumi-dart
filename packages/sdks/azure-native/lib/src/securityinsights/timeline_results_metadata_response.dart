@@ -17,7 +17,7 @@ class TimelineResultsMetadataResponse {
   /// [aggregations] timeline aggregation per kind
   /// [errors] information about the failure queries
   /// [totalCount] the total items found for the timeline request
-  TimelineResultsMetadataResponse({
+  const TimelineResultsMetadataResponse({
     required this.aggregations,
     this.errors,
     required this.totalCount,

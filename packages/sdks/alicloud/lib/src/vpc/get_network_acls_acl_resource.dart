@@ -14,7 +14,7 @@ class GetNetworkAclsAclResource {
   /// [resourceId] The ID of the associated resource.
   /// [resourceType] The type of the associated resource.
   /// [status] The state of the associated resource.
-  GetNetworkAclsAclResource({
+  const GetNetworkAclsAclResource({
     required this.resourceId,
     required this.resourceType,
     required this.status,

@@ -14,7 +14,7 @@ class AkriConnectorsContainerRegistry {
   /// Creates a new [AkriConnectorsContainerRegistry].
   /// [containerRegistrySettings] The registry settings for the container registry.
   /// [registrySettingsType] AkriConnectorsRegistrySettings properties.
-  AkriConnectorsContainerRegistry({
+  const AkriConnectorsContainerRegistry({
     required this.containerRegistrySettings,
     required this.registrySettingsType,
   });

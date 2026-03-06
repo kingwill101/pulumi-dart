@@ -60,7 +60,7 @@ class ProtocolMountTargetArgs {
   /// [vpcId] The VPC ID of the protocol service mount point.
   /// [vswitchId] The vSwitch ID of the protocol service mount target.
   /// [vswitchIds] The vSwitch IDs of the protocol service mount target.
-  ProtocolMountTargetArgs({
+  const ProtocolMountTargetArgs({
     this.accessGroupName,
     this.description,
     this.dryRun,

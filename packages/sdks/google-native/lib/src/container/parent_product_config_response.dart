@@ -12,7 +12,7 @@ class ParentProductConfigResponse {
   /// Creates a new [ParentProductConfigResponse].
   /// [labels] Labels contain the configuration of the parent product.
   /// [productName] Name of the parent product associated with the cluster.
-  ParentProductConfigResponse({
+  const ParentProductConfigResponse({
     required this.labels,
     required this.productName,
   });

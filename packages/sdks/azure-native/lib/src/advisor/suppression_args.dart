@@ -24,7 +24,7 @@ class SuppressionArgs {
   /// [resourceUri] The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   /// [suppressionId] The GUID of the suppression.
   /// [ttl] The duration for which the suppression is valid.
-  SuppressionArgs({
+  const SuppressionArgs({
     this.name,
     required this.recommendationId,
     required this.resourceUri,

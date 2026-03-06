@@ -81,7 +81,7 @@ class ClusterArgs {
   /// [releaseChannel] The release channel a cluster is subscribed to.
   /// [systemAddonsConfig] Config that customers are allowed to define for GDCE system add-ons.
   /// [targetVersion] The target cluster version. For example: "1.5.0".
-  ClusterArgs({
+  const ClusterArgs({
     required this.authorization,
     this.controlPlane,
     this.controlPlaneEncryption,

@@ -16,7 +16,7 @@ class VirtualMachineResponse {
   /// [instanceId] The unique identifier of the Managed Compute Engine instance.
   /// [instanceName] The user-friendly name of the Managed Compute Engine instance.
   /// [virtualMachineConfig] Virtual Machine configuration settings.
-  VirtualMachineResponse({
+  const VirtualMachineResponse({
     required this.instanceId,
     required this.instanceName,
     required this.virtualMachineConfig,

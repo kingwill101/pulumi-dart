@@ -11,7 +11,7 @@ class AlertConfigurationLabel {
   /// Creates a new [AlertConfigurationLabel].
   /// [key] Field name.
   /// [value] Field value.
-  AlertConfigurationLabel({
+  const AlertConfigurationLabel({
     this.key,
     this.value,
   });

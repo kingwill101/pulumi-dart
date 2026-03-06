@@ -12,7 +12,7 @@ class VirtualMachineNodes {
   /// Creates a new [VirtualMachineNodes].
   /// [count] Number of nodes.
   /// [size] The VM size of the agents used to host this group of nodes.
-  VirtualMachineNodes({
+  const VirtualMachineNodes({
     this.count,
     this.size,
   });

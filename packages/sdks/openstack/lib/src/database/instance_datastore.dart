@@ -13,7 +13,7 @@ class InstanceDatastore {
   /// Creates a new [InstanceDatastore].
   /// [type] Database engine type to be used in new instance. Changing this
   /// [version] Version of database engine type to be used in new instance.
-  InstanceDatastore({
+  const InstanceDatastore({
     required this.type,
     required this.version,
   });

@@ -12,7 +12,7 @@ class PodDNSConfigOptionPatch {
   /// Creates a new [PodDNSConfigOptionPatch].
   /// [name] Name is this DNS resolver option's name. Required.
   /// [value] Value is this DNS resolver option's value.
-  PodDNSConfigOptionPatch({
+  const PodDNSConfigOptionPatch({
     this.name,
     this.value,
   });

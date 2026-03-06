@@ -8,7 +8,7 @@ class StatefulPolicyComputeBeta {
 
   /// Creates a new [StatefulPolicyComputeBeta].
   /// [preservedState] Optional.
-  StatefulPolicyComputeBeta({
+  const StatefulPolicyComputeBeta({
     this.preservedState,
   });
 

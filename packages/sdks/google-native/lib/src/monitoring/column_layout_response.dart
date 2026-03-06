@@ -10,7 +10,7 @@ class ColumnLayoutResponse {
 
   /// Creates a new [ColumnLayoutResponse].
   /// [columns] The columns of content to display.
-  ColumnLayoutResponse({
+  const ColumnLayoutResponse({
     required this.columns,
   });
 

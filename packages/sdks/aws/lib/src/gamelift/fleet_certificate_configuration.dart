@@ -8,7 +8,7 @@ class FleetCertificateConfiguration {
 
   /// Creates a new [FleetCertificateConfiguration].
   /// [certificateType] Indicates whether a TLS/SSL certificate is generated for a fleet. Valid values are `DISABLED` and `GENERATED`. Default value is `DISABLED`.
-  FleetCertificateConfiguration({
+  const FleetCertificateConfiguration({
     this.certificateType,
   });
 

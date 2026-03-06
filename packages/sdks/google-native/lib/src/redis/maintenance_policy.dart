@@ -13,7 +13,7 @@ class MaintenancePolicy {
   /// Creates a new [MaintenancePolicy].
   /// [description] Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
   /// [weeklyMaintenanceWindow] Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
-  MaintenancePolicy({
+  const MaintenancePolicy({
     this.description,
     this.weeklyMaintenanceWindow,
   });

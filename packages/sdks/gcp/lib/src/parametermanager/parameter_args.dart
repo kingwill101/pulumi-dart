@@ -38,7 +38,7 @@ class ParameterArgs {
   /// [labels] The labels assigned to this Parameter.
   /// [parameterId] This must be unique within the project.
   /// [project] The ID of the project in which the resource belongs.
-  ParameterArgs({
+  const ParameterArgs({
     this.format,
     this.kmsKey,
     this.labels,

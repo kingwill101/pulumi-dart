@@ -13,7 +13,7 @@ class GetClustersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] Set of EKS clusters names
   /// [region] Required.
-  GetClustersResult({
+  const GetClustersResult({
     required this.id,
     required this.names,
     required this.region,

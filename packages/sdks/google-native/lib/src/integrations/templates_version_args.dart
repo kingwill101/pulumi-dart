@@ -53,7 +53,7 @@ class TemplatesVersionArgs {
   /// [templateParameters] Optional. Parameters that are expected to be passed to the IntegrationTemplateVersion when an event is triggered. This consists of all the parameters that are expected in the IntegrationTemplateVersion execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
   /// [triggerConfigs] Optional. Trigger configurations.
   /// [userLabel] Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-  TemplatesVersionArgs({
+  const TemplatesVersionArgs({
     this.databasePersistencePolicy,
     this.description,
     this.errorCatcherConfigs,

@@ -21,7 +21,7 @@ class InstanceNetworkConfigPrivateServiceConnectConfig {
   /// [effectiveUnreachableCidrBlock] (Output)
   /// [networkAttachment] Optional. The reference to the network attachment used to establish private connectivity.
   /// [unreachableCidrBlock] Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
-  InstanceNetworkConfigPrivateServiceConnectConfig({
+  const InstanceNetworkConfigPrivateServiceConnectConfig({
     this.effectiveUnreachableCidrBlock,
     this.networkAttachment,
     this.unreachableCidrBlock,

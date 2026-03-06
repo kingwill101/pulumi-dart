@@ -51,7 +51,7 @@ class DataCollectionRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [streamDeclarations] Declaration of custom streams used in this rule.
   /// [tags] Resource tags.
-  DataCollectionRuleArgs({
+  const DataCollectionRuleArgs({
     this.dataCollectionEndpointId,
     this.dataCollectionRuleName,
     this.dataFlows,

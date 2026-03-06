@@ -14,7 +14,7 @@ class ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector {
   /// Creates a new [ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector].
   /// [method] Value for method should be a valid method name for the corresponding
   /// [permission] Value for permission should be a valid Cloud IAM permission for the
-  ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector({
+  const ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector({
     this.method,
     this.permission,
   });

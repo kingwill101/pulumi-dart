@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecListenerTlCertificateSd {
 
   /// Creates a new [GetVirtualGatewaySpecListenerTlCertificateSd].
   /// [secretName] Required.
-  GetVirtualGatewaySpecListenerTlCertificateSd({
+  const GetVirtualGatewaySpecListenerTlCertificateSd({
     required this.secretName,
   });
 

@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
   /// [bucketValues] Sample of equivalence classes in this bucket. The total number of classes returned per bucket is capped at 20.
   /// [equivalenceClassSizeLowerBound] Lower bound on the size of the equivalence classes in this bucket.
   /// [equivalenceClassSizeUpperBound] Upper bound on the size of the equivalence classes in this bucket.
-  GooglePrivacyDlpV2KAnonymityHistogramBucketResponse({
+  const GooglePrivacyDlpV2KAnonymityHistogramBucketResponse({
     required this.bucketSize,
     required this.bucketValueCount,
     required this.bucketValues,

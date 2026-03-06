@@ -8,7 +8,7 @@ class VolumeCreateContent {
 
   /// Creates a new [VolumeCreateContent].
   /// [url] URL to download content from
-  VolumeCreateContent({
+  const VolumeCreateContent({
     required this.url,
   });
 

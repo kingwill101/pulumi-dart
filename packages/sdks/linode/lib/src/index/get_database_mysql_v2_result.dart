@@ -174,7 +174,7 @@ class GetDatabaseMysqlV2Result {
   /// [updated] When this Managed Database was last updated.
   /// [updates] Required.
   /// [version] The Managed Database engine version. (e.g. `13.2`)
-  GetDatabaseMysqlV2Result({
+  const GetDatabaseMysqlV2Result({
     required this.allowLists,
     required this.caCert,
     required this.clusterSize,

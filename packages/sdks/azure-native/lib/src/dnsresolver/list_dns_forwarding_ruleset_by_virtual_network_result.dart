@@ -13,7 +13,7 @@ class ListDnsForwardingRulesetByVirtualNetworkResult {
   /// Creates a new [ListDnsForwardingRulesetByVirtualNetworkResult].
   /// [nextLink] The continuation token for the next page of results.
   /// [value] Enumeration of the Virtual Network DNS Forwarding Ruleset.
-  ListDnsForwardingRulesetByVirtualNetworkResult({
+  const ListDnsForwardingRulesetByVirtualNetworkResult({
     required this.nextLink,
     this.value,
   });

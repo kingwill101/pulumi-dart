@@ -8,7 +8,7 @@ class MeshSpecServiceDiscovery {
 
   /// Creates a new [MeshSpecServiceDiscovery].
   /// [ipPreference] The IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
-  MeshSpecServiceDiscovery({
+  const MeshSpecServiceDiscovery({
     this.ipPreference,
   });
 

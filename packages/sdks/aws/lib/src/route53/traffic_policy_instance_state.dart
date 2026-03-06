@@ -24,7 +24,7 @@ class TrafficPolicyInstanceState {
   /// [trafficPolicyId] ID of the traffic policy that you want to use to create resource record sets in the specified hosted zone.
   /// [trafficPolicyVersion] Version of the traffic policy
   /// [ttl] TTL that you want Amazon Route 53 to assign to all the resource record sets that it creates in the specified hosted zone.
-  TrafficPolicyInstanceState({
+  const TrafficPolicyInstanceState({
     this.arn,
     this.hostedZoneId,
     this.name,

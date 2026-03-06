@@ -233,7 +233,7 @@ class LinuxVirtualMachineScaleSetArgs {
   /// [vtpmEnabled] Specifies whether vTPM should be enabled on the virtual machine. Changing this forces a new resource to be created.
   /// [zoneBalance] Should the Virtual Machines in this Scale Set be strictly evenly distributed across Availability Zones? Defaults to `false`. Changing this forces a new resource to be created.
   /// [zones] Specifies a list of Availability Zones in which this Linux Virtual Machine Scale Set should be located.
-  LinuxVirtualMachineScaleSetArgs({
+  const LinuxVirtualMachineScaleSetArgs({
     this.additionalCapabilities,
     this.adminPassword,
     this.adminSshKeys,

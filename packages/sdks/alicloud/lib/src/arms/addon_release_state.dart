@@ -27,7 +27,7 @@ class AddonReleaseState {
   /// [createTime] Creation time.
   /// [environmentId] Environment id.
   /// [values] Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
-  AddonReleaseState({
+  const AddonReleaseState({
     this.addonName,
     this.addonReleaseName,
     this.addonVersion,

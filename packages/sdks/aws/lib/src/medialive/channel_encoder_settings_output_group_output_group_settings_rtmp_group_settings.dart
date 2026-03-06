@@ -26,7 +26,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings {
   /// [captionData] Controls the types of data that passes to onCaptionInfo outputs.
   /// [inputLossAction] Controls the behavior of the RTMP group if input becomes unavailable.
   /// [restartDelay] Number of seconds to wait until a restart is initiated.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings({
     this.adMarkers,
     this.authenticationScheme,
     this.cacheFullBehavior,

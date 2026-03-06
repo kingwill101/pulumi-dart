@@ -9,7 +9,7 @@ class X12MessageFilter {
 
   /// Creates a new [X12MessageFilter].
   /// [messageFilterType] The message filter type.
-  X12MessageFilter({
+  const X12MessageFilter({
     required this.messageFilterType,
   });
 

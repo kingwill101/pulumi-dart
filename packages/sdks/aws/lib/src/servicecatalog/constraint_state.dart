@@ -34,7 +34,7 @@ class ConstraintState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Optional.
   /// [type] Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
-  ConstraintState({
+  const ConstraintState({
     this.acceptLanguage,
     this.description,
     this.owner,

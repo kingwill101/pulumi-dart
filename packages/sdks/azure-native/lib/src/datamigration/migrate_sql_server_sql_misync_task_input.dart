@@ -32,7 +32,7 @@ class MigrateSqlServerSqlMISyncTaskInput {
   /// [sourceConnectionInfo] Connection information for source SQL Server
   /// [storageResourceId] Fully qualified resourceId of storage
   /// [targetConnectionInfo] Connection information for Azure SQL Database Managed Instance
-  MigrateSqlServerSqlMISyncTaskInput({
+  const MigrateSqlServerSqlMISyncTaskInput({
     required this.azureApp,
     this.backupFileShare,
     this.numberOfParallelDatabaseMigrations,

@@ -33,7 +33,7 @@ class OracleColumnResponse {
   /// [precision] Column precision.
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] Column scale.
-  OracleColumnResponse({
+  const OracleColumnResponse({
     required this.column,
     required this.dataType,
     required this.encoding,

@@ -21,7 +21,7 @@ class GetWebAclArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the AWS resource associated with the Web ACL. This can be an ARN of an Application Load Balancer, Amazon API Gateway REST API, AWS AppSync GraphQL API, Amazon Cognito user pool, AWS App Runner service, AWS Verified Access instance, or AWS Amplify application. Exactly one of `name` or `resource_arn` must be specified.
   /// [scope] Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-  GetWebAclArgs({
+  const GetWebAclArgs({
     this.name,
     this.region,
     this.resourceArn,

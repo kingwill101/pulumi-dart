@@ -12,7 +12,7 @@ class RaiMonitorConfig {
   /// Creates a new [RaiMonitorConfig].
   /// [adxStorageResourceId] The storage resource Id.
   /// [identityClientId] The identity client Id to access the storage.
-  RaiMonitorConfig({
+  const RaiMonitorConfig({
     this.adxStorageResourceId,
     this.identityClientId,
   });

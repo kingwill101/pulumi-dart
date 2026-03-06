@@ -46,7 +46,7 @@ class ArtifactArgs {
   /// [schemaVersion] The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   /// [state] The state of this Artifact. This is a property of the Artifact, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines), and the system does not prescribe or check the validity of state transitions.
   /// [uri] The uniform resource identifier of the artifact file. May be empty if there is no actual artifact file.
-  ArtifactArgs({
+  const ArtifactArgs({
     this.artifactId,
     this.description,
     this.displayName,

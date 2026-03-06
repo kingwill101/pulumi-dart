@@ -34,7 +34,7 @@ class DropletAutoscaleState {
   /// [name] The name of the Droplet Autoscale pool.
   /// [status] Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
   /// [updatedAt] Updated at timestamp for the Droplet Autoscale pool.
-  DropletAutoscaleState({
+  const DropletAutoscaleState({
     this.config,
     this.createdAt,
     this.currentUtilizations,

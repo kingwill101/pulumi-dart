@@ -17,7 +17,7 @@ class QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse {
   /// [help] Required.
   /// [localizedMessage] Required.
   /// [quotaInfo] Required.
-  QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse({
+  const QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse({
     required this.errorInfo,
     required this.help,
     required this.localizedMessage,

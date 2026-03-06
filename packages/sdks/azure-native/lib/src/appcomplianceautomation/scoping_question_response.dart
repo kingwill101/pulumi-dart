@@ -24,7 +24,7 @@ class ScopingQuestionResponse {
   /// [rules] The rule of the question.
   /// [showSubQuestionsValue] The answer value to show the sub questions.
   /// [superiorQuestionId] Superior question id.
-  ScopingQuestionResponse({
+  const ScopingQuestionResponse({
     required this.inputType,
     required this.optionIds,
     required this.questionId,

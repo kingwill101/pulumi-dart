@@ -34,7 +34,7 @@ class StreamInputIotHubState {
   /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Changing this forces a new resource to be created.
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  StreamInputIotHubState({
+  const StreamInputIotHubState({
     this.endpoint,
     this.eventhubConsumerGroupName,
     this.iothubNamespace,

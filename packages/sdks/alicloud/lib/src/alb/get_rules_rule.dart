@@ -34,7 +34,7 @@ class GetRulesRule {
   /// [ruleId] The ID of the Rule.
   /// [ruleName] The name of the forwarding rule.
   /// [status] The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
-  GetRulesRule({
+  const GetRulesRule({
     required this.id,
     required this.listenerId,
     required this.loadBalancerId,

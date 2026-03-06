@@ -19,7 +19,7 @@ class GetCipherTextResult {
   /// [keyId] Required.
   /// [plaintext] Required.
   /// [region] Required.
-  GetCipherTextResult({
+  const GetCipherTextResult({
     required this.ciphertextBlob,
     this.context,
     required this.id,

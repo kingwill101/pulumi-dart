@@ -11,7 +11,7 @@ class DatasetCreateRequestPath {
   /// Creates a new [DatasetCreateRequestPath].
   /// [dataPath] Optional.
   /// [httpUrl] The Http URL.
-  DatasetCreateRequestPath({
+  const DatasetCreateRequestPath({
     this.dataPath,
     this.httpUrl,
   });

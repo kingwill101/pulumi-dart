@@ -26,7 +26,7 @@ class GetApplicationsApplication {
   /// [clusterId] The ID of the cluster that you want to create the application.
   /// [clusterType] The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
   /// [regionId] The ID of the namespace the application belongs to.
-  GetApplicationsApplication({
+  const GetApplicationsApplication({
     required this.appId,
     required this.appName,
     required this.applicationType,

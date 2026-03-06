@@ -15,7 +15,7 @@ class ListDomainRecommendationsArgs {
   /// Creates a new [ListDomainRecommendationsArgs].
   /// [keywords] Keywords to be used for generating domain recommendations.
   /// [maxDomainRecommendations] Maximum number of recommendations.
-  ListDomainRecommendationsArgs({
+  const ListDomainRecommendationsArgs({
     this.keywords,
     this.maxDomainRecommendations,
   });

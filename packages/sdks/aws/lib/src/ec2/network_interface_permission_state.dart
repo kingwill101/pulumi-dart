@@ -24,7 +24,7 @@ class NetworkInterfacePermissionState {
   /// [permission] The type of permission to grant. Valid values are `INSTANCE-ATTACH` or `EIP-ASSOCIATE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  NetworkInterfacePermissionState({
+  const NetworkInterfacePermissionState({
     this.awsAccountId,
     this.networkInterfaceId,
     this.networkInterfacePermissionId,

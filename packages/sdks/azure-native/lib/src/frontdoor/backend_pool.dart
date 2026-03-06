@@ -23,7 +23,7 @@ class BackendPool {
   /// [id] Resource ID.
   /// [loadBalancingSettings] Load balancing settings for a backend pool
   /// [name] Resource name.
-  BackendPool({
+  const BackendPool({
     this.backends,
     this.healthProbeSettings,
     this.id,

@@ -21,7 +21,7 @@ class GetSynapseWorkspaceSqlPoolTableDataSetArgs {
   /// [dataSetName] The name of the dataSet.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share.
-  GetSynapseWorkspaceSqlPoolTableDataSetArgs({
+  const GetSynapseWorkspaceSqlPoolTableDataSetArgs({
     required this.accountName,
     required this.dataSetName,
     required this.resourceGroupName,

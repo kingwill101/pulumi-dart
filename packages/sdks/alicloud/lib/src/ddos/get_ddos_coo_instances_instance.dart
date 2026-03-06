@@ -53,7 +53,7 @@ class GetDdosCooInstancesInstance {
   /// [remark] The remark of the instance.
   /// [serviceBandwidth] The instance's business bandwidth.
   /// [status] The status of the instance.
-  GetDdosCooInstancesInstance({
+  const GetDdosCooInstancesInstance({
     required this.bandwidth,
     required this.baseBandwidth,
     required this.createTime,

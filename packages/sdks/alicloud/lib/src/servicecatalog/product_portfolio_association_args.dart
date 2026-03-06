@@ -15,7 +15,7 @@ class ProductPortfolioAssociationArgs {
   /// Creates a new [ProductPortfolioAssociationArgs].
   /// [portfolioId] Product Portfolio ID
   /// [productId] Product ID
-  ProductPortfolioAssociationArgs({
+  const ProductPortfolioAssociationArgs({
     required this.portfolioId,
     required this.productId,
   });

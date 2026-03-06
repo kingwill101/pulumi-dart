@@ -46,7 +46,7 @@ class TrafficMirrorFilterRuleArgs {
   /// [sourcePortRange] Source port range. Supported only when the protocol is set to TCP(6) or UDP(17). See Traffic mirror port range documented below
   /// [trafficDirection] Direction of traffic to be captured. Valid values are `ingress` and `egress`
   /// [trafficMirrorFilterId] ID of the traffic mirror filter to which this rule should be added
-  TrafficMirrorFilterRuleArgs({
+  const TrafficMirrorFilterRuleArgs({
     this.description,
     required this.destinationCidrBlock,
     this.destinationPortRange,

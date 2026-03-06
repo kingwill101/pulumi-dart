@@ -18,7 +18,7 @@ class GetFrontdoorSecretArgs {
   /// [name] Specifies the name of the Front Door Secret.
   /// [profileName] The name of the Front Door Profile within which the Front Door Secret exists.
   /// [resourceGroupName] The name of the Resource Group where the Front Door Profile exists.
-  GetFrontdoorSecretArgs({
+  const GetFrontdoorSecretArgs({
     required this.name,
     required this.profileName,
     required this.resourceGroupName,

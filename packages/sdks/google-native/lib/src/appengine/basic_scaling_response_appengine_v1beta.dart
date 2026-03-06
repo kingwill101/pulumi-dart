@@ -12,7 +12,7 @@ class BasicScalingResponseAppengineV1beta {
   /// Creates a new [BasicScalingResponseAppengineV1beta].
   /// [idleTimeout] Duration of time after the last request that an instance must wait before the instance is shut down.
   /// [maxInstances] Maximum number of instances to create for this version.
-  BasicScalingResponseAppengineV1beta({
+  const BasicScalingResponseAppengineV1beta({
     required this.idleTimeout,
     required this.maxInstances,
   });

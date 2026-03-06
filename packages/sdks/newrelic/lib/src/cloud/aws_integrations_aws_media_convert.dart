@@ -11,7 +11,7 @@ class AwsIntegrationsAwsMediaConvert {
   /// Creates a new [AwsIntegrationsAwsMediaConvert].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsMediaConvert({
+  const AwsIntegrationsAwsMediaConvert({
     this.awsRegions,
     this.metricsPollingInterval,
   });

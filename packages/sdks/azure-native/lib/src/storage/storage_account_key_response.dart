@@ -18,7 +18,7 @@ class StorageAccountKeyResponse {
   /// [keyName] Name of the key.
   /// [permissions] Permissions for the key -- read-only or full permissions.
   /// [value] Base 64-encoded value of the key.
-  StorageAccountKeyResponse({
+  const StorageAccountKeyResponse({
     required this.creationTime,
     required this.keyName,
     required this.permissions,

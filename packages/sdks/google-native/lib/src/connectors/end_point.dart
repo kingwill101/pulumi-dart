@@ -13,7 +13,7 @@ class EndPoint {
   /// Creates a new [EndPoint].
   /// [endpointUri] The URI of the Endpoint.
   /// [headers] List of Header to be added to the Endpoint.
-  EndPoint({
+  const EndPoint({
     this.endpointUri,
     this.headers,
   });

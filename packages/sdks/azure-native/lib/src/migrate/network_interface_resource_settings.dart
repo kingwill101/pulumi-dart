@@ -26,7 +26,7 @@ class NetworkInterfaceResourceSettings {
   /// [tags] Gets or sets the Resource tags.
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
-  NetworkInterfaceResourceSettings({
+  const NetworkInterfaceResourceSettings({
     this.enableAcceleratedNetworking,
     this.ipConfigurations,
     required this.resourceType,

@@ -10,7 +10,7 @@ class SecretDeploymentResourceReferenceResponse {
 
   /// Creates a new [SecretDeploymentResourceReferenceResponse].
   /// [idType] The resource reference arm id type.
-  SecretDeploymentResourceReferenceResponse({
+  const SecretDeploymentResourceReferenceResponse({
     required this.idType,
   });
 

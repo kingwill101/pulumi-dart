@@ -15,7 +15,7 @@ class ResourceFieldSelectorPatch {
   /// [containerName] Container name: required for volumes, optional for env vars
   /// [divisor] Specifies the output format of the exposed resources, defaults to "1"
   /// [resource] Required: resource to select
-  ResourceFieldSelectorPatch({
+  const ResourceFieldSelectorPatch({
     this.containerName,
     this.divisor,
     this.resource,

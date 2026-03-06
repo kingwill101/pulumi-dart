@@ -24,7 +24,7 @@ class CredentialState {
   /// [password] The password associated with this Automation Credential.
   /// [resourceGroupName] The name of the resource group in which the Credential is created. Changing this forces a new resource to be created.
   /// [username] The username associated with this Automation Credential.
-  CredentialState({
+  const CredentialState({
     this.automationAccountName,
     this.description,
     this.name,

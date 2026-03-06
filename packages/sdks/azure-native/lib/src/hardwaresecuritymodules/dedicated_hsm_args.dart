@@ -38,7 +38,7 @@ class DedicatedHsmArgs {
   /// [stampId] This field will be used when RP does not support Availability zones.
   /// [tags] Resource tags.
   /// [zones] The Dedicated Hsm zones.
-  DedicatedHsmArgs({
+  const DedicatedHsmArgs({
     this.location,
     this.managementNetworkProfile,
     this.name,

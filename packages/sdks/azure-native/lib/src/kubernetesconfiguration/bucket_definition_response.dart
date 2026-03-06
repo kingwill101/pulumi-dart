@@ -27,7 +27,7 @@ class BucketDefinitionResponse {
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the cluster bucket source with the remote.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the cluster bucket source with the remote.
   /// [url] The URL to sync for the flux configuration S3 bucket.
-  BucketDefinitionResponse({
+  const BucketDefinitionResponse({
     this.accessKey,
     this.bucketName,
     this.insecure,

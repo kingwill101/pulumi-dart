@@ -36,7 +36,7 @@ class GetCloudExadataInfrastructureResult {
   /// [project] Optional.
   /// [properties] Required.
   /// [pulumiLabels] Required.
-  GetCloudExadataInfrastructureResult({
+  const GetCloudExadataInfrastructureResult({
     required this.cloudExadataInfrastructureId,
     required this.createTime,
     required this.deletionProtection,

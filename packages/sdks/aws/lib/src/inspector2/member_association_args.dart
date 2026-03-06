@@ -15,7 +15,7 @@ class MemberAssociationArgs {
   /// Creates a new [MemberAssociationArgs].
   /// [accountId] ID of the account to associate
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MemberAssociationArgs({
+  const MemberAssociationArgs({
     required this.accountId,
     this.region,
   });

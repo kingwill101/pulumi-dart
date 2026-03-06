@@ -21,7 +21,7 @@ class GetEnvironmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of Azure API Center service.
   /// [workspaceName] The name of the workspace.
-  GetEnvironmentArgs({
+  const GetEnvironmentArgs({
     required this.environmentName,
     required this.resourceGroupName,
     required this.serviceName,

@@ -28,7 +28,7 @@ class SaasSubscriptionLevelArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [resourceName] The name of the resource.
   /// [tags] the resource tags.
-  SaasSubscriptionLevelArgs({
+  const SaasSubscriptionLevelArgs({
     this.location,
     this.name,
     this.properties,

@@ -25,7 +25,7 @@ class TroubleshootingStatusResponse {
   /// [rootCause] Root cause of the issue
   /// [startTimeUtc] Start time in UTC timezone.
   /// [troubleshootingScenario] SQL VM troubleshooting scenario.
-  TroubleshootingStatusResponse({
+  const TroubleshootingStatusResponse({
     required this.endTimeUtc,
     required this.lastTriggerTimeUtc,
     required this.properties,

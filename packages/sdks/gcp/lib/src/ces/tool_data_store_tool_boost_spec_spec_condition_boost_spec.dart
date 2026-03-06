@@ -29,7 +29,7 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   /// [boost] Strength of the boost, which should be in [-1, 1]. Negative boost means
   /// [boostControlSpec] Specification for custom ranking based on customer specified attribute
   /// [condition] An expression which specifies a boost condition. The syntax is the same
-  ToolDataStoreToolBoostSpecSpecConditionBoostSpec({
+  const ToolDataStoreToolBoostSpecSpecConditionBoostSpec({
     this.boost,
     this.boostControlSpec,
     required this.condition,

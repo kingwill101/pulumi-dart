@@ -28,7 +28,7 @@ class InboundEndpointArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  InboundEndpointArgs({
+  const InboundEndpointArgs({
     required this.dnsResolverName,
     this.inboundEndpointName,
     required this.ipConfigurations,

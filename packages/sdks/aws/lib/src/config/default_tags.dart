@@ -8,7 +8,7 @@ class DefaultTags {
 
   /// Creates a new [DefaultTags].
   /// [tags] Resource tags to default across all resources. Can also be configured with environment variables like `TF_AWS_DEFAULT_TAGS_&lt;tag_name&gt;`.
-  DefaultTags({
+  const DefaultTags({
     this.tags,
   });
 

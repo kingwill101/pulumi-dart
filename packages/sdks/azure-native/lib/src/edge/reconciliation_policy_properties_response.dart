@@ -12,7 +12,7 @@ class ReconciliationPolicyPropertiesResponse {
   /// Creates a new [ReconciliationPolicyPropertiesResponse].
   /// [interval] Policy interval
   /// [state] The state of the ReconciliationPolicy
-  ReconciliationPolicyPropertiesResponse({
+  const ReconciliationPolicyPropertiesResponse({
     required this.interval,
     required this.state,
   });

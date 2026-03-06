@@ -49,7 +49,7 @@ class GetDistributionResult {
   /// [status] Current status of the distribution. `Deployed` if the
   /// [tags] Required.
   /// [webAclId] AWS WAF web ACL associated with this distribution.
-  GetDistributionResult({
+  const GetDistributionResult({
     required this.aliases,
     required this.anycastIpListId,
     required this.arn,

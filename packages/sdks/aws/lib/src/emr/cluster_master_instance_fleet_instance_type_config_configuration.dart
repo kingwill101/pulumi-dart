@@ -11,7 +11,7 @@ class ClusterMasterInstanceFleetInstanceTypeConfigConfiguration {
   /// Creates a new [ClusterMasterInstanceFleetInstanceTypeConfigConfiguration].
   /// [classification] Classification within a configuration.
   /// [properties] Map of properties specified within a configuration classification.
-  ClusterMasterInstanceFleetInstanceTypeConfigConfiguration({
+  const ClusterMasterInstanceFleetInstanceTypeConfigConfiguration({
     this.classification,
     this.properties,
   });

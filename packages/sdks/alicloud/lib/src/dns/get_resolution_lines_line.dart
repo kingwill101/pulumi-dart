@@ -13,7 +13,7 @@ class GetResolutionLinesLine {
   /// [lineCode] Required.
   /// [lineDisplayName] Line display name.
   /// [lineName] Line name.
-  GetResolutionLinesLine({
+  const GetResolutionLinesLine({
     required this.lineCode,
     required this.lineDisplayName,
     required this.lineName,

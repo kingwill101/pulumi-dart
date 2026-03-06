@@ -26,7 +26,7 @@ class IngressRule {
   /// [domain] Application domain name.
   /// [path] URL path.
   /// [rewritePath] The rewrite path.
-  IngressRule({
+  const IngressRule({
     required this.appId,
     required this.appName,
     this.backendProtocol,

@@ -11,7 +11,7 @@ class GetCustomDomainsDomainCertConfig {
   /// Creates a new [GetCustomDomainsDomainCertConfig].
   /// [certName] The name of the certificate.
   /// [certificate] Certificate data of the HTTPS certificates, follow the 'pem'.
-  GetCustomDomainsDomainCertConfig({
+  const GetCustomDomainsDomainCertConfig({
     required this.certName,
     required this.certificate,
   });

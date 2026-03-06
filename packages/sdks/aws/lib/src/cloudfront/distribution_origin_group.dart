@@ -15,7 +15,7 @@ class DistributionOriginGroup {
   /// [failoverCriteria] The failover criteria for when to failover to the secondary origin.
   /// [members] Ordered member configuration blocks assigned to the origin group, where the first member is the primary origin. You must specify two members.
   /// [originId] Required.
-  DistributionOriginGroup({
+  const DistributionOriginGroup({
     required this.failoverCriteria,
     required this.members,
     required this.originId,

@@ -8,7 +8,7 @@ class EnvironmentHighAvailabilityConfig {
 
   /// Creates a new [EnvironmentHighAvailabilityConfig].
   /// [desiredCapacity] Desired number of instances for the Environment.
-  EnvironmentHighAvailabilityConfig({
+  const EnvironmentHighAvailabilityConfig({
     required this.desiredCapacity,
   });
 

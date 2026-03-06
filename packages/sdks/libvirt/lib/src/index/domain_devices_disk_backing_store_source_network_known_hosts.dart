@@ -8,7 +8,7 @@ class DomainDevicesDiskBackingStoreSourceNetworkKnownHosts {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetworkKnownHosts].
   /// [path] Specifies the path to the file containing known hosts for the network storage.
-  DomainDevicesDiskBackingStoreSourceNetworkKnownHosts({
+  const DomainDevicesDiskBackingStoreSourceNetworkKnownHosts({
     required this.path,
   });
 

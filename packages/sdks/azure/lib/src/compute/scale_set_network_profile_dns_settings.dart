@@ -8,7 +8,7 @@ class ScaleSetNetworkProfileDnsSettings {
 
   /// Creates a new [ScaleSetNetworkProfileDnsSettings].
   /// [dnsServers] Specifies an array of DNS servers.
-  ScaleSetNetworkProfileDnsSettings({
+  const ScaleSetNetworkProfileDnsSettings({
     required this.dnsServers,
   });
 

@@ -16,7 +16,7 @@ class RouterMd5AuthenticationKeys {
   /// Creates a new [RouterMd5AuthenticationKeys].
   /// [key] Value of the key used for MD5 authentication.
   /// [name] Name of the resource. The name must be 1-63 characters long, and
-  RouterMd5AuthenticationKeys({
+  const RouterMd5AuthenticationKeys({
     required this.key,
     required this.name,
   });

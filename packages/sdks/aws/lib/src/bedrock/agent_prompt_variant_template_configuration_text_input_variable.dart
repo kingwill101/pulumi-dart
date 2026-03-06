@@ -8,7 +8,7 @@ class AgentPromptVariantTemplateConfigurationTextInputVariable {
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationTextInputVariable].
   /// [name] The name of the variable.
-  AgentPromptVariantTemplateConfigurationTextInputVariable({
+  const AgentPromptVariantTemplateConfigurationTextInputVariable({
     required this.name,
   });
 

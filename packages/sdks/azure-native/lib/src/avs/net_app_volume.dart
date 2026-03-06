@@ -9,7 +9,7 @@ class NetAppVolume {
 
   /// Creates a new [NetAppVolume].
   /// [id] Azure resource ID of the NetApp volume
-  NetAppVolume({
+  const NetAppVolume({
     required this.id,
   });
 

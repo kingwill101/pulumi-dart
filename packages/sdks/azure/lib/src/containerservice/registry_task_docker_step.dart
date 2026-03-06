@@ -32,7 +32,7 @@ class RegistryTaskDockerStep {
   /// [pushEnabled] Should the image built be pushed to the registry or not? Defaults to `true`.
   /// [secretArguments] Specifies a map of *secret* arguments to be used when executing this step.
   /// [target] The name of the target build stage for the docker build.
-  RegistryTaskDockerStep({
+  const RegistryTaskDockerStep({
     this.arguments,
     this.cacheEnabled,
     required this.contextAccessToken,

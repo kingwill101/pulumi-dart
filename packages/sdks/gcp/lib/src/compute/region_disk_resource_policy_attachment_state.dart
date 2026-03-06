@@ -20,7 +20,7 @@ class RegionDiskResourcePolicyAttachmentState {
   /// [name] The resource policy to be attached to the disk for scheduling snapshot
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region where the disk resides.
-  RegionDiskResourcePolicyAttachmentState({
+  const RegionDiskResourcePolicyAttachmentState({
     this.disk,
     this.name,
     this.project,

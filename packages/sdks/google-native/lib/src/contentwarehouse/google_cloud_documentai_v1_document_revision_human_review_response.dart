@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse].
   /// [state] Human review state. e.g. `requested`, `succeeded`, `rejected`.
   /// [stateMessage] A message providing more details about the current state of processing. For example, the rejection reason when the state is `rejected`.
-  GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse({
+  const GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse({
     required this.state,
     required this.stateMessage,
   });

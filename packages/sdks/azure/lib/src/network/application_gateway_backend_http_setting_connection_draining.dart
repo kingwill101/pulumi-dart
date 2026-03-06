@@ -11,7 +11,7 @@ class ApplicationGatewayBackendHttpSettingConnectionDraining {
   /// Creates a new [ApplicationGatewayBackendHttpSettingConnectionDraining].
   /// [drainTimeoutSec] The number of seconds connection draining is active. Acceptable values are from `1` second to `3600` seconds.
   /// [enabled] If connection draining is enabled or not.
-  ApplicationGatewayBackendHttpSettingConnectionDraining({
+  const ApplicationGatewayBackendHttpSettingConnectionDraining({
     required this.drainTimeoutSec,
     required this.enabled,
   });

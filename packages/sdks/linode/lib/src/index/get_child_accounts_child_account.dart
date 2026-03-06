@@ -53,7 +53,7 @@ class GetChildAccountsChildAccount {
   /// [phone] The phone number associated with this Account.
   /// [state] If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
   /// [zip] The zip code of this Account's billing address.
-  GetChildAccountsChildAccount({
+  const GetChildAccountsChildAccount({
     required this.activeSince,
     required this.address1,
     required this.address2,

@@ -30,7 +30,7 @@ class IssueModelArgs {
   /// [modelType] Type of the model.
   /// [name] Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
   /// [project] Optional.
-  IssueModelArgs({
+  const IssueModelArgs({
     this.displayName,
     this.inputDataConfig,
     this.languageCode,

@@ -21,7 +21,7 @@ class SecretCiphertextState {
   /// [ciphertext] Contains the result of encrypting the provided plaintext, encoded in base64.
   /// [cryptoKey] The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// [plaintext] The plaintext to be encrypted.
-  SecretCiphertextState({
+  const SecretCiphertextState({
     this.additionalAuthenticatedData,
     this.ciphertext,
     this.cryptoKey,

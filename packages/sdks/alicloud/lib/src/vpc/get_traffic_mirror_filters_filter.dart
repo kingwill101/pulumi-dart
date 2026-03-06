@@ -20,7 +20,7 @@ class GetTrafficMirrorFiltersFilter {
   /// [trafficMirrorFilterDescription] The description of the filter.
   /// [trafficMirrorFilterId] The ID of the filter.
   /// [trafficMirrorFilterName] The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-  GetTrafficMirrorFiltersFilter({
+  const GetTrafficMirrorFiltersFilter({
     required this.id,
     required this.status,
     required this.trafficMirrorFilterDescription,

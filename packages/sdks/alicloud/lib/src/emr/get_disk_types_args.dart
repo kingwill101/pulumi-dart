@@ -27,7 +27,7 @@ class GetDiskTypesArgs {
   /// [instanceType] The ecs instance type of create emr cluster instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [zoneId] The Zone to create emr cluster instance.
-  GetDiskTypesArgs({
+  const GetDiskTypesArgs({
     required this.clusterType,
     required this.destinationResource,
     required this.instanceChargeType,

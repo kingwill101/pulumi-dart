@@ -25,7 +25,7 @@ class CertificateCertificatePolicy {
   /// [lifetimeActions] A `lifetime_action` block as defined below.
   /// [secretProperties] A `secret_properties` block as defined below.
   /// [x509CertificateProperties] A `x509_certificate_properties` block as defined below. Required when `certificate` block is not specified.
-  CertificateCertificatePolicy({
+  const CertificateCertificatePolicy({
     required this.issuerParameters,
     required this.keyProperties,
     this.lifetimeActions,

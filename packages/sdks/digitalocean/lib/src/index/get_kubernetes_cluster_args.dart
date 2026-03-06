@@ -35,7 +35,7 @@ class GetKubernetesClusterArgs {
   /// [rdmaSharedDevicePlugin] Optional.
   /// [routingAgent] Optional.
   /// [tags] A list of tag names applied to the node pool.
-  GetKubernetesClusterArgs({
+  const GetKubernetesClusterArgs({
     this.amdGpuDeviceMetricsExporterPlugin,
     this.amdGpuDevicePlugin,
     this.clusterAutoscalerConfigurations,

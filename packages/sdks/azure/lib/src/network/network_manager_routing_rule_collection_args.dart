@@ -24,7 +24,7 @@ class NetworkManagerRoutingRuleCollectionArgs {
   /// [name] The name which should be used for this Network Manager Routing Rule Collection. Changing this forces a new Network Manager Routing Rule Collection to be created.
   /// [networkGroupIds] A list of Network Group IDs which this Network Manager Routing Rule Collection applies to.
   /// [routingConfigurationId] The ID of the Network Manager Routing Configuration. Changing this forces a new Network Manager Routing Rule Collection to be created.
-  NetworkManagerRoutingRuleCollectionArgs({
+  const NetworkManagerRoutingRuleCollectionArgs({
     this.bgpRoutePropagationEnabled,
     this.description,
     this.name,

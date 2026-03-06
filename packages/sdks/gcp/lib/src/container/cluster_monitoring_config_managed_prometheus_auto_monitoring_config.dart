@@ -8,7 +8,7 @@ class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
 
   /// Creates a new [ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig].
   /// [scope] Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
-  ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig({
+  const ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig({
     required this.scope,
   });
 

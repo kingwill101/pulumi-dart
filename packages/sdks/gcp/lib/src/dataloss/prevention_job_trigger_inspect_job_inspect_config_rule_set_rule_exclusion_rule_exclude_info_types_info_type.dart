@@ -17,7 +17,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
   /// [name] Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
   /// [sensitivityScore] Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// [version] Version of the information type to use. By default, the version is set to stable.
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType({
     required this.name,
     this.sensitivityScore,
     this.version,

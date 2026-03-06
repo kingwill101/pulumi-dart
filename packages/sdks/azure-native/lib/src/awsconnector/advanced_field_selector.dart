@@ -27,7 +27,7 @@ class AdvancedFieldSelector {
   /// [notEquals] An operator that excludes events that match the exact value of the event record field specified as the value of Field.
   /// [notStartsWith] An operator that excludes events that match the first few characters of the event record field specified as the value of Field.
   /// [startsWith] An operator that includes events that match the first few characters of the event record field specified as the value of Field.
-  AdvancedFieldSelector({
+  const AdvancedFieldSelector({
     this.endsWith,
     this.equals,
     this.field,

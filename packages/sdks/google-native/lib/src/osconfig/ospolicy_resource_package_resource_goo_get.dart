@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceGooGet {
 
   /// Creates a new [OSPolicyResourcePackageResourceGooGet].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceGooGet({
+  const OSPolicyResourcePackageResourceGooGet({
     required this.name,
   });
 

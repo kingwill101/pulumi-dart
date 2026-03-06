@@ -13,7 +13,7 @@ class PersistentDirectoryResponse {
   /// Creates a new [PersistentDirectoryResponse].
   /// [gcePd] A PersistentDirectory backed by a Compute Engine persistent disk.
   /// [mountPath] Optional. Location of this directory in the running workstation.
-  PersistentDirectoryResponse({
+  const PersistentDirectoryResponse({
     required this.gcePd,
     required this.mountPath,
   });

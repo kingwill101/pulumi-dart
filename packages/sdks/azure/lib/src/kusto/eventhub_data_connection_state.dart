@@ -51,7 +51,7 @@ class EventhubDataConnectionState {
   /// [resourceGroupName] Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   /// [retrievalStartDate] Specifies the date after which data should be retrieved from Event Hub. When defined, the data connection retrieves existing events created since the specified retrieval start date. It can only retrieve events retained by the Event Hub, based on its retention period. The value should be in RFC3339 format (e.g., `2023-06-26T12:00:00Z`).
   /// [tableName] Specifies the target table name used for the message ingestion. Table must exist before resource is created.
-  EventhubDataConnectionState({
+  const EventhubDataConnectionState({
     this.clusterName,
     this.compression,
     this.consumerGroup,

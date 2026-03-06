@@ -23,7 +23,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
   /// [disabled] Disable profiling for buckets that match this filter.
   /// [filter] The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
   /// [generationCadence] How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
-  PreventionDiscoveryConfigTargetCloudStorageTarget({
+  const PreventionDiscoveryConfigTargetCloudStorageTarget({
     this.conditions,
     this.disabled,
     required this.filter,

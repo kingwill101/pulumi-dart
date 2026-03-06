@@ -30,7 +30,7 @@ class BareMetalNodePoolNodePoolConfig {
   /// [nodeConfigs] The list of machine addresses in the Bare Metal Node Pool.
   /// [operatingSystem] Specifies the nodes operating system (default: LINUX).
   /// [taints] The initial taints assigned to nodes of this node pool.
-  BareMetalNodePoolNodePoolConfig({
+  const BareMetalNodePoolNodePoolConfig({
     this.labels,
     required this.nodeConfigs,
     this.operatingSystem,

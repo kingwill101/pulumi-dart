@@ -14,7 +14,7 @@ class GetInstanceClassesInstanceClassStorageRange {
   /// [max] DB Instance available storage max value.
   /// [min] DB Instance available storage min value.
   /// [step] DB Instance available storage increase step.
-  GetInstanceClassesInstanceClassStorageRange({
+  const GetInstanceClassesInstanceClassStorageRange({
     required this.max,
     required this.min,
     required this.step,

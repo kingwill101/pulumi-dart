@@ -11,7 +11,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerSecret {
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerSecret].
   /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   /// [valueFrom] The secret to expose to the container. The supported values are either the full Amazon Resource Name (ARN) of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerSecret({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerSecret({
     required this.name,
     required this.valueFrom,
   });

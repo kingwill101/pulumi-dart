@@ -18,7 +18,7 @@ class GetPipelineRunArgs {
   /// [pipelineRunName] The name of the pipeline run.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPipelineRunArgs({
+  const GetPipelineRunArgs({
     required this.pipelineRunName,
     required this.registryName,
     required this.resourceGroupName,

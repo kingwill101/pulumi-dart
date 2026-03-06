@@ -24,7 +24,7 @@ class VirtualMachineSchemaResponseProperties {
   /// [notebookServerPort] Notebook server port open for ssh connections.
   /// [sshPort] Port open for ssh connections.
   /// [virtualMachineSize] Virtual Machine size
-  VirtualMachineSchemaResponseProperties({
+  const VirtualMachineSchemaResponseProperties({
     this.address,
     this.administratorAccount,
     this.isNotebookInstanceCompute,

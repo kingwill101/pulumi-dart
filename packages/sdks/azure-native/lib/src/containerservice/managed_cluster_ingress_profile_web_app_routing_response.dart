@@ -20,7 +20,7 @@ class ManagedClusterIngressProfileWebAppRoutingResponse {
   /// [enabled] Whether to enable the Application Routing add-on.
   /// [identity] Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
   /// [nginx] Configuration for the default NginxIngressController. See more at https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-configuration#the-default-nginx-ingress-controller.
-  ManagedClusterIngressProfileWebAppRoutingResponse({
+  const ManagedClusterIngressProfileWebAppRoutingResponse({
     this.dnsZoneResourceIds,
     this.enabled,
     required this.identity,

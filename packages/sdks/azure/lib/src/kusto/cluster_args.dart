@@ -80,7 +80,7 @@ class ClusterArgs {
   /// [trustedExternalTenants] Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trusted_external_tenants = ["*"]` to explicitly allow all other tenants, `trusted_external_tenants = ["MyTenantOnly"]` for only your tenant or `trusted_external_tenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
   /// [virtualNetworkConfiguration] Optional.
   /// [zones] Specifies a list of Availability Zones in which this Kusto Cluster should be located. Changing this forces a new Kusto Cluster to be created.
-  ClusterArgs({
+  const ClusterArgs({
     this.allowedFqdns,
     this.allowedIpRanges,
     this.autoStopEnabled,

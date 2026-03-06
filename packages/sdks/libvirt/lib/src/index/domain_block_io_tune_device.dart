@@ -23,7 +23,7 @@ class DomainBlockIoTuneDevice {
   /// [weight] Configures the relative weight of the device, influencing scheduling priority during I/O operations.
   /// [writeBytesSec] Sets the maximum number of bytes per second that can be written to the device.
   /// [writeIopsSec] Sets the maximum number of write I/O operations per second that can be performed on the device.
-  DomainBlockIoTuneDevice({
+  const DomainBlockIoTuneDevice({
     required this.path,
     this.readBytesSec,
     this.readIopsSec,

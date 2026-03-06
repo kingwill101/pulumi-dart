@@ -22,7 +22,7 @@ class EndpointAttachmentArgs {
   /// [location] Location of the endpoint attachment.
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [serviceAttachment] Format: projects/*/regions/*/serviceAttachments/*
-  EndpointAttachmentArgs({
+  const EndpointAttachmentArgs({
     required this.endpointAttachmentId,
     required this.location,
     required this.orgId,

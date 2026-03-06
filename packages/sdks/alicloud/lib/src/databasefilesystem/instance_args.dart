@@ -73,7 +73,7 @@ class InstanceArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [usedScene] The usage scenario of DBFS. Value range:
   /// [zoneId] The ID of the zone to which the database file system belongs.
-  InstanceArgs({
+  const InstanceArgs({
     this.advancedFeatures,
     required this.category,
     this.deleteSnapshot,

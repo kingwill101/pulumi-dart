@@ -40,7 +40,7 @@ class BackupPlanArgs {
   /// [maxCustomOnDemandRetentionDays] The maximum number of days for which an on-demand backup taken with custom retention can be retained.
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceType] The resource type to which the `BackupPlan` will be applied.
-  BackupPlanArgs({
+  const BackupPlanArgs({
     required this.backupPlanId,
     required this.backupRules,
     required this.backupVault,

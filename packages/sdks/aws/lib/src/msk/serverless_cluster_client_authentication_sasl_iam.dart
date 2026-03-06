@@ -8,7 +8,7 @@ class ServerlessClusterClientAuthenticationSaslIam {
 
   /// Creates a new [ServerlessClusterClientAuthenticationSaslIam].
   /// [enabled] Whether SASL/IAM authentication is enabled or not.
-  ServerlessClusterClientAuthenticationSaslIam({
+  const ServerlessClusterClientAuthenticationSaslIam({
     required this.enabled,
   });
 

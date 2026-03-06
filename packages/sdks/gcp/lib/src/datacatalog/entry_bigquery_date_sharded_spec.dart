@@ -19,7 +19,7 @@ class EntryBigqueryDateShardedSpec {
   /// [dataset] (Output)
   /// [shardCount] (Output)
   /// [tablePrefix] (Output)
-  EntryBigqueryDateShardedSpec({
+  const EntryBigqueryDateShardedSpec({
     this.dataset,
     this.shardCount,
     this.tablePrefix,

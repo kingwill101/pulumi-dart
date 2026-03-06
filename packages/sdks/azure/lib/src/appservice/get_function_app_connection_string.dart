@@ -14,7 +14,7 @@ class GetFunctionAppConnectionString {
   /// [name] The name of the Function App resource.
   /// [type] The identity type of the Managed Identity assigned to the Function App.
   /// [value] The value for the Connection String.
-  GetFunctionAppConnectionString({
+  const GetFunctionAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

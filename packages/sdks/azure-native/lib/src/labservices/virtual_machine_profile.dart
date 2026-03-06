@@ -36,7 +36,7 @@ class VirtualMachineProfile {
   /// [sku] The SKU for the lab. Defines the type of virtual machines used in the lab.
   /// [usageQuota] The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
   /// [useSharedPassword] Enabling this option will use the same password for all user VMs.
-  VirtualMachineProfile({
+  const VirtualMachineProfile({
     this.additionalCapabilities,
     required this.adminUser,
     required this.createOption,

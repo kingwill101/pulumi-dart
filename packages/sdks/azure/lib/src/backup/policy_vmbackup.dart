@@ -22,7 +22,7 @@ class PolicyVMBackup {
   /// [hourInterval] Interval in hour at which backup is triggered. Possible values are `4`, `6`, `8` and `12`. This is used when `frequency` is `Hourly`.
   /// [time] The time of day to perform the backup in 24hour format.
   /// [weekdays] The days of the week to perform backups on. Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`. This is used when `frequency` is `Weekly`.
-  PolicyVMBackup({
+  const PolicyVMBackup({
     required this.frequency,
     this.hourDuration,
     this.hourInterval,

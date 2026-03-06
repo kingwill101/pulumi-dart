@@ -18,7 +18,7 @@ class SiteMachineKeyResponse {
   /// [decryptionKey] Decryption key.
   /// [validation] MachineKey validation.
   /// [validationKey] Validation key.
-  SiteMachineKeyResponse({
+  const SiteMachineKeyResponse({
     this.decryption,
     this.decryptionKey,
     this.validation,

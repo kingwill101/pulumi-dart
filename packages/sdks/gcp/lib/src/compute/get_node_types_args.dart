@@ -18,7 +18,7 @@ class GetNodeTypesArgs {
   /// Creates a new [GetNodeTypesArgs].
   /// [project] ID of the project to list available node types for.
   /// [zone] The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
-  GetNodeTypesArgs({
+  const GetNodeTypesArgs({
     this.project,
     this.zone,
   });

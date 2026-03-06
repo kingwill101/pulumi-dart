@@ -43,7 +43,7 @@ class CreateOrUpdateDryrunParametersResponse {
   /// [secretStore] An option to store secret value in secure place
   /// [targetService] The target service properties
   /// [vNetSolution] The VNet solution.
-  CreateOrUpdateDryrunParametersResponse({
+  const CreateOrUpdateDryrunParametersResponse({
     required this.actionName,
     this.authInfo,
     this.clientType,

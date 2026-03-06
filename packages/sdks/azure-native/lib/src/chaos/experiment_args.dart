@@ -29,7 +29,7 @@ class ExperimentArgs {
   /// [properties] The properties of the experiment resource.
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [tags] Resource tags.
-  ExperimentArgs({
+  const ExperimentArgs({
     this.experimentName,
     this.identity,
     this.location,

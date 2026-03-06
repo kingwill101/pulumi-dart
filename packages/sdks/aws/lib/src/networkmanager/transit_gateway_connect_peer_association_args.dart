@@ -23,7 +23,7 @@ class TransitGatewayConnectPeerAssociationArgs {
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
   /// [transitGatewayConnectPeerArn] ARN of the Connect peer.
-  TransitGatewayConnectPeerAssociationArgs({
+  const TransitGatewayConnectPeerAssociationArgs({
     required this.deviceId,
     required this.globalNetworkId,
     this.linkId,

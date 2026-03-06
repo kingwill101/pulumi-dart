@@ -8,7 +8,7 @@ class ConfigurationSetVdmOptionsDashboardOptions {
 
   /// Creates a new [ConfigurationSetVdmOptionsDashboardOptions].
   /// [engagementMetrics] Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
-  ConfigurationSetVdmOptionsDashboardOptions({
+  const ConfigurationSetVdmOptionsDashboardOptions({
     this.engagementMetrics,
   });
 

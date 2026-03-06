@@ -10,7 +10,7 @@ class OsProfile {
 
   /// Creates a new [OsProfile].
   /// [linuxOperatingSystemProfile] The Linux OS profile.
-  OsProfile({
+  const OsProfile({
     this.linuxOperatingSystemProfile,
   });
 

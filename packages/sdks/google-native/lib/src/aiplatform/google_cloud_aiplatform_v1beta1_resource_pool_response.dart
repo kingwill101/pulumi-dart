@@ -24,7 +24,7 @@ class GoogleCloudAiplatformV1beta1ResourcePoolResponse {
   /// [machineSpec] Immutable. The specification of a single machine.
   /// [replicaCount] Optional. The total number of machines to use for this resource pool.
   /// [usedReplicaCount] The number of machines currently in use by training jobs for this resource pool. Will replace idle_replica_count.
-  GoogleCloudAiplatformV1beta1ResourcePoolResponse({
+  const GoogleCloudAiplatformV1beta1ResourcePoolResponse({
     required this.autoscalingSpec,
     required this.diskSpec,
     required this.machineSpec,

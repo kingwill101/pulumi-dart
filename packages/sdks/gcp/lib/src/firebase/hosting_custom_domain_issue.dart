@@ -14,7 +14,7 @@ class HostingCustomDomainIssue {
   /// [code] The status code, which should be an enum value of `google.rpc.Code`
   /// [details] A list of messages that carry the error details.
   /// [message] Error message
-  HostingCustomDomainIssue({
+  const HostingCustomDomainIssue({
     this.code,
     this.details,
     this.message,

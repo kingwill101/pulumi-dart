@@ -9,7 +9,7 @@ class MetadataResponse {
 
   /// Creates a new [MetadataResponse].
   /// [services] Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-  MetadataResponse({
+  const MetadataResponse({
     required this.services,
   });
 

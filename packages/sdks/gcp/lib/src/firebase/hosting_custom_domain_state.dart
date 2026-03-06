@@ -135,7 +135,7 @@ class HostingCustomDomainState {
   /// [siteId] The ID of the site in which to create this custom domain association.
   /// [updateTime] The last time the `CustomDomain` was updated.
   /// [waitDnsVerification] Optional.
-  HostingCustomDomainState({
+  const HostingCustomDomainState({
     this.certPreference,
     this.certs,
     this.createTime,

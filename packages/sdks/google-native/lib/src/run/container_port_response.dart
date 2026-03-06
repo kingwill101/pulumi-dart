@@ -15,7 +15,7 @@ class ContainerPortResponse {
   /// [containerPort] Port number the container listens on. If present, this must be a valid port number, 0 &lt; x &lt; 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
   /// [name] If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
   /// [protocol] Protocol for port. Must be "TCP". Defaults to "TCP".
-  ContainerPortResponse({
+  const ContainerPortResponse({
     required this.containerPort,
     required this.name,
     required this.protocol,

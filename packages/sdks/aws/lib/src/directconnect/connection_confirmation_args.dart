@@ -15,7 +15,7 @@ class ConnectionConfirmationArgs {
   /// Creates a new [ConnectionConfirmationArgs].
   /// [connectionId] The ID of the hosted connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ConnectionConfirmationArgs({
+  const ConnectionConfirmationArgs({
     required this.connectionId,
     this.region,
   });

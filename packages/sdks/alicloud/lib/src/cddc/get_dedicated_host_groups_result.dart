@@ -22,7 +22,7 @@ class GetDedicatedHostGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetDedicatedHostGroupsResult({
+  const GetDedicatedHostGroupsResult({
     this.engine,
     required this.groups,
     required this.id,

@@ -8,7 +8,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile {
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile].
   /// [certificateChain] Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on. Must be between 1 and 255 characters in length.
-  VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile({
+  const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile({
     required this.certificateChain,
   });
 

@@ -15,7 +15,7 @@ class TaintResponse {
   /// [effect] Property effect
   /// [key] Property key
   /// [value] Property value
-  TaintResponse({
+  const TaintResponse({
     this.effect,
     this.key,
     this.value,

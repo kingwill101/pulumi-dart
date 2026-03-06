@@ -24,7 +24,7 @@ class NetworkManagerDeploymentStatusResponse {
   /// [deploymentType] Configuration Deployment Type.
   /// [errorMessage] Error Message.
   /// [region] Region Name.
-  NetworkManagerDeploymentStatusResponse({
+  const NetworkManagerDeploymentStatusResponse({
     this.commitTime,
     this.configurationIds,
     this.deploymentStatus,

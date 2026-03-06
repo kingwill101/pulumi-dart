@@ -25,7 +25,7 @@ class GetRegexPatternSetResult {
   /// [region] Required.
   /// [regularExpressions] One or more blocks of regular expression patterns that AWS WAF is searching for. See Regular Expression below for details.
   /// [scope] Required.
-  GetRegexPatternSetResult({
+  const GetRegexPatternSetResult({
     required this.arn,
     required this.description,
     required this.id,

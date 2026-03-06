@@ -26,7 +26,7 @@ class WorkloadDeploymentModelPropertiesResponseCurrentJob {
   /// [scenarioName] Gets or sets workload scenario name.
   /// [startTime] Gets or sets start time of the workflow.
   /// [state] Gets or sets workflow state.
-  WorkloadDeploymentModelPropertiesResponseCurrentJob({
+  const WorkloadDeploymentModelPropertiesResponseCurrentJob({
     required this.displayName,
     required this.endTime,
     required this.id,

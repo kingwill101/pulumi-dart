@@ -22,7 +22,7 @@ class UserArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the mongo cluster user.
-  UserArgs({
+  const UserArgs({
     required this.mongoClusterName,
     this.properties,
     required this.resourceGroupName,

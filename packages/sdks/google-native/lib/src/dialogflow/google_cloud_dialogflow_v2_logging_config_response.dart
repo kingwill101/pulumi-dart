@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2LoggingConfigResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2LoggingConfigResponse].
   /// [enableStackdriverLogging] Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
-  GoogleCloudDialogflowV2LoggingConfigResponse({
+  const GoogleCloudDialogflowV2LoggingConfigResponse({
     required this.enableStackdriverLogging,
   });
 

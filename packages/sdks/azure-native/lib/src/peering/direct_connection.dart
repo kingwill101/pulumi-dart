@@ -25,7 +25,7 @@ class DirectConnection {
   /// [peeringDBFacilityId] The PeeringDB.com ID of the facility at which the connection has to be set up.
   /// [sessionAddressProvider] The field indicating if Microsoft provides session ip addresses.
   /// [useForPeeringService] The flag that indicates whether or not the connection is used for peering service.
-  DirectConnection({
+  const DirectConnection({
     this.bandwidthInMbps,
     this.bgpSession,
     this.connectionIdentifier,

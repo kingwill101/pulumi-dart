@@ -11,7 +11,7 @@ class GetApplicationPublishedAppIdsResult {
   /// Creates a new [GetApplicationPublishedAppIdsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [result] A map of application names to application IDs.
-  GetApplicationPublishedAppIdsResult({
+  const GetApplicationPublishedAppIdsResult({
     required this.id,
     required this.result,
   });

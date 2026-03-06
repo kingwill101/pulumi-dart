@@ -31,7 +31,7 @@ class FirewallVpcFirewallCenArgs {
   /// [status] Firewall switch status.
   /// [vpcFirewallName] The name of the VPC firewall instance.
   /// [vpcRegion] The ID of the region to which the VPC is created.
-  FirewallVpcFirewallCenArgs({
+  const FirewallVpcFirewallCenArgs({
     required this.cenId,
     this.lang,
     required this.localVpc,

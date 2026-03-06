@@ -13,7 +13,7 @@ class AlloyDbConnectionProfileResponse {
   /// Creates a new [AlloyDbConnectionProfileResponse].
   /// [clusterId] The AlloyDB cluster ID that this connection profile is associated with.
   /// [settings] Immutable. Metadata used to create the destination AlloyDB cluster.
-  AlloyDbConnectionProfileResponse({
+  const AlloyDbConnectionProfileResponse({
     required this.clusterId,
     required this.settings,
   });

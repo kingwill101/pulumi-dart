@@ -13,7 +13,7 @@ class KubernetesPermissionState {
   /// Creates a new [KubernetesPermissionState].
   /// [permissions] A list of user permission. See `permissions` below.
   /// [uid] The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
-  KubernetesPermissionState({
+  const KubernetesPermissionState({
     this.permissions,
     this.uid,
   });

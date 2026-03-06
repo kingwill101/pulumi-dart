@@ -19,7 +19,7 @@ class ParameterGroupState {
   /// [name] The name of the parameter group.
   /// [parameters] The parameters of the parameter group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ParameterGroupState({
+  const ParameterGroupState({
     this.description,
     this.name,
     this.parameters,

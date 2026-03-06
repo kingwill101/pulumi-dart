@@ -12,7 +12,7 @@ class ApplicationAuthorization {
   /// Creates a new [ApplicationAuthorization].
   /// [principalId] The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the managed application resources.
   /// [roleDefinitionId] The provider's role definition identifier. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group.
-  ApplicationAuthorization({
+  const ApplicationAuthorization({
     required this.principalId,
     required this.roleDefinitionId,
   });

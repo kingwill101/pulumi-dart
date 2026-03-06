@@ -29,7 +29,7 @@ class ThesaurusArgs {
   /// [roleArn] The IAM (Identity and Access Management) role used to access the thesaurus file in S3.
   /// [sourceS3Path] The S3 path where your thesaurus file sits in S3. Detailed below.
   /// [tags] Optional.
-  ThesaurusArgs({
+  const ThesaurusArgs({
     this.description,
     required this.indexId,
     this.name,

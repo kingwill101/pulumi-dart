@@ -20,7 +20,7 @@ class AzureSqlProtectionPolicy {
   /// [protectedItemsCount] Number of items associated with this policy.
   /// [resourceGuardOperationRequests] ResourceGuard Operation Requests
   /// [retentionPolicy] Retention policy details.
-  AzureSqlProtectionPolicy({
+  const AzureSqlProtectionPolicy({
     required this.backupManagementType,
     this.protectedItemsCount,
     this.resourceGuardOperationRequests,

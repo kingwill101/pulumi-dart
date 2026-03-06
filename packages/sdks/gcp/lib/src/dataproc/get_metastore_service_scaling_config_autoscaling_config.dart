@@ -15,7 +15,7 @@ class GetMetastoreServiceScalingConfigAutoscalingConfig {
   /// [autoscalingEnabled] Defines whether autoscaling is enabled. The default value is false.
   /// [autoscalingFactor] Output only. The scaling factor of a service with autoscaling enabled.
   /// [limitConfigs] Represents the limit configuration of a metastore service.
-  GetMetastoreServiceScalingConfigAutoscalingConfig({
+  const GetMetastoreServiceScalingConfigAutoscalingConfig({
     required this.autoscalingEnabled,
     required this.autoscalingFactor,
     required this.limitConfigs,

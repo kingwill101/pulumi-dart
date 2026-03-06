@@ -22,7 +22,7 @@ class GetMailAddressesResult {
   /// [outputFile] Optional.
   /// [sendtype] Optional.
   /// [status] Optional.
-  GetMailAddressesResult({
+  const GetMailAddressesResult({
     required this.addresses,
     required this.id,
     required this.ids,

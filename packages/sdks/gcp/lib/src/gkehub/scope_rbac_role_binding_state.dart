@@ -9,7 +9,7 @@ class ScopeRbacRoleBindingState {
 
   /// Creates a new [ScopeRbacRoleBindingState].
   /// [code] (Output)
-  ScopeRbacRoleBindingState({
+  const ScopeRbacRoleBindingState({
     this.code,
   });
 

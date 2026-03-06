@@ -17,7 +17,7 @@ class RemediationConfigurationParameter {
   /// [resourceValue] Value is dynamic and changes at run-time.
   /// [staticValue] Value is static and does not change at run-time.
   /// [staticValues] List of static values.
-  RemediationConfigurationParameter({
+  const RemediationConfigurationParameter({
     required this.name,
     this.resourceValue,
     this.staticValue,

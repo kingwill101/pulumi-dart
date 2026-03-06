@@ -31,7 +31,7 @@ class ApplicationArgs {
   /// [spaceName] The name of the space
   /// [tags] Resource tags.
   /// [trackingDataStores] The tracking data stores.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.applicationName,
     this.description,
     this.location,

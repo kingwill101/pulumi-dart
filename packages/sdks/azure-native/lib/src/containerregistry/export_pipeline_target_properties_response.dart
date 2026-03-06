@@ -17,7 +17,7 @@ class ExportPipelineTargetPropertiesResponse {
   /// [keyVaultUri] They key vault secret uri to obtain the target storage SAS token.
   /// [type] The type of target for the export pipeline.
   /// [uri] The target uri of the export pipeline.
-  ExportPipelineTargetPropertiesResponse({
+  const ExportPipelineTargetPropertiesResponse({
     required this.keyVaultUri,
     this.type,
     this.uri,

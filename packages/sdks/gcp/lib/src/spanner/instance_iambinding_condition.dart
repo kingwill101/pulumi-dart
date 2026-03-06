@@ -11,7 +11,7 @@ class InstanceIAMBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  InstanceIAMBindingCondition({
+  const InstanceIAMBindingCondition({
     this.description,
     required this.expression,
     required this.title,

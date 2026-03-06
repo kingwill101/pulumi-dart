@@ -19,7 +19,7 @@ class GradientaiOpenaiApiKeyArgs {
   /// [apiKey] The OpenAI API key.
   /// [models] Models associated with the OpenAI API key
   /// [name] A name for the API key.
-  GradientaiOpenaiApiKeyArgs({
+  const GradientaiOpenaiApiKeyArgs({
     required this.apiKey,
     this.models,
     this.name,

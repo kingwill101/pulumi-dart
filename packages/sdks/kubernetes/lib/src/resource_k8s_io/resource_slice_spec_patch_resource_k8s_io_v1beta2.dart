@@ -58,7 +58,7 @@ class ResourceSliceSpecPatchResourceK8sIoV1beta2 {
   /// [perDeviceNodeSelection] PerDeviceNodeSelection defines whether the access from nodes to resources in the pool is set on the ResourceSlice level or on each device. If it is set to true, every device defined the ResourceSlice must specify this individually.
   /// [pool] Pool describes the pool that this ResourceSlice belongs to.
   /// [sharedCounters] SharedCounters defines a list of counter sets, each of which has a name and a list of counters available.
-  ResourceSliceSpecPatchResourceK8sIoV1beta2({
+  const ResourceSliceSpecPatchResourceK8sIoV1beta2({
     this.allNodes,
     this.devices,
     this.driver,

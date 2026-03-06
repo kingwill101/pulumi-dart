@@ -12,7 +12,7 @@ class GetProjectArgs {
 
   /// Creates a new [GetProjectArgs].
   /// [filter] A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
-  GetProjectArgs({
+  const GetProjectArgs({
     required this.filter,
   });
 

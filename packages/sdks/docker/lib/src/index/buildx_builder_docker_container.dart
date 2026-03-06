@@ -44,7 +44,7 @@ class BuildxBuilderDockerContainer {
   /// [memorySwap] Sets the memory swap limit for the container.
   /// [network] Sets the network mode for the container.
   /// [restartPolicy] Sets the container's restart policy.
-  BuildxBuilderDockerContainer({
+  const BuildxBuilderDockerContainer({
     this.cgroupParent,
     this.cpuPeriod,
     this.cpuQuota,

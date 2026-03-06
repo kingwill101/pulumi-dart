@@ -38,7 +38,7 @@ class GetVolumeResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [volumeType] Properties of the volume
-  GetVolumeResult({
+  const GetVolumeResult({
     required this.azureApiVersion,
     required this.capacityGiB,
     required this.id,

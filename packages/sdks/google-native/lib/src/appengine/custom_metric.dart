@@ -21,7 +21,7 @@ class CustomMetric {
   /// [singleInstanceAssignment] May be used instead of target_utilization when an instance can handle a specific amount of work/resources and the metric value is equal to the current amount of work remaining. The autoscaler will try to keep the number of instances equal to the metric value divided by single_instance_assignment.
   /// [targetType] The type of the metric. Must be a string representing a Stackdriver metric type e.g. GAGUE, DELTA_PER_SECOND, etc.
   /// [targetUtilization] The target value for the metric.
-  CustomMetric({
+  const CustomMetric({
     this.filter,
     this.metricName,
     this.singleInstanceAssignment,

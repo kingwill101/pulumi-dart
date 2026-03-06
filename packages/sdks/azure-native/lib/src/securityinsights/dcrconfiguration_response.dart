@@ -15,7 +15,7 @@ class DCRConfigurationResponse {
   /// [dataCollectionEndpoint] Represents the data collection ingestion endpoint in log analytics.
   /// [dataCollectionRuleImmutableId] The data collection rule immutable id, the rule defines the transformation and data destination.
   /// [streamName] The stream we are sending the data to.
-  DCRConfigurationResponse({
+  const DCRConfigurationResponse({
     required this.dataCollectionEndpoint,
     required this.dataCollectionRuleImmutableId,
     required this.streamName,

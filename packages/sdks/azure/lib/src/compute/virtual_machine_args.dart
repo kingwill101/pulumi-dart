@@ -102,7 +102,7 @@ class VirtualMachineArgs {
   /// [tags] A mapping of tags to assign to the Virtual Machine.
   /// [vmSize] Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
   /// [zones] A list of a single item of the Availability Zone which the Virtual Machine should be allocated in. Changing this forces a new resource to be created.
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     this.additionalCapabilities,
     this.availabilitySetId,
     this.bootDiagnostics,

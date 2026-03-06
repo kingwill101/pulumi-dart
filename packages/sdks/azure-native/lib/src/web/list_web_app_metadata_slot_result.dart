@@ -20,7 +20,7 @@ class ListWebAppMetadataSlotResult {
   /// [name] Resource Name.
   /// [properties] Settings.
   /// [type] Resource type.
-  ListWebAppMetadataSlotResult({
+  const ListWebAppMetadataSlotResult({
     required this.id,
     this.kind,
     required this.name,

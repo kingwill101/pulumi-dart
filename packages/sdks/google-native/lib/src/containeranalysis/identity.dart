@@ -12,7 +12,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [revision] The revision number of the update.
   /// [updateId] The revision independent identifier of the update.
-  Identity({
+  const Identity({
     this.revision,
     this.updateId,
   });

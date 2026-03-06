@@ -23,7 +23,7 @@ class DomainDevicesIommu {
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   /// [driver] Specifies the driver settings for the IOMMU device.
   /// [model] Sets the model for the IOMMU device, determining its capabilities and behavior.
-  DomainDevicesIommu({
+  const DomainDevicesIommu({
     this.acpi,
     this.address,
     this.alias,

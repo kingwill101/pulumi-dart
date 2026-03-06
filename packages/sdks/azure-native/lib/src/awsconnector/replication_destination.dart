@@ -43,7 +43,7 @@ class ReplicationDestination {
   /// [region] The AWS-Region in which the destination file system is located.  For One Zone file systems, the replication configuration must specify the AWS-Region in which the destination file system is located.
   /// [replicationTime] A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block.
   /// [storageClass] The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the ``StorageClass`` element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
-  ReplicationDestination({
+  const ReplicationDestination({
     this.accessControlTranslation,
     this.account,
     this.availabilityZoneName,

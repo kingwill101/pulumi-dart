@@ -20,7 +20,7 @@ class ProjectCache {
   /// [location] Location where the AWS CodeBuild project stores cached resources. For
   /// [modes] Specifies settings that AWS CodeBuild uses to store and reuse build
   /// [type] Type of storage that will be used for the AWS CodeBuild project cache. Valid values: `NO_CACHE`,
-  ProjectCache({
+  const ProjectCache({
     this.cacheNamespace,
     this.location,
     this.modes,

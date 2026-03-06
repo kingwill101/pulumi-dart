@@ -32,7 +32,7 @@ class GetGatewayVcoRoutesRoute {
   /// [status] The status of the vpn route entry. Valid values: `normal`, `published`.
   /// [vpnConnectionId] The id of the vpn connection.
   /// [weight] The weight value of the destination route.
-  GetGatewayVcoRoutesRoute({
+  const GetGatewayVcoRoutesRoute({
     required this.asPath,
     required this.createTime,
     required this.id,

@@ -14,7 +14,7 @@ class DiscoveredMessagingEndpointsResponse {
   /// Creates a new [DiscoveredMessagingEndpointsResponse].
   /// [inbound] Set of endpoints to connect to the device.
   /// [outbound] Set of endpoints a device can connect to.
-  DiscoveredMessagingEndpointsResponse({
+  const DiscoveredMessagingEndpointsResponse({
     this.inbound,
     this.outbound,
   });

@@ -15,7 +15,7 @@ class GetWebAgentArgs {
   /// Creates a new [GetWebAgentArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webAgentName] The name of the web agent.
-  GetWebAgentArgs({
+  const GetWebAgentArgs({
     required this.resourceGroupName,
     required this.webAgentName,
   });

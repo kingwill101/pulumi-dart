@@ -46,7 +46,7 @@ class GalleryImageVersionArgs {
   /// [securityProfile] The security profile of a gallery image version
   /// [storageProfile] This is the storage profile of a Gallery Image Version.
   /// [tags] Resource tags.
-  GalleryImageVersionArgs({
+  const GalleryImageVersionArgs({
     required this.galleryImageName,
     this.galleryImageVersionName,
     required this.galleryName,

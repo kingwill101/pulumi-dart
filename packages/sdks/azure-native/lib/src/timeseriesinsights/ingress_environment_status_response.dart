@@ -13,7 +13,7 @@ class IngressEnvironmentStatusResponse {
   /// Creates a new [IngressEnvironmentStatusResponse].
   /// [state] This string represents the state of ingress operations on an environment. It can be "Disabled", "Ready", "Running", "Paused" or "Unknown"
   /// [stateDetails] An object that contains the details about an environment's state.
-  IngressEnvironmentStatusResponse({
+  const IngressEnvironmentStatusResponse({
     this.state,
     required this.stateDetails,
   });

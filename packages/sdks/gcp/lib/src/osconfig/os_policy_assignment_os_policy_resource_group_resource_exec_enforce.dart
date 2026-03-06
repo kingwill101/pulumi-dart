@@ -29,7 +29,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
   /// [interpreter] The script interpreter to use. Possible values
   /// [outputFilePath] Only recorded for enforce Exec. Path to an
   /// [script] An inline script. The size of the script is limited to
-  OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce({
     this.args,
     this.file,
     required this.interpreter,

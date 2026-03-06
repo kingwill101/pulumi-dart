@@ -15,7 +15,7 @@ class RuntimeAccessConfigResponse {
   /// [accessType] The type of access mode this instance.
   /// [proxyUri] The proxy endpoint that is used to access the runtime.
   /// [runtimeOwner] The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
-  RuntimeAccessConfigResponse({
+  const RuntimeAccessConfigResponse({
     required this.accessType,
     required this.proxyUri,
     required this.runtimeOwner,

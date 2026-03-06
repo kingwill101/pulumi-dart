@@ -15,7 +15,7 @@ class RetentionConfigurationArgs {
   /// Creates a new [RetentionConfigurationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionPeriodInDays] The number of days AWS Config stores historical information.
-  RetentionConfigurationArgs({
+  const RetentionConfigurationArgs({
     this.region,
     required this.retentionPeriodInDays,
   });

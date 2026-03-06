@@ -26,7 +26,7 @@ class SqlServerInstanceJobStatusResponse {
   /// [jobException] The exception message if the job failed.
   /// [jobStatus] The status of the job.
   /// [sequencerActions] The list of sequencer actions.
-  SqlServerInstanceJobStatusResponse({
+  const SqlServerInstanceJobStatusResponse({
     this.backgroundJob,
     this.id,
     this.instanceName,

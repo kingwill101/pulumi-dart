@@ -22,7 +22,7 @@ class SourceIamBindingArgs {
   /// [organization] The organization whose Cloud Security Command Center the Source
   /// [role] Required.
   /// [source] Required.
-  SourceIamBindingArgs({
+  const SourceIamBindingArgs({
     this.condition,
     required this.members,
     required this.organization,

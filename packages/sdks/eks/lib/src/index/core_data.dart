@@ -74,7 +74,7 @@ class CoreData {
   /// [tags] A map of tags assigned to the EKS cluster.
   /// [vpcCni] The VPC CNI for the cluster.
   /// [vpcId] ID of the cluster's VPC.
-  CoreData({
+  const CoreData({
     this.accessEntries,
     this.awsProvider,
     required this.cluster,

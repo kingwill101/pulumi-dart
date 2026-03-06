@@ -14,7 +14,7 @@ class GalleryApplicationVersionManageAction {
   /// [install] The command to install the Gallery Application. Changing this forces a new resource to be created.
   /// [remove] The command to remove the Gallery Application. Changing this forces a new resource to be created.
   /// [update] The command to update the Gallery Application. Changing this forces a new resource to be created.
-  GalleryApplicationVersionManageAction({
+  const GalleryApplicationVersionManageAction({
     required this.install,
     required this.remove,
     this.update,

@@ -9,7 +9,7 @@ class ContinuousModeProperties {
 
   /// Creates a new [ContinuousModeProperties].
   /// [tier] Enum to indicate type of Continuous backup mode
-  ContinuousModeProperties({
+  const ContinuousModeProperties({
     this.tier,
   });
 

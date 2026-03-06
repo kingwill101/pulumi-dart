@@ -20,7 +20,7 @@ class OriginPoolOriginAuthConf {
   /// [region] The Region of the source station to be transmitted when the source station is AWS S3.
   /// [secretKey] The SecretKey to be passed when AuthType is set to private_cross_account or private.
   /// [version] The signature version to be transmitted when the source station is AWS S3.
-  OriginPoolOriginAuthConf({
+  const OriginPoolOriginAuthConf({
     this.accessKey,
     this.authType,
     this.region,

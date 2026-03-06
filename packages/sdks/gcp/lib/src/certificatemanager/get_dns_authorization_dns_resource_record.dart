@@ -14,7 +14,7 @@ class GetDnsAuthorizationDnsResourceRecord {
   /// [data] Data of the DNS Resource Record.
   /// [name] The name of the DNS Authorization.
   /// [type] Type of the DNS Resource Record.
-  GetDnsAuthorizationDnsResourceRecord({
+  const GetDnsAuthorizationDnsResourceRecord({
     required this.data,
     required this.name,
     required this.type,

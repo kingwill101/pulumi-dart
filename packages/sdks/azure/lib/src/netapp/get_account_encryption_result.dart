@@ -20,7 +20,7 @@ class GetAccountEncryptionResult {
   /// [netappAccountId] Required.
   /// [systemAssignedIdentityPrincipalId] Required.
   /// [userAssignedIdentityId] Required.
-  GetAccountEncryptionResult({
+  const GetAccountEncryptionResult({
     required this.crossTenantKeyVaultResourceId,
     required this.encryptionKey,
     required this.federatedClientId,

@@ -22,7 +22,7 @@ class GetTunnelDestGroupIamPolicyArgs {
   /// [destGroup] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the tunnel group. Must be the same as the network resources in the group.
-  GetTunnelDestGroupIamPolicyArgs({
+  const GetTunnelDestGroupIamPolicyArgs({
     required this.destGroup,
     this.project,
     this.region,

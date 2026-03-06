@@ -12,7 +12,7 @@ class DeviceErasureDetailsResponse {
   /// Creates a new [DeviceErasureDetailsResponse].
   /// [deviceErasureStatus] Holds the device erasure completion status
   /// [erasureOrDestructionCertificateSasKey] Shared access key to download cleanup or destruction certificate for device
-  DeviceErasureDetailsResponse({
+  const DeviceErasureDetailsResponse({
     required this.deviceErasureStatus,
     required this.erasureOrDestructionCertificateSasKey,
   });

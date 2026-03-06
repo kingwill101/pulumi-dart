@@ -13,7 +13,7 @@ class NotificationEventReceiverResponse {
   /// Creates a new [NotificationEventReceiverResponse].
   /// [receiverType] The type of the notification event receiver.
   /// [receiverValue] The notification event receiver value.
-  NotificationEventReceiverResponse({
+  const NotificationEventReceiverResponse({
     this.receiverType,
     this.receiverValue,
   });

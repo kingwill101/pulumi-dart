@@ -15,7 +15,7 @@ class GetDatasetKustoClusterArgs {
   /// Creates a new [GetDatasetKustoClusterArgs].
   /// [name] The name of this Data Share Kusto Cluster Dataset.
   /// [shareId] The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created.
-  GetDatasetKustoClusterArgs({
+  const GetDatasetKustoClusterArgs({
     required this.name,
     required this.shareId,
   });

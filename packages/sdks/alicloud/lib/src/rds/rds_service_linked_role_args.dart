@@ -12,7 +12,7 @@ class RdsServiceLinkedRoleArgs {
 
   /// Creates a new [RdsServiceLinkedRoleArgs].
   /// [serviceName] The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
-  RdsServiceLinkedRoleArgs({
+  const RdsServiceLinkedRoleArgs({
     required this.serviceName,
   });
 

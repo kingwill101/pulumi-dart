@@ -10,7 +10,7 @@ class MachinePreferencesResponse {
 
   /// Creates a new [MachinePreferencesResponse].
   /// [allowedMachineSeries] Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
-  MachinePreferencesResponse({
+  const MachinePreferencesResponse({
     required this.allowedMachineSeries,
   });
 

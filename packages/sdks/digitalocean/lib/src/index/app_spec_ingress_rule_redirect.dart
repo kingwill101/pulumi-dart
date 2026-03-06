@@ -20,7 +20,7 @@ class AppSpecIngressRuleRedirect {
   /// [redirectCode] The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
   /// [scheme] The scheme to redirect to. Supported values are `http` or `https`
   /// [uri] An optional URI path to redirect to.
-  AppSpecIngressRuleRedirect({
+  const AppSpecIngressRuleRedirect({
     this.authority,
     this.port,
     this.redirectCode,

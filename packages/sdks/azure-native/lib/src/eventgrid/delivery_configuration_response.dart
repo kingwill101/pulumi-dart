@@ -17,7 +17,7 @@ class DeliveryConfigurationResponse {
   /// [deliveryMode] Delivery mode of the event subscription.
   /// [push] This property should be populated when deliveryMode is push and represents information about the push subscription.
   /// [queue] This property should be populated when deliveryMode is queue and represents information about the queue subscription.
-  DeliveryConfigurationResponse({
+  const DeliveryConfigurationResponse({
     this.deliveryMode,
     this.push,
     this.queue,

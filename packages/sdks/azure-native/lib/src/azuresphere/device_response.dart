@@ -40,7 +40,7 @@ class DeviceResponse {
   /// [provisioningState] The status of the last operation.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  DeviceResponse({
+  const DeviceResponse({
     required this.chipSku,
     this.deviceId,
     required this.id,

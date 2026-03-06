@@ -21,7 +21,7 @@ class GetKustoTableDataSetArgs {
   /// [dataSetName] The name of the dataSet.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share.
-  GetKustoTableDataSetArgs({
+  const GetKustoTableDataSetArgs({
     required this.accountName,
     required this.dataSetName,
     required this.resourceGroupName,

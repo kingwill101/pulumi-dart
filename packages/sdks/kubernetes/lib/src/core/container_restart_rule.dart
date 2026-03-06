@@ -13,7 +13,7 @@ class ContainerRestartRule {
   /// Creates a new [ContainerRestartRule].
   /// [action] Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container.
   /// [exitCodes] Represents the exit codes to check on container exits.
-  ContainerRestartRule({
+  const ContainerRestartRule({
     required this.action,
     this.exitCodes,
   });

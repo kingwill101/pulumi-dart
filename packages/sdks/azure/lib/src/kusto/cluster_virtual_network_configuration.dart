@@ -11,7 +11,7 @@ class ClusterVirtualNetworkConfiguration {
   /// [dataManagementPublicIpId] Required.
   /// [enginePublicIpId] Required.
   /// [subnetId] Required.
-  ClusterVirtualNetworkConfiguration({
+  const ClusterVirtualNetworkConfiguration({
     required this.dataManagementPublicIpId,
     required this.enginePublicIpId,
     required this.subnetId,

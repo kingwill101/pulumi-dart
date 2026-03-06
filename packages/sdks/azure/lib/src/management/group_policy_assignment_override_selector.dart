@@ -11,7 +11,7 @@ class GroupPolicyAssignmentOverrideSelector {
   /// [ins] Optional.
   /// [kind] Optional.
   /// [notIns] Optional.
-  GroupPolicyAssignmentOverrideSelector({
+  const GroupPolicyAssignmentOverrideSelector({
     this.ins,
     this.kind,
     this.notIns,

@@ -18,7 +18,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings {
   /// [connectionRetryInterval] Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
   /// [destination] The RTMP endpoint excluding the stream name. See Destination for more details.
   /// [numRetries] Number of retry attempts.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings({
     this.certificateMode,
     this.connectionRetryInterval,
     required this.destination,

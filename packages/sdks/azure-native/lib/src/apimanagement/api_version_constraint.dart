@@ -9,7 +9,7 @@ class ApiVersionConstraint {
 
   /// Creates a new [ApiVersionConstraint].
   /// [minApiVersion] Limit control plane API calls to API Management service with version equal to or newer than this value.
-  ApiVersionConstraint({
+  const ApiVersionConstraint({
     this.minApiVersion,
   });
 

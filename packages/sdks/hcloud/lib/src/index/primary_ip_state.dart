@@ -42,7 +42,7 @@ class PrimaryIpState {
   /// [location] The location name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   /// [name] Name of the Primary IP.
   /// [type] Type of the Primary IP. `ipv4` or `ipv6`
-  PrimaryIpState({
+  const PrimaryIpState({
     this.assigneeId,
     this.assigneeType,
     this.autoDelete,

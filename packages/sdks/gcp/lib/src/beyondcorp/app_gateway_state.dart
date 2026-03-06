@@ -53,7 +53,7 @@ class AppGatewayState {
   /// [state] Represents the different states of a AppGateway.
   /// [type] The type of network connectivity used by the AppGateway.
   /// [uri] Server-defined URI for this resource.
-  AppGatewayState({
+  const AppGatewayState({
     this.allocatedConnections,
     this.displayName,
     this.effectiveLabels,

@@ -22,7 +22,7 @@ class CustomerManagedPolicyAttachmentArgs {
   /// [instanceArn] The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  CustomerManagedPolicyAttachmentArgs({
+  const CustomerManagedPolicyAttachmentArgs({
     required this.customerManagedPolicyReference,
     required this.instanceArn,
     required this.permissionSetArn,

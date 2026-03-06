@@ -46,7 +46,7 @@ class GetRegionSslCertificateComputeBetaResult {
   /// [selfManaged] Configuration and status of a self-managed SSL certificate.
   /// [subjectAlternativeNames] Domains associated with the certificate via Subject Alternative Name.
   /// [type] (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
-  GetRegionSslCertificateComputeBetaResult({
+  const GetRegionSslCertificateComputeBetaResult({
     required this.certificate,
     required this.creationTimestamp,
     required this.description,

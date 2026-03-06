@@ -8,7 +8,7 @@ class DomainDevicesRngBackendEgdSourceDbus {
 
   /// Creates a new [DomainDevicesRngBackendEgdSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesRngBackendEgdSourceDbus({
+  const DomainDevicesRngBackendEgdSourceDbus({
     this.channel,
   });
 

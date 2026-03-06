@@ -42,7 +42,7 @@ class GetBackupResult {
   /// [sizeBytes] Size of the backup in bytes.
   /// [state] The current state of the backup.
   /// [versionTime] The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
-  GetBackupResult({
+  const GetBackupResult({
     required this.createTime,
     required this.database,
     required this.databaseDialect,

@@ -20,7 +20,7 @@ class VectorIndexResponse {
   /// [quantizationByteSize] The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
   /// [type] The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
   /// [vectorIndexShardKey] Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
-  VectorIndexResponse({
+  const VectorIndexResponse({
     this.indexingSearchListSize,
     required this.path,
     this.quantizationByteSize,

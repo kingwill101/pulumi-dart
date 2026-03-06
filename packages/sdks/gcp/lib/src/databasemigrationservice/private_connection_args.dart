@@ -36,7 +36,7 @@ class PrivateConnectionArgs {
   /// [privateConnectionId] The private connectivity identifier.
   /// [project] The ID of the project in which the resource belongs.
   /// [vpcPeeringConfig] The VPC Peering configuration is used to create VPC peering
-  PrivateConnectionArgs({
+  const PrivateConnectionArgs({
     this.createWithoutValidation,
     this.displayName,
     this.labels,

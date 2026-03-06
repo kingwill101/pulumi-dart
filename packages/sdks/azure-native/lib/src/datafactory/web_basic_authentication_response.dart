@@ -20,7 +20,7 @@ class WebBasicAuthenticationResponse {
   /// [password] The password for Basic authentication.
   /// [url] The URL of the web service endpoint, e.g. https://www.microsoft.com . Type: string (or Expression with resultType string).
   /// [username] User name for Basic authentication. Type: string (or Expression with resultType string).
-  WebBasicAuthenticationResponse({
+  const WebBasicAuthenticationResponse({
     required this.authenticationType,
     required this.password,
     required this.url,

@@ -23,7 +23,7 @@ class ZoneShareV2State {
   /// [region] The region in which to obtain the V2 DNS client. If
   /// [targetProjectId] The ID of the target project with which the
   /// [zoneId] The ID of the DNS zone to be shared.
-  ZoneShareV2State({
+  const ZoneShareV2State({
     this.projectId,
     this.region,
     this.targetProjectId,

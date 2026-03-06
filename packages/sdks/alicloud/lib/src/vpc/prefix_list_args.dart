@@ -31,7 +31,7 @@ class PrefixListArgs {
   /// [prefixListName] The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
   /// [resourceGroupId] The ID of the resource group to which the PrefixList belongs.
   /// [tags] The tags of PrefixList.
-  PrefixListArgs({
+  const PrefixListArgs({
     this.entrys,
     this.ipVersion,
     this.maxEntries,

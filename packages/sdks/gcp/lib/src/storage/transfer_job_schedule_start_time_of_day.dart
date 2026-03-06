@@ -17,7 +17,7 @@ class TransferJobScheduleStartTimeOfDay {
   /// [minutes] Minutes of hour of day. Must be from 0 to 59.
   /// [nanos] Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
   /// [seconds] Seconds of minutes of the time. Must normally be from 0 to 59.
-  TransferJobScheduleStartTimeOfDay({
+  const TransferJobScheduleStartTimeOfDay({
     required this.hours,
     required this.minutes,
     required this.nanos,

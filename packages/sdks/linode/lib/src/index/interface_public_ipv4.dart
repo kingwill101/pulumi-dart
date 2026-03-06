@@ -17,7 +17,7 @@ class InterfacePublicIpv4 {
   /// [addresses] IPv4 addresses configured for this Linode interface. Each object in this list supports:
   /// [assignedAddresses] (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
   /// [shareds] (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
-  InterfacePublicIpv4({
+  const InterfacePublicIpv4({
     this.addresses,
     this.assignedAddresses,
     this.shareds,

@@ -12,7 +12,7 @@ class BucketAclState {
   /// Creates a new [BucketAclState].
   /// [acl] Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
   /// [bucket] The name of the bucket to which the current ACL configuration belongs.
-  BucketAclState({
+  const BucketAclState({
     this.acl,
     this.bucket,
   });

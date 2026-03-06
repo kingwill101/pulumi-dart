@@ -7,7 +7,7 @@ class GetVpnLinkConnectionIkeSasResult {
 
   /// Creates a new [GetVpnLinkConnectionIkeSasResult].
   /// [value] Optional.
-  GetVpnLinkConnectionIkeSasResult({
+  const GetVpnLinkConnectionIkeSasResult({
     this.value,
   });
 

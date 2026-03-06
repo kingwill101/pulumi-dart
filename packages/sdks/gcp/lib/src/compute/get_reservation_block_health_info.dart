@@ -14,7 +14,7 @@ class GetReservationBlockHealthInfo {
   /// [degradedSubBlockCount] The number of sub-blocks that are degraded.
   /// [healthStatus] The health status of the reservation block.
   /// [healthySubBlockCount] The number of sub-blocks that are healthy.
-  GetReservationBlockHealthInfo({
+  const GetReservationBlockHealthInfo({
     required this.degradedSubBlockCount,
     required this.healthStatus,
     required this.healthySubBlockCount,

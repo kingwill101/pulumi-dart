@@ -14,7 +14,7 @@ class FunctionAppSlotConnectionString {
   /// [name] The name of the Connection String.
   /// [type] The type of the Connection String. Possible values are `APIHub`, `Custom`, `DocDb`, `EventHub`, `MySQL`, `NotificationHub`, `PostgreSQL`, `RedisCache`, `ServiceBus`, `SQLAzure` and `SQLServer`.
   /// [value] The value for the Connection String.
-  FunctionAppSlotConnectionString({
+  const FunctionAppSlotConnectionString({
     required this.name,
     required this.type,
     required this.value,

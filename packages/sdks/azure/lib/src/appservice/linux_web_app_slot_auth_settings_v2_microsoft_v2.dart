@@ -19,7 +19,7 @@ class LinuxWebAppSlotAuthSettingsV2MicrosoftV2 {
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
   /// [loginScopes] The list of Login scopes that should be requested as part of Microsoft Account authentication.
-  LinuxWebAppSlotAuthSettingsV2MicrosoftV2({
+  const LinuxWebAppSlotAuthSettingsV2MicrosoftV2({
     this.allowedAudiences,
     required this.clientId,
     required this.clientSecretSettingName,

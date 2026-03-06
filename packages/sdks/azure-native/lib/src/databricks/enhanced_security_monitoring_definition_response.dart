@@ -8,7 +8,7 @@ class EnhancedSecurityMonitoringDefinitionResponse {
 
   /// Creates a new [EnhancedSecurityMonitoringDefinitionResponse].
   /// [value] Optional.
-  EnhancedSecurityMonitoringDefinitionResponse({
+  const EnhancedSecurityMonitoringDefinitionResponse({
     this.value,
   });
 

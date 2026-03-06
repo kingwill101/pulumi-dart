@@ -30,7 +30,7 @@ class TableExternalDataConfigurationHivePartitioningOptions {
   /// [mode] When set, what mode of hive partitioning to use when
   /// [requirePartitionFilter] If set to true, queries over this table
   /// [sourceUriPrefix] When hive partition detection is requested,
-  TableExternalDataConfigurationHivePartitioningOptions({
+  const TableExternalDataConfigurationHivePartitioningOptions({
     this.mode,
     this.requirePartitionFilter,
     this.sourceUriPrefix,

@@ -36,7 +36,7 @@ class SpaceArgs {
   /// [spaceSettings] A collection of space settings. See `space_settings` Block below.
   /// [spaceSharingSettings] A collection of space sharing settings. Required if `ownership_settings` is set. See `space_sharing_settings` Block below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  SpaceArgs({
+  const SpaceArgs({
     required this.domainId,
     this.ownershipSettings,
     this.region,

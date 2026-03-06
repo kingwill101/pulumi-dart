@@ -17,7 +17,7 @@ class GetProtocolsResult {
   /// [protocols] A list of supported protocol type..
   /// [type] Required.
   /// [zoneId] Optional.
-  GetProtocolsResult({
+  const GetProtocolsResult({
     required this.id,
     this.outputFile,
     required this.protocols,

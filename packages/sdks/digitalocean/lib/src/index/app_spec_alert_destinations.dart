@@ -12,7 +12,7 @@ class AppSpecAlertDestinations {
   /// Creates a new [AppSpecAlertDestinations].
   /// [emails] Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
   /// [slackWebhooks] Determines which slack channels or users receive alerts.
-  AppSpecAlertDestinations({
+  const AppSpecAlertDestinations({
     this.emails,
     this.slackWebhooks,
   });

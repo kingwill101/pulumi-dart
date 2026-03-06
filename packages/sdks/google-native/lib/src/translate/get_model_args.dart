@@ -15,7 +15,7 @@ class GetModelArgs {
   /// [location] Required.
   /// [modelId] Required.
   /// [project] Optional.
-  GetModelArgs({
+  const GetModelArgs({
     required this.location,
     required this.modelId,
     this.project,

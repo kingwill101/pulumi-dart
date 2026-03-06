@@ -45,7 +45,7 @@ class ServiceConnectionMapArgs {
   /// [serviceClass] The service class identifier this ServiceConnectionMap is for. The user of ServiceConnectionMap create API needs to have networkconnecitivty.serviceclasses.use iam permission for the service class.
   /// [serviceConnectionMapId] Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/serviceConnectionMaps/foo') See https://google.aip.dev/122#resource-id-segments Unique per location. If one is not provided, one will be generated.
   /// [token] The token provided by the consumer. This token authenticates that the consumer can create a connecton within the specified project and network.
-  ServiceConnectionMapArgs({
+  const ServiceConnectionMapArgs({
     this.consumerPscConfigs,
     this.description,
     this.etag,

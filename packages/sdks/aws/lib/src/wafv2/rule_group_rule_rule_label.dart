@@ -8,7 +8,7 @@ class RuleGroupRuleRuleLabel {
 
   /// Creates a new [RuleGroupRuleRuleLabel].
   /// [name] The label string.
-  RuleGroupRuleRuleLabel({
+  const RuleGroupRuleRuleLabel({
     required this.name,
   });
 

@@ -11,7 +11,7 @@ class GetAccountAliasesArgs {
 
   /// Creates a new [GetAccountAliasesArgs].
   /// [outputFile] Optional.
-  GetAccountAliasesArgs({
+  const GetAccountAliasesArgs({
     this.outputFile,
   });
 

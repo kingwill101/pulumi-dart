@@ -35,7 +35,7 @@ class ConnectorMappingProperties {
   /// [format] The format of mapping property.
   /// [hasHeader] If the file contains a header or not.
   /// [structure] Ingestion mapping information at property level.
-  ConnectorMappingProperties({
+  const ConnectorMappingProperties({
     required this.availability,
     required this.completeOperation,
     required this.errorManagement,

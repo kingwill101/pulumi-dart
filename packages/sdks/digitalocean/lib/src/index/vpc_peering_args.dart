@@ -15,7 +15,7 @@ class VpcPeeringArgs {
   /// Creates a new [VpcPeeringArgs].
   /// [name] A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
   /// [vpcIds] A set of two VPC IDs to be peered.
-  VpcPeeringArgs({
+  const VpcPeeringArgs({
     this.name,
     required this.vpcIds,
   });

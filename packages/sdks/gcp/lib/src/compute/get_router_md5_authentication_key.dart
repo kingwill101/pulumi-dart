@@ -11,7 +11,7 @@ class GetRouterMd5AuthenticationKey {
   /// Creates a new [GetRouterMd5AuthenticationKey].
   /// [key] Value of the key used for MD5 authentication.
   /// [name] The name of the router.
-  GetRouterMd5AuthenticationKey({
+  const GetRouterMd5AuthenticationKey({
     required this.key,
     required this.name,
   });

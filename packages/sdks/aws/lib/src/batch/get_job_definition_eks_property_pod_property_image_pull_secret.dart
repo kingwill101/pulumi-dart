@@ -8,7 +8,7 @@ class GetJobDefinitionEksPropertyPodPropertyImagePullSecret {
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyImagePullSecret].
   /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
-  GetJobDefinitionEksPropertyPodPropertyImagePullSecret({
+  const GetJobDefinitionEksPropertyPodPropertyImagePullSecret({
     required this.name,
   });
 

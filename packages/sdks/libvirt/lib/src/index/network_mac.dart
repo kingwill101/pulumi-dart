@@ -8,7 +8,7 @@ class NetworkMac {
 
   /// Creates a new [NetworkMac].
   /// [address] Specifies the actual MAC address associated with the network.
-  NetworkMac({
+  const NetworkMac({
     this.address,
   });
 

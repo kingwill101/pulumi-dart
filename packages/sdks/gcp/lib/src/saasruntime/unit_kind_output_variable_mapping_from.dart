@@ -11,7 +11,7 @@ class UnitKindOutputVariableMappingFrom {
   /// Creates a new [UnitKindOutputVariableMappingFrom].
   /// [dependency] Alias of the dependency that the outputVariable will pass its value to
   /// [outputVariable] Name of the outputVariable on the dependency
-  UnitKindOutputVariableMappingFrom({
+  const UnitKindOutputVariableMappingFrom({
     required this.dependency,
     required this.outputVariable,
   });

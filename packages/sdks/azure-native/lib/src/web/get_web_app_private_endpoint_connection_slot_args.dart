@@ -21,7 +21,7 @@ class GetWebAppPrivateEndpointConnectionSlotArgs {
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the site deployment slot.
-  GetWebAppPrivateEndpointConnectionSlotArgs({
+  const GetWebAppPrivateEndpointConnectionSlotArgs({
     required this.name,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

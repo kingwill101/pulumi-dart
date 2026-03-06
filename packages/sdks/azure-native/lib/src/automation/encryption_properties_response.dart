@@ -17,7 +17,7 @@ class EncryptionPropertiesResponse {
   /// [identity] User identity used for CMK.
   /// [keySource] Encryption Key Source
   /// [keyVaultProperties] Key vault properties.
-  EncryptionPropertiesResponse({
+  const EncryptionPropertiesResponse({
     this.identity,
     this.keySource,
     this.keyVaultProperties,

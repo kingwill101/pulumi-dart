@@ -16,7 +16,7 @@ class ConfigMapEnvSourceResponse {
   /// [localObjectReference] This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
   /// [name] The ConfigMap to select from.
   /// [optional] Specify whether the ConfigMap must be defined.
-  ConfigMapEnvSourceResponse({
+  const ConfigMapEnvSourceResponse({
     required this.localObjectReference,
     required this.name,
     required this.optional,

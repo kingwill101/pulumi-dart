@@ -9,7 +9,7 @@ class BucketVersioningResponse {
 
   /// Creates a new [BucketVersioningResponse].
   /// [enabled] While set to true, versioning is fully enabled for this bucket.
-  BucketVersioningResponse({
+  const BucketVersioningResponse({
     required this.enabled,
   });
 

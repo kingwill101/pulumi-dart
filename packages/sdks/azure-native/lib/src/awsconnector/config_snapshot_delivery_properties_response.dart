@@ -10,7 +10,7 @@ class ConfigSnapshotDeliveryPropertiesResponse {
 
   /// Creates a new [ConfigSnapshotDeliveryPropertiesResponse].
   /// [deliveryFrequency] &lt;p&gt;The frequency with which Config delivers configuration snapshots.&lt;/p&gt;
-  ConfigSnapshotDeliveryPropertiesResponse({
+  const ConfigSnapshotDeliveryPropertiesResponse({
     this.deliveryFrequency,
   });
 

@@ -32,7 +32,7 @@ class GetEipsEip {
   /// [internetChargeType] EIP internet charge type.
   /// [ipAddress] Public IP Address of the the EIP.
   /// [status] EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
-  GetEipsEip({
+  const GetEipsEip({
     required this.bandwidth,
     required this.creationTime,
     required this.deletionProtection,

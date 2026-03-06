@@ -16,7 +16,7 @@ class StatefulRuleGroupReferenceResponse {
   /// [override] Property override
   /// [priority] Property priority
   /// [resourceArn] A resource ARN.
-  StatefulRuleGroupReferenceResponse({
+  const StatefulRuleGroupReferenceResponse({
     this.override,
     this.priority,
     this.resourceArn,

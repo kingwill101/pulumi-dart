@@ -33,7 +33,7 @@ class GetCanaryEvaluationResult {
   /// [state] The current state of the canary evaluation.
   /// [treatment] The newer version that is serving requests.
   /// [verdict] The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-  GetCanaryEvaluationResult({
+  const GetCanaryEvaluationResult({
     required this.control,
     required this.createTime,
     required this.endTime,

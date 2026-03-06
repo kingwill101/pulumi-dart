@@ -25,7 +25,7 @@ class SigningKeyResponse {
   /// [protocol] The protocol value. The value is always 3.
   /// [publicKey] The public key, represented as a Base64 encoding.
   /// [securityAlgorithmType] The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
-  SigningKeyResponse({
+  const SigningKeyResponse({
     required this.delegationSignerInfo,
     required this.flags,
     required this.keyTag,

@@ -68,7 +68,7 @@ class GetOtsSnapshotsSnapshot {
   /// [tableName] The name of the table in the Table store instance.
   /// [updatedTime] The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
   /// [vaultId] The ID of the backup vault that stores the backup snapshot.
-  GetOtsSnapshotsSnapshot({
+  const GetOtsSnapshotsSnapshot({
     required this.actualBytes,
     required this.backupType,
     required this.bytesTotal,

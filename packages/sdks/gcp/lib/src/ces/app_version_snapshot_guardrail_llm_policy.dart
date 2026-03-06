@@ -37,7 +37,7 @@ class AppVersionSnapshotGuardrailLlmPolicy {
   /// [modelSettings] (Output)
   /// [policyScope] (Output)
   /// [prompt] (Output)
-  AppVersionSnapshotGuardrailLlmPolicy({
+  const AppVersionSnapshotGuardrailLlmPolicy({
     this.failOpen,
     this.maxConversationMessages,
     this.modelSettings,

@@ -33,7 +33,7 @@ class VolumeAttachState {
   /// [tag] Add a device role tag that is applied to the volume when
   /// [vendorOptions] Map of additional vendor-specific options.
   /// [volumeId] The ID of the Volume to attach to an Instance.
-  VolumeAttachState({
+  const VolumeAttachState({
     this.device,
     this.instanceId,
     this.multiattach,

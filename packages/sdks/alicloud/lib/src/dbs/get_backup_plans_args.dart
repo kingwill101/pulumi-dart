@@ -31,7 +31,7 @@ class GetBackupPlansArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
-  GetBackupPlansArgs({
+  const GetBackupPlansArgs({
     this.backupPlanName,
     this.enableDetails,
     this.ids,

@@ -11,7 +11,7 @@ class GetInstanceGroupManagerAllInstancesConfig {
   /// Creates a new [GetInstanceGroupManagerAllInstancesConfig].
   /// [labels] The label key-value pairs that you want to patch onto the instance,
   /// [metadata] The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
-  GetInstanceGroupManagerAllInstancesConfig({
+  const GetInstanceGroupManagerAllInstancesConfig({
     required this.labels,
     required this.metadata,
   });

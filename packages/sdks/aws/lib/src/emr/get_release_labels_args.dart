@@ -16,7 +16,7 @@ class GetReleaseLabelsArgs {
   /// Creates a new [GetReleaseLabelsArgs].
   /// [filters] Filters the results of the request. Prefix specifies the prefix of release labels to return. Application specifies the application (with/without version) of release labels to return. See Filters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetReleaseLabelsArgs({
+  const GetReleaseLabelsArgs({
     this.filters,
     this.region,
   });

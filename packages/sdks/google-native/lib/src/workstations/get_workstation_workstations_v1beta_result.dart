@@ -47,7 +47,7 @@ class GetWorkstationWorkstationsV1betaResult {
   /// [state] Current state of the workstation.
   /// [uid] A system-assigned unique identifier for this workstation.
   /// [updateTime] Time when this workstation was most recently updated.
-  GetWorkstationWorkstationsV1betaResult({
+  const GetWorkstationWorkstationsV1betaResult({
     required this.annotations,
     required this.createTime,
     required this.deleteTime,

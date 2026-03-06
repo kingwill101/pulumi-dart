@@ -27,7 +27,7 @@ class GetOutpostArgs {
   /// [ownerId] AWS Account identifier of the Outpost owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The Outpost tags.
-  GetOutpostArgs({
+  const GetOutpostArgs({
     this.arn,
     this.id,
     this.name,

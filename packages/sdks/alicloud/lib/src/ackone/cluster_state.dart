@@ -27,7 +27,7 @@ class ClusterState {
   /// [network] Cluster network information. See `network` below.
   /// [profile] Cluster attributes. Valid values: 'Default', 'XFlow'.
   /// [status] The status of the resource.
-  ClusterState({
+  const ClusterState({
     this.argocdEnabled,
     this.clusterName,
     this.createTime,

@@ -11,7 +11,7 @@ class GetDatabaseUserSettingAcl {
   /// [id] Required.
   /// [permission] Required.
   /// [topic] Required.
-  GetDatabaseUserSettingAcl({
+  const GetDatabaseUserSettingAcl({
     required this.id,
     required this.permission,
     required this.topic,

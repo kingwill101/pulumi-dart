@@ -36,7 +36,7 @@ class GetRouteServicesResult {
   /// [outputFile] Optional.
   /// [services] A list of CEN Route Services. Each element contains the following attributes:
   /// [status] The status of the cloud service.
-  GetRouteServicesResult({
+  const GetRouteServicesResult({
     this.accessRegionId,
     required this.cenId,
     this.host,

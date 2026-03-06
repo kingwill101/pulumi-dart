@@ -28,7 +28,7 @@ class GcpUserAccessBindingArgs {
   /// [organizationId] Required. ID of the parent organization.
   /// [scopedAccessSettings] Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
   /// [sessionSettings] Optional. The Google Cloud session length (GCSL) policy for the group key.
-  GcpUserAccessBindingArgs({
+  const GcpUserAccessBindingArgs({
     this.accessLevels,
     required this.groupKey,
     required this.organizationId,

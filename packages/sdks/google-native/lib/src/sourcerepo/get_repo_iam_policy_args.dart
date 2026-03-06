@@ -15,7 +15,7 @@ class GetRepoIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [repoId] Required.
-  GetRepoIamPolicyArgs({
+  const GetRepoIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.repoId,

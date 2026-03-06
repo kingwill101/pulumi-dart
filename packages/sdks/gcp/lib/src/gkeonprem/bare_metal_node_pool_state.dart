@@ -73,7 +73,7 @@ class BareMetalNodePoolState {
   /// [statuses] Specifies detailed node pool status.
   /// [uid] The unique identifier of the Bare Metal Node Pool.
   /// [updateTime] The time the cluster was last updated, in RFC3339 text format.
-  BareMetalNodePoolState({
+  const BareMetalNodePoolState({
     this.annotations,
     this.bareMetalCluster,
     this.createTime,

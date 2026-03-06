@@ -44,7 +44,7 @@ class ExpressRoutePortArgs {
   /// [peeringLocation] The name of the peering location that the ExpressRoutePort is mapped to physically.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  ExpressRoutePortArgs({
+  const ExpressRoutePortArgs({
     this.bandwidthInGbps,
     this.billingType,
     this.encapsulation,

@@ -9,7 +9,7 @@ class GetClusterIdentity {
 
   /// Creates a new [GetClusterIdentity].
   /// [oidcs] Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
-  GetClusterIdentity({
+  const GetClusterIdentity({
     required this.oidcs,
   });
 

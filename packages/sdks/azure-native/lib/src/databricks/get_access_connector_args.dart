@@ -15,7 +15,7 @@ class GetAccessConnectorArgs {
   /// Creates a new [GetAccessConnectorArgs].
   /// [connectorName] The name of the Azure Databricks Access Connector.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccessConnectorArgs({
+  const GetAccessConnectorArgs({
     required this.connectorName,
     required this.resourceGroupName,
   });

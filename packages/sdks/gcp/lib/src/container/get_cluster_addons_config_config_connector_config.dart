@@ -7,7 +7,7 @@ class GetClusterAddonsConfigConfigConnectorConfig {
 
   /// Creates a new [GetClusterAddonsConfigConfigConnectorConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigConfigConnectorConfig({
+  const GetClusterAddonsConfigConfigConnectorConfig({
     required this.enabled,
   });
 

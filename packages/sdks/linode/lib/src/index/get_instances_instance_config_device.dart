@@ -37,7 +37,7 @@ class GetInstancesInstanceConfigDevice {
   /// [sdfs] Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
   /// [sdgs] Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
   /// [sdhs] Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  GetInstancesInstanceConfigDevice({
+  const GetInstancesInstanceConfigDevice({
     required this.sdas,
     required this.sdbs,
     required this.sdcs,

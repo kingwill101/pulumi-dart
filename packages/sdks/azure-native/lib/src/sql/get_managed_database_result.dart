@@ -47,7 +47,7 @@ class GetManagedDatabaseResult {
   /// [status] Status of the database.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetManagedDatabaseResult({
+  const GetManagedDatabaseResult({
     required this.azureApiVersion,
     this.catalogCollation,
     this.collation,

@@ -78,7 +78,7 @@ class BackupVaultArgs {
   /// [labels] Optional. Resource labels to represent user provided metadata.
   /// [location] The GCP location for the backup vault.
   /// [project] The ID of the project in which the resource belongs.
-  BackupVaultArgs({
+  const BackupVaultArgs({
     this.accessRestriction,
     this.allowMissing,
     this.annotations,

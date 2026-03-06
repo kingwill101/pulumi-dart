@@ -23,7 +23,7 @@ class GetSingleServerFirewallRuleResult {
   /// [name] The name of the resource
   /// [startIpAddress] The start IP address of the server firewall rule. Must be IPv4 format.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSingleServerFirewallRuleResult({
+  const GetSingleServerFirewallRuleResult({
     required this.azureApiVersion,
     required this.endIpAddress,
     required this.id,

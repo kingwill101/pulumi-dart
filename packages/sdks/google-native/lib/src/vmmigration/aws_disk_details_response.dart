@@ -15,7 +15,7 @@ class AwsDiskDetailsResponse {
   /// [diskNumber] The ordinal number of the disk.
   /// [sizeGb] Size in GB.
   /// [volumeId] AWS volume ID.
-  AwsDiskDetailsResponse({
+  const AwsDiskDetailsResponse({
     required this.diskNumber,
     required this.sizeGb,
     required this.volumeId,

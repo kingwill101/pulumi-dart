@@ -21,7 +21,7 @@ class CertificateAuthorityCertificateArgs {
   /// [certificateAuthorityArn] ARN of the Certificate Authority.
   /// [certificateChain] PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA. Required for subordinate Certificate Authorities. Not allowed for root Certificate Authorities.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  CertificateAuthorityCertificateArgs({
+  const CertificateAuthorityCertificateArgs({
     required this.certificate,
     required this.certificateAuthorityArn,
     this.certificateChain,

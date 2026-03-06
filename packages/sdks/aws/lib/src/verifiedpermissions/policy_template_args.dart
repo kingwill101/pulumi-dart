@@ -23,7 +23,7 @@ class PolicyTemplateArgs {
   /// [policyStoreId] The ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [statement] Defines the content of the statement, written in Cedar policy language.
-  PolicyTemplateArgs({
+  const PolicyTemplateArgs({
     this.description,
     required this.policyStoreId,
     this.region,

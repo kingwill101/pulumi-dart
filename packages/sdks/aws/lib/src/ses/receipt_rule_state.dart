@@ -61,7 +61,7 @@ class ReceiptRuleState {
   /// [stopActions] A list of Stop Action blocks. Documented below.
   /// [tlsPolicy] `Require` or `Optional`
   /// [workmailActions] A list of WorkMail Action blocks. Documented below.
-  ReceiptRuleState({
+  const ReceiptRuleState({
     this.addHeaderActions,
     this.after,
     this.arn,

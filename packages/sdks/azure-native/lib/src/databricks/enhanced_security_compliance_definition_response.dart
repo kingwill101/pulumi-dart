@@ -18,7 +18,7 @@ class EnhancedSecurityComplianceDefinitionResponse {
   /// [automaticClusterUpdate] Status of automated cluster updates feature.
   /// [complianceSecurityProfile] Status of Compliance Security Profile feature.
   /// [enhancedSecurityMonitoring] Status of Enhanced Security Monitoring feature.
-  EnhancedSecurityComplianceDefinitionResponse({
+  const EnhancedSecurityComplianceDefinitionResponse({
     this.automaticClusterUpdate,
     this.complianceSecurityProfile,
     this.enhancedSecurityMonitoring,

@@ -12,7 +12,7 @@ class CustomHttpPattern {
   /// Creates a new [CustomHttpPattern].
   /// [kind] The name of this custom HTTP verb.
   /// [path] The path matched by this custom verb.
-  CustomHttpPattern({
+  const CustomHttpPattern({
     this.kind,
     this.path,
   });

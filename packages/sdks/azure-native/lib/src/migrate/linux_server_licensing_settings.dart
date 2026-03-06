@@ -9,7 +9,7 @@ class LinuxServerLicensingSettings {
 
   /// Creates a new [LinuxServerLicensingSettings].
   /// [licenseCost] Licence Cost.
-  LinuxServerLicensingSettings({
+  const LinuxServerLicensingSettings({
     required this.licenseCost,
   });
 

@@ -11,7 +11,7 @@ class GetDeploymentRemoteDebuggingConfigResult {
   /// Creates a new [GetDeploymentRemoteDebuggingConfigResult].
   /// [enabled] Indicate if remote debugging is enabled
   /// [port] Application debugging port
-  GetDeploymentRemoteDebuggingConfigResult({
+  const GetDeploymentRemoteDebuggingConfigResult({
     this.enabled,
     this.port,
   });

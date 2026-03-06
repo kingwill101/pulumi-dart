@@ -14,7 +14,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
   /// [registryBurst] (Optional)
   /// [registryPullQps] (Optional)
   /// [serializeImagePullsDisabled] (Optional)
-  BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig({
     this.registryBurst,
     this.registryPullQps,
     this.serializeImagePullsDisabled,

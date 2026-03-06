@@ -11,7 +11,7 @@ class EfsLocationEc2Config {
   /// Creates a new [EfsLocationEc2Config].
   /// [securityGroupArns] List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
   /// [subnetArn] Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
-  EfsLocationEc2Config({
+  const EfsLocationEc2Config({
     required this.securityGroupArns,
     required this.subnetArn,
   });

@@ -31,7 +31,7 @@ class Type {
   /// [options] The protocol buffer options.
   /// [sourceContext] The source context.
   /// [syntax] The source syntax.
-  Type({
+  const Type({
     this.edition,
     this.fields,
     this.name,

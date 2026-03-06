@@ -13,7 +13,7 @@ class GetBillingAccountExclusionArgs {
   /// Creates a new [GetBillingAccountExclusionArgs].
   /// [billingAccountId] Required.
   /// [exclusionId] Required.
-  GetBillingAccountExclusionArgs({
+  const GetBillingAccountExclusionArgs({
     required this.billingAccountId,
     required this.exclusionId,
   });

@@ -7,7 +7,7 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStr
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream].
   /// [streamName] Required.
-  IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream({
+  const IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream({
     required this.streamName,
   });
 

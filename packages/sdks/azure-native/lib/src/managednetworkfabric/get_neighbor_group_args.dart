@@ -15,7 +15,7 @@ class GetNeighborGroupArgs {
   /// Creates a new [GetNeighborGroupArgs].
   /// [neighborGroupName] Name of the Neighbor Group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNeighborGroupArgs({
+  const GetNeighborGroupArgs({
     required this.neighborGroupName,
     required this.resourceGroupName,
   });

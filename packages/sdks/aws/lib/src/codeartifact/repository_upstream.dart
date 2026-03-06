@@ -8,7 +8,7 @@ class RepositoryUpstream {
 
   /// Creates a new [RepositoryUpstream].
   /// [repositoryName] The name of an upstream repository.
-  RepositoryUpstream({
+  const RepositoryUpstream({
     required this.repositoryName,
   });
 

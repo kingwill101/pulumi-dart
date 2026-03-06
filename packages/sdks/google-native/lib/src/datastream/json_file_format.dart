@@ -14,7 +14,7 @@ class JsonFileFormat {
   /// Creates a new [JsonFileFormat].
   /// [compression] Compression of the loaded JSON file.
   /// [schemaFileFormat] The schema file format along JSON data files.
-  JsonFileFormat({
+  const JsonFileFormat({
     this.compression,
     this.schemaFileFormat,
   });

@@ -21,7 +21,7 @@ class PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2 {
   /// [reason] `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
   /// [status] `status` is the status of the condition. Can be True, False, Unknown. Required.
   /// [type] `type` is the type of the condition. Required.
-  PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2({
+  const PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2({
     this.lastTransitionTime,
     this.message,
     this.reason,

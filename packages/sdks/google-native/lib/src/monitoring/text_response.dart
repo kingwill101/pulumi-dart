@@ -16,7 +16,7 @@ class TextResponse {
   /// [content] The text content to be displayed.
   /// [format] How the text content is formatted.
   /// [style] How the text is styled
-  TextResponse({
+  const TextResponse({
     required this.content,
     required this.format,
     required this.style,

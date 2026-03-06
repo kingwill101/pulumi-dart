@@ -29,7 +29,7 @@ class GetGatewaysGatewaySlbList {
   /// [slbIp] The ip of the gateway slb.
   /// [slbPort] The port of the gateway slb.
   /// [type] The type of the gateway slb.
-  GetGatewaysGatewaySlbList({
+  const GetGatewaysGatewaySlbList({
     required this.associateId,
     required this.gatewaySlbMode,
     required this.gatewaySlbStatus,

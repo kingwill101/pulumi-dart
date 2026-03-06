@@ -30,7 +30,7 @@ class VpcAttachmentArgs {
   /// [subnetArns] Subnet ARNs of the VPC attachment.
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcArn] ARN of the VPC.
-  VpcAttachmentArgs({
+  const VpcAttachmentArgs({
     required this.coreNetworkId,
     this.options,
     this.routingPolicyLabel,

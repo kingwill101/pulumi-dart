@@ -47,7 +47,7 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker {
   /// [metros] (Output)
   /// [regions] (Output)
   /// [zones] (Output)
-  InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker({
+  const InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker({
     this.attachments,
     this.blockerType,
     this.documentationLink,

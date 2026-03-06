@@ -13,7 +13,7 @@ class EventSubscriptionAdvancedFilterStringEndsWith {
   /// Creates a new [EventSubscriptionAdvancedFilterStringEndsWith].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
   /// [values] Specifies an array of values to compare to when using a multiple values operator.
-  EventSubscriptionAdvancedFilterStringEndsWith({
+  const EventSubscriptionAdvancedFilterStringEndsWith({
     required this.key,
     required this.values,
   });

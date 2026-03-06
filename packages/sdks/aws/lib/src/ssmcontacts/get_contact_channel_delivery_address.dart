@@ -7,7 +7,7 @@ class GetContactChannelDeliveryAddress {
 
   /// Creates a new [GetContactChannelDeliveryAddress].
   /// [simpleAddress] Required.
-  GetContactChannelDeliveryAddress({
+  const GetContactChannelDeliveryAddress({
     required this.simpleAddress,
   });
 

@@ -15,7 +15,7 @@ class GetKeystoreArgs {
   /// [environmentId] Required.
   /// [keystoreId] Required.
   /// [organizationId] Required.
-  GetKeystoreArgs({
+  const GetKeystoreArgs({
     required this.environmentId,
     required this.keystoreId,
     required this.organizationId,

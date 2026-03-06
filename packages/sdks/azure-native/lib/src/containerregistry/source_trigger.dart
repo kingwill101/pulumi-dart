@@ -19,7 +19,7 @@ class SourceTrigger {
   /// [sourceRepository] The properties that describes the source(code) for the task.
   /// [sourceTriggerEvents] The source event corresponding to the trigger.
   /// [status] The current status of trigger.
-  SourceTrigger({
+  const SourceTrigger({
     required this.name,
     required this.sourceRepository,
     required this.sourceTriggerEvents,

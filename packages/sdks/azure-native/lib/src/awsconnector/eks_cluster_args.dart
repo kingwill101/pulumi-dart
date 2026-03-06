@@ -16,7 +16,7 @@ class EksClusterArgs {
   /// Creates a new [EksClusterArgs].
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  EksClusterArgs({
+  const EksClusterArgs({
     this.properties,
     required this.resourceUri,
   });

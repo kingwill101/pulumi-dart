@@ -17,7 +17,7 @@ class ServiceDeploymentConfigurationLifecycleHook {
   /// [hookTargetArn] ARN of the Lambda function to invoke for the lifecycle hook.
   /// [lifecycleStages] Stages during the deployment when the hook should be invoked. Valid values: `RECONCILE_SERVICE`, `PRE_SCALE_UP`, `POST_SCALE_UP`, `TEST_TRAFFIC_SHIFT`, `POST_TEST_TRAFFIC_SHIFT`, `PRODUCTION_TRAFFIC_SHIFT`, `POST_PRODUCTION_TRAFFIC_SHIFT`.
   /// [roleArn] ARN of the IAM role that grants the service permission to invoke the Lambda function.
-  ServiceDeploymentConfigurationLifecycleHook({
+  const ServiceDeploymentConfigurationLifecycleHook({
     this.hookDetails,
     required this.hookTargetArn,
     required this.lifecycleStages,

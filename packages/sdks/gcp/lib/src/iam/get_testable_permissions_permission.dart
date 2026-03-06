@@ -20,7 +20,7 @@ class GetTestablePermissionsPermission {
   /// [name] Name of the permission.
   /// [stage] Release stage of the permission.
   /// [title] Human readable title of the permission.
-  GetTestablePermissionsPermission({
+  const GetTestablePermissionsPermission({
     required this.apiDisabled,
     required this.customSupportLevel,
     required this.name,

@@ -12,7 +12,7 @@ class GetSitesBySubscriptionArgs {
 
   /// Creates a new [GetSitesBySubscriptionArgs].
   /// [siteName] The name of the Site
-  GetSitesBySubscriptionArgs({
+  const GetSitesBySubscriptionArgs({
     required this.siteName,
   });
 

@@ -15,7 +15,7 @@ class GetJobArgs {
   /// Creates a new [GetJobArgs].
   /// [jobName] Job Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetJobArgs({
+  const GetJobArgs({
     required this.jobName,
     required this.resourceGroupName,
   });

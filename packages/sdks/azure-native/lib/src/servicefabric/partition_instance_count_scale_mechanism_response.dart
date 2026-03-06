@@ -19,7 +19,7 @@ class PartitionInstanceCountScaleMechanismResponse {
   /// [maxInstanceCount] Maximum number of instances of the partition.
   /// [minInstanceCount] Minimum number of instances of the partition.
   /// [scaleIncrement] The number of instances to add or remove during a scaling operation.
-  PartitionInstanceCountScaleMechanismResponse({
+  const PartitionInstanceCountScaleMechanismResponse({
     required this.kind,
     required this.maxInstanceCount,
     required this.minInstanceCount,

@@ -18,7 +18,7 @@ class AppVersionSnapshotToolPythonFunction {
   /// [description] The description of the app version.
   /// [name] (Output)
   /// [pythonCode] (Output)
-  AppVersionSnapshotToolPythonFunction({
+  const AppVersionSnapshotToolPythonFunction({
     this.description,
     this.name,
     this.pythonCode,

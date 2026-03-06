@@ -14,7 +14,7 @@ class InstanceFromMachineImageConfidentialInstanceConfig {
   /// Creates a new [InstanceFromMachineImageConfidentialInstanceConfig].
   /// [confidentialInstanceType] The confidential computing technology the instance uses.
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
-  InstanceFromMachineImageConfidentialInstanceConfig({
+  const InstanceFromMachineImageConfidentialInstanceConfig({
     this.confidentialInstanceType,
     this.enableConfidentialCompute,
   });

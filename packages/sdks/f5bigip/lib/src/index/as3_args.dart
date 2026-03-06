@@ -221,7 +221,7 @@ class As3Args {
   /// [tenantFilter] If there are multiple tenants on a BIG-IP, this attribute helps the user to set a particular tenant to which he want to reflect the changes. Other tenants will neither be created nor be modified.
   /// [tenantList] List of tenants currently deployed on the Big-Ip
   /// [tenantName] Name of Tenant. This name is used only in the case of Per-Application Deployment. If it is not provided, then a random name would be generated.
-  As3Args({
+  const As3Args({
     this.applicationList,
     this.as3Json,
     this.controls,

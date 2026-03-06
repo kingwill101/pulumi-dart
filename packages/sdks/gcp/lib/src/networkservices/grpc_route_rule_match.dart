@@ -15,7 +15,7 @@ class GrpcRouteRuleMatch {
   /// Creates a new [GrpcRouteRuleMatch].
   /// [headers] Specifies a list of HTTP request headers to match against.
   /// [method] A gRPC method to match against. If this field is empty or omitted, will match all methods.
-  GrpcRouteRuleMatch({
+  const GrpcRouteRuleMatch({
     this.headers,
     this.method,
   });

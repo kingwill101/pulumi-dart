@@ -10,7 +10,7 @@ class SdsConfig {
 
   /// Creates a new [SdsConfig].
   /// [grpcServiceConfig] The configuration to access the SDS server over GRPC.
-  SdsConfig({
+  const SdsConfig({
     this.grpcServiceConfig,
   });
 

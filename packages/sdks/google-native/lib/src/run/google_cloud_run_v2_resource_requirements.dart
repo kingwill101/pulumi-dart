@@ -15,7 +15,7 @@ class GoogleCloudRunV2ResourceRequirements {
   /// [cpuIdle] Determines whether CPU should be throttled or not outside of requests.
   /// [limits] Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
   /// [startupCpuBoost] Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
-  GoogleCloudRunV2ResourceRequirements({
+  const GoogleCloudRunV2ResourceRequirements({
     this.cpuIdle,
     this.limits,
     this.startupCpuBoost,

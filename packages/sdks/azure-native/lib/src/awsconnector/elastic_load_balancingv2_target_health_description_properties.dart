@@ -31,7 +31,7 @@ class ElasticLoadBalancingv2TargetHealthDescriptionProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ElasticLoadBalancingv2TargetHealthDescriptionProperties({
+  const ElasticLoadBalancingv2TargetHealthDescriptionProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

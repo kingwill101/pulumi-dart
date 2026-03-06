@@ -36,7 +36,7 @@ class NoneAuthTypeConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  NoneAuthTypeConnectionPropertiesResponse({
+  const NoneAuthTypeConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

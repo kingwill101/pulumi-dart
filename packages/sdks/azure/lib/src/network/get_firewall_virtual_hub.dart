@@ -17,7 +17,7 @@ class GetFirewallVirtualHub {
   /// [publicIpAddresses] The list of public IP addresses associated with the Azure Firewall.
   /// [publicIpCount] The number of public IPs assigned to the Azure Firewall.
   /// [virtualHubId] The ID of the Virtual Hub where the Azure Firewall resides in.
-  GetFirewallVirtualHub({
+  const GetFirewallVirtualHub({
     required this.privateIpAddress,
     required this.publicIpAddresses,
     required this.publicIpCount,

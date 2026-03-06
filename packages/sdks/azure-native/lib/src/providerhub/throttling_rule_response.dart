@@ -18,7 +18,7 @@ class ThrottlingRuleResponse {
   /// [applicationId] The application id.
   /// [metrics] The metrics.
   /// [requiredFeatures] The required features.
-  ThrottlingRuleResponse({
+  const ThrottlingRuleResponse({
     required this.action,
     this.applicationId,
     required this.metrics,

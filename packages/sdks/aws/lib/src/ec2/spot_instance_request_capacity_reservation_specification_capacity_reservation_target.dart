@@ -11,7 +11,7 @@ class SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarg
   /// Creates a new [SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationId] ID of the Capacity Reservation in which to run the instance.
   /// [capacityReservationResourceGroupArn] ARN of the Capacity Reservation resource group in which to run the instance.
-  SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget({
+  const SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget({
     this.capacityReservationId,
     this.capacityReservationResourceGroupArn,
   });

@@ -38,7 +38,7 @@ class WorkerPoolTerminalCondition {
   /// [severity] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  WorkerPoolTerminalCondition({
+  const WorkerPoolTerminalCondition({
     this.executionReason,
     this.lastTransitionTime,
     this.message,

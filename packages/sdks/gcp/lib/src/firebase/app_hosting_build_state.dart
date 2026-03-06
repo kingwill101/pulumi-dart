@@ -108,7 +108,7 @@ class AppHostingBuildState {
   /// [state] The state of the build.
   /// [uid] System-assigned, unique identifier.
   /// [updateTime] Time at which the build was last updated.
-  AppHostingBuildState({
+  const AppHostingBuildState({
     this.annotations,
     this.backend,
     this.buildId,

@@ -15,7 +15,7 @@ class GetClusterAddonsConfigRayOperatorConfig {
   /// [enabled] Required.
   /// [rayClusterLoggingConfigs] The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
   /// [rayClusterMonitoringConfigs] The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
-  GetClusterAddonsConfigRayOperatorConfig({
+  const GetClusterAddonsConfigRayOperatorConfig({
     required this.enabled,
     required this.rayClusterLoggingConfigs,
     required this.rayClusterMonitoringConfigs,

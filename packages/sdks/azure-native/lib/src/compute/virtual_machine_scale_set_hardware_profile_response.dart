@@ -10,7 +10,7 @@ class VirtualMachineScaleSetHardwareProfileResponse {
 
   /// Creates a new [VirtualMachineScaleSetHardwareProfileResponse].
   /// [vmSizeProperties] Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
-  VirtualMachineScaleSetHardwareProfileResponse({
+  const VirtualMachineScaleSetHardwareProfileResponse({
     this.vmSizeProperties,
   });
 

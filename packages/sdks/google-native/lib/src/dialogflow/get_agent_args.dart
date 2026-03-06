@@ -15,7 +15,7 @@ class GetAgentArgs {
   /// [agentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAgentArgs({
+  const GetAgentArgs({
     required this.agentId,
     required this.location,
     this.project,

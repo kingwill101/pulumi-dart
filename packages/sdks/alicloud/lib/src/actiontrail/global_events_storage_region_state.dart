@@ -9,7 +9,7 @@ class GlobalEventsStorageRegionState {
 
   /// Creates a new [GlobalEventsStorageRegionState].
   /// [storageRegion] Global Events Storage Region.
-  GlobalEventsStorageRegionState({
+  const GlobalEventsStorageRegionState({
     this.storageRegion,
   });
 

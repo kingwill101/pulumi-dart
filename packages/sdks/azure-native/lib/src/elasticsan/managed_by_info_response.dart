@@ -9,7 +9,7 @@ class ManagedByInfoResponse {
 
   /// Creates a new [ManagedByInfoResponse].
   /// [resourceId] Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
-  ManagedByInfoResponse({
+  const ManagedByInfoResponse({
     this.resourceId,
   });
 

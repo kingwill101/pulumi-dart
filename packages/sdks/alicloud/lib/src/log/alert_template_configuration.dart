@@ -20,7 +20,7 @@ class AlertTemplateConfiguration {
   /// [lang] Alert template language including `cn`, `en`.
   /// [tokens] Alert template tokens.
   /// [type] Alert template type including `sys`, `user`.
-  AlertTemplateConfiguration({
+  const AlertTemplateConfiguration({
     this.annotations,
     required this.id,
     this.lang,

@@ -11,7 +11,7 @@ class GetApplicationsApplicationMountDesc {
   /// Creates a new [GetApplicationsApplicationMountDesc].
   /// [mountPath] Container mount path.
   /// [nasPath] NAS relative file directory.
-  GetApplicationsApplicationMountDesc({
+  const GetApplicationsApplicationMountDesc({
     required this.mountPath,
     required this.nasPath,
   });

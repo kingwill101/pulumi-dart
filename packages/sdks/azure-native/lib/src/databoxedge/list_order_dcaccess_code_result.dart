@@ -8,7 +8,7 @@ class ListOrderDCAccessCodeResult {
 
   /// Creates a new [ListOrderDCAccessCodeResult].
   /// [authCode] DCAccess Code for the Self Managed shipment.
-  ListOrderDCAccessCodeResult({
+  const ListOrderDCAccessCodeResult({
     this.authCode,
   });
 

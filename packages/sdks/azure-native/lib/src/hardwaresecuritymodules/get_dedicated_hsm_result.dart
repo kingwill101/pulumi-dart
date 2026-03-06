@@ -50,7 +50,7 @@ class GetDedicatedHsmResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] The Dedicated Hsm zones.
-  GetDedicatedHsmResult({
+  const GetDedicatedHsmResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

@@ -25,7 +25,7 @@ class InstanceStatusEventResponse {
   /// [notAfter] &lt;p&gt;The latest scheduled end time for the event.&lt;/p&gt;
   /// [notBefore] &lt;p&gt;The earliest scheduled start time for the event.&lt;/p&gt;
   /// [notBeforeDeadline] &lt;p&gt;The deadline for starting the event.&lt;/p&gt;
-  InstanceStatusEventResponse({
+  const InstanceStatusEventResponse({
     this.code,
     this.description,
     this.instanceEventId,

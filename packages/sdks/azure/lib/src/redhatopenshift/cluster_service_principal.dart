@@ -13,7 +13,7 @@ class ClusterServicePrincipal {
   /// Creates a new [ClusterServicePrincipal].
   /// [clientId] The Client ID for the Service Principal.
   /// [clientSecret] The Client Secret for the Service Principal.
-  ClusterServicePrincipal({
+  const ClusterServicePrincipal({
     required this.clientId,
     required this.clientSecret,
   });

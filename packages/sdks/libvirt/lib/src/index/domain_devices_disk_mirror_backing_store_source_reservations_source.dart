@@ -61,7 +61,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceReservationsSource {
   /// [udp] Configures UDP settings for the random number generator backend.
   /// [unix] Configures UNIX domain socket settings for the random number generator backend.
   /// [vc] Configures settings for the VC source in the backing store for disk mirroring reservations.
-  DomainDevicesDiskMirrorBackingStoreSourceReservationsSource({
+  const DomainDevicesDiskMirrorBackingStoreSourceReservationsSource({
     this.dbus,
     this.dev,
     this.file,

@@ -12,7 +12,7 @@ class CdnCertificateSourceParametersResponse {
   /// Creates a new [CdnCertificateSourceParametersResponse].
   /// [certificateType] Type of certificate used
   /// [typeName] Expected value is 'CdnCertificateSourceParameters'.
-  CdnCertificateSourceParametersResponse({
+  const CdnCertificateSourceParametersResponse({
     required this.certificateType,
     required this.typeName,
   });

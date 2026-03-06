@@ -36,7 +36,7 @@ class PolicyDnsV1beta2Args {
   /// [name] User-assigned name for this policy.
   /// [networks] List of network names specifying networks to which this policy is applied.
   /// [project] Optional.
-  PolicyDnsV1beta2Args({
+  const PolicyDnsV1beta2Args({
     this.alternativeNameServerConfig,
     this.clientOperationId,
     this.description,

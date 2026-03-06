@@ -12,7 +12,7 @@ class AnalysisParametersIntegerParameter {
   /// Creates a new [AnalysisParametersIntegerParameter].
   /// [name] Display name for the analysis.
   /// [values] Required.
-  AnalysisParametersIntegerParameter({
+  const AnalysisParametersIntegerParameter({
     required this.name,
     required this.values,
   });

@@ -12,7 +12,7 @@ class DatabaseTypeResponse {
   /// Creates a new [DatabaseTypeResponse].
   /// [engine] The database engine.
   /// [provider] The database provider.
-  DatabaseTypeResponse({
+  const DatabaseTypeResponse({
     required this.engine,
     required this.provider,
   });

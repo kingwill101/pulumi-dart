@@ -15,7 +15,7 @@ class GetCustomResourceProviderArgs {
   /// Creates a new [GetCustomResourceProviderArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [resourceProviderName] The name of the resource provider.
-  GetCustomResourceProviderArgs({
+  const GetCustomResourceProviderArgs({
     required this.resourceGroupName,
     required this.resourceProviderName,
   });

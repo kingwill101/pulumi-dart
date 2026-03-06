@@ -11,7 +11,7 @@ class StandardAppVersionDeploymentZip {
   /// Creates a new [StandardAppVersionDeploymentZip].
   /// [filesCount] files count
   /// [sourceUrl] Source URL
-  StandardAppVersionDeploymentZip({
+  const StandardAppVersionDeploymentZip({
     this.filesCount,
     required this.sourceUrl,
   });

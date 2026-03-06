@@ -14,7 +14,7 @@ class KubernetesRoleNetworkResponse {
   /// Creates a new [KubernetesRoleNetworkResponse].
   /// [cniConfig] Cni configuration
   /// [loadBalancerConfig] Load balancer configuration
-  KubernetesRoleNetworkResponse({
+  const KubernetesRoleNetworkResponse({
     required this.cniConfig,
     required this.loadBalancerConfig,
   });

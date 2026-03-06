@@ -8,7 +8,7 @@ class GetLoadBalancersBalancerLoadBalancerBillingConfig {
 
   /// Creates a new [GetLoadBalancersBalancerLoadBalancerBillingConfig].
   /// [payType] The billing method of the ALB instance.
-  GetLoadBalancersBalancerLoadBalancerBillingConfig({
+  const GetLoadBalancersBalancerLoadBalancerBillingConfig({
     required this.payType,
   });
 

@@ -22,7 +22,7 @@ class SiteDeliveryTaskKafkaDelivery {
   /// [topic] Optional.
   /// [userAuth] Optional.
   /// [userName] Optional.
-  SiteDeliveryTaskKafkaDelivery({
+  const SiteDeliveryTaskKafkaDelivery({
     this.balancer,
     this.brokers,
     this.compress,

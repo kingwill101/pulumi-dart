@@ -30,7 +30,7 @@ class OutputFunctionState {
   /// [name] The name which should be used for this Stream Analytics Output. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Output should exist. Changing this forces a new resource to be created.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  OutputFunctionState({
+  const OutputFunctionState({
     this.apiKey,
     this.batchMaxCount,
     this.batchMaxInBytes,

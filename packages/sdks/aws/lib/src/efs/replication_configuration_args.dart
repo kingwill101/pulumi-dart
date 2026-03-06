@@ -19,7 +19,7 @@ class ReplicationConfigurationArgs {
   /// [destination] A destination configuration block (documented below).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceFileSystemId] The ID of the file system that is to be replicated.
-  ReplicationConfigurationArgs({
+  const ReplicationConfigurationArgs({
     required this.destination,
     this.region,
     required this.sourceFileSystemId,

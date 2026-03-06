@@ -14,7 +14,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation {
   /// [edgeLocation] The AWS Region code for the first edge location in the association (e.g., `us-east-1`).
   /// [peerEdgeLocation] The AWS Region code for the second edge location in the association (e.g., `us-west-2`).
   /// [routingPolicyNames] A set of routing policy names to apply to this edge location pair.
-  GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation({
+  const GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation({
     required this.edgeLocation,
     required this.peerEdgeLocation,
     required this.routingPolicyNames,

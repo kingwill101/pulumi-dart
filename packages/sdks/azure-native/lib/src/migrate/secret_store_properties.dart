@@ -7,7 +7,7 @@ class SecretStoreProperties {
 
   /// Creates a new [SecretStoreProperties].
   /// [secretStoreId] Optional.
-  SecretStoreProperties({
+  const SecretStoreProperties({
     this.secretStoreId,
   });
 

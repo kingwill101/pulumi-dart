@@ -18,7 +18,7 @@ class ListIdentityProviderSecretsArgs {
   /// [identityProviderName] Identity Provider Type identifier.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  ListIdentityProviderSecretsArgs({
+  const ListIdentityProviderSecretsArgs({
     required this.identityProviderName,
     required this.resourceGroupName,
     required this.serviceName,

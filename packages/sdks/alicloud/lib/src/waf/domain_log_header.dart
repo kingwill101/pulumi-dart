@@ -9,7 +9,7 @@ class DomainLogHeader {
   /// Creates a new [DomainLogHeader].
   /// [key] Optional.
   /// [value] Optional.
-  DomainLogHeader({
+  const DomainLogHeader({
     this.key,
     this.value,
   });

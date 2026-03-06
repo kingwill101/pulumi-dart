@@ -14,7 +14,7 @@ class ApiProductOperationGroup {
   /// Creates a new [ApiProductOperationGroup].
   /// [operationConfigType] Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
   /// [operationConfigs] Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
-  ApiProductOperationGroup({
+  const ApiProductOperationGroup({
     this.operationConfigType,
     this.operationConfigs,
   });

@@ -12,7 +12,7 @@ class ExternalSubnetResponse {
   /// Creates a new [ExternalSubnetResponse].
   /// [id] Gets or sets the identifier.
   /// [name] Gets or sets the name.
-  ExternalSubnetResponse({
+  const ExternalSubnetResponse({
     this.id,
     this.name,
   });

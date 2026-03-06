@@ -23,7 +23,7 @@ class GetDatabaseMigrationsSqlDbArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [sqlDbInstanceName] Required.
   /// [targetDbName] The name of the target database.
-  GetDatabaseMigrationsSqlDbArgs({
+  const GetDatabaseMigrationsSqlDbArgs({
     this.expand,
     this.migrationOperationId,
     required this.resourceGroupName,

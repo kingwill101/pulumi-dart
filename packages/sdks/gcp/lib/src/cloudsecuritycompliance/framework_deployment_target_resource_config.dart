@@ -15,7 +15,7 @@ class FrameworkDeploymentTargetResourceConfig {
   /// Creates a new [FrameworkDeploymentTargetResourceConfig].
   /// [existingTargetResource] CRM node in format organizations/{organization}, folders/{folder},
   /// [targetResourceCreationConfig] TargetResourceCreationConfig contains the config to create a new resource to
-  FrameworkDeploymentTargetResourceConfig({
+  const FrameworkDeploymentTargetResourceConfig({
     this.existingTargetResource,
     this.targetResourceCreationConfig,
   });

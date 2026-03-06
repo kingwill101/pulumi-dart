@@ -21,7 +21,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
   /// Creates a new [URLMapPathMatcherRouteRuleMatchRuleMetadataFilter].
   /// [filterLabels] The list of label value pairs that must match labels in the provided metadata
   /// [filterMatchCriteria] Specifies how individual filterLabel matches within the list of filterLabels
-  URLMapPathMatcherRouteRuleMatchRuleMetadataFilter({
+  const URLMapPathMatcherRouteRuleMatchRuleMetadataFilter({
     required this.filterLabels,
     required this.filterMatchCriteria,
   });

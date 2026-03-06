@@ -29,7 +29,7 @@ class GetUsersUserAddress {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [streetAddress] Street of the address.
   /// [type] Type of phone number.
-  GetUsersUserAddress({
+  const GetUsersUserAddress({
     required this.country,
     required this.formatted,
     required this.locality,

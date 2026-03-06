@@ -15,7 +15,7 @@ class ConnectionStatusResponse {
   /// [description] Description.
   /// [state] State.
   /// [status] Status provides detailed information for the state.
-  ConnectionStatusResponse({
+  const ConnectionStatusResponse({
     required this.description,
     required this.state,
     required this.status,

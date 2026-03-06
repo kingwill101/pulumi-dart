@@ -17,7 +17,7 @@ class GetRulesRuleBindVpc {
   /// [regionName] The Region Name of the vpc.
   /// [vpcId] The ID of the VPC.
   /// [vpcName] The Name of the VPC.
-  GetRulesRuleBindVpc({
+  const GetRulesRuleBindVpc({
     required this.regionId,
     required this.regionName,
     required this.vpcId,

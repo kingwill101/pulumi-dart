@@ -11,7 +11,7 @@ class FeatureImportanceSettings {
   /// Creates a new [FeatureImportanceSettings].
   /// [mode] The mode of operation for computing feature importance.
   /// [targetColumn] The name of the target column within the input data asset.
-  FeatureImportanceSettings({
+  const FeatureImportanceSettings({
     this.mode,
     this.targetColumn,
   });

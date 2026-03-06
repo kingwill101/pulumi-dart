@@ -44,7 +44,7 @@ class NetworkFunctionValueWithSecretsResponse {
   /// [publisherName] The publisher name for the network function.
   /// [publisherScope] The scope of the publisher.
   /// [roleOverrideValues] The role configuration override values from the user.
-  NetworkFunctionValueWithSecretsResponse({
+  const NetworkFunctionValueWithSecretsResponse({
     this.allowSoftwareUpdate,
     required this.configurationType,
     this.networkFunctionDefinitionGroupName,

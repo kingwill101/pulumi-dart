@@ -26,7 +26,7 @@ class GetRegistryEnterpriseNamespacesResult {
   /// [names] A list of namespace names.
   /// [namespaces] A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetRegistryEnterpriseNamespacesResult({
+  const GetRegistryEnterpriseNamespacesResult({
     required this.id,
     required this.ids,
     required this.instanceId,

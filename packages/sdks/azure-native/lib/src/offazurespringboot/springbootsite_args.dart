@@ -29,7 +29,7 @@ class SpringbootsiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [springbootsitesName] The springbootsites name.
   /// [tags] Resource tags.
-  SpringbootsiteArgs({
+  const SpringbootsiteArgs({
     this.extendedLocation,
     this.location,
     this.properties,

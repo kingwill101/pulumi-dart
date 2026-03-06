@@ -141,7 +141,7 @@ class AppVersionSnapshotAgent {
   /// [tools] (Output)
   /// [toolsets] (Output)
   /// [updateTime] (Output)
-  AppVersionSnapshotAgent({
+  const AppVersionSnapshotAgent({
     this.afterAgentCallbacks,
     this.afterModelCallbacks,
     this.afterToolCallbacks,

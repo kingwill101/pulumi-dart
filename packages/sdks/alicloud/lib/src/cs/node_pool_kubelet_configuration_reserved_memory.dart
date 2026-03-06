@@ -11,7 +11,7 @@ class NodePoolKubeletConfigurationReservedMemory {
   /// Creates a new [NodePoolKubeletConfigurationReservedMemory].
   /// [limits] Memory resource limit.
   /// [numaNode] The NUMA node.
-  NodePoolKubeletConfigurationReservedMemory({
+  const NodePoolKubeletConfigurationReservedMemory({
     this.limits,
     this.numaNode,
   });

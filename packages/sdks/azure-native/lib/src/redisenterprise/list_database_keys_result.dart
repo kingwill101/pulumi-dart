@@ -11,7 +11,7 @@ class ListDatabaseKeysResult {
   /// Creates a new [ListDatabaseKeysResult].
   /// [primaryKey] The current primary key that clients can use to authenticate
   /// [secondaryKey] The current secondary key that clients can use to authenticate
-  ListDatabaseKeysResult({
+  const ListDatabaseKeysResult({
     required this.primaryKey,
     required this.secondaryKey,
   });

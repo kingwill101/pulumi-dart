@@ -40,7 +40,7 @@ class ExternalNetworkPropertiesResponseOptionAProperties {
   /// [secondaryIpv4Prefix] Secondary IPv4 Address Prefix.
   /// [secondaryIpv6Prefix] Secondary IPv6 Address Prefix.
   /// [vlanId] Vlan identifier. Example : 501
-  ExternalNetworkPropertiesResponseOptionAProperties({
+  const ExternalNetworkPropertiesResponseOptionAProperties({
     this.bfdConfiguration,
     this.egressAclId,
     required this.fabricASN,

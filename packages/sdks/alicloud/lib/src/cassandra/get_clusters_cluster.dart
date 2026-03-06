@@ -40,7 +40,7 @@ class GetClustersCluster {
   /// [payType] Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.
   /// [status] Status of the cluster.
   /// [tags] A mapping of tags to assign to the resource.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.clusterId,
     required this.clusterName,
     required this.createdTime,

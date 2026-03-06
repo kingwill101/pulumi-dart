@@ -20,7 +20,7 @@ class DomainDevicesDiskTarget {
   /// [removable] Indicates whether the disk device is removable within the guest.
   /// [rotationRate] Sets the rotational speed for the disk device, affecting its performance characteristics.
   /// [tray] Configures the tray setting for the disk device, indicating whether the tray is open or closed.
-  DomainDevicesDiskTarget({
+  const DomainDevicesDiskTarget({
     this.bus,
     this.dev,
     this.removable,

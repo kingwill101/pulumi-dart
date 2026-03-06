@@ -32,7 +32,7 @@ class GetInstancesInstance {
   /// [instanceType] The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
   /// [status] The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
   /// [zoneId] The ID of the region to which the EAIS instance belongs.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.clientInstanceId,
     required this.clientInstanceName,
     required this.clientInstanceType,

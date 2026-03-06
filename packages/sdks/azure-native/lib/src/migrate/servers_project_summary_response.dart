@@ -34,7 +34,7 @@ class ServersProjectSummaryResponse {
   /// [refreshSummaryState] Gets or sets the state of refresh summary.
   /// [replicatingCount] Gets or sets the count of entities being replicated.
   /// [testMigratedCount] Gets or sets the count of entities test migrated.
-  ServersProjectSummaryResponse({
+  const ServersProjectSummaryResponse({
     this.assessedCount,
     this.discoveredCount,
     this.extendedSummary,

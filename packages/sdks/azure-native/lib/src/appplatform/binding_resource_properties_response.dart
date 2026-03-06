@@ -30,7 +30,7 @@ class BindingResourcePropertiesResponse {
   /// [resourceName] The name of the bound resource
   /// [resourceType] The standard Azure resource type of the bound resource
   /// [updatedAt] Update time of the Binding resource
-  BindingResourcePropertiesResponse({
+  const BindingResourcePropertiesResponse({
     this.bindingParameters,
     required this.createdAt,
     required this.generatedProperties,

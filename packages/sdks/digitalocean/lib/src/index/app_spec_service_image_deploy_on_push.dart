@@ -8,7 +8,7 @@ class AppSpecServiceImageDeployOnPush {
 
   /// Creates a new [AppSpecServiceImageDeployOnPush].
   /// [enabled] Whether to automatically deploy images pushed to DOCR.
-  AppSpecServiceImageDeployOnPush({
+  const AppSpecServiceImageDeployOnPush({
     this.enabled,
   });
 

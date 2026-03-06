@@ -11,7 +11,7 @@ class EncryptionSpecEncryptionSpec {
 
   /// Creates a new [EncryptionSpecEncryptionSpec].
   /// [kmsKey] The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
-  EncryptionSpecEncryptionSpec({
+  const EncryptionSpecEncryptionSpec({
     required this.kmsKey,
   });
 

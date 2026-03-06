@@ -10,7 +10,7 @@ class StreamDeclaration {
 
   /// Creates a new [StreamDeclaration].
   /// [columns] List of columns used by data in this stream.
-  StreamDeclaration({
+  const StreamDeclaration({
     this.columns,
   });
 

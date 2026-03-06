@@ -24,7 +24,7 @@ class GuardrailModelSafetySafetySetting {
   /// Creates a new [GuardrailModelSafetySafetySetting].
   /// [category] The harm category.
   /// [threshold] The harm block threshold.
-  GuardrailModelSafetySafetySetting({
+  const GuardrailModelSafetySafetySetting({
     required this.category,
     required this.threshold,
   });

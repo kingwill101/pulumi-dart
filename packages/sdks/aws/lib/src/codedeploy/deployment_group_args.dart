@@ -76,7 +76,7 @@ class DeploymentGroupArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [terminationHookEnabled] Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   /// [triggerConfigurations] Configuration block(s) of the triggers for the deployment group (documented below).
-  DeploymentGroupArgs({
+  const DeploymentGroupArgs({
     this.alarmConfiguration,
     required this.appName,
     this.autoRollbackConfiguration,

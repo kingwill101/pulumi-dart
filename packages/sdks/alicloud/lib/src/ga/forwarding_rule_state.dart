@@ -32,7 +32,7 @@ class ForwardingRuleState {
   /// [priority] Forwarding policy priority.
   /// [ruleActions] Forward action. See `rule_actions` below.
   /// [ruleConditions] Forwarding condition list. See `rule_conditions` below.
-  ForwardingRuleState({
+  const ForwardingRuleState({
     this.acceleratorId,
     this.forwardingRuleId,
     this.forwardingRuleName,

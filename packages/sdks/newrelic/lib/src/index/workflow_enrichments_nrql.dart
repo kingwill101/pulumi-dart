@@ -21,7 +21,7 @@ class WorkflowEnrichmentsNrql {
   /// [enrichmentId] Enrichment's id.
   /// [name] The name of the workflow.
   /// [type] The type of the enrichment. One of: (NRQL).
-  WorkflowEnrichmentsNrql({
+  const WorkflowEnrichmentsNrql({
     this.accountId,
     required this.configurations,
     this.enrichmentId,

@@ -13,7 +13,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText {
   /// Creates a new [CxFlowEventHandlerTriggerFulfillmentMessageText].
   /// [allowPlaybackInterruption] (Output)
   /// [texts] A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-  CxFlowEventHandlerTriggerFulfillmentMessageText({
+  const CxFlowEventHandlerTriggerFulfillmentMessageText({
     this.allowPlaybackInterruption,
     this.texts,
   });

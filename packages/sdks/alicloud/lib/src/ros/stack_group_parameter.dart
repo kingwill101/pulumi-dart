@@ -11,7 +11,7 @@ class StackGroupParameter {
   /// Creates a new [StackGroupParameter].
   /// [parameterKey] The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
   /// [parameterValue] The value of parameter N.
-  StackGroupParameter({
+  const StackGroupParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

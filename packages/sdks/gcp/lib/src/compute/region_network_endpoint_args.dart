@@ -37,7 +37,7 @@ class RegionNetworkEndpointArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the containing network endpoint group is located.
   /// [regionNetworkEndpointGroup] The network endpoint group this endpoint is part of.
-  RegionNetworkEndpointArgs({
+  const RegionNetworkEndpointArgs({
     this.clientDestinationPort,
     this.fqdn,
     this.instance,

@@ -18,7 +18,7 @@ class GetFhirServiceArgs {
   /// [name] The name of the Healthcare FHIR Service.
   /// [tags] The map of tags assigned to the Healthcare FHIR Service.
   /// [workspaceId] The id of the Healthcare Workspace in which the Healthcare FHIR Service exists.
-  GetFhirServiceArgs({
+  const GetFhirServiceArgs({
     required this.name,
     this.tags,
     required this.workspaceId,

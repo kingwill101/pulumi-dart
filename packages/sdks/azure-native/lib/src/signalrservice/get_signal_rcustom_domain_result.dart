@@ -31,7 +31,7 @@ class GetSignalRCustomDomainResult {
   /// [provisioningState] Provisioning state of the resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSignalRCustomDomainResult({
+  const GetSignalRCustomDomainResult({
     required this.azureApiVersion,
     required this.customCertificate,
     required this.domainName,

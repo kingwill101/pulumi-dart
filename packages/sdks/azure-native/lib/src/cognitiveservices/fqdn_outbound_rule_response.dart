@@ -23,7 +23,7 @@ class FqdnOutboundRuleResponse {
   /// [parentRuleNames] Required.
   /// [status] Type of a managed network Outbound Rule of a cognitive services account.
   /// [type] Type of a managed network Outbound Rule of a cognitive services account.
-  FqdnOutboundRuleResponse({
+  const FqdnOutboundRuleResponse({
     this.category,
     this.destination,
     required this.errorInformation,

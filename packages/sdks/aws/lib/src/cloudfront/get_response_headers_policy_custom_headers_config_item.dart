@@ -14,7 +14,7 @@ class GetResponseHeadersPolicyCustomHeadersConfigItem {
   /// [header] The HTTP header name.
   /// [override] Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
   /// [value] Value for the HTTP response header.
-  GetResponseHeadersPolicyCustomHeadersConfigItem({
+  const GetResponseHeadersPolicyCustomHeadersConfigItem({
     required this.header,
     required this.override,
     required this.value,

@@ -14,7 +14,7 @@ class TriggerDependencyReferenceResponse {
   /// Creates a new [TriggerDependencyReferenceResponse].
   /// [referenceTrigger] Referenced trigger.
   /// [type] The type of dependency reference.
-  TriggerDependencyReferenceResponse({
+  const TriggerDependencyReferenceResponse({
     required this.referenceTrigger,
     required this.type,
   });

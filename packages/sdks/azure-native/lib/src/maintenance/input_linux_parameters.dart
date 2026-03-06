@@ -15,7 +15,7 @@ class InputLinuxParameters {
   /// [classificationsToInclude] Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
   /// [packageNameMasksToExclude] Package names to be excluded for patching.
   /// [packageNameMasksToInclude] Package names to be included for patching.
-  InputLinuxParameters({
+  const InputLinuxParameters({
     this.classificationsToInclude,
     this.packageNameMasksToExclude,
     this.packageNameMasksToInclude,

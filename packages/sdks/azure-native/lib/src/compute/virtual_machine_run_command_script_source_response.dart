@@ -19,7 +19,7 @@ class VirtualMachineRunCommandScriptSourceResponse {
   /// [script] Specifies the script content to be executed on the VM.
   /// [scriptUri] Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
   /// [scriptUriManagedIdentity] User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
-  VirtualMachineRunCommandScriptSourceResponse({
+  const VirtualMachineRunCommandScriptSourceResponse({
     this.commandId,
     this.script,
     this.scriptUri,

@@ -49,7 +49,7 @@ class TableFieldSchema {
   /// [roundingMode] Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
   /// [scale] [Optional] See documentation for precision.
   /// [type] [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
-  TableFieldSchema({
+  const TableFieldSchema({
     this.categories,
     this.collation,
     this.defaultValueExpression,

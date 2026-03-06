@@ -13,7 +13,7 @@ class DeploymentStrategyAppsV1beta2 {
   /// Creates a new [DeploymentStrategyAppsV1beta2].
   /// [rollingUpdate] Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
   /// [type] Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
-  DeploymentStrategyAppsV1beta2({
+  const DeploymentStrategyAppsV1beta2({
     this.rollingUpdate,
     this.type,
   });

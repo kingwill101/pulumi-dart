@@ -14,7 +14,7 @@ class InsightsReportConfigFrequencyOptionsStartDate {
   /// [day] The day of the month to start generating inventory reports.
   /// [month] The month to start generating inventory reports.
   /// [year] The year to start generating inventory reports
-  InsightsReportConfigFrequencyOptionsStartDate({
+  const InsightsReportConfigFrequencyOptionsStartDate({
     required this.day,
     required this.month,
     required this.year,

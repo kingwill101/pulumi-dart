@@ -15,7 +15,7 @@ class GetMetadataStoreAiplatformV1beta1Args {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetMetadataStoreAiplatformV1beta1Args({
+  const GetMetadataStoreAiplatformV1beta1Args({
     required this.location,
     required this.metadataStoreId,
     this.project,

@@ -18,7 +18,7 @@ class DnsSettingsResponse {
   /// [customDns] An arbitrary DNS provider identified by its name servers.
   /// [glueRecords] The list of glue records for this `Registration`. Commonly empty.
   /// [googleDomainsDns] Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
-  DnsSettingsResponse({
+  const DnsSettingsResponse({
     required this.customDns,
     required this.glueRecords,
     required this.googleDomainsDns,

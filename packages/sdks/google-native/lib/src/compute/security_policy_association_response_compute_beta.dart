@@ -17,7 +17,7 @@ class SecurityPolicyAssociationResponseComputeBeta {
   /// [displayName] The display name of the security policy of the association.
   /// [name] The name for an association.
   /// [securityPolicyId] The security policy ID of the association.
-  SecurityPolicyAssociationResponseComputeBeta({
+  const SecurityPolicyAssociationResponseComputeBeta({
     required this.attachmentId,
     required this.displayName,
     required this.name,

@@ -37,7 +37,7 @@ class GetServiceResult {
   /// [namespaceId] ID of the namespace to use for DNS configuration.
   /// [region] Required.
   /// [tags] Map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  GetServiceResult({
+  const GetServiceResult({
     required this.arn,
     required this.description,
     required this.dnsConfigs,

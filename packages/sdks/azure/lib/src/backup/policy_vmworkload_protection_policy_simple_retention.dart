@@ -8,7 +8,7 @@ class PolicyVMWorkloadProtectionPolicySimpleRetention {
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicySimpleRetention].
   /// [count] The count that is used to count retention duration with duration type `Days`. Possible values are between `7` and `35`.
-  PolicyVMWorkloadProtectionPolicySimpleRetention({
+  const PolicyVMWorkloadProtectionPolicySimpleRetention({
     required this.count,
   });
 

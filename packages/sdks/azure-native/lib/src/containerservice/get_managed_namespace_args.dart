@@ -18,7 +18,7 @@ class GetManagedNamespaceArgs {
   /// [managedNamespaceName] The name of the managed namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetManagedNamespaceArgs({
+  const GetManagedNamespaceArgs({
     required this.managedNamespaceName,
     required this.resourceGroupName,
     required this.resourceName,

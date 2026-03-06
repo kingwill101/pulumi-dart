@@ -16,7 +16,7 @@ class GetApiIamPolicyArgs {
   /// Creates a new [GetApiIamPolicyArgs].
   /// [api] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetApiIamPolicyArgs({
+  const GetApiIamPolicyArgs({
     required this.api,
     this.project,
   });

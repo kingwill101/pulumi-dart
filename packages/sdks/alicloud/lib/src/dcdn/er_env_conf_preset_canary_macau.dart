@@ -14,7 +14,7 @@ class ErEnvConfPresetCanaryMacau {
   /// [allowedHosts] Allowed DCDN domain names.
   /// [codeRev] The version number of the code.
   /// [specName] The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-  ErEnvConfPresetCanaryMacau({
+  const ErEnvConfPresetCanaryMacau({
     this.allowedHosts,
     this.codeRev,
     this.specName,

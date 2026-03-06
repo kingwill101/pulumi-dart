@@ -22,7 +22,7 @@ class GetVirtualHostsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetVirtualHostsResult({
+  const GetVirtualHostsResult({
     required this.hosts,
     required this.id,
     required this.ids,

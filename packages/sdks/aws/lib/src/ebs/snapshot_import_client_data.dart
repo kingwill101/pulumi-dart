@@ -17,7 +17,7 @@ class SnapshotImportClientData {
   /// [uploadEnd] The time that the disk upload ends.
   /// [uploadSize] The size of the uploaded disk image, in GiB.
   /// [uploadStart] The time that the disk upload starts.
-  SnapshotImportClientData({
+  const SnapshotImportClientData({
     this.comment,
     this.uploadEnd,
     this.uploadSize,

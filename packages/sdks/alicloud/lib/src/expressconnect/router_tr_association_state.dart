@@ -33,7 +33,7 @@ class RouterTrAssociationState {
   /// [status] The status of the resource.
   /// [transitRouterId] The ID of the forwarding router instance.
   /// [transitRouterOwnerId] The ID of the Alibaba Cloud account to which the forwarding router belongs.
-  RouterTrAssociationState({
+  const RouterTrAssociationState({
     this.allowedPrefixes,
     this.associationId,
     this.associationRegionId,

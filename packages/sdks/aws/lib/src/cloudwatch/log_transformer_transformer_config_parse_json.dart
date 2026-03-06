@@ -11,7 +11,7 @@ class LogTransformerTransformerConfigParseJson {
   /// Creates a new [LogTransformerTransformerConfigParseJson].
   /// [destination] Specifies the location to put the parsed key value pair into. If omitted, it will be placed under the root node.
   /// [source] Specifies the path to the field in the log event that will be parsed. Defaults to `@message`.
-  LogTransformerTransformerConfigParseJson({
+  const LogTransformerTransformerConfigParseJson({
     this.destination,
     this.source,
   });

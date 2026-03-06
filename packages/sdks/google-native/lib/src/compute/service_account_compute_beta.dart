@@ -12,7 +12,7 @@ class ServiceAccountComputeBeta {
   /// Creates a new [ServiceAccountComputeBeta].
   /// [email] Email address of the service account.
   /// [scopes] The list of scopes to be made available for this service account.
-  ServiceAccountComputeBeta({
+  const ServiceAccountComputeBeta({
     this.email,
     this.scopes,
   });

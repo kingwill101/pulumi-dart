@@ -47,7 +47,7 @@ class ProvisioningConfigArgs {
   /// [ticketId] A generated ticket id to track provisioning request.
   /// [volumes] Volumes to be created.
   /// [vpcScEnabled] If true, VPC SC is enabled for the cluster.
-  ProvisioningConfigArgs({
+  const ProvisioningConfigArgs({
     this.customId,
     this.email,
     this.handoverServiceAccount,

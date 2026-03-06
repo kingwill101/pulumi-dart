@@ -16,7 +16,7 @@ class UserProfileUserSettingsJupyterServerAppSettings {
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see Code Repository below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  UserProfileUserSettingsJupyterServerAppSettings({
+  const UserProfileUserSettingsJupyterServerAppSettings({
     this.codeRepositories,
     this.defaultResourceSpec,
     this.lifecycleConfigArns,

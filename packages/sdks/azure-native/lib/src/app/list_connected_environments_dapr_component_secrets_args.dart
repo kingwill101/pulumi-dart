@@ -18,7 +18,7 @@ class ListConnectedEnvironmentsDaprComponentSecretsArgs {
   /// [componentName] Name of the Dapr Component.
   /// [connectedEnvironmentName] Name of the connected environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListConnectedEnvironmentsDaprComponentSecretsArgs({
+  const ListConnectedEnvironmentsDaprComponentSecretsArgs({
     required this.componentName,
     required this.connectedEnvironmentName,
     required this.resourceGroupName,

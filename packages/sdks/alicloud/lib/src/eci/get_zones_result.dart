@@ -15,7 +15,7 @@ class GetZonesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [zones] A list of eci Instance zones. Each element contains the following attributes:
-  GetZonesResult({
+  const GetZonesResult({
     required this.id,
     this.outputFile,
     required this.zones,

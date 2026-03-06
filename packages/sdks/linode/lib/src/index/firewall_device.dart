@@ -20,7 +20,7 @@ class FirewallDevice {
   /// [label] This Firewall's unique label.
   /// [type] The type of Firewall Device.
   /// [url] The URL of the underlying entity this device references.
-  FirewallDevice({
+  const FirewallDevice({
     required this.entityId,
     required this.id,
     required this.label,

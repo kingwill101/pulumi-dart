@@ -18,7 +18,7 @@ class TransitRouterRouteTableAssociationArgs {
   /// [dryRun] Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
   /// [transitRouterRouteTableId] TransitRouterRouteTableId
-  TransitRouterRouteTableAssociationArgs({
+  const TransitRouterRouteTableAssociationArgs({
     this.dryRun,
     required this.transitRouterAttachmentId,
     required this.transitRouterRouteTableId,

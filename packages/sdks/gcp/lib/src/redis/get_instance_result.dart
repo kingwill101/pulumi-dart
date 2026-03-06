@@ -90,7 +90,7 @@ class GetInstanceResult {
   /// [serverCaCerts] Required.
   /// [tier] Required.
   /// [transitEncryptionMode] Required.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.alternativeLocationId,
     required this.authEnabled,
     required this.authString,

@@ -15,7 +15,7 @@ class BasicPerfSampleSeries {
   /// [perfMetricType] Optional.
   /// [perfUnit] Optional.
   /// [sampleSeriesLabel] Optional.
-  BasicPerfSampleSeries({
+  const BasicPerfSampleSeries({
     this.perfMetricType,
     this.perfUnit,
     this.sampleSeriesLabel,

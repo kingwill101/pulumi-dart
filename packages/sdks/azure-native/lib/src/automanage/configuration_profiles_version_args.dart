@@ -28,7 +28,7 @@ class ConfigurationProfilesVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [versionName] The configuration profile version name.
-  ConfigurationProfilesVersionArgs({
+  const ConfigurationProfilesVersionArgs({
     required this.configurationProfileName,
     this.location,
     this.properties,

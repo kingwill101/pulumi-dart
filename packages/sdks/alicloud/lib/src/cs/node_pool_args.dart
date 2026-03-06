@@ -299,7 +299,7 @@ class NodePoolArgs {
   /// [upgradePolicy] Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
   /// [userData] Node custom data, base64-encoded.
   /// [vswitchIds] The vswitches used by node pool workers.
-  NodePoolArgs({
+  const NodePoolArgs({
     this.autoMode,
     this.autoRenew,
     this.autoRenewPeriod,

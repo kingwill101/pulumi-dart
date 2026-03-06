@@ -55,7 +55,7 @@ class AppHostingDomainState {
   /// [serve] The serving behavior of the domain. If specified, the domain will
   /// [uid] System-assigned, unique identifier.
   /// [updateTime] Time at which the domain was last updated.
-  AppHostingDomainState({
+  const AppHostingDomainState({
     this.backend,
     this.createTime,
     this.customDomainStatuses,

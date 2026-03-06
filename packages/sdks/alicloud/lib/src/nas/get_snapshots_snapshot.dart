@@ -44,7 +44,7 @@ class GetSnapshotsSnapshot {
   /// [sourceFileSystemSize] The capacity of the source file system. Unit: GiB.
   /// [sourceFileSystemVersion] The version of the source file system.
   /// [status] The status of the snapshot.
-  GetSnapshotsSnapshot({
+  const GetSnapshotsSnapshot({
     required this.createTime,
     required this.description,
     required this.encryptType,

@@ -21,7 +21,7 @@ class DataEncryption {
   /// [primaryKeyURI] URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
   /// [primaryUserAssignedIdentityId] Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
   /// [type] Data encryption type used by a server.
-  DataEncryption({
+  const DataEncryption({
     this.geoBackupKeyURI,
     this.geoBackupUserAssignedIdentityId,
     this.primaryKeyURI,

@@ -21,7 +21,7 @@ class GetDocumentArgs {
   /// [documentVersion] The document version.
   /// [name] The name of the document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDocumentArgs({
+  const GetDocumentArgs({
     this.documentFormat,
     this.documentVersion,
     required this.name,

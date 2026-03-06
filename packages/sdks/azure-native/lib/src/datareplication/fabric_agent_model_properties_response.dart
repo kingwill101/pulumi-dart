@@ -42,7 +42,7 @@ class FabricAgentModelPropertiesResponse {
   /// [provisioningState] Gets or sets the provisioning state of the fabric agent.
   /// [resourceAccessIdentity] Identity model.
   /// [versionNumber] Gets or sets the fabric agent version.
-  FabricAgentModelPropertiesResponse({
+  const FabricAgentModelPropertiesResponse({
     required this.authenticationIdentity,
     required this.correlationId,
     required this.customProperties,

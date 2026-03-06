@@ -11,7 +11,7 @@ class GetFailoverGroupReadWriteEndpointFailoverPolicy {
   /// Creates a new [GetFailoverGroupReadWriteEndpointFailoverPolicy].
   /// [graceMinutes] The grace period in minutes, before failover with data loss is attempted for the read-write endpoint.
   /// [mode] The failover policy of the read-write endpoint for the Failover Group.
-  GetFailoverGroupReadWriteEndpointFailoverPolicy({
+  const GetFailoverGroupReadWriteEndpointFailoverPolicy({
     required this.graceMinutes,
     required this.mode,
   });

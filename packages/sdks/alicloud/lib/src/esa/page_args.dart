@@ -21,7 +21,7 @@ class PageArgs {
   /// [contentType] The Content-Type field in the HTTP header.
   /// [description] The description of the custom error page.
   /// [pageName] The name of the custom response page.
-  PageArgs({
+  const PageArgs({
     this.content,
     required this.contentType,
     this.description,

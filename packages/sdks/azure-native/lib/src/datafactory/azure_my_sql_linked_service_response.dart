@@ -37,7 +37,7 @@ class AzureMySqlLinkedServiceResponse {
   /// [password] The Azure key vault secret reference of password in connection string.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureMySqlLinkedServiceResponse({
+  const AzureMySqlLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     required this.connectionString,

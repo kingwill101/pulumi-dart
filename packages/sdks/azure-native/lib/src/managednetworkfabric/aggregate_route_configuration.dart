@@ -13,7 +13,7 @@ class AggregateRouteConfiguration {
   /// Creates a new [AggregateRouteConfiguration].
   /// [ipv4Routes] List of IPv4 Route prefixes.
   /// [ipv6Routes] List of Ipv6Routes prefixes.
-  AggregateRouteConfiguration({
+  const AggregateRouteConfiguration({
     this.ipv4Routes,
     this.ipv6Routes,
   });

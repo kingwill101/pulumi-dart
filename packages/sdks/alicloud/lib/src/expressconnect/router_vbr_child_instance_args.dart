@@ -29,7 +29,7 @@ class RouterVbrChildInstanceArgs {
   /// [childInstanceType] The type of the network instance. Value: `VBR`: VBR instance.
   /// [description] Resource attribute fields that represent descriptive information
   /// [ecrId] ID of the representative leased line gateway instance.
-  RouterVbrChildInstanceArgs({
+  const RouterVbrChildInstanceArgs({
     required this.childInstanceId,
     this.childInstanceOwnerId,
     required this.childInstanceRegionId,

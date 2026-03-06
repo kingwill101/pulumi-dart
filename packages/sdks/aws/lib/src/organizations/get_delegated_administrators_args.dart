@@ -12,7 +12,7 @@ class GetDelegatedAdministratorsArgs {
 
   /// Creates a new [GetDelegatedAdministratorsArgs].
   /// [servicePrincipal] Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
-  GetDelegatedAdministratorsArgs({
+  const GetDelegatedAdministratorsArgs({
     this.servicePrincipal,
   });
 

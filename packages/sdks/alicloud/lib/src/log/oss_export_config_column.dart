@@ -11,7 +11,7 @@ class OssExportConfigColumn {
   /// Creates a new [OssExportConfigColumn].
   /// [name] The name of the key.
   /// [type] Type of configuration name.
-  OssExportConfigColumn({
+  const OssExportConfigColumn({
     required this.name,
     required this.type,
   });

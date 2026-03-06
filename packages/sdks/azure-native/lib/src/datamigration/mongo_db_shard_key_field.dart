@@ -12,7 +12,7 @@ class MongoDbShardKeyField {
   /// Creates a new [MongoDbShardKeyField].
   /// [name] The name of the field
   /// [order] The field ordering
-  MongoDbShardKeyField({
+  const MongoDbShardKeyField({
     required this.name,
     required this.order,
   });

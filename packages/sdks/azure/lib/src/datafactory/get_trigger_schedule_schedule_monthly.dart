@@ -11,7 +11,7 @@ class GetTriggerScheduleScheduleMonthly {
   /// Creates a new [GetTriggerScheduleScheduleMonthly].
   /// [week] The occurrence of the specified day during the month.
   /// [weekday] The day of the week on which the trigger runs.
-  GetTriggerScheduleScheduleMonthly({
+  const GetTriggerScheduleScheduleMonthly({
     required this.week,
     required this.weekday,
   });

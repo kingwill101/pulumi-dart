@@ -12,7 +12,7 @@ class GetPrimaryIpsArgs {
 
   /// Creates a new [GetPrimaryIpsArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetPrimaryIpsArgs({
+  const GetPrimaryIpsArgs({
     this.withSelector,
   });
 

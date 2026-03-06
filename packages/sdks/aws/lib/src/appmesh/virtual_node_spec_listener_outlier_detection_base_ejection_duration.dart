@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration {
   /// Creates a new [VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration({
+  const VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration({
     required this.unit,
     required this.value,
   });

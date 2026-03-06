@@ -13,7 +13,7 @@ class SyncGroupSchema {
   /// Creates a new [SyncGroupSchema].
   /// [masterSyncMemberName] Name of master sync member where the schema is from.
   /// [tables] List of tables in sync group schema.
-  SyncGroupSchema({
+  const SyncGroupSchema({
     this.masterSyncMemberName,
     this.tables,
   });

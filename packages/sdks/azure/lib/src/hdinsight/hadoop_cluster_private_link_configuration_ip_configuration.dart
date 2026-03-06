@@ -20,7 +20,7 @@ class HadoopClusterPrivateLinkConfigurationIpConfiguration {
   /// [privateIpAddress] The private IP address of the IP configuration.
   /// [privateIpAllocationMethod] The private IP allocation method. Possible values are `Dynamic` and `Static`.
   /// [subnetId] The ID of the Subnet within the Virtual Network where the IP configuration should be provisioned.
-  HadoopClusterPrivateLinkConfigurationIpConfiguration({
+  const HadoopClusterPrivateLinkConfigurationIpConfiguration({
     required this.name,
     this.primary,
     this.privateIpAddress,

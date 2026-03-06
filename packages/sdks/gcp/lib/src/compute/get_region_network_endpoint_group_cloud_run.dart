@@ -26,7 +26,7 @@ class GetRegionNetworkEndpointGroupCloudRun {
   /// [service] Cloud Run service is the main resource of Cloud Run.
   /// [tag] Cloud Run tag represents the "named-revision" to provide
   /// [urlMask] A template to parse service and tag fields from a request URL.
-  GetRegionNetworkEndpointGroupCloudRun({
+  const GetRegionNetworkEndpointGroupCloudRun({
     required this.service,
     required this.tag,
     required this.urlMask,

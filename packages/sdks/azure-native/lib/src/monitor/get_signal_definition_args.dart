@@ -21,7 +21,7 @@ class GetSignalDefinitionArgs {
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [signalDefinitionName] Name of the signal definition. Must be unique within a health model.
-  GetSignalDefinitionArgs({
+  const GetSignalDefinitionArgs({
     required this.azureMonitorWorkspaceName,
     required this.healthModelName,
     required this.resourceGroupName,

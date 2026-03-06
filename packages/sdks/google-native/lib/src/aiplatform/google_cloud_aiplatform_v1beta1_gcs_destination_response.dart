@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1GcsDestinationResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1GcsDestinationResponse].
   /// [outputUriPrefix] Google Cloud Storage URI to output directory. If the uri doesn't end with '/', a '/' will be automatically appended. The directory is created if it doesn't exist.
-  GoogleCloudAiplatformV1beta1GcsDestinationResponse({
+  const GoogleCloudAiplatformV1beta1GcsDestinationResponse({
     required this.outputUriPrefix,
   });
 

@@ -12,7 +12,7 @@ class GetFirewallTemplatesArgs {
 
   /// Creates a new [GetFirewallTemplatesArgs].
   /// [filters] Optional.
-  GetFirewallTemplatesArgs({
+  const GetFirewallTemplatesArgs({
     this.filters,
   });
 

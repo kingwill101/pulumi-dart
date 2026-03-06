@@ -57,7 +57,7 @@ class GetStorageSyncServiceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [useIdentity] Use Identity authorization when customer have finished setup RBAC permissions.
-  GetStorageSyncServiceResult({
+  const GetStorageSyncServiceResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

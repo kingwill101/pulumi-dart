@@ -15,7 +15,7 @@ class GetApplicationArgs {
   /// [applicationId] Required.
   /// [location] Required.
   /// [project] Required.
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.applicationId,
     required this.location,
     required this.project,

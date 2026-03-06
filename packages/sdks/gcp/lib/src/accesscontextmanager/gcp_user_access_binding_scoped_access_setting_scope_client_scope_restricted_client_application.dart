@@ -11,7 +11,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApp
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication].
   /// [clientId] The OAuth client ID of the application.
   /// [name] The name of the application. Example: "Cloud Console"
-  GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication({
+  const GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication({
     this.clientId,
     this.name,
   });

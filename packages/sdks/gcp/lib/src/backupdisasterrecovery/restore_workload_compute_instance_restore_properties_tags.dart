@@ -8,7 +8,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesTags {
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesTags].
   /// [items] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesTags({
+  const RestoreWorkloadComputeInstanceRestorePropertiesTags({
     this.items,
   });
 

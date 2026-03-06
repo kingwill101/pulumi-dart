@@ -15,7 +15,7 @@ class ListLabVhdsArgs {
   /// Creates a new [ListLabVhdsArgs].
   /// [name] The name of the lab.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListLabVhdsArgs({
+  const ListLabVhdsArgs({
     required this.name,
     required this.resourceGroupName,
   });

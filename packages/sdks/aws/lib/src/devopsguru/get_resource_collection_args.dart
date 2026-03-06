@@ -15,7 +15,7 @@ class GetResourceCollectionArgs {
   /// Creates a new [GetResourceCollectionArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
-  GetResourceCollectionArgs({
+  const GetResourceCollectionArgs({
     this.region,
     required this.type,
   });

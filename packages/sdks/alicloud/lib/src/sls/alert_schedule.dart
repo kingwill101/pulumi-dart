@@ -23,7 +23,7 @@ class AlertSchedule {
   /// [runImmdiately] Dispatch immediately.
   /// [timeZone] The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
   /// [type] Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
-  AlertSchedule({
+  const AlertSchedule({
     this.cronExpression,
     this.delay,
     this.interval,

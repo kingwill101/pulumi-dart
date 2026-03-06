@@ -55,7 +55,7 @@ class InboundNatRuleArgs {
   /// [name] The name of the resource that is unique within the set of inbound NAT rules used by the load balancer. This name can be used to access the resource.
   /// [protocol] The reference to the transport protocol used by the load balancing rule.
   /// [resourceGroupName] The name of the resource group.
-  InboundNatRuleArgs({
+  const InboundNatRuleArgs({
     this.backendAddressPool,
     this.backendPort,
     this.enableFloatingIP,

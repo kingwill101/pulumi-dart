@@ -16,7 +16,7 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   /// [force] Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
   /// [tableUri] BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
   /// [writeDisposition] Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
-  GoogleCloudHealthcareV1DicomBigQueryDestination({
+  const GoogleCloudHealthcareV1DicomBigQueryDestination({
     this.force,
     this.tableUri,
     this.writeDisposition,

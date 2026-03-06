@@ -40,7 +40,7 @@ class PrivateEndpointConnectionResponse {
   /// [provisioningState] The provisioning state of the private endpoint connection resource.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     this.eTag,
     this.groupIds,
     required this.id,

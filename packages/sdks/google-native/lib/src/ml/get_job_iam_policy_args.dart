@@ -15,7 +15,7 @@ class GetJobIamPolicyArgs {
   /// [jobId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetJobIamPolicyArgs({
+  const GetJobIamPolicyArgs({
     required this.jobId,
     this.optionsRequestedPolicyVersion,
     this.project,

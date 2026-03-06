@@ -11,7 +11,7 @@ class GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
   /// Creates a new [GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader].
   /// [name] The name of the Cloud Run v2 Service.
   /// [value] The header field value
-  GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader({
+  const GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader({
     required this.name,
     required this.value,
   });

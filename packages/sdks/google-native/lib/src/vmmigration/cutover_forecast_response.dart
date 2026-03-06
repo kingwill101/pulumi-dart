@@ -9,7 +9,7 @@ class CutoverForecastResponse {
 
   /// Creates a new [CutoverForecastResponse].
   /// [estimatedCutoverJobDuration] Estimation of the CutoverJob duration.
-  CutoverForecastResponse({
+  const CutoverForecastResponse({
     required this.estimatedCutoverJobDuration,
   });
 

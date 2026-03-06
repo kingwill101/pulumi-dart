@@ -29,7 +29,7 @@ class ClusterCapacityResponse {
   /// [totalCoreCount] The total number of cores that are supported by this cluster for workload use.
   /// [totalHostStorageGB] The total machine or host-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
   /// [totalMemoryGB] The total memory supported by this cluster for workload use. Measured in gibibytes.
-  ClusterCapacityResponse({
+  const ClusterCapacityResponse({
     this.availableApplianceStorageGB,
     this.availableCoreCount,
     this.availableHostStorageGB,

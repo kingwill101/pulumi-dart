@@ -33,7 +33,7 @@ class GetInferenceProfilesInferenceProfileSummary {
   /// [status] Status of the inference profile. `ACTIVE` means that the inference profile is available to use.
   /// [type] Filters for inference profiles that match the type you specify. Valid values are: `SYSTEM_DEFINED`, `APPLICATION`.
   /// [updatedAt] Time at which the inference profile was last updated.
-  GetInferenceProfilesInferenceProfileSummary({
+  const GetInferenceProfilesInferenceProfileSummary({
     required this.createdAt,
     required this.description,
     required this.inferenceProfileArn,

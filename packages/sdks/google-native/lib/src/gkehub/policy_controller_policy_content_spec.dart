@@ -13,7 +13,7 @@ class PolicyControllerPolicyContentSpec {
   /// Creates a new [PolicyControllerPolicyContentSpec].
   /// [bundles] map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
   /// [templateLibrary] Configures the installation of the Template Library.
-  PolicyControllerPolicyContentSpec({
+  const PolicyControllerPolicyContentSpec({
     this.bundles,
     this.templateLibrary,
   });

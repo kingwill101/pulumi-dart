@@ -37,7 +37,7 @@ class ExperimentArgs {
   /// [profileName] The Profile identifier associated with the Tenant and Partner
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [tags] Resource tags.
-  ExperimentArgs({
+  const ExperimentArgs({
     this.description,
     this.enabledState,
     this.endpointA,

@@ -24,7 +24,7 @@ class ResourceClaimStatusResourceK8sIoV1beta2 {
   /// [allocation] Allocation is set once the claim has been allocated successfully.
   /// [devices] Devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers.
   /// [reservedFor] ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated.
-  ResourceClaimStatusResourceK8sIoV1beta2({
+  const ResourceClaimStatusResourceK8sIoV1beta2({
     this.allocation,
     this.devices,
     this.reservedFor,

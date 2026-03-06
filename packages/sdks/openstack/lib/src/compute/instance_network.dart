@@ -29,7 +29,7 @@ class InstanceNetwork {
   /// [name] The human-readable
   /// [port] The port UUID of a
   /// [uuid] The network UUID to
-  InstanceNetwork({
+  const InstanceNetwork({
     this.accessNetwork,
     this.fixedIpV4,
     this.fixedIpV6,

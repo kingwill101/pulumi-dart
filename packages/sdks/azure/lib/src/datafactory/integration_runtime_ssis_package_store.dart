@@ -11,7 +11,7 @@ class IntegrationRuntimeSsisPackageStore {
   /// Creates a new [IntegrationRuntimeSsisPackageStore].
   /// [linkedServiceName] Name of the Linked Service to associate with the packages.
   /// [name] Name of the package store.
-  IntegrationRuntimeSsisPackageStore({
+  const IntegrationRuntimeSsisPackageStore({
     required this.linkedServiceName,
     required this.name,
   });

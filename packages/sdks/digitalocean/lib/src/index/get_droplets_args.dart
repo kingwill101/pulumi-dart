@@ -22,7 +22,7 @@ class GetDropletsArgs {
   /// [filters] Filter the results.
   /// [gpus] A boolean value specifying whether or not to list GPU Droplets
   /// [sorts] Sort the results.
-  GetDropletsArgs({
+  const GetDropletsArgs({
     this.filters,
     this.gpus,
     this.sorts,

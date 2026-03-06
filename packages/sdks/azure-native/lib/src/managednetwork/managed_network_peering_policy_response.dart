@@ -22,7 +22,7 @@ class ManagedNetworkPeeringPolicyResponse {
   /// [name] The name of the resource
   /// [properties] Gets or sets the properties of a Managed Network Policy
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  ManagedNetworkPeeringPolicyResponse({
+  const ManagedNetworkPeeringPolicyResponse({
     required this.id,
     this.location,
     required this.name,

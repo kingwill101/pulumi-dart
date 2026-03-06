@@ -107,7 +107,7 @@ class GetLaunchTemplateResult {
   /// [tags] Required.
   /// [userData] Required.
   /// [vpcSecurityGroupIds] Required.
-  GetLaunchTemplateResult({
+  const GetLaunchTemplateResult({
     required this.arn,
     required this.blockDeviceMappings,
     required this.capacityReservationSpecifications,

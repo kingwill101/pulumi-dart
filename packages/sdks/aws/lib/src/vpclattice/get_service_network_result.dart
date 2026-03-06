@@ -35,7 +35,7 @@ class GetServiceNetworkResult {
   /// [region] Required.
   /// [serviceNetworkIdentifier] Required.
   /// [tags] Required.
-  GetServiceNetworkResult({
+  const GetServiceNetworkResult({
     required this.arn,
     required this.authType,
     required this.createdAt,

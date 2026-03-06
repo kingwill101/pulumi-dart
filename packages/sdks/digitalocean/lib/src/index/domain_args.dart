@@ -16,7 +16,7 @@ class DomainArgs {
   /// Creates a new [DomainArgs].
   /// [ipAddress] The IP address of the domain. If specified, this IP
   /// [name] The name of the domain
-  DomainArgs({
+  const DomainArgs({
     this.ipAddress,
     required this.name,
   });

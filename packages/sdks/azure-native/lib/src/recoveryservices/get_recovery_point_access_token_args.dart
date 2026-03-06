@@ -40,7 +40,7 @@ class GetRecoveryPointAccessTokenArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
-  GetRecoveryPointAccessTokenArgs({
+  const GetRecoveryPointAccessTokenArgs({
     required this.containerName,
     this.eTag,
     required this.fabricName,

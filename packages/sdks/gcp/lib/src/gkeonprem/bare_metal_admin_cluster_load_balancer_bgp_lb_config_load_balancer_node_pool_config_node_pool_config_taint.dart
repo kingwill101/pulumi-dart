@@ -14,7 +14,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
   /// [effect] Available taint effects.
   /// [key] (Optional)
   /// [value] (Optional)
-  BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint({
     this.effect,
     this.key,
     this.value,

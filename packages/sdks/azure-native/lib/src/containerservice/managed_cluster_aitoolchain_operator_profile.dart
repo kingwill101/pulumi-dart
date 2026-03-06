@@ -9,7 +9,7 @@ class ManagedClusterAIToolchainOperatorProfile {
 
   /// Creates a new [ManagedClusterAIToolchainOperatorProfile].
   /// [enabled] Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator  enabled or not.
-  ManagedClusterAIToolchainOperatorProfile({
+  const ManagedClusterAIToolchainOperatorProfile({
     this.enabled,
   });
 

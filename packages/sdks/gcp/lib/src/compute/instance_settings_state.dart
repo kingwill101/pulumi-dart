@@ -22,7 +22,7 @@ class InstanceSettingsState {
   /// [metadata] The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides.
-  InstanceSettingsState({
+  const InstanceSettingsState({
     this.fingerprint,
     this.metadata,
     this.project,

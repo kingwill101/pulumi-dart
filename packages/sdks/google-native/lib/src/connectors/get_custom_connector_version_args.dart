@@ -15,7 +15,7 @@ class GetCustomConnectorVersionArgs {
   /// [customConnectorId] Required.
   /// [customConnectorVersionId] Required.
   /// [project] Optional.
-  GetCustomConnectorVersionArgs({
+  const GetCustomConnectorVersionArgs({
     required this.customConnectorId,
     required this.customConnectorVersionId,
     this.project,

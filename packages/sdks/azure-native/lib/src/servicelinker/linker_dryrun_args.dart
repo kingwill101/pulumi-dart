@@ -19,7 +19,7 @@ class LinkerDryrunArgs {
   /// [dryrunName] The name of dryrun.
   /// [parameters] The parameters of the dryrun
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
-  LinkerDryrunArgs({
+  const LinkerDryrunArgs({
     this.dryrunName,
     this.parameters,
     required this.resourceUri,

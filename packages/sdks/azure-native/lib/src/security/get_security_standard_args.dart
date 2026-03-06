@@ -15,7 +15,7 @@ class GetSecurityStandardArgs {
   /// Creates a new [GetSecurityStandardArgs].
   /// [scope] The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   /// [standardId] The Security Standard key - unique key for the standard type
-  GetSecurityStandardArgs({
+  const GetSecurityStandardArgs({
     required this.scope,
     required this.standardId,
   });

@@ -38,7 +38,7 @@ class MappingDataFlowResponse {
   /// [sources] List of sources in data flow.
   /// [transformations_] List of transformations in data flow.
   /// [type] Type of data flow.
-  MappingDataFlowResponse({
+  const MappingDataFlowResponse({
     this.annotations,
     this.description,
     this.folder,

@@ -16,7 +16,7 @@ class ManagementPolicyFilter {
   /// [blobIndexMatch] An array of blob index tag based filters, there can be at most 10 tag filters
   /// [blobTypes] An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
   /// [prefixMatch] An array of strings for prefixes to be match.
-  ManagementPolicyFilter({
+  const ManagementPolicyFilter({
     this.blobIndexMatch,
     required this.blobTypes,
     this.prefixMatch,

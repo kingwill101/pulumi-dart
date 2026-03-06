@@ -30,7 +30,7 @@ class GetBackupPlansResult {
   /// [pageSize] Optional.
   /// [plans] Required.
   /// [status] Optional.
-  GetBackupPlansResult({
+  const GetBackupPlansResult({
     this.backupPlanName,
     this.enableDetails,
     required this.id,

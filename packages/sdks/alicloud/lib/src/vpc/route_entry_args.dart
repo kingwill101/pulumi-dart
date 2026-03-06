@@ -39,7 +39,7 @@ class RouteEntryArgs {
   /// [nexthopId] The ID of Next Hop.
   /// [nexthopType] The type of Next Hop. Valid values:
   /// [routeTableId] The ID of the Route Table.
-  RouteEntryArgs({
+  const RouteEntryArgs({
     this.description,
     this.destinationCidrblock,
     this.name,

@@ -19,7 +19,7 @@ class GetGrafanaArgs {
   /// [identity] The managed identity of the grafana resource.
   /// [name] Name of the grafana dashboard.
   /// [resourceGroupName] Name of the resource group where resource belongs to.
-  GetGrafanaArgs({
+  const GetGrafanaArgs({
     this.identity,
     required this.name,
     required this.resourceGroupName,

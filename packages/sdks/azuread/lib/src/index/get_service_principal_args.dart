@@ -20,7 +20,7 @@ class GetServicePrincipalArgs {
   /// [clientId] The client ID of the application associated with this service principal.
   /// [displayName] The display name of the application associated with this service principal.
   /// [objectId] The object ID of the service principal.
-  GetServicePrincipalArgs({
+  const GetServicePrincipalArgs({
     this.clientId,
     this.displayName,
     this.objectId,

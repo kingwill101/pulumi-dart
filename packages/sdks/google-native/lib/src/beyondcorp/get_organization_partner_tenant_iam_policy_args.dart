@@ -15,7 +15,7 @@ class GetOrganizationPartnerTenantIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
-  GetOrganizationPartnerTenantIamPolicyArgs({
+  const GetOrganizationPartnerTenantIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     required this.organizationId,
     required this.partnerTenantId,

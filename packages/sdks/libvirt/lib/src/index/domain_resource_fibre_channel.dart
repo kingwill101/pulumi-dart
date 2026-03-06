@@ -8,7 +8,7 @@ class DomainResourceFibreChannel {
 
   /// Creates a new [DomainResourceFibreChannel].
   /// [appId] Sets the application ID for the Fibre Channel resource.
-  DomainResourceFibreChannel({
+  const DomainResourceFibreChannel({
     required this.appId,
   });
 

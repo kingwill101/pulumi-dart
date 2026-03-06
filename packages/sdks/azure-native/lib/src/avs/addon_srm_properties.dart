@@ -13,7 +13,7 @@ class AddonSrmProperties {
   /// Creates a new [AddonSrmProperties].
   /// [addonType] Addon type
   /// [licenseKey] The Site Recovery Manager (SRM) license
-  AddonSrmProperties({
+  const AddonSrmProperties({
     required this.addonType,
     this.licenseKey,
   });

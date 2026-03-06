@@ -13,7 +13,7 @@ class SecretConfigurationResponse {
   /// Creates a new [SecretConfigurationResponse].
   /// [uri] Secret Uri.
   /// [workspaceSecretName] Name of secret in workspace key vault.
-  SecretConfigurationResponse({
+  const SecretConfigurationResponse({
     this.uri,
     this.workspaceSecretName,
   });

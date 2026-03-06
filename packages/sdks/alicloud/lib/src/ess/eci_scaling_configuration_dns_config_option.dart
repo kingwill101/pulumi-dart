@@ -11,7 +11,7 @@ class EciScalingConfigurationDnsConfigOption {
   /// Creates a new [EciScalingConfigurationDnsConfigOption].
   /// [name] The option name.
   /// [value] The option value.
-  EciScalingConfigurationDnsConfigOption({
+  const EciScalingConfigurationDnsConfigOption({
     this.name,
     this.value,
   });

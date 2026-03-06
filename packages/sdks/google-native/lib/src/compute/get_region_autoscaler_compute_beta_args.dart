@@ -15,7 +15,7 @@ class GetRegionAutoscalerComputeBetaArgs {
   /// [autoscaler] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionAutoscalerComputeBetaArgs({
+  const GetRegionAutoscalerComputeBetaArgs({
     required this.autoscaler,
     this.project,
     required this.region,

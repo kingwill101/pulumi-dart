@@ -12,7 +12,7 @@ class UserDefinedFunctionResource {
   /// Creates a new [UserDefinedFunctionResource].
   /// [inlineCode] [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
   /// [resourceUri] [Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
-  UserDefinedFunctionResource({
+  const UserDefinedFunctionResource({
     this.inlineCode,
     this.resourceUri,
   });

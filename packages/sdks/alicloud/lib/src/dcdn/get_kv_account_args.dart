@@ -12,7 +12,7 @@ class GetKvAccountArgs {
 
   /// Creates a new [GetKvAccountArgs].
   /// [status] The status of the KV feature for your account. Valid values: `online`, `offline`.
-  GetKvAccountArgs({
+  const GetKvAccountArgs({
     this.status,
   });
 

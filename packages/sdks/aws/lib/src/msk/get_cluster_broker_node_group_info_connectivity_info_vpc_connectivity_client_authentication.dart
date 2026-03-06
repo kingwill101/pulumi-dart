@@ -10,7 +10,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenti
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication].
   /// [sasls] Required.
   /// [tls] Required.
-  GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication({
+  const GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication({
     required this.sasls,
     required this.tls,
   });

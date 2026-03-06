@@ -10,7 +10,7 @@ class RouteSpecTcpRouteAction {
 
   /// Creates a new [RouteSpecTcpRouteAction].
   /// [weightedTargets] Targets that traffic is routed to when a request matches the route.
-  RouteSpecTcpRouteAction({
+  const RouteSpecTcpRouteAction({
     required this.weightedTargets,
   });
 

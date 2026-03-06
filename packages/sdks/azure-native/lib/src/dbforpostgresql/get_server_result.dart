@@ -103,7 +103,7 @@ class GetServerResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Major version of PostgreSQL database engine.
-  GetServerResult({
+  const GetServerResult({
     this.administratorLogin,
     this.authConfig,
     this.availabilityZone,

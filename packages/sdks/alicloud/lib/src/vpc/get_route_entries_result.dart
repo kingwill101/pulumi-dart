@@ -27,7 +27,7 @@ class GetRouteEntriesResult {
   /// [outputFile] Optional.
   /// [routeTableId] The ID of the router table to which the route entry belongs.
   /// [type] The type of the route entry.
-  GetRouteEntriesResult({
+  const GetRouteEntriesResult({
     this.cidrBlock,
     required this.entries,
     required this.id,

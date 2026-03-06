@@ -33,7 +33,7 @@ class GetStackGroupsGroup {
   /// [stackGroupName] The name of the stack group..
   /// [status] The status of Stack Group.
   /// [templateBody] The structure that contains the template body.
-  GetStackGroupsGroup({
+  const GetStackGroupsGroup({
     required this.administrationRoleName,
     required this.description,
     required this.executionRoleName,

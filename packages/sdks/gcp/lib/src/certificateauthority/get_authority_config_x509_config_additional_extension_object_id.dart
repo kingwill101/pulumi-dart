@@ -8,7 +8,7 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
 
   /// Creates a new [GetAuthorityConfigX509ConfigAdditionalExtensionObjectId].
   /// [objectIdPaths] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  GetAuthorityConfigX509ConfigAdditionalExtensionObjectId({
+  const GetAuthorityConfigX509ConfigAdditionalExtensionObjectId({
     required this.objectIdPaths,
   });
 

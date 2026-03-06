@@ -21,7 +21,7 @@ class ReachabilityAnalysisIntentPropertiesResponse {
   /// [ipTraffic] IP traffic information.
   /// [provisioningState] Provisioning states of a resource.
   /// [sourceResourceId] Source resource id to verify the reachability path of.
-  ReachabilityAnalysisIntentPropertiesResponse({
+  const ReachabilityAnalysisIntentPropertiesResponse({
     this.description,
     required this.destinationResourceId,
     required this.ipTraffic,

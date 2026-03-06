@@ -20,7 +20,7 @@ class AccountSharePropertiesSmb {
   /// [kerberosTicketEncryptionTypes] A set of Kerberos ticket encryption. Possible values are `RC4-HMAC`, and `AES-256`.
   /// [multichannelEnabled] Indicates whether multichannel is enabled. Defaults to `false`. This is only supported on Premium storage accounts.
   /// [versions] A set of SMB protocol versions. Possible values are `SMB2.1`, `SMB3.0`, and `SMB3.1.1`.
-  AccountSharePropertiesSmb({
+  const AccountSharePropertiesSmb({
     this.authenticationTypes,
     this.channelEncryptionTypes,
     this.kerberosTicketEncryptionTypes,

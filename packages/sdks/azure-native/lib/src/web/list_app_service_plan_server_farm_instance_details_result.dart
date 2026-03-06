@@ -16,7 +16,7 @@ class ListAppServicePlanServerFarmInstanceDetailsResult {
   /// [instanceCount] The total number of instances.
   /// [instances] The list of server farm instances.
   /// [serverFarmName] The server farm name.
-  ListAppServicePlanServerFarmInstanceDetailsResult({
+  const ListAppServicePlanServerFarmInstanceDetailsResult({
     this.instanceCount,
     this.instances,
     this.serverFarmName,

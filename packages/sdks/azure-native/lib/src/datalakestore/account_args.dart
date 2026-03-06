@@ -64,7 +64,7 @@ class AccountArgs {
   /// [trustedIdProviderState] The current state of the trusted identity provider feature for this Data Lake Store account.
   /// [trustedIdProviders] The list of trusted identity providers associated with this Data Lake Store account.
   /// [virtualNetworkRules] The list of virtual network rules associated with this Data Lake Store account.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.defaultGroup,
     this.encryptionConfig,

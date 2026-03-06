@@ -29,7 +29,7 @@ class GetTopicsResult {
   /// [outputFile] Optional.
   /// [tags] A map of tags assigned to the Ons instance.
   /// [topics] A list of topics. Each element contains the following attributes:
-  GetTopicsResult({
+  const GetTopicsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

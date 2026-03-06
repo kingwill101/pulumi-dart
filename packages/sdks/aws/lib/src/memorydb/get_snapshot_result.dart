@@ -33,7 +33,7 @@ class GetSnapshotResult {
   /// [region] Required.
   /// [source] Whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
   /// [tags] Map of tags assigned to the snapshot.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.arn,
     required this.clusterConfigurations,
     required this.clusterName,

@@ -11,7 +11,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement].
   /// [type] The type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
   /// [value] The quantity of the specified resource to reserve for the container.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement({
     required this.type,
     required this.value,
   });

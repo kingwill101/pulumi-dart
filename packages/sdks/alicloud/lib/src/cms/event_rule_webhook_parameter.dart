@@ -17,7 +17,7 @@ class EventRuleWebhookParameter {
   /// [protocol] The name of the protocol.
   /// [url] The callback URL.
   /// [webhookParametersId] The ID of the recipient that receives alert notifications.
-  EventRuleWebhookParameter({
+  const EventRuleWebhookParameter({
     this.method,
     this.protocol,
     this.url,

@@ -29,7 +29,7 @@ class FunctionAppSlotSiteConfigScmIpRestriction {
   /// [priority] The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
-  FunctionAppSlotSiteConfigScmIpRestriction({
+  const FunctionAppSlotSiteConfigScmIpRestriction({
     this.action,
     this.headers,
     this.ipAddress,

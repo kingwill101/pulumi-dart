@@ -13,7 +13,7 @@ class StackApplicationSettings {
   /// Creates a new [StackApplicationSettings].
   /// [enabled] Whether application settings should be persisted.
   /// [settingsGroup] Name of the settings group.
-  StackApplicationSettings({
+  const StackApplicationSettings({
     required this.enabled,
     this.settingsGroup,
   });

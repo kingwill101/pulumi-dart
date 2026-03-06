@@ -42,7 +42,7 @@ class GetVolumeV3Result {
   /// [sourceVolumeId] The ID of the volume from which the current volume was created.
   /// [status] See Argument Reference above.
   /// [volumeType] The type of the volume.
-  GetVolumeV3Result({
+  const GetVolumeV3Result({
     required this.attachments,
     required this.bootable,
     required this.host,

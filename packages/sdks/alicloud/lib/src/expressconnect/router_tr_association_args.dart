@@ -27,7 +27,7 @@ class RouterTrAssociationArgs {
   /// [ecrId] The ID of the leased line gateway instance.
   /// [transitRouterId] The ID of the forwarding router instance.
   /// [transitRouterOwnerId] The ID of the Alibaba Cloud account to which the forwarding router belongs.
-  RouterTrAssociationArgs({
+  const RouterTrAssociationArgs({
     this.allowedPrefixes,
     required this.associationRegionId,
     this.cenId,

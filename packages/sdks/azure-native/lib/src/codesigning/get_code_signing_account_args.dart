@@ -15,7 +15,7 @@ class GetCodeSigningAccountArgs {
   /// Creates a new [GetCodeSigningAccountArgs].
   /// [accountName] Trusted Signing account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCodeSigningAccountArgs({
+  const GetCodeSigningAccountArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

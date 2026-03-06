@@ -68,7 +68,7 @@ class AiFeatureOnlineStoreState {
   /// [region] The region of feature online store. eg us-central1
   /// [state] The state of the Feature Online Store. See the possible states in [this link](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores#state).
   /// [updateTime] The timestamp of when the feature online store was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiFeatureOnlineStoreState({
+  const AiFeatureOnlineStoreState({
     this.bigtable,
     this.createTime,
     this.dedicatedServingEndpoint,

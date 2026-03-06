@@ -38,7 +38,7 @@ class FormulaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   /// [vm] Information about a VM from which a formula is to be created.
-  FormulaArgs({
+  const FormulaArgs({
     this.description,
     this.formulaContent,
     required this.labName,

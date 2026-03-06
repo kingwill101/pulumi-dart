@@ -12,7 +12,7 @@ class BillingSettingsResponse {
   /// Creates a new [BillingSettingsResponse].
   /// [licensingProgram] Gets or sets the licensing program.
   /// [subscriptionId] Gets or sets the subscription ID for licensing program selected.
-  BillingSettingsResponse({
+  const BillingSettingsResponse({
     this.licensingProgram,
     this.subscriptionId,
   });

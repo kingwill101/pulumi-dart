@@ -16,7 +16,7 @@ class VmwareVsphereConfigResponse {
   /// [datastore] The name of the vCenter datastore. Inherited from the user cluster.
   /// [hostGroups] Vsphere host groups to apply to all VMs in the node pool
   /// [tags] Tags to apply to VMs.
-  VmwareVsphereConfigResponse({
+  const VmwareVsphereConfigResponse({
     required this.datastore,
     required this.hostGroups,
     required this.tags,

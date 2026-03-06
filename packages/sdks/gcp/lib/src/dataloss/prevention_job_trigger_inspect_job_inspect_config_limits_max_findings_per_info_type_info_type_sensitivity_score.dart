@@ -9,7 +9,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore({
+  const PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore({
     required this.score,
   });
 

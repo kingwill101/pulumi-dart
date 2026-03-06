@@ -58,7 +58,7 @@ class GetConnectionsConnection {
   /// [vcoHealthChecks] Optional.
   /// [vpnBgpConfigs] The vpn_bgp_config mapping supports the following:
   /// [vpnGatewayId] Use the VPN gateway ID as the search key.
-  GetConnectionsConnection({
+  const GetConnectionsConnection({
     required this.createTime,
     required this.customerGatewayId,
     required this.effectImmediately,

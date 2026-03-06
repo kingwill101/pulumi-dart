@@ -17,7 +17,7 @@ class DefenderCspmJFrogOfferingResponse {
   /// [description] The offering description.
   /// [mdcContainersImageAssessment] The Microsoft Defender Container image assessment configuration
   /// [offeringType] The type of the security offering.
-  DefenderCspmJFrogOfferingResponse({
+  const DefenderCspmJFrogOfferingResponse({
     required this.description,
     this.mdcContainersImageAssessment,
     required this.offeringType,

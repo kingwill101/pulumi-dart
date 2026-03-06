@@ -30,7 +30,7 @@ class PrivateStoreCollectionArgs {
   /// [enabled] Indicating whether the collection is enabled or disabled.
   /// [privateStoreId] The store ID - must use the tenant ID
   /// [subscriptionsList] Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
-  PrivateStoreCollectionArgs({
+  const PrivateStoreCollectionArgs({
     this.allSubscriptions,
     this.claim,
     this.collectionId,

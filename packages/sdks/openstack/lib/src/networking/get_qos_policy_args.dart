@@ -32,7 +32,7 @@ class GetQosPolicyArgs {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [shared] Whether this QoS policy is shared across all projects.
   /// [tags] The list of QoS policy tags to filter.
-  GetQosPolicyArgs({
+  const GetQosPolicyArgs({
     this.description,
     this.isDefault,
     this.name,

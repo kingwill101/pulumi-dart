@@ -11,7 +11,7 @@ class OrchestratedVirtualMachineScaleSetIdentity {
   /// Creates a new [OrchestratedVirtualMachineScaleSetIdentity].
   /// [identityIds] Specifies a list of User Managed Identity IDs to be assigned to this Windows Virtual Machine Scale Set.
   /// [type] The type of Managed Identity that should be configured on this Windows Virtual Machine Scale Set. Only possible value is `UserAssigned`.
-  OrchestratedVirtualMachineScaleSetIdentity({
+  const OrchestratedVirtualMachineScaleSetIdentity({
     required this.identityIds,
     required this.type,
   });

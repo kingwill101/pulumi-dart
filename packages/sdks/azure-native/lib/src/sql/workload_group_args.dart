@@ -39,7 +39,7 @@ class WorkloadGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   /// [workloadGroupName] The name of the workload group.
-  WorkloadGroupArgs({
+  const WorkloadGroupArgs({
     required this.databaseName,
     this.importance,
     required this.maxResourcePercent,

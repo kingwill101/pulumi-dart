@@ -11,7 +11,7 @@ class GetNetworkManagerScope {
   /// Creates a new [GetNetworkManagerScope].
   /// [managementGroupIds] A list of management group IDs used a scope for the Network Manager.
   /// [subscriptionIds] A list of subscription IDs used as the scope for the Network Manager.
-  GetNetworkManagerScope({
+  const GetNetworkManagerScope({
     required this.managementGroupIds,
     required this.subscriptionIds,
   });

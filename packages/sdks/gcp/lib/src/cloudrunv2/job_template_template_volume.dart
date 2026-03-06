@@ -33,7 +33,7 @@ class JobTemplateTemplateVolume {
   /// [name] Volume's name.
   /// [nfs] NFS share mounted as a volume.
   /// [secret] Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  JobTemplateTemplateVolume({
+  const JobTemplateTemplateVolume({
     this.cloudSqlInstance,
     this.emptyDir,
     this.gcs,

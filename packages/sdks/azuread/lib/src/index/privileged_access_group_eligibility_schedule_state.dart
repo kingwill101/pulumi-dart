@@ -41,7 +41,7 @@ class PrivilegedAccessGroupEligibilityScheduleState {
   /// [status] (String) The provisioning status of this request.
   /// [ticketNumber] The ticket number in the ticket system approving this assignment. May be required by the role policy.
   /// [ticketSystem] The ticket system containing the ticket number approving this assignment. May be required by the role policy.
-  PrivilegedAccessGroupEligibilityScheduleState({
+  const PrivilegedAccessGroupEligibilityScheduleState({
     this.assignmentType,
     this.duration,
     this.expirationDate,

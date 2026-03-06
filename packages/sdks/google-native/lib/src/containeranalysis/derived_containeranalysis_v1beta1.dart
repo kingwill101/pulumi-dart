@@ -14,7 +14,7 @@ class DerivedContaineranalysisV1beta1 {
   /// Creates a new [DerivedContaineranalysisV1beta1].
   /// [fingerprint] The fingerprint of the derived image.
   /// [layerInfo] This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  DerivedContaineranalysisV1beta1({
+  const DerivedContaineranalysisV1beta1({
     required this.fingerprint,
     this.layerInfo,
   });

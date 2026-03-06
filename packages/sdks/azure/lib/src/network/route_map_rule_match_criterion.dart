@@ -17,7 +17,7 @@ class RouteMapRuleMatchCriterion {
   /// [communities] A list of BGP communities which this criterion matches.
   /// [matchCondition] The match condition to apply the rule of the Route Map. Possible values are `Contains`, `Equals`, `NotContains`, `NotEquals` and `Unknown`.
   /// [routePrefixes] A list of route prefixes which this criterion matches.
-  RouteMapRuleMatchCriterion({
+  const RouteMapRuleMatchCriterion({
     this.asPaths,
     this.communities,
     required this.matchCondition,

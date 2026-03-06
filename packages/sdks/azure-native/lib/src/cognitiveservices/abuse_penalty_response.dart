@@ -15,7 +15,7 @@ class AbusePenaltyResponse {
   /// [action] The action of AbusePenalty.
   /// [expiration] The datetime of expiration of the AbusePenalty.
   /// [rateLimitPercentage] The percentage of rate limit.
-  AbusePenaltyResponse({
+  const AbusePenaltyResponse({
     this.action,
     this.expiration,
     this.rateLimitPercentage,

@@ -30,7 +30,7 @@ class GetPolicyDocumentResult {
   /// [sourcePolicyDocuments] Optional.
   /// [statements] Optional.
   /// [version] Optional.
-  GetPolicyDocumentResult({
+  const GetPolicyDocumentResult({
     required this.id,
     required this.json,
     required this.minifiedJson,

@@ -13,7 +13,7 @@ class AuditLogConfigWorkstationsV1beta {
   /// Creates a new [AuditLogConfigWorkstationsV1beta].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigWorkstationsV1beta({
+  const AuditLogConfigWorkstationsV1beta({
     this.exemptedMembers,
     this.logType,
   });

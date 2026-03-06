@@ -40,7 +40,7 @@ class GetDataAttributeBindingResult {
   /// [resource] Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
   /// [uid] System generated globally unique ID for the DataAttributeBinding. This ID will be different if the DataAttributeBinding is deleted and re-created with the same name.
   /// [updateTime] The time when the DataAttributeBinding was last updated.
-  GetDataAttributeBindingResult({
+  const GetDataAttributeBindingResult({
     required this.attributes,
     required this.createTime,
     required this.description,

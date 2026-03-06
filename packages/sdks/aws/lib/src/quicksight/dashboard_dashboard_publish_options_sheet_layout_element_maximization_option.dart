@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption({
+  const DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption({
     this.availabilityStatus,
   });
 

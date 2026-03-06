@@ -9,7 +9,7 @@ class GPUProfile {
 
   /// Creates a new [GPUProfile].
   /// [driver] Whether to install GPU drivers. When it's not specified, default is Install.
-  GPUProfile({
+  const GPUProfile({
     this.driver,
   });
 

@@ -9,7 +9,7 @@ class EnterpriseConfigResponse {
 
   /// Creates a new [EnterpriseConfigResponse].
   /// [clusterTier] [Output only] cluster_tier specifies the premium tier of the cluster.
-  EnterpriseConfigResponse({
+  const EnterpriseConfigResponse({
     required this.clusterTier,
   });
 

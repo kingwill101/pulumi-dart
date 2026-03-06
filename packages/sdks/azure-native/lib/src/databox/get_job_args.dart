@@ -18,7 +18,7 @@ class GetJobArgs {
   /// [expand] $expand is supported on details parameter for job, which provides details on the job stages.
   /// [jobName] The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   /// [resourceGroupName] The Resource Group Name
-  GetJobArgs({
+  const GetJobArgs({
     this.expand,
     required this.jobName,
     required this.resourceGroupName,

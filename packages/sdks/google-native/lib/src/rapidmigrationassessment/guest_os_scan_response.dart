@@ -9,7 +9,7 @@ class GuestOsScanResponse {
 
   /// Creates a new [GuestOsScanResponse].
   /// [coreSource] reference to the corresponding Guest OS Scan in MC Source.
-  GuestOsScanResponse({
+  const GuestOsScanResponse({
     required this.coreSource,
   });
 

@@ -24,7 +24,7 @@ class ConfigurationArgs {
   /// [serverName] The name of the server.
   /// [source] Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
   /// [value] Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
-  ConfigurationArgs({
+  const ConfigurationArgs({
     this.configurationName,
     required this.resourceGroupName,
     required this.serverName,

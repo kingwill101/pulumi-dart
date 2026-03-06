@@ -12,7 +12,7 @@ class KeyEncryptionKeyInfo {
   /// Creates a new [KeyEncryptionKeyInfo].
   /// [keyIdentifier] The key URL / identifier.
   /// [keyVaultResourceArmId] The KeyVault resource ARM Id for key.
-  KeyEncryptionKeyInfo({
+  const KeyEncryptionKeyInfo({
     this.keyIdentifier,
     this.keyVaultResourceArmId,
   });

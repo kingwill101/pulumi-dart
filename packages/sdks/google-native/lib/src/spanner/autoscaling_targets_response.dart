@@ -12,7 +12,7 @@ class AutoscalingTargetsResponse {
   /// Creates a new [AutoscalingTargetsResponse].
   /// [highPriorityCpuUtilizationPercent] The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
   /// [storageUtilizationPercent] The target storage utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 100] inclusive.
-  AutoscalingTargetsResponse({
+  const AutoscalingTargetsResponse({
     required this.highPriorityCpuUtilizationPercent,
     required this.storageUtilizationPercent,
   });

@@ -23,7 +23,7 @@ class LinuxFunctionAppStorageAccount {
   /// [name] The name which should be used for this Storage Account.
   /// [shareName] The Name of the File Share or Container Name for Blob storage.
   /// [type] The Azure Storage Type. Possible values include `AzureFiles` and `AzureBlob`.
-  LinuxFunctionAppStorageAccount({
+  const LinuxFunctionAppStorageAccount({
     required this.accessKey,
     required this.accountName,
     this.mountPath,

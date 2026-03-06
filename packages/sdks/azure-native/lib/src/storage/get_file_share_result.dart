@@ -101,7 +101,7 @@ class GetFileShareResult {
   /// [snapshotTime] Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version of the share.
-  GetFileShareResult({
+  const GetFileShareResult({
     this.accessTier,
     required this.accessTierChangeTime,
     required this.accessTierStatus,

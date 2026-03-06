@@ -36,7 +36,7 @@ class AutoSnapshotPolicyState {
   /// [retentionDays] The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
   /// [status] The status of the automatic snapshot policy.
   /// [timePoints] The point in time at which an auto snapshot is created.
-  AutoSnapshotPolicyState({
+  const AutoSnapshotPolicyState({
     this.autoSnapshotPolicyName,
     this.createTime,
     this.fileSystemType,

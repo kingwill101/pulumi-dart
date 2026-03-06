@@ -15,7 +15,7 @@ class ListCommunicationServiceKeysArgs {
   /// Creates a new [ListCommunicationServiceKeysArgs].
   /// [communicationServiceName] The name of the CommunicationService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListCommunicationServiceKeysArgs({
+  const ListCommunicationServiceKeysArgs({
     required this.communicationServiceName,
     required this.resourceGroupName,
   });

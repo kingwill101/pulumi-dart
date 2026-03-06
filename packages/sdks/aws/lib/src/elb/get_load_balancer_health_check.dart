@@ -15,7 +15,7 @@ class GetLoadBalancerHealthCheck {
   /// [target] Required.
   /// [timeout] Required.
   /// [unhealthyThreshold] Required.
-  GetLoadBalancerHealthCheck({
+  const GetLoadBalancerHealthCheck({
     required this.healthyThreshold,
     required this.interval,
     required this.target,

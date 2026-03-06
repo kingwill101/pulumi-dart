@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse].
   /// [enableAnswerFeedback] Optional. If enabled, end users will be able to provide answer feedback to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
-  GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse({
+  const GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse({
     required this.enableAnswerFeedback,
   });
 

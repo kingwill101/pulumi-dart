@@ -11,7 +11,7 @@ class VpnGatewayConnectionRoutingPropagatedRouteTable {
   /// Creates a new [VpnGatewayConnectionRoutingPropagatedRouteTable].
   /// [labels] A list of labels to assign to this route table.
   /// [routeTableIds] A list of Route Table IDs to associated with this VPN Gateway Connection.
-  VpnGatewayConnectionRoutingPropagatedRouteTable({
+  const VpnGatewayConnectionRoutingPropagatedRouteTable({
     this.labels,
     required this.routeTableIds,
   });

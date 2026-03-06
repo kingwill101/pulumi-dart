@@ -342,7 +342,7 @@ class AutonomousDatabaseProperties {
   /// [totalAutoBackupStorageSizeGbs] (Output)
   /// [usedDataStorageSizeTbs] (Output)
   /// [vaultId] The ID of the Oracle Cloud Infrastructure vault.
-  AutonomousDatabaseProperties({
+  const AutonomousDatabaseProperties({
     this.actualUsedDataStorageSizeTb,
     this.allocatedStorageSizeTb,
     this.apexDetails,

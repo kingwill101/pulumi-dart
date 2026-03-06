@@ -23,7 +23,7 @@ class GalleryImageStatusResponse {
   /// [errorMessage] Descriptive error message
   /// [progressPercentage] The progress of the operation in percentage
   /// [provisioningStatus] provisioning status of the gallery image
-  GalleryImageStatusResponse({
+  const GalleryImageStatusResponse({
     this.downloadStatus,
     this.errorCode,
     this.errorMessage,

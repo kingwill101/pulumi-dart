@@ -85,7 +85,7 @@ class InsightsConfigState {
   /// [runtimeConfigs] The runtime configurations where the application is deployed.
   /// [state] (Output)
   /// [updateTime] [Output only] Update timestamp
-  InsightsConfigState({
+  const InsightsConfigState({
     this.annotations,
     this.appHubApplication,
     this.artifactConfigs,

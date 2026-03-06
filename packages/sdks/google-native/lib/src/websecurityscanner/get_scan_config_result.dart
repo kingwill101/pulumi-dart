@@ -46,7 +46,7 @@ class GetScanConfigResult {
   /// [startingUrls] The starting URLs from which the scanner finds site pages.
   /// [staticIpScan] Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
   /// [userAgent] The user agent used during scanning.
-  GetScanConfigResult({
+  const GetScanConfigResult({
     required this.authentication,
     required this.blacklistPatterns,
     required this.displayName,

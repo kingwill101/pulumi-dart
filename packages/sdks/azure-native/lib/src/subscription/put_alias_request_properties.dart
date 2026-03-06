@@ -28,7 +28,7 @@ class PutAliasRequestProperties {
   /// [resellerId] Reseller Id
   /// [subscriptionId] This parameter can be used to create alias for existing subscription Id
   /// [workload] The workload type of the subscription. It can be either Production or DevTest.
-  PutAliasRequestProperties({
+  const PutAliasRequestProperties({
     this.additionalProperties,
     this.billingScope,
     this.displayName,

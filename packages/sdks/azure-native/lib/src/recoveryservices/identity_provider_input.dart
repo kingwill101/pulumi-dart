@@ -21,7 +21,7 @@ class IdentityProviderInput {
   /// [audience] The intended Audience of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
   /// [objectId] The object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
   /// [tenantId] The tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  IdentityProviderInput({
+  const IdentityProviderInput({
     required this.aadAuthority,
     required this.applicationId,
     required this.audience,

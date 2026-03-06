@@ -8,7 +8,7 @@ class ConfigFileDeploymentmanagerV2beta {
 
   /// Creates a new [ConfigFileDeploymentmanagerV2beta].
   /// [content] The contents of the file.
-  ConfigFileDeploymentmanagerV2beta({
+  const ConfigFileDeploymentmanagerV2beta({
     this.content,
   });
 

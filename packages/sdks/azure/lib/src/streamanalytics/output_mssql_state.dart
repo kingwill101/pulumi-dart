@@ -39,7 +39,7 @@ class OutputMssqlState {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [table] Table in the database that the output points to. Changing this forces a new resource to be created.
   /// [user] Username used to login to the Microsoft SQL Server. Changing this forces a new resource to be created. Required if `authentication_mode` is `ConnectionString`.
-  OutputMssqlState({
+  const OutputMssqlState({
     this.authenticationMode,
     this.database,
     this.maxBatchCount,

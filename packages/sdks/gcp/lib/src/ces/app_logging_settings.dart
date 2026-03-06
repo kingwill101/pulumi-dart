@@ -30,7 +30,7 @@ class AppLoggingSettings {
   /// [cloudLoggingSettings] Settings to describe the Cloud Logging behaviors for the app.
   /// [conversationLoggingSettings] Settings to describe the conversation logging behaviors for the app.
   /// [redactionConfig] Configuration to instruct how sensitive data should be handled.
-  AppLoggingSettings({
+  const AppLoggingSettings({
     this.audioRecordingConfig,
     this.bigqueryExportSettings,
     this.cloudLoggingSettings,

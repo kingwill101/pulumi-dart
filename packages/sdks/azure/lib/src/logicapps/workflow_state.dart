@@ -64,7 +64,7 @@ class WorkflowState {
   /// [workflowParameters] Specifies a map of Key-Value pairs of the Parameter Definitions to use for this Logic App Workflow. The key is the parameter name, and the value is a JSON encoded string of the parameter definition (see: &lt;https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-definition-language#parameters&gt;).
   /// [workflowSchema] Specifies the Schema to use for this Logic App Workflow. Defaults to `https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#`. Changing this forces a new resource to be created.
   /// [workflowVersion] Specifies the version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`. Changing this forces a new resource to be created.
-  WorkflowState({
+  const WorkflowState({
     this.accessControl,
     this.accessEndpoint,
     this.connectorEndpointIpAddresses,

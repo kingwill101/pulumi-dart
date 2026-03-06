@@ -16,7 +16,7 @@ class EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse {
   /// [parameters] Optional. The customized parameters the user can pass to this task.
   /// [rollbackTaskImplementationClassName] This is the name of the task that needs to be executed upon rollback of this task.
   /// [taskNumbersToRollback] These are the tasks numbers of the tasks whose `rollback_strategy.rollback_task_implementation_class_name` needs to be executed upon failure of this task.
-  EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse({
+  const EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse({
     required this.parameters,
     required this.rollbackTaskImplementationClassName,
     required this.taskNumbersToRollback,

@@ -23,7 +23,7 @@ class JobMapTaskXattrs {
   /// [queueSize] The upper limit of the sub-task queue cache. The default value is 10000.
   /// [taskAttemptInterval] Subtask failure retry interval.
   /// [taskMaxAttempt] The number of failed sub-task retries.
-  JobMapTaskXattrs({
+  const JobMapTaskXattrs({
     this.consumerSize,
     this.dispatcherSize,
     this.pageSize,

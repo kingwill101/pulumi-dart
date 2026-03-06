@@ -52,7 +52,7 @@ class BlockchainNodesState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The timestamp at which the blockchain node was last updated.
-  BlockchainNodesState({
+  const BlockchainNodesState({
     this.blockchainNodeId,
     this.blockchainType,
     this.connectionInfos,

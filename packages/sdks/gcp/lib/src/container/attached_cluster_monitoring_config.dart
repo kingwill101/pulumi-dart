@@ -10,7 +10,7 @@ class AttachedClusterMonitoringConfig {
 
   /// Creates a new [AttachedClusterMonitoringConfig].
   /// [managedPrometheusConfig] Enable Google Cloud Managed Service for Prometheus in the cluster.
-  AttachedClusterMonitoringConfig({
+  const AttachedClusterMonitoringConfig({
     this.managedPrometheusConfig,
   });
 

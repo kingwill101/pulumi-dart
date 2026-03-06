@@ -13,7 +13,7 @@ class MqttBridgeRemoteBrokerX509Authentication {
   /// Creates a new [MqttBridgeRemoteBrokerX509Authentication].
   /// [keyVault] Keyvault X509 secret properties.
   /// [secretName] Secret where cert details are stored.
-  MqttBridgeRemoteBrokerX509Authentication({
+  const MqttBridgeRemoteBrokerX509Authentication({
     this.keyVault,
     this.secretName,
   });

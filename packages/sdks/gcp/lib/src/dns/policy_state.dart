@@ -43,7 +43,7 @@ class PolicyState {
   /// [name] User assigned name for this policy.
   /// [networks] List of network names specifying networks to which this policy is applied.
   /// [project] The ID of the project in which the resource belongs.
-  PolicyState({
+  const PolicyState({
     this.alternativeNameServerConfig,
     this.description,
     this.dns64Config,

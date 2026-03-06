@@ -18,7 +18,7 @@ class DicomTagConfig {
   /// [actions] Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
   /// [options] Specifies additional options to apply, overriding the base `profile`.
   /// [profileType] Base profile type for handling DICOM tags.
-  DicomTagConfig({
+  const DicomTagConfig({
     this.actions,
     this.options,
     this.profileType,

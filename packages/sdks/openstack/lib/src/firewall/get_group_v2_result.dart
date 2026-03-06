@@ -44,7 +44,7 @@ class GetGroupV2Result {
   /// [shared] See Argument Reference above.
   /// [status] See Argument Reference above.
   /// [tenantId] See Argument Reference above.
-  GetGroupV2Result({
+  const GetGroupV2Result({
     required this.adminStateUp,
     this.description,
     this.egressFirewallPolicyId,

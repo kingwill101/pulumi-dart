@@ -20,7 +20,7 @@ class TokenPasswordArgs {
   /// [containerRegistryTokenId] The ID of the Container Registry Token that this Container Registry Token Password resides in. Changing this forces a new Container Registry Token Password to be created.
   /// [password1] One `password` block as defined below.
   /// [password2] One `password` block as defined below.
-  TokenPasswordArgs({
+  const TokenPasswordArgs({
     required this.containerRegistryTokenId,
     required this.password1,
     this.password2,

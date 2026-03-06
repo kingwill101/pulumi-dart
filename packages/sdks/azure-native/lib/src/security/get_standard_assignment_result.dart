@@ -48,7 +48,7 @@ class GetStandardAssignmentResult {
   /// [metadata] The standard assignment metadata.
   /// [name] Resource name
   /// [type] Resource type
-  GetStandardAssignmentResult({
+  const GetStandardAssignmentResult({
     this.assignedStandard,
     this.attestationData,
     required this.azureApiVersion,

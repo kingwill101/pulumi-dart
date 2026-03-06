@@ -8,7 +8,7 @@ class AttachedClusterError {
 
   /// Creates a new [AttachedClusterError].
   /// [message] Human-friendly description of the error.
-  AttachedClusterError({
+  const AttachedClusterError({
     this.message,
   });
 

@@ -11,7 +11,7 @@ class WireGroupWireGroupProperties {
 
   /// Creates a new [WireGroupWireGroupProperties].
   /// [type] Type of wire group (enum).
-  WireGroupWireGroupProperties({
+  const WireGroupWireGroupProperties({
     this.type,
   });
 

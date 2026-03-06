@@ -14,7 +14,7 @@ class GetApplicationGatewayTrustedRootCertificate {
   /// [id] The ID of the Rewrite Rule Set
   /// [keyVaultSecretId] The Secret ID of (base-64 encoded unencrypted pfx) the `Secret` or `Certificate` object stored in Azure KeyVault.
   /// [name] The name of this Application Gateway.
-  GetApplicationGatewayTrustedRootCertificate({
+  const GetApplicationGatewayTrustedRootCertificate({
     required this.id,
     required this.keyVaultSecretId,
     required this.name,

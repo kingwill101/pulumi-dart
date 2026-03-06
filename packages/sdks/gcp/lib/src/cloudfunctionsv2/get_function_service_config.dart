@@ -74,7 +74,7 @@ class GetFunctionServiceConfig {
   /// [uri] URI of the Service deployed.
   /// [vpcConnector] The Serverless VPC Access connector that this cloud function can connect to.
   /// [vpcConnectorEgressSettings] Available egress settings. Possible values: ["VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED", "PRIVATE_RANGES_ONLY", "ALL_TRAFFIC"]
-  GetFunctionServiceConfig({
+  const GetFunctionServiceConfig({
     required this.allTrafficOnLatestRevision,
     required this.availableCpu,
     required this.availableMemory,

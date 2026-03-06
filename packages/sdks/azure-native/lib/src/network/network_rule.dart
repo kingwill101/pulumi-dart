@@ -37,7 +37,7 @@ class NetworkRule {
   /// [ruleType] Rule Type.
   /// [sourceAddresses] List of source IP addresses for this rule.
   /// [sourceIpGroups] List of source IpGroups for this rule.
-  NetworkRule({
+  const NetworkRule({
     this.description,
     this.destinationAddresses,
     this.destinationFqdns,

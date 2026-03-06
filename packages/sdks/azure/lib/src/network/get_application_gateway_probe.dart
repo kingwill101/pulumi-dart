@@ -42,7 +42,7 @@ class GetApplicationGatewayProbe {
   /// [protocol] The Protocol used for this Probe.
   /// [timeout] The Timeout used for this Probe, indicating when a probe becomes unhealthy.
   /// [unhealthyThreshold] The Unhealthy Threshold for this Probe, which indicates the amount of retries which will be attempted before a node is deemed unhealthy.
-  GetApplicationGatewayProbe({
+  const GetApplicationGatewayProbe({
     required this.host,
     required this.id,
     required this.interval,

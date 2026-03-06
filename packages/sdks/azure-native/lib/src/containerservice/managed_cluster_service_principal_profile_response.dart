@@ -12,7 +12,7 @@ class ManagedClusterServicePrincipalProfileResponse {
   /// Creates a new [ManagedClusterServicePrincipalProfileResponse].
   /// [clientId] The ID for the service principal.
   /// [secret] The secret password associated with the service principal in plain text.
-  ManagedClusterServicePrincipalProfileResponse({
+  const ManagedClusterServicePrincipalProfileResponse({
     required this.clientId,
     this.secret,
   });

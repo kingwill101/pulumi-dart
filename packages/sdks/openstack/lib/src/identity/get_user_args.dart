@@ -35,7 +35,7 @@ class GetUserArgs {
   /// [protocolId] The protocol ID of the user.
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [uniqueId] The unique ID of the user.
-  GetUserArgs({
+  const GetUserArgs({
     this.domainId,
     this.enabled,
     this.idpId,

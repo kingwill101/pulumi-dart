@@ -8,7 +8,7 @@ class CertificateTemplatePredefinedValuesPolicyId {
 
   /// Creates a new [CertificateTemplatePredefinedValuesPolicyId].
   /// [objectIdPaths] Required. The parts of an OID path. The most significant parts of the path come first.
-  CertificateTemplatePredefinedValuesPolicyId({
+  const CertificateTemplatePredefinedValuesPolicyId({
     required this.objectIdPaths,
   });
 

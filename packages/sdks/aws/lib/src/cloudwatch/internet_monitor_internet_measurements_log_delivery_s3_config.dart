@@ -11,7 +11,7 @@ class InternetMonitorInternetMeasurementsLogDeliveryS3Config {
   /// [bucketName] Required.
   /// [bucketPrefix] Optional.
   /// [logDeliveryStatus] Optional.
-  InternetMonitorInternetMeasurementsLogDeliveryS3Config({
+  const InternetMonitorInternetMeasurementsLogDeliveryS3Config({
     required this.bucketName,
     this.bucketPrefix,
     this.logDeliveryStatus,

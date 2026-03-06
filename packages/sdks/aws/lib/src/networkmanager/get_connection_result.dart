@@ -33,7 +33,7 @@ class GetConnectionResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [linkId] ID of the link for the first device.
   /// [tags] Key-value tags for the connection.
-  GetConnectionResult({
+  const GetConnectionResult({
     required this.arn,
     required this.connectedDeviceId,
     required this.connectedLinkId,

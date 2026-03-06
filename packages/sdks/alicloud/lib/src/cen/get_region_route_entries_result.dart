@@ -19,7 +19,7 @@ class GetRegionRouteEntriesResult {
   /// [instanceId] Required.
   /// [outputFile] Optional.
   /// [regionId] Required.
-  GetRegionRouteEntriesResult({
+  const GetRegionRouteEntriesResult({
     required this.entries,
     required this.id,
     required this.instanceId,

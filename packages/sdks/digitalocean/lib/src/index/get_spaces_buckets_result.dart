@@ -19,7 +19,7 @@ class GetSpacesBucketsResult {
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sorts] Optional.
-  GetSpacesBucketsResult({
+  const GetSpacesBucketsResult({
     required this.buckets,
     this.filters,
     required this.id,

@@ -13,7 +13,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRef {
   /// Creates a new [ServiceTemplateSpecContainerEnvFromSecretRef].
   /// [localObjectReference] The Secret to select from.
   /// [optional] Specify whether the Secret must be defined
-  ServiceTemplateSpecContainerEnvFromSecretRef({
+  const ServiceTemplateSpecContainerEnvFromSecretRef({
     this.localObjectReference,
     this.optional,
   });

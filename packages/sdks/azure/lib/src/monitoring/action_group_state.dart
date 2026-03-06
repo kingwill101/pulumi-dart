@@ -68,7 +68,7 @@ class ActionGroupState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [voiceReceivers] One or more `voice_receiver` blocks as defined below.
   /// [webhookReceivers] One or more `webhook_receiver` blocks as defined below.
-  ActionGroupState({
+  const ActionGroupState({
     this.armRoleReceivers,
     this.automationRunbookReceivers,
     this.azureAppPushReceivers,

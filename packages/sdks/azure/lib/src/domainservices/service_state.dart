@@ -58,7 +58,7 @@ class ServiceState {
   /// [tags] A mapping of tags assigned to the resource.
   /// [tenantId] Optional.
   /// [version] Optional.
-  ServiceState({
+  const ServiceState({
     this.deploymentId,
     this.domainConfigurationType,
     this.domainName,

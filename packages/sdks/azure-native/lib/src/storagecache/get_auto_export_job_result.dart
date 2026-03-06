@@ -81,7 +81,7 @@ class GetAutoExportJobResult {
   /// [totalFilesFailed] Total files failed to be export since the last successfully completed iteration. This is accumulative, some files may be counted repeatedly.
   /// [totalMiBExported] Total data (in MiB) exported since the start of the export. This is accumulative, some files may be counted repeatedly.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAutoExportJobResult({
+  const GetAutoExportJobResult({
     this.adminStatus,
     this.autoExportPrefixes,
     required this.azureApiVersion,

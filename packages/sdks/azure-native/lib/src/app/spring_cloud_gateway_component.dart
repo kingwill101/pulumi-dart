@@ -26,7 +26,7 @@ class SpringCloudGatewayComponent {
   /// [scale] Java component scaling configurations
   /// [serviceBinds] List of Java Components that are bound to the Java component
   /// [springCloudGatewayRoutes] Gateway route definition
-  SpringCloudGatewayComponent({
+  const SpringCloudGatewayComponent({
     required this.componentType,
     this.configurations,
     this.scale,

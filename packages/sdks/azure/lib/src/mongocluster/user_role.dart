@@ -11,7 +11,7 @@ class UserRole {
   /// Creates a new [UserRole].
   /// [database] The name of the database to which the role will be applied. Changing this forces a new resource to be created.
   /// [name] The role name. The only possible value is `root`. Changing this forces a new resource to be created.
-  UserRole({
+  const UserRole({
     required this.database,
     required this.name,
   });

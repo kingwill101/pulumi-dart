@@ -18,7 +18,7 @@ class GetAgentArgs {
   /// [agentName] The name of the Agent resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
-  GetAgentArgs({
+  const GetAgentArgs({
     required this.agentName,
     required this.resourceGroupName,
     required this.storageMoverName,

@@ -26,7 +26,7 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
   /// [modality] (Output)
   /// [theme] (Output)
   /// [webWidgetTitle] (Output)
-  AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig({
+  const AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig({
     this.modality,
     this.theme,
     this.webWidgetTitle,

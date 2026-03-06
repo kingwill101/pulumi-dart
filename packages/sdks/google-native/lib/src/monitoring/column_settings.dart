@@ -12,7 +12,7 @@ class ColumnSettings {
   /// Creates a new [ColumnSettings].
   /// [column] The id of the column.
   /// [visible] Whether the column should be visible on page load.
-  ColumnSettings({
+  const ColumnSettings({
     required this.column,
     required this.visible,
   });

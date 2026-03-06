@@ -13,7 +13,7 @@ class LabelingJobInputConfigDataSource {
   /// Creates a new [LabelingJobInputConfigDataSource].
   /// [s3DataSource] S3 location of the input data objects.. Fields are documented below.
   /// [snsDataSource] SNS data source used for streaming labeling jobs. Fields are documented below.
-  LabelingJobInputConfigDataSource({
+  const LabelingJobInputConfigDataSource({
     this.s3DataSource,
     this.snsDataSource,
   });

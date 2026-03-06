@@ -30,7 +30,7 @@ class GetHoneyPotsArgs {
   /// [nodeId] The ID of the honeypot management node.
   /// [nodeName] The name of the honeypot management node.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetHoneyPotsArgs({
+  const GetHoneyPotsArgs({
     this.honeypotId,
     this.honeypotName,
     this.ids,

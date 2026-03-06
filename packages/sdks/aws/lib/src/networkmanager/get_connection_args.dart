@@ -18,7 +18,7 @@ class GetConnectionArgs {
   /// [connectionId] ID of the specific connection to retrieve.
   /// [globalNetworkId] ID of the Global Network of the connection to retrieve.
   /// [tags] Key-value tags for the connection.
-  GetConnectionArgs({
+  const GetConnectionArgs({
     required this.connectionId,
     required this.globalNetworkId,
     this.tags,

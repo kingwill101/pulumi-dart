@@ -18,7 +18,7 @@ class ServiceNetworkSettingsState {
   /// [networkSettings] Ingress settings for this service. Will apply to all versions.
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The name of the service these settings apply to.
-  ServiceNetworkSettingsState({
+  const ServiceNetworkSettingsState({
     this.networkSettings,
     this.project,
     this.service,

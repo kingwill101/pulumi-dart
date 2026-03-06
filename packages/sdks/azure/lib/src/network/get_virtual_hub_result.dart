@@ -33,7 +33,7 @@ class GetVirtualHubResult {
   /// [virtualRouterAsn] The Autonomous System Number of the Virtual Hub BGP router.
   /// [virtualRouterIps] The IP addresses of the Virtual Hub BGP router.
   /// [virtualWanId] The ID of the Virtual WAN within which the Virtual Hub exists.
-  GetVirtualHubResult({
+  const GetVirtualHubResult({
     required this.addressPrefix,
     required this.defaultRouteTableId,
     required this.id,

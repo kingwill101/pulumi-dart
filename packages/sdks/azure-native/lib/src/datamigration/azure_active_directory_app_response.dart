@@ -18,7 +18,7 @@ class AzureActiveDirectoryAppResponse {
   /// [applicationId] Application ID of the Azure Active Directory Application
   /// [ignoreAzurePermissions] Ignore checking azure permissions on the AAD app
   /// [tenantId] Tenant id of the customer
-  AzureActiveDirectoryAppResponse({
+  const AzureActiveDirectoryAppResponse({
     this.appKey,
     this.applicationId,
     this.ignoreAzurePermissions,

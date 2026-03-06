@@ -17,7 +17,7 @@ class GetSpringCloudServiceConfigServerGitSettingSshAuth {
   /// [hostKeyAlgorithm] The host key algorithm.
   /// [privateKey] The SSH private key to access the Git repository, needed when the URI starts with `git@` or `ssh://`.
   /// [strictHostKeyCheckingEnabled] Indicates whether the Config Server instance will fail to start if the host_key does not match.
-  GetSpringCloudServiceConfigServerGitSettingSshAuth({
+  const GetSpringCloudServiceConfigServerGitSettingSshAuth({
     required this.hostKey,
     required this.hostKeyAlgorithm,
     required this.privateKey,

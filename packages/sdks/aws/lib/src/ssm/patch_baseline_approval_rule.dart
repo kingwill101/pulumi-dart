@@ -21,7 +21,7 @@ class PatchBaselineApprovalRule {
   /// [complianceLevel] Compliance level for patches approved by this rule. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, and `UNSPECIFIED`. The default value is `UNSPECIFIED`.
   /// [enableNonSecurity] Boolean enabling the application of non-security updates. The default value is `false`. Valid for Linux instances only.
   /// [patchFilters] Patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid combinations of these Keys and the `operating_system` value can be found in the [SSM DescribePatchProperties API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribePatchProperties.html). Valid Values are exact values for the patch property given as the key, or a wildcard `*`, which matches all values. `PATCH_SET` defaults to `OS` if unspecified
-  PatchBaselineApprovalRule({
+  const PatchBaselineApprovalRule({
     this.approveAfterDays,
     this.approveUntilDate,
     this.complianceLevel,

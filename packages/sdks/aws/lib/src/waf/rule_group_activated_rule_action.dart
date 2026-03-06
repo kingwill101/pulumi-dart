@@ -7,7 +7,7 @@ class RuleGroupActivatedRuleAction {
 
   /// Creates a new [RuleGroupActivatedRuleAction].
   /// [type] Required.
-  RuleGroupActivatedRuleAction({
+  const RuleGroupActivatedRuleAction({
     required this.type,
   });
 

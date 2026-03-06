@@ -16,7 +16,7 @@ class SnapshotSettingsStorageLocation {
   /// Creates a new [SnapshotSettingsStorageLocation].
   /// [locations] When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
   /// [policy] The chosen location policy
-  SnapshotSettingsStorageLocation({
+  const SnapshotSettingsStorageLocation({
     this.locations,
     required this.policy,
   });

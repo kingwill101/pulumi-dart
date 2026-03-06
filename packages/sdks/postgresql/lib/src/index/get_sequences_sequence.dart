@@ -14,7 +14,7 @@ class GetSequencesSequence {
   /// [dataType] The sequence's data type as defined in ``information_schema.sequences``.
   /// [objectName] The sequence name.
   /// [schemaName] The parent schema.
-  GetSequencesSequence({
+  const GetSequencesSequence({
     required this.dataType,
     required this.objectName,
     required this.schemaName,

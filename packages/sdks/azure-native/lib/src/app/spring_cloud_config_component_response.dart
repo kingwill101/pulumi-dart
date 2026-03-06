@@ -25,7 +25,7 @@ class SpringCloudConfigComponentResponse {
   /// [provisioningState] Provisioning state of the Java Component.
   /// [scale] Java component scaling configurations
   /// [serviceBinds] List of Java Components that are bound to the Java component
-  SpringCloudConfigComponentResponse({
+  const SpringCloudConfigComponentResponse({
     required this.componentType,
     this.configurations,
     required this.provisioningState,

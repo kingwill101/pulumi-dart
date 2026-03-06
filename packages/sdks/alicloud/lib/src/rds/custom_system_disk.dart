@@ -11,7 +11,7 @@ class CustomSystemDisk {
   /// Creates a new [CustomSystemDisk].
   /// [category] The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
   /// [size] System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
-  CustomSystemDisk({
+  const CustomSystemDisk({
     this.category,
     this.size,
   });

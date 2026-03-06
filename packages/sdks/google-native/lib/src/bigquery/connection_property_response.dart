@@ -11,7 +11,7 @@ class ConnectionPropertyResponse {
   /// Creates a new [ConnectionPropertyResponse].
   /// [key] [Required] Name of the connection property to set.
   /// [value] [Required] Value of the connection property.
-  ConnectionPropertyResponse({
+  const ConnectionPropertyResponse({
     required this.key,
     required this.value,
   });

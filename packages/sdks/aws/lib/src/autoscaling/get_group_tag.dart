@@ -14,7 +14,7 @@ class GetGroupTag {
   /// [key] Key.
   /// [propagateAtLaunch] Whether the tag is propagated to Amazon EC2 instances launched via this ASG.
   /// [value] Value.
-  GetGroupTag({
+  const GetGroupTag({
     required this.key,
     required this.propagateAtLaunch,
     required this.value,

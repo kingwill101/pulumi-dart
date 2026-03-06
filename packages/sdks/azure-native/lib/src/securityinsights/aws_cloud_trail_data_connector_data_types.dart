@@ -10,7 +10,7 @@ class AwsCloudTrailDataConnectorDataTypes {
 
   /// Creates a new [AwsCloudTrailDataConnectorDataTypes].
   /// [logs] Logs data type.
-  AwsCloudTrailDataConnectorDataTypes({
+  const AwsCloudTrailDataConnectorDataTypes({
     required this.logs,
   });
 

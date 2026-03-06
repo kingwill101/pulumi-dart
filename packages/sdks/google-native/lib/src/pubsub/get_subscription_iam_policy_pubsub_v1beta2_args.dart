@@ -15,7 +15,7 @@ class GetSubscriptionIamPolicyPubsubV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [subscriptionId] Required.
-  GetSubscriptionIamPolicyPubsubV1beta2Args({
+  const GetSubscriptionIamPolicyPubsubV1beta2Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.subscriptionId,

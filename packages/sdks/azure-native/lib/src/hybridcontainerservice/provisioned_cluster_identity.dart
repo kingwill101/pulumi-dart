@@ -10,7 +10,7 @@ class ProvisionedClusterIdentity {
 
   /// Creates a new [ProvisionedClusterIdentity].
   /// [type] The type of identity used for the provisioned cluster. The type SystemAssigned, includes a system created identity. The type None means no identity is assigned to the provisioned cluster.
-  ProvisionedClusterIdentity({
+  const ProvisionedClusterIdentity({
     required this.type,
   });
 

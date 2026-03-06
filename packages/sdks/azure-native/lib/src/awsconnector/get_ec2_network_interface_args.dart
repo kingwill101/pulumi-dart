@@ -15,7 +15,7 @@ class GetEc2NetworkInterfaceArgs {
   /// Creates a new [GetEc2NetworkInterfaceArgs].
   /// [name] Name of Ec2NetworkInterface
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2NetworkInterfaceArgs({
+  const GetEc2NetworkInterfaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

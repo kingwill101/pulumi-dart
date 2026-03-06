@@ -63,7 +63,7 @@ class GetVpnSiteResult {
   /// [type] Resource type.
   /// [virtualWan] The VirtualWAN to which the vpnSite belongs.
   /// [vpnSiteLinks] List of all vpn site links.
-  GetVpnSiteResult({
+  const GetVpnSiteResult({
     this.addressSpace,
     required this.azureApiVersion,
     this.bgpProperties,

@@ -73,7 +73,7 @@ class DataAccessScopeState {
   /// [name] The unique full name of the data access scope. This unique identifier is generated using values provided for the URL parameters.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. The time at which the data access scope was last updated.
-  DataAccessScopeState({
+  const DataAccessScopeState({
     this.allowAll,
     this.allowedDataAccessLabels,
     this.author,

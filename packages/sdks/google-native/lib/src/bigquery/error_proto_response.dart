@@ -17,7 +17,7 @@ class ErrorProtoResponse {
   /// [location] Specifies where the error occurred, if present.
   /// [message] A human-readable description of the error.
   /// [reason] A short error code that summarizes the error.
-  ErrorProtoResponse({
+  const ErrorProtoResponse({
     required this.debugInfo,
     required this.location,
     required this.message,

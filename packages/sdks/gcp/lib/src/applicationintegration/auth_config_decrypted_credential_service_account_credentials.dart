@@ -11,7 +11,7 @@ class AuthConfigDecryptedCredentialServiceAccountCredentials {
   /// Creates a new [AuthConfigDecryptedCredentialServiceAccountCredentials].
   /// [scope] A space-delimited list of requested scope permissions.
   /// [serviceAccount] Name of the service account that has the permission to make the request.
-  AuthConfigDecryptedCredentialServiceAccountCredentials({
+  const AuthConfigDecryptedCredentialServiceAccountCredentials({
     this.scope,
     this.serviceAccount,
   });

@@ -26,7 +26,7 @@ class GetApiIssueCommentResult {
   /// [text] Comment text.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userId] A resource identifier for the user who left the comment.
-  GetApiIssueCommentResult({
+  const GetApiIssueCommentResult({
     required this.azureApiVersion,
     this.createdDate,
     required this.id,

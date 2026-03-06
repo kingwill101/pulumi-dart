@@ -20,7 +20,7 @@ class SpringCloudAppIngressSettings {
   /// [sendTimeoutInSeconds] Specifies the ingress send time out in seconds. Defaults to `60`.
   /// [sessionAffinity] Specifies the type of the affinity, set this to `Cookie` to enable session affinity. Allowed values are `Cookie` and `None`. Defaults to `None`.
   /// [sessionCookieMaxAge] Specifies the time in seconds until the cookie expires.
-  SpringCloudAppIngressSettings({
+  const SpringCloudAppIngressSettings({
     this.backendProtocol,
     this.readTimeoutInSeconds,
     this.sendTimeoutInSeconds,

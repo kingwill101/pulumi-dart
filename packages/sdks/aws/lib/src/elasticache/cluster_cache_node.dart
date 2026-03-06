@@ -17,7 +17,7 @@ class ClusterCacheNode {
   /// [id] Optional.
   /// [outpostArn] Optional.
   /// [port] The port number on which each of the cache nodes will accept connections. For Memcached the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replication_group_id`. Changing this value will re-create the resource.
-  ClusterCacheNode({
+  const ClusterCacheNode({
     this.address,
     this.availabilityZone,
     this.id,

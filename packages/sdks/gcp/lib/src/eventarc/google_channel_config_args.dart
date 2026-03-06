@@ -22,7 +22,7 @@ class GoogleChannelConfigArgs {
   /// [location] The location for the resource
   /// [name] Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
   /// [project] The ID of the project in which the resource belongs.
-  GoogleChannelConfigArgs({
+  const GoogleChannelConfigArgs({
     this.cryptoKeyName,
     required this.location,
     this.name,

@@ -22,7 +22,7 @@ class GetBackendsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetBackendsArgs({
+  const GetBackendsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

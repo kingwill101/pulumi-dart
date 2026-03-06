@@ -41,7 +41,7 @@ class LayerVersionState {
   /// [skipDestroy] Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
   /// [version] The version of Layer Version.
   /// [zipFile] The ZIP package of the function code that is encoded in the Base64 format.
-  LayerVersionState({
+  const LayerVersionState({
     this.acl,
     this.arn,
     this.codeCheckSum,

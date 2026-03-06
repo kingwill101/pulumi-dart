@@ -21,7 +21,7 @@ class ThresholdResponse {
   /// [label] A label for the threshold.
   /// [targetAxis] The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
   /// [value] The value of the threshold. The value should be defined in the native scale of the metric.
-  ThresholdResponse({
+  const ThresholdResponse({
     required this.color,
     required this.direction,
     required this.label,

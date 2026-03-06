@@ -14,7 +14,7 @@ class TlsRouteRouteRuleResponseNetworkservicesV1beta1 {
   /// Creates a new [TlsRouteRouteRuleResponseNetworkservicesV1beta1].
   /// [action] The detailed rule defining how to route matched traffic.
   /// [matches] RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
-  TlsRouteRouteRuleResponseNetworkservicesV1beta1({
+  const TlsRouteRouteRuleResponseNetworkservicesV1beta1({
     required this.action,
     required this.matches,
   });

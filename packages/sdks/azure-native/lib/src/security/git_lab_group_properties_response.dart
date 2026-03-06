@@ -44,7 +44,7 @@ class GitLabGroupPropertiesResponse {
   /// [provisioningStatusMessage] Gets or sets resource status message.
   /// [provisioningStatusUpdateTimeUtc] Gets or sets time when resource was last checked.
   /// [url] Gets or sets the url of the GitLab Group.
-  GitLabGroupPropertiesResponse({
+  const GitLabGroupPropertiesResponse({
     required this.fullyQualifiedFriendlyName,
     required this.fullyQualifiedName,
     this.onboardingState,

@@ -14,7 +14,7 @@ class GetJobQueueJobStateTimeLimitAction {
   /// [maxTimeSeconds] Required.
   /// [reason] Required.
   /// [state] Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
-  GetJobQueueJobStateTimeLimitAction({
+  const GetJobQueueJobStateTimeLimitAction({
     required this.action,
     required this.maxTimeSeconds,
     required this.reason,

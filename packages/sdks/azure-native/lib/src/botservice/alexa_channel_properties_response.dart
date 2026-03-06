@@ -18,7 +18,7 @@ class AlexaChannelPropertiesResponse {
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [serviceEndpointUri] Full Uri used to configured the skill in Alexa
   /// [urlFragment] Url fragment used in part of the Uri configured in Alexa
-  AlexaChannelPropertiesResponse({
+  const AlexaChannelPropertiesResponse({
     required this.alexaSkillId,
     required this.isEnabled,
     required this.serviceEndpointUri,

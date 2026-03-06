@@ -14,7 +14,7 @@ class GetWindowsWebAppConnectionString {
   /// [name] The name of this Windows Web App.
   /// [type] The Azure Storage Type.
   /// [value] The Connection String value.
-  GetWindowsWebAppConnectionString({
+  const GetWindowsWebAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

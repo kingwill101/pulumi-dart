@@ -14,7 +14,7 @@ class FunctionImageConfig {
   /// [commands] Parameters to pass to the container image.
   /// [entryPoints] Entry point to your application.
   /// [workingDirectory] Working directory for the container image.
-  FunctionImageConfig({
+  const FunctionImageConfig({
     this.commands,
     this.entryPoints,
     this.workingDirectory,

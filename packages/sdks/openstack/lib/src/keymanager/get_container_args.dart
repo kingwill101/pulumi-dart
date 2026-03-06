@@ -17,7 +17,7 @@ class GetContainerArgs {
   /// Creates a new [GetContainerArgs].
   /// [name] The Container name.
   /// [region] The region in which to obtain the V1 KeyManager client.
-  GetContainerArgs({
+  const GetContainerArgs({
     this.name,
     this.region,
   });

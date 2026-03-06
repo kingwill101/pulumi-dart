@@ -19,7 +19,7 @@ class GetDomainIdentityResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [verificationToken] Code which when added to the domain as a TXT record will signal to SES that the owner of the domain has authorized SES to act on their behalf.
-  GetDomainIdentityResult({
+  const GetDomainIdentityResult({
     required this.arn,
     required this.domain,
     required this.id,

@@ -18,7 +18,7 @@ class ConfigMapState {
   /// [description] The Description of ConfigMap.
   /// [name] ConfigMap instance name.
   /// [namespaceId] The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-  ConfigMapState({
+  const ConfigMapState({
     this.data,
     this.description,
     this.name,

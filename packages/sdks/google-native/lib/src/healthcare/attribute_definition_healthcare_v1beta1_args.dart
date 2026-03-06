@@ -39,7 +39,7 @@ class AttributeDefinitionHealthcareV1beta1Args {
   /// [location] Optional.
   /// [name] Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
   /// [project] Optional.
-  AttributeDefinitionHealthcareV1beta1Args({
+  const AttributeDefinitionHealthcareV1beta1Args({
     required this.allowedValues,
     required this.attributeDefinitionId,
     required this.category,

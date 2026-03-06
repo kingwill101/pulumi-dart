@@ -19,7 +19,7 @@ class StorageQueueEventSubscriptionDestination {
   /// [queueMessageTimeToLiveInSeconds] Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
   /// [queueName] The name of the Storage queue under a storage account that is the destination of an event subscription.
   /// [resourceId] The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
-  StorageQueueEventSubscriptionDestination({
+  const StorageQueueEventSubscriptionDestination({
     required this.endpointType,
     this.queueMessageTimeToLiveInSeconds,
     this.queueName,

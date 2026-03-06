@@ -17,7 +17,7 @@ class GetEngineArgs {
   /// [engineId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEngineArgs({
+  const GetEngineArgs({
     required this.collectionId,
     required this.engineId,
     required this.location,

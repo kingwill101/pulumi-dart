@@ -23,7 +23,7 @@ class BudgetNotification {
   /// [subscriberSnsTopicArns] (Optional) SNS topics to notify. Either this or `subscriber_email_addresses` is required.
   /// [threshold] (Required) Threshold when the notification should be sent.
   /// [thresholdType] (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
-  BudgetNotification({
+  const BudgetNotification({
     required this.comparisonOperator,
     required this.notificationType,
     this.subscriberEmailAddresses,

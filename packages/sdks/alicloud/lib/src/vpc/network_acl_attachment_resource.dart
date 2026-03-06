@@ -11,7 +11,7 @@ class NetworkAclAttachmentResource {
   /// Creates a new [NetworkAclAttachmentResource].
   /// [resourceId] The resource id that the network acl will associate with.
   /// [resourceType] The resource id that the network acl will associate with. Only support `VSwitch` now.
-  NetworkAclAttachmentResource({
+  const NetworkAclAttachmentResource({
     required this.resourceId,
     required this.resourceType,
   });

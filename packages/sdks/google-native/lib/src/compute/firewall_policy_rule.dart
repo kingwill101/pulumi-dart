@@ -48,7 +48,7 @@ class FirewallPolicyRule {
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// [targetServiceAccounts] A list of service accounts indicating the sets of instances that are applied with this rule.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
-  FirewallPolicyRule({
+  const FirewallPolicyRule({
     this.action,
     this.description,
     this.direction,

@@ -24,7 +24,7 @@ class PrivateLinkScopeArgs {
   /// [queryAccessMode] The default query access mode for hte associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
   /// [resourceGroupName] The name of the Resource Group where the Azure Monitor Private Link Scope should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Monitor Private Link Scope.
-  PrivateLinkScopeArgs({
+  const PrivateLinkScopeArgs({
     this.ingestionAccessMode,
     this.name,
     this.queryAccessMode,

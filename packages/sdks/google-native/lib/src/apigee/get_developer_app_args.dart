@@ -19,7 +19,7 @@ class GetDeveloperAppArgs {
   /// [entity] Optional.
   /// [organizationId] Required.
   /// [query] Optional.
-  GetDeveloperAppArgs({
+  const GetDeveloperAppArgs({
     required this.appId,
     required this.developerId,
     this.entity,

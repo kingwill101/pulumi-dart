@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2InfoTypeLikelihood {
   /// Creates a new [GooglePrivacyDlpV2InfoTypeLikelihood].
   /// [infoType] Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
   /// [minLikelihood] Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
-  GooglePrivacyDlpV2InfoTypeLikelihood({
+  const GooglePrivacyDlpV2InfoTypeLikelihood({
     this.infoType,
     this.minLikelihood,
   });

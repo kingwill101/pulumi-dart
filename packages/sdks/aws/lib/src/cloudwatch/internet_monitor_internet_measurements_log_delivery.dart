@@ -8,7 +8,7 @@ class InternetMonitorInternetMeasurementsLogDelivery {
 
   /// Creates a new [InternetMonitorInternetMeasurementsLogDelivery].
   /// [s3Config] Optional.
-  InternetMonitorInternetMeasurementsLogDelivery({
+  const InternetMonitorInternetMeasurementsLogDelivery({
     this.s3Config,
   });
 

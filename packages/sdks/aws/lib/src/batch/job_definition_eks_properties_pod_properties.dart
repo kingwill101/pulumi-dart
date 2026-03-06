@@ -37,7 +37,7 @@ class JobDefinitionEksPropertiesPodProperties {
   /// [serviceAccountName] Name of the service account that's used to run the pod.
   /// [shareProcessNamespace] Indicates if the processes in a container are shared, or visible, to other containers in the same pod.
   /// [volumes] Volumes for a job definition that uses Amazon EKS resources. AWS Batch supports emptyDir, hostPath, and secret volume types.
-  JobDefinitionEksPropertiesPodProperties({
+  const JobDefinitionEksPropertiesPodProperties({
     required this.containers,
     this.dnsPolicy,
     this.hostNetwork,

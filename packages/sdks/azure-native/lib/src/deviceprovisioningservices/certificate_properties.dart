@@ -12,7 +12,7 @@ class CertificateProperties {
   /// Creates a new [CertificateProperties].
   /// [certificate] base-64 representation of X509 certificate .cer file or just .pem file content.
   /// [isVerified] Determines whether certificate has been verified.
-  CertificateProperties({
+  const CertificateProperties({
     this.certificate,
     this.isVerified,
   });

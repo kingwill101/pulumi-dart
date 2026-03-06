@@ -11,7 +11,7 @@ class GetAppConnectionApplicationEndpoint {
   /// Creates a new [GetAppConnectionApplicationEndpoint].
   /// [host] Hostname or IP address of the remote application endpoint.
   /// [port] Port of the remote application endpoint.
-  GetAppConnectionApplicationEndpoint({
+  const GetAppConnectionApplicationEndpoint({
     required this.host,
     required this.port,
   });

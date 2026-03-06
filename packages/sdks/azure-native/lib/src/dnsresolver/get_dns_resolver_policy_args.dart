@@ -15,7 +15,7 @@ class GetDnsResolverPolicyArgs {
   /// Creates a new [GetDnsResolverPolicyArgs].
   /// [dnsResolverPolicyName] The name of the DNS resolver policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDnsResolverPolicyArgs({
+  const GetDnsResolverPolicyArgs({
     required this.dnsResolverPolicyName,
     required this.resourceGroupName,
   });

@@ -12,7 +12,7 @@ class CustomSeasonalityResponse {
   /// Creates a new [CustomSeasonalityResponse].
   /// [mode] Forecasting seasonality mode.
   /// [value] [Required] Seasonality value.
-  CustomSeasonalityResponse({
+  const CustomSeasonalityResponse({
     required this.mode,
     required this.value,
   });

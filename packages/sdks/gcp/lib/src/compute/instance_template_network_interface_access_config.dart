@@ -16,7 +16,7 @@ class InstanceTemplateNetworkInterfaceAccessConfig {
   /// [natIp] The IP address that will be 1:1 mapped to the instance's
   /// [networkTier] The service-level to be provided for IPv6 traffic when the
   /// [publicPtrDomainName] The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
-  InstanceTemplateNetworkInterfaceAccessConfig({
+  const InstanceTemplateNetworkInterfaceAccessConfig({
     this.natIp,
     this.networkTier,
     this.publicPtrDomainName,

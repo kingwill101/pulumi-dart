@@ -31,7 +31,7 @@ class AvailablePatchSummaryResponse {
   /// [rebootPending] The overall reboot status of the VM. It will be true when partially installed patches require a reboot to complete installation but the reboot has not yet occurred.
   /// [startTime] The UTC timestamp when the operation began.
   /// [status] The overall success or failure status of the operation. It remains "InProgress" until the operation completes. At that point it will become "Unknown", "Failed", "Succeeded", or "CompletedWithWarnings."
-  AvailablePatchSummaryResponse({
+  const AvailablePatchSummaryResponse({
     required this.assessmentActivityId,
     required this.criticalAndSecurityPatchCount,
     required this.error,

@@ -47,7 +47,7 @@ class GetGlobalClusterResult {
   /// [resourceId] AWS Region-unique, immutable identifier for the global database cluster.
   /// [storageEncrypted] Whether the DB cluster is encrypted.
   /// [tags] A map of tags to assigned to the Global Cluster.
-  GetGlobalClusterResult({
+  const GetGlobalClusterResult({
     required this.arn,
     required this.databaseName,
     required this.deletionProtection,

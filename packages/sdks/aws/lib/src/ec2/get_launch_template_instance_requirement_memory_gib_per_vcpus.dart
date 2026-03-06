@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus {
   /// Creates a new [GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus({
+  const GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus({
     required this.max,
     required this.min,
   });

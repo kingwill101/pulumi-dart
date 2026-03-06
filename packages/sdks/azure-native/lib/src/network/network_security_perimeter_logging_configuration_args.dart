@@ -22,7 +22,7 @@ class NetworkSecurityPerimeterLoggingConfigurationArgs {
   /// [networkSecurityPerimeterName] The name of the network security perimeter.
   /// [properties] Properties of the NSP logging configuration.
   /// [resourceGroupName] The name of the resource group.
-  NetworkSecurityPerimeterLoggingConfigurationArgs({
+  const NetworkSecurityPerimeterLoggingConfigurationArgs({
     this.loggingConfigurationName,
     required this.networkSecurityPerimeterName,
     this.properties,

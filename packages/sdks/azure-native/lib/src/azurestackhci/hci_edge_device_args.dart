@@ -23,7 +23,7 @@ class HciEdgeDeviceArgs {
   /// [kind] Edge device kind.
   /// [properties] properties for Arc-enabled edge device with HCI OS.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  HciEdgeDeviceArgs({
+  const HciEdgeDeviceArgs({
     this.edgeDeviceName,
     required this.kind,
     this.properties,

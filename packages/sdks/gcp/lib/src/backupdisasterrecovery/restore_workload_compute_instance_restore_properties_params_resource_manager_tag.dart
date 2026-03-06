@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag {
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag].
   /// [key] The identifier for this object. Format specified above.
   /// [value] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag({
+  const RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag({
     required this.key,
     this.value,
   });

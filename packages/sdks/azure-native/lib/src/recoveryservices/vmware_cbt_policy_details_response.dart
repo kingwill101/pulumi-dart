@@ -19,7 +19,7 @@ class VmwareCbtPolicyDetailsResponse {
   /// [crashConsistentFrequencyInMinutes] The crash consistent snapshot frequency in minutes.
   /// [instanceType] Gets the class type. Overridden in derived classes.
   /// [recoveryPointHistoryInMinutes] The duration in minutes until which the recovery points need to be stored.
-  VmwareCbtPolicyDetailsResponse({
+  const VmwareCbtPolicyDetailsResponse({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

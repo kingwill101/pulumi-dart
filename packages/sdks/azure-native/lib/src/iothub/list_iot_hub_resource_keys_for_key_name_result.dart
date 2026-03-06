@@ -17,7 +17,7 @@ class ListIotHubResourceKeysForKeyNameResult {
   /// [primaryKey] The primary key.
   /// [rights] The permissions assigned to the shared access policy.
   /// [secondaryKey] The secondary key.
-  ListIotHubResourceKeysForKeyNameResult({
+  const ListIotHubResourceKeysForKeyNameResult({
     required this.keyName,
     this.primaryKey,
     required this.rights,

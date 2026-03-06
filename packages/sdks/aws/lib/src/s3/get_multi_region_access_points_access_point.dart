@@ -25,7 +25,7 @@ class GetMultiRegionAccessPointsAccessPoint {
   /// [publicAccessBlocks] Public access block configuration for this multi-region access point. See `public_access_block` below.
   /// [regions] List of AWS Regions where the multi-region access point has data support. See `regions` below.
   /// [status] Current status of the multi-region access point.
-  GetMultiRegionAccessPointsAccessPoint({
+  const GetMultiRegionAccessPointsAccessPoint({
     required this.alias,
     required this.createdAt,
     required this.name,

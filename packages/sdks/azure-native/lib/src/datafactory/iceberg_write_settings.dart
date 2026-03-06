@@ -10,7 +10,7 @@ class IcebergWriteSettings {
 
   /// Creates a new [IcebergWriteSettings].
   /// [type] The write setting type.
-  IcebergWriteSettings({
+  const IcebergWriteSettings({
     required this.type,
   });
 

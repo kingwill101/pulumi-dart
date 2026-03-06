@@ -29,7 +29,7 @@ class GetIstioCanonicalServiceArgs {
   /// [canonicalServiceNamespace] The namespace of the canonical service underlying this service.
   /// [meshUid] Identifier for the mesh in which this Istio service is defined.
   /// [project] The ID of the project in which the resource belongs.
-  GetIstioCanonicalServiceArgs({
+  const GetIstioCanonicalServiceArgs({
     required this.canonicalService,
     required this.canonicalServiceNamespace,
     required this.meshUid,

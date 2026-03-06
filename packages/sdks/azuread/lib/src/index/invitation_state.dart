@@ -28,7 +28,7 @@ class InvitationState {
   /// [userEmailAddress] The email address of the user being invited.
   /// [userId] Object ID of the invited user.
   /// [userType] The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
-  InvitationState({
+  const InvitationState({
     this.message,
     this.redeemUrl,
     this.redirectUrl,

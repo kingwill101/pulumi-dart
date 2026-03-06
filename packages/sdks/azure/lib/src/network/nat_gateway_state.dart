@@ -32,7 +32,7 @@ class NatGatewayState {
   /// [skuName] The SKU which should be used. At this time the only supported value is `Standard`. Defaults to `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zones] A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
-  NatGatewayState({
+  const NatGatewayState({
     this.idleTimeoutInMinutes,
     this.location,
     this.name,

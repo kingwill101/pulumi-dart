@@ -21,7 +21,7 @@ class RecordSetRoutingPolicyPrimaryBackup {
   /// [enableGeoFencingForBackups] Specifies whether to enable fencing for backup geo queries.
   /// [primary] The list of global primary targets to be health checked.
   /// [trickleRatio] Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
-  RecordSetRoutingPolicyPrimaryBackup({
+  const RecordSetRoutingPolicyPrimaryBackup({
     required this.backupGeos,
     this.enableGeoFencingForBackups,
     required this.primary,

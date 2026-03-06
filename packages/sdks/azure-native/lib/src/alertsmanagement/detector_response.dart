@@ -31,7 +31,7 @@ class DetectorResponse {
   /// [parameters] The detector's parameters.'
   /// [supportedCadences] The Smart Detector supported cadences.
   /// [supportedResourceTypes] The Smart Detector supported resource types.
-  DetectorResponse({
+  const DetectorResponse({
     required this.description,
     required this.id,
     required this.imagePaths,

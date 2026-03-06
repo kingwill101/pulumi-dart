@@ -20,7 +20,7 @@ class ServiceEndpointSpecPort {
   /// [publishMode] Represents the mode in which the port is to be published: 'ingress' or 'host'. Defaults to `ingress`.
   /// [publishedPort] The port on the swarm hosts
   /// [targetPort] The port inside the container
-  ServiceEndpointSpecPort({
+  const ServiceEndpointSpecPort({
     this.name,
     this.protocol,
     this.publishMode,

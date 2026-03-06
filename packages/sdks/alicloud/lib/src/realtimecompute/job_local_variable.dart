@@ -11,7 +11,7 @@ class JobLocalVariable {
   /// Creates a new [JobLocalVariable].
   /// [name] Local variables name
   /// [value] Local variables value
-  JobLocalVariable({
+  const JobLocalVariable({
     this.name,
     this.value,
   });

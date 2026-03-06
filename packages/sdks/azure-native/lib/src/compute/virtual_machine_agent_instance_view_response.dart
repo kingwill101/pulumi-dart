@@ -17,7 +17,7 @@ class VirtualMachineAgentInstanceViewResponse {
   /// [extensionHandlers] The virtual machine extension handler instance view.
   /// [statuses] The resource status information.
   /// [vmAgentVersion] The VM Agent full version.
-  VirtualMachineAgentInstanceViewResponse({
+  const VirtualMachineAgentInstanceViewResponse({
     this.extensionHandlers,
     this.statuses,
     this.vmAgentVersion,

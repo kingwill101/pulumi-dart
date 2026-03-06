@@ -51,7 +51,7 @@ class BucketObjectArgs {
   /// [kmsKeyId] Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
   /// [serverSideEncryption] Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
   /// [source] The path to the source file being uploaded to the bucket.
-  BucketObjectArgs({
+  const BucketObjectArgs({
     this.acl,
     required this.bucket,
     this.cacheControl,

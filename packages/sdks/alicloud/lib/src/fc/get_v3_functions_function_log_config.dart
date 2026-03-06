@@ -20,7 +20,7 @@ class GetV3FunctionsFunctionLogConfig {
   /// [logBeginRule] Log Line First Matching Rules.
   /// [logstore] The Logstore name of log service.
   /// [project] The name of the log service Project.
-  GetV3FunctionsFunctionLogConfig({
+  const GetV3FunctionsFunctionLogConfig({
     required this.enableInstanceMetrics,
     required this.enableRequestMetrics,
     required this.logBeginRule,

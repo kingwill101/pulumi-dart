@@ -12,7 +12,7 @@ class ImageInformationResponse {
   /// Creates a new [ImageInformationResponse].
   /// [imageType] Type of the image.
   /// [imageUrl] Url of the image.
-  ImageInformationResponse({
+  const ImageInformationResponse({
     required this.imageType,
     required this.imageUrl,
   });

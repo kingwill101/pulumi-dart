@@ -22,7 +22,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSett
   /// [finishDigit] The digit that terminates a DTMF digit sequence.
   /// [interdigitTimeoutDuration] Interdigit timeout setting for matching dtmf input to regex.
   /// [maxDigits] Max length of DTMF digits.
-  CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings({
+  const CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings({
     this.enabled,
     this.endpointingTimeoutDuration,
     this.finishDigit,

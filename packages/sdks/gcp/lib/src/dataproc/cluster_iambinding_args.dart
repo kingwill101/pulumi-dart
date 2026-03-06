@@ -42,7 +42,7 @@ class ClusterIAMBindingArgs {
   /// [project] The project in which the cluster belongs. If it
   /// [region] The region in which the cluster belongs. If it
   /// [role] The role that should be applied. Only one
-  ClusterIAMBindingArgs({
+  const ClusterIAMBindingArgs({
     required this.cluster,
     this.condition,
     required this.members,

@@ -14,7 +14,7 @@ class CrawlerMongodbTarget {
   /// [connectionName] The name of the connection to use to connect to the Amazon DocumentDB or MongoDB target.
   /// [path] The path of the Amazon DocumentDB or MongoDB target (database/collection).
   /// [scanAll] Indicates whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table. Default value is `true`.
-  CrawlerMongodbTarget({
+  const CrawlerMongodbTarget({
     required this.connectionName,
     required this.path,
     this.scanAll,

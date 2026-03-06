@@ -29,7 +29,7 @@ class MoveResourceDependencyResponse {
   /// [manualResolution] Defines the properties for manual resolution.
   /// [resolutionStatus] Gets the dependency resolution status.
   /// [resolutionType] Defines the resolution type.
-  MoveResourceDependencyResponse({
+  const MoveResourceDependencyResponse({
     this.automaticResolution,
     this.dependencyType,
     this.id,

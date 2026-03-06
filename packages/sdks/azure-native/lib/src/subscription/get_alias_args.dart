@@ -12,7 +12,7 @@ class GetAliasArgs {
 
   /// Creates a new [GetAliasArgs].
   /// [aliasName] AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  GetAliasArgs({
+  const GetAliasArgs({
     required this.aliasName,
   });
 

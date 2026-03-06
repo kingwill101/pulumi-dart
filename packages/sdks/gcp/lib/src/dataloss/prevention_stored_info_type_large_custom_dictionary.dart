@@ -21,7 +21,7 @@ class PreventionStoredInfoTypeLargeCustomDictionary {
   /// [bigQueryField] Field in a BigQuery table where each cell represents a dictionary phrase.
   /// [cloudStorageFileSet] Set of files containing newline-delimited lists of dictionary phrases.
   /// [outputPath] Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API.
-  PreventionStoredInfoTypeLargeCustomDictionary({
+  const PreventionStoredInfoTypeLargeCustomDictionary({
     this.bigQueryField,
     this.cloudStorageFileSet,
     required this.outputPath,

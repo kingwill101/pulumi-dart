@@ -13,7 +13,7 @@ class GetTunnelIamPolicyArgs {
 
   /// Creates a new [GetTunnelIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
-  GetTunnelIamPolicyArgs({
+  const GetTunnelIamPolicyArgs({
     this.project,
   });
 

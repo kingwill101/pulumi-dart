@@ -11,7 +11,7 @@ class GlobalSecondaryIndexOnDemandThroughput {
   /// Creates a new [GlobalSecondaryIndexOnDemandThroughput].
   /// [maxReadRequestUnits] Maximum number of read request units for this index.
   /// [maxWriteRequestUnits] Maximum number of write request units for this index.
-  GlobalSecondaryIndexOnDemandThroughput({
+  const GlobalSecondaryIndexOnDemandThroughput({
     this.maxReadRequestUnits,
     this.maxWriteRequestUnits,
   });

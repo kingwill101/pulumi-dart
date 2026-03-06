@@ -8,7 +8,7 @@ class DomainCpuTuneEmulatorPin {
 
   /// Creates a new [DomainCpuTuneEmulatorPin].
   /// [cpuSet] Sets which CPUs the emulator can be pinned to, allowing for controlled CPU allocation and enhanced performance.
-  DomainCpuTuneEmulatorPin({
+  const DomainCpuTuneEmulatorPin({
     required this.cpuSet,
   });
 

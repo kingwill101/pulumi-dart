@@ -28,7 +28,7 @@ class StartStopManagedInstanceScheduleArgs {
   /// [scheduleList] Schedule list.
   /// [startStopScheduleName] Name of the managed instance Start/Stop schedule.
   /// [timeZoneId] The time zone of the schedule.
-  StartStopManagedInstanceScheduleArgs({
+  const StartStopManagedInstanceScheduleArgs({
     this.description,
     required this.managedInstanceName,
     required this.resourceGroupName,

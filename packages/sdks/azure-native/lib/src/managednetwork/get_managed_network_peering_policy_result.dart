@@ -24,7 +24,7 @@ class GetManagedNetworkPeeringPolicyResult {
   /// [name] The name of the resource
   /// [properties] Gets or sets the properties of a Managed Network Policy
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetManagedNetworkPeeringPolicyResult({
+  const GetManagedNetworkPeeringPolicyResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

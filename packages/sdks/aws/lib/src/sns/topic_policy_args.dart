@@ -18,7 +18,7 @@ class TopicPolicyArgs {
   /// [arn] The ARN of the SNS topic
   /// [policy] The fully-formed AWS policy as JSON.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  TopicPolicyArgs({
+  const TopicPolicyArgs({
     required this.arn,
     required this.policy,
     this.region,

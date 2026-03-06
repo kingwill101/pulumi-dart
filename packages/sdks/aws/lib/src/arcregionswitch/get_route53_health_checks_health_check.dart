@@ -20,7 +20,7 @@ class GetRoute53HealthChecksHealthCheck {
   /// [recordName] Record name for the health check.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of the health check. Valid values: `healthy`, `unhealthy`, `unknown`.
-  GetRoute53HealthChecksHealthCheck({
+  const GetRoute53HealthChecksHealthCheck({
     required this.healthCheckId,
     required this.hostedZoneId,
     required this.recordName,

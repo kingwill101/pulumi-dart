@@ -25,7 +25,7 @@ class ServiceProviderPropertiesResponse {
   /// [id] Id for Service Provider
   /// [parameters] The list of parameters for the Service Provider
   /// [serviceProviderName] Name of the Service Provider
-  ServiceProviderPropertiesResponse({
+  const ServiceProviderPropertiesResponse({
     required this.devPortalUrl,
     required this.displayName,
     this.iconUrl,

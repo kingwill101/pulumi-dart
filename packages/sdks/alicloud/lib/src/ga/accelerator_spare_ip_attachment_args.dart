@@ -18,7 +18,7 @@ class AcceleratorSpareIpAttachmentArgs {
   /// [acceleratorId] The ID of the global acceleration instance.
   /// [dryRun] The dry run.
   /// [spareIp] The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
-  AcceleratorSpareIpAttachmentArgs({
+  const AcceleratorSpareIpAttachmentArgs({
     required this.acceleratorId,
     this.dryRun,
     required this.spareIp,

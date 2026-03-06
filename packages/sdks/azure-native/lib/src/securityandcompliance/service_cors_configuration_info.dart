@@ -21,7 +21,7 @@ class ServiceCorsConfigurationInfo {
   /// [maxAge] The max age to be allowed via CORS.
   /// [methods] The methods to be allowed via CORS.
   /// [origins] The origins to be allowed via CORS.
-  ServiceCorsConfigurationInfo({
+  const ServiceCorsConfigurationInfo({
     this.allowCredentials,
     this.headers,
     this.maxAge,

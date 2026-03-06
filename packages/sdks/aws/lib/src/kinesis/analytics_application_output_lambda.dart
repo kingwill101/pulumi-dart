@@ -11,7 +11,7 @@ class AnalyticsApplicationOutputLambda {
   /// Creates a new [AnalyticsApplicationOutputLambda].
   /// [resourceArn] The ARN of the Lambda function.
   /// [roleArn] The ARN of the IAM Role used to access the Lambda function.
-  AnalyticsApplicationOutputLambda({
+  const AnalyticsApplicationOutputLambda({
     required this.resourceArn,
     required this.roleArn,
   });

@@ -10,7 +10,7 @@ class RateLimitRuleListResponse {
 
   /// Creates a new [RateLimitRuleListResponse].
   /// [rules] List of rules
-  RateLimitRuleListResponse({
+  const RateLimitRuleListResponse({
     this.rules,
   });
 

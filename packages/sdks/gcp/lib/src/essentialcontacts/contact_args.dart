@@ -21,7 +21,7 @@ class ContactArgs {
   /// [languageTag] The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
   /// [notificationCategorySubscriptions] The categories of notifications that the contact will receive communications for.
   /// [parent] The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-  ContactArgs({
+  const ContactArgs({
     required this.email,
     required this.languageTag,
     required this.notificationCategorySubscriptions,

@@ -13,7 +13,7 @@ class GetRouteSpecHttpRouteMatchHeader {
   /// [invert] Required.
   /// [matches] Required.
   /// [name] Name of the route.
-  GetRouteSpecHttpRouteMatchHeader({
+  const GetRouteSpecHttpRouteMatchHeader({
     required this.invert,
     required this.matches,
     required this.name,

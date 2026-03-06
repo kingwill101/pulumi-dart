@@ -13,7 +13,7 @@ class EnvelopeResponse {
   /// [payload] Required.
   /// [payloadType] Required.
   /// [signatures] Required.
-  EnvelopeResponse({
+  const EnvelopeResponse({
     required this.payload,
     required this.payloadType,
     required this.signatures,

@@ -14,7 +14,7 @@ class GetIdentityAwareProxyClientResult {
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [name] Unique identifier of the OAuth client.
   /// [secret] Client secret of the OAuth client.
-  GetIdentityAwareProxyClientResult({
+  const GetIdentityAwareProxyClientResult({
     required this.displayName,
     required this.name,
     required this.secret,

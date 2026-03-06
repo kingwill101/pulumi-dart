@@ -17,7 +17,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
   /// [projectMaps] A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// [projects] list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// [shareType] Type of sharing for this future reservation.
-  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings({
+  const FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings({
     this.projectMaps,
     this.projects,
     this.shareType,

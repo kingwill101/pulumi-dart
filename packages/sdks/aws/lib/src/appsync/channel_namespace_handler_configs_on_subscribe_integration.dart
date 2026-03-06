@@ -12,7 +12,7 @@ class ChannelNamespaceHandlerConfigsOnSubscribeIntegration {
   /// Creates a new [ChannelNamespaceHandlerConfigsOnSubscribeIntegration].
   /// [dataSourceName] Unique name of the data source that has been configured on the API.
   /// [lambdaConfig] Configuration for a Lambda data source. See Lambda Config below.
-  ChannelNamespaceHandlerConfigsOnSubscribeIntegration({
+  const ChannelNamespaceHandlerConfigsOnSubscribeIntegration({
     required this.dataSourceName,
     this.lambdaConfig,
   });

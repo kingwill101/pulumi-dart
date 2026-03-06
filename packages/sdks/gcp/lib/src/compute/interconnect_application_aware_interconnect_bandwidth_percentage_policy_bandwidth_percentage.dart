@@ -13,7 +13,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
   /// Creates a new [InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage].
   /// [percentage] Bandwidth percentage for a specific traffic class.
   /// [trafficClass] Enum representing the various traffic classes offered by AAI.
-  InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage({
+  const InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage({
     this.percentage,
     this.trafficClass,
   });

@@ -16,7 +16,7 @@ class DataSourceCredentials {
   /// [copySourceArn] The Amazon Resource Name (ARN) of a data source that has the credential pair that you want to use.
   /// [credentialPair] Credential pair. See Credential Pair below for more details.
   /// [secretArn] The Amazon Resource Name (ARN) of the secret associated with the data source in Amazon Secrets Manager.
-  DataSourceCredentials({
+  const DataSourceCredentials({
     this.copySourceArn,
     this.credentialPair,
     this.secretArn,

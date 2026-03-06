@@ -31,7 +31,7 @@ class RouteArgs {
   /// [spec] Route specification to apply.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualRouterName] Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
-  RouteArgs({
+  const RouteArgs({
     required this.meshName,
     this.meshOwner,
     this.name,

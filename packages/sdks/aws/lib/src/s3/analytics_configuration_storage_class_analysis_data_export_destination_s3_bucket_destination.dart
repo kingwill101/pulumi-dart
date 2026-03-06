@@ -17,7 +17,7 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDes
   /// [bucketArn] ARN of the destination bucket.
   /// [format] Output format of exported analytics data. Allowed values: `CSV`. Default value: `CSV`.
   /// [prefix] Prefix to append to exported analytics data.
-  AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination({
+  const AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination({
     this.bucketAccountId,
     required this.bucketArn,
     this.format,

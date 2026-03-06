@@ -12,7 +12,7 @@ class AssignmentStatusResponse {
   /// Creates a new [AssignmentStatusResponse].
   /// [message] Reason for the status
   /// [state] State of the assignment resource
-  AssignmentStatusResponse({
+  const AssignmentStatusResponse({
     this.message,
     required this.state,
   });

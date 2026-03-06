@@ -13,7 +13,7 @@ class ExclusionManagedRuleGroupResponse {
   /// Creates a new [ExclusionManagedRuleGroupResponse].
   /// [ruleGroupName] The managed rule group for exclusion.
   /// [rules] List of rules that will be excluded. If none specified, all rules in the group will be excluded.
-  ExclusionManagedRuleGroupResponse({
+  const ExclusionManagedRuleGroupResponse({
     required this.ruleGroupName,
     this.rules,
   });

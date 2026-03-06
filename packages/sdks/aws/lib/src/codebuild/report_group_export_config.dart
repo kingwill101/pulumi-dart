@@ -12,7 +12,7 @@ class ReportGroupExportConfig {
   /// Creates a new [ReportGroupExportConfig].
   /// [s3Destination] contains information about the S3 bucket where the run of a report is exported. see S3 Destination documented below.
   /// [type] The export configuration type. Valid values are `S3` and `NO_EXPORT`.
-  ReportGroupExportConfig({
+  const ReportGroupExportConfig({
     this.s3Destination,
     required this.type,
   });

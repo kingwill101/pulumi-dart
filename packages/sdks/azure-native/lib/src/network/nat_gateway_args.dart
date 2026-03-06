@@ -41,7 +41,7 @@ class NatGatewayArgs {
   /// [sku] The nat gateway SKU.
   /// [tags] Resource tags.
   /// [zones] A list of availability zones denoting the zone in which Nat Gateway should be deployed.
-  NatGatewayArgs({
+  const NatGatewayArgs({
     this.id,
     this.idleTimeoutInMinutes,
     this.location,

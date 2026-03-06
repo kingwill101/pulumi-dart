@@ -12,7 +12,7 @@ class Day {
   /// Creates a new [Day].
   /// [date] Date of the month
   /// [isLast] Whether Date is last date of month
-  Day({
+  const Day({
     this.date,
     this.isLast,
   });

@@ -20,7 +20,7 @@ class GetEndpointResult {
   /// [endpointType] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetEndpointResult({
+  const GetEndpointResult({
     required this.endpointAddress,
     this.endpointType,
     required this.id,

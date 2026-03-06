@@ -21,7 +21,7 @@ class VpcscConfigState {
   /// [name] The name of the project's VPC SC Config.
   /// [project] The ID of the project in which the resource belongs.
   /// [vpcscPolicy] The VPC SC policy for project and location.
-  VpcscConfigState({
+  const VpcscConfigState({
     this.location,
     this.name,
     this.project,

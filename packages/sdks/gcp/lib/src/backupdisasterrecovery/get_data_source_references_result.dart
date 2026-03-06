@@ -18,7 +18,7 @@ class GetDataSourceReferencesResult {
   /// [location] Required.
   /// [project] Required.
   /// [resourceType] Optional.
-  GetDataSourceReferencesResult({
+  const GetDataSourceReferencesResult({
     required this.dataSourceReferences,
     required this.id,
     required this.location,

@@ -16,7 +16,7 @@ class AutomationRuleAddIncidentTaskActionResponse {
   /// [actionConfiguration] Describes an automation rule action to add a task to an incident.
   /// [actionType] The type of the automation rule action.
   /// [order] Required.
-  AutomationRuleAddIncidentTaskActionResponse({
+  const AutomationRuleAddIncidentTaskActionResponse({
     this.actionConfiguration,
     required this.actionType,
     required this.order,

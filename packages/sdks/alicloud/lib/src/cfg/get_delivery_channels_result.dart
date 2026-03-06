@@ -26,7 +26,7 @@ class GetDeliveryChannelsResult {
   /// [names] A list of Config Delivery Channel names.
   /// [outputFile] Optional.
   /// [status] The status of the delivery channel.
-  GetDeliveryChannelsResult({
+  const GetDeliveryChannelsResult({
     required this.channels,
     required this.id,
     required this.ids,

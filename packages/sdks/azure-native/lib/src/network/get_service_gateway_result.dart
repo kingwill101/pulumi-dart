@@ -56,7 +56,7 @@ class GetServiceGatewayResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetwork] Reference to an existing virtual network.
   /// [zones] A list of availability zones denoting the zone in which service gateway should be deployed.
-  GetServiceGatewayResult({
+  const GetServiceGatewayResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

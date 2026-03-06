@@ -8,7 +8,7 @@ class ApplicationPostStartV2Exec {
 
   /// Creates a new [ApplicationPostStartV2Exec].
   /// [commands] Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-  ApplicationPostStartV2Exec({
+  const ApplicationPostStartV2Exec({
     this.commands,
   });
 

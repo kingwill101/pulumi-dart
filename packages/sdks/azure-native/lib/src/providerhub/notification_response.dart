@@ -11,7 +11,7 @@ class NotificationResponse {
   /// Creates a new [NotificationResponse].
   /// [notificationType] The notification type.
   /// [skipNotifications] Whether notifications should be skipped.
-  NotificationResponse({
+  const NotificationResponse({
     this.notificationType,
     this.skipNotifications,
   });

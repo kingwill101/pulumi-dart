@@ -11,7 +11,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes].
   /// [infoTypes] InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
-  PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes({
+  const PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes({
     required this.infoTypes,
   });
 

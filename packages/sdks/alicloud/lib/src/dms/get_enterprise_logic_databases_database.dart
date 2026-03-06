@@ -38,7 +38,7 @@ class GetEnterpriseLogicDatabasesDatabase {
   /// [ownerNameLists] The nickname list of the logical library Owner.
   /// [schemaName] Logical Library name.
   /// [searchName] Logical library search name.
-  GetEnterpriseLogicDatabasesDatabase({
+  const GetEnterpriseLogicDatabasesDatabase({
     required this.alias,
     required this.databaseIds,
     required this.dbType,

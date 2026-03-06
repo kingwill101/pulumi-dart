@@ -9,7 +9,7 @@ class CloudFunctionEndpointResponseNetworkmanagementV1beta1 {
 
   /// Creates a new [CloudFunctionEndpointResponseNetworkmanagementV1beta1].
   /// [uri] A [Cloud Function](https://cloud.google.com/functions) name.
-  CloudFunctionEndpointResponseNetworkmanagementV1beta1({
+  const CloudFunctionEndpointResponseNetworkmanagementV1beta1({
     required this.uri,
   });
 

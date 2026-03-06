@@ -46,7 +46,7 @@ class TeamDeskLinkedServiceResponse {
   /// [url] The url to connect TeamDesk source. Type: string (or Expression with resultType string).
   /// [userName] The username of the TeamDesk source. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  TeamDeskLinkedServiceResponse({
+  const TeamDeskLinkedServiceResponse({
     this.annotations,
     this.apiToken,
     required this.authenticationType,

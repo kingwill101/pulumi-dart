@@ -17,7 +17,7 @@ class GetFrontdoorRuleSetResult {
   /// [name] Required.
   /// [profileName] Required.
   /// [resourceGroupName] Required.
-  GetFrontdoorRuleSetResult({
+  const GetFrontdoorRuleSetResult({
     required this.cdnFrontdoorProfileId,
     required this.id,
     required this.name,

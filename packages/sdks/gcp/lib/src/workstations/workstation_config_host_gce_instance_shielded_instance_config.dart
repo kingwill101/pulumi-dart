@@ -14,7 +14,7 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfig {
   /// [enableIntegrityMonitoring] Whether the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Whether the instance has Secure Boot enabled.
   /// [enableVtpm] Whether the instance has the vTPM enabled.
-  WorkstationConfigHostGceInstanceShieldedInstanceConfig({
+  const WorkstationConfigHostGceInstanceShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

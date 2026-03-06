@@ -21,7 +21,7 @@ class GetAiEndpointIamPolicyArgs {
   /// [endpoint] Used to find the parent resource to bind the IAM policy to
   /// [location] The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
-  GetAiEndpointIamPolicyArgs({
+  const GetAiEndpointIamPolicyArgs({
     required this.endpoint,
     this.location,
     this.project,

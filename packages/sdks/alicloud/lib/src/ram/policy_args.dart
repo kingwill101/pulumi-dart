@@ -42,7 +42,7 @@ class PolicyArgs {
   /// [statements] Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
   /// [tags] The list of tags on the policy.
   /// [version] Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
-  PolicyArgs({
+  const PolicyArgs({
     this.description,
     this.document,
     this.force,

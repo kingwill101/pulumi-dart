@@ -30,7 +30,7 @@ class DiscountProductFamilyResponse {
   /// [discountType] Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
   /// [priceGuaranteeProperties] Set only in price guarantee scenario.
   /// [productFamilyName] Product family for which the discount is given. Validation: Optional
-  DiscountProductFamilyResponse({
+  const DiscountProductFamilyResponse({
     required this.applyDiscountOn,
     this.conditions,
     this.discountCombinationRule,

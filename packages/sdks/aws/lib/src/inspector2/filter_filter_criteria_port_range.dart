@@ -11,7 +11,7 @@ class FilterFilterCriteriaPortRange {
   /// Creates a new [FilterFilterCriteriaPortRange].
   /// [beginInclusive] (Required) The beginning of the port range, inclusive.
   /// [endInclusive] (Required) The end of the port range, inclusive.
-  FilterFilterCriteriaPortRange({
+  const FilterFilterCriteriaPortRange({
     required this.beginInclusive,
     required this.endInclusive,
   });

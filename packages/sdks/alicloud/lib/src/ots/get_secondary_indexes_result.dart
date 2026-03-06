@@ -29,7 +29,7 @@ class GetSecondaryIndexesResult {
   /// [names] A list of secondary index  names.
   /// [outputFile] Optional.
   /// [tableName] The table name of the OTS which could not be changed.
-  GetSecondaryIndexesResult({
+  const GetSecondaryIndexesResult({
     required this.id,
     required this.ids,
     required this.indexes,

@@ -18,7 +18,7 @@ class GetMachinePoolArgs {
   /// [childResourceName] The name of the MachinePool resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
-  GetMachinePoolArgs({
+  const GetMachinePoolArgs({
     required this.childResourceName,
     required this.resourceGroupName,
     required this.resourceName,

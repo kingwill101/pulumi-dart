@@ -31,7 +31,7 @@ class LicenseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [tenantId] Describes the tenant id.
-  LicenseArgs({
+  const LicenseArgs({
     this.licenseDetails,
     this.licenseName,
     this.licenseType,

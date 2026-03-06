@@ -10,7 +10,7 @@ class GetGlobalEventsStorageRegionResult {
   /// Creates a new [GetGlobalEventsStorageRegionResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [storageRegion] Required.
-  GetGlobalEventsStorageRegionResult({
+  const GetGlobalEventsStorageRegionResult({
     required this.id,
     required this.storageRegion,
   });

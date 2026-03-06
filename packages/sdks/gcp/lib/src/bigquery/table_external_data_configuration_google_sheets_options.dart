@@ -16,7 +16,7 @@ class TableExternalDataConfigurationGoogleSheetsOptions {
   /// Creates a new [TableExternalDataConfigurationGoogleSheetsOptions].
   /// [range] Range of a sheet to query from. Only used when
   /// [skipLeadingRows] The number of rows at the top of the sheet
-  TableExternalDataConfigurationGoogleSheetsOptions({
+  const TableExternalDataConfigurationGoogleSheetsOptions({
     this.range,
     this.skipLeadingRows,
   });

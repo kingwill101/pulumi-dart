@@ -13,7 +13,7 @@ class EntityTagsTag {
   /// Creates a new [EntityTagsTag].
   /// [key] The key of the tag.
   /// [values] The tag values.
-  EntityTagsTag({
+  const EntityTagsTag({
     required this.key,
     required this.values,
   });

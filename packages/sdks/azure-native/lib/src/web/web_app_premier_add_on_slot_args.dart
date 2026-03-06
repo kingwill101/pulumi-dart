@@ -45,7 +45,7 @@ class WebAppPremierAddOnSlotArgs {
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will update the named add-on for the production slot.
   /// [tags] Resource tags.
   /// [vendor] Premier add on Vendor.
-  WebAppPremierAddOnSlotArgs({
+  const WebAppPremierAddOnSlotArgs({
     this.kind,
     this.location,
     this.marketplaceOffer,

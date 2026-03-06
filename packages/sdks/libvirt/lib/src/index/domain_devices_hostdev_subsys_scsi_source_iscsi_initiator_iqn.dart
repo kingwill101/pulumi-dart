@@ -8,7 +8,7 @@ class DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn {
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn].
   /// [name] Sets the name for the iSCSI initiator's IQN.
-  DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn({
+  const DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn({
     required this.name,
   });
 

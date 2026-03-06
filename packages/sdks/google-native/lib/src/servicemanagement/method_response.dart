@@ -28,7 +28,7 @@ class MethodResponse {
   /// [responseStreaming] If true, the response is streamed.
   /// [responseTypeUrl] The URL of the output message type.
   /// [syntax] The source syntax of this method.
-  MethodResponse({
+  const MethodResponse({
     required this.name,
     required this.options,
     required this.requestStreaming,

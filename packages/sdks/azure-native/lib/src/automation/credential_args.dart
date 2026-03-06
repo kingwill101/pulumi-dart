@@ -30,7 +30,7 @@ class CredentialArgs {
   /// [password] Gets or sets the password of the credential.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [userName] Gets or sets the user name of the credential.
-  CredentialArgs({
+  const CredentialArgs({
     required this.automationAccountName,
     this.credentialName,
     this.description,

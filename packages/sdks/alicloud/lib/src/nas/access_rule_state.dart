@@ -33,7 +33,7 @@ class AccessRuleState {
   /// [rwAccessType] RWAccess.
   /// [sourceCidrIp] SourceCidrIp.
   /// [userAccessType] UserAccess.
-  AccessRuleState({
+  const AccessRuleState({
     this.accessGroupName,
     this.accessRuleId,
     this.fileSystemType,

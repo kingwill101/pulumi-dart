@@ -29,7 +29,7 @@ class GetDiskEncryptionSetResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Disk Encryption Set.
-  GetDiskEncryptionSetResult({
+  const GetDiskEncryptionSetResult({
     required this.autoKeyRotationEnabled,
     required this.id,
     required this.identities,

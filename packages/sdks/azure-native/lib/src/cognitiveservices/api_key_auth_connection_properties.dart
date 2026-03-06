@@ -55,7 +55,7 @@ class ApiKeyAuthConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  ApiKeyAuthConnectionProperties({
+  const ApiKeyAuthConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

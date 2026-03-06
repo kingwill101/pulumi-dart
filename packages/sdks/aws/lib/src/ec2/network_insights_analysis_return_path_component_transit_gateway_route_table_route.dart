@@ -19,7 +19,7 @@ class NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute {
   /// [resourceType] Optional.
   /// [routeOrigin] Optional.
   /// [state] Optional.
-  NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute({
+  const NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute({
     this.attachmentId,
     this.destinationCidr,
     this.prefixListId,

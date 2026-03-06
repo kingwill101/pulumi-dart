@@ -27,7 +27,7 @@ class SsisVariableResponse {
   /// [sensitive] Whether variable is sensitive.
   /// [sensitiveValue] Variable sensitive value.
   /// [value] Variable value.
-  SsisVariableResponse({
+  const SsisVariableResponse({
     this.dataType,
     this.description,
     this.id,

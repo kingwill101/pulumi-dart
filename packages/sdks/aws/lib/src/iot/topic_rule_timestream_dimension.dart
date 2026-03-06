@@ -11,7 +11,7 @@ class TopicRuleTimestreamDimension {
   /// Creates a new [TopicRuleTimestreamDimension].
   /// [name] The metadata dimension name. This is the name of the column in the Amazon Timestream database table record.
   /// [value] The value to write in this column of the database record.
-  TopicRuleTimestreamDimension({
+  const TopicRuleTimestreamDimension({
     required this.name,
     required this.value,
   });

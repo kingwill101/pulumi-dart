@@ -15,7 +15,7 @@ class ProjectResourcesArgs {
   /// Creates a new [ProjectResourcesArgs].
   /// [project] the ID of the project
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
-  ProjectResourcesArgs({
+  const ProjectResourcesArgs({
     required this.project,
     required this.resources,
   });

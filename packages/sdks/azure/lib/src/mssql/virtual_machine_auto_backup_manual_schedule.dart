@@ -22,7 +22,7 @@ class VirtualMachineAutoBackupManualSchedule {
   /// [fullBackupStartHour] Start hour of a given day during which full backups can take place. Valid values are from `0` to `23`.
   /// [fullBackupWindowInHours] Duration of the time window of a given day during which full backups can take place, in hours. Valid values are between `1` and `23`.
   /// [logBackupFrequencyInMinutes] Frequency of log backups, in minutes. Valid values are from `5` to `60`.
-  VirtualMachineAutoBackupManualSchedule({
+  const VirtualMachineAutoBackupManualSchedule({
     this.daysOfWeeks,
     required this.fullBackupFrequency,
     required this.fullBackupStartHour,

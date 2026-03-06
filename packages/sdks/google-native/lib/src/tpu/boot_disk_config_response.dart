@@ -13,7 +13,7 @@ class BootDiskConfigResponse {
   /// Creates a new [BootDiskConfigResponse].
   /// [customerEncryptionKey] Optional. Customer encryption key for boot disk.
   /// [enableConfidentialCompute] Optional. Whether the boot disk will be created with confidential compute mode.
-  BootDiskConfigResponse({
+  const BootDiskConfigResponse({
     required this.customerEncryptionKey,
     required this.enableConfidentialCompute,
   });

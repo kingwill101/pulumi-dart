@@ -28,7 +28,7 @@ class GetCertificatesResult {
   /// [nameRegex] Optional.
   /// [names] A list of Certificate names.
   /// [outputFile] Optional.
-  GetCertificatesResult({
+  const GetCertificatesResult({
     required this.certificates,
     this.domain,
     required this.id,

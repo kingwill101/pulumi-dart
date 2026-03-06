@@ -33,7 +33,7 @@ class ReplicationVaultState {
   /// [status] The status of the mirror backup vault.
   /// [vaultName] The name of the backup vault.
   /// [vaultStorageClass] Backup Vault Storage Class
-  ReplicationVaultState({
+  const ReplicationVaultState({
     this.description,
     this.encryptType,
     this.kmsKeyId,

@@ -15,7 +15,7 @@ class GetIamVirtualMfaDeviceArgs {
   /// Creates a new [GetIamVirtualMfaDeviceArgs].
   /// [name] Name of IamVirtualMFADevice
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamVirtualMfaDeviceArgs({
+  const GetIamVirtualMfaDeviceArgs({
     required this.name,
     required this.resourceGroupName,
   });

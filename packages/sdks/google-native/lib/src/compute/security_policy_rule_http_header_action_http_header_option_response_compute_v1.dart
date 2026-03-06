@@ -11,7 +11,7 @@ class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1 {
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1].
   /// [headerName] The name of the header to set.
   /// [headerValue] The value to set the named header to.
-  SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1({
+  const SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeV1({
     required this.headerName,
     required this.headerValue,
   });

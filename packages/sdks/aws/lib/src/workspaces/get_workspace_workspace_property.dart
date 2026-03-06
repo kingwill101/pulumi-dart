@@ -20,7 +20,7 @@ class GetWorkspaceWorkspaceProperty {
   /// [runningMode] Running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
   /// [runningModeAutoStopTimeoutInMinutes] Time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
   /// [userVolumeSizeGib] Size of the user storage.
-  GetWorkspaceWorkspaceProperty({
+  const GetWorkspaceWorkspaceProperty({
     required this.computeTypeName,
     required this.rootVolumeSizeGib,
     required this.runningMode,

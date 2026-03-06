@@ -10,7 +10,7 @@ class AmlTokenComputeIdentityResponse {
 
   /// Creates a new [AmlTokenComputeIdentityResponse].
   /// [computeIdentityType] Monitor compute identity type enum.
-  AmlTokenComputeIdentityResponse({
+  const AmlTokenComputeIdentityResponse({
     required this.computeIdentityType,
   });
 

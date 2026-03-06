@@ -83,7 +83,7 @@ class StreamingJobArgs {
   /// [sku] Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.
   /// [tags] Resource tags.
   /// [transformation] Indicates the query and the number of streaming units to use for the streaming job. The name property of the transformation is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
-  StreamingJobArgs({
+  const StreamingJobArgs({
     this.cluster,
     this.compatibilityLevel,
     this.contentStoragePolicy,

@@ -44,7 +44,7 @@ class AlertConfigurationQueryList {
   /// [storeType] Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
   /// [timeSpanType] Time Type.
   /// [ui] Use of specific scene alarm front end.
-  AlertConfigurationQueryList({
+  const AlertConfigurationQueryList({
     this.chartTitle,
     this.dashboardId,
     this.end,

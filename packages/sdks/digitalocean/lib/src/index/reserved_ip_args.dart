@@ -18,7 +18,7 @@ class ReservedIpArgs {
   /// [dropletId] The ID of Droplet that the reserved IP will be assigned to.
   /// [ipAddress] The IP Address of the resource
   /// [region] The region that the reserved IP is reserved to.
-  ReservedIpArgs({
+  const ReservedIpArgs({
     this.dropletId,
     this.ipAddress,
     required this.region,

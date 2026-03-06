@@ -20,7 +20,7 @@ class ServicePerimeterSpecIngressPolicy {
   /// [ingressFrom] Defines the conditions on the source of a request causing this `IngressPolicy`
   /// [ingressTo] Defines the conditions on the `ApiOperation` and request destination that cause
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  ServicePerimeterSpecIngressPolicy({
+  const ServicePerimeterSpecIngressPolicy({
     this.ingressFrom,
     this.ingressTo,
     this.title,

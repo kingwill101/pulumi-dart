@@ -17,7 +17,7 @@ class ManagedIdentityProperties {
   /// [resourceGroup] Optional.
   /// [subscriptionId] Optional.
   /// [tenantId] Optional.
-  ManagedIdentityProperties({
+  const ManagedIdentityProperties({
     this.clientId,
     this.managedIdentityName,
     this.principalId,

@@ -13,7 +13,7 @@ class NetworkMonitorProperties {
   /// Creates a new [NetworkMonitorProperties].
   /// [annotation] Switch configuration description.
   /// [bmpConfiguration] BMP Configurations for the Network Fabric.
-  NetworkMonitorProperties({
+  const NetworkMonitorProperties({
     this.annotation,
     this.bmpConfiguration,
   });

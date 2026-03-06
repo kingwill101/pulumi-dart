@@ -29,7 +29,7 @@ class GetPbrRouteEntriesEntry {
   /// [status] The status of the VPN Pbr Route Entry.
   /// [vpnGatewayId] The ID of the VPN gateway.
   /// [weight] The weight of the policy-based route. Valid values: 0 and 100.
-  GetPbrRouteEntriesEntry({
+  const GetPbrRouteEntriesEntry({
     required this.createTime,
     required this.id,
     required this.nextHop,

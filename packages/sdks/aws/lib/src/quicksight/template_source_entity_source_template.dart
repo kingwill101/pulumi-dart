@@ -8,7 +8,7 @@ class TemplateSourceEntitySourceTemplate {
 
   /// Creates a new [TemplateSourceEntitySourceTemplate].
   /// [arn] The Amazon Resource Name (ARN) of the resource.
-  TemplateSourceEntitySourceTemplate({
+  const TemplateSourceEntitySourceTemplate({
     required this.arn,
   });
 

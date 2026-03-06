@@ -15,7 +15,7 @@ class ClusterMaintenancePolicyWindowRecurringWindow {
   /// Creates a new [ClusterMaintenancePolicyWindowRecurringWindow].
   /// [recurrence] An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
   /// [window] Represents an arbitrary window of time.
-  ClusterMaintenancePolicyWindowRecurringWindow({
+  const ClusterMaintenancePolicyWindowRecurringWindow({
     this.recurrence,
     this.window,
   });

@@ -18,7 +18,7 @@ class EnqueueServerPropertiesResponse {
   /// [hostname] Enqueue Server SAP Hostname.
   /// [ipAddress] Enqueue Server SAP IP Address.
   /// [port] Enqueue Server Port.
-  EnqueueServerPropertiesResponse({
+  const EnqueueServerPropertiesResponse({
     required this.health,
     required this.hostname,
     required this.ipAddress,

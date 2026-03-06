@@ -14,7 +14,7 @@ class DropletBackupPolicy {
   /// [hour] The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
   /// [plan] The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
   /// [weekday] The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
-  DropletBackupPolicy({
+  const DropletBackupPolicy({
     this.hour,
     this.plan,
     this.weekday,

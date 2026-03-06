@@ -15,7 +15,7 @@ class RegionalSharingStatusResponse {
   /// [details] Details of gallery regional sharing failure.
   /// [region] Region name
   /// [state] Gallery sharing state in current region
-  RegionalSharingStatusResponse({
+  const RegionalSharingStatusResponse({
     this.details,
     this.region,
     required this.state,

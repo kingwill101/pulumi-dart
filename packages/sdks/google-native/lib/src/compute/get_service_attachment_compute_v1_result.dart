@@ -63,7 +63,7 @@ class GetServiceAttachmentComputeV1Result {
   /// [region] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [selfLink] Server-defined URL for the resource.
   /// [targetService] The URL of a service serving the endpoint identified by this service attachment.
-  GetServiceAttachmentComputeV1Result({
+  const GetServiceAttachmentComputeV1Result({
     required this.connectedEndpoints,
     required this.connectionPreference,
     required this.consumerAcceptLists,

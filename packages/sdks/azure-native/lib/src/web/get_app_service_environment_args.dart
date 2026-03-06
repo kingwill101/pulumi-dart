@@ -15,7 +15,7 @@ class GetAppServiceEnvironmentArgs {
   /// Creates a new [GetAppServiceEnvironmentArgs].
   /// [name] Name of the App Service Environment.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetAppServiceEnvironmentArgs({
+  const GetAppServiceEnvironmentArgs({
     required this.name,
     required this.resourceGroupName,
   });

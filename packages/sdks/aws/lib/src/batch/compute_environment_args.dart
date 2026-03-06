@@ -42,7 +42,7 @@ class ComputeEnvironmentArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   /// [updatePolicy] Specifies the infrastructure update policy for the compute environment. See details below.
-  ComputeEnvironmentArgs({
+  const ComputeEnvironmentArgs({
     this.computeResources,
     this.eksConfiguration,
     this.name,

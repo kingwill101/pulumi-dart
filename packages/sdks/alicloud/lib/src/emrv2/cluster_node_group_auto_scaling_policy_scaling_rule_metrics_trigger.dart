@@ -25,7 +25,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
   /// [evaluationCount] The evaluation count for this scaling rule specific metrics trigger.
   /// [timeConstraints] The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
   /// [timeWindow] The time window for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger({
+  const ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger({
     this.conditionLogicOperator,
     this.conditions,
     this.coolDownInterval,

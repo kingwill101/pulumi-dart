@@ -17,7 +17,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentOutboundHeader {
   /// [protocol] Required.
   /// [sourceAddresses] Required.
   /// [sourcePortRanges] Required.
-  GetNetworkInsightsAnalysisReturnPathComponentOutboundHeader({
+  const GetNetworkInsightsAnalysisReturnPathComponentOutboundHeader({
     required this.destinationAddresses,
     required this.destinationPortRanges,
     required this.protocol,

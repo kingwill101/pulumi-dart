@@ -21,7 +21,7 @@ class GetScheduledSynchronizationSettingArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share.
   /// [synchronizationSettingName] The name of the synchronizationSetting.
-  GetScheduledSynchronizationSettingArgs({
+  const GetScheduledSynchronizationSettingArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.shareName,

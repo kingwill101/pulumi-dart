@@ -22,7 +22,7 @@ class SlsaProvenanceZeroTwo {
   /// [invocation] Optional.
   /// [materials] Optional.
   /// [metadata] Optional.
-  SlsaProvenanceZeroTwo({
+  const SlsaProvenanceZeroTwo({
     this.buildConfig,
     this.buildType,
     this.builder,

@@ -21,7 +21,7 @@ class InstanceIpArgs {
   /// [linodeId] The ID of the Linode to allocate an IPv4 address for.
   /// [public] Whether the IPv4 address is public or private. Defaults to true.
   /// [rdns] The reverse DNS assigned to this address.
-  InstanceIpArgs({
+  const InstanceIpArgs({
     this.applyImmediately,
     required this.linodeId,
     this.public,

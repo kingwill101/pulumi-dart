@@ -56,7 +56,7 @@ class NamespaceDiscoveredDeviceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [version] An integer that is incremented each time the resource is modified.
-  NamespaceDiscoveredDeviceArgs({
+  const NamespaceDiscoveredDeviceArgs({
     this.attributes,
     this.discoveredDeviceName,
     required this.discoveryId,

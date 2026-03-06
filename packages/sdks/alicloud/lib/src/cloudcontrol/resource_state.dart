@@ -21,7 +21,7 @@ class ResourceState {
   /// [resourceAttributes] The collection of properties for the resource.
   /// [resourceCode] Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   /// [resourceId] If there is a parent resource, you need to enter the id of the parent resource, for example, in the VPC::VSwtich resource, you need to enter the id of the VPC: vpc-dexadfe3r4ad. If there are more than one level of parent resources, you need to use `:` to split.
-  ResourceState({
+  const ResourceState({
     this.desireAttributes,
     this.product,
     this.resourceAttributes,

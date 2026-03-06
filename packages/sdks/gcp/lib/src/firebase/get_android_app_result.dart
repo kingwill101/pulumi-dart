@@ -38,7 +38,7 @@ class GetAndroidAppResult {
   /// [project] Optional.
   /// [sha1Hashes] The SHA1 certificate hashes for the AndroidApp.
   /// [sha256Hashes] The SHA256 certificate hashes for the AndroidApp.
-  GetAndroidAppResult({
+  const GetAndroidAppResult({
     required this.apiKeyId,
     required this.appId,
     required this.deletionPolicy,

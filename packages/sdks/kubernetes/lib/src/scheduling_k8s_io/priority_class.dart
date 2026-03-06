@@ -28,7 +28,7 @@ class PriorityClass {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [preemptionPolicy] preemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
   /// [value] value represents the integer value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.
-  PriorityClass({
+  const PriorityClass({
     this.apiVersion,
     this.description,
     this.globalDefault,

@@ -49,7 +49,7 @@ class ProvisionArgs {
   /// [level] Sets the provisioning level for the requested modules. Changing the level for one module may require modifying the level of another module. For example, changing one module to `dedicated` requires setting all others to `none`. Setting the level of a module to `none` means the module is not activated.
   /// [memoryRatio] Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   /// [name] Name of module to provision in BIG-IP.
-  ProvisionArgs({
+  const ProvisionArgs({
     this.cpuRatio,
     this.diskRatio,
     this.fullPath,

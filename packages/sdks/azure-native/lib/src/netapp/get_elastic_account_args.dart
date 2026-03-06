@@ -15,7 +15,7 @@ class GetElasticAccountArgs {
   /// Creates a new [GetElasticAccountArgs].
   /// [accountName] The name of the ElasticAccount
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticAccountArgs({
+  const GetElasticAccountArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

@@ -13,7 +13,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTable {
   /// Creates a new [StreamBackfillAllSqlServerExcludedObjectsSchemaTable].
   /// [columns] Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamBackfillAllSqlServerExcludedObjectsSchemaTable({
+  const StreamBackfillAllSqlServerExcludedObjectsSchemaTable({
     this.columns,
     required this.table,
   });

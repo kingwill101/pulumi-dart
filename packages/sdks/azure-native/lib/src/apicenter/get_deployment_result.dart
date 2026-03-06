@@ -43,7 +43,7 @@ class GetDeploymentResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [title] API deployment title
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDeploymentResult({
+  const GetDeploymentResult({
     required this.azureApiVersion,
     this.customProperties,
     this.definitionId,

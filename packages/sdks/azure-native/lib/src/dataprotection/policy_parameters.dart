@@ -14,7 +14,7 @@ class PolicyParameters {
   /// Creates a new [PolicyParameters].
   /// [backupDatasourceParametersList] Gets or sets the Backup Data Source Parameters
   /// [dataStoreParametersList] Gets or sets the DataStore Parameters
-  PolicyParameters({
+  const PolicyParameters({
     this.backupDatasourceParametersList,
     this.dataStoreParametersList,
   });

@@ -36,7 +36,7 @@ class DataQualityMonitoringSignalResponse {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [referenceData] [Required] The data to calculate drift against.
   /// [signalType] Expected value is 'DataQuality'.
-  DataQualityMonitoringSignalResponse({
+  const DataQualityMonitoringSignalResponse({
     this.featureDataTypeOverride,
     this.featureImportanceSettings,
     this.features,

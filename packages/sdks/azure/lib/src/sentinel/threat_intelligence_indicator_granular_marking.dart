@@ -14,7 +14,7 @@ class ThreatIntelligenceIndicatorGranularMarking {
   /// [language] The language of granular marking of the Threat Intelligence Indicator.
   /// [markingRef] The reference of the granular marking of the Threat Intelligence Indicator.
   /// [selectors] A list of selectors of the granular marking of the Threat Intelligence Indicator.
-  ThreatIntelligenceIndicatorGranularMarking({
+  const ThreatIntelligenceIndicatorGranularMarking({
     this.language,
     this.markingRef,
     this.selectors,

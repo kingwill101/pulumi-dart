@@ -26,7 +26,7 @@ class DatabaseKafkaTopicState {
   /// [partitionCount] The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
   /// [replicationFactor] The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
   /// [state] The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.
-  DatabaseKafkaTopicState({
+  const DatabaseKafkaTopicState({
     this.clusterId,
     this.configs,
     this.name,

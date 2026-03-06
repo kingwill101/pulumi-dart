@@ -30,7 +30,7 @@ class ConnectionClassicCertificateArgs {
   /// [resourceGroupName] The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   /// [subscriptionId] The id of subscription.
   /// [subscriptionName] The name of subscription.
-  ConnectionClassicCertificateArgs({
+  const ConnectionClassicCertificateArgs({
     required this.automationAccountName,
     required this.certificateAssetName,
     this.description,

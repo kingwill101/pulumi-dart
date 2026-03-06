@@ -12,7 +12,7 @@ class ConfigurationServiceInstanceResponse {
   /// Creates a new [ConfigurationServiceInstanceResponse].
   /// [name] Name of the Application Configuration Service instance
   /// [status] Status of the Application Configuration Service instance
-  ConfigurationServiceInstanceResponse({
+  const ConfigurationServiceInstanceResponse({
     required this.name,
     required this.status,
   });

@@ -8,7 +8,7 @@ class DomainAimlOptionsNaturalLanguageQueryGenerationOptions {
 
   /// Creates a new [DomainAimlOptionsNaturalLanguageQueryGenerationOptions].
   /// [desiredState] The desired state of the natural language query generation feature. Valid values are `ENABLED` and `DISABLED`.
-  DomainAimlOptionsNaturalLanguageQueryGenerationOptions({
+  const DomainAimlOptionsNaturalLanguageQueryGenerationOptions({
     this.desiredState,
   });
 

@@ -44,7 +44,7 @@ class CloningInfo {
   /// [sourceWebAppLocation] Location of source app ex: West US or North Europe
   /// [trafficManagerProfileId] ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form
   /// [trafficManagerProfileName] Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
-  CloningInfo({
+  const CloningInfo({
     this.appSettingsOverrides,
     this.cloneCustomHostNames,
     this.cloneSourceControl,

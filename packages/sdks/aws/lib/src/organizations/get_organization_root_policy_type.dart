@@ -10,7 +10,7 @@ class GetOrganizationRootPolicyType {
   /// Creates a new [GetOrganizationRootPolicyType].
   /// [status] Status of the policy type as it relates to the associated root.
   /// [type] Required.
-  GetOrganizationRootPolicyType({
+  const GetOrganizationRootPolicyType({
     required this.status,
     required this.type,
   });

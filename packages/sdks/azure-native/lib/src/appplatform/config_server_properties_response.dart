@@ -20,7 +20,7 @@ class ConfigServerPropertiesResponse {
   /// [enabledState] Enabled state of the config server. This is only used in Consumption tier.
   /// [error] Error when apply config server settings.
   /// [provisioningState] State of the config server.
-  ConfigServerPropertiesResponse({
+  const ConfigServerPropertiesResponse({
     this.configServer,
     this.enabledState,
     this.error,

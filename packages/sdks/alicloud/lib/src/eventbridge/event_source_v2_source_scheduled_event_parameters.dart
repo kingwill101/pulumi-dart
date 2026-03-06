@@ -14,7 +14,7 @@ class EventSourceV2SourceScheduledEventParameters {
   /// [schedule] Cron expression
   /// [timeZone] The Cron execution time zone.
   /// [userData] JSON string
-  EventSourceV2SourceScheduledEventParameters({
+  const EventSourceV2SourceScheduledEventParameters({
     this.schedule,
     this.timeZone,
     this.userData,

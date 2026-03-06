@@ -13,7 +13,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd {
   /// Creates a new [ReservationSpecificReservationInstancePropertiesLocalSsd].
   /// [diskSizeGb] The size of the disk in base-2 GB.
   /// [interface] The disk interface to use for attaching this disk.
-  ReservationSpecificReservationInstancePropertiesLocalSsd({
+  const ReservationSpecificReservationInstancePropertiesLocalSsd({
     required this.diskSizeGb,
     this.interface,
   });

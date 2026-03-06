@@ -14,7 +14,7 @@ class GetApplicationGatewaySkus {
   /// [capacity] The Capacity of the SKU in use for this Application Gateway.
   /// [name] The name of this Application Gateway.
   /// [tier] The Tier of the SKU in use for this Application Gateway.
-  GetApplicationGatewaySkus({
+  const GetApplicationGatewaySkus({
     required this.capacity,
     required this.name,
     required this.tier,

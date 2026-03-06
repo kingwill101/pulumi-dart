@@ -14,7 +14,7 @@ class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter {
   /// [parameterName] The Parameter Name.
   /// [parameterValue] The Parameter Value.
   /// [required] Required.
-  GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter({
+  const GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter({
     required this.parameterName,
     required this.parameterValue,
     required this.required,

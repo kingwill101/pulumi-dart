@@ -17,7 +17,7 @@ class VpcAttachmentOptions {
   /// [dnsSupport] Whether to enable DNS support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   /// [ipv6Support] Whether to enable IPv6 support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   /// [securityGroupReferencingSupport] Whether to enable security group referencing support for this VPC attachment. The default is `true`. However, at the core network policy-level the default is set to `false`. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
-  VpcAttachmentOptions({
+  const VpcAttachmentOptions({
     this.applianceModeSupport,
     this.dnsSupport,
     this.ipv6Support,

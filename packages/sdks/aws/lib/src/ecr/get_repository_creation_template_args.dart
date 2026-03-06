@@ -18,7 +18,7 @@ class GetRepositoryCreationTemplateArgs {
   /// [prefix] The repository name prefix that the template matches against.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTags] A map of tags to assign to any created repositories.
-  GetRepositoryCreationTemplateArgs({
+  const GetRepositoryCreationTemplateArgs({
     required this.prefix,
     this.region,
     this.resourceTags,

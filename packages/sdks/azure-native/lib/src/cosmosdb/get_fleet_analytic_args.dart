@@ -18,7 +18,7 @@ class GetFleetAnalyticArgs {
   /// [fleetAnalyticsName] Cosmos DB fleetAnalytics name.
   /// [fleetName] Cosmos DB fleet name. Needs to be unique under a subscription.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFleetAnalyticArgs({
+  const GetFleetAnalyticArgs({
     required this.fleetAnalyticsName,
     required this.fleetName,
     required this.resourceGroupName,

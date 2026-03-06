@@ -12,7 +12,7 @@ class AccessLevelCustom {
 
   /// Creates a new [AccessLevelCustom].
   /// [expr] Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-  AccessLevelCustom({
+  const AccessLevelCustom({
     required this.expr,
   });
 

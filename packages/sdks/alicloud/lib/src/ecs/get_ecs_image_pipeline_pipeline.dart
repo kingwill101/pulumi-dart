@@ -59,7 +59,7 @@ class GetEcsImagePipelinePipeline {
   /// [tags] A mapping of tags to assign to the resource.
   /// [toRegionIds] The IDs of regions to which to distribute the created image.
   /// [vswitchId] The vswitch id.
-  GetEcsImagePipelinePipeline({
+  const GetEcsImagePipelinePipeline({
     required this.addAccounts,
     required this.baseImage,
     required this.baseImageType,

@@ -70,7 +70,7 @@ class AutoscalerAutoscalingPolicyMetric {
   /// [singleInstanceAssignment] If scaling is based on a per-group metric value that represents the
   /// [target] The target value of the metric that autoscaler should
   /// [type] Defines how target utilization value is expressed for a
-  AutoscalerAutoscalingPolicyMetric({
+  const AutoscalerAutoscalingPolicyMetric({
     this.filter,
     required this.name,
     this.singleInstanceAssignment,

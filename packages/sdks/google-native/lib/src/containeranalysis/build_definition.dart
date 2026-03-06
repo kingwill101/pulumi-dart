@@ -14,7 +14,7 @@ class BuildDefinition {
   /// [externalParameters] Optional.
   /// [internalParameters] Optional.
   /// [resolvedDependencies] Optional.
-  BuildDefinition({
+  const BuildDefinition({
     this.buildType,
     this.externalParameters,
     this.internalParameters,

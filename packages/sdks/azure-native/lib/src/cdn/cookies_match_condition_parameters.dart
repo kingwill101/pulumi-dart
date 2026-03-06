@@ -24,7 +24,7 @@ class CookiesMatchConditionParameters {
   /// [selector] Name of Cookies to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleCookiesConditionParameters'.
-  CookiesMatchConditionParameters({
+  const CookiesMatchConditionParameters({
     this.matchValues,
     this.negateCondition,
     required this.operator,

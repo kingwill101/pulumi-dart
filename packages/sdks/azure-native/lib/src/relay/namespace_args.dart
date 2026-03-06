@@ -33,7 +33,7 @@ class NamespaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] SKU of the namespace.
   /// [tags] Resource tags.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.location,
     this.namespaceName,
     this.privateEndpointConnections,

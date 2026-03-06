@@ -15,7 +15,7 @@ class GetLicenseArgs {
   /// Creates a new [GetLicenseArgs].
   /// [licenseName] The name of the license.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLicenseArgs({
+  const GetLicenseArgs({
     required this.licenseName,
     required this.resourceGroupName,
   });

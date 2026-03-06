@@ -22,7 +22,7 @@ class OrderV1Args {
   /// [meta] Dictionary containing the order metadata used to generate the order. The structure is described below.
   /// [region] The region in which to obtain the V1 KeyManager client.
   /// [type] The type of key to be generated. Must be one of `asymmetric`, `key`.
-  OrderV1Args({
+  const OrderV1Args({
     required this.meta,
     this.region,
     required this.type,

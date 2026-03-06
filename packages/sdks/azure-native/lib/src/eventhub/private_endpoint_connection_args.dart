@@ -29,7 +29,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] Details about the state of the connection.
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     required this.namespaceName,
     this.privateEndpoint,
     this.privateEndpointConnectionName,

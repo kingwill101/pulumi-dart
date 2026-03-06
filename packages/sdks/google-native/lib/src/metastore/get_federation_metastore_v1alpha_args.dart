@@ -15,7 +15,7 @@ class GetFederationMetastoreV1alphaArgs {
   /// [federationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFederationMetastoreV1alphaArgs({
+  const GetFederationMetastoreV1alphaArgs({
     required this.federationId,
     required this.location,
     this.project,

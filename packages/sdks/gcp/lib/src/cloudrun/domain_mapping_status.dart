@@ -28,7 +28,7 @@ class DomainMappingStatus {
   /// [mappedRouteName] (Output)
   /// [observedGeneration] (Output)
   /// [resourceRecords] The resource records required to configure this domain mapping. These
-  DomainMappingStatus({
+  const DomainMappingStatus({
     this.conditions,
     this.mappedRouteName,
     this.observedGeneration,

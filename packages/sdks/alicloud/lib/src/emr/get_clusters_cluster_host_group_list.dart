@@ -51,7 +51,7 @@ class GetClustersClusterHostGroupList {
   /// [nodeCount] The number of machine group nodes.
   /// [nodes] Machine node.
   /// [period] Package year and month time (days).
-  GetClustersClusterHostGroupList({
+  const GetClustersClusterHostGroupList({
     required this.bandWidth,
     required this.chargeType,
     required this.cpuCore,

@@ -32,7 +32,7 @@ class ApplicationScalingRuleState {
   /// [scalingRuleName] The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
   /// [scalingRuleTimer] Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
   /// [scalingRuleType] Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
-  ApplicationScalingRuleState({
+  const ApplicationScalingRuleState({
     this.appId,
     this.minReadyInstanceRatio,
     this.minReadyInstances,

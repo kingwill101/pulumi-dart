@@ -12,7 +12,7 @@ class ResourceTypeExtensionOptionsResourceCreationBeginResponse {
   /// Creates a new [ResourceTypeExtensionOptionsResourceCreationBeginResponse].
   /// [request] The request.
   /// [response] The response.
-  ResourceTypeExtensionOptionsResourceCreationBeginResponse({
+  const ResourceTypeExtensionOptionsResourceCreationBeginResponse({
     this.request,
     this.response,
   });

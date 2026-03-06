@@ -23,7 +23,7 @@ class PeeringManagedidentitiesV1beta1Args {
   /// [labels] Optional. Resource labels to represent user provided metadata.
   /// [peeringId] Required. Peering Id, unique name to identify peering.
   /// [project] Optional.
-  PeeringManagedidentitiesV1beta1Args({
+  const PeeringManagedidentitiesV1beta1Args({
     required this.authorizedNetwork,
     required this.domainResource,
     this.labels,

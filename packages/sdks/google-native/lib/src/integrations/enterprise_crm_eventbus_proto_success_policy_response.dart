@@ -9,7 +9,7 @@ class EnterpriseCrmEventbusProtoSuccessPolicyResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoSuccessPolicyResponse].
   /// [finalState] State to which the execution snapshot status will be set if the task succeeds.
-  EnterpriseCrmEventbusProtoSuccessPolicyResponse({
+  const EnterpriseCrmEventbusProtoSuccessPolicyResponse({
     required this.finalState,
   });
 

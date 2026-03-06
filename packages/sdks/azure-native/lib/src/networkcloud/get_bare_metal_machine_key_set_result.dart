@@ -70,7 +70,7 @@ class GetBareMetalMachineKeySetResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userList] The unique list of permitted users.
   /// [userListStatus] The status evaluation of each user.
-  GetBareMetalMachineKeySetResult({
+  const GetBareMetalMachineKeySetResult({
     required this.azureApiVersion,
     required this.azureGroupId,
     required this.detailedStatus,

@@ -13,7 +13,7 @@ class MaintenanceWindow {
   /// Creates a new [MaintenanceWindow].
   /// [dayOfWeek] The day of week, when the window starts.
   /// [hourOfDay] The hour of day (0-23) when the window starts.
-  MaintenanceWindow({
+  const MaintenanceWindow({
     this.dayOfWeek,
     this.hourOfDay,
   });

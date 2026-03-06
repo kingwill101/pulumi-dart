@@ -16,7 +16,7 @@ class ServiceConfigState {
   /// [location] The location in which the Service config is to be initialized.
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceType] The resource type to which the default service config will be applied.
-  ServiceConfigState({
+  const ServiceConfigState({
     this.location,
     this.project,
     this.resourceType,

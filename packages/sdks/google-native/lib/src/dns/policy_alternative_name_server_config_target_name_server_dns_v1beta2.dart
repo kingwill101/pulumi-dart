@@ -17,7 +17,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerDnsV1beta2 {
   /// [ipv4Address] IPv4 address to forward queries to.
   /// [ipv6Address] IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022.
   /// [kind] Optional.
-  PolicyAlternativeNameServerConfigTargetNameServerDnsV1beta2({
+  const PolicyAlternativeNameServerConfigTargetNameServerDnsV1beta2({
     this.forwardingPath,
     this.ipv4Address,
     this.ipv6Address,

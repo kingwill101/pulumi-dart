@@ -15,7 +15,7 @@ class GetWorkbookTemplateArgs {
   /// Creates a new [GetWorkbookTemplateArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  GetWorkbookTemplateArgs({
+  const GetWorkbookTemplateArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

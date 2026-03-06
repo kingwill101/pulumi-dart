@@ -45,7 +45,7 @@ class WebCloudRunServiceIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  WebCloudRunServiceIamBindingState({
+  const WebCloudRunServiceIamBindingState({
     this.cloudRunServiceName,
     this.condition,
     this.etag,

@@ -48,7 +48,7 @@ class ApplicationRuleResponse {
   /// [targetUrls] List of Urls for this rule condition.
   /// [terminateTLS] Terminate TLS connections for this rule.
   /// [webCategories] List of destination azure web categories.
-  ApplicationRuleResponse({
+  const ApplicationRuleResponse({
     this.description,
     this.destinationAddresses,
     this.fqdnTags,

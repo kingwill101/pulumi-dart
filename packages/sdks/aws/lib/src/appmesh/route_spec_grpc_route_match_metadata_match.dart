@@ -21,7 +21,7 @@ class RouteSpecGrpcRouteMatchMetadataMatch {
   /// [range] Object that specifies the range of numbers that the value sent by the client must be included in.
   /// [regex] Value sent by the client must include the specified characters. Must be between 1 and 255 characters in length.
   /// [suffix] Value sent by the client must end with the specified characters. Must be between 1 and 255 characters in length.
-  RouteSpecGrpcRouteMatchMetadataMatch({
+  const RouteSpecGrpcRouteMatchMetadataMatch({
     this.exact,
     this.prefix,
     this.range,

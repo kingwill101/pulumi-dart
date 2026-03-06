@@ -12,7 +12,7 @@ class SessionProbeResponseHttpHeaders {
   /// Creates a new [SessionProbeResponseHttpHeaders].
   /// [name] The header field name
   /// [value] The header field value
-  SessionProbeResponseHttpHeaders({
+  const SessionProbeResponseHttpHeaders({
     required this.name,
     required this.value,
   });

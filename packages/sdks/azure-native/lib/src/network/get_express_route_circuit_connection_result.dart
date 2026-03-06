@@ -43,7 +43,7 @@ class GetExpressRouteCircuitConnectionResult {
   /// [peerExpressRouteCircuitPeering] Reference to Express Route Circuit Private Peering Resource of the peered circuit.
   /// [provisioningState] The provisioning state of the express route circuit connection resource.
   /// [type] Type of the resource.
-  GetExpressRouteCircuitConnectionResult({
+  const GetExpressRouteCircuitConnectionResult({
     this.addressPrefix,
     this.authorizationKey,
     required this.azureApiVersion,

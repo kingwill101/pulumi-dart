@@ -13,7 +13,7 @@ class AS2AgreementContentResponse {
   /// Creates a new [AS2AgreementContentResponse].
   /// [receiveAgreement] The AS2 one-way receive agreement.
   /// [sendAgreement] The AS2 one-way send agreement.
-  AS2AgreementContentResponse({
+  const AS2AgreementContentResponse({
     required this.receiveAgreement,
     required this.sendAgreement,
   });

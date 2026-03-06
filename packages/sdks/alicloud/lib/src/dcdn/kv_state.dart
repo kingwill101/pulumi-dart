@@ -15,7 +15,7 @@ class KvState {
   /// [key] The name of the key to Put, the longest 512, cannot contain spaces.
   /// [namespace] The name specified when the customer calls PutDcdnKvNamespace.
   /// [value] The content of key, up to 2M(2*1000*1000).
-  KvState({
+  const KvState({
     this.key,
     this.namespace,
     this.value,

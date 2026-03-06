@@ -17,7 +17,7 @@ class WorkspaceTableCustomLogColumn {
   /// [displayName] The display name of the column.
   /// [name] Specifies the name of the column.
   /// [type] The data type of the column. Possible values are `boolean`, `datetime`, `dynamic`, `guid`, `int`, `long`, `real`, and `string`.
-  WorkspaceTableCustomLogColumn({
+  const WorkspaceTableCustomLogColumn({
     this.description,
     this.displayName,
     required this.name,

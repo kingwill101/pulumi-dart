@@ -12,7 +12,7 @@ class TagArgs {
 
   /// Creates a new [TagArgs].
   /// [name] The name of the tag
-  TagArgs({
+  const TagArgs({
     this.name,
   });
 

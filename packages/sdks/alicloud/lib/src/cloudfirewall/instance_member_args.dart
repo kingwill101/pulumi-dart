@@ -15,7 +15,7 @@ class InstanceMemberArgs {
   /// Creates a new [InstanceMemberArgs].
   /// [memberDesc] Remarks of cloud firewall member accounts.
   /// [memberUid] The UID of the cloud firewall member account.
-  InstanceMemberArgs({
+  const InstanceMemberArgs({
     this.memberDesc,
     required this.memberUid,
   });

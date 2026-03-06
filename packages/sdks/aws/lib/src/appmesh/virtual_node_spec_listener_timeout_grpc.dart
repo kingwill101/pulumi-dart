@@ -13,7 +13,7 @@ class VirtualNodeSpecListenerTimeoutGrpc {
   /// Creates a new [VirtualNodeSpecListenerTimeoutGrpc].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
   /// [perRequest] Per request timeout.
-  VirtualNodeSpecListenerTimeoutGrpc({
+  const VirtualNodeSpecListenerTimeoutGrpc({
     this.idle,
     this.perRequest,
   });

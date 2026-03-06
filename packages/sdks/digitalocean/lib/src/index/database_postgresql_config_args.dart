@@ -167,7 +167,7 @@ class DatabasePostgresqlConfigArgs {
   /// [walSenderTimeout] Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Must be either 0 or between 5000 and 10800000.
   /// [walWriterDelay] WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance
   /// [workMem] The maximum amount of memory, in MB, used by a query operation (such as a sort or hash table) before writing to temporary disk files. Default is 1MB + 0.075% of total RAM (up to 32MB).
-  DatabasePostgresqlConfigArgs({
+  const DatabasePostgresqlConfigArgs({
     this.autovacuumAnalyzeScaleFactor,
     this.autovacuumAnalyzeThreshold,
     this.autovacuumFreezeMaxAge,

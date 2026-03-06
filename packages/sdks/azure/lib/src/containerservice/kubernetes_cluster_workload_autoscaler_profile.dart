@@ -11,7 +11,7 @@ class KubernetesClusterWorkloadAutoscalerProfile {
   /// Creates a new [KubernetesClusterWorkloadAutoscalerProfile].
   /// [kedaEnabled] Specifies whether KEDA Autoscaler can be used for workloads.
   /// [verticalPodAutoscalerEnabled] Specifies whether Vertical Pod Autoscaler should be enabled.
-  KubernetesClusterWorkloadAutoscalerProfile({
+  const KubernetesClusterWorkloadAutoscalerProfile({
     this.kedaEnabled,
     this.verticalPodAutoscalerEnabled,
   });

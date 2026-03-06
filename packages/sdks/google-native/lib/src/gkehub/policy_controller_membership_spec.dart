@@ -13,7 +13,7 @@ class PolicyControllerMembershipSpec {
   /// Creates a new [PolicyControllerMembershipSpec].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster.
   /// [version] Version of Policy Controller installed.
-  PolicyControllerMembershipSpec({
+  const PolicyControllerMembershipSpec({
     this.policyControllerHubConfig,
     this.version,
   });

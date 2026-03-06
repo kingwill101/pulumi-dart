@@ -10,7 +10,7 @@ class ServerS3StorageOptions {
 
   /// Creates a new [ServerS3StorageOptions].
   /// [directoryListingOptimization] Specifies whether or not performance for your Amazon S3 directories is optimized. Valid values are `DISABLED`, `ENABLED`.
-  ServerS3StorageOptions({
+  const ServerS3StorageOptions({
     this.directoryListingOptimization,
   });
 

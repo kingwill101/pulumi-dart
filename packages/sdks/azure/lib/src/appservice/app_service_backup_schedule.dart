@@ -20,7 +20,7 @@ class AppServiceBackupSchedule {
   /// [keepAtLeastOneBackup] Should at least one backup always be kept in the Storage Account by the Retention Policy, regardless of how old it is?
   /// [retentionPeriodInDays] Specifies the number of days after which Backups should be deleted. Defaults to `30`.
   /// [startTime] Sets when the schedule should start working.
-  AppServiceBackupSchedule({
+  const AppServiceBackupSchedule({
     required this.frequencyInterval,
     required this.frequencyUnit,
     this.keepAtLeastOneBackup,

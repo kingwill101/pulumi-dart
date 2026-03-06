@@ -44,7 +44,7 @@ class TargetHttpProxyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [proxyBind] This field only applies when the forwarding rule that references
   /// [urlMap] A reference to the UrlMap resource that defines the mapping from URL
-  TargetHttpProxyArgs({
+  const TargetHttpProxyArgs({
     this.description,
     this.httpKeepAliveTimeoutSec,
     this.name,

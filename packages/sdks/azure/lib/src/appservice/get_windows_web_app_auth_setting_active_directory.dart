@@ -17,7 +17,7 @@ class GetWindowsWebAppAuthSettingActiveDirectory {
   /// [clientId] The OAuth 2.0 client ID used by the app for authentication.
   /// [clientSecret] The OAuth 2.0 client secret used by the app for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
-  GetWindowsWebAppAuthSettingActiveDirectory({
+  const GetWindowsWebAppAuthSettingActiveDirectory({
     required this.allowedAudiences,
     required this.clientId,
     required this.clientSecret,

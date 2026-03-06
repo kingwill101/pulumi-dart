@@ -21,7 +21,7 @@ class FCVolumeSourcePatch {
   /// [readOnly] readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   /// [targetWWNs] targetWWNs is Optional: FC target worldwide names (WWNs)
   /// [wwids] wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
-  FCVolumeSourcePatch({
+  const FCVolumeSourcePatch({
     this.fsType,
     this.lun,
     this.readOnly,

@@ -43,7 +43,7 @@ class HealthCheckTcpHealthCheck {
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to the
   /// [request] The application data to send once the TCP connection has been
   /// [response] The bytes to match against the beginning of the response data. If left empty
-  HealthCheckTcpHealthCheck({
+  const HealthCheckTcpHealthCheck({
     this.port,
     this.portName,
     this.portSpecification,

@@ -18,7 +18,7 @@ class GetPlatformImageResult {
   /// [publisher] Required.
   /// [sku] Required.
   /// [version] Required.
-  GetPlatformImageResult({
+  const GetPlatformImageResult({
     required this.id,
     required this.location,
     required this.offer,

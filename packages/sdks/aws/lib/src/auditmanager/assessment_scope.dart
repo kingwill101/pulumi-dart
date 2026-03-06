@@ -13,7 +13,7 @@ class AssessmentScope {
   /// Creates a new [AssessmentScope].
   /// [awsAccounts] Amazon Web Services accounts that are in scope for the assessment. See `aws_accounts` below.
   /// [awsServices] Amazon Web Services services that are included in the scope of the assessment. See `aws_services` below.
-  AssessmentScope({
+  const AssessmentScope({
     this.awsAccounts,
     this.awsServices,
   });

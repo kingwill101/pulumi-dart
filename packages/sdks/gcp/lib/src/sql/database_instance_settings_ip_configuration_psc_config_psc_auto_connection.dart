@@ -20,7 +20,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
   /// [consumerServiceProjectId] The project ID of consumer service project of this consumer endpoint.
   /// [ipAddress] (Output) The IP address of the consumer endpoint.
   /// [status] (Output) The connection status of the consumer endpoint.
-  DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection({
+  const DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection({
     required this.consumerNetwork,
     this.consumerNetworkStatus,
     this.consumerServiceProjectId,

@@ -32,7 +32,7 @@ class ConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceResourceId] Defines the ID of the connector's source resource.
   /// [tags] Resource tags.
-  ConnectorArgs({
+  const ConnectorArgs({
     this.connectorName,
     this.identity,
     this.location,

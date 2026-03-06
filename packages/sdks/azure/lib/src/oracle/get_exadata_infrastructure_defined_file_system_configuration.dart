@@ -17,7 +17,7 @@ class GetExadataInfrastructureDefinedFileSystemConfiguration {
   /// [minimumSizeInGb] The minimum size of the file system in GB.
   /// [mountPoint] Mount path for the file system.
   /// [resizableEnabled] Whether the resizable is enabled.
-  GetExadataInfrastructureDefinedFileSystemConfiguration({
+  const GetExadataInfrastructureDefinedFileSystemConfiguration({
     required this.backupPartitionEnabled,
     required this.minimumSizeInGb,
     required this.mountPoint,

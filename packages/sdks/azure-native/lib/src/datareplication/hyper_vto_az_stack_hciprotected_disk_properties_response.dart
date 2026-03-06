@@ -40,7 +40,7 @@ class HyperVToAzStackHCIProtectedDiskPropertiesResponse {
   /// [storageContainerId] Gets or sets the ARM Id of the storage container.
   /// [storageContainerLocalPath] Gets or sets the local path of the storage container.
   /// [testMigrateDiskName] Gets or sets the test failover clone disk.
-  HyperVToAzStackHCIProtectedDiskPropertiesResponse({
+  const HyperVToAzStackHCIProtectedDiskPropertiesResponse({
     required this.capacityInBytes,
     required this.diskType,
     required this.isDynamic,

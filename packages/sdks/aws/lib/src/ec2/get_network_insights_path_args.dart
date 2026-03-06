@@ -26,7 +26,7 @@ class GetNetworkInsightsPathArgs {
   /// [networkInsightsPathId] ID of the Network Insights Path to select.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource.
-  GetNetworkInsightsPathArgs({
+  const GetNetworkInsightsPathArgs({
     this.filters,
     this.networkInsightsPathId,
     this.region,

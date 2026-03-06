@@ -11,7 +11,7 @@ class BuildxBuilderKubernetesQemu {
   /// Creates a new [BuildxBuilderKubernetesQemu].
   /// [image] Sets the QEMU emulation image.
   /// [install] Install QEMU emulation for multi-platform support.
-  BuildxBuilderKubernetesQemu({
+  const BuildxBuilderKubernetesQemu({
     this.image,
     this.install,
   });

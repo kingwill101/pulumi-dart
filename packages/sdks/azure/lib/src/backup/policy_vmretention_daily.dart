@@ -10,7 +10,7 @@ class PolicyVMRetentionDaily {
 
   /// Creates a new [PolicyVMRetentionDaily].
   /// [count] The number of daily backups to keep. Must be between `7` and `9999`.
-  PolicyVMRetentionDaily({
+  const PolicyVMRetentionDaily({
     required this.count,
   });
 

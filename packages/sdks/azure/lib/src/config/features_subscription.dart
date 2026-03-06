@@ -7,7 +7,7 @@ class FeaturesSubscription {
 
   /// Creates a new [FeaturesSubscription].
   /// [preventCancellationOnDestroy] Optional.
-  FeaturesSubscription({
+  const FeaturesSubscription({
     this.preventCancellationOnDestroy,
   });
 

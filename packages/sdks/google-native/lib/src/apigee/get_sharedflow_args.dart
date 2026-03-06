@@ -13,7 +13,7 @@ class GetSharedflowArgs {
   /// Creates a new [GetSharedflowArgs].
   /// [organizationId] Required.
   /// [sharedflowId] Required.
-  GetSharedflowArgs({
+  const GetSharedflowArgs({
     required this.organizationId,
     required this.sharedflowId,
   });

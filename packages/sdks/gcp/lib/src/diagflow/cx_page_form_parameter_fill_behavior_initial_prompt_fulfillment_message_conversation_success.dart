@@ -8,7 +8,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversation
 
   /// Creates a new [CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess({
+  const CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess({
     this.metadata,
   });
 

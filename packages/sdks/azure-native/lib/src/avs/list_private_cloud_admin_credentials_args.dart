@@ -15,7 +15,7 @@ class ListPrivateCloudAdminCredentialsArgs {
   /// Creates a new [ListPrivateCloudAdminCredentialsArgs].
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListPrivateCloudAdminCredentialsArgs({
+  const ListPrivateCloudAdminCredentialsArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
   });

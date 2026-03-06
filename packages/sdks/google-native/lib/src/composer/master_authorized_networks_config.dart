@@ -13,7 +13,7 @@ class MasterAuthorizedNetworksConfig {
   /// Creates a new [MasterAuthorizedNetworksConfig].
   /// [cidrBlocks] Up to 50 external networks that could access Kubernetes master through HTTPS.
   /// [enabled] Whether or not master authorized networks feature is enabled.
-  MasterAuthorizedNetworksConfig({
+  const MasterAuthorizedNetworksConfig({
     this.cidrBlocks,
     this.enabled,
   });

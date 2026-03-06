@@ -9,7 +9,7 @@ class BareMetalClusterOsEnvironmentConfig {
 
   /// Creates a new [BareMetalClusterOsEnvironmentConfig].
   /// [packageRepoExcluded] Whether the package repo should not be included when initializing
-  BareMetalClusterOsEnvironmentConfig({
+  const BareMetalClusterOsEnvironmentConfig({
     required this.packageRepoExcluded,
   });
 

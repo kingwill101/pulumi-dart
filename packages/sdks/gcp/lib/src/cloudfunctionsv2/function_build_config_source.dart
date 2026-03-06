@@ -15,7 +15,7 @@ class FunctionBuildConfigSource {
   /// Creates a new [FunctionBuildConfigSource].
   /// [repoSource] If provided, get the source from this location in a Cloud Source Repository.
   /// [storageSource] If provided, get the source from this location in Google Cloud Storage.
-  FunctionBuildConfigSource({
+  const FunctionBuildConfigSource({
     this.repoSource,
     this.storageSource,
   });

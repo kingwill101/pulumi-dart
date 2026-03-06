@@ -92,7 +92,7 @@ class PodSecurityPolicySpecPatch {
   /// [seLinux] seLinux is the strategy that will dictate the allowable labels that may be set.
   /// [supplementalGroups] supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
   /// [volumes] volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
-  PodSecurityPolicySpecPatch({
+  const PodSecurityPolicySpecPatch({
     this.allowPrivilegeEscalation,
     this.allowedCSIDrivers,
     this.allowedCapabilities,

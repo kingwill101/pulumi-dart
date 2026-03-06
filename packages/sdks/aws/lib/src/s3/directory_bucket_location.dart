@@ -11,7 +11,7 @@ class DirectoryBucketLocation {
   /// Creates a new [DirectoryBucketLocation].
   /// [name] [Availability Zone ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#az-ids) or Local Zone ID.
   /// [type] Location type. Valid values: `AvailabilityZone`, `LocalZone`.
-  DirectoryBucketLocation({
+  const DirectoryBucketLocation({
     required this.name,
     this.type,
   });

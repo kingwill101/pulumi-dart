@@ -19,7 +19,7 @@ class GetGroupTransitiveMembershipsMembership {
   /// [preferredMemberKeys] EntityKey of the member.  Structure is documented below.
   /// [relationType] The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
   /// [roles] The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
-  GetGroupTransitiveMembershipsMembership({
+  const GetGroupTransitiveMembershipsMembership({
     required this.member,
     required this.preferredMemberKeys,
     required this.relationType,

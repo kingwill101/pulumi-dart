@@ -29,7 +29,7 @@ class UserGroupState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userGroupId] The ID of the user group.
   /// [userIds] The list of user IDs that belong to the user group.
-  UserGroupState({
+  const UserGroupState({
     this.arn,
     this.engine,
     this.region,

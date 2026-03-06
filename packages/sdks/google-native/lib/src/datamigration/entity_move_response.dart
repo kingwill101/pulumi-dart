@@ -9,7 +9,7 @@ class EntityMoveResponse {
 
   /// Creates a new [EntityMoveResponse].
   /// [newSchema] The new schema
-  EntityMoveResponse({
+  const EntityMoveResponse({
     required this.newSchema,
   });
 

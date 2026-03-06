@@ -21,7 +21,7 @@ class GetLabArgs {
   /// [billingProfileName] The ID that uniquely identifies a billing profile.
   /// [includeBudget] May be used to include budget information.
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
-  GetLabArgs({
+  const GetLabArgs({
     required this.billingAccountName,
     required this.billingProfileName,
     this.includeBudget,

@@ -36,7 +36,7 @@ class EnvironmentApiRevisionDeploymentState {
   /// [sequencedRollout] If true, enables sequenced rollout for safe traffic switching.
   /// [serviceAccount] Optional service account the deployed proxy runs as.
   /// [state] Deployment state reported by Apigee.
-  EnvironmentApiRevisionDeploymentState({
+  const EnvironmentApiRevisionDeploymentState({
     this.api,
     this.basepaths,
     this.deployStartTime,

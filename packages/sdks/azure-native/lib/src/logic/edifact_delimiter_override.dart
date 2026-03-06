@@ -44,7 +44,7 @@ class EdifactDelimiterOverride {
   /// [segmentTerminator] The segment terminator.
   /// [segmentTerminatorSuffix] The segment terminator suffix.
   /// [targetNamespace] The target namespace on which this delimiter settings has to be applied.
-  EdifactDelimiterOverride({
+  const EdifactDelimiterOverride({
     required this.componentSeparator,
     required this.dataElementSeparator,
     required this.decimalPointIndicator,

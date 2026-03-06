@@ -11,7 +11,7 @@ class DomainMatchingJobSchedule {
   /// Creates a new [DomainMatchingJobSchedule].
   /// [dayOfTheWeek] The day when the Identity Resolution Job should run every week.
   /// [time] The time when the Identity Resolution Job should run every week.
-  DomainMatchingJobSchedule({
+  const DomainMatchingJobSchedule({
     required this.dayOfTheWeek,
     required this.time,
   });

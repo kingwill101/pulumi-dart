@@ -10,7 +10,7 @@ class NodeDaemonEndpoints {
 
   /// Creates a new [NodeDaemonEndpoints].
   /// [kubeletEndpoint] Endpoint on which Kubelet is listening.
-  NodeDaemonEndpoints({
+  const NodeDaemonEndpoints({
     this.kubeletEndpoint,
   });
 

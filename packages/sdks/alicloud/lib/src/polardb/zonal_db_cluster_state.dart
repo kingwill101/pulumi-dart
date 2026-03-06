@@ -80,7 +80,7 @@ class ZonalDbClusterState {
   /// [usedTime] The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
   /// [vpcId] The id of the ENS VPC.
   /// [vswitchId] The ENS virtual switch ID to launch DB instances in one VPC.
-  ZonalDbClusterState({
+  const ZonalDbClusterState({
     this.autoRenewPeriod,
     this.clusterLatestVersion,
     this.clusterVersion,

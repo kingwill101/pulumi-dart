@@ -27,7 +27,7 @@ class LoadBalancerArgs {
   /// [loadBalancerName] The name of the LoadBalancer
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceSelector] A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     required this.addresses,
     required this.advertiseMode,
     this.bgpPeers,

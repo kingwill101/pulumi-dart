@@ -11,7 +11,7 @@ class FunctionJavaScriptUDFInput {
   /// Creates a new [FunctionJavaScriptUDFInput].
   /// [configurationParameter] Is this input parameter a configuration parameter? Defaults to `false`.
   /// [type] The Data Type for the Input Argument of this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-  FunctionJavaScriptUDFInput({
+  const FunctionJavaScriptUDFInput({
     this.configurationParameter,
     required this.type,
   });

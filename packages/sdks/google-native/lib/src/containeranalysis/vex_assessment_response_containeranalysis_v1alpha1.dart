@@ -33,7 +33,7 @@ class VexAssessmentResponseContaineranalysisV1alpha1 {
   /// [remediations] Specifies details on how to handle (and presumably, fix) a vulnerability.
   /// [state] Provides the state of this Vulnerability assessment.
   /// [vulnerabilityId] The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
-  VexAssessmentResponseContaineranalysisV1alpha1({
+  const VexAssessmentResponseContaineranalysisV1alpha1({
     required this.cve,
     required this.impacts,
     required this.justification,

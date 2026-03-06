@@ -19,7 +19,7 @@ class EnvGroupArgs {
   /// [hostnames] Hostnames of the environment group.
   /// [name] The resource ID of the environment group.
   /// [orgId] The Apigee Organization associated with the Apigee environment group,
-  EnvGroupArgs({
+  const EnvGroupArgs({
     this.hostnames,
     this.name,
     required this.orgId,

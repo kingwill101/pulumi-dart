@@ -31,7 +31,7 @@ class DatasourceSetResponse {
   /// [resourceProperties] Properties specific to data source set
   /// [resourceType] Resource Type of Datasource.
   /// [resourceUri] Uri of the resource.
-  DatasourceSetResponse({
+  const DatasourceSetResponse({
     this.datasourceType,
     this.objectType,
     required this.resourceID,

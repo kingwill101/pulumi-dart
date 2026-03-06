@@ -11,7 +11,7 @@ class VaultNotification {
   /// Creates a new [VaultNotification].
   /// [events] You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
   /// [snsTopic] The SNS Topic ARN.
-  VaultNotification({
+  const VaultNotification({
     required this.events,
     required this.snsTopic,
   });

@@ -11,7 +11,7 @@ class CollectorProperties {
   /// Creates a new [CollectorProperties].
   /// [agentProperties] Optional.
   /// [discoverySiteId] The ARM id of the discovery service site.
-  CollectorProperties({
+  const CollectorProperties({
     this.agentProperties,
     this.discoverySiteId,
   });

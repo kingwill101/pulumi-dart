@@ -42,7 +42,7 @@ class TableExternalDataConfigurationCsvOptions {
   /// [quote] The value that is used to quote data sections in a
   /// [skipLeadingRows] The number of rows at the top of a CSV
   /// [sourceColumnMatch] Specifies how source columns are matched
-  TableExternalDataConfigurationCsvOptions({
+  const TableExternalDataConfigurationCsvOptions({
     this.allowJaggedRows,
     this.allowQuotedNewlines,
     this.encoding,

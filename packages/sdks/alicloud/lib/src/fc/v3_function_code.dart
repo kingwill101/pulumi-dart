@@ -17,7 +17,7 @@ class V3FunctionCode {
   /// [ossBucketName] The name of the OSS Bucket that stores the function code ZIP package.
   /// [ossObjectName] The name of the OSS Object that stores the function code ZIP package.
   /// [zipFile] The Base 64 encoding of the function code ZIP package.
-  V3FunctionCode({
+  const V3FunctionCode({
     this.checksum,
     this.ossBucketName,
     this.ossObjectName,

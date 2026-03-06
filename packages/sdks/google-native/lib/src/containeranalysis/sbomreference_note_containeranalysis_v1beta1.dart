@@ -12,7 +12,7 @@ class SBOMReferenceNoteContaineranalysisV1beta1 {
   /// Creates a new [SBOMReferenceNoteContaineranalysisV1beta1].
   /// [format] The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
   /// [version] The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
-  SBOMReferenceNoteContaineranalysisV1beta1({
+  const SBOMReferenceNoteContaineranalysisV1beta1({
     this.format,
     this.version,
   });

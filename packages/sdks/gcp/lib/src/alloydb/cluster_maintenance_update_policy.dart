@@ -10,7 +10,7 @@ class ClusterMaintenanceUpdatePolicy {
 
   /// Creates a new [ClusterMaintenanceUpdatePolicy].
   /// [maintenanceWindows] Preferred windows to perform maintenance. Currently limited to 1.
-  ClusterMaintenanceUpdatePolicy({
+  const ClusterMaintenanceUpdatePolicy({
     this.maintenanceWindows,
   });
 

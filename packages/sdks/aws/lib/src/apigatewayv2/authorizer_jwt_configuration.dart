@@ -11,7 +11,7 @@ class AuthorizerJwtConfiguration {
   /// Creates a new [AuthorizerJwtConfiguration].
   /// [audiences] List of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
   /// [issuer] Base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `aws.cognito.UserPool` resource.
-  AuthorizerJwtConfiguration({
+  const AuthorizerJwtConfiguration({
     this.audiences,
     this.issuer,
   });

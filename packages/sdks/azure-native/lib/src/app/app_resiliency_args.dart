@@ -42,7 +42,7 @@ class AppResiliencyArgs {
   /// [tcpConnectionPool] Defines parameters for tcp connection pooling
   /// [tcpRetryPolicy] Policy that defines tcp request retry conditions
   /// [timeoutPolicy] Policy to set request timeouts
-  AppResiliencyArgs({
+  const AppResiliencyArgs({
     required this.appName,
     this.circuitBreakerPolicy,
     this.httpConnectionPool,

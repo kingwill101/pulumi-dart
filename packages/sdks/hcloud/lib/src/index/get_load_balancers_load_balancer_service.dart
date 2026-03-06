@@ -19,7 +19,7 @@ class GetLoadBalancersLoadBalancerService {
   /// [listenPort] Required.
   /// [protocol] Required.
   /// [proxyprotocol] Required.
-  GetLoadBalancersLoadBalancerService({
+  const GetLoadBalancersLoadBalancerService({
     required this.destinationPort,
     required this.healthChecks,
     required this.https,

@@ -16,7 +16,7 @@ class ImagePipelineExecutionState {
   /// [createTime] The time when the image build task was created.
   /// [imagePipelineId] The ID of the image template.
   /// [status] The status of the image build task. Valid values:
-  ImagePipelineExecutionState({
+  const ImagePipelineExecutionState({
     this.createTime,
     this.imagePipelineId,
     this.status,

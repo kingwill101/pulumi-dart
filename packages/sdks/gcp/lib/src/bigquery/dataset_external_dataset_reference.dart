@@ -12,7 +12,7 @@ class DatasetExternalDatasetReference {
   /// Creates a new [DatasetExternalDatasetReference].
   /// [connection] The connection id that is used to access the externalSource.
   /// [externalSource] External source that backs this dataset.
-  DatasetExternalDatasetReference({
+  const DatasetExternalDatasetReference({
     required this.connection,
     required this.externalSource,
   });

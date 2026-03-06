@@ -34,7 +34,7 @@ class AzureKeyVaultLinkedService {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureKeyVaultLinkedService({
+  const AzureKeyVaultLinkedService({
     this.annotations,
     required this.baseUrl,
     this.connectVia,

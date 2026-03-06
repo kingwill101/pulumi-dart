@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse].
   /// [jobConfig] The job config for the risk job.
-  GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse({
+  const GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse({
     required this.jobConfig,
   });
 

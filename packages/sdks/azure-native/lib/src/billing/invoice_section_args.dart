@@ -25,7 +25,7 @@ class InvoiceSectionArgs {
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
   /// [properties] An invoice section.
   /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  InvoiceSectionArgs({
+  const InvoiceSectionArgs({
     required this.billingAccountName,
     required this.billingProfileName,
     this.invoiceSectionName,

@@ -11,7 +11,7 @@ class ProviderExternalCredentials {
   /// [audience] Required.
   /// [identityToken] Required.
   /// [serviceAccountEmail] Required.
-  ProviderExternalCredentials({
+  const ProviderExternalCredentials({
     required this.audience,
     required this.identityToken,
     required this.serviceAccountEmail,

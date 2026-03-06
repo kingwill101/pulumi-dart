@@ -23,7 +23,7 @@ class DeploymentArtifactPythonArtifact {
   /// [entryModule] Entry module for Python
   /// [mainArgs] Startup arguments
   /// [pythonArtifactUri] Full URL path of the Python job
-  DeploymentArtifactPythonArtifact({
+  const DeploymentArtifactPythonArtifact({
     this.additionalDependencies,
     this.additionalPythonArchives,
     this.additionalPythonLibraries,

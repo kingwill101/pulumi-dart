@@ -38,7 +38,7 @@ class GetInstancesResult {
   /// [resolution] Optional.
   /// [status] Optional.
   /// [zoneId] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

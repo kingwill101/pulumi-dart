@@ -21,7 +21,7 @@ class BucketOverwriteConfigRule {
   /// [prefix] The prefix of the Object name, which is used to filter objects to be processed.
   /// [principals] A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
   /// [suffix] The suffix of the Object name, which is used to filter objects to be processed.
-  BucketOverwriteConfigRule({
+  const BucketOverwriteConfigRule({
     this.action,
     this.id,
     this.prefix,

@@ -19,7 +19,7 @@ class GetSshKeysResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sorts] Optional.
   /// [sshKeys] A list of SSH Keys. Each SSH Key has the following attributes:
-  GetSshKeysResult({
+  const GetSshKeysResult({
     this.filters,
     required this.id,
     this.sorts,

@@ -25,7 +25,7 @@ class GetTlsInspectCaCertificatesResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetTlsInspectCaCertificatesResult({
+  const GetTlsInspectCaCertificatesResult({
     this.caCertId,
     required this.certificates,
     required this.id,

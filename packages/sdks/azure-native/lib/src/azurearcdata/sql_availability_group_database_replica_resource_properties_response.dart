@@ -36,7 +36,7 @@ class SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
   /// [suspendReasonDescription] Description of the database suspended state reason.
   /// [synchronizationHealthDescription] Description of the health of database.
   /// [synchronizationStateDescription] Description of the data-movement state.
-  SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse({
+  const SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse({
     this.databaseName,
     required this.databaseStateDescription,
     required this.isCommitParticipant,

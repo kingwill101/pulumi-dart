@@ -15,7 +15,7 @@ class GetDeviceSecurityGroupArgs {
   /// Creates a new [GetDeviceSecurityGroupArgs].
   /// [deviceSecurityGroupName] The name of the device security group. Note that the name of the device security group is case insensitive.
   /// [resourceId] The identifier of the resource.
-  GetDeviceSecurityGroupArgs({
+  const GetDeviceSecurityGroupArgs({
     required this.deviceSecurityGroupName,
     required this.resourceId,
   });

@@ -41,7 +41,7 @@ class GetTableResult {
   /// [retentionProperties] Object containing the following attributes to describe the retention duration for the memory and magnetic stores.
   /// [schemas] Object containing the following attributes to describe the schema of the table.
   /// [tableStatus] Current state of table.
-  GetTableResult({
+  const GetTableResult({
     required this.arn,
     required this.creationTime,
     required this.databaseName,

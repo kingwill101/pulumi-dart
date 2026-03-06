@@ -25,7 +25,7 @@ class FleetArgs {
   /// [properties] The fleet properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  FleetArgs({
+  const FleetArgs({
     this.fleetName,
     this.location,
     this.properties,

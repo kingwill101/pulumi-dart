@@ -32,7 +32,7 @@ class ResourceSkuResponse {
   /// [name] The name of the SKU. Required.
   /// [size] Not used. Retained for future use.
   /// [tier] Optional tier of this particular SKU. 'Standard' or 'Free'.
-  ResourceSkuResponse({
+  const ResourceSkuResponse({
     this.capacity,
     required this.family,
     required this.name,

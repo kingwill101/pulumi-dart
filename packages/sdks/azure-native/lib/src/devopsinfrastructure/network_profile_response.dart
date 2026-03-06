@@ -9,7 +9,7 @@ class NetworkProfileResponse {
 
   /// Creates a new [NetworkProfileResponse].
   /// [subnetId] The subnet id on which to put all machines created in the pool.
-  NetworkProfileResponse({
+  const NetworkProfileResponse({
     required this.subnetId,
   });
 

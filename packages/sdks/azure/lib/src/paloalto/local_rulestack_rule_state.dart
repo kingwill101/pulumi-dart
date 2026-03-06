@@ -70,7 +70,7 @@ class LocalRulestackRuleState {
   /// [rulestackId] The ID of the Local Rulestack in which to create this Rule. Changing this forces a new Palo Alto Local Rulestack Rule to be created.
   /// [source] One or more `source` blocks as defined below.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Local Rulestack Rule.
-  LocalRulestackRuleState({
+  const LocalRulestackRuleState({
     this.action,
     this.applications,
     this.auditComment,

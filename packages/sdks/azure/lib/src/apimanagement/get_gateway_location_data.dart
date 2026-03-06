@@ -16,7 +16,7 @@ class GetGatewayLocationData {
   /// [district] The district, state, or province where the resource is located.
   /// [name] The name of the API Management Gateway.
   /// [region] Required.
-  GetGatewayLocationData({
+  const GetGatewayLocationData({
     required this.city,
     required this.district,
     required this.name,

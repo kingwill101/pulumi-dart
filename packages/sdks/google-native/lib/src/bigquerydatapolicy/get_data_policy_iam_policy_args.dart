@@ -15,7 +15,7 @@ class GetDataPolicyIamPolicyArgs {
   /// [dataPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataPolicyIamPolicyArgs({
+  const GetDataPolicyIamPolicyArgs({
     required this.dataPolicyId,
     required this.location,
     this.project,

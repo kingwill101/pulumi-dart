@@ -18,7 +18,7 @@ class GetBrokerArgs {
   /// [brokerName] Name of MQ broker resource
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBrokerArgs({
+  const GetBrokerArgs({
     required this.brokerName,
     required this.mqName,
     required this.resourceGroupName,

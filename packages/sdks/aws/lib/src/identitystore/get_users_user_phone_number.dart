@@ -14,7 +14,7 @@ class GetUsersUserPhoneNumber {
   /// [primary] When `true`, this is the primary phone number associated with the user.
   /// [type] Type of phone number.
   /// [value] User's phone number.
-  GetUsersUserPhoneNumber({
+  const GetUsersUserPhoneNumber({
     required this.primary,
     required this.type,
     required this.value,

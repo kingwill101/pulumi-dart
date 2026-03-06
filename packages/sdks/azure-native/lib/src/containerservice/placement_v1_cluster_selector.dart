@@ -10,7 +10,7 @@ class PlacementV1ClusterSelector {
 
   /// Creates a new [PlacementV1ClusterSelector].
   /// [clusterSelectorTerms] ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`.
-  PlacementV1ClusterSelector({
+  const PlacementV1ClusterSelector({
     required this.clusterSelectorTerms,
   });
 

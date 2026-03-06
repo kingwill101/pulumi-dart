@@ -15,7 +15,7 @@ class EnvironmentVariableResponse {
   /// [name] The name of the environment variable.
   /// [secureValue] The value of the secure environment variable.
   /// [value] The value of the environment variable.
-  EnvironmentVariableResponse({
+  const EnvironmentVariableResponse({
     required this.name,
     this.secureValue,
     this.value,

@@ -21,7 +21,7 @@ class GetKustoPoolPrincipalAssignmentArgs {
   /// [principalAssignmentName] The name of the Kusto principalAssignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetKustoPoolPrincipalAssignmentArgs({
+  const GetKustoPoolPrincipalAssignmentArgs({
     required this.kustoPoolName,
     required this.principalAssignmentName,
     required this.resourceGroupName,

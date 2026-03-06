@@ -19,7 +19,7 @@ class LinuxWebAppSlotLogs {
   /// [detailedErrorMessages] Should detailed error messages be enabled?
   /// [failedRequestTracing] Should the failed request tracing be enabled?
   /// [httpLogs] An `http_logs` block as defined above.
-  LinuxWebAppSlotLogs({
+  const LinuxWebAppSlotLogs({
     this.applicationLogs,
     this.detailedErrorMessages,
     this.failedRequestTracing,

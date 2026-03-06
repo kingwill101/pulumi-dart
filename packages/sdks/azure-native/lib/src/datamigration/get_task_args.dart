@@ -24,7 +24,7 @@ class GetTaskArgs {
   /// [projectName] Name of the project
   /// [serviceName] Name of the service
   /// [taskName] Name of the Task
-  GetTaskArgs({
+  const GetTaskArgs({
     this.expand,
     required this.groupName,
     required this.projectName,

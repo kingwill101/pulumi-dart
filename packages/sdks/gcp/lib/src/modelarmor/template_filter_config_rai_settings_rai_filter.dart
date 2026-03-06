@@ -18,7 +18,7 @@ class TemplateFilterConfigRaiSettingsRaiFilter {
   /// Creates a new [TemplateFilterConfigRaiSettingsRaiFilter].
   /// [confidenceLevel] Possible values:
   /// [filterType] Possible values:
-  TemplateFilterConfigRaiSettingsRaiFilter({
+  const TemplateFilterConfigRaiSettingsRaiFilter({
     this.confidenceLevel,
     required this.filterType,
   });

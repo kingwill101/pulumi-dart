@@ -14,7 +14,7 @@ class GetRecordsResourceRecordSetAliasTarget {
   /// [dnsName] Target DNS name.
   /// [evaluateTargetHealth] Whether an alias resource record set inherits the health of the referenced AWS resource.
   /// [hostedZoneId] Target hosted zone ID.
-  GetRecordsResourceRecordSetAliasTarget({
+  const GetRecordsResourceRecordSetAliasTarget({
     required this.dnsName,
     required this.evaluateTargetHealth,
     required this.hostedZoneId,

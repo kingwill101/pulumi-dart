@@ -27,7 +27,7 @@ class KvState {
   /// [namespace] The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
   /// [url] The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
   /// [value] The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
-  KvState({
+  const KvState({
     this.expiration,
     this.expirationTtl,
     this.isbase,

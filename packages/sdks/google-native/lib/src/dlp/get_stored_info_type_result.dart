@@ -16,7 +16,7 @@ class GetStoredInfoTypeResult {
   /// [currentVersion] Current version of the stored info type.
   /// [name] Resource name.
   /// [pendingVersions] Pending versions of the stored info type. Empty if no versions are pending.
-  GetStoredInfoTypeResult({
+  const GetStoredInfoTypeResult({
     required this.currentVersion,
     required this.name,
     required this.pendingVersions,

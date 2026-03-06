@@ -13,7 +13,7 @@ class PropagationPolicyResponse {
   /// Creates a new [PropagationPolicyResponse].
   /// [placementProfile] The profile to be used for propagation via placement.
   /// [type] The type of the policy to be used. Default is Placement.
-  PropagationPolicyResponse({
+  const PropagationPolicyResponse({
     this.placementProfile,
     required this.type,
   });

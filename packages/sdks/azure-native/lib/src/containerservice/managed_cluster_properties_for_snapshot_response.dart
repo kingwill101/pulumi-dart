@@ -20,7 +20,7 @@ class ManagedClusterPropertiesForSnapshotResponse {
   /// [kubernetesVersion] The current kubernetes version.
   /// [networkProfile] The current network profile.
   /// [sku] The current managed cluster sku.
-  ManagedClusterPropertiesForSnapshotResponse({
+  const ManagedClusterPropertiesForSnapshotResponse({
     this.enableRbac,
     this.kubernetesVersion,
     required this.networkProfile,

@@ -35,7 +35,7 @@ class GetDedicatedCloudServiceResult {
   /// [serviceURL] link to a service management web portal
   /// [tags] The list of tags
   /// [type] {resourceProviderNamespace}/{resourceType}
-  GetDedicatedCloudServiceResult({
+  const GetDedicatedCloudServiceResult({
     required this.azureApiVersion,
     required this.gatewaySubnet,
     required this.id,

@@ -16,7 +16,7 @@ class GetUserTablesSqlTaskInputResponse {
   /// [connectionInfo] Connection information for SQL Server
   /// [encryptedKeyForSecureFields] encrypted key for secure fields
   /// [selectedDatabases] List of database names to collect tables for
-  GetUserTablesSqlTaskInputResponse({
+  const GetUserTablesSqlTaskInputResponse({
     required this.connectionInfo,
     this.encryptedKeyForSecureFields,
     required this.selectedDatabases,

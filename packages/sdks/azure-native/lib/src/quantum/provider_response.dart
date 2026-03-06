@@ -24,7 +24,7 @@ class ProviderResponse {
   /// [providerSku] The sku associated with pricing information for this provider.
   /// [provisioningState] Provisioning status field
   /// [resourceUsageId] Id to track resource usage for the provider.
-  ProviderResponse({
+  const ProviderResponse({
     this.applicationName,
     this.instanceUri,
     this.providerId,

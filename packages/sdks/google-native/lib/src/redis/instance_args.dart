@@ -90,7 +90,7 @@ class InstanceArgs {
   /// [suspensionReasons] Optional. reasons that causes instance in "SUSPENDED" state.
   /// [tier] The service tier of the instance.
   /// [transitEncryptionMode] Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.alternativeLocationId,
     this.authEnabled,
     this.authorizedNetwork,

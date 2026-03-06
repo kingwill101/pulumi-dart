@@ -15,7 +15,7 @@ class HPAScalingPolicyAutoscalingV2beta2 {
   /// [periodSeconds] PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).
   /// [type] Type is used to specify the scaling policy.
   /// [value] Value contains the amount of change which is permitted by the policy. It must be greater than zero
-  HPAScalingPolicyAutoscalingV2beta2({
+  const HPAScalingPolicyAutoscalingV2beta2({
     required this.periodSeconds,
     required this.type,
     required this.value,

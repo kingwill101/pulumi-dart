@@ -39,7 +39,7 @@ class GetSecretParametersResult {
   /// [sortOrder] Optional.
   /// [tags] The tags of the parameter.
   /// [withDecryption] Optional.
-  GetSecretParametersResult({
+  const GetSecretParametersResult({
     this.enableDetails,
     required this.id,
     required this.ids,

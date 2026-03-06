@@ -18,7 +18,7 @@ class GetDomainAutoTuneOption {
   /// [maintenanceSchedules] A list of the nested configurations for the Auto-Tune maintenance windows of the domain.
   /// [rollbackOnDisable] Whether the domain is set to roll back to default Auto-Tune settings when disabling Auto-Tune.
   /// [useOffPeakWindow] Whether to schedule Auto-Tune optimizations that require blue/green deployments during the domain's configured daily off-peak window.
-  GetDomainAutoTuneOption({
+  const GetDomainAutoTuneOption({
     required this.desiredState,
     required this.maintenanceSchedules,
     required this.rollbackOnDisable,

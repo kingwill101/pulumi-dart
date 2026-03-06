@@ -15,7 +15,7 @@ class GetCapacityCommitmentArgs {
   /// [capacityCommitmentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCapacityCommitmentArgs({
+  const GetCapacityCommitmentArgs({
     required this.capacityCommitmentId,
     required this.location,
     this.project,

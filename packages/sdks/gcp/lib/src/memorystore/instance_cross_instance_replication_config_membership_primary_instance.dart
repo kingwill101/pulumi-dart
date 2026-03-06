@@ -12,7 +12,7 @@ class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
   /// Creates a new [InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance].
   /// [instance] The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
   /// [uid] (Output)
-  InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance({
+  const InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance({
     this.instance,
     this.uid,
   });

@@ -35,7 +35,7 @@ class GetDropletAutoscaleDropletTemplate {
   /// [userData] Droplet user data
   /// [vpcUuid] Droplet VPC UUID
   /// [withDropletAgent] Enable droplet agent
-  GetDropletAutoscaleDropletTemplate({
+  const GetDropletAutoscaleDropletTemplate({
     required this.image,
     required this.ipv6,
     required this.projectId,

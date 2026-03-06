@@ -22,7 +22,7 @@ class GetClientConfigResult {
   /// [project] The ID of the project to apply any resources to.
   /// [region] The region to operate under.
   /// [zone] The zone to operate under.
-  GetClientConfigResult({
+  const GetClientConfigResult({
     required this.accessToken,
     required this.defaultLabels,
     required this.id,

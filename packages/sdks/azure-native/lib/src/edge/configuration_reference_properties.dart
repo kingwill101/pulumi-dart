@@ -9,7 +9,7 @@ class ConfigurationReferenceProperties {
 
   /// Creates a new [ConfigurationReferenceProperties].
   /// [configurationResourceId] ArmId of Configuration resource
-  ConfigurationReferenceProperties({
+  const ConfigurationReferenceProperties({
     this.configurationResourceId,
   });
 

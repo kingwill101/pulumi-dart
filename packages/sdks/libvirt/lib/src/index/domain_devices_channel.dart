@@ -32,7 +32,7 @@ class DomainDevicesChannel {
   /// [protocol] Sets the protocol type for the EGD backend.
   /// [source] Defines the source settings for the EGD backend.
   /// [target] This field defines the target configuration for the virtual channel.
-  DomainDevicesChannel({
+  const DomainDevicesChannel({
     this.acpi,
     this.address,
     this.alias,

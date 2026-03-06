@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
   /// Creates a new [GooglePrivacyDlpV2InspectDataSourceDetailsResponse].
   /// [requestedOptions] The configuration used for this job.
   /// [result] A summary of the outcome of this inspection job.
-  GooglePrivacyDlpV2InspectDataSourceDetailsResponse({
+  const GooglePrivacyDlpV2InspectDataSourceDetailsResponse({
     required this.requestedOptions,
     required this.result,
   });

@@ -16,7 +16,7 @@ class BrokerListenerProperties {
   /// [ports] Ports on which this listener accepts client connections.
   /// [serviceName] Kubernetes Service name of this listener.
   /// [serviceType] Kubernetes Service type of this listener.
-  BrokerListenerProperties({
+  const BrokerListenerProperties({
     required this.ports,
     this.serviceName,
     this.serviceType,

@@ -12,7 +12,7 @@ class Objective {
   /// Creates a new [Objective].
   /// [goal] [Required] Defines supported metric goals for hyperparameter tuning
   /// [primaryMetric] [Required] Name of the metric to optimize.
-  Objective({
+  const Objective({
     required this.goal,
     required this.primaryMetric,
   });

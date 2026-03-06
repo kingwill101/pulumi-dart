@@ -24,7 +24,7 @@ class GetDatabasesDatabase {
   /// [dbName] Database name.
   /// [dbStatus] The status of database.
   /// [engine] The engine of database.
-  GetDatabasesDatabase({
+  const GetDatabasesDatabase({
     required this.accounts,
     required this.characterSetName,
     required this.dbDescription,

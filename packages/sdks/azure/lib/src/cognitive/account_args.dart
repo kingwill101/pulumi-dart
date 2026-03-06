@@ -101,7 +101,7 @@ class AccountArgs {
   /// [skuName] Specifies the SKU Name for this Cognitive Service Account. Possible values are `C2`, `C3`, `C4`, `D3`, `DC0`, `E0`, `F0`, `F1`, `P0`, `P1`, `P2`, `S`, `S0`, `S1`, `S2`, `S3`, `S4`, `S5` and `S6`.
   /// [storages] A `storage` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountArgs({
+  const AccountArgs({
     this.customQuestionAnsweringSearchServiceId,
     this.customQuestionAnsweringSearchServiceKey,
     this.customSubdomainName,

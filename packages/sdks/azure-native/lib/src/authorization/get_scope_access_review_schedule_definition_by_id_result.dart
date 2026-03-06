@@ -94,7 +94,7 @@ class GetScopeAccessReviewScheduleDefinitionByIdResult {
   /// [status] This read-only field specifies the status of an accessReview.
   /// [type] The resource type.
   /// [userPrincipalName] The user principal name(if valid)
-  GetScopeAccessReviewScheduleDefinitionByIdResult({
+  const GetScopeAccessReviewScheduleDefinitionByIdResult({
     this.autoApplyDecisionsEnabled,
     required this.azureApiVersion,
     this.backupReviewers,

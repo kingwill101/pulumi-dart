@@ -29,7 +29,7 @@ class GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse {
   /// [scope] A space-delimited list of requested scope permissions.
   /// [tokenEndpoint] The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
   /// [tokenParams] Token parameters for the auth request.
-  GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse({
+  const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse({
     required this.accessToken,
     required this.clientId,
     required this.clientSecret,

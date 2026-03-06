@@ -23,7 +23,7 @@ class GetRouterArgs {
   /// [network] The VPC network on which this router lives.
   /// [project] The ID of the project in which the resource
   /// [region] The region this router has been created in. If
-  GetRouterArgs({
+  const GetRouterArgs({
     required this.name,
     required this.network,
     this.project,

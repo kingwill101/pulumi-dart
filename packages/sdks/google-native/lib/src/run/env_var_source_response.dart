@@ -14,7 +14,7 @@ class EnvVarSourceResponse {
   /// Creates a new [EnvVarSourceResponse].
   /// [configMapKeyRef] Not supported by Cloud Run. Not supported in Cloud Run.
   /// [secretKeyRef] Selects a key (version) of a secret in Secret Manager.
-  EnvVarSourceResponse({
+  const EnvVarSourceResponse({
     required this.configMapKeyRef,
     required this.secretKeyRef,
   });

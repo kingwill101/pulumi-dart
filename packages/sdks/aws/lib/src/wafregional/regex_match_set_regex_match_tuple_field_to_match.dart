@@ -15,7 +15,7 @@ class RegexMatchSetRegexMatchTupleFieldToMatch {
   /// Creates a new [RegexMatchSetRegexMatchTupleFieldToMatch].
   /// [data] When `type` is `HEADER`, enter the name of the header that you want to search, e.g., `User-Agent` or `Referer`.
   /// [type] The part of the web request that you want AWS WAF to search for a specified string.
-  RegexMatchSetRegexMatchTupleFieldToMatch({
+  const RegexMatchSetRegexMatchTupleFieldToMatch({
     this.data,
     required this.type,
   });

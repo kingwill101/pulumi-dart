@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2InspectionRuleSetResponse {
   /// Creates a new [GooglePrivacyDlpV2InspectionRuleSetResponse].
   /// [infoTypes] List of infoTypes this rule set is applied to.
   /// [rules] Set of rules to be applied to infoTypes. The rules are applied in order.
-  GooglePrivacyDlpV2InspectionRuleSetResponse({
+  const GooglePrivacyDlpV2InspectionRuleSetResponse({
     required this.infoTypes,
     required this.rules,
   });

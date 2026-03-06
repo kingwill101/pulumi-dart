@@ -56,7 +56,7 @@ class GetVpcResult {
   /// [region] Required.
   /// [state] State of the association.
   /// [tags] Required.
-  GetVpcResult({
+  const GetVpcResult({
     required this.arn,
     required this.cidrBlock,
     required this.cidrBlockAssociations,

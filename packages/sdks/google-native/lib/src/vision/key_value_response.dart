@@ -12,7 +12,7 @@ class KeyValueResponse {
   /// Creates a new [KeyValueResponse].
   /// [key] The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
   /// [value] The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
-  KeyValueResponse({
+  const KeyValueResponse({
     required this.key,
     required this.value,
   });

@@ -21,7 +21,7 @@ class GetAdditionalCertificatesArgs {
   /// [ids] A list of Additional Certificate IDs.
   /// [listenerId] The ID of the listener. Only HTTPS listeners support this parameter.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAdditionalCertificatesArgs({
+  const GetAdditionalCertificatesArgs({
     required this.acceleratorId,
     this.ids,
     required this.listenerId,

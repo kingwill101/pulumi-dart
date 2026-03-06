@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
   /// [pattern] Required.
   /// [requiresRestart] Required.
   /// [types] Required.
-  GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable({
+  const GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable({
     required this.description,
     required this.example,
     required this.maxLength,

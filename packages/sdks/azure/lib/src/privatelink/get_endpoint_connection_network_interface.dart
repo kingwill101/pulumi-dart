@@ -11,7 +11,7 @@ class GetEndpointConnectionNetworkInterface {
   /// Creates a new [GetEndpointConnectionNetworkInterface].
   /// [id] The ID of the network interface associated with the private endpoint.
   /// [name] Specifies the Name of the private endpoint.
-  GetEndpointConnectionNetworkInterface({
+  const GetEndpointConnectionNetworkInterface({
     required this.id,
     required this.name,
   });

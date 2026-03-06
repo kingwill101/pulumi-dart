@@ -18,7 +18,7 @@ class GetVolumeArgs {
   /// [description] Text describing a block storage volume.
   /// [name] The name of block storage volume.
   /// [region] The region the block storage volume is provisioned in.
-  GetVolumeArgs({
+  const GetVolumeArgs({
     this.description,
     required this.name,
     this.region,

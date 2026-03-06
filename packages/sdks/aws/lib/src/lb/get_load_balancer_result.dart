@@ -84,7 +84,7 @@ class GetLoadBalancerResult {
   /// [vpcId] Required.
   /// [xffHeaderProcessingMode] Required.
   /// [zoneId] Required.
-  GetLoadBalancerResult({
+  const GetLoadBalancerResult({
     required this.accessLogs,
     required this.arn,
     required this.arnSuffix,

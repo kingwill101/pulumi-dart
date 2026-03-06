@@ -33,7 +33,7 @@ class DataflowEndpointProperties {
   /// [kafkaSettings] Kafka endpoint.
   /// [localStorageSettings] Local persistent volume endpoint.
   /// [mqttSettings] Broker endpoint.
-  DataflowEndpointProperties({
+  const DataflowEndpointProperties({
     this.dataExplorerSettings,
     this.dataLakeStorageSettings,
     required this.endpointType,

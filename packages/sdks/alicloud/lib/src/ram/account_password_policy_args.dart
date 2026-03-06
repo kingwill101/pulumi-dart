@@ -36,7 +36,7 @@ class AccountPasswordPolicyArgs {
   /// [requireNumbers] Specifies if the occurrence of a number in the password is mandatory. Default to true.
   /// [requireSymbols] Specifies if the occurrence of a special character in the password is mandatory. Default to true.
   /// [requireUppercaseCharacters] Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
-  AccountPasswordPolicyArgs({
+  const AccountPasswordPolicyArgs({
     this.hardExpiry,
     this.maxLoginAttempts,
     this.maxPasswordAge,

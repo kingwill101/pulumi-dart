@@ -51,7 +51,7 @@ class GenaiIndexingJobCancelState {
   /// [totalItemsSkipped] Total number of items that were skipped during indexing.
   /// [updatedAt] When the indexing job was last updated.
   /// [uuid] The UUID of the indexing job to cancel.
-  GenaiIndexingJobCancelState({
+  const GenaiIndexingJobCancelState({
     this.completedDatasources,
     this.createdAt,
     this.dataSourceUuids,

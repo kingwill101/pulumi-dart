@@ -87,7 +87,7 @@ class GetClusterNodePoolResult {
   /// [vmSize] The size of the Virtual Machines used in the Virtual Machine Scale Set backing this Node Pool.
   /// [vnetSubnetId] The ID of the Subnet in which this Node Pool exists.
   /// [zones] A list of the Availability Zones where the Nodes in this Node Pool exist.
-  GetClusterNodePoolResult({
+  const GetClusterNodePoolResult({
     required this.autoScalingEnabled,
     required this.evictionPolicy,
     required this.gpuDriver,

@@ -24,7 +24,7 @@ class PrefixListGlobalRulestackArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] Local Rule priority
   /// [prefixList] prefix list
-  PrefixListGlobalRulestackArgs({
+  const PrefixListGlobalRulestackArgs({
     this.auditComment,
     this.description,
     required this.globalRulestackName,

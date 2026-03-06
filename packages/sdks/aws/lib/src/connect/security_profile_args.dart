@@ -28,7 +28,7 @@ class SecurityProfileArgs {
   /// [permissions] Specifies a list of permissions assigned to the security profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Security Profile. If configured with a provider
-  SecurityProfileArgs({
+  const SecurityProfileArgs({
     this.description,
     required this.instanceId,
     this.name,

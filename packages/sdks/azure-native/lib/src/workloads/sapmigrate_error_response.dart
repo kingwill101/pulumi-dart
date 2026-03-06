@@ -19,7 +19,7 @@ class SAPMigrateErrorResponse {
   /// [details] Internal error details.
   /// [message] Description of the error.
   /// [recommendation] Description of the recommendation.
-  SAPMigrateErrorResponse({
+  const SAPMigrateErrorResponse({
     required this.code,
     required this.details,
     required this.message,

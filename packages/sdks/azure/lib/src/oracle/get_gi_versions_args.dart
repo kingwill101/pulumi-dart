@@ -18,7 +18,7 @@ class GetGiVersionsArgs {
   /// [location] The Azure Region to query for the GI Versions in.
   /// [shape] The model name of the Cloud Exadata Infrastructure resource. Possible values are `ExaDbXS`, `Exadata.X9M`, and `Exadata.X11M`. This is used to filter out the available GI versions compatible with the given model.
   /// [zone] Indicates the Azure zone for the Cloud Exadata Infrastructure, used to filter the available GI versions within a given zone.
-  GetGiVersionsArgs({
+  const GetGiVersionsArgs({
     required this.location,
     this.shape,
     this.zone,

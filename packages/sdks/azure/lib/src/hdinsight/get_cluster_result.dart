@@ -54,7 +54,7 @@ class GetClusterResult {
   /// [tags] A map of tags assigned to the HDInsight Cluster.
   /// [tier] The SKU / Tier of this HDInsight Cluster.
   /// [tlsMinVersion] The minimal supported TLS version.
-  GetClusterResult({
+  const GetClusterResult({
     required this.clusterId,
     required this.clusterVersion,
     required this.componentVersions,

@@ -34,7 +34,7 @@ class FeaturesetJobResponse {
   /// [status] Specifies the job status
   /// [tags] Specifies the tags if any
   /// [type] Specifies the feature store job type
-  FeaturesetJobResponse({
+  const FeaturesetJobResponse({
     this.createdDate,
     this.displayName,
     this.duration,

@@ -28,7 +28,7 @@ class ContactArgs {
   /// [project] Optional.
   /// [validateTime] The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
   /// [validationState] The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
-  ContactArgs({
+  const ContactArgs({
     required this.email,
     required this.languageTag,
     required this.notificationCategorySubscriptions,

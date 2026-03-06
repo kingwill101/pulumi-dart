@@ -15,7 +15,7 @@ class GceShieldedInstanceConfigResponseWorkstationsV1beta {
   /// [enableIntegrityMonitoring] Optional. Whether the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Optional. Whether the instance has Secure Boot enabled.
   /// [enableVtpm] Optional. Whether the instance has the vTPM enabled.
-  GceShieldedInstanceConfigResponseWorkstationsV1beta({
+  const GceShieldedInstanceConfigResponseWorkstationsV1beta({
     required this.enableIntegrityMonitoring,
     required this.enableSecureBoot,
     required this.enableVtpm,

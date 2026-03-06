@@ -66,7 +66,7 @@ class MultitenantDistributionArgs {
   /// [timeouts] Optional.
   /// [viewerCertificate] SSL configuration for this distribution. See Viewer Certificate below.
   /// [webAclId] Unique identifier that specifies the AWS WAF v2 web ACL to associate with this distribution.
-  MultitenantDistributionArgs({
+  const MultitenantDistributionArgs({
     this.activeTrustedKeyGroups,
     this.cacheBehaviors,
     required this.comment,

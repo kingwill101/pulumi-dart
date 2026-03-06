@@ -30,7 +30,7 @@ class NasJobAiplatformV1beta1Args {
   /// [location] Optional.
   /// [nasJobSpec] The specification of a NasJob.
   /// [project] Optional.
-  NasJobAiplatformV1beta1Args({
+  const NasJobAiplatformV1beta1Args({
     required this.displayName,
     this.enableRestrictedImageTraining,
     this.encryptionSpec,

@@ -11,7 +11,7 @@ class BucketWebsiteConfigurationV2RedirectAllRequestsTo {
   /// Creates a new [BucketWebsiteConfigurationV2RedirectAllRequestsTo].
   /// [hostName] Name of the host where requests are redirected.
   /// [protocol] Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
-  BucketWebsiteConfigurationV2RedirectAllRequestsTo({
+  const BucketWebsiteConfigurationV2RedirectAllRequestsTo({
     required this.hostName,
     this.protocol,
   });

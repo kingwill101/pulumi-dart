@@ -19,7 +19,7 @@ class GetVmwareNodePoolArgs {
   /// [view] Optional.
   /// [vmwareClusterId] Required.
   /// [vmwareNodePoolId] Required.
-  GetVmwareNodePoolArgs({
+  const GetVmwareNodePoolArgs({
     required this.location,
     this.project,
     this.view,

@@ -25,7 +25,7 @@ class GetKubernetesClusterNetworkProfile {
   /// [networkPolicy] Network policy to be used with Azure CNI. e.g. `calico` or `azure`
   /// [podCidr] The CIDR used for pod IP addresses.
   /// [serviceCidr] Network range used by the Kubernetes service.
-  GetKubernetesClusterNetworkProfile({
+  const GetKubernetesClusterNetworkProfile({
     required this.dnsServiceIp,
     required this.dockerBridgeCidr,
     required this.loadBalancerSku,

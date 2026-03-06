@@ -18,7 +18,7 @@ class ShortUrlArgs {
   /// [effectiveDays] Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
   /// [shortUrlName] The name of the resource.
   /// [sourceUrl] The original link address.
-  ShortUrlArgs({
+  const ShortUrlArgs({
     required this.effectiveDays,
     required this.shortUrlName,
     required this.sourceUrl,

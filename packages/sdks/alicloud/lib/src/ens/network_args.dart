@@ -21,7 +21,7 @@ class NetworkArgs {
   /// [description] Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
   /// [ensRegionId] Ens node IDExample value: cn-beijing-telecom.
   /// [networkName] Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
-  NetworkArgs({
+  const NetworkArgs({
     required this.cidrBlock,
     this.description,
     required this.ensRegionId,

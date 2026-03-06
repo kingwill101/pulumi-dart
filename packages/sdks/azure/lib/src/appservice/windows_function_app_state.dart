@@ -173,7 +173,7 @@ class WindowsFunctionAppState {
   /// [vnetImagePullEnabled] Specifies whether traffic for the image pull should be routed over virtual network. Defaults to `false`.
   /// [webdeployPublishBasicAuthenticationEnabled] Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   /// [zipDeployFile] The local path and filename of the Zip packaged application to deploy to this Windows Function App.
-  WindowsFunctionAppState({
+  const WindowsFunctionAppState({
     this.appSettings,
     this.authSettings,
     this.authSettingsV2,

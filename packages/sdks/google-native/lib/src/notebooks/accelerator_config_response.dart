@@ -12,7 +12,7 @@ class AcceleratorConfigResponse {
   /// Creates a new [AcceleratorConfigResponse].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Type of this accelerator.
-  AcceleratorConfigResponse({
+  const AcceleratorConfigResponse({
     required this.coreCount,
     required this.type,
   });

@@ -10,7 +10,7 @@ class ClusterHealthResponse {
 
   /// Creates a new [ClusterHealthResponse].
   /// [issues] &lt;p&gt;An object representing the health issues of your local Amazon EKS cluster on an Amazon Web Services Outpost.&lt;/p&gt;
-  ClusterHealthResponse({
+  const ClusterHealthResponse({
     this.issues,
   });
 

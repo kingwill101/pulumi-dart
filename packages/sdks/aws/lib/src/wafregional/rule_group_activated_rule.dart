@@ -17,7 +17,7 @@ class RuleGroupActivatedRule {
   /// [priority] Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
   /// [ruleId] The ID of a rule
   /// [type] Optional.
-  RuleGroupActivatedRule({
+  const RuleGroupActivatedRule({
     required this.action,
     required this.priority,
     required this.ruleId,

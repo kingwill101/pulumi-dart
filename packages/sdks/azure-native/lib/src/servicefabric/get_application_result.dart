@@ -50,7 +50,7 @@ class GetApplicationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [upgradePolicy] Describes the policy for a monitored application upgrade.
   /// [version] The version of the application type as defined in the application manifest.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

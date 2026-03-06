@@ -44,7 +44,7 @@ class GetDaprSubscriptionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [topic] Topic name
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDaprSubscriptionResult({
+  const GetDaprSubscriptionResult({
     required this.azureApiVersion,
     this.bulkSubscribe,
     this.deadLetterTopic,

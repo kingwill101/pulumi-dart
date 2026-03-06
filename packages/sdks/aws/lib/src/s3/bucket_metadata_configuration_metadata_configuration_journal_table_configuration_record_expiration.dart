@@ -11,7 +11,7 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationR
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration].
   /// [days] Number of days to retain journal table records.
   /// [expiration] Whether journal table record expiration is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
-  BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration({
+  const BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration({
     this.days,
     required this.expiration,
   });

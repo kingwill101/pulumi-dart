@@ -12,7 +12,7 @@ class GoogleIamV1AuditLogConfigResponseBeyondcorpV1alpha {
   /// Creates a new [GoogleIamV1AuditLogConfigResponseBeyondcorpV1alpha].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  GoogleIamV1AuditLogConfigResponseBeyondcorpV1alpha({
+  const GoogleIamV1AuditLogConfigResponseBeyondcorpV1alpha({
     required this.exemptedMembers,
     required this.logType,
   });

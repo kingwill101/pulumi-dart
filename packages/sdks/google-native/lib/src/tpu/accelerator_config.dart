@@ -13,7 +13,7 @@ class AcceleratorConfig {
   /// Creates a new [AcceleratorConfig].
   /// [topology] Topology of TPU in chips.
   /// [type] Type of TPU.
-  AcceleratorConfig({
+  const AcceleratorConfig({
     required this.topology,
     required this.type,
   });

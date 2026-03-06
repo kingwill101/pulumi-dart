@@ -35,7 +35,7 @@ class BotConnectionArgs {
   /// [resourceName] The name of the Bot resource.
   /// [sku] Gets or sets the SKU of the resource.
   /// [tags] Contains resource tags defined as key/value pairs.
-  BotConnectionArgs({
+  const BotConnectionArgs({
     this.connectionName,
     this.kind,
     this.location,

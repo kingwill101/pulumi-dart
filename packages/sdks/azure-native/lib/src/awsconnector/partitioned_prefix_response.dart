@@ -9,7 +9,7 @@ class PartitionedPrefixResponse {
 
   /// Creates a new [PartitionedPrefixResponse].
   /// [partitionDateSource] Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime.
-  PartitionedPrefixResponse({
+  const PartitionedPrefixResponse({
     this.partitionDateSource,
   });
 

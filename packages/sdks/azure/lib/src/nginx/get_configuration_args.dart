@@ -12,7 +12,7 @@ class GetConfigurationArgs {
 
   /// Creates a new [GetConfigurationArgs].
   /// [nginxDeploymentId] The ID of the Nginx Deployment.
-  GetConfigurationArgs({
+  const GetConfigurationArgs({
     required this.nginxDeploymentId,
   });
 

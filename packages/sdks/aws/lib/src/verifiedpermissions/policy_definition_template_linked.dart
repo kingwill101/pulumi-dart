@@ -16,7 +16,7 @@ class PolicyDefinitionTemplateLinked {
   /// [policyTemplateId] The ID of the template.
   /// [principal] The principal of the template linked policy.
   /// [resource] The resource of the template linked policy.
-  PolicyDefinitionTemplateLinked({
+  const PolicyDefinitionTemplateLinked({
     required this.policyTemplateId,
     this.principal,
     this.resource,

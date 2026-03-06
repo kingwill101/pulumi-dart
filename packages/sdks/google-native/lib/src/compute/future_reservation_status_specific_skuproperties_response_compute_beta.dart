@@ -9,7 +9,7 @@ class FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta {
 
   /// Creates a new [FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate the Future Reservation properties.
-  FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta({
+  const FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta({
     required this.sourceInstanceTemplateId,
   });
 

@@ -17,7 +17,7 @@ class GetCatalogTableTargetTable {
   /// [databaseName] Name of the metadata database where the table metadata resides.
   /// [name] Name of the table.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCatalogTableTargetTable({
+  const GetCatalogTableTargetTable({
     required this.catalogId,
     required this.databaseName,
     required this.name,

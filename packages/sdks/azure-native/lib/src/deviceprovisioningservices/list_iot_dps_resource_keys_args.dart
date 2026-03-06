@@ -15,7 +15,7 @@ class ListIotDpsResourceKeysArgs {
   /// Creates a new [ListIotDpsResourceKeysArgs].
   /// [provisioningServiceName] The provisioning service name to get the shared access keys for.
   /// [resourceGroupName] resource group name
-  ListIotDpsResourceKeysArgs({
+  const ListIotDpsResourceKeysArgs({
     required this.provisioningServiceName,
     required this.resourceGroupName,
   });

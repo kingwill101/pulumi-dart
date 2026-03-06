@@ -126,7 +126,7 @@ class RouterStatusBestRoutesForRouter {
   /// [selfLink] Required.
   /// [tags] A list of instance tags to which this route applies.
   /// [warnings] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  RouterStatusBestRoutesForRouter({
+  const RouterStatusBestRoutesForRouter({
     required this.asPaths,
     required this.creationTimestamp,
     required this.description,

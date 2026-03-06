@@ -54,7 +54,7 @@ class KafkaConnectorTopicMapArgs {
   /// [routes] The route details for Kafka connector.
   /// [tags] Resource tags.
   /// [topicMapName] Name of MQ kafka/topicMap resource
-  KafkaConnectorTopicMapArgs({
+  const KafkaConnectorTopicMapArgs({
     this.batching,
     this.compression,
     this.copyMqttProperties,

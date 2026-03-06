@@ -12,7 +12,7 @@ class DomainRedirectResponse {
   /// Creates a new [DomainRedirectResponse].
   /// [domainName] The domain name to redirect to.
   /// [type] The redirect status code.
-  DomainRedirectResponse({
+  const DomainRedirectResponse({
     required this.domainName,
     required this.type,
   });

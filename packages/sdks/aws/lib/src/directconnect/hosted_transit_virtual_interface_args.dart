@@ -42,7 +42,7 @@ class HostedTransitVirtualInterfaceArgs {
   /// [ownerAccountId] The AWS account that will own the new virtual interface.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vlan] The VLAN ID.
-  HostedTransitVirtualInterfaceArgs({
+  const HostedTransitVirtualInterfaceArgs({
     required this.addressFamily,
     this.amazonAddress,
     required this.bgpAsn,

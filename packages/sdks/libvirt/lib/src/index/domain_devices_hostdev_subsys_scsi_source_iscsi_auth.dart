@@ -12,7 +12,7 @@ class DomainDevicesHostdevSubsysScsiSourceIscsiAuth {
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.
   /// [username] Sets the username for iSCSI authentication.
-  DomainDevicesHostdevSubsysScsiSourceIscsiAuth({
+  const DomainDevicesHostdevSubsysScsiSourceIscsiAuth({
     this.secret,
     this.username,
   });

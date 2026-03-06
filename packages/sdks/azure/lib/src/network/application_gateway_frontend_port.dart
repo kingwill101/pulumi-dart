@@ -14,7 +14,7 @@ class ApplicationGatewayFrontendPort {
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of the Frontend Port.
   /// [port] The port used for this Frontend Port.
-  ApplicationGatewayFrontendPort({
+  const ApplicationGatewayFrontendPort({
     this.id,
     required this.name,
     required this.port,

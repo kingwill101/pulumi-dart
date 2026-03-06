@@ -8,7 +8,7 @@ class DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription 
 
   /// Creates a new [DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription].
   /// [text] The text of a description for a column.
-  DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription({
+  const DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription({
     this.text,
   });
 

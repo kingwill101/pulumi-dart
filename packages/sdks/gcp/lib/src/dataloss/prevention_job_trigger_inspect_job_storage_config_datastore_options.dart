@@ -16,7 +16,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigDatastoreOptions].
   /// [kind] A representation of a Datastore kind.
   /// [partitionId] Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
-  PreventionJobTriggerInspectJobStorageConfigDatastoreOptions({
+  const PreventionJobTriggerInspectJobStorageConfigDatastoreOptions({
     required this.kind,
     required this.partitionId,
   });

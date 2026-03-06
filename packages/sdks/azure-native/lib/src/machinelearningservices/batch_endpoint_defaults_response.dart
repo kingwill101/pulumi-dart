@@ -10,7 +10,7 @@ class BatchEndpointDefaultsResponse {
 
   /// Creates a new [BatchEndpointDefaultsResponse].
   /// [deploymentName] Name of the deployment that will be default for the endpoint.
-  BatchEndpointDefaultsResponse({
+  const BatchEndpointDefaultsResponse({
     this.deploymentName,
   });
 

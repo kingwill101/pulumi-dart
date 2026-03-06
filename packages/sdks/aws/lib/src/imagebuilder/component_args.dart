@@ -49,7 +49,7 @@ class ComponentArgs {
   /// [tags] Key-value map of resource tags for the component. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [uri] S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   /// [version] Version of the component.
-  ComponentArgs({
+  const ComponentArgs({
     this.changeDescription,
     this.data,
     this.description,

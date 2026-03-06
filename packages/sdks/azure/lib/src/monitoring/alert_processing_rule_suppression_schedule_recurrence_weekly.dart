@@ -14,7 +14,7 @@ class AlertProcessingRuleSuppressionScheduleRecurrenceWeekly {
   /// [daysOfWeeks] Specifies a list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, and `Saturday`.
   /// [endTime] Specifies the recurrence end time (H:M:S).
   /// [startTime] Specifies the recurrence start time (H:M:S).
-  AlertProcessingRuleSuppressionScheduleRecurrenceWeekly({
+  const AlertProcessingRuleSuppressionScheduleRecurrenceWeekly({
     required this.daysOfWeeks,
     this.endTime,
     this.startTime,

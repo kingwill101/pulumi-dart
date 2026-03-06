@@ -17,7 +17,7 @@ class GetTargetIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [targetId] Required.
-  GetTargetIamPolicyArgs({
+  const GetTargetIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

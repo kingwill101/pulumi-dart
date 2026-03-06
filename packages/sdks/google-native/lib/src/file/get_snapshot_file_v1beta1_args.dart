@@ -17,7 +17,7 @@ class GetSnapshotFileV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [snapshotId] Required.
-  GetSnapshotFileV1beta1Args({
+  const GetSnapshotFileV1beta1Args({
     required this.instanceId,
     required this.location,
     this.project,

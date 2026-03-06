@@ -18,7 +18,7 @@ class GetSecretsResult {
   /// [keyVaultId] Required.
   /// [names] List containing names of secrets that exist in this Key Vault.
   /// [secrets] One or more `secrets` blocks as defined below.
-  GetSecretsResult({
+  const GetSecretsResult({
     required this.id,
     required this.keyVaultId,
     required this.names,

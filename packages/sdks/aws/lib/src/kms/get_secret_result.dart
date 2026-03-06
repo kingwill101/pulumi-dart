@@ -14,7 +14,7 @@ class GetSecretResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [secrets] Required.
-  GetSecretResult({
+  const GetSecretResult({
     required this.id,
     required this.region,
     required this.secrets,

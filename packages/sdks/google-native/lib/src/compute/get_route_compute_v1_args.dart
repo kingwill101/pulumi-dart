@@ -13,7 +13,7 @@ class GetRouteComputeV1Args {
   /// Creates a new [GetRouteComputeV1Args].
   /// [project] Optional.
   /// [route] Required.
-  GetRouteComputeV1Args({
+  const GetRouteComputeV1Args({
     this.project,
     required this.route,
   });

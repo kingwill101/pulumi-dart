@@ -17,7 +17,7 @@ class GetActivityResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetActivityResult({
+  const GetActivityResult({
     required this.arn,
     required this.creationDate,
     required this.id,

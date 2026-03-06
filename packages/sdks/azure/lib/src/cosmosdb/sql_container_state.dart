@@ -56,7 +56,7 @@ class SqlContainerState {
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB SQL Container is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
   /// [uniqueKeys] One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
-  SqlContainerState({
+  const SqlContainerState({
     this.accountName,
     this.analyticalStorageTtl,
     this.autoscaleSettings,

@@ -55,7 +55,7 @@ class GetKeyVaultResult {
   /// [tags] A mapping of tags assigned to the Key Vault.
   /// [tenantId] The Azure Active Directory Tenant ID used to authenticate requests for this Key Vault.
   /// [vaultUri] The URI of the vault for performing operations on keys and secrets.
-  GetKeyVaultResult({
+  const GetKeyVaultResult({
     required this.accessPolicies,
     required this.enableRbacAuthorization,
     required this.enabledForDeployment,

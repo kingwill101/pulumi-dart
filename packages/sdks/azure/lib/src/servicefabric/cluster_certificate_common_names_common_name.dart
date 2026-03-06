@@ -13,7 +13,7 @@ class ClusterCertificateCommonNamesCommonName {
   /// Creates a new [ClusterCertificateCommonNamesCommonName].
   /// [certificateCommonName] The common or subject name of the certificate.
   /// [certificateIssuerThumbprint] The Issuer Thumbprint of the Certificate.
-  ClusterCertificateCommonNamesCommonName({
+  const ClusterCertificateCommonNamesCommonName({
     required this.certificateCommonName,
     this.certificateIssuerThumbprint,
   });

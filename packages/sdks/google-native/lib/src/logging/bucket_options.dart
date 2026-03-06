@@ -18,7 +18,7 @@ class BucketOptions {
   /// [explicitBuckets] The explicit buckets.
   /// [exponentialBuckets] The exponential buckets.
   /// [linearBuckets] The linear bucket.
-  BucketOptions({
+  const BucketOptions({
     this.explicitBuckets,
     this.exponentialBuckets,
     this.linearBuckets,

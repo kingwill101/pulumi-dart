@@ -16,7 +16,7 @@ class GetReleaseLabelsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [releaseLabels] Returned release labels.
-  GetReleaseLabelsResult({
+  const GetReleaseLabelsResult({
     this.filters,
     required this.id,
     required this.region,

@@ -18,7 +18,7 @@ class GetFlowDestinationEndpointPortsArgs {
   /// [connectionName] The name for the connection that is to be requested.
   /// [flowName] The name for the flow that is to be onboarded.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFlowDestinationEndpointPortsArgs({
+  const GetFlowDestinationEndpointPortsArgs({
     required this.connectionName,
     required this.flowName,
     required this.resourceGroupName,

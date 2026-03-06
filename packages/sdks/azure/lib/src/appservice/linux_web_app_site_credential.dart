@@ -13,7 +13,7 @@ class LinuxWebAppSiteCredential {
   /// Creates a new [LinuxWebAppSiteCredential].
   /// [name] The name which should be used for this Linux Web App. Changing this forces a new Linux Web App to be created.
   /// [password] The Site Credentials Password used for publishing.
-  LinuxWebAppSiteCredential({
+  const LinuxWebAppSiteCredential({
     this.name,
     this.password,
   });

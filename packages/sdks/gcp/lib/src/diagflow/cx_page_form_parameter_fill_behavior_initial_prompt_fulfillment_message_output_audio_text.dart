@@ -17,7 +17,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
   /// [allowPlaybackInterruption] (Output)
   /// [ssml] The SSML text to be synthesized. For more information, see SSML.
   /// [text] The raw text to be synthesized.
-  CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText({
+  const CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText({
     this.allowPlaybackInterruption,
     this.ssml,
     this.text,

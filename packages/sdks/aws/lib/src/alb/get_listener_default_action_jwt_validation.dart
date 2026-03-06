@@ -12,7 +12,7 @@ class GetListenerDefaultActionJwtValidation {
   /// [additionalClaims] Required.
   /// [issuer] Required.
   /// [jwksEndpoint] Required.
-  GetListenerDefaultActionJwtValidation({
+  const GetListenerDefaultActionJwtValidation({
     required this.additionalClaims,
     required this.issuer,
     required this.jwksEndpoint,

@@ -8,7 +8,7 @@ class DomainDevicesTpmBackendPassthroughDevice {
 
   /// Creates a new [DomainDevicesTpmBackendPassthroughDevice].
   /// [path] Specifies the path to the TPM device that is being passed through to the guest.
-  DomainDevicesTpmBackendPassthroughDevice({
+  const DomainDevicesTpmBackendPassthroughDevice({
     required this.path,
   });
 

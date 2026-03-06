@@ -13,7 +13,7 @@ class DomainAuthConfig {
   /// [masterKey] Optional.
   /// [slaveKey] Optional.
   /// [timeout] Optional.
-  DomainAuthConfig({
+  const DomainAuthConfig({
     this.authType,
     this.masterKey,
     this.slaveKey,

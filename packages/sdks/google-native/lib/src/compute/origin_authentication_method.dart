@@ -9,7 +9,7 @@ class OriginAuthenticationMethod {
 
   /// Creates a new [OriginAuthenticationMethod].
   /// [jwt] Optional.
-  OriginAuthenticationMethod({
+  const OriginAuthenticationMethod({
     this.jwt,
   });
 

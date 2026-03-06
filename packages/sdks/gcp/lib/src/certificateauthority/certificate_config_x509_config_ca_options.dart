@@ -21,7 +21,7 @@ class CertificateConfigX509ConfigCaOptions {
   /// [maxIssuerPathLength] Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
   /// [nonCa] When true, the "CA" in Basic Constraints extension will be set to false.
   /// [zeroMaxIssuerPathLength] When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-  CertificateConfigX509ConfigCaOptions({
+  const CertificateConfigX509ConfigCaOptions({
     this.isCa,
     this.maxIssuerPathLength,
     this.nonCa,

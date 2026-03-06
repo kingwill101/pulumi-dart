@@ -11,7 +11,7 @@ class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLoc
   /// Creates a new [WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation].
   /// [fileSystemId] The ID of the file system, assigned by Amazon EFS.
   /// [path] The pathname for the folder being used by a workflow.
-  WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation({
+  const WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation({
     this.fileSystemId,
     this.path,
   });

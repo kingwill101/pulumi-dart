@@ -14,7 +14,7 @@ class FeatureGroupOfflineStoreConfigDataCatalogConfig {
   /// [catalog] The name of the Glue table catalog.
   /// [database] The name of the Glue table database.
   /// [tableName] The name of the Glue table.
-  FeatureGroupOfflineStoreConfigDataCatalogConfig({
+  const FeatureGroupOfflineStoreConfigDataCatalogConfig({
     this.catalog,
     this.database,
     this.tableName,

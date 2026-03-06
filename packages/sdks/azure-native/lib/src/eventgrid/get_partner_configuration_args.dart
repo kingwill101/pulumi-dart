@@ -12,7 +12,7 @@ class GetPartnerConfigurationArgs {
 
   /// Creates a new [GetPartnerConfigurationArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerConfigurationArgs({
+  const GetPartnerConfigurationArgs({
     required this.resourceGroupName,
   });
 

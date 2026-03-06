@@ -14,7 +14,7 @@ class DomainNumaTuneMemory {
   /// [mode] Sets the allocation mode for NUMA memory, influencing how memory is distributed across nodes.
   /// [nodeset] Specifies the nodeset for memory allocation for the NUMA settings, allowing for tailored memory configurations.
   /// [placement] Defines the placement strategy for NUMA memory, orienting memory allocation toward specific nodes.
-  DomainNumaTuneMemory({
+  const DomainNumaTuneMemory({
     this.mode,
     this.nodeset,
     this.placement,

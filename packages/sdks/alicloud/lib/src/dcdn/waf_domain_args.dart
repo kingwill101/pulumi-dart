@@ -15,7 +15,7 @@ class WafDomainArgs {
   /// Creates a new [WafDomainArgs].
   /// [clientIpTag] The client ip tag.
   /// [domainName] The accelerated domain name.
-  WafDomainArgs({
+  const WafDomainArgs({
     this.clientIpTag,
     required this.domainName,
   });

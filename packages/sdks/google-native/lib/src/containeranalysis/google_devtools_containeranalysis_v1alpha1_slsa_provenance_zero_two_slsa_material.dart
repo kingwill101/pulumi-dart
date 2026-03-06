@@ -12,7 +12,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial {
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial].
   /// [digest] Collection of cryptographic digests for the contents of this artifact.
   /// [uri] The method by which this artifact was referenced during the build.
-  GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial({
+  const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial({
     this.digest,
     this.uri,
   });

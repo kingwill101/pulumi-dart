@@ -68,7 +68,7 @@ class AwsEcsTaskDefinitionPropertiesResponse {
   /// [taskDefinitionArn] Property taskDefinitionArn
   /// [taskRoleArn] The short name or full Amazon Resource Name (ARN) of the IAMlong role that grants containers in the task permission to call AWS APIs on your behalf. For more information, see [Amazon ECS Task Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon Elastic Container Service Developer Guide*. IAM roles for tasks on Windows require that the ``-EnableTaskIAMRole`` option is set when you launch the Amazon ECS-optimized Windows AMI. Your containers must also run some configuration code to use the feature. For more information, see [Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html) in the *Amazon Elastic Container Service Developer Guide*.
   /// [volumes] The list of data volume definitions for the task. For more information, see [Using data volumes in tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html) in the *Amazon Elastic Container Service Developer Guide*.  The ``host`` and ``sourcePath`` parameters aren't supported for tasks run on FARGATElong.
-  AwsEcsTaskDefinitionPropertiesResponse({
+  const AwsEcsTaskDefinitionPropertiesResponse({
     this.containerDefinitions,
     this.cpu,
     this.ephemeralStorage,

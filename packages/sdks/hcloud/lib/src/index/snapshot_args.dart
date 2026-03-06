@@ -18,7 +18,7 @@ class SnapshotArgs {
   /// [description] Description of the snapshot.
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [serverId] Server to the snapshot should be created from.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.description,
     this.labels,
     required this.serverId,

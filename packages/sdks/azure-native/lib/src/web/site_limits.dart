@@ -15,7 +15,7 @@ class SiteLimits {
   /// [maxDiskSizeInMb] Maximum allowed disk size usage in MB.
   /// [maxMemoryInMb] Maximum allowed memory usage in MB.
   /// [maxPercentageCpu] Maximum allowed CPU usage percentage.
-  SiteLimits({
+  const SiteLimits({
     this.maxDiskSizeInMb,
     this.maxMemoryInMb,
     this.maxPercentageCpu,

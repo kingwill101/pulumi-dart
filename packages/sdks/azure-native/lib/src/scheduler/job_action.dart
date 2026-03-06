@@ -33,7 +33,7 @@ class JobAction {
   /// [serviceBusQueueMessage] Gets or sets the service bus queue message.
   /// [serviceBusTopicMessage] Gets or sets the service bus topic message.
   /// [type] Gets or sets the job action type.
-  JobAction({
+  const JobAction({
     this.errorAction,
     this.queueMessage,
     this.request,

@@ -72,7 +72,7 @@ class GetClustersCluster {
   /// [storageUsed] The StorageUsed of the PolarDB cluster.
   /// [vpcId] ID of the VPC the cluster belongs to.
   /// [zoneId] The zone_id of the db_nodes.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.chargeType,
     required this.connectionString,
     required this.createTime,

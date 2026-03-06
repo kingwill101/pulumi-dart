@@ -15,7 +15,7 @@ class DomainCacheConfig {
   /// [cacheType] Required.
   /// [ttl] Required.
   /// [weight] Optional.
-  DomainCacheConfig({
+  const DomainCacheConfig({
     required this.cacheContent,
     this.cacheId,
     required this.cacheType,

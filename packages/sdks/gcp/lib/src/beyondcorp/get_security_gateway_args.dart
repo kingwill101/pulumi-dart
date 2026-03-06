@@ -18,7 +18,7 @@ class GetSecurityGatewayArgs {
   /// Creates a new [GetSecurityGatewayArgs].
   /// [project] The project in which the resource belongs. If it
   /// [securityGatewayId] The name of the Security Gateway resource.
-  GetSecurityGatewayArgs({
+  const GetSecurityGatewayArgs({
     this.project,
     required this.securityGatewayId,
   });

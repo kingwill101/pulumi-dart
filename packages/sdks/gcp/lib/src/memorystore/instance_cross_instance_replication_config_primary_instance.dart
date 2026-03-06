@@ -12,7 +12,7 @@ class InstanceCrossInstanceReplicationConfigPrimaryInstance {
   /// Creates a new [InstanceCrossInstanceReplicationConfigPrimaryInstance].
   /// [instance] The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
   /// [uid] (Output)
-  InstanceCrossInstanceReplicationConfigPrimaryInstance({
+  const InstanceCrossInstanceReplicationConfigPrimaryInstance({
     this.instance,
     this.uid,
   });

@@ -18,7 +18,7 @@ class ResolverRuleAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resolverRuleId] The ID of the resolver rule that you want to associate with the VPC.
   /// [vpcId] The ID of the VPC that you want to associate the resolver rule with.
-  ResolverRuleAssociationState({
+  const ResolverRuleAssociationState({
     this.name,
     this.region,
     this.resolverRuleId,

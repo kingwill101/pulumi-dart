@@ -10,7 +10,7 @@ class ManagedOnBehalfOfConfigurationResponse {
 
   /// Creates a new [ManagedOnBehalfOfConfigurationResponse].
   /// [moboBrokerResources] Associated MoboBrokerResources.
-  ManagedOnBehalfOfConfigurationResponse({
+  const ManagedOnBehalfOfConfigurationResponse({
     required this.moboBrokerResources,
   });
 

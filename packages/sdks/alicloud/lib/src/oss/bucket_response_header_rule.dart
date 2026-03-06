@@ -16,7 +16,7 @@ class BucketResponseHeaderRule {
   /// [filters] The container that holds the operations that need to be apply rules. See `filters` below.
   /// [hideHeaders] The container that holds the response headers that need to be hidden. See `hide_headers` below.
   /// [name] The response header rule name.
-  BucketResponseHeaderRule({
+  const BucketResponseHeaderRule({
     this.filters,
     this.hideHeaders,
     this.name,

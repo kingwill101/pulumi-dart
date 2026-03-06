@@ -113,7 +113,7 @@ class RocketMQInstanceState {
   /// [status] The status of the instance
   /// [subSeriesCode] The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
   /// [tags] The resource label.
-  RocketMQInstanceState({
+  const RocketMQInstanceState({
     this.aclInfo,
     this.autoRenew,
     this.autoRenewPeriod,

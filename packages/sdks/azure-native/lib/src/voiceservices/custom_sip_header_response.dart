@@ -9,7 +9,7 @@ class CustomSipHeaderResponse {
 
   /// Creates a new [CustomSipHeaderResponse].
   /// [name] The name of the Custom SIP Header
-  CustomSipHeaderResponse({
+  const CustomSipHeaderResponse({
     this.name,
   });
 

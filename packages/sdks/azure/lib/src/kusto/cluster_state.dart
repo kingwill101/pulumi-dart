@@ -83,7 +83,7 @@ class ClusterState {
   /// [uri] The FQDN of the Azure Kusto Cluster.
   /// [virtualNetworkConfiguration] Optional.
   /// [zones] Specifies a list of Availability Zones in which this Kusto Cluster should be located. Changing this forces a new Kusto Cluster to be created.
-  ClusterState({
+  const ClusterState({
     this.allowedFqdns,
     this.allowedIpRanges,
     this.autoStopEnabled,

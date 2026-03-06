@@ -15,7 +15,7 @@ class TableEncryptionConfiguration {
   /// Creates a new [TableEncryptionConfiguration].
   /// [kmsKeyName] The self link or full name of a key which should be used to
   /// [kmsKeyVersion] The self link or full name of the kms key version used to encrypt this table.
-  TableEncryptionConfiguration({
+  const TableEncryptionConfiguration({
     required this.kmsKeyName,
     this.kmsKeyVersion,
   });

@@ -56,7 +56,7 @@ class StackArgs {
   /// [templateBody] Structure containing the template body (max size: 51,200 bytes).
   /// [templateUrl] Location of a file containing the template body (max size: 460,800 bytes).
   /// [timeoutInMinutes] The amount of time that can pass before the stack status becomes `CREATE_FAILED`.
-  StackArgs({
+  const StackArgs({
     this.capabilities,
     this.disableRollback,
     this.iamRoleArn,

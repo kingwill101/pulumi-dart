@@ -9,7 +9,7 @@ class VirtualGatewaySpecLogging {
 
   /// Creates a new [VirtualGatewaySpecLogging].
   /// [accessLog] Access log configuration for a virtual gateway.
-  VirtualGatewaySpecLogging({
+  const VirtualGatewaySpecLogging({
     this.accessLog,
   });
 

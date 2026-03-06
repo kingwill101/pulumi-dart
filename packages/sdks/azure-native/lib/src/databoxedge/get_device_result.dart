@@ -98,7 +98,7 @@ class GetDeviceResult {
   /// [tags] The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
   /// [timeZone] The Data Box Edge/Gateway device timezone.
   /// [type] The hierarchical type of the object.
-  GetDeviceResult({
+  const GetDeviceResult({
     required this.azureApiVersion,
     required this.configuredRoleTypes,
     required this.culture,

@@ -9,7 +9,7 @@ class AttachedClusterBinaryAuthorization {
 
   /// Creates a new [AttachedClusterBinaryAuthorization].
   /// [evaluationMode] Configure Binary Authorization evaluation mode.
-  AttachedClusterBinaryAuthorization({
+  const AttachedClusterBinaryAuthorization({
     this.evaluationMode,
   });
 

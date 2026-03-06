@@ -14,7 +14,7 @@ class HadoopClusterRolesEdgeNodeUninstallScriptAction {
   /// [name] The name of the uninstall script action.
   /// [parameters] The parameters for the script.
   /// [uri] The URI pointing to the script to run during the installation of the edge node.
-  HadoopClusterRolesEdgeNodeUninstallScriptAction({
+  const HadoopClusterRolesEdgeNodeUninstallScriptAction({
     required this.name,
     this.parameters,
     required this.uri,

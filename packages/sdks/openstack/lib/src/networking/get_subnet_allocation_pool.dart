@@ -9,7 +9,7 @@ class GetSubnetAllocationPool {
   /// Creates a new [GetSubnetAllocationPool].
   /// [end] Required.
   /// [start] Required.
-  GetSubnetAllocationPool({
+  const GetSubnetAllocationPool({
     required this.end,
     required this.start,
   });

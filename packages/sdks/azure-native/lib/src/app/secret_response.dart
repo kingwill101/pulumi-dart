@@ -15,7 +15,7 @@ class SecretResponse {
   /// [identity] Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   /// [keyVaultUrl] Azure Key Vault URL pointing to the secret referenced by the container app.
   /// [name] Secret Name.
-  SecretResponse({
+  const SecretResponse({
     this.identity,
     this.keyVaultUrl,
     this.name,

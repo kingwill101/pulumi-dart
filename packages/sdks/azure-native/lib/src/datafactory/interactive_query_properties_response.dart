@@ -12,7 +12,7 @@ class InteractiveQueryPropertiesResponse {
   /// Creates a new [InteractiveQueryPropertiesResponse].
   /// [autoTerminationMinutes] The allowed idle time for interactive authoring.
   /// [status] The interactive authoring capability status. Must be one of InteractiveCapabilityStatus. The default value is 'Enabling'.
-  InteractiveQueryPropertiesResponse({
+  const InteractiveQueryPropertiesResponse({
     required this.autoTerminationMinutes,
     required this.status,
   });

@@ -9,7 +9,7 @@ class PlanWorkflowStepParallelConfig {
 
   /// Creates a new [PlanWorkflowStepParallelConfig].
   /// [steps] List of steps to execute in parallel. Uses the same schema as Step but without `parallel_config` to prevent infinite nesting.
-  PlanWorkflowStepParallelConfig({
+  const PlanWorkflowStepParallelConfig({
     this.steps,
   });
 

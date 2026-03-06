@@ -11,7 +11,7 @@ class GetClusterAccessConfig {
   /// Creates a new [GetClusterAccessConfig].
   /// [authenticationMode] Values returned are `CONFIG_MAP`, `API` or `API_AND_CONFIG_MAP`
   /// [bootstrapClusterCreatorAdminPermissions] Default to `true`.
-  GetClusterAccessConfig({
+  const GetClusterAccessConfig({
     required this.authenticationMode,
     required this.bootstrapClusterCreatorAdminPermissions,
   });

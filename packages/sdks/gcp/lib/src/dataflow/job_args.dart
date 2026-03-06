@@ -75,7 +75,7 @@ class JobArgs {
   /// [templateGcsPath] The GCS path to the Dataflow job template.
   /// [transformNameMapping] Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
   /// [zone] The zone in which the created job should run. If it is not provided, the provider zone is used.
-  JobArgs({
+  const JobArgs({
     this.additionalExperiments,
     this.enableStreamingEngine,
     this.ipConfiguration,

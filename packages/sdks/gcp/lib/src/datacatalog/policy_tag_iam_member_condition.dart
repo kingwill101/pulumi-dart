@@ -11,7 +11,7 @@ class PolicyTagIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  PolicyTagIamMemberCondition({
+  const PolicyTagIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

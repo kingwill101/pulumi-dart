@@ -61,7 +61,7 @@ class GetNetworkResult {
   /// [tags] Optional.
   /// [tenantId] Optional.
   /// [transparentVlan] See Argument Reference above.
-  GetNetworkResult({
+  const GetNetworkResult({
     required this.adminStateUp,
     required this.allTags,
     required this.availabilityZoneHints,

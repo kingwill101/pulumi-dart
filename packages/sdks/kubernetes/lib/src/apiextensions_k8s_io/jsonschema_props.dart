@@ -140,7 +140,7 @@ class JSONSchemaProps {
   /// [xKubernetesMapType] x-kubernetes-map-type annotates an object to further describe its topology. This extension must only be used when type is object and may have 2 possible values:
   /// [xKubernetesPreserveUnknownFields] x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
   /// [xKubernetesValidations] x-kubernetes-validations describes a list of validation rules written in the CEL expression language.
-  JSONSchemaProps({
+  const JSONSchemaProps({
     this.ref,
     this.schema,
     this.additionalItems,

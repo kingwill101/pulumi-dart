@@ -8,7 +8,7 @@ class DomainDevicesRedirDevProtocol {
 
   /// Creates a new [DomainDevicesRedirDevProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesRedirDevProtocol({
+  const DomainDevicesRedirDevProtocol({
     required this.type,
   });
 

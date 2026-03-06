@@ -13,7 +13,7 @@ class ClusterLoggingInfoBrokerLogsS3 {
   /// [bucket] Name of the S3 bucket to deliver logs to.
   /// [enabled] Required.
   /// [prefix] Prefix to append to the folder name.
-  ClusterLoggingInfoBrokerLogsS3({
+  const ClusterLoggingInfoBrokerLogsS3({
     this.bucket,
     required this.enabled,
     this.prefix,

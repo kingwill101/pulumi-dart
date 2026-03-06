@@ -15,7 +15,7 @@ class GetProjectResult {
   /// [filter] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [projects] A list of projects matching the provided filter. Structure is defined below.
-  GetProjectResult({
+  const GetProjectResult({
     required this.filter,
     required this.id,
     required this.projects,

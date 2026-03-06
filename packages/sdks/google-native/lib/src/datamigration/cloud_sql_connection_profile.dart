@@ -10,7 +10,7 @@ class CloudSqlConnectionProfile {
 
   /// Creates a new [CloudSqlConnectionProfile].
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfile({
+  const CloudSqlConnectionProfile({
     this.settings,
   });
 

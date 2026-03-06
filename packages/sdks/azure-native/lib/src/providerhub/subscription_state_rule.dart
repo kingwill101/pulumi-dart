@@ -11,7 +11,7 @@ class SubscriptionStateRule {
   /// Creates a new [SubscriptionStateRule].
   /// [allowedActions] The allowed actions.
   /// [state] The subscription state.
-  SubscriptionStateRule({
+  const SubscriptionStateRule({
     this.allowedActions,
     this.state,
   });

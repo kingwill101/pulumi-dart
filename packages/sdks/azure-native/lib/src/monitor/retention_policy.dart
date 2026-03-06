@@ -12,7 +12,7 @@ class RetentionPolicy {
   /// Creates a new [RetentionPolicy].
   /// [days] the number of days for the retention in days. A value of 0 will retain the events indefinitely.
   /// [enabled] a value indicating whether the retention policy is enabled.
-  RetentionPolicy({
+  const RetentionPolicy({
     required this.days,
     required this.enabled,
   });

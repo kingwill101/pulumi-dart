@@ -9,7 +9,7 @@ class VmwareAdminClusterNetworkConfigDhcpIpConfig {
 
   /// Creates a new [VmwareAdminClusterNetworkConfigDhcpIpConfig].
   /// [enabled] enabled is a flag to mark if DHCP IP allocation is
-  VmwareAdminClusterNetworkConfigDhcpIpConfig({
+  const VmwareAdminClusterNetworkConfigDhcpIpConfig({
     required this.enabled,
   });
 

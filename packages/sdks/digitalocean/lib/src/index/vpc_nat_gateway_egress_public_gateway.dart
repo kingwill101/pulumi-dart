@@ -8,7 +8,7 @@ class VpcNatGatewayEgressPublicGateway {
 
   /// Creates a new [VpcNatGatewayEgressPublicGateway].
   /// [ipv4] IPv4 address
-  VpcNatGatewayEgressPublicGateway({
+  const VpcNatGatewayEgressPublicGateway({
     this.ipv4,
   });
 

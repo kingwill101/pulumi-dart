@@ -40,7 +40,7 @@ class Db2TableDatasetResponse {
   /// [table] The Db2 table name. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  Db2TableDatasetResponse({
+  const Db2TableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

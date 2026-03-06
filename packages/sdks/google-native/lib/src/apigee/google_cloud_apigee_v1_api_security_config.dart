@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1ApiSecurityConfig {
 
   /// Creates a new [GoogleCloudApigeeV1ApiSecurityConfig].
   /// [enabled] Flag that specifies whether the API security add-on is enabled.
-  GoogleCloudApigeeV1ApiSecurityConfig({
+  const GoogleCloudApigeeV1ApiSecurityConfig({
     this.enabled,
   });
 

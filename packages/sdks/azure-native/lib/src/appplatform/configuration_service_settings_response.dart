@@ -13,7 +13,7 @@ class ConfigurationServiceSettingsResponse {
   /// Creates a new [ConfigurationServiceSettingsResponse].
   /// [gitProperty] Property of git environment.
   /// [refreshIntervalInSeconds] How often (in seconds) to check repository updates. Minimum value is 0.
-  ConfigurationServiceSettingsResponse({
+  const ConfigurationServiceSettingsResponse({
     this.gitProperty,
     this.refreshIntervalInSeconds,
   });

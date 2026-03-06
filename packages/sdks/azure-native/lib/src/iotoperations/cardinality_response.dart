@@ -14,7 +14,7 @@ class CardinalityResponse {
   /// Creates a new [CardinalityResponse].
   /// [backendChain] The backend broker desired properties
   /// [frontend] The frontend desired properties
-  CardinalityResponse({
+  const CardinalityResponse({
     required this.backendChain,
     required this.frontend,
   });

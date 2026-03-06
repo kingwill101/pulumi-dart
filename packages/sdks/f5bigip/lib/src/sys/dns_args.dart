@@ -21,7 +21,7 @@ class DnsArgs {
   /// [nameServers] Specifies the name servers that the system uses to validate DNS lookups, and resolve host names.
   /// [numberOfDots] Configures the number of dots needed in a name before an initial absolute query will be made.
   /// [searches] Specifies the domains that the system searches for local domain lookups, to resolve local host names.
-  DnsArgs({
+  const DnsArgs({
     required this.description,
     required this.nameServers,
     this.numberOfDots,

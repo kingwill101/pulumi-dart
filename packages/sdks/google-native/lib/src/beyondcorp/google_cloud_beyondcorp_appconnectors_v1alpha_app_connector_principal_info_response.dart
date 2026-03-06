@@ -10,7 +10,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoResponse
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoResponse].
   /// [serviceAccount] A GCP service account.
-  GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoResponse({
+  const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoResponse({
     required this.serviceAccount,
   });
 

@@ -34,7 +34,7 @@ class GetTransitRouterPrefixListAssociationsArgs {
   /// [status] The status of the prefix list. Valid Value: `Active`, `Updating`.
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterTableId] The ID of the route table of the transit router.
-  GetTransitRouterPrefixListAssociationsArgs({
+  const GetTransitRouterPrefixListAssociationsArgs({
     this.ids,
     this.outputFile,
     this.ownerUid,

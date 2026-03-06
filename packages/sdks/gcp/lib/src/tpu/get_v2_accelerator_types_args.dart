@@ -17,7 +17,7 @@ class GetV2AcceleratorTypesArgs {
   /// Creates a new [GetV2AcceleratorTypesArgs].
   /// [project] The project to list types for. If it
   /// [zone] The zone to list types for. If it
-  GetV2AcceleratorTypesArgs({
+  const GetV2AcceleratorTypesArgs({
     this.project,
     this.zone,
   });

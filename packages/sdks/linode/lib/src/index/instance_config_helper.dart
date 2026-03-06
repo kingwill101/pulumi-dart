@@ -20,7 +20,7 @@ class InstanceConfigHelper {
   /// [modulesDep] Creates a modules dependency file for the Kernel you run. (default `true`)
   /// [network] Automatically configures static networking. (default `true`)
   /// [updatedbDisabled] Disables updatedb cron job to avoid disk thrashing. (default `true`)
-  InstanceConfigHelper({
+  const InstanceConfigHelper({
     this.devtmpfsAutomount,
     this.distro,
     this.modulesDep,

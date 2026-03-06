@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicr
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro].
   /// [apiSecretKey] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro({
     required this.apiSecretKey,
   });
 

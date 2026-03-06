@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation {
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation].
   /// [owner] Required.
-  GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation({
+  const GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation({
     required this.owner,
   });
 

@@ -18,7 +18,7 @@ class BackupPolicyResponse {
   /// [fullBackupDays] The value indicating days between full backups.
   /// [retentionPeriodDays] The retention period for all the databases in this managed instance.
   /// [transactionLogBackupMinutes] The value indicating minutes between transaction log backups.
-  BackupPolicyResponse({
+  const BackupPolicyResponse({
     this.differentialBackupHours,
     this.fullBackupDays,
     this.retentionPeriodDays,

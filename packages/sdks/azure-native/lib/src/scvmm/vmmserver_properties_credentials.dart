@@ -12,7 +12,7 @@ class VMMServerPropertiesCredentials {
   /// Creates a new [VMMServerPropertiesCredentials].
   /// [password] Credentials to use to connect to VMMServer.
   /// [username] Username to use to connect to VMMServer.
-  VMMServerPropertiesCredentials({
+  const VMMServerPropertiesCredentials({
     this.password,
     this.username,
   });

@@ -20,7 +20,7 @@ class IamMemberRemoveState {
   /// [member] The IAM principal that should not have the target role.
   /// [project] The project id of the target project.
   /// [role] The target role that should be removed.
-  IamMemberRemoveState({
+  const IamMemberRemoveState({
     this.member,
     this.project,
     this.role,

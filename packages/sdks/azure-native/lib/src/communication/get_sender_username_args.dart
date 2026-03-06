@@ -21,7 +21,7 @@ class GetSenderUsernameArgs {
   /// [emailServiceName] The name of the EmailService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [senderUsername] The valid sender Username.
-  GetSenderUsernameArgs({
+  const GetSenderUsernameArgs({
     required this.domainName,
     required this.emailServiceName,
     required this.resourceGroupName,

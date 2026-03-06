@@ -8,7 +8,7 @@ class TagsResponse {
 
   /// Creates a new [TagsResponse].
   /// [tags] Optional.
-  TagsResponse({
+  const TagsResponse({
     this.tags,
   });
 

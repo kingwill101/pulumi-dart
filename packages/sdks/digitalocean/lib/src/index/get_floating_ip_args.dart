@@ -12,7 +12,7 @@ class GetFloatingIpArgs {
 
   /// Creates a new [GetFloatingIpArgs].
   /// [ipAddress] The allocated IP address of the specific floating IP to retrieve.
-  GetFloatingIpArgs({
+  const GetFloatingIpArgs({
     required this.ipAddress,
   });
 

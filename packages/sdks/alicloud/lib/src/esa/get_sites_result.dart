@@ -50,7 +50,7 @@ class GetSitesResult {
   /// [sites] A list of Site Entries. Each element contains the following attributes:
   /// [status] The status of the resource
   /// [tags] Optional.
-  GetSitesResult({
+  const GetSitesResult({
     this.accessType,
     this.coverage,
     required this.id,

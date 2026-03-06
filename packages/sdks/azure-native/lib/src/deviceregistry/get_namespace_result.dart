@@ -41,7 +41,7 @@ class GetNamespaceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Globally unique, immutable, non-reusable ID.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

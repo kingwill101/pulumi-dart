@@ -16,7 +16,7 @@ class ContainerResourceMetricSource {
   /// [container] container is the name of the container in the pods of the scaling target
   /// [name] name is the name of the resource in question.
   /// [target] target specifies the target value for the given metric
-  ContainerResourceMetricSource({
+  const ContainerResourceMetricSource({
     required this.container,
     required this.name,
     required this.target,

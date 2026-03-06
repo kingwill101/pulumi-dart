@@ -18,7 +18,7 @@ class GetTableResourceTableRoleAssignmentArgs {
   /// [accountName] Cosmos DB database account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [roleAssignmentId] The GUID for the Role Assignment.
-  GetTableResourceTableRoleAssignmentArgs({
+  const GetTableResourceTableRoleAssignmentArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.roleAssignmentId,

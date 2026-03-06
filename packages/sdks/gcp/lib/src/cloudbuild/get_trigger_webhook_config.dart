@@ -12,7 +12,7 @@ class GetTriggerWebhookConfig {
   /// Creates a new [GetTriggerWebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.
   /// [state] Potential issues with the underlying Pub/Sub subscription configuration.
-  GetTriggerWebhookConfig({
+  const GetTriggerWebhookConfig({
     required this.secret,
     required this.state,
   });

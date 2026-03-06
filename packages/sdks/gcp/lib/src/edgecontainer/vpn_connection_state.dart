@@ -60,7 +60,7 @@ class VpnConnectionState {
   /// [updateTime] The time when the VPN connection was last updated.
   /// [vpc] The network ID of VPC to connect to.
   /// [vpcProject] Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
-  VpnConnectionState({
+  const VpnConnectionState({
     this.cluster,
     this.createTime,
     this.details,

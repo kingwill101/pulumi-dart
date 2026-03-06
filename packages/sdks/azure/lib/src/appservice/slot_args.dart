@@ -66,7 +66,7 @@ class SlotArgs {
   /// [siteConfig] A `site_config` object as defined below.
   /// [storageAccounts] One or more `storage_account` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  SlotArgs({
+  const SlotArgs({
     required this.appServiceName,
     required this.appServicePlanId,
     this.appSettings,

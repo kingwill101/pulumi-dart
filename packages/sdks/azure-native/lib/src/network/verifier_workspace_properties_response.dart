@@ -11,7 +11,7 @@ class VerifierWorkspacePropertiesResponse {
   /// Creates a new [VerifierWorkspacePropertiesResponse].
   /// [description] Optional.
   /// [provisioningState] Provisioning states of a resource.
-  VerifierWorkspacePropertiesResponse({
+  const VerifierWorkspacePropertiesResponse({
     this.description,
     required this.provisioningState,
   });

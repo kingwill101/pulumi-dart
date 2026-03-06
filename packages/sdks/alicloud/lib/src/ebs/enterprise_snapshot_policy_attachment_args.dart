@@ -15,7 +15,7 @@ class EnterpriseSnapshotPolicyAttachmentArgs {
   /// Creates a new [EnterpriseSnapshotPolicyAttachmentArgs].
   /// [diskId] Cloud Disk ID.
   /// [policyId] the enterprise snapshot policy id.
-  EnterpriseSnapshotPolicyAttachmentArgs({
+  const EnterpriseSnapshotPolicyAttachmentArgs({
     this.diskId,
     required this.policyId,
   });

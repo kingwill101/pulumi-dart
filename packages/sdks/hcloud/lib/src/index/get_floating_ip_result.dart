@@ -39,7 +39,7 @@ class GetFloatingIpResult {
   /// [serverId] (int) Server to assign the Floating IP is assigned to.
   /// [type] (string) Type of the Floating IP.
   /// [withSelector] Optional.
-  GetFloatingIpResult({
+  const GetFloatingIpResult({
     required this.deleteProtection,
     required this.description,
     required this.homeLocation,

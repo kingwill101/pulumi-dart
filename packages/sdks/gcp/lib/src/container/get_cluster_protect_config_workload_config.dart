@@ -8,7 +8,7 @@ class GetClusterProtectConfigWorkloadConfig {
 
   /// Creates a new [GetClusterProtectConfigWorkloadConfig].
   /// [auditMode] Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
-  GetClusterProtectConfigWorkloadConfig({
+  const GetClusterProtectConfigWorkloadConfig({
     required this.auditMode,
   });
 

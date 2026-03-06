@@ -15,7 +15,7 @@ class GetCaseArgs {
   /// [caseId] Required.
   /// [v2Id] Required.
   /// [v2Id1] Required.
-  GetCaseArgs({
+  const GetCaseArgs({
     required this.caseId,
     required this.v2Id,
     required this.v2Id1,

@@ -40,7 +40,7 @@ class KubernetesClusterExtensionArgs {
   /// [releaseTrain] The release train used by this extension. Possible values include but are not limited to `Stable`, `Preview`. Changing this forces a new Kubernetes Cluster Extension to be created.
   /// [targetNamespace] Namespace where the extension will be created for a namespace scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Kubernetes Cluster Extension to be created.
   /// [version] User-specified version that the extension should pin to. If it is not set, Azure will use the latest version and auto upgrade it. Changing this forces a new Kubernetes Cluster Extension to be created.
-  KubernetesClusterExtensionArgs({
+  const KubernetesClusterExtensionArgs({
     required this.clusterId,
     this.configurationProtectedSettings,
     this.configurationSettings,

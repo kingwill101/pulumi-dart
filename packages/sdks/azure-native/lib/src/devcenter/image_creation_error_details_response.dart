@@ -12,7 +12,7 @@ class ImageCreationErrorDetailsResponse {
   /// Creates a new [ImageCreationErrorDetailsResponse].
   /// [code] An identifier for the error.
   /// [message] A message describing the error.
-  ImageCreationErrorDetailsResponse({
+  const ImageCreationErrorDetailsResponse({
     this.code,
     this.message,
   });

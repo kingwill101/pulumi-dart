@@ -42,7 +42,7 @@ class RegionTargetTcpProxyArgs {
   /// [proxyBind] This field only applies when the forwarding rule that references
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to
   /// [region] The Region in which the created target TCP proxy should reside.
-  RegionTargetTcpProxyArgs({
+  const RegionTargetTcpProxyArgs({
     required this.backendService,
     this.description,
     this.name,

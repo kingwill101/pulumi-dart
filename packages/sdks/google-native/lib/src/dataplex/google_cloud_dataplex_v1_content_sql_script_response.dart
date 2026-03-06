@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1ContentSqlScriptResponse {
 
   /// Creates a new [GoogleCloudDataplexV1ContentSqlScriptResponse].
   /// [engine] Query Engine to be used for the Sql Query.
-  GoogleCloudDataplexV1ContentSqlScriptResponse({
+  const GoogleCloudDataplexV1ContentSqlScriptResponse({
     required this.engine,
   });
 

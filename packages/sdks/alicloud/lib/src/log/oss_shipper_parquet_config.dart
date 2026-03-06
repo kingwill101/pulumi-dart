@@ -9,7 +9,7 @@ class OssShipperParquetConfig {
   /// Creates a new [OssShipperParquetConfig].
   /// [name] Required.
   /// [type] Required.
-  OssShipperParquetConfig({
+  const OssShipperParquetConfig({
     required this.name,
     required this.type,
   });

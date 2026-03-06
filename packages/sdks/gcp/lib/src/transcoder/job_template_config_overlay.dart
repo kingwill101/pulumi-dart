@@ -15,7 +15,7 @@ class JobTemplateConfigOverlay {
   /// Creates a new [JobTemplateConfigOverlay].
   /// [animations] List of animations. The list should be chronological, without any time overlap.
   /// [image] Image overlay.
-  JobTemplateConfigOverlay({
+  const JobTemplateConfigOverlay({
     this.animations,
     this.image,
   });

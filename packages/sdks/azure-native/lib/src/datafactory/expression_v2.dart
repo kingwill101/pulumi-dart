@@ -18,7 +18,7 @@ class ExpressionV2 {
   /// [operators] Expression operator value Type: list of strings.
   /// [type] Type of expressions supported by the system. Type: string.
   /// [value] Value for Constant/Field Type: object.
-  ExpressionV2({
+  const ExpressionV2({
     this.operands,
     this.operators,
     this.type,

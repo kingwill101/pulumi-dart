@@ -25,7 +25,7 @@ class GetAddressBooksResult {
   /// [nameRegex] Optional.
   /// [names] A list of Address Book names.
   /// [outputFile] Optional.
-  GetAddressBooksResult({
+  const GetAddressBooksResult({
     required this.books,
     this.groupType,
     required this.id,

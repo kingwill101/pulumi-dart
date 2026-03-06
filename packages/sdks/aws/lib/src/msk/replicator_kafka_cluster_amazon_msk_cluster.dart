@@ -8,7 +8,7 @@ class ReplicatorKafkaClusterAmazonMskCluster {
 
   /// Creates a new [ReplicatorKafkaClusterAmazonMskCluster].
   /// [mskClusterArn] The ARN of an Amazon MSK cluster.
-  ReplicatorKafkaClusterAmazonMskCluster({
+  const ReplicatorKafkaClusterAmazonMskCluster({
     required this.mskClusterArn,
   });
 

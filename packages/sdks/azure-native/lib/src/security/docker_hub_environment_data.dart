@@ -17,7 +17,7 @@ class DockerHubEnvironmentData {
   /// [authentication] The Docker Hub organization authentication details
   /// [environmentType] The type of the environment data.
   /// [scanInterval] Scan interval in hours (value should be between 1-hour to 24-hours)
-  DockerHubEnvironmentData({
+  const DockerHubEnvironmentData({
     this.authentication,
     required this.environmentType,
     this.scanInterval,

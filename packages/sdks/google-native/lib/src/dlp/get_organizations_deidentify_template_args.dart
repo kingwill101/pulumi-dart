@@ -15,7 +15,7 @@ class GetOrganizationsDeidentifyTemplateArgs {
   /// [deidentifyTemplateId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationsDeidentifyTemplateArgs({
+  const GetOrganizationsDeidentifyTemplateArgs({
     required this.deidentifyTemplateId,
     required this.location,
     required this.organizationId,

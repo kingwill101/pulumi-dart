@@ -35,7 +35,7 @@ class ConnectToSourceSqlServerTaskOutputTaskLevelResponse {
   /// [sourceServerBrandVersion] Source server brand version
   /// [sourceServerVersion] Source server version
   /// [validationErrors] Validation errors
-  ConnectToSourceSqlServerTaskOutputTaskLevelResponse({
+  const ConnectToSourceSqlServerTaskOutputTaskLevelResponse({
     required this.agentJobs,
     required this.databaseTdeCertificateMapping,
     required this.databases,

@@ -8,7 +8,7 @@ class KubernetesClusterRdmaSharedDevicePlugin {
 
   /// Creates a new [KubernetesClusterRdmaSharedDevicePlugin].
   /// [enabled] Boolean flag whether the component is enabled or not.
-  KubernetesClusterRdmaSharedDevicePlugin({
+  const KubernetesClusterRdmaSharedDevicePlugin({
     required this.enabled,
   });
 

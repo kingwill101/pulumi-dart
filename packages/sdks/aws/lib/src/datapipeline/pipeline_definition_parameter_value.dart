@@ -11,7 +11,7 @@ class PipelineDefinitionParameterValue {
   /// Creates a new [PipelineDefinitionParameterValue].
   /// [id] ID of the parameter value.
   /// [stringValue] Field value, expressed as a String.
-  PipelineDefinitionParameterValue({
+  const PipelineDefinitionParameterValue({
     required this.id,
     required this.stringValue,
   });

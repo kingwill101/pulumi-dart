@@ -18,7 +18,7 @@ class PrivateCloudVcenter {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] State of the appliance.
   /// [version] Version of the appliance.
-  PrivateCloudVcenter({
+  const PrivateCloudVcenter({
     this.fqdn,
     this.internalIp,
     this.state,

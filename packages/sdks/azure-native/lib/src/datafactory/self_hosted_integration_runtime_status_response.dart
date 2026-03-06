@@ -69,7 +69,7 @@ class SelfHostedIntegrationRuntimeStatusResponse {
   /// [updateDelayOffset] The time in the date scheduled by service to update the integration runtime, e.g., PT03H is 3 hours
   /// [version] Version of the integration runtime.
   /// [versionStatus] Status of the integration runtime version.
-  SelfHostedIntegrationRuntimeStatusResponse({
+  const SelfHostedIntegrationRuntimeStatusResponse({
     required this.autoUpdate,
     required this.autoUpdateETA,
     required this.capabilities,

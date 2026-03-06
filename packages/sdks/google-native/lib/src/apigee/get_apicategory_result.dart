@@ -21,7 +21,7 @@ class GetApicategoryResult {
   /// [message] Description of the operation.
   /// [requestId] Unique ID of the request.
   /// [status] Status of the operation.
-  GetApicategoryResult({
+  const GetApicategoryResult({
     required this.data,
     required this.errorCode,
     required this.message,

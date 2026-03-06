@@ -40,7 +40,7 @@ class GetKustoClusterDataSetMappingResult {
   /// [provisioningState] Provisioning state of the data set mapping.
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetKustoClusterDataSetMappingResult({
+  const GetKustoClusterDataSetMappingResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.dataSetMappingStatus,

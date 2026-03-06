@@ -10,7 +10,7 @@ class AppBundleResponse {
 
   /// Creates a new [AppBundleResponse].
   /// [bundleLocation] .aab file representing the app bundle under test.
-  AppBundleResponse({
+  const AppBundleResponse({
     required this.bundleLocation,
   });
 

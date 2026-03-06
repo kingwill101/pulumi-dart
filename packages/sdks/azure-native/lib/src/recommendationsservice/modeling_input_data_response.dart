@@ -9,7 +9,7 @@ class ModelingInputDataResponse {
 
   /// Creates a new [ModelingInputDataResponse].
   /// [connectionString] Connection string to raw input data.
-  ModelingInputDataResponse({
+  const ModelingInputDataResponse({
     this.connectionString,
   });
 

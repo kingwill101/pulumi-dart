@@ -15,7 +15,7 @@ class GetServiceBindingNetworkservicesV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceBindingId] Required.
-  GetServiceBindingNetworkservicesV1beta1Args({
+  const GetServiceBindingNetworkservicesV1beta1Args({
     required this.location,
     this.project,
     required this.serviceBindingId,

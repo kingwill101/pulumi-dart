@@ -14,7 +14,7 @@ class DeliveryRuleRouteConfigurationOverrideAction {
   /// Creates a new [DeliveryRuleRouteConfigurationOverrideAction].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  DeliveryRuleRouteConfigurationOverrideAction({
+  const DeliveryRuleRouteConfigurationOverrideAction({
     required this.name,
     required this.parameters,
   });

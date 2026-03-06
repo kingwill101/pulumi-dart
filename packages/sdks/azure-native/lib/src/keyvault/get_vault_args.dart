@@ -15,7 +15,7 @@ class GetVaultArgs {
   /// Creates a new [GetVaultArgs].
   /// [resourceGroupName] The name of the Resource Group to which the vault belongs.
   /// [vaultName] The name of the vault.
-  GetVaultArgs({
+  const GetVaultArgs({
     required this.resourceGroupName,
     required this.vaultName,
   });

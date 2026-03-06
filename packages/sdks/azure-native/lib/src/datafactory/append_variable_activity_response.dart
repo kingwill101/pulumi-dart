@@ -36,7 +36,7 @@ class AppendVariableActivityResponse {
   /// [userProperties] Activity user properties.
   /// [value] Value to be appended. Type: could be a static value matching type of the variable item or Expression with resultType matching type of the variable item
   /// [variableName] Name of the variable whose value needs to be appended to.
-  AppendVariableActivityResponse({
+  const AppendVariableActivityResponse({
     this.dependsOn,
     this.description,
     required this.name,

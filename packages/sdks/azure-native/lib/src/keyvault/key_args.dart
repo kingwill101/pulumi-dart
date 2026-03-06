@@ -25,7 +25,7 @@ class KeyArgs {
   /// [resourceGroupName] The name of the resource group which contains the specified key vault.
   /// [tags] The tags that will be assigned to the key.
   /// [vaultName] The name of the key vault which contains the key to be created.
-  KeyArgs({
+  const KeyArgs({
     this.keyName,
     required this.properties,
     required this.resourceGroupName,

@@ -60,7 +60,7 @@ class HDInsightLinkedService {
   /// [type] Type of linked service.
   /// [userName] HDInsight cluster user name. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  HDInsightLinkedService({
+  const HDInsightLinkedService({
     this.annotations,
     this.clusterAuthType,
     required this.clusterUri,

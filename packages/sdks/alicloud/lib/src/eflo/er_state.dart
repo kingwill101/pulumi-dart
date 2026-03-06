@@ -30,7 +30,7 @@ class ErState {
   /// [resourceGroupId] The ID of the resource group instance.
   /// [status] Status
   /// [tags] Label List
-  ErState({
+  const ErState({
     this.createTime,
     this.description,
     this.erName,

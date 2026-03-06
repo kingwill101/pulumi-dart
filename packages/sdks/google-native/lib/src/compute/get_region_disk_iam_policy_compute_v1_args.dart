@@ -17,7 +17,7 @@ class GetRegionDiskIamPolicyComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetRegionDiskIamPolicyComputeV1Args({
+  const GetRegionDiskIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

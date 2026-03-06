@@ -8,7 +8,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfo {
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoStorageInfo].
   /// [ebsStorageInfos] Required.
-  GetClusterBrokerNodeGroupInfoStorageInfo({
+  const GetClusterBrokerNodeGroupInfoStorageInfo({
     required this.ebsStorageInfos,
   });
 

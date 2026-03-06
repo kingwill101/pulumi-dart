@@ -14,7 +14,7 @@ class AutomationRuleActionPlaybook {
   /// [logicAppId] The ID of the Logic App that defines the playbook's logic.
   /// [order] The execution order of this action.
   /// [tenantId] The ID of the Tenant that owns the playbook.
-  AutomationRuleActionPlaybook({
+  const AutomationRuleActionPlaybook({
     required this.logicAppId,
     required this.order,
     this.tenantId,

@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceVdpa {
 
   /// Creates a new [DomainDevicesInterfaceSourceVdpa].
   /// [device] Defines the specific vDPA device used for the network interface, facilitating optimized data paths.
-  DomainDevicesInterfaceSourceVdpa({
+  const DomainDevicesInterfaceSourceVdpa({
     this.device,
   });
 

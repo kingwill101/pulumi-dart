@@ -19,7 +19,7 @@ class GetPythonPackagesResult {
   /// [project] Optional.
   /// [pythonPackages] A list of all retrieved Artifact Registry Python packages. Structure is defined below.
   /// [repositoryId] Required.
-  GetPythonPackagesResult({
+  const GetPythonPackagesResult({
     required this.id,
     required this.location,
     this.project,

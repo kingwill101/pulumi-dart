@@ -9,7 +9,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact {
 
   /// Creates a new [GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact].
   /// [email] The email address used by Oracle to send notifications regarding databases
-  GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact({
+  const GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact({
     required this.email,
   });
 

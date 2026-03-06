@@ -22,7 +22,7 @@ class VersionContaineranalysisV1beta1 {
   /// [kind] Distinguishes between sentinel MIN/MAX versions and normal versions.
   /// [name] Required only when version kind is NORMAL. The main part of the version name.
   /// [revision] The iteration of the package build from the above version.
-  VersionContaineranalysisV1beta1({
+  const VersionContaineranalysisV1beta1({
     this.epoch,
     this.inclusive,
     required this.kind,

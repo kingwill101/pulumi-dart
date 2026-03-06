@@ -14,7 +14,7 @@ class Strategy {
   /// Creates a new [Strategy].
   /// [canary] Canary deployment strategy provides progressive percentage based deployments to a Target.
   /// [standard] Standard deployment strategy executes a single deploy and allows verifying the deployment.
-  Strategy({
+  const Strategy({
     this.canary,
     this.standard,
   });

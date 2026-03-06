@@ -8,7 +8,7 @@ class PacketMirroringForwardingRuleInfoComputeBeta {
 
   /// Creates a new [PacketMirroringForwardingRuleInfoComputeBeta].
   /// [url] Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
-  PacketMirroringForwardingRuleInfoComputeBeta({
+  const PacketMirroringForwardingRuleInfoComputeBeta({
     this.url,
   });
 

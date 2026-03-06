@@ -11,7 +11,7 @@ class DomainInboundIpRule {
   /// Creates a new [DomainInboundIpRule].
   /// [action] The action to take when the rule is matched. Possible values are `Allow`. Defaults to `Allow`.
   /// [ipMask] The IP mask (CIDR) to match on.
-  DomainInboundIpRule({
+  const DomainInboundIpRule({
     this.action,
     required this.ipMask,
   });

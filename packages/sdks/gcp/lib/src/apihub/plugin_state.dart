@@ -88,7 +88,7 @@ class PluginState {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] Represents the state of the plugin.
   /// [updateTime] Timestamp indicating when the plugin was last updated.
-  PluginState({
+  const PluginState({
     this.actionsConfigs,
     this.configTemplate,
     this.createTime,

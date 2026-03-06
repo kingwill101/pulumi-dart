@@ -17,7 +17,7 @@ class GetGroupUser {
   /// [path] Path to the IAM user.
   /// [userId] Stable and unique string identifying the IAM user.
   /// [userName] Name of the IAM user.
-  GetGroupUser({
+  const GetGroupUser({
     required this.arn,
     required this.path,
     required this.userId,

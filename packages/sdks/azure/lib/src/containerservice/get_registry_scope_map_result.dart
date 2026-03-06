@@ -19,7 +19,7 @@ class GetRegistryScopeMapResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [resourceGroupName] Required.
-  GetRegistryScopeMapResult({
+  const GetRegistryScopeMapResult({
     required this.actions,
     required this.containerRegistryName,
     required this.description,

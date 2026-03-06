@@ -11,7 +11,7 @@ class DestinationStateTimeline {
 
   /// Creates a new [DestinationStateTimeline].
   /// [states] (Output)
-  DestinationStateTimeline({
+  const DestinationStateTimeline({
     this.states,
   });
 

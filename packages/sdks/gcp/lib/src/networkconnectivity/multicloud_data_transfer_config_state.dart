@@ -63,7 +63,7 @@ class MulticloudDataTransferConfigState {
   /// [services] Maps services to their current or planned states. Service names are keys,
   /// [uid] The Google-generated unique ID for the MulticloudDataTransferConfig
   /// [updateTime] Time when the MulticloudDataTransferConfig resource was updated.
-  MulticloudDataTransferConfigState({
+  const MulticloudDataTransferConfigState({
     this.createTime,
     this.description,
     this.destinationsActiveCount,

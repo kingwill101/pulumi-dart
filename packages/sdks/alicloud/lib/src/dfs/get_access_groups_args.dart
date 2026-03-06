@@ -26,7 +26,7 @@ class GetAccessGroupsArgs {
   /// [orderType] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [startOffset] Optional.
-  GetAccessGroupsArgs({
+  const GetAccessGroupsArgs({
     this.ids,
     this.limit,
     this.nameRegex,

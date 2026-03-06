@@ -14,7 +14,7 @@ class ServiceGroupMonitoringAgentProcessMatchExpress {
   /// [function] The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
   /// [name] The criteria based on which the instances are matched.
   /// [value] The keyword used to match the instance name.
-  ServiceGroupMonitoringAgentProcessMatchExpress({
+  const ServiceGroupMonitoringAgentProcessMatchExpress({
     this.function,
     this.name,
     this.value,

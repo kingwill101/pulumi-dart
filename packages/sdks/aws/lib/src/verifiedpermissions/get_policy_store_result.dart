@@ -31,7 +31,7 @@ class GetPolicyStoreResult {
   /// [region] Required.
   /// [tags] Map of key-value pairs associated with the policy store.
   /// [validationSettings] Validation settings for the policy store.
-  GetPolicyStoreResult({
+  const GetPolicyStoreResult({
     required this.arn,
     required this.createdDate,
     required this.deletionProtection,

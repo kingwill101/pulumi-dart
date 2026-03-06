@@ -20,7 +20,7 @@ class GetPublicIPsPublicIp {
   /// [id] The ID of the Public IP Address
   /// [ipAddress] The IP address of the Public IP Address
   /// [name] The Name of the Public IP Address
-  GetPublicIPsPublicIp({
+  const GetPublicIPsPublicIp({
     required this.domainNameLabel,
     required this.fqdn,
     required this.id,

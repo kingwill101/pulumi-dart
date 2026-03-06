@@ -11,7 +11,7 @@ class VectorsIndexEncryptionConfiguration {
   /// Creates a new [VectorsIndexEncryptionConfiguration].
   /// [kmsKeyArn] AWS Key Management Service (KMS) customer managed key ID to use for the encryption configuration. This parameter is allowed if and only if `sse_type` is set to `aws:kms`. To specify the KMS key, you must use the format of the KMS key Amazon Resource Name (ARN).
   /// [sseType] Type of encryption to use. Valid values: `AES256`, `aws:kms`. Defaults to `AES256`.
-  VectorsIndexEncryptionConfiguration({
+  const VectorsIndexEncryptionConfiguration({
     required this.kmsKeyArn,
     required this.sseType,
   });

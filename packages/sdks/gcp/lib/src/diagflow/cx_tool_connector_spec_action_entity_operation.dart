@@ -12,7 +12,7 @@ class CxToolConnectorSpecActionEntityOperation {
   /// Creates a new [CxToolConnectorSpecActionEntityOperation].
   /// [entityId] ID of the entity.
   /// [operation] The operation to perform on the entity.
-  CxToolConnectorSpecActionEntityOperation({
+  const CxToolConnectorSpecActionEntityOperation({
     required this.entityId,
     required this.operation,
   });

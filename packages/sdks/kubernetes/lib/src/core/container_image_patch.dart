@@ -12,7 +12,7 @@ class ContainerImagePatch {
   /// Creates a new [ContainerImagePatch].
   /// [names] Names by which this image is known. e.g. ["kubernetes.example/hyperkube:v1.0.7", "cloud-vendor.registry.example/cloud-vendor/hyperkube:v1.0.7"]
   /// [sizeBytes] The size of the image in bytes.
-  ContainerImagePatch({
+  const ContainerImagePatch({
     this.names,
     this.sizeBytes,
   });

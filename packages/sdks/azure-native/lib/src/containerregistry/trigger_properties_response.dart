@@ -18,7 +18,7 @@ class TriggerPropertiesResponse {
   /// [baseImageTrigger] The trigger based on base image dependencies.
   /// [sourceTriggers] The collection of triggers based on source code repository.
   /// [timerTriggers] The collection of timer triggers.
-  TriggerPropertiesResponse({
+  const TriggerPropertiesResponse({
     this.baseImageTrigger,
     this.sourceTriggers,
     this.timerTriggers,

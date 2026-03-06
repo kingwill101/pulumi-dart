@@ -11,7 +11,7 @@ class LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget {
   /// Creates a new [LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationId] The ID of the Capacity Reservation in which to run the instance.
   /// [capacityReservationResourceGroupArn] The ARN of the Capacity Reservation resource group in which to run the instance.
-  LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget({
+  const LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget({
     this.capacityReservationId,
     this.capacityReservationResourceGroupArn,
   });

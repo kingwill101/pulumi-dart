@@ -41,7 +41,7 @@ class GetCertificateResult {
   /// [tags] Required.
   /// [validFromDate] The beginning date that the certificate is valid.
   /// [validToDate] The final date that the certificate is valid.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificateArn,
     required this.certificateCreationDate,
     required this.certificateId,

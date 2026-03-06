@@ -77,7 +77,7 @@ class TransitRouterVpcAttachmentState {
   /// [vpcId] The VPC ID.
   /// [vpcOwnerId] VpcOwnerId
   /// [zoneMappings] ZoneMappingss See `zone_mappings` below.
-  TransitRouterVpcAttachmentState({
+  const TransitRouterVpcAttachmentState({
     this.autoPublishRouteEnabled,
     this.cenId,
     this.createTime,

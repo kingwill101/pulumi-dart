@@ -23,7 +23,7 @@ class TransitGatewayRouteTableAttachmentArgs {
   /// [routingPolicyLabel] The routing policy label to apply to the Transit Gateway route table attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayRouteTableArn] ARN of the transit gateway route table for the attachment.
-  TransitGatewayRouteTableAttachmentArgs({
+  const TransitGatewayRouteTableAttachmentArgs({
     required this.peeringId,
     this.routingPolicyLabel,
     this.tags,

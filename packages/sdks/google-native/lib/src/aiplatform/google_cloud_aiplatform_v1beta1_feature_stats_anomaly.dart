@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1beta1FeatureStatsAnomaly {
   /// [score] Feature importance score, only populated when cross-feature monitoring is enabled. For now only used to represent feature attribution score within range [0, 1] for ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_SKEW and ModelDeploymentMonitoringObjectiveType.FEATURE_ATTRIBUTION_DRIFT.
   /// [startTime] The start timestamp of window where stats were generated. For objectives where time window doesn't make sense (e.g. Featurestore Snapshot Monitoring), start_time is only used to indicate the monitoring intervals, so it always equals to (end_time - monitoring_interval).
   /// [statsUri] Path of the stats file for current feature values in Cloud Storage bucket. Format: gs:////stats. Example: gs://monitoring_bucket/feature_name/stats. Stats are stored as binary format with Protobuf message [tensorflow.metadata.v0.FeatureNameStatistics](https://github.com/tensorflow/metadata/blob/master/tensorflow_metadata/proto/v0/statistics.proto).
-  GoogleCloudAiplatformV1beta1FeatureStatsAnomaly({
+  const GoogleCloudAiplatformV1beta1FeatureStatsAnomaly({
     this.anomalyDetectionThreshold,
     this.anomalyUri,
     this.distributionDeviation,

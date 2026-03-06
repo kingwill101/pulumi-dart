@@ -33,7 +33,7 @@ class DatasetIamBindingArgs {
   /// [datasetId] The dataset ID, in the form
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  DatasetIamBindingArgs({
+  const DatasetIamBindingArgs({
     this.condition,
     required this.datasetId,
     required this.members,

@@ -11,7 +11,7 @@ class GetInboundSsoAssignmentCloudidentityV1beta1Args {
 
   /// Creates a new [GetInboundSsoAssignmentCloudidentityV1beta1Args].
   /// [inboundSsoAssignmentId] Required.
-  GetInboundSsoAssignmentCloudidentityV1beta1Args({
+  const GetInboundSsoAssignmentCloudidentityV1beta1Args({
     required this.inboundSsoAssignmentId,
   });
 

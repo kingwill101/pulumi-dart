@@ -18,7 +18,7 @@ class GetIntentArgs {
   /// [name] Name of the intent. The name is case sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the intent.
-  GetIntentArgs({
+  const GetIntentArgs({
     required this.name,
     this.region,
     this.version,

@@ -61,7 +61,7 @@ class VirtualMachineScaleSetVMInstanceViewResponse {
   /// [statuses] The resource status information.
   /// [vmAgent] The VM Agent running on the virtual machine.
   /// [vmHealth] The health status for the VM.
-  VirtualMachineScaleSetVMInstanceViewResponse({
+  const VirtualMachineScaleSetVMInstanceViewResponse({
     required this.assignedHost,
     this.bootDiagnostics,
     this.computerName,

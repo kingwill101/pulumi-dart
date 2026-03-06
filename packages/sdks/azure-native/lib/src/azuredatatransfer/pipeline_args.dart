@@ -25,7 +25,7 @@ class PipelineArgs {
   /// [properties] Properties of pipeline
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PipelineArgs({
+  const PipelineArgs({
     this.location,
     this.pipelineName,
     this.properties,

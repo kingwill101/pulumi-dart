@@ -11,7 +11,7 @@ class AllowedUnauthorizedActionsExtension {
   /// Creates a new [AllowedUnauthorizedActionsExtension].
   /// [action] The action.
   /// [intent] The intent.
-  AllowedUnauthorizedActionsExtension({
+  const AllowedUnauthorizedActionsExtension({
     this.action,
     this.intent,
   });

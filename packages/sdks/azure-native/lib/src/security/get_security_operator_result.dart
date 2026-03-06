@@ -21,7 +21,7 @@ class GetSecurityOperatorResult {
   /// [identity] Identity for the resource.
   /// [name] Resource name
   /// [type] Resource type
-  GetSecurityOperatorResult({
+  const GetSecurityOperatorResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

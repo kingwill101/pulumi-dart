@@ -30,7 +30,7 @@ class FlowProfileRulesets {
   /// [mimeFilters] Rules for filtering files based on MIME types.
   /// [textMatching] Rules for detecting and blocking specific text patterns.
   /// [xmlFilters] Rules for filtering XML content using XSD schemas.
-  FlowProfileRulesets({
+  const FlowProfileRulesets({
     this.antivirus,
     this.archives,
     this.dataSize,

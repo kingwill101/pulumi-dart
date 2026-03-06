@@ -16,7 +16,7 @@ class PrivateEndpointConnection {
   /// [privateEndpoint] Specifies the private endpoint.
   /// [privateLinkServiceConnectionState] Specifies the connection state.
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
-  PrivateEndpointConnection({
+  const PrivateEndpointConnection({
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     this.provisioningState,

@@ -12,7 +12,7 @@ class EventingStatusResponse {
   /// Creates a new [EventingStatusResponse].
   /// [description] Description of error if State is set to "ERROR".
   /// [state] State.
-  EventingStatusResponse({
+  const EventingStatusResponse({
     required this.description,
     required this.state,
   });

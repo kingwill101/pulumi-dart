@@ -32,7 +32,7 @@ class GetRegionResult {
   /// [resolvers] Required.
   /// [siteType] The type of this region.
   /// [status] This region’s current operational status (ok or outage).
-  GetRegionResult({
+  const GetRegionResult({
     required this.capabilities,
     required this.country,
     required this.id,

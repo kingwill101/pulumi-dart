@@ -62,7 +62,7 @@ class InstanceFromTemplateScheduling {
   /// [provisioningModel] Whether the instance is spot. If this is set as SPOT.
   /// [skipGuestOsShutdown] Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   /// [terminationTime] Specifies the timestamp, when the instance will be terminated,
-  InstanceFromTemplateScheduling({
+  const InstanceFromTemplateScheduling({
     this.automaticRestart,
     this.availabilityDomain,
     this.gracefulShutdown,

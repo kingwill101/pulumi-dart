@@ -15,7 +15,7 @@ class GetEfsFileSystemArgs {
   /// Creates a new [GetEfsFileSystemArgs].
   /// [name] Name of EfsFileSystem
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEfsFileSystemArgs({
+  const GetEfsFileSystemArgs({
     required this.name,
     required this.resourceGroupName,
   });

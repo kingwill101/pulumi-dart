@@ -16,7 +16,7 @@ class BootDiagnosticsInstanceViewResponse {
   /// [consoleScreenshotBlobUri] The console screenshot blob URI. **Note:** This will **not** be set if boot diagnostics is currently enabled with managed storage.
   /// [serialConsoleLogBlobUri] The serial console log blob Uri. **Note:** This will **not** be set if boot diagnostics is currently enabled with managed storage.
   /// [status] The boot diagnostics status information for the VM. **Note:** It will be set only if there are errors encountered in enabling boot diagnostics.
-  BootDiagnosticsInstanceViewResponse({
+  const BootDiagnosticsInstanceViewResponse({
     required this.consoleScreenshotBlobUri,
     required this.serialConsoleLogBlobUri,
     required this.status,

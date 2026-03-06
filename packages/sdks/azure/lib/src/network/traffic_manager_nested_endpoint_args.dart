@@ -52,7 +52,7 @@ class TrafficManagerNestedEndpointArgs {
   /// [subnets] One or more `subnet` blocks as defined below. Changing this forces a new resource to be created.
   /// [targetResourceId] The resource id of an Azure resource to target.
   /// [weight] Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
-  TrafficManagerNestedEndpointArgs({
+  const TrafficManagerNestedEndpointArgs({
     this.customHeaders,
     this.enabled,
     this.endpointLocation,

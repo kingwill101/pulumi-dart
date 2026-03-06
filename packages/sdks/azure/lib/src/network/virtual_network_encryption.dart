@@ -10,7 +10,7 @@ class VirtualNetworkEncryption {
 
   /// Creates a new [VirtualNetworkEncryption].
   /// [enforcement] Specifies if the encrypted Virtual Network allows VM that does not support encryption. Possible values are `DropUnencrypted` and `AllowUnencrypted`.
-  VirtualNetworkEncryption({
+  const VirtualNetworkEncryption({
     required this.enforcement,
   });
 

@@ -8,7 +8,7 @@ class ExportTar {
 
   /// Creates a new [ExportTar].
   /// [dest] Output path.
-  ExportTar({
+  const ExportTar({
     required this.dest,
   });
 

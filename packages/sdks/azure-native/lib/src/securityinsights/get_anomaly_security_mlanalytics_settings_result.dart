@@ -72,7 +72,7 @@ class GetAnomalySecurityMLAnalyticsSettingsResult {
   /// [tactics] The tactics of the SecurityMLAnalyticsSettings
   /// [techniques] The techniques of the SecurityMLAnalyticsSettings
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAnomalySecurityMLAnalyticsSettingsResult({
+  const GetAnomalySecurityMLAnalyticsSettingsResult({
     this.anomalySettingsVersion,
     required this.anomalyVersion,
     required this.azureApiVersion,

@@ -12,7 +12,7 @@ class ManagedIdentitySetting {
   /// Creates a new [ManagedIdentitySetting].
   /// [identity] The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
   /// [lifecycle] Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
-  ManagedIdentitySetting({
+  const ManagedIdentitySetting({
     required this.identity,
     this.lifecycle,
   });

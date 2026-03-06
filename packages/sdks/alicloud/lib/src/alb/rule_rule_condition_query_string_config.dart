@@ -9,7 +9,7 @@ class RuleRuleConditionQueryStringConfig {
 
   /// Creates a new [RuleRuleConditionQueryStringConfig].
   /// [values] Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-  RuleRuleConditionQueryStringConfig({
+  const RuleRuleConditionQueryStringConfig({
     this.values,
   });
 

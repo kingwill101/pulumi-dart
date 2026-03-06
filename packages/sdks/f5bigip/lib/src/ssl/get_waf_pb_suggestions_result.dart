@@ -20,7 +20,7 @@ class GetWafPbSuggestionsResult {
   /// [partition] Required.
   /// [policyId] System generated id of the WAF policy
   /// [policyName] Required.
-  GetWafPbSuggestionsResult({
+  const GetWafPbSuggestionsResult({
     required this.id,
     required this.json,
     required this.minimumLearningScore,

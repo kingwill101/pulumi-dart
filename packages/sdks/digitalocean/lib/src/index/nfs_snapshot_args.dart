@@ -18,7 +18,7 @@ class NfsSnapshotArgs {
   /// [name] A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
   /// [region] The region where the NFS snapshot will be created.
   /// [shareId] The ID of the NFS share to snapshot.
-  NfsSnapshotArgs({
+  const NfsSnapshotArgs({
     this.name,
     required this.region,
     required this.shareId,

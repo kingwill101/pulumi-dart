@@ -34,7 +34,7 @@ class AutoScalingAutoScalingGroupPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  AutoScalingAutoScalingGroupPropertiesResponse({
+  const AutoScalingAutoScalingGroupPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

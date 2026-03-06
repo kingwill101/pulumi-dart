@@ -21,7 +21,7 @@ class DatabaseInstancePropertiesResponse {
   /// [dwDatabaseId] Resource Id of warehouse database on database instance
   /// [dwDatabaseName] Name of warehouse database on database instance
   /// [operationalDatabaseId] Resource Id of operational database on database instance
-  DatabaseInstancePropertiesResponse({
+  const DatabaseInstancePropertiesResponse({
     required this.databaseFqdn,
     this.databaseInstanceId,
     required this.dwDatabaseId,

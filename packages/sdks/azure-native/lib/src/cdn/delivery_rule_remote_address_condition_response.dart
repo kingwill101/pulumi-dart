@@ -14,7 +14,7 @@ class DeliveryRuleRemoteAddressConditionResponse {
   /// Creates a new [DeliveryRuleRemoteAddressConditionResponse].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleRemoteAddressConditionResponse({
+  const DeliveryRuleRemoteAddressConditionResponse({
     required this.name,
     required this.parameters,
   });

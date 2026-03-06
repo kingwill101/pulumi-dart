@@ -37,7 +37,7 @@ class GetConsentResult {
   /// [state] Indicates the current state of this Consent.
   /// [ttl] Input only. The time to live for this Consent from when it is created.
   /// [userId] User's UUID provided by the client.
-  GetConsentResult({
+  const GetConsentResult({
     required this.consentArtifact,
     required this.expireTime,
     required this.metadata,

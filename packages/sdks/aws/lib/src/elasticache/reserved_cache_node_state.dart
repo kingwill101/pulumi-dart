@@ -59,7 +59,7 @@ class ReservedCacheNodeState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [usagePrice] Hourly price charged for this reserved cache node.
-  ReservedCacheNodeState({
+  const ReservedCacheNodeState({
     this.arn,
     this.cacheNodeCount,
     this.cacheNodeType,

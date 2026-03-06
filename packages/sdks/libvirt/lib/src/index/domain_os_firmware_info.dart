@@ -9,7 +9,7 @@ class DomainOsFirmwareInfo {
 
   /// Creates a new [DomainOsFirmwareInfo].
   /// [features] Lists the optional features supported by the firmware.
-  DomainOsFirmwareInfo({
+  const DomainOsFirmwareInfo({
     this.features,
   });
 

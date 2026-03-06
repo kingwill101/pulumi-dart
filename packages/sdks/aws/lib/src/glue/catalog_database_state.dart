@@ -45,7 +45,7 @@ class CatalogDatabaseState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetDatabase] Configuration block for a target database for resource linking. See `target_database` below.
-  CatalogDatabaseState({
+  const CatalogDatabaseState({
     this.arn,
     this.catalogId,
     this.createTableDefaultPermissions,

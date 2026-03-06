@@ -15,7 +15,7 @@ class GetBillingProfileArgs {
   /// Creates a new [GetBillingProfileArgs].
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [billingProfileName] The ID that uniquely identifies a billing profile.
-  GetBillingProfileArgs({
+  const GetBillingProfileArgs({
     required this.billingAccountName,
     required this.billingProfileName,
   });

@@ -43,7 +43,7 @@ class AgenticApplicationResponse {
   /// [provisioningState] Provisioning state of the application.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [trafficRoutingPolicy] Gets or sets the traffic routing policy for the application's deployments.
-  AgenticApplicationResponse({
+  const AgenticApplicationResponse({
     this.agentIdentityBlueprint,
     this.agents,
     this.authorizationPolicy,

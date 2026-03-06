@@ -11,7 +11,7 @@ class ResourceGroupRegionStatus {
   /// Creates a new [ResourceGroupRegionStatus].
   /// [regionId] The status of the region.
   /// [status] The status of the resource group.
-  ResourceGroupRegionStatus({
+  const ResourceGroupRegionStatus({
     this.regionId,
     this.status,
   });

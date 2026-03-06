@@ -12,7 +12,7 @@ class DatabaseEngineInfoResponse {
   /// Creates a new [DatabaseEngineInfoResponse].
   /// [engine] Engine type.
   /// [version] Engine version, for example "12.c.1".
-  DatabaseEngineInfoResponse({
+  const DatabaseEngineInfoResponse({
     required this.engine,
     required this.version,
   });

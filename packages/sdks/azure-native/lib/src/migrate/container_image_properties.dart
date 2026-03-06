@@ -25,7 +25,7 @@ class ContainerImageProperties {
   /// [registryProperties] Class for ACR Properties.
   /// [runId] Gets or sets the RunId.
   /// [runStatus] Gets or sets the RunStatus.
-  ContainerImageProperties({
+  const ContainerImageProperties({
     this.dockerfile,
     this.imageName,
     this.imageTag,

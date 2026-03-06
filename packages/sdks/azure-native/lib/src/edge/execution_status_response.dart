@@ -19,7 +19,7 @@ class ExecutionStatusResponse {
   /// [status] Deployment status
   /// [statusMessage] status details
   /// [updateTime] The lastModified timestamp of the Status
-  ExecutionStatusResponse({
+  const ExecutionStatusResponse({
     this.stageHistory,
     this.status,
     this.statusMessage,

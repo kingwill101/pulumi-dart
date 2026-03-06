@@ -23,7 +23,7 @@ class ControlPlaneAccessArgs {
   /// [analyticsPublisherIdentities] Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
   /// [name] Name of the Apigee organization.
   /// [synchronizerIdentities] Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
-  ControlPlaneAccessArgs({
+  const ControlPlaneAccessArgs({
     this.analyticsPublisherIdentities,
     this.name,
     this.synchronizerIdentities,

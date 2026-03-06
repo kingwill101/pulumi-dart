@@ -24,7 +24,7 @@ class StaticMemberArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [resourceId] Resource Id.
   /// [staticMemberName] The name of the static member.
-  StaticMemberArgs({
+  const StaticMemberArgs({
     required this.networkGroupName,
     required this.networkManagerName,
     required this.resourceGroupName,

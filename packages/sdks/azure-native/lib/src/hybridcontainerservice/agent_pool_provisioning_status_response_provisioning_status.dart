@@ -16,7 +16,7 @@ class AgentPoolProvisioningStatusResponseProvisioningStatus {
   /// [operationId] Optional.
   /// [phase] Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
   /// [status] Optional.
-  AgentPoolProvisioningStatusResponseProvisioningStatus({
+  const AgentPoolProvisioningStatusResponseProvisioningStatus({
     this.error,
     this.operationId,
     this.phase,

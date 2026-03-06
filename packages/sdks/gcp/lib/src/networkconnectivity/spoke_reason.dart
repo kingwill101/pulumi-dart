@@ -14,7 +14,7 @@ class SpokeReason {
   /// [code] The code associated with this reason.
   /// [message] Human-readable details about this reason.
   /// [userDetails] Additional information provided by the user in the RejectSpoke call.
-  SpokeReason({
+  const SpokeReason({
     this.code,
     this.message,
     this.userDetails,

@@ -18,7 +18,7 @@ class GetRegionsArgs {
   /// [current] Set to true to match only the region configured in the provider. Default value: `true`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [regionId] You can use specified region_id to find the region and available zones information that supports ClickHouse.
-  GetRegionsArgs({
+  const GetRegionsArgs({
     this.current,
     this.outputFile,
     this.regionId,

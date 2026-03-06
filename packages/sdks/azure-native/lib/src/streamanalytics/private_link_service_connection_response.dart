@@ -19,7 +19,7 @@ class PrivateLinkServiceConnectionResponse {
   /// [privateLinkServiceConnectionState] A collection of read-only information about the state of the connection to the private remote resource.
   /// [privateLinkServiceId] The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
   /// [requestMessage] A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
-  PrivateLinkServiceConnectionResponse({
+  const PrivateLinkServiceConnectionResponse({
     this.groupIds,
     this.privateLinkServiceConnectionState,
     this.privateLinkServiceId,

@@ -11,7 +11,7 @@ class CxGeneratorPlaceholder {
   /// Creates a new [CxGeneratorPlaceholder].
   /// [id] Unique ID used to map custom placeholder to parameters in fulfillment.
   /// [name] Custom placeholder value in the prompt text.
-  CxGeneratorPlaceholder({
+  const CxGeneratorPlaceholder({
     this.id,
     this.name,
   });

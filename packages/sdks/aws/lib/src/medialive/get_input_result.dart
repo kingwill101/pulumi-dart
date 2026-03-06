@@ -58,7 +58,7 @@ class GetInputResult {
   /// [state] The state of the input.
   /// [tags] A map of tags assigned to the Input.
   /// [type] The type of the input.
-  GetInputResult({
+  const GetInputResult({
     required this.arn,
     required this.attachedChannels,
     required this.destinations,

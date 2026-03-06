@@ -31,7 +31,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
   /// [minReplicas] The minimum number of instances.
   /// [nextScaleMetrics] Next monitoring indicator elasticity list
   /// [nextScaleTimePeriod] The next cycle of monitoring indicator elasticity.
-  GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus({
+  const GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus({
     required this.currentMetrics,
     required this.currentReplicas,
     required this.desiredReplicas,

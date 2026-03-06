@@ -11,7 +11,7 @@ class ConnectionAuthParametersOauthParametersClientParameters {
   /// Creates a new [ConnectionAuthParametersOauthParametersClientParameters].
   /// [clientId] The ID of the client.
   /// [clientSecret] The AccessKey secret of the client.
-  ConnectionAuthParametersOauthParametersClientParameters({
+  const ConnectionAuthParametersOauthParametersClientParameters({
     this.clientId,
     this.clientSecret,
   });

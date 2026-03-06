@@ -12,7 +12,7 @@ class EnvelopeSignatureResponseContaineranalysisV1alpha1 {
   /// Creates a new [EnvelopeSignatureResponseContaineranalysisV1alpha1].
   /// [keyid] A reference id to the key being used for signing
   /// [sig] The signature itself
-  EnvelopeSignatureResponseContaineranalysisV1alpha1({
+  const EnvelopeSignatureResponseContaineranalysisV1alpha1({
     required this.keyid,
     required this.sig,
   });

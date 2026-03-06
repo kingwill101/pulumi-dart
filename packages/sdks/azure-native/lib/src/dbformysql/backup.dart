@@ -15,7 +15,7 @@ class Backup {
   /// [backupIntervalHours] Backup interval hours for the server.
   /// [backupRetentionDays] Backup retention days for the server.
   /// [geoRedundantBackup] Whether or not geo redundant backup is enabled.
-  Backup({
+  const Backup({
     this.backupIntervalHours,
     this.backupRetentionDays,
     this.geoRedundantBackup,

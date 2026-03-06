@@ -60,7 +60,7 @@ class AppSpecStaticSite {
   /// [outputDir] An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
   /// [routes] An HTTP paths that should be routed to this component.
   /// [sourceDir] An optional path to the working directory to use for the build.
-  AppSpecStaticSite({
+  const AppSpecStaticSite({
     this.bitbucket,
     this.buildCommand,
     this.catchallDocument,

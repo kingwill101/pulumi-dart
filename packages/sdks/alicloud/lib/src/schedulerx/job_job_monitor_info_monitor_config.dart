@@ -27,7 +27,7 @@ class JobJobMonitorInfoMonitorConfig {
   /// [timeout] Timeout threshold, unit s, default 7200.
   /// [timeoutEnable] Time-out alarm switch. The values are as follows:
   /// [timeoutKillEnable] The trigger switch is terminated by timeout and is turned off by default.
-  JobJobMonitorInfoMonitorConfig({
+  const JobJobMonitorInfoMonitorConfig({
     this.failEnable,
     this.missWorkerEnable,
     this.sendChannel,

@@ -18,7 +18,7 @@ class AutomationRuleCriteriaConfidence {
   /// [gte] The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   /// [lt] Optional.
   /// [lte] The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  AutomationRuleCriteriaConfidence({
+  const AutomationRuleCriteriaConfidence({
     this.eq,
     this.gt,
     this.gte,

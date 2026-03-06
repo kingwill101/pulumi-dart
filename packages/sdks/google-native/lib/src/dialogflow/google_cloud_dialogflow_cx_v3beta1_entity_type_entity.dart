@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1EntityTypeEntity {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EntityTypeEntity].
   /// [synonyms] A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
   /// [value] The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-  GoogleCloudDialogflowCxV3beta1EntityTypeEntity({
+  const GoogleCloudDialogflowCxV3beta1EntityTypeEntity({
     required this.synonyms,
     required this.value,
   });

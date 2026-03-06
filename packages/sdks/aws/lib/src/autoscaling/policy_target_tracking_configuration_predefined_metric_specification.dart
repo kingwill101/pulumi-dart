@@ -11,7 +11,7 @@ class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
   /// Creates a new [PolicyTargetTrackingConfigurationPredefinedMetricSpecification].
   /// [predefinedMetricType] Metric type.
   /// [resourceLabel] Identifies the resource associated with the metric type.
-  PolicyTargetTrackingConfigurationPredefinedMetricSpecification({
+  const PolicyTargetTrackingConfigurationPredefinedMetricSpecification({
     required this.predefinedMetricType,
     this.resourceLabel,
   });

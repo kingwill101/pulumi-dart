@@ -13,7 +13,7 @@ class InstanceAttachmentEnaSrdSpecificationResponse {
   /// Creates a new [InstanceAttachmentEnaSrdSpecificationResponse].
   /// [enaSrdEnabled] &lt;p&gt;Indicates whether ENA Express is enabled for the network interface.&lt;/p&gt;
   /// [enaSrdUdpSpecification] &lt;p&gt;Configures ENA Express for UDP network traffic.&lt;/p&gt;
-  InstanceAttachmentEnaSrdSpecificationResponse({
+  const InstanceAttachmentEnaSrdSpecificationResponse({
     this.enaSrdEnabled,
     this.enaSrdUdpSpecification,
   });

@@ -15,7 +15,7 @@ class NicResponse {
   /// [lldpNeighbor] The information about the device connected to this NIC.
   /// [macAddress] The MAC address associated with this NIC.
   /// [name] The name of the NIC/interface.
-  NicResponse({
+  const NicResponse({
     required this.lldpNeighbor,
     required this.macAddress,
     required this.name,

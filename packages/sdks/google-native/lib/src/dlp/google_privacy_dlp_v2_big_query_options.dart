@@ -29,7 +29,7 @@ class GooglePrivacyDlpV2BigQueryOptions {
   /// [rowsLimitPercent] Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
   /// [sampleMethod] Optional.
   /// [tableReference] Complete BigQuery table reference.
-  GooglePrivacyDlpV2BigQueryOptions({
+  const GooglePrivacyDlpV2BigQueryOptions({
     this.excludedFields,
     this.identifyingFields,
     this.includedFields,

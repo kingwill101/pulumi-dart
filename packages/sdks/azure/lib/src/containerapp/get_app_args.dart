@@ -18,7 +18,7 @@ class GetAppArgs {
   /// [name] The name of the Container App.
   /// [readSecrets] Should the data source read the secrets from the Container App? Defaults to `true`.
   /// [resourceGroupName] The name of the Resource Group where this Container App exists.
-  GetAppArgs({
+  const GetAppArgs({
     required this.name,
     this.readSecrets,
     required this.resourceGroupName,

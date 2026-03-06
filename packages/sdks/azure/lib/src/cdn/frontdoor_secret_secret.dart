@@ -9,7 +9,7 @@ class FrontdoorSecretSecret {
 
   /// Creates a new [FrontdoorSecretSecret].
   /// [customerCertificates] A `customer_certificate` block as defined below. Changing this forces a new Front Door Secret to be created.
-  FrontdoorSecretSecret({
+  const FrontdoorSecretSecret({
     required this.customerCertificates,
   });
 

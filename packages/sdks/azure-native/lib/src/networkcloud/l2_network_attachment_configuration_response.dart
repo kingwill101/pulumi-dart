@@ -11,7 +11,7 @@ class L2NetworkAttachmentConfigurationResponse {
   /// Creates a new [L2NetworkAttachmentConfigurationResponse].
   /// [networkId] The resource ID of the network that is being configured for attachment.
   /// [pluginType] The indicator of how this network will be utilized by the Kubernetes cluster.
-  L2NetworkAttachmentConfigurationResponse({
+  const L2NetworkAttachmentConfigurationResponse({
     required this.networkId,
     this.pluginType,
   });

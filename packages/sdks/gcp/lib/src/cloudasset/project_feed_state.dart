@@ -53,7 +53,7 @@ class ProjectFeedState {
   /// [feedOutputConfig] Output configuration for asset feed destination.
   /// [name] The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
   /// [project] The ID of the project in which the resource belongs.
-  ProjectFeedState({
+  const ProjectFeedState({
     this.assetNames,
     this.assetTypes,
     this.billingProject,

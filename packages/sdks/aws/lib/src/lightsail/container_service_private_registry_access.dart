@@ -9,7 +9,7 @@ class ContainerServicePrivateRegistryAccess {
 
   /// Creates a new [ContainerServicePrivateRegistryAccess].
   /// [ecrImagePullerRole] Configuration to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.
-  ContainerServicePrivateRegistryAccess({
+  const ContainerServicePrivateRegistryAccess({
     this.ecrImagePullerRole,
   });
 

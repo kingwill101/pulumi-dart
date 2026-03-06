@@ -72,7 +72,7 @@ class DatascanDataQualitySpecRule {
   /// [tableConditionExpectation] Table rule which evaluates whether the provided expression is true.
   /// [threshold] The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
   /// [uniquenessExpectation] Row-level rule which evaluates whether each column value is unique.
-  DatascanDataQualitySpecRule({
+  const DatascanDataQualitySpecRule({
     this.column,
     this.description,
     required this.dimension,

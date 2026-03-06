@@ -22,7 +22,7 @@ class SourceIamMemberArgs {
   /// [organization] The organization whose Cloud Security Command Center the Source
   /// [role] Required.
   /// [source] Required.
-  SourceIamMemberArgs({
+  const SourceIamMemberArgs({
     this.condition,
     required this.member,
     required this.organization,

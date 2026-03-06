@@ -25,7 +25,7 @@ class SpringCloudConfigurationServiceArgs {
   /// [refreshIntervalInSeconds] Specifies how often to check repository updates. Minimum value is 0.
   /// [repositories] One or more `repository` blocks as defined below.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Configuration Service to be created.
-  SpringCloudConfigurationServiceArgs({
+  const SpringCloudConfigurationServiceArgs({
     this.generation,
     this.name,
     this.refreshIntervalInSeconds,

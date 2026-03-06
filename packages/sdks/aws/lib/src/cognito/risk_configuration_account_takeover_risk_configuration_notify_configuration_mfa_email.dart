@@ -14,7 +14,7 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEma
   /// [htmlBody] The email HTML body.
   /// [subject] The email subject.
   /// [textBody] The email text body.
-  RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail({
+  const RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail({
     required this.htmlBody,
     required this.subject,
     required this.textBody,

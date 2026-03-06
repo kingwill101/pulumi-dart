@@ -28,7 +28,7 @@ class DaprPropertiesResponse {
   /// [scopes] The dapr component scopes
   /// [secretStoreComponent] The name of a secret store dapr to retrieve secret
   /// [version] The dapr component version
-  DaprPropertiesResponse({
+  const DaprPropertiesResponse({
     required this.bindingComponentDirection,
     this.componentType,
     this.metadata,

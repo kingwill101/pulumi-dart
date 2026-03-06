@@ -11,7 +11,7 @@ class GetClusterSecretSyncConfigRotationConfig {
   /// Creates a new [GetClusterSecretSyncConfigRotationConfig].
   /// [enabled] Enable the Secret sync auto rotation.
   /// [rotationInterval] The interval between two consecutive rotations. Default rotation interval is 2 minutes
-  GetClusterSecretSyncConfigRotationConfig({
+  const GetClusterSecretSyncConfigRotationConfig({
     required this.enabled,
     required this.rotationInterval,
   });

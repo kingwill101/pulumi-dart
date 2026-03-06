@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2DeidentifyTemplateResponse {
   /// [displayName] Display name (max 256 chars).
   /// [name] The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
   /// [updateTime] The last update timestamp of an inspectTemplate.
-  GooglePrivacyDlpV2DeidentifyTemplateResponse({
+  const GooglePrivacyDlpV2DeidentifyTemplateResponse({
     required this.createTime,
     required this.deidentifyConfig,
     required this.description,

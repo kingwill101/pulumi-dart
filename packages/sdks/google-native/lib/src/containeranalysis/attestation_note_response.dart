@@ -10,7 +10,7 @@ class AttestationNoteResponse {
 
   /// Creates a new [AttestationNoteResponse].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AttestationNoteResponse({
+  const AttestationNoteResponse({
     required this.hint,
   });
 

@@ -8,7 +8,7 @@ class RouterBgpPeerCustomLearnedIpRangeResponseComputeV1 {
 
   /// Creates a new [RouterBgpPeerCustomLearnedIpRangeResponseComputeV1].
   /// [range] The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
-  RouterBgpPeerCustomLearnedIpRangeResponseComputeV1({
+  const RouterBgpPeerCustomLearnedIpRangeResponseComputeV1({
     required this.range,
   });
 

@@ -9,7 +9,7 @@ class BackupPolicyResponse {
 
   /// Creates a new [BackupPolicyResponse].
   /// [status] Set the backup policy status for the file system.  +   *ENABLED* - Turns automatic backups on for the file system.   +   *DISABLED* - Turns automatic backups off for the file system.
-  BackupPolicyResponse({
+  const BackupPolicyResponse({
     this.status,
   });
 

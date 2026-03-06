@@ -19,7 +19,7 @@ class ManualJobTriggerConfigResponse {
   /// [retryLimit] Maximum number of retries before failing the job.
   /// [timeoutInSeconds] Maximum number of seconds an execution is allowed to run.
   /// [triggerType] Type of job trigger
-  ManualJobTriggerConfigResponse({
+  const ManualJobTriggerConfigResponse({
     this.parallelism,
     this.retryLimit,
     this.timeoutInSeconds,

@@ -10,7 +10,7 @@ class ListContainerAppSecretsResult {
 
   /// Creates a new [ListContainerAppSecretsResult].
   /// [value] Collection of resources.
-  ListContainerAppSecretsResult({
+  const ListContainerAppSecretsResult({
     required this.value,
   });
 

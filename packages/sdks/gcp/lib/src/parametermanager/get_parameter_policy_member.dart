@@ -17,7 +17,7 @@ class GetParameterPolicyMember {
   /// Creates a new [GetParameterPolicyMember].
   /// [iamPolicyNamePrincipal] IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
   /// [iamPolicyUidPrincipal] IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
-  GetParameterPolicyMember({
+  const GetParameterPolicyMember({
     required this.iamPolicyNamePrincipal,
     required this.iamPolicyUidPrincipal,
   });

@@ -14,7 +14,7 @@ class RegistryEndpointArtifactPullSecretAuthenticationResponse {
   /// Creates a new [RegistryEndpointArtifactPullSecretAuthenticationResponse].
   /// [artifactPullSecretSettings] Artifact Pull Secret authentication properties
   /// [method] The authentication method.
-  RegistryEndpointArtifactPullSecretAuthenticationResponse({
+  const RegistryEndpointArtifactPullSecretAuthenticationResponse({
     required this.artifactPullSecretSettings,
     required this.method,
   });

@@ -34,7 +34,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse {
   /// [onlyFinalAttempt] For either events or tasks, depending on the type of alert, count only final attempts, not retries.
   /// [thresholdType] The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
   /// [thresholdValue] The metric value, above or below which the alert should be triggered.
-  GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse({
+  const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse({
     required this.aggregationPeriod,
     required this.alertThreshold,
     required this.disableAlert,

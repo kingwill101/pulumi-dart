@@ -9,7 +9,7 @@ class GetTableTtl {
   /// Creates a new [GetTableTtl].
   /// [attributeName] Required.
   /// [enabled] Required.
-  GetTableTtl({
+  const GetTableTtl({
     required this.attributeName,
     required this.enabled,
   });

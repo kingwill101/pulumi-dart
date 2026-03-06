@@ -43,7 +43,7 @@ class CollectorArgs {
   /// [project] Optional.
   /// [requestId] Optional. An optional request ID to identify requests.
   /// [serviceAccount] Service Account email used to ingest data to this Collector.
-  CollectorArgs({
+  const CollectorArgs({
     this.collectionDays,
     required this.collectorId,
     this.description,

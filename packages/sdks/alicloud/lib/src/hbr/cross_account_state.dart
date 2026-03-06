@@ -18,7 +18,7 @@ class CrossAccountState {
   /// [createTime] Timestamp of the creation time
   /// [crossAccountRoleName] The name of RAM role that the backup account authorizes the management account to manage its resources
   /// [crossAccountUserId] The uid of the backup account.
-  CrossAccountState({
+  const CrossAccountState({
     this.alias,
     this.createTime,
     this.crossAccountRoleName,

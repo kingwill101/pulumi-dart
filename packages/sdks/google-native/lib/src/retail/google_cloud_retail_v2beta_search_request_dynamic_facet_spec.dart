@@ -10,7 +10,7 @@ class GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
 
   /// Creates a new [GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec].
   /// [mode] Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
-  GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec({
+  const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec({
     this.mode,
   });
 

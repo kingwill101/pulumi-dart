@@ -26,7 +26,7 @@ class AmlCompute {
   /// [disableLocalAuth] Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   /// [properties] Properties of AmlCompute
   /// [resourceId] ARM resource id of the underlying compute
-  AmlCompute({
+  const AmlCompute({
     this.computeLocation,
     required this.computeType,
     this.description,

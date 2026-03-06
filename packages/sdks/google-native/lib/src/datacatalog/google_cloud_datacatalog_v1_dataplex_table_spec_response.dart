@@ -17,7 +17,7 @@ class GoogleCloudDatacatalogV1DataplexTableSpecResponse {
   /// [dataplexSpec] Common Dataplex fields.
   /// [externalTables] List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
   /// [userManaged] Indicates if the table schema is managed by the user or not.
-  GoogleCloudDatacatalogV1DataplexTableSpecResponse({
+  const GoogleCloudDatacatalogV1DataplexTableSpecResponse({
     required this.dataplexSpec,
     required this.externalTables,
     required this.userManaged,

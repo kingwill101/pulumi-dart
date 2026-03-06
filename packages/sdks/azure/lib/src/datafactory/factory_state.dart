@@ -49,7 +49,7 @@ class FactoryState {
   /// [resourceGroupName] The name of the resource group in which to create the Data Factory. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vstsConfiguration] A `vsts_configuration` block as defined below.
-  FactoryState({
+  const FactoryState({
     this.customerManagedKeyId,
     this.customerManagedKeyIdentityId,
     this.githubConfiguration,

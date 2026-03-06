@@ -46,7 +46,7 @@ class GetWorkspaceResult {
   /// [volumeEncryptionKey] Symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
   /// [workspaceId] Required.
   /// [workspaceProperties] WorkSpace properties.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.bundleId,
     required this.computerName,
     required this.directoryId,

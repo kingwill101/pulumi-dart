@@ -57,7 +57,7 @@ class DeploymentState {
   /// [namespace] Namespace name
   /// [resourceId] Workspace resource ID
   /// [streamingResourceSetting] Resource settings for streaming mode See `streaming_resource_setting` below.
-  DeploymentState({
+  const DeploymentState({
     this.artifact,
     this.batchResourceSetting,
     this.deploymentId,

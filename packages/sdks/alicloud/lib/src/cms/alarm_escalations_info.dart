@@ -17,7 +17,7 @@ class AlarmEscalationsInfo {
   /// [statistics] Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
   /// [threshold] Info level alarm threshold value, which must be a numeric value currently.
   /// [times] Info level alarm retry times. Default value: `3`.
-  AlarmEscalationsInfo({
+  const AlarmEscalationsInfo({
     this.comparisonOperator,
     this.statistics,
     this.threshold,

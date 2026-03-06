@@ -19,7 +19,7 @@ class EdgeMachineCollectLogJobProperties {
   /// [fromDate] From date for log collection.
   /// [jobType] Job Type supported.
   /// [toDate] To date for log collection.
-  EdgeMachineCollectLogJobProperties({
+  const EdgeMachineCollectLogJobProperties({
     this.deploymentMode,
     required this.fromDate,
     required this.jobType,

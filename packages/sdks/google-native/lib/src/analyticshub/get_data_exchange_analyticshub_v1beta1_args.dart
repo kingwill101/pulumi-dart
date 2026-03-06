@@ -15,7 +15,7 @@ class GetDataExchangeAnalyticshubV1beta1Args {
   /// [dataExchangeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataExchangeAnalyticshubV1beta1Args({
+  const GetDataExchangeAnalyticshubV1beta1Args({
     required this.dataExchangeId,
     required this.location,
     this.project,

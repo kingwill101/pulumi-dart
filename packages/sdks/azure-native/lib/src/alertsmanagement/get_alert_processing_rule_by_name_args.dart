@@ -15,7 +15,7 @@ class GetAlertProcessingRuleByNameArgs {
   /// Creates a new [GetAlertProcessingRuleByNameArgs].
   /// [alertProcessingRuleName] The name of the alert processing rule that needs to be fetched.
   /// [resourceGroupName] Resource group name where the resource is created.
-  GetAlertProcessingRuleByNameArgs({
+  const GetAlertProcessingRuleByNameArgs({
     required this.alertProcessingRuleName,
     required this.resourceGroupName,
   });

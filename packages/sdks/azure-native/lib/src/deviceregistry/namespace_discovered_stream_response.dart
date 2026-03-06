@@ -22,7 +22,7 @@ class NamespaceDiscoveredStreamResponse {
   /// [name] Name of the stream definition.
   /// [streamConfiguration] Stringified JSON that contains connector-specific configuration for the specific stream.
   /// [typeRef] URI or type definition ID.
-  NamespaceDiscoveredStreamResponse({
+  const NamespaceDiscoveredStreamResponse({
     this.destinations,
     this.lastUpdatedOn,
     required this.name,

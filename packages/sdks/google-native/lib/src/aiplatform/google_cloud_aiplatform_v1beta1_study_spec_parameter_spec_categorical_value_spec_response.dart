@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResp
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse].
   /// [defaultValue] A default value for a `CATEGORICAL` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
   /// [values] The list of possible categories.
-  GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse({
+  const GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse({
     required this.defaultValue,
     required this.values,
   });

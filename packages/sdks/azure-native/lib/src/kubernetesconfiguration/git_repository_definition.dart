@@ -31,7 +31,7 @@ class GitRepositoryDefinition {
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the cluster git repository source with the remote.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the cluster git repository source with the remote.
   /// [url] The URL to sync for the flux configuration git repository.
-  GitRepositoryDefinition({
+  const GitRepositoryDefinition({
     this.httpsCACert,
     this.httpsUser,
     this.localAuthRef,

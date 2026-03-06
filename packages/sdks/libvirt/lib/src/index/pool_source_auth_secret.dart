@@ -11,7 +11,7 @@ class PoolSourceAuthSecret {
   /// Creates a new [PoolSourceAuthSecret].
   /// [usage] Indicates the intended usage for the authentication secret.
   /// [uuid] Sets the UUID for the authentication secret tied to the storage source connection.
-  PoolSourceAuthSecret({
+  const PoolSourceAuthSecret({
     this.usage,
     this.uuid,
   });

@@ -38,7 +38,7 @@ class BackupInstance {
   /// [policyInfo] Gets or sets the policy information.
   /// [resourceGuardOperationRequests] ResourceGuardOperationRequests on which LAC check will be performed
   /// [validationType] Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
-  BackupInstance({
+  const BackupInstance({
     required this.dataSourceInfo,
     this.dataSourceSetInfo,
     this.datasourceAuthCredentials,

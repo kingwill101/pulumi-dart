@@ -23,7 +23,7 @@ class GetArchiveDeploymentResult {
   /// [name] Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
   /// [operation] A reference to the LRO that created this Archive Deployment in the following format: `organizations/{org}/operations/{id}`
   /// [updatedAt] The time at which the Archive Deployment was updated in milliseconds since the epoch.
-  GetArchiveDeploymentResult({
+  const GetArchiveDeploymentResult({
     required this.createdAt,
     required this.gcsUri,
     required this.labels,

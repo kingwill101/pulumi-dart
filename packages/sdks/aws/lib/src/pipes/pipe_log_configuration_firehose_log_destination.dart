@@ -8,7 +8,7 @@ class PipeLogConfigurationFirehoseLogDestination {
 
   /// Creates a new [PipeLogConfigurationFirehoseLogDestination].
   /// [deliveryStreamArn] Amazon Resource Name (ARN) of the Kinesis Data Firehose delivery stream to which EventBridge delivers the pipe log records.
-  PipeLogConfigurationFirehoseLogDestination({
+  const PipeLogConfigurationFirehoseLogDestination({
     required this.deliveryStreamArn,
   });
 

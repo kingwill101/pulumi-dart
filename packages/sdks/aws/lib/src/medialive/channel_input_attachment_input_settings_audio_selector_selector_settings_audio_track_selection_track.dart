@@ -8,7 +8,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack].
   /// [track] 1-based integer value that maps to a specific audio track.
-  ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack({
+  const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack({
     required this.track,
   });
 

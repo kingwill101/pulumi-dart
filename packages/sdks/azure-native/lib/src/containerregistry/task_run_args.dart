@@ -32,7 +32,7 @@ class TaskRunArgs {
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   /// [runRequest] The request (parameters) for the run
   /// [taskRunName] The name of the task run.
-  TaskRunArgs({
+  const TaskRunArgs({
     this.forceUpdateTag,
     this.identity,
     this.location,

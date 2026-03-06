@@ -49,7 +49,7 @@ class GetSigningProfileResult {
   /// [tags] List of tags associated with the signing profile.
   /// [version] Current version of the signing profile.
   /// [versionArn] Signing profile ARN, including the profile version.
-  GetSigningProfileResult({
+  const GetSigningProfileResult({
     required this.arn,
     required this.id,
     required this.name,

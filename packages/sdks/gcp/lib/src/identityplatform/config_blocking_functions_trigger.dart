@@ -15,7 +15,7 @@ class ConfigBlockingFunctionsTrigger {
   /// [eventType] The identifier for this object. Format specified above.
   /// [functionUri] HTTP URI trigger for the Cloud Function.
   /// [updateTime] (Output)
-  ConfigBlockingFunctionsTrigger({
+  const ConfigBlockingFunctionsTrigger({
     required this.eventType,
     required this.functionUri,
     this.updateTime,

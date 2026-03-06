@@ -52,7 +52,7 @@ class StageArgs {
   /// [routeSettings] Route settings for the stage.
   /// [stageVariables] Map that defines the stage variables for the stage.
   /// [tags] Map of tags to assign to the stage. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  StageArgs({
+  const StageArgs({
     this.accessLogSettings,
     required this.apiId,
     this.autoDeploy,

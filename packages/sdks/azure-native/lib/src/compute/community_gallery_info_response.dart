@@ -24,7 +24,7 @@ class CommunityGalleryInfoResponse {
   /// [publicNames] Community gallery public name list.
   /// [publisherContact] Community gallery publisher support email. The email address of the publisher. Visible to all users.
   /// [publisherUri] The link to the publisher website. Visible to all users.
-  CommunityGalleryInfoResponse({
+  const CommunityGalleryInfoResponse({
     required this.communityGalleryEnabled,
     this.eula,
     this.publicNamePrefix,

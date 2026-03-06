@@ -13,7 +13,7 @@ class GetThemeConfigurationSheet {
   /// Creates a new [GetThemeConfigurationSheet].
   /// [tileLayouts] The layout options for tiles. See tile_layout.
   /// [tiles] The display options for tiles. See tile.
-  GetThemeConfigurationSheet({
+  const GetThemeConfigurationSheet({
     required this.tileLayouts,
     required this.tiles,
   });

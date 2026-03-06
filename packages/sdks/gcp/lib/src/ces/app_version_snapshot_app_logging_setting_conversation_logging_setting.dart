@@ -9,7 +9,7 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
 
   /// Creates a new [AppVersionSnapshotAppLoggingSettingConversationLoggingSetting].
   /// [disableConversationLogging] (Output)
-  AppVersionSnapshotAppLoggingSettingConversationLoggingSetting({
+  const AppVersionSnapshotAppLoggingSettingConversationLoggingSetting({
     this.disableConversationLogging,
   });
 

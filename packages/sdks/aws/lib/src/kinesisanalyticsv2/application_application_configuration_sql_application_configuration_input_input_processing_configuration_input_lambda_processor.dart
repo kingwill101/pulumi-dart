@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPr
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor].
   /// [resourceArn] The ARN of the Lambda function that operates on records in the stream.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor({
     required this.resourceArn,
   });
 

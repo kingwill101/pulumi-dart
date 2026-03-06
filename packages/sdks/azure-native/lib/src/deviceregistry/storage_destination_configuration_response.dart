@@ -9,7 +9,7 @@ class StorageDestinationConfigurationResponse {
 
   /// Creates a new [StorageDestinationConfigurationResponse].
   /// [path] The storage destination path.
-  StorageDestinationConfigurationResponse({
+  const StorageDestinationConfigurationResponse({
     required this.path,
   });
 

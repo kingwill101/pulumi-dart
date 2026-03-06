@@ -12,7 +12,7 @@ class GetProfilingGroupProfilingStatus {
   /// [latestAgentOrchestratedAt] Required.
   /// [latestAgentProfileReportedAt] Required.
   /// [latestAggregatedProfiles] Required.
-  GetProfilingGroupProfilingStatus({
+  const GetProfilingGroupProfilingStatus({
     required this.latestAgentOrchestratedAt,
     required this.latestAgentProfileReportedAt,
     required this.latestAggregatedProfiles,

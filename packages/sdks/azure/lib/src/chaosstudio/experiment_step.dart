@@ -12,7 +12,7 @@ class ExperimentStep {
   /// Creates a new [ExperimentStep].
   /// [branches] One or more `branch` blocks as defined above.
   /// [name] The name of the Step.
-  ExperimentStep({
+  const ExperimentStep({
     required this.branches,
     required this.name,
   });

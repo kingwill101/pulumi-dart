@@ -15,7 +15,7 @@ class AzureDevOpsPermissionProfileResponse {
   /// [groups] Group email addresses
   /// [kind] Determines who has admin permissions to the Azure DevOps pool.
   /// [users] User email addresses
-  AzureDevOpsPermissionProfileResponse({
+  const AzureDevOpsPermissionProfileResponse({
     this.groups,
     required this.kind,
     this.users,

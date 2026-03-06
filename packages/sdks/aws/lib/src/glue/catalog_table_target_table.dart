@@ -17,7 +17,7 @@ class CatalogTableTargetTable {
   /// [databaseName] Name of the catalog database that contains the target table.
   /// [name] Name of the target table.
   /// [region] Region of the target table.
-  CatalogTableTargetTable({
+  const CatalogTableTargetTable({
     required this.catalogId,
     required this.databaseName,
     required this.name,

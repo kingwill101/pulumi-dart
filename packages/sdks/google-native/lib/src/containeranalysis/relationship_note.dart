@@ -10,7 +10,7 @@ class RelationshipNote {
 
   /// Creates a new [RelationshipNote].
   /// [type] The type of relationship between the source and target SPDX elements
-  RelationshipNote({
+  const RelationshipNote({
     this.type,
   });
 

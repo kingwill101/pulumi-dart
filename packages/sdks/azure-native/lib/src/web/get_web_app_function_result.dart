@@ -59,7 +59,7 @@ class GetWebAppFunctionResult {
   /// [testData] Test data used when testing via the Azure Portal.
   /// [testDataHref] Test data URI.
   /// [type] Resource type.
-  GetWebAppFunctionResult({
+  const GetWebAppFunctionResult({
     required this.azureApiVersion,
     this.config,
     this.configHref,

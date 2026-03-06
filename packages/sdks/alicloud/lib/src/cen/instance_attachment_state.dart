@@ -29,7 +29,7 @@ class InstanceAttachmentState {
   /// [childInstanceType] The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
   /// [instanceId] The ID of the CEN.
   /// [status] The associating status of the network.
-  InstanceAttachmentState({
+  const InstanceAttachmentState({
     this.cenOwnerId,
     this.childInstanceId,
     this.childInstanceOwnerId,

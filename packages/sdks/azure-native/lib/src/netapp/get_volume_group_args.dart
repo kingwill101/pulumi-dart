@@ -18,7 +18,7 @@ class GetVolumeGroupArgs {
   /// [accountName] The name of the NetApp account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeGroupName] The name of the volumeGroup
-  GetVolumeGroupArgs({
+  const GetVolumeGroupArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.volumeGroupName,

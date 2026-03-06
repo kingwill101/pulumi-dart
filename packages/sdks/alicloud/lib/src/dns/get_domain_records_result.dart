@@ -32,7 +32,7 @@ class GetDomainRecordsResult {
   /// [type] Optional.
   /// [urls] Required.
   /// [valueRegex] Optional.
-  GetDomainRecordsResult({
+  const GetDomainRecordsResult({
     required this.domainName,
     this.hostRecordRegex,
     required this.id,

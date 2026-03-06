@@ -12,7 +12,7 @@ class DotNetComponentServiceBind {
   /// Creates a new [DotNetComponentServiceBind].
   /// [name] Name of the service bind
   /// [serviceId] Resource id of the target service
-  DotNetComponentServiceBind({
+  const DotNetComponentServiceBind({
     this.name,
     this.serviceId,
   });

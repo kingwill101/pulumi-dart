@@ -15,7 +15,7 @@ class GetNetworkFirewallFirewallArgs {
   /// Creates a new [GetNetworkFirewallFirewallArgs].
   /// [name] Name of NetworkFirewallFirewall
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkFirewallFirewallArgs({
+  const GetNetworkFirewallFirewallArgs({
     required this.name,
     required this.resourceGroupName,
   });

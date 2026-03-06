@@ -11,7 +11,7 @@ class RaiToolLabelPropertiesResponseProjectScopes {
   /// Creates a new [RaiToolLabelPropertiesResponseProjectScopes].
   /// [labelValues] Dictionary of label key-value pairs for the project scope.
   /// [project] Project name to which this scope applies.
-  RaiToolLabelPropertiesResponseProjectScopes({
+  const RaiToolLabelPropertiesResponseProjectScopes({
     required this.labelValues,
     required this.project,
   });

@@ -20,7 +20,7 @@ class LabelingJobLabelCounter {
   /// [machineLabeled] Total number of objects labeled by automated data labeling.
   /// [totalLabeled] Total number of objects labeled.
   /// [unlabeled] Total number of objects not yet labeled.
-  LabelingJobLabelCounter({
+  const LabelingJobLabelCounter({
     required this.failedNonRetryableError,
     required this.humanLabeled,
     required this.machineLabeled,

@@ -27,7 +27,7 @@ class GetNetworkInterfaceTapConfigurationResult {
   /// [provisioningState] The provisioning state of the network interface tap configuration resource.
   /// [type] Sub Resource type.
   /// [virtualNetworkTap] The reference to the Virtual Network Tap resource.
-  GetNetworkInterfaceTapConfigurationResult({
+  const GetNetworkInterfaceTapConfigurationResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

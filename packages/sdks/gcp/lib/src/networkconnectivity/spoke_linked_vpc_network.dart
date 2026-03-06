@@ -14,7 +14,7 @@ class SpokeLinkedVpcNetwork {
   /// [excludeExportRanges] IP ranges encompassing the subnets to be excluded from peering.
   /// [includeExportRanges] IP ranges allowed to be included from peering.
   /// [uri] The URI of the VPC network resource.
-  SpokeLinkedVpcNetwork({
+  const SpokeLinkedVpcNetwork({
     this.excludeExportRanges,
     this.includeExportRanges,
     required this.uri,

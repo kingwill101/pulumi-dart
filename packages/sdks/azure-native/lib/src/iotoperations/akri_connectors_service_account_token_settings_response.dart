@@ -9,7 +9,7 @@ class AkriConnectorsServiceAccountTokenSettingsResponse {
 
   /// Creates a new [AkriConnectorsServiceAccountTokenSettingsResponse].
   /// [audience] The audience for the service account token.
-  AkriConnectorsServiceAccountTokenSettingsResponse({
+  const AkriConnectorsServiceAccountTokenSettingsResponse({
     required this.audience,
   });
 

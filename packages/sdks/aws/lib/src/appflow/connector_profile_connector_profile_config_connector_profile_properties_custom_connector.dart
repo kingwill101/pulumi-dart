@@ -12,7 +12,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConn
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector].
   /// [oauth2Properties] The OAuth 2.0 properties required for OAuth 2.0 authentication.
   /// [profileProperties] A map of properties that are required to create a profile for the custom connector.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector({
     this.oauth2Properties,
     this.profileProperties,
   });

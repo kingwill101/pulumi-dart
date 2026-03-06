@@ -39,7 +39,7 @@ class GitPatternRepository {
   /// [strictHostKeyChecking] Strict host key checking or not.
   /// [uri] URI of the repository
   /// [username] Username of git repository basic auth.
-  GitPatternRepository({
+  const GitPatternRepository({
     this.hostKey,
     this.hostKeyAlgorithm,
     this.label,

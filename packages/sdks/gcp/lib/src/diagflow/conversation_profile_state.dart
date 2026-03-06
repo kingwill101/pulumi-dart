@@ -75,7 +75,7 @@ class ConversationProfileState {
   /// [sttConfig] Settings for speech transcription.
   /// [timeZone] The time zone of this conversational profile.
   /// [ttsConfig] Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
-  ConversationProfileState({
+  const ConversationProfileState({
     this.automatedAgentConfig,
     this.displayName,
     this.humanAgentAssistantConfig,

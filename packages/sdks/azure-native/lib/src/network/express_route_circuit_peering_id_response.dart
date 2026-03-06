@@ -9,7 +9,7 @@ class ExpressRouteCircuitPeeringIdResponse {
 
   /// Creates a new [ExpressRouteCircuitPeeringIdResponse].
   /// [id] The ID of the ExpressRoute circuit peering.
-  ExpressRouteCircuitPeeringIdResponse({
+  const ExpressRouteCircuitPeeringIdResponse({
     this.id,
   });
 

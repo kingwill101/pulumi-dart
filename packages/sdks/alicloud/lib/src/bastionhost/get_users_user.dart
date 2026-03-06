@@ -41,7 +41,7 @@ class GetUsersUser {
   /// [status] The status of the resource.
   /// [userId] The User ID.
   /// [userName] Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
-  GetUsersUser({
+  const GetUsersUser({
     required this.comment,
     required this.displayName,
     required this.email,

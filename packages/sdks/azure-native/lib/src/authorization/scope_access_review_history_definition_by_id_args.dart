@@ -39,7 +39,7 @@ class ScopeAccessReviewHistoryDefinitionByIdArgs {
   /// [scope] The scope of the resource.
   /// [scopes] A collection of scopes used when selecting review history data
   /// [type] The recurrence type : weekly, monthly, etc.
-  ScopeAccessReviewHistoryDefinitionByIdArgs({
+  const ScopeAccessReviewHistoryDefinitionByIdArgs({
     this.decisions,
     this.displayName,
     this.historyDefinitionId,

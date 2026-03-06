@@ -21,7 +21,7 @@ class ServiceLinkedRoleArgs {
   /// [customSuffix] Additional string appended to the role name. Not all AWS services support custom suffixes.
   /// [description] The description of the role.
   /// [tags] Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ServiceLinkedRoleArgs({
+  const ServiceLinkedRoleArgs({
     required this.awsServiceName,
     this.customSuffix,
     this.description,

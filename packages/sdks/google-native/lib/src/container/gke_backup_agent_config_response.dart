@@ -9,7 +9,7 @@ class GkeBackupAgentConfigResponse {
 
   /// Creates a new [GkeBackupAgentConfigResponse].
   /// [enabled] Whether the Backup for GKE agent is enabled for this cluster.
-  GkeBackupAgentConfigResponse({
+  const GkeBackupAgentConfigResponse({
     required this.enabled,
   });
 

@@ -9,7 +9,7 @@ class CFNKubernetesAuditLogsConfigurationResponse {
 
   /// Creates a new [CFNKubernetesAuditLogsConfigurationResponse].
   /// [enable] Property enable
-  CFNKubernetesAuditLogsConfigurationResponse({
+  const CFNKubernetesAuditLogsConfigurationResponse({
     this.enable,
   });
 

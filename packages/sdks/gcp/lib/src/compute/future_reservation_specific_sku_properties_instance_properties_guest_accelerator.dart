@@ -11,7 +11,7 @@ class FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAccelerator {
   /// Creates a new [FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAccelerator].
   /// [acceleratorCount] The number of the guest accelerator cards exposed to this instance.
   /// [acceleratorType] Full or partial URL of the accelerator type resource to attach to this instance.
-  FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAccelerator({
+  const FutureReservationSpecificSkuPropertiesInstancePropertiesGuestAccelerator({
     this.acceleratorCount,
     this.acceleratorType,
   });

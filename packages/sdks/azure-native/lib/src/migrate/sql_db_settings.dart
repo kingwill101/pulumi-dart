@@ -18,7 +18,7 @@ class SqlDbSettings {
   /// [azureSqlDataBaseType] Gets or sets the azure PAAS SQL instance type.
   /// [azureSqlPurchaseModel] Gets or sets the azure SQL purchase model.
   /// [azureSqlServiceTier] Gets or sets the azure SQL service tier.
-  SqlDbSettings({
+  const SqlDbSettings({
     this.azureSqlComputeTier,
     this.azureSqlDataBaseType,
     this.azureSqlPurchaseModel,

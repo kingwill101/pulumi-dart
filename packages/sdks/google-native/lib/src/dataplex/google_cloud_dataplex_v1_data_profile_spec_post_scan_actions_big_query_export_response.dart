@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse 
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse].
   /// [resultsTable] Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
-  GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse({
+  const GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse({
     required this.resultsTable,
   });
 

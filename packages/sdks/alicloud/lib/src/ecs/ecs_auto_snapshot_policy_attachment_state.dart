@@ -15,7 +15,7 @@ class EcsAutoSnapshotPolicyAttachmentState {
   /// [autoSnapshotPolicyId] The ID of the automatic snapshot policy that is applied to the cloud disk.
   /// [diskId] The ID of the disk.
   /// [regionId] (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
-  EcsAutoSnapshotPolicyAttachmentState({
+  const EcsAutoSnapshotPolicyAttachmentState({
     this.autoSnapshotPolicyId,
     this.diskId,
     this.regionId,

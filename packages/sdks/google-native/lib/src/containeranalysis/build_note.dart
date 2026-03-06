@@ -9,7 +9,7 @@ class BuildNote {
 
   /// Creates a new [BuildNote].
   /// [builderVersion] Immutable. Version of the builder which produced this build.
-  BuildNote({
+  const BuildNote({
     required this.builderVersion,
   });
 

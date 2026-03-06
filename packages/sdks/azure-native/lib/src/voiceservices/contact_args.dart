@@ -33,7 +33,7 @@ class ContactArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [role] Job title of contact
   /// [tags] Resource tags.
-  ContactArgs({
+  const ContactArgs({
     required this.communicationsGatewayName,
     this.contactName,
     required this.email,

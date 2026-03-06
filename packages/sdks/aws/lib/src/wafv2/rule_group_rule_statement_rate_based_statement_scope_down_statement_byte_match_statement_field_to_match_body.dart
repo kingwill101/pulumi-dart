@@ -7,7 +7,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchBody({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

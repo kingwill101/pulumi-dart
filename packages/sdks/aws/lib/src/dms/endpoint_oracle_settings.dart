@@ -116,7 +116,7 @@ class EndpointOracleSettings {
   /// [useDirectPathFullLoad] Set this attribute to `true` to have AWS DMS use a direct path full load. Specify this value to use the direct path protocol in the Oracle Call Interface (OCI).
   /// [useLogminerReader] Set this attribute to `true` to capture change data using the Oracle LogMiner utility (the default). Set this attribute to `false` if you want to access the redo logs as a binary file.
   /// [usePathPrefix] Set this string attribute to the required value in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This value specifies the path prefix used to replace the default Oracle root to access the redo logs.
-  EndpointOracleSettings({
+  const EndpointOracleSettings({
     this.accessAlternateDirectly,
     this.addSupplementalLogging,
     this.additionalArchivedLogDestId,

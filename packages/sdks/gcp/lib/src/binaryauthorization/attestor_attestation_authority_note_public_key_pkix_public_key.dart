@@ -16,7 +16,7 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
   /// Creates a new [AttestorAttestationAuthorityNotePublicKeyPkixPublicKey].
   /// [publicKeyPem] A PEM-encoded public key, as described in
   /// [signatureAlgorithm] The signature algorithm used to verify a message against
-  AttestorAttestationAuthorityNotePublicKeyPkixPublicKey({
+  const AttestorAttestationAuthorityNotePublicKeyPkixPublicKey({
     this.publicKeyPem,
     this.signatureAlgorithm,
   });

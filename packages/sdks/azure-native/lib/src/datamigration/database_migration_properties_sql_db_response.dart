@@ -64,7 +64,7 @@ class DatabaseMigrationPropertiesSqlDbResponse {
   /// [tableList] List of tables to copy.
   /// [targetDatabaseCollation] Database collation to be used for the target database.
   /// [targetSqlConnection] Target SQL DB connection details.
-  DatabaseMigrationPropertiesSqlDbResponse({
+  const DatabaseMigrationPropertiesSqlDbResponse({
     required this.endedOn,
     required this.kind,
     required this.migrationFailureError,

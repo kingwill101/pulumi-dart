@@ -10,7 +10,7 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse].
   /// [featureGroups] List of features that need to be synced to Online Store.
-  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse({
+  const GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse({
     required this.featureGroups,
   });
 

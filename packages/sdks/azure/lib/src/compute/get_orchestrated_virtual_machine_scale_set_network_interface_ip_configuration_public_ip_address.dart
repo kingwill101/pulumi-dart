@@ -24,7 +24,7 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublic
   /// [name] The name of this Orchestrated Virtual Machine Scale Set.
   /// [publicIpPrefixId] The ID of the public IP prefix.
   /// [version] The Internet Protocol Version of the public IP address.
-  GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
+  const GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
     required this.domainNameLabel,
     required this.idleTimeoutInMinutes,
     required this.ipTags,

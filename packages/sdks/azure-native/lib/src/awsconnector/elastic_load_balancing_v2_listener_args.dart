@@ -25,7 +25,7 @@ class ElasticLoadBalancingV2ListenerArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ElasticLoadBalancingV2ListenerArgs({
+  const ElasticLoadBalancingV2ListenerArgs({
     this.location,
     this.name,
     this.properties,

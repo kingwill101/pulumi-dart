@@ -10,7 +10,7 @@ class AttackPathSensitiveAssetConfigState {
 
   /// Creates a new [AttackPathSensitiveAssetConfigState].
   /// [attackPathAssetLists] The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
-  AttackPathSensitiveAssetConfigState({
+  const AttackPathSensitiveAssetConfigState({
     this.attackPathAssetLists,
   });
 

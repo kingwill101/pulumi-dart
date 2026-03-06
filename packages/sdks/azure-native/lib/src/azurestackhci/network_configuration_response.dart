@@ -10,7 +10,7 @@ class NetworkConfigurationResponse {
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [networkAdapters] List of network adapters.
-  NetworkConfigurationResponse({
+  const NetworkConfigurationResponse({
     this.networkAdapters,
   });
 

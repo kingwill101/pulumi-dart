@@ -28,7 +28,7 @@ class DevOpsConfigurationProperties {
   /// [autoDiscovery] AutoDiscovery states.
   /// [provisioningState] The provisioning state of the resource.
   /// [topLevelInventoryList] List of top-level inventory to select when AutoDiscovery is disabled.
-  DevOpsConfigurationProperties({
+  const DevOpsConfigurationProperties({
     this.authorization,
     this.autoDiscovery,
     this.provisioningState,

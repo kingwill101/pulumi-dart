@@ -74,7 +74,7 @@ class MigrationJobArgs {
   /// [staticIpConnectivity] If set to an empty object (`{}`), the source database will allow incoming
   /// [type] The type of the migration job.
   /// [vpcPeeringConnectivity] The details of the VPC network that the source database is located in.
-  MigrationJobArgs({
+  const MigrationJobArgs({
     required this.destination,
     this.displayName,
     this.dumpFlags,

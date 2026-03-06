@@ -18,7 +18,7 @@ class DispatchRuleNotifyRule {
   /// [notifyEndTime] End time of notification.
   /// [notifyObjects] Sets the notification object. See `notify_objects` below.
   /// [notifyStartTime] Start time of notification.
-  DispatchRuleNotifyRule({
+  const DispatchRuleNotifyRule({
     required this.notifyChannels,
     required this.notifyEndTime,
     required this.notifyObjects,

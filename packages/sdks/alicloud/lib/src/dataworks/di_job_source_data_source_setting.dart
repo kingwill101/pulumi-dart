@@ -12,7 +12,7 @@ class DiJobSourceDataSourceSetting {
   /// Creates a new [DiJobSourceDataSourceSetting].
   /// [dataSourceName] Data source name of a single source
   /// [dataSourceProperties] Single Source Data Source Properties See `data_source_properties` below.
-  DiJobSourceDataSourceSetting({
+  const DiJobSourceDataSourceSetting({
     this.dataSourceName,
     this.dataSourceProperties,
   });

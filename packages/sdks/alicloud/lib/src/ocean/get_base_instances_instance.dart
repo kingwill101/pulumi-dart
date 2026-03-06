@@ -47,7 +47,7 @@ class GetBaseInstancesInstance {
   /// [series] Series of OceanBase clusters.
   /// [status] The status of the resource.
   /// [zones] Information about the zone where the cluster is deployed.
-  GetBaseInstancesInstance({
+  const GetBaseInstancesInstance({
     required this.commodityCode,
     required this.cpu,
     required this.createTime,

@@ -12,7 +12,7 @@ class GcsProfileDatastreamV1alpha1 {
   /// Creates a new [GcsProfileDatastreamV1alpha1].
   /// [bucketName] The full project and resource path for Cloud Storage bucket including the name.
   /// [rootPath] The root path inside the Cloud Storage bucket.
-  GcsProfileDatastreamV1alpha1({
+  const GcsProfileDatastreamV1alpha1({
     required this.bucketName,
     this.rootPath,
   });

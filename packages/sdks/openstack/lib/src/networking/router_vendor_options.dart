@@ -9,7 +9,7 @@ class RouterVendorOptions {
 
   /// Creates a new [RouterVendorOptions].
   /// [setRouterGatewayAfterCreate] Boolean to control whether
-  RouterVendorOptions({
+  const RouterVendorOptions({
     this.setRouterGatewayAfterCreate,
   });
 

@@ -17,7 +17,7 @@ class GetConnectionProfileIamPolicyDatamigrationV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetConnectionProfileIamPolicyDatamigrationV1beta1Args({
+  const GetConnectionProfileIamPolicyDatamigrationV1beta1Args({
     required this.connectionProfileId,
     required this.location,
     this.optionsRequestedPolicyVersion,

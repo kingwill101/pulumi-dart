@@ -16,7 +16,7 @@ class AccessModeSettingsResponse {
   /// [exclusions] List of exclusions that override the default access mode settings for specific private endpoint connections.
   /// [ingestionAccessMode] Specifies the default access mode of ingestion through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
   /// [queryAccessMode] Specifies the default access mode of queries through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
-  AccessModeSettingsResponse({
+  const AccessModeSettingsResponse({
     this.exclusions,
     required this.ingestionAccessMode,
     required this.queryAccessMode,

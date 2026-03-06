@@ -15,7 +15,7 @@ class GetAzureBareMetalInstanceArgs {
   /// Creates a new [GetAzureBareMetalInstanceArgs].
   /// [azureBareMetalInstanceName] Name of the Azure Bare Metal Instance, also known as the ResourceName.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAzureBareMetalInstanceArgs({
+  const GetAzureBareMetalInstanceArgs({
     required this.azureBareMetalInstanceName,
     required this.resourceGroupName,
   });

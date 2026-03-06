@@ -12,7 +12,7 @@ class XiaomiCredential {
   /// Creates a new [XiaomiCredential].
   /// [appSecret] Gets or sets app secret.
   /// [endpoint] Gets or sets xiaomi service endpoint.
-  XiaomiCredential({
+  const XiaomiCredential({
     this.appSecret,
     this.endpoint,
   });

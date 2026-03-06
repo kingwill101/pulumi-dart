@@ -24,7 +24,7 @@ class WorkspaceGroupUserArgs {
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceGroupUserArgs({
+  const WorkspaceGroupUserArgs({
     required this.groupId,
     required this.resourceGroupName,
     required this.serviceName,

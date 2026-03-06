@@ -10,7 +10,7 @@ class DedicatedHostAvailableCapacityResponse {
 
   /// Creates a new [DedicatedHostAvailableCapacityResponse].
   /// [allocatableVMs] The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the dedicated host.
-  DedicatedHostAvailableCapacityResponse({
+  const DedicatedHostAvailableCapacityResponse({
     this.allocatableVMs,
   });
 

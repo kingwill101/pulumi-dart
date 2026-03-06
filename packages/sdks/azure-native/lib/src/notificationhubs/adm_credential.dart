@@ -15,7 +15,7 @@ class AdmCredential {
   /// [authTokenUrl] Gets or sets the URL of the authorization token.
   /// [clientId] Gets or sets the client identifier.
   /// [clientSecret] Gets or sets the credential secret access key.
-  AdmCredential({
+  const AdmCredential({
     required this.authTokenUrl,
     required this.clientId,
     required this.clientSecret,

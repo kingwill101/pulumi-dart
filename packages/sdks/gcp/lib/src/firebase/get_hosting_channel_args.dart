@@ -15,7 +15,7 @@ class GetHostingChannelArgs {
   /// Creates a new [GetHostingChannelArgs].
   /// [channelId] The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
   /// [siteId] The ID of the site this channel belongs to.
-  GetHostingChannelArgs({
+  const GetHostingChannelArgs({
     required this.channelId,
     required this.siteId,
   });

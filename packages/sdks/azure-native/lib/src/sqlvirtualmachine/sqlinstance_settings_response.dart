@@ -27,7 +27,7 @@ class SQLInstanceSettingsResponse {
   /// [maxDop] SQL Server MAXDOP.
   /// [maxServerMemoryMB] SQL Server maximum memory.
   /// [minServerMemoryMB] SQL Server minimum memory.
-  SQLInstanceSettingsResponse({
+  const SQLInstanceSettingsResponse({
     this.collation,
     this.isIfiEnabled,
     this.isLpimEnabled,

@@ -15,7 +15,7 @@ class GetGuestUsageArgs {
   /// Creates a new [GetGuestUsageArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [resourceName] The initial domain name of the Azure AD B2C tenant.
-  GetGuestUsageArgs({
+  const GetGuestUsageArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -17,7 +17,7 @@ class TlsInspectionConfigurationCertificateAuthority {
   /// [certificateSerial] Serial number of the certificate.
   /// [status] Status of the certificate.
   /// [statusMessage] Details about the certificate status, including information about certificate errors.
-  TlsInspectionConfigurationCertificateAuthority({
+  const TlsInspectionConfigurationCertificateAuthority({
     required this.certificateArn,
     required this.certificateSerial,
     required this.status,

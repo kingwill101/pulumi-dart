@@ -41,7 +41,7 @@ class GetApplicationGatewayUrlPathMapPathRule {
   /// [redirectConfigurationName] The Name of the Redirect Configuration which is used for this Routing Rule.
   /// [rewriteRuleSetId] The ID of the associated Rewrite Rule Set.
   /// [rewriteRuleSetName] The Name of the Rewrite Rule Set which is used for this Routing Rule.
-  GetApplicationGatewayUrlPathMapPathRule({
+  const GetApplicationGatewayUrlPathMapPathRule({
     required this.backendAddressPoolId,
     required this.backendAddressPoolName,
     required this.backendHttpSettingsId,

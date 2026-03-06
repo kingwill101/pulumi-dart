@@ -17,7 +17,7 @@ class QuotaSubQuotaInfoList {
   /// [nickName] Secondary Quota nickname.
   /// [parameter] Parameter See `parameter` below.
   /// [type] The secondary Quota type. The default value is: FUXI_OFFLINE
-  QuotaSubQuotaInfoList({
+  const QuotaSubQuotaInfoList({
     required this.nickName,
     this.parameter,
     this.type,

@@ -33,7 +33,7 @@ class DatasetIamMemberState {
   /// [etag] (Computed) The etag of the dataset's IAM policy.
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  DatasetIamMemberState({
+  const DatasetIamMemberState({
     this.condition,
     this.datasetId,
     this.etag,

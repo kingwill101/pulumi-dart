@@ -33,7 +33,7 @@ class AccessConfigurationArgs {
   /// [permissionPolicies] The Policy List. See `permission_policies` below.
   /// [relayState] The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
   /// [sessionDuration] The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
-  AccessConfigurationArgs({
+  const AccessConfigurationArgs({
     required this.accessConfigurationName,
     this.description,
     required this.directoryId,

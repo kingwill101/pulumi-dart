@@ -15,7 +15,7 @@ class GetNodeTemplateArgs {
   /// [nodeTemplate] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNodeTemplateArgs({
+  const GetNodeTemplateArgs({
     required this.nodeTemplate,
     this.project,
     required this.region,

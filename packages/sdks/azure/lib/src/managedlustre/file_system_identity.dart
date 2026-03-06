@@ -11,7 +11,7 @@ class FileSystemIdentity {
   /// Creates a new [FileSystemIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this Azure Managed Lustre File System. Changing this forces a new resource to be created.
   /// [type] The type of Managed Service Identity that should be configured on this Azure Managed Lustre File System. Only possible value is `UserAssigned`. Changing this forces a new resource to be created.
-  FileSystemIdentity({
+  const FileSystemIdentity({
     required this.identityIds,
     required this.type,
   });

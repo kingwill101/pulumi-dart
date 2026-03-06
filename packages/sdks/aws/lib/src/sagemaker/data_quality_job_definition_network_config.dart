@@ -15,7 +15,7 @@ class DataQualityJobDefinitionNetworkConfig {
   /// [enableInterContainerTrafficEncryption] Whether to encrypt all communications between the instances used for the monitoring jobs. Choose `true` to encrypt communications. Encryption provides greater security for distributed jobs, but the processing might take longer.
   /// [enableNetworkIsolation] Whether to allow inbound and outbound network calls to and from the containers used for the monitoring job.
   /// [vpcConfig] Specifies a VPC that your training jobs and hosted models have access to. Control access to and from your training and model containers by configuring the VPC. Fields are documented below.
-  DataQualityJobDefinitionNetworkConfig({
+  const DataQualityJobDefinitionNetworkConfig({
     this.enableInterContainerTrafficEncryption,
     this.enableNetworkIsolation,
     this.vpcConfig,

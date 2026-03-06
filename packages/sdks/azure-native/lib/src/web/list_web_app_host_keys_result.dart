@@ -14,7 +14,7 @@ class ListWebAppHostKeysResult {
   /// [functionKeys] Host level function keys.
   /// [masterKey] Secret key.
   /// [systemKeys] System keys.
-  ListWebAppHostKeysResult({
+  const ListWebAppHostKeysResult({
     this.functionKeys,
     this.masterKey,
     this.systemKeys,

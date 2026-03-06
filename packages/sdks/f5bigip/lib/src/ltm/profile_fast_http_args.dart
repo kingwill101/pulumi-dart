@@ -42,7 +42,7 @@ class ProfileFastHttpArgs {
   /// [idleTimeout] Specifies an idle timeout in seconds. This setting specifies the number of seconds that a connection is idle before the connection is eligible for deletion.When you specify an idle timeout for the Fast L4 profile, the value must be greater than the bigdb database variable Pva.Scrub time in msec for it to work properly.The default value is 300 seconds.
   /// [maxheaderSize] Specifies the maximum amount of HTTP header data that the system buffers before making a load balancing decision. The default setting is 32768.
   /// [name] Name of the profile_fasthttp
-  ProfileFastHttpArgs({
+  const ProfileFastHttpArgs({
     this.connpoolMaxreuse,
     this.connpoolMaxsize,
     this.connpoolMinsize,

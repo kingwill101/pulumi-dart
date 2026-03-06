@@ -8,7 +8,7 @@ class BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
 
   /// Creates a new [BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig].
   /// [dataprocCluster] Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-  BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig({
+  const BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig({
     this.dataprocCluster,
   });
 

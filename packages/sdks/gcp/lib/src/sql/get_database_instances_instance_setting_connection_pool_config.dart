@@ -12,7 +12,7 @@ class GetDatabaseInstancesInstanceSettingConnectionPoolConfig {
   /// Creates a new [GetDatabaseInstancesInstanceSettingConnectionPoolConfig].
   /// [connectionPoolingEnabled] Whether Managed Connection Pool is enabled for this instance.
   /// [flags] List of connection pool configuration flags
-  GetDatabaseInstancesInstanceSettingConnectionPoolConfig({
+  const GetDatabaseInstancesInstanceSettingConnectionPoolConfig({
     required this.connectionPoolingEnabled,
     required this.flags,
   });

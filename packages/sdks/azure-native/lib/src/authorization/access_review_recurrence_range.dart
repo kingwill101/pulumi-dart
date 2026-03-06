@@ -18,7 +18,7 @@ class AccessReviewRecurrenceRange {
   /// [numberOfOccurrences] The number of times to repeat the access review. Required and must be positive if type is numbered.
   /// [startDate] The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
   /// [type] The recurrence range type. The possible values are: endDate, noEnd, numbered.
-  AccessReviewRecurrenceRange({
+  const AccessReviewRecurrenceRange({
     this.endDate,
     this.numberOfOccurrences,
     this.startDate,

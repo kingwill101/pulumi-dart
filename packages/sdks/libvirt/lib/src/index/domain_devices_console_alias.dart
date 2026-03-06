@@ -8,7 +8,7 @@ class DomainDevicesConsoleAlias {
 
   /// Creates a new [DomainDevicesConsoleAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesConsoleAlias({
+  const DomainDevicesConsoleAlias({
     required this.name,
   });
 

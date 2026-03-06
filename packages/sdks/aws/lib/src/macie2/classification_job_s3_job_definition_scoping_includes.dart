@@ -9,7 +9,7 @@ class ClassificationJobS3JobDefinitionScopingIncludes {
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludes].
   /// [ands] An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)
-  ClassificationJobS3JobDefinitionScopingIncludes({
+  const ClassificationJobS3JobDefinitionScopingIncludes({
     this.ands,
   });
 

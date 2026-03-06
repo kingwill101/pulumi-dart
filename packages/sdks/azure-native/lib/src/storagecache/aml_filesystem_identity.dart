@@ -13,7 +13,7 @@ class AmlFilesystemIdentity {
   /// Creates a new [AmlFilesystemIdentity].
   /// [type] The type of identity used for the resource.
   /// [userAssignedIdentities] A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  AmlFilesystemIdentity({
+  const AmlFilesystemIdentity({
     this.type,
     this.userAssignedIdentities,
   });

@@ -18,7 +18,7 @@ class CloudFunctionInfoResponseNetworkmanagementV1beta1 {
   /// [location] Location in which the Cloud Function is deployed.
   /// [uri] URI of a Cloud Function.
   /// [versionId] Latest successfully deployed version id of the Cloud Function.
-  CloudFunctionInfoResponseNetworkmanagementV1beta1({
+  const CloudFunctionInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.location,
     required this.uri,

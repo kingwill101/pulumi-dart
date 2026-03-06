@@ -10,7 +10,7 @@ class ViewDataFilterExpressionTimeRange {
   /// Creates a new [ViewDataFilterExpressionTimeRange].
   /// [beginDateInclusive] Inclusive end date of the time range.
   /// [endDateInclusive] Required.
-  ViewDataFilterExpressionTimeRange({
+  const ViewDataFilterExpressionTimeRange({
     required this.beginDateInclusive,
     required this.endDateInclusive,
   });

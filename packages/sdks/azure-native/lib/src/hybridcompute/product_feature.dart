@@ -12,7 +12,7 @@ class ProductFeature {
   /// Creates a new [ProductFeature].
   /// [name] Product feature name.
   /// [subscriptionStatus] Indicates the current status of the product features.
-  ProductFeature({
+  const ProductFeature({
     this.name,
     this.subscriptionStatus,
   });

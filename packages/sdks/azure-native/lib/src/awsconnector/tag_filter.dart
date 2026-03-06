@@ -12,7 +12,7 @@ class TagFilter {
   /// Creates a new [TagFilter].
   /// [key] The tag key.
   /// [value] The tag value.
-  TagFilter({
+  const TagFilter({
     this.key,
     this.value,
   });

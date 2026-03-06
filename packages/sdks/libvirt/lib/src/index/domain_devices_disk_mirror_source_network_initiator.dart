@@ -9,7 +9,7 @@ class DomainDevicesDiskMirrorSourceNetworkInitiator {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  DomainDevicesDiskMirrorSourceNetworkInitiator({
+  const DomainDevicesDiskMirrorSourceNetworkInitiator({
     this.iqn,
   });
 

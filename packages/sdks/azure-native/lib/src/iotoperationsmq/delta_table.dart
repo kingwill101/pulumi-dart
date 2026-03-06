@@ -16,7 +16,7 @@ class DeltaTable {
   /// [schema] Schema list supported.
   /// [tableName] Delta table name.
   /// [tablePath] Delta table path.
-  DeltaTable({
+  const DeltaTable({
     required this.schema,
     required this.tableName,
     this.tablePath,

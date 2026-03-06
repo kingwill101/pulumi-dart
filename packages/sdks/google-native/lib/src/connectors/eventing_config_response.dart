@@ -30,7 +30,7 @@ class EventingConfigResponse {
   /// [eventsListenerIngressEndpoint] Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
   /// [privateConnectivityEnabled] Optional. Private Connectivity Enabled.
   /// [registrationDestinationConfig] Registration endpoint for auto registration.
-  EventingConfigResponse({
+  const EventingConfigResponse({
     required this.additionalVariables,
     required this.authConfig,
     required this.encryptionKey,

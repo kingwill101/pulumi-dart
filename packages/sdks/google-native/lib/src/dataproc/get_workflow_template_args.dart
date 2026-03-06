@@ -17,7 +17,7 @@ class GetWorkflowTemplateArgs {
   /// [project] Optional.
   /// [version] Optional.
   /// [workflowTemplateId] Required.
-  GetWorkflowTemplateArgs({
+  const GetWorkflowTemplateArgs({
     required this.location,
     this.project,
     this.version,

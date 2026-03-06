@@ -18,7 +18,7 @@ class GetProjectCatalogArgs {
   /// [catalogName] The name of the Catalog.
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectCatalogArgs({
+  const GetProjectCatalogArgs({
     required this.catalogName,
     required this.projectName,
     required this.resourceGroupName,

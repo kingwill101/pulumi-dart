@@ -17,7 +17,7 @@ class CollaborationMember {
   /// [displayName] Display name for the invited member.
   /// [memberAbilities] List of abilities for the invited member. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-creatorMemberAbilities).
   /// [status] For each member included in the collaboration an additional computed attribute of status is added. These values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_MemberSummary.html#API-Type-MemberSummary-status).
-  CollaborationMember({
+  const CollaborationMember({
     required this.accountId,
     required this.displayName,
     required this.memberAbilities,

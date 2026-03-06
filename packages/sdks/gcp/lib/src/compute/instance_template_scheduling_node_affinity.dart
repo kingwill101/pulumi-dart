@@ -15,7 +15,7 @@ class InstanceTemplateSchedulingNodeAffinity {
   /// [key] The key for the node affinity label.
   /// [operator] The operator. Can be `IN` for node-affinities
   /// [values] Corresponds to the label values of a reservation resource.
-  InstanceTemplateSchedulingNodeAffinity({
+  const InstanceTemplateSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

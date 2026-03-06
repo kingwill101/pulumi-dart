@@ -9,7 +9,7 @@ class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
 
   /// Creates a new [DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement({
+  const DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
 

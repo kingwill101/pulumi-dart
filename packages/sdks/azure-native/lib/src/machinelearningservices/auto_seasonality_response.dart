@@ -9,7 +9,7 @@ class AutoSeasonalityResponse {
 
   /// Creates a new [AutoSeasonalityResponse].
   /// [mode] Forecasting seasonality mode.
-  AutoSeasonalityResponse({
+  const AutoSeasonalityResponse({
     required this.mode,
   });
 

@@ -12,7 +12,7 @@ class GetAssessmentsMetadataSubscriptionArgs {
 
   /// Creates a new [GetAssessmentsMetadataSubscriptionArgs].
   /// [assessmentMetadataName] The Assessment Key - Unique key for the assessment type
-  GetAssessmentsMetadataSubscriptionArgs({
+  const GetAssessmentsMetadataSubscriptionArgs({
     required this.assessmentMetadataName,
   });
 

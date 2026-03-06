@@ -12,7 +12,7 @@ class GetPartnerArgs {
 
   /// Creates a new [GetPartnerArgs].
   /// [partnerId] Id of the Partner
-  GetPartnerArgs({
+  const GetPartnerArgs({
     required this.partnerId,
   });
 

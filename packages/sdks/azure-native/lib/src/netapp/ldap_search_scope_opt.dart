@@ -15,7 +15,7 @@ class LdapSearchScopeOpt {
   /// [groupDN] This specifies the group DN, which overrides the base DN for group lookups.
   /// [groupMembershipFilter] This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
   /// [userDN] This specifies the user DN, which overrides the base DN for user lookups.
-  LdapSearchScopeOpt({
+  const LdapSearchScopeOpt({
     this.groupDN,
     this.groupMembershipFilter,
     this.userDN,

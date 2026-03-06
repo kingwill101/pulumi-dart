@@ -10,7 +10,7 @@ class ZoneMappingResponse {
   /// Creates a new [ZoneMappingResponse].
   /// [location] The location of the zone mapping.
   /// [zones] Optional.
-  ZoneMappingResponse({
+  const ZoneMappingResponse({
     this.location,
     this.zones,
   });

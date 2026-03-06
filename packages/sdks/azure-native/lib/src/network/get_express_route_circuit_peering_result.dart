@@ -88,7 +88,7 @@ class GetExpressRouteCircuitPeeringResult {
   /// [stats] The peering stats of express route circuit.
   /// [type] Type of the resource.
   /// [vlanId] The VLAN ID.
-  GetExpressRouteCircuitPeeringResult({
+  const GetExpressRouteCircuitPeeringResult({
     this.azureASN,
     required this.azureApiVersion,
     this.connections,

@@ -15,7 +15,7 @@ class GetBatchArgs {
   /// [batchId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBatchArgs({
+  const GetBatchArgs({
     required this.batchId,
     required this.location,
     this.project,

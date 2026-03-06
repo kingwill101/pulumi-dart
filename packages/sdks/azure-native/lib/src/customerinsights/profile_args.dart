@@ -66,7 +66,7 @@ class ProfileArgs {
   /// [strongIds] The strong IDs.
   /// [timestampFieldName] The timestamp property name. Represents the time when the interaction or profile update happened.
   /// [typeName] The name of the entity.
-  ProfileArgs({
+  const ProfileArgs({
     this.apiEntitySetName,
     this.attributes,
     this.description,

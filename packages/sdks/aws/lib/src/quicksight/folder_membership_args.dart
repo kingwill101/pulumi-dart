@@ -26,7 +26,7 @@ class FolderMembershipArgs {
   /// [memberId] ID of the asset (the dashboard, analysis, or dataset).
   /// [memberType] Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  FolderMembershipArgs({
+  const FolderMembershipArgs({
     this.awsAccountId,
     required this.folderId,
     required this.memberId,

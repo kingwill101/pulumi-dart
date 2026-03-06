@@ -27,7 +27,7 @@ class MedtechServiceFhirDestinationArgs {
   /// [location] Specifies the Azure Region where the Healthcare Med Tech Service Fhir Destination should be created. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   /// [medtechServiceId] Specifies the name of the Healthcare Med Tech Service where the Healthcare Med Tech Service Fhir Destination should exist. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
   /// [name] Specifies the name of the Healthcare Med Tech Service Fhir Destination. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
-  MedtechServiceFhirDestinationArgs({
+  const MedtechServiceFhirDestinationArgs({
     required this.destinationFhirMappingJson,
     required this.destinationFhirServiceId,
     required this.destinationIdentityResolutionType,

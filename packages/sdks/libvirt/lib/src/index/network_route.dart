@@ -23,7 +23,7 @@ class NetworkRoute {
   /// [metric] Sets the metric value for the static route, influencing route selection.
   /// [netmask] Configures the netmask for the static route address.
   /// [prefix] Defines the prefix length for the static route, particularly for IPv6 addresses.
-  NetworkRoute({
+  const NetworkRoute({
     this.address,
     this.family,
     this.gateway,

@@ -21,7 +21,7 @@ class GetMessageArgs {
   /// [messageId] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetMessageArgs({
+  const GetMessageArgs({
     required this.datasetId,
     required this.hl7V2StoreId,
     required this.location,

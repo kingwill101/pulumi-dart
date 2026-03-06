@@ -24,7 +24,7 @@ class K8sSlbAttachmentSlbConfig {
   /// [slbId] The ID of your SLB instance, if value is empty which means EDAS will purchase an SLB instance with 'specification' field.
   /// [specification] The instance specification of SLB, values can be found [here](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html), empty for 'slb.s1.small'.
   /// [type] The type of SLB instance, values can be 'internet' or 'intranet'.
-  K8sSlbAttachmentSlbConfig({
+  const K8sSlbAttachmentSlbConfig({
     this.name,
     required this.portMappings,
     required this.scheduler,

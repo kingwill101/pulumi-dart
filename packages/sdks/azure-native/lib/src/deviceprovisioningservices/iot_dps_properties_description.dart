@@ -41,7 +41,7 @@ class IotDpsPropertiesDescription {
   /// [provisioningState] The ARM provisioning state of the provisioning service.
   /// [publicNetworkAccess] Whether requests from Public Network are allowed
   /// [state] Current state of the provisioning service.
-  IotDpsPropertiesDescription({
+  const IotDpsPropertiesDescription({
     this.allocationPolicy,
     this.authorizationPolicies,
     this.enableDataResidency,

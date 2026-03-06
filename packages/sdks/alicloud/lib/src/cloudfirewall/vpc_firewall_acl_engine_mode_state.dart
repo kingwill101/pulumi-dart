@@ -15,7 +15,7 @@ class VpcFirewallAclEngineModeState {
   /// [memberUid] The ID of member account.
   /// [strictMode] The mode of the ACL engine. Possible values are `0`, `1`.
   /// [vpcFirewallId] The ID of the VPC firewall.
-  VpcFirewallAclEngineModeState({
+  const VpcFirewallAclEngineModeState({
     this.memberUid,
     this.strictMode,
     this.vpcFirewallId,

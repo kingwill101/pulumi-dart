@@ -27,7 +27,7 @@ class GroupingConfigurationResponse {
   /// [lookbackDuration] Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
   /// [matchingMethod] Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
   /// [reopenClosedIncident] Re-open closed matching incidents
-  GroupingConfigurationResponse({
+  const GroupingConfigurationResponse({
     required this.enabled,
     this.groupByAlertDetails,
     this.groupByCustomDetails,

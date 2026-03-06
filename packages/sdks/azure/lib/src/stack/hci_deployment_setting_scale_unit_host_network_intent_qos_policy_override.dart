@@ -14,7 +14,7 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride {
   /// [bandwidthPercentageSmb] Specifies the percentage of the allocated storage traffic bandwidth. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [priorityValue8021ActionCluster] Specifies the Cluster traffic priority. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [priorityValue8021ActionSmb] Specifies the Priority Flow Control where Data Center Bridging (DCB) is used. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride({
+  const HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride({
     this.bandwidthPercentageSmb,
     this.priorityValue8021ActionCluster,
     this.priorityValue8021ActionSmb,

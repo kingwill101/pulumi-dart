@@ -18,7 +18,7 @@ class ResolverConfigArgs {
   /// [autodefinedReverseFlag] Indicates whether or not the Resolver will create autodefined rules for reverse DNS lookups. Valid values: `ENABLE`, `DISABLE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the VPC that the configuration is for.
-  ResolverConfigArgs({
+  const ResolverConfigArgs({
     required this.autodefinedReverseFlag,
     this.region,
     required this.resourceId,

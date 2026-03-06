@@ -13,7 +13,7 @@ class GetDomainMappingArgs {
   /// Creates a new [GetDomainMappingArgs].
   /// [appId] Required.
   /// [domainMappingId] Required.
-  GetDomainMappingArgs({
+  const GetDomainMappingArgs({
     required this.appId,
     required this.domainMappingId,
   });

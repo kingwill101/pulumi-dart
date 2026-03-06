@@ -15,7 +15,7 @@ class RouteSpecHttpRouteMatchHeader {
   /// [invert] If `true`, the match is on the opposite of the `match` method and value. Default is `false`.
   /// [match] Method and value to match the header value sent with a request. Specify one match method.
   /// [name] Name for the HTTP header in the client request that will be matched on.
-  RouteSpecHttpRouteMatchHeader({
+  const RouteSpecHttpRouteMatchHeader({
     this.invert,
     this.match,
     required this.name,

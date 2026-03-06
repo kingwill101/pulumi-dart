@@ -13,7 +13,7 @@ class GetLaunchTemplateCpuOption {
   /// [coreCount] Required.
   /// [nestedVirtualization] Required.
   /// [threadsPerCore] Required.
-  GetLaunchTemplateCpuOption({
+  const GetLaunchTemplateCpuOption({
     required this.amdSevSnp,
     required this.coreCount,
     required this.nestedVirtualization,

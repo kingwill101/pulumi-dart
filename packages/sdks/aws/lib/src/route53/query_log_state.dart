@@ -15,7 +15,7 @@ class QueryLogState {
   /// [arn] The Amazon Resource Name (ARN) of the Query Logging Config.
   /// [cloudwatchLogGroupArn] CloudWatch log group ARN to send query logs.
   /// [zoneId] Route53 hosted zone ID to enable query logs.
-  QueryLogState({
+  const QueryLogState({
     this.arn,
     this.cloudwatchLogGroupArn,
     this.zoneId,

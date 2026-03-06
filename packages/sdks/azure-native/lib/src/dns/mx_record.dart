@@ -12,7 +12,7 @@ class MxRecord {
   /// Creates a new [MxRecord].
   /// [exchange] The domain name of the mail host for this MX record.
   /// [preference] The preference value for this MX record.
-  MxRecord({
+  const MxRecord({
     this.exchange,
     this.preference,
   });

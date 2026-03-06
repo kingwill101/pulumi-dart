@@ -21,7 +21,7 @@ class DetectorParameterDefinitionResponse {
   /// [isMandatory] A value indicating whether this detector parameter is mandatory.
   /// [name] The detector parameter name.
   /// [type] The detector parameter type.
-  DetectorParameterDefinitionResponse({
+  const DetectorParameterDefinitionResponse({
     this.description,
     this.displayName,
     this.isMandatory,

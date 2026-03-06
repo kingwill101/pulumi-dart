@@ -56,7 +56,7 @@ class GetNodeTemplateResult {
   /// [serverBinding] Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
   /// [status] The status of the node template. One of the following values: CREATING, READY, and DELETING.
   /// [statusMessage] An optional, human-readable explanation of the status.
-  GetNodeTemplateResult({
+  const GetNodeTemplateResult({
     required this.accelerators,
     required this.cpuOvercommitType,
     required this.creationTimestamp,

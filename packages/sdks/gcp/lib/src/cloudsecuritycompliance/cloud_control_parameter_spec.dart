@@ -46,7 +46,7 @@ class CloudControlParameterSpec {
   /// [substitutionRules] List of parameter substitutions.
   /// [validation] Validation of the parameter.
   /// [valueType] Parameter value type.
-  CloudControlParameterSpec({
+  const CloudControlParameterSpec({
     this.defaultValue,
     this.description,
     this.displayName,

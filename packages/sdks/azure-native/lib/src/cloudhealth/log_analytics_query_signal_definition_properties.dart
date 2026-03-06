@@ -35,7 +35,7 @@ class LogAnalyticsQuerySignalDefinitionProperties {
   /// [signalKind] Supported signal kinds as discriminator
   /// [timeGrain] Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
   /// [valueColumnName] Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
-  LogAnalyticsQuerySignalDefinitionProperties({
+  const LogAnalyticsQuerySignalDefinitionProperties({
     this.dataUnit,
     this.displayName,
     required this.evaluationRules,

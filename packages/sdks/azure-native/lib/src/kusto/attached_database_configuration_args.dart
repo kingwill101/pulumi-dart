@@ -40,7 +40,7 @@ class AttachedDatabaseConfigurationArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tableLevelSharingProperties] Table level sharing specifications
-  AttachedDatabaseConfigurationArgs({
+  const AttachedDatabaseConfigurationArgs({
     this.attachedDatabaseConfigurationName,
     required this.clusterName,
     required this.clusterResourceId,

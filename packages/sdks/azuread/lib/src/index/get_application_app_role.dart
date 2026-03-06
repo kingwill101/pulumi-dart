@@ -23,7 +23,7 @@ class GetApplicationAppRole {
   /// [enabled] Determines if the app role is enabled.
   /// [id] The unique identifier for an app role or OAuth2 permission scope published by the resource application.
   /// [value] The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-  GetApplicationAppRole({
+  const GetApplicationAppRole({
     required this.allowedMemberTypes,
     required this.description,
     required this.displayName,

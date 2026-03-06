@@ -41,7 +41,7 @@ class IdentityPoolArgs {
   /// [samlProviderArns] An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
   /// [supportedLoginProviders] Key-Value pairs mapping provider names to provider app IDs.
   /// [tags] A map of tags to assign to the Identity Pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  IdentityPoolArgs({
+  const IdentityPoolArgs({
     this.allowClassicFlow,
     this.allowUnauthenticatedIdentities,
     this.cognitoIdentityProviders,

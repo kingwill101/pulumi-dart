@@ -85,7 +85,7 @@ class DiskReplicaPairState {
   /// [sourceZoneId] The ID of the zone to which the production site belongs.
   /// [status] The status of the resource
   /// [tags] The tag of the resource
-  DiskReplicaPairState({
+  const DiskReplicaPairState({
     this.bandwidth,
     this.createTime,
     this.description,

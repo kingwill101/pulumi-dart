@@ -16,7 +16,7 @@ class PredictionDistributionDefinitionResponse {
   /// [distributions] Distributions of the prediction.
   /// [totalNegatives] Total negatives in the distribution.
   /// [totalPositives] Total positive in the distribution.
-  PredictionDistributionDefinitionResponse({
+  const PredictionDistributionDefinitionResponse({
     this.distributions,
     this.totalNegatives,
     this.totalPositives,

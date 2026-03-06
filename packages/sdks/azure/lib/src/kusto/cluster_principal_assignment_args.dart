@@ -30,7 +30,7 @@ class ClusterPrincipalAssignmentArgs {
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   /// [role] The cluster role assigned to the principal. Valid values include `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`. Changing this forces a new resource to be created.
   /// [tenantId] The tenant id in which the principal resides. Changing this forces a new resource to be created.
-  ClusterPrincipalAssignmentArgs({
+  const ClusterPrincipalAssignmentArgs({
     required this.clusterName,
     this.name,
     required this.principalId,

@@ -31,7 +31,7 @@ class GetFactoryResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Azure Data Factory.
   /// [vstsConfigurations] A `vsts_configuration` block as defined below.
-  GetFactoryResult({
+  const GetFactoryResult({
     required this.githubConfigurations,
     required this.id,
     required this.identities,

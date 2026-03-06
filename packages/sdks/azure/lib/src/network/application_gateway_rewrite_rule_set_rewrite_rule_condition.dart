@@ -17,7 +17,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleCondition {
   /// [negate] Negate the result of the condition evaluation. Defaults to `false`
   /// [pattern] The pattern, either fixed string or regular expression, that evaluates the truthfulness of the condition.
   /// [variable] The [variable](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) of the condition.
-  ApplicationGatewayRewriteRuleSetRewriteRuleCondition({
+  const ApplicationGatewayRewriteRuleSetRewriteRuleCondition({
     this.ignoreCase,
     this.negate,
     required this.pattern,

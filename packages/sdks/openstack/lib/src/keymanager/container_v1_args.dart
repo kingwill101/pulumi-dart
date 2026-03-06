@@ -33,7 +33,7 @@ class ContainerV1Args {
   /// [region] The region in which to obtain the V1 KeyManager client.
   /// [secretRefs] A set of dictionaries containing references to secrets. The structure is described
   /// [type] Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-  ContainerV1Args({
+  const ContainerV1Args({
     this.acl,
     this.name,
     this.region,

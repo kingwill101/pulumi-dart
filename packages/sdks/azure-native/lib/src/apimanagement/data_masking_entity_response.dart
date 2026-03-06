@@ -11,7 +11,7 @@ class DataMaskingEntityResponse {
   /// Creates a new [DataMaskingEntityResponse].
   /// [mode] Data masking mode.
   /// [value] The name of an entity to mask (e.g. a name of a header or a query parameter).
-  DataMaskingEntityResponse({
+  const DataMaskingEntityResponse({
     this.mode,
     this.value,
   });

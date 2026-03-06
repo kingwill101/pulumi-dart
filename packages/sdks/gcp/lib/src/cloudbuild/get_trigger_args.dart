@@ -20,7 +20,7 @@ class GetTriggerArgs {
   /// [location] The Cloud Build location for the trigger.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [triggerId] The unique identifier for the trigger..
-  GetTriggerArgs({
+  const GetTriggerArgs({
     required this.location,
     this.project,
     required this.triggerId,

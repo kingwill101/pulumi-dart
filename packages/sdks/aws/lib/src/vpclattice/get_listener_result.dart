@@ -49,7 +49,7 @@ class GetListenerResult {
   /// [serviceId] The ID of the service.
   /// [serviceIdentifier] Required.
   /// [tags] List of tags associated with the listener.
-  GetListenerResult({
+  const GetListenerResult({
     required this.arn,
     required this.createdAt,
     required this.defaultActions,

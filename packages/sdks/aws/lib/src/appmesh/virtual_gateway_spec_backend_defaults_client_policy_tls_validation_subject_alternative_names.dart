@@ -9,7 +9,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternati
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
-  VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames({
+  const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames({
     required this.match,
   });
 

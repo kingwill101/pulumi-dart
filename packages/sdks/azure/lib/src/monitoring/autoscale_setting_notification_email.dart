@@ -14,7 +14,7 @@ class AutoscaleSettingNotificationEmail {
   /// [customEmails] Specifies a list of custom email addresses to which the email notifications will be sent.
   /// [sendToSubscriptionAdministrator] Should email notifications be sent to the subscription administrator? Defaults to `false`.
   /// [sendToSubscriptionCoAdministrator] Should email notifications be sent to the subscription co-administrator? Defaults to `false`.
-  AutoscaleSettingNotificationEmail({
+  const AutoscaleSettingNotificationEmail({
     this.customEmails,
     this.sendToSubscriptionAdministrator,
     this.sendToSubscriptionCoAdministrator,

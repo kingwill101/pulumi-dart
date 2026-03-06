@@ -98,7 +98,7 @@ class GetConnectionResult {
   /// [subscriptionType] This subscription type enum states the subscription type of the project.
   /// [suspended] Optional. Suspended indicates if a user has suspended a connection or not.
   /// [updateTime] Updated time.
-  GetConnectionResult({
+  const GetConnectionResult({
     required this.authConfig,
     required this.configVariables,
     required this.connectionRevision,

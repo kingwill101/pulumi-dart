@@ -22,7 +22,7 @@ class AlertConfigurationTemplateConfiguration {
   /// [tokens] Template Variables.
   /// [type] Optional.
   /// [version] Template Version.
-  AlertConfigurationTemplateConfiguration({
+  const AlertConfigurationTemplateConfiguration({
     this.annotations,
     this.lang,
     this.templateId,

@@ -124,7 +124,7 @@ class NodeState {
   /// [vpcId] VPC ID
   /// [vswitchId] Switch ID
   /// [zone] Availability Zone
-  NodeState({
+  const NodeState({
     this.billingCycle,
     this.classify,
     this.clusterId,

@@ -18,7 +18,7 @@ class GetAttachedDatabaseConfigurationArgs {
   /// [attachedDatabaseConfigurationName] The name of the attached database configuration.
   /// [clusterName] The name of the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAttachedDatabaseConfigurationArgs({
+  const GetAttachedDatabaseConfigurationArgs({
     required this.attachedDatabaseConfigurationName,
     required this.clusterName,
     required this.resourceGroupName,

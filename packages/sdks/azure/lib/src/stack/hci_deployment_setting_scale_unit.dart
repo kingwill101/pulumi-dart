@@ -80,7 +80,7 @@ class HciDeploymentSettingScaleUnit {
   /// [storage] A `storage` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [streamingDataClientEnabled] Whether the telemetry data will be sent to Microsoft. Possible values are `true` and `false`. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [wdacEnabled] Whether to enable WDAC. Possible values are `true` and `false`. When set to `true`, applications and the code that you can run on your Azure Stack HCI cluster are limited. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnit({
+  const HciDeploymentSettingScaleUnit({
     required this.activeDirectoryOrganizationalUnitPath,
     this.bitlockerBootVolumeEnabled,
     this.bitlockerDataVolumeEnabled,

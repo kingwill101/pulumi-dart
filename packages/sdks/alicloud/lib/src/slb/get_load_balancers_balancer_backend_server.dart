@@ -13,7 +13,7 @@ class GetLoadBalancersBalancerBackendServer {
   /// [serverId] Required.
   /// [type] Required.
   /// [weight] Required.
-  GetLoadBalancersBalancerBackendServer({
+  const GetLoadBalancersBalancerBackendServer({
     required this.description,
     required this.serverId,
     required this.type,

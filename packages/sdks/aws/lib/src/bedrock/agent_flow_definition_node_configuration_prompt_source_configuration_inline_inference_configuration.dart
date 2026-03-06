@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferen
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration].
   /// [text] Optional.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration({
     this.text,
   });
 

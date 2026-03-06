@@ -47,7 +47,7 @@ class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker {
   /// [interconnects] Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
   /// [metros] (Output)
   /// [zones] (Output)
-  InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker({
+  const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker({
     this.blockerType,
     this.documentationLink,
     this.explanation,

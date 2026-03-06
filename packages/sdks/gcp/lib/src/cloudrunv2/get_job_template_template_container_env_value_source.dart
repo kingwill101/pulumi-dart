@@ -9,7 +9,7 @@ class GetJobTemplateTemplateContainerEnvValueSource {
 
   /// Creates a new [GetJobTemplateTemplateContainerEnvValueSource].
   /// [secretKeyReves] Selects a secret and a specific version from Cloud Secret Manager.
-  GetJobTemplateTemplateContainerEnvValueSource({
+  const GetJobTemplateTemplateContainerEnvValueSource({
     required this.secretKeyReves,
   });
 

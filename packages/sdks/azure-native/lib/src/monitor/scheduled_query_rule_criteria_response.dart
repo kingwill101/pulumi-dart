@@ -10,7 +10,7 @@ class ScheduledQueryRuleCriteriaResponse {
 
   /// Creates a new [ScheduledQueryRuleCriteriaResponse].
   /// [allOf] A list of conditions to evaluate against the specified scopes
-  ScheduledQueryRuleCriteriaResponse({
+  const ScheduledQueryRuleCriteriaResponse({
     this.allOf,
   });
 

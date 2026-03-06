@@ -9,7 +9,7 @@ class GalleryImageVersion {
 
   /// Creates a new [GalleryImageVersion].
   /// [name] This is the version of the gallery image.
-  GalleryImageVersion({
+  const GalleryImageVersion({
     this.name,
   });
 

@@ -12,7 +12,7 @@ class ManagedClusterServicePrincipalProfile {
   /// Creates a new [ManagedClusterServicePrincipalProfile].
   /// [clientId] The ID for the service principal.
   /// [secret] The secret password associated with the service principal in plain text.
-  ManagedClusterServicePrincipalProfile({
+  const ManagedClusterServicePrincipalProfile({
     required this.clientId,
     this.secret,
   });

@@ -18,7 +18,7 @@ class NetworkInsightsAnalysisReturnPathComponentAclRule {
   /// [protocol] Optional.
   /// [ruleAction] Optional.
   /// [ruleNumber] Optional.
-  NetworkInsightsAnalysisReturnPathComponentAclRule({
+  const NetworkInsightsAnalysisReturnPathComponentAclRule({
     this.cidr,
     this.egress,
     this.portRanges,

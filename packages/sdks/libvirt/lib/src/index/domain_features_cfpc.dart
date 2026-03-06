@@ -8,7 +8,7 @@ class DomainFeaturesCfpc {
 
   /// Creates a new [DomainFeaturesCfpc].
   /// [value] Sets the specific value associated with the CFPC feature.
-  DomainFeaturesCfpc({
+  const DomainFeaturesCfpc({
     required this.value,
   });
 

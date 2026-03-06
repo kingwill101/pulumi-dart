@@ -15,7 +15,7 @@ class EnterpriseCrmEventbusProtoFailurePolicyResponse {
   /// [intervalInSeconds] Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
   /// [maxNumRetries] Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
   /// [retryStrategy] Defines what happens to the task upon failure.
-  EnterpriseCrmEventbusProtoFailurePolicyResponse({
+  const EnterpriseCrmEventbusProtoFailurePolicyResponse({
     required this.intervalInSeconds,
     required this.maxNumRetries,
     required this.retryStrategy,

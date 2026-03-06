@@ -15,7 +15,7 @@ class GetTableIamPolicyArgs {
   /// [datasetId] Required.
   /// [project] Optional.
   /// [tableId] Required.
-  GetTableIamPolicyArgs({
+  const GetTableIamPolicyArgs({
     required this.datasetId,
     this.project,
     required this.tableId,

@@ -20,7 +20,7 @@ class BucketWebsiteRoutingRulesRoutingRule {
   /// [luaConfig] The Lua script configuration to be executed. See `lua_config` below.
   /// [redirect] Specifies the action to perform after this rule is matched. See `redirect` below.
   /// [ruleNumber] The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
-  BucketWebsiteRoutingRulesRoutingRule({
+  const BucketWebsiteRoutingRulesRoutingRule({
     this.condition,
     this.luaConfig,
     this.redirect,

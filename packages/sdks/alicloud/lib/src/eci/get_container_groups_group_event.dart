@@ -26,7 +26,7 @@ class GetContainerGroupsGroupEvent {
   /// [name] The name of the object to which the event belongs.
   /// [reason] The name of the event.
   /// [type] The type of the event. Valid values: Normal and Warning.
-  GetContainerGroupsGroupEvent({
+  const GetContainerGroupsGroupEvent({
     required this.count,
     required this.firstTimestamp,
     required this.lastTimestamp,

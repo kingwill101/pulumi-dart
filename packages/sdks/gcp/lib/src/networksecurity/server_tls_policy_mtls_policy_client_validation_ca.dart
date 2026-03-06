@@ -16,7 +16,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCa {
   /// Creates a new [ServerTlsPolicyMtlsPolicyClientValidationCa].
   /// [certificateProviderInstance] Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
   /// [grpcEndpoint] gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-  ServerTlsPolicyMtlsPolicyClientValidationCa({
+  const ServerTlsPolicyMtlsPolicyClientValidationCa({
     this.certificateProviderInstance,
     this.grpcEndpoint,
   });

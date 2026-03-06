@@ -27,7 +27,7 @@ class TableVerticalLimitSettingsResponse {
   /// [maxTrials] Number of iterations.
   /// [timeout] AutoML job timeout.
   /// [trialTimeout] Iteration timeout.
-  TableVerticalLimitSettingsResponse({
+  const TableVerticalLimitSettingsResponse({
     this.enableEarlyTermination,
     this.exitScore,
     this.maxConcurrentTrials,

@@ -37,7 +37,7 @@ class GetMongoDBResourceMongoUserDefinitionResult {
   /// [roles] The set of roles inherited by the User Definition.
   /// [type] The type of Azure resource.
   /// [userName] The user name for User Definition.
-  GetMongoDBResourceMongoUserDefinitionResult({
+  const GetMongoDBResourceMongoUserDefinitionResult({
     required this.azureApiVersion,
     this.customData,
     this.databaseName,

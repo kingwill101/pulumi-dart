@@ -21,7 +21,7 @@ class GetClientApplicationProductLinkArgs {
   /// [clientApplicationProductLinkId] Client Application Product Link identifier. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetClientApplicationProductLinkArgs({
+  const GetClientApplicationProductLinkArgs({
     required this.clientApplicationId,
     required this.clientApplicationProductLinkId,
     required this.resourceGroupName,

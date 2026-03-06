@@ -62,7 +62,7 @@ class DatabaseMigrationPropertiesSqlMiResponse {
   /// [sourceSqlConnection] Source SQL Server connection details.
   /// [startedOn] Database migration start time.
   /// [targetDatabaseCollation] Database collation to be used for the target database.
-  DatabaseMigrationPropertiesSqlMiResponse({
+  const DatabaseMigrationPropertiesSqlMiResponse({
     this.backupConfiguration,
     required this.endedOn,
     required this.kind,

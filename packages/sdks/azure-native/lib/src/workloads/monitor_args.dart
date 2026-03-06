@@ -48,7 +48,7 @@ class MonitorArgs {
   /// [routingPreference] Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
   /// [tags] Resource tags.
   /// [zoneRedundancyPreference] Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy.
-  MonitorArgs({
+  const MonitorArgs({
     this.appLocation,
     this.appServicePlanConfiguration,
     this.identity,

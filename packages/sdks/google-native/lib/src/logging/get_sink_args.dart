@@ -13,7 +13,7 @@ class GetSinkArgs {
   /// Creates a new [GetSinkArgs].
   /// [project] Optional.
   /// [sinkId] Required.
-  GetSinkArgs({
+  const GetSinkArgs({
     this.project,
     required this.sinkId,
   });

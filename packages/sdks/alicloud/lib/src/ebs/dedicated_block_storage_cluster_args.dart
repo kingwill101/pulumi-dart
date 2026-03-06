@@ -24,7 +24,7 @@ class DedicatedBlockStorageClusterArgs {
   /// [totalCapacity] The total capacity of the dedicated block storage cluster. Unit: GiB.
   /// [type] The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
   /// [zoneId] The zone ID  of the resource
-  DedicatedBlockStorageClusterArgs({
+  const DedicatedBlockStorageClusterArgs({
     required this.dedicatedBlockStorageClusterName,
     this.description,
     required this.totalCapacity,

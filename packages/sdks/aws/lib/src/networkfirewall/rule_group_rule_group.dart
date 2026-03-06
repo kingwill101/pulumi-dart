@@ -21,7 +21,7 @@ class RuleGroupRuleGroup {
   /// [ruleVariables] A configuration block that defines additional settings available to use in the rules defined in the rule group. Can only be specified for **stateful** rule groups. See Rule Variables below for details.
   /// [rulesSource] A configuration block that defines the stateful or stateless rules for the rule group. See Rules Source below for details.
   /// [statefulRuleOptions] A configuration block that defines stateful rule options for the rule group. See Stateful Rule Options below for details.
-  RuleGroupRuleGroup({
+  const RuleGroupRuleGroup({
     this.referenceSets,
     this.ruleVariables,
     required this.rulesSource,

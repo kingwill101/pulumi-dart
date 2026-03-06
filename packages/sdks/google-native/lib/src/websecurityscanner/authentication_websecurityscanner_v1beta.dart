@@ -18,7 +18,7 @@ class AuthenticationWebsecurityscannerV1beta {
   /// [customAccount] Authentication using a custom account.
   /// [googleAccount] Authentication using a Google account.
   /// [iapCredential] Authentication using Identity-Aware-Proxy (IAP).
-  AuthenticationWebsecurityscannerV1beta({
+  const AuthenticationWebsecurityscannerV1beta({
     this.customAccount,
     this.googleAccount,
     this.iapCredential,

@@ -17,7 +17,7 @@ class GetWindowsWebAppAuthSettingFacebook {
   /// [appSecret] The App Secret of the Facebook app used for Facebook login.
   /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook login.
   /// [oauthScopes] A list of OAuth 2.0 scopes requested as part of Microsoft Account authentication.
-  GetWindowsWebAppAuthSettingFacebook({
+  const GetWindowsWebAppAuthSettingFacebook({
     required this.appId,
     required this.appSecret,
     required this.appSecretSettingName,

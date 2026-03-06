@@ -50,7 +50,7 @@ class JobConfigElementaryStreamVideoStreamH264 {
   /// [vbvFullnessBits] Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
   /// [vbvSizeBits] Size of the Video Buffering Verifier (VBV) buffer in bits.
   /// [widthPixels] The width of the video in pixels.
-  JobConfigElementaryStreamVideoStreamH264({
+  const JobConfigElementaryStreamVideoStreamH264({
     required this.bitrateBps,
     this.crfLevel,
     this.entropyCoder,

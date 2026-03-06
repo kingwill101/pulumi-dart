@@ -22,7 +22,7 @@ class CopyFileArgs {
   /// [localPath] The path of the file to be copied.
   /// [remotePath] The destination path in the remote host.
   /// [triggers] Trigger replacements on changes to this input.
-  CopyFileArgs({
+  const CopyFileArgs({
     required this.connection,
     required this.localPath,
     required this.remotePath,

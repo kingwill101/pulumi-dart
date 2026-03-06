@@ -18,7 +18,7 @@ class GetApplicationScalingRulesRuleScalingRuleTimer {
   /// [endDate] The short-term end date of the timed elastic scaling strategy.
   /// [period] The period in which a timed elastic scaling strategy is executed.
   /// [schedules] Trigger point in time within a single day.
-  GetApplicationScalingRulesRuleScalingRuleTimer({
+  const GetApplicationScalingRulesRuleScalingRuleTimer({
     required this.beginDate,
     required this.endDate,
     required this.period,

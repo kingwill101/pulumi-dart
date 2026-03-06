@@ -18,7 +18,7 @@ class GetCircuitPeeringArgs {
   /// [expressRouteCircuitName] The name of the ExpressRoute Circuit in which to create the Peering. Changing this forces a new resource to be created.
   /// [peeringType] The type of the ExpressRoute Circuit Peering. Acceptable values include `AzurePrivatePeering`, `AzurePublicPeering` and `MicrosoftPeering`.
   /// [resourceGroupName] The name of the resource group in which to create the Express Route Circuit Peering. Changing this forces a new resource to be created.
-  GetCircuitPeeringArgs({
+  const GetCircuitPeeringArgs({
     required this.expressRouteCircuitName,
     required this.peeringType,
     required this.resourceGroupName,

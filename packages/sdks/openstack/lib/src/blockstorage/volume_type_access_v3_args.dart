@@ -22,7 +22,7 @@ class VolumeTypeAccessV3Args {
   /// [projectId] ID of the project to give access to. Changing this
   /// [region] The region in which to create the volume. If
   /// [volumeTypeId] ID of the volume type to give access to. Changing
-  VolumeTypeAccessV3Args({
+  const VolumeTypeAccessV3Args({
     required this.projectId,
     this.region,
     required this.volumeTypeId,

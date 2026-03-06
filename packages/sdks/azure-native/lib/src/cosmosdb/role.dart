@@ -12,7 +12,7 @@ class Role {
   /// Creates a new [Role].
   /// [db] The database name the role is applied.
   /// [role] The role name.
-  Role({
+  const Role({
     this.db,
     this.role,
   });

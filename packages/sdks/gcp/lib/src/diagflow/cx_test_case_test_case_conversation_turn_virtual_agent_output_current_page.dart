@@ -13,7 +13,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage {
   /// Creates a new [CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage].
   /// [displayName] (Output)
   /// [name] The unique identifier of the page.
-  CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage({
+  const CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage({
     this.displayName,
     this.name,
   });

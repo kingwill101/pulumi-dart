@@ -39,7 +39,7 @@ class GetQosPolicyResult {
   /// [shared] See Argument Reference above.
   /// [tags] Optional.
   /// [updatedAt] The time at which QoS policy was created.
-  GetQosPolicyResult({
+  const GetQosPolicyResult({
     required this.allTags,
     required this.createdAt,
     required this.description,

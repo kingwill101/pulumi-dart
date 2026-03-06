@@ -90,5 +90,5 @@ class MysqlConfig {
 
 }
 
-final config = MysqlConfig();
+const config = MysqlConfig();
 

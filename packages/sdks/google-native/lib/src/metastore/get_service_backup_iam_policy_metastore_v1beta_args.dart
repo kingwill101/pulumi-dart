@@ -19,7 +19,7 @@ class GetServiceBackupIamPolicyMetastoreV1betaArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetServiceBackupIamPolicyMetastoreV1betaArgs({
+  const GetServiceBackupIamPolicyMetastoreV1betaArgs({
     required this.backupId,
     required this.location,
     this.optionsRequestedPolicyVersion,

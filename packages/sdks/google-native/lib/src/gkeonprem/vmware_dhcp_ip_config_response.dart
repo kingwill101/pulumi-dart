@@ -9,7 +9,7 @@ class VmwareDhcpIpConfigResponse {
 
   /// Creates a new [VmwareDhcpIpConfigResponse].
   /// [enabled] enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters.
-  VmwareDhcpIpConfigResponse({
+  const VmwareDhcpIpConfigResponse({
     required this.enabled,
   });
 

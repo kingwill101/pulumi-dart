@@ -9,7 +9,7 @@ class PolicyDns64Config {
 
   /// Creates a new [PolicyDns64Config].
   /// [scope] The scope to which DNS64 config will be applied to.
-  PolicyDns64Config({
+  const PolicyDns64Config({
     required this.scope,
   });
 

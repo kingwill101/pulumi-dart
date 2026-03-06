@@ -15,7 +15,7 @@ class LinuxContainerUserPatch {
   /// [gid] GID is the primary gid initially attached to the first process in the container
   /// [supplementalGroups] SupplementalGroups are the supplemental groups initially attached to the first process in the container
   /// [uid] UID is the primary uid initially attached to the first process in the container
-  LinuxContainerUserPatch({
+  const LinuxContainerUserPatch({
     this.gid,
     this.supplementalGroups,
     this.uid,

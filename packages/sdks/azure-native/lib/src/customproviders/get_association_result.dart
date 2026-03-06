@@ -23,7 +23,7 @@ class GetAssociationResult {
   /// [provisioningState] The provisioning state of the association.
   /// [targetResourceId] The REST resource instance of the target resource for this association.
   /// [type] The association type.
-  GetAssociationResult({
+  const GetAssociationResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

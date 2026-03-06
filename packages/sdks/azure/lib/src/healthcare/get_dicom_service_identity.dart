@@ -13,7 +13,7 @@ class GetDicomServiceIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] Required.
-  GetDicomServiceIdentity({
+  const GetDicomServiceIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

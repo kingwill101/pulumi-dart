@@ -9,7 +9,7 @@ class NodeToNodeEncryptionOptionsResponse {
 
   /// Creates a new [NodeToNodeEncryptionOptionsResponse].
   /// [enabled] &lt;p&gt;True to enable node-to-node encryption.&lt;/p&gt;
-  NodeToNodeEncryptionOptionsResponse({
+  const NodeToNodeEncryptionOptionsResponse({
     this.enabled,
   });
 

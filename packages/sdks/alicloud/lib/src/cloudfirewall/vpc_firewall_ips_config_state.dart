@@ -33,7 +33,7 @@ class VpcFirewallIpsConfigState {
   /// [ruleClass] IPS rule Group
   /// [runMode] IPS defense mode. Value:
   /// [vpcFirewallId] The ID of the VPC firewall instance. Value:
-  VpcFirewallIpsConfigState({
+  const VpcFirewallIpsConfigState({
     this.basicRules,
     this.enableAllPatch,
     this.lang,

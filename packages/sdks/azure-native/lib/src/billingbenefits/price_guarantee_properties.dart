@@ -12,7 +12,7 @@ class PriceGuaranteeProperties {
   /// Creates a new [PriceGuaranteeProperties].
   /// [priceGuaranteeDate] The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
   /// [pricingPolicy] Supported values: Protected, Locked
-  PriceGuaranteeProperties({
+  const PriceGuaranteeProperties({
     this.priceGuaranteeDate,
     this.pricingPolicy,
   });

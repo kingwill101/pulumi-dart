@@ -21,7 +21,7 @@ class CorsConfigurationResponse {
   /// [maxAge] The max age to be allowed via CORS.
   /// [methods] The methods to be allowed via CORS.
   /// [origins] The origins to be allowed via CORS.
-  CorsConfigurationResponse({
+  const CorsConfigurationResponse({
     this.allowCredentials,
     this.headers,
     this.maxAge,

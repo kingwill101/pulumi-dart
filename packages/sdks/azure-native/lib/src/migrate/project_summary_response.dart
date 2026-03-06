@@ -18,7 +18,7 @@ class ProjectSummaryResponse {
   /// [instanceType] Instance type.
   /// [lastSummaryRefreshedTime] Last summary refresh time.
   /// [refreshSummaryState] Refresh summary state.
-  ProjectSummaryResponse({
+  const ProjectSummaryResponse({
     this.extendedSummary,
     required this.instanceType,
     this.lastSummaryRefreshedTime,

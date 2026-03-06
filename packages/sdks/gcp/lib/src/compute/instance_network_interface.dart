@@ -80,7 +80,7 @@ class InstanceNetworkInterface {
   /// [stackType] The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
   /// [subnetwork] The name or self_link of the subnetwork to attach this
   /// [subnetworkProject] The project in which the subnetwork belongs.
-  InstanceNetworkInterface({
+  const InstanceNetworkInterface({
     this.accessConfigs,
     this.aliasIpRanges,
     this.igmpQuery,

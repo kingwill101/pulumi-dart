@@ -22,7 +22,7 @@ class SchemaVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
   /// [schemaVersionName] The name of the SchemaVersion
-  SchemaVersionArgs({
+  const SchemaVersionArgs({
     this.properties,
     required this.resourceGroupName,
     required this.schemaName,

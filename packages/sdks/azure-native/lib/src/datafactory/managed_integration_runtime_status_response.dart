@@ -31,7 +31,7 @@ class ManagedIntegrationRuntimeStatusResponse {
   /// [otherErrors] The errors that occurred on this integration runtime.
   /// [state] The state of integration runtime.
   /// [type] The type of integration runtime.
-  ManagedIntegrationRuntimeStatusResponse({
+  const ManagedIntegrationRuntimeStatusResponse({
     required this.createTime,
     required this.dataFactoryName,
     required this.lastOperation,

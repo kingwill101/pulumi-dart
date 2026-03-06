@@ -13,7 +13,7 @@ class AzureBackupParamsResponse {
   /// Creates a new [AzureBackupParamsResponse].
   /// [backupType] BackupType ; Full/Incremental etc
   /// [objectType] Type of the specific object - used for deserializing
-  AzureBackupParamsResponse({
+  const AzureBackupParamsResponse({
     required this.backupType,
     required this.objectType,
   });

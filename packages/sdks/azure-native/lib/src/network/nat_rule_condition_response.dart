@@ -31,7 +31,7 @@ class NatRuleConditionResponse {
   /// [ruleConditionType] Rule Condition Type.
   /// [sourceAddresses] List of source IP addresses for this rule.
   /// [sourceIpGroups] List of source IpGroups for this rule.
-  NatRuleConditionResponse({
+  const NatRuleConditionResponse({
     this.description,
     this.destinationAddresses,
     this.destinationPorts,

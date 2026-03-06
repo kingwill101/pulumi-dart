@@ -25,7 +25,7 @@ class GetDatabaseBackupsResult {
   /// [latest] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetDatabaseBackupsResult({
+  const GetDatabaseBackupsResult({
     required this.backups,
     required this.databaseId,
     required this.databaseType,

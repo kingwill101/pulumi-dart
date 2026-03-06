@@ -63,7 +63,7 @@ class GetFileImportResult {
   /// [totalRecordCount] The number of records in the file.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validRecordCount] The number of records that have passed validation.
-  GetFileImportResult({
+  const GetFileImportResult({
     required this.azureApiVersion,
     required this.contentType,
     required this.createdTimeUTC,

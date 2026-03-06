@@ -16,7 +16,7 @@ class TargetReadinessResponse {
   /// [azureSqlDatabase] The SKU recommendation summary.
   /// [azureSqlManagedInstance] The SKU recommendation summary.
   /// [azureSqlVirtualMachine] The SKU recommendation summary.
-  TargetReadinessResponse({
+  const TargetReadinessResponse({
     this.azureSqlDatabase,
     this.azureSqlManagedInstance,
     this.azureSqlVirtualMachine,

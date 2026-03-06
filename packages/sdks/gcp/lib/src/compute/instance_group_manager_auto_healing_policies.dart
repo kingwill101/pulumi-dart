@@ -12,7 +12,7 @@ class InstanceGroupManagerAutoHealingPolicies {
   /// Creates a new [InstanceGroupManagerAutoHealingPolicies].
   /// [healthCheck] The health check resource that signals autohealing.
   /// [initialDelaySec] The number of seconds that the managed instance group waits before
-  InstanceGroupManagerAutoHealingPolicies({
+  const InstanceGroupManagerAutoHealingPolicies({
     required this.healthCheck,
     required this.initialDelaySec,
   });

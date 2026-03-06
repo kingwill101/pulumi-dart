@@ -15,7 +15,7 @@ class ListSkusByProjectArgs {
   /// Creates a new [ListSkusByProjectArgs].
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListSkusByProjectArgs({
+  const ListSkusByProjectArgs({
     required this.projectName,
     required this.resourceGroupName,
   });

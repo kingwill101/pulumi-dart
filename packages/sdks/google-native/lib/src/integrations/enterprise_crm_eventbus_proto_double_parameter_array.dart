@@ -7,7 +7,7 @@ class EnterpriseCrmEventbusProtoDoubleParameterArray {
 
   /// Creates a new [EnterpriseCrmEventbusProtoDoubleParameterArray].
   /// [doubleValues] Optional.
-  EnterpriseCrmEventbusProtoDoubleParameterArray({
+  const EnterpriseCrmEventbusProtoDoubleParameterArray({
     this.doubleValues,
   });
 

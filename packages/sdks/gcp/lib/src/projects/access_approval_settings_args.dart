@@ -36,7 +36,7 @@ class AccessApprovalSettingsArgs {
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
   /// [project] (Optional, Deprecated)
   /// [projectId] ID of the project of the access approval settings.
-  AccessApprovalSettingsArgs({
+  const AccessApprovalSettingsArgs({
     this.activeKeyVersion,
     required this.enrolledServices,
     this.notificationEmails,

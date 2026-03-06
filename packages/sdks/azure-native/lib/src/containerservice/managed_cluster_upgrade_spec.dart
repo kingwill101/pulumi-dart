@@ -12,7 +12,7 @@ class ManagedClusterUpgradeSpec {
   /// Creates a new [ManagedClusterUpgradeSpec].
   /// [kubernetesVersion] The Kubernetes version to upgrade the member clusters to.
   /// [type] ManagedClusterUpgradeType is the type of upgrade to be applied.
-  ManagedClusterUpgradeSpec({
+  const ManagedClusterUpgradeSpec({
     this.kubernetesVersion,
     required this.type,
   });

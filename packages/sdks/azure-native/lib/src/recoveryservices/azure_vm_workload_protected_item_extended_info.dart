@@ -27,7 +27,7 @@ class AzureVmWorkloadProtectedItemExtendedInfo {
   /// [policyState] Indicates consistency of policy object and policy applied to this backup item.
   /// [recoveryModel] Indicates consistency of policy object and policy applied to this backup item.
   /// [recoveryPointCount] Number of backup copies available for this backup item.
-  AzureVmWorkloadProtectedItemExtendedInfo({
+  const AzureVmWorkloadProtectedItemExtendedInfo({
     this.newestRecoveryPointInArchive,
     this.oldestRecoveryPoint,
     this.oldestRecoveryPointInArchive,

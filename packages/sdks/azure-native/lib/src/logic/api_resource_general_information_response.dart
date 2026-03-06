@@ -24,7 +24,7 @@ class ApiResourceGeneralInformationResponse {
   /// [releaseTag] The release tag.
   /// [termsOfUseUrl] The terms of use url.
   /// [tier] The tier.
-  ApiResourceGeneralInformationResponse({
+  const ApiResourceGeneralInformationResponse({
     this.description,
     this.displayName,
     this.iconUrl,

@@ -42,7 +42,7 @@ class GetTaskRunResult {
   /// [runResult] The result of this task run
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetTaskRunResult({
+  const GetTaskRunResult({
     required this.azureApiVersion,
     this.forceUpdateTag,
     required this.id,

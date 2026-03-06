@@ -12,7 +12,7 @@ class CopilotSettingArgs {
 
   /// Creates a new [CopilotSettingArgs].
   /// [accessControlEnabled] Boolean indicating if role-based access control is enabled for copilot in this tenant.
-  CopilotSettingArgs({
+  const CopilotSettingArgs({
     required this.accessControlEnabled,
   });
 

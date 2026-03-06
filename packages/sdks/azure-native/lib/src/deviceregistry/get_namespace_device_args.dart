@@ -18,7 +18,7 @@ class GetNamespaceDeviceArgs {
   /// [deviceName] The name of the device.
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNamespaceDeviceArgs({
+  const GetNamespaceDeviceArgs({
     required this.deviceName,
     required this.namespaceName,
     required this.resourceGroupName,

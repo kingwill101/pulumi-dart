@@ -9,7 +9,7 @@ class ApplicationDeploymentPolicy {
 
   /// Creates a new [ApplicationDeploymentPolicy].
   /// [deploymentMode] The managed application deployment mode.
-  ApplicationDeploymentPolicy({
+  const ApplicationDeploymentPolicy({
     required this.deploymentMode,
   });
 

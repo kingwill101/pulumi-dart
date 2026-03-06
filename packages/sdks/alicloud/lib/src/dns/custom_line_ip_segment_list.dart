@@ -11,7 +11,7 @@ class CustomLineIpSegmentList {
   /// Creates a new [CustomLineIpSegmentList].
   /// [endIp] The end IP address of the CIDR block.
   /// [startIp] The start IP address of the CIDR block.
-  CustomLineIpSegmentList({
+  const CustomLineIpSegmentList({
     required this.endIp,
     required this.startIp,
   });

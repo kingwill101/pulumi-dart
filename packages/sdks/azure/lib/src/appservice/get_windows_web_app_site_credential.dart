@@ -11,7 +11,7 @@ class GetWindowsWebAppSiteCredential {
   /// Creates a new [GetWindowsWebAppSiteCredential].
   /// [name] The name of this Windows Web App.
   /// [password] The Site Credentials Password used for publishing.
-  GetWindowsWebAppSiteCredential({
+  const GetWindowsWebAppSiteCredential({
     required this.name,
     required this.password,
   });

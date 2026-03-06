@@ -57,7 +57,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch {
   /// [singleQueryArgument] Inspect a single query argument. See Single Query Argument below for details.
   /// [uriFragment] Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See URI Fragment below for details.
   /// [uriPath] Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
-  RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch({
+  const RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch({
     this.allQueryArguments,
     this.body,
     this.cookies,

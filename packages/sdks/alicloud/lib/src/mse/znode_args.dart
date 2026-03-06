@@ -21,7 +21,7 @@ class ZnodeArgs {
   /// [clusterId] The ID of the Cluster.
   /// [data] The Node data.
   /// [path] The Node path. The value must start with a forward slash (/).
-  ZnodeArgs({
+  const ZnodeArgs({
     this.acceptLanguage,
     required this.clusterId,
     this.data,

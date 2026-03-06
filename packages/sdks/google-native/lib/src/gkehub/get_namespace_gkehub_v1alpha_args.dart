@@ -17,7 +17,7 @@ class GetNamespaceGkehubV1alphaArgs {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [scopeId] Required.
-  GetNamespaceGkehubV1alphaArgs({
+  const GetNamespaceGkehubV1alphaArgs({
     required this.location,
     required this.namespaceId,
     this.project,

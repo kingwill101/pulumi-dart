@@ -32,7 +32,7 @@ class RouteServerArgs {
   /// [snsNotificationsEnabled] Indicates whether SNS notifications should be enabled for route server events. Enabling SNS notifications persists BGP status changes to an SNS topic provisioned by AWS`.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  RouteServerArgs({
+  const RouteServerArgs({
     required this.amazonSideAsn,
     this.persistRoutes,
     this.persistRoutesDuration,

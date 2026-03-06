@@ -33,7 +33,7 @@ class GetCompliancePacksPack {
   /// [id] The ID of the Compliance Pack.
   /// [riskLevel] The Ris Level.
   /// [status] The status of the resource. Valid values `ACTIVE`, `CREATING`.
-  GetCompliancePacksPack({
+  const GetCompliancePacksPack({
     required this.accountId,
     required this.compliancePackId,
     required this.compliancePackName,

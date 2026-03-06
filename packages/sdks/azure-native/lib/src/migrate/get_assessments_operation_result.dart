@@ -162,7 +162,7 @@ class GetAssessmentsOperationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Date and Time when assessment was last updated.
   /// [vmUptime] Gets or sets the duration for which the VMs are up in the on-premises
-  GetAssessmentsOperationResult({
+  const GetAssessmentsOperationResult({
     required this.assessmentErrorSummary,
     required this.assessmentType,
     required this.azureApiVersion,

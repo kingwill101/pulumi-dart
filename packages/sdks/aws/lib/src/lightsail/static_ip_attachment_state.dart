@@ -20,7 +20,7 @@ class StaticIpAttachmentState {
   /// [ipAddress] Allocated static IP address.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [staticIpName] Name of the allocated static IP.
-  StaticIpAttachmentState({
+  const StaticIpAttachmentState({
     this.instanceName,
     this.ipAddress,
     this.region,

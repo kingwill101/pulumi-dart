@@ -28,7 +28,7 @@ class GetParameterGroupsResult {
   /// [nameRegex] Optional.
   /// [names] A list of Parameter Group names.
   /// [outputFile] Optional.
-  GetParameterGroupsResult({
+  const GetParameterGroupsResult({
     this.dbType,
     this.dbVersion,
     required this.groups,

@@ -15,7 +15,7 @@ class GetMeshArgs {
   /// [location] Required.
   /// [meshId] Required.
   /// [project] Optional.
-  GetMeshArgs({
+  const GetMeshArgs({
     required this.location,
     required this.meshId,
     this.project,

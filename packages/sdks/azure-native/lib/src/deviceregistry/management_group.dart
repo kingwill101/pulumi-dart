@@ -25,7 +25,7 @@ class ManagementGroup {
   /// [managementGroupConfiguration] Stringified JSON that contains connector-specific configuration for the management group.
   /// [name] Name of the management group.
   /// [typeRef] URI or type definition ID.
-  ManagementGroup({
+  const ManagementGroup({
     this.actions,
     this.defaultTimeoutInSeconds,
     this.defaultTopic,

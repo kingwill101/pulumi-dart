@@ -8,7 +8,7 @@ class PacketMirroringCollectorIlb {
 
   /// Creates a new [PacketMirroringCollectorIlb].
   /// [url] The URL of the forwarding rule.
-  PacketMirroringCollectorIlb({
+  const PacketMirroringCollectorIlb({
     required this.url,
   });
 

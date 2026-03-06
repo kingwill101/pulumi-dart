@@ -37,7 +37,7 @@ class GetBundlesBundle {
   /// [id] The ID of the bundle.
   /// [imageId] The image id attribute of the bundle.
   /// [osType] The os type attribute of the bundle.
-  GetBundlesBundle({
+  const GetBundlesBundle({
     required this.bundleId,
     required this.bundleName,
     required this.bundleType,

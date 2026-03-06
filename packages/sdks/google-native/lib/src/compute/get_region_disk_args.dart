@@ -15,7 +15,7 @@ class GetRegionDiskArgs {
   /// [disk] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionDiskArgs({
+  const GetRegionDiskArgs({
     required this.disk,
     this.project,
     required this.region,

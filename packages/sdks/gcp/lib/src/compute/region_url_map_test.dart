@@ -17,7 +17,7 @@ class RegionUrlMapTest {
   /// [host] Host portion of the URL.
   /// [path] Path portion of the URL.
   /// [service] A reference to expected RegionBackendService resource the given URL should be mapped to.
-  RegionUrlMapTest({
+  const RegionUrlMapTest({
     this.description,
     required this.host,
     required this.path,

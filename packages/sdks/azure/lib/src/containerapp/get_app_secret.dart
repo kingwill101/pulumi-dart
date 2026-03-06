@@ -17,7 +17,7 @@ class GetAppSecret {
   /// [keyVaultSecretId] The ID of a Key Vault secret.
   /// [name] The name of the Container App.
   /// [value] The HTTP Header value.
-  GetAppSecret({
+  const GetAppSecret({
     required this.identity,
     required this.keyVaultSecretId,
     required this.name,

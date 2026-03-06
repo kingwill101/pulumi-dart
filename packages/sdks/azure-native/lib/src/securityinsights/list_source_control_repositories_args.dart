@@ -33,7 +33,7 @@ class ListSourceControlRepositoriesArgs {
   /// [state] OAuth State. Required when `kind` is `OAuth`
   /// [token] Personal Access Token. Required when `kind` is `PAT`
   /// [workspaceName] The name of the workspace.
-  ListSourceControlRepositoriesArgs({
+  const ListSourceControlRepositoriesArgs({
     this.clientId,
     this.code,
     this.installationId,

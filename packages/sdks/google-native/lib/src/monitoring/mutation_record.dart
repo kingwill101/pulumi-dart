@@ -12,7 +12,7 @@ class MutationRecord {
   /// Creates a new [MutationRecord].
   /// [mutateTime] When the change occurred.
   /// [mutatedBy] The email address of the user making the change.
-  MutationRecord({
+  const MutationRecord({
     this.mutateTime,
     this.mutatedBy,
   });

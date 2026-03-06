@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesChown {
 
   /// Creates a new [DomainFeaturesCapabilitiesChown].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesChown({
+  const DomainFeaturesCapabilitiesChown({
     this.state,
   });
 

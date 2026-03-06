@@ -12,7 +12,7 @@ class ListClusterCalloutPoliciesResult {
   /// Creates a new [ListClusterCalloutPoliciesResult].
   /// [nextLink] Optional.
   /// [value] A list of the service's callout policies.
-  ListClusterCalloutPoliciesResult({
+  const ListClusterCalloutPoliciesResult({
     this.nextLink,
     this.value,
   });

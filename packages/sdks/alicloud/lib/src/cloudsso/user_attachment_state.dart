@@ -15,7 +15,7 @@ class UserAttachmentState {
   /// [directoryId] The ID of the directory.
   /// [groupId] The ID of the group.
   /// [userId] The ID of the user.
-  UserAttachmentState({
+  const UserAttachmentState({
     this.directoryId,
     this.groupId,
     this.userId,

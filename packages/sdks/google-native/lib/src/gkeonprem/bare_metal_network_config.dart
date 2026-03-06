@@ -21,7 +21,7 @@ class BareMetalNetworkConfig {
   /// [islandModeCidr] Configuration for island mode CIDR. In an island-mode network, nodes have unique IP addresses, but pods don't have unique addresses across clusters. This doesn't cause problems because pods in one cluster never directly communicate with pods in another cluster. Instead, there are gateways that mediate between a pod in one cluster and a pod in another cluster.
   /// [multipleNetworkInterfacesConfig] Configuration for multiple network interfaces.
   /// [srIovConfig] Configuration for SR-IOV.
-  BareMetalNetworkConfig({
+  const BareMetalNetworkConfig({
     this.advancedNetworking,
     this.islandModeCidr,
     this.multipleNetworkInterfacesConfig,

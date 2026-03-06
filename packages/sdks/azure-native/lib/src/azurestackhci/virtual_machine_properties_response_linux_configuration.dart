@@ -16,7 +16,7 @@ class VirtualMachinePropertiesResponseLinuxConfiguration {
   /// [disablePasswordAuthentication] DisablePasswordAuthentication - whether password authentication should be disabled
   /// [provisionVMAgent] Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
   /// [ssh] SSH - contains settings related to ssh configuration
-  VirtualMachinePropertiesResponseLinuxConfiguration({
+  const VirtualMachinePropertiesResponseLinuxConfiguration({
     this.disablePasswordAuthentication,
     this.provisionVMAgent,
     this.ssh,

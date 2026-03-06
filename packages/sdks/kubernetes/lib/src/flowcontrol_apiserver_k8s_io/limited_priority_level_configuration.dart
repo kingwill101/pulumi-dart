@@ -35,7 +35,7 @@ class LimitedPriorityLevelConfiguration {
   /// [lendablePercent] `lendablePercent` prescribes the fraction of the level's NominalCL that can be borrowed by other priority levels. The value of this field must be between 0 and 100, inclusive, and it defaults to 0. The number of seats that other levels can borrow from this level, known as this level's LendableConcurrencyLimit (LendableCL), is defined as follows.
   /// [limitResponse] `limitResponse` indicates what to do with requests that can not be executed right now
   /// [nominalConcurrencyShares] `nominalConcurrencyShares` (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats available at this priority level. This is used both for requests dispatched from this priority level as well as requests dispatched from other priority levels borrowing seats from this level. The server's concurrency limit (ServerCL) is divided among the Limited priority levels in proportion to their NCS values:
-  LimitedPriorityLevelConfiguration({
+  const LimitedPriorityLevelConfiguration({
     this.borrowingLimitPercent,
     this.lendablePercent,
     this.limitResponse,

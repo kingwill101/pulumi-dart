@@ -25,7 +25,7 @@ class ConnectionArgs {
   /// [properties] Properties of connection
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.connectionName,
     this.location,
     this.properties,

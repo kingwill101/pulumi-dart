@@ -15,7 +15,7 @@ class DeployGroupArgs {
   /// Creates a new [DeployGroupArgs].
   /// [appId] The ID of the application that you want to deploy.
   /// [groupName] The name of the instance group that you want to create.
-  DeployGroupArgs({
+  const DeployGroupArgs({
     required this.appId,
     required this.groupName,
   });

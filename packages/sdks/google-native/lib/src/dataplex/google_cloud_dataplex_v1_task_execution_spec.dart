@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1TaskExecutionSpec {
   /// [maxJobExecutionLifetime] Optional. The maximum duration after which the job execution is expired.
   /// [project] Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
   /// [serviceAccount] Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
-  GoogleCloudDataplexV1TaskExecutionSpec({
+  const GoogleCloudDataplexV1TaskExecutionSpec({
     this.args,
     this.kmsKey,
     this.maxJobExecutionLifetime,

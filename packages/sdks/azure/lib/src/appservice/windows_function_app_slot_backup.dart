@@ -18,7 +18,7 @@ class WindowsFunctionAppSlotBackup {
   /// [name] The name which should be used for this Backup.
   /// [schedule] a `schedule` block as detailed below.
   /// [storageAccountUrl] The SAS URL to the container.
-  WindowsFunctionAppSlotBackup({
+  const WindowsFunctionAppSlotBackup({
     this.enabled,
     required this.name,
     required this.schedule,

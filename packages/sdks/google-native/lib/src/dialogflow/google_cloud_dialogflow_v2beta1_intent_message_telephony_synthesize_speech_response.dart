@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse].
   /// [ssml] The SSML to be synthesized. For more information, see [SSML](https://developers.google.com/actions/reference/ssml).
   /// [text] The raw text to be synthesized.
-  GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse({
     required this.ssml,
     required this.text,
   });

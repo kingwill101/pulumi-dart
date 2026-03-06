@@ -28,7 +28,7 @@ class SynapseWorkspaceSqlPoolTableDataSetArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share to add the data set to.
   /// [synapseWorkspaceSqlPoolTableResourceId] Resource id of the Synapse Workspace SQL Pool Table
-  SynapseWorkspaceSqlPoolTableDataSetArgs({
+  const SynapseWorkspaceSqlPoolTableDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.kind,

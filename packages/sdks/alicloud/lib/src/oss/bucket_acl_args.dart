@@ -15,7 +15,7 @@ class BucketAclArgs {
   /// Creates a new [BucketAclArgs].
   /// [acl] Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
   /// [bucket] The name of the bucket to which the current ACL configuration belongs.
-  BucketAclArgs({
+  const BucketAclArgs({
     required this.acl,
     required this.bucket,
   });

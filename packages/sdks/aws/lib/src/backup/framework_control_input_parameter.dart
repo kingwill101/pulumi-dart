@@ -11,7 +11,7 @@ class FrameworkControlInputParameter {
   /// Creates a new [FrameworkControlInputParameter].
   /// [name] The name of a parameter, for example, BackupPlanFrequency.
   /// [value] The value of parameter, for example, hourly.
-  FrameworkControlInputParameter({
+  const FrameworkControlInputParameter({
     this.name,
     this.value,
   });

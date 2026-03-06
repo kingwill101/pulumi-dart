@@ -13,7 +13,7 @@ class LogLocationSettings {
   /// Creates a new [LogLocationSettings].
   /// [linkedServiceName] Log storage linked service reference.
   /// [path] The path to storage for storing detailed logs of activity execution. Type: string (or Expression with resultType string).
-  LogLocationSettings({
+  const LogLocationSettings({
     required this.linkedServiceName,
     this.path,
   });

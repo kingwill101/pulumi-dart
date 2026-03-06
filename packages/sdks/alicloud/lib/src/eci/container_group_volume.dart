@@ -40,7 +40,7 @@ class ContainerGroupVolume {
   /// [nfsVolumeReadOnly] The nfs volume read only. Default value: `false`.
   /// [nfsVolumeServer] The address of the NFS server.
   /// [type] The type of the volume.
-  ContainerGroupVolume({
+  const ContainerGroupVolume({
     this.configFileVolumeConfigFileToPaths,
     this.diskVolumeDiskId,
     this.diskVolumeFsType,

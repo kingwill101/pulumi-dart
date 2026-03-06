@@ -17,7 +17,7 @@ class GetDataCollectionRuleDataSourcePerformanceCounter {
   /// [name] Specifies the name of the Data Collection Rule.
   /// [samplingFrequencyInSeconds] The number of seconds between consecutive counter measurements (samples). The value should be integer between `1` and `1800` inclusive.
   /// [streams] Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
-  GetDataCollectionRuleDataSourcePerformanceCounter({
+  const GetDataCollectionRuleDataSourcePerformanceCounter({
     required this.counterSpecifiers,
     required this.name,
     required this.samplingFrequencyInSeconds,

@@ -14,7 +14,7 @@ class AppVersionSnapshotExampleMessageChunkAgentTransfer {
   /// Creates a new [AppVersionSnapshotExampleMessageChunkAgentTransfer].
   /// [displayName] The display name of the app version.
   /// [targetAgent] (Output)
-  AppVersionSnapshotExampleMessageChunkAgentTransfer({
+  const AppVersionSnapshotExampleMessageChunkAgentTransfer({
     this.displayName,
     this.targetAgent,
   });

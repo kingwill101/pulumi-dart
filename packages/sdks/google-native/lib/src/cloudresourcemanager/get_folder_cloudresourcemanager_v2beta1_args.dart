@@ -11,7 +11,7 @@ class GetFolderCloudresourcemanagerV2beta1Args {
 
   /// Creates a new [GetFolderCloudresourcemanagerV2beta1Args].
   /// [folderId] Required.
-  GetFolderCloudresourcemanagerV2beta1Args({
+  const GetFolderCloudresourcemanagerV2beta1Args({
     required this.folderId,
   });
 

@@ -16,7 +16,7 @@ class NodeManagementResponseContainerV1beta1 {
   /// [autoRepair] Whether the nodes will be automatically repaired.
   /// [autoUpgrade] Whether the nodes will be automatically upgraded.
   /// [upgradeOptions] Specifies the Auto Upgrade knobs for the node pool.
-  NodeManagementResponseContainerV1beta1({
+  const NodeManagementResponseContainerV1beta1({
     required this.autoRepair,
     required this.autoUpgrade,
     required this.upgradeOptions,

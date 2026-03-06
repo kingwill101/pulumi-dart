@@ -18,7 +18,7 @@ class GetBackupVaultArgs {
   /// [accountName] The name of the NetApp Account in which the NetApp Vault exists.
   /// [name] The name of the NetApp Backup Vault.
   /// [resourceGroupName] The name of the resource group where the NetApp Backup Vault exists.
-  GetBackupVaultArgs({
+  const GetBackupVaultArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

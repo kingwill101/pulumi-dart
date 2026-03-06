@@ -8,7 +8,7 @@ class GetStreamStreamModeDetail {
 
   /// Creates a new [GetStreamStreamModeDetail].
   /// [streamMode] Capacity mode of the stream. Either `ON_DEMAND` or `PROVISIONED`.
-  GetStreamStreamModeDetail({
+  const GetStreamStreamModeDetail({
     required this.streamMode,
   });
 

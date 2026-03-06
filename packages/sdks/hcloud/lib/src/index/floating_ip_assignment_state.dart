@@ -12,7 +12,7 @@ class FloatingIpAssignmentState {
   /// Creates a new [FloatingIpAssignmentState].
   /// [floatingIpId] ID of the Floating IP.
   /// [serverId] Server to assign the Floating IP to.
-  FloatingIpAssignmentState({
+  const FloatingIpAssignmentState({
     this.floatingIpId,
     this.serverId,
   });

@@ -33,7 +33,7 @@ class AzureADAdministratorArgs {
   /// [serverName] The name of the server.
   /// [sid] SID (object ID) of the server administrator.
   /// [tenantId] Tenant ID of the administrator.
-  AzureADAdministratorArgs({
+  const AzureADAdministratorArgs({
     this.administratorName,
     this.administratorType,
     this.identityResourceId,

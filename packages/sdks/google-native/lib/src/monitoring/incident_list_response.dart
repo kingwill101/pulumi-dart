@@ -13,7 +13,7 @@ class IncidentListResponse {
   /// Creates a new [IncidentListResponse].
   /// [monitoredResources] Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
   /// [policyNames] Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
-  IncidentListResponse({
+  const IncidentListResponse({
     required this.monitoredResources,
     required this.policyNames,
   });

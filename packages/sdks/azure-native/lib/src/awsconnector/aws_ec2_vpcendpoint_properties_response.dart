@@ -42,7 +42,7 @@ class AwsEc2VPCEndpointPropertiesResponse {
   /// [subnetIds] The IDs of the subnets in which to create endpoint network interfaces. You must specify this property for an interface endpoint or a Gateway Load Balancer endpoint. You can't specify this property for a gateway endpoint. For a Gateway Load Balancer endpoint, you can specify only one subnet.
   /// [vpcEndpointType] The type of endpoint. Default: Gateway
   /// [vpcId] The ID of the VPC.
-  AwsEc2VPCEndpointPropertiesResponse({
+  const AwsEc2VPCEndpointPropertiesResponse({
     this.creationTimestamp,
     this.dnsEntries,
     this.id,

@@ -30,7 +30,7 @@ class WorkspaceState {
   /// [queryEndpoint] The query endpoint for the Azure Monitor Workspace.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Azure Monitor Workspace should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Monitor Workspace.
-  WorkspaceState({
+  const WorkspaceState({
     this.defaultDataCollectionEndpointId,
     this.defaultDataCollectionRuleId,
     this.location,

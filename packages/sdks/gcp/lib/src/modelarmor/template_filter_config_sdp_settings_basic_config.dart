@@ -12,7 +12,7 @@ class TemplateFilterConfigSdpSettingsBasicConfig {
 
   /// Creates a new [TemplateFilterConfigSdpSettingsBasicConfig].
   /// [filterEnforcement] Tells whether the Sensitive Data Protection basic config is enabled or
-  TemplateFilterConfigSdpSettingsBasicConfig({
+  const TemplateFilterConfigSdpSettingsBasicConfig({
     this.filterEnforcement,
   });
 

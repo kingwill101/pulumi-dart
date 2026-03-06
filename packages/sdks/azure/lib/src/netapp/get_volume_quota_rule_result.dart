@@ -24,7 +24,7 @@ class GetVolumeQuotaRuleResult {
   /// [quotaTarget] The quota Target.
   /// [quotaType] The quota type.
   /// [volumeId] Required.
-  GetVolumeQuotaRuleResult({
+  const GetVolumeQuotaRuleResult({
     required this.id,
     required this.location,
     required this.name,

@@ -23,7 +23,7 @@ class GetConnectionArgs {
   /// [name] CodeStar Connection name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of key-value resource tags to associate with the resource.
-  GetConnectionArgs({
+  const GetConnectionArgs({
     this.arn,
     this.name,
     this.region,

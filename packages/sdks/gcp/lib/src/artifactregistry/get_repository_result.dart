@@ -57,7 +57,7 @@ class GetRepositoryResult {
   /// [updateTime] Required.
   /// [virtualRepositoryConfigs] Required.
   /// [vulnerabilityScanningConfigs] Required.
-  GetRepositoryResult({
+  const GetRepositoryResult({
     required this.cleanupPolicies,
     required this.cleanupPolicyDryRun,
     required this.createTime,

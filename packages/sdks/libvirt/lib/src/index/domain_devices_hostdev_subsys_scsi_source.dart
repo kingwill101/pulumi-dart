@@ -13,7 +13,7 @@ class DomainDevicesHostdevSubsysScsiSource {
   /// Creates a new [DomainDevicesHostdevSubsysScsiSource].
   /// [host] Configures the host settings for the SCSI device source.
   /// [iscsi] Defines the iSCSI source parameters for the SCSI device.
-  DomainDevicesHostdevSubsysScsiSource({
+  const DomainDevicesHostdevSubsysScsiSource({
     this.host,
     this.iscsi,
   });

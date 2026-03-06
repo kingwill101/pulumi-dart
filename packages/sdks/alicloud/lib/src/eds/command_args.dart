@@ -24,7 +24,7 @@ class CommandArgs {
   /// [contentEncoding] That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
   /// [desktopId] The desktop id of the Desktop.
   /// [timeout] The timeout period for script execution the unit is seconds. Default to: `60`.
-  CommandArgs({
+  const CommandArgs({
     required this.commandContent,
     required this.commandType,
     this.contentEncoding,

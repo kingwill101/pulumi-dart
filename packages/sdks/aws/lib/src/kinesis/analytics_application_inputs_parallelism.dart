@@ -8,7 +8,7 @@ class AnalyticsApplicationInputsParallelism {
 
   /// Creates a new [AnalyticsApplicationInputsParallelism].
   /// [count] The Count of streams.
-  AnalyticsApplicationInputsParallelism({
+  const AnalyticsApplicationInputsParallelism({
     this.count,
   });
 

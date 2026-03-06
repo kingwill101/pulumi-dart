@@ -13,7 +13,7 @@ class TableTtl {
   /// Creates a new [TableTtl].
   /// [attributeName] Name of the table attribute to store the TTL timestamp in.
   /// [enabled] Whether TTL is enabled.
-  TableTtl({
+  const TableTtl({
     this.attributeName,
     this.enabled,
   });

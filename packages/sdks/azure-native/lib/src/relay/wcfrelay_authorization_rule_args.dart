@@ -24,7 +24,7 @@ class WCFRelayAuthorizationRuleArgs {
   /// [relayName] The relay name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rights] The rights associated with the rule.
-  WCFRelayAuthorizationRuleArgs({
+  const WCFRelayAuthorizationRuleArgs({
     this.authorizationRuleName,
     required this.namespaceName,
     required this.relayName,

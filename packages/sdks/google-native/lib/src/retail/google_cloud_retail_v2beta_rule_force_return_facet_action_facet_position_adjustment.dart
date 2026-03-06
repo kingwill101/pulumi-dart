@@ -12,7 +12,7 @@ class GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment {
   /// Creates a new [GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment].
   /// [attributeName] The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
   /// [position] This is the position in the request as explained above. It should be strictly positive be at most 100.
-  GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment({
+  const GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment({
     this.attributeName,
     this.position,
   });

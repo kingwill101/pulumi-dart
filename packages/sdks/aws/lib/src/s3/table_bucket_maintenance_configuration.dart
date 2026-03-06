@@ -10,7 +10,7 @@ class TableBucketMaintenanceConfiguration {
 
   /// Creates a new [TableBucketMaintenanceConfiguration].
   /// [icebergUnreferencedFileRemoval] A single Iceberg unreferenced file removal settings object.
-  TableBucketMaintenanceConfiguration({
+  const TableBucketMaintenanceConfiguration({
     required this.icebergUnreferencedFileRemoval,
   });
 

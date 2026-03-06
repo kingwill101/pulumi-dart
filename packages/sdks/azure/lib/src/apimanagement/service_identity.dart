@@ -19,7 +19,7 @@ class ServiceIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The identifier for the tenant access information contract.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this API Management Service. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  ServiceIdentity({
+  const ServiceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

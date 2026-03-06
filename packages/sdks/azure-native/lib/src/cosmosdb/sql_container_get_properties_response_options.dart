@@ -12,7 +12,7 @@ class SqlContainerGetPropertiesResponseOptions {
   /// Creates a new [SqlContainerGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
   /// [throughput] Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  SqlContainerGetPropertiesResponseOptions({
+  const SqlContainerGetPropertiesResponseOptions({
     this.autoscaleSettings,
     this.throughput,
   });

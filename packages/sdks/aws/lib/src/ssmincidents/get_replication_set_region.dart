@@ -18,7 +18,7 @@ class GetReplicationSetRegion {
   /// [name] The name of the Region.
   /// [status] The current status of the Region.
   /// [statusMessage] More information about the status of a Region.
-  GetReplicationSetRegion({
+  const GetReplicationSetRegion({
     required this.kmsKeyArn,
     required this.name,
     required this.status,

@@ -14,7 +14,7 @@ class EndpointNetworkInterfaceOptions {
   /// [port] Optional.
   /// [portRanges] Optional.
   /// [protocol] Optional.
-  EndpointNetworkInterfaceOptions({
+  const EndpointNetworkInterfaceOptions({
     this.networkInterfaceId,
     this.port,
     this.portRanges,

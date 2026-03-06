@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionScheduleRecurrenceDaily {
   /// Creates a new [AlertProcessingRuleSuppressionScheduleRecurrenceDaily].
   /// [endTime] Specifies the recurrence end time (H:M:S).
   /// [startTime] Specifies the recurrence start time (H:M:S).
-  AlertProcessingRuleSuppressionScheduleRecurrenceDaily({
+  const AlertProcessingRuleSuppressionScheduleRecurrenceDaily({
     required this.endTime,
     required this.startTime,
   });

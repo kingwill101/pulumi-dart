@@ -9,7 +9,7 @@ class IntraNodeVisibilityConfigContainerV1beta1 {
 
   /// Creates a new [IntraNodeVisibilityConfigContainerV1beta1].
   /// [enabled] Enables intra node visibility for this cluster.
-  IntraNodeVisibilityConfigContainerV1beta1({
+  const IntraNodeVisibilityConfigContainerV1beta1({
     this.enabled,
   });
 

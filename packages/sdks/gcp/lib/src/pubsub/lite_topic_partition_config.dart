@@ -13,7 +13,7 @@ class LiteTopicPartitionConfig {
   /// Creates a new [LiteTopicPartitionConfig].
   /// [capacity] The capacity configuration.
   /// [count] The number of partitions in the topic. Must be at least 1.
-  LiteTopicPartitionConfig({
+  const LiteTopicPartitionConfig({
     this.capacity,
     required this.count,
   });

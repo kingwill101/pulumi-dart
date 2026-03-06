@@ -36,7 +36,7 @@ class GetPrincipalPolicySimulationIamResult {
   /// [resourceOwnerAccountId] Optional.
   /// [resourcePolicyJson] Optional.
   /// [results] A set of result objects, one for each of the simulated requests, with the following nested attributes:
-  GetPrincipalPolicySimulationIamResult({
+  const GetPrincipalPolicySimulationIamResult({
     required this.actionNames,
     this.additionalPoliciesJsons,
     required this.allAllowed,

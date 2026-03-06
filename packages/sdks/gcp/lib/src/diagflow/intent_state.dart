@@ -74,7 +74,7 @@ class IntentState {
   /// [resetContexts] Indicates whether to delete all contexts in the current session when this intent is matched.
   /// [rootFollowupIntentName] The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
   /// [webhookState] Indicates whether webhooks are enabled for the intent.
-  IntentState({
+  const IntentState({
     this.action,
     this.defaultResponsePlatforms,
     this.displayName,

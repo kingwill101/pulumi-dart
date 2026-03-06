@@ -11,7 +11,7 @@ class GetLoadBalancersBalancerAccessLogConfig {
   /// Creates a new [GetLoadBalancersBalancerAccessLogConfig].
   /// [logProject] The log service that access logs are shipped to.
   /// [logStore] The logstore that access logs are shipped to.
-  GetLoadBalancersBalancerAccessLogConfig({
+  const GetLoadBalancersBalancerAccessLogConfig({
     required this.logProject,
     required this.logStore,
   });

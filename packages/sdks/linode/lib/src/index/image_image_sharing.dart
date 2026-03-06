@@ -13,7 +13,7 @@ class ImageImageSharing {
   /// Creates a new [ImageImageSharing].
   /// [sharedBy] Details about who the image is shared by.
   /// [sharedWith] Details about who the image is shared with.
-  ImageImageSharing({
+  const ImageImageSharing({
     this.sharedBy,
     this.sharedWith,
   });

@@ -15,7 +15,7 @@ class GetCacheNodesOperationArgs {
   /// Creates a new [GetCacheNodesOperationArgs].
   /// [customerResourceName] Name of the Customer resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCacheNodesOperationArgs({
+  const GetCacheNodesOperationArgs({
     required this.customerResourceName,
     required this.resourceGroupName,
   });

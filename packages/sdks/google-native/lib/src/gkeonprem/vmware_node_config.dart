@@ -38,7 +38,7 @@ class VmwareNodeConfig {
   /// [replicas] The number of nodes in the node pool.
   /// [taints] The initial taints assigned to nodes of this node pool.
   /// [vsphereConfig] Specifies the vSphere config for node pool.
-  VmwareNodeConfig({
+  const VmwareNodeConfig({
     this.bootDiskSizeGb,
     this.cpus,
     this.enableLoadBalancer,

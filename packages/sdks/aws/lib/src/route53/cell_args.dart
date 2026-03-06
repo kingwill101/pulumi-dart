@@ -20,7 +20,7 @@ class CellArgs {
   /// [cellName] Unique name describing the cell.
   /// [cells] List of cell arns to add as nested fault domains within this cell.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  CellArgs({
+  const CellArgs({
     required this.cellName,
     this.cells,
     this.tags,

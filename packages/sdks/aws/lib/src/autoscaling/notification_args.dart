@@ -23,7 +23,7 @@ class NotificationArgs {
   /// [notifications] List of Notification Types that trigger
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topicArn] Topic ARN for notifications to be sent through
-  NotificationArgs({
+  const NotificationArgs({
     required this.groupNames,
     required this.notifications,
     this.region,

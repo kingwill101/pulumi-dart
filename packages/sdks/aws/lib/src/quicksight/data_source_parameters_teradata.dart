@@ -14,7 +14,7 @@ class DataSourceParametersTeradata {
   /// [database] The database to which to connect.
   /// [host] The host to which to connect.
   /// [port] The warehouse to which to connect.
-  DataSourceParametersTeradata({
+  const DataSourceParametersTeradata({
     required this.database,
     required this.host,
     required this.port,

@@ -11,7 +11,7 @@ class DomainDevicesControllerVirtIoSerial {
   /// Creates a new [DomainDevicesControllerVirtIoSerial].
   /// [ports] Specifies the number of ports available on the VirtIO serial controller device.
   /// [vectors] Sets the number of vectors allocated for the VirtIO serial controller device.
-  DomainDevicesControllerVirtIoSerial({
+  const DomainDevicesControllerVirtIoSerial({
     this.ports,
     this.vectors,
   });

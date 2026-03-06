@@ -13,7 +13,7 @@ class ProbeResponse {
   /// Creates a new [ProbeResponse].
   /// [name] name of the load balancer health probe
   /// [properties] load balancer rule properties
-  ProbeResponse({
+  const ProbeResponse({
     required this.name,
     required this.properties,
   });

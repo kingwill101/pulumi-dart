@@ -63,7 +63,7 @@ class AcceleratorState {
   /// [spec] The instance type of the GA instance. Specification of global acceleration instance. Valid values:
   /// [status] The status of the GA instance.
   /// [tags] A mapping of tags to assign to the resource.
-  AcceleratorState({
+  const AcceleratorState({
     this.acceleratorName,
     this.autoRenewDuration,
     this.autoUseCoupon,

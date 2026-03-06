@@ -8,7 +8,7 @@ class NodePoolQueuedProvisioning {
 
   /// Creates a new [NodePoolQueuedProvisioning].
   /// [enabled] Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
-  NodePoolQueuedProvisioning({
+  const NodePoolQueuedProvisioning({
     required this.enabled,
   });
 

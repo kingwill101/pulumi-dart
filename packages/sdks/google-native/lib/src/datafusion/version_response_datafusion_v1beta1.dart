@@ -18,7 +18,7 @@ class VersionResponseDatafusionV1beta1 {
   /// [defaultVersion] Whether this is currently the default version for Cloud Data Fusion
   /// [type] Type represents the release availability of the version
   /// [versionNumber] The version number of the Data Fusion instance, such as '6.0.1.0'.
-  VersionResponseDatafusionV1beta1({
+  const VersionResponseDatafusionV1beta1({
     required this.availableFeatures,
     required this.defaultVersion,
     required this.type,

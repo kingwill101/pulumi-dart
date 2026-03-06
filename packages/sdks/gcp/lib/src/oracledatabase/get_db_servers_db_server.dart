@@ -11,7 +11,7 @@ class GetDbServersDbServer {
   /// Creates a new [GetDbServersDbServer].
   /// [displayName] The Display name
   /// [properties] Required.
-  GetDbServersDbServer({
+  const GetDbServersDbServer({
     required this.displayName,
     required this.properties,
   });

@@ -33,7 +33,7 @@ class GetZonesArgs {
   /// [multi] It has been deprecated from version 1.137.0 and using `multi_zone` instead.
   /// [multiZone] Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({
+  const GetZonesArgs({
     this.category,
     this.dbInstanceStorageType,
     this.engine,

@@ -45,7 +45,7 @@ class GetApiOperationResult {
   /// [templateParameters] Collection of URL template parameters.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [urlTemplate] Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
-  GetApiOperationResult({
+  const GetApiOperationResult({
     required this.azureApiVersion,
     this.description,
     required this.displayName,

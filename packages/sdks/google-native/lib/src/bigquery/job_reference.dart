@@ -14,7 +14,7 @@ class JobReference {
   /// [jobId] [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
   /// [location] The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   /// [project] [Required] The ID of the project containing this job.
-  JobReference({
+  const JobReference({
     this.jobId,
     this.location,
     this.project,

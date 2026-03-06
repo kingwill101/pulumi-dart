@@ -28,7 +28,7 @@ class GetCertificateResult {
   /// [privateKey] Required.
   /// [project] Optional.
   /// [selfLink] Required.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificate,
     required this.certificateId,
     required this.creationTimestamp,

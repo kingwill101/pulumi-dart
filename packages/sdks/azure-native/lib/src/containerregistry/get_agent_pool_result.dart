@@ -42,7 +42,7 @@ class GetAgentPoolResult {
   /// [tier] The Tier of agent machine
   /// [type] The type of the resource.
   /// [virtualNetworkSubnetResourceId] The Virtual Network Subnet Resource Id of the agent machine
-  GetAgentPoolResult({
+  const GetAgentPoolResult({
     required this.azureApiVersion,
     this.count,
     required this.id,

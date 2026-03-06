@@ -24,7 +24,7 @@ class AgentAgentPromptOverrideConfigurationPromptConfiguration {
   /// [promptCreationMode] Whether to override the default prompt template for this `prompt_type`. Set this argument to `OVERRIDDEN` to use the prompt that you provide in the `base_prompt_template`. If you leave it as `DEFAULT`, the agent uses a default prompt template. Valid values: `DEFAULT`, `OVERRIDDEN`.
   /// [promptState] Whether to allow the agent to carry out the step specified in the `prompt_type`. If you set this argument to `DISABLED`, the agent skips that step. Valid Values: `ENABLED`, `DISABLED`.
   /// [promptType] Step in the agent sequence that this prompt configuration applies to. Valid values: `PRE_PROCESSING`, `ORCHESTRATION`, `POST_PROCESSING`, `KNOWLEDGE_BASE_RESPONSE_GENERATION`.
-  AgentAgentPromptOverrideConfigurationPromptConfiguration({
+  const AgentAgentPromptOverrideConfigurationPromptConfiguration({
     required this.basePromptTemplate,
     required this.inferenceConfigurations,
     required this.parserMode,

@@ -19,7 +19,7 @@ class GetProjectsArgs {
   /// Creates a new [GetProjectsArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetProjectsArgs({
+  const GetProjectsArgs({
     this.filters,
     this.sorts,
   });

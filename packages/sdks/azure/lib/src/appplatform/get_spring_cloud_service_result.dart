@@ -31,7 +31,7 @@ class GetSpringCloudServiceResult {
   /// [requiredNetworkTrafficRules] A list of `required_network_traffic_rules` blocks as defined below.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to Spring Cloud Service.
-  GetSpringCloudServiceResult({
+  const GetSpringCloudServiceResult({
     required this.configServerGitSettings,
     required this.id,
     required this.location,

@@ -36,7 +36,7 @@ class GetQuotaApplicationsArgs {
   /// [quotaActionCode] The ID of quota action.
   /// [quotaCategory] The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
   /// [status] The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
-  GetQuotaApplicationsArgs({
+  const GetQuotaApplicationsArgs({
     this.dimensions,
     this.enableDetails,
     this.ids,

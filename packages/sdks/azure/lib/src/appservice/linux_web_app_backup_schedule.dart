@@ -25,7 +25,7 @@ class LinuxWebAppBackupSchedule {
   /// [lastExecutionTime] The time the backup was last attempted.
   /// [retentionPeriodDays] After how many days backups should be deleted. Defaults to `30`.
   /// [startTime] When the schedule should start working in RFC-3339 format.
-  LinuxWebAppBackupSchedule({
+  const LinuxWebAppBackupSchedule({
     required this.frequencyInterval,
     required this.frequencyUnit,
     this.keepAtLeastOneBackup,

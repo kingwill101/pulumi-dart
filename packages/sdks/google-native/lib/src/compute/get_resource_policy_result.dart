@@ -50,7 +50,7 @@ class GetResourcePolicyResult {
   /// [snapshotSchedulePolicy] Resource policy for persistent disks for creating snapshots.
   /// [status] The status of resource policy creation.
   /// [vmMaintenancePolicy] Resource policy applicable to VMs for infrastructure maintenance.
-  GetResourcePolicyResult({
+  const GetResourcePolicyResult({
     required this.creationTimestamp,
     required this.description,
     required this.diskConsistencyGroupPolicy,

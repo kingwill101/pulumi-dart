@@ -42,7 +42,7 @@ class GetVpcFirewallCensResult {
   /// [status] Firewall switch status
   /// [vpcFirewallId] VPC firewall ID
   /// [vpcFirewallName] The name of the VPC firewall instance.
-  GetVpcFirewallCensResult({
+  const GetVpcFirewallCensResult({
     this.cenId,
     required this.cens,
     required this.id,

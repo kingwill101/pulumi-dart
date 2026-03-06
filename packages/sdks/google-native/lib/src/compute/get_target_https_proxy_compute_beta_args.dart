@@ -13,7 +13,7 @@ class GetTargetHttpsProxyComputeBetaArgs {
   /// Creates a new [GetTargetHttpsProxyComputeBetaArgs].
   /// [project] Optional.
   /// [targetHttpsProxy] Required.
-  GetTargetHttpsProxyComputeBetaArgs({
+  const GetTargetHttpsProxyComputeBetaArgs({
     this.project,
     required this.targetHttpsProxy,
   });

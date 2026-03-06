@@ -9,7 +9,7 @@ class ResilientVMDeletionPolicyResponse {
 
   /// Creates a new [ResilientVMDeletionPolicyResponse].
   /// [enabled] Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.
-  ResilientVMDeletionPolicyResponse({
+  const ResilientVMDeletionPolicyResponse({
     this.enabled,
   });
 

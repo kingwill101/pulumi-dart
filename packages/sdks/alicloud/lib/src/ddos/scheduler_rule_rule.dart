@@ -29,7 +29,7 @@ class SchedulerRuleRule {
   /// [type] The address type of the interaction resource. Valid values:
   /// [value] The address of the interaction resource.
   /// [valueType] Required. The type of the linked resource. It is an Integer. Valid values:
-  SchedulerRuleRule({
+  const SchedulerRuleRule({
     this.priority,
     this.regionId,
     this.status,

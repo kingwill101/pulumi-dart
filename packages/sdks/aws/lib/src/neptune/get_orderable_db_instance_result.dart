@@ -67,7 +67,7 @@ class GetOrderableDbInstanceResult {
   /// [supportsPerformanceInsights] Whether a DB instance supports Performance Insights.
   /// [supportsStorageEncryption] Whether a DB instance supports encrypted storage.
   /// [vpc] Required.
-  GetOrderableDbInstanceResult({
+  const GetOrderableDbInstanceResult({
     required this.availabilityZones,
     this.engine,
     required this.engineVersion,

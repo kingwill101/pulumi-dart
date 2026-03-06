@@ -63,7 +63,7 @@ class GetJobDefinitionResult {
   /// [targetResourceId] Fully qualified resource ID of the target Endpoint.
   /// [targetSubpath] The subpath to use when writing to the target Endpoint.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetJobDefinitionResult({
+  const GetJobDefinitionResult({
     this.agentName,
     required this.agentResourceId,
     required this.azureApiVersion,

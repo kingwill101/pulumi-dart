@@ -14,7 +14,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
   /// [adminUsername] The name of the administrator account. Changing this forces a new resource to be created.
   /// [sshPrivateKey] The SSH public key that is used to authenticate with the Virtual Machine. Changing this forces a new resource to be created.
   /// [sshPublicKey] The SSH private key that is used to authenticate with the Virtual Machine. Changing this forces a new resource to be created.
-  SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile({
+  const SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile({
     required this.adminUsername,
     required this.sshPrivateKey,
     required this.sshPublicKey,

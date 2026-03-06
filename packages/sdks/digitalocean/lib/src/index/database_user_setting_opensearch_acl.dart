@@ -10,7 +10,7 @@ class DatabaseUserSettingOpensearchAcl {
   /// Creates a new [DatabaseUserSettingOpensearchAcl].
   /// [index] Required.
   /// [permission] The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-  DatabaseUserSettingOpensearchAcl({
+  const DatabaseUserSettingOpensearchAcl({
     required this.index,
     required this.permission,
   });

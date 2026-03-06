@@ -20,7 +20,7 @@ class RecordAuthConf {
   /// [region] The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
   /// [secretKey] The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
   /// [version] The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
-  RecordAuthConf({
+  const RecordAuthConf({
     this.accessKey,
     this.authType,
     this.region,

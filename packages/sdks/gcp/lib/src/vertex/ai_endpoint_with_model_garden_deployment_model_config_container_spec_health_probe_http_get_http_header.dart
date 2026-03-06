@@ -13,7 +13,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader].
   /// [name] The header field name.
   /// [value] The header field value
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader({
     this.name,
     this.value,
   });

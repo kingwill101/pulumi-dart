@@ -15,7 +15,7 @@ class GetEnvironmentCertificateArgs {
   /// Creates a new [GetEnvironmentCertificateArgs].
   /// [containerAppEnvironmentId] The ID of the Container App Environment to configure this Certificate on. Changing this forces a new resource to be created.
   /// [name] The name of the Container Apps Certificate. Changing this forces a new resource to be created.
-  GetEnvironmentCertificateArgs({
+  const GetEnvironmentCertificateArgs({
     required this.containerAppEnvironmentId,
     required this.name,
   });

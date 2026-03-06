@@ -12,7 +12,7 @@ class TaskDefinitionPlacementConstraint {
   /// Creates a new [TaskDefinitionPlacementConstraint].
   /// [expression] A cluster query language expression to apply to the constraint. For more information, see [Cluster query language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*.
   /// [type] The type of constraint. The ``MemberOf`` constraint restricts selection to be from a group of valid candidates.
-  TaskDefinitionPlacementConstraint({
+  const TaskDefinitionPlacementConstraint({
     this.expression,
     this.type,
   });

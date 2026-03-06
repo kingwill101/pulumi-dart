@@ -17,7 +17,7 @@ class GetRepositoryIamPolicyArtifactregistryV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetRepositoryIamPolicyArtifactregistryV1beta2Args({
+  const GetRepositoryIamPolicyArtifactregistryV1beta2Args({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

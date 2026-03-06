@@ -13,7 +13,7 @@ class ApplicationService {
   /// [name] Optional.
   /// [status] Optional.
   /// [version] Optional.
-  ApplicationService({
+  const ApplicationService({
     this.id,
     this.name,
     this.status,

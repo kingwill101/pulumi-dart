@@ -45,7 +45,7 @@ class HealthErrorDetailsResponse {
   /// [source] Gets the error source.
   /// [summaryMessage] Gets the error summary message.
   /// [updatedTimeStamp] Gets the time stamp when the error was updated.
-  HealthErrorDetailsResponse({
+  const HealthErrorDetailsResponse({
     required this.applianceName,
     required this.code,
     required this.discoveryScope,

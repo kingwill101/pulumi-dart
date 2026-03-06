@@ -25,7 +25,7 @@ class RoleBindingRecordResponse {
   /// [metadata] Metadata of the record
   /// [principal] The principal User or Group to bind the role to
   /// [roleName] The name of the role to bind to the principal
-  RoleBindingRecordResponse({
+  const RoleBindingRecordResponse({
     this.crnPattern,
     this.id,
     this.kind,

@@ -19,7 +19,7 @@ class GetKernelsResult {
   /// [kernels] Required.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetKernelsResult({
+  const GetKernelsResult({
     this.filters,
     required this.id,
     required this.kernels,

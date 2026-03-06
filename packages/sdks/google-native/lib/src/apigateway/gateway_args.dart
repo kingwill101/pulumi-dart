@@ -25,7 +25,7 @@ class GatewayArgs {
   /// [labels] Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   /// [location] Optional.
   /// [project] Optional.
-  GatewayArgs({
+  const GatewayArgs({
     required this.apiConfig,
     this.displayName,
     required this.gatewayId,

@@ -30,7 +30,7 @@ class RoleDefinitionArgs {
   /// [permissions] A `permissions` block as defined below.
   /// [roleDefinitionId] A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
   /// [scope] The scope at which the Role Definition applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignable_scopes`. Changing this forces a new resource to be created.
-  RoleDefinitionArgs({
+  const RoleDefinitionArgs({
     this.assignableScopes,
     this.description,
     this.name,

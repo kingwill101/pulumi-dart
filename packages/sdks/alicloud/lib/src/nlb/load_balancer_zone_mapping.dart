@@ -36,7 +36,7 @@ class LoadBalancerZoneMapping {
   /// [status] Zone Status
   /// [vswitchId] The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
   /// [zoneId] The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-  LoadBalancerZoneMapping({
+  const LoadBalancerZoneMapping({
     this.allocationId,
     this.eniId,
     this.ipv4LocalAddresses,

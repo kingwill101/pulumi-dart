@@ -15,7 +15,7 @@ class GetIntegrationAccountArgs {
   /// Creates a new [GetIntegrationAccountArgs].
   /// [name] The name of this Logic App Integration Account.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account exists.
-  GetIntegrationAccountArgs({
+  const GetIntegrationAccountArgs({
     required this.name,
     required this.resourceGroupName,
   });

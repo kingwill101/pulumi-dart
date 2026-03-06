@@ -9,7 +9,7 @@ class ClusterClientAuthenticationSasl {
   /// Creates a new [ClusterClientAuthenticationSasl].
   /// [iam] Optional.
   /// [scram] Optional.
-  ClusterClientAuthenticationSasl({
+  const ClusterClientAuthenticationSasl({
     this.iam,
     this.scram,
   });

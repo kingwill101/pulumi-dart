@@ -40,7 +40,7 @@ class ConnectionProfileMongodbProfileSslConfig {
   /// [clientKey] PEM-encoded private key associated with the Client Certificate.
   /// [clientKeySet] (Output)
   /// [secretManagerStoredClientKey] A reference to a Secret Manager resource name storing the
-  ConnectionProfileMongodbProfileSslConfig({
+  const ConnectionProfileMongodbProfileSslConfig({
     this.caCertificate,
     this.caCertificateSet,
     this.clientCertificate,

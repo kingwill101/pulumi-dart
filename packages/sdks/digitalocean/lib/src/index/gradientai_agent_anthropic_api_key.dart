@@ -23,7 +23,7 @@ class GradientaiAgentAnthropicApiKey {
   /// [name] Name of the API Key
   /// [updatedAt] Updated At timestamp for the API Key
   /// [uuid] API Key value
-  GradientaiAgentAnthropicApiKey({
+  const GradientaiAgentAnthropicApiKey({
     this.createdAt,
     this.createdBy,
     this.deletedAt,

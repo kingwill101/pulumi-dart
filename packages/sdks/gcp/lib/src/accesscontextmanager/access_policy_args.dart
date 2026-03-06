@@ -20,7 +20,7 @@ class AccessPolicyArgs {
   /// [parent] The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// [scopes] Folder or project on which this policy is applicable.
   /// [title] Human readable title. Does not affect behavior.
-  AccessPolicyArgs({
+  const AccessPolicyArgs({
     required this.parent,
     this.scopes,
     required this.title,

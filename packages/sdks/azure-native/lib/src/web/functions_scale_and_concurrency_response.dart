@@ -20,7 +20,7 @@ class FunctionsScaleAndConcurrencyResponse {
   /// [instanceMemoryMB] Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
   /// [maximumInstanceCount] The maximum number of instances for the function app.
   /// [triggers] Scale and concurrency settings for the function app triggers.
-  FunctionsScaleAndConcurrencyResponse({
+  const FunctionsScaleAndConcurrencyResponse({
     this.alwaysReady,
     this.instanceMemoryMB,
     this.maximumInstanceCount,

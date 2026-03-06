@@ -184,7 +184,7 @@ class GetInstanceResult {
   /// [tags] Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
   /// [upcomingMaintenance] Specifies upcoming maintenance for the instance.
   /// [zone] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.advancedMachineFeatures,
     required this.canIpForward,
     required this.confidentialInstanceConfig,

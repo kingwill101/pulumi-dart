@@ -19,7 +19,7 @@ class ManagedIdentityCredential {
   /// [description] Credential description.
   /// [resourceId] The resource id of user assigned managed identity
   /// [type] Type of credential.
-  ManagedIdentityCredential({
+  const ManagedIdentityCredential({
     this.annotations,
     this.description,
     this.resourceId,

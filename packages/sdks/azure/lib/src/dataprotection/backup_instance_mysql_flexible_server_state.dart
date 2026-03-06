@@ -24,7 +24,7 @@ class BackupInstanceMysqlFlexibleServerState {
   /// [protectionState] The protection state of the Backup Instance MySQL Flexible Server.
   /// [serverId] The ID of the source server. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the MySQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
-  BackupInstanceMysqlFlexibleServerState({
+  const BackupInstanceMysqlFlexibleServerState({
     this.backupPolicyId,
     this.location,
     this.name,

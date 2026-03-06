@@ -13,7 +13,7 @@ class HadoopClusterGateway {
   /// Creates a new [HadoopClusterGateway].
   /// [password] The password used for the Ambari Portal.
   /// [username] The username used for the Ambari Portal. Changing this forces a new resource to be created.
-  HadoopClusterGateway({
+  const HadoopClusterGateway({
     required this.password,
     required this.username,
   });

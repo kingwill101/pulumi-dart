@@ -15,7 +15,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   /// [objectPath] Required.
   /// [paginationConfig] Sets the page size for each concurrent process that transfers OData records from your SAP instance.
   /// [parallelismConfig] Sets the number of concurrent processes that transfers OData records from your SAP instance.
-  FlowSourceFlowConfigSourceConnectorPropertiesSapoData({
+  const FlowSourceFlowConfigSourceConnectorPropertiesSapoData({
     required this.objectPath,
     this.paginationConfig,
     this.parallelismConfig,

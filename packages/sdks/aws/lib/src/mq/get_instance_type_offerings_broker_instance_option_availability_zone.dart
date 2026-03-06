@@ -8,7 +8,7 @@ class GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone {
 
   /// Creates a new [GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone].
   /// [name] Name of the Availability Zone.
-  GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone({
+  const GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone({
     required this.name,
   });
 

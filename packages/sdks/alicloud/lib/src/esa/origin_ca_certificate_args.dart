@@ -18,7 +18,7 @@ class OriginCaCertificateArgs {
   /// [certificate] Certificate content.
   /// [name] The certificate name.
   /// [siteId] Site Id
-  OriginCaCertificateArgs({
+  const OriginCaCertificateArgs({
     required this.certificate,
     this.name,
     required this.siteId,

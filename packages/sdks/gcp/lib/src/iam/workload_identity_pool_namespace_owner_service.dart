@@ -10,7 +10,7 @@ class WorkloadIdentityPoolNamespaceOwnerService {
 
   /// Creates a new [WorkloadIdentityPoolNamespaceOwnerService].
   /// [principalSubject] (Output)
-  WorkloadIdentityPoolNamespaceOwnerService({
+  const WorkloadIdentityPoolNamespaceOwnerService({
     this.principalSubject,
   });
 

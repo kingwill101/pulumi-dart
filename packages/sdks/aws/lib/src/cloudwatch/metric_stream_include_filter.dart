@@ -11,7 +11,7 @@ class MetricStreamIncludeFilter {
   /// Creates a new [MetricStreamIncludeFilter].
   /// [metricNames] An array that defines the metrics you want to include for this metric namespace
   /// [namespace] Name of the metric namespace in the filter.
-  MetricStreamIncludeFilter({
+  const MetricStreamIncludeFilter({
     this.metricNames,
     required this.namespace,
   });

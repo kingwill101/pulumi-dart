@@ -11,7 +11,7 @@ class ManagedDiskEncryptionSettingsDiskEncryptionKey {
   /// Creates a new [ManagedDiskEncryptionSettingsDiskEncryptionKey].
   /// [secretUrl] The URL to the Key Vault Secret used as the Disk Encryption Key. This can be found as `id` on the `azure.keyvault.Secret` resource.
   /// [sourceVaultId] The ID of the source Key Vault. This can be found as `id` on the `azure.keyvault.KeyVault` resource.
-  ManagedDiskEncryptionSettingsDiskEncryptionKey({
+  const ManagedDiskEncryptionSettingsDiskEncryptionKey({
     required this.secretUrl,
     required this.sourceVaultId,
   });

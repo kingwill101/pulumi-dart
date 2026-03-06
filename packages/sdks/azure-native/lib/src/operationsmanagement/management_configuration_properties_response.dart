@@ -22,7 +22,7 @@ class ManagementConfigurationPropertiesResponse {
   /// [parentResourceType] The type of the parent resource.
   /// [provisioningState] The provisioning state for the ManagementConfiguration.
   /// [template] The Json object containing the ARM template to deploy
-  ManagementConfigurationPropertiesResponse({
+  const ManagementConfigurationPropertiesResponse({
     this.applicationId,
     required this.parameters,
     required this.parentResourceType,

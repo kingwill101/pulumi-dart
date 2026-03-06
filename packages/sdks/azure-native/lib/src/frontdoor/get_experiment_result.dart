@@ -45,7 +45,7 @@ class GetExperimentResult {
   /// [status] The description of Experiment status from the server side
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetExperimentResult({
+  const GetExperimentResult({
     required this.azureApiVersion,
     this.description,
     this.enabledState,

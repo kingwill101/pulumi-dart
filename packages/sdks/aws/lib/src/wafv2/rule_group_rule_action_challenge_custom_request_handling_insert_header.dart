@@ -11,7 +11,7 @@ class RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader {
   /// Creates a new [RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader].
   /// [name] A friendly name of the rule group.
   /// [value] The value of the custom header.
-  RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader({
+  const RuleGroupRuleActionChallengeCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
   });

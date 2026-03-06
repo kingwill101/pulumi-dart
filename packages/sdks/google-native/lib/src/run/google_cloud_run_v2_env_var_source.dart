@@ -10,7 +10,7 @@ class GoogleCloudRunV2EnvVarSource {
 
   /// Creates a new [GoogleCloudRunV2EnvVarSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  GoogleCloudRunV2EnvVarSource({
+  const GoogleCloudRunV2EnvVarSource({
     this.secretKeyRef,
   });
 

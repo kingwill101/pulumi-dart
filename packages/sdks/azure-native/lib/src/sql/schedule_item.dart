@@ -18,7 +18,7 @@ class ScheduleItem {
   /// [startTime] Start time.
   /// [stopDay] Stop day.
   /// [stopTime] Stop time.
-  ScheduleItem({
+  const ScheduleItem({
     required this.startDay,
     required this.startTime,
     required this.stopDay,

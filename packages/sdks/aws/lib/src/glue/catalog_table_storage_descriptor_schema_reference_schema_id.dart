@@ -14,7 +14,7 @@ class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
   /// [registryName] Name of the schema registry that contains the schema. Must be provided when `schema_name` is specified and conflicts with `schema_arn`.
   /// [schemaArn] ARN of the schema. One of `schema_arn` or `schema_name` has to be provided.
   /// [schemaName] Name of the schema. One of `schema_arn` or `schema_name` has to be provided.
-  CatalogTableStorageDescriptorSchemaReferenceSchemaId({
+  const CatalogTableStorageDescriptorSchemaReferenceSchemaId({
     this.registryName,
     this.schemaArn,
     this.schemaName,

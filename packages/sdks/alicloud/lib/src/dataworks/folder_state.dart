@@ -16,7 +16,7 @@ class FolderState {
   /// [folderPath] Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
   /// [projectId] The ID of the project.
   /// [projectIdentifier] Optional.
-  FolderState({
+  const FolderState({
     this.folderId,
     this.folderPath,
     this.projectId,

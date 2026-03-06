@@ -10,7 +10,7 @@ class EndCondition {
 
   /// Creates a new [EndCondition].
   /// [cardinality] The cardinality of the `EndCondition`.
-  EndCondition({
+  const EndCondition({
     this.cardinality,
   });
 

@@ -34,7 +34,7 @@ class UrlMapTest {
   /// [host] Host portion of the URL. If headers contains a host header, then host must also match the header value.
   /// [path] Path portion of the URL.
   /// [service] Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
-  UrlMapTest({
+  const UrlMapTest({
     this.backendServiceWeight,
     this.description,
     this.expectedOutputUrl,

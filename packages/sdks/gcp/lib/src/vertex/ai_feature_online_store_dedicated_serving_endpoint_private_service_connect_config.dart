@@ -11,7 +11,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
   /// Creates a new [AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig].
   /// [enablePrivateServiceConnect] If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
   /// [projectAllowlists] A list of Projects from which the forwarding rule will target the service attachment.
-  AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig({
+  const AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig({
     required this.enablePrivateServiceConnect,
     this.projectAllowlists,
   });

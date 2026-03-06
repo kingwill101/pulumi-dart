@@ -9,7 +9,7 @@ class FaultSimulationConstraintsResponse {
 
   /// Creates a new [FaultSimulationConstraintsResponse].
   /// [expirationTime] The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
-  FaultSimulationConstraintsResponse({
+  const FaultSimulationConstraintsResponse({
     this.expirationTime,
   });
 

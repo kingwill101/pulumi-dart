@@ -36,7 +36,7 @@ class DevCenterArgs {
   /// [projectCatalogSettings] Dev Center settings to be used when associating a project with a catalog.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DevCenterArgs({
+  const DevCenterArgs({
     this.devCenterName,
     this.displayName,
     this.encryption,

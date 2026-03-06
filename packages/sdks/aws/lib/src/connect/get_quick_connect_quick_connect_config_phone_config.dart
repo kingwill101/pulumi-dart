@@ -8,7 +8,7 @@ class GetQuickConnectQuickConnectConfigPhoneConfig {
 
   /// Creates a new [GetQuickConnectQuickConnectConfigPhoneConfig].
   /// [phoneNumber] Phone number in in E.164 format.
-  GetQuickConnectQuickConnectConfigPhoneConfig({
+  const GetQuickConnectQuickConnectConfigPhoneConfig({
     required this.phoneNumber,
   });
 

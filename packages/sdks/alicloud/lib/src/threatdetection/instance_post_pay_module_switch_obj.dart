@@ -41,7 +41,7 @@ class InstancePostPayModuleSwitchObj {
   /// [serverless] Serverless Security Module. Valid values:
   /// [vul] Vulnerability Repair Module. Valid values:
   /// [webLock] File Tamper Protection Module. Valid values:
-  InstancePostPayModuleSwitchObj({
+  const InstancePostPayModuleSwitchObj({
     this.agentless,
     this.antiRansomware,
     this.basicService,

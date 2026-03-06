@@ -18,7 +18,7 @@ class GetSignalRSharedPrivateLinkResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource.
-  GetSignalRSharedPrivateLinkResourceArgs({
+  const GetSignalRSharedPrivateLinkResourceArgs({
     required this.resourceGroupName,
     required this.resourceName,
     required this.sharedPrivateLinkResourceName,

@@ -13,7 +13,7 @@ class EventArgs {
 
   /// Creates a new [EventArgs].
   /// [events] An event to insert into Insights. Multiple event blocks can be defined. See Events below for details.
-  EventArgs({
+  const EventArgs({
     required this.events,
   });
 

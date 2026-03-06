@@ -15,7 +15,7 @@ class FlowPipelineArgs {
   /// Creates a new [FlowPipelineArgs].
   /// [manifest] The pipeline definition. For more information, see the sample pipeline definition).
   /// [workspaceId] The ID of the workspace.
-  FlowPipelineArgs({
+  const FlowPipelineArgs({
     required this.manifest,
     required this.workspaceId,
   });

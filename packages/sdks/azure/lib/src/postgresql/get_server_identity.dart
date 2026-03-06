@@ -14,7 +14,7 @@ class GetServerIdentity {
   /// [principalId] The ID of the System Managed Service Principal assigned to the PostgreSQL Server.
   /// [tenantId] The ID of the Tenant of the System Managed Service Principal assigned to the PostgreSQL Server.
   /// [type] The identity type of the Managed Identity assigned to the PostgreSQL Server.
-  GetServerIdentity({
+  const GetServerIdentity({
     required this.principalId,
     required this.tenantId,
     required this.type,

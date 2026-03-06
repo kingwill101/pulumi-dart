@@ -51,7 +51,7 @@ class P2SVpnGatewayResponse {
   /// [vpnClientConnectionHealth] All P2S VPN clients' connection health status.
   /// [vpnGatewayScaleUnit] The scale unit for this p2s vpn gateway.
   /// [vpnServerConfiguration] The VpnServerConfiguration to which the p2sVpnGateway is attached to.
-  P2SVpnGatewayResponse({
+  const P2SVpnGatewayResponse({
     this.customDnsServers,
     required this.etag,
     this.id,

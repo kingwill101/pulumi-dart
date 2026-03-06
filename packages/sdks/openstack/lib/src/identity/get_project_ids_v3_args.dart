@@ -37,7 +37,7 @@ class GetProjectIdsV3Args {
   /// [parentId] The parent of the project.
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [tags] Tags for the project.
-  GetProjectIdsV3Args({
+  const GetProjectIdsV3Args({
     this.domainId,
     this.enabled,
     this.isDomain,

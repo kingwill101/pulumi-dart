@@ -32,7 +32,7 @@ class IntegrationAccountArgs {
   /// [sku] The sku.
   /// [state] The workflow state.
   /// [tags] The resource tags.
-  IntegrationAccountArgs({
+  const IntegrationAccountArgs({
     this.integrationAccountName,
     this.integrationServiceEnvironment,
     this.location,

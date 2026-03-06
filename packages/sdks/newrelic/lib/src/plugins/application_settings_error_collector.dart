@@ -17,7 +17,7 @@ class ApplicationSettingsErrorCollector {
   /// [expectedErrorCodes] A list of expected error codes(any status code between 100-900).
   /// [ignoredErrorClasses] A list of ignored error classes.
   /// [ignoredErrorCodes] A list of ignored error codes(any status code between 100-900).
-  ApplicationSettingsErrorCollector({
+  const ApplicationSettingsErrorCollector({
     this.expectedErrorClasses,
     this.expectedErrorCodes,
     this.ignoredErrorClasses,

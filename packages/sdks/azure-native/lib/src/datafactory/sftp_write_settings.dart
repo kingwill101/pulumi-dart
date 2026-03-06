@@ -29,7 +29,7 @@ class SftpWriteSettings {
   /// [operationTimeout] Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
   /// [type] The write setting type.
   /// [useTempFileRename] Upload to temporary file(s) and rename. Disable this option if your SFTP server doesn't support rename operation. Type: boolean (or Expression with resultType boolean).
-  SftpWriteSettings({
+  const SftpWriteSettings({
     this.copyBehavior,
     this.disableMetricsCollection,
     this.maxConcurrentConnections,

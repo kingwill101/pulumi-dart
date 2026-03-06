@@ -20,7 +20,7 @@ class ActionGroupWebhookReceiver {
   /// [name] The name of the webhook receiver. Names must be unique (case-insensitive) across all receivers within an action group.
   /// [serviceUri] The URI where webhooks should be sent.
   /// [useCommonAlertSchema] Enables or disables the common alert schema.
-  ActionGroupWebhookReceiver({
+  const ActionGroupWebhookReceiver({
     this.aadAuth,
     required this.name,
     required this.serviceUri,

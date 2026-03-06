@@ -13,7 +13,7 @@ class ListConnectionAllModelsResult {
   /// Creates a new [ListConnectionAllModelsResult].
   /// [nextLink] The link to the next page constructed using the continuationToken.  If null, there are no additional pages.
   /// [value] List of models.
-  ListConnectionAllModelsResult({
+  const ListConnectionAllModelsResult({
     this.nextLink,
     this.value,
   });

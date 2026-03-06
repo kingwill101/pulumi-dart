@@ -27,7 +27,7 @@ class RoleManagementPolicyExpirationRule {
   /// [maximumDuration] The maximum duration of expiration in timespan.
   /// [ruleType] The type of rule
   /// [target] The target of the current rule.
-  RoleManagementPolicyExpirationRule({
+  const RoleManagementPolicyExpirationRule({
     this.exceptionMembers,
     this.id,
     this.isExpirationRequired,

@@ -56,7 +56,7 @@ class GetApiResult {
   /// [termsOfService] Terms of service for the API.
   /// [title] API title.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiResult({
+  const GetApiResult({
     required this.azureApiVersion,
     this.contacts,
     this.customProperties,

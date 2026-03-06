@@ -7,7 +7,7 @@ class DiskResourceStatusAsyncReplicationStatusResponseComputeBeta {
 
   /// Creates a new [DiskResourceStatusAsyncReplicationStatusResponseComputeBeta].
   /// [state] Required.
-  DiskResourceStatusAsyncReplicationStatusResponseComputeBeta({
+  const DiskResourceStatusAsyncReplicationStatusResponseComputeBeta({
     required this.state,
   });
 

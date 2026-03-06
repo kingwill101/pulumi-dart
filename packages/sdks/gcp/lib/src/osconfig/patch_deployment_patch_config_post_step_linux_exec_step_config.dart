@@ -21,7 +21,7 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
   /// [gcsObject] A Cloud Storage object containing the executable.
   /// [interpreter] The script interpreter to use to run the script. If no interpreter is specified the script will
   /// [localPath] An absolute path to the executable on the VM.
-  PatchDeploymentPatchConfigPostStepLinuxExecStepConfig({
+  const PatchDeploymentPatchConfigPostStepLinuxExecStepConfig({
     this.allowedSuccessCodes,
     this.gcsObject,
     this.interpreter,

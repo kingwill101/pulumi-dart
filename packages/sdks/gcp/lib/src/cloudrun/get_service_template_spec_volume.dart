@@ -27,7 +27,7 @@ class GetServiceTemplateSpecVolume {
   /// [name] The name of the Cloud Run Service.
   /// [nfs] A filesystem backed by a Network File System share. This filesystem requires the
   /// [secrets] The secret's value will be presented as the content of a file whose
-  GetServiceTemplateSpecVolume({
+  const GetServiceTemplateSpecVolume({
     required this.csis,
     required this.emptyDirs,
     required this.name,

@@ -29,7 +29,7 @@ class GetMembershipResult {
   /// [roles] The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
   /// [type] The type of the membership.
   /// [updateTime] The time when the `Membership` was last updated.
-  GetMembershipResult({
+  const GetMembershipResult({
     required this.createTime,
     required this.deliverySetting,
     required this.name,

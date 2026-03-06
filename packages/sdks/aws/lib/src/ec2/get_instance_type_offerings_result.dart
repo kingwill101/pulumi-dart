@@ -25,7 +25,7 @@ class GetInstanceTypeOfferingsResult {
   /// [locationTypes] List of location types.
   /// [locations] List of locations.
   /// [region] Required.
-  GetInstanceTypeOfferingsResult({
+  const GetInstanceTypeOfferingsResult({
     this.filters,
     required this.id,
     required this.instanceTypes,

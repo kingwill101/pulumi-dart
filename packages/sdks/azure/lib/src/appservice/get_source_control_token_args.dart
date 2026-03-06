@@ -12,7 +12,7 @@ class GetSourceControlTokenArgs {
 
   /// Creates a new [GetSourceControlTokenArgs].
   /// [type] The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
-  GetSourceControlTokenArgs({
+  const GetSourceControlTokenArgs({
     required this.type,
   });
 

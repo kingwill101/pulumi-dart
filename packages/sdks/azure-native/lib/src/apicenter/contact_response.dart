@@ -15,7 +15,7 @@ class ContactResponse {
   /// [email] Email address of the contact.
   /// [name] Name of the contact.
   /// [url] URL for the contact.
-  ContactResponse({
+  const ContactResponse({
     this.email,
     this.name,
     this.url,

@@ -42,7 +42,7 @@ class FileSystemState {
   /// [subnetId] The delegated subnet ID for Vnet injection. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the File System.
   /// [zone] The Availability Zone in which the Azure Native Qumulo Scalable File system is located. Changing this forces a new resource to be created.
-  FileSystemState({
+  const FileSystemState({
     this.adminPassword,
     this.email,
     this.location,

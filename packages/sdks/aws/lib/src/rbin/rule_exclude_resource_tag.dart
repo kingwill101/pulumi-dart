@@ -13,7 +13,7 @@ class RuleExcludeResourceTag {
   /// Creates a new [RuleExcludeResourceTag].
   /// [resourceTagKey] Tag key.
   /// [resourceTagValue] Tag value.
-  RuleExcludeResourceTag({
+  const RuleExcludeResourceTag({
     required this.resourceTagKey,
     this.resourceTagValue,
   });

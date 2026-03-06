@@ -20,7 +20,7 @@ class AccountNetworkAcls {
   /// [defaultAction] The Default Action to use when no rules match from `ip_rules` / `virtual_network_rules`. Possible values are `Allow` and `Deny`.
   /// [ipRules] One or more IP Addresses, or CIDR Blocks which should be able to access the Cognitive Account.
   /// [virtualNetworkRules] A `virtual_network_rules` block as defined below.
-  AccountNetworkAcls({
+  const AccountNetworkAcls({
     this.bypass,
     required this.defaultAction,
     this.ipRules,

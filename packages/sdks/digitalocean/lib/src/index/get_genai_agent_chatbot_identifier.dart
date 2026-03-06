@@ -8,7 +8,7 @@ class GetGenaiAgentChatbotIdentifier {
 
   /// Creates a new [GetGenaiAgentChatbotIdentifier].
   /// [chatbotId] Chatbot ID
-  GetGenaiAgentChatbotIdentifier({
+  const GetGenaiAgentChatbotIdentifier({
     this.chatbotId,
   });
 

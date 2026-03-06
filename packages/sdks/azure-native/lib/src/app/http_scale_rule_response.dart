@@ -16,7 +16,7 @@ class HttpScaleRuleResponse {
   /// [auth] Authentication secrets for the custom scale rule.
   /// [identity] The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
   /// [metadata] Metadata properties to describe http scale rule.
-  HttpScaleRuleResponse({
+  const HttpScaleRuleResponse({
     this.auth,
     this.identity,
     this.metadata,

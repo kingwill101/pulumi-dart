@@ -15,7 +15,7 @@ class BillingProfilePropertiesCurrentPaymentTerm {
   /// [endDate] The date on when the defined 'Payment Term' will end and is always in UTC.
   /// [startDate] The date on when the defined 'Payment Term' will be effective from and is always in UTC.
   /// [term] Represents duration in netXX format. Always in days.
-  BillingProfilePropertiesCurrentPaymentTerm({
+  const BillingProfilePropertiesCurrentPaymentTerm({
     this.endDate,
     this.startDate,
     this.term,

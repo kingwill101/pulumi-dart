@@ -9,7 +9,7 @@ class WatchlistUserInfo {
 
   /// Creates a new [WatchlistUserInfo].
   /// [objectId] The object id of the user.
-  WatchlistUserInfo({
+  const WatchlistUserInfo({
     this.objectId,
   });
 

@@ -17,7 +17,7 @@ class GetKeyRingIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetKeyRingIamPolicyArgs({
+  const GetKeyRingIamPolicyArgs({
     required this.keyRingId,
     required this.location,
     this.optionsRequestedPolicyVersion,

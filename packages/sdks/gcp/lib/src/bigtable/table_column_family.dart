@@ -11,7 +11,7 @@ class TableColumnFamily {
   /// Creates a new [TableColumnFamily].
   /// [family] The name of the column family.
   /// [type] The type of the column family.
-  TableColumnFamily({
+  const TableColumnFamily({
     required this.family,
     this.type,
   });

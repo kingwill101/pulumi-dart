@@ -8,7 +8,7 @@ class DataSourceLambdaConfig {
 
   /// Creates a new [DataSourceLambdaConfig].
   /// [functionArn] ARN for the Lambda function.
-  DataSourceLambdaConfig({
+  const DataSourceLambdaConfig({
     required this.functionArn,
   });
 

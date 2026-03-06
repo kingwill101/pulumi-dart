@@ -31,7 +31,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRule {
   /// [ruleName] The rule name of auto scaling policy.
   /// [timeTrigger] The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
   /// [triggerType] The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
-  ClusterNodeGroupAutoScalingPolicyScalingRule({
+  const ClusterNodeGroupAutoScalingPolicyScalingRule({
     required this.activityType,
     this.adjustmentType,
     required this.adjustmentValue,

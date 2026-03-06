@@ -20,7 +20,7 @@ class EnterpriseKeyWebSettings {
   /// [allowedDomains] Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
   /// [challengeSecurityPreference] Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
   /// [integrationType] Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
-  EnterpriseKeyWebSettings({
+  const EnterpriseKeyWebSettings({
     this.allowAllDomains,
     this.allowAmpTraffic,
     this.allowedDomains,

@@ -16,7 +16,7 @@ class ConfigurationAggregatorAccountAggregationSource {
   /// [accountIds] List of 12-digit account IDs of the account(s) being aggregated.
   /// [allRegions] If true, aggregate existing AWS Config regions and future regions.
   /// [regions] List of source regions being aggregated.
-  ConfigurationAggregatorAccountAggregationSource({
+  const ConfigurationAggregatorAccountAggregationSource({
     required this.accountIds,
     this.allRegions,
     this.regions,

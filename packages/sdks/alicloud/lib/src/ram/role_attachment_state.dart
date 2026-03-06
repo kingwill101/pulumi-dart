@@ -12,7 +12,7 @@ class RoleAttachmentState {
   /// Creates a new [RoleAttachmentState].
   /// [instanceIds] The list of ECS instance's IDs.
   /// [roleName] The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
-  RoleAttachmentState({
+  const RoleAttachmentState({
     this.instanceIds,
     this.roleName,
   });

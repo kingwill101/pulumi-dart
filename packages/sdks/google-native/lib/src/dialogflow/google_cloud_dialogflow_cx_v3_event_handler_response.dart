@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3EventHandlerResponse {
   /// [targetFlow] The target flow to transition to. Format: `projects//locations//agents//flows/`.
   /// [targetPage] The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   /// [triggerFulfillment] The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
-  GoogleCloudDialogflowCxV3EventHandlerResponse({
+  const GoogleCloudDialogflowCxV3EventHandlerResponse({
     required this.event,
     required this.name,
     required this.targetFlow,

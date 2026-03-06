@@ -27,7 +27,7 @@ class GetCompliancePacksResult {
   /// [outputFile] Optional.
   /// [packs] A list of Config Compliance Packs. Each element contains the following attributes:
   /// [status] The status of the resource.
-  GetCompliancePacksResult({
+  const GetCompliancePacksResult({
     this.enableDetails,
     required this.id,
     required this.ids,

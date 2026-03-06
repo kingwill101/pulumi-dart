@@ -12,7 +12,7 @@ class SecretPasswordKeyVaultPropertiesResponse {
   /// Creates a new [SecretPasswordKeyVaultPropertiesResponse].
   /// [keyVaultUri] The Uri of KeyVault.
   /// [secretName] The name of KeyVault password secret.
-  SecretPasswordKeyVaultPropertiesResponse({
+  const SecretPasswordKeyVaultPropertiesResponse({
     required this.keyVaultUri,
     required this.secretName,
   });

@@ -15,7 +15,7 @@ class EnvironmentAllSetting {
   /// [namespace] Required.
   /// [resource] Optional.
   /// [value] Required.
-  EnvironmentAllSetting({
+  const EnvironmentAllSetting({
     required this.name,
     required this.namespace,
     this.resource,

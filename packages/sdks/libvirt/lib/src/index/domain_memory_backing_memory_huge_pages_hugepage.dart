@@ -14,7 +14,7 @@ class DomainMemoryBackingMemoryHugePagesHugepage {
   /// [nodeset] Specifies the NUMA nodeset where huge pages can be allocated, controlling memory locality.
   /// [size] Sets the size of each huge page, which impacts memory management and performance.
   /// [unit] Indicates the unit for the huge page size, specifying the measurement of the size configuration.
-  DomainMemoryBackingMemoryHugePagesHugepage({
+  const DomainMemoryBackingMemoryHugePagesHugepage({
     this.nodeset,
     required this.size,
     this.unit,

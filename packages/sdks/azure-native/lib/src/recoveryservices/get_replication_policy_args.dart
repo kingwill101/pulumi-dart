@@ -18,7 +18,7 @@ class GetReplicationPolicyArgs {
   /// [policyName] Replication policy name.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  GetReplicationPolicyArgs({
+  const GetReplicationPolicyArgs({
     required this.policyName,
     required this.resourceGroupName,
     required this.resourceName,

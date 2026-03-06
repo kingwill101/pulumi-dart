@@ -12,7 +12,7 @@ class StatusResponse {
   /// Creates a new [StatusResponse].
   /// [code] Code specifies AppDevExperienceFeature's subcomponent ready state.
   /// [description] Description is populated if Code is Failed, explaining why it has failed.
-  StatusResponse({
+  const StatusResponse({
     required this.code,
     required this.description,
   });

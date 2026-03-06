@@ -26,7 +26,7 @@ class GetPolicyFragmentResult {
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Contents of the policy fragment.
-  GetPolicyFragmentResult({
+  const GetPolicyFragmentResult({
     required this.azureApiVersion,
     this.description,
     this.format,

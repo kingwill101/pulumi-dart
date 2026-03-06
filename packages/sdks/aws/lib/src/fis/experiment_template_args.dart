@@ -47,7 +47,7 @@ class ExperimentTemplateArgs {
   /// [stopConditions] When an ongoing experiment should be stopped. See below.
   /// [tags] Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] Target of an action. See below.
-  ExperimentTemplateArgs({
+  const ExperimentTemplateArgs({
     required this.actions,
     required this.description,
     this.experimentOptions,

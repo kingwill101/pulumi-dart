@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysChRoot {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysChRoot].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysChRoot({
+  const DomainFeaturesCapabilitiesSysChRoot({
     this.state,
   });
 

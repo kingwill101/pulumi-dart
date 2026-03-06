@@ -11,7 +11,7 @@ class AzureIntegrationsMariaDb {
   /// Creates a new [AzureIntegrationsMariaDb].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsMariaDb({
+  const AzureIntegrationsMariaDb({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

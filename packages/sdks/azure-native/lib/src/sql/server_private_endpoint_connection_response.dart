@@ -13,7 +13,7 @@ class ServerPrivateEndpointConnectionResponse {
   /// Creates a new [ServerPrivateEndpointConnectionResponse].
   /// [id] Resource ID.
   /// [properties] Private endpoint connection properties
-  ServerPrivateEndpointConnectionResponse({
+  const ServerPrivateEndpointConnectionResponse({
     required this.id,
     required this.properties,
   });

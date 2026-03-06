@@ -9,7 +9,7 @@ class WebAclRuleStatementNotStatement {
 
   /// Creates a new [WebAclRuleStatementNotStatement].
   /// [statements] The statements to combine.
-  WebAclRuleStatementNotStatement({
+  const WebAclRuleStatementNotStatement({
     required this.statements,
   });
 

@@ -8,7 +8,7 @@ class ListDelegationSettingSecretsResult {
 
   /// Creates a new [ListDelegationSettingSecretsResult].
   /// [validationKey] This is secret value of the validation key in portal settings.
-  ListDelegationSettingSecretsResult({
+  const ListDelegationSettingSecretsResult({
     this.validationKey,
   });
 

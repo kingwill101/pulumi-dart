@@ -48,7 +48,7 @@ class ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1 {
   /// [totalCores] Sum of the CPU core count of all the assets in this collection.
   /// [totalMemoryBytes] Sum of the memory in bytes of all the assets in this collection.
   /// [totalStorageBytes] Sum of persistent storage in bytes of all the assets in this collection.
-  ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1({
+  const ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1({
     required this.assetAge,
     required this.coreCountHistogram,
     required this.memoryBytesHistogram,

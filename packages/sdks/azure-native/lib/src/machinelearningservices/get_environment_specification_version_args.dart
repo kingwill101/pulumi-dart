@@ -21,7 +21,7 @@ class GetEnvironmentSpecificationVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetEnvironmentSpecificationVersionArgs({
+  const GetEnvironmentSpecificationVersionArgs({
     required this.name,
     required this.resourceGroupName,
     required this.version,

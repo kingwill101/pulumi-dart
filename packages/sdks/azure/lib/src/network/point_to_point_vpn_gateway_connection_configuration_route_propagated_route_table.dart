@@ -11,7 +11,7 @@ class PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable {
   /// Creates a new [PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable].
   /// [ids] The list of Virtual Hub Route Table resource id which the routes will be propagated to.
   /// [labels] The list of labels to logically group Virtual Hub Route Tables which the routes will be propagated to.
-  PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable({
+  const PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable({
     required this.ids,
     this.labels,
   });

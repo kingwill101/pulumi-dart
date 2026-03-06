@@ -21,7 +21,7 @@ class PlanDetails {
   /// [planName] Plan Name
   /// [publisherID] Publisher ID of the plan
   /// [termID] Term ID of the plan
-  PlanDetails({
+  const PlanDetails({
     this.offerID,
     this.planID,
     this.planName,

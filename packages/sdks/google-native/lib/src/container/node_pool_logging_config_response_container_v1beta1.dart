@@ -10,7 +10,7 @@ class NodePoolLoggingConfigResponseContainerV1beta1 {
 
   /// Creates a new [NodePoolLoggingConfigResponseContainerV1beta1].
   /// [variantConfig] Logging variant configuration.
-  NodePoolLoggingConfigResponseContainerV1beta1({
+  const NodePoolLoggingConfigResponseContainerV1beta1({
     required this.variantConfig,
   });
 

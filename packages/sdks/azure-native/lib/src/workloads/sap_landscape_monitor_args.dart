@@ -23,7 +23,7 @@ class SapLandscapeMonitorArgs {
   /// [monitorName] Name of the SAP monitor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topMetricsThresholds] Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-  SapLandscapeMonitorArgs({
+  const SapLandscapeMonitorArgs({
     this.grouping,
     required this.monitorName,
     required this.resourceGroupName,

@@ -8,7 +8,7 @@ class DefaultScaleSettingsResponse {
 
   /// Creates a new [DefaultScaleSettingsResponse].
   /// [scaleType] Expected value is 'Default'.
-  DefaultScaleSettingsResponse({
+  const DefaultScaleSettingsResponse({
     required this.scaleType,
   });
 

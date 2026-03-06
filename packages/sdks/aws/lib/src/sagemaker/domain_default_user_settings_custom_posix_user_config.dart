@@ -11,7 +11,7 @@ class DomainDefaultUserSettingsCustomPosixUserConfig {
   /// Creates a new [DomainDefaultUserSettingsCustomPosixUserConfig].
   /// [gid] The POSIX group ID.
   /// [uid] The POSIX user ID.
-  DomainDefaultUserSettingsCustomPosixUserConfig({
+  const DomainDefaultUserSettingsCustomPosixUserConfig({
     required this.gid,
     required this.uid,
   });

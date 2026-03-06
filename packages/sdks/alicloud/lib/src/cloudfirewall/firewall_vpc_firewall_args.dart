@@ -29,7 +29,7 @@ class FirewallVpcFirewallArgs {
   /// [peerVpc] The details of the peer VPC. See `peer_vpc` below.
   /// [status] The status of the resource. Valid values:
   /// [vpcFirewallName] The name of the VPC firewall instance.
-  FirewallVpcFirewallArgs({
+  const FirewallVpcFirewallArgs({
     this.lang,
     required this.localVpc,
     this.memberUid,

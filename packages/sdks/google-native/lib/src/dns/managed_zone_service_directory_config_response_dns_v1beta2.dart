@@ -12,7 +12,7 @@ class ManagedZoneServiceDirectoryConfigResponseDnsV1beta2 {
   /// Creates a new [ManagedZoneServiceDirectoryConfigResponseDnsV1beta2].
   /// [kind] Required.
   /// [namespace] Contains information about the namespace associated with the zone.
-  ManagedZoneServiceDirectoryConfigResponseDnsV1beta2({
+  const ManagedZoneServiceDirectoryConfigResponseDnsV1beta2({
     required this.kind,
     required this.namespace,
   });

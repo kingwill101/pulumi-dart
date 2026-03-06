@@ -15,7 +15,7 @@ class SparkClusterRolesWorkerNodeAutoscale {
   /// Creates a new [SparkClusterRolesWorkerNodeAutoscale].
   /// [capacity] A `capacity` block as defined below.
   /// [recurrence] A `recurrence` block as defined below.
-  SparkClusterRolesWorkerNodeAutoscale({
+  const SparkClusterRolesWorkerNodeAutoscale({
     this.capacity,
     this.recurrence,
   });

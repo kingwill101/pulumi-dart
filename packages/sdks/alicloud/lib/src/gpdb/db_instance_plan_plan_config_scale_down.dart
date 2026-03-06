@@ -17,7 +17,7 @@ class DbInstancePlanPlanConfigScaleDown {
   /// [instanceSpec] The specification of segment nodes of the Plan.
   /// [planCronTime] The Cron Time of the plan.
   /// [planTaskStatus] (Available since v1.231.0) The status of the plan task.
-  DbInstancePlanPlanConfigScaleDown({
+  const DbInstancePlanPlanConfigScaleDown({
     this.executeTime,
     this.instanceSpec,
     this.planCronTime,

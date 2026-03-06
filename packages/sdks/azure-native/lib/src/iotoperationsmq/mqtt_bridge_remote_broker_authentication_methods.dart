@@ -14,7 +14,7 @@ class MqttBridgeRemoteBrokerAuthenticationMethods {
   /// Creates a new [MqttBridgeRemoteBrokerAuthenticationMethods].
   /// [systemAssignedManagedIdentity] Managed identity remote broker authentication method.
   /// [x509] X509 remote broker authentication method.
-  MqttBridgeRemoteBrokerAuthenticationMethods({
+  const MqttBridgeRemoteBrokerAuthenticationMethods({
     this.systemAssignedManagedIdentity,
     this.x509,
   });

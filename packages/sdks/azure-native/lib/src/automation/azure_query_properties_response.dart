@@ -16,7 +16,7 @@ class AzureQueryPropertiesResponse {
   /// [locations] List of locations to scope the query to.
   /// [scope] List of Subscription or Resource Group ARM Ids.
   /// [tagSettings] Tag settings for the VM.
-  AzureQueryPropertiesResponse({
+  const AzureQueryPropertiesResponse({
     this.locations,
     this.scope,
     this.tagSettings,

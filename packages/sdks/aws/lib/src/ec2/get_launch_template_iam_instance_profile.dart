@@ -10,7 +10,7 @@ class GetLaunchTemplateIamInstanceProfile {
   /// Creates a new [GetLaunchTemplateIamInstanceProfile].
   /// [arn] Required.
   /// [name] Name of the launch template.
-  GetLaunchTemplateIamInstanceProfile({
+  const GetLaunchTemplateIamInstanceProfile({
     required this.arn,
     required this.name,
   });

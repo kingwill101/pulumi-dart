@@ -25,7 +25,7 @@ class ApprovalStageResponse {
   /// [isApproverJustificationRequired] Determines whether approver need to provide justification for his decision.
   /// [isEscalationEnabled] The value determine whether escalation feature is enabled.
   /// [primaryApprovers] The primary approver of the request.
-  ApprovalStageResponse({
+  const ApprovalStageResponse({
     this.approvalStageTimeOutInDays,
     this.escalationApprovers,
     this.escalationTimeInMinutes,

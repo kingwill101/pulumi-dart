@@ -32,7 +32,7 @@ class PublicIpAddressPoolArgs {
   /// [resourceGroupId] The resource group ID of the VPC Public IP address pool.
   /// [securityProtectionTypes] Security protection level.
   /// [tags] The tags of PrefixList.
-  PublicIpAddressPoolArgs({
+  const PublicIpAddressPoolArgs({
     this.bizType,
     this.description,
     this.isp,

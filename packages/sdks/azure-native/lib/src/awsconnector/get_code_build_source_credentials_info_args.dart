@@ -15,7 +15,7 @@ class GetCodeBuildSourceCredentialsInfoArgs {
   /// Creates a new [GetCodeBuildSourceCredentialsInfoArgs].
   /// [name] Name of CodeBuildSourceCredentialsInfo
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCodeBuildSourceCredentialsInfoArgs({
+  const GetCodeBuildSourceCredentialsInfoArgs({
     required this.name,
     required this.resourceGroupName,
   });

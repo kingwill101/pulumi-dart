@@ -9,7 +9,7 @@ class VirtualNodeSpecLogging {
 
   /// Creates a new [VirtualNodeSpecLogging].
   /// [accessLog] Access log configuration for a virtual node.
-  VirtualNodeSpecLogging({
+  const VirtualNodeSpecLogging({
     this.accessLog,
   });
 

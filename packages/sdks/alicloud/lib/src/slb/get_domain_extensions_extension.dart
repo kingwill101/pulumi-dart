@@ -14,7 +14,7 @@ class GetDomainExtensionsExtension {
   /// [domain] The domain name.
   /// [id] The ID of the domain extension.
   /// [serverCertificateId] The ID of the certificate used by the domain name.
-  GetDomainExtensionsExtension({
+  const GetDomainExtensionsExtension({
     required this.domain,
     required this.id,
     required this.serverCertificateId,

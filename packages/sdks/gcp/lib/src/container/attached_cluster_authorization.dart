@@ -19,7 +19,7 @@ class AttachedClusterAuthorization {
   /// Creates a new [AttachedClusterAuthorization].
   /// [adminGroups] Groups that can perform operations as a cluster admin. A managed
   /// [adminUsers] Users that can perform operations as a cluster admin. A managed
-  AttachedClusterAuthorization({
+  const AttachedClusterAuthorization({
     this.adminGroups,
     this.adminUsers,
   });

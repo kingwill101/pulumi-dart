@@ -38,7 +38,7 @@ class GetKeyPairResult {
   /// [publicKey] Public key material.
   /// [region] Required.
   /// [tags] Any tags assigned to the Key Pair.
-  GetKeyPairResult({
+  const GetKeyPairResult({
     required this.arn,
     required this.createTime,
     this.filters,

@@ -15,7 +15,7 @@ class CorsSettings {
   /// Creates a new [CorsSettings].
   /// [allowedOrigins] Gets or sets the list of origins that should be allowed to make cross-origin
   /// [supportCredentials] Gets or sets whether CORS requests with credentials are allowed. See
-  CorsSettings({
+  const CorsSettings({
     this.allowedOrigins,
     this.supportCredentials,
   });

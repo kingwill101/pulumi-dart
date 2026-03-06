@@ -16,7 +16,7 @@ class IAppTable {
   /// [encryptedColumns] Name of origin
   /// [name] Name of the iApp.
   /// [rows] Optional.
-  IAppTable({
+  const IAppTable({
     this.columnNames,
     this.encryptedColumns,
     this.name,

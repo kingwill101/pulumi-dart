@@ -12,7 +12,7 @@ class EnvironmentFileResponse {
   /// Creates a new [EnvironmentFileResponse].
   /// [type] The file type to use. Environment files are objects in Amazon S3. The only supported value is ``s3``.
   /// [value] The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file.
-  EnvironmentFileResponse({
+  const EnvironmentFileResponse({
     this.type,
     this.value,
   });

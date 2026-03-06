@@ -14,7 +14,7 @@ class RemoteImageBuildUlimit {
   /// [hard] soft limit
   /// [name] type of ulimit, e.g. `nofile`
   /// [soft] hard limit
-  RemoteImageBuildUlimit({
+  const RemoteImageBuildUlimit({
     required this.hard,
     required this.name,
     required this.soft,

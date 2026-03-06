@@ -61,7 +61,7 @@ class BgpvpnV2State {
   /// [shared] Indicates whether the BGP VPN is shared across projects.
   /// [type] The type of the BGP VPN (either `l2` or `l3`). Changing this
   /// [vni] The globally-assigned VXLAN VNI for the BGP VPN. Changing
-  BgpvpnV2State({
+  const BgpvpnV2State({
     this.exportTargets,
     this.importTargets,
     this.localPref,

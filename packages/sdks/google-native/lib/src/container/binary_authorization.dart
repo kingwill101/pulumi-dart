@@ -13,7 +13,7 @@ class BinaryAuthorization {
   /// Creates a new [BinaryAuthorization].
   /// [enabled] This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  BinaryAuthorization({
+  const BinaryAuthorization({
     this.enabled,
     this.evaluationMode,
   });

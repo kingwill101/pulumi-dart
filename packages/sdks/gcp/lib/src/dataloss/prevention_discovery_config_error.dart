@@ -12,7 +12,7 @@ class PreventionDiscoveryConfigError {
   /// Creates a new [PreventionDiscoveryConfigError].
   /// [details] A list of messages that carry the error details.
   /// [timestamp] The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
-  PreventionDiscoveryConfigError({
+  const PreventionDiscoveryConfigError({
     this.details,
     this.timestamp,
   });

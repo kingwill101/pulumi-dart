@@ -22,7 +22,7 @@ class GetInferenceGroupDeltaModelsStatusAsyncResult {
   /// [expectedInstanceCount] Gets or sets expected instance count.
   /// [revisionId] Gets or sets revision ID.
   /// [targetBaseModel] Gets or sets target base model.
-  GetInferenceGroupDeltaModelsStatusAsyncResult({
+  const GetInferenceGroupDeltaModelsStatusAsyncResult({
     this.actualInstanceCount,
     this.deltaModels,
     this.expectedInstanceCount,

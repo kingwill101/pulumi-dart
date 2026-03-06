@@ -52,7 +52,7 @@ class HookState {
   /// [targetUri] The target URI to which the payloads will be delivered.
   /// [uid] Unique identifier of the hook.
   /// [updateTime] Update timestamp.
-  HookState({
+  const HookState({
     this.createTime,
     this.disabled,
     this.events,

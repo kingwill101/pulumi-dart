@@ -19,7 +19,7 @@ class DeviceCapacity {
   /// Creates a new [DeviceCapacity].
   /// [requestPolicy] RequestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations.
   /// [value] Value defines how much of a certain capacity that device has.
-  DeviceCapacity({
+  const DeviceCapacity({
     this.requestPolicy,
     required this.value,
   });

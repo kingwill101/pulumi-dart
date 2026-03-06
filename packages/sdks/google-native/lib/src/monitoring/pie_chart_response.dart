@@ -16,7 +16,7 @@ class PieChartResponse {
   /// [chartType] Indicates the visualization type for the PieChart.
   /// [dataSets] The queries for the chart's data.
   /// [showLabels] Optional. Indicates whether or not the pie chart should show slices' labels
-  PieChartResponse({
+  const PieChartResponse({
     required this.chartType,
     required this.dataSets,
     required this.showLabels,

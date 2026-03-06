@@ -14,7 +14,7 @@ class ClusterCertificate {
   /// [thumbprint] The Thumbprint of the Certificate.
   /// [thumbprintSecondary] The Secondary Thumbprint of the Certificate.
   /// [x509StoreName] The X509 Store where the Certificate Exists, such as `My`.
-  ClusterCertificate({
+  const ClusterCertificate({
     required this.thumbprint,
     this.thumbprintSecondary,
     required this.x509StoreName,

@@ -11,7 +11,7 @@ class GetImageImagePermission {
   /// Creates a new [GetImageImagePermission].
   /// [allowFleet] Boolean indicating if the image can be used for a fleet.
   /// [allowImageBuilder] indicated whether the image can be used for an image builder.
-  GetImageImagePermission({
+  const GetImageImagePermission({
     required this.allowFleet,
     required this.allowImageBuilder,
   });

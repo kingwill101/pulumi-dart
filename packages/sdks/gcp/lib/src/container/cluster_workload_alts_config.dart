@@ -8,7 +8,7 @@ class ClusterWorkloadAltsConfig {
 
   /// Creates a new [ClusterWorkloadAltsConfig].
   /// [enableAlts] Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
-  ClusterWorkloadAltsConfig({
+  const ClusterWorkloadAltsConfig({
     required this.enableAlts,
   });
 

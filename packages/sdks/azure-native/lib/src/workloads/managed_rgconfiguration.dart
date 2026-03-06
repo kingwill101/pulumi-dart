@@ -9,7 +9,7 @@ class ManagedRGConfiguration {
 
   /// Creates a new [ManagedRGConfiguration].
   /// [name] Managed resource group name
-  ManagedRGConfiguration({
+  const ManagedRGConfiguration({
     this.name,
   });
 

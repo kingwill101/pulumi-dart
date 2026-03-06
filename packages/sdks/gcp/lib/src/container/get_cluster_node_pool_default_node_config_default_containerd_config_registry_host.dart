@@ -12,7 +12,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost {
   /// Creates a new [GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost].
   /// [hosts] Configures a list of host-specific configurations for the server.
   /// [server] Defines the host name of the registry server.
-  GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost({
+  const GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost({
     required this.hosts,
     required this.server,
   });

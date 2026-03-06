@@ -34,7 +34,7 @@ class DdrInstancePgHbaConf {
   /// [priorityId] The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
   /// [type] The type of connection to the instance. Valid values:
   /// [user] The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
-  DdrInstancePgHbaConf({
+  const DdrInstancePgHbaConf({
     required this.address,
     required this.database,
     this.mask,

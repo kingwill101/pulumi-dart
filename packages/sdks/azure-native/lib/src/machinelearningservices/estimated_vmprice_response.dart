@@ -15,7 +15,7 @@ class EstimatedVMPriceResponse {
   /// [osType] Operating system type used by the VM.
   /// [retailPrice] The price charged for using the VM.
   /// [vmTier] The type of the VM.
-  EstimatedVMPriceResponse({
+  const EstimatedVMPriceResponse({
     required this.osType,
     required this.retailPrice,
     required this.vmTier,

@@ -10,7 +10,7 @@ class AmlFilesystemEncryptionSettings {
 
   /// Creates a new [AmlFilesystemEncryptionSettings].
   /// [keyEncryptionKey] Specifies the location of the encryption key in Key Vault.
-  AmlFilesystemEncryptionSettings({
+  const AmlFilesystemEncryptionSettings({
     this.keyEncryptionKey,
   });
 

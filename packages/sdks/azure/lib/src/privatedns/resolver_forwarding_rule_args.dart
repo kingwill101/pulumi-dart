@@ -28,7 +28,7 @@ class ResolverForwardingRuleArgs {
   /// [metadata] Metadata attached to the Private DNS Resolver Forwarding Rule.
   /// [name] Specifies the name which should be used for this Private DNS Resolver Forwarding Rule. Changing this forces a new Private DNS Resolver Forwarding Rule to be created.
   /// [targetDnsServers] Can be specified multiple times to define multiple target DNS servers. Each `target_dns_servers` block as defined below.
-  ResolverForwardingRuleArgs({
+  const ResolverForwardingRuleArgs({
     required this.dnsForwardingRulesetId,
     required this.domainName,
     this.enabled,

@@ -21,7 +21,7 @@ class FrontdoorEndpointArgs {
   /// [enabled] Specifies if this Front Door Endpoint is enabled? Defaults to `true`.
   /// [name] The name which should be used for this Front Door Endpoint. Changing this forces a new Front Door Endpoint to be created.
   /// [tags] Specifies a mapping of tags which should be assigned to the Front Door Endpoint.
-  FrontdoorEndpointArgs({
+  const FrontdoorEndpointArgs({
     required this.cdnFrontdoorProfileId,
     this.enabled,
     this.name,

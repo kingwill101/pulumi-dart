@@ -48,7 +48,7 @@ class ExternalAccessRuleArgs {
   /// [priority] External access rule priority, which determines the external access rule to use when multiple rules apply.
   /// [sourceIpRanges] If source ranges are specified, the external access rule applies only to
   /// [sourcePorts] A list of source ports to which the external access rule applies.
-  ExternalAccessRuleArgs({
+  const ExternalAccessRuleArgs({
     required this.action,
     this.description,
     required this.destinationIpRanges,

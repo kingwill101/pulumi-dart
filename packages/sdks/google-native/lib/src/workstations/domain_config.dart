@@ -9,7 +9,7 @@ class DomainConfig {
 
   /// Creates a new [DomainConfig].
   /// [domain] Immutable. Domain used by Workstations for HTTP ingress.
-  DomainConfig({
+  const DomainConfig({
     this.domain,
   });
 

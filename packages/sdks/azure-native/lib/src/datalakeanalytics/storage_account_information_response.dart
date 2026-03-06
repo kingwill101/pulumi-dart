@@ -18,7 +18,7 @@ class StorageAccountInformationResponse {
   /// [name] The resource name.
   /// [suffix] The optional suffix for the storage account.
   /// [type] The resource type.
-  StorageAccountInformationResponse({
+  const StorageAccountInformationResponse({
     required this.id,
     required this.name,
     required this.suffix,

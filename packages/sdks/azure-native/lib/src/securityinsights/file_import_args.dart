@@ -31,7 +31,7 @@ class FileImportArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [source] The source for the data in the file.
   /// [workspaceName] The name of the workspace.
-  FileImportArgs({
+  const FileImportArgs({
     required this.contentType,
     this.fileImportId,
     required this.importFile,

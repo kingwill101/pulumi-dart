@@ -24,7 +24,7 @@ class IncidentAdditionalDataResponse {
   /// [commentsCount] The number of comments in the incident
   /// [providerIncidentUrl] The provider incident url to the incident in Microsoft 365 Defender portal
   /// [tactics] The tactics associated with incident
-  IncidentAdditionalDataResponse({
+  const IncidentAdditionalDataResponse({
     required this.alertProductNames,
     required this.alertsCount,
     required this.bookmarksCount,

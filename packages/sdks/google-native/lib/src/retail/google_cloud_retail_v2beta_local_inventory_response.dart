@@ -19,7 +19,7 @@ class GoogleCloudRetailV2betaLocalInventoryResponse {
   /// [fulfillmentTypes] Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
   /// [placeId] The place ID for the current set of inventory information.
   /// [priceInfo] Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
-  GoogleCloudRetailV2betaLocalInventoryResponse({
+  const GoogleCloudRetailV2betaLocalInventoryResponse({
     required this.attributes,
     required this.fulfillmentTypes,
     required this.placeId,

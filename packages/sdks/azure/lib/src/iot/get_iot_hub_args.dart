@@ -18,7 +18,7 @@ class GetIotHubArgs {
   /// [name] The name of this IoTHub.
   /// [resourceGroupName] The name of the Resource Group where the IoTHub exists.
   /// [tags] A mapping of tags which should be assigned to the IoTHub.
-  GetIotHubArgs({
+  const GetIotHubArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

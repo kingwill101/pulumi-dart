@@ -24,7 +24,7 @@ class GetAccessConfigurationsArgs {
   /// [ids] A list of Access Configuration IDs.
   /// [nameRegex] A regex string to filter results by Access Configuration name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAccessConfigurationsArgs({
+  const GetAccessConfigurationsArgs({
     required this.directoryId,
     this.enableDetails,
     this.ids,

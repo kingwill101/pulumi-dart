@@ -12,7 +12,7 @@ class GetIamPolicyArgs {
 
   /// Creates a new [GetIamPolicyArgs].
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-  GetIamPolicyArgs({
+  const GetIamPolicyArgs({
     required this.folder,
   });
 

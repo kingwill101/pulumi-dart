@@ -31,7 +31,7 @@ class VirtualNetworkGatewayConnectionIpsecPolicy {
   /// [pfsGroup] The DH group used in IKE phase 2 for new child SA.
   /// [saDatasize] The IPSec SA payload size in KB. Must be at least `1024` KB. Defaults to `102400000` KB.
   /// [saLifetime] The IPSec SA lifetime in seconds. Must be at least `300` seconds. Defaults to `27000` seconds.
-  VirtualNetworkGatewayConnectionIpsecPolicy({
+  const VirtualNetworkGatewayConnectionIpsecPolicy({
     required this.dhGroup,
     required this.ikeEncryption,
     required this.ikeIntegrity,

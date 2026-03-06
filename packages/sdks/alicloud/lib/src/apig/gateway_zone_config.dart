@@ -8,7 +8,7 @@ class GatewayZoneConfig {
 
   /// Creates a new [GatewayZoneConfig].
   /// [selectOption] Availability Zone Options
-  GatewayZoneConfig({
+  const GatewayZoneConfig({
     required this.selectOption,
   });
 

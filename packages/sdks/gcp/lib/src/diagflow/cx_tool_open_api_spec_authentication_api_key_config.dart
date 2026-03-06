@@ -22,7 +22,7 @@ class CxToolOpenApiSpecAuthenticationApiKeyConfig {
   /// [keyName] The parameter name or the header name of the API key.
   /// [requestLocation] Key location in the request.
   /// [secretVersionForApiKey] Optional. The name of the SecretManager secret version resource storing the API key.
-  CxToolOpenApiSpecAuthenticationApiKeyConfig({
+  const CxToolOpenApiSpecAuthenticationApiKeyConfig({
     this.apiKey,
     required this.keyName,
     required this.requestLocation,

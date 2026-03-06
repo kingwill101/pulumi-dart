@@ -41,7 +41,7 @@ class StandardArgs {
   /// [standardId] The Security Standard key - unique key for the standard type
   /// [supportedClouds] List of all standard supported clouds.
   /// [tags] A list of key value pairs that describe the resource.
-  StandardArgs({
+  const StandardArgs({
     this.category,
     this.components,
     this.description,

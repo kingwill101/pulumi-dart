@@ -24,7 +24,7 @@ class GetBgpPeersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [routerId] The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
   /// [status] The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
-  GetBgpPeersArgs({
+  const GetBgpPeersArgs({
     this.bgpGroupId,
     this.ids,
     this.outputFile,

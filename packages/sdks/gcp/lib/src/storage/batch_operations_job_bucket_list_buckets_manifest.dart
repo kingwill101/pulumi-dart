@@ -8,7 +8,7 @@ class BatchOperationsJobBucketListBucketsManifest {
 
   /// Creates a new [BatchOperationsJobBucketListBucketsManifest].
   /// [manifestLocation] Specifies objects in a manifest file.
-  BatchOperationsJobBucketListBucketsManifest({
+  const BatchOperationsJobBucketListBucketsManifest({
     this.manifestLocation,
   });
 

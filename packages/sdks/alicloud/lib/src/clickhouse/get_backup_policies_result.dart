@@ -16,7 +16,7 @@ class GetBackupPoliciesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [policies] Required.
-  GetBackupPoliciesResult({
+  const GetBackupPoliciesResult({
     required this.dbClusterId,
     required this.id,
     this.outputFile,

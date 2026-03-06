@@ -12,7 +12,7 @@ class HelmOperatorProperties {
   /// Creates a new [HelmOperatorProperties].
   /// [chartValues] Values override for the operator Helm chart.
   /// [chartVersion] Version of the operator Helm chart.
-  HelmOperatorProperties({
+  const HelmOperatorProperties({
     this.chartValues,
     this.chartVersion,
   });

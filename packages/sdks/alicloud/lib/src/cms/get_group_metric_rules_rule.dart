@@ -63,7 +63,7 @@ class GetGroupMetricRulesRule {
   /// [sourceType] The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
   /// [status] The status of Group Metric Rule..
   /// [webhook] The callback URL.
-  GetGroupMetricRulesRule({
+  const GetGroupMetricRulesRule({
     required this.contactGroups,
     required this.dimensions,
     required this.effectiveInterval,

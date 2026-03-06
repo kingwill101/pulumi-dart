@@ -17,7 +17,7 @@ class DataQualityJobDefinitionDataQualityAppSpecification {
   /// [imageUri] The container image that the data quality monitoring job runs.
   /// [postAnalyticsProcessorSourceUri] An Amazon S3 URI to a script that is called after analysis has been performed. Applicable only for the built-in (first party) containers.
   /// [recordPreprocessorSourceUri] An Amazon S3 URI to a script that is called per row prior to running analysis. It can base64 decode the payload and convert it into a flatted json so that the built-in container can use the converted data. Applicable only for the built-in (first party) containers.
-  DataQualityJobDefinitionDataQualityAppSpecification({
+  const DataQualityJobDefinitionDataQualityAppSpecification({
     this.environment,
     required this.imageUri,
     this.postAnalyticsProcessorSourceUri,

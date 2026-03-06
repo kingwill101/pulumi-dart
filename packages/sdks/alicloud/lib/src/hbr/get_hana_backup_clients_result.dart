@@ -33,7 +33,7 @@ class GetHanaBackupClientsResult {
   /// [pageSize] Optional.
   /// [status] The status of the backup client.
   /// [vaultId] The ID of the backup vault.
-  GetHanaBackupClientsResult({
+  const GetHanaBackupClientsResult({
     this.clientId,
     this.clusterId,
     required this.hanaBackupClients,

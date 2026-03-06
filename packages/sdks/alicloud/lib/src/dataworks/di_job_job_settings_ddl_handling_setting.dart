@@ -20,7 +20,7 @@ class DiJobJobSettingsDdlHandlingSetting {
   /// Creates a new [DiJobJobSettingsDdlHandlingSetting].
   /// [action] Optional.
   /// [type] DDL type, optional enumeration value:
-  DiJobJobSettingsDdlHandlingSetting({
+  const DiJobJobSettingsDdlHandlingSetting({
     this.action,
     this.type,
   });

@@ -36,7 +36,7 @@ class EvidenceArgs {
   /// [reportCreatorTenantId] The tenant id of the report creator.
   /// [reportName] Report Name.
   /// [responsibilityId] Responsibility id.
-  EvidenceArgs({
+  const EvidenceArgs({
     this.controlId,
     this.evidenceName,
     this.evidenceType,

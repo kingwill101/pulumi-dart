@@ -8,7 +8,7 @@ class RouteSpecHttp2RouteMatchQueryParameterMatch {
 
   /// Creates a new [RouteSpecHttp2RouteMatchQueryParameterMatch].
   /// [exact] The exact query parameter to match on.
-  RouteSpecHttp2RouteMatchQueryParameterMatch({
+  const RouteSpecHttp2RouteMatchQueryParameterMatch({
     this.exact,
   });
 

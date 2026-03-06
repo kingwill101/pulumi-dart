@@ -18,7 +18,7 @@ class GetClientApplicationArgs {
   /// [clientApplicationId] Client Application identifier. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetClientApplicationArgs({
+  const GetClientApplicationArgs({
     required this.clientApplicationId,
     required this.resourceGroupName,
     required this.serviceName,

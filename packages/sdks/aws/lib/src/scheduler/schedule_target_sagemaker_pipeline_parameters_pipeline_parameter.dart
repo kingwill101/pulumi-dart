@@ -11,7 +11,7 @@ class ScheduleTargetSagemakerPipelineParametersPipelineParameter {
   /// Creates a new [ScheduleTargetSagemakerPipelineParametersPipelineParameter].
   /// [name] Name of parameter to start execution of a SageMaker AI Model Building Pipeline.
   /// [value] Value of parameter to start execution of a SageMaker AI Model Building Pipeline.
-  ScheduleTargetSagemakerPipelineParametersPipelineParameter({
+  const ScheduleTargetSagemakerPipelineParametersPipelineParameter({
     required this.name,
     required this.value,
   });

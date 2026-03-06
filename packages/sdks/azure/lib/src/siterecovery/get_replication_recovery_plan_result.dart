@@ -29,7 +29,7 @@ class GetReplicationRecoveryPlanResult {
   /// [recoveryVaultId] Required.
   /// [sourceRecoveryFabricId] The ID of source fabric to be recovered from.
   /// [targetRecoveryFabricId] The ID of target fabric to recover.
-  GetReplicationRecoveryPlanResult({
+  const GetReplicationRecoveryPlanResult({
     required this.azureToAzureSettings,
     required this.failoverDeploymentModel,
     required this.id,

@@ -12,7 +12,7 @@ class PlacementKeyValuePairs {
   /// Creates a new [PlacementKeyValuePairs].
   /// [key] Key for an application specific parameter for the placement of volumes in the volume group
   /// [value] Value for an application specific parameter for the placement of volumes in the volume group
-  PlacementKeyValuePairs({
+  const PlacementKeyValuePairs({
     required this.key,
     required this.value,
   });

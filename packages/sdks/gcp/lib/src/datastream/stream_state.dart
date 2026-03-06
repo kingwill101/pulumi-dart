@@ -73,7 +73,7 @@ class StreamState {
   /// [sourceConfig] Source connection profile configuration.
   /// [state] The state of the stream.
   /// [streamId] The stream identifier.
-  StreamState({
+  const StreamState({
     this.backfillAll,
     this.backfillNone,
     this.createWithoutValidation,

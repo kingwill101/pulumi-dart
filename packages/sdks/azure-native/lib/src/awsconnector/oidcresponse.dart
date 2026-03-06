@@ -9,7 +9,7 @@ class OIDCResponse {
 
   /// Creates a new [OIDCResponse].
   /// [issuer] &lt;p&gt;The issuer URL for the OIDC identity provider.&lt;/p&gt;
-  OIDCResponse({
+  const OIDCResponse({
     this.issuer,
   });
 

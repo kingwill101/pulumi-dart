@@ -8,7 +8,7 @@ class DomainOsNvRamSourceNetworkConfig {
 
   /// Creates a new [DomainOsNvRamSourceNetworkConfig].
   /// [file] Specifies a file for loading additional network configuration in the backing store source.
-  DomainOsNvRamSourceNetworkConfig({
+  const DomainOsNvRamSourceNetworkConfig({
     required this.file,
   });
 

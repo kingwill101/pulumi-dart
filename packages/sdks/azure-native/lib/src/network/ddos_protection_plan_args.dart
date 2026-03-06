@@ -21,7 +21,7 @@ class DdosProtectionPlanArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  DdosProtectionPlanArgs({
+  const DdosProtectionPlanArgs({
     this.ddosProtectionPlanName,
     this.location,
     required this.resourceGroupName,

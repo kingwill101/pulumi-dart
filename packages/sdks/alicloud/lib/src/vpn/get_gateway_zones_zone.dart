@@ -11,7 +11,7 @@ class GetGatewayZonesZone {
   /// Creates a new [GetGatewayZonesZone].
   /// [zoneId] The zone ID.
   /// [zoneName] The zone name.
-  GetGatewayZonesZone({
+  const GetGatewayZonesZone({
     required this.zoneId,
     required this.zoneName,
   });

@@ -15,7 +15,7 @@ class DnsConfigurationResponse {
   /// [nameServers] The DNS servers for the container group.
   /// [options] The DNS options for the container group.
   /// [searchDomains] The DNS search domains for hostname lookup in the container group.
-  DnsConfigurationResponse({
+  const DnsConfigurationResponse({
     required this.nameServers,
     this.options,
     this.searchDomains,

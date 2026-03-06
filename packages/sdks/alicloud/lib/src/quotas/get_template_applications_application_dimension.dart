@@ -11,7 +11,7 @@ class GetTemplateApplicationsApplicationDimension {
   /// Creates a new [GetTemplateApplicationsApplicationDimension].
   /// [key] Quota dimension Key.
   /// [value] Quota dimension Value.
-  GetTemplateApplicationsApplicationDimension({
+  const GetTemplateApplicationsApplicationDimension({
     required this.key,
     required this.value,
   });

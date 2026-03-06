@@ -27,7 +27,7 @@ class FunctionEventInvokeConfigState {
   /// [maximumRetryAttempts] Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
   /// [qualifier] Lambda Function published version, `$LATEST`, or Lambda Alias name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  FunctionEventInvokeConfigState({
+  const FunctionEventInvokeConfigState({
     this.destinationConfig,
     this.functionName,
     this.maximumEventAgeInSeconds,

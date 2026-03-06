@@ -63,7 +63,7 @@ class ObjectAccessControlArgs {
   /// [role] The access permission for the entity.
   /// [selfLink] The link to this access-control entry.
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
-  ObjectAccessControlArgs({
+  const ObjectAccessControlArgs({
     required this.bucket,
     this.domain,
     this.email,

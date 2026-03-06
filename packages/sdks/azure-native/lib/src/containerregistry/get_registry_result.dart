@@ -86,7 +86,7 @@ class GetRegistryResult {
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
   /// [zoneRedundancy] Whether or not zone redundancy is enabled for this container registry
-  GetRegistryResult({
+  const GetRegistryResult({
     this.adminUserEnabled,
     this.anonymousPullEnabled,
     required this.azureApiVersion,

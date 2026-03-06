@@ -42,7 +42,7 @@ class NetworkConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnetId] The subnet to attach Virtual Machines to
   /// [tags] Resource tags.
-  NetworkConnectionArgs({
+  const NetworkConnectionArgs({
     required this.domainJoinType,
     this.domainName,
     this.domainPassword,

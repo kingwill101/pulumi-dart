@@ -13,7 +13,7 @@ class AzureResourceManagerManagedIdentityProperties {
   /// Creates a new [AzureResourceManagerManagedIdentityProperties].
   /// [type] The type of managed identity assigned to this resource.
   /// [userAssignedIdentities] The identities assigned to this resource by the user.
-  AzureResourceManagerManagedIdentityProperties({
+  const AzureResourceManagerManagedIdentityProperties({
     required this.type,
     this.userAssignedIdentities,
   });

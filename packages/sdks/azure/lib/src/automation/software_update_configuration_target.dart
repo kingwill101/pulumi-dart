@@ -13,7 +13,7 @@ class SoftwareUpdateConfigurationTarget {
   /// Creates a new [SoftwareUpdateConfigurationTarget].
   /// [azureQueries] One or more `azure_query` blocks as defined above.
   /// [nonAzureQueries] One or more `non_azure_query` blocks as defined above.
-  SoftwareUpdateConfigurationTarget({
+  const SoftwareUpdateConfigurationTarget({
     this.azureQueries,
     this.nonAzureQueries,
   });

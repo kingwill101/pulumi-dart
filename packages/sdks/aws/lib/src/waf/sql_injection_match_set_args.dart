@@ -16,7 +16,7 @@ class SqlInjectionMatchSetArgs {
   /// Creates a new [SqlInjectionMatchSetArgs].
   /// [name] The name or description of the SQL Injection Match Set.
   /// [sqlInjectionMatchTuples] The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  SqlInjectionMatchSetArgs({
+  const SqlInjectionMatchSetArgs({
     this.name,
     this.sqlInjectionMatchTuples,
   });

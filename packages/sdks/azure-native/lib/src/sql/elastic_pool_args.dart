@@ -65,7 +65,7 @@ class ElasticPoolArgs {
   /// [sku] The elastic pool SKU.
   /// [tags] Resource tags.
   /// [zoneRedundant] Whether or not this elastic pool is zone redundant, which means the replicas of this elastic pool will be spread across multiple availability zones.
-  ElasticPoolArgs({
+  const ElasticPoolArgs({
     this.autoPauseDelay,
     this.availabilityZone,
     this.elasticPoolName,

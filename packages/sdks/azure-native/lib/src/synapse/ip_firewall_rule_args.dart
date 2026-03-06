@@ -24,7 +24,7 @@ class IpFirewallRuleArgs {
   /// [ruleName] The IP firewall rule name
   /// [startIpAddress] The start IP address of the firewall rule. Must be IPv4 format
   /// [workspaceName] The name of the workspace.
-  IpFirewallRuleArgs({
+  const IpFirewallRuleArgs({
     this.endIpAddress,
     required this.resourceGroupName,
     this.ruleName,

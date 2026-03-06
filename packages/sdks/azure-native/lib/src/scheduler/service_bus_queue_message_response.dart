@@ -28,7 +28,7 @@ class ServiceBusQueueMessageResponse {
   /// [namespace] Gets or sets the namespace.
   /// [queueName] Gets or sets the queue name.
   /// [transportType] Gets or sets the transport type.
-  ServiceBusQueueMessageResponse({
+  const ServiceBusQueueMessageResponse({
     this.authentication,
     this.brokeredMessageProperties,
     this.customMessageProperties,

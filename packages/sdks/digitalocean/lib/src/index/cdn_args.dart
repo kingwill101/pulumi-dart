@@ -24,7 +24,7 @@ class CdnArgs {
   /// [customDomain] The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
   /// [origin] The fully qualified domain name, (FQDN) for a Space.
   /// [ttl] The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-  CdnArgs({
+  const CdnArgs({
     this.certificateId,
     this.certificateName,
     this.customDomain,

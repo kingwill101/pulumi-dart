@@ -89,7 +89,7 @@ class InstanceState {
   /// [state] The state of the instance.
   /// [stateReason] The reason why the instance is in a certain state.
   /// [updateTime] Timestamp when the instance was last updated.
-  InstanceState({
+  const InstanceState({
     this.accessRulesOptions,
     this.capacityGib,
     this.createTime,

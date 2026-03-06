@@ -26,7 +26,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings {
   /// [drcProfile] If set to filmStandard, adds dynamic range compression signaling to the output bitstream as defined in the Dolby Digital specification.
   /// [lfeFilter] When set to enabled, applies a 120Hz lowpass filter to the LFE channel prior to encoding.
   /// [metadataControl] Metadata control.
-  ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings({
+  const ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings({
     this.bitrate,
     this.bitstreamMode,
     this.codingMode,

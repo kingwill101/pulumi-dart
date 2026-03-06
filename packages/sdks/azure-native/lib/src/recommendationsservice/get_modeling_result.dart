@@ -31,7 +31,7 @@ class GetModelingResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetModelingResult({
+  const GetModelingResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

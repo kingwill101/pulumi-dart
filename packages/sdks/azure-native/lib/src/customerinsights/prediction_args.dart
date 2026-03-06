@@ -59,7 +59,7 @@ class PredictionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [scopeExpression] Scope expression.
   /// [scoreLabel] Score label.
-  PredictionArgs({
+  const PredictionArgs({
     required this.autoAnalyze,
     this.description,
     this.displayName,

@@ -17,7 +17,7 @@ class ManagedInstancePrivateEndpointConnectionPropertiesResponse {
   /// [privateEndpoint] Private endpoint which the connection belongs to.
   /// [privateLinkServiceConnectionState] Connection State of the Private Endpoint Connection.
   /// [provisioningState] State of the Private Endpoint Connection.
-  ManagedInstancePrivateEndpointConnectionPropertiesResponse({
+  const ManagedInstancePrivateEndpointConnectionPropertiesResponse({
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     required this.provisioningState,

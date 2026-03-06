@@ -14,7 +14,7 @@ class EnterpriseSnapshotPolicySpecialRetainRules {
   /// Creates a new [EnterpriseSnapshotPolicySpecialRetainRules].
   /// [enabled] Whether special reservations are enabled. Value range:
   /// [rules] List of special retention rules. See `rules` below.
-  EnterpriseSnapshotPolicySpecialRetainRules({
+  const EnterpriseSnapshotPolicySpecialRetainRules({
     this.enabled,
     this.rules,
   });

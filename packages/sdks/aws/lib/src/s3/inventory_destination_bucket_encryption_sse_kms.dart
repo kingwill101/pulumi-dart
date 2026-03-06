@@ -8,7 +8,7 @@ class InventoryDestinationBucketEncryptionSseKms {
 
   /// Creates a new [InventoryDestinationBucketEncryptionSseKms].
   /// [keyId] ARN of the KMS customer master key (CMK) used to encrypt the inventory file.
-  InventoryDestinationBucketEncryptionSseKms({
+  const InventoryDestinationBucketEncryptionSseKms({
     required this.keyId,
   });
 

@@ -27,7 +27,7 @@ class GetOrganizationResult {
   /// [name] The resource name of the Organization in the form `organizations/{organization_id}`.
   /// [orgId] The Organization ID.
   /// [organization] Optional.
-  GetOrganizationResult({
+  const GetOrganizationResult({
     required this.createTime,
     required this.directoryCustomerId,
     required this.domain,

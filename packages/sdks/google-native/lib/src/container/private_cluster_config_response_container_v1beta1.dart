@@ -31,7 +31,7 @@ class PrivateClusterConfigResponseContainerV1beta1 {
   /// [privateEndpoint] The internal IP address of this cluster's master endpoint.
   /// [privateEndpointSubnetwork] Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
   /// [publicEndpoint] The external IP address of this cluster's master endpoint.
-  PrivateClusterConfigResponseContainerV1beta1({
+  const PrivateClusterConfigResponseContainerV1beta1({
     required this.enablePrivateEndpoint,
     required this.enablePrivateNodes,
     required this.masterGlobalAccessConfig,

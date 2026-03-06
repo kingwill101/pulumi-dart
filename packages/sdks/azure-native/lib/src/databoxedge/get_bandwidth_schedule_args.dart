@@ -18,7 +18,7 @@ class GetBandwidthScheduleArgs {
   /// [deviceName] The device name.
   /// [name] The bandwidth schedule name.
   /// [resourceGroupName] The resource group name.
-  GetBandwidthScheduleArgs({
+  const GetBandwidthScheduleArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

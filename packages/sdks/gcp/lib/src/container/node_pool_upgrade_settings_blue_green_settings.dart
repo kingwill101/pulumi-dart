@@ -17,7 +17,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings {
   /// [autoscaledRolloutPolicy] Autoscaled rollout policy for blue-green upgrade.
   /// [nodePoolSoakDuration] Time needed after draining the entire blue pool.
   /// [standardRolloutPolicy] Specifies the standard policy settings for blue-green upgrades.
-  NodePoolUpgradeSettingsBlueGreenSettings({
+  const NodePoolUpgradeSettingsBlueGreenSettings({
     this.autoscaledRolloutPolicy,
     this.nodePoolSoakDuration,
     this.standardRolloutPolicy,

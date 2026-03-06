@@ -15,7 +15,7 @@ class GetPrivateStoreCollectionArgs {
   /// Creates a new [GetPrivateStoreCollectionArgs].
   /// [collectionId] The collection ID
   /// [privateStoreId] The store ID - must use the tenant ID
-  GetPrivateStoreCollectionArgs({
+  const GetPrivateStoreCollectionArgs({
     required this.collectionId,
     required this.privateStoreId,
   });

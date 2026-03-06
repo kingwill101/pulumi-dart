@@ -17,7 +17,7 @@ class StreamProcessorRegionsOfInterestBoundingBox {
   /// [left] Left coordinate of the bounding box as a ratio of overall image width.
   /// [top] Top coordinate of the bounding box as a ratio of overall image height.
   /// [width] Width of the bounding box as a ratio of the overall image width.
-  StreamProcessorRegionsOfInterestBoundingBox({
+  const StreamProcessorRegionsOfInterestBoundingBox({
     this.height,
     this.left,
     this.top,

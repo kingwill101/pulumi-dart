@@ -19,7 +19,7 @@ class GetConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetConfigArgs({
+  const GetConfigArgs({
     required this.apiId,
     required this.configId,
     required this.location,

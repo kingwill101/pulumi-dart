@@ -55,7 +55,7 @@ class GetReservationResult {
   /// [specificReservations] Required.
   /// [status] Required.
   /// [zone] Required.
-  GetReservationResult({
+  const GetReservationResult({
     required this.blockNames,
     required this.commitment,
     required this.creationTimestamp,

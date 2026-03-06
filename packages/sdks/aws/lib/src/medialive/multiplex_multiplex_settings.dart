@@ -17,7 +17,7 @@ class MultiplexMultiplexSettings {
   /// [transportStreamBitrate] Transport stream bit rate.
   /// [transportStreamId] Unique ID for each multiplex.
   /// [transportStreamReservedBitrate] Transport stream reserved bit rate.
-  MultiplexMultiplexSettings({
+  const MultiplexMultiplexSettings({
     this.maximumVideoBufferDelayMilliseconds,
     required this.transportStreamBitrate,
     required this.transportStreamId,

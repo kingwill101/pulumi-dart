@@ -41,7 +41,7 @@ class GetRouterArgs {
   /// [status] The status of the router (ACTIVE/DOWN).
   /// [tags] The list of router tags to filter.
   /// [tenantId] The owner of the router.
-  GetRouterArgs({
+  const GetRouterArgs({
     this.adminStateUp,
     this.description,
     this.distributed,

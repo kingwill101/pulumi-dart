@@ -34,7 +34,7 @@ class GetVirtualMachineResult {
   /// [publicIpAddress] The Primary Public IP Address assigned to this Virtual Machine.
   /// [publicIpAddresses] A list of the Public IP Addresses assigned to this Virtual Machine.
   /// [resourceGroupName] Required.
-  GetVirtualMachineResult({
+  const GetVirtualMachineResult({
     required this.id,
     required this.identities,
     required this.location,

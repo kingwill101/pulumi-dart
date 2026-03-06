@@ -28,7 +28,7 @@ class CapacityRequestPolicyRange {
   /// [max] Max defines the upper limit for capacity that can be requested.
   /// [min] Min specifies the minimum capacity allowed for a consumption request.
   /// [step] Step defines the step size between valid capacity amounts within the range.
-  CapacityRequestPolicyRange({
+  const CapacityRequestPolicyRange({
     this.max,
     required this.min,
     this.step,

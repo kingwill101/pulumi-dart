@@ -12,7 +12,7 @@ class GetUserSettingsResult {
   /// Creates a new [GetUserSettingsResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [properties] The cloud shell user settings properties.
-  GetUserSettingsResult({
+  const GetUserSettingsResult({
     required this.azureApiVersion,
     required this.properties,
   });

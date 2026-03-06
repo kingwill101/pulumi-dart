@@ -10,7 +10,7 @@ class SkipFileShareConfigurationResponse {
 
   /// Creates a new [SkipFileShareConfigurationResponse].
   /// [configurationType] The type of file share config.
-  SkipFileShareConfigurationResponse({
+  const SkipFileShareConfigurationResponse({
     required this.configurationType,
   });
 

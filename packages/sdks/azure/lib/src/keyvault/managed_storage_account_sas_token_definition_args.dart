@@ -27,7 +27,7 @@ class ManagedStorageAccountSasTokenDefinitionArgs {
   /// [sasType] The type of SAS token the SAS definition will create. Possible values are `account` and `service`.
   /// [tags] A mapping of tags which should be assigned to the SAS Definition. Changing this forces a new resource to be created.
   /// [validityPeriod] Validity period of SAS token. Value needs to be in [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  ManagedStorageAccountSasTokenDefinitionArgs({
+  const ManagedStorageAccountSasTokenDefinitionArgs({
     required this.managedStorageAccountId,
     this.name,
     required this.sasTemplateUri,

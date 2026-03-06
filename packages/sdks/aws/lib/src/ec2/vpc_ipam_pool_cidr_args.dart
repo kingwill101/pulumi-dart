@@ -25,7 +25,7 @@ class VpcIpamPoolCidrArgs {
   /// [ipamPoolId] The ID of the pool to which you want to assign a CIDR.
   /// [netmaskLength] If provided, the cidr provisioned into the specified pool will be the next available cidr given this declared netmask length. Conflicts with `cidr`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  VpcIpamPoolCidrArgs({
+  const VpcIpamPoolCidrArgs({
     this.cidr,
     this.cidrAuthorizationContext,
     required this.ipamPoolId,

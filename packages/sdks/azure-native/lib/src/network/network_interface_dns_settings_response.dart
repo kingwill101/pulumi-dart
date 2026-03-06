@@ -21,7 +21,7 @@ class NetworkInterfaceDnsSettingsResponse {
   /// [internalDnsNameLabel] Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
   /// [internalDomainNameSuffix] Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
   /// [internalFqdn] Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
-  NetworkInterfaceDnsSettingsResponse({
+  const NetworkInterfaceDnsSettingsResponse({
     required this.appliedDnsServers,
     this.dnsServers,
     this.internalDnsNameLabel,

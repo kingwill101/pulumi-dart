@@ -11,7 +11,7 @@ class SacAttachmentSymantecOptions {
   /// Creates a new [SacAttachmentSymantecOptions].
   /// [symantecLocationName] Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
   /// [symantecSite] Symantec data center identifier that this attachment will connect to.
-  SacAttachmentSymantecOptions({
+  const SacAttachmentSymantecOptions({
     this.symantecLocationName,
     this.symantecSite,
   });

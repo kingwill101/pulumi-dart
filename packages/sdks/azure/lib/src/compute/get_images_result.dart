@@ -17,7 +17,7 @@ class GetImagesResult {
   /// [images] One or more `images` blocks as defined below:
   /// [resourceGroupName] Required.
   /// [tagsFilter] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     required this.id,
     required this.images,
     required this.resourceGroupName,

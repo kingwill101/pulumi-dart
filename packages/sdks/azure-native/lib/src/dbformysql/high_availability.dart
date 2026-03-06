@@ -12,7 +12,7 @@ class HighAvailability {
   /// Creates a new [HighAvailability].
   /// [mode] High availability mode for a server.
   /// [standbyAvailabilityZone] Availability zone of the standby server.
-  HighAvailability({
+  const HighAvailability({
     this.mode,
     this.standbyAvailabilityZone,
   });

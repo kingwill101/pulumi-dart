@@ -12,7 +12,7 @@ class GetKernelArgs {
 
   /// Creates a new [GetKernelArgs].
   /// [id] The unique ID of this Kernel.
-  GetKernelArgs({
+  const GetKernelArgs({
     required this.id,
   });
 

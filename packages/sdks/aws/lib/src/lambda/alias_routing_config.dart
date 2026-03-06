@@ -8,7 +8,7 @@ class AliasRoutingConfig {
 
   /// Creates a new [AliasRoutingConfig].
   /// [additionalVersionWeights] Map that defines the proportion of events that should be sent to different versions of a Lambda function.
-  AliasRoutingConfig({
+  const AliasRoutingConfig({
     this.additionalVersionWeights,
   });
 

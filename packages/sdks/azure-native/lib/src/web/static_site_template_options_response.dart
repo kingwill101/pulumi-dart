@@ -21,7 +21,7 @@ class StaticSiteTemplateOptionsResponse {
   /// [owner] Owner of the newly generated repository.
   /// [repositoryName] Name of the newly generated repository.
   /// [templateRepositoryUrl] URL of the template repository. The newly generated repository will be based on this one.
-  StaticSiteTemplateOptionsResponse({
+  const StaticSiteTemplateOptionsResponse({
     this.description,
     this.isPrivate,
     this.owner,

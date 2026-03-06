@@ -32,7 +32,7 @@ class GetHmacKeyResult {
   /// [state] The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
   /// [timeCreated] The creation time of the HMAC key in RFC 3339 format.
   /// [updated] The last modification time of the HMAC key metadata in RFC 3339 format.
-  GetHmacKeyResult({
+  const GetHmacKeyResult({
     required this.accessId,
     required this.etag,
     required this.kind,

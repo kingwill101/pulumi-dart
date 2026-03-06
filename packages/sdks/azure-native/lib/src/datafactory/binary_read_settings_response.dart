@@ -14,7 +14,7 @@ class BinaryReadSettingsResponse {
   /// Creates a new [BinaryReadSettingsResponse].
   /// [compressionProperties] Compression settings.
   /// [type] The read setting type.
-  BinaryReadSettingsResponse({
+  const BinaryReadSettingsResponse({
     this.compressionProperties,
     required this.type,
   });

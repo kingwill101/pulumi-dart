@@ -15,7 +15,7 @@ class SqlFileShare {
   /// [password] Password for username to access file share location.
   /// [path] Location as SMB share or local drive where backups are placed.
   /// [username] Username to access the file share location for backups.
-  SqlFileShare({
+  const SqlFileShare({
     this.password,
     this.path,
     this.username,

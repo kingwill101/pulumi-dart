@@ -48,7 +48,7 @@ class DeploymentArgs {
   /// [location] Optional.
   /// [name] Resource name.
   /// [project] Optional.
-  DeploymentArgs({
+  const DeploymentArgs({
     this.accessGuidance,
     this.annotations,
     required this.apiDeploymentId,

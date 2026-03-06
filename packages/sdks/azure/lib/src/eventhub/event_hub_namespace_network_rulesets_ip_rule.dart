@@ -11,7 +11,7 @@ class EventHubNamespaceNetworkRulesetsIpRule {
   /// Creates a new [EventHubNamespaceNetworkRulesetsIpRule].
   /// [action] The action to take when the rule is matched. Possible values are `Allow`. Defaults to `Allow`.
   /// [ipMask] The IP mask to match on.
-  EventHubNamespaceNetworkRulesetsIpRule({
+  const EventHubNamespaceNetworkRulesetsIpRule({
     this.action,
     required this.ipMask,
   });

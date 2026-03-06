@@ -9,7 +9,7 @@ class BrowserKeyRestrictionsResponse {
 
   /// Creates a new [BrowserKeyRestrictionsResponse].
   /// [allowedReferrers] A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
-  BrowserKeyRestrictionsResponse({
+  const BrowserKeyRestrictionsResponse({
     required this.allowedReferrers,
   });
 

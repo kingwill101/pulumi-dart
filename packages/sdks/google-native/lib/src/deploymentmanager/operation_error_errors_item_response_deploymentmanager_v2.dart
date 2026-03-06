@@ -14,7 +14,7 @@ class OperationErrorErrorsItemResponseDeploymentmanagerV2 {
   /// [code] The error type identifier for this error.
   /// [location] Indicates the field in the request that caused the error. This property is optional.
   /// [message] An optional, human-readable error message.
-  OperationErrorErrorsItemResponseDeploymentmanagerV2({
+  const OperationErrorErrorsItemResponseDeploymentmanagerV2({
     required this.code,
     required this.location,
     required this.message,

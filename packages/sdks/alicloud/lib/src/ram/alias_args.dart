@@ -11,7 +11,7 @@ class AliasArgs {
 
   /// Creates a new [AliasArgs].
   /// [accountAlias] Required.
-  AliasArgs({
+  const AliasArgs({
     required this.accountAlias,
   });
 

@@ -20,7 +20,7 @@ class VirtualMachineAvailabilityGroupListenerReplica {
   /// [readableSecondary] The replica readable secondary mode for the availability group. Possible values are `No`, `Read_Only` and `All`. Changing this forces a new resource to be created.
   /// [role] The replica role for the availability group. Possible values are `Primary` and `Secondary`. Changing this forces a new resource to be created.
   /// [sqlVirtualMachineId] The ID of the SQL Virtual Machine. Changing this forces a new resource to be created.
-  VirtualMachineAvailabilityGroupListenerReplica({
+  const VirtualMachineAvailabilityGroupListenerReplica({
     required this.commit,
     required this.failoverMode,
     required this.readableSecondary,

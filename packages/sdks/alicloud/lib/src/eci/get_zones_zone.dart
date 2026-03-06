@@ -11,7 +11,7 @@ class GetZonesZone {
   /// Creates a new [GetZonesZone].
   /// [regionEndpoint] The endpoint of the region.
   /// [zoneIds] The list of available zone ids.
-  GetZonesZone({
+  const GetZonesZone({
     required this.regionEndpoint,
     required this.zoneIds,
   });

@@ -72,7 +72,7 @@ class ServiceArgs {
   /// [sku] The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service.
   /// [tags] Resource tags.
   /// [upgradeAvailable] Indicates if the search service has an upgrade available.
-  ServiceArgs({
+  const ServiceArgs({
     this.authOptions,
     this.computeType,
     this.dataExfiltrationProtections,

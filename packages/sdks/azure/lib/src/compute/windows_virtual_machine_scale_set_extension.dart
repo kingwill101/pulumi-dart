@@ -45,7 +45,7 @@ class WindowsVirtualMachineScaleSetExtension {
   /// [settings] A JSON String which specifies Settings for the Extension.
   /// [type] Specifies the Type of the Extension.
   /// [typeHandlerVersion] Specifies the version of the extension to use, available versions can be found using the Azure CLI.
-  WindowsVirtualMachineScaleSetExtension({
+  const WindowsVirtualMachineScaleSetExtension({
     this.autoUpgradeMinorVersion,
     this.automaticUpgradeEnabled,
     this.forceUpdateTag,

@@ -34,7 +34,7 @@ class NetworkEndpointArgs {
   /// [port] Port number of network endpoint.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Zone where the containing network endpoint group is located.
-  NetworkEndpointArgs({
+  const NetworkEndpointArgs({
     this.instance,
     required this.ipAddress,
     required this.networkEndpointGroup,

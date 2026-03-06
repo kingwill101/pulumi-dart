@@ -10,7 +10,7 @@ class RepositoryConfigResponse {
 
   /// Creates a new [RepositoryConfigResponse].
   /// [pypiRepositoryConfig] Optional. Configuration for PyPi repository.
-  RepositoryConfigResponse({
+  const RepositoryConfigResponse({
     required this.pypiRepositoryConfig,
   });
 

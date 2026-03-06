@@ -11,7 +11,7 @@ class GetAccountStorage {
   /// Creates a new [GetAccountStorage].
   /// [identityClientId] The client ID of the managed identity associated with the storage resource.
   /// [storageAccountId] The ID of the Storage Account resource associated with this Cognitive Services Account.
-  GetAccountStorage({
+  const GetAccountStorage({
     required this.identityClientId,
     required this.storageAccountId,
   });

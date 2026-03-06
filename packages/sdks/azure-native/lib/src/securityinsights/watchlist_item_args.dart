@@ -49,7 +49,7 @@ class WatchlistItemArgs {
   /// [watchlistItemId] The id (a Guid) of the watchlist item
   /// [watchlistItemType] The type of the watchlist item
   /// [workspaceName] The name of the workspace.
-  WatchlistItemArgs({
+  const WatchlistItemArgs({
     this.created,
     this.createdBy,
     this.entityMapping,

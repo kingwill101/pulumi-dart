@@ -14,7 +14,7 @@ class DomainDevicesInterfaceMac {
   /// [address] Specifies the specific MAC address assigned to the network interface.
   /// [check] Determines whether to validate the MAC address format.
   /// [type] Configures the type of MAC address assignment (static or dynamic).
-  DomainDevicesInterfaceMac({
+  const DomainDevicesInterfaceMac({
     required this.address,
     this.check,
     this.type,

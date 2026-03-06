@@ -25,7 +25,7 @@ class PolicyFragmentState {
   /// [format] The format of the Policy Fragment. Possible values are `xml` or `rawxml`. Default is `xml`.
   /// [name] The name which should be used for this Api Management Policy Fragment. Changing this forces a new Api Management Policy Fragment to be created.
   /// [value] The value of the Policy Fragment.
-  PolicyFragmentState({
+  const PolicyFragmentState({
     this.apiManagementId,
     this.description,
     this.format,

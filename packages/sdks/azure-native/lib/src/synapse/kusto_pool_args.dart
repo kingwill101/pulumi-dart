@@ -41,7 +41,7 @@ class KustoPoolArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
   /// [workspaceUID] The workspace unique identifier.
-  KustoPoolArgs({
+  const KustoPoolArgs({
     this.enablePurge,
     this.enableStreamingIngest,
     this.kustoPoolName,

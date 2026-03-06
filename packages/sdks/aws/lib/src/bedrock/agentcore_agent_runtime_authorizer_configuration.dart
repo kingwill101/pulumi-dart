@@ -9,7 +9,7 @@ class AgentcoreAgentRuntimeAuthorizerConfiguration {
 
   /// Creates a new [AgentcoreAgentRuntimeAuthorizerConfiguration].
   /// [customJwtAuthorizer] JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
-  AgentcoreAgentRuntimeAuthorizerConfiguration({
+  const AgentcoreAgentRuntimeAuthorizerConfiguration({
     this.customJwtAuthorizer,
   });
 

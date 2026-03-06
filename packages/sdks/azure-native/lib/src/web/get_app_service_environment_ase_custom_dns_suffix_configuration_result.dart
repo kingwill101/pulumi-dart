@@ -33,7 +33,7 @@ class GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult {
   /// [provisioningDetails] Required.
   /// [provisioningState] Required.
   /// [type] Resource type.
-  GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult({
+  const GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult({
     required this.azureApiVersion,
     this.certificateUrl,
     this.dnsSuffix,

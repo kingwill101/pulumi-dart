@@ -61,7 +61,7 @@ class MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse {
   /// [statusMessage] Migration status message
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Target server version
-  MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse({
+  const MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse({
     required this.databaseSummary,
     required this.databases,
     required this.durationInSeconds,

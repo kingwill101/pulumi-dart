@@ -18,7 +18,7 @@ class GetAttachmentsArgs {
   /// [instanceIds] List of attached ECS instance IDs.
   /// [loadBalancerId] ID of the SLB with attachments.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAttachmentsArgs({
+  const GetAttachmentsArgs({
     this.instanceIds,
     required this.loadBalancerId,
     this.outputFile,

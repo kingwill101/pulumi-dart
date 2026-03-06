@@ -17,7 +17,7 @@ class GetTiersTier {
   /// [ram] The maximum ram usage of this tier in bytes.
   /// [regions] The applicable regions for this tier.
   /// [tier] An identifier for the machine type, for example, db-custom-1-3840.
-  GetTiersTier({
+  const GetTiersTier({
     required this.diskQuota,
     required this.ram,
     required this.regions,

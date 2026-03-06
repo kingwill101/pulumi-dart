@@ -30,7 +30,7 @@ class GetBindingResult {
   /// [state] State of the membership binding resource.
   /// [uid] Google-generated UUID for this resource. This is unique across all membershipbinding resources. If a membershipbinding resource is deleted and another resource with the same name is created, it gets a different uid.
   /// [updateTime] When the membership binding was last updated.
-  GetBindingResult({
+  const GetBindingResult({
     required this.createTime,
     required this.deleteTime,
     required this.labels,

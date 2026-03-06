@@ -12,7 +12,7 @@ class VerificationStatusRecordResponse {
   /// Creates a new [VerificationStatusRecordResponse].
   /// [errorCode] Error code. This property will only be present if the status is UnableToVerify.
   /// [status] Status of the verification operation.
-  VerificationStatusRecordResponse({
+  const VerificationStatusRecordResponse({
     required this.errorCode,
     required this.status,
   });

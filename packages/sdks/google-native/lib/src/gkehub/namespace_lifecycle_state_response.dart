@@ -9,7 +9,7 @@ class NamespaceLifecycleStateResponse {
 
   /// Creates a new [NamespaceLifecycleStateResponse].
   /// [code] The current state of the Namespace resource.
-  NamespaceLifecycleStateResponse({
+  const NamespaceLifecycleStateResponse({
     required this.code,
   });
 

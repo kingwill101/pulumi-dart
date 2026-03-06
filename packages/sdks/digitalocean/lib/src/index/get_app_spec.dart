@@ -67,7 +67,7 @@ class GetAppSpec {
   /// [staticSites] Optional.
   /// [vpcs] Optional.
   /// [workers] Optional.
-  GetAppSpec({
+  const GetAppSpec({
     this.alerts,
     this.databases,
     this.disableEdgeCache,

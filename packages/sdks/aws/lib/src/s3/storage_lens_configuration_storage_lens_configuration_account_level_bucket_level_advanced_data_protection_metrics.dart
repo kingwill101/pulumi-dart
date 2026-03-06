@@ -8,7 +8,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdv
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics].
   /// [enabled] Whether advanced data-protection metrics are enabled.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics({
     this.enabled,
   });
 

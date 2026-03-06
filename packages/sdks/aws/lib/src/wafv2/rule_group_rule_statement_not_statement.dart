@@ -9,7 +9,7 @@ class RuleGroupRuleStatementNotStatement {
 
   /// Creates a new [RuleGroupRuleStatementNotStatement].
   /// [statements] The statements to combine.
-  RuleGroupRuleStatementNotStatement({
+  const RuleGroupRuleStatementNotStatement({
     required this.statements,
   });
 

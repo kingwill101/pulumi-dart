@@ -9,7 +9,7 @@ class SensitiveDataDiscoveryProperties {
 
   /// Creates a new [SensitiveDataDiscoveryProperties].
   /// [isEnabled] Indicates whether Sensitive Data Discovery should be enabled.
-  SensitiveDataDiscoveryProperties({
+  const SensitiveDataDiscoveryProperties({
     this.isEnabled,
   });
 

@@ -30,7 +30,7 @@ class GetRouteServicesArgs {
   /// [hostVpcId] The VPC associated with the cloud service.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
-  GetRouteServicesArgs({
+  const GetRouteServicesArgs({
     this.accessRegionId,
     required this.cenId,
     this.host,

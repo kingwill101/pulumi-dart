@@ -21,7 +21,7 @@ class MessageCountDetailsResponse {
   /// [scheduledMessageCount] Number of scheduled messages.
   /// [transferDeadLetterMessageCount] Number of messages transferred into dead letters.
   /// [transferMessageCount] Number of messages transferred to another queue, topic, or subscription.
-  MessageCountDetailsResponse({
+  const MessageCountDetailsResponse({
     required this.activeMessageCount,
     required this.deadLetterMessageCount,
     required this.scheduledMessageCount,

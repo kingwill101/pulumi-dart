@@ -11,7 +11,7 @@ class GetServiceDeploymentConfigurationLinearConfiguration {
   /// Creates a new [GetServiceDeploymentConfigurationLinearConfiguration].
   /// [stepBakeTimeInMinutes] Time to wait between deployment steps
   /// [stepPercent] Percentage of traffic to shift in each step
-  GetServiceDeploymentConfigurationLinearConfiguration({
+  const GetServiceDeploymentConfigurationLinearConfiguration({
     required this.stepBakeTimeInMinutes,
     required this.stepPercent,
   });

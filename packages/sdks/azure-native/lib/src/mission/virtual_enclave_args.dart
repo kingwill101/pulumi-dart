@@ -54,7 +54,7 @@ class VirtualEnclaveArgs {
   /// [tags] Resource tags.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   /// [workloadRoleAssignments] Workload role assignments
-  VirtualEnclaveArgs({
+  const VirtualEnclaveArgs({
     this.bastionEnabled,
     required this.communityResourceId,
     this.enclaveDefaultSettings,

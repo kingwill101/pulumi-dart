@@ -30,7 +30,7 @@ class InstanceConnectEndpointArgs {
   /// [subnetId] The ID of the subnet in which to create the EC2 Instance Connect Endpoint.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  InstanceConnectEndpointArgs({
+  const InstanceConnectEndpointArgs({
     this.ipAddressType,
     this.preserveClientIp,
     this.region,

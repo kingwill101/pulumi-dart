@@ -17,7 +17,7 @@ class BudgetFilterResponse {
   /// [and] The logical "AND" expression. Must have at least 2 items.
   /// [dimensions] Has comparison expression for a dimension
   /// [tags] Has comparison expression for a tag
-  BudgetFilterResponse({
+  const BudgetFilterResponse({
     this.and,
     this.dimensions,
     this.tags,

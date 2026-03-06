@@ -26,7 +26,7 @@ class NamespaceAuthorizationRuleArgs {
   /// [name] Specifies the name of the ServiceBus Namespace Authorization Rule resource. Changing this forces a new resource to be created.
   /// [namespaceId] Specifies the ID of the ServiceBus Namespace. Changing this forces a new resource to be created.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
-  NamespaceAuthorizationRuleArgs({
+  const NamespaceAuthorizationRuleArgs({
     this.listen,
     this.manage,
     this.name,

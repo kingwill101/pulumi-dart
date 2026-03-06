@@ -25,7 +25,7 @@ class EnterpriseCrmEventbusProtoNextTask {
   /// [label] User-provided label that is attached to this edge in the UI.
   /// [taskConfigId] ID of the next task.
   /// [taskNumber] Task number of the next task.
-  EnterpriseCrmEventbusProtoNextTask({
+  const EnterpriseCrmEventbusProtoNextTask({
     this.combinedConditions,
     this.condition,
     this.description,

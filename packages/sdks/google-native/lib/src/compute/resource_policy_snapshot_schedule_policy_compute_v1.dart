@@ -18,7 +18,7 @@ class ResourcePolicySnapshotSchedulePolicyComputeV1 {
   /// [retentionPolicy] Retention policy applied to snapshots created by this resource policy.
   /// [schedule] A Vm Maintenance Policy specifies what kind of infrastructure maintenance we are allowed to perform on this VM and when. Schedule that is applied to disks covered by this policy.
   /// [snapshotProperties] Properties with which snapshots are created such as labels, encryption keys.
-  ResourcePolicySnapshotSchedulePolicyComputeV1({
+  const ResourcePolicySnapshotSchedulePolicyComputeV1({
     this.retentionPolicy,
     this.schedule,
     this.snapshotProperties,

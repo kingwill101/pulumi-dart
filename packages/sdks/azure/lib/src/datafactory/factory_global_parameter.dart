@@ -16,7 +16,7 @@ class FactoryGlobalParameter {
   /// [name] Specifies the global parameter name.
   /// [type] Specifies the global parameter type. Possible Values are `Array`, `Bool`, `Float`, `Int`, `Object` or `String`.
   /// [value] Specifies the global parameter value.
-  FactoryGlobalParameter({
+  const FactoryGlobalParameter({
     required this.name,
     required this.type,
     required this.value,

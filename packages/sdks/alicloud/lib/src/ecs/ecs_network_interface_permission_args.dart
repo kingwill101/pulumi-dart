@@ -21,7 +21,7 @@ class EcsNetworkInterfacePermissionArgs {
   /// [force] Whether to force deletion of Network Interface Permission. Default value: `true`.
   /// [networkInterfaceId] The ID of the network interface.
   /// [permission] The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
-  EcsNetworkInterfacePermissionArgs({
+  const EcsNetworkInterfacePermissionArgs({
     required this.accountId,
     this.force,
     required this.networkInterfaceId,

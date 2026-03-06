@@ -15,7 +15,7 @@ class GetProvisioningConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [provisioningConfigId] Required.
-  GetProvisioningConfigArgs({
+  const GetProvisioningConfigArgs({
     required this.location,
     this.project,
     required this.provisioningConfigId,

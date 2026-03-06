@@ -17,7 +17,7 @@ class LogTransformerTransformerConfigCsv {
   /// [delimiter] Specifies the character used to separate each column in the original comma-separated value log event. Defaults to the comma `,` character.
   /// [quoteCharacter] Specifies the character used as a text qualifier for a single column of data. Defaults to the double quotation mark `"` character.
   /// [source] Specifies the path to the field in the log event that has the comma separated values to be parsed. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigCsv({
+  const LogTransformerTransformerConfigCsv({
     this.columns,
     this.delimiter,
     this.quoteCharacter,

@@ -12,7 +12,7 @@ class GetEksClusterArgs {
 
   /// Creates a new [GetEksClusterArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetEksClusterArgs({
+  const GetEksClusterArgs({
     required this.resourceUri,
   });
 

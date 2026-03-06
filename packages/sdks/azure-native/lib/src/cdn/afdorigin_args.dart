@@ -53,7 +53,7 @@ class AFDOriginArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sharedPrivateLinkResource] The properties of the private link resource for private origin.
   /// [weight] Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
-  AFDOriginArgs({
+  const AFDOriginArgs({
     this.azureOrigin,
     this.enabledState,
     this.enforceCertificateNameCheck,

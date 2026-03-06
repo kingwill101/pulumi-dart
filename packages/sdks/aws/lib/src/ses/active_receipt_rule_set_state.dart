@@ -15,7 +15,7 @@ class ActiveReceiptRuleSetState {
   /// [arn] The SES receipt rule set ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleSetName] The name of the rule set
-  ActiveReceiptRuleSetState({
+  const ActiveReceiptRuleSetState({
     this.arn,
     this.region,
     this.ruleSetName,

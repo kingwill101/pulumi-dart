@@ -9,7 +9,7 @@ class MaximumExecutionFrequencyEnumValue {
 
   /// Creates a new [MaximumExecutionFrequencyEnumValue].
   /// [value] Property value
-  MaximumExecutionFrequencyEnumValue({
+  const MaximumExecutionFrequencyEnumValue({
     this.value,
   });
 

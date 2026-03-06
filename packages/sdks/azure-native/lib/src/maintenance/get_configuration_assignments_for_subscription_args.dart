@@ -12,7 +12,7 @@ class GetConfigurationAssignmentsForSubscriptionArgs {
 
   /// Creates a new [GetConfigurationAssignmentsForSubscriptionArgs].
   /// [configurationAssignmentName] The name of the ConfigurationAssignment
-  GetConfigurationAssignmentsForSubscriptionArgs({
+  const GetConfigurationAssignmentsForSubscriptionArgs({
     required this.configurationAssignmentName,
   });
 

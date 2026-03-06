@@ -28,7 +28,7 @@ class ResourceGuardArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceGuardsName] The name of ResourceGuard
   /// [tags] Resource tags.
-  ResourceGuardArgs({
+  const ResourceGuardArgs({
     this.eTag,
     this.location,
     this.properties,

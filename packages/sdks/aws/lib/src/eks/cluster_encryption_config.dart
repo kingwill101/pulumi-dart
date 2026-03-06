@@ -12,7 +12,7 @@ class ClusterEncryptionConfig {
   /// Creates a new [ClusterEncryptionConfig].
   /// [provider] Configuration block with provider for encryption. Detailed below.
   /// [resources] List of strings with resources to be encrypted. Valid values: `secrets`.
-  ClusterEncryptionConfig({
+  const ClusterEncryptionConfig({
     required this.provider,
     required this.resources,
   });

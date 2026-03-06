@@ -20,7 +20,7 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping {
   /// [primaryKeyField] Name of the field in which Amazon Bedrock stores the ID for each entry.
   /// [textField] Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
   /// [vectorField] Name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
-  AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping({
+  const AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping({
     this.customMetadataField,
     required this.metadataField,
     required this.primaryKeyField,

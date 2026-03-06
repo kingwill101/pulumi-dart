@@ -11,7 +11,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRe
   /// Creates a new [DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder].
   /// [redactionPlaceHolderText] The redaction placeholder text that will replace the redacted text in session for the custom text redaction placeholder type.
   /// [redactionPlaceHolderType] The redaction placeholder type that will replace the redacted text in session. Currently, only `CustomText` is supported.
-  DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder({
+  const DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder({
     this.redactionPlaceHolderText,
     required this.redactionPlaceHolderType,
   });

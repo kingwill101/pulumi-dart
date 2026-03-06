@@ -9,7 +9,7 @@ class FileSystemTokenStoreResponse {
 
   /// Creates a new [FileSystemTokenStoreResponse].
   /// [directory] The directory in which the tokens will be stored.
-  FileSystemTokenStoreResponse({
+  const FileSystemTokenStoreResponse({
     this.directory,
   });
 

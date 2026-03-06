@@ -21,7 +21,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedSca
   /// [label] Human-readable label for this metric or expression.
   /// [metricStat] Information about the metric data to return. See supported fields below.
   /// [returnData] Whether to return the timestamps and raw data values of this metric.
-  PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery({
+  const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery({
     this.expression,
     required this.id,
     this.label,

@@ -7,7 +7,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetR
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

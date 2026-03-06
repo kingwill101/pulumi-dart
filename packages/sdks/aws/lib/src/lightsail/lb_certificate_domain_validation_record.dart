@@ -14,7 +14,7 @@ class LbCertificateDomainValidationRecord {
   /// [resourceRecordName] Optional.
   /// [resourceRecordType] Optional.
   /// [resourceRecordValue] Optional.
-  LbCertificateDomainValidationRecord({
+  const LbCertificateDomainValidationRecord({
     this.domainName,
     this.resourceRecordName,
     this.resourceRecordType,

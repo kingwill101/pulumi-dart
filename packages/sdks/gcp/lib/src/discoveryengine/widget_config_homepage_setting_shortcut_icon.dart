@@ -8,7 +8,7 @@ class WidgetConfigHomepageSettingShortcutIcon {
 
   /// Creates a new [WidgetConfigHomepageSettingShortcutIcon].
   /// [url] Image URL.
-  WidgetConfigHomepageSettingShortcutIcon({
+  const WidgetConfigHomepageSettingShortcutIcon({
     this.url,
   });
 

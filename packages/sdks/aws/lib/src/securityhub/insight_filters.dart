@@ -357,7 +357,7 @@ class InsightFilters {
   /// [userDefinedValues] A list of name/value string pairs associated with the finding. These are custom, user-defined fields added to a finding. See Map Filter below for more details.
   /// [verificationStates] The veracity of a finding. See String Filter below for more details.
   /// [workflowStatuses] The status of the investigation into a finding. See Workflow Status Filter below for more details.
-  InsightFilters({
+  const InsightFilters({
     this.awsAccountIds,
     this.companyNames,
     this.complianceStatuses,

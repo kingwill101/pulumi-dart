@@ -72,7 +72,7 @@ class NetworkInterfaceIPConfigurationResponse {
   /// [subnet] Subnet bound to the IP configuration.
   /// [type] Resource type.
   /// [virtualNetworkTaps] The reference to Virtual Network Taps.
-  NetworkInterfaceIPConfigurationResponse({
+  const NetworkInterfaceIPConfigurationResponse({
     this.applicationGatewayBackendAddressPools,
     this.applicationSecurityGroups,
     required this.etag,

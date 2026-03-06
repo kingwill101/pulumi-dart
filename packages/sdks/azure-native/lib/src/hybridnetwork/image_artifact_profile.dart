@@ -12,7 +12,7 @@ class ImageArtifactProfile {
   /// Creates a new [ImageArtifactProfile].
   /// [imageName] Image name.
   /// [imageVersion] Image version.
-  ImageArtifactProfile({
+  const ImageArtifactProfile({
     this.imageName,
     this.imageVersion,
   });

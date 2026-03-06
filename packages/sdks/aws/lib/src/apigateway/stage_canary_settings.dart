@@ -17,7 +17,7 @@ class StageCanarySettings {
   /// [percentTraffic] Percent `0.0` - `100.0` of traffic to divert to the canary deployment.
   /// [stageVariableOverrides] Map of overridden stage `variables` (including new variables) for the canary deployment.
   /// [useStageCache] Whether the canary deployment uses the stage cache. Defaults to false.
-  StageCanarySettings({
+  const StageCanarySettings({
     required this.deploymentId,
     this.percentTraffic,
     this.stageVariableOverrides,

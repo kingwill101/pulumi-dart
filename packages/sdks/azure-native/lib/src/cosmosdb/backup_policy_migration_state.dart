@@ -15,7 +15,7 @@ class BackupPolicyMigrationState {
   /// [startTime] Time at which the backup policy migration started (ISO-8601 format).
   /// [status] Describes the status of migration between backup policy types.
   /// [targetType] Describes the target backup policy type of the backup policy migration.
-  BackupPolicyMigrationState({
+  const BackupPolicyMigrationState({
     this.startTime,
     this.status,
     this.targetType,

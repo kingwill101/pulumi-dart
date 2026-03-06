@@ -15,7 +15,7 @@ class GetDatasetKustoDatabaseArgs {
   /// Creates a new [GetDatasetKustoDatabaseArgs].
   /// [name] The name of this Data Share Kusto Database Dataset.
   /// [shareId] The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created.
-  GetDatasetKustoDatabaseArgs({
+  const GetDatasetKustoDatabaseArgs({
     required this.name,
     required this.shareId,
   });

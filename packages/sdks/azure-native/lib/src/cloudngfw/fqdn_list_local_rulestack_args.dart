@@ -27,7 +27,7 @@ class FqdnListLocalRulestackArgs {
   /// [localRulestackName] LocalRulestack resource name
   /// [name] fqdn list name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  FqdnListLocalRulestackArgs({
+  const FqdnListLocalRulestackArgs({
     this.auditComment,
     this.description,
     required this.fqdnList,

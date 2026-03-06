@@ -67,7 +67,7 @@ class NodeGroupState {
   /// [region] The region in which to obtain the V1 Container Infra
   /// [role] The role of nodes in the node group. Changing this
   /// [updatedAt] Optional.
-  NodeGroupState({
+  const NodeGroupState({
     this.clusterId,
     this.createdAt,
     this.dockerVolumeSize,

@@ -81,7 +81,7 @@ class JsonWebKey {
   /// [x] X coordinate for the Elliptic Curve point
   /// [x5C] The "x5c" (X.509 certificate chain) parameter contains a chain of one
   /// [y] Y coordinate for the Elliptic Curve point
-  JsonWebKey({
+  const JsonWebKey({
     this.alg,
     this.crv,
     this.d,

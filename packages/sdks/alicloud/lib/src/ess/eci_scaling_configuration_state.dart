@@ -163,7 +163,7 @@ class EciScalingConfigurationState {
   /// [tags] A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
   /// [terminationGracePeriodSeconds] The program's buffering time before closing.
   /// [volumes] The list of volumes. See `volumes` below for details.
-  EciScalingConfigurationState({
+  const EciScalingConfigurationState({
     this.acrRegistryInfos,
     this.active,
     this.activeDeadlineSeconds,

@@ -13,7 +13,7 @@ class GetSiteArgs {
   /// Creates a new [GetSiteArgs].
   /// [project] Optional.
   /// [siteId] Required.
-  GetSiteArgs({
+  const GetSiteArgs({
     this.project,
     required this.siteId,
   });

@@ -8,7 +8,7 @@ class EnhancedSecurityMonitoringDefinition {
 
   /// Creates a new [EnhancedSecurityMonitoringDefinition].
   /// [value] Optional.
-  EnhancedSecurityMonitoringDefinition({
+  const EnhancedSecurityMonitoringDefinition({
     this.value,
   });
 

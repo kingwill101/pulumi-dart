@@ -71,7 +71,7 @@ class EnrollmentState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] Server assigned unique identifier for the channel. The value is a UUID4
   /// [updateTime] The last-modified time.
-  EnrollmentState({
+  const EnrollmentState({
     this.annotations,
     this.celMatch,
     this.createTime,

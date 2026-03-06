@@ -71,7 +71,7 @@ class NetworkInterfaceState {
   /// [resourceGroupName] The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualMachineId] The ID of the Virtual Machine which this Network Interface is connected to.
-  NetworkInterfaceState({
+  const NetworkInterfaceState({
     this.acceleratedNetworkingEnabled,
     this.appliedDnsServers,
     this.auxiliaryMode,

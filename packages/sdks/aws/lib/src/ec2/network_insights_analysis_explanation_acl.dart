@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationAcl {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationAcl({
+  const NetworkInsightsAnalysisExplanationAcl({
     this.arn,
     this.id,
     this.name,

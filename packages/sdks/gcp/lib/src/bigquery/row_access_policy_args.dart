@@ -58,7 +58,7 @@ class RowAccessPolicyArgs {
   /// [policyId] The ID of the row access policy. The ID must contain only
   /// [project] The ID of the project in which the resource belongs.
   /// [tableId] The ID of the table containing this row access policy.
-  RowAccessPolicyArgs({
+  const RowAccessPolicyArgs({
     required this.datasetId,
     required this.filterPredicate,
     this.grantees,

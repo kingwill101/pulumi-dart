@@ -9,7 +9,7 @@ class GetDevEnvironmentIde {
   /// Creates a new [GetDevEnvironmentIde].
   /// [name] Required.
   /// [runtime] Required.
-  GetDevEnvironmentIde({
+  const GetDevEnvironmentIde({
     required this.name,
     required this.runtime,
   });

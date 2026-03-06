@@ -17,7 +17,7 @@ class HciNetworkInterfaceIpConfiguration {
   /// [prefixLength] The prefix length for the address of the Network Interface.
   /// [privateIpAddress] The IPv4 address of the IP configuration. Changing this forces a new resource to be created.
   /// [subnetId] The resource ID of the Stack HCI Logical Network bound to the IP configuration. Changing this forces a new resource to be created.
-  HciNetworkInterfaceIpConfiguration({
+  const HciNetworkInterfaceIpConfiguration({
     this.gateway,
     this.prefixLength,
     this.privateIpAddress,

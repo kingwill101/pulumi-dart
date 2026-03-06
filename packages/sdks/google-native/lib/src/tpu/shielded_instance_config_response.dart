@@ -9,7 +9,7 @@ class ShieldedInstanceConfigResponse {
 
   /// Creates a new [ShieldedInstanceConfigResponse].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  ShieldedInstanceConfigResponse({
+  const ShieldedInstanceConfigResponse({
     required this.enableSecureBoot,
   });
 

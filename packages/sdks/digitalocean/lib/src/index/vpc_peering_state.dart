@@ -18,7 +18,7 @@ class VpcPeeringState {
   /// [name] A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
   /// [status] The status of the VPC Peering.
   /// [vpcIds] A set of two VPC IDs to be peered.
-  VpcPeeringState({
+  const VpcPeeringState({
     this.createdAt,
     this.name,
     this.status,

@@ -31,7 +31,7 @@ class WebAgentArgs {
   /// [systemPrompt] System prompt for the web agent.
   /// [tags] Resource tags.
   /// [webAgentName] The name of the web agent.
-  WebAgentArgs({
+  const WebAgentArgs({
     this.description,
     this.location,
     this.paths,

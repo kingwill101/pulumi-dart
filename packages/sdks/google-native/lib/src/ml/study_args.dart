@@ -20,7 +20,7 @@ class StudyArgs {
   /// [project] Optional.
   /// [studyConfig] Configuration of the study.
   /// [studyId] Required. The ID to use for the study, which will become the final component of the study's resource name.
-  StudyArgs({
+  const StudyArgs({
     this.location,
     this.project,
     required this.studyConfig,

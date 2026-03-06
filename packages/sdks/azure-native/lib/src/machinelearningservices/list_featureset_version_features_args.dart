@@ -27,7 +27,7 @@ class ListFeaturesetVersionFeaturesArgs {
   /// [tags] Comma-separated list of tag names (and optionally values). Example: tag1,tag2=value2
   /// [version] Featureset Version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ListFeaturesetVersionFeaturesArgs({
+  const ListFeaturesetVersionFeaturesArgs({
     required this.name,
     required this.resourceGroupName,
     this.skip,

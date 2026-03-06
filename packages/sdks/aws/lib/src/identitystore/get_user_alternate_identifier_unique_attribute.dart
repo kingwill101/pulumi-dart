@@ -11,7 +11,7 @@ class GetUserAlternateIdentifierUniqueAttribute {
   /// Creates a new [GetUserAlternateIdentifierUniqueAttribute].
   /// [attributePath] Attribute path that is used to specify which attribute name to search. For example: `UserName`. Refer to the [User data type](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html).
   /// [attributeValue] Value for an attribute.
-  GetUserAlternateIdentifierUniqueAttribute({
+  const GetUserAlternateIdentifierUniqueAttribute({
     required this.attributePath,
     required this.attributeValue,
   });

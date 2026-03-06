@@ -21,7 +21,7 @@ class CxToolOpenApiSpecTlsConfigCaCert {
   /// Creates a new [CxToolOpenApiSpecTlsConfigCaCert].
   /// [cert] The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
   /// [displayName] The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
-  CxToolOpenApiSpecTlsConfigCaCert({
+  const CxToolOpenApiSpecTlsConfigCaCert({
     required this.cert,
     required this.displayName,
   });

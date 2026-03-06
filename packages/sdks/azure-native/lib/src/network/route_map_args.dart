@@ -31,7 +31,7 @@ class RouteMapArgs {
   /// [routeMapName] The name of the RouteMap.
   /// [rules] List of RouteMap rules to be applied.
   /// [virtualHubName] The name of the VirtualHub containing the RouteMap.
-  RouteMapArgs({
+  const RouteMapArgs({
     this.associatedInboundConnections,
     this.associatedOutboundConnections,
     this.id,

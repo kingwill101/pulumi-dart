@@ -13,7 +13,7 @@ class PredictiveAutoscalePolicy {
   /// Creates a new [PredictiveAutoscalePolicy].
   /// [scaleLookAheadTime] the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
   /// [scaleMode] the predictive autoscale mode
-  PredictiveAutoscalePolicy({
+  const PredictiveAutoscalePolicy({
     this.scaleLookAheadTime,
     required this.scaleMode,
   });

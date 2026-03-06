@@ -15,7 +15,7 @@ class NotificationRecipientEmailState {
   /// [apiManagementId] The ID of the API Management Service from which to create this Notification Recipient Email. Changing this forces a new API Management Notification Recipient Email to be created.
   /// [email] The recipient email address. Changing this forces a new API Management Notification Recipient Email to be created.
   /// [notificationType] The Notification Name to be received. Changing this forces a new API Management Notification Recipient Email to be created. Possible values are `AccountClosedPublisher`, `BCC`, `NewApplicationNotificationMessage`, `NewIssuePublisherNotificationMessage`, `PurchasePublisherNotificationMessage`, `QuotaLimitApproachingPublisherNotificationMessage`, and `RequestPublisherNotificationMessage`.
-  NotificationRecipientEmailState({
+  const NotificationRecipientEmailState({
     this.apiManagementId,
     this.email,
     this.notificationType,

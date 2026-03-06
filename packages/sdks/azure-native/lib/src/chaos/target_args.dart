@@ -30,7 +30,7 @@ class TargetArgs {
   /// [properties] The properties of the target resource.
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [targetName] String that represents a Target resource name.
-  TargetArgs({
+  const TargetArgs({
     this.location,
     required this.parentProviderNamespace,
     required this.parentResourceName,

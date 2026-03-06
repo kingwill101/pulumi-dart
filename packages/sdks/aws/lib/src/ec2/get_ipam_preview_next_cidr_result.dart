@@ -19,7 +19,7 @@ class GetIpamPreviewNextCidrResult {
   /// [ipamPoolId] Required.
   /// [netmaskLength] Optional.
   /// [region] Required.
-  GetIpamPreviewNextCidrResult({
+  const GetIpamPreviewNextCidrResult({
     required this.cidr,
     this.disallowedCidrs,
     required this.id,

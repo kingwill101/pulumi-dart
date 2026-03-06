@@ -14,7 +14,7 @@ class TableSchemaCompositePartitionKey {
   /// [enforcementInRecord] The level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
   /// [name] The name of the attribute used for a dimension key.
   /// [type] The type of the partition key. Valid values: `DIMENSION`, `MEASURE`.
-  TableSchemaCompositePartitionKey({
+  const TableSchemaCompositePartitionKey({
     this.enforcementInRecord,
     this.name,
     required this.type,

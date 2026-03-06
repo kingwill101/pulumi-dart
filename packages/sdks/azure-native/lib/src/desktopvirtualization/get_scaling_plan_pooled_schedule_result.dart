@@ -73,7 +73,7 @@ class GetScalingPlanPooledScheduleResult {
   /// [rampUpStartTime] Starting time for ramp up period.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetScalingPlanPooledScheduleResult({
+  const GetScalingPlanPooledScheduleResult({
     required this.azureApiVersion,
     this.daysOfWeek,
     required this.id,

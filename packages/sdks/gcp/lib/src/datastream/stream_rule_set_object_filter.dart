@@ -10,7 +10,7 @@ class StreamRuleSetObjectFilter {
 
   /// Creates a new [StreamRuleSetObjectFilter].
   /// [sourceObjectIdentifier] Specific source object identifier.
-  StreamRuleSetObjectFilter({
+  const StreamRuleSetObjectFilter({
     this.sourceObjectIdentifier,
   });
 

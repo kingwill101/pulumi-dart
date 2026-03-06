@@ -49,7 +49,7 @@ class EventSourceV2State {
   /// [sourceRocketmqParameters] The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
   /// [sourceScheduledEventParameters] Time event source parameter. See `source_scheduled_event_parameters` below.
   /// [sourceSlsParameters] The request parameter SourceSLSParameters. See `source_sls_parameters` below.
-  EventSourceV2State({
+  const EventSourceV2State({
     this.description,
     this.eventBusName,
     this.eventSourceName,

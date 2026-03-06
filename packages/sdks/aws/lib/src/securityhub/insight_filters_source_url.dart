@@ -9,7 +9,7 @@ class InsightFiltersSourceUrl {
   /// Creates a new [InsightFiltersSourceUrl].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersSourceUrl({
+  const InsightFiltersSourceUrl({
     required this.comparison,
     required this.value,
   });

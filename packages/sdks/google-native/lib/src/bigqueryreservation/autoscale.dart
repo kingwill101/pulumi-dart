@@ -9,7 +9,7 @@ class Autoscale {
 
   /// Creates a new [Autoscale].
   /// [maxSlots] Number of slots to be scaled when needed.
-  Autoscale({
+  const Autoscale({
     this.maxSlots,
   });
 

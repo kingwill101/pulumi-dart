@@ -21,7 +21,7 @@ class GetHavipsArgs {
   /// [nameRegex] A regex string to filter results by Ha Vip name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
-  GetHavipsArgs({
+  const GetHavipsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

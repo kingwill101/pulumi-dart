@@ -35,7 +35,7 @@ class GetEventHubConnectionResult {
   /// [name] The name of the resource
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEventHubConnectionResult({
+  const GetEventHubConnectionResult({
     required this.azureApiVersion,
     required this.consumerGroup,
     this.dataFormat,

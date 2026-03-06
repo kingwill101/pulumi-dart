@@ -16,7 +16,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFor
   /// [aggregationConfig] Aggregation settings that you can use to customize the output format of your flow data. See Aggregation Config for more details.
   /// [fileType] File type that Amazon AppFlow places in the Amazon S3 bucket. Valid values are `CSV`, `JSON`, and `PARQUET`.
   /// [prefixConfig] Determines the prefix that Amazon AppFlow applies to the folder name in the Amazon S3 bucket. You can name folders according to the flow frequency and date. See Prefix Config for more details.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig({
     this.aggregationConfig,
     this.fileType,
     required this.prefixConfig,

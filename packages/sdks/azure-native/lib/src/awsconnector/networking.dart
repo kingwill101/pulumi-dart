@@ -14,7 +14,7 @@ class Networking {
   /// Creates a new [Networking].
   /// [monthlyTransfer] Monthly Transfer of the Instance.
   /// [ports] Ports to the Instance.
-  Networking({
+  const Networking({
     this.monthlyTransfer,
     this.ports,
   });

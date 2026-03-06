@@ -102,7 +102,7 @@ class GetRegisteredServerResult {
   /// [storageSyncServiceUid] Registered Server storageSyncServiceUid
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetRegisteredServerResult({
+  const GetRegisteredServerResult({
     required this.activeAuthType,
     this.agentVersion,
     required this.agentVersionExpirationDate,

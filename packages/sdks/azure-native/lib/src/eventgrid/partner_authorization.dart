@@ -14,7 +14,7 @@ class PartnerAuthorization {
   /// Creates a new [PartnerAuthorization].
   /// [authorizedPartnersList] The list of authorized partners.
   /// [defaultMaximumExpirationTimeInDays] Time used to validate the authorization expiration time for each authorized partner. If DefaultMaximumExpirationTimeInDays is
-  PartnerAuthorization({
+  const PartnerAuthorization({
     this.authorizedPartnersList,
     this.defaultMaximumExpirationTimeInDays,
   });

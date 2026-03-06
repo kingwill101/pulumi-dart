@@ -33,7 +33,7 @@ class SpringCloudGatewayComponentResponse {
   /// [scale] Java component scaling configurations
   /// [serviceBinds] List of Java Components that are bound to the Java component
   /// [springCloudGatewayRoutes] Gateway route definition
-  SpringCloudGatewayComponentResponse({
+  const SpringCloudGatewayComponentResponse({
     required this.componentType,
     this.configurations,
     this.ingress,

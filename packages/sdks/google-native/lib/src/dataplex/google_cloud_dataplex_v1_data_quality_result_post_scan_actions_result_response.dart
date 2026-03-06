@@ -10,7 +10,7 @@ class GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse].
   /// [bigqueryExportResult] The result of BigQuery export post scan action.
-  GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse({
+  const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse({
     required this.bigqueryExportResult,
   });
 

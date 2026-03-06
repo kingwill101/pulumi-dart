@@ -19,7 +19,7 @@ class ReplicationConfigurationDestination {
   /// [kmsKeyId] The Key ID, ARN, alias, or alias ARN of the KMS key that should be used to encrypt the replica file system. If omitted, the default KMS key for EFS `/aws/elasticfilesystem` will be used.
   /// [region] The region in which the replica should be created.
   /// [status] Optional.
-  ReplicationConfigurationDestination({
+  const ReplicationConfigurationDestination({
     this.availabilityZoneName,
     this.fileSystemId,
     this.kmsKeyId,

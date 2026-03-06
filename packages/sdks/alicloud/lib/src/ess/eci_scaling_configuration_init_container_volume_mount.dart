@@ -15,7 +15,7 @@ class EciScalingConfigurationInitContainerVolumeMount {
   /// [name] Optional.
   /// [readOnly] Optional.
   /// [subPath] Optional.
-  EciScalingConfigurationInitContainerVolumeMount({
+  const EciScalingConfigurationInitContainerVolumeMount({
     this.mountPath,
     this.mountPropagation,
     this.name,

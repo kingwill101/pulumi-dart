@@ -35,7 +35,7 @@ class ApplicationArgs {
   /// [location] Part of `parent`. See documentation of `projectsId`.
   /// [project] The ID of the project in which the resource belongs.
   /// [scope] Scope of an application.
-  ApplicationArgs({
+  const ApplicationArgs({
     required this.applicationId,
     this.attributes,
     this.description,

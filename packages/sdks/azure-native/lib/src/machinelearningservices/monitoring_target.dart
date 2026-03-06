@@ -15,7 +15,7 @@ class MonitoringTarget {
   /// [deploymentId] Reference to the deployment asset targeted by this monitor.
   /// [modelId] Reference to the model asset targeted by this monitor.
   /// [taskType] [Required] The machine learning task type of the monitored model.
-  MonitoringTarget({
+  const MonitoringTarget({
     this.deploymentId,
     this.modelId,
     required this.taskType,

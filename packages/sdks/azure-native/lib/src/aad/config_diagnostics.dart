@@ -13,7 +13,7 @@ class ConfigDiagnostics {
   /// Creates a new [ConfigDiagnostics].
   /// [lastExecuted] Last domain configuration diagnostics DateTime
   /// [validatorResults] List of Configuration Diagnostics validator results.
-  ConfigDiagnostics({
+  const ConfigDiagnostics({
     this.lastExecuted,
     this.validatorResults,
   });

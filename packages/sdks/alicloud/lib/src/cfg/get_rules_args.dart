@@ -33,7 +33,7 @@ class GetRulesArgs {
   /// [riskLevel] The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
   /// [ruleName] The name of config rule.
   /// [status] The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
-  GetRulesArgs({
+  const GetRulesArgs({
     this.configRuleState,
     this.enableDetails,
     this.ids,

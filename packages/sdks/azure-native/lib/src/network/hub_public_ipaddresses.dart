@@ -13,7 +13,7 @@ class HubPublicIPAddresses {
   /// Creates a new [HubPublicIPAddresses].
   /// [addresses] The list of Public IP addresses associated with azure firewall or IP addresses to be retained.
   /// [count] The number of Public IP addresses associated with azure firewall.
-  HubPublicIPAddresses({
+  const HubPublicIPAddresses({
     this.addresses,
     this.count,
   });

@@ -16,7 +16,7 @@ class GetRoutersArgs {
   /// Creates a new [GetRoutersArgs].
   /// [project] The project in which the resource belongs. If it
   /// [region] If provided, only resources from the given regions are queried.
-  GetRoutersArgs({
+  const GetRoutersArgs({
     this.project,
     this.region,
   });

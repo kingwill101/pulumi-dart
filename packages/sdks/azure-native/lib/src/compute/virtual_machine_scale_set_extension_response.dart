@@ -49,7 +49,7 @@ class VirtualMachineScaleSetExtensionResponse {
   /// [suppressFailures] Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
   /// [type] Resource type
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  VirtualMachineScaleSetExtensionResponse({
+  const VirtualMachineScaleSetExtensionResponse({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,

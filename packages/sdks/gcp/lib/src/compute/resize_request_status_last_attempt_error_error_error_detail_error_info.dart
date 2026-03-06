@@ -17,7 +17,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo {
   /// [domain] (Output)
   /// [metadatas] (Output)
   /// [reason] (Output)
-  ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo({
+  const ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo({
     this.domain,
     this.metadatas,
     this.reason,

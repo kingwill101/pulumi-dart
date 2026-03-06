@@ -10,7 +10,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint].
   /// [privateServiceConnectConfig] Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
-  GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint({
+  const GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint({
     this.privateServiceConnectConfig,
   });
 

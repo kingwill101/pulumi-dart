@@ -67,7 +67,7 @@ class ManagedClusterArgs {
   /// [tags] A mapping of tags which should be assigned to the Resource Group.
   /// [upgradeWave] Upgrade wave for the fabric runtime. Default is `Wave0`, allowed value must be one of `Wave0`, `Wave1`, or `Wave2`.
   /// [username] Administrator password for the VMs that will be created as part of this cluster.
-  ManagedClusterArgs({
+  const ManagedClusterArgs({
     this.authentication,
     this.backupServiceEnabled,
     required this.clientConnectionPort,

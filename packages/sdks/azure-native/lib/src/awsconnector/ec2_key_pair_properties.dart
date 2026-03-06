@@ -31,7 +31,7 @@ class Ec2KeyPairProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2KeyPairProperties({
+  const Ec2KeyPairProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

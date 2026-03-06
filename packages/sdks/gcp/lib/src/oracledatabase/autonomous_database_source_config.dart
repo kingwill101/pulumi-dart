@@ -11,7 +11,7 @@ class AutonomousDatabaseSourceConfig {
   /// Creates a new [AutonomousDatabaseSourceConfig].
   /// [automaticBackupsReplicationEnabled] This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
   /// [autonomousDatabase] The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
-  AutonomousDatabaseSourceConfig({
+  const AutonomousDatabaseSourceConfig({
     this.automaticBackupsReplicationEnabled,
     this.autonomousDatabase,
   });

@@ -12,7 +12,7 @@ class GetFirewallApplyTo {
   /// Creates a new [GetFirewallApplyTo].
   /// [labelSelector] (string) Label Selector to select servers the firewall is applied to. Empty if a server is directly
   /// [server] (int) ID of a server where the firewall is applied to. `0` if applied to a label_selector
-  GetFirewallApplyTo({
+  const GetFirewallApplyTo({
     required this.labelSelector,
     required this.server,
   });

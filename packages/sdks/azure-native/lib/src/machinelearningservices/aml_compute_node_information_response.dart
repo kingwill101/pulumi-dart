@@ -24,7 +24,7 @@ class AmlComputeNodeInformationResponse {
   /// [privateIpAddress] Private IP address of the compute node.
   /// [publicIpAddress] Public IP address of the compute node.
   /// [runId] ID of the Experiment running on the node, if any else null.
-  AmlComputeNodeInformationResponse({
+  const AmlComputeNodeInformationResponse({
     required this.nodeId,
     required this.nodeState,
     required this.port,

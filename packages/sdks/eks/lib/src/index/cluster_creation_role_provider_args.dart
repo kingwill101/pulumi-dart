@@ -13,7 +13,7 @@ class ClusterCreationRoleProviderArgs {
   /// Creates a new [ClusterCreationRoleProviderArgs].
   /// [profile] Optional.
   /// [region] Optional.
-  ClusterCreationRoleProviderArgs({
+  const ClusterCreationRoleProviderArgs({
     this.profile,
     this.region,
   });

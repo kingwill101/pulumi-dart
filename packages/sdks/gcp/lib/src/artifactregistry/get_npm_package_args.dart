@@ -21,7 +21,7 @@ class GetNpmPackageArgs {
   /// [packageName] The name of the package to fetch. Can optionally include a specific version (e.g., `my_pkg:1.2.3`). If no version is provided, the latest version is used.
   /// [project] The ID of the project that owns the repository. If not provided, the provider-level project is used.
   /// [repositoryId] The ID of the repository containing the NPM package.
-  GetNpmPackageArgs({
+  const GetNpmPackageArgs({
     required this.location,
     required this.packageName,
     this.project,

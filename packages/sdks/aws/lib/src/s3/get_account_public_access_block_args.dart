@@ -12,7 +12,7 @@ class GetAccountPublicAccessBlockArgs {
 
   /// Creates a new [GetAccountPublicAccessBlockArgs].
   /// [accountId] AWS account ID to configure. Defaults to automatically determined account ID of the AWS provider.
-  GetAccountPublicAccessBlockArgs({
+  const GetAccountPublicAccessBlockArgs({
     this.accountId,
   });
 

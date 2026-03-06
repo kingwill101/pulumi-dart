@@ -26,7 +26,7 @@ class GetCheckItemConfigsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [taskSources] Optional.
-  GetCheckItemConfigsResult({
+  const GetCheckItemConfigsResult({
     required this.configs,
     required this.id,
     required this.ids,

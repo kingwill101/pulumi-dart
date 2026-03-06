@@ -9,7 +9,7 @@ class ResourceId {
 
   /// Creates a new [ResourceId].
   /// [id] The azure resource id.
-  ResourceId({
+  const ResourceId({
     this.id,
   });
 

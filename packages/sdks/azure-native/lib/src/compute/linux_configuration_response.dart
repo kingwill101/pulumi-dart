@@ -23,7 +23,7 @@ class LinuxConfigurationResponse {
   /// [patchSettings] [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
   /// [provisionVMAgent] Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  LinuxConfigurationResponse({
+  const LinuxConfigurationResponse({
     this.disablePasswordAuthentication,
     this.enableVMAgentPlatformUpdates,
     this.patchSettings,

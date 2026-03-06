@@ -11,7 +11,7 @@ class UserAlarmConfigNotifyConfig {
   /// Creates a new [UserAlarmConfigNotifyConfig].
   /// [notifyType] The notification type. Possible values are `sms`, `mail`.
   /// [notifyValue] The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
-  UserAlarmConfigNotifyConfig({
+  const UserAlarmConfigNotifyConfig({
     this.notifyType,
     this.notifyValue,
   });

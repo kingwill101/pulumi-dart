@@ -14,7 +14,7 @@ class GetAuditPoliciesPolicy {
   /// [auditStatus] The status of the log audit feature.
   /// [dbInstanceId] The ID of the instance.
   /// [id] The ID of the Audit Policy.
-  GetAuditPoliciesPolicy({
+  const GetAuditPoliciesPolicy({
     required this.auditStatus,
     required this.dbInstanceId,
     required this.id,

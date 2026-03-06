@@ -24,7 +24,7 @@ class GetTopicIngestionDataSourceSettingAwsKinese {
   /// [consumerArn] The Kinesis consumer ARN to used for ingestion in
   /// [gcpServiceAccount] The GCP service account to be used for Federated Identity authentication
   /// [streamArn] The Kinesis stream ARN to ingest data from.
-  GetTopicIngestionDataSourceSettingAwsKinese({
+  const GetTopicIngestionDataSourceSettingAwsKinese({
     required this.awsRoleArn,
     required this.consumerArn,
     required this.gcpServiceAccount,

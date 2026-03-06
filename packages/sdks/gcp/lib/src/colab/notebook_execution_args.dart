@@ -57,7 +57,7 @@ class NotebookExecutionArgs {
   /// [notebookRuntimeTemplateResourceName] The NotebookRuntimeTemplate to source compute configuration from.
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceAccount] The service account to run the execution as.
-  NotebookExecutionArgs({
+  const NotebookExecutionArgs({
     this.customEnvironmentSpec,
     this.dataformRepositorySource,
     this.directNotebookSource,

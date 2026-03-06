@@ -82,7 +82,7 @@ class V2PolicyOrchestratorState {
   /// [reconciling] Output only. Set to true, if the there are ongoing changes being applied by the
   /// [state] Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// [updateTime] Output only. Timestamp when the policy orchestrator resource was last modified.
-  V2PolicyOrchestratorState({
+  const V2PolicyOrchestratorState({
     this.action,
     this.createTime,
     this.description,

@@ -9,7 +9,7 @@ class ParsedDataResponseHealthcareV1beta1 {
 
   /// Creates a new [ParsedDataResponseHealthcareV1beta1].
   /// [segments] Required.
-  ParsedDataResponseHealthcareV1beta1({
+  const ParsedDataResponseHealthcareV1beta1({
     required this.segments,
   });
 

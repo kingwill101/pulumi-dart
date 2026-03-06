@@ -12,7 +12,7 @@ class SAMLIdpResponse {
   /// Creates a new [SAMLIdpResponse].
   /// [entityId] &lt;p&gt;The unique entity ID of the application in the SAML identity provider.&lt;/p&gt;
   /// [metadataContent] &lt;p&gt;The metadata of the SAML application, in XML format.&lt;/p&gt;
-  SAMLIdpResponse({
+  const SAMLIdpResponse({
     this.entityId,
     this.metadataContent,
   });

@@ -37,7 +37,7 @@ class GetRoutingProfileResult {
   /// [region] Required.
   /// [routingProfileId] Required.
   /// [tags] Map of tags to assign to the Routing Profile.
-  GetRoutingProfileResult({
+  const GetRoutingProfileResult({
     required this.arn,
     required this.defaultOutboundQueueId,
     required this.description,

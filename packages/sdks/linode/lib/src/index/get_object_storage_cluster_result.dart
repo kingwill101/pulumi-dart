@@ -19,7 +19,7 @@ class GetObjectStorageClusterResult {
   /// [region] The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
   /// [staticSiteDomain] The base URL for this cluster used when hosting static sites.
   /// [status] This cluster's status. (`available`, `unavailable`)
-  GetObjectStorageClusterResult({
+  const GetObjectStorageClusterResult({
     required this.domain,
     required this.id,
     required this.region,

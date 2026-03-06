@@ -33,7 +33,7 @@ class MonitorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] SKU of the monitor resource.
   /// [tags] The tags of the monitor resource.
-  MonitorArgs({
+  const MonitorArgs({
     this.identity,
     this.location,
     this.monitorName,

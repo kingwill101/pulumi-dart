@@ -33,7 +33,7 @@ class WorkspaceServiceAccountTokenState {
   /// [serviceAccountId] The ID of the service account for which to create a token.
   /// [serviceAccountTokenId] Identifier of the service account token in the given Grafana workspace.
   /// [workspaceId] The Grafana workspace with which the service account token is associated.
-  WorkspaceServiceAccountTokenState({
+  const WorkspaceServiceAccountTokenState({
     this.createdAt,
     this.expiresAt,
     this.key,

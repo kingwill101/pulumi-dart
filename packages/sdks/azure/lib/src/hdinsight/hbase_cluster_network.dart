@@ -13,7 +13,7 @@ class HBaseClusterNetwork {
   /// Creates a new [HBaseClusterNetwork].
   /// [connectionDirection] The direction of the resource provider connection. Possible values include `Inbound` or `Outbound`. Defaults to `Inbound`. Changing this forces a new resource to be created.
   /// [privateLinkEnabled] Is the private link enabled? Possible values include `true` or `false`. Defaults to `false`. Changing this forces a new resource to be created.
-  HBaseClusterNetwork({
+  const HBaseClusterNetwork({
     this.connectionDirection,
     this.privateLinkEnabled,
   });

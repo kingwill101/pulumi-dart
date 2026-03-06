@@ -96,7 +96,7 @@ class GetDeviceResult {
   /// [securityPatchTime] OS security patch update time on device.
   /// [serialNumber] Serial Number of device. Example: HT82V1A01076.
   /// [wifiMacAddresses] WiFi MAC addresses of device.
-  GetDeviceResult({
+  const GetDeviceResult({
     required this.androidSpecificAttributes,
     required this.assetTag,
     required this.basebandVersion,

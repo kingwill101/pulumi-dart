@@ -15,7 +15,7 @@ class GetScopeAccessReviewScheduleDefinitionByIdArgs {
   /// Creates a new [GetScopeAccessReviewScheduleDefinitionByIdArgs].
   /// [scheduleDefinitionId] The id of the access review schedule definition.
   /// [scope] The scope of the resource.
-  GetScopeAccessReviewScheduleDefinitionByIdArgs({
+  const GetScopeAccessReviewScheduleDefinitionByIdArgs({
     required this.scheduleDefinitionId,
     required this.scope,
   });

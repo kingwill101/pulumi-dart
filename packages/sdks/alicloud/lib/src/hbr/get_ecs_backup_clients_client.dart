@@ -85,7 +85,7 @@ class GetEcsBackupClientsClient {
   /// [updatedTime] The update time of client. Unix Time Seconds.
   /// [useHttps] Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
   /// [zoneId] The ID of Zone.
-  GetEcsBackupClientsClient({
+  const GetEcsBackupClientsClient({
     required this.archType,
     required this.backupStatus,
     required this.clientType,

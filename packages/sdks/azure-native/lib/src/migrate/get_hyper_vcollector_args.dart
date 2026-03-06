@@ -18,7 +18,7 @@ class GetHyperVCollectorArgs {
   /// [hyperVCollectorName] Unique name of a Hyper-V collector within a project.
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  GetHyperVCollectorArgs({
+  const GetHyperVCollectorArgs({
     required this.hyperVCollectorName,
     required this.projectName,
     required this.resourceGroupName,

@@ -44,7 +44,7 @@ class PatchDeploymentRecurringSchedule {
   /// [timeOfDay] Time of the day to run a recurring deployment.
   /// [timeZone] Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
   /// [weekly] Schedule with weekly executions.
-  PatchDeploymentRecurringSchedule({
+  const PatchDeploymentRecurringSchedule({
     this.endTime,
     this.lastExecuteTime,
     this.monthly,

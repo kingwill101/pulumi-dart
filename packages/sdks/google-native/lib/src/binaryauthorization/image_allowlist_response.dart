@@ -9,7 +9,7 @@ class ImageAllowlistResponse {
 
   /// Creates a new [ImageAllowlistResponse].
   /// [allowPattern] A disjunction of image patterns to allow. If any of these patterns match, then the image is considered exempted by this allowlist.
-  ImageAllowlistResponse({
+  const ImageAllowlistResponse({
     required this.allowPattern,
   });
 

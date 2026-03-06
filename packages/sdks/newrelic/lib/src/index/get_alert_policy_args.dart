@@ -21,7 +21,7 @@ class GetAlertPolicyArgs {
   /// [accountId] The New Relic account ID to operate on.  This allows you to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   /// [incidentPreference] The rollup strategy for the policy, which can have one of the following values:
   /// [name] The name of the alert policy in New Relic.
-  GetAlertPolicyArgs({
+  const GetAlertPolicyArgs({
     this.accountId,
     this.incidentPreference,
     required this.name,

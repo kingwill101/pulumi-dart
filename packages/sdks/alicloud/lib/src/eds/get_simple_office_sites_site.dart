@@ -95,7 +95,7 @@ class GetSimpleOfficeSitesSite {
   /// [trustPassword] AD Trust Password.
   /// [vpcId] Security Office VPC ID.
   /// [vswitchIds] The vswitch ids.
-  GetSimpleOfficeSitesSite({
+  const GetSimpleOfficeSitesSite({
     required this.bandwidth,
     required this.cenId,
     required this.cidrBlock,

@@ -8,7 +8,7 @@ class OptInCondition {
 
   /// Creates a new [OptInCondition].
   /// [expression] List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
-  OptInCondition({
+  const OptInCondition({
     this.expression,
   });
 

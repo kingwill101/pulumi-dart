@@ -13,7 +13,7 @@ class ListConfigurationStoreKeysResult {
   /// Creates a new [ListConfigurationStoreKeysResult].
   /// [nextLink] The URI that can be used to request the next set of paged results.
   /// [value] The collection value.
-  ListConfigurationStoreKeysResult({
+  const ListConfigurationStoreKeysResult({
     this.nextLink,
     this.value,
   });

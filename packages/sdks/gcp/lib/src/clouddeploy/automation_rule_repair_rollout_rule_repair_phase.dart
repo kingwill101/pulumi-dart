@@ -15,7 +15,7 @@ class AutomationRuleRepairRolloutRuleRepairPhase {
   /// Creates a new [AutomationRuleRepairRolloutRuleRepairPhase].
   /// [retry] Optional. Retries a failed job.
   /// [rollback] Optional. Rolls back a Rollout.
-  AutomationRuleRepairRolloutRuleRepairPhase({
+  const AutomationRuleRepairRolloutRuleRepairPhase({
     this.retry,
     this.rollback,
   });

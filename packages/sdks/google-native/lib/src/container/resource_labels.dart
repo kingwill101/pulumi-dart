@@ -9,7 +9,7 @@ class ResourceLabels {
 
   /// Creates a new [ResourceLabels].
   /// [labels] Map of node label keys and node label values.
-  ResourceLabels({
+  const ResourceLabels({
     this.labels,
   });
 

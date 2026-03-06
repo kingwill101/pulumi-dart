@@ -118,7 +118,7 @@ class V2VmState {
   /// [symptoms] The Symptoms that have occurred to the TPU Node.
   /// [tags] Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
   /// [zone] The GCP location for the TPU. If it is not provided, the provider zone is used.
-  V2VmState({
+  const V2VmState({
     this.acceleratorConfig,
     this.acceleratorType,
     this.apiVersion,

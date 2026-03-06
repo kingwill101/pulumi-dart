@@ -21,7 +21,7 @@ class GetAccessPointsArgs {
   /// [nameRegex] A regex string to filter results by Access Point name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
-  GetAccessPointsArgs({
+  const GetAccessPointsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -9,7 +9,7 @@ class SettingsAccessSettingsCorsSettings {
 
   /// Creates a new [SettingsAccessSettingsCorsSettings].
   /// [allowHttpOptions] Configuration to allow HTTP OPTIONS calls to skip authorization.
-  SettingsAccessSettingsCorsSettings({
+  const SettingsAccessSettingsCorsSettings({
     this.allowHttpOptions,
   });
 

@@ -31,7 +31,7 @@ class GetContactFlowResult {
   /// [region] Required.
   /// [tags] Tags to assign to the Contact Flow.
   /// [type] Type of Contact Flow.
-  GetContactFlowResult({
+  const GetContactFlowResult({
     required this.arn,
     required this.contactFlowId,
     required this.content,

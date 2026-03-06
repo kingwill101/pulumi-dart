@@ -15,7 +15,7 @@ class GetPoliciesResult {
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policies] List of Cloud Identity policies that match the filter (or all policies if no filter is provided). Structure is documented below.
-  GetPoliciesResult({
+  const GetPoliciesResult({
     this.filter,
     required this.id,
     required this.policies,

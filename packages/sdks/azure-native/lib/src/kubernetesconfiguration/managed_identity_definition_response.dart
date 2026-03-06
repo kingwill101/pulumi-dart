@@ -9,7 +9,7 @@ class ManagedIdentityDefinitionResponse {
 
   /// Creates a new [ManagedIdentityDefinitionResponse].
   /// [clientId] The client Id for authenticating a Managed Identity.
-  ManagedIdentityDefinitionResponse({
+  const ManagedIdentityDefinitionResponse({
     this.clientId,
   });
 

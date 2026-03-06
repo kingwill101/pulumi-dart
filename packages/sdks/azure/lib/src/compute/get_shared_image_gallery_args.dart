@@ -15,7 +15,7 @@ class GetSharedImageGalleryArgs {
   /// Creates a new [GetSharedImageGalleryArgs].
   /// [name] The name of the Shared Image Gallery.
   /// [resourceGroupName] The name of the Resource Group in which the Shared Image Gallery exists.
-  GetSharedImageGalleryArgs({
+  const GetSharedImageGalleryArgs({
     required this.name,
     required this.resourceGroupName,
   });

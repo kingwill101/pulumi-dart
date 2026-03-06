@@ -74,7 +74,7 @@ class GetRolloutResult {
   /// [state] Current state of the `Rollout`.
   /// [targetId] The ID of Target to which this `Rollout` is deploying.
   /// [uid] Unique identifier of the `Rollout`.
-  GetRolloutResult({
+  const GetRolloutResult({
     required this.annotations,
     required this.approvalState,
     required this.approveTime,

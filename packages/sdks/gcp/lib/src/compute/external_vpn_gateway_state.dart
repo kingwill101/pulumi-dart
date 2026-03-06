@@ -50,7 +50,7 @@ class ExternalVpnGatewayState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [redundancyType] Indicates the redundancy type of this external VPN gateway
   /// [selfLink] The URI of the created resource.
-  ExternalVpnGatewayState({
+  const ExternalVpnGatewayState({
     this.description,
     this.effectiveLabels,
     this.interfaces,

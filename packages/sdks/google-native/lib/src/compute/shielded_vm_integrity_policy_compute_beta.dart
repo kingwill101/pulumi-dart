@@ -9,7 +9,7 @@ class ShieldedVmIntegrityPolicyComputeBeta {
 
   /// Creates a new [ShieldedVmIntegrityPolicyComputeBeta].
   /// [updateAutoLearnPolicy] Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
-  ShieldedVmIntegrityPolicyComputeBeta({
+  const ShieldedVmIntegrityPolicyComputeBeta({
     this.updateAutoLearnPolicy,
   });
 

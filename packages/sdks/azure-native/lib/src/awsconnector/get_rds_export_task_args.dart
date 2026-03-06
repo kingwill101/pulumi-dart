@@ -15,7 +15,7 @@ class GetRdsExportTaskArgs {
   /// Creates a new [GetRdsExportTaskArgs].
   /// [name] Name of RdsExportTask
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRdsExportTaskArgs({
+  const GetRdsExportTaskArgs({
     required this.name,
     required this.resourceGroupName,
   });

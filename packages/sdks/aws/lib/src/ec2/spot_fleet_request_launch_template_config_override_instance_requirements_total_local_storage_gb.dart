@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocal
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb].
   /// [max] Maximum. May be a decimal number, e.g. `0.5`.
   /// [min] Minimum. May be a decimal number, e.g. `0.5`.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb({
     this.max,
     this.min,
   });

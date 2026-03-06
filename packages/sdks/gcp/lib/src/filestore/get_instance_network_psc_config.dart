@@ -11,7 +11,7 @@ class GetInstanceNetworkPscConfig {
 
   /// Creates a new [GetInstanceNetworkPscConfig].
   /// [endpointProject] Consumer service project in which the Private Service Connect endpoint
-  GetInstanceNetworkPscConfig({
+  const GetInstanceNetworkPscConfig({
     required this.endpointProject,
   });
 

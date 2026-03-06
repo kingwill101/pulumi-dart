@@ -18,7 +18,7 @@ class GalleryArgs {
   /// [devCenterId] Specifies the ID of the Dev Center within which this Dev Center Gallery should exist. Changing this forces a new Dev Center Gallery to be created.
   /// [name] Specifies the name of this Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   /// [sharedGalleryId] The ID of the Shared Gallery which should be connected to the Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
-  GalleryArgs({
+  const GalleryArgs({
     required this.devCenterId,
     this.name,
     required this.sharedGalleryId,

@@ -15,7 +15,7 @@ class GetDomainMappingArgs {
   /// [domainmappingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDomainMappingArgs({
+  const GetDomainMappingArgs({
     required this.domainmappingId,
     required this.location,
     this.project,

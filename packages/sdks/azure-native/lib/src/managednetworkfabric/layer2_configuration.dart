@@ -12,7 +12,7 @@ class Layer2Configuration {
   /// Creates a new [Layer2Configuration].
   /// [interfaces] List of network device interfaces resource IDs.
   /// [mtu] MTU of the packets between PE & CE.
-  Layer2Configuration({
+  const Layer2Configuration({
     this.interfaces,
     this.mtu,
   });

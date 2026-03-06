@@ -140,7 +140,7 @@ class InstanceArgs {
   /// [vpcId] The VPC ID of the instance.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.arbiterVswitchId,
     this.arbiterZoneId,
     this.archVersion,

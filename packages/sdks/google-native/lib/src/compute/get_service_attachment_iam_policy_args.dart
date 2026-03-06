@@ -17,7 +17,7 @@ class GetServiceAttachmentIamPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetServiceAttachmentIamPolicyArgs({
+  const GetServiceAttachmentIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

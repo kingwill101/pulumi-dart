@@ -19,7 +19,7 @@ class VMwareCbtPolicyCreationInput {
   /// [crashConsistentFrequencyInMinutes] The crash consistent snapshot frequency (in minutes).
   /// [instanceType] The class type.
   /// [recoveryPointHistoryInMinutes] The duration in minutes until which the recovery points need to be stored.
-  VMwareCbtPolicyCreationInput({
+  const VMwareCbtPolicyCreationInput({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

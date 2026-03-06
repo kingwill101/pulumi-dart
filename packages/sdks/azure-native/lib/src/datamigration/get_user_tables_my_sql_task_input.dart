@@ -13,7 +13,7 @@ class GetUserTablesMySqlTaskInput {
   /// Creates a new [GetUserTablesMySqlTaskInput].
   /// [connectionInfo] Connection information for SQL Server
   /// [selectedDatabases] List of database names to collect tables for
-  GetUserTablesMySqlTaskInput({
+  const GetUserTablesMySqlTaskInput({
     required this.connectionInfo,
     required this.selectedDatabases,
   });

@@ -21,7 +21,7 @@ class FrontdoorOriginPrivateLink {
   /// [privateLinkTargetId] The ID of the Azure Resource to connect to via the Private Link.
   /// [requestMessage] Specifies the request message that will be submitted to the `private_link_target_id` when requesting the private link endpoint connection. Values must be between `1` and `140` characters in length. Defaults to `Access request for CDN FrontDoor Private Link Origin`.
   /// [targetType] Specifies the type of target for this Private Link Endpoint. Possible values are `blob`, `blob_secondary`, `Gateway`, `managedEnvironments`, `sites`, `web` and `web_secondary`.
-  FrontdoorOriginPrivateLink({
+  const FrontdoorOriginPrivateLink({
     required this.location,
     required this.privateLinkTargetId,
     this.requestMessage,

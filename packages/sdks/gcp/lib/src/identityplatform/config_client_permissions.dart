@@ -11,7 +11,7 @@ class ConfigClientPermissions {
   /// Creates a new [ConfigClientPermissions].
   /// [disabledUserDeletion] When true, end users cannot delete their account on the associated project through any of our API methods
   /// [disabledUserSignup] When true, end users cannot sign up for a new account on the associated project through any of our API methods
-  ConfigClientPermissions({
+  const ConfigClientPermissions({
     this.disabledUserDeletion,
     this.disabledUserSignup,
   });

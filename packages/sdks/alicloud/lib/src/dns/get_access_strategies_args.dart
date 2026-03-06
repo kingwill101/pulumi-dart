@@ -32,7 +32,7 @@ class GetAccessStrategiesArgs {
   /// [nameRegex] A regex string to filter results by Access Strategy name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [strategyMode] The type of the access policy. Valid values:
-  GetAccessStrategiesArgs({
+  const GetAccessStrategiesArgs({
     this.enableDetails,
     this.ids,
     required this.instanceId,

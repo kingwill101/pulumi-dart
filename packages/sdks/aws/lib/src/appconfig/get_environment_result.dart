@@ -35,7 +35,7 @@ class GetEnvironmentResult {
   /// [region] Required.
   /// [state] State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK`
   /// [tags] Map of tags for the resource.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.applicationId,
     required this.arn,
     required this.description,

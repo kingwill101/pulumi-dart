@@ -11,7 +11,7 @@ class GetUserPoolAccountRecoverySettingRecoveryMechanism {
   /// Creates a new [GetUserPoolAccountRecoverySettingRecoveryMechanism].
   /// [name] - Name of the attribute.
   /// [priority] - Priority of this mechanism in the recovery process (lower numbers are higher priority).
-  GetUserPoolAccountRecoverySettingRecoveryMechanism({
+  const GetUserPoolAccountRecoverySettingRecoveryMechanism({
     required this.name,
     required this.priority,
   });

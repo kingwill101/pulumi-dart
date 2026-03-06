@@ -17,7 +17,7 @@ class NotificationChannelSensitiveLabels {
   /// [authToken] An authorization token for a notification channel. Channel types that support this field include: slack
   /// [password] An password for a notification channel. Channel types that support this field include: webhook_basicauth
   /// [serviceKey] An servicekey token for a notification channel. Channel types that support this field include: pagerduty
-  NotificationChannelSensitiveLabels({
+  const NotificationChannelSensitiveLabels({
     this.authToken,
     this.password,
     this.serviceKey,

@@ -15,7 +15,7 @@ class SuspendProcessArgs {
   /// Creates a new [SuspendProcessArgs].
   /// [process] Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   /// [scalingGroupId] ID of the scaling group.
-  SuspendProcessArgs({
+  const SuspendProcessArgs({
     required this.process,
     required this.scalingGroupId,
   });

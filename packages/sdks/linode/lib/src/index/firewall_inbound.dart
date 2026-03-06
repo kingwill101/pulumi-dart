@@ -26,7 +26,7 @@ class FirewallInbound {
   /// [label] Used to identify this rule. For display purposes only.
   /// [ports] A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
   /// [protocol] The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-  FirewallInbound({
+  const FirewallInbound({
     required this.action,
     this.description,
     this.ipv4s,

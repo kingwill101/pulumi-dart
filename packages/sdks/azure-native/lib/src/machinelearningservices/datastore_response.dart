@@ -57,7 +57,7 @@ class DatastoreResponse {
   /// [modifiedTime] The date and time when the datastore was last modified.
   /// [name] Name of the datastore.
   /// [tags] Tags for this datastore.
-  DatastoreResponse({
+  const DatastoreResponse({
     this.azureDataLakeSection,
     this.azureMySqlSection,
     this.azurePostgreSqlSection,

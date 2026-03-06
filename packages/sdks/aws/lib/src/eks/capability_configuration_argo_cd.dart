@@ -23,7 +23,7 @@ class CapabilityConfigurationArgoCd {
   /// [networkAccess] Network access configuration. See `network_access` below.
   /// [rbacRoleMappings] RBAC role mappings. See `rbac_role_mapping` below.
   /// [serverUrl] URL of the Argo CD server.
-  CapabilityConfigurationArgoCd({
+  const CapabilityConfigurationArgoCd({
     required this.awsIdc,
     this.namespace,
     this.networkAccess,

@@ -22,7 +22,7 @@ class GcpOrganizationalDataOrganizationResponse {
   /// [organizationName] GCP organization name
   /// [serviceAccountEmailAddress] The service account email address which represents the organization level permissions container.
   /// [workloadIdentityProviderId] The GCP workload identity provider id which represents the permissions required to auto provision security connectors
-  GcpOrganizationalDataOrganizationResponse({
+  const GcpOrganizationalDataOrganizationResponse({
     this.excludedProjectNumbers,
     required this.organizationMembershipType,
     required this.organizationName,

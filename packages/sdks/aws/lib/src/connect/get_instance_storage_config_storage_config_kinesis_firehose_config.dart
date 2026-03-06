@@ -8,7 +8,7 @@ class GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig {
 
   /// Creates a new [GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig].
   /// [firehoseArn] The Amazon Resource Name (ARN) of the delivery stream.
-  GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig({
+  const GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig({
     required this.firehoseArn,
   });
 

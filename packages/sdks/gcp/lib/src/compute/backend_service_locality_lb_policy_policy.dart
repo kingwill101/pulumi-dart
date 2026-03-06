@@ -34,7 +34,7 @@ class BackendServiceLocalityLbPolicyPolicy {
 
   /// Creates a new [BackendServiceLocalityLbPolicyPolicy].
   /// [name] The name of a locality load balancer policy to be used. The value
-  BackendServiceLocalityLbPolicyPolicy({
+  const BackendServiceLocalityLbPolicyPolicy({
     required this.name,
   });
 

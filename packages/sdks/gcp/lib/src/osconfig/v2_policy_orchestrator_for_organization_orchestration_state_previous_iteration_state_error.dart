@@ -19,7 +19,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
   /// [code] The status code, which should be an enum value of google.rpc.Code.
   /// [details] A list of messages that carry the error details.  There is a common set of
   /// [message] A developer-facing error message, which should be in English. Any
-  V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateError({
+  const V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateError({
     this.code,
     this.details,
     this.message,

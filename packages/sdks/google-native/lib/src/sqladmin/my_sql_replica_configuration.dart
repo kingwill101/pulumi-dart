@@ -39,7 +39,7 @@ class MySqlReplicaConfiguration {
   /// [sslCipher] A list of permissible ciphers to use for SSL encryption.
   /// [username] The username for the replication connection.
   /// [verifyServerCertificate] Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
-  MySqlReplicaConfiguration({
+  const MySqlReplicaConfiguration({
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,

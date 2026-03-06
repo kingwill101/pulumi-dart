@@ -13,7 +13,7 @@ class DSSEAttestationOccurrence {
   /// Creates a new [DSSEAttestationOccurrence].
   /// [envelope] If doing something security critical, make sure to verify the signatures in this metadata.
   /// [statement] Optional.
-  DSSEAttestationOccurrence({
+  const DSSEAttestationOccurrence({
     this.envelope,
     this.statement,
   });

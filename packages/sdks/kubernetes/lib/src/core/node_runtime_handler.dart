@@ -13,7 +13,7 @@ class NodeRuntimeHandler {
   /// Creates a new [NodeRuntimeHandler].
   /// [features] Supported features.
   /// [name] Runtime handler name. Empty for the default runtime handler.
-  NodeRuntimeHandler({
+  const NodeRuntimeHandler({
     this.features,
     this.name,
   });

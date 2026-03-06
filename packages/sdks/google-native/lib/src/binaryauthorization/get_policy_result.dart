@@ -18,7 +18,7 @@ class GetPolicyResult {
   /// [gkePolicy] Optional. GKE platform-specific policy.
   /// [name] The relative resource name of the Binary Authorization platform policy, in the form of `projects/*/platforms/*/policies/*`.
   /// [updateTime] Time when the policy was last updated.
-  GetPolicyResult({
+  const GetPolicyResult({
     required this.description,
     required this.gkePolicy,
     required this.name,

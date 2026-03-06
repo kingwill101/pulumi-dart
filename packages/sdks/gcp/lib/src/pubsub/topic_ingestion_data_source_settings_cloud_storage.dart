@@ -37,7 +37,7 @@ class TopicIngestionDataSourceSettingsCloudStorage {
   /// [minimumObjectCreateTime] The timestamp set in RFC3339 text format. If set, only objects with a
   /// [pubsubAvroFormat] Configuration for reading Cloud Storage data written via Cloud Storage
   /// [textFormat] Configuration for reading Cloud Storage data in text format. Each line of
-  TopicIngestionDataSourceSettingsCloudStorage({
+  const TopicIngestionDataSourceSettingsCloudStorage({
     this.avroFormat,
     required this.bucket,
     this.matchGlob,

@@ -21,7 +21,7 @@ class GetInputResult {
   /// [name] Resource name
   /// [properties] The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
   /// [type] Resource type
-  GetInputResult({
+  const GetInputResult({
     required this.azureApiVersion,
     required this.id,
     this.name,

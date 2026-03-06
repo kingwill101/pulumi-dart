@@ -22,7 +22,7 @@ class GetGatewayFileSharesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [shares] Required.
-  GetGatewayFileSharesResult({
+  const GetGatewayFileSharesResult({
     required this.gatewayId,
     required this.id,
     required this.ids,

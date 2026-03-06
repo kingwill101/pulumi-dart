@@ -12,7 +12,7 @@ class FunctionsAlwaysReadyConfigResponse {
   /// Creates a new [FunctionsAlwaysReadyConfigResponse].
   /// [instanceCount] Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
   /// [name] Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  FunctionsAlwaysReadyConfigResponse({
+  const FunctionsAlwaysReadyConfigResponse({
     this.instanceCount,
     this.name,
   });

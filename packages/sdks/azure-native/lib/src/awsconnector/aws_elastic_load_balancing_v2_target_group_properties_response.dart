@@ -79,7 +79,7 @@ class AwsElasticLoadBalancingV2TargetGroupPropertiesResponse {
   /// [targets] The targets.
   /// [unhealthyThresholdCount] The number of consecutive health check failures required before considering a target unhealthy.
   /// [vpcId] The identifier of the virtual private cloud (VPC). If the target is a Lambda function, this parameter does not apply.
-  AwsElasticLoadBalancingV2TargetGroupPropertiesResponse({
+  const AwsElasticLoadBalancingV2TargetGroupPropertiesResponse({
     this.healthCheckEnabled,
     this.healthCheckIntervalSeconds,
     this.healthCheckPath,

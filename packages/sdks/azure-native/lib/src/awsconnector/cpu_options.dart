@@ -16,7 +16,7 @@ class CpuOptions {
   /// [amdSevSnp] &lt;p&gt;Indicates whether the instance is enabled for AMD SEV-SNP. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html'&gt;AMD SEV-SNP&lt;/a&gt;.&lt;/p&gt;
   /// [coreCount] &lt;p&gt;The number of CPU cores for the instance.&lt;/p&gt;
   /// [threadsPerCore] &lt;p&gt;The number of threads per CPU core.&lt;/p&gt;
-  CpuOptions({
+  const CpuOptions({
     this.amdSevSnp,
     this.coreCount,
     this.threadsPerCore,

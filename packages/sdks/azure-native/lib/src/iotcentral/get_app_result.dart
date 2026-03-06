@@ -65,7 +65,7 @@ class GetAppResult {
   /// [tags] Resource tags.
   /// [template] The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAppResult({
+  const GetAppResult({
     required this.applicationId,
     required this.azureApiVersion,
     this.displayName,

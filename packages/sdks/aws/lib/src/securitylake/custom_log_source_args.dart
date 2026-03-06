@@ -27,7 +27,7 @@ class CustomLogSourceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceName] Specify the name for a third-party custom source.
   /// [sourceVersion] Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
-  CustomLogSourceArgs({
+  const CustomLogSourceArgs({
     required this.configuration,
     this.eventClasses,
     this.region,

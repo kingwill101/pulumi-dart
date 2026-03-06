@@ -23,7 +23,7 @@ class VirtualMachineInstancePropertiesHardwareProfile {
   /// [processors] number of processors for the virtual machine instance
   /// [virtualMachineGPUs] virtualMachineGPUs - list of gpus to be attached to the virtual machine instance
   /// [vmSize] Enum of VM Sizes
-  VirtualMachineInstancePropertiesHardwareProfile({
+  const VirtualMachineInstancePropertiesHardwareProfile({
     this.dynamicMemoryConfig,
     this.memoryMB,
     this.processors,

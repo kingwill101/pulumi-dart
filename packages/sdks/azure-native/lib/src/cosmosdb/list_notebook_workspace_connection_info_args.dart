@@ -18,7 +18,7 @@ class ListNotebookWorkspaceConnectionInfoArgs {
   /// [accountName] Cosmos DB database account name.
   /// [notebookWorkspaceName] The name of the notebook workspace resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListNotebookWorkspaceConnectionInfoArgs({
+  const ListNotebookWorkspaceConnectionInfoArgs({
     required this.accountName,
     required this.notebookWorkspaceName,
     required this.resourceGroupName,

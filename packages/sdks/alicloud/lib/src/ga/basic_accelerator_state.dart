@@ -53,7 +53,7 @@ class BasicAcceleratorState {
   /// [resourceGroupId] The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   /// [status] The status of the Basic Accelerator instance.
   /// [tags] A mapping of tags to assign to the resource.
-  BasicAcceleratorState({
+  const BasicAcceleratorState({
     this.autoPay,
     this.autoRenew,
     this.autoRenewDuration,

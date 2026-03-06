@@ -15,7 +15,7 @@ class ServiceAuthenticationConfigurationInfo {
   /// [audience] The audience url for the service
   /// [authority] The authority url for the service
   /// [smartProxyEnabled] If the SMART on FHIR proxy is enabled
-  ServiceAuthenticationConfigurationInfo({
+  const ServiceAuthenticationConfigurationInfo({
     this.audience,
     this.authority,
     this.smartProxyEnabled,

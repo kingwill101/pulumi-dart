@@ -45,7 +45,7 @@ class BillingProfileProperties {
   /// [shipTo] The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
   /// [soldTo] The address of the individual or organization that is responsible for the billing account.
   /// [tags] Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  BillingProfileProperties({
+  const BillingProfileProperties({
     this.billTo,
     this.currentPaymentTerm,
     this.displayName,

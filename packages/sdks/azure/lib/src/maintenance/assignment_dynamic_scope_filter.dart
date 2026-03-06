@@ -24,7 +24,7 @@ class AssignmentDynamicScopeFilter {
   /// [resourceTypes] Specifies a list of allowed resources. Possible values are `Microsoft.Compute/virtualMachines` and `Microsoft.HybridCompute/machines`.
   /// [tagFilter] Filter VMs by `Any` or `All` specified tags. Defaults to `Any`.
   /// [tags] One or more `tags` blocks as defined below.
-  AssignmentDynamicScopeFilter({
+  const AssignmentDynamicScopeFilter({
     this.locations,
     this.osTypes,
     this.resourceGroups,

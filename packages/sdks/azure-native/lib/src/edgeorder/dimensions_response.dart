@@ -27,7 +27,7 @@ class DimensionsResponse {
   /// [weight] Weight of the device.
   /// [weightUnit] Unit for the dimensions of weight.
   /// [width] Width of the device.
-  DimensionsResponse({
+  const DimensionsResponse({
     required this.depth,
     required this.height,
     required this.length,

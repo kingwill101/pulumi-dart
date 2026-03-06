@@ -8,7 +8,7 @@ class InterconnectAttachmentL2ForwardingGeneveHeader {
 
   /// Creates a new [InterconnectAttachmentL2ForwardingGeneveHeader].
   /// [vni] VNI is a 24-bit unique virtual network identifier.
-  InterconnectAttachmentL2ForwardingGeneveHeader({
+  const InterconnectAttachmentL2ForwardingGeneveHeader({
     this.vni,
   });
 

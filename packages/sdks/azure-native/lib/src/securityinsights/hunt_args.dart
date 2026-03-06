@@ -43,7 +43,7 @@ class HuntArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [status] The status of the hunt.
   /// [workspaceName] The name of the workspace.
-  HuntArgs({
+  const HuntArgs({
     this.attackTactics,
     this.attackTechniques,
     required this.description,

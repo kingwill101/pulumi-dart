@@ -29,7 +29,7 @@ class CommonFeatureStateResponseGkehubV1alpha {
   /// [namespaceactuation] Namespace Actuation feature state.
   /// [servicemesh] Service Mesh-specific state.
   /// [state] The "running state" of the Feature in this Hub.
-  CommonFeatureStateResponseGkehubV1alpha({
+  const CommonFeatureStateResponseGkehubV1alpha({
     required this.appdevexperience,
     required this.clusterupgrade,
     required this.fleetobservability,

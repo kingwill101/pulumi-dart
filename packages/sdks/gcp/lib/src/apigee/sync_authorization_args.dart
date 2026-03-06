@@ -18,7 +18,7 @@ class SyncAuthorizationArgs {
   /// Creates a new [SyncAuthorizationArgs].
   /// [identities] Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
   /// [name] Name of the Apigee organization.
-  SyncAuthorizationArgs({
+  const SyncAuthorizationArgs({
     required this.identities,
     this.name,
   });

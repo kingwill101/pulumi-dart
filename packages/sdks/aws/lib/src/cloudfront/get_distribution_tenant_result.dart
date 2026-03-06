@@ -48,7 +48,7 @@ class GetDistributionTenantResult {
   /// [parameters] Required.
   /// [status] Current status of the distribution tenant. `Deployed` if the
   /// [tags] Required.
-  GetDistributionTenantResult({
+  const GetDistributionTenantResult({
     required this.arn,
     required this.connectionGroupId,
     required this.customizations,

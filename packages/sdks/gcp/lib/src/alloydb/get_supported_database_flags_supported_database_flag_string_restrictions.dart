@@ -8,7 +8,7 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions {
 
   /// Creates a new [GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions].
   /// [allowedValues] The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
-  GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions({
+  const GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions({
     required this.allowedValues,
   });
 

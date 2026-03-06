@@ -15,7 +15,7 @@ class GetDomainInterfaceAddressesInterface {
   /// [addrs] List of IP addresses assigned to this interface.
   /// [hwaddr] MAC address of the interface.
   /// [name] Interface name on the host (e.g., `vnet0`).
-  GetDomainInterfaceAddressesInterface({
+  const GetDomainInterfaceAddressesInterface({
     required this.addrs,
     required this.hwaddr,
     required this.name,

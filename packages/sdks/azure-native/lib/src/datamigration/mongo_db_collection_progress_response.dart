@@ -49,7 +49,7 @@ class MongoDbCollectionProgressResponse {
   /// [state] Required.
   /// [totalBytes] The total number of document bytes on the source at the beginning of the Copying stage, or -1 if the total size was unknown
   /// [totalDocuments] The total number of documents on the source at the beginning of the Copying stage, or -1 if the total count was unknown
-  MongoDbCollectionProgressResponse({
+  const MongoDbCollectionProgressResponse({
     required this.bytesCopied,
     required this.documentsCopied,
     required this.elapsedTime,

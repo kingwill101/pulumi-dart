@@ -7,7 +7,7 @@ class GetVpcIpamsIpamOperatingRegion {
 
   /// Creates a new [GetVpcIpamsIpamOperatingRegion].
   /// [regionName] Required.
-  GetVpcIpamsIpamOperatingRegion({
+  const GetVpcIpamsIpamOperatingRegion({
     required this.regionName,
   });
 

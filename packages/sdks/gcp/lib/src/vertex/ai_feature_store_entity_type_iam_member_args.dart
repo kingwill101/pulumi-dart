@@ -37,7 +37,7 @@ class AiFeatureStoreEntityTypeIamMemberArgs {
   /// [featurestore] The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  AiFeatureStoreEntityTypeIamMemberArgs({
+  const AiFeatureStoreEntityTypeIamMemberArgs({
     this.condition,
     required this.entitytype,
     required this.featurestore,

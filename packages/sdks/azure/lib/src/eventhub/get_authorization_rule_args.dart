@@ -27,7 +27,7 @@ class GetAuthorizationRuleArgs {
   /// [namespaceName] Specifies the name of the grandparent EventHub Namespace.
   /// [resourceGroupName] The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
   /// [send] Optional.
-  GetAuthorizationRuleArgs({
+  const GetAuthorizationRuleArgs({
     required this.eventhubName,
     this.listen,
     this.manage,

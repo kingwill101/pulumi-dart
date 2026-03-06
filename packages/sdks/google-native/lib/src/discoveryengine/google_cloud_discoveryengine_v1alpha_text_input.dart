@@ -13,7 +13,7 @@ class GoogleCloudDiscoveryengineV1alphaTextInput {
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaTextInput].
   /// [context] Conversation context of the input.
   /// [input] Text input.
-  GoogleCloudDiscoveryengineV1alphaTextInput({
+  const GoogleCloudDiscoveryengineV1alphaTextInput({
     this.context,
     this.input,
   });

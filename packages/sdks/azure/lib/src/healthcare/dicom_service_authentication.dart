@@ -12,7 +12,7 @@ class DicomServiceAuthentication {
   /// Creates a new [DicomServiceAuthentication].
   /// [audiences] The intended audience to receive authentication tokens for the service. The default value is &lt;https://dicom.azurehealthcareapis.azure.com&gt;
   /// [authority] The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
-  DicomServiceAuthentication({
+  const DicomServiceAuthentication({
     this.audiences,
     this.authority,
   });

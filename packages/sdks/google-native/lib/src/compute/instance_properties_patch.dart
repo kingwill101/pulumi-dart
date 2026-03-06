@@ -12,7 +12,7 @@ class InstancePropertiesPatch {
   /// Creates a new [InstancePropertiesPatch].
   /// [labels] The label key-value pairs that you want to patch onto the instance.
   /// [metadata] The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-  InstancePropertiesPatch({
+  const InstancePropertiesPatch({
     this.labels,
     this.metadata,
   });

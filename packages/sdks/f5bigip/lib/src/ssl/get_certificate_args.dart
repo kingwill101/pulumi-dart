@@ -15,7 +15,7 @@ class GetCertificateArgs {
   /// Creates a new [GetCertificateArgs].
   /// [name] Name of the ssl_certificate
   /// [partition] partition of the ltm ssl_certificate
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.name,
     required this.partition,
   });

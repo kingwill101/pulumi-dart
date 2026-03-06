@@ -14,7 +14,7 @@ class NodeDataDisk {
   /// [category] Data disk type
   /// [performanceLevel] Performance level
   /// [size] Data disk size
-  NodeDataDisk({
+  const NodeDataDisk({
     this.category,
     this.performanceLevel,
     this.size,

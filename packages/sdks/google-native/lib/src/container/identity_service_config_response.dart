@@ -9,7 +9,7 @@ class IdentityServiceConfigResponse {
 
   /// Creates a new [IdentityServiceConfigResponse].
   /// [enabled] Whether to enable the Identity Service component
-  IdentityServiceConfigResponse({
+  const IdentityServiceConfigResponse({
     required this.enabled,
   });
 

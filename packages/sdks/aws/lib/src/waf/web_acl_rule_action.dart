@@ -8,7 +8,7 @@ class WebAclRuleAction {
 
   /// Creates a new [WebAclRuleAction].
   /// [type] valid values are: `BLOCK`, `ALLOW`, or `COUNT`
-  WebAclRuleAction({
+  const WebAclRuleAction({
     required this.type,
   });
 

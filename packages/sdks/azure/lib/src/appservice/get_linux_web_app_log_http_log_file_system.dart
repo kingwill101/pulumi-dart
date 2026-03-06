@@ -11,7 +11,7 @@ class GetLinuxWebAppLogHttpLogFileSystem {
   /// Creates a new [GetLinuxWebAppLogHttpLogFileSystem].
   /// [retentionInDays] The retention period in days.
   /// [retentionInMb] The maximum size in megabytes that log files can use.
-  GetLinuxWebAppLogHttpLogFileSystem({
+  const GetLinuxWebAppLogHttpLogFileSystem({
     required this.retentionInDays,
     required this.retentionInMb,
   });

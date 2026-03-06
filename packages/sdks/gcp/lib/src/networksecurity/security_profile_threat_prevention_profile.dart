@@ -22,7 +22,7 @@ class SecurityProfileThreatPreventionProfile {
   /// [antivirusOverrides] Defines what action to take for antivirus threats per protocol.
   /// [severityOverrides] The configuration for overriding threats actions by severity match.
   /// [threatOverrides] The configuration for overriding threats actions by threat id match.
-  SecurityProfileThreatPreventionProfile({
+  const SecurityProfileThreatPreventionProfile({
     this.antivirusOverrides,
     this.severityOverrides,
     this.threatOverrides,

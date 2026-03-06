@@ -23,7 +23,7 @@ class GetInstanceGroupArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [selfLink] The self link of the instance group. Either `name` or `self_link` must be provided.
   /// [zone] The zone of the instance group. If referencing the instance group by name
-  GetInstanceGroupArgs({
+  const GetInstanceGroupArgs({
     this.name,
     this.project,
     this.selfLink,

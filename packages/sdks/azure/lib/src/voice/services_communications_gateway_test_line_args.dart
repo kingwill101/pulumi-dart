@@ -27,7 +27,7 @@ class ServicesCommunicationsGatewayTestLineArgs {
   /// [purpose] The purpose of the Voice Services Communications Gateway Test Line. Possible values are `Automated` or `Manual`.
   /// [tags] A mapping of tags which should be assigned to the Voice Services Communications Gateway Test Line.
   /// [voiceServicesCommunicationsGatewayId] Specifies the ID of the Voice Services Communications Gateway. Changing this forces a new resource to be created.
-  ServicesCommunicationsGatewayTestLineArgs({
+  const ServicesCommunicationsGatewayTestLineArgs({
     this.location,
     this.name,
     required this.phoneNumber,

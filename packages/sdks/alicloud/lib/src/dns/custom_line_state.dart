@@ -19,7 +19,7 @@ class CustomLineState {
   /// [domainName] The Domain name.
   /// [ipSegmentLists] The IP segment list. See `ip_segment_list` below for details.
   /// [lang] The lang.
-  CustomLineState({
+  const CustomLineState({
     this.customLineName,
     this.domainName,
     this.ipSegmentLists,

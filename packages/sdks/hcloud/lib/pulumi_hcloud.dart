@@ -3,11 +3,11 @@
 import 'package:pulumi_hcloud/index.dart' as module_index;
 import 'package:pulumi_hcloud/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final Certificate = module_index.Certificate.new;
   final CertificateArgs = module_index.CertificateArgs.new;
   final CertificateState = module_index.CertificateState.new;
@@ -426,7 +426,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Hcloud = module_providers.ProviderProvider.new;
   final HcloudArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

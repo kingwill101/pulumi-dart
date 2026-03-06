@@ -27,7 +27,7 @@ class GetAuthorizationProviderResult {
   /// [name] The name of the resource
   /// [oauth2] OAuth2 settings
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAuthorizationProviderResult({
+  const GetAuthorizationProviderResult({
     required this.azureApiVersion,
     this.displayName,
     required this.id,

@@ -30,7 +30,7 @@ class EnvironmentApiRevisionDeploymentArgs {
   /// [revision] API proxy revision number to deploy.
   /// [sequencedRollout] If true, enables sequenced rollout for safe traffic switching.
   /// [serviceAccount] Optional service account the deployed proxy runs as.
-  EnvironmentApiRevisionDeploymentArgs({
+  const EnvironmentApiRevisionDeploymentArgs({
     required this.api,
     required this.environment,
     required this.orgId,

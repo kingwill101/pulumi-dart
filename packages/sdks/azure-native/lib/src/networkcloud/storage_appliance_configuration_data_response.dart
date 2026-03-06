@@ -18,7 +18,7 @@ class StorageApplianceConfigurationDataResponse {
   /// [rackSlot] The slot that storage appliance is in the rack based on the BOM configuration.
   /// [serialNumber] The serial number of the appliance.
   /// [storageApplianceName] The user-provided name for the storage appliance that will be created from this specification.
-  StorageApplianceConfigurationDataResponse({
+  const StorageApplianceConfigurationDataResponse({
     required this.adminCredentials,
     required this.rackSlot,
     required this.serialNumber,

@@ -11,7 +11,7 @@ class GetLaunchTemplatePrivateDnsNameOption {
   /// [enableResourceNameDnsARecord] Required.
   /// [enableResourceNameDnsAaaaRecord] Required.
   /// [hostnameType] Required.
-  GetLaunchTemplatePrivateDnsNameOption({
+  const GetLaunchTemplatePrivateDnsNameOption({
     required this.enableResourceNameDnsARecord,
     required this.enableResourceNameDnsAaaaRecord,
     required this.hostnameType,

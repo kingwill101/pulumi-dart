@@ -16,7 +16,7 @@ class PublicEndpointState {
   /// [connectionStringPrefix] The public network connection string prefix of the instance.
   /// [dbInstanceId] The cluster ID.
   /// [netType] Network type of the connection address. Valid values:
-  PublicEndpointState({
+  const PublicEndpointState({
     this.connectionStringPrefix,
     this.dbInstanceId,
     this.netType,

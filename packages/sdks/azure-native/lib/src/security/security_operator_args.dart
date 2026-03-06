@@ -15,7 +15,7 @@ class SecurityOperatorArgs {
   /// Creates a new [SecurityOperatorArgs].
   /// [pricingName] name of the pricing configuration
   /// [securityOperatorName] name of the securityOperator
-  SecurityOperatorArgs({
+  const SecurityOperatorArgs({
     required this.pricingName,
     this.securityOperatorName,
   });

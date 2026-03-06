@@ -12,7 +12,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret {
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret].
   /// [certificates] One or more `certificate` blocks as defined below.
   /// [keyVaultId] The ID of the Key Vault from which all Secrets should be sourced.
-  OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret({
+  const OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecret({
     required this.certificates,
     required this.keyVaultId,
   });

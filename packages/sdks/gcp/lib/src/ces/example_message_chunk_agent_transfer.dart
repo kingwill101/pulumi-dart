@@ -14,7 +14,7 @@ class ExampleMessageChunkAgentTransfer {
   /// Creates a new [ExampleMessageChunkAgentTransfer].
   /// [displayName] (Output)
   /// [targetAgent] The agent to which the conversation is being transferred. The agent will
-  ExampleMessageChunkAgentTransfer({
+  const ExampleMessageChunkAgentTransfer({
     this.displayName,
     required this.targetAgent,
   });

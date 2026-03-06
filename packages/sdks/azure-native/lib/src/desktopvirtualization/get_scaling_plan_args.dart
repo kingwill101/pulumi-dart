@@ -15,7 +15,7 @@ class GetScalingPlanArgs {
   /// Creates a new [GetScalingPlanArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scalingPlanName] The name of the scaling plan.
-  GetScalingPlanArgs({
+  const GetScalingPlanArgs({
     required this.resourceGroupName,
     required this.scalingPlanName,
   });

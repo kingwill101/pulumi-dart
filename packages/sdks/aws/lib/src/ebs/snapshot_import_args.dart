@@ -44,7 +44,7 @@ class SnapshotImportArgs {
   /// [storageTier] The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
   /// [tags] A map of tags to assign to the snapshot.
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
-  SnapshotImportArgs({
+  const SnapshotImportArgs({
     this.clientData,
     this.description,
     required this.diskContainer,

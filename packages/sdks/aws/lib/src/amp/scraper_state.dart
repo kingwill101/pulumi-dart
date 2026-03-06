@@ -42,7 +42,7 @@ class ScraperState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
-  ScraperState({
+  const ScraperState({
     this.alias,
     this.arn,
     this.destination,

@@ -11,7 +11,7 @@ class CustomRoutingListenerPortRange {
   /// Creates a new [CustomRoutingListenerPortRange].
   /// [fromPort] The first port in the range of ports, inclusive.
   /// [toPort] The last port in the range of ports, inclusive.
-  CustomRoutingListenerPortRange({
+  const CustomRoutingListenerPortRange({
     this.fromPort,
     this.toPort,
   });

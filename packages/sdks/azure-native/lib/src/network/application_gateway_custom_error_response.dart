@@ -12,7 +12,7 @@ class ApplicationGatewayCustomErrorResponse {
   /// Creates a new [ApplicationGatewayCustomErrorResponse].
   /// [customErrorPageUrl] Error page URL of the application gateway custom error.
   /// [statusCode] Status code of the application gateway custom error.
-  ApplicationGatewayCustomErrorResponse({
+  const ApplicationGatewayCustomErrorResponse({
     this.customErrorPageUrl,
     this.statusCode,
   });

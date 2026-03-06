@@ -37,7 +37,7 @@ class SpotInstanceRequestSecondaryNetworkInterface {
   /// [secondarySubnetId] ID of the secondary subnet in which to create the network interface. Forces replacement.
   /// [sourceDestCheck] Controls if traffic is routed to the instance when the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
   /// [status] Optional.
-  SpotInstanceRequestSecondaryNetworkInterface({
+  const SpotInstanceRequestSecondaryNetworkInterface({
     this.deleteOnTermination,
     this.deviceIndex,
     this.interfaceType,

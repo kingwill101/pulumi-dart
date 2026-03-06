@@ -21,7 +21,7 @@ class GetBucketObjectsResult {
   /// [keyRegex] Optional.
   /// [objects] A list of bucket objects. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetBucketObjectsResult({
+  const GetBucketObjectsResult({
     required this.bucketName,
     required this.id,
     this.keyPrefix,

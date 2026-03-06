@@ -17,7 +17,7 @@ class GetDataSourceReferencesArgs {
   /// [location] Required.
   /// [project] - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [resourceType] The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
-  GetDataSourceReferencesArgs({
+  const GetDataSourceReferencesArgs({
     required this.location,
     this.project,
     this.resourceType,

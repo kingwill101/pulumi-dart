@@ -46,7 +46,7 @@ class AzureStorageContainer {
   /// [resourceGroup] Resource group name of Recovery Services Vault.
   /// [sourceResourceId] Fully qualified ARM url.
   /// [storageAccountVersion] Storage account version.
-  AzureStorageContainer({
+  const AzureStorageContainer({
     this.acquireStorageAccountLock,
     this.backupManagementType,
     required this.containerType,

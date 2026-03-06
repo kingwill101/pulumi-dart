@@ -10,7 +10,7 @@ class GetHostedZoneIdResult {
   /// Creates a new [GetHostedZoneIdResult].
   /// [id] ID of the AWS App Runner service HostedZoneId in the selected Region.
   /// [region] Required.
-  GetHostedZoneIdResult({
+  const GetHostedZoneIdResult({
     required this.id,
     required this.region,
   });

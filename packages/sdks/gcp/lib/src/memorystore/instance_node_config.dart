@@ -9,7 +9,7 @@ class InstanceNodeConfig {
 
   /// Creates a new [InstanceNodeConfig].
   /// [sizeGb] (Output)
-  InstanceNodeConfig({
+  const InstanceNodeConfig({
     this.sizeGb,
   });
 

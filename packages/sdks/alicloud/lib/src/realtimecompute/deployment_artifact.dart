@@ -20,7 +20,7 @@ class DeploymentArtifact {
   /// [kind] Artifact type
   /// [pythonArtifact] PythonArtifact See `python_artifact` below.
   /// [sqlArtifact] SqlArtifact See `sql_artifact` below.
-  DeploymentArtifact({
+  const DeploymentArtifact({
     this.jarArtifact,
     required this.kind,
     this.pythonArtifact,

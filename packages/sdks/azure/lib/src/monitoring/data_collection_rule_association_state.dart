@@ -25,7 +25,7 @@ class DataCollectionRuleAssociationState {
   /// [description] The description of the Data Collection Rule Association.
   /// [name] The name which should be used for this Data Collection Rule Association. Changing this forces a new Data Collection Rule Association to be created. Defaults to `configurationAccessEndpoint`.
   /// [targetResourceId] The ID of the Azure Resource which to associate to a Data Collection Rule or a Data Collection Endpoint. Changing this forces a new resource to be created.
-  DataCollectionRuleAssociationState({
+  const DataCollectionRuleAssociationState({
     this.dataCollectionEndpointId,
     this.dataCollectionRuleId,
     this.description,

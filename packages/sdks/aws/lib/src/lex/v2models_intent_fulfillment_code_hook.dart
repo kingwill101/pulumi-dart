@@ -19,7 +19,7 @@ class V2modelsIntentFulfillmentCodeHook {
   /// [enabled] Whether a Lambda function should be invoked to fulfill a specific intent.
   /// [fulfillmentUpdatesSpecification] Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See `fulfillment_updates_specification`.
   /// [postFulfillmentStatusSpecification] Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See `post_fulfillment_status_specification`.
-  V2modelsIntentFulfillmentCodeHook({
+  const V2modelsIntentFulfillmentCodeHook({
     this.active,
     required this.enabled,
     this.fulfillmentUpdatesSpecification,

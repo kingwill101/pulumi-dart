@@ -19,7 +19,7 @@ class CircuitBreakerRuleResponse {
   /// [failureCondition] The conditions for tripping the circuit breaker.
   /// [name] The rule name.
   /// [tripDuration] The duration for which the circuit will be tripped.
-  CircuitBreakerRuleResponse({
+  const CircuitBreakerRuleResponse({
     this.acceptRetryAfter,
     this.failureCondition,
     this.name,

@@ -18,7 +18,7 @@ class ListIotDpsResourceKeysForKeyNameArgs {
   /// [keyName] Logical key name to get key-values for.
   /// [provisioningServiceName] Name of the provisioning service.
   /// [resourceGroupName] The name of the resource group that contains the provisioning service.
-  ListIotDpsResourceKeysForKeyNameArgs({
+  const ListIotDpsResourceKeysForKeyNameArgs({
     required this.keyName,
     required this.provisioningServiceName,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class GetFirewallTemplateArgs {
 
   /// Creates a new [GetFirewallTemplateArgs].
   /// [slug] The slug of the firewall template.
-  GetFirewallTemplateArgs({
+  const GetFirewallTemplateArgs({
     required this.slug,
   });
 

@@ -9,7 +9,7 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
 
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation].
   /// [awsLambda] Configuration for an AWS Lambda function. See AWS Lambda below for more details.
-  ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation({
+  const ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation({
     required this.awsLambda,
   });
 

@@ -23,7 +23,7 @@ class GetApiVersionSpecArtifactIamPolicyArgs {
   /// [project] Optional.
   /// [specId] Required.
   /// [versionId] Required.
-  GetApiVersionSpecArtifactIamPolicyArgs({
+  const GetApiVersionSpecArtifactIamPolicyArgs({
     required this.apiId,
     required this.artifactId,
     required this.location,

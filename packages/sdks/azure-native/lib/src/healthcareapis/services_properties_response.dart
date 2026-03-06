@@ -44,7 +44,7 @@ class ServicesPropertiesResponse {
   /// [privateEndpointConnections] The list of private endpoint connections that are set up for this resource.
   /// [provisioningState] The provisioning state.
   /// [publicNetworkAccess] Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-  ServicesPropertiesResponse({
+  const ServicesPropertiesResponse({
     this.accessPolicies,
     this.acrConfiguration,
     this.authenticationConfiguration,

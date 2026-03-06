@@ -11,7 +11,7 @@ class RouteSpecGrpcRouteTimeoutIdle {
   /// Creates a new [RouteSpecGrpcRouteTimeoutIdle].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  RouteSpecGrpcRouteTimeoutIdle({
+  const RouteSpecGrpcRouteTimeoutIdle({
     required this.unit,
     required this.value,
   });

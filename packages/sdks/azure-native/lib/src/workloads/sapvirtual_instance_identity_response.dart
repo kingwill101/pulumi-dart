@@ -13,7 +13,7 @@ class SAPVirtualInstanceIdentityResponse {
   /// Creates a new [SAPVirtualInstanceIdentityResponse].
   /// [type] The type of managed identity assigned to this resource.
   /// [userAssignedIdentities] The identities assigned to this resource by the user.
-  SAPVirtualInstanceIdentityResponse({
+  const SAPVirtualInstanceIdentityResponse({
     required this.type,
     this.userAssignedIdentities,
   });

@@ -8,7 +8,7 @@ class ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification {
 
   /// Creates a new [ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification].
   /// [allocationStrategy] Specifies the strategy to use in launching On-Demand instance fleets. Currently, the only option is `lowest-price` (the default), which launches the lowest price first.
-  ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification({
+  const ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification({
     required this.allocationStrategy,
   });
 

@@ -9,7 +9,7 @@ class ProxyUrlConfigurationResponse {
 
   /// Creates a new [ProxyUrlConfigurationResponse].
   /// [proxyUrl] Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
-  ProxyUrlConfigurationResponse({
+  const ProxyUrlConfigurationResponse({
     this.proxyUrl,
   });
 

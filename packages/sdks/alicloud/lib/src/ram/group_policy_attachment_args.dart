@@ -20,7 +20,7 @@ class GroupPolicyAttachmentArgs {
   /// [groupName] The name of the group.
   /// [policyName] The name of the policy.
   /// [policyType] Policy type.
-  GroupPolicyAttachmentArgs({
+  const GroupPolicyAttachmentArgs({
     required this.groupName,
     required this.policyName,
     required this.policyType,

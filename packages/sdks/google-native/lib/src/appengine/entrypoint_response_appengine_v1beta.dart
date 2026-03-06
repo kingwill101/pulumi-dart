@@ -9,7 +9,7 @@ class EntrypointResponseAppengineV1beta {
 
   /// Creates a new [EntrypointResponseAppengineV1beta].
   /// [shell] The format should be a shell command that can be fed to bash -c.
-  EntrypointResponseAppengineV1beta({
+  const EntrypointResponseAppengineV1beta({
     required this.shell,
   });
 

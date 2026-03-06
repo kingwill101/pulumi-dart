@@ -17,7 +17,7 @@ class AS2OneWayAgreement {
   /// [protocolSettings] The AS2 protocol settings.
   /// [receiverBusinessIdentity] The receiver business identity
   /// [senderBusinessIdentity] The sender business identity
-  AS2OneWayAgreement({
+  const AS2OneWayAgreement({
     required this.protocolSettings,
     required this.receiverBusinessIdentity,
     required this.senderBusinessIdentity,

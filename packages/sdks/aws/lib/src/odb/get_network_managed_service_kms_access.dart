@@ -14,7 +14,7 @@ class GetNetworkManagedServiceKmsAccess {
   /// [ipv4Addresses] Required.
   /// [kmsPolicyDocument] Required.
   /// [status] The status of the network resource.
-  GetNetworkManagedServiceKmsAccess({
+  const GetNetworkManagedServiceKmsAccess({
     required this.domainName,
     required this.ipv4Addresses,
     required this.kmsPolicyDocument,

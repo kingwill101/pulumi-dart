@@ -20,7 +20,7 @@ class GetVpcIpamPoolCidrsResult {
   /// [ipamPoolCidrs] The CIDRs provisioned into the IPAM pool, described below.
   /// [ipamPoolId] Required.
   /// [region] Required.
-  GetVpcIpamPoolCidrsResult({
+  const GetVpcIpamPoolCidrsResult({
     this.filters,
     required this.id,
     required this.ipamPoolCidrs,

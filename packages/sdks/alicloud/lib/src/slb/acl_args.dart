@@ -25,7 +25,7 @@ class AclArgs {
   /// [name] Name of the access control list.
   /// [resourceGroupId] Resource group ID.
   /// [tags] A mapping of tags to assign to the resource.
-  AclArgs({
+  const AclArgs({
     this.entryLists,
     this.ipVersion,
     this.name,

@@ -26,7 +26,7 @@ class DataStoreDocumentProcessingConfig {
   /// [defaultParsingConfig] Configurations for default Document parser. If not specified, this resource
   /// [name] (Output)
   /// [parsingConfigOverrides] Map from file type to override the default parsing configuration based on the file type. Supported keys:
-  DataStoreDocumentProcessingConfig({
+  const DataStoreDocumentProcessingConfig({
     this.chunkingConfig,
     this.defaultParsingConfig,
     this.name,

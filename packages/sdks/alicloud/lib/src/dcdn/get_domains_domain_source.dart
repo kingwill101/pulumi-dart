@@ -23,7 +23,7 @@ class GetDomainsDomainSource {
   /// [priority] The priority of the origin if multiple origins are specified.
   /// [type] The type of the origin. Valid values:
   /// [weight] The weight of the origin if multiple origins are specified.
-  GetDomainsDomainSource({
+  const GetDomainsDomainSource({
     required this.content,
     required this.enabled,
     required this.port,

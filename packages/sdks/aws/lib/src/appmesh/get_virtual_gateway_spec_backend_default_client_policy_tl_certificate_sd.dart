@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd {
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd].
   /// [secretName] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd({
     required this.secretName,
   });
 

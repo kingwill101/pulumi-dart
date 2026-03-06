@@ -21,7 +21,7 @@ class TunnelArgs {
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
   /// [tunnelName] The name of the OTS tunnel. If changed, a new tunnel would be created.
   /// [tunnelType] The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
-  TunnelArgs({
+  const TunnelArgs({
     required this.instanceName,
     required this.tableName,
     required this.tunnelName,

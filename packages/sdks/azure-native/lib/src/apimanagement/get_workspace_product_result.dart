@@ -38,7 +38,7 @@ class GetWorkspaceProductResult {
   /// [subscriptionsLimit] Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false.
   /// [terms] Product terms of use. Developers trying to subscribe to the product will be presented and required to accept these terms before they can complete the subscription process.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceProductResult({
+  const GetWorkspaceProductResult({
     this.approvalRequired,
     required this.azureApiVersion,
     this.description,

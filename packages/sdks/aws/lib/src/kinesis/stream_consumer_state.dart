@@ -25,7 +25,7 @@ class StreamConsumerState {
   /// [streamArn] Amazon Resource Name (ARN) of the data stream the consumer is registered with.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  StreamConsumerState({
+  const StreamConsumerState({
     this.arn,
     this.creationTimestamp,
     this.name,

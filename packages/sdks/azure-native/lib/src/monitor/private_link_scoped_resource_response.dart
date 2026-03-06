@@ -11,7 +11,7 @@ class PrivateLinkScopedResourceResponse {
   /// Creates a new [PrivateLinkScopedResourceResponse].
   /// [resourceId] The resourceId of the Azure Monitor Private Link Scope Scoped Resource through which this DCE is associated with a Azure Monitor Private Link Scope.
   /// [scopeId] The immutableId of the Azure Monitor Private Link Scope Resource to which the association is.
-  PrivateLinkScopedResourceResponse({
+  const PrivateLinkScopedResourceResponse({
     this.resourceId,
     this.scopeId,
   });

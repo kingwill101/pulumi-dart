@@ -8,7 +8,7 @@ class ServiceMeshMeshConfigKialiRamOauthConfig {
 
   /// Creates a new [ServiceMeshMeshConfigKialiRamOauthConfig].
   /// [redirectUris] The redirect Uri provided to the RAM OAuth application. This needs to be the access address of the mesh topology service. When not provided, the redirect Uri will be automatically inferred based on the ServerConfig or the CLB address of the mesh topology integration.
-  ServiceMeshMeshConfigKialiRamOauthConfig({
+  const ServiceMeshMeshConfigKialiRamOauthConfig({
     this.redirectUris,
   });
 

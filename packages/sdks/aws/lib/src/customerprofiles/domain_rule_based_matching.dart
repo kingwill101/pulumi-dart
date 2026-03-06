@@ -32,7 +32,7 @@ class DomainRuleBasedMatching {
   /// [maxAllowedRuleLevelForMatching] Indicates the maximum allowed rule level for matching.
   /// [maxAllowedRuleLevelForMerging] Indicates the maximum allowed rule level for merging.
   /// [status] Optional.
-  DomainRuleBasedMatching({
+  const DomainRuleBasedMatching({
     this.attributeTypesSelector,
     this.conflictResolution,
     required this.enabled,

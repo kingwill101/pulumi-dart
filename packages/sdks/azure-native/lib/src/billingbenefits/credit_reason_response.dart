@@ -12,7 +12,7 @@ class CreditReasonResponse {
   /// Creates a new [CreditReasonResponse].
   /// [code] The reason code for credit.
   /// [description] The free string description of the credit.
-  CreditReasonResponse({
+  const CreditReasonResponse({
     required this.code,
     required this.description,
   });

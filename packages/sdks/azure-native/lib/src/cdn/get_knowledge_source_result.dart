@@ -39,7 +39,7 @@ class GetKnowledgeSourceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updateFrequency] Specifies the units of time for scheduling update intervals for the knowledge source.
   /// [url] Endpoint or location of the knowledge source.
-  GetKnowledgeSourceResult({
+  const GetKnowledgeSourceResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

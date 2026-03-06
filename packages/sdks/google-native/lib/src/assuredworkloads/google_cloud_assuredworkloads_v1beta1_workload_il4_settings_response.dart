@@ -10,7 +10,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse {
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.
-  GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse({
+  const GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse({
     required this.kmsSettings,
   });
 

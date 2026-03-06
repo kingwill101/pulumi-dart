@@ -13,7 +13,7 @@ class SourceAuth {
   /// Creates a new [SourceAuth].
   /// [resource] &lt;p&gt;The resource value that applies to the specified authorization type.&lt;/p&gt;
   /// [type] &lt;p&gt;The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.&lt;/p&gt;
-  SourceAuth({
+  const SourceAuth({
     this.resource,
     this.type,
   });

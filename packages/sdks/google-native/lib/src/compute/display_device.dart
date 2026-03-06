@@ -9,7 +9,7 @@ class DisplayDevice {
 
   /// Creates a new [DisplayDevice].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDevice({
+  const DisplayDevice({
     this.enableDisplay,
   });
 

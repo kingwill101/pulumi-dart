@@ -18,7 +18,7 @@ class GetRegistryEnvironmentContainerArgs {
   /// [environmentName] Container name. This is case-sensitive.
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRegistryEnvironmentContainerArgs({
+  const GetRegistryEnvironmentContainerArgs({
     required this.environmentName,
     required this.registryName,
     required this.resourceGroupName,

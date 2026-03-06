@@ -8,7 +8,7 @@ class WorkflowAccessControlAction {
 
   /// Creates a new [WorkflowAccessControlAction].
   /// [allowedCallerIpAddressRanges] A list of the allowed caller IP address ranges.
-  WorkflowAccessControlAction({
+  const WorkflowAccessControlAction({
     required this.allowedCallerIpAddressRanges,
   });
 

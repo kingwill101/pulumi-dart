@@ -11,7 +11,7 @@ class NetworkForwardNatAddress {
   /// Creates a new [NetworkForwardNatAddress].
   /// [end] Sets the ending address for the NAT range.
   /// [start] Specifies the starting address for the NAT range.
-  NetworkForwardNatAddress({
+  const NetworkForwardNatAddress({
     required this.end,
     required this.start,
   });

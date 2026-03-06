@@ -15,7 +15,7 @@ class VirtualApplianceSkuProperties {
   /// [bundledScaleUnit] Virtual Appliance Scale Unit.
   /// [marketPlaceVersion] Virtual Appliance Version.
   /// [vendor] Virtual Appliance Vendor.
-  VirtualApplianceSkuProperties({
+  const VirtualApplianceSkuProperties({
     this.bundledScaleUnit,
     this.marketPlaceVersion,
     this.vendor,

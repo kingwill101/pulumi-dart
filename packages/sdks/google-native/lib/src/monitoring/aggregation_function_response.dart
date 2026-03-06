@@ -13,7 +13,7 @@ class AggregationFunctionResponse {
   /// Creates a new [AggregationFunctionResponse].
   /// [parameters] Optional. Parameters applied to the aggregation function. Only used for functions that require them.
   /// [type] The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
-  AggregationFunctionResponse({
+  const AggregationFunctionResponse({
     required this.parameters,
     required this.type,
   });

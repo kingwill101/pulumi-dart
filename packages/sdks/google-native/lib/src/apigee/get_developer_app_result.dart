@@ -47,7 +47,7 @@ class GetDeveloperAppResult {
   /// [name] Name of the developer app.
   /// [scopes] Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
   /// [status] Status of the credential. Valid values include `approved` or `revoked`.
-  GetDeveloperAppResult({
+  const GetDeveloperAppResult({
     required this.apiProducts,
     required this.appFamily,
     required this.appId,

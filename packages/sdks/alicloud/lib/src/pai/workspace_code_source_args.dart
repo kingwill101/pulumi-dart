@@ -41,7 +41,7 @@ class WorkspaceCodeSourceArgs {
   /// [displayName] Code source configuration name.
   /// [mountPath] The local Mount Directory of the code.
   /// [workspaceId] The ID of the workspace.
-  WorkspaceCodeSourceArgs({
+  const WorkspaceCodeSourceArgs({
     required this.accessibility,
     this.codeBranch,
     this.codeCommit,

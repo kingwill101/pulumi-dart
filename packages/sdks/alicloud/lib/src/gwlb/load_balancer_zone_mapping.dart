@@ -15,7 +15,7 @@ class LoadBalancerZoneMapping {
   /// [loadBalancerAddresses] The information about the IP addresses used by the GWLB instance.
   /// [vswitchId] The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
   /// [zoneId] The zone ID. You can call the DescribeZones operation to query the most recent zone list.
-  LoadBalancerZoneMapping({
+  const LoadBalancerZoneMapping({
     this.loadBalancerAddresses,
     required this.vswitchId,
     required this.zoneId,

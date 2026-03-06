@@ -33,7 +33,7 @@ class OnlineEndpoint {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [publicNetworkAccess] Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
   /// [traffic] Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
-  OnlineEndpoint({
+  const OnlineEndpoint({
     required this.authMode,
     this.compute,
     this.description,

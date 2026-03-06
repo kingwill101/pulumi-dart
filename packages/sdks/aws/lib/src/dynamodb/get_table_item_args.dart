@@ -27,7 +27,7 @@ class GetTableItemArgs {
   /// [projectionExpression] A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] The name or ARN of the table containing the requested item.
-  GetTableItemArgs({
+  const GetTableItemArgs({
     this.expressionAttributeNames,
     required this.key,
     this.projectionExpression,

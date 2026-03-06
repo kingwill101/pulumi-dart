@@ -27,7 +27,7 @@ class GetAggregateCompliancePacksArgs {
   /// [nameRegex] A regex string to filter results by Aggregate Compliance Pack name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
-  GetAggregateCompliancePacksArgs({
+  const GetAggregateCompliancePacksArgs({
     required this.aggregatorId,
     this.enableDetails,
     this.ids,

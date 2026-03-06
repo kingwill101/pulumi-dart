@@ -21,7 +21,7 @@ class GetStudentArgs {
   /// [billingProfileName] The ID that uniquely identifies a billing profile.
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
   /// [studentAlias] Student alias.
-  GetStudentArgs({
+  const GetStudentArgs({
     required this.billingAccountName,
     required this.billingProfileName,
     required this.invoiceSectionName,

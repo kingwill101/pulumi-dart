@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] Name of the private endpoint connection associated with the key vault.
   /// [resourceGroupName] Name of the resource group that contains the key vault.
   /// [vaultName] The name of the key vault.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.vaultName,

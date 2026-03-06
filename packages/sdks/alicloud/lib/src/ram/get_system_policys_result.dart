@@ -23,7 +23,7 @@ class GetSystemPolicysResult {
   /// [names] A list of name of System Policys.
   /// [outputFile] Optional.
   /// [policys] A list of System Policy Entries. Each element contains the following attributes:
-  GetSystemPolicysResult({
+  const GetSystemPolicysResult({
     required this.id,
     required this.ids,
     this.nameRegex,

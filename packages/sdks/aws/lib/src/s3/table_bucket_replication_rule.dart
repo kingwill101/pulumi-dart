@@ -9,7 +9,7 @@ class TableBucketReplicationRule {
 
   /// Creates a new [TableBucketReplicationRule].
   /// [destinations] Replication destination. See Destination below for more details.
-  TableBucketReplicationRule({
+  const TableBucketReplicationRule({
     required this.destinations,
   });
 

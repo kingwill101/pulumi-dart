@@ -14,7 +14,7 @@ class Service {
   /// Creates a new [Service].
   /// [persistence] Persistence options to all pipelines in the instance.
   /// [pipelines] Pipelines belonging to a given pipeline group.
-  Service({
+  const Service({
     this.persistence,
     required this.pipelines,
   });

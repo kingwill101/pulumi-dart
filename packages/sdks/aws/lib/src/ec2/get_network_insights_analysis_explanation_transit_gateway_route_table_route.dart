@@ -19,7 +19,7 @@ class GetNetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute {
   /// [resourceType] Required.
   /// [routeOrigin] Required.
   /// [state] Required.
-  GetNetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute({
+  const GetNetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute({
     required this.attachmentId,
     required this.destinationCidr,
     required this.prefixListId,

@@ -12,7 +12,7 @@ class ScalingConfigResponse {
   /// Creates a new [ScalingConfigResponse].
   /// [instanceSize] An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
   /// [scalingFactor] Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
-  ScalingConfigResponse({
+  const ScalingConfigResponse({
     required this.instanceSize,
     required this.scalingFactor,
   });

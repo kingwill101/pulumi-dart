@@ -44,7 +44,7 @@ class NetworkManagerAdminRuleArgs {
   /// [protocol] Specifies which network protocol this Network Manager Admin Rule applies to. Possible values are `Ah`, `Any`, `Esp`, `Icmp`, `Tcp`, and `Udp`.
   /// [sourcePortRanges] A list of string specifies the source port ranges. Specify one or more single port number or port ranges such as `1024-65535`. Use `*` to specify any port.
   /// [sources] One or more `source` blocks as defined below.
-  NetworkManagerAdminRuleArgs({
+  const NetworkManagerAdminRuleArgs({
     required this.action,
     required this.adminRuleCollectionId,
     this.description,

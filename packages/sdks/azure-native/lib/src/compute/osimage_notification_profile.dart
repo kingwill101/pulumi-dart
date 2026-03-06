@@ -11,7 +11,7 @@ class OSImageNotificationProfile {
   /// Creates a new [OSImageNotificationProfile].
   /// [enable] Specifies whether the OS Image Scheduled event is enabled or disabled.
   /// [notBeforeTimeout] Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
-  OSImageNotificationProfile({
+  const OSImageNotificationProfile({
     this.enable,
     this.notBeforeTimeout,
   });

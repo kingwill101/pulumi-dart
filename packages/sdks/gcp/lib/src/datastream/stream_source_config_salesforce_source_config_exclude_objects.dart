@@ -10,7 +10,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjects {
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigExcludeObjects].
   /// [objects] Salesforce objects in data source.
-  StreamSourceConfigSalesforceSourceConfigExcludeObjects({
+  const StreamSourceConfigSalesforceSourceConfigExcludeObjects({
     required this.objects,
   });
 

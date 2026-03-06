@@ -9,7 +9,7 @@ class GetClusterNotificationConfig {
 
   /// Creates a new [GetClusterNotificationConfig].
   /// [pubsubs] Notification config for Cloud Pub/Sub
-  GetClusterNotificationConfig({
+  const GetClusterNotificationConfig({
     required this.pubsubs,
   });
 

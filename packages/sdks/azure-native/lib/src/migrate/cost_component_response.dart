@@ -15,7 +15,7 @@ class CostComponentResponse {
   /// [description] The textual description of the component.
   /// [name] Gets the name of the component.
   /// [value] The value of the component.
-  CostComponentResponse({
+  const CostComponentResponse({
     this.description,
     required this.name,
     this.value,

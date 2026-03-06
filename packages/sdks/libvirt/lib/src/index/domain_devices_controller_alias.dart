@@ -8,7 +8,7 @@ class DomainDevicesControllerAlias {
 
   /// Creates a new [DomainDevicesControllerAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesControllerAlias({
+  const DomainDevicesControllerAlias({
     required this.name,
   });
 

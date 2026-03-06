@@ -8,7 +8,7 @@ class ApiEventConfigDefaultSubscribeAuthMode {
 
   /// Creates a new [ApiEventConfigDefaultSubscribeAuthMode].
   /// [authType] Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
-  ApiEventConfigDefaultSubscribeAuthMode({
+  const ApiEventConfigDefaultSubscribeAuthMode({
     required this.authType,
   });
 

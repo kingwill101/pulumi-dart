@@ -42,7 +42,7 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
   /// [requestedOptions] The configuration used for this job.
   /// [requestedPrivacyMetric] Privacy metric to compute.
   /// [requestedSourceTable] Input dataset to compute metrics over.
-  GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse({
+  const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse({
     required this.categoricalStatsResult,
     required this.deltaPresenceEstimationResult,
     required this.kAnonymityResult,

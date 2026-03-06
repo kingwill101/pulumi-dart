@@ -23,7 +23,7 @@ class IAMBindingState {
   /// [members] A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
   /// [orgId] The numeric ID of the organization in which you want to create a custom role.
   /// [role] The role that should be applied. Only one
-  IAMBindingState({
+  const IAMBindingState({
     this.condition,
     this.etag,
     this.members,

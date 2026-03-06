@@ -125,7 +125,7 @@ class VPNTunnelState {
   /// [tunnelId] The unique identifier for the resource. This identifier is defined by the server.
   /// [vpnGateway] URL of the VPN gateway with which this VPN tunnel is associated.
   /// [vpnGatewayInterface] The interface ID of the VPN gateway with which this VPN tunnel is associated.
-  VPNTunnelState({
+  const VPNTunnelState({
     this.cipherSuite,
     this.creationTimestamp,
     this.description,

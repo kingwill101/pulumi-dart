@@ -14,7 +14,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3ConversationTurnResponse].
   /// [userInput] The user input.
   /// [virtualAgentOutput] The virtual agent output.
-  GoogleCloudDialogflowCxV3ConversationTurnResponse({
+  const GoogleCloudDialogflowCxV3ConversationTurnResponse({
     required this.userInput,
     required this.virtualAgentOutput,
   });

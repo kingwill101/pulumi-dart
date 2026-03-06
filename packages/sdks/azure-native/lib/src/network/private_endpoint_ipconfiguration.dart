@@ -18,7 +18,7 @@ class PrivateEndpointIPConfiguration {
   /// [memberName] The member name of a group obtained from the remote resource that this private endpoint should connect to.
   /// [name] The name of the resource that is unique within a resource group.
   /// [privateIPAddress] A private ip address obtained from the private endpoint's subnet.
-  PrivateEndpointIPConfiguration({
+  const PrivateEndpointIPConfiguration({
     this.groupId,
     this.memberName,
     this.name,

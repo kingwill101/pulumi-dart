@@ -34,7 +34,7 @@ class ManagementServerState {
   /// [oauth2ClientId] The oauth2ClientId of management console.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of management server (management console).
-  ManagementServerState({
+  const ManagementServerState({
     this.location,
     this.managementUris,
     this.name,

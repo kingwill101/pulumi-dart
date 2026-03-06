@@ -12,7 +12,7 @@ class BucketDataRedundancyTransitionArgs {
 
   /// Creates a new [BucketDataRedundancyTransitionArgs].
   /// [bucket] Storage space name.
-  BucketDataRedundancyTransitionArgs({
+  const BucketDataRedundancyTransitionArgs({
     required this.bucket,
   });
 

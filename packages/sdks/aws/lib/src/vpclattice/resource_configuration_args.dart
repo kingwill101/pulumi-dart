@@ -51,7 +51,7 @@ class ResourceConfigurationArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [type] Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
-  ResourceConfigurationArgs({
+  const ResourceConfigurationArgs({
     this.allowAssociationToShareableServiceNetwork,
     this.customDomainName,
     this.domainVerificationId,

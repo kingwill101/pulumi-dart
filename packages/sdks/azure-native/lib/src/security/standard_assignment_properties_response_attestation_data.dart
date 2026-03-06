@@ -20,7 +20,7 @@ class StandardAssignmentPropertiesResponseAttestationData {
   /// [complianceDate] Attestation compliance date
   /// [complianceState] Attest category of this assignment
   /// [evidence] Array of links to attestation evidence
-  StandardAssignmentPropertiesResponseAttestationData({
+  const StandardAssignmentPropertiesResponseAttestationData({
     this.assignedAssessment,
     required this.complianceDate,
     this.complianceState,

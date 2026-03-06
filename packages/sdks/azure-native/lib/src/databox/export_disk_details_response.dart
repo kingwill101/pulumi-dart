@@ -15,7 +15,7 @@ class ExportDiskDetailsResponse {
   /// [backupManifestCloudPath] Path to backed up manifest, only returned if enableManifestBackup is true.
   /// [manifestFile] The relative path of the manifest file on the disk.
   /// [manifestHash] The Base16-encoded MD5 hash of the manifest file on the disk.
-  ExportDiskDetailsResponse({
+  const ExportDiskDetailsResponse({
     required this.backupManifestCloudPath,
     required this.manifestFile,
     required this.manifestHash,

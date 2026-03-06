@@ -25,7 +25,7 @@ class DeploymentWithOSConfiguration {
   /// [infrastructureConfiguration] The infrastructure configuration.
   /// [osSapConfiguration] The OS and SAP configuration.
   /// [softwareConfiguration] The software configuration.
-  DeploymentWithOSConfiguration({
+  const DeploymentWithOSConfiguration({
     this.appLocation,
     required this.configurationType,
     this.infrastructureConfiguration,

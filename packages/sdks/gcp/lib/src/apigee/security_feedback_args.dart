@@ -35,7 +35,7 @@ class SecurityFeedbackArgs {
   /// [feedbackType] The type of feedback being submitted.
   /// [orgId] The Apigee Organization associated with the Apigee Security Feedback,
   /// [reason] The reason for the feedback.
-  SecurityFeedbackArgs({
+  const SecurityFeedbackArgs({
     this.comment,
     this.displayName,
     required this.feedbackContexts,

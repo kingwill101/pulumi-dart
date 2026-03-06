@@ -43,7 +43,7 @@ class ReservedIpAssignmentState {
   /// [subnetMask] The mask that separates host bits from network bits for this address.
   /// [type] The type of IP address.
   /// [vpcNat11s] Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
-  ReservedIpAssignmentState({
+  const ReservedIpAssignmentState({
     this.address,
     this.applyImmediately,
     this.gateway,

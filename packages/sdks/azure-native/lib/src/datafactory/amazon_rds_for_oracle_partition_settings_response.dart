@@ -18,7 +18,7 @@ class AmazonRdsForOraclePartitionSettingsResponse {
   /// [partitionLowerBound] The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   /// [partitionNames] Names of the physical partitions of AmazonRdsForOracle table.
   /// [partitionUpperBound] The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  AmazonRdsForOraclePartitionSettingsResponse({
+  const AmazonRdsForOraclePartitionSettingsResponse({
     this.partitionColumnName,
     this.partitionLowerBound,
     this.partitionNames,

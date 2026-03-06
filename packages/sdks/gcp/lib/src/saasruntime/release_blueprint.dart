@@ -15,7 +15,7 @@ class ReleaseBlueprint {
   /// [engine] Optional.
   /// [package] URI to a blueprint used by the Unit (required unless unitKind or release is
   /// [version] (Output)
-  ReleaseBlueprint({
+  const ReleaseBlueprint({
     this.engine,
     this.package,
     this.version,

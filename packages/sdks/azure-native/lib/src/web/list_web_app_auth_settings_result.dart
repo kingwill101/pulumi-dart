@@ -183,7 +183,7 @@ class ListWebAppAuthSettingsResult {
   /// [type] Resource type.
   /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app.
   /// [validateIssuer] Gets a value indicating whether the issuer should be a valid HTTPS url and be validated as such.
-  ListWebAppAuthSettingsResult({
+  const ListWebAppAuthSettingsResult({
     this.aadClaimsAuthorization,
     this.additionalLoginParams,
     this.allowedAudiences,

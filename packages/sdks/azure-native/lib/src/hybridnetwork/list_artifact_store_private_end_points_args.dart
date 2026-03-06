@@ -18,7 +18,7 @@ class ListArtifactStorePrivateEndPointsArgs {
   /// [artifactStoreName] The name of the artifact store.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListArtifactStorePrivateEndPointsArgs({
+  const ListArtifactStorePrivateEndPointsArgs({
     required this.artifactStoreName,
     required this.publisherName,
     required this.resourceGroupName,

@@ -43,7 +43,7 @@ class MessageHealthcareV1beta1Args {
   /// [schematizedData] The parsed version of the raw message data schematized according to this store's schemas and type definitions.
   /// [sendFacility] The hospital that this message came from. MSH-4.
   /// [sendTime] The datetime the sending application sent this message. MSH-7.
-  MessageHealthcareV1beta1Args({
+  const MessageHealthcareV1beta1Args({
     this.data,
     required this.datasetId,
     required this.hl7V2StoreId,

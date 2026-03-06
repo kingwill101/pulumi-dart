@@ -37,7 +37,7 @@ class KeystoresAliasesPkcs12State {
   /// [orgId] Organization ID associated with the alias, without organization/ prefix
   /// [password] Password for the PKCS12 file if it's encrypted
   /// [type] Optional.Type of Alias
-  KeystoresAliasesPkcs12State({
+  const KeystoresAliasesPkcs12State({
     this.alias,
     this.certsInfos,
     this.environment,

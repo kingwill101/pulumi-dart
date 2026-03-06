@@ -21,7 +21,7 @@ class SmsChannelPropertiesResponse {
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [isValidated] Whether this channel is validated for the bot
   /// [phone] The Sms phone
-  SmsChannelPropertiesResponse({
+  const SmsChannelPropertiesResponse({
     required this.accountSID,
     this.authToken,
     required this.isEnabled,

@@ -12,7 +12,7 @@ class InstanceGceSetupContainerImage {
   /// Creates a new [InstanceGceSetupContainerImage].
   /// [repository] The path to the container image repository.
   /// [tag] The tag of the container image. If not specified, this defaults to the latest tag.
-  InstanceGceSetupContainerImage({
+  const InstanceGceSetupContainerImage({
     required this.repository,
     this.tag,
   });

@@ -13,7 +13,7 @@ class NetworkProfileResponse {
   /// Creates a new [NetworkProfileResponse].
   /// [circuitId] Specifies the circuit id for connecting to express route.
   /// [networkInterfaces] Specifies the network interfaces for the Azure Bare Metal Instance.
-  NetworkProfileResponse({
+  const NetworkProfileResponse({
     this.circuitId,
     this.networkInterfaces,
   });

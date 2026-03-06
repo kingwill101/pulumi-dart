@@ -29,7 +29,7 @@ class DatabaseReplicaArgs {
   /// [size] Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
   /// [storageSizeMib] Optional.
   /// [tags] A list of tag names to be applied to the database replica.
-  DatabaseReplicaArgs({
+  const DatabaseReplicaArgs({
     required this.clusterId,
     this.name,
     this.privateNetworkUuid,

@@ -17,7 +17,7 @@ class BucketMetadataConfigurationMetadataConfiguration {
   /// [destinations] Destination information for the S3 Metadata configuration.
   /// [inventoryTableConfiguration] Inventory table configuration. See `inventory_table_configuration` Block for details.
   /// [journalTableConfiguration] Journal table configuration. See `journal_table_configuration` Block for details.
-  BucketMetadataConfigurationMetadataConfiguration({
+  const BucketMetadataConfigurationMetadataConfiguration({
     this.destinations,
     required this.inventoryTableConfiguration,
     required this.journalTableConfiguration,

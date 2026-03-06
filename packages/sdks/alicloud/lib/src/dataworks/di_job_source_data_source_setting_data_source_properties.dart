@@ -11,7 +11,7 @@ class DiJobSourceDataSourceSettingDataSourceProperties {
   /// Creates a new [DiJobSourceDataSourceSettingDataSourceProperties].
   /// [encoding] Data Source Encoding
   /// [timezone] Data Source Time Zone
-  DiJobSourceDataSourceSettingDataSourceProperties({
+  const DiJobSourceDataSourceSettingDataSourceProperties({
     this.encoding,
     this.timezone,
   });

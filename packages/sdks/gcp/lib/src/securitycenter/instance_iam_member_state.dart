@@ -25,7 +25,7 @@ class InstanceIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the Data Fusion instance.
   /// [role] Optional.
-  InstanceIamMemberState({
+  const InstanceIamMemberState({
     this.condition,
     this.etag,
     this.member,

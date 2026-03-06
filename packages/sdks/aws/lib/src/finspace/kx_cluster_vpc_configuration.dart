@@ -17,7 +17,7 @@ class KxClusterVpcConfiguration {
   /// [securityGroupIds] Unique identifier of the VPC security group applied to the VPC endpoint ENI for the cluster.
   /// [subnetIds] Required.
   /// [vpcId] Identifier of the VPC endpoint
-  KxClusterVpcConfiguration({
+  const KxClusterVpcConfiguration({
     required this.ipAddressType,
     required this.securityGroupIds,
     required this.subnetIds,

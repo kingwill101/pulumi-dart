@@ -30,7 +30,7 @@ class SqlDatabaseGetPropertiesResponseResource {
   /// [rid] A system generated property. A unique identifier.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
   /// [users] A system generated property that specifies the addressable path of the users resource.
-  SqlDatabaseGetPropertiesResponseResource({
+  const SqlDatabaseGetPropertiesResponseResource({
     this.colls,
     this.createMode,
     required this.etag,

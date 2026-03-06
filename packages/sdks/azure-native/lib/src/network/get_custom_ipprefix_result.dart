@@ -80,7 +80,7 @@ class GetCustomIPPrefixResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  GetCustomIPPrefixResult({
+  const GetCustomIPPrefixResult({
     this.asn,
     this.authorizationMessage,
     required this.azureApiVersion,

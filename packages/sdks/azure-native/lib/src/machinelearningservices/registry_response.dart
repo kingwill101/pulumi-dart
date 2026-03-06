@@ -35,7 +35,7 @@ class RegistryResponse {
   /// [publicNetworkAccess] Is the Registry accessible from the internet?
   /// [regionDetails] Details of each region the registry is in
   /// [registryPrivateEndpointConnections] Private endpoint connections info used for pending connections in private link portal
-  RegistryResponse({
+  const RegistryResponse({
     this.discoveryUrl,
     this.intellectualPropertyPublisher,
     this.managedResourceGroup,

@@ -15,7 +15,7 @@ class StateHistoryResponse {
   /// [state] The state of the batch at this point in history.
   /// [stateMessage] Details about the state at this point in history.
   /// [stateStartTime] The time when the batch entered the historical state.
-  StateHistoryResponse({
+  const StateHistoryResponse({
     required this.state,
     required this.stateMessage,
     required this.stateStartTime,

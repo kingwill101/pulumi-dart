@@ -33,7 +33,7 @@ class RaiExternalSafetyProviderSchemaPropertiesResponse {
   /// [providerName] Name of the safety provider.
   /// [secretName] The name of the secret in Key Vault that contains the api key to access the webhook.
   /// [url] Webhook URL for the safety provider.
-  RaiExternalSafetyProviderSchemaPropertiesResponse({
+  const RaiExternalSafetyProviderSchemaPropertiesResponse({
     required this.createdAt,
     this.keyVaultUri,
     required this.lastModifiedAt,

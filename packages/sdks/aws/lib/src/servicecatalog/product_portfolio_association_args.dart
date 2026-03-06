@@ -26,7 +26,7 @@ class ProductPortfolioAssociationArgs {
   /// [productId] Product identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourcePortfolioId] Identifier of the source portfolio.
-  ProductPortfolioAssociationArgs({
+  const ProductPortfolioAssociationArgs({
     this.acceptLanguage,
     required this.portfolioId,
     required this.productId,

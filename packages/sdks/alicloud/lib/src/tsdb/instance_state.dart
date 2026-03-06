@@ -61,7 +61,7 @@ class InstanceState {
   /// [status] Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  InstanceState({
+  const InstanceState({
     this.appKey,
     this.diskCategory,
     this.duration,

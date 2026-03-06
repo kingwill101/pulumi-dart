@@ -64,7 +64,7 @@ class GetFunctionAppResult {
   /// [siteCredentials] A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   /// [sourceControls] A `source_control` block as defined below.
   /// [tags] Optional.
-  GetFunctionAppResult({
+  const GetFunctionAppResult({
     required this.appServicePlanId,
     required this.appSettings,
     required this.clientCertMode,

@@ -33,7 +33,7 @@ class NotificationConfigurationState {
   /// [name] Name of the NotificationConfiguration. Supports RFC 3986's unreserved characters. Length
   /// [tags] Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags`
-  NotificationConfigurationState({
+  const NotificationConfigurationState({
     this.aggregationDuration,
     this.arn,
     this.description,

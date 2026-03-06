@@ -35,7 +35,7 @@ class GetParameterGroupsGroup {
   /// [parameterGroupId] The ID of the Parameter Group.
   /// [parameterGroupName] The name of the parameter template.
   /// [parameterGroupType] The type of the parameter template.
-  GetParameterGroupsGroup({
+  const GetParameterGroupsGroup({
     required this.createTime,
     required this.dbType,
     required this.dbVersion,

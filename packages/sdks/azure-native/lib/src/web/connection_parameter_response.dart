@@ -13,7 +13,7 @@ class ConnectionParameterResponse {
   /// Creates a new [ConnectionParameterResponse].
   /// [oAuthSettings] OAuth settings for the connection provider
   /// [type] Type of the parameter
-  ConnectionParameterResponse({
+  const ConnectionParameterResponse({
     this.oAuthSettings,
     this.type,
   });

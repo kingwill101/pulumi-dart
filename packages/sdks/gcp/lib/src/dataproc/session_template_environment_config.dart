@@ -15,7 +15,7 @@ class SessionTemplateEnvironmentConfig {
   /// Creates a new [SessionTemplateEnvironmentConfig].
   /// [executionConfig] Execution configuration for a workload.
   /// [peripheralsConfig] Peripherals configuration that workload has access to.
-  SessionTemplateEnvironmentConfig({
+  const SessionTemplateEnvironmentConfig({
     this.executionConfig,
     this.peripheralsConfig,
   });

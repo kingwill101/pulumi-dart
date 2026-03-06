@@ -83,7 +83,7 @@ class SystemTopicEventSubscriptionAdvancedFilter {
   /// [stringNotContains] Compares a value of an event using multiple string values.
   /// [stringNotEndsWiths] Compares a value of an event using multiple string values.
   /// [stringNotIns] Compares a value of an event using multiple string values.
-  SystemTopicEventSubscriptionAdvancedFilter({
+  const SystemTopicEventSubscriptionAdvancedFilter({
     this.boolEquals,
     this.isNotNulls,
     this.isNullOrUndefineds,

@@ -13,7 +13,7 @@ class WafRuleConfigRateLimitThresholdResponseStatus {
   /// [code] Optional.
   /// [count] The maximum number of times the specified status code can be returned.
   /// [ratio] The upper limit of the percentage of occurrences of the specified status code among all responses.
-  WafRuleConfigRateLimitThresholdResponseStatus({
+  const WafRuleConfigRateLimitThresholdResponseStatus({
     this.code,
     this.count,
     this.ratio,

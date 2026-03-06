@@ -20,7 +20,7 @@ class GetDedicatedHostResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Dedicated Host.
-  GetDedicatedHostResult({
+  const GetDedicatedHostResult({
     required this.dedicatedHostGroupName,
     required this.id,
     required this.location,

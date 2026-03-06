@@ -12,7 +12,7 @@ class ProductResponse {
   /// Creates a new [ProductResponse].
   /// [genericUri] Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   /// [name] Name of the product.
-  ProductResponse({
+  const ProductResponse({
     required this.genericUri,
     required this.name,
   });

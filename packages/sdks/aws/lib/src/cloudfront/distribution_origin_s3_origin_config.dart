@@ -8,7 +8,7 @@ class DistributionOriginS3OriginConfig {
 
   /// Creates a new [DistributionOriginS3OriginConfig].
   /// [originAccessIdentity] The CloudFront origin access identity to associate with the origin.
-  DistributionOriginS3OriginConfig({
+  const DistributionOriginS3OriginConfig({
     required this.originAccessIdentity,
   });
 

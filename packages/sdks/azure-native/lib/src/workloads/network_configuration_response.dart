@@ -9,7 +9,7 @@ class NetworkConfigurationResponse {
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [isSecondaryIpEnabled] Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
-  NetworkConfigurationResponse({
+  const NetworkConfigurationResponse({
     this.isSecondaryIpEnabled,
   });
 

@@ -39,7 +39,7 @@ class NamespaceState {
   /// [sku] Defines which tier to use. The only possible value is `Standard`. Defaults to `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [topicSpacesConfigurations] A `topic_spaces_configuration` block as defined below. Changing this forces a new resource to be created.
-  NamespaceState({
+  const NamespaceState({
     this.capacity,
     this.identity,
     this.inboundIpRules,

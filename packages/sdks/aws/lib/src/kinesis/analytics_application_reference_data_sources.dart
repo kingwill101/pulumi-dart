@@ -19,7 +19,7 @@ class AnalyticsApplicationReferenceDataSources {
   /// [s3] The S3 configuration for the reference data source. See S3 Reference below for more details.
   /// [schema] The Schema format of the data in the streaming source. See Source Schema below for more details.
   /// [tableName] The in-application Table Name.
-  AnalyticsApplicationReferenceDataSources({
+  const AnalyticsApplicationReferenceDataSources({
     this.id,
     required this.s3,
     required this.schema,

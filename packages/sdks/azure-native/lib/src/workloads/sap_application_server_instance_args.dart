@@ -24,7 +24,7 @@ class SapApplicationServerInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
   /// [tags] Resource tags.
-  SapApplicationServerInstanceArgs({
+  const SapApplicationServerInstanceArgs({
     this.applicationInstanceName,
     this.location,
     required this.resourceGroupName,

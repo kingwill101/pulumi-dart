@@ -9,7 +9,7 @@ class SiteReferenceProperties {
 
   /// Creates a new [SiteReferenceProperties].
   /// [siteId] Azure Resource ID for Site
-  SiteReferenceProperties({
+  const SiteReferenceProperties({
     required this.siteId,
   });
 

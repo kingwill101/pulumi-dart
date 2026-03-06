@@ -15,7 +15,7 @@ class VolumeResponseAppengineV1beta {
   /// [name] Unique name for the volume.
   /// [sizeGb] Volume size in gigabytes.
   /// [volumeType] Underlying volume type, e.g. 'tmpfs'.
-  VolumeResponseAppengineV1beta({
+  const VolumeResponseAppengineV1beta({
     required this.name,
     required this.sizeGb,
     required this.volumeType,

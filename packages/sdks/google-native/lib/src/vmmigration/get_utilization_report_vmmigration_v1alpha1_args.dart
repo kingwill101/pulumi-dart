@@ -19,7 +19,7 @@ class GetUtilizationReportVmmigrationV1alpha1Args {
   /// [sourceId] Required.
   /// [utilizationReportId] Required.
   /// [view] Optional.
-  GetUtilizationReportVmmigrationV1alpha1Args({
+  const GetUtilizationReportVmmigrationV1alpha1Args({
     required this.location,
     this.project,
     required this.sourceId,

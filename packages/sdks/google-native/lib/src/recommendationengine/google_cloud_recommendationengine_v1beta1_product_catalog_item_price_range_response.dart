@@ -12,7 +12,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
   /// Creates a new [GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse].
   /// [max] The maximum product price.
   /// [min] The minimum product price.
-  GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse({
+  const GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse({
     required this.max,
     required this.min,
   });

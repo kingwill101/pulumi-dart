@@ -18,7 +18,7 @@ class GetApplicationGroupArgs {
   /// [applicationGroupName] The Application Group name
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetApplicationGroupArgs({
+  const GetApplicationGroupArgs({
     required this.applicationGroupName,
     required this.namespaceName,
     required this.resourceGroupName,

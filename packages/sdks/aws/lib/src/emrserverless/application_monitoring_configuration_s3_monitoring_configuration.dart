@@ -11,7 +11,7 @@ class ApplicationMonitoringConfigurationS3MonitoringConfiguration {
   /// Creates a new [ApplicationMonitoringConfigurationS3MonitoringConfiguration].
   /// [encryptionKeyArn] The KMS key ARN to encrypt the logs published to the given Amazon S3 destination.
   /// [logUri] The Amazon S3 destination URI for log publishing.
-  ApplicationMonitoringConfigurationS3MonitoringConfiguration({
+  const ApplicationMonitoringConfigurationS3MonitoringConfiguration({
     this.encryptionKeyArn,
     this.logUri,
   });

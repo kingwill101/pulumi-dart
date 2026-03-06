@@ -32,7 +32,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
   /// [machineType] The name of a Google Compute Engine machine type
   /// [minCpuPlatform] The name of a minimum generation of CPU family
   /// [numInstances] Specifies the number of master nodes to create.
-  ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig({
+  const ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig({
     this.accelerators,
     this.diskConfig,
     this.instanceNames,

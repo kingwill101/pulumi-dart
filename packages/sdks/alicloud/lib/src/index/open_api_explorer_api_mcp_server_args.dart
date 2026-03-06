@@ -69,7 +69,7 @@ class OpenApiExplorerApiMcpServerArgs {
   /// [systemTools] Enabled system services.
   /// [terraformTools] Optional.
   /// [vpcWhitelists] When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
-  OpenApiExplorerApiMcpServerArgs({
+  const OpenApiExplorerApiMcpServerArgs({
     this.additionalApiDescriptions,
     required this.apis,
     this.assumeRoleExtraPolicy,

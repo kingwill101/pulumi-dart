@@ -44,7 +44,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
   /// [includedCookieNames] Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
   /// [includedHeaderNames] Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
   /// [includedQueryParameters] Names of query string parameters to include in cache keys. All other parameters will be excluded.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy({
     this.excludeHost,
     this.excludeQueryString,
     this.excludedQueryParameters,

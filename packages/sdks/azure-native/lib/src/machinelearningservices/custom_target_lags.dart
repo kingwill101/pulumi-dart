@@ -12,7 +12,7 @@ class CustomTargetLags {
   /// Creates a new [CustomTargetLags].
   /// [mode] Target lags selection modes.
   /// [values] [Required] Set target lags values.
-  CustomTargetLags({
+  const CustomTargetLags({
     required this.mode,
     required this.values,
   });

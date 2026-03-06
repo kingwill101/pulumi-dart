@@ -25,7 +25,7 @@ class GetDeliveriesResult {
   /// [names] A list of Config Delivery names.
   /// [outputFile] Optional.
   /// [status] The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
-  GetDeliveriesResult({
+  const GetDeliveriesResult({
     required this.deliveries,
     required this.id,
     required this.ids,

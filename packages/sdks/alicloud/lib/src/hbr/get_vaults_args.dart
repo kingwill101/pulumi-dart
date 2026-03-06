@@ -26,7 +26,7 @@ class GetVaultsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
   /// [vaultType] VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
-  GetVaultsArgs({
+  const GetVaultsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

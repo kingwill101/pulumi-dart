@@ -19,7 +19,7 @@ class SecretV1AclRead {
   /// [projectAccess] Whether the secret is accessible project wide.
   /// [updatedAt] The date the secret was last updated.
   /// [users] The list of user IDs, which are allowed to access the
-  SecretV1AclRead({
+  const SecretV1AclRead({
     this.createdAt,
     this.projectAccess,
     this.updatedAt,

@@ -29,7 +29,7 @@ class GetControlPoliciesPolicy {
   /// [policyDocument] The policy document.
   /// [policyId] The ID of policy.
   /// [policyType] The type of policy.
-  GetControlPoliciesPolicy({
+  const GetControlPoliciesPolicy({
     required this.attachmentCount,
     required this.controlPolicyName,
     required this.description,

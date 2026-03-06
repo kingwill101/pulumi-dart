@@ -10,7 +10,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting].
   /// [checkDigitString] Required.
   /// [sid] The Nielsen Source ID to include in the watermark.
-  ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting({
+  const ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting({
     required this.checkDigitString,
     required this.sid,
   });

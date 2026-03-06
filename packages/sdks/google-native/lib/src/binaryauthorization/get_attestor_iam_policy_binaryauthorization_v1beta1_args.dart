@@ -15,7 +15,7 @@ class GetAttestorIamPolicyBinaryauthorizationV1beta1Args {
   /// [attestorId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAttestorIamPolicyBinaryauthorizationV1beta1Args({
+  const GetAttestorIamPolicyBinaryauthorizationV1beta1Args({
     required this.attestorId,
     this.optionsRequestedPolicyVersion,
     this.project,

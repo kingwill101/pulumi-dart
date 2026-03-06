@@ -16,7 +16,7 @@ class EnumValueResponse {
   /// [name] Enum value name.
   /// [number] Enum value number.
   /// [options] Protocol buffer options.
-  EnumValueResponse({
+  const EnumValueResponse({
     required this.name,
     required this.number,
     required this.options,

@@ -14,7 +14,7 @@ class EncryptionImages {
   /// Creates a new [EncryptionImages].
   /// [dataDiskImages] A list of encryption specifications for data disk images.
   /// [osDiskImage] Contains encryption settings for an OS disk image.
-  EncryptionImages({
+  const EncryptionImages({
     this.dataDiskImages,
     this.osDiskImage,
   });

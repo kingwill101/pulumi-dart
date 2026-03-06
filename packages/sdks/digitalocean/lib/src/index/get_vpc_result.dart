@@ -29,7 +29,7 @@ class GetVpcResult {
   /// [name] The name of the VPC.
   /// [region] The DigitalOcean region slug for the VPC's location.
   /// [urn] The uniform resource name (URN) for the VPC.
-  GetVpcResult({
+  const GetVpcResult({
     required this.createdAt,
     required this.default_,
     required this.description,

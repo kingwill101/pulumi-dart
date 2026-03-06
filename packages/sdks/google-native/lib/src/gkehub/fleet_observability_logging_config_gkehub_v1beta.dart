@@ -13,7 +13,7 @@ class FleetObservabilityLoggingConfigGkehubV1beta {
   /// Creates a new [FleetObservabilityLoggingConfigGkehubV1beta].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.
   /// [fleetScopeLogsConfig] Specified if applying the routing config to all logs for all fleet scopes.
-  FleetObservabilityLoggingConfigGkehubV1beta({
+  const FleetObservabilityLoggingConfigGkehubV1beta({
     this.defaultConfig,
     this.fleetScopeLogsConfig,
   });

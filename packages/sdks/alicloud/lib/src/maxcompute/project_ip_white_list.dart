@@ -15,7 +15,7 @@ class ProjectIpWhiteList {
   /// Creates a new [ProjectIpWhiteList].
   /// [ipList] Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
   /// [vpcIpList] Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
-  ProjectIpWhiteList({
+  const ProjectIpWhiteList({
     this.ipList,
     this.vpcIpList,
   });

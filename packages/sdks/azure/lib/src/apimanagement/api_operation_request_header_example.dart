@@ -20,7 +20,7 @@ class ApiOperationRequestHeaderExample {
   /// [name] The name of this example.
   /// [summary] A short description for this example.
   /// [value] The example of the representation.
-  ApiOperationRequestHeaderExample({
+  const ApiOperationRequestHeaderExample({
     this.description,
     this.externalValue,
     required this.name,

@@ -24,7 +24,7 @@ class AccountSettingsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [terminationProtectionEnabled] A boolean value that determines whether or not an Amazon QuickSight account can be deleted. If `true`, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If `false`, it will allow the account to be deleted.
   /// [timeouts] Optional.
-  AccountSettingsArgs({
+  const AccountSettingsArgs({
     this.awsAccountId,
     this.defaultNamespace,
     this.region,

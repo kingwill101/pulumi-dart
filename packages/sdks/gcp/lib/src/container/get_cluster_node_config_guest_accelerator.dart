@@ -22,7 +22,7 @@ class GetClusterNodeConfigGuestAccelerator {
   /// [gpuPartitionSize] Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
   /// [gpuSharingConfigs] Configuration for GPU sharing.
   /// [type] The accelerator type resource name.
-  GetClusterNodeConfigGuestAccelerator({
+  const GetClusterNodeConfigGuestAccelerator({
     required this.count,
     required this.gpuDriverInstallationConfigs,
     required this.gpuPartitionSize,

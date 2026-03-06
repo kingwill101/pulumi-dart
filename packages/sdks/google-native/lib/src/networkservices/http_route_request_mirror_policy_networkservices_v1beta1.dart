@@ -10,7 +10,7 @@ class HttpRouteRequestMirrorPolicyNetworkservicesV1beta1 {
 
   /// Creates a new [HttpRouteRequestMirrorPolicyNetworkservicesV1beta1].
   /// [destination] The destination the requests will be mirrored to. The weight of the destination will be ignored.
-  HttpRouteRequestMirrorPolicyNetworkservicesV1beta1({
+  const HttpRouteRequestMirrorPolicyNetworkservicesV1beta1({
     this.destination,
   });
 

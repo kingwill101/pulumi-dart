@@ -31,7 +31,7 @@ class DeploymentStatusResponse {
   /// [status] Deployment status
   /// [statusDetails] Status details
   /// [targetStatuses] Target resource statuses
-  DeploymentStatusResponse({
+  const DeploymentStatusResponse({
     this.deployed,
     this.expectedRunningJobId,
     this.generation,

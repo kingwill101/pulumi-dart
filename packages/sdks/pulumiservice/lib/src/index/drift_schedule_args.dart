@@ -24,7 +24,7 @@ class DriftScheduleArgs {
   /// [project] Project name.
   /// [scheduleCron] Cron expression for when to run drift detection.
   /// [stack] Stack name.
-  DriftScheduleArgs({
+  const DriftScheduleArgs({
     this.autoRemediate,
     required this.organization,
     required this.project,

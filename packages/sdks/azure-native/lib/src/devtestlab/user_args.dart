@@ -32,7 +32,7 @@ class UserArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [secretStore] The secret store of the user.
   /// [tags] The tags of the resource.
-  UserArgs({
+  const UserArgs({
     this.identity,
     required this.labName,
     this.location,

@@ -18,7 +18,7 @@ class GetConnectionsArgs {
   /// [deviceId] ID of the device of the connections to retrieve.
   /// [globalNetworkId] ID of the Global Network of the connections to retrieve.
   /// [tags] Restricts the list to the connections with these tags.
-  GetConnectionsArgs({
+  const GetConnectionsArgs({
     this.deviceId,
     required this.globalNetworkId,
     this.tags,

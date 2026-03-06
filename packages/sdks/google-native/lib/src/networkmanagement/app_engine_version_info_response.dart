@@ -18,7 +18,7 @@ class AppEngineVersionInfoResponse {
   /// [environment] App Engine execution environment for a version.
   /// [runtime] Runtime of the App Engine version.
   /// [uri] URI of an App Engine version.
-  AppEngineVersionInfoResponse({
+  const AppEngineVersionInfoResponse({
     required this.displayName,
     required this.environment,
     required this.runtime,

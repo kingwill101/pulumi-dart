@@ -14,7 +14,7 @@ class DelegationSignerRecordSigningAttributes {
   /// [algorithm] Algorithm which was used to generate the digest from the public key.
   /// [flags] Defines the type of key. It can be either a KSK (key-signing-key, value `257`) or ZSK (zone-signing-key, value `256`).
   /// [publicKey] The base64-encoded public key part of the key pair that is passed to the registry.
-  DelegationSignerRecordSigningAttributes({
+  const DelegationSignerRecordSigningAttributes({
     required this.algorithm,
     required this.flags,
     required this.publicKey,

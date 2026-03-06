@@ -18,7 +18,7 @@ class GetGovernanceAssignmentArgs {
   /// [assessmentName] The Assessment Key - A unique key for the assessment type
   /// [assignmentKey] The governance assignment key - the assessment key of the required governance assignment
   /// [scope] The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
-  GetGovernanceAssignmentArgs({
+  const GetGovernanceAssignmentArgs({
     required this.assessmentName,
     required this.assignmentKey,
     required this.scope,

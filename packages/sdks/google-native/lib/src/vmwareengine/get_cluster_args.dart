@@ -17,7 +17,7 @@ class GetClusterArgs {
   /// [location] Required.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterId,
     required this.location,
     required this.privateCloudId,

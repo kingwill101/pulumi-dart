@@ -17,7 +17,7 @@ class GetCryptoKeysResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyRing] Required.
   /// [keys] A list of all the retrieved keys from the provided key ring. This list is influenced by the provided filter argument.
-  GetCryptoKeysResult({
+  const GetCryptoKeysResult({
     this.filter,
     required this.id,
     required this.keyRing,

@@ -8,7 +8,7 @@ class PoolSourceVendor {
 
   /// Creates a new [PoolSourceVendor].
   /// [name] Configures the name attribute for the vendor related to the storage source.
-  PoolSourceVendor({
+  const PoolSourceVendor({
     required this.name,
   });
 

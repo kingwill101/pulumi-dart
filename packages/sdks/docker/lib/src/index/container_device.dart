@@ -14,7 +14,7 @@ class ContainerDevice {
   /// [containerPath] The path in the container where the device will be bound.
   /// [hostPath] The path on the host where the device is located.
   /// [permissions] The cgroup permissions given to the container to access the device. Defaults to `rwm`.
-  ContainerDevice({
+  const ContainerDevice({
     this.containerPath,
     required this.hostPath,
     this.permissions,

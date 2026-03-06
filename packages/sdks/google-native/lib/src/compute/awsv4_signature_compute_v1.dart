@@ -18,7 +18,7 @@ class AWSV4SignatureComputeV1 {
   /// [accessKeyId] The identifier of an access key used for s3 bucket authentication.
   /// [accessKeyVersion] The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
   /// [originRegion] The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin. For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
-  AWSV4SignatureComputeV1({
+  const AWSV4SignatureComputeV1({
     this.accessKey,
     this.accessKeyId,
     this.accessKeyVersion,

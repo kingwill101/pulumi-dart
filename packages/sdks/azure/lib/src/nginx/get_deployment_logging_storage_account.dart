@@ -10,7 +10,7 @@ class GetDeploymentLoggingStorageAccount {
   /// Creates a new [GetDeploymentLoggingStorageAccount].
   /// [containerName] Required.
   /// [name] The name of this NGINX Deployment.
-  GetDeploymentLoggingStorageAccount({
+  const GetDeploymentLoggingStorageAccount({
     required this.containerName,
     required this.name,
   });

@@ -36,7 +36,7 @@ class GetAppTemplateContainerLivenessProbe {
   /// [terminationGracePeriodSeconds] The time in seconds after the container is sent the termination signal before the process if forcibly killed.
   /// [timeout] Time in seconds after which the probe times out.
   /// [transport] The transport method for the Ingress.
-  GetAppTemplateContainerLivenessProbe({
+  const GetAppTemplateContainerLivenessProbe({
     required this.failureCountThreshold,
     required this.headers,
     required this.host,

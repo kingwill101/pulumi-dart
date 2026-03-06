@@ -31,7 +31,7 @@ class LogDeliveryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3DeliveryConfigurations] Parameters that are valid only when the delivery's delivery destination is an S3 bucket.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LogDeliveryArgs({
+  const LogDeliveryArgs({
     required this.deliveryDestinationArn,
     required this.deliverySourceName,
     this.fieldDelimiter,

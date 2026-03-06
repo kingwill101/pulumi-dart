@@ -10,7 +10,7 @@ class MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups {
   /// Creates a new [MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
   /// [items] Optional.
-  MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups({
+  const MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups({
     this.enabled,
     this.items,
   });

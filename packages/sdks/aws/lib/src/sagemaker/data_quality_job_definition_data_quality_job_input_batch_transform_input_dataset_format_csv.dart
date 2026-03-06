@@ -8,7 +8,7 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv].
   /// [header] Indicates if the CSV data has a header.
-  DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv({
+  const DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv({
     this.header,
   });
 

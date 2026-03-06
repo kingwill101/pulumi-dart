@@ -22,7 +22,7 @@ class GetWafRulesArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [queryArgs] The query conditions. The value is a string in the JSON format.
-  GetWafRulesArgs({
+  const GetWafRulesArgs({
     this.ids,
     this.outputFile,
     this.pageNumber,

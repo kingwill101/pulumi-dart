@@ -19,7 +19,7 @@ class DefenderForStorageArgs {
   /// [properties] Defender for Storage resource properties.
   /// [resourceId] The identifier of the resource.
   /// [settingName] Defender for Storage setting name.
-  DefenderForStorageArgs({
+  const DefenderForStorageArgs({
     this.properties,
     required this.resourceId,
     this.settingName,

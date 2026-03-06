@@ -31,7 +31,7 @@ class AcmCertificateSummaryProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  AcmCertificateSummaryProperties({
+  const AcmCertificateSummaryProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

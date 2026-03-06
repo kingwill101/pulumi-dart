@@ -16,7 +16,7 @@ class StringNotBeginsWithAdvancedFilter {
   /// [key] The field/property in the event based on which you want to filter.
   /// [operatorType] The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// [values] The set of filter values.
-  StringNotBeginsWithAdvancedFilter({
+  const StringNotBeginsWithAdvancedFilter({
     this.key,
     required this.operatorType,
     this.values,

@@ -46,7 +46,7 @@ class InstanceInterface {
   /// [purpose] The type of interface. (`public`, `vlan`, `vpc`)
   /// [subnetId] The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
   /// [vpcId] The ID of VPC which this interface is attached to.
-  InstanceInterface({
+  const InstanceInterface({
     this.active,
     this.id,
     this.ipRanges,

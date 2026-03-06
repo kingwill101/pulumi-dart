@@ -14,7 +14,7 @@ class SecretPassword {
   /// Creates a new [SecretPassword].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   /// [keyVaultProperties] Properties provided by KeyVault.
-  SecretPassword({
+  const SecretPassword({
     this.identity,
     this.keyVaultProperties,
   });

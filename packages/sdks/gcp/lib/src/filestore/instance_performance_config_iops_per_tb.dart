@@ -12,7 +12,7 @@ class InstancePerformanceConfigIopsPerTb {
 
   /// Creates a new [InstancePerformanceConfigIopsPerTb].
   /// [maxIopsPerTb] The instance max IOPS will be calculated by multiplying
-  InstancePerformanceConfigIopsPerTb({
+  const InstancePerformanceConfigIopsPerTb({
     this.maxIopsPerTb,
   });
 

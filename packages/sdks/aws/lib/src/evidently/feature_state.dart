@@ -56,7 +56,7 @@ class FeatureState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [valueType] Defines the type of value used to define the different feature variations. Valid Values: `STRING`, `LONG`, `DOUBLE`, `BOOLEAN`.
   /// [variations] One or more blocks that contain the configuration of the feature's different variations. Detailed below
-  FeatureState({
+  const FeatureState({
     this.arn,
     this.createdTime,
     this.defaultVariation,

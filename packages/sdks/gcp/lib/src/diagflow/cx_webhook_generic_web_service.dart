@@ -73,7 +73,7 @@ class CxWebhookGenericWebService {
   /// [serviceAgentAuth] Indicate the auth token type generated from the [Diglogflow service
   /// [uri] The webhook URI for receiving POST requests. It must use https protocol.
   /// [webhookType] Type of the webhook.
-  CxWebhookGenericWebService({
+  const CxWebhookGenericWebService({
     this.allowedCaCerts,
     this.httpMethod,
     this.oauthConfig,

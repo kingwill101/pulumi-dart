@@ -28,7 +28,7 @@ class UriFileDataVersion {
   /// [isArchived] Is the asset archived?
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  UriFileDataVersion({
+  const UriFileDataVersion({
     required this.dataType,
     required this.dataUri,
     this.description,

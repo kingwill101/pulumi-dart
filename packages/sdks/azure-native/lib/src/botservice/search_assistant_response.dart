@@ -19,7 +19,7 @@ class SearchAssistantResponse {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [provisioningState] Provisioning state of the resource
-  SearchAssistantResponse({
+  const SearchAssistantResponse({
     required this.channelName,
     this.etag,
     this.location,

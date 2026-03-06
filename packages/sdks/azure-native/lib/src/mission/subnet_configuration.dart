@@ -15,7 +15,7 @@ class SubnetConfiguration {
   /// [networkPrefixSize] Network prefix size.
   /// [subnetDelegation] Subnet delegation.
   /// [subnetName] Subnet name.
-  SubnetConfiguration({
+  const SubnetConfiguration({
     required this.networkPrefixSize,
     this.subnetDelegation,
     required this.subnetName,

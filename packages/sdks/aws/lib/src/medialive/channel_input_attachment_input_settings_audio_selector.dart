@@ -13,7 +13,7 @@ class ChannelInputAttachmentInputSettingsAudioSelector {
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelector].
   /// [name] Name of the Channel.
   /// [selectorSettings] Optional.
-  ChannelInputAttachmentInputSettingsAudioSelector({
+  const ChannelInputAttachmentInputSettingsAudioSelector({
     required this.name,
     this.selectorSettings,
   });

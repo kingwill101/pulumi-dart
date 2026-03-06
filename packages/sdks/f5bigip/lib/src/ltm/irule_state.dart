@@ -12,7 +12,7 @@ class IRuleState {
   /// Creates a new [IRuleState].
   /// [irule] Body of the iRule
   /// [name] Name of the iRule
-  IRuleState({
+  const IRuleState({
     this.irule,
     this.name,
   });

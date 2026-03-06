@@ -19,7 +19,7 @@ class HostingCustomDomainCertVerificationHttp {
   /// [discovered] Whether Hosting was able to find the required file contents on the
   /// [lastCheckTime] (Output)
   /// [path] The path to the file.
-  HostingCustomDomainCertVerificationHttp({
+  const HostingCustomDomainCertVerificationHttp({
     this.desired,
     this.discovered,
     this.lastCheckTime,

@@ -18,7 +18,7 @@ class StorageAccountInternetEndpointsResponse {
   /// [dfs] Gets the dfs endpoint.
   /// [file] Gets the file endpoint.
   /// [web] Gets the web endpoint.
-  StorageAccountInternetEndpointsResponse({
+  const StorageAccountInternetEndpointsResponse({
     required this.blob,
     required this.dfs,
     required this.file,

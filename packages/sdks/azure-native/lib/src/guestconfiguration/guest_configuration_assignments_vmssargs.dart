@@ -25,7 +25,7 @@ class GuestConfigurationAssignmentsVMSSArgs {
   /// [properties] Properties of the Guest configuration assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmssName] The name of the virtual machine scale set.
-  GuestConfigurationAssignmentsVMSSArgs({
+  const GuestConfigurationAssignmentsVMSSArgs({
     this.location,
     this.name,
     this.properties,

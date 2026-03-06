@@ -9,7 +9,7 @@ class UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
 
   /// Creates a new [UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement({
+  const UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
 

@@ -9,7 +9,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetwork
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetworkInterfaceCount].
   /// [max] Optional.
   /// [min] Optional.
-  GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetworkInterfaceCount({
+  const GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetworkInterfaceCount({
     this.max,
     this.min,
   });

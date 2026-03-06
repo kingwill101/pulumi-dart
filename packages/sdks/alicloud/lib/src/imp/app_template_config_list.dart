@@ -13,7 +13,7 @@ class AppTemplateConfigList {
   /// Creates a new [AppTemplateConfigList].
   /// [key] Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
   /// [value] Configuration item content.
-  AppTemplateConfigList({
+  const AppTemplateConfigList({
     this.key,
     this.value,
   });

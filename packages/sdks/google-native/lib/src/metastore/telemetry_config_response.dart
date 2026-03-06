@@ -9,7 +9,7 @@ class TelemetryConfigResponse {
 
   /// Creates a new [TelemetryConfigResponse].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.
-  TelemetryConfigResponse({
+  const TelemetryConfigResponse({
     required this.logFormat,
   });
 

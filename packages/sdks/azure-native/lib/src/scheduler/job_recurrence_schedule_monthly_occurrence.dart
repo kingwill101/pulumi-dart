@@ -12,7 +12,7 @@ class JobRecurrenceScheduleMonthlyOccurrence {
   /// Creates a new [JobRecurrenceScheduleMonthlyOccurrence].
   /// [day] Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
   /// [occurrence] Gets or sets the occurrence. Must be between -5 and 5.
-  JobRecurrenceScheduleMonthlyOccurrence({
+  const JobRecurrenceScheduleMonthlyOccurrence({
     this.day,
     this.occurrence,
   });

@@ -10,7 +10,7 @@ class NetworkConfiguration {
 
   /// Creates a new [NetworkConfiguration].
   /// [networkAdapters] List of network adapters.
-  NetworkConfiguration({
+  const NetworkConfiguration({
     this.networkAdapters,
   });
 

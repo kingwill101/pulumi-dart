@@ -18,7 +18,7 @@ class PostgresqlFirewallRuleState {
   /// [endIpAddress] The end IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   /// [name] The name which should be used for the Azure Cosmos DB for PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   /// [startIpAddress] The start IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
-  PostgresqlFirewallRuleState({
+  const PostgresqlFirewallRuleState({
     this.clusterId,
     this.endIpAddress,
     this.name,

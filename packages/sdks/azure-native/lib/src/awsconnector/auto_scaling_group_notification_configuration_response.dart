@@ -12,7 +12,7 @@ class AutoScalingGroupNotificationConfigurationResponse {
   /// Creates a new [AutoScalingGroupNotificationConfigurationResponse].
   /// [notificationTypes] A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``
   /// [topicARN] The Amazon Resource Name (ARN) of the Amazon SNS topic.
-  AutoScalingGroupNotificationConfigurationResponse({
+  const AutoScalingGroupNotificationConfigurationResponse({
     this.notificationTypes,
     this.topicARN,
   });

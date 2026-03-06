@@ -24,7 +24,7 @@ class SolutionResponse {
   /// [planId] Plan Id.
   /// [saasSubscriptionId] Saas subscription Id.
   /// [saasSubscriptionName] Saas subscription name.
-  SolutionResponse({
+  const SolutionResponse({
     this.applicationName,
     this.marketPlacePublisherId,
     this.partnerId,

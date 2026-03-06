@@ -13,7 +13,7 @@ class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
   /// Creates a new [TableMaintenanceConfigurationIcebergSnapshotManagementSettings].
   /// [maxSnapshotAgeHours] Snapshots older than this will be marked for deletiion.
   /// [minSnapshotsToKeep] Minimum number of snapshots to keep.
-  TableMaintenanceConfigurationIcebergSnapshotManagementSettings({
+  const TableMaintenanceConfigurationIcebergSnapshotManagementSettings({
     required this.maxSnapshotAgeHours,
     required this.minSnapshotsToKeep,
   });

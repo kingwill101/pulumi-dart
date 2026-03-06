@@ -13,7 +13,7 @@ class GetKeyVaultNetworkAcl {
   /// [defaultAction] Required.
   /// [ipRules] Required.
   /// [virtualNetworkSubnetIds] Required.
-  GetKeyVaultNetworkAcl({
+  const GetKeyVaultNetworkAcl({
     required this.bypass,
     required this.defaultAction,
     required this.ipRules,

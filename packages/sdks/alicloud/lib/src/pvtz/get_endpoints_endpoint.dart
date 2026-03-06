@@ -32,7 +32,7 @@ class GetEndpointsEndpoint {
   /// [vpcId] The VPC ID.
   /// [vpcName] The name of the VPC.
   /// [vpcRegionId] The Region of the VPC.
-  GetEndpointsEndpoint({
+  const GetEndpointsEndpoint({
     required this.createTime,
     required this.endpointName,
     required this.id,

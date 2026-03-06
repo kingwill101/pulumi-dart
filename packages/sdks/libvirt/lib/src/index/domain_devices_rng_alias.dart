@@ -8,7 +8,7 @@ class DomainDevicesRngAlias {
 
   /// Creates a new [DomainDevicesRngAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesRngAlias({
+  const DomainDevicesRngAlias({
     required this.name,
   });
 

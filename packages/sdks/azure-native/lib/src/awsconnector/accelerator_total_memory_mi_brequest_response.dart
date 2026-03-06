@@ -12,7 +12,7 @@ class AcceleratorTotalMemoryMiBRequestResponse {
   /// Creates a new [AcceleratorTotalMemoryMiBRequestResponse].
   /// [max] The memory maximum in MiB.
   /// [min] The memory minimum in MiB.
-  AcceleratorTotalMemoryMiBRequestResponse({
+  const AcceleratorTotalMemoryMiBRequestResponse({
     this.max,
     this.min,
   });

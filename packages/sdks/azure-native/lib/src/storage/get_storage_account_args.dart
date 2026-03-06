@@ -18,7 +18,7 @@ class GetStorageAccountArgs {
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   /// [expand] May be used to expand the properties within account's properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetStorageAccountArgs({
+  const GetStorageAccountArgs({
     required this.accountName,
     this.expand,
     required this.resourceGroupName,

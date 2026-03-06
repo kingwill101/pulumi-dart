@@ -15,7 +15,7 @@ class GetOrchestratedVirtualMachineScaleSetArgs {
   /// Creates a new [GetOrchestratedVirtualMachineScaleSetArgs].
   /// [name] The name of this Orchestrated Virtual Machine Scale Set.
   /// [resourceGroupName] The name of the Resource Group where the Orchestrated Virtual Machine Scale Set exists.
-  GetOrchestratedVirtualMachineScaleSetArgs({
+  const GetOrchestratedVirtualMachineScaleSetArgs({
     required this.name,
     required this.resourceGroupName,
   });

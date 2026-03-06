@@ -51,7 +51,7 @@ class GetSecurityConnectorResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] A list of key value pairs that describe the resource.
   /// [type] Resource type
-  GetSecurityConnectorResult({
+  const GetSecurityConnectorResult({
     required this.azureApiVersion,
     this.environmentData,
     this.environmentName,

@@ -10,7 +10,7 @@ class StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1 {
 
   /// Creates a new [StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1].
   /// [resource] The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.
-  StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1({
+  const StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1({
     this.resource,
   });
 

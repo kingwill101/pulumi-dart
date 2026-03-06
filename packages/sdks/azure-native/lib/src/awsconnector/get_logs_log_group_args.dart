@@ -15,7 +15,7 @@ class GetLogsLogGroupArgs {
   /// Creates a new [GetLogsLogGroupArgs].
   /// [name] Name of LogsLogGroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLogsLogGroupArgs({
+  const GetLogsLogGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

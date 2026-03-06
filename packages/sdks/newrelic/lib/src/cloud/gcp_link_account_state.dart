@@ -17,7 +17,7 @@ class GcpLinkAccountState {
   /// [accountId] Account ID of the New Relic account.
   /// [name] The name of the GCP account in New Relic.
   /// [projectId] Project ID of the GCP account.
-  GcpLinkAccountState({
+  const GcpLinkAccountState({
     this.accountId,
     this.name,
     this.projectId,

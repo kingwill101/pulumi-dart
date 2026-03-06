@@ -11,7 +11,7 @@ class AppConnectionApplicationEndpoint {
   /// Creates a new [AppConnectionApplicationEndpoint].
   /// [host] Hostname or IP address of the remote application endpoint.
   /// [port] Port of the remote application endpoint.
-  AppConnectionApplicationEndpoint({
+  const AppConnectionApplicationEndpoint({
     required this.host,
     required this.port,
   });

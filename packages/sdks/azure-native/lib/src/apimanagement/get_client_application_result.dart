@@ -35,7 +35,7 @@ class GetClientApplicationResult {
   /// [ownerId] A resource identifier for the user who owns the application.
   /// [state] Client application state. The value derives the state of an application based on the statuses of its associated ClientApplicationProductLinks.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetClientApplicationResult({
+  const GetClientApplicationResult({
     required this.azureApiVersion,
     this.description,
     required this.displayName,

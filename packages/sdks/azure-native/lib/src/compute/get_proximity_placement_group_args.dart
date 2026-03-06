@@ -18,7 +18,7 @@ class GetProximityPlacementGroupArgs {
   /// [includeColocationStatus] includeColocationStatus=true enables fetching the colocation status of all the resources in the proximity placement group.
   /// [proximityPlacementGroupName] The name of the proximity placement group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProximityPlacementGroupArgs({
+  const GetProximityPlacementGroupArgs({
     this.includeColocationStatus,
     required this.proximityPlacementGroupName,
     required this.resourceGroupName,

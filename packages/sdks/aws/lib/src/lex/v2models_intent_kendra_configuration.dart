@@ -14,7 +14,7 @@ class V2modelsIntentKendraConfiguration {
   /// [kendraIndex] ARN of the Kendra index.
   /// [queryFilterString] Query filter string for Kendra.
   /// [queryFilterStringEnabled] Whether the query filter string is enabled.
-  V2modelsIntentKendraConfiguration({
+  const V2modelsIntentKendraConfiguration({
     required this.kendraIndex,
     this.queryFilterString,
     this.queryFilterStringEnabled,

@@ -9,7 +9,7 @@ class GetElasticIpFilter {
   /// Creates a new [GetElasticIpFilter].
   /// [name] Required.
   /// [values] Required.
-  GetElasticIpFilter({
+  const GetElasticIpFilter({
     required this.name,
     required this.values,
   });

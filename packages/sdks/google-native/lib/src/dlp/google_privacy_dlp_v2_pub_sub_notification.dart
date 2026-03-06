@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2PubSubNotification {
   /// [event] The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
   /// [pubsubCondition] Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
   /// [topic] Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
-  GooglePrivacyDlpV2PubSubNotification({
+  const GooglePrivacyDlpV2PubSubNotification({
     this.detailOfMessage,
     this.event,
     this.pubsubCondition,

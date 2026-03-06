@@ -24,7 +24,7 @@ class GetOrderableClusterArgs {
   /// [nodeType] Redshift Cluster node typeE.g., `dc2.8xlarge`
   /// [preferredNodeTypes] Ordered list of preferred Redshift Cluster node types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetOrderableClusterArgs({
+  const GetOrderableClusterArgs({
     this.clusterType,
     this.clusterVersion,
     this.nodeType,

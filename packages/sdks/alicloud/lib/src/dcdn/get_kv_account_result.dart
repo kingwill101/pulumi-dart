@@ -11,7 +11,7 @@ class GetKvAccountResult {
   /// Creates a new [GetKvAccountResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [status] The current kv account enable status.
-  GetKvAccountResult({
+  const GetKvAccountResult({
     required this.id,
     required this.status,
   });

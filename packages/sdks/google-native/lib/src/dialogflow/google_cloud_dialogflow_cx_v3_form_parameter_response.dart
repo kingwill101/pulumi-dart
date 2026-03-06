@@ -32,7 +32,7 @@ class GoogleCloudDialogflowCxV3FormParameterResponse {
   /// [isList] Indicates whether the parameter represents a list of values.
   /// [redact] Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
   /// [required] Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required parameters must be filled before form filling concludes.
-  GoogleCloudDialogflowCxV3FormParameterResponse({
+  const GoogleCloudDialogflowCxV3FormParameterResponse({
     required this.advancedSettings,
     required this.defaultValue,
     required this.displayName,

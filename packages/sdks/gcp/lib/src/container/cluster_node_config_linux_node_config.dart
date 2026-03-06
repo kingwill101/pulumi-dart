@@ -32,7 +32,7 @@ class ClusterNodeConfigLinuxNodeConfig {
   /// [sysctls] The Linux kernel parameters to be applied to the nodes
   /// [transparentHugepageDefrag] The Linux kernel transparent hugepage defrag setting.
   /// [transparentHugepageEnabled] The Linux kernel transparent hugepage setting.
-  ClusterNodeConfigLinuxNodeConfig({
+  const ClusterNodeConfigLinuxNodeConfig({
     this.cgroupMode,
     this.hugepagesConfig,
     this.nodeKernelModuleLoading,

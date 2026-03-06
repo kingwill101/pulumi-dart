@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesDacOverride {
 
   /// Creates a new [DomainFeaturesCapabilitiesDacOverride].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesDacOverride({
+  const DomainFeaturesCapabilitiesDacOverride({
     this.state,
   });
 

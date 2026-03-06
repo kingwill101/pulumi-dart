@@ -27,7 +27,7 @@ class MetricAlertCriteria {
   /// [operator] The criteria operator. Possible values are `Equals`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
   /// [skipMetricValidation] Skip the metric validation to allow creating an alert rule on a custom metric that isn't yet emitted? Defaults to `false`.
   /// [threshold] The criteria threshold value that activates the alert.
-  MetricAlertCriteria({
+  const MetricAlertCriteria({
     required this.aggregation,
     this.dimensions,
     required this.metricName,

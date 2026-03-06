@@ -28,7 +28,7 @@ class MoveCollectionPropertiesResponse {
   /// [sourceRegion] Gets or sets the source region.
   /// [targetRegion] Gets or sets the target region.
   /// [version] Gets or sets the version of move collection.
-  MoveCollectionPropertiesResponse({
+  const MoveCollectionPropertiesResponse({
     required this.errors,
     this.moveRegion,
     this.moveType,

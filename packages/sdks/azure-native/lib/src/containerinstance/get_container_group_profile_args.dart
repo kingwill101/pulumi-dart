@@ -15,7 +15,7 @@ class GetContainerGroupProfileArgs {
   /// Creates a new [GetContainerGroupProfileArgs].
   /// [containerGroupProfileName] The name of the container group profile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContainerGroupProfileArgs({
+  const GetContainerGroupProfileArgs({
     required this.containerGroupProfileName,
     required this.resourceGroupName,
   });

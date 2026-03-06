@@ -22,7 +22,7 @@ class GetDiskReplicaPairsResult {
   /// [pairs] A list of Disk Replica Pair Entries. Each element contains the following attributes:
   /// [replicaGroupId] Optional.
   /// [site] Optional.
-  GetDiskReplicaPairsResult({
+  const GetDiskReplicaPairsResult({
     required this.id,
     required this.ids,
     this.outputFile,

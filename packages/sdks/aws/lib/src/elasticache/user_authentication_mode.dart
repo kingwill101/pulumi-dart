@@ -13,7 +13,7 @@ class UserAuthenticationMode {
   /// [passwordCount] Optional.
   /// [passwords] Specifies the passwords to use for authentication if `type` is set to `password`.
   /// [type] Specifies the authentication type. Possible options are: `password`, `no-password-required` or `iam`.
-  UserAuthenticationMode({
+  const UserAuthenticationMode({
     this.passwordCount,
     this.passwords,
     required this.type,

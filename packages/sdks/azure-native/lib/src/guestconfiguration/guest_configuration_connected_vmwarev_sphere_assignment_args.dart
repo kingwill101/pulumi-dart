@@ -28,7 +28,7 @@ class GuestConfigurationConnectedVMwarevSphereAssignmentArgs {
   /// [properties] Properties of the Guest configuration assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmName] The name of the virtual machine.
-  GuestConfigurationConnectedVMwarevSphereAssignmentArgs({
+  const GuestConfigurationConnectedVMwarevSphereAssignmentArgs({
     this.guestConfigurationAssignmentName,
     this.location,
     required this.name,

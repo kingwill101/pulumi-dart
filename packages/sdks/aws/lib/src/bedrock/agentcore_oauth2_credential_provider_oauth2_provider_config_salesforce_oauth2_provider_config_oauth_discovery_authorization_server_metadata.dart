@@ -17,7 +17,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2Provi
   /// [issuer] OAuth2 authorization server issuer identifier.
   /// [responseTypes] Set of OAuth2 response types supported by the authorization server.
   /// [tokenEndpoint] OAuth2 token endpoint URL.
-  AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata({
+  const AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata({
     required this.authorizationEndpoint,
     required this.issuer,
     required this.responseTypes,

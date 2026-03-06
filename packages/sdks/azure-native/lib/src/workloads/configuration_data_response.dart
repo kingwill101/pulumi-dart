@@ -39,7 +39,7 @@ class ConfigurationDataResponse {
   /// [targetHanaRamSizeGB] Provide the target HANA database size you need. Applicable only if SAP instance type for this server instance is 'DB' and you are migrating an AnyDb database to SAP S/4HANA.
   /// [totalDiskIops] Provide the total disk IOPS capacity. Add the disk volume for each individual disk and provide the sum total in this field.
   /// [totalDiskSizeGB] Provide the total disk volume capacity in GB. Add the disk volume for each individual disks and provide the total sum in this field.
-  ConfigurationDataResponse({
+  const ConfigurationDataResponse({
     required this.cpu,
     required this.cpuInMhz,
     required this.cpuType,

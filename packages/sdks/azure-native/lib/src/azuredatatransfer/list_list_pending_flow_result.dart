@@ -13,7 +13,7 @@ class ListListPendingFlowResult {
   /// Creates a new [ListListPendingFlowResult].
   /// [nextLink] Link to next results
   /// [value] flows array.
-  ListListPendingFlowResult({
+  const ListListPendingFlowResult({
     this.nextLink,
     this.value,
   });

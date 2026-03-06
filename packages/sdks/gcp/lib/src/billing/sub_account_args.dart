@@ -21,7 +21,7 @@ class SubAccountArgs {
   /// [deletionPolicy] If set to "RENAME_ON_DESTROY" the billing account display_name
   /// [displayName] The display name of the billing account.
   /// [masterBillingAccount] The name of the master billing account that the subaccount
-  SubAccountArgs({
+  const SubAccountArgs({
     this.deletionPolicy,
     required this.displayName,
     required this.masterBillingAccount,

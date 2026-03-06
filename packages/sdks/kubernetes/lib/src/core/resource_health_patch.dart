@@ -20,7 +20,7 @@ class ResourceHealthPatch {
   /// Creates a new [ResourceHealthPatch].
   /// [health] Health of the resource. can be one of:
   /// [resourceID] ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
-  ResourceHealthPatch({
+  const ResourceHealthPatch({
     this.health,
     this.resourceID,
   });

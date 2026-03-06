@@ -10,7 +10,7 @@ class ArmResourceIdResponse {
 
   /// Creates a new [ArmResourceIdResponse].
   /// [resourceId] Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"
-  ArmResourceIdResponse({
+  const ArmResourceIdResponse({
     this.resourceId,
   });
 

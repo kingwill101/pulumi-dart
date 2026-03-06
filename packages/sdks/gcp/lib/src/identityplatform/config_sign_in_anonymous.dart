@@ -10,7 +10,7 @@ class ConfigSignInAnonymous {
 
   /// Creates a new [ConfigSignInAnonymous].
   /// [enabled] Whether anonymous user auth is enabled for the project or not.
-  ConfigSignInAnonymous({
+  const ConfigSignInAnonymous({
     required this.enabled,
   });
 

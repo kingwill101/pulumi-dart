@@ -26,7 +26,7 @@ class WorkspaceWorkspaceArgs {
   /// [displayName] It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
   /// [envTypes] Environments contained in the workspace:
   /// [workspaceName] The workspace name. The format is as follows:
-  WorkspaceWorkspaceArgs({
+  const WorkspaceWorkspaceArgs({
     required this.description,
     this.displayName,
     required this.envTypes,

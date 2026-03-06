@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerOutlierDetectionInterval {
   /// Creates a new [GetVirtualNodeSpecListenerOutlierDetectionInterval].
   /// [unit] Required.
   /// [value] Required.
-  GetVirtualNodeSpecListenerOutlierDetectionInterval({
+  const GetVirtualNodeSpecListenerOutlierDetectionInterval({
     required this.unit,
     required this.value,
   });

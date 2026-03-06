@@ -31,7 +31,7 @@ class DomainDevicesRng {
   /// [driver] Specifies the driver settings for the random number generator device.
   /// [model] Sets the model type for the random number generator device.
   /// [rate] Configures the rate of data provided by the random number generator device.
-  DomainDevicesRng({
+  const DomainDevicesRng({
     this.acpi,
     this.address,
     this.alias,

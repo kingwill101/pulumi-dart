@@ -15,7 +15,7 @@ class GetNetworkAttachmentArgs {
   /// [networkAttachment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNetworkAttachmentArgs({
+  const GetNetworkAttachmentArgs({
     required this.networkAttachment,
     this.project,
     required this.region,

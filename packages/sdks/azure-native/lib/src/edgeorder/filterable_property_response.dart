@@ -12,7 +12,7 @@ class FilterablePropertyResponse {
   /// Creates a new [FilterablePropertyResponse].
   /// [supportedValues] Values to be filtered.
   /// [type] Type of product filter.
-  FilterablePropertyResponse({
+  const FilterablePropertyResponse({
     required this.supportedValues,
     required this.type,
   });

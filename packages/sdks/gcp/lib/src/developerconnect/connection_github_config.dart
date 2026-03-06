@@ -27,7 +27,7 @@ class ConnectionGithubConfig {
   /// [authorizerCredential] Represents an OAuth token of the account that authorized the Connection,
   /// [githubApp] Required. Immutable. The GitHub Application that was installed to the GitHub user or
   /// [installationUri] (Output)
-  ConnectionGithubConfig({
+  const ConnectionGithubConfig({
     this.appInstallationId,
     this.authorizerCredential,
     required this.githubApp,

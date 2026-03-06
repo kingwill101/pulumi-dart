@@ -31,7 +31,7 @@ class FleetspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceTier] Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
   /// [throughputPoolConfiguration] Configuration for throughput pool in the fleetspace.
-  FleetspaceArgs({
+  const FleetspaceArgs({
     this.dataRegions,
     required this.fleetName,
     this.fleetspaceApiKind,

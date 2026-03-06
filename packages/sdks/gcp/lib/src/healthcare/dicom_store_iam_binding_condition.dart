@@ -11,7 +11,7 @@ class DicomStoreIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DicomStoreIamBindingCondition({
+  const DicomStoreIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

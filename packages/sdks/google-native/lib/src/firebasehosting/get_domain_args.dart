@@ -15,7 +15,7 @@ class GetDomainArgs {
   /// [domainId] Required.
   /// [project] Optional.
   /// [siteId] Required.
-  GetDomainArgs({
+  const GetDomainArgs({
     required this.domainId,
     this.project,
     required this.siteId,

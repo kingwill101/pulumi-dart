@@ -14,7 +14,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   /// [failureValues] Values in the response header with the specified name that indicate a failed login attempt.
   /// [name] The name of the header to use.
   /// [successValues] Values in the response header with the specified name that indicate a successful login attempt.
-  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader({
+  const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionHeader({
     required this.failureValues,
     required this.name,
     required this.successValues,

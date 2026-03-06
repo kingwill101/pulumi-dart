@@ -69,7 +69,7 @@ class InstanceState {
   /// [storage] The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] VSwitch ID configured to Bastionhost.
-  InstanceState({
+  const InstanceState({
     this.adAuthServers,
     this.bandwidth,
     this.description,

@@ -54,7 +54,7 @@ class FreeServiceArgs {
   /// [status] Current status of the free services
   /// [systemId] This is the globally unique identifier of the free services which will not change for its lifetime.
   /// [tags] Resource tags.
-  FreeServiceArgs({
+  const FreeServiceArgs({
     this.endAt,
     this.freeServiceName,
     this.identity,

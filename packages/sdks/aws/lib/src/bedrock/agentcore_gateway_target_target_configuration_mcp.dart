@@ -21,7 +21,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcp {
   /// [mcpServer] MCP server target configuration. See `mcp_server` below.
   /// [openApiSchema] OpenAPI schema-based target configuration. See `api_schema_configuration` below.
   /// [smithyModel] Smithy model-based target configuration. See `api_schema_configuration` below.
-  AgentcoreGatewayTargetTargetConfigurationMcp({
+  const AgentcoreGatewayTargetTargetConfigurationMcp({
     this.lambda,
     this.mcpServer,
     this.openApiSchema,

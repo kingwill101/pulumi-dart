@@ -9,7 +9,7 @@ class EnclaveOptionsResponse {
 
   /// Creates a new [EnclaveOptionsResponse].
   /// [enabled] &lt;p&gt;If this parameter is set to &lt;code&gt;true&lt;/code&gt;, the instance is enabled for Amazon Web Services Nitro Enclaves; otherwise, it is not enabled for Amazon Web Services Nitro Enclaves.&lt;/p&gt;
-  EnclaveOptionsResponse({
+  const EnclaveOptionsResponse({
     this.enabled,
   });
 

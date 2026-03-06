@@ -7,7 +7,7 @@ class ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders {
 
   /// Creates a new [ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders].
   /// [items] Optional.
-  ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders({
+  const ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders({
     this.items,
   });
 

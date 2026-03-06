@@ -33,7 +33,7 @@ class SchemaArgs {
   /// [schemaRegistryName] Schema registry name parameter.
   /// [schemaType] Type of the schema.
   /// [tags] Schema tags.
-  SchemaArgs({
+  const SchemaArgs({
     this.description,
     this.displayName,
     required this.format,

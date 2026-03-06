@@ -15,7 +15,7 @@ class SingleScramSecretAssociationState {
   /// [clusterArn] Amazon Resource Name (ARN) of the MSK cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] AWS Secrets Manager secret ARN.
-  SingleScramSecretAssociationState({
+  const SingleScramSecretAssociationState({
     this.clusterArn,
     this.region,
     this.secretArn,

@@ -8,7 +8,7 @@ class AppConnectionSecretStore {
 
   /// Creates a new [AppConnectionSecretStore].
   /// [keyVaultId] The key vault id to store secret.
-  AppConnectionSecretStore({
+  const AppConnectionSecretStore({
     required this.keyVaultId,
   });
 

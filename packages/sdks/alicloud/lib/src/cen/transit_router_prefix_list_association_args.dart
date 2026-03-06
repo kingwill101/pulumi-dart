@@ -31,7 +31,7 @@ class TransitRouterPrefixListAssociationArgs {
   /// [prefixListId] The ID of the prefix list.
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterTableId] The ID of the route table of the transit router.
-  TransitRouterPrefixListAssociationArgs({
+  const TransitRouterPrefixListAssociationArgs({
     required this.nextHop,
     this.nextHopType,
     this.ownerUid,

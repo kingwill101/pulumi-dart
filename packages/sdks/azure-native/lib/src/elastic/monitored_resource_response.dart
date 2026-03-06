@@ -15,7 +15,7 @@ class MonitoredResourceResponse {
   /// [id] The ARM id of the resource.
   /// [reasonForLogsStatus] Reason for why the resource is sending logs (or why it is not sending).
   /// [sendingLogs] Flag indicating the status of the resource for sending logs operation to Elastic.
-  MonitoredResourceResponse({
+  const MonitoredResourceResponse({
     this.id,
     this.reasonForLogsStatus,
     this.sendingLogs,

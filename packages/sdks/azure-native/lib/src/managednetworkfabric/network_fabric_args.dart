@@ -56,7 +56,7 @@ class NetworkFabricArgs {
   /// [serverCountPerRack] Number of servers.Possible values are from 1-16.
   /// [tags] Resource tags.
   /// [terminalServerConfiguration] Network and credentials configuration currently applied to terminal server.
-  NetworkFabricArgs({
+  const NetworkFabricArgs({
     this.annotation,
     required this.fabricASN,
     this.fabricVersion,

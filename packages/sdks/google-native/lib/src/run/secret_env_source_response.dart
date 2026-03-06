@@ -16,7 +16,7 @@ class SecretEnvSourceResponse {
   /// [localObjectReference] This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
   /// [name] The Secret to select from.
   /// [optional] Specify whether the Secret must be defined
-  SecretEnvSourceResponse({
+  const SecretEnvSourceResponse({
     required this.localObjectReference,
     required this.name,
     required this.optional,

@@ -9,7 +9,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration 
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration].
   /// [urlConfiguration] The URL configuration of your web data source. See `url_configuration` block for details.
-  AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration({
+  const AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration({
     required this.urlConfiguration,
   });
 

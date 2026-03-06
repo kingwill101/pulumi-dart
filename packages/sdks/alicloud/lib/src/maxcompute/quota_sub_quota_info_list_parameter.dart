@@ -29,7 +29,7 @@ class QuotaSubQuotaInfoListParameter {
   /// [minCu] The value of minCU in Reserved CUs.
   /// [schedulerType] Scheduling policy. Valid values: Fifo/Fair, default: Fifo
   /// [singleJobCuLimit] Single job CU upper limit. Valid value: greater than or equal to 1
-  QuotaSubQuotaInfoListParameter({
+  const QuotaSubQuotaInfoListParameter({
     this.enablePriority,
     this.forceReservedMin,
     required this.maxCu,

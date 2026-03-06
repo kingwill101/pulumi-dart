@@ -15,7 +15,7 @@ class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummari
   /// [definition] Optional. Definition of the section, for example, "what the customer needs help with or has question about."
   /// [key] Optional. Name of the section, for example, "situation".
   /// [type] Optional. Type of the summarization section.
-  GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection({
+  const GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection({
     this.definition,
     this.key,
     this.type,

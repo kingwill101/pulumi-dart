@@ -8,7 +8,7 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
 
   /// Creates a new [GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference].
   /// [name] The name of the Cloud Run Service.
-  GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference({
+  const GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference({
     required this.name,
   });
 

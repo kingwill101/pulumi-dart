@@ -42,7 +42,7 @@ class MultitenantDistributionOrigin {
   /// [originShields] CloudFront Origin Shield configuration information. See Origin Shield below.
   /// [responseCompletionTimeout] Number of seconds that CloudFront waits for a response after forwarding a request to the origin. Default: 30.
   /// [vpcOriginConfigs] CloudFront VPC origin configuration. See VPC Origin Config below.
-  MultitenantDistributionOrigin({
+  const MultitenantDistributionOrigin({
     this.connectionAttempts,
     this.connectionTimeout,
     this.customHeaders,

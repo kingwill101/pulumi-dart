@@ -31,7 +31,7 @@ class MetadataSchemaArgs {
   /// [schema] The raw YAML string representation of the MetadataSchema. The combination of [MetadataSchema.version] and the schema name given by `title` in [MetadataSchema.schema] must be unique within a MetadataStore. The schema is defined as an OpenAPI 3.0.2 [MetadataSchema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#schemaObject)
   /// [schemaType] The type of the MetadataSchema. This is a property that identifies which metadata types will use the MetadataSchema.
   /// [schemaVersion] The version of the MetadataSchema. The version's format must match the following regular expression: `^[0-9]+.+.+$`, which would allow to order/compare different versions. Example: 1.0.0, 1.0.1, etc.
-  MetadataSchemaArgs({
+  const MetadataSchemaArgs({
     this.description,
     this.location,
     this.metadataSchemaId,

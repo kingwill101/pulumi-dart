@@ -16,7 +16,7 @@ class SnapshotBackupAdditionalDetails {
   /// [instantRPDetails] Instant RP details for the snapshot.
   /// [instantRpRetentionRangeInDays] Retention range for instant Rp in days.
   /// [userAssignedManagedIdentityDetails] User Assigned managed identity details used for snapshot policy.
-  SnapshotBackupAdditionalDetails({
+  const SnapshotBackupAdditionalDetails({
     this.instantRPDetails,
     this.instantRpRetentionRangeInDays,
     this.userAssignedManagedIdentityDetails,

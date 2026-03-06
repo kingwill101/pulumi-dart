@@ -68,7 +68,7 @@ class FleetArgs {
   /// [type] The type of request. Indicates whether the EC2 Fleet only requests the target capacity, or also attempts to maintain it. Valid values: `maintain`, `request`, `instant`. Defaults to `maintain`.
   /// [validFrom] The start date and time of the request, in UTC format (for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
   /// [validUntil] The end date and time of the request, in UTC format (for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new EC2 Fleet requests are placed or able to fulfill the request. If no value is specified, the request remains until you cancel it.
-  FleetArgs({
+  const FleetArgs({
     this.context,
     this.excessCapacityTerminationPolicy,
     this.fleetInstanceSets,

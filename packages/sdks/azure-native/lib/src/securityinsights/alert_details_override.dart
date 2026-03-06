@@ -22,7 +22,7 @@ class AlertDetailsOverride {
   /// [alertDynamicProperties] List of additional dynamic properties to override
   /// [alertSeverityColumnName] the column name to take the alert severity from
   /// [alertTacticsColumnName] the column name to take the alert tactics from
-  AlertDetailsOverride({
+  const AlertDetailsOverride({
     this.alertDescriptionFormat,
     this.alertDisplayNameFormat,
     this.alertDynamicProperties,

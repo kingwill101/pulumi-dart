@@ -9,7 +9,7 @@ class GetKubernetesClusterControlPlaneFirewall {
   /// Creates a new [GetKubernetesClusterControlPlaneFirewall].
   /// [allowedAddresses] Required.
   /// [enabled] Required.
-  GetKubernetesClusterControlPlaneFirewall({
+  const GetKubernetesClusterControlPlaneFirewall({
     required this.allowedAddresses,
     required this.enabled,
   });

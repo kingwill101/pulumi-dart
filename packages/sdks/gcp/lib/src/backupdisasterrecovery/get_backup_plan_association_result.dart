@@ -34,7 +34,7 @@ class GetBackupPlanAssociationResult {
   /// [resourceType] Required.
   /// [rulesConfigInfos] Required.
   /// [updateTime] Required.
-  GetBackupPlanAssociationResult({
+  const GetBackupPlanAssociationResult({
     required this.backupPlan,
     required this.backupPlanAssociationId,
     required this.createTime,

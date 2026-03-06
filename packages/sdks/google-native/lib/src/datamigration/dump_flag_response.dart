@@ -12,7 +12,7 @@ class DumpFlagResponse {
   /// Creates a new [DumpFlagResponse].
   /// [name] The name of the flag
   /// [value] The value of the flag.
-  DumpFlagResponse({
+  const DumpFlagResponse({
     required this.name,
     required this.value,
   });

@@ -9,7 +9,7 @@ class FleetLifecycleStateResponseGkehubV1alpha {
 
   /// Creates a new [FleetLifecycleStateResponseGkehubV1alpha].
   /// [code] The current state of the Fleet resource.
-  FleetLifecycleStateResponseGkehubV1alpha({
+  const FleetLifecycleStateResponseGkehubV1alpha({
     required this.code,
   });
 

@@ -14,7 +14,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
   /// [datasetId] The dataset ID of the table.
   /// [projectId] The Google Cloud Platform project ID of the project containing the table.
   /// [tableId] The name of the table.
-  PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference({
+  const PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference({
     required this.datasetId,
     required this.projectId,
     required this.tableId,

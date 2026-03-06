@@ -60,7 +60,7 @@ class UserState {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [sqlServerUserDetails] Optional.
   /// [type] The user type. It determines the method to authenticate the
-  UserState({
+  const UserState({
     this.deletionPolicy,
     this.host,
     this.instance,

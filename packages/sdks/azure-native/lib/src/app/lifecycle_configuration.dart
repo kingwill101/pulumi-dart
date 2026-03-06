@@ -15,7 +15,7 @@ class LifecycleConfiguration {
   /// [cooldownPeriodInSeconds] The cooldown period of a session in seconds when the lifecycle type is 'Timed'.
   /// [lifecycleType] The lifecycle type of the session pool.
   /// [maxAlivePeriodInSeconds] The maximum alive period of a session in seconds when the lifecycle type is 'OnContainerExit'.
-  LifecycleConfiguration({
+  const LifecycleConfiguration({
     this.cooldownPeriodInSeconds,
     this.lifecycleType,
     this.maxAlivePeriodInSeconds,

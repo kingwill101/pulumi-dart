@@ -18,7 +18,7 @@ class CalloutPolicyResponse {
   /// [calloutType] Type of the callout service, specifying the kind of external resource or service being accessed.
   /// [calloutUriRegex] Regular expression or FQDN pattern for the callout URI.
   /// [outboundAccess] Indicates whether outbound access is permitted for the specified URI pattern.
-  CalloutPolicyResponse({
+  const CalloutPolicyResponse({
     required this.calloutId,
     this.calloutType,
     this.calloutUriRegex,

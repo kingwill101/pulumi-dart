@@ -16,7 +16,7 @@ class MonitoringSubscriptionArgs {
   /// Creates a new [MonitoringSubscriptionArgs].
   /// [distributionId] The ID of the distribution that you are enabling metrics for.
   /// [monitoringSubscription] A monitoring subscription. This structure contains information about whether additional CloudWatch metrics are enabled for a given CloudFront distribution.
-  MonitoringSubscriptionArgs({
+  const MonitoringSubscriptionArgs({
     required this.distributionId,
     required this.monitoringSubscription,
   });

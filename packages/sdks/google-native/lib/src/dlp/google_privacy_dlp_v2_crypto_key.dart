@@ -18,7 +18,7 @@ class GooglePrivacyDlpV2CryptoKey {
   /// [kmsWrapped] Key wrapped using Cloud KMS
   /// [transient] Transient crypto key
   /// [unwrapped] Unwrapped crypto key
-  GooglePrivacyDlpV2CryptoKey({
+  const GooglePrivacyDlpV2CryptoKey({
     this.kmsWrapped,
     this.transient,
     this.unwrapped,

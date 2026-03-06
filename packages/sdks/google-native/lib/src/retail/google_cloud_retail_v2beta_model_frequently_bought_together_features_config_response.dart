@@ -9,7 +9,7 @@ class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse
 
   /// Creates a new [GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse].
   /// [contextProductsType] Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
-  GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse({
+  const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse({
     required this.contextProductsType,
   });
 

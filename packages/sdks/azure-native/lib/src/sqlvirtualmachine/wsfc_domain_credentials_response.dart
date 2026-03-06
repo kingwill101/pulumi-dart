@@ -15,7 +15,7 @@ class WsfcDomainCredentialsResponse {
   /// [clusterBootstrapAccountPassword] Cluster bootstrap account password.
   /// [clusterOperatorAccountPassword] Cluster operator account password.
   /// [sqlServiceAccountPassword] SQL service account password.
-  WsfcDomainCredentialsResponse({
+  const WsfcDomainCredentialsResponse({
     this.clusterBootstrapAccountPassword,
     this.clusterOperatorAccountPassword,
     this.sqlServiceAccountPassword,

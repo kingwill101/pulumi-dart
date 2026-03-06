@@ -29,7 +29,7 @@ class ReplicatedVMNetworkInterface {
   /// [sourceNetworkInterfaceId] (Required if the network_interface block is specified) Id source network interface.
   /// [targetStaticIp] Static IP to assign when a failover is done.
   /// [targetSubnetName] Name of the subnet to use when a failover is done.
-  ReplicatedVMNetworkInterface({
+  const ReplicatedVMNetworkInterface({
     this.failoverTestPublicIpAddressId,
     this.failoverTestStaticIp,
     this.failoverTestSubnetName,

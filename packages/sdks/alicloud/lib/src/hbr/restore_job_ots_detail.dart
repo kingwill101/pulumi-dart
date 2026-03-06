@@ -8,7 +8,7 @@ class RestoreJobOtsDetail {
 
   /// Creates a new [RestoreJobOtsDetail].
   /// [overwriteExisting] Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-  RestoreJobOtsDetail({
+  const RestoreJobOtsDetail({
     this.overwriteExisting,
   });
 

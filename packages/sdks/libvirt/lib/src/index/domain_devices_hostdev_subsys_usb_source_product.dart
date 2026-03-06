@@ -8,7 +8,7 @@ class DomainDevicesHostdevSubsysUsbSourceProduct {
 
   /// Creates a new [DomainDevicesHostdevSubsysUsbSourceProduct].
   /// [id] Specifies the unique identifier for the vendor of the USB device.
-  DomainDevicesHostdevSubsysUsbSourceProduct({
+  const DomainDevicesHostdevSubsysUsbSourceProduct({
     this.id,
   });
 

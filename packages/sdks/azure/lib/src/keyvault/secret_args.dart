@@ -41,7 +41,7 @@ class SecretArgs {
   /// [value] Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   /// [valueWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [valueWoVersion] An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
-  SecretArgs({
+  const SecretArgs({
     this.contentType,
     this.expirationDate,
     required this.keyVaultId,

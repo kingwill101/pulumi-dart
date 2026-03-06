@@ -36,7 +36,7 @@ class IntegrationRuntimeSsisProperties {
   /// [expressCustomSetupProperties] Custom setup without script properties for a SSIS integration runtime.
   /// [licenseType] License type for bringing your own license scenario.
   /// [packageStores] Package stores for the SSIS Integration Runtime.
-  IntegrationRuntimeSsisProperties({
+  const IntegrationRuntimeSsisProperties({
     this.catalogInfo,
     this.credential,
     this.customSetupScriptProperties,

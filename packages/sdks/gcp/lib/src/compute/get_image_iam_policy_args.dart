@@ -16,7 +16,7 @@ class GetImageIamPolicyArgs {
   /// Creates a new [GetImageIamPolicyArgs].
   /// [image] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetImageIamPolicyArgs({
+  const GetImageIamPolicyArgs({
     required this.image,
     this.project,
   });

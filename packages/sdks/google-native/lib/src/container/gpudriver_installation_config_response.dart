@@ -9,7 +9,7 @@ class GPUDriverInstallationConfigResponse {
 
   /// Creates a new [GPUDriverInstallationConfigResponse].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  GPUDriverInstallationConfigResponse({
+  const GPUDriverInstallationConfigResponse({
     required this.gpuDriverVersion,
   });
 

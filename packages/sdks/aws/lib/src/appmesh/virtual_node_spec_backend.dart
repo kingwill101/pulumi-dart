@@ -9,7 +9,7 @@ class VirtualNodeSpecBackend {
 
   /// Creates a new [VirtualNodeSpecBackend].
   /// [virtualService] Virtual service to use as a backend for a virtual node.
-  VirtualNodeSpecBackend({
+  const VirtualNodeSpecBackend({
     required this.virtualService,
   });
 

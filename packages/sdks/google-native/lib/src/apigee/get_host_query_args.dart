@@ -13,7 +13,7 @@ class GetHostQueryArgs {
   /// Creates a new [GetHostQueryArgs].
   /// [hostQueryId] Required.
   /// [organizationId] Required.
-  GetHostQueryArgs({
+  const GetHostQueryArgs({
     required this.hostQueryId,
     required this.organizationId,
   });

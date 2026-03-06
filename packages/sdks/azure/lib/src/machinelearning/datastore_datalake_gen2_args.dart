@@ -39,7 +39,7 @@ class DatastoreDatalakeGen2Args {
   /// [tags] A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   /// [tenantId] The ID of the Tenant which the Service Principal belongs to.
   /// [workspaceId] The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
-  DatastoreDatalakeGen2Args({
+  const DatastoreDatalakeGen2Args({
     this.authorityUrl,
     this.clientId,
     this.clientSecret,

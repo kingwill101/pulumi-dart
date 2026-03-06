@@ -8,7 +8,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyJa3Fingerprint {
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyJa3Fingerprint].
   /// [fallbackBehavior] Match status to assign to the web request if there is insufficient TSL Client Hello information to compute the JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  WebAclRuleStatementRateBasedStatementCustomKeyJa3Fingerprint({
+  const WebAclRuleStatementRateBasedStatementCustomKeyJa3Fingerprint({
     required this.fallbackBehavior,
   });
 

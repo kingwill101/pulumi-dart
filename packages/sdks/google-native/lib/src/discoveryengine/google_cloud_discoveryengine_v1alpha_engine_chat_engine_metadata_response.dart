@@ -9,7 +9,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse {
 
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse].
   /// [dialogflowAgent] The resource name of a Dialogflow agent, that this Chat Engine refers to. Format: `projects//locations//agents/`.
-  GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse({
+  const GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse({
     required this.dialogflowAgent,
   });
 

@@ -71,7 +71,7 @@ class GetDataCollectionRuleResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetDataCollectionRuleResult({
+  const GetDataCollectionRuleResult({
     required this.azureApiVersion,
     this.dataCollectionEndpointId,
     this.dataFlows,

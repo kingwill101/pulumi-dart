@@ -31,7 +31,7 @@ class GetSharedImageVersionArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Shared Image Gallery exists.
   /// [sortVersionsBySemver] Sort available versions taking SemVer versioning scheme into account. Defaults to `false`.
   /// [tags] A mapping of tags assigned to the Shared Image.
-  GetSharedImageVersionArgs({
+  const GetSharedImageVersionArgs({
     required this.galleryName,
     required this.imageName,
     required this.name,

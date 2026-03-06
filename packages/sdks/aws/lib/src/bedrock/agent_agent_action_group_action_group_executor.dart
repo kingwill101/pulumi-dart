@@ -14,7 +14,7 @@ class AgentAgentActionGroupActionGroupExecutor {
   /// Creates a new [AgentAgentActionGroupActionGroupExecutor].
   /// [customControl] Custom control method for handling the information elicited from the user. Valid values: `RETURN_CONTROL`.
   /// [lambda] ARN of the Lambda function containing the business logic that is carried out upon invoking the action.
-  AgentAgentActionGroupActionGroupExecutor({
+  const AgentAgentActionGroupActionGroupExecutor({
     this.customControl,
     this.lambda,
   });

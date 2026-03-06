@@ -90,7 +90,7 @@ class MirroringEndpointGroupState {
   /// [state] (Output)
   /// [type] The type of the endpoint group.
   /// [updateTime] The timestamp when the resource was most recently updated.
-  MirroringEndpointGroupState({
+  const MirroringEndpointGroupState({
     this.associations,
     this.connectedDeploymentGroups,
     this.createTime,

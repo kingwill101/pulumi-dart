@@ -8,7 +8,7 @@ class DataCellsFilterTableDataColumnWildcard {
 
   /// Creates a new [DataCellsFilterTableDataColumnWildcard].
   /// [excludedColumnNames] (Optional) Excludes column names. Any column with this name will be excluded.
-  DataCellsFilterTableDataColumnWildcard({
+  const DataCellsFilterTableDataColumnWildcard({
     this.excludedColumnNames,
   });
 

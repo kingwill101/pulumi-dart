@@ -11,7 +11,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings {
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings].
   /// [captureInterval] The frequency at which to capture frames for inclusion in the output.
   /// [captureIntervalUnits] Unit for the frame capture interval.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings({
     this.captureInterval,
     this.captureIntervalUnits,
   });

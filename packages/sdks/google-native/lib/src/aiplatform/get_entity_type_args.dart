@@ -17,7 +17,7 @@ class GetEntityTypeArgs {
   /// [featurestoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEntityTypeArgs({
+  const GetEntityTypeArgs({
     required this.entityTypeId,
     required this.featurestoreId,
     required this.location,

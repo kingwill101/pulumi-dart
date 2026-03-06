@@ -28,7 +28,7 @@ class DataTaxonomyArgs {
   /// [labels] Optional. User-defined labels for the DataTaxonomy.
   /// [location] Optional.
   /// [project] Optional.
-  DataTaxonomyArgs({
+  const DataTaxonomyArgs({
     required this.dataTaxonomyId,
     this.description,
     this.displayName,

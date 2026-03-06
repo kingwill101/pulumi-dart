@@ -13,7 +13,7 @@ class GetRulesetArgs {
   /// Creates a new [GetRulesetArgs].
   /// [project] Optional.
   /// [rulesetId] Required.
-  GetRulesetArgs({
+  const GetRulesetArgs({
     this.project,
     required this.rulesetId,
   });

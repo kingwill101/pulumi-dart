@@ -31,7 +31,7 @@ class ScriptState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] Version that is associated with this script.
   /// [zipFile] A data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
-  ScriptState({
+  const ScriptState({
     this.arn,
     this.name,
     this.region,

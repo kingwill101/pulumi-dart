@@ -15,7 +15,7 @@ class GetSitesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] IDs of the sites.
   /// [tags] Optional.
-  GetSitesResult({
+  const GetSitesResult({
     required this.globalNetworkId,
     required this.id,
     required this.ids,

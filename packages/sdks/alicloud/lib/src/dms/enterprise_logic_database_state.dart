@@ -36,7 +36,7 @@ class EnterpriseLogicDatabaseState {
   /// [ownerNameLists] The nickname list of the logical library Owner.
   /// [schemaName] Logical Library name.
   /// [searchName] Logical library search name.
-  EnterpriseLogicDatabaseState({
+  const EnterpriseLogicDatabaseState({
     this.alias,
     this.databaseIds,
     this.dbType,

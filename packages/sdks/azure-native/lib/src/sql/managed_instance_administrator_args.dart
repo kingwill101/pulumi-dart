@@ -29,7 +29,7 @@ class ManagedInstanceAdministratorArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [sid] SID (object ID) of the managed instance administrator.
   /// [tenantId] Tenant ID of the managed instance administrator.
-  ManagedInstanceAdministratorArgs({
+  const ManagedInstanceAdministratorArgs({
     this.administratorName,
     required this.administratorType,
     required this.login,

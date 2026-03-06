@@ -21,7 +21,7 @@ class SecureCredentialState {
   /// [key] The secure credential's key name.  Regardless of the case used in the configuration, the provider will provide an upcased key to the underlying API.
   /// [lastUpdated] The time the secure credential was last updated.
   /// [value] The secure credential's value.
-  SecureCredentialState({
+  const SecureCredentialState({
     this.accountId,
     this.description,
     this.key,

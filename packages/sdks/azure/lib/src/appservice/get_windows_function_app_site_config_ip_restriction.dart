@@ -29,7 +29,7 @@ class GetWindowsFunctionAppSiteConfigIpRestriction {
   /// [priority] The priority value of this `ip_restriction`.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The subnet id which the Windows Function App is vNet Integrated with.
-  GetWindowsFunctionAppSiteConfigIpRestriction({
+  const GetWindowsFunctionAppSiteConfigIpRestriction({
     required this.action,
     required this.description,
     required this.headers,

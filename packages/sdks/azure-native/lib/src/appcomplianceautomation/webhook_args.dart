@@ -39,7 +39,7 @@ class WebhookArgs {
   /// [updateWebhookKey] whether to update webhookKey.
   /// [webhookKey] webhook secret token. If not set, this field value is null; otherwise, please set a string value.
   /// [webhookName] Webhook Name.
-  WebhookArgs({
+  const WebhookArgs({
     this.contentType,
     this.enableSslVerification,
     this.events,

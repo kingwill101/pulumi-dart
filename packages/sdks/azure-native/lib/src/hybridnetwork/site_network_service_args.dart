@@ -33,7 +33,7 @@ class SiteNetworkServiceArgs {
   /// [siteNetworkServiceName] The name of the site network service.
   /// [sku] Sku of the site network service.
   /// [tags] Resource tags.
-  SiteNetworkServiceArgs({
+  const SiteNetworkServiceArgs({
     this.identity,
     this.location,
     this.properties,

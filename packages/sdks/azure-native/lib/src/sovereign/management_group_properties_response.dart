@@ -10,7 +10,7 @@ class ManagementGroupPropertiesResponse {
 
   /// Creates a new [ManagementGroupPropertiesResponse].
   /// [policyInitiativesAssignmentProperties] Array of policy initiatives applied to the management group.
-  ManagementGroupPropertiesResponse({
+  const ManagementGroupPropertiesResponse({
     required this.policyInitiativesAssignmentProperties,
   });
 

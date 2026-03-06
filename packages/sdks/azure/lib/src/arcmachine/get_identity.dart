@@ -14,7 +14,7 @@ class GetIdentity {
   /// [principalId] The principal ID of resource identity.
   /// [tenantId] The tenant ID of resource.
   /// [type] The identity type.
-  GetIdentity({
+  const GetIdentity({
     required this.principalId,
     required this.tenantId,
     required this.type,

@@ -12,7 +12,7 @@ class JobPlacement {
   /// Creates a new [JobPlacement].
   /// [clusterLabels] Optional. Cluster labels to identify a cluster where the job will be submitted.
   /// [clusterName] The name of the cluster where the job will be submitted.
-  JobPlacement({
+  const JobPlacement({
     this.clusterLabels,
     required this.clusterName,
   });

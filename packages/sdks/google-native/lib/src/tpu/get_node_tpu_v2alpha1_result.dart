@@ -90,7 +90,7 @@ class GetNodeTpuV2alpha1Result {
   /// [state] The current state for the TPU Node.
   /// [symptoms] The Symptoms that have occurred to the TPU Node.
   /// [tags] Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
-  GetNodeTpuV2alpha1Result({
+  const GetNodeTpuV2alpha1Result({
     required this.acceleratorConfig,
     required this.acceleratorType,
     required this.apiVersion,

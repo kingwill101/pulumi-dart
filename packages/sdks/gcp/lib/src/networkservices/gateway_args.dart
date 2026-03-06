@@ -89,7 +89,7 @@ class GatewayArgs {
   /// [serverTlsPolicy] A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
   /// [subnetwork] The relative resource name identifying the subnetwork in which this SWG is allocated.
   /// [type] Immutable. The type of the customer managed gateway.
-  GatewayArgs({
+  const GatewayArgs({
     this.addresses,
     this.certificateUrls,
     this.deleteSwgAutogenRouterOnDestroy,

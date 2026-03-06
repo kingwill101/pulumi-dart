@@ -31,7 +31,7 @@ class SiteDeliveryTaskHttpDelivery {
   /// [standardAuthOn] Optional.
   /// [standardAuthParam] See `standard_auth_param` below.
   /// [transformTimeout] Optional.
-  SiteDeliveryTaskHttpDelivery({
+  const SiteDeliveryTaskHttpDelivery({
     this.compress,
     this.destUrl,
     this.headerParam,

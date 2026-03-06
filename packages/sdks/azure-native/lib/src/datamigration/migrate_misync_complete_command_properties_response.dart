@@ -25,7 +25,7 @@ class MigrateMISyncCompleteCommandPropertiesResponse {
   /// [input] Command input
   /// [output] Command output. This is ignored if submitted.
   /// [state] The state of the command. This is ignored if submitted.
-  MigrateMISyncCompleteCommandPropertiesResponse({
+  const MigrateMISyncCompleteCommandPropertiesResponse({
     required this.commandType,
     required this.errors,
     this.input,

@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [clusterName] Name of the Log Analytics Cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

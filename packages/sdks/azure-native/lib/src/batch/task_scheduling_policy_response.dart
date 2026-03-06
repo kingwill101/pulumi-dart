@@ -9,7 +9,7 @@ class TaskSchedulingPolicyResponse {
 
   /// Creates a new [TaskSchedulingPolicyResponse].
   /// [nodeFillType] How tasks should be distributed across compute nodes.
-  TaskSchedulingPolicyResponse({
+  const TaskSchedulingPolicyResponse({
     required this.nodeFillType,
   });
 

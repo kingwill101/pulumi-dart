@@ -36,7 +36,7 @@ class GetPeriodicTimerEventTriggerResult {
   /// [sourceInfo] Periodic timer details.
   /// [systemData] Metadata pertaining to creation and last modification of Trigger
   /// [type] The hierarchical type of the object.
-  GetPeriodicTimerEventTriggerResult({
+  const GetPeriodicTimerEventTriggerResult({
     required this.azureApiVersion,
     this.customContextTag,
     required this.id,

@@ -38,7 +38,7 @@ class ListWebAppBackupStatusSecretsArgs {
   /// [name] Name of web app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [storageAccountUrl] SAS URL to the container.
-  ListWebAppBackupStatusSecretsArgs({
+  const ListWebAppBackupStatusSecretsArgs({
     required this.backupId,
     this.backupName,
     this.backupSchedule,

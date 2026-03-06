@@ -28,7 +28,7 @@ class AzureFabricSpecificDetailsResponse {
   /// [location] The Location for the Azure fabric.
   /// [locationDetails] The location details.
   /// [zones] The zones.
-  AzureFabricSpecificDetailsResponse({
+  const AzureFabricSpecificDetailsResponse({
     this.containerIds,
     this.extendedLocations,
     required this.instanceType,

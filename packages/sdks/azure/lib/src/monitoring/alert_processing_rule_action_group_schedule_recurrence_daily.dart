@@ -11,7 +11,7 @@ class AlertProcessingRuleActionGroupScheduleRecurrenceDaily {
   /// Creates a new [AlertProcessingRuleActionGroupScheduleRecurrenceDaily].
   /// [endTime] Specifies the recurrence end time (H:M:S).
   /// [startTime] Specifies the recurrence start time (H:M:S).
-  AlertProcessingRuleActionGroupScheduleRecurrenceDaily({
+  const AlertProcessingRuleActionGroupScheduleRecurrenceDaily({
     required this.endTime,
     required this.startTime,
   });

@@ -12,7 +12,7 @@ class PreferencesState {
   /// Creates a new [PreferencesState].
   /// [memberAccountDiscountVisibility] Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
   /// [savingsEstimationMode] Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
-  PreferencesState({
+  const PreferencesState({
     this.memberAccountDiscountVisibility,
     this.savingsEstimationMode,
   });

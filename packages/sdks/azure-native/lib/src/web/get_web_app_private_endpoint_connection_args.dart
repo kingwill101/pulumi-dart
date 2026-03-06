@@ -18,7 +18,7 @@ class GetWebAppPrivateEndpointConnectionArgs {
   /// [name] Name of the site.
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppPrivateEndpointConnectionArgs({
+  const GetWebAppPrivateEndpointConnectionArgs({
     required this.name,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

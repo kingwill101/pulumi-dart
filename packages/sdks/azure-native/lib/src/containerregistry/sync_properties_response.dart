@@ -24,7 +24,7 @@ class SyncPropertiesResponse {
   /// [schedule] The cron expression indicating the schedule that the connected registry will sync with its parent.
   /// [syncWindow] The time window during which sync is enabled for each schedule occurrence. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
   /// [tokenId] The resource ID of the ACR token used to authenticate the connected registry to its parent during sync.
-  SyncPropertiesResponse({
+  const SyncPropertiesResponse({
     required this.gatewayEndpoint,
     required this.lastSyncTime,
     required this.messageTtl,

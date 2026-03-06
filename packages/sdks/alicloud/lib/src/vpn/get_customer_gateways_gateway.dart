@@ -23,7 +23,7 @@ class GetCustomerGatewaysGateway {
   /// [id] ID of the VPN customer gateway .
   /// [ipAddress] The ip address of the VPN customer gateway.
   /// [name] The name of the VPN customer gateway.
-  GetCustomerGatewaysGateway({
+  const GetCustomerGatewaysGateway({
     required this.asn,
     required this.createTime,
     required this.description,

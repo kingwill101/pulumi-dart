@@ -41,7 +41,7 @@ class ProxyEndpointState {
   /// [vpcId] The VPC ID of the DB proxy endpoint.
   /// [vpcSecurityGroupIds] One or more VPC security group IDs to associate with the new proxy.
   /// [vpcSubnetIds] One or more VPC subnet IDs to associate with the new proxy.
-  ProxyEndpointState({
+  const ProxyEndpointState({
     this.arn,
     this.dbProxyEndpointName,
     this.dbProxyName,

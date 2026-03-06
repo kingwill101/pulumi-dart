@@ -108,7 +108,7 @@ class SqlServerLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userName] The on-premises Windows authentication user name. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SqlServerLinkedServiceResponse({
+  const SqlServerLinkedServiceResponse({
     this.alwaysEncryptedSettings,
     this.annotations,
     this.applicationIntent,

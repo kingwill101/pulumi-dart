@@ -11,7 +11,7 @@ class RecommendationPreferencesUtilizationPreferenceMetricParameters {
   /// Creates a new [RecommendationPreferencesUtilizationPreferenceMetricParameters].
   /// [headroom] The headroom value in percentage used for the specified metric parameter. Valid values: `PERCENT_30`, `PERCENT_20`, `PERCENT_10`, `PERCENT_0`.
   /// [threshold] The threshold value used for the specified metric parameter. You can only specify the threshold value for CPU utilization. Valid values: `P90`, `P95`, `P99_5`.
-  RecommendationPreferencesUtilizationPreferenceMetricParameters({
+  const RecommendationPreferencesUtilizationPreferenceMetricParameters({
     required this.headroom,
     this.threshold,
   });

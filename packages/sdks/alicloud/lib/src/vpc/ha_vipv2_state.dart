@@ -55,7 +55,7 @@ class HaVipv2State {
   /// [tags] The tags of HaVip.
   /// [vpcId] The VPC ID to which the HaVip instance belongs
   /// [vswitchId] The switch ID to which the HaVip instance belongs
-  HaVipv2State({
+  const HaVipv2State({
     this.associatedEipAddresses,
     this.associatedInstanceType,
     this.associatedInstances,

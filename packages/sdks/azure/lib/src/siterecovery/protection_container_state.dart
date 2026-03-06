@@ -18,7 +18,7 @@ class ProtectionContainerState {
   /// [recoveryFabricName] Name of fabric that should contain this protection container. Changing this forces a new resource to be created.
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
-  ProtectionContainerState({
+  const ProtectionContainerState({
     this.name,
     this.recoveryFabricName,
     this.recoveryVaultName,

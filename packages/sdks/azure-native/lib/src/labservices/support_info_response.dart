@@ -18,7 +18,7 @@ class SupportInfoResponse {
   /// [instructions] Support instructions.
   /// [phone] Support contact phone number.
   /// [url] Support web address.
-  SupportInfoResponse({
+  const SupportInfoResponse({
     this.email,
     this.instructions,
     this.phone,

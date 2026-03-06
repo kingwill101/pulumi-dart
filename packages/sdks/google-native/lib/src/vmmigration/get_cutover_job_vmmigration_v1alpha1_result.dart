@@ -53,7 +53,7 @@ class GetCutoverJobVmmigrationV1alpha1Result {
   /// [stateTime] The time the state was last updated.
   /// [steps] The cutover steps list representing its progress.
   /// [targetDetails] Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
-  GetCutoverJobVmmigrationV1alpha1Result({
+  const GetCutoverJobVmmigrationV1alpha1Result({
     required this.computeEngineDisksTargetDetails,
     required this.computeEngineTargetDetails,
     required this.computeEngineVmDetails,

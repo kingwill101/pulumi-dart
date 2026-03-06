@@ -77,7 +77,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentials {
   /// [trendmicro] The connector-specific credentials required when using Trend Micro. See Trend Micro Connector Profile Credentials for more details.
   /// [veeva] Connector-specific credentials required when using Veeva. See Veeva Connector Profile Credentials for more details.
   /// [zendesk] Connector-specific credentials required when using Zendesk. See Zendesk Connector Profile Credentials for more details.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentials({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentials({
     this.amplitude,
     this.customConnector,
     this.datadog,

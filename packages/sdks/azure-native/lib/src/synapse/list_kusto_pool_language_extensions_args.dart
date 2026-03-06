@@ -18,7 +18,7 @@ class ListKustoPoolLanguageExtensionsArgs {
   /// [kustoPoolName] The name of the Kusto pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  ListKustoPoolLanguageExtensionsArgs({
+  const ListKustoPoolLanguageExtensionsArgs({
     required this.kustoPoolName,
     required this.resourceGroupName,
     required this.workspaceName,

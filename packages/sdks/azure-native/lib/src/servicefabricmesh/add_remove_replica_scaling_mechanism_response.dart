@@ -19,7 +19,7 @@ class AddRemoveReplicaScalingMechanismResponse {
   /// [maxCount] Maximum number of containers (scale up won't be performed above this number).
   /// [minCount] Minimum number of containers (scale down won't be performed below this number).
   /// [scaleIncrement] Each time auto scaling is performed, this number of containers will be added or removed.
-  AddRemoveReplicaScalingMechanismResponse({
+  const AddRemoveReplicaScalingMechanismResponse({
     required this.kind,
     required this.maxCount,
     required this.minCount,

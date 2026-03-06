@@ -13,7 +13,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable 
   /// Creates a new [StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable].
   /// [oracleColumns] Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable({
+  const StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable({
     this.oracleColumns,
     required this.table,
   });

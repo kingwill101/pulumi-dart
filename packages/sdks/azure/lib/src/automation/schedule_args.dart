@@ -46,7 +46,7 @@ class ScheduleArgs {
   /// [startTime] Start time of the schedule. Must be at least five minutes in the future. Defaults to seven minutes in the future from the time the resource is created.
   /// [timezone] The timezone of the start time. Defaults to `Etc/UTC`. For possible values see: &lt;https://docs.microsoft.com/en-us/rest/api/maps/timezone/gettimezoneenumwindows&gt;
   /// [weekDays] List of days of the week that the job should execute on. Only valid when frequency is `Week`. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-  ScheduleArgs({
+  const ScheduleArgs({
     required this.automationAccountName,
     this.description,
     this.expiryTime,

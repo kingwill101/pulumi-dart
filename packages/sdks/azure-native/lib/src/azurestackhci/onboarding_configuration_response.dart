@@ -21,7 +21,7 @@ class OnboardingConfigurationResponse {
   /// [resourceId] Resource ID.
   /// [tenantId] Tenant ID of the resource.
   /// [type] Type of the onboarding resource to support polymorphic resource.
-  OnboardingConfigurationResponse({
+  const OnboardingConfigurationResponse({
     this.arcVirtualMachineId,
     this.location,
     this.resourceId,

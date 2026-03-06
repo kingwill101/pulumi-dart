@@ -29,7 +29,7 @@ class GetServerPlansPlan {
   /// [memory] The memory size. Unit: GB.
   /// [planId] The ID of the Instance Plan.
   /// [supportPlatform] The platform of Plan supported.
-  GetServerPlansPlan({
+  const GetServerPlansPlan({
     required this.bandwidth,
     required this.core,
     required this.diskSize,

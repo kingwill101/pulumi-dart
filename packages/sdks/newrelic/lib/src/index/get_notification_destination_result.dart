@@ -33,7 +33,7 @@ class GetNotificationDestinationResult {
   /// [secureUrls] The URL in secure format, showing only the `prefix`, as the `secure_suffix` is a secret.
   /// [status] The status of the notification destination.
   /// [type] The notification destination type, either: `EMAIL`, `SERVICE_NOW`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `PAGERDUTY_ACCOUNT_INTEGRATION` or `PAGERDUTY_SERVICE_INTEGRATION`, `SLACK`, `SLACK_COLLABORATION`, `MICROSOFT_TEAMS` and `WORKFLOW_AUTOMATION`.
-  GetNotificationDestinationResult({
+  const GetNotificationDestinationResult({
     required this.accountId,
     required this.active,
     required this.guid,

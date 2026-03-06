@@ -43,7 +43,7 @@ class GetInstanceConfigResult {
   /// [reconciling] If true, the instance config is being created or updated. If false, there are no ongoing operations for the instance config.
   /// [replicas] The geographic placement of nodes in this instance configuration and their replication properties.
   /// [state] The current instance config state. Applicable only for USER_MANAGED configs.
-  GetInstanceConfigResult({
+  const GetInstanceConfigResult({
     required this.baseConfig,
     required this.configType,
     required this.displayName,

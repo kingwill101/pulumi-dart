@@ -12,7 +12,7 @@ class PrivateConnectionVpcPeeringConfig {
   /// Creates a new [PrivateConnectionVpcPeeringConfig].
   /// [subnet] A free subnet for peering. (CIDR of /29)
   /// [vpc] Fully qualified name of the VPC that Datastream will peer to.
-  PrivateConnectionVpcPeeringConfig({
+  const PrivateConnectionVpcPeeringConfig({
     required this.subnet,
     required this.vpc,
   });

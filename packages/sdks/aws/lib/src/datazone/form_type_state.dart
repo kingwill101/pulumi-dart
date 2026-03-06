@@ -49,7 +49,7 @@ class FormTypeState {
   /// [revision] Revision of the Form Type.
   /// [status] Status of form type. Must be "ENABLED" or "DISABLED" If status is set to "ENABLED" terraform cannot delete the resource until it is manually changed in the AWS console.
   /// [timeouts] Optional.
-  FormTypeState({
+  const FormTypeState({
     this.createdAt,
     this.createdBy,
     this.description,

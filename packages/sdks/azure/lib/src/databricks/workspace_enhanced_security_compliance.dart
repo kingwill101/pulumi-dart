@@ -25,7 +25,7 @@ class WorkspaceEnhancedSecurityCompliance {
   /// [complianceSecurityProfileEnabled] Enables compliance security profile for this workspace. Defaults to `false`.
   /// [complianceSecurityProfileStandards] A list of standards to enforce on this workspace. Possible values include `HIPAA` and `PCI_DSS`.
   /// [enhancedSecurityMonitoringEnabled] Enables enhanced security monitoring for this workspace. Defaults to `false`.
-  WorkspaceEnhancedSecurityCompliance({
+  const WorkspaceEnhancedSecurityCompliance({
     this.automaticClusterUpdateEnabled,
     this.complianceSecurityProfileEnabled,
     this.complianceSecurityProfileStandards,

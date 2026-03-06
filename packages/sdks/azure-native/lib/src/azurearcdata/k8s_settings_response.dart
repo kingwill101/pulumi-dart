@@ -10,7 +10,7 @@ class K8sSettingsResponse {
 
   /// Creates a new [K8sSettingsResponse].
   /// [network] The kubernetes network settings information.
-  K8sSettingsResponse({
+  const K8sSettingsResponse({
     this.network,
   });
 

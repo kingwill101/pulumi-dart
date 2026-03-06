@@ -36,7 +36,7 @@ class MetricAlertDynamicCriteria {
   /// [metricNamespace] One of the metric namespaces to be monitored.
   /// [operator] The criteria operator. Possible values are `LessThan`, `GreaterThan` and `GreaterOrLessThan`.
   /// [skipMetricValidation] Skip the metric validation to allow creating an alert rule on a custom metric that isn't yet emitted?
-  MetricAlertDynamicCriteria({
+  const MetricAlertDynamicCriteria({
     required this.aggregation,
     required this.alertSensitivity,
     this.dimensions,

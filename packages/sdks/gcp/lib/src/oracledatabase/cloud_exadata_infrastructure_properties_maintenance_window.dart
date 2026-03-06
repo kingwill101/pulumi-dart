@@ -54,7 +54,7 @@ class CloudExadataInfrastructurePropertiesMaintenanceWindow {
   /// [patchingMode] Cloud CloudExadataInfrastructure node patching method, either "ROLLING"
   /// [preference] The maintenance window scheduling preference.
   /// [weeksOfMonths] Weeks during the month when maintenance should be performed. Weeks start on
-  CloudExadataInfrastructurePropertiesMaintenanceWindow({
+  const CloudExadataInfrastructurePropertiesMaintenanceWindow({
     this.customActionTimeoutMins,
     this.daysOfWeeks,
     this.hoursOfDays,

@@ -182,7 +182,7 @@ class DomainDevices {
   /// [videos] Defines one or more video devices attached to the guest, each providing a virtual graphics adapter.
   /// [vsock] Configures a virtio vsock device that provides a host/guest communication channel using a CID-based socket interface.
   /// [watchdogs] Configures one or more virtual watchdog devices attached to the guest, each controlling timeout behavior and actions on failure.
-  DomainDevices({
+  const DomainDevices({
     this.audios,
     this.channels,
     this.consoles,

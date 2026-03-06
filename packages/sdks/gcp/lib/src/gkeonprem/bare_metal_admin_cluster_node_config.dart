@@ -9,7 +9,7 @@ class BareMetalAdminClusterNodeConfig {
 
   /// Creates a new [BareMetalAdminClusterNodeConfig].
   /// [maxPodsPerNode] The maximum number of pods a node can run. The size of the CIDR range
-  BareMetalAdminClusterNodeConfig({
+  const BareMetalAdminClusterNodeConfig({
     this.maxPodsPerNode,
   });
 

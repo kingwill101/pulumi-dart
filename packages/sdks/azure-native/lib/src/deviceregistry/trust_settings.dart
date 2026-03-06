@@ -9,7 +9,7 @@ class TrustSettings {
 
   /// Creates a new [TrustSettings].
   /// [trustList] Defines a secret reference for certificates to trust.
-  TrustSettings({
+  const TrustSettings({
     this.trustList,
   });
 

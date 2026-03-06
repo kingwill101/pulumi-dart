@@ -15,7 +15,7 @@ class GetExtensionMonitoringStatusArgs {
   /// Creates a new [GetExtensionMonitoringStatusArgs].
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group.
-  GetExtensionMonitoringStatusArgs({
+  const GetExtensionMonitoringStatusArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

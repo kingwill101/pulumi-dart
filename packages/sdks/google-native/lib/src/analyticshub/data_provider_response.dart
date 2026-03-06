@@ -12,7 +12,7 @@ class DataProviderResponse {
   /// Creates a new [DataProviderResponse].
   /// [name] Optional. Name of the data provider.
   /// [primaryContact] Optional. Email or URL of the data provider. Max Length: 1000 bytes.
-  DataProviderResponse({
+  const DataProviderResponse({
     required this.name,
     required this.primaryContact,
   });

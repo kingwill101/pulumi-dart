@@ -15,7 +15,7 @@ class Context {
 
   /// Creates a new [Context].
   /// [location] Resources to use for build context.
-  Context({
+  const Context({
     required this.location,
   });
 

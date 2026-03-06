@@ -11,7 +11,7 @@ class DomainDevicesRedirDevSourceTcpReconnect {
   /// Creates a new [DomainDevicesRedirDevSourceTcpReconnect].
   /// [enabled] Enables or disables the automatic reconnection feature for the UNIX domain socket.
   /// [timeout] Sets the timeout duration for reconnections in the UNIX socket settings.
-  DomainDevicesRedirDevSourceTcpReconnect({
+  const DomainDevicesRedirDevSourceTcpReconnect({
     required this.enabled,
     this.timeout,
   });

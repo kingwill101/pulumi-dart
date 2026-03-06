@@ -8,7 +8,7 @@ class S3LocationS3Config {
 
   /// Creates a new [S3LocationS3Config].
   /// [bucketAccessRoleArn] ARN of the IAM Role used to connect to the S3 Bucket.
-  S3LocationS3Config({
+  const S3LocationS3Config({
     required this.bucketAccessRoleArn,
   });
 

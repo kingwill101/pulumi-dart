@@ -13,7 +13,7 @@ class HostingCustomDomainRequiredDnsUpdateDiscovered {
   /// Creates a new [HostingCustomDomainRequiredDnsUpdateDiscovered].
   /// [domainName] The domain name the record pertains to, e.g. `foo.bar.com.`.
   /// [records] Records on the domain
-  HostingCustomDomainRequiredDnsUpdateDiscovered({
+  const HostingCustomDomainRequiredDnsUpdateDiscovered({
     this.domainName,
     this.records,
   });

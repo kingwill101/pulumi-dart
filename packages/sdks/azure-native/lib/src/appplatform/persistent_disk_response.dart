@@ -15,7 +15,7 @@ class PersistentDiskResponse {
   /// [mountPath] Mount path of the persistent disk
   /// [sizeInGB] Size of the persistent disk in GB
   /// [usedInGB] Size of the used persistent disk in GB
-  PersistentDiskResponse({
+  const PersistentDiskResponse({
     this.mountPath,
     this.sizeInGB,
     required this.usedInGB,

@@ -9,7 +9,7 @@ class ManagedEnvironmentResponseEncryption {
 
   /// Creates a new [ManagedEnvironmentResponseEncryption].
   /// [enabled] Boolean indicating whether the peer traffic encryption is enabled
-  ManagedEnvironmentResponseEncryption({
+  const ManagedEnvironmentResponseEncryption({
     this.enabled,
   });
 

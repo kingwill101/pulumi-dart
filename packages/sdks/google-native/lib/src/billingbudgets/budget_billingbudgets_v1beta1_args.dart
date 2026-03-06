@@ -36,7 +36,7 @@ class BudgetBillingbudgetsV1beta1Args {
   /// [etag] Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
   /// [ownershipScope] Optional.
   /// [thresholdRules] Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  BudgetBillingbudgetsV1beta1Args({
+  const BudgetBillingbudgetsV1beta1Args({
     this.allUpdatesRule,
     required this.amount,
     required this.billingAccountId,

@@ -14,7 +14,7 @@ class KafkaRoutes {
   /// Creates a new [KafkaRoutes].
   /// [kafkaToMqtt] Kafka to Mqtt route.
   /// [mqttToKafka] Mqtt to Kafka route.
-  KafkaRoutes({
+  const KafkaRoutes({
     this.kafkaToMqtt,
     this.mqttToKafka,
   });

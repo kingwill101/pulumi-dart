@@ -18,7 +18,7 @@ class GetSharedImageVersionTargetRegion {
   /// [name] The name of the Image Version.
   /// [regionalReplicaCount] The number of replicas of the Image Version to be created per region.
   /// [storageAccountType] The storage account type for the image version.
-  GetSharedImageVersionTargetRegion({
+  const GetSharedImageVersionTargetRegion({
     required this.name,
     required this.regionalReplicaCount,
     required this.storageAccountType,

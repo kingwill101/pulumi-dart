@@ -22,7 +22,7 @@ class GetRegionSecurityPolicyAdvancedOptionsConfig {
   /// [logLevel] Logging level. Supported values include: "NORMAL", "VERBOSE". Possible values: ["NORMAL", "VERBOSE"]
   /// [requestBodyInspectionSize] The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
   /// [userIpRequestHeaders] An optional list of case-insensitive request header names to use for resolving the callers client IP address.
-  GetRegionSecurityPolicyAdvancedOptionsConfig({
+  const GetRegionSecurityPolicyAdvancedOptionsConfig({
     required this.jsonCustomConfigs,
     required this.jsonParsing,
     required this.logLevel,

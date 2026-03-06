@@ -8,7 +8,7 @@ class PipelineInputPayloadFormatProtobuf {
 
   /// Creates a new [PipelineInputPayloadFormatProtobuf].
   /// [schemaDefinition] The entire schema definition is stored in this field.
-  PipelineInputPayloadFormatProtobuf({
+  const PipelineInputPayloadFormatProtobuf({
     this.schemaDefinition,
   });
 

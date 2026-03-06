@@ -48,7 +48,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings 
   /// [streamManifestBehavior] Optional.
   /// [timestampOffset] Optional.
   /// [timestampOffsetMode] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings({
     this.acquisitionPointId,
     this.audioOnlyTimecodeControl,
     this.certificateMode,

@@ -12,7 +12,7 @@ class IngressConfigurationScale {
   /// Creates a new [IngressConfigurationScale].
   /// [maxReplicas] Maximum number of ingress replicas. Must be greater than or equal to minReplicas.
   /// [minReplicas] Minimum number of ingress replicas. Must be at least 2. Required.
-  IngressConfigurationScale({
+  const IngressConfigurationScale({
     this.maxReplicas,
     this.minReplicas,
   });

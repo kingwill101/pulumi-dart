@@ -24,7 +24,7 @@ class EnvServiceMonitorState {
   /// [environmentId] Environment id.
   /// [namespace] The namespace where the resource is located.
   /// [status] Status: run, stop.
-  EnvServiceMonitorState({
+  const EnvServiceMonitorState({
     this.aliyunLang,
     this.configYaml,
     this.envServiceMonitorName,

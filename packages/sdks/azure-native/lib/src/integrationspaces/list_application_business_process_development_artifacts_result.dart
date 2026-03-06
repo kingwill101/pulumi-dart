@@ -10,7 +10,7 @@ class ListApplicationBusinessProcessDevelopmentArtifactsResult {
 
   /// Creates a new [ListApplicationBusinessProcessDevelopmentArtifactsResult].
   /// [value] The list of the business process development artifact.
-  ListApplicationBusinessProcessDevelopmentArtifactsResult({
+  const ListApplicationBusinessProcessDevelopmentArtifactsResult({
     required this.value,
   });
 

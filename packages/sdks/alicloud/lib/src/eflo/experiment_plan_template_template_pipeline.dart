@@ -25,7 +25,7 @@ class ExperimentPlanTemplateTemplatePipeline {
   /// [settingParams] Represents additional parameters for the run.
   /// [workloadId] Used to uniquely identify a specific payload.
   /// [workloadName] The name used to represent a specific payload.
-  ExperimentPlanTemplateTemplatePipeline({
+  const ExperimentPlanTemplateTemplatePipeline({
     required this.envParams,
     required this.pipelineOrder,
     required this.scene,

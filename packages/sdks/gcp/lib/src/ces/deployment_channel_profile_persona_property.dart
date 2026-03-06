@@ -12,7 +12,7 @@ class DeploymentChannelProfilePersonaProperty {
 
   /// Creates a new [DeploymentChannelProfilePersonaProperty].
   /// [persona] The persona of the channel.
-  DeploymentChannelProfilePersonaProperty({
+  const DeploymentChannelProfilePersonaProperty({
     this.persona,
   });
 

@@ -37,7 +37,7 @@ class ReplicationRecoveryPlanBootRecoveryGroupPreAction {
   /// [runbookId] Id of runbook.
   /// [scriptPath] Path of action script.
   /// [type] Type of the action detail. Possible values are `AutomationRunbookActionDetails`, `ManualActionDetails` and `ScriptActionDetails`.
-  ReplicationRecoveryPlanBootRecoveryGroupPreAction({
+  const ReplicationRecoveryPlanBootRecoveryGroupPreAction({
     this.fabricLocation,
     required this.failOverDirections,
     required this.failOverTypes,

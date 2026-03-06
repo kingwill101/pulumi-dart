@@ -15,7 +15,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration {
   /// [code] Configuration block for the source code location and configuration details. See `code` below.
   /// [entryPoints] Array specifying the entry point for code execution, indicating the function or method to invoke when the code runs. The array must contain 1 or 2 elements. Examples: `["main.py"]`, `["opentelemetry-instrument", "main.py"]`.
   /// [runtime] Runtime environment used to execute the code. Valid values: `PYTHON_3_10`, `PYTHON_3_11`, `PYTHON_3_12`, `PYTHON_3_13`.
-  AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration({
+  const AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration({
     this.code,
     required this.entryPoints,
     required this.runtime,

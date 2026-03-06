@@ -171,7 +171,7 @@ class InstanceArgs {
   /// [warmNodeDiskType] The warm node disk type. Supported values:  cloud_efficiency.
   /// [warmNodeSpec] The warm node specifications of the Elasticsearch instance.
   /// [zoneCount] The number of zones in the Elasticsearch instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.autoRenewDuration,
     this.clientNodeAmount,
     this.clientNodeConfiguration,

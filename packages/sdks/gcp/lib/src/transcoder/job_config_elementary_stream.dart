@@ -18,7 +18,7 @@ class JobConfigElementaryStream {
   /// [audioStream] Encoding of an audio stream.
   /// [key] A unique key for this atom.
   /// [videoStream] Encoding of a video stream.
-  JobConfigElementaryStream({
+  const JobConfigElementaryStream({
     this.audioStream,
     this.key,
     this.videoStream,

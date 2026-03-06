@@ -52,7 +52,7 @@ class RepositoryArgs {
   /// [region] A reference to the region
   /// [serviceAccount] The service account to run workflow invocations under.
   /// [workspaceCompilationOverrides] If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
-  RepositoryArgs({
+  const RepositoryArgs({
     this.deletionPolicy,
     this.displayName,
     this.gitRemoteSettings,

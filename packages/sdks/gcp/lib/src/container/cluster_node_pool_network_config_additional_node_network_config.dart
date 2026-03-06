@@ -14,7 +14,7 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
   /// Creates a new [ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig].
   /// [network] The name or self_link of the Google Compute Engine
   /// [subnetwork] The name or self_link of the Google Compute Engine
-  ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig({
+  const ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig({
     this.network,
     this.subnetwork,
   });

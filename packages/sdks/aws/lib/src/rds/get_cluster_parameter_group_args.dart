@@ -15,7 +15,7 @@ class GetClusterParameterGroupArgs {
   /// Creates a new [GetClusterParameterGroupArgs].
   /// [name] DB cluster parameter group name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetClusterParameterGroupArgs({
+  const GetClusterParameterGroupArgs({
     required this.name,
     this.region,
   });

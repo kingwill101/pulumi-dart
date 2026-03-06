@@ -15,7 +15,7 @@ class GetNodeGroupsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] Set of all node group names in an EKS Cluster.
   /// [region] Required.
-  GetNodeGroupsResult({
+  const GetNodeGroupsResult({
     required this.clusterName,
     required this.id,
     required this.names,

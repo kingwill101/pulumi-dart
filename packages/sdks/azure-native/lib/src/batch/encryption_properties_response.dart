@@ -13,7 +13,7 @@ class EncryptionPropertiesResponse {
   /// Creates a new [EncryptionPropertiesResponse].
   /// [keySource] Type of the key source.
   /// [keyVaultProperties] Additional details when using Microsoft.KeyVault
-  EncryptionPropertiesResponse({
+  const EncryptionPropertiesResponse({
     this.keySource,
     this.keyVaultProperties,
   });

@@ -9,7 +9,7 @@ class GetCustomRoutingAcceleratorIpSet {
   /// Creates a new [GetCustomRoutingAcceleratorIpSet].
   /// [ipAddresses] Required.
   /// [ipFamily] Required.
-  GetCustomRoutingAcceleratorIpSet({
+  const GetCustomRoutingAcceleratorIpSet({
     required this.ipAddresses,
     required this.ipFamily,
   });

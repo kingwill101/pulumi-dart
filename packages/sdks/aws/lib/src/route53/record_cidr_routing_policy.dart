@@ -11,7 +11,7 @@ class RecordCidrRoutingPolicy {
   /// Creates a new [RecordCidrRoutingPolicy].
   /// [collectionId] The CIDR collection ID. See the `aws.route53.CidrCollection` resource for more details.
   /// [locationName] The CIDR collection location name. See the `aws.route53.CidrLocation` resource for more details. A `location_name` with an asterisk `"*"` can be used to create a default CIDR record. `collection_id` is still required for default record.
-  RecordCidrRoutingPolicy({
+  const RecordCidrRoutingPolicy({
     required this.collectionId,
     required this.locationName,
   });

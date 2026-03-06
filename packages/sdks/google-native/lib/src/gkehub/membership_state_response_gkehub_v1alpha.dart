@@ -9,7 +9,7 @@ class MembershipStateResponseGkehubV1alpha {
 
   /// Creates a new [MembershipStateResponseGkehubV1alpha].
   /// [code] The current state of the Membership resource.
-  MembershipStateResponseGkehubV1alpha({
+  const MembershipStateResponseGkehubV1alpha({
     required this.code,
   });
 

@@ -19,7 +19,7 @@ class GetCoipPoolsResult {
   /// [poolIds] Set of COIP Pool Identifiers
   /// [region] Required.
   /// [tags] Optional.
-  GetCoipPoolsResult({
+  const GetCoipPoolsResult({
     this.filters,
     required this.id,
     required this.poolIds,

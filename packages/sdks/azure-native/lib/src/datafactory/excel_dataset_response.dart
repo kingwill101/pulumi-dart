@@ -57,7 +57,7 @@ class ExcelDatasetResponse {
   /// [sheetName] The sheet name of excel file. Type: string (or Expression with resultType string).
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [type] Type of dataset.
-  ExcelDatasetResponse({
+  const ExcelDatasetResponse({
     this.annotations,
     this.compression,
     this.description,

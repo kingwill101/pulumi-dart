@@ -9,7 +9,7 @@ class LogTransformerTransformerConfigTypeConverter {
 
   /// Creates a new [LogTransformerTransformerConfigTypeConverter].
   /// [entries] Objects containing the information about the fields to change the type of. You must include at least one entry, and five at most. See `type_converter` `entry` below for details.
-  LogTransformerTransformerConfigTypeConverter({
+  const LogTransformerTransformerConfigTypeConverter({
     required this.entries,
   });
 

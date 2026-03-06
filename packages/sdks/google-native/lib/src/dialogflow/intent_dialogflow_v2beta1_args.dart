@@ -82,7 +82,7 @@ class IntentDialogflowV2beta1Args {
   /// [resetContexts] Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
   /// [trainingPhrases] Optional. The collection of examples that the agent is trained on.
   /// [webhookState] Optional. Indicates whether webhooks are enabled for the intent.
-  IntentDialogflowV2beta1Args({
+  const IntentDialogflowV2beta1Args({
     this.action,
     this.defaultResponsePlatforms,
     required this.displayName,

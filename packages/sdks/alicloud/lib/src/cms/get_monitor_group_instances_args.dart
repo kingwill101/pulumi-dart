@@ -15,7 +15,7 @@ class GetMonitorGroupInstancesArgs {
   /// [ids] Required.
   /// [keyword] Optional.
   /// [outputFile] Optional.
-  GetMonitorGroupInstancesArgs({
+  const GetMonitorGroupInstancesArgs({
     required this.ids,
     this.keyword,
     this.outputFile,

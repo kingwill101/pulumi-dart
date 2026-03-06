@@ -12,7 +12,7 @@ class AssignedUserResponse {
   /// Creates a new [AssignedUserResponse].
   /// [objectId] User’s AAD Object Id.
   /// [tenantId] User’s AAD Tenant Id.
-  AssignedUserResponse({
+  const AssignedUserResponse({
     required this.objectId,
     required this.tenantId,
   });

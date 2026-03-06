@@ -8,7 +8,7 @@ class DomainDevicesSmartcardPassthroughQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesSmartcardPassthroughQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesSmartcardPassthroughQemuvdAgentMouse({
+  const DomainDevicesSmartcardPassthroughQemuvdAgentMouse({
     required this.mode,
   });
 

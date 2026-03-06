@@ -30,7 +30,7 @@ class ClientCertificateArgs {
   /// [siteId] Site Id
   /// [status] The certificate status. Valid values: `revoked`, `active`.
   /// [validityDays] Certificate validity period.
-  ClientCertificateArgs({
+  const ClientCertificateArgs({
     this.csr,
     this.pkeyType,
     required this.siteId,

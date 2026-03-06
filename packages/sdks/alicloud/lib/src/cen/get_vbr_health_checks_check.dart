@@ -29,7 +29,7 @@ class GetVbrHealthChecksCheck {
   /// [id] The ID of the CEN VBR Heath Check.
   /// [vbrInstanceId] The ID of the VBR instance.
   /// [vbrInstanceRegionId] The ID of the region where the VBR instance is deployed.
-  GetVbrHealthChecksCheck({
+  const GetVbrHealthChecksCheck({
     required this.cenId,
     required this.healthCheckInterval,
     required this.healthCheckSourceIp,

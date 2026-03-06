@@ -17,7 +17,7 @@ class GetEntryGroupDatacatalogV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [readMask] Optional.
-  GetEntryGroupDatacatalogV1beta1Args({
+  const GetEntryGroupDatacatalogV1beta1Args({
     required this.entryGroupId,
     required this.location,
     this.project,

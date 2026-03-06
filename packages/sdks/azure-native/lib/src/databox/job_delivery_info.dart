@@ -9,7 +9,7 @@ class JobDeliveryInfo {
 
   /// Creates a new [JobDeliveryInfo].
   /// [scheduledDateTime] Scheduled date time.
-  JobDeliveryInfo({
+  const JobDeliveryInfo({
     this.scheduledDateTime,
   });
 

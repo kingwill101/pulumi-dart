@@ -40,7 +40,7 @@ class StreamBackfillAll {
   /// [salesforceExcludedObjects] Salesforce objects to avoid backfilling.
   /// [spannerExcludedObjects] Spanner objects to avoid backfilling.
   /// [sqlServerExcludedObjects] SQL Server data source objects to avoid backfilling.
-  StreamBackfillAll({
+  const StreamBackfillAll({
     this.mongodbExcludedObjects,
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,

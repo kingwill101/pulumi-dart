@@ -24,7 +24,7 @@ class GetEventBusesResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetEventBusesResult({
+  const GetEventBusesResult({
     required this.buses,
     this.eventBusType,
     required this.id,

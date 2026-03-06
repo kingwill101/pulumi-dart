@@ -19,7 +19,7 @@ class FailoverGroupPropertiesResponse {
   /// [provisioningState] The provisioning state of the failover group resource.
   /// [spec] The specifications of the failover group resource.
   /// [status] The status of the failover group custom resource.
-  FailoverGroupPropertiesResponse({
+  const FailoverGroupPropertiesResponse({
     required this.partnerManagedInstanceId,
     required this.provisioningState,
     required this.spec,

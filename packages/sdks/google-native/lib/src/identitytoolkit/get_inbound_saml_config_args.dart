@@ -15,7 +15,7 @@ class GetInboundSamlConfigArgs {
   /// [inboundSamlConfigId] Required.
   /// [project] Optional.
   /// [tenantId] Required.
-  GetInboundSamlConfigArgs({
+  const GetInboundSamlConfigArgs({
     required this.inboundSamlConfigId,
     this.project,
     required this.tenantId,

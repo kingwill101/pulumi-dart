@@ -18,7 +18,7 @@ class GetIpAllocationArgs {
   /// [expand] Expands referenced resources.
   /// [ipAllocationName] The name of the IpAllocation.
   /// [resourceGroupName] The name of the resource group.
-  GetIpAllocationArgs({
+  const GetIpAllocationArgs({
     this.expand,
     required this.ipAllocationName,
     required this.resourceGroupName,

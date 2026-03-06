@@ -11,7 +11,7 @@ class IdentityDetails {
   /// Creates a new [IdentityDetails].
   /// [useSystemAssignedIdentity] Specifies if the BI is protected by System Identity.
   /// [userAssignedIdentityArmUrl] ARM URL for User Assigned Identity.
-  IdentityDetails({
+  const IdentityDetails({
     this.useSystemAssignedIdentity,
     this.userAssignedIdentityArmUrl,
   });

@@ -10,7 +10,7 @@ class StorageProfile {
 
   /// Creates a new [StorageProfile].
   /// [disks] Gets or sets the list of virtual disks associated with the virtual machine.
-  StorageProfile({
+  const StorageProfile({
     this.disks,
   });
 

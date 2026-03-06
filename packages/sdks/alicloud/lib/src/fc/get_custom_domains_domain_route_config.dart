@@ -20,7 +20,7 @@ class GetCustomDomainsDomainRouteConfig {
   /// [path] The path that requests are routed from.
   /// [qualifier] The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
   /// [serviceName] The name of the Function Compute service that requests are routed to.
-  GetCustomDomainsDomainRouteConfig({
+  const GetCustomDomainsDomainRouteConfig({
     required this.functionName,
     required this.methods,
     required this.path,

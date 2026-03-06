@@ -16,7 +16,7 @@ class WorkflowEnvelopeResponseProperties {
   /// [files] Gets or sets the files.
   /// [flowState] Gets or sets the state of the workflow.
   /// [health] Gets or sets workflow health.
-  WorkflowEnvelopeResponseProperties({
+  const WorkflowEnvelopeResponseProperties({
     this.files,
     this.flowState,
     this.health,

@@ -17,7 +17,7 @@ class VirtualGatewaySpecListenerConnectionPool {
   /// [grpc] Connection pool information for gRPC listeners.
   /// [http] Connection pool information for HTTP listeners.
   /// [http2] Connection pool information for HTTP2 listeners.
-  VirtualGatewaySpecListenerConnectionPool({
+  const VirtualGatewaySpecListenerConnectionPool({
     this.grpc,
     this.http,
     this.http2,

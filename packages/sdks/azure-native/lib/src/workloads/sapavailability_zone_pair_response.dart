@@ -12,7 +12,7 @@ class SAPAvailabilityZonePairResponse {
   /// Creates a new [SAPAvailabilityZonePairResponse].
   /// [zoneA] The zone A.
   /// [zoneB] The zone B.
-  SAPAvailabilityZonePairResponse({
+  const SAPAvailabilityZonePairResponse({
     this.zoneA,
     this.zoneB,
   });

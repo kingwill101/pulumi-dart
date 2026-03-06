@@ -16,7 +16,7 @@ class AddonSrmPropertiesResponse {
   /// [addonType] Addon type
   /// [licenseKey] The Site Recovery Manager (SRM) license
   /// [provisioningState] The state of the addon provisioning
-  AddonSrmPropertiesResponse({
+  const AddonSrmPropertiesResponse({
     required this.addonType,
     this.licenseKey,
     required this.provisioningState,

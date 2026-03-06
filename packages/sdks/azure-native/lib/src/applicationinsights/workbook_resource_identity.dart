@@ -12,7 +12,7 @@ class WorkbookResourceIdentity {
   /// Creates a new [WorkbookResourceIdentity].
   /// [type] Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
   /// [userAssignedIdentities] The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  WorkbookResourceIdentity({
+  const WorkbookResourceIdentity({
     required this.type,
     this.userAssignedIdentities,
   });

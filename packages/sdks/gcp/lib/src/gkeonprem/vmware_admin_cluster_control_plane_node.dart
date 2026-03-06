@@ -14,7 +14,7 @@ class VmwareAdminClusterControlPlaneNode {
   /// [cpus] The number of vCPUs for the control-plane node of the admin cluster.
   /// [memory] The number of mebibytes of memory for the control-plane node of the admin cluster.
   /// [replicas] The number of control plane nodes for this VMware admin cluster.
-  VmwareAdminClusterControlPlaneNode({
+  const VmwareAdminClusterControlPlaneNode({
     this.cpus,
     this.memory,
     this.replicas,

@@ -62,7 +62,7 @@ class GroupMetricRuleState {
   /// [status] The status of Group Metric Rule.
   /// [targets] The information about the resource for which alerts are triggered. See `targets` below.
   /// [webhook] The callback URL.
-  GroupMetricRuleState({
+  const GroupMetricRuleState({
     this.category,
     this.contactGroups,
     this.dimensions,

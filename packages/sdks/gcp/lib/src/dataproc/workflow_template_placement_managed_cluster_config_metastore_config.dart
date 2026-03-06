@@ -8,7 +8,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig].
   /// [dataprocMetastoreService] Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-  WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig({
     required this.dataprocMetastoreService,
   });
 

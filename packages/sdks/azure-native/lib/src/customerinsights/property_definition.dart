@@ -52,7 +52,7 @@ class PropertyDefinition {
   /// [maxLength] Max length of string. Used only if type is string.
   /// [propertyId] The ID associated with the property.
   /// [schemaItemPropLink] URL encoded schema.org item prop link for the property.
-  PropertyDefinition({
+  const PropertyDefinition({
     this.arrayValueSeparator,
     this.enumValidValues,
     required this.fieldName,

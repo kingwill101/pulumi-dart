@@ -34,7 +34,7 @@ class GetManagementGroupSubscriptionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tenant] The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetManagementGroupSubscriptionResult({
+  const GetManagementGroupSubscriptionResult({
     required this.azureApiVersion,
     this.displayName,
     required this.id,

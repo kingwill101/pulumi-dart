@@ -31,7 +31,7 @@ class GetAlertProcessingRuleByNameResult {
   /// [systemData] Alert processing rule system data.
   /// [tags] Resource tags
   /// [type] Azure resource type
-  GetAlertProcessingRuleByNameResult({
+  const GetAlertProcessingRuleByNameResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

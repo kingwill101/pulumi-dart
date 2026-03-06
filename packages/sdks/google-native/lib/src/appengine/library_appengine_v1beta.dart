@@ -12,7 +12,7 @@ class LibraryAppengineV1beta {
   /// Creates a new [LibraryAppengineV1beta].
   /// [name] Name of the library. Example: "django".
   /// [version] Version of the library to select, or "latest".
-  LibraryAppengineV1beta({
+  const LibraryAppengineV1beta({
     this.name,
     this.version,
   });

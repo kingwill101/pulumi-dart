@@ -8,7 +8,7 @@ class ListSecretValueResult {
 
   /// Creates a new [ListSecretValueResult].
   /// [value] The actual value of the secret.
-  ListSecretValueResult({
+  const ListSecretValueResult({
     this.value,
   });
 

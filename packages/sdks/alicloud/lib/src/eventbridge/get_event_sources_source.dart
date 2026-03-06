@@ -25,7 +25,7 @@ class GetEventSourcesSource {
   /// [id] The ID of the Event Source.
   /// [linkedExternalSource] Whether to connect to an external data source.
   /// [type] Required.
-  GetEventSourcesSource({
+  const GetEventSourcesSource({
     required this.description,
     required this.eventSourceName,
     required this.externalSourceConfig,

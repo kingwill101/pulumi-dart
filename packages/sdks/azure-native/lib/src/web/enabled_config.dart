@@ -9,7 +9,7 @@ class EnabledConfig {
 
   /// Creates a new [EnabledConfig].
   /// [enabled] True if configuration is enabled, false if it is disabled and null if configuration is not set.
-  EnabledConfig({
+  const EnabledConfig({
     this.enabled,
   });
 

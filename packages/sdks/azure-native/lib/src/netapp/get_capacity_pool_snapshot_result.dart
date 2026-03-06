@@ -33,7 +33,7 @@ class GetCapacityPoolSnapshotResult {
   /// [snapshotId] UUID v4 used to identify the Snapshot
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCapacityPoolSnapshotResult({
+  const GetCapacityPoolSnapshotResult({
     required this.azureApiVersion,
     required this.created,
     required this.id,

@@ -26,7 +26,7 @@ class GetSecurityPoliciesPolicy {
   /// [securityPolicyName] The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
   /// [status] The status of the resource.
   /// [tlsVersions] The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
-  GetSecurityPoliciesPolicy({
+  const GetSecurityPoliciesPolicy({
     required this.ciphers,
     required this.id,
     required this.resourceGroupId,

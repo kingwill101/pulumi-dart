@@ -28,7 +28,7 @@ class PortState {
   /// [frontendProtocol] The type of the forwarding protocol to query. Valid values:
   /// [instanceId] The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
   /// [realServers] List of source IP addresses
-  PortState({
+  const PortState({
     this.backendPort,
     this.config,
     this.frontendPort,

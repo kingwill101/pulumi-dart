@@ -23,7 +23,7 @@ class GetFirewallPolicyArgs {
   /// [name] Descriptive name of the firewall policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the firewall policy.
-  GetFirewallPolicyArgs({
+  const GetFirewallPolicyArgs({
     this.arn,
     this.name,
     this.region,

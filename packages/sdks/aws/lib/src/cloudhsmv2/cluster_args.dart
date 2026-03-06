@@ -27,7 +27,7 @@ class ClusterArgs {
   /// [sourceBackupIdentifier] ID of Cloud HSM v2 cluster backup to be restored.
   /// [subnetIds] The IDs of subnets in which cluster will operate.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ClusterArgs({
+  const ClusterArgs({
     required this.hsmType,
     this.mode,
     this.region,

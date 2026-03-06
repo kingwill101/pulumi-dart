@@ -20,7 +20,7 @@ class MonitorServerlessSparkComputeResponse {
   /// [computeType] Monitor compute type enum.
   /// [instanceType] [Required] The instance type running the Spark job.
   /// [runtimeVersion] [Required] The Spark runtime version.
-  MonitorServerlessSparkComputeResponse({
+  const MonitorServerlessSparkComputeResponse({
     required this.computeIdentity,
     required this.computeType,
     required this.instanceType,

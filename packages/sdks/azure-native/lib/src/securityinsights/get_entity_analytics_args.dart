@@ -18,7 +18,7 @@ class GetEntityAnalyticsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [settingsName] The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
   /// [workspaceName] The name of the workspace.
-  GetEntityAnalyticsArgs({
+  const GetEntityAnalyticsArgs({
     required this.resourceGroupName,
     required this.settingsName,
     required this.workspaceName,

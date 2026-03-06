@@ -15,7 +15,7 @@ class IpFilterRuleResponse {
   /// [action] The desired action for requests captured by this rule.
   /// [filterName] The name of the IP filter rule.
   /// [ipMask] A string that contains the IP address range in CIDR notation for the rule.
-  IpFilterRuleResponse({
+  const IpFilterRuleResponse({
     required this.action,
     required this.filterName,
     required this.ipMask,

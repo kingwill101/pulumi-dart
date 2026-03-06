@@ -9,7 +9,7 @@ class OrganizationsAccessState {
 
   /// Creates a new [OrganizationsAccessState].
   /// [enabled] Whether to enable AWS Organizations access.
-  OrganizationsAccessState({
+  const OrganizationsAccessState({
     this.enabled,
   });
 

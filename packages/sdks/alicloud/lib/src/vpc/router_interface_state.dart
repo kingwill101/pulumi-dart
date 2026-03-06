@@ -59,7 +59,7 @@ class RouterInterfaceState {
   /// [routerId] The Router ID.
   /// [routerType] Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
   /// [specification] Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
-  RouterInterfaceState({
+  const RouterInterfaceState({
     this.accessPointId,
     this.description,
     this.healthCheckSourceIp,

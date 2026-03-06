@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDes
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination({
     required this.destinationRefId,
   });
 

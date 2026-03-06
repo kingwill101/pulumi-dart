@@ -8,7 +8,7 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePath {
 
   /// Creates a new [PreventionStoredInfoTypeDictionaryCloudStoragePath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  PreventionStoredInfoTypeDictionaryCloudStoragePath({
+  const PreventionStoredInfoTypeDictionaryCloudStoragePath({
     required this.path,
   });
 

@@ -36,7 +36,7 @@ class RouteArgs {
   /// [routeName] The name of the route.
   /// [routeTableName] The name of the route table.
   /// [type] The type of the resource.
-  RouteArgs({
+  const RouteArgs({
     this.addressPrefix,
     this.id,
     this.name,

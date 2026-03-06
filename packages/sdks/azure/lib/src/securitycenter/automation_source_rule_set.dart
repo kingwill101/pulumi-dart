@@ -11,7 +11,7 @@ class AutomationSourceRuleSet {
 
   /// Creates a new [AutomationSourceRuleSet].
   /// [rules] One or more `rule` blocks as defined below.
-  AutomationSourceRuleSet({
+  const AutomationSourceRuleSet({
     required this.rules,
   });
 

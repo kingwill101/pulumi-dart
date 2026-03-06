@@ -13,7 +13,7 @@ class ServiceAcrConfigurationInfo {
   /// Creates a new [ServiceAcrConfigurationInfo].
   /// [loginServers] The list of the ACR login servers.
   /// [ociArtifacts] The list of Open Container Initiative (OCI) artifacts.
-  ServiceAcrConfigurationInfo({
+  const ServiceAcrConfigurationInfo({
     this.loginServers,
     this.ociArtifacts,
   });

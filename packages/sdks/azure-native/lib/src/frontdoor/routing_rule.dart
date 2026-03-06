@@ -36,7 +36,7 @@ class RoutingRule {
   /// [routeConfiguration] A reference to the routing configuration.
   /// [rulesEngine] A reference to a specific Rules Engine Configuration to apply to this route.
   /// [webApplicationFirewallPolicyLink] Defines the Web Application Firewall policy for each routing rule (if applicable)
-  RoutingRule({
+  const RoutingRule({
     this.acceptedProtocols,
     this.enabledState,
     this.frontendEndpoints,

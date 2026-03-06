@@ -14,7 +14,7 @@ class ServiceSpec {
   /// Creates a new [ServiceSpec].
   /// [template] Holds the latest specification for the Revision to be stamped out.
   /// [traffic] Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
-  ServiceSpec({
+  const ServiceSpec({
     this.template,
     this.traffic,
   });

@@ -15,7 +15,7 @@ class GetPublicKeyArgs {
   /// Creates a new [GetPublicKeyArgs].
   /// [privateKeyOpenssh] The private key (in  [OpenSSH PEM (RFC 4716)](https://datatracker.ietf.org/doc/html/rfc4716) format) to extract the public key from. This is *mutually exclusive* with `private_key_pem`. Currently-supported algorithms for keys are: `RSA`, `ECDSA`, `ED25519`.
   /// [privateKeyPem] The private key (in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format) to extract the public key from. This is *mutually exclusive* with `private_key_openssh`. Currently-supported algorithms for keys are: `RSA`, `ECDSA`, `ED25519`.
-  GetPublicKeyArgs({
+  const GetPublicKeyArgs({
     this.privateKeyOpenssh,
     this.privateKeyPem,
   });

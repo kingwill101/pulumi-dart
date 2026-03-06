@@ -9,7 +9,7 @@ class AiTrafficAnalysisStatusState {
 
   /// Creates a new [AiTrafficAnalysisStatusState].
   /// [status] Status
-  AiTrafficAnalysisStatusState({
+  const AiTrafficAnalysisStatusState({
     this.status,
   });
 

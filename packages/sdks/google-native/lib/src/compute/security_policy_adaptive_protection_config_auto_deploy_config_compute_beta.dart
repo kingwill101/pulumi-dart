@@ -14,7 +14,7 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta {
   /// [expirationSec] Optional.
   /// [impactedBaselineThreshold] Optional.
   /// [loadThreshold] Optional.
-  SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta({
+  const SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta({
     this.confidenceThreshold,
     this.expirationSec,
     this.impactedBaselineThreshold,

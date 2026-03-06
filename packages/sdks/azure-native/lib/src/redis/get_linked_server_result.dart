@@ -39,7 +39,7 @@ class GetLinkedServerResult {
   /// [serverRole] Role of the linked server.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLinkedServerResult({
+  const GetLinkedServerResult({
     required this.azureApiVersion,
     required this.geoReplicatedPrimaryHostName,
     required this.id,

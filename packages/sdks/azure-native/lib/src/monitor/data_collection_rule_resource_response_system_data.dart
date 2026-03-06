@@ -24,7 +24,7 @@ class DataCollectionRuleResourceResponseSystemData {
   /// [lastModifiedAt] The timestamp of resource last modification (UTC)
   /// [lastModifiedBy] The identity that last modified the resource.
   /// [lastModifiedByType] The type of identity that last modified the resource.
-  DataCollectionRuleResourceResponseSystemData({
+  const DataCollectionRuleResourceResponseSystemData({
     this.createdAt,
     this.createdBy,
     this.createdByType,

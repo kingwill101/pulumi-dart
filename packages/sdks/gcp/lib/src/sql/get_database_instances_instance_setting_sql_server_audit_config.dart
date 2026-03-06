@@ -14,7 +14,7 @@ class GetDatabaseInstancesInstanceSettingSqlServerAuditConfig {
   /// [bucket] The name of the destination bucket (e.g., gs://mybucket).
   /// [retentionInterval] How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
   /// [uploadInterval] How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  GetDatabaseInstancesInstanceSettingSqlServerAuditConfig({
+  const GetDatabaseInstancesInstanceSettingSqlServerAuditConfig({
     required this.bucket,
     required this.retentionInterval,
     required this.uploadInterval,

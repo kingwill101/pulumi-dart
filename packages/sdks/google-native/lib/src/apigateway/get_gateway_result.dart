@@ -29,7 +29,7 @@ class GetGatewayResult {
   /// [name] Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
   /// [state] The current state of the Gateway.
   /// [updateTime] Updated time.
-  GetGatewayResult({
+  const GetGatewayResult({
     required this.apiConfig,
     required this.createTime,
     required this.defaultHostname,

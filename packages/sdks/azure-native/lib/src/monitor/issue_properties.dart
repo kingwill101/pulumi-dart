@@ -18,7 +18,7 @@ class IssueProperties {
   /// [severity] The issue severity
   /// [status] The issue status
   /// [title] The issue title
-  IssueProperties({
+  const IssueProperties({
     required this.impactTime,
     required this.severity,
     required this.status,

@@ -16,7 +16,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
   /// [items] List items.
   /// [subtitle] Optional. Subtitle of the list.
   /// [title] Optional. The overall title of the list.
-  GoogleCloudDialogflowV2IntentMessageListSelect({
+  const GoogleCloudDialogflowV2IntentMessageListSelect({
     required this.items,
     this.subtitle,
     this.title,

@@ -12,7 +12,7 @@ class PivotProperties {
   /// Creates a new [PivotProperties].
   /// [name] Data field to show in view.
   /// [type] Data type to show in view.
-  PivotProperties({
+  const PivotProperties({
     this.name,
     this.type,
   });

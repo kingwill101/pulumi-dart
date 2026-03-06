@@ -9,7 +9,7 @@ class AzureFirewallNatRCAction {
 
   /// Creates a new [AzureFirewallNatRCAction].
   /// [type] The type of action.
-  AzureFirewallNatRCAction({
+  const AzureFirewallNatRCAction({
     this.type,
   });
 

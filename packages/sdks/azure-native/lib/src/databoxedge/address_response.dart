@@ -27,7 +27,7 @@ class AddressResponse {
   /// [country] The country name.
   /// [postalCode] The postal code.
   /// [state] The state name.
-  AddressResponse({
+  const AddressResponse({
     this.addressLine1,
     this.addressLine2,
     this.addressLine3,

@@ -24,7 +24,7 @@ class SubnetCidrReservationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [reservationType] The type of reservation to create. Valid values: `explicit`, `prefix`
   /// [subnetId] The ID of the subnet to create the reservation for.
-  SubnetCidrReservationState({
+  const SubnetCidrReservationState({
     this.cidrBlock,
     this.description,
     this.ownerId,

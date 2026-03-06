@@ -9,7 +9,7 @@ class NetworkTagsResponse {
 
   /// Creates a new [NetworkTagsResponse].
   /// [tags] List of network tags.
-  NetworkTagsResponse({
+  const NetworkTagsResponse({
     required this.tags,
   });
 

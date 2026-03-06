@@ -18,7 +18,7 @@ class BackendCredentials {
   /// [certificates] A list of client certificate thumbprints to present to the backend host. The certificates must exist within the API Management Service.
   /// [header] A mapping of header parameters to pass to the backend host. The keys are the header names and the values are a comma separated string of header values. This is converted to a list before being passed to the API.
   /// [query] A mapping of query parameters to pass to the backend host. The keys are the query names and the values are a comma separated string of query values. This is converted to a list before being passed to the API.
-  BackendCredentials({
+  const BackendCredentials({
     this.authorization,
     this.certificates,
     this.header,

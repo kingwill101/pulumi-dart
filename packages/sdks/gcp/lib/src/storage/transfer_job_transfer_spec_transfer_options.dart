@@ -22,7 +22,7 @@ class TransferJobTransferSpecTransferOptions {
   /// [metadataOptions] Specifies the metadata options for running a transfer. Structure documented below.
   /// [overwriteObjectsAlreadyExistingInSink] Whether overwriting objects that already exist in the sink is allowed.
   /// [overwriteWhen] When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
-  TransferJobTransferSpecTransferOptions({
+  const TransferJobTransferSpecTransferOptions({
     this.deleteObjectsFromSourceAfterTransfer,
     this.deleteObjectsUniqueInSink,
     this.metadataOptions,

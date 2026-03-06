@@ -12,7 +12,7 @@ class TableTableConstraintsForeignKeyColumnReferences {
   /// Creates a new [TableTableConstraintsForeignKeyColumnReferences].
   /// [referencedColumn] The column in the primary key that are
   /// [referencingColumn] The column that composes the foreign key.
-  TableTableConstraintsForeignKeyColumnReferences({
+  const TableTableConstraintsForeignKeyColumnReferences({
     required this.referencedColumn,
     required this.referencingColumn,
   });

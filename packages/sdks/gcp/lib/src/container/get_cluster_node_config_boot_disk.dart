@@ -17,7 +17,7 @@ class GetClusterNodeConfigBootDisk {
   /// [provisionedIops] Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
   /// [provisionedThroughput] Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
   /// [sizeGb] Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
-  GetClusterNodeConfigBootDisk({
+  const GetClusterNodeConfigBootDisk({
     required this.diskType,
     required this.provisionedIops,
     required this.provisionedThroughput,

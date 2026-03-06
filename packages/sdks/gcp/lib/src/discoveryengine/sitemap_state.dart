@@ -32,7 +32,7 @@ class SitemapState {
   /// [project] The ID of the project in which the resource belongs.
   /// [sitemapId] The unique id of the sitemap.
   /// [uri] Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
-  SitemapState({
+  const SitemapState({
     this.createTime,
     this.dataStoreId,
     this.location,

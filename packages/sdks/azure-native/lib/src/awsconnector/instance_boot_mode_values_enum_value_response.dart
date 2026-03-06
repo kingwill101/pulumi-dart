@@ -9,7 +9,7 @@ class InstanceBootModeValuesEnumValueResponse {
 
   /// Creates a new [InstanceBootModeValuesEnumValueResponse].
   /// [value] Property value
-  InstanceBootModeValuesEnumValueResponse({
+  const InstanceBootModeValuesEnumValueResponse({
     this.value,
   });
 

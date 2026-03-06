@@ -9,7 +9,7 @@ class CspmMonitorAwsOfferingResponseNativeCloudConnection {
 
   /// Creates a new [CspmMonitorAwsOfferingResponseNativeCloudConnection].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
-  CspmMonitorAwsOfferingResponseNativeCloudConnection({
+  const CspmMonitorAwsOfferingResponseNativeCloudConnection({
     this.cloudRoleArn,
   });
 

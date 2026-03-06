@@ -18,7 +18,7 @@ class EmailIdentityFeedbackAttributesArgs {
   /// [emailForwardingEnabled] Sets the feedback forwarding configuration for the identity.
   /// [emailIdentity] The email identity.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EmailIdentityFeedbackAttributesArgs({
+  const EmailIdentityFeedbackAttributesArgs({
     this.emailForwardingEnabled,
     required this.emailIdentity,
     this.region,

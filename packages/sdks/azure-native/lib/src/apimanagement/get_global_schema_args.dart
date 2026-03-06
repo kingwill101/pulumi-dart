@@ -18,7 +18,7 @@ class GetGlobalSchemaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaId] Schema id identifier. Must be unique in the current API Management service instance.
   /// [serviceName] The name of the API Management service.
-  GetGlobalSchemaArgs({
+  const GetGlobalSchemaArgs({
     required this.resourceGroupName,
     required this.schemaId,
     required this.serviceName,

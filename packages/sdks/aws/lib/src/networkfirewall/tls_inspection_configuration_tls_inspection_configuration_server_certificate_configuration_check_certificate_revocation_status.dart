@@ -9,7 +9,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus].
   /// [revokedStatusAction] Optional.
   /// [unknownStatusAction] Optional.
-  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus({
+  const TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus({
     this.revokedStatusAction,
     this.unknownStatusAction,
   });

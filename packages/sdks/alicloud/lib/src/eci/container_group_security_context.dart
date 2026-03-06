@@ -9,7 +9,7 @@ class ContainerGroupSecurityContext {
 
   /// Creates a new [ContainerGroupSecurityContext].
   /// [sysctls] Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
-  ContainerGroupSecurityContext({
+  const ContainerGroupSecurityContext({
     this.sysctls,
   });
 

@@ -11,7 +11,7 @@ class GetHybridMonitorSlsTasksTaskAttachLabel {
   /// Creates a new [GetHybridMonitorSlsTasksTaskAttachLabel].
   /// [name] The key of the tag.
   /// [value] The value of the tag.
-  GetHybridMonitorSlsTasksTaskAttachLabel({
+  const GetHybridMonitorSlsTasksTaskAttachLabel({
     required this.name,
     required this.value,
   });

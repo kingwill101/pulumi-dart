@@ -13,7 +13,7 @@ class BucketResponseHeaderState {
   /// Creates a new [BucketResponseHeaderState].
   /// [bucket] The name of the bucket
   /// [rules] The container that holds the response header rules. See `rule` below.
-  BucketResponseHeaderState({
+  const BucketResponseHeaderState({
     this.bucket,
     this.rules,
   });

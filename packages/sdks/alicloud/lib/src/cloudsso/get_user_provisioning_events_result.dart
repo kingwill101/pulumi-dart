@@ -24,7 +24,7 @@ class GetUserProvisioningEventsResult {
   /// [ids] A list of User Provisioning Event IDs.
   /// [outputFile] Optional.
   /// [userProvisioningId] The ID of the User Provisioning.
-  GetUserProvisioningEventsResult({
+  const GetUserProvisioningEventsResult({
     required this.directoryId,
     required this.events,
     required this.id,

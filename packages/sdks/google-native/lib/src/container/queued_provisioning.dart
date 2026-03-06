@@ -9,7 +9,7 @@ class QueuedProvisioning {
 
   /// Creates a new [QueuedProvisioning].
   /// [enabled] Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
-  QueuedProvisioning({
+  const QueuedProvisioning({
     this.enabled,
   });
 

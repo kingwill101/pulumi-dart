@@ -15,7 +15,7 @@ class DeviceClaimConfigurationPatch {
   /// Creates a new [DeviceClaimConfigurationPatch].
   /// [opaque] Opaque provides driver-specific configuration parameters.
   /// [requests] Requests lists the names of requests where the configuration applies. If empty, it applies to all requests.
-  DeviceClaimConfigurationPatch({
+  const DeviceClaimConfigurationPatch({
     this.opaque,
     this.requests,
   });

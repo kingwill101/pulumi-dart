@@ -34,7 +34,7 @@ class RdsDBSnapshotPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  RdsDBSnapshotPropertiesResponse({
+  const RdsDBSnapshotPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

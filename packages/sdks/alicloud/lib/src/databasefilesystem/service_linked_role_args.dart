@@ -12,7 +12,7 @@ class ServiceLinkedRoleArgs {
 
   /// Creates a new [ServiceLinkedRoleArgs].
   /// [productName] The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
-  ServiceLinkedRoleArgs({
+  const ServiceLinkedRoleArgs({
     required this.productName,
   });
 

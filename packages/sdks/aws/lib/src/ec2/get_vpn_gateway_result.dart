@@ -25,7 +25,7 @@ class GetVpnGatewayResult {
   /// [region] Required.
   /// [state] Required.
   /// [tags] Required.
-  GetVpnGatewayResult({
+  const GetVpnGatewayResult({
     required this.amazonSideAsn,
     required this.arn,
     required this.attachedVpcId,

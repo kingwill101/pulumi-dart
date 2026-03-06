@@ -22,7 +22,7 @@ class ReplicationExtensionArgs {
   /// [replicationExtensionName] The replication extension name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  ReplicationExtensionArgs({
+  const ReplicationExtensionArgs({
     required this.properties,
     this.replicationExtensionName,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class GetNetworkAttachmentComputeBetaArgs {
   /// [networkAttachment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNetworkAttachmentComputeBetaArgs({
+  const GetNetworkAttachmentComputeBetaArgs({
     required this.networkAttachment,
     this.project,
     required this.region,

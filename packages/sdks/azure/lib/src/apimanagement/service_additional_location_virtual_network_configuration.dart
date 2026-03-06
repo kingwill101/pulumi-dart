@@ -8,7 +8,7 @@ class ServiceAdditionalLocationVirtualNetworkConfiguration {
 
   /// Creates a new [ServiceAdditionalLocationVirtualNetworkConfiguration].
   /// [subnetId] The id of the subnet that will be used for the API Management.
-  ServiceAdditionalLocationVirtualNetworkConfiguration({
+  const ServiceAdditionalLocationVirtualNetworkConfiguration({
     required this.subnetId,
   });
 

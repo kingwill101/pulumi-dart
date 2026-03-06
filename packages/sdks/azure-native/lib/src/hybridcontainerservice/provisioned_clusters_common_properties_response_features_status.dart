@@ -10,7 +10,7 @@ class ProvisionedClustersCommonPropertiesResponseFeaturesStatus {
 
   /// Creates a new [ProvisionedClustersCommonPropertiesResponseFeaturesStatus].
   /// [arcAgentStatus] Defines the observed Arc Agent status that is resourceSynced back to the ARM resource.
-  ProvisionedClustersCommonPropertiesResponseFeaturesStatus({
+  const ProvisionedClustersCommonPropertiesResponseFeaturesStatus({
     this.arcAgentStatus,
   });
 

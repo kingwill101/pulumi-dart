@@ -12,7 +12,7 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
   /// Creates a new [RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink].
   /// [description] An optional description of this resize-request.
   /// [url] (Output)
-  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink({
+  const RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink({
     this.description,
     this.url,
   });

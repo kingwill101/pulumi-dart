@@ -55,7 +55,7 @@ class AwsNodePoolConfig {
   /// [sshConfig] Optional. The SSH configuration.
   /// [tags] Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
   /// [taints] Optional. The initial taints assigned to nodes of this node pool.
-  AwsNodePoolConfig({
+  const AwsNodePoolConfig({
     this.autoscalingMetricsCollection,
     required this.configEncryption,
     required this.iamInstanceProfile,

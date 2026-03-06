@@ -21,7 +21,7 @@ class SourceIamBindingState {
   /// [organization] The organization whose Cloud Security Command Center the Source
   /// [role] Optional.
   /// [source] Optional.
-  SourceIamBindingState({
+  const SourceIamBindingState({
     this.condition,
     this.etag,
     this.members,

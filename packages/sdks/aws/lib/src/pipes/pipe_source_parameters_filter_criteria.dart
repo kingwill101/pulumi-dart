@@ -9,7 +9,7 @@ class PipeSourceParametersFilterCriteria {
 
   /// Creates a new [PipeSourceParametersFilterCriteria].
   /// [filters] An array of up to 5 event patterns. Detailed below.
-  PipeSourceParametersFilterCriteria({
+  const PipeSourceParametersFilterCriteria({
     this.filters,
   });
 

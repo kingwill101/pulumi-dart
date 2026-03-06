@@ -13,7 +13,7 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendCo
   /// Creates a new [NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig].
   /// [port] The port on which to receive traffic.
   /// [publicIpAddressId] The ID of the Public IP Address on which to receive traffic.
-  NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig({
+  const NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig({
     required this.port,
     required this.publicIpAddressId,
   });

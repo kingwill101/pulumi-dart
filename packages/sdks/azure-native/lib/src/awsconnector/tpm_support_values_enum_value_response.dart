@@ -9,7 +9,7 @@ class TpmSupportValuesEnumValueResponse {
 
   /// Creates a new [TpmSupportValuesEnumValueResponse].
   /// [value] Property value
-  TpmSupportValuesEnumValueResponse({
+  const TpmSupportValuesEnumValueResponse({
     this.value,
   });
 

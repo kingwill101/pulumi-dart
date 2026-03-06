@@ -28,7 +28,7 @@ class V3AsyncInvokeConfigArgs {
   /// [maxAsyncEventAgeInSeconds] Event maximum survival time
   /// [maxAsyncRetryAttempts] Number of Asynchronous call retries
   /// [qualifier] Function version or alias
-  V3AsyncInvokeConfigArgs({
+  const V3AsyncInvokeConfigArgs({
     this.asyncTask,
     this.destinationConfig,
     required this.functionName,

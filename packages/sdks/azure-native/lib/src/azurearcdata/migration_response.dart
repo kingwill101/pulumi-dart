@@ -10,7 +10,7 @@ class MigrationResponse {
 
   /// Creates a new [MigrationResponse].
   /// [assessment] Migration assessments related configuration.
-  MigrationResponse({
+  const MigrationResponse({
     this.assessment,
   });
 

@@ -64,7 +64,7 @@ class ImagePipelineArgs {
   /// [status] Status of the image pipeline. Valid values are `DISABLED` and `ENABLED`. Defaults to `ENABLED`.
   /// [tags] Key-value map of resource tags for the image pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [workflows] Configuration block with the workflow configuration. Detailed below.
-  ImagePipelineArgs({
+  const ImagePipelineArgs({
     this.containerRecipeArn,
     this.description,
     this.distributionConfigurationArn,

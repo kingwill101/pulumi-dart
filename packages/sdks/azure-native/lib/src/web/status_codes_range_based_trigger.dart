@@ -17,7 +17,7 @@ class StatusCodesRangeBasedTrigger {
   /// [path] Optional.
   /// [statusCodes] HTTP status code.
   /// [timeInterval] Time interval.
-  StatusCodesRangeBasedTrigger({
+  const StatusCodesRangeBasedTrigger({
     this.count,
     this.path,
     this.statusCodes,

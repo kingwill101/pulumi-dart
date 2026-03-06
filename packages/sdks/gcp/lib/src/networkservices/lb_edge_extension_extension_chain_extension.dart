@@ -32,7 +32,7 @@ class LbEdgeExtensionExtensionChainExtension {
   /// [name] The name for this extension. The name is logged as part of the HTTP request logs.
   /// [service] The reference to the service that runs the extension.
   /// [supportedEvents] A set of events during request or response processing for which this extension is called.
-  LbEdgeExtensionExtensionChainExtension({
+  const LbEdgeExtensionExtensionChainExtension({
     this.failOpen,
     this.forwardHeaders,
     required this.name,

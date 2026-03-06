@@ -8,7 +8,7 @@ class DomainOsNvRamSourceNetworkKnownHosts {
 
   /// Creates a new [DomainOsNvRamSourceNetworkKnownHosts].
   /// [path] Specifies the path to the file containing known hosts for the network storage.
-  DomainOsNvRamSourceNetworkKnownHosts({
+  const DomainOsNvRamSourceNetworkKnownHosts({
     required this.path,
   });
 

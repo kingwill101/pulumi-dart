@@ -36,7 +36,7 @@ class ProjectState {
   /// [purpose] the purpose of the project, (Default: "Web Application")
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
   /// [updatedAt] the date and time when the project was last updated, (ISO8601)
-  ProjectState({
+  const ProjectState({
     this.createdAt,
     this.description,
     this.environment,

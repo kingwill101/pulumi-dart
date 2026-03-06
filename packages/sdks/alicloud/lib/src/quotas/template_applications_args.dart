@@ -56,7 +56,7 @@ class TemplateApplicationsArgs {
   /// [quotaActionCode] The quota ID.
   /// [quotaCategory] The quota type. Value:
   /// [reason] Reason for quota application.
-  TemplateApplicationsArgs({
+  const TemplateApplicationsArgs({
     required this.aliyunUids,
     required this.desireValue,
     this.dimensions,

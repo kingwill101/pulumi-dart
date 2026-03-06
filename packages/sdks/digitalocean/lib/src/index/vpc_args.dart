@@ -21,7 +21,7 @@ class VpcArgs {
   /// [ipRange] The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
   /// [name] A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
   /// [region] The DigitalOcean region slug for the VPC's location.
-  VpcArgs({
+  const VpcArgs({
     this.description,
     this.ipRange,
     this.name,

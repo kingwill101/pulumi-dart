@@ -10,7 +10,7 @@ class LinuxConfigurationResponse {
 
   /// Creates a new [LinuxConfigurationResponse].
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  LinuxConfigurationResponse({
+  const LinuxConfigurationResponse({
     this.ssh,
   });
 

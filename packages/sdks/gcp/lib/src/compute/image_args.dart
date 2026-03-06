@@ -113,7 +113,7 @@ class ImageArgs {
   /// [sourceSnapshot] URL of the source snapshot used to create this image.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption key of the source snapshot. Required if
   /// [storageLocations] Cloud Storage bucket storage location of the image
-  ImageArgs({
+  const ImageArgs({
     this.description,
     this.diskSizeGb,
     this.family,

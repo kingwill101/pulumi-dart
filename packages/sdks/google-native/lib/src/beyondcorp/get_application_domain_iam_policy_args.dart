@@ -17,7 +17,7 @@ class GetApplicationDomainIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetApplicationDomainIamPolicyArgs({
+  const GetApplicationDomainIamPolicyArgs({
     required this.applicationDomainId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -16,7 +16,7 @@ class IntuneEnrollmentMetadata {
   /// [appList] The enrolled Intune apps.
   /// [credentialId] The id of the Intune enrollment credential.
   /// [expectedDeploymentDurationInMinute] The expected duration of Intune applications and policies deployment.
-  IntuneEnrollmentMetadata({
+  const IntuneEnrollmentMetadata({
     this.appList,
     this.credentialId,
     this.expectedDeploymentDurationInMinute,

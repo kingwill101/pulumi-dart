@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceSsl {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceSsl].
   /// [verify] Specifies the verification level of the SSL connections for the backing store.
-  DomainDevicesDiskMirrorBackingStoreSourceSsl({
+  const DomainDevicesDiskMirrorBackingStoreSourceSsl({
     required this.verify,
   });
 

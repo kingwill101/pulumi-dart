@@ -16,7 +16,7 @@ class InstanceDatabase {
   /// [charset] Database character set. Changing this creates a
   /// [collate] Database collation. Changing this creates a new instance.
   /// [name] Database to be created on new instance. Changing this creates a
-  InstanceDatabase({
+  const InstanceDatabase({
     this.charset,
     this.collate,
     required this.name,

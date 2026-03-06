@@ -18,7 +18,7 @@ class GetPredictionArgs {
   /// [hubName] The name of the hub.
   /// [predictionName] The name of the Prediction.
   /// [resourceGroupName] The name of the resource group.
-  GetPredictionArgs({
+  const GetPredictionArgs({
     required this.hubName,
     required this.predictionName,
     required this.resourceGroupName,

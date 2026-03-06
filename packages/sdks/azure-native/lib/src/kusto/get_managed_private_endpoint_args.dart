@@ -18,7 +18,7 @@ class GetManagedPrivateEndpointArgs {
   /// [clusterName] The name of the Kusto cluster.
   /// [managedPrivateEndpointName] The name of the managed private endpoint.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManagedPrivateEndpointArgs({
+  const GetManagedPrivateEndpointArgs({
     required this.clusterName,
     required this.managedPrivateEndpointName,
     required this.resourceGroupName,

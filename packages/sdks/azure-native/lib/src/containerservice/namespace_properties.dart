@@ -26,7 +26,7 @@ class NamespaceProperties {
   /// [defaultResourceQuota] The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
   /// [deletePolicy] Delete options of a namespace.
   /// [labels] The labels of managed namespace.
-  NamespaceProperties({
+  const NamespaceProperties({
     this.adoptionPolicy,
     this.annotations,
     this.defaultNetworkPolicy,

@@ -33,7 +33,7 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
   /// [questionDuration] Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds.
   /// [replicaCount] Optional. Replication of questions. Each question will be sent to up to this number of contributors to label. Aggregated answers will be returned. Default is set to 1. For image related labeling, valid values are 1, 3, 5.
   /// [userEmailAddress] Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent.
-  GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse({
+  const GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse({
     required this.annotatedDatasetDescription,
     required this.annotatedDatasetDisplayName,
     required this.contributorEmails,

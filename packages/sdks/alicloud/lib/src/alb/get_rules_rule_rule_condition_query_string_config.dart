@@ -9,7 +9,7 @@ class GetRulesRuleRuleConditionQueryStringConfig {
 
   /// Creates a new [GetRulesRuleRuleConditionQueryStringConfig].
   /// [values] Add one or more IP addresses or IP address segments.
-  GetRulesRuleRuleConditionQueryStringConfig({
+  const GetRulesRuleRuleConditionQueryStringConfig({
     required this.values,
   });
 

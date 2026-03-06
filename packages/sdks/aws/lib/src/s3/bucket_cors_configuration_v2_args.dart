@@ -22,7 +22,7 @@ class BucketCorsConfigurationV2Args {
   /// [corsRules] Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BucketCorsConfigurationV2Args({
+  const BucketCorsConfigurationV2Args({
     required this.bucket,
     required this.corsRules,
     this.expectedBucketOwner,

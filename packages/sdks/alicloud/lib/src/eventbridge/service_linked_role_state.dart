@@ -9,7 +9,7 @@ class ServiceLinkedRoleState {
 
   /// Creates a new [ServiceLinkedRoleState].
   /// [productName] The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
-  ServiceLinkedRoleState({
+  const ServiceLinkedRoleState({
     this.productName,
   });
 

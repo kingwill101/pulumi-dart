@@ -26,7 +26,7 @@ class GetDnsNamespaceResult {
   /// [region] Required.
   /// [tags] Map of tags for the resource.
   /// [type] Required.
-  GetDnsNamespaceResult({
+  const GetDnsNamespaceResult({
     required this.arn,
     required this.description,
     required this.hostedZone,

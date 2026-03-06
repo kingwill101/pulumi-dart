@@ -35,7 +35,7 @@ class InstanceIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] Optional.
   /// [role] The role that should be applied. Only one
-  InstanceIamMemberArgs({
+  const InstanceIamMemberArgs({
     this.condition,
     required this.instance,
     required this.member,

@@ -24,7 +24,7 @@ class KeyArgs {
   /// [name] Name of the SSL Certificate key to be Imported on to BIGIP
   /// [partition] Partition of ssl certificate key
   /// [passphrase] Passphrase on key.
-  KeyArgs({
+  const KeyArgs({
     required this.content,
     this.fullPath,
     required this.name,

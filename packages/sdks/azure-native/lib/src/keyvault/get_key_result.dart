@@ -52,7 +52,7 @@ class GetKeyResult {
   /// [rotationPolicy] Key rotation policy in response. It will be used for both output and input. Omitted if empty
   /// [tags] Tags assigned to the key vault resource.
   /// [type] Resource type of the key vault resource.
-  GetKeyResult({
+  const GetKeyResult({
     this.attributes,
     required this.azureApiVersion,
     this.curveName,

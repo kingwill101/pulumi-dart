@@ -9,7 +9,7 @@ class DefaultActionEnumValueResponse {
 
   /// Creates a new [DefaultActionEnumValueResponse].
   /// [value] Property value
-  DefaultActionEnumValueResponse({
+  const DefaultActionEnumValueResponse({
     this.value,
   });
 

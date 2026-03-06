@@ -57,7 +57,7 @@ class SelfSignedCertState {
   /// [validityEndTime] The time until which the certificate is invalid, expressed as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
   /// [validityPeriodHours] Number of hours, after initial issuing, that the certificate will remain valid for.
   /// [validityStartTime] The time after which the certificate is valid, expressed as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
-  SelfSignedCertState({
+  const SelfSignedCertState({
     this.allowedUses,
     this.certPem,
     this.dnsNames,

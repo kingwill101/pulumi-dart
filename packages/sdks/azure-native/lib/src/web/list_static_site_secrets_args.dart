@@ -15,7 +15,7 @@ class ListStaticSiteSecretsArgs {
   /// Creates a new [ListStaticSiteSecretsArgs].
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListStaticSiteSecretsArgs({
+  const ListStaticSiteSecretsArgs({
     required this.name,
     required this.resourceGroupName,
   });

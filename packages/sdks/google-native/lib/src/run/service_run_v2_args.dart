@@ -61,7 +61,7 @@ class ServiceRunV2Args {
   /// [serviceId] Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
   /// [template] The template used to create revisions for this Service.
   /// [traffic] Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-  ServiceRunV2Args({
+  const ServiceRunV2Args({
     this.annotations,
     this.binaryAuthorization,
     this.client,

@@ -10,7 +10,7 @@ class LastRunErrorStatus {
 
   /// Creates a new [LastRunErrorStatus].
   /// [code] &lt;p&gt;Specifies whether any account- or bucket-level access errors occurred when the job ran. For a recurring job, this value indicates the error status of the job's most recent run. Possible values are:&lt;/p&gt; &lt;ul&gt;&lt;li&gt;&lt;p&gt;ERROR - One or more errors occurred. Amazon Macie didn't process all the data specified for the job.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;NONE - No errors occurred. Macie processed all the data specified for the job.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
-  LastRunErrorStatus({
+  const LastRunErrorStatus({
     this.code,
   });
 

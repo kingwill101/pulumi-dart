@@ -9,7 +9,7 @@ class CustomProfile {
 
   /// Creates a new [CustomProfile].
   /// [metadataConfigurationPath] Path for metadata configuration.
-  CustomProfile({
+  const CustomProfile({
     this.metadataConfigurationPath,
   });
 

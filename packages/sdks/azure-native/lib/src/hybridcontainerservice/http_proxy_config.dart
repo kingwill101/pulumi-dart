@@ -24,7 +24,7 @@ class HttpProxyConfig {
   /// [password] Password to use for connecting to proxy server
   /// [trustedCa] Alternative CA cert to use for connecting to proxy servers.
   /// [username] Username to use for connecting to proxy server
-  HttpProxyConfig({
+  const HttpProxyConfig({
     this.httpProxy,
     this.httpsProxy,
     this.noProxy,

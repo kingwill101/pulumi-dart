@@ -11,7 +11,7 @@ class GroupResourceQuery {
   /// Creates a new [GroupResourceQuery].
   /// [query] The resource query as a JSON string.
   /// [type] The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
-  GroupResourceQuery({
+  const GroupResourceQuery({
     required this.query,
     this.type,
   });

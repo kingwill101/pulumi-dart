@@ -39,7 +39,7 @@ class RegistryWebhookArgs {
   /// [serviceUri] Specifies the service URI for the Webhook to post notifications.
   /// [status] Specifies if this Webhook triggers notifications or not. Valid values: `enabled` and `disabled`. Default is `enabled`.
   /// [tags] A mapping of tags to assign to the resource.
-  RegistryWebhookArgs({
+  const RegistryWebhookArgs({
     required this.actions,
     this.customHeaders,
     this.location,

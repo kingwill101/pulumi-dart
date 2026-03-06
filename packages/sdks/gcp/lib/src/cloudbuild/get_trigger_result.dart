@@ -72,7 +72,7 @@ class GetTriggerResult {
   /// [triggerId] Required.
   /// [triggerTemplates] Required.
   /// [webhookConfigs] Required.
-  GetTriggerResult({
+  const GetTriggerResult({
     required this.approvalConfigs,
     required this.bitbucketServerTriggerConfigs,
     required this.builds,

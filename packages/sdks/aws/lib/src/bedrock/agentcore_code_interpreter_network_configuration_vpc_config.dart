@@ -11,7 +11,7 @@ class AgentcoreCodeInterpreterNetworkConfigurationVpcConfig {
   /// Creates a new [AgentcoreCodeInterpreterNetworkConfigurationVpcConfig].
   /// [securityGroups] Security groups associated with the VPC configuration.
   /// [subnets] Subnets associated with the VPC configuration.
-  AgentcoreCodeInterpreterNetworkConfigurationVpcConfig({
+  const AgentcoreCodeInterpreterNetworkConfigurationVpcConfig({
     required this.securityGroups,
     required this.subnets,
   });

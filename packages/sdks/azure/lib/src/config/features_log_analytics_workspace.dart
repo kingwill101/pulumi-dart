@@ -7,7 +7,7 @@ class FeaturesLogAnalyticsWorkspace {
 
   /// Creates a new [FeaturesLogAnalyticsWorkspace].
   /// [permanentlyDeleteOnDestroy] Optional.
-  FeaturesLogAnalyticsWorkspace({
+  const FeaturesLogAnalyticsWorkspace({
     this.permanentlyDeleteOnDestroy,
   });
 

@@ -35,7 +35,7 @@ class GoogleCloudDataplexV1DataQualityResultResponse {
   /// [rules] A list of all the rules in a job, and their results.
   /// [scannedData] The data scanned for this result.
   /// [score] The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
-  GoogleCloudDataplexV1DataQualityResultResponse({
+  const GoogleCloudDataplexV1DataQualityResultResponse({
     required this.columns,
     required this.dimensions,
     required this.passed,

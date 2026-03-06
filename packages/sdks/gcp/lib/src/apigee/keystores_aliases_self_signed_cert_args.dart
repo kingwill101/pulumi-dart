@@ -42,7 +42,7 @@ class KeystoresAliasesSelfSignedCertArgs {
   /// [sigAlg] Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
   /// [subject] Subject details.
   /// [subjectAlternativeDnsNames] List of alternative host names. Maximum length is 255 characters for each value.
-  KeystoresAliasesSelfSignedCertArgs({
+  const KeystoresAliasesSelfSignedCertArgs({
     required this.alias,
     this.certValidityInDays,
     required this.environment,

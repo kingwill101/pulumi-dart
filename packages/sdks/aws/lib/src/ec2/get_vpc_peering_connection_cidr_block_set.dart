@@ -8,7 +8,7 @@ class GetVpcPeeringConnectionCidrBlockSet {
 
   /// Creates a new [GetVpcPeeringConnectionCidrBlockSet].
   /// [cidrBlock] Primary CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.
-  GetVpcPeeringConnectionCidrBlockSet({
+  const GetVpcPeeringConnectionCidrBlockSet({
     required this.cidrBlock,
   });
 

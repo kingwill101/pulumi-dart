@@ -18,7 +18,7 @@ class GetVirtualRouterPeeringArgs {
   /// [peeringName] The name of the Virtual Router Peering.
   /// [resourceGroupName] The name of the resource group.
   /// [virtualRouterName] The name of the Virtual Router.
-  GetVirtualRouterPeeringArgs({
+  const GetVirtualRouterPeeringArgs({
     required this.peeringName,
     required this.resourceGroupName,
     required this.virtualRouterName,

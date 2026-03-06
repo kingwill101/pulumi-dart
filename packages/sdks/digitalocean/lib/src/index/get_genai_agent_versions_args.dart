@@ -17,7 +17,7 @@ class GetGenaiAgentVersionsArgs {
   /// [agentId] Required.
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGenaiAgentVersionsArgs({
+  const GetGenaiAgentVersionsArgs({
     required this.agentId,
     this.filters,
     this.sorts,

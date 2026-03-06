@@ -14,7 +14,7 @@ class OneDashboardVariableOption {
   /// [excluded] (Optional) An argument with a boolean value. With this turned on, the query condition defined with the variable will not be included in the query. Defaults to `false`.
   /// [ignoreTimeRange] (Optional) An argument with a boolean value that is supported only by variables of `type` _nrql_ - when true, the time range specified in the query will override the time picker on dashboards and other pages.
   /// [showApplyAction] (Optional) When multi-selection is enabled (`is_multi_selection = true`), displays an "Apply" button that allows users to confirm and apply their selected values to the dashboard.
-  OneDashboardVariableOption({
+  const OneDashboardVariableOption({
     this.excluded,
     this.ignoreTimeRange,
     this.showApplyAction,

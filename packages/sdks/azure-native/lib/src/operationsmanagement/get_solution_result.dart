@@ -31,7 +31,7 @@ class GetSolutionResult {
   /// [properties] Properties for solution object supported by the OperationsManagement resource provider.
   /// [tags] Resource tags
   /// [type] Resource type.
-  GetSolutionResult({
+  const GetSolutionResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

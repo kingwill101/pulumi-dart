@@ -23,7 +23,7 @@ class PreferencesResponse {
   /// [reverseTransportPreferences] Optional Preferences related to the reverse shipment logistics of the sku.
   /// [storageAccountAccessTierPreferences] Preferences related to the Access Tier of storage accounts.
   /// [transportPreferences] Preferences related to the shipment logistics of the sku.
-  PreferencesResponse({
+  const PreferencesResponse({
     this.encryptionPreferences,
     this.preferredDataCenterRegion,
     this.reverseTransportPreferences,

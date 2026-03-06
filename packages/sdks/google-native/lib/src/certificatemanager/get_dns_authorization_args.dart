@@ -15,7 +15,7 @@ class GetDnsAuthorizationArgs {
   /// [dnsAuthorizationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDnsAuthorizationArgs({
+  const GetDnsAuthorizationArgs({
     required this.dnsAuthorizationId,
     required this.location,
     this.project,

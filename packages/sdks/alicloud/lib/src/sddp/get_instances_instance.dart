@@ -34,7 +34,7 @@ class GetInstancesInstance {
   /// [paymentType] The payment type of the resource. Valid values: `Subscription`.
   /// [rdsSet] Whether the authorized rds assets.
   /// [status] The status of the resource.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.authed,
     required this.id,
     required this.instanceId,

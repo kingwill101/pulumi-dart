@@ -22,7 +22,7 @@ class RecordsExclusiveArgs {
   /// [resourceRecordSets] A list of all resource record sets associated with the hosted zone.
   /// [timeouts] Optional.
   /// [zoneId] ID of the hosted zone containing the resource record sets.
-  RecordsExclusiveArgs({
+  const RecordsExclusiveArgs({
     this.resourceRecordSets,
     this.timeouts,
     required this.zoneId,

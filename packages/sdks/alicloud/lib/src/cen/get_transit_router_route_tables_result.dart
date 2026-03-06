@@ -36,7 +36,7 @@ class GetTransitRouterRouteTablesResult {
   /// [transitRouterRouteTableNames] Optional.
   /// [transitRouterRouteTableStatus] Optional.
   /// [transitRouterRouteTableType] The type of the route table.
-  GetTransitRouterRouteTablesResult({
+  const GetTransitRouterRouteTablesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

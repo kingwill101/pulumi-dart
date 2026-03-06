@@ -8,7 +8,7 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddress {
 
   /// Creates a new [RegionPerInstanceConfigPreservedStateInternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.
-  RegionPerInstanceConfigPreservedStateInternalIpIpAddress({
+  const RegionPerInstanceConfigPreservedStateInternalIpIpAddress({
     this.address,
   });
 

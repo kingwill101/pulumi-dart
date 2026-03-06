@@ -14,7 +14,7 @@ class GatewayConfig {
   /// Creates a new [GatewayConfig].
   /// [gatewayAuthMethod] Indicates how to authorize and/or authenticate devices to access the gateway.
   /// [gatewayType] Indicates whether the device is a gateway.
-  GatewayConfig({
+  const GatewayConfig({
     this.gatewayAuthMethod,
     this.gatewayType,
   });

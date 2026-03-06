@@ -46,7 +46,7 @@ class SftpReadSettingsResponse {
   /// [type] The read setting type.
   /// [wildcardFileName] Sftp wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Sftp wildcardFolderPath. Type: string (or Expression with resultType string).
-  SftpReadSettingsResponse({
+  const SftpReadSettingsResponse({
     this.deleteFilesAfterCompletion,
     this.disableChunking,
     this.disableMetricsCollection,

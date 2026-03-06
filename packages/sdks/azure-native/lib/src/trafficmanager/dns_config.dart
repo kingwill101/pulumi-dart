@@ -12,7 +12,7 @@ class DnsConfig {
   /// Creates a new [DnsConfig].
   /// [relativeName] The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile.
   /// [ttl] The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile.
-  DnsConfig({
+  const DnsConfig({
     this.relativeName,
     this.ttl,
   });

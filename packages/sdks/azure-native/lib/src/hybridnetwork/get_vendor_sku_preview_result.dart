@@ -24,7 +24,7 @@ class GetVendorSkuPreviewResult {
   /// [provisioningState] The provisioning state of the PreviewSubscription resource.
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource.
-  GetVendorSkuPreviewResult({
+  const GetVendorSkuPreviewResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

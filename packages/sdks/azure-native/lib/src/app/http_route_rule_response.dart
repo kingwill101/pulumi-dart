@@ -17,7 +17,7 @@ class HttpRouteRuleResponse {
   /// [description] Description of rule. Optional.
   /// [routes] Routing configuration that will allow matches on specific paths/headers.
   /// [targets] Targets- container apps, revisions, labels
-  HttpRouteRuleResponse({
+  const HttpRouteRuleResponse({
     this.description,
     this.routes,
     this.targets,

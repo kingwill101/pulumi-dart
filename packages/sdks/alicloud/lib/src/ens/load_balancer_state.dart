@@ -34,7 +34,7 @@ class LoadBalancerState {
   /// [paymentType] Server Load Balancer Instance Payment Type. Value:PayAsYouGo
   /// [status] The status of the SLB instance.
   /// [vswitchId] The ID of the vSwitch to which the VPC instance belongs.
-  LoadBalancerState({
+  const LoadBalancerState({
     this.backendServers,
     this.createTime,
     this.ensRegionId,

@@ -12,7 +12,7 @@ class IstioIngressGatewayResponse {
   /// Creates a new [IstioIngressGatewayResponse].
   /// [enabled] Whether to enable the ingress gateway.
   /// [mode] Mode of an ingress gateway.
-  IstioIngressGatewayResponse({
+  const IstioIngressGatewayResponse({
     required this.enabled,
     required this.mode,
   });

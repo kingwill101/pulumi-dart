@@ -15,7 +15,7 @@ class GetPlacementGroupsArgs {
   /// Creates a new [GetPlacementGroupsArgs].
   /// [mostRecent] Sorts list by date.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetPlacementGroupsArgs({
+  const GetPlacementGroupsArgs({
     this.mostRecent,
     this.withSelector,
   });

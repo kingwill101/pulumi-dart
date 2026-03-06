@@ -26,7 +26,7 @@ class ConfigVariableResponse {
   /// [key] Key of the config variable.
   /// [secretValue] Value is a secret.
   /// [stringValue] Value is a string.
-  ConfigVariableResponse({
+  const ConfigVariableResponse({
     required this.boolValue,
     required this.encryptionKeyValue,
     required this.intValue,

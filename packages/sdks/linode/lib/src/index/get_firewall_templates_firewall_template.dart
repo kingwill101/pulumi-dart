@@ -22,7 +22,7 @@ class GetFirewallTemplatesFirewallTemplate {
   /// [outboundPolicy] The default behavior for outbound traffic.
   /// [outbounds] A list of firewall rules specifying allowed outbound network traffic.
   /// [slug] The slug of the firewall template.
-  GetFirewallTemplatesFirewallTemplate({
+  const GetFirewallTemplatesFirewallTemplate({
     required this.inboundPolicy,
     required this.inbounds,
     required this.outboundPolicy,

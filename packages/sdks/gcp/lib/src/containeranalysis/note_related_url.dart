@@ -11,7 +11,7 @@ class NoteRelatedUrl {
   /// Creates a new [NoteRelatedUrl].
   /// [label] Label to describe usage of the URL
   /// [url] Specific URL associated with the resource.
-  NoteRelatedUrl({
+  const NoteRelatedUrl({
     this.label,
     required this.url,
   });

@@ -12,7 +12,7 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig].
   /// [queryStringBehavior] Whether URL query strings in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `query_string_behavior` are `none`, `whitelist`, `allExcept`, and `all`.
   /// [queryStrings] Configuration parameter that contains a list of query string names. See Items for more information.
-  CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig({
+  const CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig({
     required this.queryStringBehavior,
     this.queryStrings,
   });

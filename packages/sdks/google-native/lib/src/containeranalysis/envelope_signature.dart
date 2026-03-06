@@ -9,7 +9,7 @@ class EnvelopeSignature {
   /// Creates a new [EnvelopeSignature].
   /// [keyid] Optional.
   /// [sig] Optional.
-  EnvelopeSignature({
+  const EnvelopeSignature({
     this.keyid,
     this.sig,
   });

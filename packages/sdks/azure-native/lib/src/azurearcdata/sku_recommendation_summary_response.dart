@@ -12,7 +12,7 @@ class SkuRecommendationSummaryResponse {
   /// Creates a new [SkuRecommendationSummaryResponse].
   /// [numOfBlockerIssues] Number of blocker issues to fix before migrating this database to the target platform.
   /// [recommendationStatus] The target recommendation Status for this database.
-  SkuRecommendationSummaryResponse({
+  const SkuRecommendationSummaryResponse({
     this.numOfBlockerIssues,
     this.recommendationStatus,
   });

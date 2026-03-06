@@ -44,7 +44,7 @@ class GetPrivateConnectionResult {
   /// [updateTime] Last update time of this resource.
   /// [vmwareEngineNetwork] The relative resource name of Legacy VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}`, `{location}` will be same as specified in private connection resource name and `{vmware_engine_network_id}` will be in the form of `{location}`-default e.g. projects/project/locations/us-central1/vmwareEngineNetworks/us-central1-default.
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in the form: `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
-  GetPrivateConnectionResult({
+  const GetPrivateConnectionResult({
     required this.createTime,
     required this.description,
     required this.name,

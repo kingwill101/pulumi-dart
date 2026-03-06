@@ -11,7 +11,7 @@ class DomainOsBootMenu {
   /// Creates a new [DomainOsBootMenu].
   /// [enable] Enables or disables the boot menu for user selection during startup.
   /// [timeout] Sets the amount of time the boot menu remains visible before booting the default device.
-  DomainOsBootMenu({
+  const DomainOsBootMenu({
     this.enable,
     this.timeout,
   });

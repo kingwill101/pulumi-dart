@@ -53,7 +53,7 @@ class GetAppAppengineV1betaResult {
   /// [name] Full path to the Application resource in the API. Example: apps/myapp.
   /// [serviceAccount] The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
   /// [servingStatus] Serving status of this application.
-  GetAppAppengineV1betaResult({
+  const GetAppAppengineV1betaResult({
     required this.authDomain,
     required this.codeBucket,
     required this.databaseType,

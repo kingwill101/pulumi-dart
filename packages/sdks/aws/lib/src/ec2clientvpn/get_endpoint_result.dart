@@ -86,7 +86,7 @@ class GetEndpointResult {
   /// [transportProtocol] Transport protocol used by the Client VPN endpoint.
   /// [vpcId] ID of the VPC associated with the Client VPN endpoint.
   /// [vpnPort] Port number for the Client VPN endpoint.
-  GetEndpointResult({
+  const GetEndpointResult({
     required this.arn,
     required this.authenticationOptions,
     required this.clientCidrBlock,

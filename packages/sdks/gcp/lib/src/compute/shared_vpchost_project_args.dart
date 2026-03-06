@@ -12,7 +12,7 @@ class SharedVPCHostProjectArgs {
 
   /// Creates a new [SharedVPCHostProjectArgs].
   /// [project] The ID of the project that will serve as a Shared VPC host project
-  SharedVPCHostProjectArgs({
+  const SharedVPCHostProjectArgs({
     required this.project,
   });
 

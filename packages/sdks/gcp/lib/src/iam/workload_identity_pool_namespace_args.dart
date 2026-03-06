@@ -35,7 +35,7 @@ class WorkloadIdentityPoolNamespaceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [workloadIdentityPoolId] The ID to use for the pool, which becomes the final component of the resource name. This
   /// [workloadIdentityPoolNamespaceId] The ID to use for the namespace. This value must:
-  WorkloadIdentityPoolNamespaceArgs({
+  const WorkloadIdentityPoolNamespaceArgs({
     this.description,
     this.disabled,
     this.project,

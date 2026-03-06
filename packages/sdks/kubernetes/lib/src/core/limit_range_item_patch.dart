@@ -24,7 +24,7 @@ class LimitRangeItemPatch {
   /// [maxLimitRequestRatio] MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource.
   /// [min] Min usage constraints on this kind by resource name.
   /// [type] Type of resource that this limit applies to.
-  LimitRangeItemPatch({
+  const LimitRangeItemPatch({
     this.default_,
     this.defaultRequest,
     this.max,

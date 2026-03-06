@@ -15,7 +15,7 @@ class GoogleCloudRetailV2betaRuleReplacementActionResponse {
   /// [queryTerms] Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
   /// [replacementTerm] Term that will be used for replacement.
   /// [term] Will be [deprecated = true] post migration;
-  GoogleCloudRetailV2betaRuleReplacementActionResponse({
+  const GoogleCloudRetailV2betaRuleReplacementActionResponse({
     required this.queryTerms,
     required this.replacementTerm,
     required this.term,

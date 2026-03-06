@@ -38,7 +38,7 @@ class TestExecutionResponse {
   /// [testSpecification] How to run the test.
   /// [timestamp] The time this test execution was initially created.
   /// [toolResultsStep] Where the results for this execution are written.
-  TestExecutionResponse({
+  const TestExecutionResponse({
     required this.environment,
     required this.matrixId,
     required this.project,

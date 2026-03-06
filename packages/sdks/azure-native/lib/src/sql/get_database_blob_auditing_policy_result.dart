@@ -118,7 +118,7 @@ class GetDatabaseBlobAuditingPolicyResult {
   /// [storageAccountSubscriptionId] Specifies the blob storage subscription Id.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
   /// [type] Resource type.
-  GetDatabaseBlobAuditingPolicyResult({
+  const GetDatabaseBlobAuditingPolicyResult({
     this.auditActionsAndGroups,
     required this.azureApiVersion,
     required this.id,

@@ -10,7 +10,7 @@ class LoggingConfigContainerV1beta1 {
 
   /// Creates a new [LoggingConfigContainerV1beta1].
   /// [componentConfig] Logging components configuration
-  LoggingConfigContainerV1beta1({
+  const LoggingConfigContainerV1beta1({
     this.componentConfig,
   });
 

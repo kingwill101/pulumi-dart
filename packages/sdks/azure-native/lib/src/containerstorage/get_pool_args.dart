@@ -15,7 +15,7 @@ class GetPoolArgs {
   /// Creates a new [GetPoolArgs].
   /// [poolName] Pool Object
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPoolArgs({
+  const GetPoolArgs({
     required this.poolName,
     required this.resourceGroupName,
   });

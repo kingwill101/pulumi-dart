@@ -8,7 +8,7 @@ class ResourceSetResourceDnsTargetResourceTargetResourceNlbResource {
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResourceNlbResource].
   /// [arn] NLB resource ARN.
-  ResourceSetResourceDnsTargetResourceTargetResourceNlbResource({
+  const ResourceSetResourceDnsTargetResourceTargetResourceNlbResource({
     this.arn,
   });
 

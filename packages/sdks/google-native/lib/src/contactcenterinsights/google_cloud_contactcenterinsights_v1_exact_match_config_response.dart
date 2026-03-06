@@ -9,7 +9,7 @@ class GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse {
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse].
   /// [caseSensitive] Whether to consider case sensitivity when performing an exact match.
-  GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse({
+  const GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse({
     required this.caseSensitive,
   });
 

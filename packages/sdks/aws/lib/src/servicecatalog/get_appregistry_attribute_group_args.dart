@@ -22,7 +22,7 @@ class GetAppregistryAttributeGroupArgs {
   /// [id] ID of the Attribute Group to find.
   /// [name] Name of the Attribute Group to find.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAppregistryAttributeGroupArgs({
+  const GetAppregistryAttributeGroupArgs({
     this.arn,
     this.id,
     this.name,

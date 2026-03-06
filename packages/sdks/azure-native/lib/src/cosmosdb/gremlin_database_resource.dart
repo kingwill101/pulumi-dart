@@ -16,7 +16,7 @@ class GremlinDatabaseResource {
   /// [createMode] Enum to indicate the mode of resource creation.
   /// [id] Name of the Cosmos DB Gremlin database
   /// [restoreParameters] Parameters to indicate the information about the restore
-  GremlinDatabaseResource({
+  const GremlinDatabaseResource({
     this.createMode,
     required this.id,
     this.restoreParameters,

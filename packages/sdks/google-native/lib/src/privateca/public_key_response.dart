@@ -12,7 +12,7 @@ class PublicKeyResponse {
   /// Creates a new [PublicKeyResponse].
   /// [format] The format of the public key.
   /// [key] A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
-  PublicKeyResponse({
+  const PublicKeyResponse({
     required this.format,
     required this.key,
   });

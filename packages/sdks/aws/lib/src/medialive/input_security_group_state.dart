@@ -26,7 +26,7 @@ class InputSecurityGroupState {
   /// [tags] A map of tags to assign to the InputSecurityGroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [whitelistRules] Whitelist rules. See Whitelist Rules for more details.
-  InputSecurityGroupState({
+  const InputSecurityGroupState({
     this.arn,
     this.inputs,
     this.region,

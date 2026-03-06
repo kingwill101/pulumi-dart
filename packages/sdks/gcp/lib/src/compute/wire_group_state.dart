@@ -54,7 +54,7 @@ class WireGroupState {
   /// [wireGroupProperties] Properties specific to the wire group.
   /// [wireProperties] Default properties for wires within the group.
   /// [wires] The single/redundant wire(s) managed by the wire group.
-  WireGroupState({
+  const WireGroupState({
     this.adminEnabled,
     this.creationTimestamp,
     this.crossSiteNetwork,

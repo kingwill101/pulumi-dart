@@ -35,7 +35,7 @@ class GetScopeMapResult {
   /// [provisioningState] Provisioning state of the resource.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetScopeMapResult({
+  const GetScopeMapResult({
     required this.actions,
     required this.azureApiVersion,
     required this.creationDate,

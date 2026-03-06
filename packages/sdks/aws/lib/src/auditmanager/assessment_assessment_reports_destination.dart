@@ -11,7 +11,7 @@ class AssessmentAssessmentReportsDestination {
   /// Creates a new [AssessmentAssessmentReportsDestination].
   /// [destination] Destination of the assessment report. This value be in the form `s3://{bucket_name}`.
   /// [destinationType] Destination type. Currently, `S3` is the only valid value.
-  AssessmentAssessmentReportsDestination({
+  const AssessmentAssessmentReportsDestination({
     required this.destination,
     required this.destinationType,
   });

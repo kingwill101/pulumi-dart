@@ -43,7 +43,7 @@ class HoneypotProbeArgs {
   /// [serviceIpLists] Listen to the IP address list.
   /// [uuid] Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
   /// [vpcId] The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
-  HoneypotProbeArgs({
+  const HoneypotProbeArgs({
     this.arp,
     required this.controlNodeId,
     required this.displayName,

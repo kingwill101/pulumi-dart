@@ -11,7 +11,7 @@ class SnatOrigin {
   /// Creates a new [SnatOrigin].
   /// [appService] app service
   /// [name] Name of the SNAT, name of SNAT should be full path. Full path is the combination of the `partition + SNAT name`,For example `/Common/test-snat`.
-  SnatOrigin({
+  const SnatOrigin({
     this.appService,
     this.name,
   });

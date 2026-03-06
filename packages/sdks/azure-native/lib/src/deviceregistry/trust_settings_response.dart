@@ -9,7 +9,7 @@ class TrustSettingsResponse {
 
   /// Creates a new [TrustSettingsResponse].
   /// [trustList] Defines a secret reference for certificates to trust.
-  TrustSettingsResponse({
+  const TrustSettingsResponse({
     this.trustList,
   });
 

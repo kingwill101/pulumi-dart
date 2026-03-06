@@ -42,7 +42,7 @@ class MigrationInstanceState {
   /// [status] The status.
   /// [syncArchitecture] The sync architecture. Valid values: `oneway`.
   /// [tags] A mapping of tags to assign to the resource.
-  MigrationInstanceState({
+  const MigrationInstanceState({
     this.computeUnit,
     this.databaseCount,
     this.destinationEndpointEngineName,

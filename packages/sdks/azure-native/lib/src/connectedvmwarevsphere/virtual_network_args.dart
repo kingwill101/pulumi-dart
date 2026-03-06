@@ -37,7 +37,7 @@ class VirtualNetworkArgs {
   /// [tags] Gets or sets the Resource tags.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this template resides.
   /// [virtualNetworkName] Name of the virtual network resource.
-  VirtualNetworkArgs({
+  const VirtualNetworkArgs({
     this.extendedLocation,
     this.inventoryItemId,
     this.kind,

@@ -11,7 +11,7 @@ class RouteSpecHttp2RouteMatchPath {
   /// Creates a new [RouteSpecHttp2RouteMatchPath].
   /// [exact] The exact path to match on.
   /// [regex] The regex used to match the path.
-  RouteSpecHttp2RouteMatchPath({
+  const RouteSpecHttp2RouteMatchPath({
     this.exact,
     this.regex,
   });

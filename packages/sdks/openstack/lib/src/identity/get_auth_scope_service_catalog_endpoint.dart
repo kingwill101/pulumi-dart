@@ -22,7 +22,7 @@ class GetAuthScopeServiceCatalogEndpoint {
   /// [region] The region in which to obtain the V3 Identity client.
   /// [regionId] The region ID of the endpoint.
   /// [url] The URL of the endpoint.
-  GetAuthScopeServiceCatalogEndpoint({
+  const GetAuthScopeServiceCatalogEndpoint({
     required this.id,
     required this.interface,
     required this.region,

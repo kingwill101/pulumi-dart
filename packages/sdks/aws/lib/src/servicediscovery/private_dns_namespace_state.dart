@@ -30,7 +30,7 @@ class PrivateDnsNamespaceState {
   /// [tags] A map of tags to assign to the namespace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpc] The ID of VPC that you want to associate the namespace with.
-  PrivateDnsNamespaceState({
+  const PrivateDnsNamespaceState({
     this.arn,
     this.description,
     this.hostedZone,

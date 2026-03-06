@@ -22,7 +22,7 @@ class ImageTemplateManagedImageDistributor {
   /// [location] Azure location for the image, should match if image already exists
   /// [runOutputName] The name to be used for the associated RunOutput.
   /// [type] Type of distribution.
-  ImageTemplateManagedImageDistributor({
+  const ImageTemplateManagedImageDistributor({
     this.artifactTags,
     required this.imageId,
     required this.location,

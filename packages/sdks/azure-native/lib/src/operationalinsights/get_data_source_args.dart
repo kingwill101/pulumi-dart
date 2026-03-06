@@ -18,7 +18,7 @@ class GetDataSourceArgs {
   /// [dataSourceName] Name of the datasource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetDataSourceArgs({
+  const GetDataSourceArgs({
     required this.dataSourceName,
     required this.resourceGroupName,
     required this.workspaceName,

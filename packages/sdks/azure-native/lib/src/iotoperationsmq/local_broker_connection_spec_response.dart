@@ -17,7 +17,7 @@ class LocalBrokerConnectionSpecResponse {
   /// [authentication] The authentication methods for LocalBroker connection. NOTE - Enum only one method at a time is supported.
   /// [endpoint] The endpoint of local broker to connect to.
   /// [tls] TLS details for Local broker Connection.
-  LocalBrokerConnectionSpecResponse({
+  const LocalBrokerConnectionSpecResponse({
     this.authentication,
     this.endpoint,
     this.tls,

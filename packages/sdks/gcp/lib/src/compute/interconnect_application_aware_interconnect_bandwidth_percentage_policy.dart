@@ -11,7 +11,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
 
   /// Creates a new [InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy].
   /// [bandwidthPercentages] Specify bandwidth percentages for various traffic classes for queuing
-  InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy({
+  const InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy({
     this.bandwidthPercentages,
   });
 

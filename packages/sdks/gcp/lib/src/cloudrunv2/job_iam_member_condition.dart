@@ -11,7 +11,7 @@ class JobIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  JobIamMemberCondition({
+  const JobIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

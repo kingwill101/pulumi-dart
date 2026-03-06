@@ -9,7 +9,7 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha({
+  const WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha({
     this.customRequestHandling,
   });
 

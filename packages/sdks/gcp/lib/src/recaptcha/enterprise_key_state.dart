@@ -54,7 +54,7 @@ class EnterpriseKeyState {
   /// [testingOptions] Options for user acceptance testing.
   /// [wafSettings] Settings specific to keys that can be used for WAF (Web Application Firewall).
   /// [webSettings] Settings for keys that can be used by websites.
-  EnterpriseKeyState({
+  const EnterpriseKeyState({
     this.androidSettings,
     this.createTime,
     this.displayName,

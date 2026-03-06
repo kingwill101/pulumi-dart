@@ -12,7 +12,7 @@ class NetworkInterfaceApplicationSecurityGroupAssociationState {
   /// Creates a new [NetworkInterfaceApplicationSecurityGroupAssociationState].
   /// [applicationSecurityGroupId] The ID of the Application Security Group which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
-  NetworkInterfaceApplicationSecurityGroupAssociationState({
+  const NetworkInterfaceApplicationSecurityGroupAssociationState({
     this.applicationSecurityGroupId,
     this.networkInterfaceId,
   });

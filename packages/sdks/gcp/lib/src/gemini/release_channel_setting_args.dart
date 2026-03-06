@@ -30,7 +30,7 @@ class ReleaseChannelSettingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [releaseChannel] Release channel to be used.
   /// [releaseChannelSettingId] Id of the Release Channel Setting.
-  ReleaseChannelSettingArgs({
+  const ReleaseChannelSettingArgs({
     this.labels,
     required this.location,
     this.project,

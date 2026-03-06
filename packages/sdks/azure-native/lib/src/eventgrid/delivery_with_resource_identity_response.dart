@@ -15,7 +15,7 @@ class DeliveryWithResourceIdentityResponse {
   /// Creates a new [DeliveryWithResourceIdentityResponse].
   /// [destination] Information about the destination where events have to be delivered for the event subscription.
   /// [identity] The identity to use when delivering events.
-  DeliveryWithResourceIdentityResponse({
+  const DeliveryWithResourceIdentityResponse({
     this.destination,
     this.identity,
   });

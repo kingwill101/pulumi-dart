@@ -15,7 +15,7 @@ class GetInstanceScratchDisk {
   /// [deviceName] Name with which the attached disk is accessible
   /// [interface] The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
   /// [size] The size of the image in gigabytes.
-  GetInstanceScratchDisk({
+  const GetInstanceScratchDisk({
     required this.deviceName,
     required this.interface,
     required this.size,

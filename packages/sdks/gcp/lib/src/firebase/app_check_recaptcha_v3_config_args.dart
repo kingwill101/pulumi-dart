@@ -27,7 +27,7 @@ class AppCheckRecaptchaV3ConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [siteSecret] The site secret used to identify your service for reCAPTCHA v3 verification.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
-  AppCheckRecaptchaV3ConfigArgs({
+  const AppCheckRecaptchaV3ConfigArgs({
     required this.appId,
     this.project,
     required this.siteSecret,

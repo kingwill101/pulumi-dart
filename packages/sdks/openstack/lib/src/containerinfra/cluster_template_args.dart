@@ -150,7 +150,7 @@ class ClusterTemplateArgs {
   /// [serverType] The server type for the cluster template. Changing
   /// [tlsDisabled] Indicates whether the TLS should be disabled in
   /// [volumeDriver] The name of the driver that is used for the
-  ClusterTemplateArgs({
+  const ClusterTemplateArgs({
     this.apiserverPort,
     this.clusterDistro,
     required this.coe,

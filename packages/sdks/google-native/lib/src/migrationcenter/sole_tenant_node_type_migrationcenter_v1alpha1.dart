@@ -9,7 +9,7 @@ class SoleTenantNodeTypeMigrationcenterV1alpha1 {
 
   /// Creates a new [SoleTenantNodeTypeMigrationcenterV1alpha1].
   /// [nodeName] Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  SoleTenantNodeTypeMigrationcenterV1alpha1({
+  const SoleTenantNodeTypeMigrationcenterV1alpha1({
     this.nodeName,
   });
 

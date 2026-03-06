@@ -137,7 +137,7 @@ class TableArgs {
   /// [tableReplicationInfo] Replication info of a table created
   /// [timePartitioning] If specified, configures time-based
   /// [view] If specified, configures this table as a view.
-  TableArgs({
+  const TableArgs({
     this.biglakeConfiguration,
     this.clusterings,
     required this.datasetId,

@@ -20,7 +20,7 @@ class JobRecurrenceResponse {
   /// [frequency] Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
   /// [interval] Gets or sets the interval between retries.
   /// [schedule] Optional.
-  JobRecurrenceResponse({
+  const JobRecurrenceResponse({
     this.count,
     this.endTime,
     this.frequency,

@@ -28,7 +28,7 @@ class SharedResourceArgs {
   /// [resourceId] The ID of the shared resource.
   /// [resourceShareId] The ID of the resource share.
   /// [resourceType] The type of the shared resource.
-  SharedResourceArgs({
+  const SharedResourceArgs({
     this.permissionName,
     this.resourceArn,
     this.resourceId,

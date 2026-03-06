@@ -19,7 +19,7 @@ class GetFirewallTemplateInbound {
   /// [label] Required.
   /// [ports] Required.
   /// [protocol] Required.
-  GetFirewallTemplateInbound({
+  const GetFirewallTemplateInbound({
     required this.action,
     required this.description,
     required this.ipv4s,

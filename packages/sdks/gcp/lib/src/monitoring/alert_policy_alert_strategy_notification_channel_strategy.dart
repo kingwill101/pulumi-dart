@@ -14,7 +14,7 @@ class AlertPolicyAlertStrategyNotificationChannelStrategy {
   /// Creates a new [AlertPolicyAlertStrategyNotificationChannelStrategy].
   /// [notificationChannelNames] The notification channels that these settings apply to. Each of these
   /// [renotifyInterval] The frequency at which to send reminder notifications for open incidents.
-  AlertPolicyAlertStrategyNotificationChannelStrategy({
+  const AlertPolicyAlertStrategyNotificationChannelStrategy({
     this.notificationChannelNames,
     this.renotifyInterval,
   });

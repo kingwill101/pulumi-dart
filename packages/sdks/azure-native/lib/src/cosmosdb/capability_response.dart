@@ -9,7 +9,7 @@ class CapabilityResponse {
 
   /// Creates a new [CapabilityResponse].
   /// [name] Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
-  CapabilityResponse({
+  const CapabilityResponse({
     this.name,
   });
 

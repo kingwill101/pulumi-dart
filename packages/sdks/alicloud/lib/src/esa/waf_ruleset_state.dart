@@ -23,7 +23,7 @@ class WafRulesetState {
   /// [siteId] The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   /// [siteVersion] Optional.
   /// [status] Rule Set Status
-  WafRulesetState({
+  const WafRulesetState({
     this.name,
     this.phase,
     this.rulesetId,

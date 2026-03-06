@@ -21,7 +21,7 @@ class ListConnectedClusterUserCredentialsArgs {
   /// [clientProxy] Boolean value to indicate whether the request is for client side proxy or not
   /// [clusterName] The name of the Kubernetes cluster on which get is called.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListConnectedClusterUserCredentialsArgs({
+  const ListConnectedClusterUserCredentialsArgs({
     required this.authenticationMethod,
     required this.clientProxy,
     required this.clusterName,

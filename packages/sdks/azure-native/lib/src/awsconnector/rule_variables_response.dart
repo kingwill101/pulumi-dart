@@ -14,7 +14,7 @@ class RuleVariablesResponse {
   /// Creates a new [RuleVariablesResponse].
   /// [ipSets] Property ipSets
   /// [portSets] Property portSets
-  RuleVariablesResponse({
+  const RuleVariablesResponse({
     this.ipSets,
     this.portSets,
   });

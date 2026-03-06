@@ -9,7 +9,7 @@ class DashboardDefinitionProperties {
 
   /// Creates a new [DashboardDefinitionProperties].
   /// [serializedData] The dashboard definition data in JSON format.
-  DashboardDefinitionProperties({
+  const DashboardDefinitionProperties({
     this.serializedData,
   });
 

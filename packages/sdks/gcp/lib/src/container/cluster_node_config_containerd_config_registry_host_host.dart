@@ -29,7 +29,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost {
   /// [headers] Configures the registry host headers.
   /// [host] Configures the registry host/mirror.
   /// [overridePath] Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
-  ClusterNodeConfigContainerdConfigRegistryHostHost({
+  const ClusterNodeConfigContainerdConfigRegistryHostHost({
     this.capabilities,
     this.cas,
     this.clients,

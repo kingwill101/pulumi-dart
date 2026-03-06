@@ -8,7 +8,7 @@ class EventTargetDeadLetterConfig {
 
   /// Creates a new [EventTargetDeadLetterConfig].
   /// [arn] ARN of the SQS queue specified as the target for the dead-letter queue.
-  EventTargetDeadLetterConfig({
+  const EventTargetDeadLetterConfig({
     this.arn,
   });
 

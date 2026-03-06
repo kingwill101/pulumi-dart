@@ -28,7 +28,7 @@ class FrontdoorOriginGroupState {
   /// [name] The name which should be used for this Front Door Origin Group. Changing this forces a new Front Door Origin Group to be created.
   /// [restoreTrafficTimeToHealedOrNewEndpointInMinutes] Specifies the amount of time which should elapse before shifting traffic to another endpoint when a healthy endpoint becomes unhealthy or a new endpoint is added. Possible values are between `0` and `50` minutes (inclusive). Default is `10` minutes.
   /// [sessionAffinityEnabled] Specifies whether session affinity should be enabled on this host. Defaults to `true`.
-  FrontdoorOriginGroupState({
+  const FrontdoorOriginGroupState({
     this.cdnFrontdoorProfileId,
     this.healthProbe,
     this.loadBalancing,

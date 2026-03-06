@@ -17,7 +17,7 @@ class GroupDiagnosticsLogAnalytics {
   /// [metadata] Any metadata required for Log Analytics. Changing this forces a new resource to be created.
   /// [workspaceId] The Workspace ID of the Log Analytics Workspace. Changing this forces a new resource to be created.
   /// [workspaceKey] The Workspace Key of the Log Analytics Workspace. Changing this forces a new resource to be created.
-  GroupDiagnosticsLogAnalytics({
+  const GroupDiagnosticsLogAnalytics({
     this.logType,
     this.metadata,
     required this.workspaceId,

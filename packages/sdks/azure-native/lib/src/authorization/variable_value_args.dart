@@ -19,7 +19,7 @@ class VariableValueArgs {
   /// [values] Variable value column value array.
   /// [variableName] The name of the variable to operate on.
   /// [variableValueName] The name of the variable value to operate on.
-  VariableValueArgs({
+  const VariableValueArgs({
     required this.values,
     required this.variableName,
     this.variableValueName,

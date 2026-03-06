@@ -18,7 +18,7 @@ class GetInvoiceSectionArgs {
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [billingProfileName] The ID that uniquely identifies a billing profile.
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
-  GetInvoiceSectionArgs({
+  const GetInvoiceSectionArgs({
     required this.billingAccountName,
     required this.billingProfileName,
     required this.invoiceSectionName,

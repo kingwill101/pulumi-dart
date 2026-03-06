@@ -63,7 +63,7 @@ class ZoneState {
   /// [type] Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
   /// [uid] Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
   /// [updateTime] Output only. The time when the zone was last updated.
-  ZoneState({
+  const ZoneState({
     this.assetStatuses,
     this.createTime,
     this.description,

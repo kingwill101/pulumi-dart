@@ -15,7 +15,7 @@ class GetLBArgs {
   /// Creates a new [GetLBArgs].
   /// [name] Specifies the name of the Load Balancer.
   /// [resourceGroupName] The name of the Resource Group in which the Load Balancer exists.
-  GetLBArgs({
+  const GetLBArgs({
     required this.name,
     required this.resourceGroupName,
   });

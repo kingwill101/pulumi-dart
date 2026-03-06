@@ -21,7 +21,7 @@ class ResolverFirewallDomainListArgs {
   /// [name] A name that lets you identify the domain list, to manage and use it.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. f configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ResolverFirewallDomainListArgs({
+  const ResolverFirewallDomainListArgs({
     this.domains,
     this.name,
     this.region,

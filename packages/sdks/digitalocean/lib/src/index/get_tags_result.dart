@@ -18,7 +18,7 @@ class GetTagsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sorts] Optional.
   /// [tags] Required.
-  GetTagsResult({
+  const GetTagsResult({
     this.filters,
     required this.id,
     this.sorts,

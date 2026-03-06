@@ -29,7 +29,7 @@ class ContainerNetworkData {
   /// [ipv6Gateway] The IPV6 gateway of the container.
   /// [macAddress] The MAC address of the container.
   /// [networkName] The name of the network
-  ContainerNetworkData({
+  const ContainerNetworkData({
     this.gateway,
     this.globalIpv6Address,
     this.globalIpv6PrefixLength,

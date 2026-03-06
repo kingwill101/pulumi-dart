@@ -7,7 +7,7 @@ class GetLaunchTemplateEnclaveOption {
 
   /// Creates a new [GetLaunchTemplateEnclaveOption].
   /// [enabled] Required.
-  GetLaunchTemplateEnclaveOption({
+  const GetLaunchTemplateEnclaveOption({
     required this.enabled,
   });
 

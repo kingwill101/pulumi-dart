@@ -10,7 +10,7 @@ class WorkspaceHubConfig {
   /// Creates a new [WorkspaceHubConfig].
   /// [additionalWorkspaceStorageAccounts] Optional.
   /// [defaultWorkspaceResourceGroup] Optional.
-  WorkspaceHubConfig({
+  const WorkspaceHubConfig({
     this.additionalWorkspaceStorageAccounts,
     this.defaultWorkspaceResourceGroup,
   });

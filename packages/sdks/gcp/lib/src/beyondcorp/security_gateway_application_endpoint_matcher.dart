@@ -11,7 +11,7 @@ class SecurityGatewayApplicationEndpointMatcher {
   /// Creates a new [SecurityGatewayApplicationEndpointMatcher].
   /// [hostname] Required. Hostname of the application.
   /// [ports] Optional. Ports of the application.
-  SecurityGatewayApplicationEndpointMatcher({
+  const SecurityGatewayApplicationEndpointMatcher({
     required this.hostname,
     required this.ports,
   });

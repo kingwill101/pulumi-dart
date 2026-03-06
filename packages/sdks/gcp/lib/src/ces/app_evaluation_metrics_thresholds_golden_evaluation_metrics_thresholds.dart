@@ -15,7 +15,7 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   /// Creates a new [AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds].
   /// [expectationLevelMetricsThresholds] Expectation level metrics thresholds.
   /// [turnLevelMetricsThresholds] Turn level metrics thresholds.
-  AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds({
+  const AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds({
     this.expectationLevelMetricsThresholds,
     this.turnLevelMetricsThresholds,
   });

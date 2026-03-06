@@ -18,7 +18,7 @@ class GetAccountArgs {
   /// [identity] Optional.
   /// [name] The name of the NetApp Account.
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Account exists.
-  GetAccountArgs({
+  const GetAccountArgs({
     this.identity,
     required this.name,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class GooglePrivacyDlpV2CharsToIgnoreResponse {
   /// Creates a new [GooglePrivacyDlpV2CharsToIgnoreResponse].
   /// [charactersToSkip] Characters to not transform when masking.
   /// [commonCharactersToIgnore] Common characters to not transform when masking. Useful to avoid removing punctuation.
-  GooglePrivacyDlpV2CharsToIgnoreResponse({
+  const GooglePrivacyDlpV2CharsToIgnoreResponse({
     required this.charactersToSkip,
     required this.commonCharactersToIgnore,
   });

@@ -32,7 +32,7 @@ class GetWafPoliciesPolicy {
   /// [policyType] The type of the protection policy.
   /// [ruleCount] The number of protection rules in this protection policy.
   /// [status] The status of the resource. Valid values: `on`, `off`.
-  GetWafPoliciesPolicy({
+  const GetWafPoliciesPolicy({
     required this.dcdnWafPolicyId,
     required this.defenseScene,
     required this.domainCount,

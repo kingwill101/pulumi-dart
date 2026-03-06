@@ -10,7 +10,7 @@ class ImageTemplatePropertiesVmBoot {
 
   /// Creates a new [ImageTemplatePropertiesVmBoot].
   /// [state] Enabling this field will improve VM boot time by optimizing the final customized image output.
-  ImageTemplatePropertiesVmBoot({
+  const ImageTemplatePropertiesVmBoot({
     this.state,
   });
 

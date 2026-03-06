@@ -17,7 +17,7 @@ class AzureActiveDirectoryValidationResponse {
   /// [allowedAudiences] The list of audiences that can make successful authentication/authorization requests.
   /// [defaultAuthorizationPolicy] The configuration settings of the default authorization policy.
   /// [jwtClaimChecks] The configuration settings of the checks that should be made while validating the JWT Claims.
-  AzureActiveDirectoryValidationResponse({
+  const AzureActiveDirectoryValidationResponse({
     this.allowedAudiences,
     this.defaultAuthorizationPolicy,
     this.jwtClaimChecks,

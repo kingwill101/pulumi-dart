@@ -12,7 +12,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction].
   /// [actionDefinition] A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
   /// [actionName] A friendly name of the custom action.
-  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction({
+  const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction({
     required this.actionDefinition,
     required this.actionName,
   });

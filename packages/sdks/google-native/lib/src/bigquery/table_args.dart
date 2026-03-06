@@ -82,7 +82,7 @@ class TableArgs {
   /// [tableReference] [Required] Reference describing the ID of this table.
   /// [timePartitioning] Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
   /// [view] [Optional] The view definition.
-  TableArgs({
+  const TableArgs({
     this.biglakeConfiguration,
     this.clustering,
     required this.datasetId,

@@ -15,7 +15,7 @@ class GetStorageDiscoveryWorkspaceArgs {
   /// Creates a new [GetStorageDiscoveryWorkspaceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageDiscoveryWorkspaceName] The name of the StorageDiscoveryWorkspace
-  GetStorageDiscoveryWorkspaceArgs({
+  const GetStorageDiscoveryWorkspaceArgs({
     required this.resourceGroupName,
     required this.storageDiscoveryWorkspaceName,
   });

@@ -52,7 +52,7 @@ class LinkArgs {
   /// [sourceEntityTypeName] Name of the source Entity Type.
   /// [targetEntityType] Type of target entity.
   /// [targetEntityTypeName] Name of the target Entity Type.
-  LinkArgs({
+  const LinkArgs({
     this.description,
     this.displayName,
     required this.hubName,

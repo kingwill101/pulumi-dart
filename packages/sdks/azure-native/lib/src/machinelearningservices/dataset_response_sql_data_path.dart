@@ -18,7 +18,7 @@ class DatasetResponseSqlDataPath {
   /// [sqlQuery] SQL query
   /// [sqlStoredProcedureName] SQL storedProcedure name
   /// [sqlTableName] SQL table name
-  DatasetResponseSqlDataPath({
+  const DatasetResponseSqlDataPath({
     required this.queryTimeout,
     required this.sqlQuery,
     required this.sqlStoredProcedureName,

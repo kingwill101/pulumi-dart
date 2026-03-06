@@ -11,7 +11,7 @@ class MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfigurat
   /// Creates a new [MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration].
   /// [speakerSearchStatus] Enable speaker search.
   /// [voiceToneAnalysisStatus] Enable voice tone analysis.
-  MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration({
+  const MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration({
     required this.speakerSearchStatus,
     required this.voiceToneAnalysisStatus,
   });

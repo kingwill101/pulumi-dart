@@ -9,7 +9,7 @@ class GoogleCloudIdentitytoolkitAdminV2InheritanceResponse {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2InheritanceResponse].
   /// [emailSendingConfig] Whether to allow the tenant to inherit custom domains, email templates, and custom SMTP settings. If true, email sent from tenant will follow the project level email sending configurations. If false (by default), emails will go with the default settings with no customizations.
-  GoogleCloudIdentitytoolkitAdminV2InheritanceResponse({
+  const GoogleCloudIdentitytoolkitAdminV2InheritanceResponse({
     required this.emailSendingConfig,
   });
 

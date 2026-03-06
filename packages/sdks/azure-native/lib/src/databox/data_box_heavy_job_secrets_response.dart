@@ -22,7 +22,7 @@ class DataBoxHeavyJobSecretsResponse {
   /// [dcAccessSecurityCode] Dc Access Security Code for Customer Managed Shipping
   /// [error] Error while fetching the secrets.
   /// [jobSecretsType] Used to indicate what type of job secrets object.
-  DataBoxHeavyJobSecretsResponse({
+  const DataBoxHeavyJobSecretsResponse({
     required this.cabinetPodSecrets,
     required this.dcAccessSecurityCode,
     required this.error,

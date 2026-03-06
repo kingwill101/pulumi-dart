@@ -23,7 +23,7 @@ class EmailTemplateState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   /// [templateName] name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
-  EmailTemplateState({
+  const EmailTemplateState({
     this.arn,
     this.emailTemplates,
     this.region,

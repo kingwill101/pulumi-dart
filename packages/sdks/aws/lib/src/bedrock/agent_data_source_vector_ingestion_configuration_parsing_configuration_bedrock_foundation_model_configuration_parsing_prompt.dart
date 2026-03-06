@@ -8,7 +8,7 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt].
   /// [parsingPromptString] Instructions for interpreting the contents of the document.
-  AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt({
+  const AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt({
     required this.parsingPromptString,
   });
 

@@ -25,7 +25,7 @@ class OntapVolumeSnaplockConfiguration {
   /// [retentionPeriod] The retention period of an FSx for ONTAP SnapLock volume. See `retention_period` Block for details.
   /// [snaplockType] Specifies the retention mode of an FSx for ONTAP SnapLock volume. After it is set, it can't be changed. Valid values: `COMPLIANCE`, `ENTERPRISE`.
   /// [volumeAppendModeEnabled] Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. The default value is `false`.
-  OntapVolumeSnaplockConfiguration({
+  const OntapVolumeSnaplockConfiguration({
     this.auditLogVolume,
     this.autocommitPeriod,
     this.privilegedDelete,

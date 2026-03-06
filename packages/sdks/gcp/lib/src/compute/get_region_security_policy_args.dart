@@ -18,7 +18,7 @@ class GetRegionSecurityPolicyArgs {
   /// [name] The name of the Region Security Policy.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [region] The region in which the Region Security Policy resides. If not specified, the provider region is used.
-  GetRegionSecurityPolicyArgs({
+  const GetRegionSecurityPolicyArgs({
     required this.name,
     this.project,
     this.region,

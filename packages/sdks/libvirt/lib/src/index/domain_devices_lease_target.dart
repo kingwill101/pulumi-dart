@@ -11,7 +11,7 @@ class DomainDevicesLeaseTarget {
   /// Creates a new [DomainDevicesLeaseTarget].
   /// [offset] Sets the offset attribute for the lease target, indicating the starting point for the resource allocation.
   /// [path] Defines the path attribute for the lease target, indicating the specific resource being leased.
-  DomainDevicesLeaseTarget({
+  const DomainDevicesLeaseTarget({
     this.offset,
     required this.path,
   });

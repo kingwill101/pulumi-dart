@@ -29,7 +29,7 @@ class GetAppProfileResult {
   /// [priority] This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
   /// [singleClusterRouting] Use a single-cluster routing policy.
   /// [standardIsolation] The standard options used for isolating this app profile's traffic from other use cases.
-  GetAppProfileResult({
+  const GetAppProfileResult({
     required this.description,
     required this.etag,
     required this.multiClusterRoutingUseAny,

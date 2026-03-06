@@ -11,7 +11,7 @@ class IntegrationRuntimeDataFlowPropertiesResponseCustomProperties {
   /// Creates a new [IntegrationRuntimeDataFlowPropertiesResponseCustomProperties].
   /// [name] Name of custom property.
   /// [value] Value of custom property.
-  IntegrationRuntimeDataFlowPropertiesResponseCustomProperties({
+  const IntegrationRuntimeDataFlowPropertiesResponseCustomProperties({
     this.name,
     this.value,
   });

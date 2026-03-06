@@ -9,7 +9,7 @@ class MongoIndexKeysResponse {
 
   /// Creates a new [MongoIndexKeysResponse].
   /// [keys] List of keys for each MongoDB collection in the Azure Cosmos DB service
-  MongoIndexKeysResponse({
+  const MongoIndexKeysResponse({
     this.keys,
   });
 

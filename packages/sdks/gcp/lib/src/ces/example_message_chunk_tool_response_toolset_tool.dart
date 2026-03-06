@@ -13,7 +13,7 @@ class ExampleMessageChunkToolResponseToolsetTool {
   /// Creates a new [ExampleMessageChunkToolResponseToolsetTool].
   /// [toolId] The tool ID to filter the tools to retrieve the schema for.
   /// [toolset] The resource name of the Toolset from which this tool is derived.
-  ExampleMessageChunkToolResponseToolsetTool({
+  const ExampleMessageChunkToolResponseToolsetTool({
     this.toolId,
     required this.toolset,
   });

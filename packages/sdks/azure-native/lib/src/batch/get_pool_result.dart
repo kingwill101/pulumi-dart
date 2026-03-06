@@ -134,7 +134,7 @@ class GetPoolResult {
   /// [upgradePolicy] Describes an upgrade policy - automatic, manual, or rolling.
   /// [userAccounts] The list of user accounts to be created on each node in the pool.
   /// [vmSize] For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
-  GetPoolResult({
+  const GetPoolResult({
     required this.allocationState,
     required this.allocationStateTransitionTime,
     this.applicationLicenses,

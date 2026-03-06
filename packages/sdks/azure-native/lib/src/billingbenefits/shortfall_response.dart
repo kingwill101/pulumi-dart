@@ -28,7 +28,7 @@ class ShortfallResponse {
   /// [resourceId] Fully-qualified resource identifier of the credits associated with the shortfall.
   /// [startAt] Start DateTime.
   /// [systemId] This is an identifier of the shortfall which will not change for its lifetime.
-  ShortfallResponse({
+  const ShortfallResponse({
     this.balanceVersion,
     this.charge,
     this.endAt,

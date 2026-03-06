@@ -8,7 +8,7 @@ class ListOpenIdConnectProviderSecretsResult {
 
   /// Creates a new [ListOpenIdConnectProviderSecretsResult].
   /// [clientSecret] Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
-  ListOpenIdConnectProviderSecretsResult({
+  const ListOpenIdConnectProviderSecretsResult({
     this.clientSecret,
   });
 

@@ -15,7 +15,7 @@ class GetRegionTargetHttpProxyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [targetHttpProxy] Required.
-  GetRegionTargetHttpProxyArgs({
+  const GetRegionTargetHttpProxyArgs({
     this.project,
     required this.region,
     required this.targetHttpProxy,

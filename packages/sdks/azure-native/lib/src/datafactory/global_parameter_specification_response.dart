@@ -12,7 +12,7 @@ class GlobalParameterSpecificationResponse {
   /// Creates a new [GlobalParameterSpecificationResponse].
   /// [type] Global Parameter type.
   /// [value] Value of parameter.
-  GlobalParameterSpecificationResponse({
+  const GlobalParameterSpecificationResponse({
     required this.type,
     required this.value,
   });

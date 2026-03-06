@@ -13,7 +13,7 @@ class FargateProfileSelector {
   /// Creates a new [FargateProfileSelector].
   /// [labels] Key-value map of Kubernetes labels for selection.
   /// [namespace] Kubernetes namespace for selection.
-  FargateProfileSelector({
+  const FargateProfileSelector({
     this.labels,
     required this.namespace,
   });

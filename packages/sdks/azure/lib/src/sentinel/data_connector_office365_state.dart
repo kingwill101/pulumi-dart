@@ -28,7 +28,7 @@ class DataConnectorOffice365State {
   /// [sharepointEnabled] Should the SharePoint data connector be enabled? Defaults to `true`.
   /// [teamsEnabled] Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   /// [tenantId] The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
-  DataConnectorOffice365State({
+  const DataConnectorOffice365State({
     this.exchangeEnabled,
     this.logAnalyticsWorkspaceId,
     this.name,

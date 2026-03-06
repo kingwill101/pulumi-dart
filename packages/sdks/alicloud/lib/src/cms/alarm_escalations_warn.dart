@@ -17,7 +17,7 @@ class AlarmEscalationsWarn {
   /// [statistics] Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
   /// [threshold] Warn level alarm threshold value, which must be a numeric value currently.
   /// [times] Warn level alarm retry times. Default value: `3`.
-  AlarmEscalationsWarn({
+  const AlarmEscalationsWarn({
     this.comparisonOperator,
     this.statistics,
     this.threshold,

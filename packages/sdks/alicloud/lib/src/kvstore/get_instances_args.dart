@@ -69,7 +69,7 @@ class GetInstancesArgs {
   /// [vpcId] Used to retrieve instances belong to specified VPC.
   /// [vswitchId] Used to retrieve instances belong to specified `vswitch` resources.
   /// [zoneId] The ID of the zone.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.architectureType,
     this.editionType,
     this.enableDetails,

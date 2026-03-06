@@ -21,7 +21,7 @@ class Dockerfile {
   /// Creates a new [Dockerfile].
   /// [inline] Raw Dockerfile contents.
   /// [location] Location of the Dockerfile to use.
-  Dockerfile({
+  const Dockerfile({
     this.inline,
     this.location,
   });

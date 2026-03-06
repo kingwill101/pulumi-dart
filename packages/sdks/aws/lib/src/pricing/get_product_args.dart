@@ -16,7 +16,7 @@ class GetProductArgs {
   /// Creates a new [GetProductArgs].
   /// [filters] List of filters. Passed directly to the API (see GetProducts API reference). These filters must describe a single product, this resource will fail if more than one product is returned by the API.
   /// [serviceCode] Code of the service. Available service codes can be fetched using the DescribeServices pricing API call.
-  GetProductArgs({
+  const GetProductArgs({
     required this.filters,
     required this.serviceCode,
   });

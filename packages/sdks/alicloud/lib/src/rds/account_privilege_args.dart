@@ -27,7 +27,7 @@ class AccountPrivilegeArgs {
   /// [dbNames] List of specified database name.
   /// [instanceId] The Id of instance in which account belongs.
   /// [privilege] The privilege of one account access database. Valid values:
-  AccountPrivilegeArgs({
+  const AccountPrivilegeArgs({
     required this.accountName,
     required this.dbNames,
     required this.instanceId,

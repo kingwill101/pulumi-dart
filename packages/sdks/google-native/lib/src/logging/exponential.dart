@@ -15,7 +15,7 @@ class Exponential {
   /// [growthFactor] Must be greater than 1.
   /// [numFiniteBuckets] Must be greater than 0.
   /// [scale] Must be greater than 0.
-  Exponential({
+  const Exponential({
     this.growthFactor,
     this.numFiniteBuckets,
     this.scale,

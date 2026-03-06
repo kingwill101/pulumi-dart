@@ -21,7 +21,7 @@ class GetWafDomainsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [queryArgs] Optional.
-  GetWafDomainsResult({
+  const GetWafDomainsResult({
     required this.domains,
     this.enableDetails,
     required this.id,

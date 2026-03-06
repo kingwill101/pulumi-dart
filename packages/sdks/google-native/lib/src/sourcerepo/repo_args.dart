@@ -27,7 +27,7 @@ class RepoArgs {
   /// [pubsubConfigs] How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
   /// [size] The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
   /// [url] URL to clone the repository from Google Cloud Source Repositories. Read-only field.
-  RepoArgs({
+  const RepoArgs({
     this.mirrorConfig,
     this.name,
     this.project,

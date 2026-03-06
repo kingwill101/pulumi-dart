@@ -12,7 +12,7 @@ class ManagedIdentityPropertiesResponse {
   /// Creates a new [ManagedIdentityPropertiesResponse].
   /// [type] The type of managed identity.
   /// [userAssignedIdentityResourceId] The resource id of the managed identity.
-  ManagedIdentityPropertiesResponse({
+  const ManagedIdentityPropertiesResponse({
     required this.type,
     this.userAssignedIdentityResourceId,
   });

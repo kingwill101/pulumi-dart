@@ -18,7 +18,7 @@ class SshPublicKeyResponse {
   /// Creates a new [SshPublicKeyResponse].
   /// [keyData] SSH public key certificate used to authenticate with the VM through ssh. The
   /// [path] Specifies the full path on the created VM where ssh public key is stored. If
-  SshPublicKeyResponse({
+  const SshPublicKeyResponse({
     this.keyData,
     this.path,
   });

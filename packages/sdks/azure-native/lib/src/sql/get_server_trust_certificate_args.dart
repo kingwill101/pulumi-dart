@@ -18,7 +18,7 @@ class GetServerTrustCertificateArgs {
   /// [certificateName] Name of of the certificate to get.
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetServerTrustCertificateArgs({
+  const GetServerTrustCertificateArgs({
     required this.certificateName,
     required this.managedInstanceName,
     required this.resourceGroupName,

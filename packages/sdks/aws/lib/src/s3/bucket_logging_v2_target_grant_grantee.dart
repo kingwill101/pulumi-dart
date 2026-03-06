@@ -19,7 +19,7 @@ class BucketLoggingV2TargetGrantGrantee {
   /// [id] Canonical user ID of the grantee.
   /// [type] Type of grantee. Valid values: `CanonicalUser`, `AmazonCustomerByEmail`, `Group`.
   /// [uri] URI of the grantee group.
-  BucketLoggingV2TargetGrantGrantee({
+  const BucketLoggingV2TargetGrantGrantee({
     this.displayName,
     this.emailAddress,
     this.id,

@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb {
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb].
   /// [max] The maximum amount of total local storage, in GB. To specify no maximum limit, omit this parameter.
   /// [min] The minimum amount of total local storage, in GB. To specify no minimum limit, omit this parameter.
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb({
     this.max,
     this.min,
   });

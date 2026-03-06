@@ -14,7 +14,7 @@ class TrustStoreResponse {
   /// Creates a new [TrustStoreResponse].
   /// [intermediateCas] Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
   /// [trustAnchors] List of Trust Anchors to be used while performing validation against a given TrustStore.
-  TrustStoreResponse({
+  const TrustStoreResponse({
     required this.intermediateCas,
     required this.trustAnchors,
   });

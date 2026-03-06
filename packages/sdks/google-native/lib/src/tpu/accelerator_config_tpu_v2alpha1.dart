@@ -13,7 +13,7 @@ class AcceleratorConfigTpuV2alpha1 {
   /// Creates a new [AcceleratorConfigTpuV2alpha1].
   /// [topology] Topology of TPU in chips.
   /// [type] Type of TPU.
-  AcceleratorConfigTpuV2alpha1({
+  const AcceleratorConfigTpuV2alpha1({
     required this.topology,
     required this.type,
   });

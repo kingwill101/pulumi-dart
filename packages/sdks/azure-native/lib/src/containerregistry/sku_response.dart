@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [name] The SKU name of the container registry. Required for registry creation.
   /// [tier] The SKU tier based on the SKU name.
-  SkuResponse({
+  const SkuResponse({
     required this.name,
     required this.tier,
   });

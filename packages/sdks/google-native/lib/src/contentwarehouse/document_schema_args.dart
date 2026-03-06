@@ -29,7 +29,7 @@ class DocumentSchemaArgs {
   /// [name] The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
   /// [project] Optional.
   /// [propertyDefinitions] Document details.
-  DocumentSchemaArgs({
+  const DocumentSchemaArgs({
     this.description,
     required this.displayName,
     this.documentIsFolder,

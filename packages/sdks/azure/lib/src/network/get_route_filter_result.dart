@@ -24,7 +24,7 @@ class GetRouteFilterResult {
   /// [resourceGroupName] Required.
   /// [rules] A `rule` block as defined below.
   /// [tags] A mapping of tags assigned to the Route Filter.
-  GetRouteFilterResult({
+  const GetRouteFilterResult({
     required this.id,
     required this.location,
     required this.name,

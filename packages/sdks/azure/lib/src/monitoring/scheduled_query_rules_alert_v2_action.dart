@@ -11,7 +11,7 @@ class ScheduledQueryRulesAlertV2Action {
   /// Creates a new [ScheduledQueryRulesAlertV2Action].
   /// [actionGroups] List of Action Group resource IDs to invoke when the alert fires.
   /// [customProperties] Specifies the properties of an alert payload.
-  ScheduledQueryRulesAlertV2Action({
+  const ScheduledQueryRulesAlertV2Action({
     this.actionGroups,
     this.customProperties,
   });

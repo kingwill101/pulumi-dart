@@ -22,7 +22,7 @@ class WafRuleConfigRateLimit {
   /// [onHit] Indicates whether the rule applies to requests that hit the cache.
   /// [threshold] Threshold settings for the rate limiting rule. See `threshold` below.
   /// [ttl] The timeout period for creating the stack used in rate limiting.
-  WafRuleConfigRateLimit({
+  const WafRuleConfigRateLimit({
     this.characteristics,
     this.interval,
     this.onHit,

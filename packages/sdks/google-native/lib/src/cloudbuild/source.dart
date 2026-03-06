@@ -26,7 +26,7 @@ class Source {
   /// [repoSource] If provided, get the source from this location in a Cloud Source Repository.
   /// [storageSource] If provided, get the source from this location in Cloud Storage.
   /// [storageSourceManifest] If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-  Source({
+  const Source({
     this.connectedRepository,
     this.gitSource,
     this.repoSource,

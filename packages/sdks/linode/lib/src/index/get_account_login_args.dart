@@ -12,7 +12,7 @@ class GetAccountLoginArgs {
 
   /// Creates a new [GetAccountLoginArgs].
   /// [id] The unique ID of this login object.
-  GetAccountLoginArgs({
+  const GetAccountLoginArgs({
     required this.id,
   });
 

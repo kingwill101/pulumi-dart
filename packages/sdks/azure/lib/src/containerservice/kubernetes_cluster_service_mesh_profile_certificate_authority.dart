@@ -22,7 +22,7 @@ class KubernetesClusterServiceMeshProfileCertificateAuthority {
   /// [keyObjectName] The intermediate certificate private key object name in Azure Key Vault.
   /// [keyVaultId] The resource ID of the Key Vault.
   /// [rootCertObjectName] The root certificate object name in Azure Key Vault.
-  KubernetesClusterServiceMeshProfileCertificateAuthority({
+  const KubernetesClusterServiceMeshProfileCertificateAuthority({
     required this.certChainObjectName,
     required this.certObjectName,
     required this.keyObjectName,

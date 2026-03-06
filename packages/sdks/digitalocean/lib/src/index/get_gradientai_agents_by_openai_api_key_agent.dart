@@ -127,7 +127,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgent {
   /// [updatedAt] Timestamp when the Agent was updated
   /// [url] URL for the Agent
   /// [userId] User ID linked with the Agent
-  GetGradientaiAgentsByOpenaiApiKeyAgent({
+  const GetGradientaiAgentsByOpenaiApiKeyAgent({
     this.agentGuardrails,
     required this.agentId,
     this.anthropicApiKeys,

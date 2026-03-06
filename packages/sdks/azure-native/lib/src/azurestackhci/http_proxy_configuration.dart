@@ -18,7 +18,7 @@ class HttpProxyConfiguration {
   /// [httpsProxy] The HTTPS proxy server endpoint to use.
   /// [noProxy] The endpoints that should not go through proxy.
   /// [trustedCa] Alternative CA cert to use for connecting to proxy servers.
-  HttpProxyConfiguration({
+  const HttpProxyConfiguration({
     this.httpProxy,
     this.httpsProxy,
     this.noProxy,

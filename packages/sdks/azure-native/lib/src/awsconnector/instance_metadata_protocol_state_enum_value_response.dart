@@ -9,7 +9,7 @@ class InstanceMetadataProtocolStateEnumValueResponse {
 
   /// Creates a new [InstanceMetadataProtocolStateEnumValueResponse].
   /// [value] Property value
-  InstanceMetadataProtocolStateEnumValueResponse({
+  const InstanceMetadataProtocolStateEnumValueResponse({
     this.value,
   });
 

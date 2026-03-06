@@ -44,7 +44,7 @@ class GetRouteTableResult {
   /// [subnets] A collection of references to subnets.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetRouteTableResult({
+  const GetRouteTableResult({
     required this.azureApiVersion,
     this.disableBgpRoutePropagation,
     required this.etag,

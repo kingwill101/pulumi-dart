@@ -13,7 +13,7 @@ class NamedResourcesInstancePatch {
   /// Creates a new [NamedResourcesInstancePatch].
   /// [attributes] Attributes defines the attributes of this resource instance. The name of each attribute must be unique.
   /// [name] Name is unique identifier among all resource instances managed by the driver on the node. It must be a DNS subdomain.
-  NamedResourcesInstancePatch({
+  const NamedResourcesInstancePatch({
     this.attributes,
     this.name,
   });

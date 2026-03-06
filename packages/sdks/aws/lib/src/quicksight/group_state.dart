@@ -24,7 +24,7 @@ class GroupState {
   /// [groupName] A name for the group.
   /// [namespace] The namespace. Currently, you should set this to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupState({
+  const GroupState({
     this.arn,
     this.awsAccountId,
     this.description,

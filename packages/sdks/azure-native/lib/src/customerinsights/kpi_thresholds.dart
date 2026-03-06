@@ -15,7 +15,7 @@ class KpiThresholds {
   /// [increasingKpi] Whether or not the KPI is an increasing KPI.
   /// [lowerLimit] The lower threshold limit.
   /// [upperLimit] The upper threshold limit.
-  KpiThresholds({
+  const KpiThresholds({
     required this.increasingKpi,
     required this.lowerLimit,
     required this.upperLimit,

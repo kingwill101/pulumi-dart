@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch {
 
   /// Creates a new [GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch].
   /// [exacts] Required.
-  GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch({
+  const GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch({
     required this.exacts,
   });
 

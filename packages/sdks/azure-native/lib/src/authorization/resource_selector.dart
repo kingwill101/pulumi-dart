@@ -13,7 +13,7 @@ class ResourceSelector {
   /// Creates a new [ResourceSelector].
   /// [name] The name of the resource selector.
   /// [selectors] The list of the selector expressions.
-  ResourceSelector({
+  const ResourceSelector({
     this.name,
     this.selectors,
   });

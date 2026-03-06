@@ -29,7 +29,7 @@ class GetSearchIndexesResult {
   /// [names] A list of search index  names.
   /// [outputFile] Optional.
   /// [tableName] The table name of the OTS which could not be changed.
-  GetSearchIndexesResult({
+  const GetSearchIndexesResult({
     required this.id,
     required this.ids,
     required this.indexes,

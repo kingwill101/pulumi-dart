@@ -8,7 +8,7 @@ class DomainOsNvRamSourceReservationsSourceDbus {
 
   /// Creates a new [DomainOsNvRamSourceReservationsSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainOsNvRamSourceReservationsSourceDbus({
+  const DomainOsNvRamSourceReservationsSourceDbus({
     this.channel,
   });
 

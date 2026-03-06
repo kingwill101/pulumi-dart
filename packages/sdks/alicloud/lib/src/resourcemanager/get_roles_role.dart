@@ -29,7 +29,7 @@ class GetRolesRole {
   /// [roleId] The ID of the role.
   /// [roleName] The name of the role.
   /// [updateDate] The time when the RAM role was updated.
-  GetRolesRole({
+  const GetRolesRole({
     required this.arn,
     required this.assumeRolePolicyDocument,
     required this.description,

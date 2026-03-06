@@ -24,7 +24,7 @@ class NamespaceArgs {
   /// [resourceGroupName] The name of the resource group in which to create the Azure Relay Namespace. Changing this forces a new resource to be created.
   /// [skuName] The name of the SKU to use. At this time the only supported value is `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

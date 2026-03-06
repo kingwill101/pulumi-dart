@@ -16,7 +16,7 @@ class FileSystemHsmSetting {
   /// [containerId] The resource ID of the storage container that is used for hydrating the namespace and archiving from the namespace. Changing this forces a new resource to be created.
   /// [importPrefix] The import prefix for the Azure Managed Lustre File System. Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace. Changing this forces a new resource to be created.
   /// [loggingContainerId] The resource ID of the storage container that is used for logging events and errors. Changing this forces a new resource to be created.
-  FileSystemHsmSetting({
+  const FileSystemHsmSetting({
     required this.containerId,
     this.importPrefix,
     required this.loggingContainerId,

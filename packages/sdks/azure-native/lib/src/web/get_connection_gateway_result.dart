@@ -29,7 +29,7 @@ class GetConnectionGatewayResult {
   /// [properties] Required.
   /// [tags] Resource tags
   /// [type] Resource type
-  GetConnectionGatewayResult({
+  const GetConnectionGatewayResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

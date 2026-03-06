@@ -15,7 +15,7 @@ class GetGenaiModelsArgs {
   /// Creates a new [GetGenaiModelsArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGenaiModelsArgs({
+  const GetGenaiModelsArgs({
     this.filters,
     this.sorts,
   });

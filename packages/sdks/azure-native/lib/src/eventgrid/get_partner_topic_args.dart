@@ -15,7 +15,7 @@ class GetPartnerTopicArgs {
   /// Creates a new [GetPartnerTopicArgs].
   /// [partnerTopicName] Name of the partner topic.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerTopicArgs({
+  const GetPartnerTopicArgs({
     required this.partnerTopicName,
     required this.resourceGroupName,
   });

@@ -27,7 +27,7 @@ class SlbAttachmentArgs {
   /// [slbIp] The IP address that is allocated to the bound SLB instance.
   /// [type] The type of the bound SLB instance.
   /// [vserverGroupId] The ID of the virtual server (VServer) group associated with the intranet SLB instance.
-  SlbAttachmentArgs({
+  const SlbAttachmentArgs({
     required this.appId,
     this.listenerPort,
     required this.slbId,

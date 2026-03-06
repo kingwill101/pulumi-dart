@@ -9,7 +9,7 @@ class GetSubnetHostRoute {
   /// Creates a new [GetSubnetHostRoute].
   /// [destinationCidr] Required.
   /// [nextHop] Required.
-  GetSubnetHostRoute({
+  const GetSubnetHostRoute({
     required this.destinationCidr,
     required this.nextHop,
   });

@@ -12,7 +12,7 @@ class UefiKeyResponse {
   /// Creates a new [UefiKeyResponse].
   /// [type] The type of key signature.
   /// [value] The value of the key signature.
-  UefiKeyResponse({
+  const UefiKeyResponse({
     this.type,
     this.value,
   });

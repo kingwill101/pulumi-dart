@@ -7,7 +7,7 @@ class GetVirtualNetworkGatewayVpnProfilePackageUrlResult {
 
   /// Creates a new [GetVirtualNetworkGatewayVpnProfilePackageUrlResult].
   /// [value] Optional.
-  GetVirtualNetworkGatewayVpnProfilePackageUrlResult({
+  const GetVirtualNetworkGatewayVpnProfilePackageUrlResult({
     this.value,
   });
 

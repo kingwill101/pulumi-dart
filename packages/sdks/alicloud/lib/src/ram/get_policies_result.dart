@@ -37,7 +37,7 @@ class GetPoliciesResult {
   /// [tags] (Available since v1.262.1) The tags of the Policy.
   /// [type] The type of the policy.
   /// [userName] (Removed since v1.262.1) Field `user_name` has been removed from provider version 1.262.1.
-  GetPoliciesResult({
+  const GetPoliciesResult({
     this.enableDetails,
     this.groupName,
     required this.id,

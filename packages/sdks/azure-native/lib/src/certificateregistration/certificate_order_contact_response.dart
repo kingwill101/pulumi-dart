@@ -13,7 +13,7 @@ class CertificateOrderContactResponse {
   /// [nameFirst] Optional.
   /// [nameLast] Optional.
   /// [phone] Optional.
-  CertificateOrderContactResponse({
+  const CertificateOrderContactResponse({
     this.email,
     this.nameFirst,
     this.nameLast,

@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse].
   /// [idleShutdownDisabled] Whether Idle Shutdown is disabled in this NotebookRuntimeTemplate.
   /// [idleTimeout] Duration is accurate to the second. In Notebook, Idle Timeout is accurate to minute so the range of idle_timeout (second) is: 10 * 60 ~ 1440 * 60.
-  GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse({
+  const GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse({
     required this.idleShutdownDisabled,
     required this.idleTimeout,
   });

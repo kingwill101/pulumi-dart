@@ -14,7 +14,7 @@ class DomainDevicesDiskMirrorSourceNetworkAuthSecret {
   /// [type] Sets the type of secret used for iSCSI authentication.
   /// [usage] Defines the usage context for the iSCSI authentication secret.
   /// [uuid] Specifies the UUID of the iSCSI authentication secret.
-  DomainDevicesDiskMirrorSourceNetworkAuthSecret({
+  const DomainDevicesDiskMirrorSourceNetworkAuthSecret({
     this.type,
     this.usage,
     this.uuid,

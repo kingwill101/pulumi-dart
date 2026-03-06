@@ -41,7 +41,7 @@ class CertificateOrderArgs {
   /// [resourceGroupName] The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   /// [tags] (Optional) A mapping of tags to assign to the resource.
   /// [validityInYears] Duration in years (must be between `1` and `3`). Defaults to `1`.
-  CertificateOrderArgs({
+  const CertificateOrderArgs({
     this.autoRenew,
     this.csr,
     this.distinguishedName,

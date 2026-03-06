@@ -31,7 +31,7 @@ class GoogleCloudApigeeV1CredentialResponse {
   /// [issuedAt] Time the credential was issued in milliseconds since epoch.
   /// [scopes] List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
   /// [status] Status of the credential. Valid values include `approved` or `revoked`.
-  GoogleCloudApigeeV1CredentialResponse({
+  const GoogleCloudApigeeV1CredentialResponse({
     required this.apiProducts,
     required this.attributes,
     required this.consumerKey,

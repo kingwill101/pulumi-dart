@@ -21,7 +21,7 @@ class AdmChannelState {
   /// [clientSecret] Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
   /// [enabled] Specifies whether to enable the channel. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AdmChannelState({
+  const AdmChannelState({
     this.applicationId,
     this.clientId,
     this.clientSecret,

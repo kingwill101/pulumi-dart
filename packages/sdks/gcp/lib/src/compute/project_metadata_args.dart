@@ -18,7 +18,7 @@ class ProjectMetadataArgs {
   /// Creates a new [ProjectMetadataArgs].
   /// [metadata] A series of key value pairs.
   /// [project] The ID of the project in which the resource belongs. If it
-  ProjectMetadataArgs({
+  const ProjectMetadataArgs({
     required this.metadata,
     this.project,
   });

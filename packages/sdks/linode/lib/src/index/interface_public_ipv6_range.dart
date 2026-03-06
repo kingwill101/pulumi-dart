@@ -8,7 +8,7 @@ class InterfacePublicIpv6Range {
 
   /// Creates a new [InterfacePublicIpv6Range].
   /// [range] The IPv6 range.
-  InterfacePublicIpv6Range({
+  const InterfacePublicIpv6Range({
     required this.range,
   });
 

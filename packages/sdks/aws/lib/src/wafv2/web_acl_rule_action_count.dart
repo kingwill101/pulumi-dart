@@ -9,7 +9,7 @@ class WebAclRuleActionCount {
 
   /// Creates a new [WebAclRuleActionCount].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleActionCount({
+  const WebAclRuleActionCount({
     this.customRequestHandling,
   });
 

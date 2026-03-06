@@ -23,7 +23,7 @@ class Ipv6ExpressRouteCircuitPeeringConfig {
   /// [routeFilter] The reference to the RouteFilter resource.
   /// [secondaryPeerAddressPrefix] The secondary address prefix.
   /// [state] The state of peering.
-  Ipv6ExpressRouteCircuitPeeringConfig({
+  const Ipv6ExpressRouteCircuitPeeringConfig({
     this.microsoftPeeringConfig,
     this.primaryPeerAddressPrefix,
     this.routeFilter,

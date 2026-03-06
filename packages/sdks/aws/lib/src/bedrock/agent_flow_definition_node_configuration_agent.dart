@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationAgent {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationAgent].
   /// [agentAliasArn] The Amazon Resource Name (ARN) of the alias of the agent to invoke.
-  AgentFlowDefinitionNodeConfigurationAgent({
+  const AgentFlowDefinitionNodeConfigurationAgent({
     required this.agentAliasArn,
   });
 

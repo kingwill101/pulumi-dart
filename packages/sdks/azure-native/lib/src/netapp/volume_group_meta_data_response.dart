@@ -22,7 +22,7 @@ class VolumeGroupMetaDataResponse {
   /// [globalPlacementRules] Application specific placement rules for the volume group
   /// [groupDescription] Group Description
   /// [volumesCount] Number of volumes in volume group
-  VolumeGroupMetaDataResponse({
+  const VolumeGroupMetaDataResponse({
     this.applicationIdentifier,
     this.applicationType,
     this.globalPlacementRules,

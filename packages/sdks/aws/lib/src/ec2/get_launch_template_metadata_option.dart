@@ -15,7 +15,7 @@ class GetLaunchTemplateMetadataOption {
   /// [httpPutResponseHopLimit] Required.
   /// [httpTokens] Required.
   /// [instanceMetadataTags] Required.
-  GetLaunchTemplateMetadataOption({
+  const GetLaunchTemplateMetadataOption({
     required this.httpEndpoint,
     required this.httpProtocolIpv6,
     required this.httpPutResponseHopLimit,

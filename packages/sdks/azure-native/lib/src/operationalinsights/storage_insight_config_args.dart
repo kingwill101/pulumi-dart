@@ -34,7 +34,7 @@ class StorageInsightConfigArgs {
   /// [tables] The names of the Azure tables that the workspace should read
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
-  StorageInsightConfigArgs({
+  const StorageInsightConfigArgs({
     this.containers,
     this.eTag,
     required this.resourceGroupName,

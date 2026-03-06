@@ -21,7 +21,7 @@ class GetUserProvisioningEventsArgs {
   /// [ids] A list of User Provisioning Event IDs. The value is formulated as `&lt;directory_id&gt;:&lt;event_id&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userProvisioningId] The ID of the User Provisioning.
-  GetUserProvisioningEventsArgs({
+  const GetUserProvisioningEventsArgs({
     required this.directoryId,
     this.ids,
     this.outputFile,

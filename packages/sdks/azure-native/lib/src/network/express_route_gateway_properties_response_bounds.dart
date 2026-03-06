@@ -12,7 +12,7 @@ class ExpressRouteGatewayPropertiesResponseBounds {
   /// Creates a new [ExpressRouteGatewayPropertiesResponseBounds].
   /// [max] Maximum number of scale units deployed for ExpressRoute gateway.
   /// [min] Minimum number of scale units deployed for ExpressRoute gateway.
-  ExpressRouteGatewayPropertiesResponseBounds({
+  const ExpressRouteGatewayPropertiesResponseBounds({
     this.max,
     this.min,
   });

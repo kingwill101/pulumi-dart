@@ -22,7 +22,7 @@ class OSPolicyResourceRepositoryResourceAptRepository {
   /// [distribution] Distribution of this repository.
   /// [gpgKey] URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
   /// [uri] URI for this repository.
-  OSPolicyResourceRepositoryResourceAptRepository({
+  const OSPolicyResourceRepositoryResourceAptRepository({
     required this.archiveType,
     required this.components,
     required this.distribution,

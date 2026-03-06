@@ -15,7 +15,7 @@ class BucketMetaQueryState {
   /// [bucket] The name of the bucket.
   /// [createTime] The creation time of the metadata index database. The format is mm:ss + TIMEZONE in the YYYY-MM-DDTHH format of RFC 3339. Where YYYY-MM-DD indicates the year, month and day, T indicates the beginning of the time element, HH:mm:ss indicates the hour, minute and second, and TIMEZONE indicates the time zone.
   /// [status] The status of the resource.
-  BucketMetaQueryState({
+  const BucketMetaQueryState({
     this.bucket,
     this.createTime,
     this.status,

@@ -18,7 +18,7 @@ class EnterpriseWorkspaceArgs {
   /// [description] The description of the Workspace.
   /// [vpcId] The ID of the VPC.
   /// [workspaceName] The name of the Workspace.
-  EnterpriseWorkspaceArgs({
+  const EnterpriseWorkspaceArgs({
     required this.description,
     required this.vpcId,
     required this.workspaceName,

@@ -25,7 +25,7 @@ class UserArgs {
   /// [name] The user name.
   /// [resourceGroupName] The resource group name.
   /// [userType] Type of the user.
-  UserArgs({
+  const UserArgs({
     required this.deviceName,
     this.encryptedPassword,
     this.name,

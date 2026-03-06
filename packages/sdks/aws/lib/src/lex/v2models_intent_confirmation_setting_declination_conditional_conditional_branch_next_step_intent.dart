@@ -12,7 +12,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchNe
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchNextStepIntent].
   /// [name] Name of the intent.
   /// [slots] Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchNextStepIntent({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchNextStepIntent({
     this.name,
     this.slots,
   });

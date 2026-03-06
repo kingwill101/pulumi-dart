@@ -9,7 +9,7 @@ class GetFunctionAppSiteConfigCors {
   /// Creates a new [GetFunctionAppSiteConfigCors].
   /// [allowedOrigins] Required.
   /// [supportCredentials] Optional.
-  GetFunctionAppSiteConfigCors({
+  const GetFunctionAppSiteConfigCors({
     required this.allowedOrigins,
     this.supportCredentials,
   });

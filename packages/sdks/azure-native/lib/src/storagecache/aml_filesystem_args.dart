@@ -54,7 +54,7 @@ class AmlFilesystemArgs {
   /// [storageCapacityTiB] The size of the AML file system, in TiB. This might be rounded up.
   /// [tags] Resource tags.
   /// [zones] Availability zones for resources. This field should only contain a single element in the array.
-  AmlFilesystemArgs({
+  const AmlFilesystemArgs({
     this.amlFilesystemName,
     this.encryptionSettings,
     required this.filesystemSubnet,

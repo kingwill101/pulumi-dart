@@ -31,7 +31,7 @@ class FrontdoorRuleState {
   /// [conditions] A `conditions` block as defined below.
   /// [name] The name which should be used for this Front Door Rule. Possible values must be between 1 and 260 characters in length, begin with a letter and may contain only letters and numbers. Changing this forces a new Front Door Rule to be created.
   /// [order] The order in which the rules will be applied for the Front Door Endpoint. The order value should be sequential and begin at `1`(e.g. `1`, `2`, `3`...). A Front Door Rule with a lesser order value will be applied before a rule with a greater order value.
-  FrontdoorRuleState({
+  const FrontdoorRuleState({
     this.actions,
     this.behaviorOnMatch,
     this.cdnFrontdoorRuleSetId,

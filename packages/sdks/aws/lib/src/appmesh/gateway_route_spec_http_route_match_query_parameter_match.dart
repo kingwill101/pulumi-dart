@@ -8,7 +8,7 @@ class GatewayRouteSpecHttpRouteMatchQueryParameterMatch {
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchQueryParameterMatch].
   /// [exact] The exact query parameter to match on.
-  GatewayRouteSpecHttpRouteMatchQueryParameterMatch({
+  const GatewayRouteSpecHttpRouteMatchQueryParameterMatch({
     this.exact,
   });
 

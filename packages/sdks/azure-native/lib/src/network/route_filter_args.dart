@@ -29,7 +29,7 @@ class RouteFilterArgs {
   /// [routeFilterName] The name of the route filter.
   /// [rules] Collection of RouteFilterRules contained within a route filter.
   /// [tags] Resource tags.
-  RouteFilterArgs({
+  const RouteFilterArgs({
     this.id,
     this.location,
     required this.resourceGroupName,

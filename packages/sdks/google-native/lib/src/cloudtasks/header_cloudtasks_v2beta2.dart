@@ -12,7 +12,7 @@ class HeaderCloudtasksV2beta2 {
   /// Creates a new [HeaderCloudtasksV2beta2].
   /// [key] The key of the header.
   /// [value] The value of the header.
-  HeaderCloudtasksV2beta2({
+  const HeaderCloudtasksV2beta2({
     this.key,
     this.value,
   });

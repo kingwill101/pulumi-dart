@@ -15,7 +15,7 @@ class GoogleCloudFunctionsV2alphaStateMessageResponse {
   /// [message] The message.
   /// [severity] Severity of the state message.
   /// [type] One-word CamelCase type of the state message.
-  GoogleCloudFunctionsV2alphaStateMessageResponse({
+  const GoogleCloudFunctionsV2alphaStateMessageResponse({
     required this.message,
     required this.severity,
     required this.type,

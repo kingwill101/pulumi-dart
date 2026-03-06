@@ -15,7 +15,7 @@ class GetDnsResolverDomainListArgs {
   /// Creates a new [GetDnsResolverDomainListArgs].
   /// [dnsResolverDomainListName] The name of the DNS resolver domain list.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDnsResolverDomainListArgs({
+  const GetDnsResolverDomainListArgs({
     required this.dnsResolverDomainListName,
     required this.resourceGroupName,
   });

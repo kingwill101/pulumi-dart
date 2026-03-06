@@ -39,7 +39,7 @@ class MessageContactArgs {
   /// [messageTypes] The types of messages received by the contact.
   /// [phoneNumber] The mobile phone number of the contact.
   /// [title] The job title of the contact.Valid values:
-  MessageContactArgs({
+  const MessageContactArgs({
     required this.emailAddress,
     required this.messageContactName,
     required this.messageTypes,

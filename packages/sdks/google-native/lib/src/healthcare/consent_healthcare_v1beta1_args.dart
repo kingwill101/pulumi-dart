@@ -43,7 +43,7 @@ class ConsentHealthcareV1beta1Args {
   /// [state] Indicates the current state of this Consent.
   /// [ttl] Input only. The time to live for this Consent from when it is created.
   /// [userId] User's UUID provided by the client.
-  ConsentHealthcareV1beta1Args({
+  const ConsentHealthcareV1beta1Args({
     required this.consentArtifact,
     required this.consentStoreId,
     required this.datasetId,

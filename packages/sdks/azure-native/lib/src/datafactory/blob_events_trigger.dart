@@ -35,7 +35,7 @@ class BlobEventsTrigger {
   /// [pipelines] Pipelines that need to be started.
   /// [scope] The ARM resource ID of the Storage Account.
   /// [type] Trigger type.
-  BlobEventsTrigger({
+  const BlobEventsTrigger({
     this.annotations,
     this.blobPathBeginsWith,
     this.blobPathEndsWith,

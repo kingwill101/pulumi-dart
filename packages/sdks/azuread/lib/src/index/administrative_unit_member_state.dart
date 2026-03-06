@@ -14,7 +14,7 @@ class AdministrativeUnitMemberState {
   /// Creates a new [AdministrativeUnitMemberState].
   /// [administrativeUnitObjectId] The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   /// [memberObjectId] The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
-  AdministrativeUnitMemberState({
+  const AdministrativeUnitMemberState({
     this.administrativeUnitObjectId,
     this.memberObjectId,
   });

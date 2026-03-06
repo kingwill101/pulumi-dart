@@ -57,7 +57,7 @@ class AddressGroupState {
   /// [purposes] List of supported purposes of the Address Group.
   /// [type] The type of the Address Group. Possible values are "IPV4" or "IPV6".
   /// [updateTime] The timestamp when the resource was updated.
-  AddressGroupState({
+  const AddressGroupState({
     this.capacity,
     this.createTime,
     this.description,

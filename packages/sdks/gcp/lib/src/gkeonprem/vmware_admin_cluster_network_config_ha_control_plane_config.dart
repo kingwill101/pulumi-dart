@@ -10,7 +10,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
 
   /// Creates a new [VmwareAdminClusterNetworkConfigHaControlPlaneConfig].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.
-  VmwareAdminClusterNetworkConfigHaControlPlaneConfig({
+  const VmwareAdminClusterNetworkConfigHaControlPlaneConfig({
     this.controlPlaneIpBlock,
   });
 

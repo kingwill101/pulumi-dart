@@ -50,7 +50,7 @@ class RecordArgs {
   /// [siteId] The website ID.
   /// [sourceType] The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
   /// [ttl] The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
-  RecordArgs({
+  const RecordArgs({
     this.authConf,
     this.bizName,
     this.comment,

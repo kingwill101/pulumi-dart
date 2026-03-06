@@ -44,7 +44,7 @@ class AwsNetworkFirewallFirewallPropertiesResponse {
   /// [subnetMappings] Property subnetMappings
   /// [tags] Property tags
   /// [vpcId] Property vpcId
-  AwsNetworkFirewallFirewallPropertiesResponse({
+  const AwsNetworkFirewallFirewallPropertiesResponse({
     this.deleteProtection,
     this.description,
     this.endpointIds,

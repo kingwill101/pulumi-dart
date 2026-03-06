@@ -15,7 +15,7 @@ class VmwareDiskDetailsResponse {
   /// [diskNumber] The ordinal number of the disk.
   /// [label] The disk label.
   /// [sizeGb] Size in GB.
-  VmwareDiskDetailsResponse({
+  const VmwareDiskDetailsResponse({
     required this.diskNumber,
     required this.label,
     required this.sizeGb,

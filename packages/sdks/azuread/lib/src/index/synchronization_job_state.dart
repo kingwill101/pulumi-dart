@@ -19,7 +19,7 @@ class SynchronizationJobState {
   /// [schedules] A `schedule` list as documented below.
   /// [servicePrincipalId] The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   /// [templateId] Identifier of the synchronization template this job is based on.
-  SynchronizationJobState({
+  const SynchronizationJobState({
     this.enabled,
     this.schedules,
     this.servicePrincipalId,

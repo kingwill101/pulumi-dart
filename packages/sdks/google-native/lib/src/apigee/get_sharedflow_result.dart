@@ -18,7 +18,7 @@ class GetSharedflowResult {
   /// [metaData] Metadata describing the shared flow.
   /// [name] The ID of the shared flow.
   /// [revision] A list of revisions of this shared flow.
-  GetSharedflowResult({
+  const GetSharedflowResult({
     required this.latestRevisionId,
     required this.metaData,
     required this.name,

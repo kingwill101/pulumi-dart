@@ -36,7 +36,7 @@ class AFDOriginGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sessionAffinityState] Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
   /// [trafficRestorationTimeToHealedOrNewEndpointsInMinutes] Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
-  AFDOriginGroupArgs({
+  const AFDOriginGroupArgs({
     this.authentication,
     this.healthProbeSettings,
     this.loadBalancingSettings,

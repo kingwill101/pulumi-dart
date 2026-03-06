@@ -28,7 +28,7 @@ class DaprComponentResiliencyPolicyArgs {
   /// [name] Name of the Dapr Component Resiliency Policy.
   /// [outboundPolicy] The optional outbound component resiliency policy configuration
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DaprComponentResiliencyPolicyArgs({
+  const DaprComponentResiliencyPolicyArgs({
     required this.componentName,
     required this.environmentName,
     this.inboundPolicy,

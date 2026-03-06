@@ -49,7 +49,7 @@ class ImageObjectDetectionResponse {
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
   /// [validationDataSize] The fraction of training dataset that needs to be set aside for validation purpose.
-  ImageObjectDetectionResponse({
+  const ImageObjectDetectionResponse({
     required this.limitSettings,
     this.logVerbosity,
     this.modelSettings,

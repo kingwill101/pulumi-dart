@@ -34,7 +34,7 @@ class GetHybridIdentityMetadatumResult {
   /// [resourceUid] The unique identifier for the resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHybridIdentityMetadatumResult({
+  const GetHybridIdentityMetadatumResult({
     required this.azureApiVersion,
     required this.id,
     required this.identity,

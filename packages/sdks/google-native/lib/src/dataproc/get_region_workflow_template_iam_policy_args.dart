@@ -15,7 +15,7 @@ class GetRegionWorkflowTemplateIamPolicyArgs {
   /// [project] Optional.
   /// [regionId] Required.
   /// [workflowTemplateId] Required.
-  GetRegionWorkflowTemplateIamPolicyArgs({
+  const GetRegionWorkflowTemplateIamPolicyArgs({
     this.project,
     required this.regionId,
     required this.workflowTemplateId,

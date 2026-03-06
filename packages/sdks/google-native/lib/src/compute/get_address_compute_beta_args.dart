@@ -15,7 +15,7 @@ class GetAddressComputeBetaArgs {
   /// [address] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetAddressComputeBetaArgs({
+  const GetAddressComputeBetaArgs({
     required this.address,
     this.project,
     required this.region,

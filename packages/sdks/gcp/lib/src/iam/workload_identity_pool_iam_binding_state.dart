@@ -40,7 +40,7 @@ class WorkloadIdentityPoolIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [workloadIdentityPoolId] Used to find the parent resource to bind the IAM policy to
-  WorkloadIdentityPoolIamBindingState({
+  const WorkloadIdentityPoolIamBindingState({
     this.condition,
     this.etag,
     this.members,

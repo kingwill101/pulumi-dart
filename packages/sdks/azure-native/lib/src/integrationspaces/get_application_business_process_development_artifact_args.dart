@@ -21,7 +21,7 @@ class GetApplicationBusinessProcessDevelopmentArtifactArgs {
   /// [name] The name of the business process development artifact.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
-  GetApplicationBusinessProcessDevelopmentArtifactArgs({
+  const GetApplicationBusinessProcessDevelopmentArtifactArgs({
     required this.applicationName,
     required this.name,
     required this.resourceGroupName,

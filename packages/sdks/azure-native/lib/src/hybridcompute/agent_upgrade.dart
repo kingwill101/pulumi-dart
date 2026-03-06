@@ -15,7 +15,7 @@ class AgentUpgrade {
   /// [correlationId] The correlation ID passed in from RSM per upgrade.
   /// [desiredVersion] Specifies the version info w.r.t AgentUpgrade for the machine.
   /// [enableAutomaticUpgrade] Specifies if RSM should try to upgrade this machine
-  AgentUpgrade({
+  const AgentUpgrade({
     this.correlationId,
     this.desiredVersion,
     this.enableAutomaticUpgrade,

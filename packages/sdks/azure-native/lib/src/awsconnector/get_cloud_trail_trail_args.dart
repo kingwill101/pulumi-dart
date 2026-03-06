@@ -15,7 +15,7 @@ class GetCloudTrailTrailArgs {
   /// Creates a new [GetCloudTrailTrailArgs].
   /// [name] Name of CloudTrailTrail
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudTrailTrailArgs({
+  const GetCloudTrailTrailArgs({
     required this.name,
     required this.resourceGroupName,
   });

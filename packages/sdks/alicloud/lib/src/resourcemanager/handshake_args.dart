@@ -22,7 +22,7 @@ class HandshakeArgs {
   /// [note] The description of the invitation.
   /// [targetEntity] The ID or logon email address of the account that you want to invite.
   /// [targetType] The type of the invited account. Valid values:
-  HandshakeArgs({
+  const HandshakeArgs({
     this.note,
     required this.targetEntity,
     required this.targetType,

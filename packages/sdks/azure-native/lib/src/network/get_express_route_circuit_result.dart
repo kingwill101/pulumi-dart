@@ -86,7 +86,7 @@ class GetExpressRouteCircuitResult {
   /// [stag] The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetExpressRouteCircuitResult({
+  const GetExpressRouteCircuitResult({
     this.allowClassicOperations,
     this.authorizationKey,
     required this.authorizationStatus,

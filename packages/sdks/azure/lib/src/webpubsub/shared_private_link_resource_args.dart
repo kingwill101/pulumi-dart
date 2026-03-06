@@ -28,7 +28,7 @@ class SharedPrivateLinkResourceArgs {
   /// [subresourceName] Specify the sub resource name which the Web Pubsub Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] Specify the ID of the Shared Private Link Enabled Remote Resource which this Web Pubsub Private Endpoint should be connected to. Changing this forces a new resource to be created.
   /// [webPubsubId] Specify the id of the Web Pubsub. Changing this forces a new resource to be created.
-  SharedPrivateLinkResourceArgs({
+  const SharedPrivateLinkResourceArgs({
     this.name,
     this.requestMessage,
     required this.subresourceName,

@@ -32,7 +32,7 @@ class InsightsAccountArgs {
   /// [providerConfig] Provider-specific configuration as a JSON object. For AWS, specify regions to scan: {"regions": ["us-west-1", "us-west-2"]}.
   /// [scanSchedule] Schedule for automated scanning. Use 'daily' to enable daily scans, or 'none' to disable scheduled scanning. Defaults to 'none'.
   /// [tags] Key-value tags to associate with the insights account.
-  InsightsAccountArgs({
+  const InsightsAccountArgs({
     required this.accountName,
     required this.environment,
     required this.organizationName,

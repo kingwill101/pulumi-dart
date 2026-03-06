@@ -26,7 +26,7 @@ class InstanceGroupNamedPortArgs {
   /// [port] The port number, which can be a value between 1 and 65535.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] The zone of the instance group.
-  InstanceGroupNamedPortArgs({
+  const InstanceGroupNamedPortArgs({
     required this.group,
     this.name,
     required this.port,

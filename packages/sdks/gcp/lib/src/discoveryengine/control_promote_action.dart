@@ -13,7 +13,7 @@ class ControlPromoteAction {
   /// Creates a new [ControlPromoteAction].
   /// [dataStore] The data store to promote.
   /// [searchLinkPromotion] The search link promotion to apply to the search results.
-  ControlPromoteAction({
+  const ControlPromoteAction({
     required this.dataStore,
     required this.searchLinkPromotion,
   });

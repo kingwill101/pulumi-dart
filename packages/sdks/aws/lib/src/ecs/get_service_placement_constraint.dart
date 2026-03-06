@@ -11,7 +11,7 @@ class GetServicePlacementConstraint {
   /// Creates a new [GetServicePlacementConstraint].
   /// [expression] Cluster query language expression
   /// [type] Constraint type
-  GetServicePlacementConstraint({
+  const GetServicePlacementConstraint({
     required this.expression,
     required this.type,
   });

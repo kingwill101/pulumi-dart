@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2CryptoHashConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2CryptoHashConfigResponse].
   /// [cryptoKey] The key used by the hash function.
-  GooglePrivacyDlpV2CryptoHashConfigResponse({
+  const GooglePrivacyDlpV2CryptoHashConfigResponse({
     required this.cryptoKey,
   });
 

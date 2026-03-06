@@ -20,7 +20,7 @@ class TargetUtilizationScaleSettingsResponse {
   /// [pollingInterval] The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
   /// [scaleType] Expected value is 'TargetUtilization'.
   /// [targetUtilizationPercentage] Target CPU usage for the autoscaler.
-  TargetUtilizationScaleSettingsResponse({
+  const TargetUtilizationScaleSettingsResponse({
     this.maxInstances,
     this.minInstances,
     this.pollingInterval,

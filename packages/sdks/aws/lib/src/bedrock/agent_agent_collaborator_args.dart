@@ -37,7 +37,7 @@ class AgentAgentCollaboratorArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [relayConversationHistory] Configure relaying the history to the collaborator.
   /// [timeouts] Optional.
-  AgentAgentCollaboratorArgs({
+  const AgentAgentCollaboratorArgs({
     required this.agentDescriptor,
     required this.agentId,
     this.agentVersion,

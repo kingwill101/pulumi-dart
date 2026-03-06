@@ -43,7 +43,7 @@ class GetADLSGen1FileDataSetResult {
   /// [subscriptionId] Subscription id of ADLS account.
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetADLSGen1FileDataSetResult({
+  const GetADLSGen1FileDataSetResult({
     required this.accountName,
     required this.azureApiVersion,
     required this.dataSetId,

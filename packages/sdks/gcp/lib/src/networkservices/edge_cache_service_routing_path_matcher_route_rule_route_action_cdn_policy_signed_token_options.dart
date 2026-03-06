@@ -16,7 +16,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions].
   /// [allowedSignatureAlgorithms] The allowed signature algorithms to use.
   /// [tokenQueryParameter] The query parameter in which to find the token.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions({
     this.allowedSignatureAlgorithms,
     this.tokenQueryParameter,
   });

@@ -17,7 +17,7 @@ class ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha {
   /// [stats] Number of GKE clusters in each status code.
   /// [status] Status of the upgrade.
   /// [upgrade] Which upgrade to track the state.
-  ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha({
+  const ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha({
     required this.stats,
     required this.status,
     required this.upgrade,

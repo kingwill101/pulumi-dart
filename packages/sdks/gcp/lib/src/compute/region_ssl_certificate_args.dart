@@ -50,7 +50,7 @@ class RegionSslCertificateArgs {
   /// [privateKey] The write-only private key in PEM format.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created regional ssl certificate should reside.
-  RegionSslCertificateArgs({
+  const RegionSslCertificateArgs({
     required this.certificate,
     this.description,
     this.name,

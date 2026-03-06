@@ -21,7 +21,7 @@ class CustomResourceDefinitionConditionPatchApiextensionsK8sIoV1beta1 {
   /// [reason] reason is a unique, one-word, CamelCase reason for the condition's last transition.
   /// [status] status is the status of the condition. Can be True, False, Unknown.
   /// [type] type is the type of the condition. Types include Established, NamesAccepted and Terminating.
-  CustomResourceDefinitionConditionPatchApiextensionsK8sIoV1beta1({
+  const CustomResourceDefinitionConditionPatchApiextensionsK8sIoV1beta1({
     this.lastTransitionTime,
     this.message,
     this.reason,

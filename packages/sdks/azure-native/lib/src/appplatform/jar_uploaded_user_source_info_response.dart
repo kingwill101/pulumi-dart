@@ -22,7 +22,7 @@ class JarUploadedUserSourceInfoResponse {
   /// [runtimeVersion] Runtime version of the Jar file
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  JarUploadedUserSourceInfoResponse({
+  const JarUploadedUserSourceInfoResponse({
     this.jvmOptions,
     this.relativePath,
     this.runtimeVersion,

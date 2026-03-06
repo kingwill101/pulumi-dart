@@ -11,7 +11,7 @@ class GetKubernetesClusterKeyManagementService {
   /// Creates a new [GetKubernetesClusterKeyManagementService].
   /// [keyVaultKeyId] Identifier of Azure Key Vault key. See [key identifier format](https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates#vault-name-and-object-name) for more details.
   /// [keyVaultNetworkAccess] Network access of the key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link.
-  GetKubernetesClusterKeyManagementService({
+  const GetKubernetesClusterKeyManagementService({
     required this.keyVaultKeyId,
     required this.keyVaultNetworkAccess,
   });

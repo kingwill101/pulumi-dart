@@ -30,7 +30,7 @@ class JobStepOutput {
   /// [subscriptionId] The output destination subscription id.
   /// [tableName] The output destination table.
   /// [type] The output destination type.
-  JobStepOutput({
+  const JobStepOutput({
     this.credential,
     required this.databaseName,
     this.resourceGroupName,

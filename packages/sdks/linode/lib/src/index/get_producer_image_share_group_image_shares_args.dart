@@ -24,7 +24,7 @@ class GetProducerImageShareGroupImageSharesArgs {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [sharegroupId] The ID of the Image Share Group to list shared Images from.
-  GetProducerImageShareGroupImageSharesArgs({
+  const GetProducerImageShareGroupImageSharesArgs({
     this.filters,
     this.imageShares,
     this.order,

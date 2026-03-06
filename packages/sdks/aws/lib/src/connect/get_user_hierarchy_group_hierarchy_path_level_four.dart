@@ -16,7 +16,7 @@ class GetUserHierarchyGroupHierarchyPathLevelFour {
   /// [arn] ARN of the hierarchy group.
   /// [id] The identifier of the hierarchy group.
   /// [name] Returns information on a specific hierarchy group by name
-  GetUserHierarchyGroupHierarchyPathLevelFour({
+  const GetUserHierarchyGroupHierarchyPathLevelFour({
     required this.arn,
     required this.id,
     required this.name,

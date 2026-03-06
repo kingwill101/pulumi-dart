@@ -156,7 +156,7 @@ class EcsInstanceSetArgs {
   /// [uniqueSuffix] Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
   /// [vswitchId] The virtual switch ID to launch in VPC.
   /// [zoneId] The ID of the zone in which to create the instance.
-  EcsInstanceSetArgs({
+  const EcsInstanceSetArgs({
     this.amount,
     this.autoReleaseTime,
     this.autoRenew,

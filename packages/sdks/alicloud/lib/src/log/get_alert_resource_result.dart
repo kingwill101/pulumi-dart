@@ -14,7 +14,7 @@ class GetAlertResourceResult {
   /// [lang] Optional.
   /// [project] Optional.
   /// [type] Required.
-  GetAlertResourceResult({
+  const GetAlertResourceResult({
     required this.id,
     this.lang,
     this.project,

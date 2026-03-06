@@ -15,7 +15,7 @@ class GetKeyRingIamPolicyArgs {
 
   /// Creates a new [GetKeyRingIamPolicyArgs].
   /// [keyRingId] The key ring ID, in the form
-  GetKeyRingIamPolicyArgs({
+  const GetKeyRingIamPolicyArgs({
     required this.keyRingId,
   });
 

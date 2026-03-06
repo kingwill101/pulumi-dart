@@ -49,7 +49,7 @@ class GetSqlVirtualMachineGroupResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [wsfcDomainProfile] Cluster Active Directory domain profile.
-  GetSqlVirtualMachineGroupResult({
+  const GetSqlVirtualMachineGroupResult({
     required this.azureApiVersion,
     required this.clusterConfiguration,
     required this.clusterManagerType,

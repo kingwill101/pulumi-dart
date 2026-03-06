@@ -16,7 +16,7 @@ class GetServiceTemplateSpecContainerEnvFrom {
   /// [configMapReves] The ConfigMap to select from.
   /// [prefix] An optional identifier to prepend to each key in the ConfigMap.
   /// [secretReves] The Secret to select from.
-  GetServiceTemplateSpecContainerEnvFrom({
+  const GetServiceTemplateSpecContainerEnvFrom({
     required this.configMapReves,
     required this.prefix,
     required this.secretReves,

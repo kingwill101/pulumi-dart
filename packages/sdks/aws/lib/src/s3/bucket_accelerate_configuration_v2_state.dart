@@ -18,7 +18,7 @@ class BucketAccelerateConfigurationV2State {
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Transfer acceleration state of the bucket. Valid values: `Enabled`, `Suspended`.
-  BucketAccelerateConfigurationV2State({
+  const BucketAccelerateConfigurationV2State({
     this.bucket,
     this.expectedBucketOwner,
     this.region,

@@ -16,7 +16,7 @@ class CustomRolloutPropertiesResponse {
   /// [provisioningState] The provisioned state of the resource.
   /// [specification] The specification.
   /// [status] The status.
-  CustomRolloutPropertiesResponse({
+  const CustomRolloutPropertiesResponse({
     required this.provisioningState,
     required this.specification,
     this.status,

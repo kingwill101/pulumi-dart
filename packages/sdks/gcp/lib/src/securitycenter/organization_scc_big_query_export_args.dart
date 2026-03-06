@@ -45,7 +45,7 @@ class OrganizationSccBigQueryExportArgs {
   /// [description] The description of the notification config (max of 1024 characters).
   /// [filter] Expression that defines the filter to apply across create/update
   /// [organization] The organization whose Cloud Security Command Center the Big Query Export
-  OrganizationSccBigQueryExportArgs({
+  const OrganizationSccBigQueryExportArgs({
     required this.bigQueryExportId,
     this.dataset,
     this.description,

@@ -11,7 +11,7 @@ class GetClusterContinuousBackupInfoEncryptionInfo {
   /// Creates a new [GetClusterContinuousBackupInfoEncryptionInfo].
   /// [encryptionType] Output only. Type of encryption.
   /// [kmsKeyVersions] Output only. Cloud KMS key versions that are being used to protect the database or the backup.
-  GetClusterContinuousBackupInfoEncryptionInfo({
+  const GetClusterContinuousBackupInfoEncryptionInfo({
     required this.encryptionType,
     required this.kmsKeyVersions,
   });

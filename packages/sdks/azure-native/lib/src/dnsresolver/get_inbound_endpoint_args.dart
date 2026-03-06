@@ -18,7 +18,7 @@ class GetInboundEndpointArgs {
   /// [dnsResolverName] The name of the DNS resolver.
   /// [inboundEndpointName] The name of the inbound endpoint for the DNS resolver.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetInboundEndpointArgs({
+  const GetInboundEndpointArgs({
     required this.dnsResolverName,
     required this.inboundEndpointName,
     required this.resourceGroupName,

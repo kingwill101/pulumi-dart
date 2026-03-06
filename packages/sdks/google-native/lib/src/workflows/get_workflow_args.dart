@@ -17,7 +17,7 @@ class GetWorkflowArgs {
   /// [project] Optional.
   /// [revisionId] Optional.
   /// [workflowId] Required.
-  GetWorkflowArgs({
+  const GetWorkflowArgs({
     required this.location,
     this.project,
     this.revisionId,

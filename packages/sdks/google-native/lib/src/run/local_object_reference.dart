@@ -9,7 +9,7 @@ class LocalObjectReference {
 
   /// Creates a new [LocalObjectReference].
   /// [name] Name of the referent.
-  LocalObjectReference({
+  const LocalObjectReference({
     this.name,
   });
 

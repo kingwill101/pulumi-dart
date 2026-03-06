@@ -24,7 +24,7 @@ class CredentialArgs {
   /// [displayName] Credential display name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  CredentialArgs({
+  const CredentialArgs({
     this.credentialName,
     required this.credentialType,
     required this.displayName,

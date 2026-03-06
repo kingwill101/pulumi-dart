@@ -21,7 +21,7 @@ class PipelineCloudRuleArgs {
   /// [description] Additional information about the rule.
   /// [name] The name of the rule. This must be unique within an account.
   /// [nrql] The NRQL query that defines the data to be processed by this Pipeline Cloud Rule.
-  PipelineCloudRuleArgs({
+  const PipelineCloudRuleArgs({
     this.accountId,
     this.description,
     this.name,

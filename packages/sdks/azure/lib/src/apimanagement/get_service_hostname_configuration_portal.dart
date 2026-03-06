@@ -16,7 +16,7 @@ class GetServiceHostnameConfigurationPortal {
   /// [keyVaultCertificateId] The ID of the Key Vault Secret which contains the SSL Certificate.
   /// [keyVaultId] Required.
   /// [negotiateClientCertificate] Is Client Certificate Negotiation enabled?
-  GetServiceHostnameConfigurationPortal({
+  const GetServiceHostnameConfigurationPortal({
     required this.hostName,
     required this.keyVaultCertificateId,
     required this.keyVaultId,

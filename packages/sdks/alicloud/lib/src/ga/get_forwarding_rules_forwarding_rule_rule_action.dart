@@ -15,7 +15,7 @@ class GetForwardingRulesForwardingRuleRuleAction {
   /// [forwardGroupConfigs] Forwarding configuration.
   /// [order] Forwarding priority.
   /// [ruleActionType] Forward action type.
-  GetForwardingRulesForwardingRuleRuleAction({
+  const GetForwardingRulesForwardingRuleRuleAction({
     required this.forwardGroupConfigs,
     required this.order,
     required this.ruleActionType,

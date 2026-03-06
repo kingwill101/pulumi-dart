@@ -15,7 +15,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResp
   /// [allowInterrupt] Whether the user can interrupt the start message while it is playing.
   /// [frequencyInSeconds] Frequency that a message is sent to the user. When the period ends, Amazon Lex chooses a message from the message groups and plays it to the user. If the fulfillment Lambda returns before the first period ends, an update message is not played to the user.
   /// [messageGroups] Between 1-5 configuration block message groups that contain start messages. Amazon Lex chooses one of the messages to play to the user. See `message_group`.
-  V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse({
+  const V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse({
     this.allowInterrupt,
     required this.frequencyInSeconds,
     this.messageGroups,

@@ -9,7 +9,7 @@ class AnalyticsConfigurationStorageClassAnalysis {
 
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysis].
   /// [dataExport] Data export configuration (documented below).
-  AnalyticsConfigurationStorageClassAnalysis({
+  const AnalyticsConfigurationStorageClassAnalysis({
     required this.dataExport,
   });
 

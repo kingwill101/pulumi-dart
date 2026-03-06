@@ -9,7 +9,7 @@ class ConfidentialNodesResponse {
 
   /// Creates a new [ConfidentialNodesResponse].
   /// [enabled] Whether Confidential Nodes feature is enabled.
-  ConfidentialNodesResponse({
+  const ConfidentialNodesResponse({
     required this.enabled,
   });
 

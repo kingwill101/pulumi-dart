@@ -117,7 +117,7 @@ class OssStockTaskArgs {
   /// [videoScenes] The video detection scenarios included in the oss stock scan task.
   /// [videoTerrorismFreezeConfig] The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
   /// [videoVoiceAntispamFreezeConfig] Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
-  OssStockTaskArgs({
+  const OssStockTaskArgs({
     this.audioAntispamFreezeConfig,
     this.audioAutoFreezeOpened,
     this.audioMaxSize,

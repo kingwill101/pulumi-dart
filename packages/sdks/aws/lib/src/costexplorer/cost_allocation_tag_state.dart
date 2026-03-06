@@ -15,7 +15,7 @@ class CostAllocationTagState {
   /// [status] The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   /// [tagKey] The key for the cost allocation tag.
   /// [type] The type of cost allocation tag.
-  CostAllocationTagState({
+  const CostAllocationTagState({
     this.status,
     this.tagKey,
     this.type,

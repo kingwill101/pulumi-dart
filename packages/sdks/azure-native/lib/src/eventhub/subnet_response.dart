@@ -9,7 +9,7 @@ class SubnetResponse {
 
   /// Creates a new [SubnetResponse].
   /// [id] Resource ID of Virtual Network Subnet
-  SubnetResponse({
+  const SubnetResponse({
     this.id,
   });
 

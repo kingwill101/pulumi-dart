@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigParseVpc {
 
   /// Creates a new [LogTransformerTransformerConfigParseVpc].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseVpc({
+  const LogTransformerTransformerConfigParseVpc({
     this.source,
   });
 

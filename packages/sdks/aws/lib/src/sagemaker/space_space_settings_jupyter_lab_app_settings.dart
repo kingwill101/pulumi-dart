@@ -17,7 +17,7 @@ class SpaceSpaceSettingsJupyterLabAppSettings {
   /// [appLifecycleManagement] Settings that are used to configure and manage the lifecycle of JupyterLab applications in a space. See `app_lifecycle_management` Block below.
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterLab application. See `code_repository` Block below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `default_resource_spec` Block below.
-  SpaceSpaceSettingsJupyterLabAppSettings({
+  const SpaceSpaceSettingsJupyterLabAppSettings({
     this.appLifecycleManagement,
     this.codeRepositories,
     required this.defaultResourceSpec,

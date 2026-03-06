@@ -8,7 +8,7 @@ class ListenerCaCertificate {
 
   /// Creates a new [ListenerCaCertificate].
   /// [certificateId] The ID of the certificate. Currently, only server certificates are supported.
-  ListenerCaCertificate({
+  const ListenerCaCertificate({
     this.certificateId,
   });
 

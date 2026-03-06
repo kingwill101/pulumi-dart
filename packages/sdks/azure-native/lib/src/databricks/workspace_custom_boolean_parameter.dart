@@ -9,7 +9,7 @@ class WorkspaceCustomBooleanParameter {
 
   /// Creates a new [WorkspaceCustomBooleanParameter].
   /// [value] The value which should be used for this field.
-  WorkspaceCustomBooleanParameter({
+  const WorkspaceCustomBooleanParameter({
     required this.value,
   });
 

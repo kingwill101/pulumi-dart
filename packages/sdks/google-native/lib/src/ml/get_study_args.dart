@@ -15,7 +15,7 @@ class GetStudyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [studyId] Required.
-  GetStudyArgs({
+  const GetStudyArgs({
     required this.location,
     this.project,
     required this.studyId,

@@ -9,7 +9,7 @@ class GetDatabaseUserSettingOpensearchAcl {
   /// Creates a new [GetDatabaseUserSettingOpensearchAcl].
   /// [index] Required.
   /// [permission] Required.
-  GetDatabaseUserSettingOpensearchAcl({
+  const GetDatabaseUserSettingOpensearchAcl({
     required this.index,
     required this.permission,
   });

@@ -18,7 +18,7 @@ class GetLogicAppArgs {
   /// [containerAppName] Name of the Container App.
   /// [logicAppName] Name of the Logic App, the extension resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLogicAppArgs({
+  const GetLogicAppArgs({
     required this.containerAppName,
     required this.logicAppName,
     required this.resourceGroupName,

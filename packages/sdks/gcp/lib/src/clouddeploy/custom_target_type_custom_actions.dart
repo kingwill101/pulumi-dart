@@ -16,7 +16,7 @@ class CustomTargetTypeCustomActions {
   /// [deployAction] The Skaffold custom action responsible for deploy operations.
   /// [includeSkaffoldModules] List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
   /// [renderAction] The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
-  CustomTargetTypeCustomActions({
+  const CustomTargetTypeCustomActions({
     required this.deployAction,
     this.includeSkaffoldModules,
     this.renderAction,

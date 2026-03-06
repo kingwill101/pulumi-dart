@@ -15,7 +15,7 @@ class KeyPairArgs {
   /// Creates a new [KeyPairArgs].
   /// [keyPairName] The name of the key pair.
   /// [version] The version number.
-  KeyPairArgs({
+  const KeyPairArgs({
     required this.keyPairName,
     required this.version,
   });

@@ -49,7 +49,7 @@ class WindowsFunctionAppSlotAuthSettingsV2ActiveDirectoryV2 {
   /// [loginParameters] A map of key-value pairs to send to the Authorisation Endpoint when a user logs in.
   /// [tenantAuthEndpoint] The Azure Tenant Endpoint for the Authenticating Tenant. e.g. `https://login.microsoftonline.com/{tenant-guid}/v2.0/`
   /// [wwwAuthenticationDisabled] Should the www-authenticate provider should be omitted from the request? Defaults to `false`.
-  WindowsFunctionAppSlotAuthSettingsV2ActiveDirectoryV2({
+  const WindowsFunctionAppSlotAuthSettingsV2ActiveDirectoryV2({
     this.allowedApplications,
     this.allowedAudiences,
     this.allowedGroups,

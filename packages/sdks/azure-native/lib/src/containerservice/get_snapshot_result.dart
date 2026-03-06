@@ -52,7 +52,7 @@ class GetSnapshotResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmSize] The size of the VM.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.azureApiVersion,
     this.creationData,
     required this.enableFIPS,

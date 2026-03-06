@@ -15,7 +15,7 @@ class PrincipalPortfolioAssociationState {
   /// [portfolioId] Product Portfolio ID
   /// [principalId] RAM entity ID
   /// [principalType] RAM entity type
-  PrincipalPortfolioAssociationState({
+  const PrincipalPortfolioAssociationState({
     this.portfolioId,
     this.principalId,
     this.principalType,

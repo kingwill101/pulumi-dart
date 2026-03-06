@@ -41,7 +41,7 @@ class RewriteUrlRuleState {
   /// [siteId] The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   /// [siteVersion] Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
   /// [uri] The desired URI to which you want to rewrite the path in the original request.
-  RewriteUrlRuleState({
+  const RewriteUrlRuleState({
     this.configId,
     this.queryString,
     this.rewriteQueryStringType,

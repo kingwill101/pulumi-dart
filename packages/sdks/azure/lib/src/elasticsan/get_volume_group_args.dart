@@ -15,7 +15,7 @@ class GetVolumeGroupArgs {
   /// Creates a new [GetVolumeGroupArgs].
   /// [elasticSanId] The Elastic SAN ID within which the Elastic SAN Volume Group exists.
   /// [name] The name of the Elastic SAN Volume Group.
-  GetVolumeGroupArgs({
+  const GetVolumeGroupArgs({
     required this.elasticSanId,
     required this.name,
   });

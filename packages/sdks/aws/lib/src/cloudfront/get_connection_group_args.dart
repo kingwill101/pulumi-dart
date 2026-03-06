@@ -15,7 +15,7 @@ class GetConnectionGroupArgs {
   /// Creates a new [GetConnectionGroupArgs].
   /// [id] Identifier for the connection group. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `routing_endpoint` must be specified.
   /// [routingEndpoint] Routing endpoint for the connection group. For example: `d111111abcdef8.cloudfront.net`. Exactly one of `id` or `routing_endpoint` must be specified.
-  GetConnectionGroupArgs({
+  const GetConnectionGroupArgs({
     this.id,
     this.routingEndpoint,
   });

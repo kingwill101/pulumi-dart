@@ -22,7 +22,7 @@ class ScalingRuleHybridMetric {
   /// [id] The reference ID of the metric in the metric expression.
   /// [metricName] The name of the Hybrid Cloud Monitoring metric.
   /// [statistic] The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
-  ScalingRuleHybridMetric({
+  const ScalingRuleHybridMetric({
     this.dimensions,
     this.expression,
     this.id,

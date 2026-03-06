@@ -33,7 +33,7 @@ class GetInstanceEnginesArgs {
   /// [multiZone] Whether to show multi available zone. Default false to not show multi availability zone.
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
   /// [zoneId] The Zone to launch the DB instance.
-  GetInstanceEnginesArgs({
+  const GetInstanceEnginesArgs({
     this.category,
     this.dbInstanceStorageType,
     this.engine,

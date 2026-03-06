@@ -14,7 +14,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentRe
   /// Creates a new [GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse].
   /// [additionalCases] Additional cases to be evaluated.
   /// [message] Returned message.
-  GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse({
+  const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse({
     required this.additionalCases,
     required this.message,
   });

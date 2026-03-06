@@ -15,7 +15,7 @@ class ServiceServiceConnectConfigurationLogConfiguration {
   /// [logDriver] Log driver to use for the container.
   /// [options] Configuration options to send to the log driver.
   /// [secretOptions] Secrets to pass to the log configuration. See below.
-  ServiceServiceConnectConfigurationLogConfiguration({
+  const ServiceServiceConnectConfigurationLogConfiguration({
     required this.logDriver,
     this.options,
     this.secretOptions,

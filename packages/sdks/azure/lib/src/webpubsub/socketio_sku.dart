@@ -13,7 +13,7 @@ class SocketioSku {
   /// Creates a new [SocketioSku].
   /// [capacity] The number of units associated with this Web PubSub Service. Defaults to `1`. Possible values are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900` and `1000`.
   /// [name] The SKU to use for this Web PubSub Service. Possible values are `Free_F1`, `Standard_S1`, `Premium_P1`, and `Premium_P2`.
-  SocketioSku({
+  const SocketioSku({
     this.capacity,
     required this.name,
   });

@@ -23,7 +23,7 @@ class DeploymentResourcePoolAiplatformV1beta1Args {
   /// [location] Optional.
   /// [name] Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
   /// [project] Optional.
-  DeploymentResourcePoolAiplatformV1beta1Args({
+  const DeploymentResourcePoolAiplatformV1beta1Args({
     required this.dedicatedResources,
     required this.deploymentResourcePoolId,
     this.location,

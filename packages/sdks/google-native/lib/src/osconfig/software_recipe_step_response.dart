@@ -34,7 +34,7 @@ class SoftwareRecipeStepResponse {
   /// [msiInstallation] Installs an MSI file.
   /// [rpmInstallation] Installs an rpm file via the rpm utility.
   /// [scriptRun] Runs commands in a shell.
-  SoftwareRecipeStepResponse({
+  const SoftwareRecipeStepResponse({
     required this.archiveExtraction,
     required this.dpkgInstallation,
     required this.fileCopy,

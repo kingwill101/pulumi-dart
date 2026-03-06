@@ -21,7 +21,7 @@ class GetReplicationRecoveryServicesProviderArgs {
   /// [providerName] Recovery services provider name.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  GetReplicationRecoveryServicesProviderArgs({
+  const GetReplicationRecoveryServicesProviderArgs({
     required this.fabricName,
     required this.providerName,
     required this.resourceGroupName,

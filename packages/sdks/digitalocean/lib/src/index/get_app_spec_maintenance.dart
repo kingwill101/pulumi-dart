@@ -14,7 +14,7 @@ class GetAppSpecMaintenance {
   /// [archive] Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
   /// [enabled] Whether to automatically deploy images pushed to DOCR.
   /// [offlinePageUrl] A custom offline page to display when maintenance mode is enabled or the app is archived.
-  GetAppSpecMaintenance({
+  const GetAppSpecMaintenance({
     this.archive,
     this.enabled,
     this.offlinePageUrl,

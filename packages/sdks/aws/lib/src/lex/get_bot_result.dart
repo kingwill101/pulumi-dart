@@ -58,7 +58,7 @@ class GetBotResult {
   /// [status] Status of the bot.
   /// [version] Version of the bot. For a new bot, the version is always `$LATEST`.
   /// [voiceId] Amazon Polly voice ID that the Amazon Lex Bot uses for voice interactions with the user.
-  GetBotResult({
+  const GetBotResult({
     required this.arn,
     required this.checksum,
     required this.childDirected,

@@ -14,7 +14,7 @@ class AgentDataSourceDataSourceConfigurationS3Configuration {
   /// [bucketArn] ARN of the bucket that contains the data source.
   /// [bucketOwnerAccountId] Bucket account owner ID for the S3 bucket.
   /// [inclusionPrefixes] List of S3 prefixes that define the object containing the data sources. For more information, see [Organizing objects using prefixes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html).
-  AgentDataSourceDataSourceConfigurationS3Configuration({
+  const AgentDataSourceDataSourceConfigurationS3Configuration({
     required this.bucketArn,
     this.bucketOwnerAccountId,
     this.inclusionPrefixes,

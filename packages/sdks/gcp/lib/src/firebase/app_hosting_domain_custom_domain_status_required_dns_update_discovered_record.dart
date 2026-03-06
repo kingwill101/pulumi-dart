@@ -44,7 +44,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
   /// [relevantStates] (Output)
   /// [requiredAction] (Output)
   /// [type] (Output)
-  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord({
+  const AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord({
     this.domainName,
     this.rdata,
     this.relevantStates,

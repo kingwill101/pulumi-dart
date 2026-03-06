@@ -15,7 +15,7 @@ class ServiceArgs {
   /// Creates a new [ServiceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceName] The name of the the service
-  ServiceArgs({
+  const ServiceArgs({
     required this.resourceUri,
     this.serviceName,
   });

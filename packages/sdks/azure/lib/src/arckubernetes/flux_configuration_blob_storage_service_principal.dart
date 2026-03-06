@@ -23,7 +23,7 @@ class FluxConfigurationBlobStorageServicePrincipal {
   /// [clientId] Specifies the client ID for authenticating a Service Principal.
   /// [clientSecret] Specifies the client secret for authenticating a Service Principal.
   /// [tenantId] Specifies the tenant ID for authenticating a Service Principal.
-  FluxConfigurationBlobStorageServicePrincipal({
+  const FluxConfigurationBlobStorageServicePrincipal({
     this.clientCertificateBase64,
     this.clientCertificatePassword,
     this.clientCertificateSendChain,

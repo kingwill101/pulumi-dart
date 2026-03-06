@@ -20,7 +20,7 @@ class GetServerCustomImagesImage {
   /// [description] Image description information.
   /// [id] The ID of the Custom Image.
   /// [platform] The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
-  GetServerCustomImagesImage({
+  const GetServerCustomImagesImage({
     required this.customImageId,
     required this.customImageName,
     required this.description,

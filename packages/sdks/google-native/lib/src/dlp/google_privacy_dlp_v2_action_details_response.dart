@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2ActionDetailsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ActionDetailsResponse].
   /// [deidentifyDetails] Outcome of a de-identification action.
-  GooglePrivacyDlpV2ActionDetailsResponse({
+  const GooglePrivacyDlpV2ActionDetailsResponse({
     required this.deidentifyDetails,
   });
 

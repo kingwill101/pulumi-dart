@@ -114,7 +114,7 @@ class GetClustersCluster {
   /// [vpcId] ID of the VPC the cluster belongs to.
   /// [vswitchId] Required.
   /// [zoneId] The ZoneId of the ADB cluster.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.autoRenewPeriod,
     required this.availableKernelVersions,
     required this.chargeType,

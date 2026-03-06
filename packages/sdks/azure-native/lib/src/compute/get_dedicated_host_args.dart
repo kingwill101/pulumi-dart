@@ -21,7 +21,7 @@ class GetDedicatedHostArgs {
   /// [hostGroupName] The name of the dedicated host group.
   /// [hostName] The name of the dedicated host.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDedicatedHostArgs({
+  const GetDedicatedHostArgs({
     this.expand,
     required this.hostGroupName,
     required this.hostName,

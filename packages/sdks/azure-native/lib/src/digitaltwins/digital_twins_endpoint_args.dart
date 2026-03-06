@@ -22,7 +22,7 @@ class DigitalTwinsEndpointArgs {
   /// [properties] DigitalTwinsInstance endpoint resource properties.
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
-  DigitalTwinsEndpointArgs({
+  const DigitalTwinsEndpointArgs({
     this.endpointName,
     required this.properties,
     required this.resourceGroupName,

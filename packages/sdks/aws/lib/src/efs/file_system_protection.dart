@@ -8,7 +8,7 @@ class FileSystemProtection {
 
   /// Creates a new [FileSystemProtection].
   /// [replicationOverwrite] Indicates whether replication overwrite protection is enabled. Valid values: `ENABLED` or `DISABLED`.
-  FileSystemProtection({
+  const FileSystemProtection({
     this.replicationOverwrite,
   });
 

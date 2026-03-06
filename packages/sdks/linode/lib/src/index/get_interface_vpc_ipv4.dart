@@ -13,7 +13,7 @@ class GetInterfaceVpcIpv4 {
   /// Creates a new [GetInterfaceVpcIpv4].
   /// [addresses] IPv4 addresses assigned to this VPC interface.
   /// [ranges] IPv4 ranges assigned to this VPC interface.
-  GetInterfaceVpcIpv4({
+  const GetInterfaceVpcIpv4({
     required this.addresses,
     required this.ranges,
   });

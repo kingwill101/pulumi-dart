@@ -7,7 +7,7 @@ class GetGatewayRouteSpecHttp2RouteActionRewriteHostname {
 
   /// Creates a new [GetGatewayRouteSpecHttp2RouteActionRewriteHostname].
   /// [defaultTargetHostname] Required.
-  GetGatewayRouteSpecHttp2RouteActionRewriteHostname({
+  const GetGatewayRouteSpecHttp2RouteActionRewriteHostname({
     required this.defaultTargetHostname,
   });
 

@@ -15,7 +15,7 @@ class GetInstanceArgs {
   /// Creates a new [GetInstanceArgs].
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.instanceName,
     required this.resourceGroupName,
   });

@@ -15,7 +15,7 @@ class PlatformPropertiesResponse {
   /// [architecture] The OS architecture.
   /// [os] The operating system type required for the run.
   /// [variant] Variant of the CPU.
-  PlatformPropertiesResponse({
+  const PlatformPropertiesResponse({
     this.architecture,
     required this.os,
     this.variant,

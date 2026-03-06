@@ -29,7 +29,7 @@ class ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse {
   /// [name] Database name
   /// [resultType] Type of result - database level or task level
   /// [sizeMB] Size of the file in megabytes
-  ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse({
+  const ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse({
     required this.compatibilityLevel,
     required this.databaseFiles,
     required this.databaseState,

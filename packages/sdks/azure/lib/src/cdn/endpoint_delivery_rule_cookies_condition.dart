@@ -20,7 +20,7 @@ class EndpointDeliveryRuleCookiesCondition {
   /// [operator] Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
   /// [selector] Name of the cookie.
   /// [transforms] A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  EndpointDeliveryRuleCookiesCondition({
+  const EndpointDeliveryRuleCookiesCondition({
     this.matchValues,
     this.negateCondition,
     required this.operator,

@@ -39,7 +39,7 @@ class ApplicationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of the application. Valid values are `ENABLED` and `DISABLED`.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ApplicationArgs({
+  const ApplicationArgs({
     required this.applicationProviderArn,
     this.clientToken,
     this.description,

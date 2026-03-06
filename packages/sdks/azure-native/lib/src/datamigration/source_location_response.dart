@@ -17,7 +17,7 @@ class SourceLocationResponse {
   /// [azureBlob] Source Azure Blob.
   /// [fileShare] Source File share.
   /// [fileStorageType] Backup storage Type.
-  SourceLocationResponse({
+  const SourceLocationResponse({
     this.azureBlob,
     this.fileShare,
     required this.fileStorageType,

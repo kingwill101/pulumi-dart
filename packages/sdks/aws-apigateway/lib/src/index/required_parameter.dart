@@ -9,7 +9,7 @@ class RequiredParameter {
   /// Creates a new [RequiredParameter].
   /// [in_] Optional.
   /// [name] Optional.
-  RequiredParameter({
+  const RequiredParameter({
     this.in_,
     this.name,
   });

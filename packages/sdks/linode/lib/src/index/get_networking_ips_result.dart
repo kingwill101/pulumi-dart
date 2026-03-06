@@ -18,7 +18,7 @@ class GetNetworkingIpsResult {
   /// [ipAddresses] Required.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetNetworkingIpsResult({
+  const GetNetworkingIpsResult({
     this.filters,
     required this.id,
     required this.ipAddresses,

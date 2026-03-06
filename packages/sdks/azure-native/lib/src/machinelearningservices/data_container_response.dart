@@ -27,7 +27,7 @@ class DataContainerResponse {
   /// [nextVersion] The next auto incremental version
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  DataContainerResponse({
+  const DataContainerResponse({
     required this.dataType,
     this.description,
     this.isArchived,

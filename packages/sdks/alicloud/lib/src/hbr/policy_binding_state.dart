@@ -57,7 +57,7 @@ class PolicyBindingState {
   /// [source] When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
   /// [sourceType] Data source type, value range:
   /// [speedLimit] This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
-  PolicyBindingState({
+  const PolicyBindingState({
     this.advancedOptions,
     this.createTime,
     this.crossAccountRoleName,

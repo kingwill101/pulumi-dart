@@ -13,7 +13,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse].
   /// [customStrengthOptions] The custom strength options enforced by the password policy.
   /// [schemaVersion] schema version number for the password policy
-  GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse({
+  const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse({
     required this.customStrengthOptions,
     required this.schemaVersion,
   });

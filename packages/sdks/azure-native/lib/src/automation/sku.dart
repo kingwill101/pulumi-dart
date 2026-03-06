@@ -15,7 +15,7 @@ class Sku {
   /// [capacity] Gets or sets the SKU capacity.
   /// [family] Gets or sets the SKU family.
   /// [name] Gets or sets the SKU name of the account.
-  Sku({
+  const Sku({
     this.capacity,
     this.family,
     required this.name,

@@ -11,7 +11,7 @@ class InterconnectAttachmentGroupAttachment {
   /// Creates a new [InterconnectAttachmentGroupAttachment].
   /// [attachment] (Optional)
   /// [name] The identifier for this object. Format specified above.
-  InterconnectAttachmentGroupAttachment({
+  const InterconnectAttachmentGroupAttachment({
     this.attachment,
     required this.name,
   });

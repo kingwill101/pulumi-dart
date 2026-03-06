@@ -12,7 +12,7 @@ class GetPermissionArgs {
 
   /// Creates a new [GetPermissionArgs].
   /// [enable] Setting the value to `On` to assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore). If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-  GetPermissionArgs({
+  const GetPermissionArgs({
     this.enable,
   });
 

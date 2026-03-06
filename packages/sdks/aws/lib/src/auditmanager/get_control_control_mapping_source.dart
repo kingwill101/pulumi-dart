@@ -22,7 +22,7 @@ class GetControlControlMappingSource {
   /// [sourceSetUpOption] Required.
   /// [sourceType] Required.
   /// [troubleshootingText] Required.
-  GetControlControlMappingSource({
+  const GetControlControlMappingSource({
     required this.sourceDescription,
     required this.sourceFrequency,
     required this.sourceId,

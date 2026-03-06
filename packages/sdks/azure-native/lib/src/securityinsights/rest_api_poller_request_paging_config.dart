@@ -15,7 +15,7 @@ class RestApiPollerRequestPagingConfig {
   /// [pageSize] Page size
   /// [pageSizeParameterName] Page size parameter name
   /// [pagingType] Type of paging
-  RestApiPollerRequestPagingConfig({
+  const RestApiPollerRequestPagingConfig({
     this.pageSize,
     this.pageSizeParameterName,
     required this.pagingType,

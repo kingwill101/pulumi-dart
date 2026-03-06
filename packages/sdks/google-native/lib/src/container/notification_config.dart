@@ -10,7 +10,7 @@ class NotificationConfig {
 
   /// Creates a new [NotificationConfig].
   /// [pubsub] Notification config for Pub/Sub.
-  NotificationConfig({
+  const NotificationConfig({
     this.pubsub,
   });
 

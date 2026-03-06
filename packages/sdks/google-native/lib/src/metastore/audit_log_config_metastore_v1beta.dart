@@ -13,7 +13,7 @@ class AuditLogConfigMetastoreV1beta {
   /// Creates a new [AuditLogConfigMetastoreV1beta].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigMetastoreV1beta({
+  const AuditLogConfigMetastoreV1beta({
     this.exemptedMembers,
     this.logType,
   });

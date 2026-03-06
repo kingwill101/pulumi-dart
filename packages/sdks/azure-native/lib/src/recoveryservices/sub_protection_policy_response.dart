@@ -27,7 +27,7 @@ class SubProtectionPolicyResponse {
   /// [schedulePolicy] Backup schedule specified as part of backup policy.
   /// [snapshotBackupAdditionalDetails] Snapshot Backup related fields for WorkloadType SaPHanaSystem
   /// [tieringPolicy] Tiering policy to automatically move RPs to another tier.
-  SubProtectionPolicyResponse({
+  const SubProtectionPolicyResponse({
     this.policyType,
     this.retentionPolicy,
     this.schedulePolicy,

@@ -24,7 +24,7 @@ class GetEcsPrefixListsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetEcsPrefixListsResult({
+  const GetEcsPrefixListsResult({
     this.addressFamily,
     this.enableDetails,
     required this.id,

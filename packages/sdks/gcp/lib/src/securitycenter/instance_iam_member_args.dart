@@ -26,7 +26,7 @@ class InstanceIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the Data Fusion instance.
   /// [role] Required.
-  InstanceIamMemberArgs({
+  const InstanceIamMemberArgs({
     this.condition,
     required this.member,
     this.name,

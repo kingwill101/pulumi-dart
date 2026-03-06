@@ -25,7 +25,7 @@ class GetServiceTraffic {
   /// [revisionName] RevisionName of a specific revision to which to send this portion of traffic.
   /// [tag] Tag is optionally used to expose a dedicated url for referencing this target exclusively.
   /// [url] URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
-  GetServiceTraffic({
+  const GetServiceTraffic({
     required this.latestRevision,
     required this.percent,
     required this.revisionName,

@@ -14,7 +14,7 @@ class CustomActivityReferenceObjectResponse {
   /// Creates a new [CustomActivityReferenceObjectResponse].
   /// [datasets] Dataset references.
   /// [linkedServices] Linked service references.
-  CustomActivityReferenceObjectResponse({
+  const CustomActivityReferenceObjectResponse({
     this.datasets,
     this.linkedServices,
   });

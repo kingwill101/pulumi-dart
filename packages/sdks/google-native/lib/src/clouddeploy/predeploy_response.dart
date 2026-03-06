@@ -9,7 +9,7 @@ class PredeployResponse {
 
   /// Creates a new [PredeployResponse].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
-  PredeployResponse({
+  const PredeployResponse({
     required this.actions,
   });
 

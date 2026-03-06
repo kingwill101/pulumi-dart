@@ -22,7 +22,7 @@ class VirtualNetworkGatewayPolicyGroup {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [policyMembers] Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
   /// [priority] Priority for VirtualNetworkGatewayPolicyGroup.
-  VirtualNetworkGatewayPolicyGroup({
+  const VirtualNetworkGatewayPolicyGroup({
     this.id,
     required this.isDefault,
     this.name,

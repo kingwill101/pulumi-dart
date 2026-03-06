@@ -14,7 +14,7 @@ class GetMetaTagsTag {
   /// [category] The type of the resource tags.
   /// [keyName] The name of the key.
   /// [valueName] The name of the value.
-  GetMetaTagsTag({
+  const GetMetaTagsTag({
     required this.category,
     required this.keyName,
     required this.valueName,

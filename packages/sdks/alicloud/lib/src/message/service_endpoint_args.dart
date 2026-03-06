@@ -16,7 +16,7 @@ class ServiceEndpointArgs {
   /// Creates a new [ServiceEndpointArgs].
   /// [endpointEnabled] Specifies whether the endpoint is enabled. Valid values:
   /// [endpointType] Access point type. Value:
-  ServiceEndpointArgs({
+  const ServiceEndpointArgs({
     required this.endpointEnabled,
     required this.endpointType,
   });

@@ -8,7 +8,7 @@ class GetVirtualNodeSpecBackend {
 
   /// Creates a new [GetVirtualNodeSpecBackend].
   /// [virtualServices] Required.
-  GetVirtualNodeSpecBackend({
+  const GetVirtualNodeSpecBackend({
     required this.virtualServices,
   });
 

@@ -36,7 +36,7 @@ class TextClassification {
   /// [taskType] AutoMLJob Task type.
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
-  TextClassification({
+  const TextClassification({
     this.featurizationSettings,
     this.limitSettings,
     this.logVerbosity,

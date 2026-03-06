@@ -64,7 +64,7 @@ class GatewayPropertiesResponse {
   /// [responseCacheProperties] The properties to configure different types of response cache for Spring Cloud Gateway.
   /// [ssoProperties] Single sign-on related configuration
   /// [url] URL of the Spring Cloud Gateway, exposed when 'public' is true.
-  GatewayPropertiesResponse({
+  const GatewayPropertiesResponse({
     this.addonConfigs,
     this.apiMetadataProperties,
     this.apmTypes,

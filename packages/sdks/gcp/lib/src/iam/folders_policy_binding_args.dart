@@ -67,7 +67,7 @@ class FoldersPolicyBindingArgs {
   /// [policyBindingId] The Policy Binding ID.
   /// [policyKind] Immutable. The kind of the policy to attach in this binding. This
   /// [target] Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
-  FoldersPolicyBindingArgs({
+  const FoldersPolicyBindingArgs({
     this.annotations,
     this.condition,
     this.displayName,

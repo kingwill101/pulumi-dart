@@ -41,7 +41,7 @@ class ProjectArgs {
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ProjectArgs({
+  const ProjectArgs({
     this.catalogSettings,
     this.description,
     this.devCenterId,

@@ -15,7 +15,7 @@ class GetBackupFileV1beta1Args {
   /// [backupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBackupFileV1beta1Args({
+  const GetBackupFileV1beta1Args({
     required this.backupId,
     required this.location,
     this.project,

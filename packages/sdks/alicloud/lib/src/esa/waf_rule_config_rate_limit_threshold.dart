@@ -21,7 +21,7 @@ class WafRuleConfigRateLimitThreshold {
   /// [request] The maximum number of allowed requests within a time interval.
   /// [responseStatus] Limits on the frequency of returning specific HTTP status codes. See `response_status` below.
   /// [traffic] The maximum allowed traffic within a time interval (deprecated).
-  WafRuleConfigRateLimitThreshold({
+  const WafRuleConfigRateLimitThreshold({
     this.distinctManagedRules,
     this.managedRulesBlocked,
     this.request,

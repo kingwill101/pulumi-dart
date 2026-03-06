@@ -33,7 +33,7 @@ class WorkspaceSecurityAlertPolicyArgs {
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all Threat Detection audit logs.
   /// [synapseWorkspaceId] Specifies the ID of the Synapse Workspace. Changing this forces a new resource to be created.
-  WorkspaceSecurityAlertPolicyArgs({
+  const WorkspaceSecurityAlertPolicyArgs({
     this.disabledAlerts,
     this.emailAccountAdminsEnabled,
     this.emailAddresses,

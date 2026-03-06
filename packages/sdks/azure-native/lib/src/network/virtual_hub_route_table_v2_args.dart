@@ -31,7 +31,7 @@ class VirtualHubRouteTableV2Args {
   /// [routeTableName] The name of the VirtualHubRouteTableV2.
   /// [routes] List of all routes.
   /// [virtualHubName] The name of the VirtualHub.
-  VirtualHubRouteTableV2Args({
+  const VirtualHubRouteTableV2Args({
     this.attachedConnections,
     this.id,
     this.name,

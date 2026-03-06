@@ -8,7 +8,7 @@ class GetNodeClassesClassSupportedEngineAvailableResource {
 
   /// Creates a new [GetNodeClassesClassSupportedEngineAvailableResource].
   /// [dbNodeClass] The PolarDB node class type by the user.
-  GetNodeClassesClassSupportedEngineAvailableResource({
+  const GetNodeClassesClassSupportedEngineAvailableResource({
     required this.dbNodeClass,
   });
 

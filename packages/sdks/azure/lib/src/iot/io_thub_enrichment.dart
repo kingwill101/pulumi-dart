@@ -14,7 +14,7 @@ class IoTHubEnrichment {
   /// [endpointNames] The list of endpoints which will be enriched.
   /// [key] The key of the enrichment.
   /// [value] The value of the enrichment. Value can be any static string, the name of the IoT Hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
-  IoTHubEnrichment({
+  const IoTHubEnrichment({
     required this.endpointNames,
     required this.key,
     required this.value,

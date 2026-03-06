@@ -8,7 +8,7 @@ class CxPageEntryFulfillmentMessageLiveAgentHandoff {
 
   /// Creates a new [CxPageEntryFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageEntryFulfillmentMessageLiveAgentHandoff({
+  const CxPageEntryFulfillmentMessageLiveAgentHandoff({
     this.metadata,
   });
 

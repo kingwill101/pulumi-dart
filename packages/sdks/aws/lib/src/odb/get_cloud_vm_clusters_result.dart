@@ -15,7 +15,7 @@ class GetCloudVmClustersResult {
   /// [cloudVmClusters] List of Cloud VM Clusters. It returns only basic information about the cloud VM clusters.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetCloudVmClustersResult({
+  const GetCloudVmClustersResult({
     required this.cloudVmClusters,
     required this.id,
     required this.region,

@@ -15,7 +15,7 @@ class GetSecurityConnectorArgs {
   /// Creates a new [GetSecurityConnectorArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  GetSecurityConnectorArgs({
+  const GetSecurityConnectorArgs({
     required this.resourceGroupName,
     required this.securityConnectorName,
   });

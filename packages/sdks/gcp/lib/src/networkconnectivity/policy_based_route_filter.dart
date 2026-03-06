@@ -18,7 +18,7 @@ class PolicyBasedRouteFilter {
   /// [ipProtocol] The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
   /// [protocolVersion] Internet protocol versions this policy-based route applies to.
   /// [srcRange] The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
-  PolicyBasedRouteFilter({
+  const PolicyBasedRouteFilter({
     this.destRange,
     this.ipProtocol,
     required this.protocolVersion,

@@ -34,7 +34,7 @@ class GetConsulServiceDiscoveryResult {
   /// [undetectableAction] Optional.
   /// [updateInterval] Optional.
   /// [uri] Required.
-  GetConsulServiceDiscoveryResult({
+  const GetConsulServiceDiscoveryResult({
     this.addressRealm,
     required this.consulSdJson,
     this.credentialUpdate,

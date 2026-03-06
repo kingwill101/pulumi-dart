@@ -14,7 +14,7 @@ class GetIpv6RangesResult {
   /// [filters] Optional.
   /// [id] Required.
   /// [ranges] Required.
-  GetIpv6RangesResult({
+  const GetIpv6RangesResult({
     this.filters,
     required this.id,
     required this.ranges,

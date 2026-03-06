@@ -16,7 +16,7 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse {
   /// [enabledProviders] A list of usable second factors for this project.
   /// [providerConfigs] A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
   /// [state] Whether MultiFactor Authentication has been enabled for this project.
-  GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse({
     required this.enabledProviders,
     required this.providerConfigs,
     required this.state,

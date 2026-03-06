@@ -41,7 +41,7 @@ class GetIpv6AddressesAddress {
   /// [status] The status of the IPv6 address. Valid values:`Pending` or `Available`.
   /// [vpcId] The ID of the VPC to which the IPv6 address belongs.
   /// [vswitchId] The ID of the vSwitch to which the IPv6 address belongs.
-  GetIpv6AddressesAddress({
+  const GetIpv6AddressesAddress({
     required this.associatedInstanceId,
     required this.associatedInstanceType,
     required this.createTime,

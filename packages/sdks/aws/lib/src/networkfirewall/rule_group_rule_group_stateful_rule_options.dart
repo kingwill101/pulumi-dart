@@ -8,7 +8,7 @@ class RuleGroupRuleGroupStatefulRuleOptions {
 
   /// Creates a new [RuleGroupRuleGroupStatefulRuleOptions].
   /// [ruleOrder] Indicates how to manage the order of the rule evaluation for the rule group. Default value: `DEFAULT_ACTION_ORDER`. Valid values: `DEFAULT_ACTION_ORDER`, `STRICT_ORDER`.
-  RuleGroupRuleGroupStatefulRuleOptions({
+  const RuleGroupRuleGroupStatefulRuleOptions({
     required this.ruleOrder,
   });
 

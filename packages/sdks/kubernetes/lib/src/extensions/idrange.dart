@@ -12,7 +12,7 @@ class IDRange {
   /// Creates a new [IDRange].
   /// [max] max is the end of the range, inclusive.
   /// [min] min is the start of the range, inclusive.
-  IDRange({
+  const IDRange({
     required this.max,
     required this.min,
   });

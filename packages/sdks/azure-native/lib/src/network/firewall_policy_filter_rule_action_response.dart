@@ -9,7 +9,7 @@ class FirewallPolicyFilterRuleActionResponse {
 
   /// Creates a new [FirewallPolicyFilterRuleActionResponse].
   /// [type] The type of action.
-  FirewallPolicyFilterRuleActionResponse({
+  const FirewallPolicyFilterRuleActionResponse({
     this.type,
   });
 

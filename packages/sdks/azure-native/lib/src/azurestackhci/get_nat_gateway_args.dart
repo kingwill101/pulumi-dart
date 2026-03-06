@@ -15,7 +15,7 @@ class GetNatGatewayArgs {
   /// Creates a new [GetNatGatewayArgs].
   /// [natGatewayName] Name of the nat gateway
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNatGatewayArgs({
+  const GetNatGatewayArgs({
     required this.natGatewayName,
     required this.resourceGroupName,
   });

@@ -13,7 +13,7 @@ class Twitter {
   /// Creates a new [Twitter].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Twitter provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
   /// [registration] The configuration settings of the app registration for the Twitter provider.
-  Twitter({
+  const Twitter({
     this.enabled,
     this.registration,
   });

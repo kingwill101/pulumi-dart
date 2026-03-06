@@ -15,7 +15,7 @@ class DeviceClaimConfiguration {
   /// Creates a new [DeviceClaimConfiguration].
   /// [opaque] Opaque provides driver-specific configuration parameters.
   /// [requests] Requests lists the names of requests where the configuration applies. If empty, it applies to all requests.
-  DeviceClaimConfiguration({
+  const DeviceClaimConfiguration({
     this.opaque,
     this.requests,
   });

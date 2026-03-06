@@ -73,7 +73,7 @@ class GetStandardSiteConfig {
   /// [use32BitWorkerProcess] Should the Logic App run in 32 bit mode, rather than 64 bit mode?
   /// [vnetRouteAllEnabled] Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
   /// [websocketsEnabled] Should WebSockets be enabled?
-  GetStandardSiteConfig({
+  const GetStandardSiteConfig({
     required this.alwaysOn,
     required this.appScaleLimit,
     required this.autoSwapSlotName,

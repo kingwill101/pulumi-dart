@@ -20,7 +20,7 @@ class GetContentItemResult {
   /// [name] The name of the resource
   /// [properties] Properties of the content item.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetContentItemResult({
+  const GetContentItemResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

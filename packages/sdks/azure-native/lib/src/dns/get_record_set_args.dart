@@ -21,7 +21,7 @@ class GetRecordSetArgs {
   /// [relativeRecordSetName] The name of the record set, relative to the name of the zone.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
-  GetRecordSetArgs({
+  const GetRecordSetArgs({
     required this.recordType,
     required this.relativeRecordSetName,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class CanaryVpcConfig {
   /// [securityGroupIds] IDs of the security groups for this canary.
   /// [subnetIds] IDs of the subnets where this canary is to run.
   /// [vpcId] ID of the VPC where this canary is to run.
-  CanaryVpcConfig({
+  const CanaryVpcConfig({
     this.ipv6AllowedForDualStack,
     this.securityGroupIds,
     this.subnetIds,

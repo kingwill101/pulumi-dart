@@ -24,7 +24,7 @@ class GetTopicArgs {
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topicName] Confluent kafka or schema registry topic name
-  GetTopicArgs({
+  const GetTopicArgs({
     required this.clusterId,
     required this.environmentId,
     required this.organizationName,

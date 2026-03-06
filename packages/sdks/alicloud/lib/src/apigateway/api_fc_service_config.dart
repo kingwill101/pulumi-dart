@@ -41,7 +41,7 @@ class ApiFcServiceConfig {
   /// [region] The region that the function compute service belongs to.
   /// [serviceName] The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
   /// [timeout] Backend service time-out time; unit: millisecond.
-  ApiFcServiceConfig({
+  const ApiFcServiceConfig({
     required this.arnRole,
     this.functionBaseUrl,
     this.functionName,

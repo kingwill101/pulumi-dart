@@ -14,7 +14,7 @@ class GetExtensionMonitoringStatusResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [clusterMonitoringEnabled] The status of the monitor on the HDInsight cluster.
   /// [workspaceId] The workspace ID of the monitor on the HDInsight cluster.
-  GetExtensionMonitoringStatusResult({
+  const GetExtensionMonitoringStatusResult({
     required this.azureApiVersion,
     this.clusterMonitoringEnabled,
     this.workspaceId,

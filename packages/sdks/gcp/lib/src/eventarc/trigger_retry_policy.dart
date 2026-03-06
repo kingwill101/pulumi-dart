@@ -9,7 +9,7 @@ class TriggerRetryPolicy {
 
   /// Creates a new [TriggerRetryPolicy].
   /// [maxAttempts] The maximum number of delivery attempts for any message. The only valid
-  TriggerRetryPolicy({
+  const TriggerRetryPolicy({
     this.maxAttempts,
   });
 

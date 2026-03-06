@@ -12,7 +12,7 @@ class ResourceLimits {
   /// Creates a new [ResourceLimits].
   /// [cpu] CPU limits in cores. At present, only full cores are supported.
   /// [memoryInGB] The memory limit in GB.
-  ResourceLimits({
+  const ResourceLimits({
     this.cpu,
     this.memoryInGB,
   });

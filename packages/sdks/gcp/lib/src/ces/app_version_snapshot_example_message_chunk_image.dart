@@ -17,7 +17,7 @@ class AppVersionSnapshotExampleMessageChunkImage {
   /// Creates a new [AppVersionSnapshotExampleMessageChunkImage].
   /// [data] (Output)
   /// [mimeType] (Output)
-  AppVersionSnapshotExampleMessageChunkImage({
+  const AppVersionSnapshotExampleMessageChunkImage({
     this.data,
     this.mimeType,
   });

@@ -18,7 +18,7 @@ class GetStaticAccountsArgs {
   /// [ids] The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
   /// [instanceId] InstanceId
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetStaticAccountsArgs({
+  const GetStaticAccountsArgs({
     this.ids,
     this.instanceId,
     this.outputFile,

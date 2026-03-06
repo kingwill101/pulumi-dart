@@ -12,7 +12,7 @@ class ProductArgs {
 
   /// Creates a new [ProductArgs].
   /// [productName] ProductName.
-  ProductArgs({
+  const ProductArgs({
     required this.productName,
   });
 

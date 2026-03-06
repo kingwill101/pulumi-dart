@@ -16,7 +16,7 @@ class DashboardArgs {
   /// Creates a new [DashboardArgs].
   /// [dashboardJson] The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
   /// [project] The ID of the project in which the resource belongs.
-  DashboardArgs({
+  const DashboardArgs({
     required this.dashboardJson,
     this.project,
   });

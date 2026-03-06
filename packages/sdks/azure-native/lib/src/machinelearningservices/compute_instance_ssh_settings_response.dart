@@ -18,7 +18,7 @@ class ComputeInstanceSshSettingsResponse {
   /// [adminUserName] Describes the admin user name.
   /// [sshPort] Describes the port for connecting through SSH.
   /// [sshPublicAccess] State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
-  ComputeInstanceSshSettingsResponse({
+  const ComputeInstanceSshSettingsResponse({
     this.adminPublicKey,
     required this.adminUserName,
     required this.sshPort,

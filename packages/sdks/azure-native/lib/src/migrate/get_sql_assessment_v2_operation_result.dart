@@ -144,7 +144,7 @@ class GetSqlAssessmentV2OperationResult {
   /// [timeRange] Time Range for which the historic utilization data should be considered for
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Date and Time when assessment was last updated.
-  GetSqlAssessmentV2OperationResult({
+  const GetSqlAssessmentV2OperationResult({
     this.assessmentType,
     this.asyncCommitModeIntent,
     required this.azureApiVersion,

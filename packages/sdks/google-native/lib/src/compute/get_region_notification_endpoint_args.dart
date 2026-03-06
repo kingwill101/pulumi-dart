@@ -15,7 +15,7 @@ class GetRegionNotificationEndpointArgs {
   /// [notificationEndpoint] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionNotificationEndpointArgs({
+  const GetRegionNotificationEndpointArgs({
     required this.notificationEndpoint,
     this.project,
     required this.region,

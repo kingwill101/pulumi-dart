@@ -28,7 +28,7 @@ class GetInstanceResult {
   /// [state] The current state of the Instance.
   /// [stateMessage] Extra information of Instance.State if the state is `FAILED`.
   /// [updateTime] Last update timestamp.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.build,
     required this.config,
     required this.createTime,

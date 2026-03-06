@@ -35,7 +35,7 @@ class ScanRun {
   /// [startTime] The time at which the ScanRun started.
   /// [urlsCrawledCount] The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents the number of URLs crawled up to now.
   /// [urlsTestedCount] The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads.
-  ScanRun({
+  const ScanRun({
     this.endTime,
     this.executionState,
     this.hasVulnerabilities,

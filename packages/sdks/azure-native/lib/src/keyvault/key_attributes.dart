@@ -18,7 +18,7 @@ class KeyAttributes {
   /// [expires] Expiry date in seconds since 1970-01-01T00:00:00Z.
   /// [exportable] Indicates if the private key can be exported.
   /// [notBefore] Not before date in seconds since 1970-01-01T00:00:00Z.
-  KeyAttributes({
+  const KeyAttributes({
     this.enabled,
     this.expires,
     this.exportable,

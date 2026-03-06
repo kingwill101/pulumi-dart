@@ -15,7 +15,7 @@ class GetIndexArgs {
   /// [indexId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetIndexArgs({
+  const GetIndexArgs({
     required this.indexId,
     required this.location,
     this.project,

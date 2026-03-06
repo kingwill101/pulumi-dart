@@ -13,7 +13,7 @@ class RuleResourceTag {
   /// Creates a new [RuleResourceTag].
   /// [resourceTagKey] Tag key.
   /// [resourceTagValue] Tag value.
-  RuleResourceTag({
+  const RuleResourceTag({
     required this.resourceTagKey,
     this.resourceTagValue,
   });

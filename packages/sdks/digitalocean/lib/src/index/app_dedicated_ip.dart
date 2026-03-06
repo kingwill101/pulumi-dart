@@ -14,7 +14,7 @@ class AppDedicatedIp {
   /// [id] The ID of the app.
   /// [ip] The IP address of the dedicated egress IP.
   /// [status] The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
-  AppDedicatedIp({
+  const AppDedicatedIp({
     this.id,
     this.ip,
     this.status,

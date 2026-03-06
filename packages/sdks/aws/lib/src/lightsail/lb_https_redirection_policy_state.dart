@@ -17,7 +17,7 @@ class LbHttpsRedirectionPolicyState {
   /// [enabled] Whether to enable HTTP to HTTPS redirection. `true` to activate HTTP to HTTPS redirection or `false` to deactivate HTTP to HTTPS redirection.
   /// [lbName] Name of the load balancer to which you want to enable HTTP to HTTPS redirection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LbHttpsRedirectionPolicyState({
+  const LbHttpsRedirectionPolicyState({
     this.enabled,
     this.lbName,
     this.region,

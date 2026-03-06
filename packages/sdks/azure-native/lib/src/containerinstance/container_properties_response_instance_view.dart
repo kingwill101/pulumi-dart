@@ -20,7 +20,7 @@ class ContainerPropertiesResponseInstanceView {
   /// [events] The events of the container instance.
   /// [previousState] Previous container instance state.
   /// [restartCount] The number of times that the container instance has been restarted.
-  ContainerPropertiesResponseInstanceView({
+  const ContainerPropertiesResponseInstanceView({
     required this.currentState,
     required this.events,
     required this.previousState,

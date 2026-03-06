@@ -9,7 +9,7 @@ class GetInsightsAccountsResult {
 
   /// Creates a new [GetInsightsAccountsResult].
   /// [accounts] Required.
-  GetInsightsAccountsResult({
+  const GetInsightsAccountsResult({
     required this.accounts,
   });
 

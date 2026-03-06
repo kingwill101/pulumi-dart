@@ -9,7 +9,7 @@ class CdnEndpointResponse {
 
   /// Creates a new [CdnEndpointResponse].
   /// [id] ARM Resource ID string.
-  CdnEndpointResponse({
+  const CdnEndpointResponse({
     this.id,
   });
 

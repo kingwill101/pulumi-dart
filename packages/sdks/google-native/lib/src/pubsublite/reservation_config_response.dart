@@ -9,7 +9,7 @@ class ReservationConfigResponse {
 
   /// Creates a new [ReservationConfigResponse].
   /// [throughputReservation] The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-  ReservationConfigResponse({
+  const ReservationConfigResponse({
     required this.throughputReservation,
   });
 

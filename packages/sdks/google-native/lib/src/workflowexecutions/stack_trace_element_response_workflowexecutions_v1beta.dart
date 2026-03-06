@@ -16,7 +16,7 @@ class StackTraceElementResponseWorkflowexecutionsV1beta {
   /// [position] The source position information of the stack trace element.
   /// [routine] The routine where the error occurred.
   /// [step] The step the error occurred at.
-  StackTraceElementResponseWorkflowexecutionsV1beta({
+  const StackTraceElementResponseWorkflowexecutionsV1beta({
     required this.position,
     required this.routine,
     required this.step,

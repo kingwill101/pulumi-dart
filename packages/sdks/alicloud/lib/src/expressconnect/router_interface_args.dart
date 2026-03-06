@@ -139,7 +139,7 @@ class RouterInterfaceArgs {
   /// [spec] The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
   /// [status] Resource attribute fields that represent the status of the resource. Value range:
   /// [tags] The tag of the resource
-  RouterInterfaceArgs({
+  const RouterInterfaceArgs({
     this.accessPointId,
     this.autoPay,
     this.autoRenew,

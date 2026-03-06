@@ -172,7 +172,7 @@ class ManagedNodeGroupArgs {
   /// [taints] The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group.
   /// [userData] User specified code to run on node startup. This is expected to handle the full AWS EKS node bootstrapping. If omitted, the provider will configure the user data.
   /// [version] Optional.
-  ManagedNodeGroupArgs({
+  const ManagedNodeGroupArgs({
     this.amiId,
     this.amiType,
     this.bootstrapExtraArgs,

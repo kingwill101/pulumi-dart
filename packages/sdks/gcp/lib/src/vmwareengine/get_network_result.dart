@@ -32,7 +32,7 @@ class GetNetworkResult {
   /// [uid] Required.
   /// [updateTime] Required.
   /// [vpcNetworks] Required.
-  GetNetworkResult({
+  const GetNetworkResult({
     required this.createTime,
     required this.description,
     required this.etag,

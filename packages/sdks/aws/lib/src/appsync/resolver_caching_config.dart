@@ -11,7 +11,7 @@ class ResolverCachingConfig {
   /// Creates a new [ResolverCachingConfig].
   /// [cachingKeys] The caching keys for a resolver that has caching activated. Valid values are entries from the $context.arguments, $context.source, and $context.identity maps.
   /// [ttl] The TTL in seconds for a resolver that has caching activated. Valid values are between `1` and `3600` seconds.
-  ResolverCachingConfig({
+  const ResolverCachingConfig({
     this.cachingKeys,
     this.ttl,
   });

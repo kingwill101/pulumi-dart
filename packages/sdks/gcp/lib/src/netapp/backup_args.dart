@@ -39,7 +39,7 @@ class BackupArgs {
   /// [sourceSnapshot] If specified, backup will be created from the given snapshot. If not specified,
   /// [sourceVolume] ID of volumes this backup belongs to. Format: `projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}``
   /// [vaultName] Name of the backup vault to store the backup in.
-  BackupArgs({
+  const BackupArgs({
     this.description,
     this.labels,
     required this.location,

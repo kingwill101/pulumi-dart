@@ -21,7 +21,7 @@ class HmacKeyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceAccountEmail] The email address of the key's associated service account.
   /// [state] The state of the key. Can be set to one of ACTIVE, INACTIVE.
-  HmacKeyArgs({
+  const HmacKeyArgs({
     this.project,
     required this.serviceAccountEmail,
     this.state,

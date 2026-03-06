@@ -8,7 +8,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess {
 
   /// Creates a new [CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess({
+  const CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess({
     this.metadata,
   });
 

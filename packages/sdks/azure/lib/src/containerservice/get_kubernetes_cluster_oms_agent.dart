@@ -15,7 +15,7 @@ class GetKubernetesClusterOmsAgent {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace to which the OMS Agent should send data.
   /// [msiAuthForMonitoringEnabled] Is managed identity authentication for monitoring enabled?
   /// [omsAgentIdentities] An `oms_agent_identity` block as defined below.
-  GetKubernetesClusterOmsAgent({
+  const GetKubernetesClusterOmsAgent({
     required this.logAnalyticsWorkspaceId,
     required this.msiAuthForMonitoringEnabled,
     required this.omsAgentIdentities,

@@ -9,7 +9,7 @@ class GoogleCloudNetworksecurityV1GrpcEndpoint {
 
   /// Creates a new [GoogleCloudNetworksecurityV1GrpcEndpoint].
   /// [targetUri] The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-  GoogleCloudNetworksecurityV1GrpcEndpoint({
+  const GoogleCloudNetworksecurityV1GrpcEndpoint({
     required this.targetUri,
   });
 

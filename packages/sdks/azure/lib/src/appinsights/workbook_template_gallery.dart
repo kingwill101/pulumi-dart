@@ -22,7 +22,7 @@ class WorkbookTemplateGallery {
   /// [order] Order of the template within the gallery. Defaults to `0`.
   /// [resourceType] Azure resource type supported by the gallery. Defaults to `Azure Monitor`.
   /// [type] Type of workbook supported by the workbook template. Defaults to `workbook`.
-  WorkbookTemplateGallery({
+  const WorkbookTemplateGallery({
     required this.category,
     required this.name,
     this.order,

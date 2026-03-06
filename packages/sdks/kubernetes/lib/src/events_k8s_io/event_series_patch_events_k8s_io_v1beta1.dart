@@ -15,7 +15,7 @@ class EventSeriesPatchEventsK8sIoV1beta1 {
   /// [count] Number of occurrences in this series up to the last heartbeat time
   /// [lastObservedTime] Time when last Event from the series was seen before last heartbeat.
   /// [state] Information whether this series is ongoing or finished. Deprecated. Planned removal for 1.18
-  EventSeriesPatchEventsK8sIoV1beta1({
+  const EventSeriesPatchEventsK8sIoV1beta1({
     this.count,
     this.lastObservedTime,
     this.state,

@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsEc2InstanceKeyName {
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceKeyName].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsEc2InstanceKeyName({
+  const InsightFiltersResourceAwsEc2InstanceKeyName({
     required this.comparison,
     required this.value,
   });

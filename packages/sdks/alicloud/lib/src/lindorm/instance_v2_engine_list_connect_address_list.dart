@@ -14,7 +14,7 @@ class InstanceV2EngineListConnectAddressList {
   /// [address] Connect Address
   /// [port] Connect Port
   /// [type] Connect Type:
-  InstanceV2EngineListConnectAddressList({
+  const InstanceV2EngineListConnectAddressList({
     this.address,
     this.port,
     this.type,

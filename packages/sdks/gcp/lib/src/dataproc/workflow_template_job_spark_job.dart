@@ -30,7 +30,7 @@ class WorkflowTemplateJobSparkJob {
   /// [mainClass] The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
   /// [mainJarFileUri] The HCFS URI of the jar file that contains the main class.
   /// [properties] A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-  WorkflowTemplateJobSparkJob({
+  const WorkflowTemplateJobSparkJob({
     this.archiveUris,
     this.args,
     this.fileUris,

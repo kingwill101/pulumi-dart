@@ -26,7 +26,7 @@ class ListenerArgs {
   /// [loadBalancerId] The GWLB instance ID.
   /// [serverGroupId] The server group ID.
   /// [tags] The tags. You can specify at most 20 tags in each call.
-  ListenerArgs({
+  const ListenerArgs({
     this.dryRun,
     this.listenerDescription,
     required this.loadBalancerId,

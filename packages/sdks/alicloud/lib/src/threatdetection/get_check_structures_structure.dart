@@ -12,7 +12,7 @@ class GetCheckStructuresStructure {
   /// Creates a new [GetCheckStructuresStructure].
   /// [standardType] The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
   /// [standards] The structure information about the check items of the business type.
-  GetCheckStructuresStructure({
+  const GetCheckStructuresStructure({
     required this.standardType,
     required this.standards,
   });

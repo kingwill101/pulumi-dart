@@ -40,7 +40,7 @@ class NetworkingIpState {
   /// [subnetMask] The mask that separates host bits from network bits for this address.
   /// [type] The type of IP address. (ipv4, ipv6, etc.)
   /// [vpcNat11] Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
-  NetworkingIpState({
+  const NetworkingIpState({
     this.address,
     this.gateway,
     this.linodeId,

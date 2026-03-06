@@ -33,7 +33,7 @@ class SecurityProfileArgs {
   /// [securityProfileId] Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1".
   /// [threatPreventionProfile] The threat prevention configuration for the SecurityProfile.
   /// [type] Immutable. The single ProfileType that the SecurityProfile resource configures.
-  SecurityProfileArgs({
+  const SecurityProfileArgs({
     this.description,
     this.labels,
     this.location,

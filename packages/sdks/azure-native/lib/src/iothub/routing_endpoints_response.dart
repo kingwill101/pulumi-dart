@@ -26,7 +26,7 @@ class RoutingEndpointsResponse {
   /// [serviceBusQueues] The list of Service Bus queue endpoints that IoT hub routes the messages to, based on the routing rules.
   /// [serviceBusTopics] The list of Service Bus topic endpoints that the IoT hub routes the messages to, based on the routing rules.
   /// [storageContainers] The list of storage container endpoints that IoT hub routes messages to, based on the routing rules.
-  RoutingEndpointsResponse({
+  const RoutingEndpointsResponse({
     this.cosmosDBSqlContainers,
     this.eventHubs,
     this.serviceBusQueues,

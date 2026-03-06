@@ -15,7 +15,7 @@ class BucketPolicyS3ControlState {
   /// [bucket] Amazon Resource Name (ARN) of the bucket.
   /// [policy] JSON string of the resource policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BucketPolicyS3ControlState({
+  const BucketPolicyS3ControlState({
     this.bucket,
     this.policy,
     this.region,

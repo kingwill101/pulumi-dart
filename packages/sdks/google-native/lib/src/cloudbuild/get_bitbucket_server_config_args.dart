@@ -15,7 +15,7 @@ class GetBitbucketServerConfigArgs {
   /// [bitbucketServerConfigId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBitbucketServerConfigArgs({
+  const GetBitbucketServerConfigArgs({
     required this.bitbucketServerConfigId,
     required this.location,
     this.project,

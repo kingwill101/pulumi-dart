@@ -62,7 +62,7 @@ class PolardbxInstanceState {
   /// [topologyType] Topology type:
   /// [vpcId] The VPC ID.
   /// [vswitchId] The ID of the virtual switch.
-  PolardbxInstanceState({
+  const PolardbxInstanceState({
     this.cnClass,
     this.cnNodeCount,
     this.createTime,

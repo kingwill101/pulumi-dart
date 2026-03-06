@@ -89,7 +89,7 @@ class InMageAzureV2EnableProtectionInput {
   /// [targetProximityPlacementGroupId] The proximity placement group ARM Id.
   /// [targetVmSize] The target VM size.
   /// [targetVmTags] The target VM tags.
-  InMageAzureV2EnableProtectionInput({
+  const InMageAzureV2EnableProtectionInput({
     this.diskEncryptionSetId,
     this.diskType,
     this.disksToInclude,

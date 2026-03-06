@@ -27,7 +27,7 @@ class AccessPolicyArgs {
   /// [principalObjectId] The objectId of the principal in Azure Active Directory.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [roles] The list of roles the principal is assigned on the environment.
-  AccessPolicyArgs({
+  const AccessPolicyArgs({
     this.accessPolicyName,
     this.description,
     required this.environmentName,

@@ -34,7 +34,7 @@ class Ec2SecurityGroupPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2SecurityGroupPropertiesResponse({
+  const Ec2SecurityGroupPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

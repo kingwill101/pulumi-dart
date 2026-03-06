@@ -9,7 +9,7 @@ class BareMetalPortConfig {
 
   /// Creates a new [BareMetalPortConfig].
   /// [controlPlaneLoadBalancerPort] The port that control plane hosted load balancers will listen on.
-  BareMetalPortConfig({
+  const BareMetalPortConfig({
     this.controlPlaneLoadBalancerPort,
   });
 

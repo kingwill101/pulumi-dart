@@ -121,7 +121,7 @@ class GetBackendServiceResult {
   /// [strongSessionAffinityCookies] Required.
   /// [timeoutSec] The number of seconds to wait for a backend to respond to a request before considering the request failed.
   /// [tlsSettings] Required.
-  GetBackendServiceResult({
+  const GetBackendServiceResult({
     required this.affinityCookieTtlSec,
     required this.backends,
     required this.cdnPolicies,

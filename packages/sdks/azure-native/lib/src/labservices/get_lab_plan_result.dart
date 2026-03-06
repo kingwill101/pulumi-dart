@@ -63,7 +63,7 @@ class GetLabPlanResult {
   /// [systemData] Metadata pertaining to creation and last modification of the lab plan.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLabPlanResult({
+  const GetLabPlanResult({
     this.allowedRegions,
     required this.azureApiVersion,
     this.defaultAutoShutdownProfile,

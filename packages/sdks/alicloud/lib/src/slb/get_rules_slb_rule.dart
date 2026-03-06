@@ -20,7 +20,7 @@ class GetRulesSlbRule {
   /// [name] Rule name.
   /// [serverGroupId] ID of the linked VServer group.
   /// [url] Path in the HTTP request where the rule applies (e.g. "/image").
-  GetRulesSlbRule({
+  const GetRulesSlbRule({
     required this.domain,
     required this.id,
     required this.name,

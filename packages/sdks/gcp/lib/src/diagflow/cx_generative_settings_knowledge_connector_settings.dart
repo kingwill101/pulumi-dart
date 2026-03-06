@@ -23,7 +23,7 @@ class CxGenerativeSettingsKnowledgeConnectorSettings {
   /// [business] Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
   /// [businessDescription] Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
   /// [disableDataStoreFallback] Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
-  CxGenerativeSettingsKnowledgeConnectorSettings({
+  const CxGenerativeSettingsKnowledgeConnectorSettings({
     this.agent,
     this.agentIdentity,
     this.agentScope,

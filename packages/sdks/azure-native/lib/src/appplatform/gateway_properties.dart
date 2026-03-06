@@ -50,7 +50,7 @@ class GatewayProperties {
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
   /// [responseCacheProperties] The properties to configure different types of response cache for Spring Cloud Gateway.
   /// [ssoProperties] Single sign-on related configuration
-  GatewayProperties({
+  const GatewayProperties({
     this.addonConfigs,
     this.apiMetadataProperties,
     this.apmTypes,

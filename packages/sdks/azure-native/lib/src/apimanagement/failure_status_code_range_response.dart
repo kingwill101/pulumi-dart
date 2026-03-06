@@ -12,7 +12,7 @@ class FailureStatusCodeRangeResponse {
   /// Creates a new [FailureStatusCodeRangeResponse].
   /// [max] The maximum http status code.
   /// [min] The minimum http status code.
-  FailureStatusCodeRangeResponse({
+  const FailureStatusCodeRangeResponse({
     this.max,
     this.min,
   });

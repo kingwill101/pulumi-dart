@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource].
   /// [name] The schema name in the source.
   /// [processorType] The Doc AI processor type name.
-  GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource({
+  const GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource({
     this.name,
     this.processorType,
   });

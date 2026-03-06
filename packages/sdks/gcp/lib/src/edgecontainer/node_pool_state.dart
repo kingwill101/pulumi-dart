@@ -61,7 +61,7 @@ class NodePoolState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The time when the node pool was last updated.
-  NodePoolState({
+  const NodePoolState({
     this.cluster,
     this.createTime,
     this.effectiveLabels,

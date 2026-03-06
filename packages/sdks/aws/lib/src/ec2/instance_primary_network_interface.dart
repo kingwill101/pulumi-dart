@@ -11,7 +11,7 @@ class InstancePrimaryNetworkInterface {
   /// Creates a new [InstancePrimaryNetworkInterface].
   /// [deleteOnTermination] Whether the network interface will be deleted when the instance terminates.
   /// [networkInterfaceId] ID of the network interface to attach.
-  InstancePrimaryNetworkInterface({
+  const InstancePrimaryNetworkInterface({
     this.deleteOnTermination,
     required this.networkInterfaceId,
   });

@@ -12,7 +12,7 @@ class SqlActiveDirectoryConfigResponse {
   /// Creates a new [SqlActiveDirectoryConfigResponse].
   /// [domain] The name of the domain (e.g., mydomain.com).
   /// [kind] This is always sql#activeDirectoryConfig.
-  SqlActiveDirectoryConfigResponse({
+  const SqlActiveDirectoryConfigResponse({
     required this.domain,
     required this.kind,
   });

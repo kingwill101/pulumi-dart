@@ -18,7 +18,7 @@ class NetworkInsightsAnalysisExplanationSecurityGroupRule {
   /// [prefixListId] Optional.
   /// [protocol] Optional.
   /// [securityGroupId] Optional.
-  NetworkInsightsAnalysisExplanationSecurityGroupRule({
+  const NetworkInsightsAnalysisExplanationSecurityGroupRule({
     this.cidr,
     this.direction,
     this.portRanges,

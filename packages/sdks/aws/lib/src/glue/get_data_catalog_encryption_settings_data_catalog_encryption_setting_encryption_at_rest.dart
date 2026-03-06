@@ -14,7 +14,7 @@ class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRe
   /// [catalogEncryptionMode] The encryption-at-rest mode for encrypting Data Catalog data.
   /// [catalogEncryptionServiceRole] The ARN of the AWS IAM role used for accessing encrypted Data Catalog data.
   /// [sseAwsKmsKeyId] ARN of the AWS KMS key to use for encryption at rest.
-  GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest({
+  const GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest({
     required this.catalogEncryptionMode,
     required this.catalogEncryptionServiceRole,
     required this.sseAwsKmsKeyId,

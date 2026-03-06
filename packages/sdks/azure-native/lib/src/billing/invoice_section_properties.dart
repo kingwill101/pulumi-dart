@@ -21,7 +21,7 @@ class InvoiceSectionProperties {
   /// [state] Identifies the status of an invoice section.
   /// [tags] Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
   /// [targetCloud] Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
-  InvoiceSectionProperties({
+  const InvoiceSectionProperties({
     this.displayName,
     this.reasonCode,
     this.state,

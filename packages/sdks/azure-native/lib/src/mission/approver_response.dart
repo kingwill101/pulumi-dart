@@ -15,7 +15,7 @@ class ApproverResponse {
   /// [actionPerformed] Action Performed by approver
   /// [approverEntraId] Entra ObjectID of the approver
   /// [lastUpdatedAt] approval request last updated at
-  ApproverResponse({
+  const ApproverResponse({
     this.actionPerformed,
     required this.approverEntraId,
     required this.lastUpdatedAt,

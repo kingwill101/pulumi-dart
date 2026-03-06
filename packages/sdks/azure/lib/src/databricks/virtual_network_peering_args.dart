@@ -40,7 +40,7 @@ class VirtualNetworkPeeringArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Databricks Virtual Network Peering should exist. Changing this forces a new resource to be created.
   /// [useRemoteGateways] Can remote gateways be used on the Databricks virtual network? Defaults to `false`.
   /// [workspaceId] The ID of the Databricks Workspace that this Databricks Virtual Network Peering is bound. Changing this forces a new resource to be created.
-  VirtualNetworkPeeringArgs({
+  const VirtualNetworkPeeringArgs({
     this.allowForwardedTraffic,
     this.allowGatewayTransit,
     this.allowVirtualNetworkAccess,

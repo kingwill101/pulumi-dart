@@ -28,7 +28,7 @@ class ServiceArgs {
   /// [restore] Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
   /// [serviceName] The name of Azure API Center service.
   /// [tags] Resource tags.
-  ServiceArgs({
+  const ServiceArgs({
     this.identity,
     this.location,
     required this.resourceGroupName,

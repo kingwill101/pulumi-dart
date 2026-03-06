@@ -34,7 +34,7 @@ class GetConsumerImageShareGroupTokenResult {
   /// [tokenUuid] Required.
   /// [updated] When the token was last updated.
   /// [validForSharegroupUuid] The UUID of the Image Share Group for which to create a token.
-  GetConsumerImageShareGroupTokenResult({
+  const GetConsumerImageShareGroupTokenResult({
     required this.created,
     required this.expiry,
     required this.id,

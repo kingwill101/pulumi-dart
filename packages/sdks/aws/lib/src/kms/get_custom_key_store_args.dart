@@ -18,7 +18,7 @@ class GetCustomKeyStoreArgs {
   /// [customKeyStoreId] The ID for the custom key store.
   /// [customKeyStoreName] The user-specified friendly name for the custom key store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCustomKeyStoreArgs({
+  const GetCustomKeyStoreArgs({
     this.customKeyStoreId,
     this.customKeyStoreName,
     this.region,

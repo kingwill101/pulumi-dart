@@ -10,7 +10,7 @@ class PolicyNetwork {
 
   /// Creates a new [PolicyNetwork].
   /// [networkUrl] The id or fully qualified URL of the VPC network to forward queries to.
-  PolicyNetwork({
+  const PolicyNetwork({
     required this.networkUrl,
   });
 

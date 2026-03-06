@@ -9,7 +9,7 @@ class PanoramaConfig {
 
   /// Creates a new [PanoramaConfig].
   /// [configString] Base64 encoded string representing Panorama parameters to be used by Firewall to connect to Panorama. This string is generated via azure plugin in Panorama
-  PanoramaConfig({
+  const PanoramaConfig({
     required this.configString,
   });
 

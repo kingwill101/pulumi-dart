@@ -105,7 +105,7 @@ class SubnetArgs {
   /// [tags] A set of string tags for the subnet.
   /// [tenantId] The owner of the subnet. Required if admin wants to
   /// [valueSpecs] Map of additional options.
-  SubnetArgs({
+  const SubnetArgs({
     this.allocationPools,
     this.cidr,
     this.description,

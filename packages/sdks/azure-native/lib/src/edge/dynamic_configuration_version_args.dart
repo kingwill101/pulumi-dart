@@ -25,7 +25,7 @@ class DynamicConfigurationVersionArgs {
   /// [dynamicConfigurationVersionName] The name of the DynamicConfigurationVersion
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DynamicConfigurationVersionArgs({
+  const DynamicConfigurationVersionArgs({
     required this.configurationName,
     required this.dynamicConfigurationName,
     this.dynamicConfigurationVersionName,

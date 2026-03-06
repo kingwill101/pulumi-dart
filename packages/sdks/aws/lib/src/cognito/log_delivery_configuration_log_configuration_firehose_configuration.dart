@@ -8,7 +8,7 @@ class LogDeliveryConfigurationLogConfigurationFirehoseConfiguration {
 
   /// Creates a new [LogDeliveryConfigurationLogConfigurationFirehoseConfiguration].
   /// [streamArn] The ARN of the Kinesis Data Firehose delivery stream to which the logs should be delivered.
-  LogDeliveryConfigurationLogConfigurationFirehoseConfiguration({
+  const LogDeliveryConfigurationLogConfigurationFirehoseConfiguration({
     this.streamArn,
   });
 

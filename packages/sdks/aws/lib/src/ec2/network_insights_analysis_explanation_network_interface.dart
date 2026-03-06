@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationNetworkInterface {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationNetworkInterface({
+  const NetworkInsightsAnalysisExplanationNetworkInterface({
     this.arn,
     this.id,
     this.name,

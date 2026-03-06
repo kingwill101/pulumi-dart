@@ -16,7 +16,7 @@ class GetBrowserDlpRuleResult {
   /// [group] The group to which this Rule should be applied to.
   /// [name] Unique resource name. The name is ignored when creating BrowserDlpRule.
   /// [ruleSetting] The policy settings to apply.
-  GetBrowserDlpRuleResult({
+  const GetBrowserDlpRuleResult({
     required this.group,
     required this.name,
     required this.ruleSetting,

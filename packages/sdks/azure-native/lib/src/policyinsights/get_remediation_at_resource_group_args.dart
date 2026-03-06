@@ -15,7 +15,7 @@ class GetRemediationAtResourceGroupArgs {
   /// Creates a new [GetRemediationAtResourceGroupArgs].
   /// [remediationName] The name of the remediation.
   /// [resourceGroupName] Resource group name.
-  GetRemediationAtResourceGroupArgs({
+  const GetRemediationAtResourceGroupArgs({
     required this.remediationName,
     required this.resourceGroupName,
   });

@@ -9,7 +9,7 @@ class ResourceModelWithAllowedPropertySetIdentity {
 
   /// Creates a new [ResourceModelWithAllowedPropertySetIdentity].
   /// [type] The identity type.
-  ResourceModelWithAllowedPropertySetIdentity({
+  const ResourceModelWithAllowedPropertySetIdentity({
     this.type,
   });
 

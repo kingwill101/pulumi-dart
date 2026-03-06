@@ -19,7 +19,7 @@ class GetLineageEventArgs {
   /// [processId] Required.
   /// [project] Optional.
   /// [runId] Required.
-  GetLineageEventArgs({
+  const GetLineageEventArgs({
     required this.lineageEventId,
     required this.location,
     required this.processId,

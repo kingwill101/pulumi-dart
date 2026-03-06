@@ -15,7 +15,7 @@ class ReservationAffinityResponseDataprocV1beta2 {
   /// [consumeReservationType] Optional. Type of reservation to consume
   /// [key] Optional. Corresponds to the label key of reservation resource.
   /// [values] Optional. Corresponds to the label values of reservation resource.
-  ReservationAffinityResponseDataprocV1beta2({
+  const ReservationAffinityResponseDataprocV1beta2({
     required this.consumeReservationType,
     required this.key,
     required this.values,

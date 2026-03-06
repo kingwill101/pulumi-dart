@@ -310,7 +310,7 @@ class InstanceArgs {
   /// [upgradeStorageConfig] Whether to upgrade the storage file system configuration on the read replica.
   /// [username] (Required unless a `snapshot_identifier` or `replicate_source_db`
   /// [vpcSecurityGroupIds] List of VPC security groups to
-  InstanceArgs({
+  const InstanceArgs({
     this.allocatedStorage,
     this.allowMajorVersionUpgrade,
     this.applyImmediately,

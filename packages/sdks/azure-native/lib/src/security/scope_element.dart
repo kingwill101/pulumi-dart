@@ -9,7 +9,7 @@ class ScopeElement {
 
   /// Creates a new [ScopeElement].
   /// [field] The alert entity type to suppress by.
-  ScopeElement({
+  const ScopeElement({
     this.field,
   });
 

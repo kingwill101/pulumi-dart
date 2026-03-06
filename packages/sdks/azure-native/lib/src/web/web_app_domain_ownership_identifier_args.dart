@@ -24,7 +24,7 @@ class WebAppDomainOwnershipIdentifierArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [value] String representation of the identity.
-  WebAppDomainOwnershipIdentifierArgs({
+  const WebAppDomainOwnershipIdentifierArgs({
     this.domainOwnershipIdentifierName,
     this.kind,
     required this.name,

@@ -12,7 +12,7 @@ class VirtualMachineScaleSetHardwareProfile {
 
   /// Creates a new [VirtualMachineScaleSetHardwareProfile].
   /// [vmSizeProperties] Specifies the properties for customizing the size of the virtual machine.
-  VirtualMachineScaleSetHardwareProfile({
+  const VirtualMachineScaleSetHardwareProfile({
     this.vmSizeProperties,
   });
 

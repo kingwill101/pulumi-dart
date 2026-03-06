@@ -12,7 +12,7 @@ class ScalingPlanApplicationSource {
   /// Creates a new [ScalingPlanApplicationSource].
   /// [cloudformationStackArn] ARN of a AWS CloudFormation stack.
   /// [tagFilters] Set of tags.
-  ScalingPlanApplicationSource({
+  const ScalingPlanApplicationSource({
     this.cloudformationStackArn,
     this.tagFilters,
   });

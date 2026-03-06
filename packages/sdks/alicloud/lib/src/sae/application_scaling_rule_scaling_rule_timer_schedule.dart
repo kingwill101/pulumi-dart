@@ -15,7 +15,7 @@ class ApplicationScalingRuleScalingRuleTimerSchedule {
   /// [maxReplicas] Optional.
   /// [minReplicas] Optional.
   /// [targetReplicas] This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
-  ApplicationScalingRuleScalingRuleTimerSchedule({
+  const ApplicationScalingRuleScalingRuleTimerSchedule({
     this.atTime,
     this.maxReplicas,
     this.minReplicas,

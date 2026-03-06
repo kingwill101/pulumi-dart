@@ -53,7 +53,7 @@ class ApiDiagnosticArgs {
   /// [sampling] Sampling settings for Diagnostic.
   /// [serviceName] The name of the API Management service.
   /// [verbosity] The verbosity level applied to traces emitted by trace policies.
-  ApiDiagnosticArgs({
+  const ApiDiagnosticArgs({
     this.alwaysLog,
     required this.apiId,
     this.backend,

@@ -9,7 +9,7 @@ class LinkedServiceAzureBlobStorageKeyVaultSasToken {
   /// Creates a new [LinkedServiceAzureBlobStorageKeyVaultSasToken].
   /// [linkedServiceName] Required.
   /// [secretName] Required.
-  LinkedServiceAzureBlobStorageKeyVaultSasToken({
+  const LinkedServiceAzureBlobStorageKeyVaultSasToken({
     required this.linkedServiceName,
     required this.secretName,
   });

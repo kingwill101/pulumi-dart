@@ -15,7 +15,7 @@ class GetStandardArgs {
   /// Creates a new [GetStandardArgs].
   /// [name] The name of the Logic App.
   /// [resourceGroupName] The name of the Resource Group where the Logic App exists.
-  GetStandardArgs({
+  const GetStandardArgs({
     required this.name,
     required this.resourceGroupName,
   });

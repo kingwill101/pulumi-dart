@@ -17,7 +17,7 @@ class GetKeyArgs {
   /// Creates a new [GetKeyArgs].
   /// [keyVaultId] Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
   /// [name] Specifies the name of the Key Vault Key.
-  GetKeyArgs({
+  const GetKeyArgs({
     required this.keyVaultId,
     required this.name,
   });

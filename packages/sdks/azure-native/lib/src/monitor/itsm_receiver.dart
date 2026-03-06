@@ -21,7 +21,7 @@ class ItsmReceiver {
   /// [region] Region in which workspace resides. Supported values:'centralindia','japaneast','southeastasia','australiasoutheast','uksouth','westcentralus','canadacentral','eastus','westeurope'
   /// [ticketConfiguration] JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
   /// [workspaceId] OMS LA instance identifier.
-  ItsmReceiver({
+  const ItsmReceiver({
     required this.connectionId,
     required this.name,
     required this.region,

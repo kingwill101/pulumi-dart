@@ -29,7 +29,7 @@ class NamespaceArgs {
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.identity,
     this.location,
     this.messaging,

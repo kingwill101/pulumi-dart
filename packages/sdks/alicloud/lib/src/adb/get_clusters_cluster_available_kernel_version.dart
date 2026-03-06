@@ -11,7 +11,7 @@ class GetClustersClusterAvailableKernelVersion {
   /// [expireDate] Required.
   /// [kernelVersion] Required.
   /// [releaseDate] Required.
-  GetClustersClusterAvailableKernelVersion({
+  const GetClustersClusterAvailableKernelVersion({
     required this.expireDate,
     required this.kernelVersion,
     required this.releaseDate,

@@ -8,7 +8,7 @@ class MembershipPaymentConfigurationQueryCompute {
 
   /// Creates a new [MembershipPaymentConfigurationQueryCompute].
   /// [isResponsible] Indicates whether the collaboration member has accepted to pay for query compute costs.
-  MembershipPaymentConfigurationQueryCompute({
+  const MembershipPaymentConfigurationQueryCompute({
     required this.isResponsible,
   });
 

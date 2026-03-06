@@ -18,7 +18,7 @@ class GetVpcPeeringArgs {
   /// [id] The unique identifier of an existing VPC Peering.
   /// [name] The name of an existing VPC Peering.
   /// [vpcIds] The list of VPC IDs involved in the peering.
-  GetVpcPeeringArgs({
+  const GetVpcPeeringArgs({
     this.id,
     this.name,
     this.vpcIds,

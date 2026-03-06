@@ -15,7 +15,7 @@ class ConnectorErrorDefinitionResponse {
   /// [code] Service specific error code which serves as the substatus for the HTTP error code.
   /// [details] Internal error details.
   /// [message] Description of the error.
-  ConnectorErrorDefinitionResponse({
+  const ConnectorErrorDefinitionResponse({
     required this.code,
     required this.details,
     required this.message,

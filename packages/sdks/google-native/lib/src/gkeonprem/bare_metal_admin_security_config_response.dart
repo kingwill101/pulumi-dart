@@ -10,7 +10,7 @@ class BareMetalAdminSecurityConfigResponse {
 
   /// Creates a new [BareMetalAdminSecurityConfigResponse].
   /// [authorization] Configures user access to the admin cluster.
-  BareMetalAdminSecurityConfigResponse({
+  const BareMetalAdminSecurityConfigResponse({
     required this.authorization,
   });
 

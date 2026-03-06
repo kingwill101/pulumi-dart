@@ -15,7 +15,7 @@ class LabelDescriptorResponse {
   /// [description] A human-readable description for the label.
   /// [key] The label key.
   /// [valueType] The type of data that can be assigned to the label.
-  LabelDescriptorResponse({
+  const LabelDescriptorResponse({
     required this.description,
     required this.key,
     required this.valueType,

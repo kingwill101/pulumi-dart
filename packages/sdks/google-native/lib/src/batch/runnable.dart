@@ -40,7 +40,7 @@ class Runnable {
   /// [labels] Labels for this Runnable.
   /// [script] Script runnable.
   /// [timeout] Timeout for this Runnable.
-  Runnable({
+  const Runnable({
     this.alwaysRun,
     this.background,
     this.barrier,

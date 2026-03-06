@@ -9,7 +9,7 @@ class EventSourceMappingFilterCriteria {
 
   /// Creates a new [EventSourceMappingFilterCriteria].
   /// [filters] Set of up to 5 filter. If an event satisfies at least one, Lambda sends the event to the function or adds it to the next batch. See below.
-  EventSourceMappingFilterCriteria({
+  const EventSourceMappingFilterCriteria({
     this.filters,
   });
 

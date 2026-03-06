@@ -34,7 +34,7 @@ class GetTopicsResult {
   /// [topic] The name of the topic.
   /// [topics] A list of topics. Each element contains the following attributes:
   /// [totalCount] Required.
-  GetTopicsResult({
+  const GetTopicsResult({
     required this.id,
     required this.ids,
     required this.instanceId,

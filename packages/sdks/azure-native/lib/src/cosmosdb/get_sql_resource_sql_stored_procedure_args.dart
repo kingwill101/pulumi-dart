@@ -24,7 +24,7 @@ class GetSqlResourceSqlStoredProcedureArgs {
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storedProcedureName] Cosmos DB storedProcedure name.
-  GetSqlResourceSqlStoredProcedureArgs({
+  const GetSqlResourceSqlStoredProcedureArgs({
     required this.accountName,
     required this.containerName,
     required this.databaseName,

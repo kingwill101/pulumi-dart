@@ -15,7 +15,7 @@ class WafRuleConfigAppSdk {
   /// [customSign] Custom fields used for mobile app signature validation. See `custom_sign` below.
   /// [customSignStatus] Indicates whether the custom signature field validation is enabled.
   /// [featureAbnormals] Detected abnormal behaviors of the application.
-  WafRuleConfigAppSdk({
+  const WafRuleConfigAppSdk({
     this.customSign,
     this.customSignStatus,
     this.featureAbnormals,

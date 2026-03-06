@@ -69,7 +69,7 @@ class AgentcoreAgentRuntimeState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [workloadIdentityDetails] Workload identity details for the agent runtime. See `workload_identity_details` below.
-  AgentcoreAgentRuntimeState({
+  const AgentcoreAgentRuntimeState({
     this.agentRuntimeArn,
     this.agentRuntimeArtifact,
     this.agentRuntimeId,

@@ -36,7 +36,7 @@ class V2OrganizationNotificationConfigState {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [serviceAccount] The service account that needs "pubsub.topics.publish" permission to
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  V2OrganizationNotificationConfigState({
+  const V2OrganizationNotificationConfigState({
     this.configId,
     this.description,
     this.location,

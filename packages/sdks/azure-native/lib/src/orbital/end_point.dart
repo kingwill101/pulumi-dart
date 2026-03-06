@@ -18,7 +18,7 @@ class EndPoint {
   /// [ipAddress] IP Address (IPv4).
   /// [port] TCP port to listen on to receive data.
   /// [protocol] Protocol either UDP or TCP.
-  EndPoint({
+  const EndPoint({
     required this.endPointName,
     required this.ipAddress,
     required this.port,

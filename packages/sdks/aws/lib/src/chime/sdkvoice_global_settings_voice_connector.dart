@@ -8,7 +8,7 @@ class SdkvoiceGlobalSettingsVoiceConnector {
 
   /// Creates a new [SdkvoiceGlobalSettingsVoiceConnector].
   /// [cdrBucket] The S3 bucket that stores the Voice Connector's call detail records.
-  SdkvoiceGlobalSettingsVoiceConnector({
+  const SdkvoiceGlobalSettingsVoiceConnector({
     this.cdrBucket,
   });
 

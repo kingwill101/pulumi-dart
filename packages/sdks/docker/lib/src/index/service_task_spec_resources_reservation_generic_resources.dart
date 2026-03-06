@@ -11,7 +11,7 @@ class ServiceTaskSpecResourcesReservationGenericResources {
   /// Creates a new [ServiceTaskSpecResourcesReservationGenericResources].
   /// [discreteResourcesSpecs] The Integer resources
   /// [namedResourcesSpecs] The String resources
-  ServiceTaskSpecResourcesReservationGenericResources({
+  const ServiceTaskSpecResourcesReservationGenericResources({
     this.discreteResourcesSpecs,
     this.namedResourcesSpecs,
   });

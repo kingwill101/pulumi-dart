@@ -12,7 +12,7 @@ class DomainDevicesControllerUsb {
   /// Creates a new [DomainDevicesControllerUsb].
   /// [master] Specifies the master configuration for the USB controller device.
   /// [port] Configures the number of ports available on the USB controller device.
-  DomainDevicesControllerUsb({
+  const DomainDevicesControllerUsb({
     this.master,
     this.port,
   });

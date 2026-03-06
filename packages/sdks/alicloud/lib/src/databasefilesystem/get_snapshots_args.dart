@@ -21,7 +21,7 @@ class GetSnapshotsArgs {
   /// [nameRegex] A regex string to filter results by Snapshot name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
-  GetSnapshotsArgs({
+  const GetSnapshotsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

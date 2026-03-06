@@ -15,7 +15,7 @@ class SloWindowsBasedSliMetricMeanInRangeRange {
   /// Creates a new [SloWindowsBasedSliMetricMeanInRangeRange].
   /// [max] max value for the range (inclusive). If not given,
   /// [min] Min value for the range (inclusive). If not given,
-  SloWindowsBasedSliMetricMeanInRangeRange({
+  const SloWindowsBasedSliMetricMeanInRangeRange({
     this.max,
     this.min,
   });

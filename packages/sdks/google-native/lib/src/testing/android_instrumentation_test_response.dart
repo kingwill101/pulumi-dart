@@ -36,7 +36,7 @@ class AndroidInstrumentationTestResponse {
   /// [testPackageId] The java package for the test to be executed. The default value is determined by examining the application's manifest.
   /// [testRunnerClass] The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
   /// [testTargets] Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
-  AndroidInstrumentationTestResponse({
+  const AndroidInstrumentationTestResponse({
     required this.appApk,
     required this.appBundle,
     required this.appPackageId,

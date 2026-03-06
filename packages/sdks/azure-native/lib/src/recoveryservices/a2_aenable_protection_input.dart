@@ -74,7 +74,7 @@ class A2AEnableProtectionInput {
   /// [recoveryVirtualMachineScaleSetId] The virtual machine scale set Id.
   /// [vmDisks] The list of vm disk details.
   /// [vmManagedDisks] The list of vm managed disk details.
-  A2AEnableProtectionInput({
+  const A2AEnableProtectionInput({
     this.autoProtectionOfDataDisk,
     this.diskEncryptionInfo,
     required this.fabricObjectId,

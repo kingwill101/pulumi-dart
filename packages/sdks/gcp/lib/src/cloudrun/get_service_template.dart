@@ -19,7 +19,7 @@ class GetServiceTemplate {
   /// Creates a new [GetServiceTemplate].
   /// [metadatas] Optional metadata for this Revision, including labels and annotations.
   /// [specs] RevisionSpec holds the desired state of the Revision (from the client).
-  GetServiceTemplate({
+  const GetServiceTemplate({
     required this.metadatas,
     required this.specs,
   });

@@ -9,7 +9,7 @@ class BareMetalAdminOsEnvironmentConfig {
 
   /// Creates a new [BareMetalAdminOsEnvironmentConfig].
   /// [packageRepoExcluded] Whether the package repo should be added when initializing bare metal machines.
-  BareMetalAdminOsEnvironmentConfig({
+  const BareMetalAdminOsEnvironmentConfig({
     this.packageRepoExcluded,
   });
 

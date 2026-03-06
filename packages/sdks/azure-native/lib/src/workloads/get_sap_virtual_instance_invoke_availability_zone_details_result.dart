@@ -10,7 +10,7 @@ class GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult {
 
   /// Creates a new [GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult].
   /// [availabilityZonePairs] Gets the list of availability zone pairs.
-  GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult({
+  const GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult({
     this.availabilityZonePairs,
   });
 

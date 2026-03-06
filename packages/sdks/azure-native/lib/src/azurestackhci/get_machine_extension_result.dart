@@ -52,7 +52,7 @@ class GetMachineExtensionResult {
   /// [tags] The Resource tags.
   /// [type] The type of the resource.
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  GetMachineExtensionResult({
+  const GetMachineExtensionResult({
     this.autoUpgradeMinorVersion,
     required this.azureApiVersion,
     this.forceUpdateTag,

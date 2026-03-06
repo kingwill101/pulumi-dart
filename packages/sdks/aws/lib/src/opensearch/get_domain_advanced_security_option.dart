@@ -13,7 +13,7 @@ class GetDomainAdvancedSecurityOption {
   /// [anonymousAuthEnabled] Required.
   /// [enabled] Enabled disabled toggle for off-peak update window
   /// [internalUserDatabaseEnabled] Whether the internal user database is enabled.
-  GetDomainAdvancedSecurityOption({
+  const GetDomainAdvancedSecurityOption({
     required this.anonymousAuthEnabled,
     required this.enabled,
     required this.internalUserDatabaseEnabled,

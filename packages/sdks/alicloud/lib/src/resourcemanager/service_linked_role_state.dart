@@ -24,7 +24,7 @@ class ServiceLinkedRoleState {
   /// [roleId] The ID of the role.
   /// [roleName] The name of the role.
   /// [serviceName] The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
-  ServiceLinkedRoleState({
+  const ServiceLinkedRoleState({
     this.arn,
     this.customSuffix,
     this.description,

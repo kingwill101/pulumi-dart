@@ -99,7 +99,7 @@ class MetastoreServiceArgs {
   /// [tags] A map of resource manager tags.
   /// [telemetryConfig] The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
   /// [tier] The tier of the service.
-  MetastoreServiceArgs({
+  const MetastoreServiceArgs({
     this.databaseType,
     this.deletionProtection,
     this.encryptionConfig,

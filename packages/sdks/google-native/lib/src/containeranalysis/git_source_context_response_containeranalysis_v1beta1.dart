@@ -12,7 +12,7 @@ class GitSourceContextResponseContaineranalysisV1beta1 {
   /// Creates a new [GitSourceContextResponseContaineranalysisV1beta1].
   /// [revisionId] Git commit hash.
   /// [url] Git repository URL.
-  GitSourceContextResponseContaineranalysisV1beta1({
+  const GitSourceContextResponseContaineranalysisV1beta1({
     required this.revisionId,
     required this.url,
   });

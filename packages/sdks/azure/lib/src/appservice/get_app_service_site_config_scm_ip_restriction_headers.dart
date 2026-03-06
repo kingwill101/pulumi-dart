@@ -13,7 +13,7 @@ class GetAppServiceSiteConfigScmIpRestrictionHeaders {
   /// [xFdHealthProbes] Required.
   /// [xForwardedFors] Required.
   /// [xForwardedHosts] Required.
-  GetAppServiceSiteConfigScmIpRestrictionHeaders({
+  const GetAppServiceSiteConfigScmIpRestrictionHeaders({
     required this.xAzureFdids,
     required this.xFdHealthProbes,
     required this.xForwardedFors,

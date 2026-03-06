@@ -14,7 +14,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationD
 
   /// Creates a new [DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail].
   /// [type] The type of the database backup destination.
-  DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail({
+  const DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail({
     this.type,
   });
 

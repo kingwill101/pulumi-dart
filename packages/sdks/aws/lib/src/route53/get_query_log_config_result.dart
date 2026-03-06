@@ -34,7 +34,7 @@ class GetQueryLogConfigResult {
   /// [resolverQueryLogConfigId] Optional.
   /// [shareStatus] An indication of whether the query logging configuration is shared with other AWS accounts or was shared with the current account by another AWS account.
   /// [tags] Map of tags to assign to the service.
-  GetQueryLogConfigResult({
+  const GetQueryLogConfigResult({
     required this.arn,
     required this.destinationArn,
     this.filters,

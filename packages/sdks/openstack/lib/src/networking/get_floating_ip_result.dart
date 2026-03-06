@@ -37,7 +37,7 @@ class GetFloatingIpResult {
   /// [status] Optional.
   /// [tags] Optional.
   /// [tenantId] Optional.
-  GetFloatingIpResult({
+  const GetFloatingIpResult({
     this.address,
     required this.allTags,
     this.description,

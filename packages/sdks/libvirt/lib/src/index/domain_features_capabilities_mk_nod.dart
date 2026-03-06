@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesMkNod {
 
   /// Creates a new [DomainFeaturesCapabilitiesMkNod].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesMkNod({
+  const DomainFeaturesCapabilitiesMkNod({
     this.state,
   });
 

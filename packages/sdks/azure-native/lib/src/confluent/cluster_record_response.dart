@@ -27,7 +27,7 @@ class ClusterRecordResponse {
   /// [metadata] Metadata of the record
   /// [spec] Specification of the cluster
   /// [status] Specification of the cluster
-  ClusterRecordResponse({
+  const ClusterRecordResponse({
     this.displayName,
     this.id,
     this.kind,

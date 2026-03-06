@@ -16,7 +16,7 @@ class ScheduledExecutionRecordResponse {
   /// [errorStatus] The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
   /// [executionTime] The timestamp of this execution attempt.
   /// [workflowInvocation] The name of the created workflow invocation, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/workflowInvocations/*`.
-  ScheduledExecutionRecordResponse({
+  const ScheduledExecutionRecordResponse({
     required this.errorStatus,
     required this.executionTime,
     required this.workflowInvocation,

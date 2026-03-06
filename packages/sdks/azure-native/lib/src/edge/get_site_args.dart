@@ -15,7 +15,7 @@ class GetSiteArgs {
   /// Creates a new [GetSiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of the Site
-  GetSiteArgs({
+  const GetSiteArgs({
     required this.resourceGroupName,
     required this.siteName,
   });

@@ -11,7 +11,7 @@ class CompliancePackConfigRuleConfigRuleParameter {
   /// Creates a new [CompliancePackConfigRuleConfigRuleParameter].
   /// [parameterName] The parameter name.
   /// [parameterValue] The parameter value.
-  CompliancePackConfigRuleConfigRuleParameter({
+  const CompliancePackConfigRuleConfigRuleParameter({
     this.parameterName,
     this.parameterValue,
   });

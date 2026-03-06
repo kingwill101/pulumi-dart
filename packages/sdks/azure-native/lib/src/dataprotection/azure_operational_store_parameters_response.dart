@@ -16,7 +16,7 @@ class AzureOperationalStoreParametersResponse {
   /// [dataStoreType] type of datastore; Operational/Vault/Archive
   /// [objectType] Type of the specific object - used for deserializing
   /// [resourceGroupId] Gets or sets the Snapshot Resource Group Uri.
-  AzureOperationalStoreParametersResponse({
+  const AzureOperationalStoreParametersResponse({
     required this.dataStoreType,
     required this.objectType,
     this.resourceGroupId,

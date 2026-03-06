@@ -24,7 +24,7 @@ class BatchEndpoint {
   /// [description] Description of the inference endpoint.
   /// [keys] EndpointAuthKeys to set initially on an Endpoint.
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
-  BatchEndpoint({
+  const BatchEndpoint({
     required this.authMode,
     this.defaults,
     this.description,

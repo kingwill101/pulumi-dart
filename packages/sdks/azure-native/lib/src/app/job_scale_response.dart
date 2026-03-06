@@ -19,7 +19,7 @@ class JobScaleResponse {
   /// [minExecutions] Minimum number of job executions that are created for a trigger, default 0
   /// [pollingInterval] Interval to check each event source in seconds. Defaults to 30s
   /// [rules] Scaling rules.
-  JobScaleResponse({
+  const JobScaleResponse({
     this.maxExecutions,
     this.minExecutions,
     this.pollingInterval,

@@ -19,7 +19,7 @@ class AssignmentReportResourceResponse {
   /// [properties] Properties of a guest configuration assignment resource.
   /// [reasons] Compliance reason and reason code for a resource.
   /// [resourceId] Name of the guest configuration assignment resource setting.
-  AssignmentReportResourceResponse({
+  const AssignmentReportResourceResponse({
     required this.complianceStatus,
     required this.properties,
     this.reasons,

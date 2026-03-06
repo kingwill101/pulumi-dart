@@ -26,7 +26,7 @@ class AzureActiveDirectoryResponse {
   /// [login] The configuration settings of the Azure Active Directory login flow.
   /// [registration] The configuration settings of the Azure Active Directory app registration.
   /// [validation] The configuration settings of the Azure Active Directory token validation flow.
-  AzureActiveDirectoryResponse({
+  const AzureActiveDirectoryResponse({
     this.enabled,
     this.isAutoProvisioned,
     this.login,

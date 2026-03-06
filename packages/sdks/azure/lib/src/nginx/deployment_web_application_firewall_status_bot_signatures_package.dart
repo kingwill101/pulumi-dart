@@ -11,7 +11,7 @@ class DeploymentWebApplicationFirewallStatusBotSignaturesPackage {
   /// Creates a new [DeploymentWebApplicationFirewallStatusBotSignaturesPackage].
   /// [revisionDatetime] The revision date and time of the threat campaigns package.
   /// [version] The version of the threat campaigns package.
-  DeploymentWebApplicationFirewallStatusBotSignaturesPackage({
+  const DeploymentWebApplicationFirewallStatusBotSignaturesPackage({
     this.revisionDatetime,
     this.version,
   });

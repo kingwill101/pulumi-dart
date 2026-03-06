@@ -29,7 +29,7 @@ class GetFolderCloudresourcemanagerV3Result {
   /// [parent] The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
   /// [state] The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
   /// [updateTime] Timestamp when the folder was last modified.
-  GetFolderCloudresourcemanagerV3Result({
+  const GetFolderCloudresourcemanagerV3Result({
     required this.createTime,
     required this.deleteTime,
     required this.displayName,

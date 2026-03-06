@@ -31,7 +31,7 @@ class DomainDevicesRedirDev {
   /// [bus] Defines the bus type for the redirected device, determining how it interacts with the guest's bus architecture.
   /// [protocol] Sets the protocol type for the EGD backend.
   /// [source] Defines the source settings for the EGD backend.
-  DomainDevicesRedirDev({
+  const DomainDevicesRedirDev({
     this.acpi,
     this.address,
     this.alias,

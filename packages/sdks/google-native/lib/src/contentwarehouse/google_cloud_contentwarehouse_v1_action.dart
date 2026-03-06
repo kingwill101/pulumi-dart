@@ -37,7 +37,7 @@ class GoogleCloudContentwarehouseV1Action {
   /// [deleteDocumentAction] Action deleting the document.
   /// [publishToPubSub] Action publish to Pub/Sub operation.
   /// [removeFromFolderAction] Action removing a document from a folder.
-  GoogleCloudContentwarehouseV1Action({
+  const GoogleCloudContentwarehouseV1Action({
     this.accessControl,
     this.actionId,
     this.addToFolder,

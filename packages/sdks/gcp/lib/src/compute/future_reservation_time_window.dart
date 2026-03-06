@@ -16,7 +16,7 @@ class FutureReservationTimeWindow {
   /// [duration] Duration of the future reservation
   /// [endTime] End time of the future reservation in RFC3339 format.
   /// [startTime] Start time of the future reservation in RFC3339 format.
-  FutureReservationTimeWindow({
+  const FutureReservationTimeWindow({
     this.duration,
     this.endTime,
     required this.startTime,

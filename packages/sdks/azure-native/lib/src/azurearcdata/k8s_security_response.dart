@@ -20,7 +20,7 @@ class K8sSecurityResponse {
   /// [adminLoginSecret] Admin login secret key
   /// [serviceCertificateSecret] Service certificate secret used
   /// [transparentDataEncryption] Transparent data encryption information.
-  K8sSecurityResponse({
+  const K8sSecurityResponse({
     this.activeDirectory,
     this.adminLoginSecret,
     this.serviceCertificateSecret,

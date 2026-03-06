@@ -133,7 +133,7 @@ class FunctionState {
   /// [versionId] The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
   /// [vpcConnector] The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
   /// [vpcConnectorEgressSettings] The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
-  FunctionState({
+  const FunctionState({
     this.automaticUpdatePolicy,
     this.availableMemoryMb,
     this.buildEnvironmentVariables,

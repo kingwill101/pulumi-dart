@@ -11,7 +11,7 @@ class GetPatchBaselineGlobalFilter {
   /// Creates a new [GetPatchBaselineGlobalFilter].
   /// [key] Key for the filter.
   /// [values] Value for the filter.
-  GetPatchBaselineGlobalFilter({
+  const GetPatchBaselineGlobalFilter({
     required this.key,
     required this.values,
   });

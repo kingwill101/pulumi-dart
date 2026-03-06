@@ -14,7 +14,7 @@ class GetReservationResourceStatusHealthInfo {
   /// [degradedBlockCount] The number of reservation blocks that are degraded.
   /// [healthStatus] The health status of the reservation.
   /// [healthyBlockCount] The number of reservation blocks that are healthy.
-  GetReservationResourceStatusHealthInfo({
+  const GetReservationResourceStatusHealthInfo({
     required this.degradedBlockCount,
     required this.healthStatus,
     required this.healthyBlockCount,

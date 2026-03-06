@@ -19,7 +19,7 @@ class HybridUseBenefitArgs {
   /// [planId] This is a unique identifier for a plan. Should be a guid.
   /// [scope] The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
   /// [sku] Hybrid use benefit SKU
-  HybridUseBenefitArgs({
+  const HybridUseBenefitArgs({
     this.planId,
     required this.scope,
     required this.sku,

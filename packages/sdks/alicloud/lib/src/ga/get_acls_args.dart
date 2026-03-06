@@ -27,7 +27,7 @@ class GetAclsArgs {
   /// [nameRegex] A regex string to filter results by Acl name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
-  GetAclsArgs({
+  const GetAclsArgs({
     this.aclName,
     this.enableDetails,
     this.ids,

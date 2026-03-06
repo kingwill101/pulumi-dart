@@ -15,7 +15,7 @@ class ResourceIdentityResponse {
   /// [principalId] Service Principal Id backing the Msi
   /// [tenantId] Home Tenant Id
   /// [type] Identity type
-  ResourceIdentityResponse({
+  const ResourceIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

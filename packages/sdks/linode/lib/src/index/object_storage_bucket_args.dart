@@ -56,7 +56,7 @@ class ObjectStorageBucketArgs {
   /// [s3Endpoint] The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
   /// [secretKey] The secret key to authenticate with. If not specified with the resource, its value can be
   /// [versioning] Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
-  ObjectStorageBucketArgs({
+  const ObjectStorageBucketArgs({
     this.accessKey,
     this.acl,
     this.cert,

@@ -13,7 +13,7 @@ class AutoscaleSettingProfileRule {
   /// Creates a new [AutoscaleSettingProfileRule].
   /// [metricTrigger] A `metric_trigger` block as defined below.
   /// [scaleAction] A `scale_action` block as defined below.
-  AutoscaleSettingProfileRule({
+  const AutoscaleSettingProfileRule({
     required this.metricTrigger,
     required this.scaleAction,
   });

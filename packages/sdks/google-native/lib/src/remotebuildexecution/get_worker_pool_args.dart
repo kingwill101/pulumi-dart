@@ -15,7 +15,7 @@ class GetWorkerPoolArgs {
   /// [instanceId] Required.
   /// [project] Optional.
   /// [workerpoolId] Required.
-  GetWorkerPoolArgs({
+  const GetWorkerPoolArgs({
     required this.instanceId,
     this.project,
     required this.workerpoolId,

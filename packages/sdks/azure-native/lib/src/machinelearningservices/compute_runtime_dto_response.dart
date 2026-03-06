@@ -8,7 +8,7 @@ class ComputeRuntimeDtoResponse {
 
   /// Creates a new [ComputeRuntimeDtoResponse].
   /// [sparkRuntimeVersion] Optional.
-  ComputeRuntimeDtoResponse({
+  const ComputeRuntimeDtoResponse({
     this.sparkRuntimeVersion,
   });
 

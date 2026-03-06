@@ -12,7 +12,7 @@ class ListenerDefaultAction {
   /// Creates a new [ListenerDefaultAction].
   /// [forwardGroupConfig] Forwarding Action Configurations See `forward_group_config` below.
   /// [type] The action type. Value: ForwardGroup, indicating forwarding to the server group.
-  ListenerDefaultAction({
+  const ListenerDefaultAction({
     this.forwardGroupConfig,
     required this.type,
   });

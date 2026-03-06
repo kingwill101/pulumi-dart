@@ -26,7 +26,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
   /// [backendService] The full or partial URL to the default BackendService resource. Before forwarding the
   /// [headerAction] Specifies changes to request and response headers that need to take effect for
   /// [weight] Specifies the fraction of traffic sent to backendService, computed as
-  URLMapPathMatcherPathRuleRouteActionWeightedBackendService({
+  const URLMapPathMatcherPathRuleRouteActionWeightedBackendService({
     required this.backendService,
     this.headerAction,
     required this.weight,

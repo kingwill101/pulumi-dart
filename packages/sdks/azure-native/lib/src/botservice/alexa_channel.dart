@@ -20,7 +20,7 @@ class AlexaChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Alexa channel resource
-  AlexaChannel({
+  const AlexaChannel({
     required this.channelName,
     this.etag,
     this.location,

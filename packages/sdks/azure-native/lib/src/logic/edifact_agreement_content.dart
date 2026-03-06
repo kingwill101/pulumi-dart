@@ -13,7 +13,7 @@ class EdifactAgreementContent {
   /// Creates a new [EdifactAgreementContent].
   /// [receiveAgreement] The EDIFACT one-way receive agreement.
   /// [sendAgreement] The EDIFACT one-way send agreement.
-  EdifactAgreementContent({
+  const EdifactAgreementContent({
     required this.receiveAgreement,
     required this.sendAgreement,
   });

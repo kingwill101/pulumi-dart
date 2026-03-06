@@ -27,7 +27,7 @@ class SourceTriggerDescriptorResponse {
   /// [providerType] The source control provider type.
   /// [pullRequestId] The unique ID that identifies pull request.
   /// [repositoryUrl] The repository URL.
-  SourceTriggerDescriptorResponse({
+  const SourceTriggerDescriptorResponse({
     this.branchName,
     this.commitId,
     this.eventType,

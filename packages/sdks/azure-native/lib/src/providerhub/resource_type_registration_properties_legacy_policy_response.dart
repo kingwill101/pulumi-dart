@@ -11,7 +11,7 @@ class ResourceTypeRegistrationPropertiesLegacyPolicyResponse {
   /// Creates a new [ResourceTypeRegistrationPropertiesLegacyPolicyResponse].
   /// [disallowedConditions] Optional.
   /// [disallowedLegacyOperations] Optional.
-  ResourceTypeRegistrationPropertiesLegacyPolicyResponse({
+  const ResourceTypeRegistrationPropertiesLegacyPolicyResponse({
     this.disallowedConditions,
     this.disallowedLegacyOperations,
   });

@@ -16,7 +16,7 @@ class MccCacheNodeTlsCertificatePropertiesResponse {
   /// [cacheNodeId] Mcc cache node resource Id.
   /// [customerId] Mcc customer resource Id.
   /// [tlsCertificateHistory] Cache node resource tls certificate history details.
-  MccCacheNodeTlsCertificatePropertiesResponse({
+  const MccCacheNodeTlsCertificatePropertiesResponse({
     required this.cacheNodeId,
     required this.customerId,
     this.tlsCertificateHistory,

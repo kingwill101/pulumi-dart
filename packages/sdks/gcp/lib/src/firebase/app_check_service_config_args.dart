@@ -22,7 +22,7 @@ class AppCheckServiceConfigArgs {
   /// [enforcementMode] Optional.
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
-  AppCheckServiceConfigArgs({
+  const AppCheckServiceConfigArgs({
     this.enforcementMode,
     this.project,
     required this.serviceId,

@@ -23,7 +23,7 @@ class GetSharedResourcesResult {
   /// [resourceShareId] The resource share ID of resource manager.
   /// [resources] A list of Resource Manager Shared Resources. Each element contains the following attributes:
   /// [status] The status of shared resource.
-  GetSharedResourcesResult({
+  const GetSharedResourcesResult({
     required this.id,
     required this.ids,
     this.outputFile,

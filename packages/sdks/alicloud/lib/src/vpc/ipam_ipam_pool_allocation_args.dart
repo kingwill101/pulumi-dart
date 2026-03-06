@@ -28,7 +28,7 @@ class IpamIpamPoolAllocationArgs {
   /// [ipamPoolAllocationDescription] The description of the ipam pool alloctaion.
   /// [ipamPoolAllocationName] The name of the ipam pool allocation.
   /// [ipamPoolId] The ID of the IPAM Pool.
-  IpamIpamPoolAllocationArgs({
+  const IpamIpamPoolAllocationArgs({
     this.cidr,
     this.cidrMask,
     this.ipamPoolAllocationDescription,

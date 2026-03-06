@@ -44,7 +44,7 @@ class GetTypeProviderDeploymentmanagerV2betaResult {
   /// [operation] The Operation that most recently ran, or is currently running, on this type provider.
   /// [options] Options to apply when handling any resources in this service.
   /// [selfLink] Self link for the type provider.
-  GetTypeProviderDeploymentmanagerV2betaResult({
+  const GetTypeProviderDeploymentmanagerV2betaResult({
     required this.collectionOverrides,
     required this.credential,
     required this.customCertificateAuthorityRoots,

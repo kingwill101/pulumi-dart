@@ -23,7 +23,7 @@ class GetIotHubResourceEventHubConsumerGroupResult {
   /// [name] The Event Hub-compatible consumer group name.
   /// [properties] The tags.
   /// [type] the resource type.
-  GetIotHubResourceEventHubConsumerGroupResult({
+  const GetIotHubResourceEventHubConsumerGroupResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

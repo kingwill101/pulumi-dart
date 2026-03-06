@@ -17,7 +17,7 @@ class QueuedResourceStatusResponse {
   /// [failedData] Additional status detail for the FAILED state.
   /// [provisioningOperations] [Output only] Fully qualified URL of the provisioning GCE operation to track the provisioning along with provisioning errors. The referenced operation may not exist after having been deleted or expired.
   /// [queuingPolicy] Constraints for the time when the resource(s) start provisioning. Always exposed as absolute times.
-  QueuedResourceStatusResponse({
+  const QueuedResourceStatusResponse({
     required this.failedData,
     required this.provisioningOperations,
     required this.queuingPolicy,

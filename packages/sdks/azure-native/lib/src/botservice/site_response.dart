@@ -63,7 +63,7 @@ class SiteResponse {
   /// [siteName] Site name
   /// [tenantId] Tenant Id
   /// [trustedOrigins] List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
-  SiteResponse({
+  const SiteResponse({
     this.appId,
     this.eTag,
     this.isBlockUserUploadEnabled,

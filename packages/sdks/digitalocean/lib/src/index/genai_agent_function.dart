@@ -35,7 +35,7 @@ class GenaiAgentFunction {
   /// [updatedAt] Updated At timestamp for the Agent
   /// [url] Url of the Deployment
   /// [uuid] API Key value
-  GenaiAgentFunction({
+  const GenaiAgentFunction({
     this.apiKey,
     this.createdAt,
     this.description,

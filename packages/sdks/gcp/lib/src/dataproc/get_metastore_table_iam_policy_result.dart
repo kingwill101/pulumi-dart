@@ -25,7 +25,7 @@ class GetMetastoreTableIamPolicyResult {
   /// [project] Required.
   /// [serviceId] Required.
   /// [table] Required.
-  GetMetastoreTableIamPolicyResult({
+  const GetMetastoreTableIamPolicyResult({
     required this.databaseId,
     required this.etag,
     required this.id,

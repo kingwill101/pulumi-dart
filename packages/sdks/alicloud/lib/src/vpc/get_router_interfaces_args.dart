@@ -40,7 +40,7 @@ class GetRouterInterfacesArgs {
   /// [routerType] Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
   /// [specification] Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
   /// [status] Expected status. Valid values are `Active`, `Inactive` and `Idle`.
-  GetRouterInterfacesArgs({
+  const GetRouterInterfacesArgs({
     this.ids,
     this.nameRegex,
     this.oppositeInterfaceId,

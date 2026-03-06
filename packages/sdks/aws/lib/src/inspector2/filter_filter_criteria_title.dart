@@ -11,7 +11,7 @@ class FilterFilterCriteriaTitle {
   /// Creates a new [FilterFilterCriteriaTitle].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaTitle({
+  const FilterFilterCriteriaTitle({
     required this.comparison,
     required this.value,
   });

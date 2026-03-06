@@ -15,7 +15,7 @@ class GetForwardingRuleComputeV1Args {
   /// [forwardingRule] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetForwardingRuleComputeV1Args({
+  const GetForwardingRuleComputeV1Args({
     required this.forwardingRule,
     this.project,
     required this.region,

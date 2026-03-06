@@ -21,7 +21,7 @@ class DeploymentArgs {
   /// [description] Description for the deployment resource. Must be less than or equal to 1024 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  DeploymentArgs({
+  const DeploymentArgs({
     required this.apiId,
     this.description,
     this.region,

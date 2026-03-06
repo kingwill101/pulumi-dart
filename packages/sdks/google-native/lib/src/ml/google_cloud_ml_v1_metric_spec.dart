@@ -13,7 +13,7 @@ class GoogleCloudMlV1MetricSpec {
   /// Creates a new [GoogleCloudMlV1MetricSpec].
   /// [name] metric name.
   /// [target] Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
-  GoogleCloudMlV1MetricSpec({
+  const GoogleCloudMlV1MetricSpec({
     this.name,
     this.target,
   });

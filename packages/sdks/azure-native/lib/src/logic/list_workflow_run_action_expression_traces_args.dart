@@ -21,7 +21,7 @@ class ListWorkflowRunActionExpressionTracesArgs {
   /// [resourceGroupName] The resource group name.
   /// [runName] The workflow run name.
   /// [workflowName] The workflow name.
-  ListWorkflowRunActionExpressionTracesArgs({
+  const ListWorkflowRunActionExpressionTracesArgs({
     required this.actionName,
     required this.resourceGroupName,
     required this.runName,

@@ -15,7 +15,7 @@ class GetInstancesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instances] A list of Sddp Instances. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.instances,
     this.outputFile,

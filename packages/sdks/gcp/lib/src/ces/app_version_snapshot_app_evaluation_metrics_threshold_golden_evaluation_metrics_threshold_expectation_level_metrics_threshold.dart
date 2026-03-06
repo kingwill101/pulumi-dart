@@ -10,7 +10,7 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
 
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold].
   /// [toolInvocationParameterCorrectnessThreshold] (Output)
-  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold({
+  const AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold({
     this.toolInvocationParameterCorrectnessThreshold,
   });
 

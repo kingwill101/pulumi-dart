@@ -12,7 +12,7 @@ class ExportTimePeriodResponse {
   /// Creates a new [ExportTimePeriodResponse].
   /// [from] The start date for export data.
   /// [to] The end date for export data.
-  ExportTimePeriodResponse({
+  const ExportTimePeriodResponse({
     required this.from,
     required this.to,
   });

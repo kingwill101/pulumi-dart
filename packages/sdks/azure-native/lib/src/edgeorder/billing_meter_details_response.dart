@@ -23,7 +23,7 @@ class BillingMeterDetailsResponse {
   /// [meteringType] Represents Metering type (eg one-time or recurrent).
   /// [name] Represents Billing type name.
   /// [termTypeDetails] Represent Term Type details.
-  BillingMeterDetailsResponse({
+  const BillingMeterDetailsResponse({
     required this.frequency,
     required this.meterDetails,
     required this.meteringType,

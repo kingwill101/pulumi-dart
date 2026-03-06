@@ -27,7 +27,7 @@ class RuleCompilationDiagnostic {
   /// [position] CompilationPosition represents the location of a compilation diagnostic in
   /// [severity] (Output)
   /// [uri] (Output)
-  RuleCompilationDiagnostic({
+  const RuleCompilationDiagnostic({
     this.message,
     this.position,
     this.severity,

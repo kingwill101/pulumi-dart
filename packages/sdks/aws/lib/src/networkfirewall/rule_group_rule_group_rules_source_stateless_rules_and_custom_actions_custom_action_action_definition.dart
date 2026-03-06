@@ -9,7 +9,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionAct
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition].
   /// [publishMetricAction] A configuration block describing the stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the matching packet. You can pair this custom action with any of the standard stateless rule actions. See Publish Metric Action below for details.
-  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition({
+  const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition({
     required this.publishMetricAction,
   });
 

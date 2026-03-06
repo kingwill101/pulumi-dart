@@ -11,7 +11,7 @@ class GetLoadBalancersBalancerDeletionProtectionConfig {
   /// Creates a new [GetLoadBalancersBalancerDeletionProtectionConfig].
   /// [enabled] Remove the Protection Status.
   /// [enabledTime] Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
-  GetLoadBalancersBalancerDeletionProtectionConfig({
+  const GetLoadBalancersBalancerDeletionProtectionConfig({
     required this.enabled,
     required this.enabledTime,
   });

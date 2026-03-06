@@ -9,7 +9,7 @@ class LabelingJobInstructions {
 
   /// Creates a new [LabelingJobInstructions].
   /// [uri] The link to a page with detailed labeling instructions for labelers.
-  LabelingJobInstructions({
+  const LabelingJobInstructions({
     this.uri,
   });
 

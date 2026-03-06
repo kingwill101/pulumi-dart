@@ -45,7 +45,7 @@ class ExportConfigurationArgs {
   /// [recordTypes] The document types to be exported, as comma separated values. Allowed values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  ExportConfigurationArgs({
+  const ExportConfigurationArgs({
     this.destinationAccountId,
     this.destinationAddress,
     this.destinationStorageLocationId,

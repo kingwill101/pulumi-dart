@@ -11,7 +11,7 @@ class ListIntegrationRuntimeAuthKeysResult {
   /// Creates a new [ListIntegrationRuntimeAuthKeysResult].
   /// [authKey1] The primary integration runtime authentication key.
   /// [authKey2] The secondary integration runtime authentication key.
-  ListIntegrationRuntimeAuthKeysResult({
+  const ListIntegrationRuntimeAuthKeysResult({
     this.authKey1,
     this.authKey2,
   });

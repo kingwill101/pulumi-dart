@@ -22,7 +22,7 @@ class MoveResourceArgs {
   /// [moveResourceName] The Move Resource Name.
   /// [properties] Defines the move resource properties.
   /// [resourceGroupName] The Resource Group Name.
-  MoveResourceArgs({
+  const MoveResourceArgs({
     required this.moveCollectionName,
     this.moveResourceName,
     this.properties,

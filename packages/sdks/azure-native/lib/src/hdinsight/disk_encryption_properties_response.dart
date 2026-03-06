@@ -24,7 +24,7 @@ class DiskEncryptionPropertiesResponse {
   /// [keyVersion] Specific key version that is used for enabling disk encryption.
   /// [msiResourceId] Resource ID of Managed Identity that is used to access the key vault.
   /// [vaultUri] Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net
-  DiskEncryptionPropertiesResponse({
+  const DiskEncryptionPropertiesResponse({
     this.encryptionAlgorithm,
     this.encryptionAtHost,
     this.keyName,

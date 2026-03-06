@@ -15,7 +15,7 @@ class TriggerGithubPullRequest {
   /// [branch] Regex of branches to match.
   /// [commentControl] Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
   /// [invertRegex] If true, branches that do NOT match the git_ref will trigger a build.
-  TriggerGithubPullRequest({
+  const TriggerGithubPullRequest({
     required this.branch,
     this.commentControl,
     this.invertRegex,

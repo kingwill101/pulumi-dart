@@ -125,7 +125,7 @@ class GetInstancesArgs {
   /// [nameRegex] A regex string to filter results by instance name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A map of tags assigned to the instance. It must be in the format:
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

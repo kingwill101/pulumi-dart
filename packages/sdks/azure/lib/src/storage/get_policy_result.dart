@@ -15,7 +15,7 @@ class GetPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [rules] supports the following:
   /// [storageAccountId] Required.
-  GetPolicyResult({
+  const GetPolicyResult({
     required this.id,
     required this.rules,
     required this.storageAccountId,

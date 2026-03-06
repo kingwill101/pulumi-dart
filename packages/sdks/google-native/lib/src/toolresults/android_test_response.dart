@@ -25,7 +25,7 @@ class AndroidTestResponse {
   /// [androidRoboTest] An Android robo test.
   /// [androidTestLoop] An Android test loop.
   /// [testTimeout] Max time a test is allowed to run before it is automatically cancelled.
-  AndroidTestResponse({
+  const AndroidTestResponse({
     required this.androidAppInfo,
     required this.androidInstrumentationTest,
     required this.androidRoboTest,

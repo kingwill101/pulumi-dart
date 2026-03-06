@@ -101,7 +101,7 @@ class GetBuildResult {
   /// [timeout] Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
   /// [timing] Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
   /// [warnings] Non-fatal problems encountered during the execution of the build.
-  GetBuildResult({
+  const GetBuildResult({
     required this.approval,
     required this.artifacts,
     required this.availableSecrets,

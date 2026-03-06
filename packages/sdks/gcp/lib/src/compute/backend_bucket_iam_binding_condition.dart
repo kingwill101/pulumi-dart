@@ -11,7 +11,7 @@ class BackendBucketIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  BackendBucketIamBindingCondition({
+  const BackendBucketIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

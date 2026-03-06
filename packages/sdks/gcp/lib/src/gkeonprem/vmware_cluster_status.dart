@@ -19,7 +19,7 @@ class VMwareClusterStatus {
   /// Creates a new [VMwareClusterStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  VMwareClusterStatus({
+  const VMwareClusterStatus({
     this.conditions,
     this.errorMessage,
   });

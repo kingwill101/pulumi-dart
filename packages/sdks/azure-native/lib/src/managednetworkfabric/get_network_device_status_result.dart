@@ -14,7 +14,7 @@ class GetNetworkDeviceStatusResult {
   /// [operationalStatus] Primary or Secondary power end.
   /// [powerCycleState] On or Off power cycle state.
   /// [serialNumber] The serial number of the device
-  GetNetworkDeviceStatusResult({
+  const GetNetworkDeviceStatusResult({
     required this.operationalStatus,
     required this.powerCycleState,
     required this.serialNumber,

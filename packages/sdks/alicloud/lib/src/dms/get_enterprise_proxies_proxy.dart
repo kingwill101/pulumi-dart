@@ -41,7 +41,7 @@ class GetEnterpriseProxiesProxy {
   /// [proxyId] The ID of the secure access proxy.
   /// [publicEnable] Indicates whether the public endpoint is enabled.
   /// [publicHost] The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
-  GetEnterpriseProxiesProxy({
+  const GetEnterpriseProxiesProxy({
     required this.creatorId,
     required this.creatorName,
     required this.httpsPort,

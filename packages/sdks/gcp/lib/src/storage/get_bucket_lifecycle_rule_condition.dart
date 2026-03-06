@@ -51,7 +51,7 @@ class GetBucketLifecycleRuleCondition {
   /// [sendDaysSinceNoncurrentTimeIfZero] While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
   /// [sendNumNewerVersionsIfZero] While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
   /// [withState] Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
-  GetBucketLifecycleRuleCondition({
+  const GetBucketLifecycleRuleCondition({
     required this.age,
     required this.createdBefore,
     required this.customTimeBefore,

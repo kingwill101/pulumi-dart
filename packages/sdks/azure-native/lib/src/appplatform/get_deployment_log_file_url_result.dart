@@ -8,7 +8,7 @@ class GetDeploymentLogFileUrlResult {
 
   /// Creates a new [GetDeploymentLogFileUrlResult].
   /// [url] URL of the log file
-  GetDeploymentLogFileUrlResult({
+  const GetDeploymentLogFileUrlResult({
     required this.url,
   });
 

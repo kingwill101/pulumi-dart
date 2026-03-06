@@ -31,7 +31,7 @@ class WorkspaceState {
   /// [name] The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [settings] Settings associated with this workspace.
-  WorkspaceState({
+  const WorkspaceState({
     this.dataset,
     this.effectiveLabels,
     this.labels,

@@ -9,7 +9,7 @@ class IdentityProperties {
 
   /// Creates a new [IdentityProperties].
   /// [type] Managed identity type.
-  IdentityProperties({
+  const IdentityProperties({
     this.type,
   });
 

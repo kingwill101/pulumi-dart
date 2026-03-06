@@ -23,7 +23,7 @@ class ClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
   /// [nodefsAvailable] Defines percentage of minimum reclaim for nodefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
   /// [nodefsInodesFree] Defines percentage of minimum reclaim for nodefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
   /// [pidAvailable] Defines percentage of minimum reclaim for pid.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
-  ClusterNodeConfigKubeletConfigEvictionMinimumReclaim({
+  const ClusterNodeConfigKubeletConfigEvictionMinimumReclaim({
     this.imagefsAvailable,
     this.imagefsInodesFree,
     this.memoryAvailable,

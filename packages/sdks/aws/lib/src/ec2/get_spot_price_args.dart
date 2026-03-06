@@ -22,7 +22,7 @@ class GetSpotPriceArgs {
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html) for supported filters. Detailed below.
   /// [instanceType] Type of instance for which to query Spot Price information.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetSpotPriceArgs({
+  const GetSpotPriceArgs({
     this.availabilityZone,
     this.filters,
     this.instanceType,

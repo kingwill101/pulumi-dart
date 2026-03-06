@@ -12,7 +12,7 @@ class TableGetPropertiesResponseOptions {
   /// Creates a new [TableGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
   /// [throughput] Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  TableGetPropertiesResponseOptions({
+  const TableGetPropertiesResponseOptions({
     this.autoscaleSettings,
     this.throughput,
   });

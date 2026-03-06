@@ -9,7 +9,7 @@ class NetworkVirtualPort {
 
   /// Creates a new [NetworkVirtualPort].
   /// [params] Defines parameters for the virtual port in the port group.
-  NetworkVirtualPort({
+  const NetworkVirtualPort({
     this.params,
   });
 

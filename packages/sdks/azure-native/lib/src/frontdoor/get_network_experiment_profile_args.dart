@@ -15,7 +15,7 @@ class GetNetworkExperimentProfileArgs {
   /// Creates a new [GetNetworkExperimentProfileArgs].
   /// [profileName] The Profile identifier associated with the Tenant and Partner
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
-  GetNetworkExperimentProfileArgs({
+  const GetNetworkExperimentProfileArgs({
     required this.profileName,
     required this.resourceGroupName,
   });

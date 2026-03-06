@@ -24,7 +24,7 @@ class DdosCustomPolicyArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  DdosCustomPolicyArgs({
+  const DdosCustomPolicyArgs({
     this.ddosCustomPolicyName,
     this.id,
     this.location,

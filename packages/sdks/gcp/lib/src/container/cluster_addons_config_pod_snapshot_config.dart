@@ -8,7 +8,7 @@ class ClusterAddonsConfigPodSnapshotConfig {
 
   /// Creates a new [ClusterAddonsConfigPodSnapshotConfig].
   /// [enabled] Whether the Pod Snapshot feature is enabled for this cluster.
-  ClusterAddonsConfigPodSnapshotConfig({
+  const ClusterAddonsConfigPodSnapshotConfig({
     required this.enabled,
   });
 

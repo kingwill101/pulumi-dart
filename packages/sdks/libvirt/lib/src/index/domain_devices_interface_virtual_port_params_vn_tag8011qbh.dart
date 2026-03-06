@@ -8,7 +8,7 @@ class DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh {
 
   /// Creates a new [DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh].
   /// [profileId] Sets the profile ID for the VNTag8011QBH virtual port parameters.
-  DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh({
+  const DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh({
     this.profileId,
   });
 

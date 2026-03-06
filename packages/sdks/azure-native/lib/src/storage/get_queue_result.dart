@@ -23,7 +23,7 @@ class GetQueueResult {
   /// [metadata] A name-value pair that represents queue metadata.
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetQueueResult({
+  const GetQueueResult({
     required this.approximateMessageCount,
     required this.azureApiVersion,
     required this.id,

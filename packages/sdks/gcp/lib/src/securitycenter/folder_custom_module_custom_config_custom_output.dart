@@ -10,7 +10,7 @@ class FolderCustomModuleCustomConfigCustomOutput {
 
   /// Creates a new [FolderCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  FolderCustomModuleCustomConfigCustomOutput({
+  const FolderCustomModuleCustomConfigCustomOutput({
     this.properties,
   });
 

@@ -32,7 +32,7 @@ class InstanceState {
   /// [remark] This attribute is a concise description of instance. The length cannot exceed 128.
   /// [status] The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
   /// [tags] A mapping of tags to assign to the resource.
-  InstanceState({
+  const InstanceState({
     this.instanceName,
     this.instanceStatus,
     this.instanceType,

@@ -15,7 +15,7 @@ class GetLogsLogStreamArgs {
   /// Creates a new [GetLogsLogStreamArgs].
   /// [name] Name of LogsLogStream
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLogsLogStreamArgs({
+  const GetLogsLogStreamArgs({
     required this.name,
     required this.resourceGroupName,
   });

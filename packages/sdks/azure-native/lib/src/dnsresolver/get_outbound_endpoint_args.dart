@@ -18,7 +18,7 @@ class GetOutboundEndpointArgs {
   /// [dnsResolverName] The name of the DNS resolver.
   /// [outboundEndpointName] The name of the outbound endpoint for the DNS resolver.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOutboundEndpointArgs({
+  const GetOutboundEndpointArgs({
     required this.dnsResolverName,
     required this.outboundEndpointName,
     required this.resourceGroupName,

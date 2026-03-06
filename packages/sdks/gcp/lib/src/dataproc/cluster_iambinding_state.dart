@@ -42,7 +42,7 @@ class ClusterIAMBindingState {
   /// [project] The project in which the cluster belongs. If it
   /// [region] The region in which the cluster belongs. If it
   /// [role] The role that should be applied. Only one
-  ClusterIAMBindingState({
+  const ClusterIAMBindingState({
     this.cluster,
     this.condition,
     this.etag,

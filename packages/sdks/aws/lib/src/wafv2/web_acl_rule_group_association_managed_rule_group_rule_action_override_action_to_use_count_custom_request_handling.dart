@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCou
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling].
   /// [insertHeaders] Headers to insert into the request. See below.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandling({
     this.insertHeaders,
   });
 

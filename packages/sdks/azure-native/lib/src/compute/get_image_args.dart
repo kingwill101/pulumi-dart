@@ -18,7 +18,7 @@ class GetImageArgs {
   /// [expand] The expand expression to apply on the operation.
   /// [imageName] The name of the image.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetImageArgs({
+  const GetImageArgs({
     this.expand,
     required this.imageName,
     required this.resourceGroupName,

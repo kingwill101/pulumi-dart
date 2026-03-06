@@ -29,7 +29,7 @@ class ComputeVmPropertiesResponse {
   /// [osType] Gets the OS type of the virtual machine.
   /// [statuses] Gets the statuses of the virtual machine.
   /// [vmSize] Gets the size of the virtual machine.
-  ComputeVmPropertiesResponse({
+  const ComputeVmPropertiesResponse({
     this.dataDiskIds,
     this.dataDisks,
     this.networkInterfaceId,

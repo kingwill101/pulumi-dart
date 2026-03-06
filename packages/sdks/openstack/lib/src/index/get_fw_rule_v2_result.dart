@@ -56,7 +56,7 @@ class GetFwRuleV2Result {
   /// [sourceIpAddress] See Argument Reference above.
   /// [sourcePort] See Argument Reference above.
   /// [tenantId] See Argument Reference above.
-  GetFwRuleV2Result({
+  const GetFwRuleV2Result({
     this.action,
     this.description,
     this.destinationIpAddress,

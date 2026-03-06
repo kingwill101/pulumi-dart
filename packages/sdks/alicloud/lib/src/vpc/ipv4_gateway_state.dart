@@ -42,7 +42,7 @@ class Ipv4GatewayState {
   /// [status] The status of the resource
   /// [tags] The tags of the current resource.
   /// [vpcId] The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
-  Ipv4GatewayState({
+  const Ipv4GatewayState({
     this.createTime,
     this.dryRun,
     this.enabled,

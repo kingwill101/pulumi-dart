@@ -16,7 +16,7 @@ class IpAddressResponse {
   /// [address] Represents the IP Address.
   /// [ipAddressVersion] Represents the Ip Address Version.
   /// [subnet] The subnet to which this IP address belongs.
-  IpAddressResponse({
+  const IpAddressResponse({
     this.address,
     this.ipAddressVersion,
     required this.subnet,

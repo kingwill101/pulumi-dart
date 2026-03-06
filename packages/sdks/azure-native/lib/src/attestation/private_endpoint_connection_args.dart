@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [providerName] Name of the attestation provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,
     required this.providerName,

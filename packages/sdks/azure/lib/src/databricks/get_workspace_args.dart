@@ -18,7 +18,7 @@ class GetWorkspaceArgs {
   /// [name] The name of the Databricks Workspace.
   /// [resourceGroupName] The Name of the Resource Group where the Databricks Workspace exists.
   /// [tags] A mapping of tags to assign to the Databricks Workspace.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

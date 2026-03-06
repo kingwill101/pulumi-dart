@@ -12,7 +12,7 @@ class AttestationEvidenceResponse {
   /// Creates a new [AttestationEvidenceResponse].
   /// [description] The description for this piece of evidence.
   /// [sourceUri] The URI location of the evidence.
-  AttestationEvidenceResponse({
+  const AttestationEvidenceResponse({
     this.description,
     this.sourceUri,
   });

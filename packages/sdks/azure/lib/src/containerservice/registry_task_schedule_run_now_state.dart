@@ -9,7 +9,7 @@ class RegistryTaskScheduleRunNowState {
 
   /// Creates a new [RegistryTaskScheduleRunNowState].
   /// [containerRegistryTaskId] The ID of the Container Registry Task that to be scheduled. Changing this forces a new Container Registry Task Schedule to be created.
-  RegistryTaskScheduleRunNowState({
+  const RegistryTaskScheduleRunNowState({
     this.containerRegistryTaskId,
   });
 

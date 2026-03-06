@@ -12,7 +12,7 @@ class ConversationProfileHumanAgentAssistantConfigNotificationConfig {
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigNotificationConfig].
   /// [messageFormat] Format of the message
   /// [topic] Name of the Pub/Sub topic to publish conversation events
-  ConversationProfileHumanAgentAssistantConfigNotificationConfig({
+  const ConversationProfileHumanAgentAssistantConfigNotificationConfig({
     this.messageFormat,
     this.topic,
   });

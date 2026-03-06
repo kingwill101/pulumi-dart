@@ -44,7 +44,7 @@ class GetVpcPeeringConnectionArgs {
   /// [status] Status of the specific VPC Peering Connection to retrieve.
   /// [tags] Map of tags, each pair of which must exactly match
   /// [vpcId] ID of the requester VPC of the specific VPC Peering Connection to retrieve.
-  GetVpcPeeringConnectionArgs({
+  const GetVpcPeeringConnectionArgs({
     this.cidrBlock,
     this.filters,
     this.id,

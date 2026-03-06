@@ -17,7 +17,7 @@ class GetEndpointAssociationsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [vpcEndpointId] Required.
-  GetEndpointAssociationsResult({
+  const GetEndpointAssociationsResult({
     required this.associations,
     required this.id,
     required this.region,

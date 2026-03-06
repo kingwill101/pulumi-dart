@@ -28,7 +28,7 @@ class GetSmartagFlowLogsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
-  GetSmartagFlowLogsArgs({
+  const GetSmartagFlowLogsArgs({
     this.description,
     this.ids,
     this.nameRegex,

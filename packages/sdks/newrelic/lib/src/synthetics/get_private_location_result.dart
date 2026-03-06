@@ -15,7 +15,7 @@ class GetPrivateLocationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keys] The key of the private location.
   /// [name] Required.
-  GetPrivateLocationResult({
+  const GetPrivateLocationResult({
     this.accountId,
     required this.id,
     required this.keys,

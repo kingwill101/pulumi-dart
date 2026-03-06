@@ -73,7 +73,7 @@ class AuthConfigArgs {
   /// [state] The status of the auth config.
   /// [validTime] The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
   /// [visibility] The visibility of the auth config.
-  AuthConfigArgs({
+  const AuthConfigArgs({
     this.certificateId,
     this.clientCertificateEncryptedPrivateKey,
     this.clientCertificatePassphrase,

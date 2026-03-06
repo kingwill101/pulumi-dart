@@ -12,7 +12,7 @@ class ImageResponse {
   /// Creates a new [ImageResponse].
   /// [reference] Image reference
   /// [type] Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
-  ImageResponse({
+  const ImageResponse({
     this.reference,
     this.type,
   });

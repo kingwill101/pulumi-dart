@@ -13,7 +13,7 @@ class ResourceReferenceExtendedResponse {
   /// Creates a new [ResourceReferenceExtendedResponse].
   /// [error] The error detail.
   /// [id] The ARM Resource ID of a resource managed by the deployment stack.
-  ResourceReferenceExtendedResponse({
+  const ResourceReferenceExtendedResponse({
     this.error,
     required this.id,
   });

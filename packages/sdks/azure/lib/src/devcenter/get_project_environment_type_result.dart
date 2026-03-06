@@ -33,7 +33,7 @@ class GetProjectEnvironmentTypeResult {
   /// [name] Required.
   /// [tags] A mapping of tags assigned to the Dev Center Project Environment Type.
   /// [userRoleAssignments] A `user_role_assignment` block as defined below.
-  GetProjectEnvironmentTypeResult({
+  const GetProjectEnvironmentTypeResult({
     required this.creatorRoleAssignmentRoles,
     required this.deploymentTargetId,
     required this.devCenterProjectId,

@@ -17,7 +17,7 @@ class GetRoleManagementPolicyNotificationRuleEligibleAssignment {
   /// [adminNotifications] A `notification_settings` block as defined above.
   /// [approverNotifications] A `notification_settings` block as defined above.
   /// [assigneeNotifications] A `notification_settings` block as defined above.
-  GetRoleManagementPolicyNotificationRuleEligibleAssignment({
+  const GetRoleManagementPolicyNotificationRuleEligibleAssignment({
     required this.adminNotifications,
     required this.approverNotifications,
     required this.assigneeNotifications,

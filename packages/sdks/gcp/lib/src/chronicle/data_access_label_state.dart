@@ -48,7 +48,7 @@ class DataAccessLabelState {
   /// [project] The ID of the project in which the resource belongs.
   /// [udmQuery] A UDM query over event data.
   /// [updateTime] Output only. The time at which the data access label was last updated.
-  DataAccessLabelState({
+  const DataAccessLabelState({
     this.author,
     this.createTime,
     this.dataAccessLabelId,

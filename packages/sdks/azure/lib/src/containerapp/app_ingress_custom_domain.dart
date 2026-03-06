@@ -14,7 +14,7 @@ class AppIngressCustomDomain {
   /// [certificateBindingType] The Binding type.
   /// [certificateId] The ID of the Container App Environment Certificate.
   /// [name] The name for this Container App. Changing this forces a new resource to be created.
-  AppIngressCustomDomain({
+  const AppIngressCustomDomain({
     this.certificateBindingType,
     this.certificateId,
     this.name,

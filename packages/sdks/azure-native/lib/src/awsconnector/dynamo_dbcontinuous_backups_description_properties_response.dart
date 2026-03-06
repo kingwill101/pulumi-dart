@@ -34,7 +34,7 @@ class DynamoDBContinuousBackupsDescriptionPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  DynamoDBContinuousBackupsDescriptionPropertiesResponse({
+  const DynamoDBContinuousBackupsDescriptionPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

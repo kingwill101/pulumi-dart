@@ -12,7 +12,7 @@ class GetLoadBalancersArgs {
 
   /// Creates a new [GetLoadBalancersArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetLoadBalancersArgs({
+  const GetLoadBalancersArgs({
     this.withSelector,
   });
 

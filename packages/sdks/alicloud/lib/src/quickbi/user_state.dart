@@ -24,7 +24,7 @@ class UserState {
   /// [authAdminUser] Whether this is a permissions administrator. Valid values: `false`, `true`.
   /// [nickName] The nickname of the user.
   /// [userType] The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
-  UserState({
+  const UserState({
     this.accountId,
     this.accountName,
     this.adminUser,

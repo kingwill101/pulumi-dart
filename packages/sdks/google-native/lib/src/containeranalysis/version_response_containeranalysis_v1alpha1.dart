@@ -21,7 +21,7 @@ class VersionResponseContaineranalysisV1alpha1 {
   /// [kind] Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
   /// [name] The main part of the version name.
   /// [revision] The iteration of the package build from the above version.
-  VersionResponseContaineranalysisV1alpha1({
+  const VersionResponseContaineranalysisV1alpha1({
     required this.epoch,
     required this.inclusive,
     required this.kind,

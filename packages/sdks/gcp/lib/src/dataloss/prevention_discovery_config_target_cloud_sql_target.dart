@@ -23,7 +23,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTarget {
   /// [disabled] Disable profiling for database resources that match this filter.
   /// [filter] Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
   /// [generationCadence] How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
-  PreventionDiscoveryConfigTargetCloudSqlTarget({
+  const PreventionDiscoveryConfigTargetCloudSqlTarget({
     this.conditions,
     this.disabled,
     required this.filter,

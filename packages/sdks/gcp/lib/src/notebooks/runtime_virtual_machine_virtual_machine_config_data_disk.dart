@@ -83,7 +83,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
   /// [mode] The mode in which to attach this disk, either READ_WRITE
   /// [source] Specifies a valid partial or full URL to an existing
   /// [type] Specifies the type of the disk, either SCRATCH or PERSISTENT.
-  RuntimeVirtualMachineVirtualMachineConfigDataDisk({
+  const RuntimeVirtualMachineVirtualMachineConfigDataDisk({
     this.autoDelete,
     this.boot,
     this.deviceName,

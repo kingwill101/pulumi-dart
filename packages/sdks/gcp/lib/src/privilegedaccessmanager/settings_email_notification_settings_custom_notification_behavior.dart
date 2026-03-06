@@ -20,7 +20,7 @@ class SettingsEmailNotificationSettingsCustomNotificationBehavior {
   /// [adminNotifications] Email notifications specific to Requesters.
   /// [approverNotifications] Email notifications specific to Approvers.
   /// [requesterNotifications] Email notifications specific to Requesters.
-  SettingsEmailNotificationSettingsCustomNotificationBehavior({
+  const SettingsEmailNotificationSettingsCustomNotificationBehavior({
     this.adminNotifications,
     this.approverNotifications,
     this.requesterNotifications,

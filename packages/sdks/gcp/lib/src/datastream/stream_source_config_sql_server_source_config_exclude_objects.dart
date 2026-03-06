@@ -10,7 +10,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
 
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigExcludeObjects].
   /// [schemas] Spanner schemas in the database
-  StreamSourceConfigSqlServerSourceConfigExcludeObjects({
+  const StreamSourceConfigSqlServerSourceConfigExcludeObjects({
     required this.schemas,
   });
 

@@ -15,7 +15,7 @@ class ReportDeliveryDestination {
   /// [container] The name of the container where reports will be uploaded.
   /// [resourceId] The resource id of the storage account where reports will be delivered.
   /// [rootFolderPath] The name of the directory where reports will be uploaded.
-  ReportDeliveryDestination({
+  const ReportDeliveryDestination({
     required this.container,
     required this.resourceId,
     this.rootFolderPath,

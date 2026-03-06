@@ -14,7 +14,7 @@ class KubernetesRoleStorageResponse {
   /// Creates a new [KubernetesRoleStorageResponse].
   /// [endpoints] Mount points of shares in role(s).
   /// [storageClasses] Kubernetes storage class info.
-  KubernetesRoleStorageResponse({
+  const KubernetesRoleStorageResponse({
     this.endpoints,
     required this.storageClasses,
   });

@@ -20,7 +20,7 @@ class GetTrafficManagerUserMetricsKeyResult {
   /// [key] The key returned by the User Metrics operation.
   /// [name] The name of the resource
   /// [type] The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-  GetTrafficManagerUserMetricsKeyResult({
+  const GetTrafficManagerUserMetricsKeyResult({
     required this.azureApiVersion,
     this.id,
     this.key,

@@ -50,7 +50,7 @@ class ListPaloAltoNetworksCloudngfwOperationSupportInfoResult {
   /// [registerURL] URL for registering product in paloaltonetworks Customer Service Portal
   /// [startDateForCredits] date in format yyyy-mm-dd
   /// [supportURL] URL for paloaltonetworks Customer Service Portal
-  ListPaloAltoNetworksCloudngfwOperationSupportInfoResult({
+  const ListPaloAltoNetworksCloudngfwOperationSupportInfoResult({
     this.accountId,
     this.accountRegistrationStatus,
     this.credits,

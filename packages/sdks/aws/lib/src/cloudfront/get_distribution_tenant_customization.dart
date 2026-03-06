@@ -14,7 +14,7 @@ class GetDistributionTenantCustomization {
   /// [certificates] Required.
   /// [geoRestrictions] Required.
   /// [webAcls] Required.
-  GetDistributionTenantCustomization({
+  const GetDistributionTenantCustomization({
     required this.certificates,
     required this.geoRestrictions,
     required this.webAcls,

@@ -18,7 +18,7 @@ class GetConnectionMonitorTestArgs {
   /// [connectionMonitorTestName] The name of the connection monitor test
   /// [peeringServiceName] The name of the peering service.
   /// [resourceGroupName] The name of the resource group.
-  GetConnectionMonitorTestArgs({
+  const GetConnectionMonitorTestArgs({
     required this.connectionMonitorTestName,
     required this.peeringServiceName,
     required this.resourceGroupName,

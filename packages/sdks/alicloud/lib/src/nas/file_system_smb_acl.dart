@@ -41,7 +41,7 @@ class FileSystemSmbAcl {
   /// [homeDirPath] The user directory home path for each user. The file path format is as follows:
   /// [rejectUnencryptedAccess] Whether to reject non-encrypted clients.
   /// [superAdminSid] The ID of the Super User. The ID rules are as follows:
-  FileSystemSmbAcl({
+  const FileSystemSmbAcl({
     this.enableAnonymousAccess,
     this.enabled,
     this.encryptData,

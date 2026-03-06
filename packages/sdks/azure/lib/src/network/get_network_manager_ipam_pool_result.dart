@@ -30,7 +30,7 @@ class GetNetworkManagerIpamPoolResult {
   /// [networkManagerId] Required.
   /// [parentPoolName] The name of the parent IPAM Pool.
   /// [tags] A mapping of tags assigned to the Network Manager IPAM Pool.
-  GetNetworkManagerIpamPoolResult({
+  const GetNetworkManagerIpamPoolResult({
     required this.addressPrefixes,
     required this.description,
     required this.displayName,

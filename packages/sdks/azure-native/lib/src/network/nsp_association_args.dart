@@ -40,7 +40,7 @@ class NspAssociationArgs {
   /// [profile] Profile id to which the PaaS resource is associated.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NspAssociationArgs({
+  const NspAssociationArgs({
     this.accessMode,
     this.associationName,
     this.id,

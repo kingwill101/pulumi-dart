@@ -11,7 +11,7 @@ class DomainDefaultSpaceSettingsCustomPosixUserConfig {
   /// Creates a new [DomainDefaultSpaceSettingsCustomPosixUserConfig].
   /// [gid] The POSIX group ID.
   /// [uid] The POSIX user ID.
-  DomainDefaultSpaceSettingsCustomPosixUserConfig({
+  const DomainDefaultSpaceSettingsCustomPosixUserConfig({
     required this.gid,
     required this.uid,
   });

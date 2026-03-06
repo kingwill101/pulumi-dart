@@ -13,7 +13,7 @@ class PersistentDirectoryResponseWorkstationsV1beta {
   /// Creates a new [PersistentDirectoryResponseWorkstationsV1beta].
   /// [gcePd] A PersistentDirectory backed by a Compute Engine persistent disk.
   /// [mountPath] Optional. Location of this directory in the running workstation.
-  PersistentDirectoryResponseWorkstationsV1beta({
+  const PersistentDirectoryResponseWorkstationsV1beta({
     required this.gcePd,
     required this.mountPath,
   });

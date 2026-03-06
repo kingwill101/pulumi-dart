@@ -14,7 +14,7 @@ class NetworkManagerCrossTenantScope {
   /// [managementGroups] List of management groups.
   /// [subscriptions] List of subscriptions.
   /// [tenantId] Tenant ID.
-  NetworkManagerCrossTenantScope({
+  const NetworkManagerCrossTenantScope({
     this.managementGroups,
     this.subscriptions,
     this.tenantId,

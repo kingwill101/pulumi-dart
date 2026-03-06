@@ -9,7 +9,7 @@ class RuleGroupRuleActionCaptcha {
 
   /// Creates a new [RuleGroupRuleActionCaptcha].
   /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.
-  RuleGroupRuleActionCaptcha({
+  const RuleGroupRuleActionCaptcha({
     this.customRequestHandling,
   });
 

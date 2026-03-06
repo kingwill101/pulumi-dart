@@ -23,7 +23,7 @@ class AwsSourceDetailsVmmigrationV1alpha1 {
   /// [inventorySecurityGroupNames] AWS security group names to limit the scope of the source inventory.
   /// [inventoryTagList] AWS resource tags to limit the scope of the source inventory.
   /// [migrationResourcesUserTags] User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
-  AwsSourceDetailsVmmigrationV1alpha1({
+  const AwsSourceDetailsVmmigrationV1alpha1({
     this.accessKeyCreds,
     this.awsRegion,
     this.inventorySecurityGroupNames,

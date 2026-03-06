@@ -27,7 +27,7 @@ class RegistrationAssignmentPropertiesResponseRegistrationDefinition {
   /// [properties] The properties of the registration definition associated with the registration assignment.
   /// [systemData] The metadata for the registration definition resource.
   /// [type] The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
-  RegistrationAssignmentPropertiesResponseRegistrationDefinition({
+  const RegistrationAssignmentPropertiesResponseRegistrationDefinition({
     required this.id,
     required this.name,
     this.plan,

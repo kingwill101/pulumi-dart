@@ -9,7 +9,7 @@ class GetFrontdoorSecretSecret {
 
   /// Creates a new [GetFrontdoorSecretSecret].
   /// [customerCertificates] A `customer_certificate` block as defined below.
-  GetFrontdoorSecretSecret({
+  const GetFrontdoorSecretSecret({
     required this.customerCertificates,
   });
 

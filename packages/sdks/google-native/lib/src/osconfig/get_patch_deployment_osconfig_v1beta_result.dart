@@ -46,7 +46,7 @@ class GetPatchDeploymentOsconfigV1betaResult {
   /// [rollout] Optional. Rollout strategy of the patch job.
   /// [state] Current state of the patch deployment.
   /// [updateTime] Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-  GetPatchDeploymentOsconfigV1betaResult({
+  const GetPatchDeploymentOsconfigV1betaResult({
     required this.createTime,
     required this.description,
     required this.duration,

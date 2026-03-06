@@ -16,7 +16,7 @@ class ServiceSourceConfigurationImageRepository {
   /// [imageConfiguration] Configuration for running the identified image. See Image Configuration below for more details.
   /// [imageIdentifier] Identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the
   /// [imageRepositoryType] Type of the image repository. This reflects the repository provider and whether the repository is private or public. Valid values: `ECR` , `ECR_PUBLIC`.
-  ServiceSourceConfigurationImageRepository({
+  const ServiceSourceConfigurationImageRepository({
     this.imageConfiguration,
     required this.imageIdentifier,
     required this.imageRepositoryType,

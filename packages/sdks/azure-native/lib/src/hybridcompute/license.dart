@@ -22,7 +22,7 @@ class License {
   /// [location] The geo-location where the resource lives
   /// [tags] Resource tags.
   /// [tenantId] Describes the tenant id.
-  License({
+  const License({
     this.licenseDetails,
     this.licenseType,
     required this.location,

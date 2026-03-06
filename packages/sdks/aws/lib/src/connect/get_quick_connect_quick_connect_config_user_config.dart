@@ -11,7 +11,7 @@ class GetQuickConnectQuickConnectConfigUserConfig {
   /// Creates a new [GetQuickConnectQuickConnectConfigUserConfig].
   /// [contactFlowId] Identifier of the contact flow.
   /// [userId] Identifier for the user.
-  GetQuickConnectQuickConnectConfigUserConfig({
+  const GetQuickConnectQuickConnectConfigUserConfig({
     required this.contactFlowId,
     required this.userId,
   });

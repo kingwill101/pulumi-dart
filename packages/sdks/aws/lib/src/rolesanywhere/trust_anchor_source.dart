@@ -12,7 +12,7 @@ class TrustAnchorSource {
   /// Creates a new [TrustAnchorSource].
   /// [sourceData] The data denoting the source of trust, documented below
   /// [sourceType] The type of the source of trust. Must be either `AWS_ACM_PCA` or `CERTIFICATE_BUNDLE`.
-  TrustAnchorSource({
+  const TrustAnchorSource({
     required this.sourceData,
     required this.sourceType,
   });

@@ -11,7 +11,7 @@ class DataCellsFilterTableDataRowFilter {
   /// Creates a new [DataCellsFilterTableDataRowFilter].
   /// [allRowsWildcard] (Optional) A wildcard that matches all rows. Required when applying column-level filtering without row-level filtering. Use an empty block: `all_rows_wildcard {}`.
   /// [filterExpression] (Optional) A PartiQL predicate expression for row-level filtering.
-  DataCellsFilterTableDataRowFilter({
+  const DataCellsFilterTableDataRowFilter({
     this.allRowsWildcard,
     this.filterExpression,
   });

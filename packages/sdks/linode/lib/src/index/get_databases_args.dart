@@ -18,7 +18,7 @@ class GetDatabasesArgs {
   /// [filters] Optional.
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. (`version`)
-  GetDatabasesArgs({
+  const GetDatabasesArgs({
     this.filters,
     this.order,
     this.orderBy,

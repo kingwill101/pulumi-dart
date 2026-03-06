@@ -15,7 +15,7 @@ class ExpressRoutePortIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Express Route Port. Only possible value is `UserAssigned`.
-  ExpressRoutePortIdentity({
+  const ExpressRoutePortIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

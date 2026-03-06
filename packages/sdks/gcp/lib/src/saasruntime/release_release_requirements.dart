@@ -11,7 +11,7 @@ class ReleaseReleaseRequirements {
 
   /// Creates a new [ReleaseReleaseRequirements].
   /// [upgradeableFromReleases] A list of releases from which a unit can be upgraded to this one
-  ReleaseReleaseRequirements({
+  const ReleaseReleaseRequirements({
     this.upgradeableFromReleases,
   });
 

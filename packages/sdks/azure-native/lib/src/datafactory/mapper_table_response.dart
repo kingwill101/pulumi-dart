@@ -17,7 +17,7 @@ class MapperTableResponse {
   /// [dslConnectorProperties] List of name/value pairs for connection properties.
   /// [name] Name of the table.
   /// [schema] List of columns for the source table.
-  MapperTableResponse({
+  const MapperTableResponse({
     this.dslConnectorProperties,
     this.name,
     this.schema,

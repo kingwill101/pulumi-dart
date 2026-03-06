@@ -21,7 +21,7 @@ class TokenState {
   /// [label] A label for the Token.
   /// [scopes] The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
   /// [token] The token used to access the API.
-  TokenState({
+  const TokenState({
     this.created,
     this.expiry,
     this.label,

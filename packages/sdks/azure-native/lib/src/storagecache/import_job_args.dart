@@ -33,7 +33,7 @@ class ImportJobArgs {
   /// [maximumErrors] Total non-conflict oriented errors the import job will tolerate before exiting with failure. -1 means infinite. 0 means exit immediately and is the default.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ImportJobArgs({
+  const ImportJobArgs({
     required this.amlFilesystemName,
     this.conflictResolutionMode,
     this.importJobName,

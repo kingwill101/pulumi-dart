@@ -11,7 +11,7 @@ class FlowDefinitionOutputConfig {
   /// Creates a new [FlowDefinitionOutputConfig].
   /// [kmsKeyId] The Amazon Key Management Service (KMS) key ARN for server-side encryption.
   /// [s3OutputPath] The Amazon S3 path where the object containing human output will be made available.
-  FlowDefinitionOutputConfig({
+  const FlowDefinitionOutputConfig({
     this.kmsKeyId,
     required this.s3OutputPath,
   });

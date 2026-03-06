@@ -30,7 +30,7 @@ class ConsentStoreHealthcareV1beta1Args {
   /// [location] Optional.
   /// [name] Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
   /// [project] Optional.
-  ConsentStoreHealthcareV1beta1Args({
+  const ConsentStoreHealthcareV1beta1Args({
     required this.consentStoreId,
     required this.datasetId,
     this.defaultConsentTtl,

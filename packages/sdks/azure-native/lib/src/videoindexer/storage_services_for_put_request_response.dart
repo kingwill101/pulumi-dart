@@ -12,7 +12,7 @@ class StorageServicesForPutRequestResponse {
   /// Creates a new [StorageServicesForPutRequestResponse].
   /// [resourceId] The storage services resource id
   /// [userAssignedIdentity] The user assigned identity to be used to grant permissions
-  StorageServicesForPutRequestResponse({
+  const StorageServicesForPutRequestResponse({
     this.resourceId,
     this.userAssignedIdentity,
   });

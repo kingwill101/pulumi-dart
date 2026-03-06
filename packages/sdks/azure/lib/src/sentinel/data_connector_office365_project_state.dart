@@ -17,7 +17,7 @@ class DataConnectorOffice365ProjectState {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Office 365 Project Data Connector resides in. Changing this forces a new Office 365 Project Data Connector to be created.
   /// [name] The name which should be used for this Office 365 Project Data Connector. Changing this forces a new Office 365 Project Data Connector to be created.
   /// [tenantId] The ID of the tenant that this Office 365 Project Data Connector connects to. Changing this forces a new Office 365 Project Data Connector to be created.
-  DataConnectorOffice365ProjectState({
+  const DataConnectorOffice365ProjectState({
     this.logAnalyticsWorkspaceId,
     this.name,
     this.tenantId,

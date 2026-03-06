@@ -8,7 +8,7 @@ class FunctionJavaScriptUDFOutput {
 
   /// Creates a new [FunctionJavaScriptUDFOutput].
   /// [type] The Data Type output from this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-  FunctionJavaScriptUDFOutput({
+  const FunctionJavaScriptUDFOutput({
     required this.type,
   });
 

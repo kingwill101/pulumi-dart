@@ -31,7 +31,7 @@ class ListenerDefaultActionAuthenticateCognito {
   /// [userPoolArn] ARN of the Cognito user pool.
   /// [userPoolClientId] ID of the Cognito user pool client.
   /// [userPoolDomain] Domain prefix or fully-qualified domain name of the Cognito user pool.
-  ListenerDefaultActionAuthenticateCognito({
+  const ListenerDefaultActionAuthenticateCognito({
     this.authenticationRequestExtraParams,
     this.onUnauthenticatedRequest,
     this.scope,

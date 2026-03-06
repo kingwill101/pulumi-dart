@@ -14,7 +14,7 @@ class WindowsWebAppConnectionString {
   /// [name] The name of the Connection String.
   /// [type] Type of database. Possible values include: `APIHub`, `Custom`, `DocDb`, `EventHub`, `MySQL`, `NotificationHub`, `PostgreSQL`, `RedisCache`, `ServiceBus`, `SQLAzure`, and `SQLServer`.
   /// [value] The connection string value.
-  WindowsWebAppConnectionString({
+  const WindowsWebAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

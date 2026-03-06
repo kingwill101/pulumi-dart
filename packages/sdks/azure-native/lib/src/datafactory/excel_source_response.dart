@@ -29,7 +29,7 @@ class ExcelSourceResponse {
   /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [storeSettings] Excel store settings.
   /// [type] Copy source type.
-  ExcelSourceResponse({
+  const ExcelSourceResponse({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.maxConcurrentConnections,

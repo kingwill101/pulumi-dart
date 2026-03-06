@@ -9,7 +9,7 @@ class PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3 {
 
   /// Creates a new [PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3].
   /// [name] `name` is the name of the priority level configuration being referenced Required.
-  PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3({
+  const PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3({
     this.name,
   });
 

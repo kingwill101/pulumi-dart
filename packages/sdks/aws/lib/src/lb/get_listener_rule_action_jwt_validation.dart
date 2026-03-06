@@ -15,7 +15,7 @@ class GetListenerRuleActionJwtValidation {
   /// [additionalClaims] Additional claims to validate.
   /// [issuer] Issuer of the JWT.
   /// [jwksEndpoint] JSON Web Key Set (JWKS) endpoint.
-  GetListenerRuleActionJwtValidation({
+  const GetListenerRuleActionJwtValidation({
     this.additionalClaims,
     required this.issuer,
     required this.jwksEndpoint,

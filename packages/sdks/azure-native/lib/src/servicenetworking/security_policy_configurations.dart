@@ -10,7 +10,7 @@ class SecurityPolicyConfigurations {
 
   /// Creates a new [SecurityPolicyConfigurations].
   /// [wafSecurityPolicy] Contains reference to a WAF-type security policy.
-  SecurityPolicyConfigurations({
+  const SecurityPolicyConfigurations({
     this.wafSecurityPolicy,
   });
 

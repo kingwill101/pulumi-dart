@@ -21,7 +21,7 @@ class RosterProfile {
   /// [ltiClientId] The unique id of the azure lab services tool in the lms.
   /// [ltiContextId] The unique context identifier for the lab in the lms.
   /// [ltiRosterEndpoint] The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  RosterProfile({
+  const RosterProfile({
     this.activeDirectoryGroupId,
     this.lmsInstance,
     this.ltiClientId,

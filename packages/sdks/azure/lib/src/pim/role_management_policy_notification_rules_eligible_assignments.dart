@@ -17,7 +17,7 @@ class RoleManagementPolicyNotificationRulesEligibleAssignments {
   /// [adminNotifications] Admin notification settings
   /// [approverNotifications] Approver notification settings
   /// [assigneeNotifications] Assignee notification settings
-  RoleManagementPolicyNotificationRulesEligibleAssignments({
+  const RoleManagementPolicyNotificationRulesEligibleAssignments({
     this.adminNotifications,
     this.approverNotifications,
     this.assigneeNotifications,

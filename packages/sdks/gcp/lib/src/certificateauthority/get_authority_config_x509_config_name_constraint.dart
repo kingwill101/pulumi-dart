@@ -56,7 +56,7 @@ class GetAuthorityConfigX509ConfigNameConstraint {
   /// [permittedEmailAddresses] Contains the permitted email addresses. The value can be a particular
   /// [permittedIpRanges] Contains the permitted IP ranges. For IPv4 addresses, the ranges
   /// [permittedUris] Contains the permitted URIs that apply to the host part of the name.
-  GetAuthorityConfigX509ConfigNameConstraint({
+  const GetAuthorityConfigX509ConfigNameConstraint({
     required this.critical,
     required this.excludedDnsNames,
     required this.excludedEmailAddresses,

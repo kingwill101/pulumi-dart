@@ -34,7 +34,7 @@ class GetWorkspaceResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The resource type.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

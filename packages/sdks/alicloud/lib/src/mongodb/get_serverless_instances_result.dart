@@ -36,7 +36,7 @@ class GetServerlessInstancesResult {
   /// [vpcId] Optional.
   /// [vswitchId] Optional.
   /// [zoneId] Optional.
-  GetServerlessInstancesResult({
+  const GetServerlessInstancesResult({
     this.dbInstanceClass,
     this.dbInstanceDescription,
     this.enableDetails,

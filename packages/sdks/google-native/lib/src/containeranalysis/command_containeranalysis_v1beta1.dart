@@ -24,7 +24,7 @@ class CommandContaineranalysisV1beta1 {
   /// [id] Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
   /// [name] Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
   /// [waitFor] The ID(s) of the command(s) that this command depends on.
-  CommandContaineranalysisV1beta1({
+  const CommandContaineranalysisV1beta1({
     this.args,
     this.dir,
     this.env,

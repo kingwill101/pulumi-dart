@@ -11,7 +11,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscaling
   /// Creates a new [GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit].
   /// [maxNodes] The maximum number of nodes for this specific replica.
   /// [minNodes] The minimum number of nodes for this specific replica.
-  GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit({
+  const GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit({
     required this.maxNodes,
     required this.minNodes,
   });

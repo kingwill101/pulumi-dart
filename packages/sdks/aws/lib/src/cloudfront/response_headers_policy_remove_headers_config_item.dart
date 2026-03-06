@@ -7,7 +7,7 @@ class ResponseHeadersPolicyRemoveHeadersConfigItem {
 
   /// Creates a new [ResponseHeadersPolicyRemoveHeadersConfigItem].
   /// [header] Required.
-  ResponseHeadersPolicyRemoveHeadersConfigItem({
+  const ResponseHeadersPolicyRemoveHeadersConfigItem({
     required this.header,
   });
 

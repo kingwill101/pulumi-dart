@@ -17,7 +17,7 @@ class GetEnvironmentEntryArgs {
   /// [environmentId] Required.
   /// [keyvaluemapId] Required.
   /// [organizationId] Required.
-  GetEnvironmentEntryArgs({
+  const GetEnvironmentEntryArgs({
     required this.entryId,
     required this.environmentId,
     required this.keyvaluemapId,

@@ -15,7 +15,7 @@ class GetTlsRouteArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tlsRouteId] Required.
-  GetTlsRouteArgs({
+  const GetTlsRouteArgs({
     required this.location,
     this.project,
     required this.tlsRouteId,

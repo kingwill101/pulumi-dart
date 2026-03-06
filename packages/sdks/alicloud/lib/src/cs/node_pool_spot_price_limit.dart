@@ -11,7 +11,7 @@ class NodePoolSpotPriceLimit {
   /// Creates a new [NodePoolSpotPriceLimit].
   /// [instanceType] The type of the preemptible instance.
   /// [priceLimit] The maximum price of a single instance.
-  NodePoolSpotPriceLimit({
+  const NodePoolSpotPriceLimit({
     this.instanceType,
     this.priceLimit,
   });

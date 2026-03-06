@@ -9,7 +9,7 @@ class DevOpsAzureSku {
 
   /// Creates a new [DevOpsAzureSku].
   /// [name] The Azure SKU name of the machines in the pool.
-  DevOpsAzureSku({
+  const DevOpsAzureSku({
     required this.name,
   });
 

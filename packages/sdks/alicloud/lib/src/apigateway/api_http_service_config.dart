@@ -26,7 +26,7 @@ class ApiHttpServiceConfig {
   /// [method] The http method of backend service.
   /// [path] The path of backend service.
   /// [timeout] Backend service time-out time; unit: millisecond.
-  ApiHttpServiceConfig({
+  const ApiHttpServiceConfig({
     required this.address,
     this.aoneName,
     this.contentTypeCategory,

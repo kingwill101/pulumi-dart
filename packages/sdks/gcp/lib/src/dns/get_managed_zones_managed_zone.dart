@@ -22,7 +22,7 @@ class GetManagedZonesManagedZone {
   /// [nameServers] Required.
   /// [project] The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
   /// [visibility] Required.
-  GetManagedZonesManagedZone({
+  const GetManagedZonesManagedZone({
     required this.description,
     required this.dnsName,
     required this.id,

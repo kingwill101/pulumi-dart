@@ -18,7 +18,7 @@ class GetGroupsArgs {
   /// [ids] A list of group IDs.
   /// [nameRegex] A regex string to filter results by group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetGroupsArgs({
+  const GetGroupsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

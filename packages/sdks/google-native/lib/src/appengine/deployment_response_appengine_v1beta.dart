@@ -25,7 +25,7 @@ class DeploymentResponseAppengineV1beta {
   /// [container] The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
   /// [files] Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
   /// [zip] The zip file for this deployment, if this is a zip deployment.
-  DeploymentResponseAppengineV1beta({
+  const DeploymentResponseAppengineV1beta({
     required this.build,
     required this.cloudBuildOptions,
     required this.container,

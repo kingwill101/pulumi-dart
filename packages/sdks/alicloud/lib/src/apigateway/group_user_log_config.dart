@@ -23,7 +23,7 @@ class GroupUserLogConfig {
   /// [requestHeaders] The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
   /// [responseBody] Whether to record the response body.
   /// [responseHeaders] The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
-  GroupUserLogConfig({
+  const GroupUserLogConfig({
     this.jwtClaims,
     this.queryString,
     this.requestBody,

@@ -33,7 +33,7 @@ class DomainDevicesFilesystemSource {
   /// [ram] Configures a RAM source for the filesystem.
   /// [template] Configures the template source for the filesystem.
   /// [volume] Sets the volume element that specifies the source volume for the filesystem.
-  DomainDevicesFilesystemSource({
+  const DomainDevicesFilesystemSource({
     this.bind,
     this.block,
     this.file,

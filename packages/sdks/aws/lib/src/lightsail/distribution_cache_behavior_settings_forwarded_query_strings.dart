@@ -11,7 +11,7 @@ class DistributionCacheBehaviorSettingsForwardedQueryStrings {
   /// Creates a new [DistributionCacheBehaviorSettingsForwardedQueryStrings].
   /// [option] Whether the distribution forwards and caches based on query strings.
   /// [queryStringsAllowedLists] Specific query strings that the distribution forwards to the origin.
-  DistributionCacheBehaviorSettingsForwardedQueryStrings({
+  const DistributionCacheBehaviorSettingsForwardedQueryStrings({
     this.option,
     this.queryStringsAllowedLists,
   });

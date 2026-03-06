@@ -18,7 +18,7 @@ class GetAppResiliencyArgs {
   /// [appName] Name of the Container App.
   /// [name] Name of the resiliency policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAppResiliencyArgs({
+  const GetAppResiliencyArgs({
     required this.appName,
     required this.name,
     required this.resourceGroupName,

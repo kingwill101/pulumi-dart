@@ -52,7 +52,7 @@ class ObjectMetaResponse {
   /// [resourceVersion] Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
   /// [selfLink] URL representing this object.
   /// [uid] Unique, system-generated identifier for this resource.
-  ObjectMetaResponse({
+  const ObjectMetaResponse({
     required this.annotations,
     required this.clusterName,
     required this.creationTimestamp,

@@ -30,7 +30,7 @@ class MulticastDomainGroupArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [multicastDomainGroupId] A unique name for the multicast domain group.
   /// [project] The ID of the project in which the resource belongs.
-  MulticastDomainGroupArgs({
+  const MulticastDomainGroupArgs({
     this.description,
     this.labels,
     required this.location,

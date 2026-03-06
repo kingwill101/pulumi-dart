@@ -28,7 +28,7 @@ class TraceScopeArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceNames] Names of the projects that are included in this trace scope.
   /// [traceScopeId] A client-assigned identifier for the trace scope.
-  TraceScopeArgs({
+  const TraceScopeArgs({
     this.description,
     required this.location,
     this.project,

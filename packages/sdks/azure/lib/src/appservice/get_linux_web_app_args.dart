@@ -15,7 +15,7 @@ class GetLinuxWebAppArgs {
   /// Creates a new [GetLinuxWebAppArgs].
   /// [name] The name of this Linux Web App.
   /// [resourceGroupName] The name of the Resource Group where the Linux Web App exists.
-  GetLinuxWebAppArgs({
+  const GetLinuxWebAppArgs({
     required this.name,
     required this.resourceGroupName,
   });

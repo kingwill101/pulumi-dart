@@ -33,7 +33,7 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// [publicIpAddresses] A `public_ip_address` block as defined below.
   /// [subnetId] The identifier of the subnet.
   /// [version] The Internet Protocol Version of the public IP address.
-  GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
+  const GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
     required this.applicationGatewayBackendAddressPoolIds,
     required this.applicationSecurityGroupIds,
     required this.loadBalancerBackendAddressPoolIds,

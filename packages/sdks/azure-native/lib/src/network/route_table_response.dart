@@ -41,7 +41,7 @@ class RouteTableResponse {
   /// [subnets] A collection of references to subnets.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  RouteTableResponse({
+  const RouteTableResponse({
     this.disableBgpRoutePropagation,
     required this.etag,
     this.id,

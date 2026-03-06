@@ -14,7 +14,7 @@ class ApplicationFallbackPublicClientState {
   /// Creates a new [ApplicationFallbackPublicClientState].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [enabled] Whether to enable the application as a fallback public client.
-  ApplicationFallbackPublicClientState({
+  const ApplicationFallbackPublicClientState({
     this.applicationId,
     this.enabled,
   });

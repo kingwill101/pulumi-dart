@@ -13,7 +13,7 @@ class GetUserTablesPostgreSqlTaskInputResponse {
   /// Creates a new [GetUserTablesPostgreSqlTaskInputResponse].
   /// [connectionInfo] Information for connecting to PostgreSQL source
   /// [selectedDatabases] List of PostgreSQL databases for which to collect tables
-  GetUserTablesPostgreSqlTaskInputResponse({
+  const GetUserTablesPostgreSqlTaskInputResponse({
     required this.connectionInfo,
     required this.selectedDatabases,
   });

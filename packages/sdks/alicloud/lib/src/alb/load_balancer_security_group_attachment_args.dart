@@ -18,7 +18,7 @@ class LoadBalancerSecurityGroupAttachmentArgs {
   /// [dryRun] Whether to PreCheck only this request. Value:
   /// [loadBalancerId] The ID of the Application Load Balancer.
   /// [securityGroupId] The ID of the security group.
-  LoadBalancerSecurityGroupAttachmentArgs({
+  const LoadBalancerSecurityGroupAttachmentArgs({
     this.dryRun,
     required this.loadBalancerId,
     this.securityGroupId,

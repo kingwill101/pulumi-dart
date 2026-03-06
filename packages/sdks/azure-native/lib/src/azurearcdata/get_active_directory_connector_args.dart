@@ -18,7 +18,7 @@ class GetActiveDirectoryConnectorArgs {
   /// [activeDirectoryConnectorName] The name of the Active Directory connector instance
   /// [dataControllerName] The name of the data controller
   /// [resourceGroupName] The name of the Azure resource group
-  GetActiveDirectoryConnectorArgs({
+  const GetActiveDirectoryConnectorArgs({
     required this.activeDirectoryConnectorName,
     required this.dataControllerName,
     required this.resourceGroupName,

@@ -8,7 +8,7 @@ class AddonsConfigAddonsConfigMonetizationConfig {
 
   /// Creates a new [AddonsConfigAddonsConfigMonetizationConfig].
   /// [enabled] Flag that specifies whether the Monetization add-on is enabled.
-  AddonsConfigAddonsConfigMonetizationConfig({
+  const AddonsConfigAddonsConfigMonetizationConfig({
     this.enabled,
   });
 

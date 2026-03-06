@@ -16,7 +16,7 @@ class StatusConfigResponse {
   /// [error] Object to transfer and persist errors that originate from the edge.
   /// [lastTransitionTime] A read-only timestamp indicating the last time the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud.
   /// [version] A read-only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (edge) state of the CRD. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-  StatusConfigResponse({
+  const StatusConfigResponse({
     required this.error,
     required this.lastTransitionTime,
     required this.version,

@@ -21,7 +21,7 @@ class DaprAppHealth {
   /// [probeIntervalSeconds] Interval for the health probe in seconds
   /// [probeTimeoutMilliseconds] Timeout for the health probe in milliseconds
   /// [threshold] Threshold for the health probe
-  DaprAppHealth({
+  const DaprAppHealth({
     this.enabled,
     this.path,
     this.probeIntervalSeconds,

@@ -8,7 +8,7 @@ class GetPlacementGroupsPlacementGroupMigrationsInbound {
 
   /// Creates a new [GetPlacementGroupsPlacementGroupMigrationsInbound].
   /// [linodeId] The unique identifier for the Linode being migrated out of the placement group.
-  GetPlacementGroupsPlacementGroupMigrationsInbound({
+  const GetPlacementGroupsPlacementGroupMigrationsInbound({
     required this.linodeId,
   });
 

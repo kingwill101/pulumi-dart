@@ -51,7 +51,7 @@ class DedicatedHostArgs {
   /// [usedTime] The subscription duration of the host. Valid values:
   /// [vswitchId] The ID of the vSwitch to which the host is connected.
   /// [zoneId] The ID of the zone.
-  DedicatedHostArgs({
+  const DedicatedHostArgs({
     this.allocationStatus,
     this.autoRenew,
     required this.dedicatedHostGroupId,

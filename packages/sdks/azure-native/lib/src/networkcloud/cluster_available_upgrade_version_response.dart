@@ -23,7 +23,7 @@ class ClusterAvailableUpgradeVersionResponse {
   /// [supportExpiryDate] The last date the version of the platform is supported.
   /// [targetClusterVersion] The target version this cluster will be upgraded to.
   /// [workloadImpact] The indicator of whether the workload will be impacted during the upgrade.
-  ClusterAvailableUpgradeVersionResponse({
+  const ClusterAvailableUpgradeVersionResponse({
     required this.controlImpact,
     required this.expectedDuration,
     required this.impactDescription,

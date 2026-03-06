@@ -15,7 +15,7 @@ class GetSasArgs {
   /// Creates a new [GetSasArgs].
   /// [connectionString] The connection string for the Event Hub to which this SAS applies.
   /// [expiry] The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
-  GetSasArgs({
+  const GetSasArgs({
     required this.connectionString,
     required this.expiry,
   });

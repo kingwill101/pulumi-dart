@@ -21,7 +21,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
   /// [routingPolicyName] Name of the routing policy. Must be 1-100 alphanumeric characters.
   /// [routingPolicyNumber] Priority number for the routing policy. Must be between 1 and 9999. Lower numbers are evaluated first.
   /// [routingPolicyRules] List of routing policy rules. Each rule defines match conditions and actions. Detailed below.
-  GetCoreNetworkPolicyDocumentRoutingPolicy({
+  const GetCoreNetworkPolicyDocumentRoutingPolicy({
     this.routingPolicyDescription,
     required this.routingPolicyDirection,
     required this.routingPolicyName,

@@ -40,7 +40,7 @@ class FirehoseDeliveryStreamIcebergConfiguration {
   /// [roleArn] The ARN of the IAM role to be assumed by Firehose for calling Apache Iceberg Tables.
   /// [s3BackupMode] Optional.
   /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
-  FirehoseDeliveryStreamIcebergConfiguration({
+  const FirehoseDeliveryStreamIcebergConfiguration({
     this.appendOnly,
     this.bufferingInterval,
     this.bufferingSize,

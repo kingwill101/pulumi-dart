@@ -12,7 +12,7 @@ class IndexColumnResponse {
   /// Creates a new [IndexColumnResponse].
   /// [columnName] Specifies the column name
   /// [dataType] Specifies the data type
-  IndexColumnResponse({
+  const IndexColumnResponse({
     this.columnName,
     this.dataType,
   });

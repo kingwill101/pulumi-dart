@@ -15,7 +15,7 @@ class FileMetadata {
   /// [fileFormat] The format of the file
   /// [fileName] The name of the file.
   /// [fileSize] The size of the file.
-  FileMetadata({
+  const FileMetadata({
     this.fileFormat,
     this.fileName,
     this.fileSize,

@@ -26,7 +26,7 @@ class GetInstanceResult {
   /// [satisfiesPzs] Reserved for future use.
   /// [state] The current state of the instance.
   /// [type] The type of the instance. Defaults to `PRODUCTION`.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.createTime,
     required this.displayName,
     required this.labels,

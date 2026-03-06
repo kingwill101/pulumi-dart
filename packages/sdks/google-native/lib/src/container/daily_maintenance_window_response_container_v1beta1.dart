@@ -12,7 +12,7 @@ class DailyMaintenanceWindowResponseContainerV1beta1 {
   /// Creates a new [DailyMaintenanceWindowResponseContainerV1beta1].
   /// [duration] [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
   /// [startTime] Time within the maintenance window to start the maintenance operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
-  DailyMaintenanceWindowResponseContainerV1beta1({
+  const DailyMaintenanceWindowResponseContainerV1beta1({
     required this.duration,
     required this.startTime,
   });

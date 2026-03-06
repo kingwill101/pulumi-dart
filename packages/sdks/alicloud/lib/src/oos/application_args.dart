@@ -21,7 +21,7 @@ class ApplicationArgs {
   /// [description] Application group description information.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  ApplicationArgs({
+  const ApplicationArgs({
     required this.applicationName,
     this.description,
     this.resourceGroupId,

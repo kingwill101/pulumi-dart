@@ -12,7 +12,7 @@ class LogConfigCounterOptionsCustomFieldResponseComputeV1 {
   /// Creates a new [LogConfigCounterOptionsCustomFieldResponseComputeV1].
   /// [name] This is deprecated and has no effect. Do not use.
   /// [value] This is deprecated and has no effect. Do not use.
-  LogConfigCounterOptionsCustomFieldResponseComputeV1({
+  const LogConfigCounterOptionsCustomFieldResponseComputeV1({
     required this.name,
     required this.value,
   });

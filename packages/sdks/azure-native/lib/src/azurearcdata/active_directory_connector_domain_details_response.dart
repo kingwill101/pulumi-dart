@@ -22,7 +22,7 @@ class ActiveDirectoryConnectorDomainDetailsResponse {
   /// [ouDistinguishedName] The distinguished name of the Active Directory Organizational Unit.
   /// [realm] Name (uppercase) of the Active Directory domain that this AD connector will be associated with.
   /// [serviceAccountProvisioning] The service account provisioning mode for this Active Directory connector.
-  ActiveDirectoryConnectorDomainDetailsResponse({
+  const ActiveDirectoryConnectorDomainDetailsResponse({
     this.domainControllers,
     this.netbiosDomainName,
     this.ouDistinguishedName,

@@ -24,7 +24,7 @@ class ProductPolicyArgs {
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [xmlContent] The XML Content for this Policy.
   /// [xmlLink] A link to a Policy XML Document, which must be publicly available.
-  ProductPolicyArgs({
+  const ProductPolicyArgs({
     required this.apiManagementName,
     required this.productId,
     required this.resourceGroupName,

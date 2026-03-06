@@ -17,7 +17,7 @@ class ServiceLiveTrace {
   /// [enabled] Whether the live trace is enabled? Defaults to `true`.
   /// [httpRequestLogsEnabled] Whether the log category `HttpRequestLogs` is enabled? Defaults to `true`
   /// [messagingLogsEnabled] Whether the log category `MessagingLogs` is enabled? Defaults to `true`
-  ServiceLiveTrace({
+  const ServiceLiveTrace({
     this.connectivityLogsEnabled,
     this.enabled,
     this.httpRequestLogsEnabled,

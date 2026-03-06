@@ -21,7 +21,7 @@ class NetworkServiceDesignVersionPropertiesFormat {
   /// [description] The network service design version description.
   /// [nfvisFromSite] The nfvis from the site.
   /// [resourceElementTemplates] List of resource element template
-  NetworkServiceDesignVersionPropertiesFormat({
+  const NetworkServiceDesignVersionPropertiesFormat({
     this.configurationGroupSchemaReferences,
     this.description,
     this.nfvisFromSite,

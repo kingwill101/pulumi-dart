@@ -12,7 +12,7 @@ class ResourceLimitsResponse {
   /// Creates a new [ResourceLimitsResponse].
   /// [cpu] CPU limits in cores. At present, only full cores are supported.
   /// [memoryInGB] The memory limit in GB.
-  ResourceLimitsResponse({
+  const ResourceLimitsResponse({
     this.cpu,
     this.memoryInGB,
   });

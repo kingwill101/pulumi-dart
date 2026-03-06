@@ -17,7 +17,7 @@ class AlarmEscalationsCritical {
   /// [statistics] Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
   /// [threshold] Critical level alarm threshold value, which must be a numeric value currently.
   /// [times] Critical level alarm retry times. Default value: `3`.
-  AlarmEscalationsCritical({
+  const AlarmEscalationsCritical({
     this.comparisonOperator,
     this.statistics,
     this.threshold,

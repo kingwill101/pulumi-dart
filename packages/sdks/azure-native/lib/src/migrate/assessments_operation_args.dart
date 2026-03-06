@@ -88,7 +88,7 @@ class AssessmentsOperationArgs {
   /// [sizingCriterion] Assessment sizing criterion.
   /// [timeRange] Time Range for which the historic utilization data should be considered for
   /// [vmUptime] Gets or sets the duration for which the VMs are up in the on-premises
-  AssessmentsOperationArgs({
+  const AssessmentsOperationArgs({
     this.assessmentName,
     this.azureDiskTypes,
     this.azureHybridUseBenefit,

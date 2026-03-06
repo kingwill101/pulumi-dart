@@ -11,7 +11,7 @@ class GetGenaiKnowledgeBaseDataSourcesArgs {
 
   /// Creates a new [GetGenaiKnowledgeBaseDataSourcesArgs].
   /// [knowledgeBaseUuid] Required.
-  GetGenaiKnowledgeBaseDataSourcesArgs({
+  const GetGenaiKnowledgeBaseDataSourcesArgs({
     required this.knowledgeBaseUuid,
   });
 

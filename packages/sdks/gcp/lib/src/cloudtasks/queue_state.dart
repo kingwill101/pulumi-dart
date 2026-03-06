@@ -57,7 +57,7 @@ class QueueState {
   /// [retryConfig] Settings that determine the retry behavior.
   /// [stackdriverLoggingConfig] Configuration options for writing logs to Stackdriver Logging.
   /// [state] The current state of the queue.
-  QueueState({
+  const QueueState({
     this.appEngineRoutingOverride,
     this.desiredState,
     this.httpTarget,

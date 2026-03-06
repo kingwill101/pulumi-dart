@@ -32,7 +32,7 @@ class ToolOpenApiToolApiAuthenticationOauthConfig {
   /// [oauthGrantType] (Output)
   /// [scopes] (Output)
   /// [tokenEndpoint] (Output)
-  ToolOpenApiToolApiAuthenticationOauthConfig({
+  const ToolOpenApiToolApiAuthenticationOauthConfig({
     this.clientId,
     this.clientSecretVersion,
     this.oauthGrantType,

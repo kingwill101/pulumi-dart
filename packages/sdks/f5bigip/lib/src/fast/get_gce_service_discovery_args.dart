@@ -44,7 +44,7 @@ class GetGceServiceDiscoveryArgs {
   /// [type] Optional.
   /// [undetectableAction] Action to take when node cannot be detected,default `remove`.
   /// [updateInterval] Update interval for service discovery.
-  GetGceServiceDiscoveryArgs({
+  const GetGceServiceDiscoveryArgs({
     this.addressRealm,
     this.credentialUpdate,
     this.encodedCredentials,

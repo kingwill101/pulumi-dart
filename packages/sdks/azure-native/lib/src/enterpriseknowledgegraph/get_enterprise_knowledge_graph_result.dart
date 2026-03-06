@@ -31,7 +31,7 @@ class GetEnterpriseKnowledgeGraphResult {
   /// [sku] Gets or sets the SKU of the resource.
   /// [tags] Contains resource tags defined as key/value pairs.
   /// [type] Specifies the type of the resource.
-  GetEnterpriseKnowledgeGraphResult({
+  const GetEnterpriseKnowledgeGraphResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

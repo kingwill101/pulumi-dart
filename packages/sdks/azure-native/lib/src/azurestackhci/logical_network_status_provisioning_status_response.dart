@@ -12,7 +12,7 @@ class LogicalNetworkStatusProvisioningStatusResponse {
   /// Creates a new [LogicalNetworkStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the logical network
   /// [status] The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
-  LogicalNetworkStatusProvisioningStatusResponse({
+  const LogicalNetworkStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

@@ -22,7 +22,7 @@ class GetHybridMonitorFcTasksArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetHybridMonitorFcTasksArgs({
+  const GetHybridMonitorFcTasksArgs({
     this.ids,
     this.namespace,
     this.outputFile,

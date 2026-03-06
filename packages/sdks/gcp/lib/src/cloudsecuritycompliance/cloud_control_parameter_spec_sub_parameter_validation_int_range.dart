@@ -11,7 +11,7 @@ class CloudControlParameterSpecSubParameterValidationIntRange {
   /// Creates a new [CloudControlParameterSpecSubParameterValidationIntRange].
   /// [max] Maximum allowed value for the numeric parameter (inclusive).
   /// [min] Minimum allowed value for the numeric parameter (inclusive).
-  CloudControlParameterSpecSubParameterValidationIntRange({
+  const CloudControlParameterSpecSubParameterValidationIntRange({
     required this.max,
     required this.min,
   });

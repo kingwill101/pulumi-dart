@@ -28,7 +28,7 @@ class ClassifierState {
   /// [name] The name of the classifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [xmlClassifier] A classifier for XML content. Defined below.
-  ClassifierState({
+  const ClassifierState({
     this.csvClassifier,
     this.grokClassifier,
     this.jsonClassifier,

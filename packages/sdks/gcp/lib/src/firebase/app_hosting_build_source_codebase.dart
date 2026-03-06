@@ -43,7 +43,7 @@ class AppHostingBuildSourceCodebase {
   /// [displayName] (Output)
   /// [hash] (Output)
   /// [uri] (Output)
-  AppHostingBuildSourceCodebase({
+  const AppHostingBuildSourceCodebase({
     this.authors,
     this.branch,
     this.commit,

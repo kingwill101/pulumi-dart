@@ -11,7 +11,7 @@ class BucketLifecycleRuleAction {
   /// Creates a new [BucketLifecycleRuleAction].
   /// [storageClass] The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
   /// [type] The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
-  BucketLifecycleRuleAction({
+  const BucketLifecycleRuleAction({
     this.storageClass,
     required this.type,
   });

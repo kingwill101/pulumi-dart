@@ -12,7 +12,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings].
   /// [m2tsSettings] M2TS Settings. See [M2TS Settings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-m2tssettings.html) for more details.
   /// [rawSettings] Raw Settings. This can be set as an empty block.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings({
     this.m2tsSettings,
     this.rawSettings,
   });

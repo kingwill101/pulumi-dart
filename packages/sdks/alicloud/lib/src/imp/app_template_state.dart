@@ -27,7 +27,7 @@ class AppTemplateState {
   /// [integrationMode] Integration mode. Valid values:
   /// [scene] Application Template scenario. Valid values: ["business", "classroom"].
   /// [status] Application template usage status.
-  AppTemplateState({
+  const AppTemplateState({
     this.appTemplateName,
     this.componentLists,
     this.configLists,

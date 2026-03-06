@@ -35,7 +35,7 @@ class GetJobResult {
   /// [systemData] SystemData of ImportExport Jobs.
   /// [tags] Specifies the tags that are assigned to the job.
   /// [type] Specifies the type of the job resource.
-  GetJobResult({
+  const GetJobResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

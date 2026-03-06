@@ -46,7 +46,7 @@ class CustomApiPropertiesDefinitionResponse {
   /// [runtimeUrls] Runtime URLs
   /// [swagger] The JSON representation of the swagger
   /// [wsdlDefinition] The WSDL definition
-  CustomApiPropertiesDefinitionResponse({
+  const CustomApiPropertiesDefinitionResponse({
     this.apiDefinitions,
     this.apiType,
     this.backendService,

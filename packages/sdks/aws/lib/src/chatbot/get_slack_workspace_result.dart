@@ -15,7 +15,7 @@ class GetSlackWorkspaceResult {
   /// [region] Required.
   /// [slackTeamId] ID of the Slack Workspace assigned by AWS Chatbot.
   /// [slackTeamName] Required.
-  GetSlackWorkspaceResult({
+  const GetSlackWorkspaceResult({
     required this.id,
     required this.region,
     required this.slackTeamId,

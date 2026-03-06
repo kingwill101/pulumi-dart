@@ -13,7 +13,7 @@ class ListGroundStationL2ConnectionsResult {
   /// Creates a new [ListGroundStationL2ConnectionsResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] A list of Azure Resource IDs.
-  ListGroundStationL2ConnectionsResult({
+  const ListGroundStationL2ConnectionsResult({
     required this.nextLink,
     this.value,
   });

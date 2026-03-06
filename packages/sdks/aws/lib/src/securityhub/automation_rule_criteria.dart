@@ -157,7 +157,7 @@ class AutomationRuleCriteria {
   /// [userDefinedFields] A list of user-defined name and value string pairs added to a finding. Documented below.
   /// [verificationStates] Provides the veracity of a finding. Documented below.
   /// [workflowStatuses] Provides information about the status of the investigation into a finding. Documented below.
-  AutomationRuleCriteria({
+  const AutomationRuleCriteria({
     this.awsAccountIds,
     this.awsAccountNames,
     this.companyNames,

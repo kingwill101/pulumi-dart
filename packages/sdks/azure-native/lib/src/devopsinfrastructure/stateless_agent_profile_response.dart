@@ -17,7 +17,7 @@ class StatelessAgentProfileResponse {
   /// [kind] Discriminator property for AgentProfile.
   /// [resourcePredictions] Defines pool buffer/stand-by agents.
   /// [resourcePredictionsProfile] Defines how the pool buffer/stand-by agents is provided.
-  StatelessAgentProfileResponse({
+  const StatelessAgentProfileResponse({
     required this.kind,
     this.resourcePredictions,
     this.resourcePredictionsProfile,

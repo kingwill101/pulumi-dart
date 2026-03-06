@@ -10,7 +10,7 @@ class IPAddressSpecNetworkingK8sIoV1beta1 {
 
   /// Creates a new [IPAddressSpecNetworkingK8sIoV1beta1].
   /// [parentRef] ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
-  IPAddressSpecNetworkingK8sIoV1beta1({
+  const IPAddressSpecNetworkingK8sIoV1beta1({
     required this.parentRef,
   });
 

@@ -15,7 +15,7 @@ class Sku {
   /// [capacity] Current capacity of the target resource
   /// [name] Name of the Sku
   /// [tier] Tier of the Sku
-  Sku({
+  const Sku({
     this.capacity,
     this.name,
     this.tier,

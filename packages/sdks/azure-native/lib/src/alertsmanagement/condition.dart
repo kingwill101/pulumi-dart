@@ -15,7 +15,7 @@ class Condition {
   /// [field] Field for a given condition.
   /// [operator] Operator for a given condition.
   /// [values] List of values to match for a given condition.
-  Condition({
+  const Condition({
     this.field,
     this.operator,
     this.values,

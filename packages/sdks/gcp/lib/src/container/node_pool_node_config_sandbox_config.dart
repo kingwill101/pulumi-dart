@@ -8,7 +8,7 @@ class NodePoolNodeConfigSandboxConfig {
 
   /// Creates a new [NodePoolNodeConfigSandboxConfig].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')
-  NodePoolNodeConfigSandboxConfig({
+  const NodePoolNodeConfigSandboxConfig({
     required this.sandboxType,
   });
 

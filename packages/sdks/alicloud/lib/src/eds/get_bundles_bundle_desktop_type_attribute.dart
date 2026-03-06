@@ -17,7 +17,7 @@ class GetBundlesBundleDesktopTypeAttribute {
   /// [gpuCount] The gpu count attribute of the bundle.
   /// [gpuSpec] The gpu spec attribute of the bundle.
   /// [memorySize] The memory size attribute of the bundle.
-  GetBundlesBundleDesktopTypeAttribute({
+  const GetBundlesBundleDesktopTypeAttribute({
     required this.cpuCount,
     required this.gpuCount,
     required this.gpuSpec,

@@ -28,7 +28,7 @@ class VMwareClusterControlPlaneNode {
   /// [memory] The megabytes of memory for each admin cluster node that serves as a
   /// [replicas] The number of control plane nodes for this VMware User Cluster.
   /// [vsphereConfigs] (Output)
-  VMwareClusterControlPlaneNode({
+  const VMwareClusterControlPlaneNode({
     this.autoResizeConfig,
     this.cpus,
     this.memory,

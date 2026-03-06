@@ -26,7 +26,7 @@ class GetVirtualNetworkResult {
   /// [resourceGroupName] Required.
   /// [subnetOverrides] The list of permission overrides for the subnets as defined below.
   /// [uniqueIdentifier] The unique immutable identifier of the virtual network.
-  GetVirtualNetworkResult({
+  const GetVirtualNetworkResult({
     required this.allowedSubnets,
     required this.id,
     required this.labName,

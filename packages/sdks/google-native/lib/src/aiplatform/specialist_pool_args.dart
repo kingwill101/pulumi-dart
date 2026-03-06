@@ -25,7 +25,7 @@ class SpecialistPoolArgs {
   /// [project] Optional.
   /// [specialistManagerEmails] The email addresses of the managers in the SpecialistPool.
   /// [specialistWorkerEmails] The email addresses of workers in the SpecialistPool.
-  SpecialistPoolArgs({
+  const SpecialistPoolArgs({
     required this.displayName,
     this.location,
     this.name,

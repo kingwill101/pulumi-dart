@@ -12,7 +12,7 @@ class DiskExclusionProperties {
   /// Creates a new [DiskExclusionProperties].
   /// [diskLunList] List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
   /// [isInclusionList] Flag to indicate whether DiskLunList is to be included/ excluded from backup.
-  DiskExclusionProperties({
+  const DiskExclusionProperties({
     required this.diskLunList,
     required this.isInclusionList,
   });

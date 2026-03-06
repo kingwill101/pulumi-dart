@@ -15,7 +15,7 @@ class GetCloudVmClusterPropertyDiagnosticsDataCollectionOption {
   /// [diagnosticsEventsEnabled] Indicates whether diagnostic collection is enabled for the VM cluster
   /// [healthMonitoringEnabled] Indicates whether health monitoring is enabled for the VM cluster
   /// [incidentLogsEnabled] Indicates whether incident logs and trace collection are enabled for the VM
-  GetCloudVmClusterPropertyDiagnosticsDataCollectionOption({
+  const GetCloudVmClusterPropertyDiagnosticsDataCollectionOption({
     required this.diagnosticsEventsEnabled,
     required this.healthMonitoringEnabled,
     required this.incidentLogsEnabled,

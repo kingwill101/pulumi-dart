@@ -9,7 +9,7 @@ class ConsentHeaderHandlingResponse {
 
   /// Creates a new [ConsentHeaderHandlingResponse].
   /// [profile] Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
-  ConsentHeaderHandlingResponse({
+  const ConsentHeaderHandlingResponse({
     required this.profile,
   });
 

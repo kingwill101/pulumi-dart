@@ -10,7 +10,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse].
   /// [cases] A list of cascading if-else conditions.
-  GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse({
+  const GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse({
     required this.cases,
   });
 

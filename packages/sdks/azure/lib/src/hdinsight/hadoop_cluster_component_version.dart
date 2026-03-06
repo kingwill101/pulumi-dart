@@ -8,7 +8,7 @@ class HadoopClusterComponentVersion {
 
   /// Creates a new [HadoopClusterComponentVersion].
   /// [hadoop] The version of Hadoop which should be used for this HDInsight Hadoop Cluster. Changing this forces a new resource to be created.
-  HadoopClusterComponentVersion({
+  const HadoopClusterComponentVersion({
     required this.hadoop,
   });
 

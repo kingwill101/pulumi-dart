@@ -44,7 +44,7 @@ class AzureSQLAGWorkloadContainerProtectionContainerResponse {
   /// [registrationStatus] Status of registration of the container with the Recovery Services Vault.
   /// [sourceResourceId] ARM ID of the virtual machine represented by this Azure Workload Container
   /// [workloadType] Workload type for which registration was sent.
-  AzureSQLAGWorkloadContainerProtectionContainerResponse({
+  const AzureSQLAGWorkloadContainerProtectionContainerResponse({
     this.backupManagementType,
     required this.containerType,
     this.extendedInfo,

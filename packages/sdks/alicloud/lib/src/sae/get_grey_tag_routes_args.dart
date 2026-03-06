@@ -21,7 +21,7 @@ class GetGreyTagRoutesArgs {
   /// [ids] A list of GreyTagRoute IDs.
   /// [nameRegex] A regex string to filter results by GreyTagRoute name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetGreyTagRoutesArgs({
+  const GetGreyTagRoutesArgs({
     required this.appId,
     this.ids,
     this.nameRegex,

@@ -120,7 +120,7 @@ class BackupPlanState {
   /// [status] The status of the resource. Valid values: `pause`, `running`.
   /// [storageRegion] The storage region.
   /// [usedTime] Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
-  BackupPlanState({
+  const BackupPlanState({
     this.backupGatewayId,
     this.backupLogIntervalSeconds,
     this.backupMethod,

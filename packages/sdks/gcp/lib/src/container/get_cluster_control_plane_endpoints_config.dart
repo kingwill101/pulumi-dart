@@ -13,7 +13,7 @@ class GetClusterControlPlaneEndpointsConfig {
   /// Creates a new [GetClusterControlPlaneEndpointsConfig].
   /// [dnsEndpointConfigs] DNS endpoint configuration.
   /// [ipEndpointsConfigs] IP endpoint configuration.
-  GetClusterControlPlaneEndpointsConfig({
+  const GetClusterControlPlaneEndpointsConfig({
     required this.dnsEndpointConfigs,
     required this.ipEndpointsConfigs,
   });

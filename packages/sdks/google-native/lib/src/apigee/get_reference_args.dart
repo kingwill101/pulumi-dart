@@ -15,7 +15,7 @@ class GetReferenceArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   /// [referenceId] Required.
-  GetReferenceArgs({
+  const GetReferenceArgs({
     required this.environmentId,
     required this.organizationId,
     required this.referenceId,

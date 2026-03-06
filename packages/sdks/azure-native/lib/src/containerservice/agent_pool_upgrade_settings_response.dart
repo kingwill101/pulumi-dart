@@ -21,7 +21,7 @@ class AgentPoolUpgradeSettingsResponse {
   /// [maxUnavailable] The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
   /// [nodeSoakDurationInMinutes] The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
   /// [undrainableNodeBehavior] Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes.
-  AgentPoolUpgradeSettingsResponse({
+  const AgentPoolUpgradeSettingsResponse({
     this.drainTimeoutInMinutes,
     this.maxSurge,
     this.maxUnavailable,

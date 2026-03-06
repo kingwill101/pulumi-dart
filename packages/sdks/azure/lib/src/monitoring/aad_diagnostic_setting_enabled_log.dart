@@ -11,7 +11,7 @@ class AadDiagnosticSettingEnabledLog {
   /// Creates a new [AadDiagnosticSettingEnabledLog].
   /// [category] The log category for the Azure Active Directory Diagnostic.
   /// [retentionPolicy] Optional.
-  AadDiagnosticSettingEnabledLog({
+  const AadDiagnosticSettingEnabledLog({
     required this.category,
     this.retentionPolicy,
   });

@@ -23,7 +23,7 @@ class DatabaseUserArgs {
   /// [mysqlAuthPlugin] The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
   /// [name] The name for the database user.
   /// [settings] Contains optional settings for the user.
-  DatabaseUserArgs({
+  const DatabaseUserArgs({
     required this.clusterId,
     this.mysqlAuthPlugin,
     this.name,

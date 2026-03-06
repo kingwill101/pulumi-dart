@@ -9,7 +9,7 @@ class FrontendEndpointLinkResponse {
 
   /// Creates a new [FrontendEndpointLinkResponse].
   /// [id] Resource ID.
-  FrontendEndpointLinkResponse({
+  const FrontendEndpointLinkResponse({
     this.id,
   });
 

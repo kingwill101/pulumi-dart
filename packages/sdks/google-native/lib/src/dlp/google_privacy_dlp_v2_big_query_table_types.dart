@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2BigQueryTableTypes {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableTypes].
   /// [types] A set of BigQuery table types.
-  GooglePrivacyDlpV2BigQueryTableTypes({
+  const GooglePrivacyDlpV2BigQueryTableTypes({
     this.types,
   });
 

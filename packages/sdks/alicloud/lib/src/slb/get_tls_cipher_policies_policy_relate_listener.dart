@@ -14,7 +14,7 @@ class GetTlsCipherPoliciesPolicyRelateListener {
   /// [loadBalancerId] The ID of SLB instance.
   /// [port] Listening port. Valid value: 1 to 65535.
   /// [protocol] Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
-  GetTlsCipherPoliciesPolicyRelateListener({
+  const GetTlsCipherPoliciesPolicyRelateListener({
     required this.loadBalancerId,
     required this.port,
     required this.protocol,

@@ -12,7 +12,7 @@ class ForwardInfoResponse {
   /// Creates a new [ForwardInfoResponse].
   /// [resourceUri] URI of the resource that the packet is forwarded to.
   /// [target] Target type where this packet is forwarded to.
-  ForwardInfoResponse({
+  const ForwardInfoResponse({
     required this.resourceUri,
     required this.target,
   });

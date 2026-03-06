@@ -13,7 +13,7 @@ class DownloadRequest {
   /// Creates a new [DownloadRequest].
   /// [osProfile] Operating system profile.
   /// [target] Target operating system to support polymorphic resource.
-  DownloadRequest({
+  const DownloadRequest({
     required this.osProfile,
     required this.target,
   });

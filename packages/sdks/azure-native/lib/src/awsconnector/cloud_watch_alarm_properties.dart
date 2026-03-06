@@ -31,7 +31,7 @@ class CloudWatchAlarmProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudWatchAlarmProperties({
+  const CloudWatchAlarmProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

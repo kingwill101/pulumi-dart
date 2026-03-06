@@ -42,7 +42,7 @@ class RoleArgs {
   /// [services] Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
   /// [tags] The list of tags for the role.
   /// [version] Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
-  RoleArgs({
+  const RoleArgs({
     this.assumeRolePolicyDocument,
     this.description,
     this.document,

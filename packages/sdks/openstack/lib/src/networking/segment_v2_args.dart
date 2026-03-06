@@ -38,7 +38,7 @@ class SegmentV2Args {
   /// [physicalNetwork] The name of the physical network. Changing this
   /// [region] The region in which to obtain the V2 Networking client.
   /// [segmentationId] A segmentation identifier. Changing is allowed
-  SegmentV2Args({
+  const SegmentV2Args({
     this.description,
     this.name,
     required this.networkId,

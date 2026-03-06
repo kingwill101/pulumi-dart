@@ -32,7 +32,7 @@ class WebHookEventSubscriptionDestination {
   /// [maxEventsPerBatch] Maximum number of events per batch.
   /// [minimumTlsVersionAllowed] Minimum TLS version that should be supported by webhook endpoint
   /// [preferredBatchSizeInKilobytes] Preferred batch size in Kilobytes.
-  WebHookEventSubscriptionDestination({
+  const WebHookEventSubscriptionDestination({
     this.azureActiveDirectoryApplicationIdOrUri,
     this.azureActiveDirectoryTenantId,
     this.deliveryAttributeMappings,

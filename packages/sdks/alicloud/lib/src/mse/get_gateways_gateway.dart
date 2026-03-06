@@ -39,7 +39,7 @@ class GetGatewaysGateway {
   /// [status] The status of the gateway.
   /// [vpcId] The ID of the vpc.
   /// [vswitchId] The ID of the vswitch.
-  GetGatewaysGateway({
+  const GetGatewaysGateway({
     required this.backupVswitchId,
     required this.gatewayName,
     required this.gatewayUniqueId,

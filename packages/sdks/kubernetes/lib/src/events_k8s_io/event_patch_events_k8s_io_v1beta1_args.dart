@@ -63,7 +63,7 @@ class EventPatchEventsK8sIoV1beta1Args {
   /// [reportingInstance] ID of the controller instance, e.g. `kubelet-xyzf`.
   /// [series] Data about the Event series this event represents or nil if it's a singleton Event.
   /// [type] Type of this event (Normal, Warning), new types could be added in the future.
-  EventPatchEventsK8sIoV1beta1Args({
+  const EventPatchEventsK8sIoV1beta1Args({
     this.action,
     this.apiVersion,
     this.deprecatedCount,

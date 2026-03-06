@@ -55,7 +55,7 @@ class GetGalleryInVMAccessControlProfileVersionResult {
   /// [tags] Resource tags.
   /// [targetLocations] The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGalleryInVMAccessControlProfileVersionResult({
+  const GetGalleryInVMAccessControlProfileVersionResult({
     required this.azureApiVersion,
     required this.defaultAccess,
     this.excludeFromLatest,

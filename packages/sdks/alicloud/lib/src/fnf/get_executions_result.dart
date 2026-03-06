@@ -26,7 +26,7 @@ class GetExecutionsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetExecutionsResult({
+  const GetExecutionsResult({
     this.enableDetails,
     required this.executions,
     required this.flowName,

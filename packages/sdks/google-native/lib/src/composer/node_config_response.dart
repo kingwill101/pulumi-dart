@@ -37,7 +37,7 @@ class NodeConfigResponse {
   /// [serviceAccount] Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
   /// [subnetwork] Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
   /// [tags] Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
-  NodeConfigResponse({
+  const NodeConfigResponse({
     required this.diskSizeGb,
     required this.enableIpMasqAgent,
     required this.ipAllocationPolicy,

@@ -11,7 +11,7 @@ class ManagedServiceIdentityResponseUserAssignedIdentities {
   /// Creates a new [ManagedServiceIdentityResponseUserAssignedIdentities].
   /// [clientId] The client id of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
-  ManagedServiceIdentityResponseUserAssignedIdentities({
+  const ManagedServiceIdentityResponseUserAssignedIdentities({
     required this.clientId,
     required this.principalId,
   });

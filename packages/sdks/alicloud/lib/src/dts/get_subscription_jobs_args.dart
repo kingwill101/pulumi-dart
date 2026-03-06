@@ -25,7 +25,7 @@ class GetSubscriptionJobsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
   /// [tags] Optional.
-  GetSubscriptionJobsArgs({
+  const GetSubscriptionJobsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

@@ -21,7 +21,7 @@ class HubRouteResponse {
   /// [name] The name of the Route that is unique within a RouteTable. This name can be used to access this route.
   /// [nextHop] NextHop resource ID.
   /// [nextHopType] The type of next hop (eg: ResourceId).
-  HubRouteResponse({
+  const HubRouteResponse({
     required this.destinationType,
     required this.destinations,
     required this.name,

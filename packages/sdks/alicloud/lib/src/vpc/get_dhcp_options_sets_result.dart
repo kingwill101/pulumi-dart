@@ -26,7 +26,7 @@ class GetDhcpOptionsSetsResult {
   /// [outputFile] Optional.
   /// [sets] Required.
   /// [status] Optional.
-  GetDhcpOptionsSetsResult({
+  const GetDhcpOptionsSetsResult({
     this.dhcpOptionsSetName,
     this.domainName,
     required this.id,

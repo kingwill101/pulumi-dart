@@ -39,7 +39,7 @@ class ConnectedRegistryArgs {
   /// [parent] The parent of the connected registry.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ConnectedRegistryArgs({
+  const ConnectedRegistryArgs({
     this.clientTokenIds,
     this.connectedRegistryName,
     this.garbageCollection,

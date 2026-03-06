@@ -25,7 +25,7 @@ class ProjectPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourcePolicies] Resource policies that are a part of this project policy.
   /// [scopes] Resources that have access to the shared resources that are a part of this project policy.
-  ProjectPolicyArgs({
+  const ProjectPolicyArgs({
     required this.devCenterName,
     this.projectPolicyName,
     required this.resourceGroupName,

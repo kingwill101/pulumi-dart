@@ -9,7 +9,7 @@ class InterfaceDNSSettings {
 
   /// Creates a new [InterfaceDNSSettings].
   /// [dnsServers] List of DNS server IP Addresses for the interface
-  InterfaceDNSSettings({
+  const InterfaceDNSSettings({
     this.dnsServers,
   });
 

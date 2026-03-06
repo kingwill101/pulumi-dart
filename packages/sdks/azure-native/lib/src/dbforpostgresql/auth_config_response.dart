@@ -15,7 +15,7 @@ class AuthConfigResponse {
   /// [activeDirectoryAuth] Indicates if the server supports Microsoft Entra authentication.
   /// [passwordAuth] Indicates if the server supports password based authentication.
   /// [tenantId] Identifier of the tenant of the delegated resource.
-  AuthConfigResponse({
+  const AuthConfigResponse({
     this.activeDirectoryAuth,
     this.passwordAuth,
     this.tenantId,

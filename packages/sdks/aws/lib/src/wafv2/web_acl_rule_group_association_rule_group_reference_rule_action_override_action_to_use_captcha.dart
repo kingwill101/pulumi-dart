@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseC
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha].
   /// [customRequestHandling] Custom handling for CAPTCHA requests. See below.
-  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha({
+  const WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha({
     this.customRequestHandling,
   });
 

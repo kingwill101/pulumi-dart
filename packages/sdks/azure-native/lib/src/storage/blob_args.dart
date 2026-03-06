@@ -41,7 +41,7 @@ class BlobArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [source] An asset to copy to the blob contents. This field cannot be specified for Append blobs.
   /// [type] The type of the storage blob to be created. Defaults to 'Block'.
-  BlobArgs({
+  const BlobArgs({
     this.accessTier,
     required this.accountName,
     this.blobName,

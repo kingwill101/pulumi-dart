@@ -15,7 +15,7 @@ class InstanceTrustProviderAttachmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [verifiedaccessInstanceId] The ID of the Verified Access instance to attach the Trust Provider to.
   /// [verifiedaccessTrustProviderId] The ID of the Verified Access trust provider.
-  InstanceTrustProviderAttachmentState({
+  const InstanceTrustProviderAttachmentState({
     this.region,
     this.verifiedaccessInstanceId,
     this.verifiedaccessTrustProviderId,

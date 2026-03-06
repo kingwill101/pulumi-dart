@@ -17,7 +17,7 @@ class GetMembershipIamPolicyGkehubV1alpha2Args {
   /// [membershipId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetMembershipIamPolicyGkehubV1alpha2Args({
+  const GetMembershipIamPolicyGkehubV1alpha2Args({
     required this.location,
     required this.membershipId,
     this.optionsRequestedPolicyVersion,

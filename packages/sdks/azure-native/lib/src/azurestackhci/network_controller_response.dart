@@ -15,7 +15,7 @@ class NetworkControllerResponse {
   /// [macAddressPoolStart] macAddressPoolStart of network controller used for SDN Integration.
   /// [macAddressPoolStop] macAddressPoolStop of network controller used for SDN Integration.
   /// [networkVirtualizationEnabled] NetworkVirtualizationEnabled of network controller used for SDN Integration.
-  NetworkControllerResponse({
+  const NetworkControllerResponse({
     this.macAddressPoolStart,
     this.macAddressPoolStop,
     this.networkVirtualizationEnabled,

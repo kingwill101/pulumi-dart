@@ -16,7 +16,7 @@ class ApplicationIamIdentityCenterOptions {
   /// [iamIdentityCenterApplicationArn] Optional.
   /// [iamIdentityCenterInstanceArn] The Amazon Resource Name (ARN) of the IAM Identity Center instance. Must be between 20 and 2048 characters.
   /// [iamRoleForIdentityCenterApplicationArn] The ARN of the IAM role associated with the IAM Identity Center application. Must be between 20 and 2048 characters and match the pattern for IAM role ARNs.
-  ApplicationIamIdentityCenterOptions({
+  const ApplicationIamIdentityCenterOptions({
     this.enabled,
     this.iamIdentityCenterApplicationArn,
     this.iamIdentityCenterInstanceArn,

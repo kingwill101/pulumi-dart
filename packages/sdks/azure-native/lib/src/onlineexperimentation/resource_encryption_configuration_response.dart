@@ -10,7 +10,7 @@ class ResourceEncryptionConfigurationResponse {
 
   /// Creates a new [ResourceEncryptionConfigurationResponse].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.
-  ResourceEncryptionConfigurationResponse({
+  const ResourceEncryptionConfigurationResponse({
     this.customerManagedKeyEncryption,
   });
 

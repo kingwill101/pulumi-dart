@@ -18,7 +18,7 @@ class GetCloudVmClusterIormConfigCache {
   /// [lifecycleDetails] Additional information about the current `lifecycleState`.
   /// [lifecycleState] The current state of IORM configuration for the Exadata DB system.
   /// [objective] The current value for the IORM objective. The default is `AUTO`.
-  GetCloudVmClusterIormConfigCache({
+  const GetCloudVmClusterIormConfigCache({
     required this.dbPlans,
     required this.lifecycleDetails,
     required this.lifecycleState,

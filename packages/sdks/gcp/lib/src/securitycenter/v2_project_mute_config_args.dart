@@ -32,7 +32,7 @@ class V2ProjectMuteConfigArgs {
   /// [muteConfigId] Unique identifier provided by the client within the parent scope.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the mute config.
-  V2ProjectMuteConfigArgs({
+  const V2ProjectMuteConfigArgs({
     this.description,
     required this.filter,
     this.location,

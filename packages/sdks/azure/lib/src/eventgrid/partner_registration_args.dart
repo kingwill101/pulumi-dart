@@ -18,7 +18,7 @@ class PartnerRegistrationArgs {
   /// [name] The name which should be used for this EventGrid Partner Registration. Changing this forces a new EventGrid Partner Registration to be created.
   /// [resourceGroupName] The name of the Resource Group where the EventGrid Partner Registration should exist. Changing this forces a new EventGrid Partner Registration to be created.
   /// [tags] A mapping of tags which should be assigned to the EventGrid Partner Registration.
-  PartnerRegistrationArgs({
+  const PartnerRegistrationArgs({
     this.name,
     required this.resourceGroupName,
     this.tags,

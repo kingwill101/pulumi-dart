@@ -38,7 +38,7 @@ class ApiResourceMetadataResponse {
   /// [tags] The tags.
   /// [wsdlImportMethod] The WSDL import method.
   /// [wsdlService] The WSDL service.
-  ApiResourceMetadataResponse({
+  const ApiResourceMetadataResponse({
     this.apiType,
     this.brandColor,
     this.connectionType,

@@ -14,7 +14,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
   /// [blue] The amount of blue in the color as a value in the interval [0, 1].
   /// [green] The amount of green in the color as a value in the interval [0, 1].
   /// [red] The amount of red in the color as a value in the interval [0, 1].
-  PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor({
+  const PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor({
     this.blue,
     this.green,
     this.red,

@@ -18,7 +18,7 @@ class GetAccessPointArgs {
   /// [accountId] AWS account ID for the account that owns the specified access point.
   /// [name] Name of the access point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAccessPointArgs({
+  const GetAccessPointArgs({
     this.accountId,
     required this.name,
     this.region,

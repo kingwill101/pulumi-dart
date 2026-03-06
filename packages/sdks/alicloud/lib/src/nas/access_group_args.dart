@@ -34,7 +34,7 @@ class AccessGroupArgs {
   /// [fileSystemType] File system type.
   /// [name] Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
   /// [type] Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
-  AccessGroupArgs({
+  const AccessGroupArgs({
     this.accessGroupName,
     this.accessGroupType,
     this.description,

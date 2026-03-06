@@ -12,7 +12,7 @@ class MarketPlaceOfferDetailsResponse {
   /// Creates a new [MarketPlaceOfferDetailsResponse].
   /// [publisherId] Publisher Id.
   /// [saasOfferId] Saas offer Id.
-  MarketPlaceOfferDetailsResponse({
+  const MarketPlaceOfferDetailsResponse({
     required this.publisherId,
     required this.saasOfferId,
   });

@@ -46,7 +46,7 @@ class AlertRuleProperties {
   /// [threshold] The threshold of the alert.
   /// [thresholdOperator] The threshold operator of the alert.
   /// [windowSize] The period of time on which the Alert query will be executed.
-  AlertRuleProperties({
+  const AlertRuleProperties({
     this.actionGroups,
     this.alertQueryParameters,
     this.autoMitigate,

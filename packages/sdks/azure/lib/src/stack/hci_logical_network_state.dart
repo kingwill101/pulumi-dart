@@ -31,7 +31,7 @@ class HciLogicalNetworkState {
   /// [subnet] A `subnet` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Logical Network.
   /// [virtualSwitchName] The name of the virtual switch on the cluster used to associate with the Azure Stack HCI Logical Network. Possible switch names can be retrieved by following this [Azure guide](https://learn.microsoft.com/azure-stack/hci/manage/create-logical-networks?tabs=azurecli#prerequisites). Changing this forces a new resource to be created.
-  HciLogicalNetworkState({
+  const HciLogicalNetworkState({
     this.customLocationId,
     this.dnsServers,
     this.location,

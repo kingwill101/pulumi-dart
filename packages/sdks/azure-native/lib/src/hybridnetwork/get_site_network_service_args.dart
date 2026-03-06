@@ -15,7 +15,7 @@ class GetSiteNetworkServiceArgs {
   /// Creates a new [GetSiteNetworkServiceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteNetworkServiceName] The name of the site network service.
-  GetSiteNetworkServiceArgs({
+  const GetSiteNetworkServiceArgs({
     required this.resourceGroupName,
     required this.siteNetworkServiceName,
   });

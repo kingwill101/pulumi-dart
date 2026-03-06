@@ -8,7 +8,7 @@ class ServiceMeshExtraConfiguration {
 
   /// Creates a new [ServiceMeshExtraConfiguration].
   /// [crAggregationEnabled] Whether the data plane KubeAPI access capability is enabled.
-  ServiceMeshExtraConfiguration({
+  const ServiceMeshExtraConfiguration({
     this.crAggregationEnabled,
   });
 

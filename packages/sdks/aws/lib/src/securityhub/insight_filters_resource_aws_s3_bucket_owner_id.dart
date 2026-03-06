@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsS3BucketOwnerId {
   /// Creates a new [InsightFiltersResourceAwsS3BucketOwnerId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsS3BucketOwnerId({
+  const InsightFiltersResourceAwsS3BucketOwnerId({
     required this.comparison,
     required this.value,
   });

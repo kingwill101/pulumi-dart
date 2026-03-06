@@ -29,7 +29,7 @@ class LocalNetworkGateway {
   /// [localNetworkAddressSpace] Local network site address space.
   /// [location] Resource location.
   /// [tags] Resource tags.
-  LocalNetworkGateway({
+  const LocalNetworkGateway({
     this.bgpSettings,
     this.fqdn,
     this.gatewayIpAddress,

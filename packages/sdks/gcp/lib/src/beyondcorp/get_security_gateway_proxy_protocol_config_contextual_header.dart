@@ -20,7 +20,7 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeader {
   /// [groupInfos] Group info configuration.
   /// [outputType] Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
   /// [userInfos] User info configuration.
-  GetSecurityGatewayProxyProtocolConfigContextualHeader({
+  const GetSecurityGatewayProxyProtocolConfigContextualHeader({
     required this.deviceInfos,
     required this.groupInfos,
     required this.outputType,

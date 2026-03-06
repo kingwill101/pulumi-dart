@@ -22,7 +22,7 @@ class UploadedCertificateArgs {
   /// [labels] User-defined labels (key-value pairs) the
   /// [name] Name of the Certificate.
   /// [privateKey] PEM encoded private key belonging to the certificate.
-  UploadedCertificateArgs({
+  const UploadedCertificateArgs({
     required this.certificate,
     this.labels,
     this.name,

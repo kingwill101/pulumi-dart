@@ -13,7 +13,7 @@ class GetFlowLogServiceResult {
   /// [enable] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [status] The current service enable status.
-  GetFlowLogServiceResult({
+  const GetFlowLogServiceResult({
     this.enable,
     required this.id,
     required this.status,

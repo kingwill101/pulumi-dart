@@ -12,7 +12,7 @@ class EventSource {
   /// Creates a new [EventSource].
   /// [component] Component from which the event is generated.
   /// [host] Node name on which the event is generated.
-  EventSource({
+  const EventSource({
     this.component,
     this.host,
   });

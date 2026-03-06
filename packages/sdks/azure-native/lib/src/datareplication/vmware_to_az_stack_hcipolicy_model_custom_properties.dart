@@ -20,7 +20,7 @@ class VMwareToAzStackHCIPolicyModelCustomProperties {
   /// [crashConsistentFrequencyInMinutes] Gets or sets the crash consistent snapshot frequency (in minutes).
   /// [instanceType] Gets or sets the instance type.
   /// [recoveryPointHistoryInMinutes] Gets or sets the duration in minutes until which the recovery points need to be
-  VMwareToAzStackHCIPolicyModelCustomProperties({
+  const VMwareToAzStackHCIPolicyModelCustomProperties({
     required this.appConsistentFrequencyInMinutes,
     required this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

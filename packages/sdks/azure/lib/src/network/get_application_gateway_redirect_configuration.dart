@@ -28,7 +28,7 @@ class GetApplicationGatewayRedirectConfiguration {
   /// [targetListenerId] Required.
   /// [targetListenerName] The name of the listener to redirect to.
   /// [targetUrl] The URL to redirect the request to.
-  GetApplicationGatewayRedirectConfiguration({
+  const GetApplicationGatewayRedirectConfiguration({
     required this.id,
     required this.includePath,
     required this.includeQueryString,

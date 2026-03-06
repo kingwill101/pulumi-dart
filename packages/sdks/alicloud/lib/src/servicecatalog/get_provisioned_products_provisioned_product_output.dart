@@ -11,7 +11,7 @@ class GetProvisionedProductsProvisionedProductOutput {
   /// [description] Required.
   /// [outputKey] Required.
   /// [outputValue] Required.
-  GetProvisionedProductsProvisionedProductOutput({
+  const GetProvisionedProductsProvisionedProductOutput({
     required this.description,
     required this.outputKey,
     required this.outputValue,

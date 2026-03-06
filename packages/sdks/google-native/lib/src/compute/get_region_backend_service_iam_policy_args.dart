@@ -17,7 +17,7 @@ class GetRegionBackendServiceIamPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetRegionBackendServiceIamPolicyArgs({
+  const GetRegionBackendServiceIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

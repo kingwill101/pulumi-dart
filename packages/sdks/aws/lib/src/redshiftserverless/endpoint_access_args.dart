@@ -27,7 +27,7 @@ class EndpointAccessArgs {
   /// [subnetIds] An array of VPC subnet IDs to associate with the endpoint.
   /// [vpcSecurityGroupIds] An array of security group IDs to associate with the workgroup.
   /// [workgroupName] The name of the workgroup.
-  EndpointAccessArgs({
+  const EndpointAccessArgs({
     required this.endpointName,
     this.ownerAccount,
     this.region,

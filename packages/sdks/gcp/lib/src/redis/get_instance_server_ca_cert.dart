@@ -20,7 +20,7 @@ class GetInstanceServerCaCert {
   /// [expireTime] The time when the certificate expires.
   /// [serialNumber] Serial number, as extracted from the certificate.
   /// [sha1Fingerprint] Sha1 Fingerprint of the certificate.
-  GetInstanceServerCaCert({
+  const GetInstanceServerCaCert({
     required this.cert,
     required this.createTime,
     required this.expireTime,

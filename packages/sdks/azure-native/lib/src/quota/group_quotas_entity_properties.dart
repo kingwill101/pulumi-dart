@@ -8,7 +8,7 @@ class GroupQuotasEntityProperties {
 
   /// Creates a new [GroupQuotasEntityProperties].
   /// [displayName] Display name of the GroupQuota entity.
-  GroupQuotasEntityProperties({
+  const GroupQuotasEntityProperties({
     this.displayName,
   });
 

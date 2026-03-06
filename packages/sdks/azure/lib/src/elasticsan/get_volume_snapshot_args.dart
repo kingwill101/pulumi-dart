@@ -15,7 +15,7 @@ class GetVolumeSnapshotArgs {
   /// Creates a new [GetVolumeSnapshotArgs].
   /// [name] The name of the Elastic SAN Volume Snapshot.
   /// [volumeGroupId] The Elastic SAN Volume Group ID within which the Elastic SAN Volume Snapshot exists.
-  GetVolumeSnapshotArgs({
+  const GetVolumeSnapshotArgs({
     required this.name,
     required this.volumeGroupId,
   });

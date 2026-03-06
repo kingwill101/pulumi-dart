@@ -34,7 +34,7 @@ class InsightsAccountState {
   /// [scanSchedule] Schedule for automated scanning. Use 'daily' to enable daily scans, or 'none' to disable scheduled scanning. Defaults to 'none'.
   /// [scheduledScanEnabled] Whether scheduled scanning is enabled.
   /// [tags] Key-value tags to associate with the insights account.
-  InsightsAccountState({
+  const InsightsAccountState({
     required this.accountName,
     required this.environment,
     required this.insightsAccountId,

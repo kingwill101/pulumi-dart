@@ -32,7 +32,7 @@ class PoolAssociationResponse {
   /// [reservedPrefixes] List of reserved IP address prefixes in the IpamPool of the associated resource.
   /// [resourceId] Resource id of the associated Azure resource.
   /// [totalNumberOfIPAddresses] Total number of assigned IP addresses of the association.
-  PoolAssociationResponse({
+  const PoolAssociationResponse({
     required this.addressPrefixes,
     required this.createdAt,
     this.description,

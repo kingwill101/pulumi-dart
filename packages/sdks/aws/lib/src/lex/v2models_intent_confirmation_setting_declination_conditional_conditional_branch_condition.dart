@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCo
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition].
   /// [expressionString] Expression string that is evaluated.
-  V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition({
     required this.expressionString,
   });
 

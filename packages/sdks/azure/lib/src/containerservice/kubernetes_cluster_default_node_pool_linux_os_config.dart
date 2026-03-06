@@ -20,7 +20,7 @@ class KubernetesClusterDefaultNodePoolLinuxOsConfig {
   /// [transparentHugePage] Specifies the Transparent Huge Page configuration. Possible values are `always`, `madvise` and `never`.
   /// [transparentHugePageDefrag] specifies the defrag configuration for Transparent Huge Page. Possible values are `always`, `defer`, `defer+madvise`, `madvise` and `never`.
   /// [transparentHugePageEnabled] Optional.
-  KubernetesClusterDefaultNodePoolLinuxOsConfig({
+  const KubernetesClusterDefaultNodePoolLinuxOsConfig({
     this.swapFileSizeMb,
     this.sysctlConfig,
     this.transparentHugePage,

@@ -21,7 +21,7 @@ class AppIngressTrafficWeight {
   /// [latestRevision] This traffic Weight applies to the latest stable Container Revision. At most only one `traffic_weight` block can have the `latest_revision` set to `true`.
   /// [percentage] The percentage of traffic which should be sent this revision.
   /// [revisionSuffix] The suffix string to which this `traffic_weight` applies.
-  AppIngressTrafficWeight({
+  const AppIngressTrafficWeight({
     this.label,
     this.latestRevision,
     required this.percentage,

@@ -32,7 +32,7 @@ class GetCertificateArgs {
   /// [statuses] List of statuses on which to filter the returned list. Valid values are `PENDING_VALIDATION`, `ISSUED`,
   /// [tags] A mapping of tags, each pair of which must exactly match a pair on the desired certificates.
   /// [types] List of types on which to filter the returned list. Valid values are `AMAZON_ISSUED`, `PRIVATE`, and `IMPORTED`.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     this.domain,
     this.keyTypes,
     this.mostRecent,

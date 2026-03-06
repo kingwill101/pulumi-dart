@@ -9,7 +9,7 @@ class PodCIDROverprovisionConfigResponseContainerV1beta1 {
 
   /// Creates a new [PodCIDROverprovisionConfigResponseContainerV1beta1].
   /// [disable] Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
-  PodCIDROverprovisionConfigResponseContainerV1beta1({
+  const PodCIDROverprovisionConfigResponseContainerV1beta1({
     required this.disable,
   });
 

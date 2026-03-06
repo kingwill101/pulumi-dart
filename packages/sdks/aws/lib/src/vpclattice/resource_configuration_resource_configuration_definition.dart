@@ -17,7 +17,7 @@ class ResourceConfigurationResourceConfigurationDefinition {
   /// [arnResource] Resource DNS Configuration. See `arn_resource` Block for details.
   /// [dnsResource] Resource DNS Configuration. See `dns_resource` Block for details.
   /// [ipResource] Resource DNS Configuration. See `ip_resource` Block for details.
-  ResourceConfigurationResourceConfigurationDefinition({
+  const ResourceConfigurationResourceConfigurationDefinition({
     this.arnResource,
     this.dnsResource,
     this.ipResource,

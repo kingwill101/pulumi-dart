@@ -13,7 +13,7 @@ class MeshSpec {
   /// Creates a new [MeshSpec].
   /// [egressFilter] Egress filter rules for the service mesh.
   /// [serviceDiscovery] The service discovery information for the service mesh.
-  MeshSpec({
+  const MeshSpec({
     this.egressFilter,
     this.serviceDiscovery,
   });

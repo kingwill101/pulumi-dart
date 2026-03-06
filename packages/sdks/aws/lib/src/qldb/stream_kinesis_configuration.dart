@@ -11,7 +11,7 @@ class StreamKinesisConfiguration {
   /// Creates a new [StreamKinesisConfiguration].
   /// [aggregationEnabled] Enables QLDB to publish multiple data records in a single Kinesis Data Streams record, increasing the number of records sent per API call. Default: `true`.
   /// [streamArn] The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
-  StreamKinesisConfiguration({
+  const StreamKinesisConfiguration({
     this.aggregationEnabled,
     required this.streamArn,
   });

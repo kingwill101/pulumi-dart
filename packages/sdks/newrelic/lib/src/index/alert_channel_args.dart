@@ -22,7 +22,7 @@ class AlertChannelArgs {
   /// [config] A nested block that describes an alert channel configuration.  Only one config block is permitted per alert channel definition.  See Nested config blocks below for details.
   /// [name] The name of the channel.
   /// [type] The type of channel.  One of: `email`, `slack`, `opsgenie`, `pagerduty`, `victorops`, or `webhook`.
-  AlertChannelArgs({
+  const AlertChannelArgs({
     this.accountId,
     this.config,
     this.name,

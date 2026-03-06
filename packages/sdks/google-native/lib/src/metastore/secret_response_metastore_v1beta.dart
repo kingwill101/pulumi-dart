@@ -9,7 +9,7 @@ class SecretResponseMetastoreV1beta {
 
   /// Creates a new [SecretResponseMetastoreV1beta].
   /// [cloudSecret] The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-  SecretResponseMetastoreV1beta({
+  const SecretResponseMetastoreV1beta({
     required this.cloudSecret,
   });
 

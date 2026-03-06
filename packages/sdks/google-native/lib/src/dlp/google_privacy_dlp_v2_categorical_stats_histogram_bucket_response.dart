@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
   /// [bucketValues] Sample of value frequencies in this bucket. The total number of values returned per bucket is capped at 20.
   /// [valueFrequencyLowerBound] Lower bound on the value frequency of the values in this bucket.
   /// [valueFrequencyUpperBound] Upper bound on the value frequency of the values in this bucket.
-  GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse({
+  const GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse({
     required this.bucketSize,
     required this.bucketValueCount,
     required this.bucketValues,

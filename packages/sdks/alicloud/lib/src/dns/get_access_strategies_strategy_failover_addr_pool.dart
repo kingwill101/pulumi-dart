@@ -17,7 +17,7 @@ class GetAccessStrategiesStrategyFailoverAddrPool {
   /// [addrPoolId] The ID of the address pool.
   /// [lbaWeight] The weight of the address pool.
   /// [name] The name of the address pool.
-  GetAccessStrategiesStrategyFailoverAddrPool({
+  const GetAccessStrategiesStrategyFailoverAddrPool({
     required this.addrCount,
     required this.addrPoolId,
     required this.lbaWeight,

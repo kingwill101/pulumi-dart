@@ -22,7 +22,7 @@ class AppCheckAppAttestConfigState {
   /// [name] The relative resource name of the App Attest configuration object
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid.
-  AppCheckAppAttestConfigState({
+  const AppCheckAppAttestConfigState({
     this.appId,
     this.name,
     this.project,

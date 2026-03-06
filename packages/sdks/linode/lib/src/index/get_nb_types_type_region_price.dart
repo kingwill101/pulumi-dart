@@ -11,7 +11,7 @@ class GetNbTypesTypeRegionPrice {
   /// [hourly] Required.
   /// [id] Required.
   /// [monthly] Required.
-  GetNbTypesTypeRegionPrice({
+  const GetNbTypesTypeRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

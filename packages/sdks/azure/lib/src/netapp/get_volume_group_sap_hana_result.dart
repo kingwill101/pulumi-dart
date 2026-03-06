@@ -29,7 +29,7 @@ class GetVolumeGroupSapHanaResult {
   /// [name] The name of this volume.
   /// [resourceGroupName] Required.
   /// [volumes] A `volume` block as defined below.
-  GetVolumeGroupSapHanaResult({
+  const GetVolumeGroupSapHanaResult({
     required this.accountName,
     required this.applicationIdentifier,
     required this.groupDescription,

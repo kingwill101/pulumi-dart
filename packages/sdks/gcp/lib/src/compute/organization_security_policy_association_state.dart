@@ -18,7 +18,7 @@ class OrganizationSecurityPolicyAssociationState {
   /// [displayName] The display name of the security policy of the association.
   /// [name] The name for an association.
   /// [policyId] The security policy ID of the association.
-  OrganizationSecurityPolicyAssociationState({
+  const OrganizationSecurityPolicyAssociationState({
     this.attachmentId,
     this.displayName,
     this.name,

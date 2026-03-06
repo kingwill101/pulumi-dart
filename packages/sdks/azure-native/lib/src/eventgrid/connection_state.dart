@@ -15,7 +15,7 @@ class ConnectionState {
   /// [actionsRequired] Actions required (if any).
   /// [description] Description of the connection state.
   /// [status] Status of the connection.
-  ConnectionState({
+  const ConnectionState({
     this.actionsRequired,
     this.description,
     this.status,

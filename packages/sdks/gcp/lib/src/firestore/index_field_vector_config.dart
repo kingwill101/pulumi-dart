@@ -12,7 +12,7 @@ class IndexFieldVectorConfig {
   /// Creates a new [IndexFieldVectorConfig].
   /// [dimension] The resulting index will only include vectors of this dimension, and can be used for vector search
   /// [flat] Indicates the vector index is a flat index.
-  IndexFieldVectorConfig({
+  const IndexFieldVectorConfig({
     this.dimension,
     this.flat,
   });

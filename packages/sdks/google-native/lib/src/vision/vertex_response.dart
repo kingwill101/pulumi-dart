@@ -12,7 +12,7 @@ class VertexResponse {
   /// Creates a new [VertexResponse].
   /// [x] X coordinate.
   /// [y] Y coordinate.
-  VertexResponse({
+  const VertexResponse({
     required this.x,
     required this.y,
   });

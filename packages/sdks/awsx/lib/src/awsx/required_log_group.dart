@@ -14,7 +14,7 @@ class RequiredLogGroup {
   /// Creates a new [RequiredLogGroup].
   /// [args] Arguments to use instead of the default values during creation.
   /// [existing] Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-  RequiredLogGroup({
+  const RequiredLogGroup({
     this.args,
     this.existing,
   });

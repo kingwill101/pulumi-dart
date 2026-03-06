@@ -7,7 +7,7 @@ class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType {
 
   /// Creates a new [GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType].
   /// [placeHolder] Required.
-  GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType({
+  const GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType({
     required this.placeHolder,
   });
 

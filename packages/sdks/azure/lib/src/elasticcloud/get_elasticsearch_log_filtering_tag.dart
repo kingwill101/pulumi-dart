@@ -14,7 +14,7 @@ class GetElasticsearchLogFilteringTag {
   /// [action] The type of action which is taken when the Tag matches the `name` and `value`.
   /// [name] The name of the Elasticsearch resource.
   /// [value] The value of the Tag which should be filtered.
-  GetElasticsearchLogFilteringTag({
+  const GetElasticsearchLogFilteringTag({
     required this.action,
     required this.name,
     required this.value,

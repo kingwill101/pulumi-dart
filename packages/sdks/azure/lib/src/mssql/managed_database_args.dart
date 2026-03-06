@@ -29,7 +29,7 @@ class ManagedDatabaseArgs {
   /// [pointInTimeRestore] A `point_in_time_restore` block as defined below. Changing this forces a new resource to be created.
   /// [shortTermRetentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   /// [tags] A mapping of tags to assign to the resource.
-  ManagedDatabaseArgs({
+  const ManagedDatabaseArgs({
     this.longTermRetentionPolicy,
     required this.managedInstanceId,
     this.name,

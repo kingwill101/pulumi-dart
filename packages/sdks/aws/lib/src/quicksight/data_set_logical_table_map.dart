@@ -19,7 +19,7 @@ class DataSetLogicalTableMap {
   /// [dataTransforms] Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null. See data_transforms.
   /// [logicalTableMapId] Key of the logical table map.
   /// [source] Source of this logical table. See source.
-  DataSetLogicalTableMap({
+  const DataSetLogicalTableMap({
     required this.alias,
     this.dataTransforms,
     required this.logicalTableMapId,

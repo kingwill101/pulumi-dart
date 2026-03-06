@@ -12,7 +12,7 @@ class AppProfileSingleClusterRouting {
   /// Creates a new [AppProfileSingleClusterRouting].
   /// [allowTransactionalWrites] If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
   /// [clusterId] The cluster to which read/write requests should be routed.
-  AppProfileSingleClusterRouting({
+  const AppProfileSingleClusterRouting({
     this.allowTransactionalWrites,
     required this.clusterId,
   });

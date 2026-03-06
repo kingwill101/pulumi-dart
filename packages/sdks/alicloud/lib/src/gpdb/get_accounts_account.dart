@@ -20,7 +20,7 @@ class GetAccountsAccount {
   /// [dbInstanceId] The ID of the instance.
   /// [id] The ID of the Account. Its value is same as Queue Name.
   /// [status] The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
-  GetAccountsAccount({
+  const GetAccountsAccount({
     required this.accountDescription,
     required this.accountName,
     required this.dbInstanceId,

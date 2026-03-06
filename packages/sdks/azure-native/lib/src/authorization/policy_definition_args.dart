@@ -40,7 +40,7 @@ class PolicyDefinitionArgs {
   /// [policyType] The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   /// [version] The policy definition version in #.#.# format.
   /// [versions] A list of available versions for this policy definition.
-  PolicyDefinitionArgs({
+  const PolicyDefinitionArgs({
     this.description,
     this.displayName,
     this.metadata,

@@ -23,7 +23,7 @@ class DataBoxSecretResponse {
   /// [deviceSerialNumber] Serial number of the assigned device.
   /// [encodedValidationCertPubKey] The base 64 encoded public key to authenticate with the device
   /// [networkConfigurations] Network configuration of the appliance.
-  DataBoxSecretResponse({
+  const DataBoxSecretResponse({
     required this.accountCredentialDetails,
     required this.devicePassword,
     required this.deviceSerialNumber,

@@ -120,7 +120,7 @@ class BackupVaultState {
   /// [totalStoredBytes] Output only. Total size of the storage used by all backup resources.
   /// [uid] Output only. Output only Immutable after resource creation until resource deletion.
   /// [updateTime] Output only. The time when the instance was updated.
-  BackupVaultState({
+  const BackupVaultState({
     this.accessRestriction,
     this.allowMissing,
     this.annotations,

@@ -54,7 +54,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// [id] The id of the resource with the following restrictions:
   /// [pkg] A resource that manages a system package.
   /// [repository] A resource that manages a package repository.
-  V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource({
+  const V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource({
     this.exec,
     this.file,
     required this.id,

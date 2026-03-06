@@ -50,7 +50,7 @@ class GetRouterBgp {
   /// [asn] Local BGP Autonomous System Number (ASN). Must be an RFC6996
   /// [identifierRange] Explicitly specifies a range of valid BGP Identifiers for this Router.
   /// [keepaliveInterval] The interval in seconds between BGP keepalive messages that are sent
-  GetRouterBgp({
+  const GetRouterBgp({
     required this.advertiseMode,
     required this.advertisedGroups,
     required this.advertisedIpRanges,

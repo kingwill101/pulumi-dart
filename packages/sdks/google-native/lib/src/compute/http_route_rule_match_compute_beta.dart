@@ -33,7 +33,7 @@ class HttpRouteRuleMatchComputeBeta {
   /// [prefixMatch] For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
   /// [queryParameterMatches] Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
   /// [regexMatch] For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
-  HttpRouteRuleMatchComputeBeta({
+  const HttpRouteRuleMatchComputeBeta({
     this.fullPathMatch,
     this.headerMatches,
     this.ignoreCase,

@@ -76,7 +76,7 @@ class TopicState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [schemaSettings] Settings for validating messages published against a schema.
   /// [tags] Input only. Resource manager tags to be bound to the topic. Tag keys and
-  TopicState({
+  const TopicState({
     this.effectiveLabels,
     this.ingestionDataSourceSettings,
     this.kmsKeyName,

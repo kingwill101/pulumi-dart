@@ -21,7 +21,7 @@ class PolicySettings {
   /// [defaultRedirectUrl] If action type is redirect, this field represents the default redirect URL for the client.
   /// [enabledState] describes if the policy is in enabled state or disabled state
   /// [mode] Describes if it is in detection mode or prevention mode at policy level.
-  PolicySettings({
+  const PolicySettings({
     this.defaultCustomBlockResponseBody,
     this.defaultCustomBlockResponseStatusCode,
     this.defaultRedirectUrl,

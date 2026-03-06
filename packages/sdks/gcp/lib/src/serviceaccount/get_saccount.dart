@@ -28,7 +28,7 @@ class GetSAccount {
   /// [member] The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   /// [name] The fully-qualified name of the service account.
   /// [uniqueId] The unique id of the service account.
-  GetSAccount({
+  const GetSAccount({
     required this.accountId,
     required this.disabled,
     required this.displayName,

@@ -12,7 +12,7 @@ class GetSubscriptionDiagnosticSettingArgs {
 
   /// Creates a new [GetSubscriptionDiagnosticSettingArgs].
   /// [name] The name of the diagnostic setting.
-  GetSubscriptionDiagnosticSettingArgs({
+  const GetSubscriptionDiagnosticSettingArgs({
     required this.name,
   });
 

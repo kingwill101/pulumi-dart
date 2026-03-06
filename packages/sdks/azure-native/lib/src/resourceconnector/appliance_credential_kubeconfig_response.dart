@@ -12,7 +12,7 @@ class ApplianceCredentialKubeconfigResponse {
   /// Creates a new [ApplianceCredentialKubeconfigResponse].
   /// [name] Name which contains the role of the kubeconfig.
   /// [value] Contains the kubeconfig value.
-  ApplianceCredentialKubeconfigResponse({
+  const ApplianceCredentialKubeconfigResponse({
     required this.name,
     required this.value,
   });

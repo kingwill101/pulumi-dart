@@ -11,7 +11,7 @@ class FeatureSubsetResponse {
   /// Creates a new [FeatureSubsetResponse].
   /// [features] [Required] The list of features to include.
   /// [filterType] Expected value is 'FeatureSubset'.
-  FeatureSubsetResponse({
+  const FeatureSubsetResponse({
     required this.features,
     required this.filterType,
   });

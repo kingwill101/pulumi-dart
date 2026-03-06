@@ -9,7 +9,7 @@ class PlacementGroupStrategyEnumValueResponse {
 
   /// Creates a new [PlacementGroupStrategyEnumValueResponse].
   /// [value] Property value
-  PlacementGroupStrategyEnumValueResponse({
+  const PlacementGroupStrategyEnumValueResponse({
     this.value,
   });
 

@@ -54,7 +54,7 @@ class LabArgs {
   /// [tags] Resource tags.
   /// [title] The title of the lab.
   /// [virtualMachineProfile] The profile used for creating lab virtual machines.
-  LabArgs({
+  const LabArgs({
     required this.autoShutdownProfile,
     required this.connectionProfile,
     this.description,

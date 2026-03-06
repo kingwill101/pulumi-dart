@@ -20,7 +20,7 @@ class GetHpcClustersResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetHpcClustersResult({
+  const GetHpcClustersResult({
     required this.clusters,
     required this.id,
     required this.ids,

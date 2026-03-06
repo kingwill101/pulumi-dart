@@ -15,7 +15,7 @@ class DataStoreUtilizationDetailsResponse {
   /// [dataStoreName] The datastore name.
   /// [totalSnapshotsCreated] The total snapshots created for server migration in the datastore.
   /// [totalSnapshotsSupported] The total count of snapshots supported by the datastore.
-  DataStoreUtilizationDetailsResponse({
+  const DataStoreUtilizationDetailsResponse({
     required this.dataStoreName,
     required this.totalSnapshotsCreated,
     required this.totalSnapshotsSupported,

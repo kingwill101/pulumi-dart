@@ -12,7 +12,7 @@ class RelationshipOriginInformationResponse {
   /// Creates a new [RelationshipOriginInformationResponse].
   /// [discoveryEngine] The name of the discovery engine that created the relationship.
   /// [relationshipOriginType] Identifies the origin type of the relationship.
-  RelationshipOriginInformationResponse({
+  const RelationshipOriginInformationResponse({
     required this.discoveryEngine,
     required this.relationshipOriginType,
   });

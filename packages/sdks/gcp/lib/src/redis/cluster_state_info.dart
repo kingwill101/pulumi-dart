@@ -10,7 +10,7 @@ class ClusterStateInfo {
 
   /// Creates a new [ClusterStateInfo].
   /// [updateInfo] A nested object resource.
-  ClusterStateInfo({
+  const ClusterStateInfo({
     this.updateInfo,
   });
 

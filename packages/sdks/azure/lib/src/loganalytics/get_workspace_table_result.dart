@@ -21,7 +21,7 @@ class GetWorkspaceTableResult {
   /// [retentionInDays] The table's data retention in days.
   /// [totalRetentionInDays] The table's total data retention in days.
   /// [workspaceId] Required.
-  GetWorkspaceTableResult({
+  const GetWorkspaceTableResult({
     required this.id,
     required this.name,
     required this.plan,

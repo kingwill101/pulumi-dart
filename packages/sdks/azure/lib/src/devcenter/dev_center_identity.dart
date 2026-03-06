@@ -13,7 +13,7 @@ class DevCenterIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Required.
-  DevCenterIdentity({
+  const DevCenterIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

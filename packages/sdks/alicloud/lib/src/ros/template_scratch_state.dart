@@ -37,7 +37,7 @@ class TemplateScratchState {
   /// [sourceTag] Source tag. See the following `Block source_tag`.
   /// [status] The status of the resource.
   /// [templateScratchType] The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
-  TemplateScratchState({
+  const TemplateScratchState({
     this.description,
     this.executionMode,
     this.logicalIdStrategy,

@@ -24,7 +24,7 @@ class NodeStateCountsResponse {
   /// [preparingNodeCount] Number of compute nodes which are being prepared.
   /// [runningNodeCount] Number of compute nodes which are running jobs.
   /// [unusableNodeCount] Number of compute nodes which are in unusable state.
-  NodeStateCountsResponse({
+  const NodeStateCountsResponse({
     required this.idleNodeCount,
     required this.leavingNodeCount,
     required this.preemptedNodeCount,

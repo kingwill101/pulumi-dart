@@ -14,7 +14,7 @@ class ServerlessCacheCacheUsageLimitsDataStorage {
   /// [maximum] The upper limit for data storage the cache is set to use. Must be between 1 and 5,000.
   /// [minimum] The lower limit for data storage the cache is set to use. Must be between 1 and 5,000.
   /// [unit] The unit that the storage is measured in, in GB.
-  ServerlessCacheCacheUsageLimitsDataStorage({
+  const ServerlessCacheCacheUsageLimitsDataStorage({
     this.maximum,
     this.minimum,
     required this.unit,

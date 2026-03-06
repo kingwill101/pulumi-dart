@@ -16,7 +16,7 @@ class BasicAuthModelResponse {
   /// [password] The password
   /// [type] Type of paging
   /// [userName] The user name.
-  BasicAuthModelResponse({
+  const BasicAuthModelResponse({
     required this.password,
     required this.type,
     required this.userName,

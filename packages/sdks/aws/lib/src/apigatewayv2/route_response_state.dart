@@ -24,7 +24,7 @@ class RouteResponseState {
   /// [responseModels] Response models for the route response.
   /// [routeId] Identifier of the `aws.apigatewayv2.Route`.
   /// [routeResponseKey] Route response key.
-  RouteResponseState({
+  const RouteResponseState({
     this.apiId,
     this.modelSelectionExpression,
     this.region,

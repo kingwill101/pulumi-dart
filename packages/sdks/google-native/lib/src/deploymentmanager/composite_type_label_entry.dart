@@ -12,7 +12,7 @@ class CompositeTypeLabelEntry {
   /// Creates a new [CompositeTypeLabelEntry].
   /// [key] Key of the label
   /// [value] Value of the label
-  CompositeTypeLabelEntry({
+  const CompositeTypeLabelEntry({
     this.key,
     this.value,
   });

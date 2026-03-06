@@ -26,7 +26,7 @@ class GetWorkspaceResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the resource.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.connectivityEndpoints,
     required this.id,
     required this.identities,

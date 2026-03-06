@@ -9,7 +9,7 @@ class OriginGroupMember {
 
   /// Creates a new [OriginGroupMember].
   /// [originId] The ID for an origin in an origin group.
-  OriginGroupMember({
+  const OriginGroupMember({
     this.originId,
   });
 

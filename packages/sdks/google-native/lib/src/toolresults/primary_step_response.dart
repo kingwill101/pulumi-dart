@@ -13,7 +13,7 @@ class PrimaryStepResponse {
   /// Creates a new [PrimaryStepResponse].
   /// [individualOutcome] Step Id and outcome of each individual step.
   /// [rollUp] Rollup test status of multiple steps that were run with the same configuration as a group.
-  PrimaryStepResponse({
+  const PrimaryStepResponse({
     required this.individualOutcome,
     required this.rollUp,
   });

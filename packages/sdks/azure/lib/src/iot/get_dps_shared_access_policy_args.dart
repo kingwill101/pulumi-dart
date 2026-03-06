@@ -18,7 +18,7 @@ class GetDpsSharedAccessPolicyArgs {
   /// [iothubDpsName] Specifies the name of the IoT Hub Device Provisioning service to which the Shared Access Policy belongs.
   /// [name] Specifies the name of the IotHub Shared Access Policy.
   /// [resourceGroupName] Specifies the name of the resource group under which the IotHub Shared Access Policy resource exists.
-  GetDpsSharedAccessPolicyArgs({
+  const GetDpsSharedAccessPolicyArgs({
     required this.iothubDpsName,
     required this.name,
     required this.resourceGroupName,

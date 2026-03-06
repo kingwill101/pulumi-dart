@@ -45,7 +45,7 @@ class EnterpriseKeyArgs {
   /// [testingOptions] Options for user acceptance testing.
   /// [wafSettings] Settings specific to keys that can be used for WAF (Web Application Firewall).
   /// [webSettings] Settings for keys that can be used by websites.
-  EnterpriseKeyArgs({
+  const EnterpriseKeyArgs({
     this.androidSettings,
     required this.displayName,
     this.iosSettings,

@@ -17,7 +17,7 @@ class DataExportDetailsResponse {
   /// [accountDetails] Account details of the data to be transferred
   /// [logCollectionLevel] Level of the logs to be collected.
   /// [transferConfiguration] Configuration for the data transfer.
-  DataExportDetailsResponse({
+  const DataExportDetailsResponse({
     required this.accountDetails,
     this.logCollectionLevel,
     required this.transferConfiguration,

@@ -12,7 +12,7 @@ class ServiceArtifactReference {
 
   /// Creates a new [ServiceArtifactReference].
   /// [id] The service artifact reference id in the form of
-  ServiceArtifactReference({
+  const ServiceArtifactReference({
     this.id,
   });
 

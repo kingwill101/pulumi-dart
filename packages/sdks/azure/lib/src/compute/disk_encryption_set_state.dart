@@ -51,7 +51,7 @@ class DiskEncryptionSetState {
   /// [name] The name of the Disk Encryption Set. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Disk Encryption Set should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Disk Encryption Set.
-  DiskEncryptionSetState({
+  const DiskEncryptionSetState({
     this.autoKeyRotationEnabled,
     this.encryptionType,
     this.federatedClientId,

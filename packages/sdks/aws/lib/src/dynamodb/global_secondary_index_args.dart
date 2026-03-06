@@ -53,7 +53,7 @@ class GlobalSecondaryIndexArgs {
   /// [tableName] Name of the table this index belongs to.
   /// [timeouts] Optional.
   /// [warmThroughput] Sets the number of warm read and write units for this index.
-  GlobalSecondaryIndexArgs({
+  const GlobalSecondaryIndexArgs({
     required this.indexName,
     this.keySchemas,
     this.onDemandThroughput,

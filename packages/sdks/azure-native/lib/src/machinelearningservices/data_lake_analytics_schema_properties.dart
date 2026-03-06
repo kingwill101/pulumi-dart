@@ -8,7 +8,7 @@ class DataLakeAnalyticsSchemaProperties {
 
   /// Creates a new [DataLakeAnalyticsSchemaProperties].
   /// [dataLakeStoreAccountName] DataLake Store Account Name
-  DataLakeAnalyticsSchemaProperties({
+  const DataLakeAnalyticsSchemaProperties({
     this.dataLakeStoreAccountName,
   });
 

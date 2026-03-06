@@ -36,7 +36,7 @@ class GetNetworkEndpointGroupResult {
   /// [size] Number of network endpoints in the network endpoint group.
   /// [subnetwork] subnetwork to which all network endpoints in the NEG belong.
   /// [zone] Optional.
-  GetNetworkEndpointGroupResult({
+  const GetNetworkEndpointGroupResult({
     required this.defaultPort,
     required this.description,
     required this.generatedId,

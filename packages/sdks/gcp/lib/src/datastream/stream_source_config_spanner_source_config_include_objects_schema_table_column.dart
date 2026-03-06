@@ -21,7 +21,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn {
   /// [dataType] (Output)
   /// [isPrimaryKey] (Output)
   /// [ordinalPosition] (Output)
-  StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn({
+  const StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn({
     this.column,
     this.dataType,
     this.isPrimaryKey,

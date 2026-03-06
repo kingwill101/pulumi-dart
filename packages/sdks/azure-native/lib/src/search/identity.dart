@@ -12,7 +12,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an identity created by the system and a set of user assigned identities. The type 'None' will remove all identities from the service.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  Identity({
+  const Identity({
     required this.type,
     this.userAssignedIdentities,
   });

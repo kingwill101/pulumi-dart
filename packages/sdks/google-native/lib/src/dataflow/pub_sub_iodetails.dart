@@ -12,7 +12,7 @@ class PubSubIODetails {
   /// Creates a new [PubSubIODetails].
   /// [subscription] Subscription used in the connection.
   /// [topic] Topic accessed in the connection.
-  PubSubIODetails({
+  const PubSubIODetails({
     this.subscription,
     this.topic,
   });

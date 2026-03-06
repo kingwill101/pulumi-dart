@@ -9,7 +9,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigSecurityConfig].
   /// [kerberosConfig] Kerberos related configuration.
-  WorkflowTemplatePlacementManagedClusterConfigSecurityConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigSecurityConfig({
     this.kerberosConfig,
   });
 

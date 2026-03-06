@@ -36,7 +36,7 @@ class EventEndpointState {
   /// [replicationConfig] Parameters used for replication. Documented below.
   /// [roleArn] The ARN of the IAM role used for replication between event buses.
   /// [routingConfig] Parameters used for routing, including the health check and secondary Region. Documented below.
-  EventEndpointState({
+  const EventEndpointState({
     this.arn,
     this.description,
     this.endpointUrl,

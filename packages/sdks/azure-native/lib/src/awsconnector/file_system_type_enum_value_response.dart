@@ -9,7 +9,7 @@ class FileSystemTypeEnumValueResponse {
 
   /// Creates a new [FileSystemTypeEnumValueResponse].
   /// [value] Property value
-  FileSystemTypeEnumValueResponse({
+  const FileSystemTypeEnumValueResponse({
     this.value,
   });
 

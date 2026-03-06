@@ -14,7 +14,7 @@ class ApiKeyAuthCredentials {
   /// Creates a new [ApiKeyAuthCredentials].
   /// [apiKey] Properties of the key vault.
   /// [kind] Enum for different types of AuthCredentials supported.
-  ApiKeyAuthCredentials({
+  const ApiKeyAuthCredentials({
     required this.apiKey,
     required this.kind,
   });

@@ -63,7 +63,7 @@ class ServerGroupArgs {
   /// [servers] The backend servers that you want to remove.
   /// [tags] The tag keys.
   /// [vpcId] The VPC ID.
-  ServerGroupArgs({
+  const ServerGroupArgs({
     this.connectionDrainConfig,
     this.dryRun,
     this.healthCheckConfig,

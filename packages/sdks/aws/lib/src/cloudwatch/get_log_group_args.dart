@@ -18,7 +18,7 @@ class GetLogGroupArgs {
   /// [name] Name of the Cloudwatch log group
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource.
-  GetLogGroupArgs({
+  const GetLogGroupArgs({
     required this.name,
     this.region,
     this.tags,

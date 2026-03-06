@@ -29,7 +29,7 @@ class GetEcsLaunchTemplatesTemplateDataDisk {
   /// [performanceLevel] The performance level of the ESSD used as the system disk.
   /// [size] Size of the system disk, measured in GB.
   /// [snapshotId] The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-  GetEcsLaunchTemplatesTemplateDataDisk({
+  const GetEcsLaunchTemplatesTemplateDataDisk({
     required this.category,
     required this.deleteWithInstance,
     required this.description,

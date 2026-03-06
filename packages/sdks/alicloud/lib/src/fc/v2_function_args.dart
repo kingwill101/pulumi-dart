@@ -93,7 +93,7 @@ class V2FunctionArgs {
   /// [runtime] runtime of function code.
   /// [serviceName] The name of the function Service.
   /// [timeout] max running time of function.
-  V2FunctionArgs({
+  const V2FunctionArgs({
     this.caPort,
     this.code,
     this.codeChecksum,

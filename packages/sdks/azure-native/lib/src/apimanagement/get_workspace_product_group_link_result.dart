@@ -20,7 +20,7 @@ class GetWorkspaceProductGroupLinkResult {
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceProductGroupLinkResult({
+  const GetWorkspaceProductGroupLinkResult({
     required this.azureApiVersion,
     required this.groupId,
     required this.id,

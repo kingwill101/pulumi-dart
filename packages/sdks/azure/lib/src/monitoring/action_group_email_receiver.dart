@@ -14,7 +14,7 @@ class ActionGroupEmailReceiver {
   /// [emailAddress] The email address of this receiver.
   /// [name] The name of the email receiver. Names must be unique (case-insensitive) across all receivers within an action group.
   /// [useCommonAlertSchema] Enables or disables the common alert schema.
-  ActionGroupEmailReceiver({
+  const ActionGroupEmailReceiver({
     required this.emailAddress,
     required this.name,
     this.useCommonAlertSchema,

@@ -12,7 +12,7 @@ class ImportRoutePolicyInformation {
   /// Creates a new [ImportRoutePolicyInformation].
   /// [importIpv4RoutePolicyId] Import IPv4 Route Policy Id.
   /// [importIpv6RoutePolicyId] Import IPv6 Route Policy Id.
-  ImportRoutePolicyInformation({
+  const ImportRoutePolicyInformation({
     this.importIpv4RoutePolicyId,
     this.importIpv6RoutePolicyId,
   });

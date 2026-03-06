@@ -58,7 +58,7 @@ class GetAmiArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Any tags assigned to the image.
   /// [uefiData] (Optional) Base64 representation of the non-volatile UEFI variable store.
-  GetAmiArgs({
+  const GetAmiArgs({
     this.allowUnsafeFilter,
     this.executableUsers,
     this.filters,

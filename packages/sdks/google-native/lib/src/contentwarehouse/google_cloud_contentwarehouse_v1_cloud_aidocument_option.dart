@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1CloudAIDocumentOption {
   /// Creates a new [GoogleCloudContentwarehouseV1CloudAIDocumentOption].
   /// [customizedEntitiesPropertiesConversions] If set, only selected entities will be converted to properties.
   /// [enableEntitiesConversions] Whether to convert all the entities to properties.
-  GoogleCloudContentwarehouseV1CloudAIDocumentOption({
+  const GoogleCloudContentwarehouseV1CloudAIDocumentOption({
     this.customizedEntitiesPropertiesConversions,
     this.enableEntitiesConversions,
   });

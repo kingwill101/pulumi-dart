@@ -18,7 +18,7 @@ class GetCredentialSetArgs {
   /// [credentialSetName] The name of the credential set.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCredentialSetArgs({
+  const GetCredentialSetArgs({
     required this.credentialSetName,
     required this.registryName,
     required this.resourceGroupName,

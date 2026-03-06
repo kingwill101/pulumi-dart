@@ -22,7 +22,7 @@ class DpsCertificateArgs {
   /// [properties] properties of a certificate
   /// [provisioningServiceName] The name of the provisioning service.
   /// [resourceGroupName] Resource group identifier.
-  DpsCertificateArgs({
+  const DpsCertificateArgs({
     this.certificateName,
     this.properties,
     required this.provisioningServiceName,

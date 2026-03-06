@@ -13,7 +13,7 @@ class ConnectorDataTypeResponse {
   /// Creates a new [ConnectorDataTypeResponse].
   /// [lastDataReceivedQuery] Gets or sets the query to indicate when relevant data was last received in the workspace.
   /// [name] Gets or sets the name of the data type to show in the graph.
-  ConnectorDataTypeResponse({
+  const ConnectorDataTypeResponse({
     required this.lastDataReceivedQuery,
     required this.name,
   });

@@ -9,7 +9,7 @@ class DiagnosticPropertiesResponse {
 
   /// Creates a new [DiagnosticPropertiesResponse].
   /// [provisioningState] The status of the last operation.
-  DiagnosticPropertiesResponse({
+  const DiagnosticPropertiesResponse({
     required this.provisioningState,
   });
 

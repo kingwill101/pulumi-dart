@@ -12,7 +12,7 @@ class EnrollmentStatusArgs {
 
   /// Creates a new [EnrollmentStatusArgs].
   /// [includeMemberAccounts] Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
-  EnrollmentStatusArgs({
+  const EnrollmentStatusArgs({
     this.includeMemberAccounts,
   });
 

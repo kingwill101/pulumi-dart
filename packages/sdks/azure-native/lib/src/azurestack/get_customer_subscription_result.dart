@@ -23,7 +23,7 @@ class GetCustomerSubscriptionResult {
   /// [name] Name of the resource.
   /// [tenantId] Tenant Id.
   /// [type] Type of Resource.
-  GetCustomerSubscriptionResult({
+  const GetCustomerSubscriptionResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

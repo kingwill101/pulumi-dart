@@ -25,7 +25,7 @@ class GetServiceQueuesArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [queueName] The name of the queue.
-  GetServiceQueuesArgs({
+  const GetServiceQueuesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

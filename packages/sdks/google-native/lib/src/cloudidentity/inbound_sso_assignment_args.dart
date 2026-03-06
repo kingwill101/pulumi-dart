@@ -33,7 +33,7 @@ class InboundSsoAssignmentArgs {
   /// [ssoMode] Inbound SSO behavior.
   /// [targetGroup] Immutable. Must be of the form `groups/{group}`.
   /// [targetOrgUnit] Immutable. Must be of the form `orgUnits/{org_unit}`.
-  InboundSsoAssignmentArgs({
+  const InboundSsoAssignmentArgs({
     this.customer,
     this.rank,
     this.samlSsoInfo,

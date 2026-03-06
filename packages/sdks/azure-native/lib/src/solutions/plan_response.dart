@@ -21,7 +21,7 @@ class PlanResponse {
   /// [promotionCode] The promotion code.
   /// [publisher] The publisher ID.
   /// [version] The plan's version.
-  PlanResponse({
+  const PlanResponse({
     required this.name,
     required this.product,
     this.promotionCode,

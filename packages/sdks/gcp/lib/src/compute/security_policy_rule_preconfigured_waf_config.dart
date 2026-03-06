@@ -10,7 +10,7 @@ class SecurityPolicyRulePreconfiguredWafConfig {
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfig].
   /// [exclusions] An exclusion to apply during preconfigured WAF evaluation.
-  SecurityPolicyRulePreconfiguredWafConfig({
+  const SecurityPolicyRulePreconfiguredWafConfig({
     this.exclusions,
   });
 

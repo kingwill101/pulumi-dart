@@ -13,7 +13,7 @@ class AiIndexIndexStat {
   /// Creates a new [AiIndexIndexStat].
   /// [shardsCount] (Output)
   /// [vectorsCount] (Output)
-  AiIndexIndexStat({
+  const AiIndexIndexStat({
     this.shardsCount,
     this.vectorsCount,
   });

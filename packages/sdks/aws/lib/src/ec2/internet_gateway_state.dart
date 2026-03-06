@@ -142,7 +142,7 @@ class InternetGatewayState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The VPC ID to create in.  See the aws.ec2.InternetGatewayAttachment resource for an alternate way to attach an Internet Gateway to a VPC.
-  InternetGatewayState({
+  const InternetGatewayState({
     this.arn,
     this.ownerId,
     this.region,

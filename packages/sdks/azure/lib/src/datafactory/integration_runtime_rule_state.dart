@@ -33,7 +33,7 @@ class IntegrationRuntimeRuleState {
   /// [name] Specifies the name of the Managed Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [timeToLiveMin] Time to live (in minutes) setting of the cluster which will execute data flow job. Defaults to `0`.
   /// [virtualNetworkEnabled] Is Integration Runtime compute provisioned within Managed Virtual Network? Changing this forces a new resource to be created.
-  IntegrationRuntimeRuleState({
+  const IntegrationRuntimeRuleState({
     this.cleanupEnabled,
     this.computeType,
     this.coreCount,

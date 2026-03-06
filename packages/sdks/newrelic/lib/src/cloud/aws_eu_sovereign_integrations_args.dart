@@ -27,7 +27,7 @@ class AwsEuSovereignIntegrationsArgs {
   /// [cloudtrail] CloudTrail integration
   /// [linkedAccountId] The ID of the linked AWS EU Sovereign account in New Relic.
   /// [xRay] X-Ray integration
-  AwsEuSovereignIntegrationsArgs({
+  const AwsEuSovereignIntegrationsArgs({
     this.accountId,
     this.billing,
     this.cloudtrail,

@@ -22,7 +22,7 @@ class SnapshotState {
   /// [retentionDays] The retention period of the snapshot. Unit: days. Valid values:
   /// [snapshotName] SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
   /// [status] The status of the snapshot.
-  SnapshotState({
+  const SnapshotState({
     this.description,
     this.fileSystemId,
     this.retentionDays,

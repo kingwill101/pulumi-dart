@@ -15,7 +15,7 @@ class GetEcsTaskDefinitionArgs {
   /// Creates a new [GetEcsTaskDefinitionArgs].
   /// [name] Name of EcsTaskDefinition
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEcsTaskDefinitionArgs({
+  const GetEcsTaskDefinitionArgs({
     required this.name,
     required this.resourceGroupName,
   });

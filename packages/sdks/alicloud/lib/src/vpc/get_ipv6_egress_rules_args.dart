@@ -30,7 +30,7 @@ class GetIpv6EgressRulesArgs {
   /// [nameRegex] A regex string to filter results by Ipv6 Egress Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
-  GetIpv6EgressRulesArgs({
+  const GetIpv6EgressRulesArgs({
     this.ids,
     this.instanceId,
     this.ipv6EgressRuleName,

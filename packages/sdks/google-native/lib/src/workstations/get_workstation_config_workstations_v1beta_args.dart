@@ -17,7 +17,7 @@ class GetWorkstationConfigWorkstationsV1betaArgs {
   /// [project] Optional.
   /// [workstationClusterId] Required.
   /// [workstationConfigId] Required.
-  GetWorkstationConfigWorkstationsV1betaArgs({
+  const GetWorkstationConfigWorkstationsV1betaArgs({
     required this.location,
     this.project,
     required this.workstationClusterId,

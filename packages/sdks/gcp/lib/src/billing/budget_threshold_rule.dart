@@ -15,7 +15,7 @@ class BudgetThresholdRule {
   /// Creates a new [BudgetThresholdRule].
   /// [spendBasis] The type of basis used to determine if spend has passed
   /// [thresholdPercent] Send an alert when this threshold is exceeded. This is a
-  BudgetThresholdRule({
+  const BudgetThresholdRule({
     this.spendBasis,
     required this.thresholdPercent,
   });

@@ -33,7 +33,7 @@ class NetworkManagerIpamPoolArgs {
   /// [networkManagerId] The ID of the parent Network Manager. Changing this forces a new Network Manager IPAM Pool to be created.
   /// [parentPoolName] The name of the parent IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
   /// [tags] A mapping of tags which should be assigned to the Network Manager IPAM Pool.
-  NetworkManagerIpamPoolArgs({
+  const NetworkManagerIpamPoolArgs({
     required this.addressPrefixes,
     this.description,
     this.displayName,

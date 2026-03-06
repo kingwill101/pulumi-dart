@@ -30,7 +30,7 @@ class RegisteredLimitV3Args {
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [resourceName] The resource that the limit applies to. On
   /// [serviceId] The service the limit applies to. On updates,
-  RegisteredLimitV3Args({
+  const RegisteredLimitV3Args({
     required this.defaultLimit,
     this.description,
     this.region,

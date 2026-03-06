@@ -17,7 +17,7 @@ class CloudControlRule {
   /// [celExpression] A [CEL
   /// [description] Description of the Rule. The maximum length is 2000 characters.
   /// [ruleActionTypes] The functionality enabled by the Rule.
-  CloudControlRule({
+  const CloudControlRule({
     this.celExpression,
     this.description,
     required this.ruleActionTypes,

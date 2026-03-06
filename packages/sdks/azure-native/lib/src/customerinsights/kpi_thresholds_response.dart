@@ -15,7 +15,7 @@ class KpiThresholdsResponse {
   /// [increasingKpi] Whether or not the KPI is an increasing KPI.
   /// [lowerLimit] The lower threshold limit.
   /// [upperLimit] The upper threshold limit.
-  KpiThresholdsResponse({
+  const KpiThresholdsResponse({
     required this.increasingKpi,
     required this.lowerLimit,
     required this.upperLimit,

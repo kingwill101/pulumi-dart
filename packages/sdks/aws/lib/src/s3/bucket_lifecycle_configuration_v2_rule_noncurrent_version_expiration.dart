@@ -11,7 +11,7 @@ class BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration {
   /// Creates a new [BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration].
   /// [newerNoncurrentVersions] Number of noncurrent versions Amazon S3 will retain. Must be a non-zero positive integer.
   /// [noncurrentDays] Number of days an object is noncurrent before Amazon S3 can perform the associated action. Must be a positive integer.
-  BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration({
+  const BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration({
     this.newerNoncurrentVersions,
     required this.noncurrentDays,
   });

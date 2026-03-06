@@ -21,7 +21,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfig {
   /// [name] The name of the instance template. If you leave
   /// [networkTier] The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
   /// [publicPtrDomainName] The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
-  InstanceTemplateNetworkInterfaceIpv6AccessConfig({
+  const InstanceTemplateNetworkInterfaceIpv6AccessConfig({
     this.externalIpv6,
     this.externalIpv6PrefixLength,
     this.name,

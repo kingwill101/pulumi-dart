@@ -10,7 +10,7 @@ class DeliveryChannelDeliveryChannelFilter {
 
   /// Creates a new [DeliveryChannelDeliveryChannelFilter].
   /// [resourceTypes] An array of effective resource types for the delivery channel.
-  DeliveryChannelDeliveryChannelFilter({
+  const DeliveryChannelDeliveryChannelFilter({
     this.resourceTypes,
   });
 

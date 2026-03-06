@@ -11,7 +11,7 @@ class GetCloudVmClusterPropertyTimeZone {
   /// Creates a new [GetCloudVmClusterPropertyTimeZone].
   /// [id] IANA Time Zone Database time zone, e.g. "America/New_York".
   /// [version] IANA Time Zone Database version number, e.g. "2019a".
-  GetCloudVmClusterPropertyTimeZone({
+  const GetCloudVmClusterPropertyTimeZone({
     required this.id,
     required this.version,
   });

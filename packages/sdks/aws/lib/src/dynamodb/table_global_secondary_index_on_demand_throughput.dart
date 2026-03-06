@@ -11,7 +11,7 @@ class TableGlobalSecondaryIndexOnDemandThroughput {
   /// Creates a new [TableGlobalSecondaryIndexOnDemandThroughput].
   /// [maxReadRequestUnits] Maximum number of read request units for the specified table. To specify set the value greater than or equal to 1. To remove set the value to -1.
   /// [maxWriteRequestUnits] Maximum number of write request units for the specified table. To specify set the value greater than or equal to 1. To remove set the value to -1.
-  TableGlobalSecondaryIndexOnDemandThroughput({
+  const TableGlobalSecondaryIndexOnDemandThroughput({
     this.maxReadRequestUnits,
     this.maxWriteRequestUnits,
   });

@@ -9,7 +9,7 @@ class AssignmentPropertiesResponseAdditionalData {
 
   /// Creates a new [AssignmentPropertiesResponseAdditionalData].
   /// [exemptionCategory] Exemption category of this assignment
-  AssignmentPropertiesResponseAdditionalData({
+  const AssignmentPropertiesResponseAdditionalData({
     this.exemptionCategory,
   });
 

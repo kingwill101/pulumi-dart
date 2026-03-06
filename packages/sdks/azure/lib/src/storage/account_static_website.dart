@@ -11,7 +11,7 @@ class AccountStaticWebsite {
   /// Creates a new [AccountStaticWebsite].
   /// [error404Document] The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
   /// [indexDocument] The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
-  AccountStaticWebsite({
+  const AccountStaticWebsite({
     this.error404Document,
     this.indexDocument,
   });

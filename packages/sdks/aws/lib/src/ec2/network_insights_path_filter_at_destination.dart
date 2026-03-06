@@ -19,7 +19,7 @@ class NetworkInsightsPathFilterAtDestination {
   /// [destinationPortRange] The destination port range. See below for details.
   /// [sourceAddress] IP address of the source resource.
   /// [sourcePortRange] The source port range. See below for details.
-  NetworkInsightsPathFilterAtDestination({
+  const NetworkInsightsPathFilterAtDestination({
     this.destinationAddress,
     this.destinationPortRange,
     this.sourceAddress,

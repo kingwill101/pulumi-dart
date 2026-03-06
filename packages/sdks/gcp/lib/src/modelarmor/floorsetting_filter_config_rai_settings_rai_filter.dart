@@ -18,7 +18,7 @@ class FloorsettingFilterConfigRaiSettingsRaiFilter {
   /// Creates a new [FloorsettingFilterConfigRaiSettingsRaiFilter].
   /// [confidenceLevel] Possible values:
   /// [filterType] Possible values:
-  FloorsettingFilterConfigRaiSettingsRaiFilter({
+  const FloorsettingFilterConfigRaiSettingsRaiFilter({
     this.confidenceLevel,
     required this.filterType,
   });

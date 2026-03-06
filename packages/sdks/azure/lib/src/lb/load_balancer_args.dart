@@ -44,7 +44,7 @@ class LoadBalancerArgs {
   /// [skuTier] `sku_tier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet which is associated with the IP Configuration.
   /// [tags] A mapping of tags to assign to the resource.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.edgeZone,
     this.frontendIpConfigurations,
     this.location,

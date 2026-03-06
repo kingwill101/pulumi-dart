@@ -47,7 +47,7 @@ class GetDomainsDomainListen {
   /// [tlsVersion] The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
   /// [xffHeaderMode] WAF obtains the real IP address of the client.
   /// [xffHeaders] Set the list of custom fields used to obtain the client IP address.
-  GetDomainsDomainListen({
+  const GetDomainsDomainListen({
     required this.certId,
     required this.cipherSuite,
     required this.customCiphers,

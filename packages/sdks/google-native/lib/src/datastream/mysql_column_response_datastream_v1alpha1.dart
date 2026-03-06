@@ -27,7 +27,7 @@ class MysqlColumnResponseDatastreamV1alpha1 {
   /// [nullable] Whether or not the column can accept a null value.
   /// [ordinalPosition] The ordinal position of the column in the table.
   /// [primaryKey] Whether or not the column represents a primary key.
-  MysqlColumnResponseDatastreamV1alpha1({
+  const MysqlColumnResponseDatastreamV1alpha1({
     required this.collation,
     required this.columnName,
     required this.dataType,

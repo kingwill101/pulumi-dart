@@ -13,7 +13,7 @@ class RuntimeAccessConfig {
   /// Creates a new [RuntimeAccessConfig].
   /// [accessType] The type of access mode this instance.
   /// [runtimeOwner] The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
-  RuntimeAccessConfig({
+  const RuntimeAccessConfig({
     this.accessType,
     this.runtimeOwner,
   });

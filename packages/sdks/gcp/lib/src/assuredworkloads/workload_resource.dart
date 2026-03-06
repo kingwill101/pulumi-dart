@@ -11,7 +11,7 @@ class WorkloadResource {
   /// Creates a new [WorkloadResource].
   /// [resourceId] Resource identifier. For a project this represents project_number.
   /// [resourceType] Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
-  WorkloadResource({
+  const WorkloadResource({
     this.resourceId,
     this.resourceType,
   });

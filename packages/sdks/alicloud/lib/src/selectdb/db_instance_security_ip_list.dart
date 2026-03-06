@@ -20,7 +20,7 @@ class DbInstanceSecurityIpList {
   /// [listNetType] The network type of Security group.
   /// [securityIpList] The IP list of Security group. Each single IP value should be Separated by comma.
   /// [securityIpType] The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
-  DbInstanceSecurityIpList({
+  const DbInstanceSecurityIpList({
     this.groupName,
     this.groupTag,
     this.listNetType,

@@ -14,7 +14,7 @@ class FrontdoorRuleConditionsRequestSchemeCondition {
   /// [matchValues] The requests protocol to match. Possible values include `HTTP` or `HTTPS`.
   /// [negateCondition] If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   /// [operator] Possible value `Equal`. Defaults to `Equal`.
-  FrontdoorRuleConditionsRequestSchemeCondition({
+  const FrontdoorRuleConditionsRequestSchemeCondition({
     this.matchValues,
     this.negateCondition,
     this.operator,

@@ -18,7 +18,7 @@ class NamespaceArgs {
   /// [description] Namespace description.
   /// [namespaceName] Namespace name.
   /// [namespaceUid] namespace uid
-  NamespaceArgs({
+  const NamespaceArgs({
     this.description,
     required this.namespaceName,
     this.namespaceUid,

@@ -14,7 +14,7 @@ class MetadataFilterComputeBeta {
   /// Creates a new [MetadataFilterComputeBeta].
   /// [filterLabels] The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
   /// [filterMatchCriteria] Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
-  MetadataFilterComputeBeta({
+  const MetadataFilterComputeBeta({
     this.filterLabels,
     this.filterMatchCriteria,
   });

@@ -8,7 +8,7 @@ class ClusterManagedBackupSource {
 
   /// Creates a new [ClusterManagedBackupSource].
   /// [backup] Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
-  ClusterManagedBackupSource({
+  const ClusterManagedBackupSource({
     required this.backup,
   });
 

@@ -51,7 +51,7 @@ class GetMembershipGkehubV1alpha2Result {
   /// [state] State of the Membership resource.
   /// [uniqueId] Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
   /// [updateTime] When the Membership was last updated.
-  GetMembershipGkehubV1alpha2Result({
+  const GetMembershipGkehubV1alpha2Result({
     required this.authority,
     required this.createTime,
     required this.deleteTime,

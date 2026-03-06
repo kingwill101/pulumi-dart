@@ -23,7 +23,7 @@ class TagRulesArgs {
   /// [metricRule] Set of rules for sending metrics for the Monitor resource. A `metric_rule` block as defined below.
   /// [monitorId] Name of the Dynatrace monitor. Changing this forces a new resource to be created.
   /// [name] Name of the Dynatrace tag rules. Currently, the only supported value is `default`. Changing this forces a new resource to be created.
-  TagRulesArgs({
+  const TagRulesArgs({
     this.logRule,
     this.metricRule,
     required this.monitorId,

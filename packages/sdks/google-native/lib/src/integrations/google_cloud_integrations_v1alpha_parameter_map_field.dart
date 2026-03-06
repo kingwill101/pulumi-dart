@@ -13,7 +13,7 @@ class GoogleCloudIntegrationsV1alphaParameterMapField {
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapField].
   /// [literalValue] Passing a literal value.
   /// [referenceKey] Referencing one of the Integration variables.
-  GoogleCloudIntegrationsV1alphaParameterMapField({
+  const GoogleCloudIntegrationsV1alphaParameterMapField({
     this.literalValue,
     this.referenceKey,
   });

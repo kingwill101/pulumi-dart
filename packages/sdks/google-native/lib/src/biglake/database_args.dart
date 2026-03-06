@@ -26,7 +26,7 @@ class DatabaseArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [type] The database type.
-  DatabaseArgs({
+  const DatabaseArgs({
     required this.catalogId,
     required this.databaseId,
     this.hiveOptions,

@@ -19,7 +19,7 @@ class HybridComputePrivateLinkScopePropertiesResponse {
   /// [privateLinkScopeId] The Guid id of the private link scope.
   /// [provisioningState] Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
   /// [publicNetworkAccess] Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  HybridComputePrivateLinkScopePropertiesResponse({
+  const HybridComputePrivateLinkScopePropertiesResponse({
     required this.privateEndpointConnections,
     required this.privateLinkScopeId,
     required this.provisioningState,

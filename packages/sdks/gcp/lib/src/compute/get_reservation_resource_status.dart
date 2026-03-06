@@ -20,7 +20,7 @@ class GetReservationResourceStatus {
   /// [reservationBlockCount] The number of reservation blocks associated with this reservation.
   /// [reservationMaintenances] Maintenance information for this reservation
   /// [specificSkuAllocations] Allocation Properties of this reservation.
-  GetReservationResourceStatus({
+  const GetReservationResourceStatus({
     required this.healthInfos,
     required this.reservationBlockCount,
     required this.reservationMaintenances,

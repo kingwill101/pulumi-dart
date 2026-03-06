@@ -15,7 +15,7 @@ class AlertContactGroupArgs {
   /// Creates a new [AlertContactGroupArgs].
   /// [alertContactGroupName] The name of the resource.
   /// [contactIds] The list id of alert contact.
-  AlertContactGroupArgs({
+  const AlertContactGroupArgs({
     required this.alertContactGroupName,
     this.contactIds,
   });

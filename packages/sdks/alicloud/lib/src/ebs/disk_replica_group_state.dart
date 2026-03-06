@@ -72,7 +72,7 @@ class DiskReplicaGroupState {
   /// [sourceZoneId] The ID of the zone to which the production site belongs.
   /// [status] The status of the consistent replication group. Possible values:
   /// [tags] The tag of the resource
-  DiskReplicaGroupState({
+  const DiskReplicaGroupState({
     this.description,
     this.destinationRegionId,
     this.destinationZoneId,

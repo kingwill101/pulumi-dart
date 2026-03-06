@@ -9,7 +9,7 @@ class BackendBaseParametersResponsePool {
 
   /// Creates a new [BackendBaseParametersResponsePool].
   /// [services] The list of backend entities belonging to a pool.
-  BackendBaseParametersResponsePool({
+  const BackendBaseParametersResponsePool({
     this.services,
   });
 

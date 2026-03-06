@@ -17,7 +17,7 @@ class JobStepOutputTarget {
   /// [mssqlDatabaseId] The ID of the output database.
   /// [schemaName] The name of the output schema. Defaults to `dbo`.
   /// [tableName] The name of the output table.
-  JobStepOutputTarget({
+  const JobStepOutputTarget({
     this.jobCredentialId,
     required this.mssqlDatabaseId,
     this.schemaName,

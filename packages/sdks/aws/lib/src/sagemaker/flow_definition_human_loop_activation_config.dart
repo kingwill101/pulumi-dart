@@ -9,7 +9,7 @@ class FlowDefinitionHumanLoopActivationConfig {
 
   /// Creates a new [FlowDefinitionHumanLoopActivationConfig].
   /// [humanLoopActivationConditionsConfig] defines under what conditions SageMaker AI creates a human loop. See Human Loop Activation Conditions Config details below.
-  FlowDefinitionHumanLoopActivationConfig({
+  const FlowDefinitionHumanLoopActivationConfig({
     this.humanLoopActivationConditionsConfig,
   });
 

@@ -18,7 +18,7 @@ class GetJobLatestCreatedExecution {
   /// [completionTime] Completion timestamp of the execution.
   /// [createTime] Creation timestamp of the execution.
   /// [name] The name of the Cloud Run v2 Job.
-  GetJobLatestCreatedExecution({
+  const GetJobLatestCreatedExecution({
     required this.completionTime,
     required this.createTime,
     required this.name,

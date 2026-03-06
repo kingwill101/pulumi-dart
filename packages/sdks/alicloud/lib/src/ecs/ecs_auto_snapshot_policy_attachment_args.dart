@@ -15,7 +15,7 @@ class EcsAutoSnapshotPolicyAttachmentArgs {
   /// Creates a new [EcsAutoSnapshotPolicyAttachmentArgs].
   /// [autoSnapshotPolicyId] The ID of the automatic snapshot policy that is applied to the cloud disk.
   /// [diskId] The ID of the disk.
-  EcsAutoSnapshotPolicyAttachmentArgs({
+  const EcsAutoSnapshotPolicyAttachmentArgs({
     required this.autoSnapshotPolicyId,
     required this.diskId,
   });

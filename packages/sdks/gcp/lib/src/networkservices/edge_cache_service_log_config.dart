@@ -12,7 +12,7 @@ class EdgeCacheServiceLogConfig {
   /// Creates a new [EdgeCacheServiceLogConfig].
   /// [enable] Specifies whether to enable logging for traffic served by this service.
   /// [sampleRate] Configures the sampling rate of requests, where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0, and the value of the field must be in [0, 1].
-  EdgeCacheServiceLogConfig({
+  const EdgeCacheServiceLogConfig({
     this.enable,
     this.sampleRate,
   });

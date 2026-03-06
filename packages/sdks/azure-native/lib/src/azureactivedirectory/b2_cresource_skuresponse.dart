@@ -12,7 +12,7 @@ class B2CResourceSKUResponse {
   /// Creates a new [B2CResourceSKUResponse].
   /// [name] The name of the SKU for the tenant.
   /// [tier] The tier of the tenant.
-  B2CResourceSKUResponse({
+  const B2CResourceSKUResponse({
     this.name,
     this.tier,
   });

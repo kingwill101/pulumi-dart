@@ -12,7 +12,7 @@ class UserIdentity {
   /// Creates a new [UserIdentity].
   /// [clientId] Identifier of the client of the service principal associated to the user assigned managed identity.
   /// [principalId] Identifier of the object of the service principal associated to the user assigned managed identity.
-  UserIdentity({
+  const UserIdentity({
     this.clientId,
     this.principalId,
   });

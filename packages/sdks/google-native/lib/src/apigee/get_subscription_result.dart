@@ -23,7 +23,7 @@ class GetSubscriptionResult {
   /// [lastModifiedAt] Time when the API product subscription was last modified in milliseconds since epoch.
   /// [name] Name of the API product subscription.
   /// [startTime] Time when the API product subscription starts in milliseconds since epoch.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.apiproduct,
     required this.createdAt,
     required this.endTime,

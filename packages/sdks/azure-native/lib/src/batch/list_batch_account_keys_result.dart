@@ -14,7 +14,7 @@ class ListBatchAccountKeysResult {
   /// [accountName] The Batch account name.
   /// [primary] The primary key associated with the account.
   /// [secondary] The secondary key associated with the account.
-  ListBatchAccountKeysResult({
+  const ListBatchAccountKeysResult({
     required this.accountName,
     required this.primary,
     required this.secondary,

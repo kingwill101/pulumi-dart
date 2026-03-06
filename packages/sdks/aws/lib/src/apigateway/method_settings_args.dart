@@ -25,7 +25,7 @@ class MethodSettingsArgs {
   /// [restApi] ID of the REST API
   /// [settings] Settings block, see below.
   /// [stageName] Name of the stage
-  MethodSettingsArgs({
+  const MethodSettingsArgs({
     required this.methodPath,
     this.region,
     required this.restApi,

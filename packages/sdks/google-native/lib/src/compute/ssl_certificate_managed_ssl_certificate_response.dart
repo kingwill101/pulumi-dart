@@ -15,7 +15,7 @@ class SslCertificateManagedSslCertificateResponse {
   /// [domainStatus] [Output only] Detailed statuses of the domains specified for managed certificate resource.
   /// [domains] The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
   /// [status] [Output only] Status of the managed certificate resource.
-  SslCertificateManagedSslCertificateResponse({
+  const SslCertificateManagedSslCertificateResponse({
     required this.domainStatus,
     required this.domains,
     required this.status,

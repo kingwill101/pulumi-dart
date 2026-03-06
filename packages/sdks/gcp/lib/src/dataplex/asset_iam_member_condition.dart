@@ -11,7 +11,7 @@ class AssetIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AssetIamMemberCondition({
+  const AssetIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

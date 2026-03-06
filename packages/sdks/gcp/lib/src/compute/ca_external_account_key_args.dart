@@ -16,7 +16,7 @@ class CaExternalAccountKeyArgs {
   /// Creates a new [CaExternalAccountKeyArgs].
   /// [location] Location for the externalAccountKey. Currently only `global` is supported.
   /// [project] The ID of the project in which the resource belongs.
-  CaExternalAccountKeyArgs({
+  const CaExternalAccountKeyArgs({
     this.location,
     this.project,
   });

@@ -8,7 +8,7 @@ class AppLoggingSettingsCloudLoggingSettings {
 
   /// Creates a new [AppLoggingSettingsCloudLoggingSettings].
   /// [enableCloudLogging] Whether to enable Cloud Logging for the sessions.
-  AppLoggingSettingsCloudLoggingSettings({
+  const AppLoggingSettingsCloudLoggingSettings({
     this.enableCloudLogging,
   });
 

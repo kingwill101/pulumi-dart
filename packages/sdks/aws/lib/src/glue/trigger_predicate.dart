@@ -12,7 +12,7 @@ class TriggerPredicate {
   /// Creates a new [TriggerPredicate].
   /// [conditions] A list of the conditions that determine when the trigger will fire. See Conditions.
   /// [logical] How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
-  TriggerPredicate({
+  const TriggerPredicate({
     required this.conditions,
     this.logical,
   });

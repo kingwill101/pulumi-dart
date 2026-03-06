@@ -16,7 +16,7 @@ class BatchReleaseCriteriaResponse {
   /// [batchSize] The batch size in bytes.
   /// [messageCount] The message count.
   /// [recurrence] The recurrence.
-  BatchReleaseCriteriaResponse({
+  const BatchReleaseCriteriaResponse({
     this.batchSize,
     this.messageCount,
     this.recurrence,

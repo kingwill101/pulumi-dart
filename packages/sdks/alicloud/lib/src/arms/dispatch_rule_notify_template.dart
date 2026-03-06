@@ -32,7 +32,7 @@ class DispatchRuleNotifyTemplate {
   /// [smsRecoverContent] The content of the SMS notification for restored alerts.
   /// [ttsContent] The content of the TTS notification.
   /// [ttsRecoverContent] The content of the TTS notification for restored alerts.
-  DispatchRuleNotifyTemplate({
+  const DispatchRuleNotifyTemplate({
     required this.emailContent,
     required this.emailRecoverContent,
     required this.emailRecoverTitle,

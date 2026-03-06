@@ -27,7 +27,7 @@ class HostedPrivateVirtualInterfaceAccepterState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface to accept.
   /// [vpnGatewayId] The ID of the virtual private gateway to which to connect the virtual interface.
-  HostedPrivateVirtualInterfaceAccepterState({
+  const HostedPrivateVirtualInterfaceAccepterState({
     this.arn,
     this.dxGatewayId,
     this.region,

@@ -99,7 +99,7 @@ class AlertState {
   /// [throttling] Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
   /// [type] The type of new alert, `default` for custom alert, `tpl` for template alert.
   /// [version] The version of alert, new alert is 2.0.
-  AlertState({
+  const AlertState({
     this.alertDescription,
     this.alertDisplayname,
     this.alertName,

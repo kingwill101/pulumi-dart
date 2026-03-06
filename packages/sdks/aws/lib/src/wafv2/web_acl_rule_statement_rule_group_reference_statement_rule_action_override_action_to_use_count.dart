@@ -9,7 +9,7 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount({
+  const WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount({
     this.customRequestHandling,
   });
 

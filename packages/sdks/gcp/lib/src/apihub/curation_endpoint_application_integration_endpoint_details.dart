@@ -16,7 +16,7 @@ class CurationEndpointApplicationIntegrationEndpointDetails {
   /// Creates a new [CurationEndpointApplicationIntegrationEndpointDetails].
   /// [triggerId] The API trigger ID of the Application Integration workflow.
   /// [uri] The endpoint URI should be a valid REST URI for triggering an Application
-  CurationEndpointApplicationIntegrationEndpointDetails({
+  const CurationEndpointApplicationIntegrationEndpointDetails({
     required this.triggerId,
     required this.uri,
   });

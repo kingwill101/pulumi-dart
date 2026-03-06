@@ -84,7 +84,7 @@ class DbInstanceState {
   /// [username] Username of the initial admin user created in InfluxDB. Must start with a letter and can't end with a hyphen or contain two consecutive hyphens. This username will allow you to access the InfluxDB UI to perform various administrative tasks and also use the InfluxDB CLI to create an operator token. Along with `bucket`, `organization`, and `password`, this argument will be stored in the secret referred to by the `influx_auth_parameters_secret_arn` attribute.
   /// [vpcSecurityGroupIds] List of VPC security group IDs to associate with the DB instance.
   /// [vpcSubnetIds] List of VPC subnet IDs to associate with the DB instance. Provide at least two VPC subnet IDs in different availability zones when deploying with a Multi-AZ standby.
-  DbInstanceState({
+  const DbInstanceState({
     this.allocatedStorage,
     this.arn,
     this.availabilityZone,

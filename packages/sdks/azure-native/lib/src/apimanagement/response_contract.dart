@@ -20,7 +20,7 @@ class ResponseContract {
   /// [headers] Collection of operation response headers.
   /// [representations] Collection of operation response representations.
   /// [statusCode] Operation response HTTP status code.
-  ResponseContract({
+  const ResponseContract({
     this.description,
     this.headers,
     this.representations,

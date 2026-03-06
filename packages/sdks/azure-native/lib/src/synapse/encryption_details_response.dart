@@ -13,7 +13,7 @@ class EncryptionDetailsResponse {
   /// Creates a new [EncryptionDetailsResponse].
   /// [cmk] Customer Managed Key Details
   /// [doubleEncryptionEnabled] Double Encryption enabled
-  EncryptionDetailsResponse({
+  const EncryptionDetailsResponse({
     this.cmk,
     required this.doubleEncryptionEnabled,
   });

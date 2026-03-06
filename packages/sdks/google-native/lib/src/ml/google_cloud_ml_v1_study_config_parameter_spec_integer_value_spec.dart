@@ -11,7 +11,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec].
   /// [maxValue] Must be specified if type is `INTEGER`. Maximum value of the parameter.
   /// [minValue] Must be specified if type is `INTEGER`. Minimum value of the parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec({
+  const GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec({
     this.maxValue,
     this.minValue,
   });

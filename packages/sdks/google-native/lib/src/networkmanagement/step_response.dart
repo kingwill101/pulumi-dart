@@ -98,7 +98,7 @@ class StepResponse {
   /// [vpcConnector] Display information of a VPC connector.
   /// [vpnGateway] Display information of a Compute Engine VPN gateway.
   /// [vpnTunnel] Display information of a Compute Engine VPN tunnel.
-  StepResponse({
+  const StepResponse({
     required this.abort,
     required this.appEngineVersion,
     required this.causesDrop,

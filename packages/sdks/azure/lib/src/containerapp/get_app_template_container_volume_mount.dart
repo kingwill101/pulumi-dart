@@ -14,7 +14,7 @@ class GetAppTemplateContainerVolumeMount {
   /// [name] The name of the Container App.
   /// [path] The path in the container at which to mount this volume.
   /// [subPath] The sub path of the volume to be mounted in the container.
-  GetAppTemplateContainerVolumeMount({
+  const GetAppTemplateContainerVolumeMount({
     required this.name,
     required this.path,
     required this.subPath,

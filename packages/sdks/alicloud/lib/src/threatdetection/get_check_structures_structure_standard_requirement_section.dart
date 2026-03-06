@@ -11,7 +11,7 @@ class GetCheckStructuresStructureStandardRequirementSection {
   /// Creates a new [GetCheckStructuresStructureStandardRequirementSection].
   /// [id] The ID of the section for the check item.
   /// [showName] The display name of the standard for the check item.
-  GetCheckStructuresStructureStandardRequirementSection({
+  const GetCheckStructuresStructureStandardRequirementSection({
     required this.id,
     required this.showName,
   });

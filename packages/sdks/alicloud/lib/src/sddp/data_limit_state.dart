@@ -36,7 +36,7 @@ class DataLimitState {
   /// [resourceType] The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
   /// [serviceRegionId] The region ID of the data asset.
   /// [userName] The name of the service to which the data asset belongs.
-  DataLimitState({
+  const DataLimitState({
     this.auditStatus,
     this.engineType,
     this.lang,

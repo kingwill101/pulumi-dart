@@ -33,7 +33,7 @@ class GetGithubEnterpriseConfigResult {
   /// [secrets] Names of secrets in Secret Manager.
   /// [sslCa] Optional. SSL certificate to use for requests to GitHub Enterprise.
   /// [webhookKey] The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
-  GetGithubEnterpriseConfigResult({
+  const GetGithubEnterpriseConfigResult({
     required this.appId,
     required this.createTime,
     required this.displayName,

@@ -37,7 +37,7 @@ class ParamRefAdmissionregistrationK8sIoV1beta1 {
   /// [namespace] namespace is the namespace of the referenced resource. Allows limiting the search for params to a specific namespace. Applies to both `name` and `selector` fields.
   /// [parameterNotFoundAction] `parameterNotFoundAction` controls the behavior of the binding when the resource exists, and name or selector is valid, but there are no parameters matched by the binding. If the value is set to `Allow`, then no matched parameters will be treated as successful validation by the binding. If set to `Deny`, then no matched parameters will be subject to the `failurePolicy` of the policy.
   /// [selector] selector can be used to match multiple param objects based on their labels. Supply selector: {} to match all resources of the ParamKind.
-  ParamRefAdmissionregistrationK8sIoV1beta1({
+  const ParamRefAdmissionregistrationK8sIoV1beta1({
     this.name,
     this.namespace,
     this.parameterNotFoundAction,

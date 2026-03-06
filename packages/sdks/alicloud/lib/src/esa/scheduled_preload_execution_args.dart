@@ -24,7 +24,7 @@ class ScheduledPreloadExecutionArgs {
   /// [scheduledPreloadJobId] The ID of the prefetch task.
   /// [sliceLen] The number of URLs prefetched in each batch.
   /// [startTime] The start time of the prefetch plan.
-  ScheduledPreloadExecutionArgs({
+  const ScheduledPreloadExecutionArgs({
     this.endTime,
     required this.interval,
     required this.scheduledPreloadJobId,

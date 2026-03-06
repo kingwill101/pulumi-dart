@@ -41,7 +41,7 @@ class ListProductDetailsResult {
   /// [version] Specifies product version.
   /// [vmOsType] Specifies operating system used by the product.
   /// [vmScaleSetEnabled] Indicates if virtual machine Scale Set is enabled in the specified product.
-  ListProductDetailsResult({
+  const ListProductDetailsResult({
     required this.computeRole,
     required this.dataDiskImages,
     required this.galleryPackageBlobSasUri,

@@ -18,7 +18,7 @@ class GetImageArgs {
   /// [arn] ARN of the image. The suffix can either be specified with wildcards (`x.x.x`) to fetch the latest build version or a full build version (e.g., `2020.11.26/1`) to fetch an exact version.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the image.
-  GetImageArgs({
+  const GetImageArgs({
     required this.arn,
     this.region,
     this.tags,

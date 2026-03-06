@@ -12,7 +12,7 @@ class ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs {
   /// Creates a new [ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs].
   /// [count] The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
   /// [countIPv6] The desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack.
-  ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs({
+  const ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs({
     this.count,
     this.countIPv6,
   });

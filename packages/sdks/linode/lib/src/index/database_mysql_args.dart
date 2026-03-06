@@ -48,7 +48,7 @@ class DatabaseMysqlArgs {
   /// [sslConnection] Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
   /// [type] The Linode Instance type used for the nodes of the  Managed Database instance.
   /// [updates] Configuration settings for automated patch update maintenance for the Managed Database.
-  DatabaseMysqlArgs({
+  const DatabaseMysqlArgs({
     this.allowLists,
     this.clusterSize,
     this.encrypted,

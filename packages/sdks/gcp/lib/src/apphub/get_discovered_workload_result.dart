@@ -27,7 +27,7 @@ class GetDiscoveredWorkloadResult {
   /// [workloadProperties] Properties of an underlying compute resource that can comprise a Workload. Structure is documented below
   /// [workloadReferences] Reference to an underlying networking resource that can comprise a Workload. Structure is documented below
   /// [workloadUri] Required.
-  GetDiscoveredWorkloadResult({
+  const GetDiscoveredWorkloadResult({
     required this.id,
     required this.location,
     required this.name,

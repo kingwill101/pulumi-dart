@@ -12,7 +12,7 @@ class Ipv6Range {
   /// Creates a new [Ipv6Range].
   /// [cidrIpv6] &lt;p&gt;The IPv6 address range. You can either specify a CIDR block or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.&lt;/p&gt;
   /// [description] &lt;p&gt;A description for the security group rule that references this IPv6 address range.&lt;/p&gt; &lt;p&gt;Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&amp;;{}!$*&lt;/p&gt;
-  Ipv6Range({
+  const Ipv6Range({
     this.cidrIpv6,
     this.description,
   });

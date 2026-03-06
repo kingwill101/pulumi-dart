@@ -35,7 +35,7 @@ class DomainArgs {
   /// [resourceGroupId] The resource group id.
   /// [sources] the Origin Server Information. See the following `Block sources`.
   /// [status] The status of the resource. Valid values: `offline`, `online`.
-  DomainArgs({
+  const DomainArgs({
     this.bizName,
     this.certInfos,
     this.checkUrl,

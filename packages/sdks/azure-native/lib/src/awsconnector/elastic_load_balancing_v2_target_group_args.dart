@@ -25,7 +25,7 @@ class ElasticLoadBalancingV2TargetGroupArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ElasticLoadBalancingV2TargetGroupArgs({
+  const ElasticLoadBalancingV2TargetGroupArgs({
     this.location,
     this.name,
     this.properties,

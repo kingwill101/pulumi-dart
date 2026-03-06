@@ -15,7 +15,7 @@ class PolicySecurityServicePolicyData {
   /// [managedServiceData] Details about the service that are specific to the service type, in JSON format. For service type `SHIELD_ADVANCED`, this is an empty string. Examples depending on `type` can be found in the [AWS Firewall Manager SecurityServicePolicyData API Reference](https://docs.aws.amazon.com/fms/2018-01-01/APIReference/API_SecurityServicePolicyData.html).
   /// [policyOption] Contains the Network Firewall firewall policy options to configure a centralized deployment model. See the `policy_option` block.
   /// [type] An integer value containing ICMP type.
-  PolicySecurityServicePolicyData({
+  const PolicySecurityServicePolicyData({
     this.managedServiceData,
     this.policyOption,
     required this.type,

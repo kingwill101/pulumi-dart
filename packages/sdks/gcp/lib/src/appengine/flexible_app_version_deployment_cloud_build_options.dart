@@ -12,7 +12,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptions {
   /// Creates a new [FlexibleAppVersionDeploymentCloudBuildOptions].
   /// [appYamlPath] Path to the yaml file used in deployment, used to determine runtime configuration details.
   /// [cloudBuildTimeout] The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
-  FlexibleAppVersionDeploymentCloudBuildOptions({
+  const FlexibleAppVersionDeploymentCloudBuildOptions({
     required this.appYamlPath,
     this.cloudBuildTimeout,
   });

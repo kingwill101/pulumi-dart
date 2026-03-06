@@ -46,7 +46,7 @@ class GetSqlPoolSensitivityLabelResult {
   /// [schemaName] The schema name.
   /// [tableName] The table name.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSqlPoolSensitivityLabelResult({
+  const GetSqlPoolSensitivityLabelResult({
     required this.azureApiVersion,
     required this.columnName,
     required this.id,

@@ -8,7 +8,7 @@ class LabelingJobInputConfigDataSourceS3DataSource {
 
   /// Creates a new [LabelingJobInputConfigDataSourceS3DataSource].
   /// [manifestS3Uri] S3 location of the manifest file that describes the input data objects.
-  LabelingJobInputConfigDataSourceS3DataSource({
+  const LabelingJobInputConfigDataSourceS3DataSource({
     required this.manifestS3Uri,
   });
 

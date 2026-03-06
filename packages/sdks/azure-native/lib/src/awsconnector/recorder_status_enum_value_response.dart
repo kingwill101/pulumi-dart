@@ -9,7 +9,7 @@ class RecorderStatusEnumValueResponse {
 
   /// Creates a new [RecorderStatusEnumValueResponse].
   /// [value] Property value
-  RecorderStatusEnumValueResponse({
+  const RecorderStatusEnumValueResponse({
     this.value,
   });
 

@@ -18,7 +18,7 @@ class VolumeMountResponse {
   /// [name] The name of the volume. There must be a corresponding Volume with the same name.
   /// [readOnly] Sets the mount to be read-only or read-write. Not used by Cloud Run.
   /// [subPath] Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-  VolumeMountResponse({
+  const VolumeMountResponse({
     required this.mountPath,
     required this.name,
     required this.readOnly,

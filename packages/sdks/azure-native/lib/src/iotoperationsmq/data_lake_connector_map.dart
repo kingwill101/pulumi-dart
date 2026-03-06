@@ -28,7 +28,7 @@ class DataLakeConnectorMap {
   /// [mqttSourceTopic] Mqtt source topic.
   /// [qos] Quality of Service.
   /// [table] Delta table properties to use.
-  DataLakeConnectorMap({
+  const DataLakeConnectorMap({
     required this.allowedLatencySecs,
     required this.clientId,
     required this.maxMessagesPerBatch,

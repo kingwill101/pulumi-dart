@@ -53,7 +53,7 @@ class GetRoleAssignmentResult {
   /// [type] The role assignment type.
   /// [updatedBy] Id of the user who updated the assignment
   /// [updatedOn] Time it was updated
-  GetRoleAssignmentResult({
+  const GetRoleAssignmentResult({
     required this.azureApiVersion,
     this.condition,
     this.conditionVersion,

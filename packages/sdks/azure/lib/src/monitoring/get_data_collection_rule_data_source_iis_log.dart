@@ -14,7 +14,7 @@ class GetDataCollectionRuleDataSourceIisLog {
   /// [logDirectories] Specifies a list of absolute paths where the log files are located.
   /// [name] Specifies the name of the Data Collection Rule.
   /// [streams] Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
-  GetDataCollectionRuleDataSourceIisLog({
+  const GetDataCollectionRuleDataSourceIisLog({
     required this.logDirectories,
     required this.name,
     required this.streams,

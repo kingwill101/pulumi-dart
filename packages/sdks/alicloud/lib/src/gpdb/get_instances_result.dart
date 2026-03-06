@@ -40,7 +40,7 @@ class GetInstancesResult {
   /// [status] Optional.
   /// [tags] Optional.
   /// [vswitchId] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.availabilityZone,
     this.dbInstanceCategories,
     this.dbInstanceModes,

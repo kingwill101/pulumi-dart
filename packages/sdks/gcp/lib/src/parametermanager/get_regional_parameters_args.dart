@@ -18,7 +18,7 @@ class GetRegionalParametersArgs {
   /// [filter] Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all regional parameters are listed.
   /// [location] The location of regional parameter.
   /// [project] The ID of the project.
-  GetRegionalParametersArgs({
+  const GetRegionalParametersArgs({
     this.filter,
     required this.location,
     this.project,

@@ -12,7 +12,7 @@ class DaprSubscriptionRouteRule {
   /// Creates a new [DaprSubscriptionRouteRule].
   /// [match] The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
   /// [path] The path for events that match this rule
-  DaprSubscriptionRouteRule({
+  const DaprSubscriptionRouteRule({
     this.match,
     this.path,
   });

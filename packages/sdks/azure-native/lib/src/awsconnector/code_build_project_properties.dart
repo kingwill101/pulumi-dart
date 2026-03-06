@@ -31,7 +31,7 @@ class CodeBuildProjectProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CodeBuildProjectProperties({
+  const CodeBuildProjectProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

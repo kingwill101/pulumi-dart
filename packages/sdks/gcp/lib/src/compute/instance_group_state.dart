@@ -46,7 +46,7 @@ class InstanceGroupState {
   /// [selfLink] The URI of the created resource.
   /// [size] The number of instances in the group.
   /// [zone] The zone that this instance group should be created in.
-  InstanceGroupState({
+  const InstanceGroupState({
     this.description,
     this.instances,
     this.name,

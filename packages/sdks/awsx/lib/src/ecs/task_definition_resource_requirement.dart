@@ -9,7 +9,7 @@ class TaskDefinitionResourceRequirement {
   /// Creates a new [TaskDefinitionResourceRequirement].
   /// [type] Required.
   /// [value] Required.
-  TaskDefinitionResourceRequirement({
+  const TaskDefinitionResourceRequirement({
     required this.type,
     required this.value,
   });

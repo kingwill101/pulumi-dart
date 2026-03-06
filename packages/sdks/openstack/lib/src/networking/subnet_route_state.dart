@@ -24,7 +24,7 @@ class SubnetRouteState {
   /// [nextHop] IP address of the next hop gateway.  Changing
   /// [region] The region in which to obtain the V2 networking client.
   /// [subnetId] ID of the subnet this routing entry belongs to. Changing
-  SubnetRouteState({
+  const SubnetRouteState({
     this.destinationCidr,
     this.nextHop,
     this.region,

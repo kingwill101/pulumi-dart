@@ -13,7 +13,7 @@ class GetGlobalNetworksResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] IDs of the global networks.
   /// [tags] Optional.
-  GetGlobalNetworksResult({
+  const GetGlobalNetworksResult({
     required this.id,
     required this.ids,
     this.tags,

@@ -42,7 +42,7 @@ class TagKeyState {
   /// [purposeData] Optional. Purpose data cannot be changed once set.
   /// [shortName] Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
   /// [updateTime] Output only. Update time.
-  TagKeyState({
+  const TagKeyState({
     this.allowedValuesRegex,
     this.createTime,
     this.description,

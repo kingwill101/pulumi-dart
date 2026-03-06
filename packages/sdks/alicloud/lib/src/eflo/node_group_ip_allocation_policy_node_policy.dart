@@ -11,7 +11,7 @@ class NodeGroupIpAllocationPolicyNodePolicy {
   /// Creates a new [NodeGroupIpAllocationPolicyNodePolicy].
   /// [bonds] Bond information See `bonds` below.
   /// [nodeId] Optional.
-  NodeGroupIpAllocationPolicyNodePolicy({
+  const NodeGroupIpAllocationPolicyNodePolicy({
     this.bonds,
     this.nodeId,
   });

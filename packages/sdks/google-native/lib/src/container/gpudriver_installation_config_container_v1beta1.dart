@@ -10,7 +10,7 @@ class GPUDriverInstallationConfigContainerV1beta1 {
 
   /// Creates a new [GPUDriverInstallationConfigContainerV1beta1].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  GPUDriverInstallationConfigContainerV1beta1({
+  const GPUDriverInstallationConfigContainerV1beta1({
     this.gpuDriverVersion,
   });
 

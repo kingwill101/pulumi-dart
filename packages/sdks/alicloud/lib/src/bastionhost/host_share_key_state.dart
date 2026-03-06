@@ -24,7 +24,7 @@ class HostShareKeyState {
   /// [passPhrase] The password of the private key. The value is a Base64-encoded string.
   /// [privateKey] The private key. The value is a Base64-encoded string.
   /// [privateKeyFingerPrint] The fingerprint of the private key.
-  HostShareKeyState({
+  const HostShareKeyState({
     this.hostShareKeyId,
     this.hostShareKeyName,
     this.instanceId,

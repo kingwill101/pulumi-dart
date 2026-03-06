@@ -19,7 +19,7 @@ class BlobInventoryPolicyRuleResponse {
   /// [destination] Container name where blob inventory files are stored. Must be pre-created.
   /// [enabled] Rule is enabled when set to true.
   /// [name] A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
-  BlobInventoryPolicyRuleResponse({
+  const BlobInventoryPolicyRuleResponse({
     required this.definition,
     required this.destination,
     required this.enabled,

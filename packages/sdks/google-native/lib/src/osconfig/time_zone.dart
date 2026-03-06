@@ -12,7 +12,7 @@ class TimeZone {
   /// Creates a new [TimeZone].
   /// [id] IANA Time Zone Database time zone, e.g. "America/New_York".
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  TimeZone({
+  const TimeZone({
     this.id,
     this.version,
   });

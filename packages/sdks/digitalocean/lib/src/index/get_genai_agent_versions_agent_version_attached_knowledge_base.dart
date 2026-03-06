@@ -14,7 +14,7 @@ class GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
   /// [isDeleted] Whether the knowledge base is deleted
   /// [name] Name of the knowledge base
   /// [uuid] Knowledge base UUID
-  GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase({
+  const GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase({
     required this.isDeleted,
     required this.name,
     required this.uuid,

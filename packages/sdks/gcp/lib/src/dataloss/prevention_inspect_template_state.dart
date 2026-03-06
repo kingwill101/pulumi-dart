@@ -32,7 +32,7 @@ class PreventionInspectTemplateState {
   /// [name] The resource name of the inspect template. Set by the server.
   /// [parent] The parent of the inspect template in any of the following formats:
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-  PreventionInspectTemplateState({
+  const PreventionInspectTemplateState({
     this.description,
     this.displayName,
     this.inspectConfig,

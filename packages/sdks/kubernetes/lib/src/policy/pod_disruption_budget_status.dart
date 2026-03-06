@@ -36,7 +36,7 @@ class PodDisruptionBudgetStatus {
   /// [disruptionsAllowed] Number of pod disruptions that are currently allowed.
   /// [expectedPods] total number of pods counted by this disruption budget
   /// [observedGeneration] Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.
-  PodDisruptionBudgetStatus({
+  const PodDisruptionBudgetStatus({
     this.conditions,
     required this.currentHealthy,
     required this.desiredHealthy,

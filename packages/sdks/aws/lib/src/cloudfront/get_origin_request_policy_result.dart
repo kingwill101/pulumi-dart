@@ -31,7 +31,7 @@ class GetOriginRequestPolicyResult {
   /// [id] Optional.
   /// [name] Optional.
   /// [queryStringsConfigs] Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
-  GetOriginRequestPolicyResult({
+  const GetOriginRequestPolicyResult({
     required this.arn,
     required this.comment,
     required this.cookiesConfigs,

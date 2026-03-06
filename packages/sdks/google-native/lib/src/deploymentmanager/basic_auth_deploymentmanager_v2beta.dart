@@ -10,7 +10,7 @@ class BasicAuthDeploymentmanagerV2beta {
   /// Creates a new [BasicAuthDeploymentmanagerV2beta].
   /// [password] Optional.
   /// [user] Optional.
-  BasicAuthDeploymentmanagerV2beta({
+  const BasicAuthDeploymentmanagerV2beta({
     this.password,
     this.user,
   });

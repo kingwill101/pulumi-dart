@@ -9,7 +9,7 @@ class LatencyCriteriaResponse {
 
   /// Creates a new [LatencyCriteriaResponse].
   /// [threshold] Good service is defined to be the count of requests made to this service that return in no more than threshold.
-  LatencyCriteriaResponse({
+  const LatencyCriteriaResponse({
     required this.threshold,
   });
 

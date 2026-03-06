@@ -13,7 +13,7 @@ class WebChatChannelPropertiesResponse {
   /// Creates a new [WebChatChannelPropertiesResponse].
   /// [sites] The list of Web Chat sites
   /// [webChatEmbedCode] Web chat control embed code
-  WebChatChannelPropertiesResponse({
+  const WebChatChannelPropertiesResponse({
     this.sites,
     required this.webChatEmbedCode,
   });

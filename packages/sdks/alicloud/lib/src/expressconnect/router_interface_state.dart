@@ -190,7 +190,7 @@ class RouterInterfaceState {
   /// [status] Resource attribute fields that represent the status of the resource. Value range:
   /// [tags] The tag of the resource
   /// [vpcInstanceId] ID of the local VPC in the peering connection
-  RouterInterfaceState({
+  const RouterInterfaceState({
     this.accessPointId,
     this.autoPay,
     this.autoRenew,

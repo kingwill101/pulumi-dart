@@ -26,7 +26,7 @@ class DataGroupArgs {
   /// [records] a set of `name` and `data` attributes, name must be of type specified by the `type` attributed (`string`, `ip` and `integer`), data is optional and can take any value, multiple `record` sets can be specified as needed.
   /// [recordsSrc] Path to a file with records in it,The file should be well-formed,it includes records, one per line,that resemble the following format "key separator value". For example, `foo := bar`.
   /// [type] datagroup type (applies to the `name` field of the record), supports: `string`, `ip` or `integer`
-  DataGroupArgs({
+  const DataGroupArgs({
     this.internal,
     required this.name,
     this.records,

@@ -37,7 +37,7 @@ class TrafficSelectorState {
   /// [order] Specifies the order in which traffic is matched, if traffic can be matched to multiple traffic selectors.Traffic is matched to the traffic selector with the highest priority (lowest order number).
   /// [sourceAddress] Specifies the host or network IP address from which the application traffic originates.When creating a new traffic selector, this parameter is required.
   /// [sourcePort] Specifies the IP port used by the application. The default value is `All Ports (0)`.
-  TrafficSelectorState({
+  const TrafficSelectorState({
     this.description,
     this.destinationAddress,
     this.destinationPort,

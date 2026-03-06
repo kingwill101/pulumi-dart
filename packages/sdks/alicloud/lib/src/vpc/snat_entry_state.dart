@@ -30,7 +30,7 @@ class SnatEntryState {
   /// [sourceCidr] The source CIDR block specified in the SNAT entry.
   /// [sourceVswitchId] The ID of the vSwitch.
   /// [status] (Available since v1.119.1) The ID of the SNAT entry.
-  SnatEntryState({
+  const SnatEntryState({
     this.eipAffinity,
     this.snatEntryId,
     this.snatEntryName,

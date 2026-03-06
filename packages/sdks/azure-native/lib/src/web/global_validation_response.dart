@@ -20,7 +20,7 @@ class GlobalValidationResponse {
   /// [redirectToProvider] The default authentication provider to use when multiple providers are configured.
   /// [requireAuthentication] &lt;code&gt;true&lt;/code&gt; if the authentication flow is required any request is made; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app.
-  GlobalValidationResponse({
+  const GlobalValidationResponse({
     this.excludedPaths,
     this.redirectToProvider,
     this.requireAuthentication,

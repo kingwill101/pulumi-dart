@@ -65,7 +65,7 @@ class GetUserResult {
   /// [verifiedPhoneNumber] The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
   /// [volumeGrants] Required.
   /// [vpcGrants] Required.
-  GetUserResult({
+  const GetUserResult({
     required this.databaseGrants,
     required this.domainGrants,
     required this.email,

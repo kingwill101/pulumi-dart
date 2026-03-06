@@ -8,7 +8,7 @@ class BlockchainNodesEthereumDetailsValidatorConfig {
 
   /// Creates a new [BlockchainNodesEthereumDetailsValidatorConfig].
   /// [mevRelayUrls] URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
-  BlockchainNodesEthereumDetailsValidatorConfig({
+  const BlockchainNodesEthereumDetailsValidatorConfig({
     this.mevRelayUrls,
   });
 

@@ -41,7 +41,7 @@ class GetPrivateLinkServicesForO365ManagementActivityAPIResult {
   /// [systemData] Required property for system data
   /// [tags] The resource tags.
   /// [type] The resource type.
-  GetPrivateLinkServicesForO365ManagementActivityAPIResult({
+  const GetPrivateLinkServicesForO365ManagementActivityAPIResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

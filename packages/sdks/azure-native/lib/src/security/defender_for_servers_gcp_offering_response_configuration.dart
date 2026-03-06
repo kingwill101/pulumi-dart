@@ -9,7 +9,7 @@ class DefenderForServersGcpOfferingResponseConfiguration {
 
   /// Creates a new [DefenderForServersGcpOfferingResponseConfiguration].
   /// [type] The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-  DefenderForServersGcpOfferingResponseConfiguration({
+  const DefenderForServersGcpOfferingResponseConfiguration({
     this.type,
   });
 

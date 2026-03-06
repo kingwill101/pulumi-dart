@@ -18,7 +18,7 @@ class ApplicationInsightsComponentDataVolumeCap {
   /// [stopSendNotificationWhenHitCap] Do not send a notification email when the daily data volume cap is met.
   /// [stopSendNotificationWhenHitThreshold] Reserved, not used for now.
   /// [warningThreshold] Reserved, not used for now.
-  ApplicationInsightsComponentDataVolumeCap({
+  const ApplicationInsightsComponentDataVolumeCap({
     this.cap,
     this.stopSendNotificationWhenHitCap,
     this.stopSendNotificationWhenHitThreshold,

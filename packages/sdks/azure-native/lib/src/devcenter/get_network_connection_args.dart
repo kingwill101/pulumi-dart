@@ -15,7 +15,7 @@ class GetNetworkConnectionArgs {
   /// Creates a new [GetNetworkConnectionArgs].
   /// [networkConnectionName] Name of the Network Connection that can be applied to a Pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkConnectionArgs({
+  const GetNetworkConnectionArgs({
     required this.networkConnectionName,
     required this.resourceGroupName,
   });

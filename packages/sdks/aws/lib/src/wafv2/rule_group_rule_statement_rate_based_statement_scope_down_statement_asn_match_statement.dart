@@ -12,7 +12,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatemen
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement].
   /// [asnLists] List of Autonomous System Numbers (ASNs).
   /// [forwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See Forwarded IP Config below for more details.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement({
     required this.asnLists,
     this.forwardedIpConfig,
   });

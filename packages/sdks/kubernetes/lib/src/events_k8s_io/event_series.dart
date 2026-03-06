@@ -12,7 +12,7 @@ class EventSeries {
   /// Creates a new [EventSeries].
   /// [count] count is the number of occurrences in this series up to the last heartbeat time.
   /// [lastObservedTime] lastObservedTime is the time when last Event from the series was seen before last heartbeat.
-  EventSeries({
+  const EventSeries({
     required this.count,
     required this.lastObservedTime,
   });

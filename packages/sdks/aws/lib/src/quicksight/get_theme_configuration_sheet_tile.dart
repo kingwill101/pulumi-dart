@@ -9,7 +9,7 @@ class GetThemeConfigurationSheetTile {
 
   /// Creates a new [GetThemeConfigurationSheetTile].
   /// [borders] The border around a tile. See border.
-  GetThemeConfigurationSheetTile({
+  const GetThemeConfigurationSheetTile({
     required this.borders,
   });
 

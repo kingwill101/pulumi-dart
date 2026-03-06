@@ -11,7 +11,7 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionA
   /// [count] Optional.
   /// [interval] Optional.
   /// [intervalUnit] Optional.
-  LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier({
+  const LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier({
     this.count,
     this.interval,
     this.intervalUnit,

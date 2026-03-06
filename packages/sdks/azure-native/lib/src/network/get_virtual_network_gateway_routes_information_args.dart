@@ -18,7 +18,7 @@ class GetVirtualNetworkGatewayRoutesInformationArgs {
   /// [attemptRefresh] Attempt to recalculate the Route Sets Information for the gateway
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  GetVirtualNetworkGatewayRoutesInformationArgs({
+  const GetVirtualNetworkGatewayRoutesInformationArgs({
     this.attemptRefresh,
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,

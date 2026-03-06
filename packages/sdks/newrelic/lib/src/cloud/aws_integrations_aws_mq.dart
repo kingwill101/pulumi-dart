@@ -11,7 +11,7 @@ class AwsIntegrationsAwsMq {
   /// Creates a new [AwsIntegrationsAwsMq].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsMq({
+  const AwsIntegrationsAwsMq({
     this.awsRegions,
     this.metricsPollingInterval,
   });

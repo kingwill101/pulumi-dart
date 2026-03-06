@@ -24,7 +24,7 @@ class NetworkingIpArgs {
   /// [region] The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
   /// [reserved] Whether the IPv4 address should be reserved.
   /// [type] The type of IP address. (ipv4, ipv6, etc.)
-  NetworkingIpArgs({
+  const NetworkingIpArgs({
     this.linodeId,
     this.public,
     this.region,

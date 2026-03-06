@@ -48,7 +48,7 @@ class FileTaskRunRequest {
   /// [type] The type of the run request.
   /// [values] The collection of overridable values that can be passed when running a task.
   /// [valuesFilePath] The values/parameters file path relative to the source.
-  FileTaskRunRequest({
+  const FileTaskRunRequest({
     this.agentConfiguration,
     this.agentPoolName,
     this.credentials,

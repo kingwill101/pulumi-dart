@@ -10,7 +10,7 @@ class RateLimitRuleList {
 
   /// Creates a new [RateLimitRuleList].
   /// [rules] List of rules
-  RateLimitRuleList({
+  const RateLimitRuleList({
     this.rules,
   });
 

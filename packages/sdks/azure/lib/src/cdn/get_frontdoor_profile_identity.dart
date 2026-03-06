@@ -15,7 +15,7 @@ class GetFrontdoorProfileIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] The type of Managed Service Identity that is configured on this Front Door Profile.
-  GetFrontdoorProfileIdentity({
+  const GetFrontdoorProfileIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

@@ -17,7 +17,7 @@ class PeeringPropertiesDirect {
   /// [connections] The set of connections that constitute a direct peering.
   /// [directPeeringType] The type of direct peering.
   /// [peerAsn] The reference of the peer ASN.
-  PeeringPropertiesDirect({
+  const PeeringPropertiesDirect({
     this.connections,
     this.directPeeringType,
     this.peerAsn,

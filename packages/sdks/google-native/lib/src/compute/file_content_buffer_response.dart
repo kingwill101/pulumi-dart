@@ -11,7 +11,7 @@ class FileContentBufferResponse {
   /// Creates a new [FileContentBufferResponse].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  FileContentBufferResponse({
+  const FileContentBufferResponse({
     required this.content,
     required this.fileType,
   });

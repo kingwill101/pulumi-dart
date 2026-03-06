@@ -23,7 +23,7 @@ class WebResourceState {
   /// [site] Container for the address and type of a site for which a verification token will be verified.
   /// [verificationMethod] The verification method for the Site Verification system to use to verify
   /// [webResourceId] The string used to identify this web resource.
-  WebResourceState({
+  const WebResourceState({
     this.owners,
     this.site,
     this.verificationMethod,

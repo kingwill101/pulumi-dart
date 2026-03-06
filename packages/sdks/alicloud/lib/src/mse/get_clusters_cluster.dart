@@ -72,7 +72,7 @@ class GetClustersCluster {
   /// [payInfo] The type of payment.
   /// [pubNetworkFlow] The public network bandwidth.
   /// [status] The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.aclId,
     required this.appVersion,
     required this.clusterId,

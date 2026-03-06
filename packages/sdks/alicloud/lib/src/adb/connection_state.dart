@@ -21,7 +21,7 @@ class ConnectionState {
   /// [dbClusterId] The Id of cluster that can run database.
   /// [ipAddress] The ip address of connection string.
   /// [port] Connection cluster port.
-  ConnectionState({
+  const ConnectionState({
     this.connectionPrefix,
     this.connectionString,
     this.dbClusterId,

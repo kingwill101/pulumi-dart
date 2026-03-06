@@ -13,7 +13,7 @@ class ExperimentTemplateTargetFilter {
   /// Creates a new [ExperimentTemplateTargetFilter].
   /// [path] Attribute path for the filter.
   /// [values] Set of attribute values for the filter.
-  ExperimentTemplateTargetFilter({
+  const ExperimentTemplateTargetFilter({
     required this.path,
     required this.values,
   });

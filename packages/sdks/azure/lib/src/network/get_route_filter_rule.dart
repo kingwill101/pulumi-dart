@@ -17,7 +17,7 @@ class GetRouteFilterRule {
   /// [communities] The collection for bgp community values.
   /// [name] The Name of this Route Filter.
   /// [ruleType] The Route Filter Rule Type.
-  GetRouteFilterRule({
+  const GetRouteFilterRule({
     required this.access,
     required this.communities,
     required this.name,

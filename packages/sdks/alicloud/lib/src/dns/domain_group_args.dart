@@ -18,7 +18,7 @@ class DomainGroupArgs {
   /// [domainGroupName] The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
   /// [groupName] The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
   /// [lang] User language.
-  DomainGroupArgs({
+  const DomainGroupArgs({
     this.domainGroupName,
     this.groupName,
     this.lang,

@@ -44,7 +44,7 @@ class GetVirtualNetworkApplianceResult {
   /// [subnet] The reference to the subnet resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetVirtualNetworkApplianceResult({
+  const GetVirtualNetworkApplianceResult({
     required this.azureApiVersion,
     this.bandwidthInGbps,
     required this.etag,

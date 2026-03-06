@@ -18,7 +18,7 @@ class GetEmailIdentityMailFromAttributesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [mailFromDomain] The custom MAIL FROM domain that you want the verified identity to use.
   /// [region] Required.
-  GetEmailIdentityMailFromAttributesResult({
+  const GetEmailIdentityMailFromAttributesResult({
     required this.behaviorOnMxFailure,
     required this.emailIdentity,
     required this.id,

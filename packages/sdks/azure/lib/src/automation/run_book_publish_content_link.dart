@@ -15,7 +15,7 @@ class RunBookPublishContentLink {
   /// [hash] A `hash` block as defined below.
   /// [uri] The URI of the runbook content.
   /// [version] Specifies the version of the content
-  RunBookPublishContentLink({
+  const RunBookPublishContentLink({
     this.hash,
     required this.uri,
     this.version,

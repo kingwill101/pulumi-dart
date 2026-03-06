@@ -17,7 +17,7 @@ class ServiceMeshMeshConfigKialiOpenIdConfig {
   /// [clientSecret] The client secret provided by the OIDC application
   /// [issuerUri] OIDC应用的Issuer URI
   /// [scopes] The scope of the mesh topology request to the OIDC application
-  ServiceMeshMeshConfigKialiOpenIdConfig({
+  const ServiceMeshMeshConfigKialiOpenIdConfig({
     this.clientId,
     this.clientSecret,
     this.issuerUri,

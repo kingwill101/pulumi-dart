@@ -20,7 +20,7 @@ class GetGreyTagRoutesRouteScRuleItem {
   /// [operator] The operator.
   /// [type] The Compare types.
   /// [value] The value of the parameter.
-  GetGreyTagRoutesRouteScRuleItem({
+  const GetGreyTagRoutesRouteScRuleItem({
     required this.cond,
     required this.name,
     required this.operator,

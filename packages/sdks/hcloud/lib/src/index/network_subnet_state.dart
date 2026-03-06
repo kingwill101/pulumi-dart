@@ -23,7 +23,7 @@ class NetworkSubnetState {
   /// [networkZone] Name of network zone.
   /// [type] Type of subnet. `server`, `cloud` or `vswitch`
   /// [vswitchId] ID of the vswitch, Required if type is `vswitch`
-  NetworkSubnetState({
+  const NetworkSubnetState({
     this.gateway,
     this.ipRange,
     this.networkId,

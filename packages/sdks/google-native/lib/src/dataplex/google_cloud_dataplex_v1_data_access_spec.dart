@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1DataAccessSpec {
 
   /// Creates a new [GoogleCloudDataplexV1DataAccessSpec].
   /// [readers] Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
-  GoogleCloudDataplexV1DataAccessSpec({
+  const GoogleCloudDataplexV1DataAccessSpec({
     this.readers,
   });
 

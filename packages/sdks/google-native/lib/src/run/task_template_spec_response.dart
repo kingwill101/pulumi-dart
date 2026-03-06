@@ -10,7 +10,7 @@ class TaskTemplateSpecResponse {
 
   /// Creates a new [TaskTemplateSpecResponse].
   /// [spec] Optional. Specification of the desired behavior of the task.
-  TaskTemplateSpecResponse({
+  const TaskTemplateSpecResponse({
     required this.spec,
   });
 

@@ -10,7 +10,7 @@ class SecurityGatewayServiceDiscoveryApiGateway {
 
   /// Creates a new [SecurityGatewayServiceDiscoveryApiGateway].
   /// [resourceOverride] Enables fetching resource model updates to alter service behavior per Chrome profile.
-  SecurityGatewayServiceDiscoveryApiGateway({
+  const SecurityGatewayServiceDiscoveryApiGateway({
     this.resourceOverride,
   });
 

@@ -123,7 +123,7 @@ class WindowsFunctionAppSlotSiteConfig {
   /// [websocketsEnabled] Should Web Sockets be enabled. Defaults to `false`.
   /// [windowsFxVersion] The Windows FX Version string.
   /// [workerCount] The number of Workers for this Windows Function App.
-  WindowsFunctionAppSlotSiteConfig({
+  const WindowsFunctionAppSlotSiteConfig({
     this.alwaysOn,
     this.apiDefinitionUrl,
     this.apiManagementApiId,

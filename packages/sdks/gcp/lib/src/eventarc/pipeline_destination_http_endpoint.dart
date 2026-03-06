@@ -171,7 +171,7 @@ class PipelineDestinationHttpEndpoint {
   /// Creates a new [PipelineDestinationHttpEndpoint].
   /// [messageBindingTemplate] The CEL expression used to modify how the destination-bound HTTP
   /// [uri] The URI of the HTTP enpdoint.
-  PipelineDestinationHttpEndpoint({
+  const PipelineDestinationHttpEndpoint({
     this.messageBindingTemplate,
     required this.uri,
   });

@@ -64,7 +64,7 @@ class GetGalleryImageResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Specifies information about the gallery image version that you want to create or update.
-  GetGalleryImageResult({
+  const GetGalleryImageResult({
     required this.azureApiVersion,
     this.cloudInitDataSource,
     this.containerId,

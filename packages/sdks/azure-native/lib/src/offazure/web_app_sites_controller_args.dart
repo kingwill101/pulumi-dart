@@ -27,7 +27,7 @@ class WebAppSitesControllerArgs {
   /// [siteAppliancePropertiesCollection] Gets or sets the appliance details used by service to communicate
   /// [siteName] Site name
   /// [webAppSiteName] Web app site name.
-  WebAppSitesControllerArgs({
+  const WebAppSitesControllerArgs({
     this.discoveryScenario,
     required this.resourceGroupName,
     this.siteAppliancePropertiesCollection,

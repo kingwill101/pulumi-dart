@@ -54,7 +54,7 @@ class InstanceGroupConfigResponse {
   /// [numInstances] Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
   /// [preemptibility] Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
   /// [startupConfig] Optional. Configuration to handle the startup of instances during cluster create and update process.
-  InstanceGroupConfigResponse({
+  const InstanceGroupConfigResponse({
     required this.accelerators,
     required this.diskConfig,
     required this.imageUri,

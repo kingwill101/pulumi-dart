@@ -14,7 +14,7 @@ class MetadataManagementActivityResponseMetastoreV1alpha {
   /// Creates a new [MetadataManagementActivityResponseMetastoreV1alpha].
   /// [metadataExports] The latest metadata exports of the metastore service.
   /// [restores] The latest restores of the metastore service.
-  MetadataManagementActivityResponseMetastoreV1alpha({
+  const MetadataManagementActivityResponseMetastoreV1alpha({
     required this.metadataExports,
     required this.restores,
   });

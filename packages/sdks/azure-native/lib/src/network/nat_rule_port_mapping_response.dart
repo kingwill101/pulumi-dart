@@ -15,7 +15,7 @@ class NatRulePortMappingResponse {
   /// [backendPort] Backend port.
   /// [frontendPort] Frontend port.
   /// [inboundNatRuleName] Name of inbound NAT rule.
-  NatRulePortMappingResponse({
+  const NatRulePortMappingResponse({
     this.backendPort,
     this.frontendPort,
     this.inboundNatRuleName,

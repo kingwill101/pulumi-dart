@@ -34,7 +34,7 @@ class InvocationArgs {
   /// [tenantId] Tenant Id to serve invocations from specified tenant.
   /// [terraformKey] Optional.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
-  InvocationArgs({
+  const InvocationArgs({
     required this.functionName,
     required this.input,
     this.lifecycleScope,

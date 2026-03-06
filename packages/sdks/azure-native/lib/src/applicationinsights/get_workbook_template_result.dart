@@ -41,7 +41,7 @@ class GetWorkbookTemplateResult {
   /// [tags] Resource tags
   /// [templateData] Valid JSON object containing workbook template payload.
   /// [type] Azure resource type
-  GetWorkbookTemplateResult({
+  const GetWorkbookTemplateResult({
     this.author,
     required this.azureApiVersion,
     required this.galleries,

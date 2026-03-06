@@ -10,7 +10,7 @@ class TlsRouteRouteActionResponse {
 
   /// Creates a new [TlsRouteRouteActionResponse].
   /// [destinations] The destination services to which traffic should be forwarded. At least one destination service is required.
-  TlsRouteRouteActionResponse({
+  const TlsRouteRouteActionResponse({
     required this.destinations,
   });
 

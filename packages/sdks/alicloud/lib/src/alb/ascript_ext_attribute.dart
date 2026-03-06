@@ -11,7 +11,7 @@ class AScriptExtAttribute {
   /// Creates a new [AScriptExtAttribute].
   /// [attributeKey] Key to extend attribute
   /// [attributeValue] The value of the extended attribute
-  AScriptExtAttribute({
+  const AScriptExtAttribute({
     this.attributeKey,
     this.attributeValue,
   });

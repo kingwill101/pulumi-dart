@@ -32,7 +32,7 @@ class DatabaseUserState {
   /// [password] Password for the database user.
   /// [role] Role for the database user. The value will be either "primary" or "normal".
   /// [settings] Contains optional settings for the user.
-  DatabaseUserState({
+  const DatabaseUserState({
     this.accessCert,
     this.accessKey,
     this.clusterId,

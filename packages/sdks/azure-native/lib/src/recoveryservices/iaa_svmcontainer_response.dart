@@ -37,7 +37,7 @@ class IaaSVMContainerResponse {
   /// [resourceGroup] Resource group name of Recovery Services Vault.
   /// [virtualMachineId] Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
   /// [virtualMachineVersion] Specifies whether the container represents a Classic or an Azure Resource Manager VM.
-  IaaSVMContainerResponse({
+  const IaaSVMContainerResponse({
     this.backupManagementType,
     required this.containerType,
     this.friendlyName,

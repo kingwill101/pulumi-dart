@@ -9,7 +9,7 @@ class GroupModelConfigurationResponse {
 
   /// Creates a new [GroupModelConfigurationResponse].
   /// [modelId] The URI path to the model.
-  GroupModelConfigurationResponse({
+  const GroupModelConfigurationResponse({
     this.modelId,
   });
 

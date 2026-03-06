@@ -36,7 +36,7 @@ class MirroringEndpointGroupAssociationArgs {
   /// [mirroringEndpointGroupAssociationId] The ID to use for the new association, which will become the final
   /// [network] The VPC network that is associated. for example:
   /// [project] The ID of the project in which the resource belongs.
-  MirroringEndpointGroupAssociationArgs({
+  const MirroringEndpointGroupAssociationArgs({
     this.labels,
     required this.location,
     required this.mirroringEndpointGroup,

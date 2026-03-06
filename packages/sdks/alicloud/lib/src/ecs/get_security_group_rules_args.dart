@@ -27,7 +27,7 @@ class GetSecurityGroupRulesArgs {
   /// [nicType] Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policy] Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
-  GetSecurityGroupRulesArgs({
+  const GetSecurityGroupRulesArgs({
     this.direction,
     required this.groupId,
     this.ipProtocol,

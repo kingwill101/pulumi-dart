@@ -21,7 +21,7 @@ class GetRegistryImageResult {
   /// [project] Required.
   /// [region] Optional.
   /// [tag] Optional.
-  GetRegistryImageResult({
+  const GetRegistryImageResult({
     this.digest,
     required this.id,
     required this.imageUrl,

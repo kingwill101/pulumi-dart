@@ -9,7 +9,7 @@ class GroupDiagnostics {
 
   /// Creates a new [GroupDiagnostics].
   /// [logAnalytics] A `log_analytics` block as defined below. Changing this forces a new resource to be created.
-  GroupDiagnostics({
+  const GroupDiagnostics({
     required this.logAnalytics,
   });
 

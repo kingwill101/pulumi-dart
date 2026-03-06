@@ -63,7 +63,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisk {
   /// [savedState] Optional. Specifies the saved state of the disk.
   /// [source] Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.
   /// [type] Optional. Specifies the type of the disk.
-  RestoreWorkloadComputeInstanceRestorePropertiesDisk({
+  const RestoreWorkloadComputeInstanceRestorePropertiesDisk({
     this.autoDelete,
     this.boot,
     this.deviceName,

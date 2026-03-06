@@ -15,7 +15,7 @@ class PipelineExternalComputeScaleProperties {
   /// [numberOfExternalNodes] Number of the the external nodes, which should be greater than 0 and less than 11.
   /// [numberOfPipelineNodes] Number of the pipeline nodes, which should be greater than 0 and less than 11.
   /// [timeToLive] Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
-  PipelineExternalComputeScaleProperties({
+  const PipelineExternalComputeScaleProperties({
     this.numberOfExternalNodes,
     this.numberOfPipelineNodes,
     this.timeToLive,

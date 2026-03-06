@@ -79,7 +79,7 @@ class GetJobDataprocV1beta2Result {
   /// [statusHistory] The previous job status.
   /// [submittedBy] The email address of the user submitting the job. For jobs submitted on the cluster, the address is username@hostname.
   /// [yarnApplications] The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-  GetJobDataprocV1beta2Result({
+  const GetJobDataprocV1beta2Result({
     required this.done,
     required this.driverControlFilesUri,
     required this.driverOutputResourceUri,

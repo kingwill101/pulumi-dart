@@ -14,7 +14,7 @@ class UserProfileUserSettingsStudioWebPortalSettings {
   /// [hiddenAppTypes] The Applications supported in Studio that are hidden from the Studio left navigation pane.
   /// [hiddenInstanceTypes] The instance types you are hiding from the Studio user interface.
   /// [hiddenMlTools] The machine learning tools that are hidden from the Studio left navigation pane.
-  UserProfileUserSettingsStudioWebPortalSettings({
+  const UserProfileUserSettingsStudioWebPortalSettings({
     this.hiddenAppTypes,
     this.hiddenInstanceTypes,
     this.hiddenMlTools,

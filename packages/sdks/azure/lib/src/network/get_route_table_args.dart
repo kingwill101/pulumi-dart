@@ -15,7 +15,7 @@ class GetRouteTableArgs {
   /// Creates a new [GetRouteTableArgs].
   /// [name] The name of the Route Table.
   /// [resourceGroupName] The name of the Resource Group in which the Route Table exists.
-  GetRouteTableArgs({
+  const GetRouteTableArgs({
     required this.name,
     required this.resourceGroupName,
   });

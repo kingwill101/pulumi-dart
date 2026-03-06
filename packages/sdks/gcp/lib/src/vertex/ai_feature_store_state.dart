@@ -54,7 +54,7 @@ class AiFeatureStoreState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the dataset. eg us-central1
   /// [updateTime] The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiFeatureStoreState({
+  const AiFeatureStoreState({
     this.createTime,
     this.effectiveLabels,
     this.encryptionSpec,

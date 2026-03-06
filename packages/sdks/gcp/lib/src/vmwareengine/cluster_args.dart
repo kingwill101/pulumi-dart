@@ -28,7 +28,7 @@ class ClusterArgs {
   /// [name] The ID of the Cluster.
   /// [nodeTypeConfigs] The map of cluster node types in this cluster,
   /// [parent] The resource name of the private cloud to create a new cluster in.
-  ClusterArgs({
+  const ClusterArgs({
     this.autoscalingSettings,
     this.name,
     this.nodeTypeConfigs,

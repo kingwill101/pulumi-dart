@@ -15,7 +15,7 @@ class GetEdgeMachineArgs {
   /// Creates a new [GetEdgeMachineArgs].
   /// [edgeMachineName] Name of Device
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEdgeMachineArgs({
+  const GetEdgeMachineArgs({
     required this.edgeMachineName,
     required this.resourceGroupName,
   });

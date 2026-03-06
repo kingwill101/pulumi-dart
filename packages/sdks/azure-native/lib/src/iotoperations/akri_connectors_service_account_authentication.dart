@@ -14,7 +14,7 @@ class AkriConnectorsServiceAccountAuthentication {
   /// Creates a new [AkriConnectorsServiceAccountAuthentication].
   /// [method] AkriConnectorsMqttAuthenticationMethod properties.
   /// [serviceAccountTokenSettings] The service account token for the MQTT connection.
-  AkriConnectorsServiceAccountAuthentication({
+  const AkriConnectorsServiceAccountAuthentication({
     required this.method,
     required this.serviceAccountTokenSettings,
   });

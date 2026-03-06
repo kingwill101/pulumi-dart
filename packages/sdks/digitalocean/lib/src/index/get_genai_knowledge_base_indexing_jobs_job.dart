@@ -50,7 +50,7 @@ class GetGenaiKnowledgeBaseIndexingJobsJob {
   /// [totalItemsSkipped] Total items skipped
   /// [updatedAt] Last update timestamp
   /// [uuid] Unique identifier of the indexing job
-  GetGenaiKnowledgeBaseIndexingJobsJob({
+  const GetGenaiKnowledgeBaseIndexingJobsJob({
     required this.completedDatasources,
     required this.createdAt,
     required this.dataSourceUuids,

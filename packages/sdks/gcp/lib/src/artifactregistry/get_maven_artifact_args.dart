@@ -24,7 +24,7 @@ class GetMavenArtifactArgs {
   /// [location] The location of the Artifact Registry repository.
   /// [project] The ID of the project that owns the repository. If not provided, the provider-level project is used.
   /// [repositoryId] The ID of the repository containing the Maven artifact.
-  GetMavenArtifactArgs({
+  const GetMavenArtifactArgs({
     required this.artifactId,
     required this.groupId,
     required this.location,

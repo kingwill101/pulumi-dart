@@ -12,7 +12,7 @@ class ExpressionResponse {
   /// Creates a new [ExpressionResponse].
   /// [type] Expression type.
   /// [value] Expression value.
-  ExpressionResponse({
+  const ExpressionResponse({
     required this.type,
     required this.value,
   });

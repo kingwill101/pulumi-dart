@@ -15,7 +15,7 @@ class GetAvailabilityZonesResult {
   /// [names] The names of the availability zones, ordered alphanumerically, that match the queried `state`
   /// [region] Required.
   /// [state] Optional.
-  GetAvailabilityZonesResult({
+  const GetAvailabilityZonesResult({
     required this.id,
     required this.names,
     required this.region,

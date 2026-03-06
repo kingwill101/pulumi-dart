@@ -24,7 +24,7 @@ class BudgetTimePeriodResponse {
   /// Creates a new [BudgetTimePeriodResponse].
   /// [endDate] The end date for the budget.
   /// [startDate] The start date for the budget.
-  BudgetTimePeriodResponse({
+  const BudgetTimePeriodResponse({
     this.endDate,
     required this.startDate,
   });

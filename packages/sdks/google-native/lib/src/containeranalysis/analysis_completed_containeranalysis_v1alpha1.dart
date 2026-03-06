@@ -9,7 +9,7 @@ class AnalysisCompletedContaineranalysisV1alpha1 {
 
   /// Creates a new [AnalysisCompletedContaineranalysisV1alpha1].
   /// [analysisType] type of analysis that were completed on a resource.
-  AnalysisCompletedContaineranalysisV1alpha1({
+  const AnalysisCompletedContaineranalysisV1alpha1({
     this.analysisType,
   });
 

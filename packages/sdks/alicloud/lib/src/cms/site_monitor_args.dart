@@ -45,7 +45,7 @@ class SiteMonitorArgs {
   /// [status] The status of the site monitoring task. Valid values:
   /// [taskName] The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
   /// [taskType] The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
-  SiteMonitorArgs({
+  const SiteMonitorArgs({
     required this.address,
     this.agentGroup,
     this.alertIds,

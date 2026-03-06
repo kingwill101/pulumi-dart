@@ -12,7 +12,7 @@ class NamespacedGkeDeploymentTarget {
   /// Creates a new [NamespacedGkeDeploymentTarget].
   /// [clusterNamespace] Optional. A namespace within the GKE cluster to deploy into.
   /// [targetGkeCluster] Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  NamespacedGkeDeploymentTarget({
+  const NamespacedGkeDeploymentTarget({
     this.clusterNamespace,
     this.targetGkeCluster,
   });

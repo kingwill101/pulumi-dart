@@ -9,7 +9,7 @@ class RuleGroupRuleCaptchaConfig {
 
   /// Creates a new [RuleGroupRuleCaptchaConfig].
   /// [immunityTimeProperty] Defines custom immunity time. See Immunity Time Property below for details.
-  RuleGroupRuleCaptchaConfig({
+  const RuleGroupRuleCaptchaConfig({
     this.immunityTimeProperty,
   });
 

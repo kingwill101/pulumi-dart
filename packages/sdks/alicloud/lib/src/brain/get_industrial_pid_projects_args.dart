@@ -24,7 +24,7 @@ class GetIndustrialPidProjectsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pidOrganizationId] The ID of Pid Organization.
   /// [pidProjectName] The name of Pid Project.
-  GetIndustrialPidProjectsArgs({
+  const GetIndustrialPidProjectsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

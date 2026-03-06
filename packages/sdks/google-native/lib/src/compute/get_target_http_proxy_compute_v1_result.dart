@@ -35,7 +35,7 @@ class GetTargetHttpProxyComputeV1Result {
   /// [region] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
   /// [selfLink] Server-defined URL for the resource.
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to the BackendService.
-  GetTargetHttpProxyComputeV1Result({
+  const GetTargetHttpProxyComputeV1Result({
     required this.creationTimestamp,
     required this.description,
     required this.fingerprint,

@@ -24,7 +24,7 @@ class GatewayCertificateAuthorityArgs {
   /// [isTrusted] Determines whether certificate authority is trusted.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GatewayCertificateAuthorityArgs({
+  const GatewayCertificateAuthorityArgs({
     this.certificateId,
     required this.gatewayId,
     this.isTrusted,

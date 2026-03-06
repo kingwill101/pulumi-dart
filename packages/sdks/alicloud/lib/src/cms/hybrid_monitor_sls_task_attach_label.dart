@@ -11,7 +11,7 @@ class HybridMonitorSlsTaskAttachLabel {
   /// Creates a new [HybridMonitorSlsTaskAttachLabel].
   /// [name] The tag key of the metric.
   /// [value] The tag value of the metric.
-  HybridMonitorSlsTaskAttachLabel({
+  const HybridMonitorSlsTaskAttachLabel({
     this.name,
     this.value,
   });

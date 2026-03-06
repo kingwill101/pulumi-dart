@@ -13,7 +13,7 @@ class InstanceGroupManagerVersionTargetSize {
   /// Creates a new [InstanceGroupManagerVersionTargetSize].
   /// [fixed] , The number of instances which are managed for this version. Conflicts with `percent`.
   /// [percent] , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-  InstanceGroupManagerVersionTargetSize({
+  const InstanceGroupManagerVersionTargetSize({
     this.fixed,
     this.percent,
   });

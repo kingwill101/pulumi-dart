@@ -13,7 +13,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue].
   /// [name] The name of the parameter.
   /// [parameterValue] The value of the parameter.
-  FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue({
+  const FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue({
     this.name,
     this.parameterValue,
   });

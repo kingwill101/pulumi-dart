@@ -18,7 +18,7 @@ class GetHybridRunbookWorkerGroupArgs {
   /// [automationAccountName] The name of the automation account.
   /// [hybridRunbookWorkerGroupName] The hybrid runbook worker group name
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetHybridRunbookWorkerGroupArgs({
+  const GetHybridRunbookWorkerGroupArgs({
     required this.automationAccountName,
     required this.hybridRunbookWorkerGroupName,
     required this.resourceGroupName,

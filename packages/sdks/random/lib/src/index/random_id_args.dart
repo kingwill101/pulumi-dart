@@ -18,7 +18,7 @@ class RandomIdArgs {
   /// [byteLength] The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness.
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [prefix] Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
-  RandomIdArgs({
+  const RandomIdArgs({
     required this.byteLength,
     this.keepers,
     this.prefix,

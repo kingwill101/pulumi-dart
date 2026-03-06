@@ -29,7 +29,7 @@ class GetFlowsFlow {
   /// [name] The name of the flow. The name must be unique in an Alibaba Cloud account.
   /// [roleArn] The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   /// [type] The type of the flow. Set the value to `FDL`.
-  GetFlowsFlow({
+  const GetFlowsFlow({
     required this.definition,
     required this.description,
     required this.flowId,

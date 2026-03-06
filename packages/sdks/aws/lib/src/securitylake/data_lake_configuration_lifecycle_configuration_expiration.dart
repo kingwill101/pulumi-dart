@@ -8,7 +8,7 @@ class DataLakeConfigurationLifecycleConfigurationExpiration {
 
   /// Creates a new [DataLakeConfigurationLifecycleConfigurationExpiration].
   /// [days] Number of days before data transition to a different S3 Storage Class in the Amazon Security Lake object.
-  DataLakeConfigurationLifecycleConfigurationExpiration({
+  const DataLakeConfigurationLifecycleConfigurationExpiration({
     this.days,
   });
 

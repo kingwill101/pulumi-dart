@@ -35,7 +35,7 @@ class RuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the delivery rule which is unique within the endpoint.
   /// [ruleSetName] Name of the rule set under the profile which is unique globally.
-  RuleArgs({
+  const RuleArgs({
     this.actions,
     this.conditions,
     this.matchProcessingBehavior,

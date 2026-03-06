@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigOrgConfigLocation {
   /// Creates a new [PreventionDiscoveryConfigOrgConfigLocation].
   /// [folderId] The ID for the folder within an organization to scan
   /// [organizationId] The ID of an organization to scan
-  PreventionDiscoveryConfigOrgConfigLocation({
+  const PreventionDiscoveryConfigOrgConfigLocation({
     this.folderId,
     this.organizationId,
   });

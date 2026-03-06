@@ -42,7 +42,7 @@ class BatchEnvironmentConfigExecutionConfig {
   /// [stagingBucket] A Cloud Storage bucket used to stage workload dependencies, config files, and store
   /// [subnetworkUri] Subnetwork configuration for workload execution.
   /// [ttl] The duration after which the workload will be terminated.
-  BatchEnvironmentConfigExecutionConfig({
+  const BatchEnvironmentConfigExecutionConfig({
     this.authenticationConfig,
     this.kmsKey,
     this.networkTags,

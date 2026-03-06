@@ -41,7 +41,7 @@ class GetListenerRuleAction {
   /// [order] The evaluation order of the action.
   /// [redirects] An action to redirect the request.
   /// [type] Type of transform.
-  GetListenerRuleAction({
+  const GetListenerRuleAction({
     this.authenticateCognitos,
     this.authenticateOidcs,
     this.fixedResponses,

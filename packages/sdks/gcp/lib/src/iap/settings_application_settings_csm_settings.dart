@@ -8,7 +8,7 @@ class SettingsApplicationSettingsCsmSettings {
 
   /// Creates a new [SettingsApplicationSettingsCsmSettings].
   /// [rctokenAud] Audience claim set in the generated RCToken. This value is not validated by IAP.
-  SettingsApplicationSettingsCsmSettings({
+  const SettingsApplicationSettingsCsmSettings({
     this.rctokenAud,
   });
 

@@ -11,7 +11,7 @@ class AiFeatureOnlineStoreFeatureviewBigQuerySource {
   /// Creates a new [AiFeatureOnlineStoreFeatureviewBigQuerySource].
   /// [entityIdColumns] Columns to construct entityId / row keys. Start by supporting 1 only.
   /// [uri] The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
-  AiFeatureOnlineStoreFeatureviewBigQuerySource({
+  const AiFeatureOnlineStoreFeatureviewBigQuerySource({
     required this.entityIdColumns,
     required this.uri,
   });

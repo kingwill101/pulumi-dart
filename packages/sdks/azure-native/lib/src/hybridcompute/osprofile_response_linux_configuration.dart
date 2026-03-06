@@ -19,7 +19,7 @@ class OSProfileResponseLinuxConfiguration {
   /// [enableHotpatching] Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
   /// [patchMode] Specifies the patch mode.
   /// [status] Status of the hotpatch capability enrollment or disenrollment.
-  OSProfileResponseLinuxConfiguration({
+  const OSProfileResponseLinuxConfiguration({
     this.assessmentMode,
     this.enableHotpatching,
     this.patchMode,

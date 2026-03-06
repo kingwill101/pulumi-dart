@@ -13,7 +13,7 @@ class AdvSecurityObjectModelResponse {
   /// Creates a new [AdvSecurityObjectModelResponse].
   /// [entry] URL entry
   /// [type] type of object
-  AdvSecurityObjectModelResponse({
+  const AdvSecurityObjectModelResponse({
     required this.entry,
     this.type,
   });

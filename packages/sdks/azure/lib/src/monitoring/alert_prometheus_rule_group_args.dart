@@ -40,7 +40,7 @@ class AlertPrometheusRuleGroupArgs {
   /// [rules] One or more `rule` blocks as defined below.
   /// [scopes] Specifies the resource ID of the Azure Monitor Workspace.
   /// [tags] A mapping of tags to assign to the Alert Management Prometheus Rule Group.
-  AlertPrometheusRuleGroupArgs({
+  const AlertPrometheusRuleGroupArgs({
     this.clusterName,
     this.description,
     this.interval,

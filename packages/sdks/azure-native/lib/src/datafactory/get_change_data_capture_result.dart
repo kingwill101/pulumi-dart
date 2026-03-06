@@ -46,7 +46,7 @@ class GetChangeDataCaptureResult {
   /// [status] Status of the CDC as to if it is running or stopped.
   /// [targetConnectionsInfo] List of target connections that can be used as sources in the CDC.
   /// [type] The resource type.
-  GetChangeDataCaptureResult({
+  const GetChangeDataCaptureResult({
     this.allowVNetOverride,
     required this.azureApiVersion,
     this.description,

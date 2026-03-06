@@ -22,7 +22,7 @@ class EndpointArgs {
   /// [properties] The resource specific properties for the Storage Mover resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
-  EndpointArgs({
+  const EndpointArgs({
     this.endpointName,
     required this.properties,
     required this.resourceGroupName,

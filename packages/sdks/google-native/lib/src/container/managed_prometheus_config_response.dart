@@ -9,7 +9,7 @@ class ManagedPrometheusConfigResponse {
 
   /// Creates a new [ManagedPrometheusConfigResponse].
   /// [enabled] Enable Managed Collection.
-  ManagedPrometheusConfigResponse({
+  const ManagedPrometheusConfigResponse({
     required this.enabled,
   });
 

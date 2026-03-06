@@ -13,7 +13,7 @@ class ListIssueResourcesResult {
   /// Creates a new [ListIssueResourcesResult].
   /// [nextLink] The link to the next page of items
   /// [value] The RelatedResource items on this page
-  ListIssueResourcesResult({
+  const ListIssueResourcesResult({
     this.nextLink,
     required this.value,
   });

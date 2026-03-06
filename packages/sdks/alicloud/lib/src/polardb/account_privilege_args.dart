@@ -21,7 +21,7 @@ class AccountPrivilegeArgs {
   /// [accountPrivilege] The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
   /// [dbClusterId] The Id of cluster in which account belongs.
   /// [dbNames] List of specified database name.
-  AccountPrivilegeArgs({
+  const AccountPrivilegeArgs({
     required this.accountName,
     this.accountPrivilege,
     required this.dbClusterId,

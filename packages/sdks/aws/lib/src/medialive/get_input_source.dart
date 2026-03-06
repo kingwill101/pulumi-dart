@@ -11,7 +11,7 @@ class GetInputSource {
   /// [passwordParam] Required.
   /// [url] Required.
   /// [username] Required.
-  GetInputSource({
+  const GetInputSource({
     required this.passwordParam,
     required this.url,
     required this.username,

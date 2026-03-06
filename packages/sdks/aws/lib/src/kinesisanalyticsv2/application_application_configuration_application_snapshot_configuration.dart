@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationSnapshotConfiguration].
   /// [snapshotsEnabled] Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
-  ApplicationApplicationConfigurationApplicationSnapshotConfiguration({
+  const ApplicationApplicationConfigurationApplicationSnapshotConfiguration({
     required this.snapshotsEnabled,
   });
 

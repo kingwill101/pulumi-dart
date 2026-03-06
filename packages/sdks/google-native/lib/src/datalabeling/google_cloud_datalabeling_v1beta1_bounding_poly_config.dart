@@ -12,7 +12,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
   /// Creates a new [GoogleCloudDatalabelingV1beta1BoundingPolyConfig].
   /// [annotationSpecSet] Annotation spec set resource name.
   /// [instructionMessage] Optional. Instruction message showed on contributors UI.
-  GoogleCloudDatalabelingV1beta1BoundingPolyConfig({
+  const GoogleCloudDatalabelingV1beta1BoundingPolyConfig({
     required this.annotationSpecSet,
     this.instructionMessage,
   });

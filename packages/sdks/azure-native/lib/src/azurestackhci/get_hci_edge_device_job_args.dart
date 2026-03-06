@@ -18,7 +18,7 @@ class GetHciEdgeDeviceJobArgs {
   /// [edgeDeviceName] The name of the EdgeDevice
   /// [jobsName] Name of EdgeDevice Job
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetHciEdgeDeviceJobArgs({
+  const GetHciEdgeDeviceJobArgs({
     required this.edgeDeviceName,
     required this.jobsName,
     required this.resourceUri,

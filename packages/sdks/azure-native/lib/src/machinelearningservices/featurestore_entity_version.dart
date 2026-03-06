@@ -28,7 +28,7 @@ class FeaturestoreEntityVersion {
   /// [properties] The asset property dictionary.
   /// [stage] Specifies the asset stage
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  FeaturestoreEntityVersion({
+  const FeaturestoreEntityVersion({
     this.description,
     this.indexColumns,
     this.isAnonymous,

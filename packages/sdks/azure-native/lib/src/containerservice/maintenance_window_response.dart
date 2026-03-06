@@ -26,7 +26,7 @@ class MaintenanceWindowResponse {
   /// [startDate] The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
   /// [startTime] The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
   /// [utcOffset] The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-  MaintenanceWindowResponse({
+  const MaintenanceWindowResponse({
     required this.durationHours,
     this.notAllowedDates,
     required this.schedule,

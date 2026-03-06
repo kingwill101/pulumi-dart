@@ -11,7 +11,7 @@ class GetClusterEncryptionInfo {
   /// Creates a new [GetClusterEncryptionInfo].
   /// [encryptionType] Output only. Type of encryption.
   /// [kmsKeyVersions] Output only. Cloud KMS key versions that are being used to protect the database or the backup.
-  GetClusterEncryptionInfo({
+  const GetClusterEncryptionInfo({
     required this.encryptionType,
     required this.kmsKeyVersions,
   });

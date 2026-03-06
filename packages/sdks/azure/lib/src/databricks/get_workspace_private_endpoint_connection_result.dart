@@ -19,7 +19,7 @@ class GetWorkspacePrivateEndpointConnectionResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [privateEndpointId] The resource ID of the Private Endpoint.
   /// [workspaceId] The resource ID of the Databricks Workspace.
-  GetWorkspacePrivateEndpointConnectionResult({
+  const GetWorkspacePrivateEndpointConnectionResult({
     required this.connections,
     required this.id,
     required this.privateEndpointId,

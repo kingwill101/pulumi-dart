@@ -24,7 +24,7 @@ class V3AliasArgs {
   /// [description] Description
   /// [functionName] Function Name
   /// [versionId] The version that the alias points
-  V3AliasArgs({
+  const V3AliasArgs({
     this.additionalVersionWeight,
     this.aliasName,
     this.description,

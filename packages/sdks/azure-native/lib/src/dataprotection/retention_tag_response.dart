@@ -15,7 +15,7 @@ class RetentionTagResponse {
   /// [eTag] Retention Tag version.
   /// [id] Retention Tag version.
   /// [tagName] Retention Tag Name to relate it to retention rule.
-  RetentionTagResponse({
+  const RetentionTagResponse({
     required this.eTag,
     required this.id,
     required this.tagName,

@@ -20,7 +20,7 @@ class ServicePerimeterResourceState {
   /// [etag] The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
   /// [perimeterName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
-  ServicePerimeterResourceState({
+  const ServicePerimeterResourceState({
     this.accessPolicyId,
     this.etag,
     this.perimeterName,

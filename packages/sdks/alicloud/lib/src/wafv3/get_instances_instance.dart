@@ -17,7 +17,7 @@ class GetInstancesInstance {
   /// [id] The ID of the resource.
   /// [instanceId] The first ID of the resource.
   /// [status] The status of the resource.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.createTime,
     required this.id,
     required this.instanceId,

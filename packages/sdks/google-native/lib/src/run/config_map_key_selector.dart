@@ -19,7 +19,7 @@ class ConfigMapKeySelector {
   /// [localObjectReference] Not supported by Cloud Run.
   /// [name] Not supported by Cloud Run.
   /// [optional] Not supported by Cloud Run.
-  ConfigMapKeySelector({
+  const ConfigMapKeySelector({
     required this.key,
     this.localObjectReference,
     required this.name,

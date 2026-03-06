@@ -17,7 +17,7 @@ class MetadataSupport {
   /// [link] The link for support help.
   /// [name] The name of the support contact.
   /// [tier] The type of support for content item. Possible values are `Microsoft`, `Partner` and `Community`.
-  MetadataSupport({
+  const MetadataSupport({
     this.email,
     this.link,
     this.name,

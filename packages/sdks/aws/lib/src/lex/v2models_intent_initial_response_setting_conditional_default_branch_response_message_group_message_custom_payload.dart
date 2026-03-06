@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessag
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload({
+  const V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupMessageCustomPayload({
     required this.value,
   });
 

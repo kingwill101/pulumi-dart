@@ -15,7 +15,7 @@ class GetDiskEncryptionSetArgs {
   /// Creates a new [GetDiskEncryptionSetArgs].
   /// [name] The name of the existing Disk Encryption Set.
   /// [resourceGroupName] The name of the Resource Group where the Disk Encryption Set exists.
-  GetDiskEncryptionSetArgs({
+  const GetDiskEncryptionSetArgs({
     required this.name,
     required this.resourceGroupName,
   });

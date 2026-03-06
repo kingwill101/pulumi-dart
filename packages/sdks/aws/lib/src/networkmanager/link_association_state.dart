@@ -15,7 +15,7 @@ class LinkAssociationState {
   /// [deviceId] ID of the device.
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
-  LinkAssociationState({
+  const LinkAssociationState({
     this.deviceId,
     this.globalNetworkId,
     this.linkId,

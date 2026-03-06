@@ -10,7 +10,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse].
   /// [simpleResponses] The list of simple responses.
-  GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse({
     required this.simpleResponses,
   });
 

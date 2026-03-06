@@ -24,7 +24,7 @@ class AmlFilesystemArchiveResponseStatus {
   /// [lastStartedTime] The time the latest archive operation started
   /// [percentComplete] The completion percentage of the archive operation
   /// [state] The state of the archive operation
-  AmlFilesystemArchiveResponseStatus({
+  const AmlFilesystemArchiveResponseStatus({
     required this.errorCode,
     required this.errorMessage,
     required this.lastCompletionTime,

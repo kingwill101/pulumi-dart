@@ -41,7 +41,7 @@ class EdifactFramingSettings {
   /// [segmentTerminator] The segment terminator.
   /// [segmentTerminatorSuffix] The EDIFACT frame setting segment terminator suffix.
   /// [serviceCodeListDirectoryVersion] The service code list directory version.
-  EdifactFramingSettings({
+  const EdifactFramingSettings({
     this.characterEncoding,
     required this.characterSet,
     required this.componentSeparator,

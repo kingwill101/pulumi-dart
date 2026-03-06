@@ -12,7 +12,7 @@ class ArmTemplateParameterResponse {
   /// Creates a new [ArmTemplateParameterResponse].
   /// [name] name of the parameter.
   /// [value] value for the parameter. In Jtoken
-  ArmTemplateParameterResponse({
+  const ArmTemplateParameterResponse({
     this.name,
     this.value,
   });

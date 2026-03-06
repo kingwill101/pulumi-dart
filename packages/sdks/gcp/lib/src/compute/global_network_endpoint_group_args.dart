@@ -34,7 +34,7 @@ class GlobalNetworkEndpointGroupArgs {
   /// [name] Name of the resource; provided by the client when the resource is
   /// [networkEndpointType] Type of network endpoints in this network endpoint group.
   /// [project] The ID of the project in which the resource belongs.
-  GlobalNetworkEndpointGroupArgs({
+  const GlobalNetworkEndpointGroupArgs({
     this.defaultPort,
     this.description,
     this.name,

@@ -9,7 +9,7 @@ class UserPoolAccountRecoverySetting {
 
   /// Creates a new [UserPoolAccountRecoverySetting].
   /// [recoveryMechanisms] List of Account Recovery Options of the following structure:
-  UserPoolAccountRecoverySetting({
+  const UserPoolAccountRecoverySetting({
     this.recoveryMechanisms,
   });
 

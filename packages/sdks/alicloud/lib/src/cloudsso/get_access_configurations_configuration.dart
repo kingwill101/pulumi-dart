@@ -36,7 +36,7 @@ class GetAccessConfigurationsConfiguration {
   /// [relayState] The RelayState of the Access Configuration.
   /// [sessionDuration] The SessionDuration of the Access Configuration.
   /// [statusNotifications] The StatusNotifications of the Access Configuration.
-  GetAccessConfigurationsConfiguration({
+  const GetAccessConfigurationsConfiguration({
     required this.accessConfigurationId,
     required this.accessConfigurationName,
     required this.createTime,

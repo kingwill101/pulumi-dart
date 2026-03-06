@@ -34,7 +34,7 @@ class GoogleCloudApigeeV1TlsInfoResponse {
   /// [keyStore] Required if `client_auth_enabled` is true. The resource ID of the keystore.
   /// [protocols] The TLS versioins to be used.
   /// [trustStore] The resource ID of the truststore.
-  GoogleCloudApigeeV1TlsInfoResponse({
+  const GoogleCloudApigeeV1TlsInfoResponse({
     required this.ciphers,
     required this.clientAuthEnabled,
     required this.commonName,

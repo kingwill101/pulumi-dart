@@ -9,7 +9,7 @@ class KalmConfig {
 
   /// Creates a new [KalmConfig].
   /// [enabled] Whether KALM is enabled for this cluster.
-  KalmConfig({
+  const KalmConfig({
     this.enabled,
   });
 

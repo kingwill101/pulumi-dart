@@ -18,7 +18,7 @@ class FrontdoorRuleActionsResponseHeaderAction {
   /// [headerAction] The action to be taken on the specified `header_name`. Possible values include `Append`, `Overwrite` or `Delete`.
   /// [headerName] The name of the header to modify.
   /// [value] The value to append or overwrite.
-  FrontdoorRuleActionsResponseHeaderAction({
+  const FrontdoorRuleActionsResponseHeaderAction({
     required this.headerAction,
     required this.headerName,
     this.value,

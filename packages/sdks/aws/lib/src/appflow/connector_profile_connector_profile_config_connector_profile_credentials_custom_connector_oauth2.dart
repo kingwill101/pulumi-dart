@@ -16,7 +16,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   /// [clientSecret] Optional.
   /// [oauthRequest] Optional.
   /// [refreshToken] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2({
     this.accessToken,
     this.clientId,
     this.clientSecret,

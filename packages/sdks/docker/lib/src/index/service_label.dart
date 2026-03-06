@@ -11,7 +11,7 @@ class ServiceLabel {
   /// Creates a new [ServiceLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  ServiceLabel({
+  const ServiceLabel({
     required this.label,
     required this.value,
   });

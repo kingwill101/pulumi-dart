@@ -19,7 +19,7 @@ class ObjectReplicationPolicyRuleResponse {
   /// [filters] Optional. An object that defines the filter set.
   /// [ruleId] Rule Id is auto-generated for each new rule on destination account. It is required for put policy on source account.
   /// [sourceContainer] Required. Source container name.
-  ObjectReplicationPolicyRuleResponse({
+  const ObjectReplicationPolicyRuleResponse({
     required this.destinationContainer,
     this.filters,
     this.ruleId,

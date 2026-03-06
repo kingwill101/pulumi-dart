@@ -24,7 +24,7 @@ class AzureTrafficCollectorState {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
   /// [tags] A mapping of tags which should be assigned to the Network Function Azure Traffic Collector.
   /// [virtualHubIds] The Resource ID of virtual hub.
-  AzureTrafficCollectorState({
+  const AzureTrafficCollectorState({
     this.collectorPolicyIds,
     this.location,
     this.name,

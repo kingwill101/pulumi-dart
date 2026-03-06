@@ -41,7 +41,7 @@ class ServiceState {
   /// [rollbackConfig] Specification for the rollback strategy of the service
   /// [taskSpec] User modifiable task configuration
   /// [updateConfig] Specification for the update strategy of the service
-  ServiceState({
+  const ServiceState({
     this.auth,
     this.convergeConfig,
     this.endpointSpec,

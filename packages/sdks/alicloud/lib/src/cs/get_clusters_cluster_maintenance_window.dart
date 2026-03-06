@@ -20,7 +20,7 @@ class GetClustersClusterMaintenanceWindow {
   /// [maintenanceTime] Maintenance start time.
   /// [recurrence] The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
   /// [weeklyPeriod] The maintenance cycle.
-  GetClustersClusterMaintenanceWindow({
+  const GetClustersClusterMaintenanceWindow({
     required this.duration,
     required this.enable,
     required this.maintenanceTime,

@@ -17,7 +17,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
   /// [disablePodOverprovisioning] Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
   /// [podSelectorLabel] Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
   /// [service] Required. Name of the Kubernetes Service.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking({
     required this.deployment,
     this.disablePodOverprovisioning,
     this.podSelectorLabel,

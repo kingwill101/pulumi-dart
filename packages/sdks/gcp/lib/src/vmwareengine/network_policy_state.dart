@@ -59,7 +59,7 @@ class NetworkPolicyState {
   /// [updateTime] Last updated time of this resource.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in the form:
-  NetworkPolicyState({
+  const NetworkPolicyState({
     this.createTime,
     this.description,
     this.edgeServicesCidr,

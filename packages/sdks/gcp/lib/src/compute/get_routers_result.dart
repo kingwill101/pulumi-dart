@@ -16,7 +16,7 @@ class GetRoutersResult {
   /// [project] Required.
   /// [region] Required.
   /// [routers] Required.
-  GetRoutersResult({
+  const GetRoutersResult({
     required this.id,
     required this.project,
     required this.region,

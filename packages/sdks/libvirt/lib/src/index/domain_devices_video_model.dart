@@ -40,7 +40,7 @@ class DomainDevicesVideoModel {
   /// [vgaMem] Configures the amount of memory allocated for the video graphics array (VGA) for the video device model.
   /// [vram] Specifies the video RAM allocation for the video device model.
   /// [vram64] Specifies the 64-bit video RAM configuration for the video device model.
-  DomainDevicesVideoModel({
+  const DomainDevicesVideoModel({
     this.accel,
     this.blob,
     this.edid,

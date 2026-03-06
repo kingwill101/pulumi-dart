@@ -11,7 +11,7 @@ class EnvironmentStorageConfigurationEfs {
   /// Creates a new [EnvironmentStorageConfigurationEfs].
   /// [fileSystemId] Id of the EFS filesystem to mount.
   /// [mountPoint] Path to mount the filesystem on, must start with `/m2/mount/`.
-  EnvironmentStorageConfigurationEfs({
+  const EnvironmentStorageConfigurationEfs({
     required this.fileSystemId,
     required this.mountPoint,
   });

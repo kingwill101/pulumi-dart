@@ -96,7 +96,7 @@ class NetworkArgs {
   /// [tags] The tags of Vpc.
   /// [userCidrs] A list of user CIDRs.
   /// [vpcName] The new name of the VPC.
-  NetworkArgs({
+  const NetworkArgs({
     this.cidrBlock,
     this.classicLinkEnabled,
     this.description,

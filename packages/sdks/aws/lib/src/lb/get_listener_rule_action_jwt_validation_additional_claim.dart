@@ -14,7 +14,7 @@ class GetListenerRuleActionJwtValidationAdditionalClaim {
   /// [format] Format of the claim value.
   /// [name] Name of the claim to validate.
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleActionJwtValidationAdditionalClaim({
+  const GetListenerRuleActionJwtValidationAdditionalClaim({
     required this.format,
     required this.name,
     required this.values,

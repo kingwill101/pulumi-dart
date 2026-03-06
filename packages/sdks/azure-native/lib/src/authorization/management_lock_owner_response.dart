@@ -9,7 +9,7 @@ class ManagementLockOwnerResponse {
 
   /// Creates a new [ManagementLockOwnerResponse].
   /// [applicationId] The application ID of the lock owner.
-  ManagementLockOwnerResponse({
+  const ManagementLockOwnerResponse({
     this.applicationId,
   });
 

@@ -15,7 +15,7 @@ class GetServiceResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [password] Required.
   /// [status] The current service enable status.
-  GetServiceResult({
+  const GetServiceResult({
     this.enable,
     required this.id,
     required this.password,

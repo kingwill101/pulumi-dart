@@ -32,7 +32,7 @@ class EtlState {
   /// [jobName] The job name. Naming rules are as follows:
   /// [project] Project name.
   /// [status] Task status.
-  EtlState({
+  const EtlState({
     this.configuration,
     this.createTime,
     this.description,

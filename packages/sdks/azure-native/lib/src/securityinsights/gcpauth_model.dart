@@ -19,7 +19,7 @@ class GCPAuthModel {
   /// [serviceAccountEmail] GCP Service Account Email
   /// [type] Type of paging
   /// [workloadIdentityProviderId] GCP Workload Identity Provider ID
-  GCPAuthModel({
+  const GCPAuthModel({
     required this.projectNumber,
     required this.serviceAccountEmail,
     required this.type,

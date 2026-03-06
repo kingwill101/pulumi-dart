@@ -9,7 +9,7 @@ class BucketReplicationSourceSelectionCriteria {
 
   /// Creates a new [BucketReplicationSourceSelectionCriteria].
   /// [sseKmsEncryptedObjects] Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
-  BucketReplicationSourceSelectionCriteria({
+  const BucketReplicationSourceSelectionCriteria({
     this.sseKmsEncryptedObjects,
   });
 

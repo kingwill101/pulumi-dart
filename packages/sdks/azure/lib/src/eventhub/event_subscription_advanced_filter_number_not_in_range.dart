@@ -13,7 +13,7 @@ class EventSubscriptionAdvancedFilterNumberNotInRange {
   /// Creates a new [EventSubscriptionAdvancedFilterNumberNotInRange].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
   /// [values] Specifies an array of values to compare to when using a multiple values operator.
-  EventSubscriptionAdvancedFilterNumberNotInRange({
+  const EventSubscriptionAdvancedFilterNumberNotInRange({
     required this.key,
     required this.values,
   });

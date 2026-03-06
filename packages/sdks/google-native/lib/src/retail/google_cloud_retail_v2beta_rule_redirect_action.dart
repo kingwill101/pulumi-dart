@@ -9,7 +9,7 @@ class GoogleCloudRetailV2betaRuleRedirectAction {
 
   /// Creates a new [GoogleCloudRetailV2betaRuleRedirectAction].
   /// [redirectUri] URL must have length equal or less than 2000 characters.
-  GoogleCloudRetailV2betaRuleRedirectAction({
+  const GoogleCloudRetailV2betaRuleRedirectAction({
     this.redirectUri,
   });
 

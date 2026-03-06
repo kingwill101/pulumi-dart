@@ -44,7 +44,7 @@ class ScanRuleState {
   /// [scanScope] Scan scope
   /// [scanType] Scan type:
   /// [triggerType] Trigger type
-  ScanRuleState({
+  const ScanRuleState({
     this.createTime,
     this.instanceId,
     this.namespaces,

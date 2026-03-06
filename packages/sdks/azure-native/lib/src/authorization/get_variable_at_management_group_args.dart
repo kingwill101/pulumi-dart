@@ -15,7 +15,7 @@ class GetVariableAtManagementGroupArgs {
   /// Creates a new [GetVariableAtManagementGroupArgs].
   /// [managementGroupId] The ID of the management group.
   /// [variableName] The name of the variable to operate on.
-  GetVariableAtManagementGroupArgs({
+  const GetVariableAtManagementGroupArgs({
     required this.managementGroupId,
     required this.variableName,
   });

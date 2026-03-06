@@ -18,7 +18,7 @@ class OrganizationConfigurationArgs {
   /// [autoEnable] When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s Detective delegated administrator and Detective is enabled in that AWS Region.
   /// [graphArn] ARN of the behavior graph.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationConfigurationArgs({
+  const OrganizationConfigurationArgs({
     required this.autoEnable,
     required this.graphArn,
     this.region,

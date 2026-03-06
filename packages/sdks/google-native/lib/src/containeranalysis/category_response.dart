@@ -12,7 +12,7 @@ class CategoryResponse {
   /// Creates a new [CategoryResponse].
   /// [categoryId] The identifier of the category.
   /// [name] The localized name of the category.
-  CategoryResponse({
+  const CategoryResponse({
     required this.categoryId,
     required this.name,
   });

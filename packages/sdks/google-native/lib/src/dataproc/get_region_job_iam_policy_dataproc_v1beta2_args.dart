@@ -17,7 +17,7 @@ class GetRegionJobIamPolicyDataprocV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionJobIamPolicyDataprocV1beta2Args({
+  const GetRegionJobIamPolicyDataprocV1beta2Args({
     required this.jobId,
     this.optionsRequestedPolicyVersion,
     this.project,

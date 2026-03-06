@@ -42,7 +42,7 @@ class SaasCreationProperties {
   /// [saasSubscriptionId] The saas subscription id used for tenant to subscription level migration request.
   /// [skuId] The plan id.
   /// [termId] The current Term id.
-  SaasCreationProperties({
+  const SaasCreationProperties({
     this.autoRenew,
     this.offerId,
     this.paymentChannelMetadata,

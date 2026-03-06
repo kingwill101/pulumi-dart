@@ -14,7 +14,7 @@ class ActiveDirectoryConnectorSpec {
   /// Creates a new [ActiveDirectoryConnectorSpec].
   /// [activeDirectory] null
   /// [dns] null
-  ActiveDirectoryConnectorSpec({
+  const ActiveDirectoryConnectorSpec({
     required this.activeDirectory,
     required this.dns,
   });

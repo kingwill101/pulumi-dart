@@ -8,7 +8,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
 
   /// Creates a new [GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig].
   /// [enabled] Whether or not GCFS is enabled
-  GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig({
+  const GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig({
     required this.enabled,
   });
 

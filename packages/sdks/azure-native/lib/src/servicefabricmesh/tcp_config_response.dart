@@ -16,7 +16,7 @@ class TcpConfigResponse {
   /// [destination] Describes destination endpoint for routing traffic.
   /// [name] tcp gateway config name.
   /// [port] Specifies the port at which the service endpoint below needs to be exposed.
-  TcpConfigResponse({
+  const TcpConfigResponse({
     required this.destination,
     required this.name,
     required this.port,

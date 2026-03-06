@@ -8,7 +8,7 @@ class WorkloadStatusConfigAutomaticRuleNrqlQuery {
 
   /// Creates a new [WorkloadStatusConfigAutomaticRuleNrqlQuery].
   /// [query] The entity search query that is used to perform the search of a group of entities.
-  WorkloadStatusConfigAutomaticRuleNrqlQuery({
+  const WorkloadStatusConfigAutomaticRuleNrqlQuery({
     required this.query,
   });
 

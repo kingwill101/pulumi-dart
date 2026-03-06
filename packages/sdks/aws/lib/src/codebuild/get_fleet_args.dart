@@ -18,7 +18,7 @@ class GetFleetArgs {
   /// [name] Fleet name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of Key-Value tags for the resource.
-  GetFleetArgs({
+  const GetFleetArgs({
     required this.name,
     this.region,
     this.tags,

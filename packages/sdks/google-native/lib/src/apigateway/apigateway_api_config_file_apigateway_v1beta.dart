@@ -12,7 +12,7 @@ class ApigatewayApiConfigFileApigatewayV1beta {
   /// Creates a new [ApigatewayApiConfigFileApigatewayV1beta].
   /// [contents] The bytes that constitute the file.
   /// [path] The file path (full or relative path). This is typically the path of the file when it is uploaded.
-  ApigatewayApiConfigFileApigatewayV1beta({
+  const ApigatewayApiConfigFileApigatewayV1beta({
     this.contents,
     this.path,
   });

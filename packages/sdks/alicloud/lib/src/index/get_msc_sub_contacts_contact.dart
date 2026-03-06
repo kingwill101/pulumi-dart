@@ -44,7 +44,7 @@ class GetMscSubContactsContact {
   /// [lastMobileVerificationTimeStamp] The Pieces of Authentication SMS Sending Time.
   /// [mobile] The User's Telephone.
   /// [position] The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-  GetMscSubContactsContact({
+  const GetMscSubContactsContact({
     required this.accountUid,
     required this.contactId,
     required this.contactName,

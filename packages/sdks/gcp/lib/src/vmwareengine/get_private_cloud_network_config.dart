@@ -28,7 +28,7 @@ class GetPrivateCloudNetworkConfig {
   /// [managementIpAddressLayoutVersion] The IP address layout version of the management IP address range.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network attached to the private cloud.
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in
-  GetPrivateCloudNetworkConfig({
+  const GetPrivateCloudNetworkConfig({
     required this.dnsServerIp,
     required this.managementCidr,
     required this.managementIpAddressLayoutVersion,

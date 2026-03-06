@@ -36,7 +36,7 @@ class RemotePrivateEndpointResponse {
   /// [privateLinkServiceConnections] List of automatically approved private link service connections.
   /// [privateLinkServiceProxies] List of private link service proxies.
   /// [vnetTrafficTag] Virtual network traffic tag.
-  RemotePrivateEndpointResponse({
+  const RemotePrivateEndpointResponse({
     this.connectionDetails,
     this.id,
     this.immutableResourceId,

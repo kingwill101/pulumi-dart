@@ -30,7 +30,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfi
   /// [publicPtrDomainName] (Optional)
   /// [setPublicPtr] (Optional)
   /// [type] Optional. The type of configuration.
-  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig({
+  const RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig({
     this.externalIp,
     this.externalIpv6,
     this.externalIpv6PrefixLength,

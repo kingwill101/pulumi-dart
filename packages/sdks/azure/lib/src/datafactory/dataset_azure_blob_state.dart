@@ -48,7 +48,7 @@ class DatasetAzureBlobState {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [path] The path of the Azure Blob.
   /// [schemaColumns] A `schema_column` block as defined below.
-  DatasetAzureBlobState({
+  const DatasetAzureBlobState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

@@ -8,7 +8,7 @@ class GetClusterMeshCertificate {
 
   /// Creates a new [GetClusterMeshCertificate].
   /// [enableCertificates] When enabled the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
-  GetClusterMeshCertificate({
+  const GetClusterMeshCertificate({
     required this.enableCertificates,
   });
 

@@ -10,7 +10,7 @@ class GoogleCloudChannelV1RepricingConditionResponse {
 
   /// Creates a new [GoogleCloudChannelV1RepricingConditionResponse].
   /// [skuGroupCondition] SKU Group condition for override.
-  GoogleCloudChannelV1RepricingConditionResponse({
+  const GoogleCloudChannelV1RepricingConditionResponse({
     required this.skuGroupCondition,
   });
 

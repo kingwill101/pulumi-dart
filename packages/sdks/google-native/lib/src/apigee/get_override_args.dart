@@ -15,7 +15,7 @@ class GetOverrideArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   /// [overrideId] Required.
-  GetOverrideArgs({
+  const GetOverrideArgs({
     required this.environmentId,
     required this.organizationId,
     required this.overrideId,

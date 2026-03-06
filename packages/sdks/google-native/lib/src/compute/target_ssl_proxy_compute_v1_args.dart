@@ -36,7 +36,7 @@ class TargetSslProxyComputeV1Args {
   /// [service] URL to the BackendService resource.
   /// [sslCertificates] URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
   /// [sslPolicy] URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
-  TargetSslProxyComputeV1Args({
+  const TargetSslProxyComputeV1Args({
     this.certificateMap,
     this.description,
     this.name,

@@ -17,7 +17,7 @@ class FileSystemRootSquash {
   /// [noSquashNids] NID IP Address list(s) to be added to the TrustedSystems, separated by semicolons.
   /// [squashGid] The GID to be used for the root squash. Defaults to `0`.
   /// [squashUid] The UID to be used for the root squash. Defaults to `0`.
-  FileSystemRootSquash({
+  const FileSystemRootSquash({
     required this.mode,
     required this.noSquashNids,
     this.squashGid,

@@ -9,7 +9,7 @@ class WindowsNodeConfigResponse {
 
   /// Creates a new [WindowsNodeConfigResponse].
   /// [osVersion] OSVersion specifies the Windows node config to be used on the node
-  WindowsNodeConfigResponse({
+  const WindowsNodeConfigResponse({
     required this.osVersion,
   });
 

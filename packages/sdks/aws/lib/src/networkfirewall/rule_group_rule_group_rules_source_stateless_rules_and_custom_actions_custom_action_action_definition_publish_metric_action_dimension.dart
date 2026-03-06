@@ -8,7 +8,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionAct
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension].
   /// [value] The value to use in the custom metric dimension.
-  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension({
+  const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension({
     required this.value,
   });
 

@@ -10,7 +10,7 @@ class QueryContentResponse {
 
   /// Creates a new [QueryContentResponse].
   /// [iamPolicyAnalysisQuery] An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
-  QueryContentResponse({
+  const QueryContentResponse({
     required this.iamPolicyAnalysisQuery,
   });
 

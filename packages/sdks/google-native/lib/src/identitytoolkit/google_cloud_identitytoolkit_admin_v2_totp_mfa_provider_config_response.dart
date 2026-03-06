@@ -9,7 +9,7 @@ class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse].
   /// [adjacentIntervals] The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
-  GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse({
     required this.adjacentIntervals,
   });
 

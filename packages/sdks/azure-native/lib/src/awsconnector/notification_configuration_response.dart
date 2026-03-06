@@ -22,7 +22,7 @@ class NotificationConfigurationResponse {
   /// [lambdaConfigurations] Describes the LAMlong functions to invoke and the events for which to invoke them.
   /// [queueConfigurations] The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
   /// [topicConfigurations] The topic to which notifications are sent and the events for which notifications are generated.
-  NotificationConfigurationResponse({
+  const NotificationConfigurationResponse({
     this.eventBridgeConfiguration,
     this.lambdaConfigurations,
     this.queueConfigurations,

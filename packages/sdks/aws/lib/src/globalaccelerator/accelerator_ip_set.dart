@@ -11,7 +11,7 @@ class AcceleratorIpSet {
   /// Creates a new [AcceleratorIpSet].
   /// [ipAddresses] The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   /// [ipFamily] The type of IP addresses included in this IP set.
-  AcceleratorIpSet({
+  const AcceleratorIpSet({
     this.ipAddresses,
     this.ipFamily,
   });

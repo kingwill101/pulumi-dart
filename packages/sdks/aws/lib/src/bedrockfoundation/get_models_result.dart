@@ -23,7 +23,7 @@ class GetModelsResult {
   /// [id] AWS region.
   /// [modelSummaries] List of model summary objects. See `model_summaries`.
   /// [region] Required.
-  GetModelsResult({
+  const GetModelsResult({
     this.byCustomizationType,
     this.byInferenceType,
     this.byOutputModality,

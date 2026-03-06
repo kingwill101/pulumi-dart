@@ -21,7 +21,7 @@ class ActionTargetArgs {
   /// [identifier] The ID for the custom action target.
   /// [name] The description for the custom action target.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ActionTargetArgs({
+  const ActionTargetArgs({
     required this.description,
     required this.identifier,
     this.name,

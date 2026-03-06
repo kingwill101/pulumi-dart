@@ -33,7 +33,7 @@ class VectorsVectorBucketState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vectorBucketArn] ARN of the vector bucket.
   /// [vectorBucketName] Name of the vector bucket.
-  VectorsVectorBucketState({
+  const VectorsVectorBucketState({
     this.creationTime,
     this.encryptionConfigurations,
     this.forceDestroy,

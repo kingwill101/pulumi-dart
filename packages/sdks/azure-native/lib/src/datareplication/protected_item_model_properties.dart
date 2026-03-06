@@ -16,7 +16,7 @@ class ProtectedItemModelProperties {
   /// [customProperties] Protected item model custom properties.
   /// [policyName] Gets or sets the policy name.
   /// [replicationExtensionName] Gets or sets the replication extension name.
-  ProtectedItemModelProperties({
+  const ProtectedItemModelProperties({
     required this.customProperties,
     required this.policyName,
     required this.replicationExtensionName,

@@ -14,7 +14,7 @@ class KubernetesNodePoolTaint {
   /// [effect] How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
   /// [key] An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
   /// [value] An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
-  KubernetesNodePoolTaint({
+  const KubernetesNodePoolTaint({
     required this.effect,
     required this.key,
     required this.value,

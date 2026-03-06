@@ -25,7 +25,7 @@ class KeyRingImportJobArgs {
   /// [importMethod] The wrapping method to be used for incoming key material.
   /// [keyRing] The KeyRing that this import job belongs to.
   /// [protectionLevel] The protection level of the ImportJob. This must match the protectionLevel of the
-  KeyRingImportJobArgs({
+  const KeyRingImportJobArgs({
     required this.importJobId,
     required this.importMethod,
     required this.keyRing,

@@ -27,7 +27,7 @@ class ListingSubscriptionArgs {
   /// [listingId] The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   /// [location] The name of the location of the data exchange. Distinct from the location of the destination data set.
   /// [project] The ID of the project in which the resource belongs.
-  ListingSubscriptionArgs({
+  const ListingSubscriptionArgs({
     required this.dataExchangeId,
     required this.destinationDataset,
     required this.listingId,

@@ -39,7 +39,7 @@ class SASAuthTypeConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  SASAuthTypeConnectionPropertiesResponse({
+  const SASAuthTypeConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

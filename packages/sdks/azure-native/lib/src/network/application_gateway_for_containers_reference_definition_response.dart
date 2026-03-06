@@ -9,7 +9,7 @@ class ApplicationGatewayForContainersReferenceDefinitionResponse {
 
   /// Creates a new [ApplicationGatewayForContainersReferenceDefinitionResponse].
   /// [id] Resource Id of the application gateway for containers.
-  ApplicationGatewayForContainersReferenceDefinitionResponse({
+  const ApplicationGatewayForContainersReferenceDefinitionResponse({
     required this.id,
   });
 

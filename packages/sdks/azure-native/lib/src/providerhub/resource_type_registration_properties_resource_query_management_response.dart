@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesResourceQueryManagementResponse {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceQueryManagementResponse].
   /// [filterOption] Filter option.
-  ResourceTypeRegistrationPropertiesResourceQueryManagementResponse({
+  const ResourceTypeRegistrationPropertiesResourceQueryManagementResponse({
     this.filterOption,
   });
 

@@ -24,7 +24,7 @@ class RemotePrivateEndpointResponse {
   /// [manualPrivateLinkServiceConnections] Gets or sets the list of Manual Private Link Service Connections and gets populated for Manual approval flow.
   /// [privateLinkServiceConnections] Gets or sets the list of Private Link Service Connections and gets populated for Auto approval flow.
   /// [privateLinkServiceProxies] Gets or sets the list of private link service proxies.
-  RemotePrivateEndpointResponse({
+  const RemotePrivateEndpointResponse({
     this.connectionDetails,
     required this.id,
     this.manualPrivateLinkServiceConnections,

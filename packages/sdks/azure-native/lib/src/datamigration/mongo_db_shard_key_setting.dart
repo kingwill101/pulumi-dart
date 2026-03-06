@@ -13,7 +13,7 @@ class MongoDbShardKeySetting {
   /// Creates a new [MongoDbShardKeySetting].
   /// [fields] The fields within the shard key
   /// [isUnique] Whether the shard key is unique
-  MongoDbShardKeySetting({
+  const MongoDbShardKeySetting({
     required this.fields,
     this.isUnique,
   });

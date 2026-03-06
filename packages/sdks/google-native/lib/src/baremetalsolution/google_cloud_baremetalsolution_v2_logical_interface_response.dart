@@ -16,7 +16,7 @@ class GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse {
   /// [interfaceIndex] The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
   /// [logicalNetworkInterfaces] List of logical network interfaces within a logical interface.
   /// [name] Interface name. This is of syntax or and forms part of the network template name.
-  GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse({
+  const GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse({
     required this.interfaceIndex,
     required this.logicalNetworkInterfaces,
     required this.name,

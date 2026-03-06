@@ -44,7 +44,7 @@ class GetCircuitPeeringResult {
   /// [secondaryPeerAddressPrefix] The secondary peer address prefix.
   /// [sharedKey] Required.
   /// [vlanId] The VLAN ID used for this peering.
-  GetCircuitPeeringResult({
+  const GetCircuitPeeringResult({
     required this.azureAsn,
     required this.expressRouteCircuitName,
     required this.gatewayManagerEtag,

@@ -14,7 +14,7 @@ class GetServiceAuthenticationConfiguration {
   /// [audience] The intended audience to receive authentication tokens for the service.
   /// [authority] The Azure Active Directory (tenant) that serves as the authentication authority to access the service.
   /// [smartProxyEnabled] Is the 'SMART on FHIR' option for mobile and web implementations enabled?
-  GetServiceAuthenticationConfiguration({
+  const GetServiceAuthenticationConfiguration({
     required this.audience,
     required this.authority,
     required this.smartProxyEnabled,

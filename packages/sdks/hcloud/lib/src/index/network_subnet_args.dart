@@ -24,7 +24,7 @@ class NetworkSubnetArgs {
   /// [networkZone] Name of network zone.
   /// [type] Type of subnet. `server`, `cloud` or `vswitch`
   /// [vswitchId] ID of the vswitch, Required if type is `vswitch`
-  NetworkSubnetArgs({
+  const NetworkSubnetArgs({
     required this.ipRange,
     required this.networkId,
     required this.networkZone,

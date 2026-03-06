@@ -12,7 +12,7 @@ class MonitoringDestination {
   /// Creates a new [MonitoringDestination].
   /// [metrics] Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.
   /// [monitoredResource] The monitored resource type. The type must be defined in Service.monitored_resources section.
-  MonitoringDestination({
+  const MonitoringDestination({
     this.metrics,
     this.monitoredResource,
   });

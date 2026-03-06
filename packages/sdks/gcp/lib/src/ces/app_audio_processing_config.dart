@@ -32,7 +32,7 @@ class AppAudioProcessingConfig {
   /// [bargeInConfig] Configuration for how the user barge-in activities should be handled.
   /// [inactivityTimeout] The duration of user inactivity (no speech or interaction) before the agent
   /// [synthesizeSpeechConfigs] Configuration of how the agent response should be synthesized, mapping from
-  AppAudioProcessingConfig({
+  const AppAudioProcessingConfig({
     this.ambientSoundConfig,
     this.bargeInConfig,
     this.inactivityTimeout,

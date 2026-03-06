@@ -9,7 +9,7 @@ class PortSetResponse {
 
   /// Creates a new [PortSetResponse].
   /// [definition] Property definition
-  PortSetResponse({
+  const PortSetResponse({
     this.definition,
   });
 

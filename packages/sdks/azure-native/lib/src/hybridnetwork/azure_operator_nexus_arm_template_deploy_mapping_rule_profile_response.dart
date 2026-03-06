@@ -13,7 +13,7 @@ class AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse {
   /// Creates a new [AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.
   /// [templateMappingRuleProfile] The template mapping rule profile.
-  AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse({
+  const AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse({
     this.applicationEnablement,
     this.templateMappingRuleProfile,
   });

@@ -15,7 +15,7 @@ class ListContainerAppSecretsArgs {
   /// Creates a new [ListContainerAppSecretsArgs].
   /// [containerAppName] Name of the Container App.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListContainerAppSecretsArgs({
+  const ListContainerAppSecretsArgs({
     required this.containerAppName,
     required this.resourceGroupName,
   });

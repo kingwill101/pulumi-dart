@@ -15,7 +15,7 @@ class GetNetworkMonitorArgs {
   /// Creates a new [GetNetworkMonitorArgs].
   /// [networkMonitorName] Name of the Network Monitor.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkMonitorArgs({
+  const GetNetworkMonitorArgs({
     required this.networkMonitorName,
     required this.resourceGroupName,
   });

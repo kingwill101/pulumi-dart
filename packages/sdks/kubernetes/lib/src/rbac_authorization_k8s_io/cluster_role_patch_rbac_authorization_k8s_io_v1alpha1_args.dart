@@ -27,7 +27,7 @@ class ClusterRolePatchRbacAuthorizationK8sIoV1alpha1Args {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata.
   /// [rules] Rules holds all the PolicyRules for this ClusterRole
-  ClusterRolePatchRbacAuthorizationK8sIoV1alpha1Args({
+  const ClusterRolePatchRbacAuthorizationK8sIoV1alpha1Args({
     this.aggregationRule,
     this.apiVersion,
     this.kind,

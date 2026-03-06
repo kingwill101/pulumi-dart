@@ -37,7 +37,7 @@ class PartnerNamespaceState {
   /// [publicNetworkAccess] Whether or not public network access is allowed for this server. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   /// [resourceGroupName] The name of the Resource Group where the Event Grid Partner Namespace should exist. Changing this forces a new Event Grid Partner Namespace to be created.
   /// [tags] A mapping of tags which should be assigned to the Event Grid Partner Namespace.
-  PartnerNamespaceState({
+  const PartnerNamespaceState({
     this.endpoint,
     this.inboundIpRules,
     this.localAuthenticationEnabled,

@@ -15,7 +15,7 @@ class FlexibleServerBackupArgs {
   /// Creates a new [FlexibleServerBackupArgs].
   /// [name] Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   /// [serverId] The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
-  FlexibleServerBackupArgs({
+  const FlexibleServerBackupArgs({
     this.name,
     required this.serverId,
   });

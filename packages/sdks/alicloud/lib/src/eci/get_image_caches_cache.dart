@@ -36,7 +36,7 @@ class GetImageCachesCache {
   /// [progress] The progress of ECI Image Cache.
   /// [snapshotId] The id of snapshot.
   /// [status] The status of ECI Image Cache.
-  GetImageCachesCache({
+  const GetImageCachesCache({
     required this.containerGroupId,
     required this.events,
     required this.expireDateTime,

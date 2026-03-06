@@ -21,7 +21,7 @@ class GetPricesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [product] The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   /// [resourceCode] Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
-  GetPricesArgs({
+  const GetPricesArgs({
     this.desireAttributes,
     this.outputFile,
     required this.product,

@@ -52,7 +52,7 @@ class GetSnapshotPolicyResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [weeklySchedule] Schedule for weekly snapshots
-  GetSnapshotPolicyResult({
+  const GetSnapshotPolicyResult({
     required this.azureApiVersion,
     this.dailySchedule,
     this.enabled,

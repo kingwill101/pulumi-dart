@@ -8,7 +8,7 @@ class PipelineSourceTriggerDescriptorResponse {
 
   /// Creates a new [PipelineSourceTriggerDescriptorResponse].
   /// [timestamp] The timestamp when the source update happened.
-  PipelineSourceTriggerDescriptorResponse({
+  const PipelineSourceTriggerDescriptorResponse({
     this.timestamp,
   });
 

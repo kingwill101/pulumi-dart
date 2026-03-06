@@ -15,7 +15,7 @@ class GetDataSetLogicalTableMap {
   /// [dataTransforms] Required.
   /// [logicalTableMapId] Required.
   /// [sources] Required.
-  GetDataSetLogicalTableMap({
+  const GetDataSetLogicalTableMap({
     required this.alias,
     required this.dataTransforms,
     required this.logicalTableMapId,

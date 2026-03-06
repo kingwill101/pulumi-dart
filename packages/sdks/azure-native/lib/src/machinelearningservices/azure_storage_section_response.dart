@@ -50,7 +50,7 @@ class AzureStorageSectionResponse {
   /// [sasToken] SAS Token for the container (Deprecated).
   /// [serviceDataAccessAuthIdentity] Indicates which identity to use to authenticate service data access to customer's storage.
   /// [subscriptionId] Subscription ID.
-  AzureStorageSectionResponse({
+  const AzureStorageSectionResponse({
     this.accountKey,
     this.accountName,
     this.areWorkspaceManagedIdentitiesAllowed,

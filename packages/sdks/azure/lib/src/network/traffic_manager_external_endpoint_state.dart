@@ -41,7 +41,7 @@ class TrafficManagerExternalEndpointState {
   /// [subnets] One or more `subnet` blocks as defined below. Changing this forces a new resource to be created.
   /// [target] The FQDN DNS name of the target.
   /// [weight] Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
-  TrafficManagerExternalEndpointState({
+  const TrafficManagerExternalEndpointState({
     this.alwaysServeEnabled,
     this.customHeaders,
     this.enabled,

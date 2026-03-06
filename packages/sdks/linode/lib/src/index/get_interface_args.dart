@@ -13,7 +13,7 @@ class GetInterfaceArgs {
   /// Creates a new [GetInterfaceArgs].
   /// [id] Required.
   /// [linodeId] Required.
-  GetInterfaceArgs({
+  const GetInterfaceArgs({
     required this.id,
     required this.linodeId,
   });

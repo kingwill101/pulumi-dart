@@ -74,7 +74,7 @@ class GetBackupAlloydbV1alphaResult {
   /// [type] The backup type, which suggests the trigger for the backup.
   /// [uid] The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
   /// [updateTime] Update time stamp
-  GetBackupAlloydbV1alphaResult({
+  const GetBackupAlloydbV1alphaResult({
     required this.annotations,
     required this.clusterName,
     required this.clusterUid,

@@ -17,7 +17,7 @@ class GetDataQualityRulesRuleRangeExpectation {
   /// [minValue] The minimum column value allowed for a row to pass this validation.
   /// [strictMaxEnabled] Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.
   /// [strictMinEnabled] Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.
-  GetDataQualityRulesRuleRangeExpectation({
+  const GetDataQualityRulesRuleRangeExpectation({
     required this.maxValue,
     required this.minValue,
     required this.strictMaxEnabled,

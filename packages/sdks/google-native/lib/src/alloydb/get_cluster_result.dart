@@ -94,7 +94,7 @@ class GetClusterResult {
   /// [state] The current serving state of the cluster.
   /// [uid] The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
   /// [updateTime] Update time stamp
-  GetClusterResult({
+  const GetClusterResult({
     required this.annotations,
     required this.automatedBackupPolicy,
     required this.backupSource,

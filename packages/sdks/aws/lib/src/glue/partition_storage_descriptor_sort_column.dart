@@ -11,7 +11,7 @@ class PartitionStorageDescriptorSortColumn {
   /// Creates a new [PartitionStorageDescriptorSortColumn].
   /// [column] The name of the column.
   /// [sortOrder] Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
-  PartitionStorageDescriptorSortColumn({
+  const PartitionStorageDescriptorSortColumn({
     required this.column,
     required this.sortOrder,
   });

@@ -11,7 +11,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort].
   /// [fromPort] The lower limit of the port range. This must be less than or equal to the `to_port`.
   /// [toPort] The upper limit of the port range. This must be greater than or equal to the `from_port`.
-  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort({
+  const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort({
     required this.fromPort,
     this.toPort,
   });

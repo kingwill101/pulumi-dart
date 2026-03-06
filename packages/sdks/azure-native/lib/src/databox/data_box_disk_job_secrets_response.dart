@@ -28,7 +28,7 @@ class DataBoxDiskJobSecretsResponse {
   /// [isPasskeyUserDefined] Whether passkey was provided by user.
   /// [jobSecretsType] Used to indicate what type of job secrets object.
   /// [passKey] PassKey for the disk Job.
-  DataBoxDiskJobSecretsResponse({
+  const DataBoxDiskJobSecretsResponse({
     required this.dcAccessSecurityCode,
     required this.diskSecrets,
     required this.error,

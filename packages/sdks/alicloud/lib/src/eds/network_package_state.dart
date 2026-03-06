@@ -18,7 +18,7 @@ class NetworkPackageState {
   /// [internetChargeType] The internet charge type  of  package.
   /// [officeSiteId] The ID of office site.
   /// [status] The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
-  NetworkPackageState({
+  const NetworkPackageState({
     this.bandwidth,
     this.internetChargeType,
     this.officeSiteId,

@@ -29,7 +29,7 @@ class AvroSource {
   /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [storeSettings] Avro store settings.
   /// [type] Copy source type.
-  AvroSource({
+  const AvroSource({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.maxConcurrentConnections,

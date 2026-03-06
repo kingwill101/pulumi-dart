@@ -24,7 +24,7 @@ class WorkerSettings {
   /// [shuffleServicePath] The Shuffle service path relative to the root URL, for example, "shuffle/v1beta1".
   /// [tempStoragePrefix] The prefix of the resources the system should use for temporary storage. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
   /// [workerId] The ID of the worker running this pipeline.
-  WorkerSettings({
+  const WorkerSettings({
     this.baseUrl,
     this.reportingEnabled,
     this.servicePath,

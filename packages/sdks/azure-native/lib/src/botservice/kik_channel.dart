@@ -20,7 +20,7 @@ class KikChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Kik channel resource
-  KikChannel({
+  const KikChannel({
     required this.channelName,
     this.etag,
     this.location,

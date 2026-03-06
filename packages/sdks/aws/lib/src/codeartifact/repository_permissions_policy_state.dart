@@ -27,7 +27,7 @@ class RepositoryPermissionsPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] The name of the repository to set the resource policy on.
   /// [resourceArn] The ARN of the resource associated with the resource policy.
-  RepositoryPermissionsPolicyState({
+  const RepositoryPermissionsPolicyState({
     this.domain,
     this.domainOwner,
     this.policyDocument,

@@ -8,7 +8,7 @@ class NodePoolNodeConfig {
 
   /// Creates a new [NodePoolNodeConfig].
   /// [labels] "The Kubernetes node labels"
-  NodePoolNodeConfig({
+  const NodePoolNodeConfig({
     this.labels,
   });
 

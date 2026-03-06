@@ -19,7 +19,7 @@ class UpdateStatusResponse {
   /// [error] The error details when a failure is encountered.
   /// [startTime] The time the operation or group was started.
   /// [state] The State of the operation or group.
-  UpdateStatusResponse({
+  const UpdateStatusResponse({
     required this.completedTime,
     required this.error,
     required this.startTime,

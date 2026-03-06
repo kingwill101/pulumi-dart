@@ -68,7 +68,7 @@ class IoTHubArgs {
   /// [routes] Optional.
   /// [sku] A `sku` block as defined below.
   /// [tags] Optional.
-  IoTHubArgs({
+  const IoTHubArgs({
     this.cloudToDevice,
     this.endpoints,
     this.enrichments,

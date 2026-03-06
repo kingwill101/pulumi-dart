@@ -20,7 +20,7 @@ class GetServerlessCollectionArgs {
   /// [id] ID of the collection.
   /// [name] Name of the collection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetServerlessCollectionArgs({
+  const GetServerlessCollectionArgs({
     this.id,
     this.name,
     this.region,

@@ -15,7 +15,7 @@ class FcmV1CredentialResponse {
   /// [clientEmail] Gets or sets client email.
   /// [privateKey] Gets or sets private key.
   /// [projectId] Gets or sets project id.
-  FcmV1CredentialResponse({
+  const FcmV1CredentialResponse({
     required this.clientEmail,
     required this.privateKey,
     required this.projectId,

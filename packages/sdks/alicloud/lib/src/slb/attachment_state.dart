@@ -24,7 +24,7 @@ class AttachmentState {
   /// [loadBalancerId] ID of the load balancer.
   /// [serverType] Type of the instances. Valid value ecs, eni. Default to ecs.
   /// [weight] Weight of the instances. Valid value range: [0-100]. Default to 100.
-  AttachmentState({
+  const AttachmentState({
     this.backendServers,
     this.deleteProtectionValidation,
     this.instanceIds,

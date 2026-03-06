@@ -59,7 +59,7 @@ class RegionSslCertificateState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created regional ssl certificate should reside.
   /// [selfLink] The URI of the created resource.
-  RegionSslCertificateState({
+  const RegionSslCertificateState({
     this.certificate,
     this.certificateId,
     this.creationTimestamp,

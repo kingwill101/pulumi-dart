@@ -9,7 +9,7 @@ class FlexibleAppVersionDeploymentContainer {
 
   /// Creates a new [FlexibleAppVersionDeploymentContainer].
   /// [image] URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
-  FlexibleAppVersionDeploymentContainer({
+  const FlexibleAppVersionDeploymentContainer({
     required this.image,
   });
 

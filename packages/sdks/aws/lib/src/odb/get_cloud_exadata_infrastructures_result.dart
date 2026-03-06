@@ -15,7 +15,7 @@ class GetCloudExadataInfrastructuresResult {
   /// [cloudExadataInfrastructures] List of Cloud Exadata Infrastructures. Returns basic information about the Cloud Exadata Infrastructures.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetCloudExadataInfrastructuresResult({
+  const GetCloudExadataInfrastructuresResult({
     required this.cloudExadataInfrastructures,
     required this.id,
     required this.region,

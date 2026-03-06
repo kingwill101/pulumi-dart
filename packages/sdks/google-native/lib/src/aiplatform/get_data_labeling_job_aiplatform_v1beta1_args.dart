@@ -15,7 +15,7 @@ class GetDataLabelingJobAiplatformV1beta1Args {
   /// [dataLabelingJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataLabelingJobAiplatformV1beta1Args({
+  const GetDataLabelingJobAiplatformV1beta1Args({
     required this.dataLabelingJobId,
     required this.location,
     this.project,

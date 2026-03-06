@@ -32,7 +32,7 @@ class GetConstraintResult {
   /// [region] Required.
   /// [status] Constraint status.
   /// [type] Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
-  GetConstraintResult({
+  const GetConstraintResult({
     this.acceptLanguage,
     required this.description,
     required this.id,

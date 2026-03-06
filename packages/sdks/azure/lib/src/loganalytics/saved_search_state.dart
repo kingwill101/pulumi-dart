@@ -30,7 +30,7 @@ class SavedSearchState {
   /// [name] Specifies the name of the Log Analytics Saved Search. Changing this forces a new resource to be created.
   /// [query] The query expression for the saved search. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Logs Analytics Saved Search. Changing this forces a new resource to be created.
-  SavedSearchState({
+  const SavedSearchState({
     this.category,
     this.displayName,
     this.functionAlias,

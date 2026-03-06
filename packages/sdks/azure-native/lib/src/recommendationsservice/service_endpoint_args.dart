@@ -28,7 +28,7 @@ class ServiceEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceEndpointName] The name of the ServiceEndpoint resource.
   /// [tags] Resource tags.
-  ServiceEndpointArgs({
+  const ServiceEndpointArgs({
     required this.accountName,
     this.location,
     this.properties,

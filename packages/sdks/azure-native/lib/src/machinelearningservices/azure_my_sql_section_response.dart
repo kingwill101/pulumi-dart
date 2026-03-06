@@ -59,7 +59,7 @@ class AzureMySqlSectionResponse {
   /// [thumbprint] The thumbprint of the certificate above.
   /// [userId] The Azure SQL user id.
   /// [userPassword] The Azure SQL user password.
-  AzureMySqlSectionResponse({
+  const AzureMySqlSectionResponse({
     this.authorityUrl,
     this.certificate,
     this.clientId,

@@ -11,7 +11,7 @@ class GatewayHostnameBindingKeyVault {
   /// Creates a new [GatewayHostnameBindingKeyVault].
   /// [identityClientId] The default hostname of the data-plane gateway.
   /// [secretId] The current provisioning state of the API Management gateway hostname binding.
-  GatewayHostnameBindingKeyVault({
+  const GatewayHostnameBindingKeyVault({
     this.identityClientId,
     required this.secretId,
   });

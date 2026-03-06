@@ -13,7 +13,7 @@ class VirtualMachineScaleSetIdentity {
   /// Creates a new [VirtualMachineScaleSetIdentity].
   /// [type] The type of identity used for the virtual machine scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine scale set.
   /// [userAssignedIdentities] The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  VirtualMachineScaleSetIdentity({
+  const VirtualMachineScaleSetIdentity({
     this.type,
     this.userAssignedIdentities,
   });

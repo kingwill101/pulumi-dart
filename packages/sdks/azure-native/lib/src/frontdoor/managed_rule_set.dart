@@ -23,7 +23,7 @@ class ManagedRuleSet {
   /// [ruleSetAction] Defines the rule set action.
   /// [ruleSetType] Defines the rule set type to use.
   /// [ruleSetVersion] Defines the version of the rule set to use.
-  ManagedRuleSet({
+  const ManagedRuleSet({
     this.exclusions,
     this.ruleGroupOverrides,
     this.ruleSetAction,

@@ -8,7 +8,7 @@ class ClusterVerticalPodAutoscaling {
 
   /// Creates a new [ClusterVerticalPodAutoscaling].
   /// [enabled] Enables vertical pod autoscaling
-  ClusterVerticalPodAutoscaling({
+  const ClusterVerticalPodAutoscaling({
     required this.enabled,
   });
 

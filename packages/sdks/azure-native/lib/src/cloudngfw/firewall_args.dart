@@ -66,7 +66,7 @@ class FirewallArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [strataCloudManagerConfig] Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
   /// [tags] Resource tags.
-  FirewallArgs({
+  const FirewallArgs({
     this.associatedRulestack,
     required this.dnsSettings,
     this.firewallName,

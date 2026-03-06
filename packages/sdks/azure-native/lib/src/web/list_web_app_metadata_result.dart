@@ -20,7 +20,7 @@ class ListWebAppMetadataResult {
   /// [name] Resource Name.
   /// [properties] Settings.
   /// [type] Resource type.
-  ListWebAppMetadataResult({
+  const ListWebAppMetadataResult({
     required this.id,
     this.kind,
     required this.name,

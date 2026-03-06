@@ -18,7 +18,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
   /// [maxSurge] The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
   /// [maxUnavailable] The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
   /// [strategy] Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
-  ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings({
+  const ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings({
     this.blueGreenSettings,
     this.maxSurge,
     this.maxUnavailable,

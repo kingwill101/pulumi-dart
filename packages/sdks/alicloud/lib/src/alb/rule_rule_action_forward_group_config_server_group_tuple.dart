@@ -12,7 +12,7 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple {
   /// Creates a new [RuleRuleActionForwardGroupConfigServerGroupTuple].
   /// [serverGroupId] The ID of the destination server group to which requests are forwarded.
   /// [weight] The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-  RuleRuleActionForwardGroupConfigServerGroupTuple({
+  const RuleRuleActionForwardGroupConfigServerGroupTuple({
     this.serverGroupId,
     this.weight,
   });

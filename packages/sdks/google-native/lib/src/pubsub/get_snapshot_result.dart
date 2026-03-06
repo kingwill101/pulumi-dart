@@ -17,7 +17,7 @@ class GetSnapshotResult {
   /// [labels] Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
   /// [name] Optional. The name of the snapshot.
   /// [topic] Optional. The name of the topic from which this snapshot is retaining messages.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.expireTime,
     required this.labels,
     required this.name,

@@ -27,7 +27,7 @@ class ListServiceFabricApplicableSchedulesResult {
   /// [name] The name of the resource.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
-  ListServiceFabricApplicableSchedulesResult({
+  const ListServiceFabricApplicableSchedulesResult({
     required this.id,
     this.labVmsShutdown,
     this.labVmsStartup,

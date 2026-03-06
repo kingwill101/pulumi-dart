@@ -57,7 +57,7 @@ class SearchEngineArgs {
   /// [location] Location.
   /// [project] The ID of the project in which the resource belongs.
   /// [searchEngineConfig] Configurations for a Search Engine.
-  SearchEngineArgs({
+  const SearchEngineArgs({
     this.appType,
     required this.collectionId,
     this.commonConfig,

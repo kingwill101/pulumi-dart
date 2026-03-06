@@ -17,7 +17,7 @@ class ClusterNodeGroupAckConfigPvc {
   /// [dataDiskStorageClass] The ack cluster job pod data disk storage class of persistent volume claim.
   /// [name] The name of ack cluster job pod volume mounts.
   /// [path] The path of ack cluster job pod volume mounts.
-  ClusterNodeGroupAckConfigPvc({
+  const ClusterNodeGroupAckConfigPvc({
     required this.dataDiskSize,
     required this.dataDiskStorageClass,
     required this.name,

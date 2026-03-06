@@ -14,7 +14,7 @@ class ReceiptRuleStopAction {
   /// [position] The position of the action in the receipt rule
   /// [scope] The scope to apply. The only acceptable value is `RuleSet`.
   /// [topicArn] The ARN of an SNS topic to notify
-  ReceiptRuleStopAction({
+  const ReceiptRuleStopAction({
     required this.position,
     required this.scope,
     this.topicArn,

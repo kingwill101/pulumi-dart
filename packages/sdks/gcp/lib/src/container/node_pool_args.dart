@@ -111,7 +111,7 @@ class NodePoolArgs {
   /// [queuedProvisioning] Specifies node pool-level settings of queued provisioning.
   /// [upgradeSettings] Specify node upgrade settings to change how GKE upgrades nodes.
   /// [version] The Kubernetes version for the nodes in this pool. Note that if this field
-  NodePoolArgs({
+  const NodePoolArgs({
     this.autoscaling,
     required this.cluster,
     this.initialNodeCount,

@@ -11,7 +11,7 @@ class GetHybridMonitorDatasDataValue {
   /// Creates a new [GetHybridMonitorDatasDataValue].
   /// [ts] The timestamp that indicates the time when the metric value is collected. Unit: seconds.
   /// [value] The value of the monitoring indicator.
-  GetHybridMonitorDatasDataValue({
+  const GetHybridMonitorDatasDataValue({
     required this.ts,
     required this.value,
   });

@@ -16,7 +16,7 @@ class GetWorkspaceIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
   /// [type] The Identity Type for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
-  GetWorkspaceIdentity({
+  const GetWorkspaceIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

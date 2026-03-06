@@ -14,7 +14,7 @@ class DeploymentGroupAlarmConfiguration {
   /// [alarms] A list of alarms configured for the deployment group.
   /// [enabled] Indicates whether the alarm configuration is enabled. This option is useful when you want to temporarily deactivate alarm monitoring for a deployment group without having to add the same alarms again later.
   /// [ignorePollAlarmFailure] Indicates whether a deployment should continue if information about the current state of alarms cannot be retrieved from CloudWatch. The default value is `false`.
-  DeploymentGroupAlarmConfiguration({
+  const DeploymentGroupAlarmConfiguration({
     this.alarms,
     this.enabled,
     this.ignorePollAlarmFailure,

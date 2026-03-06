@@ -19,7 +19,7 @@ class GetOriginAccessIdentitiesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Set of ids of the matched origin access identities.
   /// [s3CanonicalUserIds] Set of S3 canonical user IDs of the matched origin access identities.
-  GetOriginAccessIdentitiesResult({
+  const GetOriginAccessIdentitiesResult({
     this.comments,
     required this.iamArns,
     required this.id,

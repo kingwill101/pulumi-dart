@@ -34,7 +34,7 @@ class VocabularyState {
   /// [tagsAll] Optional.
   /// [vocabularyFileUri] The Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
   /// [vocabularyName] The name of the Vocabulary.
-  VocabularyState({
+  const VocabularyState({
     this.arn,
     this.downloadUri,
     this.languageCode,

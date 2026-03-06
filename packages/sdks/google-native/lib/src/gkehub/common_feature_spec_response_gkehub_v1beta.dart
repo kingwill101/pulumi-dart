@@ -25,7 +25,7 @@ class CommonFeatureSpecResponseGkehubV1beta {
   /// [clusterupgrade] ClusterUpgrade (fleet-based) feature spec.
   /// [fleetobservability] FleetObservability feature spec.
   /// [multiclusteringress] Multicluster Ingress-specific spec.
-  CommonFeatureSpecResponseGkehubV1beta({
+  const CommonFeatureSpecResponseGkehubV1beta({
     required this.anthosobservability,
     required this.appdevexperience,
     required this.clusterupgrade,

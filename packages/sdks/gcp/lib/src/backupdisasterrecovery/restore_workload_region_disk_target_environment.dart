@@ -14,7 +14,7 @@ class RestoreWorkloadRegionDiskTargetEnvironment {
   /// [project] Required. Target project for the disk.
   /// [region] Required. Target region for the disk.
   /// [replicaZones] Required. Target URLs of the replica zones for the disk.
-  RestoreWorkloadRegionDiskTargetEnvironment({
+  const RestoreWorkloadRegionDiskTargetEnvironment({
     required this.project,
     required this.region,
     required this.replicaZones,

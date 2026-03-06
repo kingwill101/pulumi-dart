@@ -33,7 +33,7 @@ class GetInstanceTypesArgs {
   /// [regionId] The dest region id, default client region.
   /// [version] The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
   /// [zoneId] The zone id, belong to regionId.
-  GetInstanceTypesArgs({
+  const GetInstanceTypesArgs({
     this.chargeType,
     this.diskType,
     this.engine,

@@ -15,7 +15,7 @@ class GetDeploymentResourcePoolArgs {
   /// [deploymentResourcePoolId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDeploymentResourcePoolArgs({
+  const GetDeploymentResourcePoolArgs({
     required this.deploymentResourcePoolId,
     required this.location,
     this.project,

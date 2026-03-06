@@ -59,7 +59,7 @@ class NodeGroupState {
   /// [vpdSubnets] Cluster subnet list
   /// [vswitchZoneId] Zone ID of the switch
   /// [zoneId] Zone ID
-  NodeGroupState({
+  const NodeGroupState({
     this.az,
     this.clusterId,
     this.createTime,

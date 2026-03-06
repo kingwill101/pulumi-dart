@@ -32,7 +32,7 @@ class DomainManagedidentitiesV1beta1Args {
   /// [locations] Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
   /// [project] Optional.
   /// [reservedIpRange] The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-  DomainManagedidentitiesV1beta1Args({
+  const DomainManagedidentitiesV1beta1Args({
     this.admin,
     this.auditLogsEnabled,
     this.authorizedNetworks,

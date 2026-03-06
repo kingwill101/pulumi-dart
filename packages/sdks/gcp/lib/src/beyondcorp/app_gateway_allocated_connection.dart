@@ -11,7 +11,7 @@ class AppGatewayAllocatedConnection {
   /// Creates a new [AppGatewayAllocatedConnection].
   /// [ingressPort] The ingress port of an allocated connection.
   /// [pscUri] The PSC uri of an allocated connection.
-  AppGatewayAllocatedConnection({
+  const AppGatewayAllocatedConnection({
     this.ingressPort,
     this.pscUri,
   });

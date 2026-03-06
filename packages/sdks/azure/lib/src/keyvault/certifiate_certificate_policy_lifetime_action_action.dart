@@ -8,7 +8,7 @@ class CertifiateCertificatePolicyLifetimeActionAction {
 
   /// Creates a new [CertifiateCertificatePolicyLifetimeActionAction].
   /// [actionType] The Type of action to be performed when the lifetime trigger is triggerec. Possible values include `AutoRenew` and `EmailContacts`.
-  CertifiateCertificatePolicyLifetimeActionAction({
+  const CertifiateCertificatePolicyLifetimeActionAction({
     required this.actionType,
   });
 

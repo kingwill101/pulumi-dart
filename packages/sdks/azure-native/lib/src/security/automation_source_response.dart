@@ -13,7 +13,7 @@ class AutomationSourceResponse {
   /// Creates a new [AutomationSourceResponse].
   /// [eventSource] A valid event source type.
   /// [ruleSets] A set of rules which evaluate upon event interception. A logical disjunction is applied between defined rule sets (logical 'or').
-  AutomationSourceResponse({
+  const AutomationSourceResponse({
     this.eventSource,
     this.ruleSets,
   });

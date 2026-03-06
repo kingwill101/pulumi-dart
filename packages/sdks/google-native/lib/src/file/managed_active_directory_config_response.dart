@@ -12,7 +12,7 @@ class ManagedActiveDirectoryConfigResponse {
   /// Creates a new [ManagedActiveDirectoryConfigResponse].
   /// [computer] The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
   /// [domain] Fully qualified domain name.
-  ManagedActiveDirectoryConfigResponse({
+  const ManagedActiveDirectoryConfigResponse({
     required this.computer,
     required this.domain,
   });

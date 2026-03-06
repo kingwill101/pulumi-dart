@@ -9,7 +9,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList {
 
   /// Creates a new [PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one
-  PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList({
+  const PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList({
     required this.words,
   });
 

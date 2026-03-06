@@ -18,7 +18,7 @@ class DeploymentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceArn] The Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
   /// [timeouts] Optional.
-  DeploymentArgs({
+  const DeploymentArgs({
     this.region,
     required this.serviceArn,
     this.timeouts,

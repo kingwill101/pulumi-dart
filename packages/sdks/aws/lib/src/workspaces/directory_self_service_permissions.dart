@@ -20,7 +20,7 @@ class DirectorySelfServicePermissions {
   /// [rebuildWorkspace] Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
   /// [restartWorkspace] Whether WorkSpaces directory users can restart their workspace. Default `true`.
   /// [switchRunningMode] Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
-  DirectorySelfServicePermissions({
+  const DirectorySelfServicePermissions({
     this.changeComputeType,
     this.increaseVolumeSize,
     this.rebuildWorkspace,

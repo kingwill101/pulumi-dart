@@ -22,7 +22,7 @@ class QosAssociationV3Args {
   /// [qosId] ID of the qos to associate. Changing this creates
   /// [region] The region in which to create the qos association.
   /// [volumeTypeId] ID of the volume_type to associate.
-  QosAssociationV3Args({
+  const QosAssociationV3Args({
     required this.qosId,
     this.region,
     required this.volumeTypeId,

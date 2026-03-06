@@ -30,7 +30,7 @@ class LinkedServiceArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
   /// [writeAccessResourceId] The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
-  LinkedServiceArgs({
+  const LinkedServiceArgs({
     this.linkedServiceName,
     this.provisioningState,
     required this.resourceGroupName,

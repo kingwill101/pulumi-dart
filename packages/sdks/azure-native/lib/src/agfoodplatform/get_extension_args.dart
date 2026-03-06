@@ -18,7 +18,7 @@ class GetExtensionArgs {
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [extensionId] Id of extension resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetExtensionArgs({
+  const GetExtensionArgs({
     required this.dataManagerForAgricultureResourceName,
     required this.extensionId,
     required this.resourceGroupName,

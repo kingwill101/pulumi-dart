@@ -8,7 +8,7 @@ class WorkspaceConnectionApiKey {
 
   /// Creates a new [WorkspaceConnectionApiKey].
   /// [key] Optional.
-  WorkspaceConnectionApiKey({
+  const WorkspaceConnectionApiKey({
     this.key,
   });
 

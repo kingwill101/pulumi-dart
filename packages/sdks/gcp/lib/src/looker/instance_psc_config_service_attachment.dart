@@ -15,7 +15,7 @@ class InstancePscConfigServiceAttachment {
   /// [connectionStatus] (Output)
   /// [localFqdn] Fully qualified domain name that will be used in the private DNS record created for the service attachment.
   /// [targetServiceAttachmentUri] URI of the service attachment to connect to.
-  InstancePscConfigServiceAttachment({
+  const InstancePscConfigServiceAttachment({
     this.connectionStatus,
     this.localFqdn,
     this.targetServiceAttachmentUri,

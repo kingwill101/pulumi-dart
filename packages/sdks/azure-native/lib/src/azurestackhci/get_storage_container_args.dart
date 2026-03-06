@@ -15,7 +15,7 @@ class GetStorageContainerArgs {
   /// Creates a new [GetStorageContainerArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageContainerName] Name of the storage container
-  GetStorageContainerArgs({
+  const GetStorageContainerArgs({
     required this.resourceGroupName,
     required this.storageContainerName,
   });

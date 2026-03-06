@@ -35,7 +35,7 @@ class RoutingRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleCollectionName] The name of the network manager routing Configuration rule collection.
   /// [ruleName] The name of the rule.
-  RoutingRuleArgs({
+  const RoutingRuleArgs({
     required this.configurationName,
     this.description,
     required this.destination,

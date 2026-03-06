@@ -49,7 +49,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
   /// [triggerId] Optional. The backend trigger ID.
   /// [triggerNumber] A number to uniquely identify each trigger config within the integration on UI.
   /// [triggerType] Optional. Type of trigger
-  GoogleCloudIntegrationsV1alphaTriggerConfigResponse({
+  const GoogleCloudIntegrationsV1alphaTriggerConfigResponse({
     required this.alertConfig,
     required this.cloudSchedulerConfig,
     required this.description,

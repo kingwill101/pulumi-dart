@@ -8,7 +8,7 @@ class CertificateConfigX509ConfigAdditionalExtensionObjectId {
 
   /// Creates a new [CertificateConfigX509ConfigAdditionalExtensionObjectId].
   /// [objectIdPaths] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  CertificateConfigX509ConfigAdditionalExtensionObjectId({
+  const CertificateConfigX509ConfigAdditionalExtensionObjectId({
     required this.objectIdPaths,
   });
 

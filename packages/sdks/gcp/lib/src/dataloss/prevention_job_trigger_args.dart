@@ -39,7 +39,7 @@ class PreventionJobTriggerArgs {
   /// [status] Whether the trigger is currently active.
   /// [triggerId] The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// [triggers] What event needs to occur for a new job to be started.
-  PreventionJobTriggerArgs({
+  const PreventionJobTriggerArgs({
     this.description,
     this.displayName,
     this.inspectJob,

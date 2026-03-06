@@ -30,7 +30,7 @@ class BandwidthScheduleArgs {
   /// [resourceGroupName] The resource group name.
   /// [start] The start time of the schedule in UTC.
   /// [stop] The stop time of the schedule in UTC.
-  BandwidthScheduleArgs({
+  const BandwidthScheduleArgs({
     required this.days,
     required this.deviceName,
     this.name,

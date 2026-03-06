@@ -12,7 +12,7 @@ class DataSizeRuleset {
   /// Creates a new [DataSizeRuleset].
   /// [maximum] Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
   /// [minimum] Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
-  DataSizeRuleset({
+  const DataSizeRuleset({
     this.maximum,
     this.minimum,
   });

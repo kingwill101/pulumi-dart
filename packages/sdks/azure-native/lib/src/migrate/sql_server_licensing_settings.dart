@@ -15,7 +15,7 @@ class SqlServerLicensingSettings {
   /// [licenseCost] Licence cost.
   /// [softwareAssuranceCost] Software assurance (SA) cost.
   /// [version] SQL Server version.
-  SqlServerLicensingSettings({
+  const SqlServerLicensingSettings({
     required this.licenseCost,
     required this.softwareAssuranceCost,
     required this.version,

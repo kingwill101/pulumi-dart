@@ -35,7 +35,7 @@ class DataExchangeArgs {
   /// [primaryContact] Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
   /// [project] Optional.
   /// [sharingEnvironmentConfig] Optional. Configurable data sharing environment option for a data exchange.
-  DataExchangeArgs({
+  const DataExchangeArgs({
     required this.dataExchangeId,
     this.description,
     required this.displayName,

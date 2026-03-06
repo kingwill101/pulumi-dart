@@ -9,7 +9,7 @@ class GatewayAPIConfigResponse {
 
   /// Creates a new [GatewayAPIConfigResponse].
   /// [channel] The Gateway API release channel to use for Gateway API.
-  GatewayAPIConfigResponse({
+  const GatewayAPIConfigResponse({
     required this.channel,
   });
 

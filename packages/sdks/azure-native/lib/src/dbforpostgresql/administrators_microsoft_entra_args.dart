@@ -27,7 +27,7 @@ class AdministratorsMicrosoftEntraArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   /// [tenantId] Identifier of the tenant in which the Microsoft Entra principal exists.
-  AdministratorsMicrosoftEntraArgs({
+  const AdministratorsMicrosoftEntraArgs({
     this.objectId,
     this.principalName,
     this.principalType,

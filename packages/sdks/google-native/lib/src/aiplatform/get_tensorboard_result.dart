@@ -39,7 +39,7 @@ class GetTensorboardResult {
   /// [name] Name of the Tensorboard. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
   /// [runCount] The number of Runs stored in this Tensorboard.
   /// [updateTime] Timestamp when this Tensorboard was last updated.
-  GetTensorboardResult({
+  const GetTensorboardResult({
     required this.blobStoragePathPrefix,
     required this.createTime,
     required this.description,

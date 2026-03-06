@@ -13,7 +13,7 @@ class RetentionDurationResponse {
   /// Creates a new [RetentionDurationResponse].
   /// [count] Count of duration types. Retention duration is obtained by the counting the duration type Count times.
   /// [durationType] Retention duration type of retention policy.
-  RetentionDurationResponse({
+  const RetentionDurationResponse({
     this.count,
     this.durationType,
   });

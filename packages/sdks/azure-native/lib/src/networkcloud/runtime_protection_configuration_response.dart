@@ -8,7 +8,7 @@ class RuntimeProtectionConfigurationResponse {
 
   /// Creates a new [RuntimeProtectionConfigurationResponse].
   /// [enforcementLevel] The mode of operation for runtime protection.
-  RuntimeProtectionConfigurationResponse({
+  const RuntimeProtectionConfigurationResponse({
     this.enforcementLevel,
   });
 

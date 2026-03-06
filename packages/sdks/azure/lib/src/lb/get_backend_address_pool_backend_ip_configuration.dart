@@ -8,7 +8,7 @@ class GetBackendAddressPoolBackendIpConfiguration {
 
   /// Creates a new [GetBackendAddressPoolBackendIpConfiguration].
   /// [id] The ID of the Backend Address Pool.
-  GetBackendAddressPoolBackendIpConfiguration({
+  const GetBackendAddressPoolBackendIpConfiguration({
     required this.id,
   });
 

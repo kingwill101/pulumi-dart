@@ -15,7 +15,7 @@ class PackageShippingDetailsResponse {
   /// [carrierName] Name of the carrier.
   /// [trackingId] Tracking Id of shipment.
   /// [trackingUrl] Url where shipment can be tracked.
-  PackageShippingDetailsResponse({
+  const PackageShippingDetailsResponse({
     required this.carrierName,
     required this.trackingId,
     required this.trackingUrl,

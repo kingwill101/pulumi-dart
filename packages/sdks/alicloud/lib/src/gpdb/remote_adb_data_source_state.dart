@@ -39,7 +39,7 @@ class RemoteAdbDataSourceState {
   /// [status] The status of the resource
   /// [userName] The user name used to connect to the remote instance
   /// [userPassword] The user password used to connect to the remote instance
-  RemoteAdbDataSourceState({
+  const RemoteAdbDataSourceState({
     this.dataSourceName,
     this.localDatabase,
     this.localDbInstanceId,

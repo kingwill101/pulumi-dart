@@ -18,7 +18,7 @@ class GetWorkloadNetworkVMGroupArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmGroupId] ID of the VM group.
-  GetWorkloadNetworkVMGroupArgs({
+  const GetWorkloadNetworkVMGroupArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
     required this.vmGroupId,

@@ -27,7 +27,7 @@ class GetBackupMetastoreV1alphaResult {
   /// [restoringServices] Services that are restoring from the backup.
   /// [serviceRevision] The revision of the service at the time of backup.
   /// [state] The current state of the backup.
-  GetBackupMetastoreV1alphaResult({
+  const GetBackupMetastoreV1alphaResult({
     required this.createTime,
     required this.description,
     required this.endTime,

@@ -17,7 +17,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
   /// [minutes] Minutes of hour of day. Currently, only the value 0 is supported.
   /// [nanos] Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
   /// [seconds] Seconds of minutes of the time. Currently, only the value 0 is supported.
-  ClusterAutomatedBackupPolicyWeeklyScheduleStartTime({
+  const ClusterAutomatedBackupPolicyWeeklyScheduleStartTime({
     this.hours,
     this.minutes,
     this.nanos,

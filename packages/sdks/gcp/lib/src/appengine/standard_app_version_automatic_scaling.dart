@@ -28,7 +28,7 @@ class StandardAppVersionAutomaticScaling {
   /// [minIdleInstances] Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
   /// [minPendingLatency] Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
   /// [standardSchedulerSettings] Scheduler settings for standard environment.
-  StandardAppVersionAutomaticScaling({
+  const StandardAppVersionAutomaticScaling({
     this.maxConcurrentRequests,
     this.maxIdleInstances,
     this.maxPendingLatency,

@@ -9,7 +9,7 @@ class IntakeVlanAttachmentResponse {
 
   /// Creates a new [IntakeVlanAttachmentResponse].
   /// [pairingKey] Attachment pairing key.
-  IntakeVlanAttachmentResponse({
+  const IntakeVlanAttachmentResponse({
     required this.pairingKey,
   });
 

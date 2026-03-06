@@ -34,7 +34,7 @@ class NetworkTapArgs {
   /// [pollingType] Polling type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkTapArgs({
+  const NetworkTapArgs({
     this.annotation,
     required this.destinations,
     this.location,

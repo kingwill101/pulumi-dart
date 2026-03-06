@@ -71,7 +71,7 @@ class TargetArgs {
   /// [project] The project for the resource
   /// [requireApproval] Optional. Whether or not the `Target` requires approval.
   /// [run] Information specifying a Cloud Run deployment target.
-  TargetArgs({
+  const TargetArgs({
     this.annotations,
     this.anthosCluster,
     this.associatedEntities,

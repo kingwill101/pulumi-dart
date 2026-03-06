@@ -46,7 +46,7 @@ class GetQueryResult {
   /// [self] Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   /// [state] Query state could be "enqueued", "running", "completed", "failed".
   /// [updated] Last updated timestamp for the query.
-  GetQueryResult({
+  const GetQueryResult({
     required this.created,
     required this.envgroupHostname,
     required this.error,

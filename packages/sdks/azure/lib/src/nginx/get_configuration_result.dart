@@ -25,7 +25,7 @@ class GetConfigurationResult {
   /// [packageData] The package data for this configuration.
   /// [protectedFiles] A `protected_file` block as defined below.
   /// [rootFile] The root file path of this Nginx Configuration.
-  GetConfigurationResult({
+  const GetConfigurationResult({
     required this.configFiles,
     required this.id,
     required this.nginxDeploymentId,

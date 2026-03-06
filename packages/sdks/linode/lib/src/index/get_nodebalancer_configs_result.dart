@@ -22,7 +22,7 @@ class GetNodebalancerConfigsResult {
   /// [nodebalancerId] The ID of the NodeBalancer that contains the config.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetNodebalancerConfigsResult({
+  const GetNodebalancerConfigsResult({
     this.filters,
     required this.id,
     required this.nodebalancerConfigs,

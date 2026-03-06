@@ -77,7 +77,7 @@ class DataStoreState {
   /// [project] The ID of the project in which the resource belongs.
   /// [skipDefaultSchemaCreation] A boolean flag indicating whether to skip the default schema creation for
   /// [solutionTypes] The solutions that the data store enrolls.
-  DataStoreState({
+  const DataStoreState({
     this.advancedSiteSearchConfig,
     this.contentConfig,
     this.createAdvancedSiteSearch,

@@ -9,7 +9,7 @@ class ClientCertificateConfigResponse {
 
   /// Creates a new [ClientCertificateConfigResponse].
   /// [issueClientCertificate] Issue a client certificate.
-  ClientCertificateConfigResponse({
+  const ClientCertificateConfigResponse({
     required this.issueClientCertificate,
   });
 

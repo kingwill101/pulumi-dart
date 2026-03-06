@@ -17,7 +17,7 @@ class GetProjectServiceAccountResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The Access Approval service account resource name. Format is "projects/{project_id}/serviceAccount".
   /// [projectId] Required.
-  GetProjectServiceAccountResult({
+  const GetProjectServiceAccountResult({
     required this.accountEmail,
     required this.id,
     required this.name,

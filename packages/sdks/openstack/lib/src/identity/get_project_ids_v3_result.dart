@@ -28,7 +28,7 @@ class GetProjectIdsV3Result {
   /// [parentId] Optional.
   /// [region] Required.
   /// [tags] Optional.
-  GetProjectIdsV3Result({
+  const GetProjectIdsV3Result({
     required this.description,
     required this.domainId,
     this.enabled,

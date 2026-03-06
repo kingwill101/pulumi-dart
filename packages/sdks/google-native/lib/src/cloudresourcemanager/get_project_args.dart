@@ -11,7 +11,7 @@ class GetProjectArgs {
 
   /// Creates a new [GetProjectArgs].
   /// [project] Optional.
-  GetProjectArgs({
+  const GetProjectArgs({
     this.project,
   });
 

@@ -12,7 +12,7 @@ class ThingGroupProperties {
   /// Creates a new [ThingGroupProperties].
   /// [attributePayload] The Thing Group attributes. Defined below.
   /// [description] A description of the Thing Group.
-  ThingGroupProperties({
+  const ThingGroupProperties({
     this.attributePayload,
     this.description,
   });

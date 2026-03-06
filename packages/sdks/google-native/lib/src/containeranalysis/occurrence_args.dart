@@ -68,7 +68,7 @@ class OccurrenceArgs {
   /// [sbomReference] Describes a specific SBOM reference occurrences.
   /// [upgrade] Describes an available package upgrade on the linked resource.
   /// [vulnerability] Describes a security vulnerability.
-  OccurrenceArgs({
+  const OccurrenceArgs({
     this.attestation,
     this.build,
     this.compliance,

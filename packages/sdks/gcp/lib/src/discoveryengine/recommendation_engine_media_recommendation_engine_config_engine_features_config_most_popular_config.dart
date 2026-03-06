@@ -11,7 +11,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMos
 
   /// Creates a new [RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig].
   /// [timeWindowDays] The time window of which the engine is queried at training and
-  RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig({
+  const RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig({
     this.timeWindowDays,
   });
 

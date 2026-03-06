@@ -17,7 +17,7 @@ class GetRegionInstantSnapshotIamPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetRegionInstantSnapshotIamPolicyArgs({
+  const GetRegionInstantSnapshotIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

@@ -14,7 +14,7 @@ class VolumeTimeouts {
   /// [create] Used when creating the volume (until the volume is reaches the initial `active` state)
   /// [delete] Used when deleting the volume
   /// [update] Used when updating the volume when necessary during update - e.g. when resizing the volume
-  VolumeTimeouts({
+  const VolumeTimeouts({
     this.create,
     this.delete,
     this.update,

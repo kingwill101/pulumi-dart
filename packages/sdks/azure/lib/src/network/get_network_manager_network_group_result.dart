@@ -18,7 +18,7 @@ class GetNetworkManagerNetworkGroupResult {
   /// [memberType] The member type of the Network Manager Network Group.
   /// [name] Required.
   /// [networkManagerId] Required.
-  GetNetworkManagerNetworkGroupResult({
+  const GetNetworkManagerNetworkGroupResult({
     required this.description,
     required this.id,
     required this.memberType,

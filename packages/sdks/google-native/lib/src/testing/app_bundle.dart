@@ -10,7 +10,7 @@ class AppBundle {
 
   /// Creates a new [AppBundle].
   /// [bundleLocation] .aab file representing the app bundle under test.
-  AppBundle({
+  const AppBundle({
     this.bundleLocation,
   });
 

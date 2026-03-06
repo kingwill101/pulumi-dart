@@ -31,7 +31,7 @@ class MLTableData {
   /// [properties] The asset property dictionary.
   /// [referencedUris] Uris referenced in the MLTable definition (required for lineage)
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  MLTableData({
+  const MLTableData({
     required this.dataType,
     required this.dataUri,
     this.description,

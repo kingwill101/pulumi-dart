@@ -9,7 +9,7 @@ class SigningJobDestination {
 
   /// Creates a new [SigningJobDestination].
   /// [s3] A configuration block describing the S3 Destination object: See S3 Destination below for details.
-  SigningJobDestination({
+  const SigningJobDestination({
     required this.s3,
   });
 

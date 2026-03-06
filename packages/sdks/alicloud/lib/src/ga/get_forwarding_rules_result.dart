@@ -24,7 +24,7 @@ class GetForwardingRulesResult {
   /// [listenerId] The ID of the listener.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetForwardingRulesResult({
+  const GetForwardingRulesResult({
     required this.acceleratorId,
     required this.forwardingRules,
     required this.id,

@@ -14,7 +14,7 @@ class MetadataManagementActivityResponse {
   /// Creates a new [MetadataManagementActivityResponse].
   /// [metadataExports] The latest metadata exports of the metastore service.
   /// [restores] The latest restores of the metastore service.
-  MetadataManagementActivityResponse({
+  const MetadataManagementActivityResponse({
     required this.metadataExports,
     required this.restores,
   });

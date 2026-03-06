@@ -18,7 +18,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfig {
   /// [dedicatedResources] A description of resources that are dedicated to a DeployedModel or
   /// [fastTryoutEnabled] If true, enable the QMT fast tryout feature for this model if possible.
   /// [systemLabels] System labels for Model Garden deployments.
-  AiEndpointWithModelGardenDeploymentDeployConfig({
+  const AiEndpointWithModelGardenDeploymentDeployConfig({
     this.dedicatedResources,
     this.fastTryoutEnabled,
     this.systemLabels,

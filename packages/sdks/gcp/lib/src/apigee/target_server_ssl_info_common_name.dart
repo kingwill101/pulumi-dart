@@ -11,7 +11,7 @@ class TargetServerSSlInfoCommonName {
   /// Creates a new [TargetServerSSlInfoCommonName].
   /// [value] The TLS Common Name string of the certificate.
   /// [wildcardMatch] Indicates whether the cert should be matched against as a wildcard cert.
-  TargetServerSSlInfoCommonName({
+  const TargetServerSSlInfoCommonName({
     this.value,
     this.wildcardMatch,
   });

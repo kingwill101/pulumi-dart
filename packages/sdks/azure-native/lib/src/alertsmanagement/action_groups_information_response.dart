@@ -15,7 +15,7 @@ class ActionGroupsInformationResponse {
   /// [customEmailSubject] An optional custom email subject to use in email notifications.
   /// [customWebhookPayload] An optional custom web-hook payload to use in web-hook notifications.
   /// [groupIds] The Action Group resource IDs.
-  ActionGroupsInformationResponse({
+  const ActionGroupsInformationResponse({
     this.customEmailSubject,
     this.customWebhookPayload,
     required this.groupIds,

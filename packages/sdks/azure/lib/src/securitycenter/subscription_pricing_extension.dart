@@ -15,7 +15,7 @@ class SubscriptionPricingExtension {
   /// Creates a new [SubscriptionPricingExtension].
   /// [additionalExtensionProperties] Key/Value pairs that are required for some extensions.
   /// [name] The name of extension.
-  SubscriptionPricingExtension({
+  const SubscriptionPricingExtension({
     this.additionalExtensionProperties,
     required this.name,
   });

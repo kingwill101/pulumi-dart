@@ -26,7 +26,7 @@ class VolumeState {
   /// [labels] User-defined key/value metadata
   /// [mountpoint] The mountpoint of the volume.
   /// [name] The name of the Docker volume (will be generated if not provided).
-  VolumeState({
+  const VolumeState({
     this.cluster,
     this.driver,
     this.driverOpts,

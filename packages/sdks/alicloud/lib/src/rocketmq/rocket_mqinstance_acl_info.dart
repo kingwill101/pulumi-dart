@@ -11,7 +11,7 @@ class RocketMQInstanceAclInfo {
   /// Creates a new [RocketMQInstanceAclInfo].
   /// [aclTypes] The authentication type of the instance. Valid values:
   /// [defaultVpcAuthFree] Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
-  RocketMQInstanceAclInfo({
+  const RocketMQInstanceAclInfo({
     this.aclTypes,
     this.defaultVpcAuthFree,
   });

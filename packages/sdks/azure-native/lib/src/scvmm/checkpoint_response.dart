@@ -18,7 +18,7 @@ class CheckpointResponse {
   /// [description] Gets description of the checkpoint.
   /// [name] Gets name of the checkpoint.
   /// [parentCheckpointID] Gets ID of parent of the checkpoint.
-  CheckpointResponse({
+  const CheckpointResponse({
     this.checkpointID,
     this.description,
     this.name,

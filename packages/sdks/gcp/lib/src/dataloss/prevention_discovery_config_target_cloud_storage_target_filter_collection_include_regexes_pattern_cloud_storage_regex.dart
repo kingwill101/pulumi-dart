@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex].
   /// [bucketNameRegex] Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\d{4}" will both match the bucket gs://marketing2021
   /// [projectIdRegex] For organizations, if unset, will match all projects.
-  PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex({
     this.bucketNameRegex,
     this.projectIdRegex,
   });

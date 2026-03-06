@@ -16,7 +16,7 @@ class GetRegionalSecretRotation {
   /// Creates a new [GetRegionalSecretRotation].
   /// [nextRotationTime] Timestamp in UTC at which the Secret is scheduled to rotate.
   /// [rotationPeriod] The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
-  GetRegionalSecretRotation({
+  const GetRegionalSecretRotation({
     required this.nextRotationTime,
     required this.rotationPeriod,
   });

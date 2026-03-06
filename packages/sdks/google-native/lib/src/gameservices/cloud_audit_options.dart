@@ -14,7 +14,7 @@ class CloudAuditOptions {
   /// Creates a new [CloudAuditOptions].
   /// [authorizationLoggingOptions] Information used by the Cloud Audit Logging pipeline.
   /// [logName] The log_name to populate in the Cloud Audit Record.
-  CloudAuditOptions({
+  const CloudAuditOptions({
     this.authorizationLoggingOptions,
     this.logName,
   });

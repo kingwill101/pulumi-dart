@@ -30,7 +30,7 @@ class TransitionRouteGroupDialogflowV3beta1Args {
   /// [name] The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
   /// [project] Optional.
   /// [transitionRoutes] Transition routes associated with the TransitionRouteGroup.
-  TransitionRouteGroupDialogflowV3beta1Args({
+  const TransitionRouteGroupDialogflowV3beta1Args({
     required this.agentId,
     required this.displayName,
     required this.flowId,

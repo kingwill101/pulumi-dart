@@ -17,7 +17,7 @@ class IpsecServerIpsecConfig {
   /// [ipsecEncAlg] The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
   /// [ipsecLifetime] The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
   /// [ipsecPfs] Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
-  IpsecServerIpsecConfig({
+  const IpsecServerIpsecConfig({
     this.ipsecAuthAlg,
     this.ipsecEncAlg,
     this.ipsecLifetime,

@@ -61,7 +61,7 @@ class SftpServerLinkedService {
   /// [type] Type of linked service.
   /// [userName] The username used to log on to the SFTP server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SftpServerLinkedService({
+  const SftpServerLinkedService({
     this.annotations,
     this.authenticationType,
     this.connectVia,

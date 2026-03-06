@@ -17,7 +17,7 @@ class GoogleCloudAiplatformV1UnmanagedContainerModel {
   /// [artifactUri] The path to the directory containing the Model artifact and any of its supporting files.
   /// [containerSpec] Input only. The specification of the container that is to be used when deploying this Model.
   /// [predictSchemata] Contains the schemata used in Model's predictions and explanations
-  GoogleCloudAiplatformV1UnmanagedContainerModel({
+  const GoogleCloudAiplatformV1UnmanagedContainerModel({
     this.artifactUri,
     this.containerSpec,
     this.predictSchemata,

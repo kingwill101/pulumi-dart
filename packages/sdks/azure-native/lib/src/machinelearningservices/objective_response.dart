@@ -12,7 +12,7 @@ class ObjectiveResponse {
   /// Creates a new [ObjectiveResponse].
   /// [goal] [Required] Defines supported metric goals for hyperparameter tuning
   /// [primaryMetric] [Required] Name of the metric to optimize.
-  ObjectiveResponse({
+  const ObjectiveResponse({
     required this.goal,
     required this.primaryMetric,
   });

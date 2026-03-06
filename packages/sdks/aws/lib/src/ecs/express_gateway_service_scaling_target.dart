@@ -17,7 +17,7 @@ class ExpressGatewayServiceScalingTarget {
   /// [autoScalingTargetValue] Target value for the auto-scaling metric (as a percentage). Defaults to `60`.
   /// [maxTaskCount] Maximum number of tasks to run.
   /// [minTaskCount] Minimum number of tasks to run.
-  ExpressGatewayServiceScalingTarget({
+  const ExpressGatewayServiceScalingTarget({
     required this.autoScalingMetric,
     required this.autoScalingTargetValue,
     required this.maxTaskCount,

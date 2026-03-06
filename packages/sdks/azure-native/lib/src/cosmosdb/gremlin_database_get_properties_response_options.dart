@@ -12,7 +12,7 @@ class GremlinDatabaseGetPropertiesResponseOptions {
   /// Creates a new [GremlinDatabaseGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
   /// [throughput] Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  GremlinDatabaseGetPropertiesResponseOptions({
+  const GremlinDatabaseGetPropertiesResponseOptions({
     this.autoscaleSettings,
     this.throughput,
   });

@@ -21,7 +21,7 @@ class GetResolverEndpointArgs {
   /// [filters] One or more name/value pairs to use as filters. There are
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resolverEndpointId] ID of the Route53 Resolver Endpoint.
-  GetResolverEndpointArgs({
+  const GetResolverEndpointArgs({
     this.filters,
     this.region,
     this.resolverEndpointId,

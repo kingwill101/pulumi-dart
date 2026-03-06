@@ -18,7 +18,7 @@ class APICollectionArgs {
   /// [apiCollectionId] A string representing the apiCollections resource within the Microsoft.Security provider namespace. This string matches the Azure API Management API name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  APICollectionArgs({
+  const APICollectionArgs({
     this.apiCollectionId,
     required this.resourceGroupName,
     required this.serviceName,

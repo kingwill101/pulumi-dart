@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] Approval state of the private link connection.
   /// [resourceGroupName] Name of the resource group that contains the key vault.
   /// [vaultName] The name of the key vault.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     this.privateLinkServiceConnectionState,
     required this.resourceGroupName,

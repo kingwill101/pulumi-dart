@@ -57,7 +57,7 @@ class AlertConditionState {
   /// [userDefinedMetric] A custom metric to be evaluated.
   /// [userDefinedValueFunction] One of: `average`, `min`, `max`, `total`, `sample_size`, `rate` or `percent`.
   /// [violationCloseTimer] Automatically close instance-based incidents, including JVM health metric incidents, after the number of hours specified. Must be between 1 and 720 hours. Must be specified in the following two cases, to prevent drift:
-  AlertConditionState({
+  const AlertConditionState({
     this.conditionScope,
     this.enabled,
     this.entities,

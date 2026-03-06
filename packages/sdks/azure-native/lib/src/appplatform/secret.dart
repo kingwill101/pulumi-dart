@@ -12,7 +12,7 @@ class Secret {
   /// Creates a new [Secret].
   /// [name] Secret Name.
   /// [value] Secret Value.
-  Secret({
+  const Secret({
     this.name,
     this.value,
   });

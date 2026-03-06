@@ -12,7 +12,7 @@ class ReadinessCheckWorkstationsV1beta {
   /// Creates a new [ReadinessCheckWorkstationsV1beta].
   /// [path] Optional. Path to which the request should be sent.
   /// [port] Optional. Port to which the request should be sent.
-  ReadinessCheckWorkstationsV1beta({
+  const ReadinessCheckWorkstationsV1beta({
     this.path,
     this.port,
   });

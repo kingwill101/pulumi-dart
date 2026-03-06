@@ -9,7 +9,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel].
   /// [storageMetrics] Prefix-level storage metrics for S3 Storage Lens. See Prefix Level Storage Metrics below for more details.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel({
     required this.storageMetrics,
   });
 

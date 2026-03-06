@@ -12,7 +12,7 @@ class SignedIdentifier {
   /// Creates a new [SignedIdentifier].
   /// [accessPolicy] Access policy
   /// [id] An unique identifier of the stored access policy.
-  SignedIdentifier({
+  const SignedIdentifier({
     this.accessPolicy,
     this.id,
   });

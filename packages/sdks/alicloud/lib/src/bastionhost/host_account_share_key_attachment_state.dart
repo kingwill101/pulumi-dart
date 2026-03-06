@@ -15,7 +15,7 @@ class HostAccountShareKeyAttachmentState {
   /// [hostAccountId] The ID list of the host account.
   /// [hostShareKeyId] The ID of the host shared key.
   /// [instanceId] The ID of the Bastion machine instance.
-  HostAccountShareKeyAttachmentState({
+  const HostAccountShareKeyAttachmentState({
     this.hostAccountId,
     this.hostShareKeyId,
     this.instanceId,

@@ -85,7 +85,7 @@ class SiteState {
   /// [tagName] Custom CacheTag name.
   /// [tags] Resource tags
   /// [versionManagement] Version management enabled. When true, version management is turned on for the table site.
-  SiteState({
+  const SiteState({
     this.accessType,
     this.addClientGeolocationHeader,
     this.addRealClientIpHeader,

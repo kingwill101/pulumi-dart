@@ -26,7 +26,7 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule {
   /// [portRange] The port range of security rules.
   /// [priority] The priority of security rules.
   /// [type] The type of security rules.
-  EcdPolicyGroupAuthorizeSecurityPolicyRule({
+  const EcdPolicyGroupAuthorizeSecurityPolicyRule({
     this.cidrIp,
     this.description,
     this.ipProtocol,

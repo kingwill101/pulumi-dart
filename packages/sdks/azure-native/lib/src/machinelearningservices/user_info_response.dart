@@ -27,7 +27,7 @@ class UserInfoResponse {
   /// [userObjectId] A user or service principal's object ID..
   /// [userPuId] A user or service principal's PuID.
   /// [userTenantId] A user or service principal's tenant ID.
-  UserInfoResponse({
+  const UserInfoResponse({
     this.userAltSecId,
     this.userIdp,
     this.userIss,

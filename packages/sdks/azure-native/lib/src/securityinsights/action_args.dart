@@ -27,7 +27,7 @@ class ActionArgs {
   /// [ruleId] Alert rule ID
   /// [triggerUri] Logic App Callback URL for this specific workflow.
   /// [workspaceName] The name of the workspace.
-  ActionArgs({
+  const ActionArgs({
     this.actionId,
     required this.logicAppResourceId,
     required this.resourceGroupName,

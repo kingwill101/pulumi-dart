@@ -13,7 +13,7 @@ class BudgetSubscriptionFilter {
   /// Creates a new [BudgetSubscriptionFilter].
   /// [dimensions] One or more `dimension` blocks as defined below to filter the budget on.
   /// [tags] One or more `tag` blocks as defined below to filter the budget on.
-  BudgetSubscriptionFilter({
+  const BudgetSubscriptionFilter({
     this.dimensions,
     this.tags,
   });

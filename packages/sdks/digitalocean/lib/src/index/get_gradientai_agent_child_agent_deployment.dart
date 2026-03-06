@@ -26,7 +26,7 @@ class GetGradientaiAgentChildAgentDeployment {
   /// [url] Url of the Deployment
   /// [uuid] API Key value
   /// [visibility] Visibility of the Deployment
-  GetGradientaiAgentChildAgentDeployment({
+  const GetGradientaiAgentChildAgentDeployment({
     required this.createdAt,
     this.name,
     this.status,

@@ -9,7 +9,7 @@ class ImageReference {
 
   /// Creates a new [ImageReference].
   /// [id] Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
-  ImageReference({
+  const ImageReference({
     this.id,
   });
 

@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1EnvironmentEndpointsResponse {
   /// Creates a new [GoogleCloudDataplexV1EnvironmentEndpointsResponse].
   /// [notebooks] URI to serve notebook APIs
   /// [sql] URI to serve SQL APIs
-  GoogleCloudDataplexV1EnvironmentEndpointsResponse({
+  const GoogleCloudDataplexV1EnvironmentEndpointsResponse({
     required this.notebooks,
     required this.sql,
   });

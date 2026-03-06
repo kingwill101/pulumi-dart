@@ -17,7 +17,7 @@ class UpdateGroupStatusResponse {
   /// [members] The list of member this UpdateGroup updates.
   /// [name] The name of the UpdateGroup.
   /// [status] The status of the UpdateGroup.
-  UpdateGroupStatusResponse({
+  const UpdateGroupStatusResponse({
     required this.members,
     required this.name,
     required this.status,

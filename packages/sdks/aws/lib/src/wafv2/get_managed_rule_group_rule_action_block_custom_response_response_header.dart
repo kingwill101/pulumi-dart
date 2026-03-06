@@ -10,7 +10,7 @@ class GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader {
   /// Creates a new [GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader].
   /// [name] Managed rule group name.
   /// [value] Required.
-  GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader({
+  const GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader({
     required this.name,
     required this.value,
   });

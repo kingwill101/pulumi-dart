@@ -11,7 +11,7 @@ class GetImageApplicationIconS3Location {
   /// Creates a new [GetImageApplicationIconS3Location].
   /// [s3Bucket] S3 bucket of the S3 object.
   /// [s3Key] S3 key of the S3 object.
-  GetImageApplicationIconS3Location({
+  const GetImageApplicationIconS3Location({
     required this.s3Bucket,
     required this.s3Key,
   });

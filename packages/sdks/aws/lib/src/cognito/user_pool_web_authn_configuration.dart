@@ -11,7 +11,7 @@ class UserPoolWebAuthnConfiguration {
   /// Creates a new [UserPoolWebAuthnConfiguration].
   /// [relyingPartyId] The authentication domain that passkeys providers use as a relying party.
   /// [userVerification] If your user pool should require a passkey. Must be one of `required` or `preferred`.
-  UserPoolWebAuthnConfiguration({
+  const UserPoolWebAuthnConfiguration({
     this.relyingPartyId,
     this.userVerification,
   });

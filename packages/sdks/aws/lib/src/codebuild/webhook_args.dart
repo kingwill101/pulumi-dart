@@ -36,7 +36,7 @@ class WebhookArgs {
   /// [pullRequestBuildPolicy] Defines comment-based approval requirements for triggering builds on pull requests. See pull_request_build_policy for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scopeConfiguration] Scope configuration for global or organization webhooks. See scope_configuration for details.
-  WebhookArgs({
+  const WebhookArgs({
     this.branchFilter,
     this.buildType,
     this.filterGroups,

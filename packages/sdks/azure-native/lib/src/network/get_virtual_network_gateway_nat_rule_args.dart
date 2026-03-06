@@ -18,7 +18,7 @@ class GetVirtualNetworkGatewayNatRuleArgs {
   /// [natRuleName] The name of the nat rule.
   /// [resourceGroupName] The resource group name of the Virtual Network Gateway.
   /// [virtualNetworkGatewayName] The name of the gateway.
-  GetVirtualNetworkGatewayNatRuleArgs({
+  const GetVirtualNetworkGatewayNatRuleArgs({
     required this.natRuleName,
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,

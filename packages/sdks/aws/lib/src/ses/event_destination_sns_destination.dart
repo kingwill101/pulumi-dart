@@ -8,7 +8,7 @@ class EventDestinationSnsDestination {
 
   /// Creates a new [EventDestinationSnsDestination].
   /// [topicArn] The ARN of the SNS topic
-  EventDestinationSnsDestination({
+  const EventDestinationSnsDestination({
     required this.topicArn,
   });
 

@@ -22,7 +22,7 @@ class DeploymentAtSubscriptionScopeArgs {
   /// [location] The location to store the deployment data.
   /// [properties] The deployment properties.
   /// [tags] Deployment tags
-  DeploymentAtSubscriptionScopeArgs({
+  const DeploymentAtSubscriptionScopeArgs({
     this.deploymentName,
     this.location,
     required this.properties,

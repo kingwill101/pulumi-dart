@@ -15,7 +15,7 @@ class IotHubSkuInfoResponse {
   /// [capacity] The number of provisioned IoT Hub units. See: https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
   /// [name] The name of the SKU.
   /// [tier] The billing tier for the IoT hub.
-  IotHubSkuInfoResponse({
+  const IotHubSkuInfoResponse({
     this.capacity,
     required this.name,
     required this.tier,

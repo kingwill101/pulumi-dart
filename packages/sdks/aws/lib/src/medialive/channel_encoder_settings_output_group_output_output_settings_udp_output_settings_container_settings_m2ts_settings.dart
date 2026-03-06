@@ -103,7 +103,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
   /// [timedMetadataPid] Optional.
   /// [transportStreamId] Optional.
   /// [videoPid] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings({
     this.absentInputAudioBehavior,
     this.arib,
     this.aribCaptionsPid,

@@ -14,7 +14,7 @@ class GetImageUploadUrlForEntityTypeResult {
   /// [contentUrl] Content URL for the image blob.
   /// [imageExists] Whether image exists already.
   /// [relativePath] Relative path of the image.
-  GetImageUploadUrlForEntityTypeResult({
+  const GetImageUploadUrlForEntityTypeResult({
     this.contentUrl,
     this.imageExists,
     this.relativePath,

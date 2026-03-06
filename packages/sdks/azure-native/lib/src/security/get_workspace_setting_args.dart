@@ -12,7 +12,7 @@ class GetWorkspaceSettingArgs {
 
   /// Creates a new [GetWorkspaceSettingArgs].
   /// [workspaceSettingName] Name of the security setting
-  GetWorkspaceSettingArgs({
+  const GetWorkspaceSettingArgs({
     required this.workspaceSettingName,
   });
 

@@ -12,7 +12,7 @@ class ExtendedLocation {
   /// Creates a new [ExtendedLocation].
   /// [name] The name of the extended location.
   /// [type] Type of ExtendedLocation.
-  ExtendedLocation({
+  const ExtendedLocation({
     required this.name,
     required this.type,
   });

@@ -13,7 +13,7 @@ class AuditLogConfig {
   /// Creates a new [AuditLogConfig].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfig({
+  const AuditLogConfig({
     this.exemptedMembers,
     this.logType,
   });

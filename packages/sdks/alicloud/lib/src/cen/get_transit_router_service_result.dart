@@ -13,7 +13,7 @@ class GetTransitRouterServiceResult {
   /// [enable] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [status] The current service enable status.
-  GetTransitRouterServiceResult({
+  const GetTransitRouterServiceResult({
     this.enable,
     required this.id,
     required this.status,

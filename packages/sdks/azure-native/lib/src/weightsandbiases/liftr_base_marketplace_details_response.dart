@@ -16,7 +16,7 @@ class LiftrBaseMarketplaceDetailsResponse {
   /// [offerDetails] Offer details for the marketplace that is selected by the user
   /// [subscriptionId] Azure subscription id for the the marketplace offer is purchased from
   /// [subscriptionStatus] Marketplace subscription status
-  LiftrBaseMarketplaceDetailsResponse({
+  const LiftrBaseMarketplaceDetailsResponse({
     required this.offerDetails,
     this.subscriptionId,
     required this.subscriptionStatus,

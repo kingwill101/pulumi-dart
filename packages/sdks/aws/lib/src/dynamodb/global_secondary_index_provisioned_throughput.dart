@@ -11,7 +11,7 @@ class GlobalSecondaryIndexProvisionedThroughput {
   /// Creates a new [GlobalSecondaryIndexProvisionedThroughput].
   /// [readCapacityUnits] Number of read capacity units for this index.
   /// [writeCapacityUnits] Number of write capacity units for this index.
-  GlobalSecondaryIndexProvisionedThroughput({
+  const GlobalSecondaryIndexProvisionedThroughput({
     this.readCapacityUnits,
     this.writeCapacityUnits,
   });

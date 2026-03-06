@@ -13,7 +13,7 @@ class GetDataSetPhysicalTableMapS3Source {
   /// [dataSourceArn] Required.
   /// [inputColumns] Required.
   /// [uploadSettings] Required.
-  GetDataSetPhysicalTableMapS3Source({
+  const GetDataSetPhysicalTableMapS3Source({
     required this.dataSourceArn,
     required this.inputColumns,
     required this.uploadSettings,

@@ -48,7 +48,7 @@ class AgentKnowledgeBaseState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [updatedAt] Time at which the knowledge base was last updated.
-  AgentKnowledgeBaseState({
+  const AgentKnowledgeBaseState({
     this.arn,
     this.createdAt,
     this.description,

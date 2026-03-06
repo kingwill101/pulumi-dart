@@ -14,7 +14,7 @@ class AuditLogConfigResponseGameservicesV1beta {
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [ignoreChildExemptions] Required.
   /// [logType] The log type that this config enables.
-  AuditLogConfigResponseGameservicesV1beta({
+  const AuditLogConfigResponseGameservicesV1beta({
     required this.exemptedMembers,
     required this.ignoreChildExemptions,
     required this.logType,

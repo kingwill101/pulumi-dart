@@ -27,7 +27,7 @@ class SecurityPolicyState {
   /// [status] The status of the resource.
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsVersions] The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
-  SecurityPolicyState({
+  const SecurityPolicyState({
     this.ciphers,
     this.dryRun,
     this.resourceGroupId,

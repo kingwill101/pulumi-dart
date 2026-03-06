@@ -22,7 +22,7 @@ class MonitoredSubscriptionArgs {
   /// [monitorName] Monitor resource name
   /// [properties] The request to update subscriptions needed to be monitored by the Elastic monitor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  MonitoredSubscriptionArgs({
+  const MonitoredSubscriptionArgs({
     this.configurationName,
     required this.monitorName,
     this.properties,

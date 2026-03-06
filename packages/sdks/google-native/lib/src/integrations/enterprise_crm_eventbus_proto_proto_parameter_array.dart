@@ -7,7 +7,7 @@ class EnterpriseCrmEventbusProtoProtoParameterArray {
 
   /// Creates a new [EnterpriseCrmEventbusProtoProtoParameterArray].
   /// [protoValues] Optional.
-  EnterpriseCrmEventbusProtoProtoParameterArray({
+  const EnterpriseCrmEventbusProtoProtoParameterArray({
     this.protoValues,
   });
 

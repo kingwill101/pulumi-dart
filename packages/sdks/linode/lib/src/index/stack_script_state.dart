@@ -48,7 +48,7 @@ class StackScriptState {
   /// [userDefinedFields] This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
   /// [userGravatarId] The Gravatar ID for the User who created the StackScript.
   /// [username] The User who created the StackScript.
-  StackScriptState({
+  const StackScriptState({
     this.created,
     this.deploymentsActive,
     this.deploymentsTotal,

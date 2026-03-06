@@ -23,7 +23,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse {
   /// [sourceConnectionInfo] Connection information for source PostgreSQL
   /// [startedOn] Migration start time
   /// [targetConnectionInfo] Connection information for target Azure Database for PostgreSQL
-  MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse({
+  const MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse({
     this.encryptedKeyForSecureFields,
     required this.selectedDatabases,
     required this.sourceConnectionInfo,

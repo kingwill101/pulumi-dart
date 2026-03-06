@@ -53,7 +53,7 @@ class SolutionVersionPropertiesResponse {
   /// [state] State of solution instance
   /// [targetDisplayName] Name of applicable target's display name
   /// [targetLevelConfiguration] Configuration on the line level across all solution template versions
-  SolutionVersionPropertiesResponse({
+  const SolutionVersionPropertiesResponse({
     required this.actionType,
     required this.configuration,
     required this.errorDetails,

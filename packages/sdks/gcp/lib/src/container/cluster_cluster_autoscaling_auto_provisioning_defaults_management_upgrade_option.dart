@@ -11,7 +11,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
   /// Creates a new [ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption].
   /// [autoUpgradeStartTime] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
   /// [description] Description of the cluster.
-  ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption({
+  const ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption({
     this.autoUpgradeStartTime,
     this.description,
   });

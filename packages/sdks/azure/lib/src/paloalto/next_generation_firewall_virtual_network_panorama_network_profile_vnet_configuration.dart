@@ -16,7 +16,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguratio
   /// [trustedSubnetId] The ID of the Trust subnet.
   /// [untrustedSubnetId] The ID of the UnTrust subnet.
   /// [virtualNetworkId] The ID of the Virtual Network.
-  NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration({
+  const NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration({
     this.ipOfTrustForUserDefinedRoutes,
     this.trustedSubnetId,
     this.untrustedSubnetId,

@@ -11,7 +11,7 @@ class WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy {
   /// Creates a new [WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy].
   /// [disableAutomaticRollback] Should automatic rollbacks be disabled?
   /// [enableAutomaticOsUpgrade] Should OS Upgrades automatically be applied to Scale Set instances in a rolling fashion when a newer version of the OS Image becomes available?
-  WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy({
+  const WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy({
     required this.disableAutomaticRollback,
     required this.enableAutomaticOsUpgrade,
   });

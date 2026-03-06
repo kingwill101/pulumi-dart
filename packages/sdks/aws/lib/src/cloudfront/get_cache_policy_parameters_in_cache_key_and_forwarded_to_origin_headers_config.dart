@@ -12,7 +12,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
   /// Creates a new [GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig].
   /// [headerBehavior] Determines whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values are `none`, `whitelist`.
   /// [headers] Object that contains a list of header names. See Items for more information.
-  GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig({
+  const GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig({
     required this.headerBehavior,
     required this.headers,
   });

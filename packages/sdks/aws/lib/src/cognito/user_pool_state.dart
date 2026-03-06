@@ -133,7 +133,7 @@ class UserPoolState {
   /// [usernameConfiguration] Configuration block for username configuration. Detailed below.
   /// [verificationMessageTemplate] Configuration block for verification message templates. Detailed below.
   /// [webAuthnConfiguration] Configuration block for web authn configuration. Detailed below.
-  UserPoolState({
+  const UserPoolState({
     this.accountRecoverySetting,
     this.adminCreateUserConfig,
     this.aliasAttributes,

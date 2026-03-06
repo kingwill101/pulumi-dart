@@ -60,7 +60,7 @@ class GetServerDetailsResult {
   /// [state] The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning.
   /// [tags] Key-value pairs of additional resource provisioning properties.
   /// [type] The type of the Analysis Services resource.
-  GetServerDetailsResult({
+  const GetServerDetailsResult({
     this.asAdministrators,
     required this.azureApiVersion,
     this.backupBlobContainerUri,

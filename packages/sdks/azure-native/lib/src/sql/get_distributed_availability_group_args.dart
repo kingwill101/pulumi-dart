@@ -18,7 +18,7 @@ class GetDistributedAvailabilityGroupArgs {
   /// [distributedAvailabilityGroupName] The distributed availability group name.
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetDistributedAvailabilityGroupArgs({
+  const GetDistributedAvailabilityGroupArgs({
     required this.distributedAvailabilityGroupName,
     required this.managedInstanceName,
     required this.resourceGroupName,

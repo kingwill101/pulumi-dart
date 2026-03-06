@@ -17,7 +17,7 @@ class GetAccessPackageCatalogArgs {
   /// Creates a new [GetAccessPackageCatalogArgs].
   /// [displayName] The display name of the access package catalog.
   /// [objectId] The ID of this access package catalog.
-  GetAccessPackageCatalogArgs({
+  const GetAccessPackageCatalogArgs({
     this.displayName,
     this.objectId,
   });

@@ -14,7 +14,7 @@ class Specification {
   /// Creates a new [Specification].
   /// [androidTest] An Android mobile test execution specification.
   /// [iosTest] An iOS mobile test execution specification.
-  Specification({
+  const Specification({
     this.androidTest,
     this.iosTest,
   });

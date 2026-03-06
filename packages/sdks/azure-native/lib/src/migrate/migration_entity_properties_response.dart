@@ -61,7 +61,7 @@ class MigrationEntityPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [target] Target of the Migration Entity.
   /// [targetAzureResourceArmId] target Azure Resource ARM Id.
-  MigrationEntityPropertiesResponse({
+  const MigrationEntityPropertiesResponse({
     this.assessedEntityArmId,
     this.associatedAssessmentId,
     required this.associatedInventoryResourceId,

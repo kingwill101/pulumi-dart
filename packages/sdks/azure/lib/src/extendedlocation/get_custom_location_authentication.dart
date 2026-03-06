@@ -11,7 +11,7 @@ class GetCustomLocationAuthentication {
   /// Creates a new [GetCustomLocationAuthentication].
   /// [type] The type of authentication.
   /// [value] The value of authentication.
-  GetCustomLocationAuthentication({
+  const GetCustomLocationAuthentication({
     required this.type,
     required this.value,
   });

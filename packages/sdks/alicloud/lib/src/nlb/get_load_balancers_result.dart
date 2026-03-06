@@ -42,7 +42,7 @@ class GetLoadBalancersResult {
   /// [tags] Optional.
   /// [vpcIds] Optional.
   /// [zoneId] Optional.
-  GetLoadBalancersResult({
+  const GetLoadBalancersResult({
     this.addressIpVersion,
     this.addressType,
     required this.balancers,

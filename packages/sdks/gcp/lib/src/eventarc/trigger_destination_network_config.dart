@@ -8,7 +8,7 @@ class TriggerDestinationNetworkConfig {
 
   /// Creates a new [TriggerDestinationNetworkConfig].
   /// [networkAttachment] Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-  TriggerDestinationNetworkConfig({
+  const TriggerDestinationNetworkConfig({
     required this.networkAttachment,
   });
 

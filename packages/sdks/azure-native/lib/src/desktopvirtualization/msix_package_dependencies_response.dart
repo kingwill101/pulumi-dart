@@ -15,7 +15,7 @@ class MsixPackageDependenciesResponse {
   /// [dependencyName] Name of package dependency.
   /// [minVersion] Dependency version required.
   /// [publisher] Name of dependency publisher.
-  MsixPackageDependenciesResponse({
+  const MsixPackageDependenciesResponse({
     this.dependencyName,
     this.minVersion,
     this.publisher,

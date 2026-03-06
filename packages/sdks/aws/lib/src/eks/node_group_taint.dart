@@ -14,7 +14,7 @@ class NodeGroupTaint {
   /// [effect] The effect of the taint. Valid values: `NO_SCHEDULE`, `NO_EXECUTE`, `PREFER_NO_SCHEDULE`.
   /// [key] The key of the taint. Maximum length of 63.
   /// [value] The value of the taint. Maximum length of 63.
-  NodeGroupTaint({
+  const NodeGroupTaint({
     required this.effect,
     required this.key,
     this.value,

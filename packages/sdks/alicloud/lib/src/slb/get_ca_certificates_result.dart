@@ -29,7 +29,7 @@ class GetCaCertificatesResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] The resource group Id of CA certificate.
   /// [tags] (Available in v1.66.0+) A mapping of tags to assign to the resource.
-  GetCaCertificatesResult({
+  const GetCaCertificatesResult({
     required this.certificates,
     required this.id,
     required this.ids,

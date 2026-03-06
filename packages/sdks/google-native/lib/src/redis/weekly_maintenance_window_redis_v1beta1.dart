@@ -14,7 +14,7 @@ class WeeklyMaintenanceWindowRedisV1beta1 {
   /// Creates a new [WeeklyMaintenanceWindowRedisV1beta1].
   /// [day] The day of week that maintenance updates occur.
   /// [startTime] Start time of the window in UTC time.
-  WeeklyMaintenanceWindowRedisV1beta1({
+  const WeeklyMaintenanceWindowRedisV1beta1({
     required this.day,
     required this.startTime,
   });

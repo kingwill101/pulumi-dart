@@ -47,7 +47,7 @@ class ConnectionGroupState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [waitForDeployment] Optional.
-  ConnectionGroupState({
+  const ConnectionGroupState({
     this.anycastIpListId,
     this.arn,
     this.enabled,

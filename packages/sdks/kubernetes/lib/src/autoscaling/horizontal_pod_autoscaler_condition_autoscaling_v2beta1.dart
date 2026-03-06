@@ -21,7 +21,7 @@ class HorizontalPodAutoscalerConditionAutoscalingV2beta1 {
   /// [reason] reason is the reason for the condition's last transition.
   /// [status] status is the status of the condition (True, False, Unknown)
   /// [type] type describes the current condition
-  HorizontalPodAutoscalerConditionAutoscalingV2beta1({
+  const HorizontalPodAutoscalerConditionAutoscalingV2beta1({
     this.lastTransitionTime,
     this.message,
     this.reason,

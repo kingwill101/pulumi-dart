@@ -8,7 +8,7 @@ class GetGradientaiAgentsAgentChatbotIdentifier {
 
   /// Creates a new [GetGradientaiAgentsAgentChatbotIdentifier].
   /// [chatbotId] Chatbot ID
-  GetGradientaiAgentsAgentChatbotIdentifier({
+  const GetGradientaiAgentsAgentChatbotIdentifier({
     this.chatbotId,
   });
 

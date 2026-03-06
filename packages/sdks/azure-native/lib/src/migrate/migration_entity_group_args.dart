@@ -22,7 +22,7 @@ class MigrationEntityGroupArgs {
   /// [projectName] Migrate Project Name
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  MigrationEntityGroupArgs({
+  const MigrationEntityGroupArgs({
     this.migrationEntityGroupName,
     required this.projectName,
     this.properties,

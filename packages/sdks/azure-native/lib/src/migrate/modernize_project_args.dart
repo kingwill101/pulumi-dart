@@ -31,7 +31,7 @@ class ModernizeProjectArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [subscriptionId] Azure Subscription Id in which project was created.
   /// [tags] Gets or sets the resource tags.
-  ModernizeProjectArgs({
+  const ModernizeProjectArgs({
     this.identity,
     this.location,
     this.modernizeProjectName,

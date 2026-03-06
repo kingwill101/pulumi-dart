@@ -38,7 +38,7 @@ class AppVersionSnapshotToolDataStoreTool {
   /// [maxResults] (Output)
   /// [modalityConfigs] (Output)
   /// [name] (Output)
-  AppVersionSnapshotToolDataStoreTool({
+  const AppVersionSnapshotToolDataStoreTool({
     this.boostSpecs,
     this.description,
     this.engineSources,

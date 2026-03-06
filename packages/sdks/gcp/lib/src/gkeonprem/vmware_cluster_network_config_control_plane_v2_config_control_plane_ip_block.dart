@@ -16,7 +16,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
   /// [gateway] The network gateway used by the VMware User Cluster.
   /// [ips] The node's network configurations used by the VMware User Cluster.
   /// [netmask] The netmask used by the VMware User Cluster.
-  VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock({
+  const VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock({
     this.gateway,
     this.ips,
     this.netmask,

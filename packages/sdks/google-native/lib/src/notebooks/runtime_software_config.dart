@@ -41,7 +41,7 @@ class RuntimeSoftwareConfig {
   /// [notebookUpgradeSchedule] Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
   /// [postStartupScript] Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
   /// [postStartupScriptBehavior] Behavior for the post startup script.
-  RuntimeSoftwareConfig({
+  const RuntimeSoftwareConfig({
     this.customGpuDriverPath,
     this.disableTerminal,
     this.enableHealthMonitoring,

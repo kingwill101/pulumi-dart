@@ -33,7 +33,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
   /// [detectionRelativeToBaselineQps] Detection threshold based on QPS relative to the average of baseline traffic.
   /// [name] The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
   /// [trafficGranularityConfigs] Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
-  SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig({
+  const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig({
     this.autoDeployConfidenceThreshold,
     this.autoDeployExpirationSec,
     this.autoDeployImpactedBaselineThreshold,

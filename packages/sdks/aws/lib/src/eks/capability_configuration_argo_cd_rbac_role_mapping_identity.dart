@@ -11,7 +11,7 @@ class CapabilityConfigurationArgoCdRbacRoleMappingIdentity {
   /// Creates a new [CapabilityConfigurationArgoCdRbacRoleMappingIdentity].
   /// [id] Identity ID.
   /// [type] Identity type. Valid values: `SSO_USER`, `SSO_GROUP`.
-  CapabilityConfigurationArgoCdRbacRoleMappingIdentity({
+  const CapabilityConfigurationArgoCdRbacRoleMappingIdentity({
     required this.id,
     required this.type,
   });

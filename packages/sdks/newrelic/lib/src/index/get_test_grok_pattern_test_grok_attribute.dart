@@ -11,7 +11,7 @@ class GetTestGrokPatternTestGrokAttribute {
   /// Creates a new [GetTestGrokPatternTestGrokAttribute].
   /// [name] The attribute name.
   /// [value] A string representation of the extracted value (which might not be a String).
-  GetTestGrokPatternTestGrokAttribute({
+  const GetTestGrokPatternTestGrokAttribute({
     required this.name,
     required this.value,
   });

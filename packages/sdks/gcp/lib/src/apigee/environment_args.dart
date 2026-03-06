@@ -62,7 +62,7 @@ class EnvironmentArgs {
   /// [orgId] The Apigee Organization associated with the Apigee environment,
   /// [properties] Key-value pairs that may be used for customizing the environment.
   /// [type] Types that can be selected for an Environment. Each of the types are
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.apiProxyType,
     this.clientIpResolutionConfig,
     this.deploymentType,

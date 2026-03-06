@@ -12,7 +12,7 @@ class FirewallRuleProperties {
   /// Creates a new [FirewallRuleProperties].
   /// [endIpAddress] End IP address.
   /// [startIpAddress] Start IP address.
-  FirewallRuleProperties({
+  const FirewallRuleProperties({
     this.endIpAddress,
     this.startIpAddress,
   });

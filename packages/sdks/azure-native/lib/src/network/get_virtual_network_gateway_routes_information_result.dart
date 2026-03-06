@@ -23,7 +23,7 @@ class GetVirtualNetworkGatewayRoutesInformationResult {
   /// [nextEligibleComputeTime] Timestamp denoting the next eligible time to re-compute the route sets for the gateway
   /// [routeSetVersion] Version for the route set
   /// [routeSets] List of Gateway Route Sets
-  GetVirtualNetworkGatewayRoutesInformationResult({
+  const GetVirtualNetworkGatewayRoutesInformationResult({
     this.circuitsMetadataMap,
     this.lastComputedTime,
     this.nextEligibleComputeTime,

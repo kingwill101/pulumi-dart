@@ -9,7 +9,7 @@ class BlobShare {
 
   /// Creates a new [BlobShare].
   /// [sasUri] SAS URI of Azure Storage Account Container.
-  BlobShare({
+  const BlobShare({
     this.sasUri,
   });
 

@@ -16,7 +16,7 @@ class GuardrailLlmPromptSecurity {
   /// Creates a new [GuardrailLlmPromptSecurity].
   /// [customPolicy] Guardrail that blocks the conversation if the LLM response is considered
   /// [defaultSettings] Configuration for default system security settings.
-  GuardrailLlmPromptSecurity({
+  const GuardrailLlmPromptSecurity({
     this.customPolicy,
     this.defaultSettings,
   });

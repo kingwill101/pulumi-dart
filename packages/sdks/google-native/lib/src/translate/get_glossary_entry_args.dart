@@ -17,7 +17,7 @@ class GetGlossaryEntryArgs {
   /// [glossaryId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGlossaryEntryArgs({
+  const GetGlossaryEntryArgs({
     required this.glossaryEntryId,
     required this.glossaryId,
     required this.location,

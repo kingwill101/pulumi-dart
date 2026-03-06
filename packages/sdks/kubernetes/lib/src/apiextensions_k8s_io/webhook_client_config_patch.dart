@@ -28,7 +28,7 @@ class WebhookClientConfigPatch {
   /// [caBundle] caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
   /// [service] service is a reference to the service for this webhook. Either service or url must be specified.
   /// [url] url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
-  WebhookClientConfigPatch({
+  const WebhookClientConfigPatch({
     this.caBundle,
     this.service,
     this.url,

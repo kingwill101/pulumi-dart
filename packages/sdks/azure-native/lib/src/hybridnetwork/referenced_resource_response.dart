@@ -9,7 +9,7 @@ class ReferencedResourceResponse {
 
   /// Creates a new [ReferencedResourceResponse].
   /// [id] Resource ID.
-  ReferencedResourceResponse({
+  const ReferencedResourceResponse({
     this.id,
   });
 

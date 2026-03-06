@@ -28,7 +28,7 @@ class GetTaskExecutionOverridesContainerOverride {
   /// [memoryReservation] The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition.
   /// [name] The name of the container that receives the override. This parameter is required if any override is specified.
   /// [resourceRequirements] The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. See below.
-  GetTaskExecutionOverridesContainerOverride({
+  const GetTaskExecutionOverridesContainerOverride({
     this.commands,
     this.cpu,
     this.environments,

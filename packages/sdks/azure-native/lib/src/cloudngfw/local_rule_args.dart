@@ -73,7 +73,7 @@ class LocalRuleArgs {
   /// [ruleState] state of this rule
   /// [source] source address
   /// [tags] tag for rule
-  LocalRuleArgs({
+  const LocalRuleArgs({
     this.actionType,
     this.applications,
     this.auditComment,

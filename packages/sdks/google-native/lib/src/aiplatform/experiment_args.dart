@@ -33,7 +33,7 @@ class ExperimentArgs {
   /// [source] Immutable. Source of the TensorboardExperiment. Example: a custom training job.
   /// [tensorboardExperimentId] Required. The ID to use for the Tensorboard experiment, which becomes the final component of the Tensorboard experiment's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`.
   /// [tensorboardId] Required.
-  ExperimentArgs({
+  const ExperimentArgs({
     this.description,
     this.displayName,
     this.etag,

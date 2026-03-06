@@ -44,7 +44,7 @@ class GlobalRulestackArgs {
   /// [panLocation] Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
   /// [scope] Rulestack Type
   /// [securityServices] Security Profile
-  GlobalRulestackArgs({
+  const GlobalRulestackArgs({
     this.associatedSubscriptions,
     this.defaultMode,
     this.description,

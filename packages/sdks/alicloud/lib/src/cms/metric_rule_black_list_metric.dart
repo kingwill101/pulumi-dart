@@ -11,7 +11,7 @@ class MetricRuleBlackListMetric {
   /// Creates a new [MetricRuleBlackListMetric].
   /// [metricName] The name of the monitoring indicator.
   /// [resource] The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
-  MetricRuleBlackListMetric({
+  const MetricRuleBlackListMetric({
     required this.metricName,
     this.resource,
   });

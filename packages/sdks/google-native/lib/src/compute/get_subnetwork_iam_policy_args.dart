@@ -17,7 +17,7 @@ class GetSubnetworkIamPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetSubnetworkIamPolicyArgs({
+  const GetSubnetworkIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

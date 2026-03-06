@@ -121,7 +121,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirect {
   /// [replaceKeyPrefixWith] The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
   /// [replaceKeyWith] During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
   /// [transparentMirrorResponseCodes] Mirror back-to-source transparent source station response code list
-  BucketWebsiteRoutingRulesRoutingRuleRedirect({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirect({
     this.enableReplacePrefix,
     this.hostName,
     this.httpRedirectCode,

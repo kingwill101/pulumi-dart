@@ -19,7 +19,7 @@ class BucketLifecycleConfigurationV2RuleFilterAnd {
   /// [objectSizeLessThan] Maximum object size to which the rule applies. Value must be at least `1` if specified.
   /// [prefix] Prefix identifying one or more objects to which the rule applies.
   /// [tags] Key-value map of resource tags.
-  BucketLifecycleConfigurationV2RuleFilterAnd({
+  const BucketLifecycleConfigurationV2RuleFilterAnd({
     this.objectSizeGreaterThan,
     this.objectSizeLessThan,
     this.prefix,

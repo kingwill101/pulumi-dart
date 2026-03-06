@@ -21,7 +21,7 @@ class GetProtectionContainerArgs {
   /// [fabricName] Name of the fabric where the container belongs.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [vaultName] The name of the recovery services vault.
-  GetProtectionContainerArgs({
+  const GetProtectionContainerArgs({
     required this.containerName,
     required this.fabricName,
     required this.resourceGroupName,

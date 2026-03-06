@@ -14,7 +14,7 @@ class GetDataCollectionRuleDestinationStorageBlob {
   /// [containerName] The Storage Container name.
   /// [name] Specifies the name of the Data Collection Rule.
   /// [storageAccountId] The resource ID of the Storage Account.
-  GetDataCollectionRuleDestinationStorageBlob({
+  const GetDataCollectionRuleDestinationStorageBlob({
     required this.containerName,
     required this.name,
     required this.storageAccountId,

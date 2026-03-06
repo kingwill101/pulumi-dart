@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceBlock {
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceBlock].
   /// [dev] Sets the device path for the block source of the backing store, defining the physical location of the data.
   /// [secLabels] Specifies security label settings for the block source in the backing store, managing access controls.
-  DomainDevicesDiskMirrorBackingStoreSourceBlock({
+  const DomainDevicesDiskMirrorBackingStoreSourceBlock({
     this.dev,
     this.secLabels,
   });

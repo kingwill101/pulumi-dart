@@ -15,7 +15,7 @@ class KeyPairArgs {
   /// Creates a new [KeyPairArgs].
   /// [keyPairName] ADB key pair name.
   /// [publicKeyBody] The public key of the key pair.
-  KeyPairArgs({
+  const KeyPairArgs({
     required this.keyPairName,
     this.publicKeyBody,
   });

@@ -25,7 +25,7 @@ class GetSecurityGroupsResult {
   /// [region] Required.
   /// [tags] Required.
   /// [vpcIds] VPC IDs of the matched security groups. The data source's tag or filter *will span VPCs* unless the `vpc-id` filter is also used.
-  GetSecurityGroupsResult({
+  const GetSecurityGroupsResult({
     required this.arns,
     this.filters,
     required this.id,

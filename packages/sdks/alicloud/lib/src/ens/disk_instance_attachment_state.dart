@@ -15,7 +15,7 @@ class DiskInstanceAttachmentState {
   /// [deleteWithInstance] Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
   /// [diskId] The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
   /// [instanceId] Instance ID.
-  DiskInstanceAttachmentState({
+  const DiskInstanceAttachmentState({
     this.deleteWithInstance,
     this.diskId,
     this.instanceId,

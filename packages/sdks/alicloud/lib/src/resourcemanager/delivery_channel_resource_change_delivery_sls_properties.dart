@@ -7,7 +7,7 @@ class DeliveryChannelResourceChangeDeliverySlsProperties {
 
   /// Creates a new [DeliveryChannelResourceChangeDeliverySlsProperties].
   /// [oversizedDataOssTargetArn] Optional.
-  DeliveryChannelResourceChangeDeliverySlsProperties({
+  const DeliveryChannelResourceChangeDeliverySlsProperties({
     this.oversizedDataOssTargetArn,
   });
 

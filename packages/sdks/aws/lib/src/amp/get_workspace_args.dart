@@ -18,7 +18,7 @@ class GetWorkspaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags assigned to the resource.
   /// [workspaceId] Prometheus workspace ID.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     this.region,
     this.tags,
     required this.workspaceId,

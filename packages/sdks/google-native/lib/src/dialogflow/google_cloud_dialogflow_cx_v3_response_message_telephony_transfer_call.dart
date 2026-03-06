@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall].
   /// [phoneNumber] Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
-  GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall({
+  const GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall({
     this.phoneNumber,
   });
 

@@ -14,7 +14,7 @@ class PartitionStorageDescriptorSerDeInfo {
   /// [name] Name of the SerDe.
   /// [parameters] A map of initialization parameters for the SerDe, in key-value form.
   /// [serializationLibrary] Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
-  PartitionStorageDescriptorSerDeInfo({
+  const PartitionStorageDescriptorSerDeInfo({
     this.name,
     this.parameters,
     this.serializationLibrary,

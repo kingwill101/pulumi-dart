@@ -26,7 +26,7 @@ class MaterializedViewsBuilderServiceResourcePropertiesResponse {
   /// [locations] An array that contains all of the locations for the service.
   /// [serviceType] ServiceType for the service.
   /// [status] Describes the status of a service.
-  MaterializedViewsBuilderServiceResourcePropertiesResponse({
+  const MaterializedViewsBuilderServiceResourcePropertiesResponse({
     required this.creationTime,
     this.instanceCount,
     this.instanceSize,

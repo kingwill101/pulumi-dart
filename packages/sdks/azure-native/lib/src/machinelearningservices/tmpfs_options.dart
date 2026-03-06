@@ -9,7 +9,7 @@ class TmpfsOptions {
 
   /// Creates a new [TmpfsOptions].
   /// [size] Mention the Tmpfs size
-  TmpfsOptions({
+  const TmpfsOptions({
     this.size,
   });
 

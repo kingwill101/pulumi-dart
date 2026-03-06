@@ -15,7 +15,7 @@ class GetResolverArgs {
   /// Creates a new [GetResolverArgs].
   /// [name] Name of the Private DNS Resolver.
   /// [resourceGroupName] Name of the Resource Group where the Private DNS Resolver exists.
-  GetResolverArgs({
+  const GetResolverArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -22,7 +22,7 @@ class MysqlProfileResponseDatastreamV1alpha1 {
   /// [port] Port for the MySQL connection, default value is 3306.
   /// [sslConfig] SSL configuration for the MySQL connection.
   /// [username] Username for the MySQL connection.
-  MysqlProfileResponseDatastreamV1alpha1({
+  const MysqlProfileResponseDatastreamV1alpha1({
     required this.hostname,
     required this.password,
     required this.port,

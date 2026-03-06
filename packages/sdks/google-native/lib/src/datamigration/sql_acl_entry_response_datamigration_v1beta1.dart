@@ -18,7 +18,7 @@ class SqlAclEntryResponseDatamigrationV1beta1 {
   /// [label] A label to identify this entry.
   /// [ttl] Input only. The time-to-leave of this access control entry.
   /// [value] The allowlisted value for the access control list.
-  SqlAclEntryResponseDatamigrationV1beta1({
+  const SqlAclEntryResponseDatamigrationV1beta1({
     required this.expireTime,
     required this.label,
     required this.ttl,

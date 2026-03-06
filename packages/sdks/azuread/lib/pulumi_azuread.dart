@@ -3,11 +3,11 @@
 import 'package:pulumi_azuread/index.dart' as module_index;
 import 'package:pulumi_azuread/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final AccessPackage = module_index.AccessPackage.new;
   final AccessPackageArgs = module_index.AccessPackageArgs.new;
   final AccessPackageAssignmentPolicy = module_index.AccessPackageAssignmentPolicy.new;
@@ -505,7 +505,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Azuread = module_providers.ProviderProvider.new;
   final AzureadArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

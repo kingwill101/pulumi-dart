@@ -19,7 +19,7 @@ class OsPropertiesResponse {
   /// [customImageId] Specify the referenced Test Base Custom Image Id if available.
   /// [osName] The name of the OS.
   /// [releaseProperties] The properties of the OS release.
-  OsPropertiesResponse({
+  const OsPropertiesResponse({
     required this.customImageDisplayName,
     this.customImageId,
     this.osName,

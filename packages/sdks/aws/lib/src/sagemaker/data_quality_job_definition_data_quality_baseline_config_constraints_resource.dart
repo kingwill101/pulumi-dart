@@ -8,7 +8,7 @@ class DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource {
 
   /// Creates a new [DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource].
   /// [s3Uri] The Amazon S3 URI for the constraints resource.
-  DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource({
+  const DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource({
     this.s3Uri,
   });
 

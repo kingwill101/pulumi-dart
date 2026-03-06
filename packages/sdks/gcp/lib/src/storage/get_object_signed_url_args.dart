@@ -40,7 +40,7 @@ class GetObjectSignedUrlArgs {
   /// [extensionHeaders] As needed. The server checks to make sure that the client provides matching values in requests using the signed URL.
   /// [httpMethod] What HTTP Method will the signed URL allow (defaults to `GET`)
   /// [path] The full path to the object inside the bucket
-  GetObjectSignedUrlArgs({
+  const GetObjectSignedUrlArgs({
     required this.bucket,
     this.contentMd5,
     this.contentType,

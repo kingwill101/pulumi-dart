@@ -25,7 +25,7 @@ class GetResponsePolicyDnsV1beta2Result {
   /// [labels] User labels.
   /// [networks] List of network names specifying networks to which this policy is applied.
   /// [responsePolicyName] User assigned name for this Response Policy.
-  GetResponsePolicyDnsV1beta2Result({
+  const GetResponsePolicyDnsV1beta2Result({
     required this.description,
     required this.gkeClusters,
     required this.kind,

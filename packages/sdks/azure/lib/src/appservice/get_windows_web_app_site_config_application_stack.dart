@@ -49,7 +49,7 @@ class GetWindowsWebAppSiteConfigApplicationStack {
   /// [python] Required.
   /// [pythonVersion] The Version of Python in use.
   /// [tomcatVersion] Required.
-  GetWindowsWebAppSiteConfigApplicationStack({
+  const GetWindowsWebAppSiteConfigApplicationStack({
     required this.currentStack,
     required this.dockerImageName,
     required this.dockerRegistryPassword,

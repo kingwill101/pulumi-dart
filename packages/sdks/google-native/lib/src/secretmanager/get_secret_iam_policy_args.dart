@@ -15,7 +15,7 @@ class GetSecretIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [secretId] Required.
-  GetSecretIamPolicyArgs({
+  const GetSecretIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.secretId,

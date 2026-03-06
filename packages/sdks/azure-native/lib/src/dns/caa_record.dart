@@ -15,7 +15,7 @@ class CaaRecord {
   /// [flags] The flags for this CAA record as an integer between 0 and 255.
   /// [tag] The tag for this CAA record.
   /// [value] The value for this CAA record.
-  CaaRecord({
+  const CaaRecord({
     this.flags,
     this.tag,
     this.value,

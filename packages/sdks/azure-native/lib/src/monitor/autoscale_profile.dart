@@ -25,7 +25,7 @@ class AutoscaleProfile {
   /// [name] the name of the profile.
   /// [recurrence] the repeating times at which this profile begins. This element is not used if the FixedDate element is used.
   /// [rules] the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.
-  AutoscaleProfile({
+  const AutoscaleProfile({
     required this.capacity,
     this.fixedDate,
     required this.name,

@@ -9,7 +9,7 @@ class ShieldedInstanceConfigTpuV2alpha1 {
 
   /// Creates a new [ShieldedInstanceConfigTpuV2alpha1].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  ShieldedInstanceConfigTpuV2alpha1({
+  const ShieldedInstanceConfigTpuV2alpha1({
     this.enableSecureBoot,
   });
 

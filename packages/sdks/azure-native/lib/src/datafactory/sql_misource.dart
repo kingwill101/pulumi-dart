@@ -50,7 +50,7 @@ class SqlMISource {
   /// [sqlReaderStoredProcedureName] Name of the stored procedure for a Azure SQL Managed Instance source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
   /// [storedProcedureParameters] Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
   /// [type] Copy source type.
-  SqlMISource({
+  const SqlMISource({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.isolationLevel,

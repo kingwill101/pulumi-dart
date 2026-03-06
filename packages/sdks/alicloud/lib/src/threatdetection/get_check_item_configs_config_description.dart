@@ -11,7 +11,7 @@ class GetCheckItemConfigsConfigDescription {
   /// Creates a new [GetCheckItemConfigsConfigDescription].
   /// [type] The type of the description of the check item. Valid value:*   **text**.
   /// [value] The content of the description for the check item when the Type parameter is text.
-  GetCheckItemConfigsConfigDescription({
+  const GetCheckItemConfigsConfigDescription({
     required this.type,
     required this.value,
   });

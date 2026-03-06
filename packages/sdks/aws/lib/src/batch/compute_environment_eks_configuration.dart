@@ -11,7 +11,7 @@ class ComputeEnvironmentEksConfiguration {
   /// Creates a new [ComputeEnvironmentEksConfiguration].
   /// [eksClusterArn] The Amazon Resource Name (ARN) of the Amazon EKS cluster.
   /// [kubernetesNamespace] The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
-  ComputeEnvironmentEksConfiguration({
+  const ComputeEnvironmentEksConfiguration({
     required this.eksClusterArn,
     required this.kubernetesNamespace,
   });

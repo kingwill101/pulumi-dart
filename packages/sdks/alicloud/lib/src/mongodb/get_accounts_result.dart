@@ -18,7 +18,7 @@ class GetAccountsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Required.
   /// [outputFile] Optional.
-  GetAccountsResult({
+  const GetAccountsResult({
     this.accountName,
     required this.accounts,
     required this.id,

@@ -16,7 +16,7 @@ class RecordSetRoutingPolicyGeo {
   /// [healthCheckedTargets] For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
   /// [location] The location name defined in Google Cloud.
   /// [rrdatas] Same as `rrdatas` above.
-  RecordSetRoutingPolicyGeo({
+  const RecordSetRoutingPolicyGeo({
     this.healthCheckedTargets,
     required this.location,
     this.rrdatas,

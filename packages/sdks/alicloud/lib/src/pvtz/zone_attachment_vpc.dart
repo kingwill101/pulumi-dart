@@ -11,7 +11,7 @@ class ZoneAttachmentVpc {
   /// Creates a new [ZoneAttachmentVpc].
   /// [regionId] The region of the vpc. If not set, the current region will instead of.
   /// [vpcId] The Id of the vpc.
-  ZoneAttachmentVpc({
+  const ZoneAttachmentVpc({
     this.regionId,
     required this.vpcId,
   });

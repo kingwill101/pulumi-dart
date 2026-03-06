@@ -9,7 +9,7 @@ class ServiceServicePropertyIdentity {
 
   /// Creates a new [ServiceServicePropertyIdentity].
   /// [principal] (Output)
-  ServiceServicePropertyIdentity({
+  const ServiceServicePropertyIdentity({
     this.principal,
   });
 

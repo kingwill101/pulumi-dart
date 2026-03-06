@@ -8,7 +8,7 @@ class GetClusterEnableK8sBetaApi {
 
   /// Creates a new [GetClusterEnableK8sBetaApi].
   /// [enabledApis] Enabled Kubernetes Beta APIs.
-  GetClusterEnableK8sBetaApi({
+  const GetClusterEnableK8sBetaApi({
     required this.enabledApis,
   });
 

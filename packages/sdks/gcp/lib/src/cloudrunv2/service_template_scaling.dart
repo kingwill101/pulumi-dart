@@ -11,7 +11,7 @@ class ServiceTemplateScaling {
   /// Creates a new [ServiceTemplateScaling].
   /// [maxInstanceCount] Combined maximum number of instances for all revisions receiving traffic.
   /// [minInstanceCount] Minimum number of instances for the service, to be divided among all revisions receiving traffic.
-  ServiceTemplateScaling({
+  const ServiceTemplateScaling({
     this.maxInstanceCount,
     this.minInstanceCount,
   });

@@ -13,7 +13,7 @@ class ResourceGroup {
   /// Creates a new [ResourceGroup].
   /// [groupId] The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
   /// [resourceType] The resource type of the group members.
-  ResourceGroup({
+  const ResourceGroup({
     this.groupId,
     this.resourceType,
   });

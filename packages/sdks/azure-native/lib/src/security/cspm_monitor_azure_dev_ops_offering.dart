@@ -10,7 +10,7 @@ class CspmMonitorAzureDevOpsOffering {
 
   /// Creates a new [CspmMonitorAzureDevOpsOffering].
   /// [offeringType] The type of the security offering.
-  CspmMonitorAzureDevOpsOffering({
+  const CspmMonitorAzureDevOpsOffering({
     required this.offeringType,
   });
 

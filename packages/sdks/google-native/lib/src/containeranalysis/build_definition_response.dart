@@ -14,7 +14,7 @@ class BuildDefinitionResponse {
   /// [externalParameters] Required.
   /// [internalParameters] Required.
   /// [resolvedDependencies] Required.
-  BuildDefinitionResponse({
+  const BuildDefinitionResponse({
     required this.buildType,
     required this.externalParameters,
     required this.internalParameters,

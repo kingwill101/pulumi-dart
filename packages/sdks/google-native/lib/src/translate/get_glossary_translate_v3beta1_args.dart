@@ -15,7 +15,7 @@ class GetGlossaryTranslateV3beta1Args {
   /// [glossaryId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGlossaryTranslateV3beta1Args({
+  const GetGlossaryTranslateV3beta1Args({
     required this.glossaryId,
     required this.location,
     this.project,

@@ -35,7 +35,7 @@ class GetRouterConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routerTypeIdentifier] ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   /// [virtualInterfaceId] ID of the Direct Connect Virtual Interface
-  GetRouterConfigurationArgs({
+  const GetRouterConfigurationArgs({
     this.region,
     required this.routerTypeIdentifier,
     required this.virtualInterfaceId,

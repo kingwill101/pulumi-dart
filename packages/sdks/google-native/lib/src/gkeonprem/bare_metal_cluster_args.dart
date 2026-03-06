@@ -83,7 +83,7 @@ class BareMetalClusterArgs {
   /// [securityConfig] Security related setting configuration.
   /// [storage] Storage configuration.
   /// [upgradePolicy] The cluster upgrade policy.
-  BareMetalClusterArgs({
+  const BareMetalClusterArgs({
     required this.adminClusterMembership,
     this.annotations,
     required this.bareMetalClusterId,

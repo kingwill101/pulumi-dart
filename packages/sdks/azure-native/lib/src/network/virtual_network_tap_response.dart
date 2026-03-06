@@ -45,7 +45,7 @@ class VirtualNetworkTapResponse {
   /// [resourceGuid] The resource GUID property of the virtual network tap resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  VirtualNetworkTapResponse({
+  const VirtualNetworkTapResponse({
     this.destinationLoadBalancerFrontEndIPConfiguration,
     this.destinationNetworkInterfaceIPConfiguration,
     this.destinationPort,

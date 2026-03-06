@@ -41,7 +41,7 @@ class GetTaskResult {
   /// [responseCount] The number of attempts which have received a response.
   /// [scheduleTime] The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
   /// [view] The view specifies which subset of the Task has been returned.
-  GetTaskResult({
+  const GetTaskResult({
     required this.appEngineHttpRequest,
     required this.createTime,
     required this.dispatchCount,

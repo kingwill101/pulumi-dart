@@ -12,7 +12,7 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationCallMetadata].
   /// [agentChannel] The audio channel that contains the agent.
   /// [customerChannel] The audio channel that contains the customer.
-  GoogleCloudContactcenterinsightsV1ConversationCallMetadata({
+  const GoogleCloudContactcenterinsightsV1ConversationCallMetadata({
     this.agentChannel,
     this.customerChannel,
   });

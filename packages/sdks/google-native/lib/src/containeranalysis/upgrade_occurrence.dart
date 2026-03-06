@@ -21,7 +21,7 @@ class UpgradeOccurrence {
   /// [package] Required for non-Windows OS. The package this Upgrade is for.
   /// [parsedVersion] Required for non-Windows OS. The version of the package in a machine + human readable form.
   /// [windowsUpdate] Required for Windows OS. Represents the metadata about the Windows update.
-  UpgradeOccurrence({
+  const UpgradeOccurrence({
     this.distribution,
     this.package,
     this.parsedVersion,

@@ -33,7 +33,7 @@ class InstanceArgs {
   /// [parent] The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
   /// [project] Optional.
   /// [type] The type of the instance. Defaults to `PRODUCTION`.
-  InstanceArgs({
+  const InstanceArgs({
     required this.clusters,
     required this.displayName,
     required this.instanceId,

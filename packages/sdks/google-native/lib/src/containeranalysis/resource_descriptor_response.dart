@@ -19,7 +19,7 @@ class ResourceDescriptorResponse {
   /// [mediaType] Required.
   /// [name] Required.
   /// [uri] Required.
-  ResourceDescriptorResponse({
+  const ResourceDescriptorResponse({
     required this.annotations,
     required this.content,
     required this.digest,

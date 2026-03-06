@@ -12,7 +12,7 @@ class CidrBlockResponseComposerV1beta1 {
   /// Creates a new [CidrBlockResponseComposerV1beta1].
   /// [cidrBlock] CIDR block that must be specified in CIDR notation.
   /// [displayName] User-defined name that identifies the CIDR block.
-  CidrBlockResponseComposerV1beta1({
+  const CidrBlockResponseComposerV1beta1({
     required this.cidrBlock,
     required this.displayName,
   });

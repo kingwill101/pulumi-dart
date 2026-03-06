@@ -17,7 +17,7 @@ class IndexingConfigurationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [thingGroupIndexingConfiguration] Thing group indexing configuration. See below.
   /// [thingIndexingConfiguration] Thing indexing configuration. See below.
-  IndexingConfigurationState({
+  const IndexingConfigurationState({
     this.region,
     this.thingGroupIndexingConfiguration,
     this.thingIndexingConfiguration,

@@ -21,7 +21,7 @@ class GetProfileArgs {
   /// [localeCode] Locale of profile to retrieve, default is en-us.
   /// [profileName] The name of the profile.
   /// [resourceGroupName] The name of the resource group.
-  GetProfileArgs({
+  const GetProfileArgs({
     required this.hubName,
     this.localeCode,
     required this.profileName,

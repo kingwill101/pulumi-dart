@@ -37,7 +37,7 @@ class GetHubRouteTableResult {
   /// [provisioningState] The provisioning state of the RouteTable resource.
   /// [routes] List of all routes.
   /// [type] Resource type.
-  GetHubRouteTableResult({
+  const GetHubRouteTableResult({
     required this.associatedConnections,
     required this.azureApiVersion,
     required this.etag,

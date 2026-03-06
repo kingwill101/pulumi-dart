@@ -9,7 +9,7 @@ class ClusterIssueCodeEnumValueResponse {
 
   /// Creates a new [ClusterIssueCodeEnumValueResponse].
   /// [value] Property value
-  ClusterIssueCodeEnumValueResponse({
+  const ClusterIssueCodeEnumValueResponse({
     this.value,
   });
 

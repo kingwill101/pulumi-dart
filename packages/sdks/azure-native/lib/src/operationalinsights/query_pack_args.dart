@@ -21,7 +21,7 @@ class QueryPackArgs {
   /// [queryPackName] The name of the Log Analytics QueryPack resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  QueryPackArgs({
+  const QueryPackArgs({
     this.location,
     this.queryPackName,
     required this.resourceGroupName,

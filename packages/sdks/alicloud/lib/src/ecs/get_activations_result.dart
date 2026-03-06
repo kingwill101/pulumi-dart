@@ -24,7 +24,7 @@ class GetActivationsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [totalCount] Required.
-  GetActivationsResult({
+  const GetActivationsResult({
     required this.activations,
     required this.id,
     required this.ids,

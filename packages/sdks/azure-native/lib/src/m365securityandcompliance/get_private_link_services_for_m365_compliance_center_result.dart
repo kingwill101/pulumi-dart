@@ -41,7 +41,7 @@ class GetPrivateLinkServicesForM365ComplianceCenterResult {
   /// [systemData] Required property for system data
   /// [tags] The resource tags.
   /// [type] The resource type.
-  GetPrivateLinkServicesForM365ComplianceCenterResult({
+  const GetPrivateLinkServicesForM365ComplianceCenterResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

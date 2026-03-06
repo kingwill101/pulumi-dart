@@ -21,7 +21,7 @@ class WorkspaceUserConfigArgs {
   /// [configKey] The key of the configuration.
   /// [configValue] The value of the configuration.
   /// [scope] The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
-  WorkspaceUserConfigArgs({
+  const WorkspaceUserConfigArgs({
     required this.categoryName,
     required this.configKey,
     required this.configValue,

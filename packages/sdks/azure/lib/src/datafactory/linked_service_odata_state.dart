@@ -34,7 +34,7 @@ class LinkedServiceOdataState {
   /// [name] Specifies the name of the Data Factory Linked Service OData. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service OData.
   /// [url] The URL of the OData service endpoint.
-  LinkedServiceOdataState({
+  const LinkedServiceOdataState({
     this.additionalProperties,
     this.annotations,
     this.basicAuthentication,

@@ -33,7 +33,7 @@ class ClusterSnapshotState {
   /// [snapshotIdentifier] A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the Amazon Web Services account.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ClusterSnapshotState({
+  const ClusterSnapshotState({
     this.arn,
     this.clusterIdentifier,
     this.kmsKeyId,

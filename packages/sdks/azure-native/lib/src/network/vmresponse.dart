@@ -21,7 +21,7 @@ class VMResponse {
   /// [name] Resource name.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  VMResponse({
+  const VMResponse({
     this.id,
     this.location,
     required this.name,

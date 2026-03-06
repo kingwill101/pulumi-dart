@@ -20,7 +20,7 @@ class GetTunnelsTunnelChannel {
   /// [channelStatus] The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
   /// [channelType] The type of the channel, valid values: `BaseData`, `Stream`.
   /// [clientId] The client id of the channel.
-  GetTunnelsTunnelChannel({
+  const GetTunnelsTunnelChannel({
     required this.channelId,
     required this.channelRpo,
     required this.channelStatus,

@@ -27,7 +27,7 @@ class BackupInstancePostgresqlArgs {
   /// [location] The location of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
   /// [name] The name which should be used for this Backup Instance PostgreSQL. Changing this forces a new Backup Instance PostgreSQL to be created.
   /// [vaultId] The ID of the Backup Vault within which the PostgreSQL Backup Instance should exist. Changing this forces a new Backup Instance PostgreSQL to be created.
-  BackupInstancePostgresqlArgs({
+  const BackupInstancePostgresqlArgs({
     required this.backupPolicyId,
     this.databaseCredentialKeyVaultSecretId,
     required this.databaseId,

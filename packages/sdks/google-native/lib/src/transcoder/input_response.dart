@@ -16,7 +16,7 @@ class InputResponse {
   /// [key] A unique key for this input. Must be specified when using advanced mapping and edit lists.
   /// [preprocessingConfig] Preprocessing configurations.
   /// [uri] URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
-  InputResponse({
+  const InputResponse({
     required this.key,
     required this.preprocessingConfig,
     required this.uri,

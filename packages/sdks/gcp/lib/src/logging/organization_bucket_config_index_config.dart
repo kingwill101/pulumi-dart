@@ -12,7 +12,7 @@ class OrganizationBucketConfigIndexConfig {
   /// Creates a new [OrganizationBucketConfigIndexConfig].
   /// [fieldPath] The LogEntry field path to index.
   /// [type] The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
-  OrganizationBucketConfigIndexConfig({
+  const OrganizationBucketConfigIndexConfig({
     required this.fieldPath,
     required this.type,
   });

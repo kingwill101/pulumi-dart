@@ -11,7 +11,7 @@ class OptionGroupOptionOptionSetting {
   /// Creates a new [OptionGroupOptionOptionSetting].
   /// [name] Name of the setting.
   /// [value] Value of the setting.
-  OptionGroupOptionOptionSetting({
+  const OptionGroupOptionOptionSetting({
     required this.name,
     required this.value,
   });

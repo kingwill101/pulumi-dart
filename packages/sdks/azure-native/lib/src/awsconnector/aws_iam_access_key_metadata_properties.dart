@@ -19,7 +19,7 @@ class AwsIamAccessKeyMetadataProperties {
   /// [createDate] &lt;p&gt;The date when the access key was created.&lt;/p&gt;
   /// [status] &lt;p&gt;The status of the access key. &lt;code&gt;Active&lt;/code&gt; means that the key is valid for API calls; &lt;code&gt;Inactive&lt;/code&gt; means it is not.&lt;/p&gt;
   /// [userName] &lt;p&gt;The name of the IAM user that the key is associated with.&lt;/p&gt;
-  AwsIamAccessKeyMetadataProperties({
+  const AwsIamAccessKeyMetadataProperties({
     this.accessKeyId,
     this.createDate,
     this.status,

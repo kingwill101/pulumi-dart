@@ -54,7 +54,7 @@ class TopicArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
   /// [topicName] Name of the topic.
-  TopicArgs({
+  const TopicArgs({
     this.dataResidencyBoundary,
     this.disableLocalAuth,
     this.eventTypeInfo,

@@ -15,7 +15,7 @@ class GetSolutionTemplateArgs {
   /// Creates a new [GetSolutionTemplateArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionTemplateName] The name of the SolutionTemplate
-  GetSolutionTemplateArgs({
+  const GetSolutionTemplateArgs({
     required this.resourceGroupName,
     required this.solutionTemplateName,
   });

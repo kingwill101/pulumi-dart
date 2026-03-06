@@ -15,7 +15,7 @@ class NodeTaintResponse {
   /// [effect] The taint effect.
   /// [key] Key associated with the effect.
   /// [value] Value associated with the effect.
-  NodeTaintResponse({
+  const NodeTaintResponse({
     required this.effect,
     required this.key,
     required this.value,

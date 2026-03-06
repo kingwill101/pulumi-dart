@@ -15,7 +15,7 @@ class GetRouterArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [router] Required.
-  GetRouterArgs({
+  const GetRouterArgs({
     this.project,
     required this.region,
     required this.router,

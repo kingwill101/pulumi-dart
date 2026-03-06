@@ -19,7 +19,7 @@ class GetRoleArgs {
   /// [domainId] The domain the role belongs to.
   /// [name] The name of the role.
   /// [region] The region in which to obtain the V3 Keystone client.
-  GetRoleArgs({
+  const GetRoleArgs({
     this.domainId,
     required this.name,
     this.region,

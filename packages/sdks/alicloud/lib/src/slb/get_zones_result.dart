@@ -30,7 +30,7 @@ class GetZonesResult {
   /// [outputFile] Optional.
   /// [slaveZoneId] (Available in 1.157.0+) The secondary zone.
   /// [zones] A list of availability zones. Each element contains the following attributes:
-  GetZonesResult({
+  const GetZonesResult({
     this.availableSlbAddressIpVersion,
     this.availableSlbAddressType,
     this.enableDetails,

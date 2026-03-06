@@ -41,7 +41,7 @@ class GetPrivateLinkServicesForEDMUploadResult {
   /// [systemData] Required property for system data
   /// [tags] The resource tags.
   /// [type] The resource type.
-  GetPrivateLinkServicesForEDMUploadResult({
+  const GetPrivateLinkServicesForEDMUploadResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

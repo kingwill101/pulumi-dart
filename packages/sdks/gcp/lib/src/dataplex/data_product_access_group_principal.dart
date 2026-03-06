@@ -8,7 +8,7 @@ class DataProductAccessGroupPrincipal {
 
   /// Creates a new [DataProductAccessGroupPrincipal].
   /// [googleGroup] Email of the Google Group.
-  DataProductAccessGroupPrincipal({
+  const DataProductAccessGroupPrincipal({
     this.googleGroup,
   });
 

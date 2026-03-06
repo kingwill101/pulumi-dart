@@ -15,7 +15,7 @@ class DnsSettings {
   /// [enableProxy] Enable DNS Proxy on Firewalls attached to the Firewall Policy.
   /// [requireProxyForNetworkRules] FQDNs in Network Rules are supported when set to true.
   /// [servers] List of Custom DNS Servers.
-  DnsSettings({
+  const DnsSettings({
     this.enableProxy,
     this.requireProxyForNetworkRules,
     this.servers,

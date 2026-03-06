@@ -27,7 +27,7 @@ class GetServiceFabricScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceFabricName] servicefabrics
   /// [userName] users
-  GetServiceFabricScheduleArgs({
+  const GetServiceFabricScheduleArgs({
     this.expand,
     required this.labName,
     required this.name,

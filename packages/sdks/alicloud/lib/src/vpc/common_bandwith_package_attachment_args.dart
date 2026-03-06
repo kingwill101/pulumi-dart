@@ -29,7 +29,7 @@ class CommonBandwithPackageAttachmentArgs {
   /// [cancelCommonBandwidthPackageIpBandwidth] . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
   /// [instanceId] The ID of the EIP that you want to query.
   /// [ipType] The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
-  CommonBandwithPackageAttachmentArgs({
+  const CommonBandwithPackageAttachmentArgs({
     this.bandwidthPackageBandwidth,
     required this.bandwidthPackageId,
     this.cancelCommonBandwidthPackageIpBandwidth,

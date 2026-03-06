@@ -17,7 +17,7 @@ class InterconnectGroupPhysicalStructureMetroFacility {
   /// Creates a new [InterconnectGroupPhysicalStructureMetroFacility].
   /// [facility] (Output)
   /// [zones] (Output)
-  InterconnectGroupPhysicalStructureMetroFacility({
+  const InterconnectGroupPhysicalStructureMetroFacility({
     this.facility,
     this.zones,
   });

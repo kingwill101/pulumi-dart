@@ -16,7 +16,7 @@ class TcpRouteRule {
   /// Creates a new [TcpRouteRule].
   /// [action] A detailed rule defining how to route traffic.
   /// [matches] RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
-  TcpRouteRule({
+  const TcpRouteRule({
     required this.action,
     this.matches,
   });

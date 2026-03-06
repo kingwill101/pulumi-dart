@@ -11,7 +11,7 @@ class GetVirtualNodeSpecListenerTlValidation {
   /// Creates a new [GetVirtualNodeSpecListenerTlValidation].
   /// [subjectAlternativeNames] Required.
   /// [trusts] Required.
-  GetVirtualNodeSpecListenerTlValidation({
+  const GetVirtualNodeSpecListenerTlValidation({
     required this.subjectAlternativeNames,
     required this.trusts,
   });

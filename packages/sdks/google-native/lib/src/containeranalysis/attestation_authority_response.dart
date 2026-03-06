@@ -9,7 +9,7 @@ class AttestationAuthorityResponse {
 
   /// Creates a new [AttestationAuthorityResponse].
   /// [hint] Required.
-  AttestationAuthorityResponse({
+  const AttestationAuthorityResponse({
     required this.hint,
   });
 

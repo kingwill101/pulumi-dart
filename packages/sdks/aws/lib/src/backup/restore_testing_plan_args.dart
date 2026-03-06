@@ -30,7 +30,7 @@ class RestoreTestingPlanArgs {
   /// [scheduleExpressionTimezone] The timezone for the schedule expression. If not provided, the state value will be used.
   /// [startWindowHours] The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
   /// [tags] Optional.
-  RestoreTestingPlanArgs({
+  const RestoreTestingPlanArgs({
     this.name,
     required this.recoveryPointSelection,
     this.region,

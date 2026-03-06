@@ -29,7 +29,7 @@ class InstanceMetadataOptionsResponse {
   /// [httpTokens] &lt;p&gt;Indicates whether IMDSv2 is required.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;optional&lt;/code&gt; - IMDSv2 is optional, which means that you can use either IMDSv2 or IMDSv1.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;required&lt;/code&gt; - IMDSv2 is required, which means that IMDSv1 is disabled, and you must use IMDSv2.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   /// [instanceMetadataTags] &lt;p&gt;Indicates whether access to instance tags from the instance metadata is enabled or disabled. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS'&gt;Work with instance tags using the instance metadata&lt;/a&gt;.&lt;/p&gt;
   /// [state] &lt;p&gt;The state of the metadata option changes.&lt;/p&gt; &lt;p&gt; &lt;code&gt;pending&lt;/code&gt; - The metadata options are being updated and the instance is not ready to process metadata traffic with the new selection.&lt;/p&gt; &lt;p&gt; &lt;code&gt;applied&lt;/code&gt; - The metadata options have been successfully applied on the instance.&lt;/p&gt;
-  InstanceMetadataOptionsResponse({
+  const InstanceMetadataOptionsResponse({
     this.httpEndpoint,
     this.httpProtocolIpv6,
     this.httpPutResponseHopLimit,

@@ -8,7 +8,7 @@ class AwsEuSovereignIntegrationsBilling {
 
   /// Creates a new [AwsEuSovereignIntegrationsBilling].
   /// [metricsPollingInterval] The data polling interval in seconds
-  AwsEuSovereignIntegrationsBilling({
+  const AwsEuSovereignIntegrationsBilling({
     this.metricsPollingInterval,
   });
 

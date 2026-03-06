@@ -11,7 +11,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation {
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation].
   /// [subjectAlternativeNames] Required.
   /// [trusts] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation({
     required this.subjectAlternativeNames,
     required this.trusts,
   });

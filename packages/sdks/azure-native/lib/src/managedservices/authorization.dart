@@ -18,7 +18,7 @@ class Authorization {
   /// [principalId] The identifier of the Azure Active Directory principal.
   /// [principalIdDisplayName] The display name of the Azure Active Directory principal.
   /// [roleDefinitionId] The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
-  Authorization({
+  const Authorization({
     this.delegatedRoleDefinitionIds,
     required this.principalId,
     this.principalIdDisplayName,

@@ -14,7 +14,7 @@ class DefenseRuleConfigGrayConfig {
   /// [grayRate] The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
   /// [graySubKey] The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
   /// [grayTarget] The type of the canary release object. Valid values:
-  DefenseRuleConfigGrayConfig({
+  const DefenseRuleConfigGrayConfig({
     this.grayRate,
     this.graySubKey,
     this.grayTarget,

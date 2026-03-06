@@ -21,7 +21,7 @@ class MigrateProjectProperties {
   /// [registeredTools] Gets or sets the list of tools registered with the migrate project.
   /// [serviceEndpoint] Service endpoint.
   /// [utilityStorageAccountId] Utility storage account id.
-  MigrateProjectProperties({
+  const MigrateProjectProperties({
     this.provisioningState,
     this.publicNetworkAccess,
     this.registeredTools,

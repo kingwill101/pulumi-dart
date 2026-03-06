@@ -50,7 +50,7 @@ class ImageVersionState {
   /// [releaseNotes] The maintainer description of the image version.
   /// [vendorGuidance] The stability of the image version, specified by the maintainer. Valid values are: `NOT_PROVIDED`, `STABLE`, `TO_BE_ARCHIVED`, and `ARCHIVED`.
   /// [version] The version of the image. If not specified, the latest version is described.
-  ImageVersionState({
+  const ImageVersionState({
     this.aliases,
     this.arn,
     this.baseImage,

@@ -13,7 +13,7 @@ class DraftPackageIntuneAppMetadataResponse {
   /// Creates a new [DraftPackageIntuneAppMetadataResponse].
   /// [intuneApp] The Metadata of the Intune App through intunewin file uploading.
   /// [intuneAppDependencies] The Metadata of dependencies of the Intune App through intunewin file uploading.
-  DraftPackageIntuneAppMetadataResponse({
+  const DraftPackageIntuneAppMetadataResponse({
     this.intuneApp,
     this.intuneAppDependencies,
   });

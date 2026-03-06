@@ -9,7 +9,7 @@ class DeviceTypeEnumValue {
 
   /// Creates a new [DeviceTypeEnumValue].
   /// [value] Property value
-  DeviceTypeEnumValue({
+  const DeviceTypeEnumValue({
     this.value,
   });
 

@@ -25,7 +25,7 @@ class GetServiceHostnameConfiguration {
   /// [portals] One or more `portal` blocks as documented below.
   /// [proxies] One or more `proxy` blocks as documented below.
   /// [scms] One or more `scm` blocks as documented below.
-  GetServiceHostnameConfiguration({
+  const GetServiceHostnameConfiguration({
     required this.developerPortals,
     required this.managements,
     required this.portals,

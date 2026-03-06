@@ -12,7 +12,7 @@ class DevOpsCapabilityResponse {
   /// Creates a new [DevOpsCapabilityResponse].
   /// [name] Gets the name of the DevOps capability.
   /// [value] Gets the value of the DevOps capability.
-  DevOpsCapabilityResponse({
+  const DevOpsCapabilityResponse({
     required this.name,
     required this.value,
   });

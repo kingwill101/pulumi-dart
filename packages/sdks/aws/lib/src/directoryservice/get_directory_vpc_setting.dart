@@ -13,7 +13,7 @@ class GetDirectoryVpcSetting {
   /// [availabilityZones] Required.
   /// [subnetIds] Identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
   /// [vpcId] ID of the VPC that the connector is in.
-  GetDirectoryVpcSetting({
+  const GetDirectoryVpcSetting({
     required this.availabilityZones,
     required this.subnetIds,
     required this.vpcId,

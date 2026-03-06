@@ -32,7 +32,7 @@ class GetCompositeTypeResult {
   /// [selfLink] Server defined URL for the resource.
   /// [status] Required.
   /// [templateContents] Files for the template type.
-  GetCompositeTypeResult({
+  const GetCompositeTypeResult({
     required this.description,
     required this.insertTime,
     required this.labels,

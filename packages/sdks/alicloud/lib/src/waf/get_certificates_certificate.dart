@@ -27,7 +27,7 @@ class GetCertificatesCertificate {
   /// [instanceId] WAF instance ID.
   /// [isUsing] Required.
   /// [sans] Required.
-  GetCertificatesCertificate({
+  const GetCertificatesCertificate({
     required this.certificateId,
     required this.certificateName,
     required this.commonName,

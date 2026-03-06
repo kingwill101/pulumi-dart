@@ -62,7 +62,7 @@ class GetCustomModelResult {
   /// [trainingMetrics] Metrics associated with the customization job.
   /// [validationDataConfigs] Information about the validation dataset.
   /// [validationMetrics] The loss metric for each validator that you provided.
-  GetCustomModelResult({
+  const GetCustomModelResult({
     required this.baseModelArn,
     required this.creationTime,
     required this.hyperparameters,

@@ -15,7 +15,7 @@ class GetDataExchangeIamPolicyArgs {
   /// [dataExchangeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataExchangeIamPolicyArgs({
+  const GetDataExchangeIamPolicyArgs({
     required this.dataExchangeId,
     required this.location,
     this.project,

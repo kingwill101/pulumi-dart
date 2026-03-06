@@ -29,7 +29,7 @@ class GetUserResult {
   /// [resourceGroupName] Required.
   /// [state] The current state of this User, for example `active`, `blocked` or `pending`.
   /// [userId] Required.
-  GetUserResult({
+  const GetUserResult({
     required this.apiManagementName,
     required this.email,
     required this.firstName,

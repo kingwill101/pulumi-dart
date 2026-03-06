@@ -12,7 +12,7 @@ class TlsProperties {
   /// Creates a new [TlsProperties].
   /// [mode] Mode for TLS.
   /// [trustedCaCertificateConfigMapRef] Trusted CA certificate config map.
-  TlsProperties({
+  const TlsProperties({
     this.mode,
     this.trustedCaCertificateConfigMapRef,
   });

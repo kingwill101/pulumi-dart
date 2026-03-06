@@ -13,7 +13,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1RepoId {
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1RepoId].
   /// [projectRepoId] A combination of a project ID and a repo name.
   /// [uid] A server-assigned, globally unique identifier.
-  GoogleDevtoolsContaineranalysisV1alpha1RepoId({
+  const GoogleDevtoolsContaineranalysisV1alpha1RepoId({
     this.projectRepoId,
     this.uid,
   });

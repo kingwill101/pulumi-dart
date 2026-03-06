@@ -18,7 +18,7 @@ class DiskPurchasePlanResponse {
   /// [product] Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   /// [promotionCode] The Offer Promotion Code.
   /// [publisher] The publisher ID.
-  DiskPurchasePlanResponse({
+  const DiskPurchasePlanResponse({
     required this.name,
     required this.product,
     this.promotionCode,

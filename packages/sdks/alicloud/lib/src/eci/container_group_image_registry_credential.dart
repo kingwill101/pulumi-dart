@@ -14,7 +14,7 @@ class ContainerGroupImageRegistryCredential {
   /// [password] The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
   /// [server] The address of the image repository. It is required when `image_registry_credential` is configured.
   /// [userName] The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
-  ContainerGroupImageRegistryCredential({
+  const ContainerGroupImageRegistryCredential({
     required this.password,
     required this.server,
     required this.userName,

@@ -12,7 +12,7 @@ class ReportSummaryChartDataDataPointResponse {
   /// Creates a new [ReportSummaryChartDataDataPointResponse].
   /// [label] The X-axis label for this data point.
   /// [value] The Y-axis value for this data point.
-  ReportSummaryChartDataDataPointResponse({
+  const ReportSummaryChartDataDataPointResponse({
     required this.label,
     required this.value,
   });

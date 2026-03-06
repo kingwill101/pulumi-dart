@@ -17,7 +17,7 @@ class BgpPolicyContentSourceLimit {
   /// [pps] Pps range 32~500000.
   /// [synBps] SynBps range 1024~268435456.
   /// [synPps] SynPps range 1~100000.
-  BgpPolicyContentSourceLimit({
+  const BgpPolicyContentSourceLimit({
     this.bps,
     this.pps,
     this.synBps,

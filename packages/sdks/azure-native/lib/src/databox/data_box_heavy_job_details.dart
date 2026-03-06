@@ -44,7 +44,7 @@ class DataBoxHeavyJobDetails {
   /// [preferences] Preferences for the order.
   /// [reverseShippingDetails] Optional Reverse Shipping details for order.
   /// [shippingAddress] Shipping address of the customer.
-  DataBoxHeavyJobDetails({
+  const DataBoxHeavyJobDetails({
     required this.contactDetails,
     this.dataExportDetails,
     this.dataImportDetails,

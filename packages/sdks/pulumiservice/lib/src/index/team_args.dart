@@ -30,7 +30,7 @@ class TeamArgs {
   /// [name] The team's name. Required for "pulumi" teams.
   /// [organizationName] The name of the Pulumi organization the team belongs to.
   /// [teamType] The type of team. Must be either `pulumi` or `github`.
-  TeamArgs({
+  const TeamArgs({
     this.description,
     this.displayName,
     this.githubTeamId,

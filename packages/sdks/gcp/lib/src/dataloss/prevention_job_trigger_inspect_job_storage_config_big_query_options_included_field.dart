@@ -8,7 +8,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField {
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField].
   /// [name] Name describing the field to which scanning is limited.
-  PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField({
+  const PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField({
     required this.name,
   });
 

@@ -14,7 +14,7 @@ class SpecificationResponse {
   /// Creates a new [SpecificationResponse].
   /// [androidTest] An Android mobile test execution specification.
   /// [iosTest] An iOS mobile test execution specification.
-  SpecificationResponse({
+  const SpecificationResponse({
     required this.androidTest,
     required this.iosTest,
   });

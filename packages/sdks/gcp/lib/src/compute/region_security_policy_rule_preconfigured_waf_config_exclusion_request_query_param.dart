@@ -19,7 +19,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
   /// Creates a new [RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam].
   /// [operator] You can specify an exact match or a partial match by using a field operator and a field value.
   /// [value] A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-  RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam({
+  const RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam({
     required this.operator,
     this.value,
   });

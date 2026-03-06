@@ -34,7 +34,7 @@ class Ec2VPCPeeringConnectionPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2VPCPeeringConnectionPropertiesResponse({
+  const Ec2VPCPeeringConnectionPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

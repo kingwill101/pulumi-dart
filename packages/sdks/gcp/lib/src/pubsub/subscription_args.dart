@@ -145,7 +145,7 @@ class SubscriptionArgs {
   /// [retryPolicy] A policy that specifies how Pub/Sub retries message delivery for this subscription.
   /// [tags] Input only. Resource manager tags to be bound to the subscription. Tag
   /// [topic] A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.ackDeadlineSeconds,
     this.bigqueryConfig,
     this.cloudStorageConfig,

@@ -15,7 +15,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm].
   /// [pullDeps] Whether dependencies should also be installed. -
   /// [source] An rpm package. Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm({
     this.pullDeps,
     required this.source,
   });

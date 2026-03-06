@@ -16,7 +16,7 @@ class MountFileShareConfigurationResponse {
   /// [configurationType] The type of file share config.
   /// [id] The fileshare resource ID
   /// [privateEndpointId] The private endpoint resource ID
-  MountFileShareConfigurationResponse({
+  const MountFileShareConfigurationResponse({
     required this.configurationType,
     required this.id,
     required this.privateEndpointId,

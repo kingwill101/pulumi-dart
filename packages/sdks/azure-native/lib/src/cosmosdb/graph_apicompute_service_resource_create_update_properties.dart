@@ -16,7 +16,7 @@ class GraphAPIComputeServiceResourceCreateUpdateProperties {
   /// [instanceCount] Instance count for the service.
   /// [instanceSize] Instance type for the service.
   /// [serviceType] ServiceType for the service.
-  GraphAPIComputeServiceResourceCreateUpdateProperties({
+  const GraphAPIComputeServiceResourceCreateUpdateProperties({
     this.instanceCount,
     this.instanceSize,
     required this.serviceType,

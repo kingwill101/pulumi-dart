@@ -27,7 +27,7 @@ class GetEcsImagePipelineArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group to which the image template belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  GetEcsImagePipelineArgs({
+  const GetEcsImagePipelineArgs({
     this.ids,
     this.name,
     this.nameRegex,

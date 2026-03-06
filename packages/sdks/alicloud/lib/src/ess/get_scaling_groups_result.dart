@@ -23,7 +23,7 @@ class GetScalingGroupsResult {
   /// [nameRegex] Optional.
   /// [names] A list of scaling group names.
   /// [outputFile] Optional.
-  GetScalingGroupsResult({
+  const GetScalingGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

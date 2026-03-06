@@ -36,7 +36,7 @@ class GetRecordsArgs {
   /// [status] Record status. Valid items are `ENABLE` and `DISABLE`.
   /// [type] Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
   /// [valueRegex] Host record value regex.
-  GetRecordsArgs({
+  const GetRecordsArgs({
     required this.domainName,
     this.hostRecordRegex,
     this.ids,

@@ -23,7 +23,7 @@ class DomainCertInfo {
   /// [sslPri] Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
   /// [sslProtocol] Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
   /// [sslPub] If You Enable HTTPS Here Key.
-  DomainCertInfo({
+  const DomainCertInfo({
     this.certName,
     this.certType,
     this.sslPri,

@@ -29,7 +29,7 @@ class CxToolVersionToolOpenApiSpecAuthentication {
   /// [bearerTokenConfig] Config for bearer token auth.
   /// [oauthConfig] Config for OAuth.
   /// [serviceAgentAuthConfig] Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-  CxToolVersionToolOpenApiSpecAuthentication({
+  const CxToolVersionToolOpenApiSpecAuthentication({
     this.apiKeyConfig,
     this.bearerTokenConfig,
     this.oauthConfig,

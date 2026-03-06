@@ -30,7 +30,7 @@ class SessionEntityTypeDialogflowV2beta1Args {
   /// [project] Optional.
   /// [sessionId] Required.
   /// [userId] Required.
-  SessionEntityTypeDialogflowV2beta1Args({
+  const SessionEntityTypeDialogflowV2beta1Args({
     required this.entities,
     required this.entityOverrideMode,
     required this.environmentId,

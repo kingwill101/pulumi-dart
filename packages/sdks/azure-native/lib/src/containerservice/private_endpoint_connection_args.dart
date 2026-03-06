@@ -26,7 +26,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpoint,
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,

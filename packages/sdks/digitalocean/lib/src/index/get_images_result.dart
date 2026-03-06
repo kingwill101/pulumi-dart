@@ -19,7 +19,7 @@ class GetImagesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [images] A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
   /// [sorts] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     this.filters,
     required this.id,
     required this.images,

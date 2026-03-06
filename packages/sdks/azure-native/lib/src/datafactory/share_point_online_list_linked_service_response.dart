@@ -52,7 +52,7 @@ class SharePointOnlineListLinkedServiceResponse {
   /// [tenantId] The tenant ID under which your application resides. You can find it from Azure portal Active Directory overview page. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  SharePointOnlineListLinkedServiceResponse({
+  const SharePointOnlineListLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

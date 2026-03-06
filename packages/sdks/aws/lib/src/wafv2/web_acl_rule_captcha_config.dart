@@ -9,7 +9,7 @@ class WebAclRuleCaptchaConfig {
 
   /// Creates a new [WebAclRuleCaptchaConfig].
   /// [immunityTimeProperty] Defines custom immunity time. See `immunity_time_property` below for details.
-  WebAclRuleCaptchaConfig({
+  const WebAclRuleCaptchaConfig({
     this.immunityTimeProperty,
   });
 

@@ -51,7 +51,7 @@ class DatasetAzureBlobArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [path] The path of the Azure Blob.
   /// [schemaColumns] A `schema_column` block as defined below.
-  DatasetAzureBlobArgs({
+  const DatasetAzureBlobArgs({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

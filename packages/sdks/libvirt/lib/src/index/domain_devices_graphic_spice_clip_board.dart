@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpiceClipBoard {
 
   /// Creates a new [DomainDevicesGraphicSpiceClipBoard].
   /// [copyPaste] Determines whether the copy-paste functionality is enabled for the Spice clipboard.
-  DomainDevicesGraphicSpiceClipBoard({
+  const DomainDevicesGraphicSpiceClipBoard({
     required this.copyPaste,
   });
 

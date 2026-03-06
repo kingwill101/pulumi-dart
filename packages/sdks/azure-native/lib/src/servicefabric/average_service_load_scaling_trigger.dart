@@ -25,7 +25,7 @@ class AverageServiceLoadScalingTrigger {
   /// [scaleInterval] The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
   /// [upperLoadThreshold] The upper limit of the load beyond which a scale out operation should be performed.
   /// [useOnlyPrimaryLoad] Flag determines whether only the load of primary replica should be considered for scaling. If set to true, then trigger will only consider the load of primary replicas of stateful service. If set to false, trigger will consider load of all replicas. This parameter cannot be set to true for stateless service.
-  AverageServiceLoadScalingTrigger({
+  const AverageServiceLoadScalingTrigger({
     required this.kind,
     required this.lowerLoadThreshold,
     required this.metricName,

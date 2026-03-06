@@ -11,7 +11,7 @@ class DataCollectionRuleDestinationsMonitorAccount {
   /// Creates a new [DataCollectionRuleDestinationsMonitorAccount].
   /// [monitorAccountId] The resource ID of the Monitor Account.
   /// [name] The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
-  DataCollectionRuleDestinationsMonitorAccount({
+  const DataCollectionRuleDestinationsMonitorAccount({
     required this.monitorAccountId,
     required this.name,
   });

@@ -8,7 +8,7 @@ class ConnectionApiKey {
 
   /// Creates a new [ConnectionApiKey].
   /// [key] Optional.
-  ConnectionApiKey({
+  const ConnectionApiKey({
     this.key,
   });
 

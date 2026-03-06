@@ -12,7 +12,7 @@ class RelationshipMetadataResponse {
   /// Creates a new [RelationshipMetadataResponse].
   /// [sourceType] The type of the relationship source resource.
   /// [targetType] The type of the relationship target resource.
-  RelationshipMetadataResponse({
+  const RelationshipMetadataResponse({
     required this.sourceType,
     required this.targetType,
   });

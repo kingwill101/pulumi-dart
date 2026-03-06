@@ -9,7 +9,7 @@ class PriorityLevelConfigurationReferencePatch {
 
   /// Creates a new [PriorityLevelConfigurationReferencePatch].
   /// [name] `name` is the name of the priority level configuration being referenced Required.
-  PriorityLevelConfigurationReferencePatch({
+  const PriorityLevelConfigurationReferencePatch({
     this.name,
   });
 

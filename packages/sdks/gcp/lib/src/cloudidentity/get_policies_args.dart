@@ -12,7 +12,7 @@ class GetPoliciesArgs {
 
   /// Creates a new [GetPoliciesArgs].
   /// [filter] Filter expression for listing policies, as documented in the Cloud Identity Policy API policies.list method.
-  GetPoliciesArgs({
+  const GetPoliciesArgs({
     this.filter,
   });
 

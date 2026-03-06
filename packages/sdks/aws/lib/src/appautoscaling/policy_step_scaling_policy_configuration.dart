@@ -182,7 +182,7 @@ class PolicyStepScalingPolicyConfiguration {
   /// [metricAggregationType] Aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
   /// [minAdjustmentMagnitude] Minimum number to adjust your scalable dimension as a result of a scaling activity. If the adjustment type is PercentChangeInCapacity, the scaling policy changes the scalable dimension of the scalable target by this amount.
   /// [stepAdjustments] Set of adjustments that manage scaling. These have the following structure:
-  PolicyStepScalingPolicyConfiguration({
+  const PolicyStepScalingPolicyConfiguration({
     this.adjustmentType,
     this.cooldown,
     this.metricAggregationType,

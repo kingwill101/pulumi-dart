@@ -17,7 +17,7 @@ class GetFeatureViewArgs {
   /// [featureViewId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureViewArgs({
+  const GetFeatureViewArgs({
     required this.featureOnlineStoreId,
     required this.featureViewId,
     required this.location,

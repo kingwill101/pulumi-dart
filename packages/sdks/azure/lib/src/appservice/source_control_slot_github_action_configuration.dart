@@ -19,7 +19,7 @@ class SourceControlSlotGithubActionConfiguration {
   /// [containerConfiguration] A `container_configuration` block as detailed below.
   /// [generateWorkflowFile] Should the service generate the GitHub Action Workflow file. Defaults to `true` Changing this forces a new resource to be created.
   /// [linuxAction] Denotes this action uses a Linux base image.
-  SourceControlSlotGithubActionConfiguration({
+  const SourceControlSlotGithubActionConfiguration({
     this.codeConfiguration,
     this.containerConfiguration,
     this.generateWorkflowFile,

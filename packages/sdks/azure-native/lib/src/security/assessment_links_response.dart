@@ -9,7 +9,7 @@ class AssessmentLinksResponse {
 
   /// Creates a new [AssessmentLinksResponse].
   /// [azurePortalUri] Link to assessment in Azure Portal
-  AssessmentLinksResponse({
+  const AssessmentLinksResponse({
     required this.azurePortalUri,
   });
 

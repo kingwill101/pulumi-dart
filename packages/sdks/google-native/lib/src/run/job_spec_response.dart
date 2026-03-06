@@ -10,7 +10,7 @@ class JobSpecResponse {
 
   /// Creates a new [JobSpecResponse].
   /// [template] Optional. Describes the execution that will be created when running a job.
-  JobSpecResponse({
+  const JobSpecResponse({
     required this.template,
   });
 

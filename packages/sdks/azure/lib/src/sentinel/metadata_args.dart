@@ -76,7 +76,7 @@ class MetadataArgs {
   /// [threatAnalysisTechniques] Specifies a list of techniques the resource covers.
   /// [version] Version of the content.
   /// [workspaceId] The ID of the Log Analytics Workspace. Changing this forces a new Sentinel Metadata to be created.
-  MetadataArgs({
+  const MetadataArgs({
     this.author,
     this.category,
     required this.contentId,

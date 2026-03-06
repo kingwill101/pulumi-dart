@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange {
   /// Creates a new [GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange].
   /// [from] Required.
   /// [to] Required.
-  GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange({
+  const GetNetworkInsightsAnalysisExplanationSecurityGroupRulePortRange({
     required this.from,
     required this.to,
   });

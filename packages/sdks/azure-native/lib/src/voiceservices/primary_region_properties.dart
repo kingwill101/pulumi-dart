@@ -18,7 +18,7 @@ class PrimaryRegionProperties {
   /// [allowedSignalingSourceAddressPrefixes] The allowed source IP addresses or CIDR ranges for signaling
   /// [esrpAddresses] IP address to use to contact the ESRP from this region
   /// [operatorAddresses] IP address to use to contact the operator network from this region
-  PrimaryRegionProperties({
+  const PrimaryRegionProperties({
     this.allowedMediaSourceAddressPrefixes,
     this.allowedSignalingSourceAddressPrefixes,
     this.esrpAddresses,

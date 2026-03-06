@@ -18,7 +18,7 @@ class GetClusterPersistenceConfigRdbConfig {
   /// Creates a new [GetClusterPersistenceConfigRdbConfig].
   /// [rdbSnapshotPeriod] Optional. Available snapshot periods for scheduling.
   /// [rdbSnapshotStartTime] The time that the first snapshot was/will be attempted, and to which
-  GetClusterPersistenceConfigRdbConfig({
+  const GetClusterPersistenceConfigRdbConfig({
     required this.rdbSnapshotPeriod,
     required this.rdbSnapshotStartTime,
   });

@@ -18,7 +18,7 @@ class GetPolicyArgs {
   /// [namespaceName] The name of the namespace.
   /// [policyName] The name of the Policy tracked resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.namespaceName,
     required this.policyName,
     required this.resourceGroupName,

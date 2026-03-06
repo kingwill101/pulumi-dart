@@ -12,7 +12,7 @@ class GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse].
   /// [expiresAt] Timestamp of the cert expiration instance.
   /// [x509Certificate] Self-signed public certificate.
-  GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse({
+  const GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse({
     required this.expiresAt,
     required this.x509Certificate,
   });

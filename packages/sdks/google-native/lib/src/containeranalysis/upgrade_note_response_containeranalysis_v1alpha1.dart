@@ -17,7 +17,7 @@ class UpgradeNoteResponseContaineranalysisV1alpha1 {
   /// [distributions] Metadata about the upgrade for each specific operating system.
   /// [package] Required - The package this Upgrade is for.
   /// [version] Required - The version of the package in machine + human readable form.
-  UpgradeNoteResponseContaineranalysisV1alpha1({
+  const UpgradeNoteResponseContaineranalysisV1alpha1({
     required this.distributions,
     required this.package,
     required this.version,

@@ -28,7 +28,7 @@ class ManagedHardwareSecurityModuleRoleDefinitionState {
   /// [resourceManagerId] The ID of the role definition resource without Key Vault base URL.
   /// [roleName] Specify a display name for this Key Vault Managed Hardware Security Module Role Definition.
   /// [roleType] The type of the role definition. Possible values are `AKVBuiltInRole` and `CustomRole`.
-  ManagedHardwareSecurityModuleRoleDefinitionState({
+  const ManagedHardwareSecurityModuleRoleDefinitionState({
     this.description,
     this.managedHsmId,
     this.name,

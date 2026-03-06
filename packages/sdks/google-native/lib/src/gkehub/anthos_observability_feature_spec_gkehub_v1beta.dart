@@ -10,7 +10,7 @@ class AnthosObservabilityFeatureSpecGkehubV1beta {
 
   /// Creates a new [AnthosObservabilityFeatureSpecGkehubV1beta].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships
-  AnthosObservabilityFeatureSpecGkehubV1beta({
+  const AnthosObservabilityFeatureSpecGkehubV1beta({
     this.defaultMembershipSpec,
   });
 

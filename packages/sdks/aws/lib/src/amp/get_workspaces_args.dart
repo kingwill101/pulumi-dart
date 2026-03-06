@@ -15,7 +15,7 @@ class GetWorkspacesArgs {
   /// Creates a new [GetWorkspacesArgs].
   /// [aliasPrefix] Limits results to workspaces with aliases that begin with this value.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetWorkspacesArgs({
+  const GetWorkspacesArgs({
     this.aliasPrefix,
     this.region,
   });

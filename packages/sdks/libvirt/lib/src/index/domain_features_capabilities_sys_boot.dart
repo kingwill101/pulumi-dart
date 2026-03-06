@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysBoot {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysBoot].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysBoot({
+  const DomainFeaturesCapabilitiesSysBoot({
     this.state,
   });
 

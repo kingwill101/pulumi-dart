@@ -18,7 +18,7 @@ class DataflowBuiltInTransformationFilterResponse {
   /// [expression] Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 &lt; 0 || $1 &gt; $2 (Assuming inputs section $1 and $2 are provided)
   /// [inputs] List of fields for filtering in JSON path expression.
   /// [type] The type of dataflow operation.
-  DataflowBuiltInTransformationFilterResponse({
+  const DataflowBuiltInTransformationFilterResponse({
     this.description,
     required this.expression,
     required this.inputs,

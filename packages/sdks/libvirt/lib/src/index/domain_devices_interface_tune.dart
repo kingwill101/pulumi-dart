@@ -8,7 +8,7 @@ class DomainDevicesInterfaceTune {
 
   /// Creates a new [DomainDevicesInterfaceTune].
   /// [sndBuf] Specifies the size of the sound buffer for the network interface.
-  DomainDevicesInterfaceTune({
+  const DomainDevicesInterfaceTune({
     required this.sndBuf,
   });
 

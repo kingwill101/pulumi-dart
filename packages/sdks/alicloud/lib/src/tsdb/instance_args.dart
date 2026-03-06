@@ -61,7 +61,7 @@ class InstanceArgs {
   /// [paymentType] The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.appKey,
     this.diskCategory,
     this.duration,

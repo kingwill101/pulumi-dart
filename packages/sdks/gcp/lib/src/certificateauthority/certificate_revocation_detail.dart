@@ -13,7 +13,7 @@ class CertificateRevocationDetail {
   /// Creates a new [CertificateRevocationDetail].
   /// [revocationState] (Output)
   /// [revocationTime] (Output)
-  CertificateRevocationDetail({
+  const CertificateRevocationDetail({
     this.revocationState,
     this.revocationTime,
   });

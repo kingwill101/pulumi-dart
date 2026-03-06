@@ -8,7 +8,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
 
   /// Creates a new [RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository].
   /// [uri] Specific uri to the registry, e.g. `"https://pypi.io"`
-  RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository({
+  const RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository({
     this.uri,
   });
 

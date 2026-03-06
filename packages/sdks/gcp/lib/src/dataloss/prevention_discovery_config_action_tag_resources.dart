@@ -17,7 +17,7 @@ class PreventionDiscoveryConfigActionTagResources {
   /// [lowerDataRiskToLow] Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.
   /// [profileGenerationsToTags] The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
   /// [tagConditions] The tags to associate with different conditions.
-  PreventionDiscoveryConfigActionTagResources({
+  const PreventionDiscoveryConfigActionTagResources({
     this.lowerDataRiskToLow,
     this.profileGenerationsToTags,
     this.tagConditions,

@@ -29,7 +29,7 @@ class GetLBFrontendIpConfiguration {
   /// [publicIpAddressId] The ID of a  Public IP Address which is associated with this Load Balancer.
   /// [subnetId] The ID of the Subnet which is associated with the IP Configuration.
   /// [zones] A list of Availability Zones which the Load Balancer's IP Addresses should be created in.
-  GetLBFrontendIpConfiguration({
+  const GetLBFrontendIpConfiguration({
     required this.id,
     required this.name,
     required this.privateIpAddress,

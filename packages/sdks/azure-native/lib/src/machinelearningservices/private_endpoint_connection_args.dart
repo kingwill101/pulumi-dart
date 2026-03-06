@@ -36,7 +36,7 @@ class PrivateEndpointConnectionArgs {
   /// [sku] The sku of the workspace.
   /// [tags] Contains resource tags defined as key/value pairs.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.identity,
     this.location,
     this.privateEndpointConnectionName,

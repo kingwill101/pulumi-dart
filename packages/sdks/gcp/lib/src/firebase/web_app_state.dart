@@ -31,7 +31,7 @@ class WebAppState {
   /// [displayName] The user-assigned display name of the App.
   /// [name] The fully qualified resource name of the App, for example:
   /// [project] The ID of the project in which the resource belongs.
-  WebAppState({
+  const WebAppState({
     this.apiKeyId,
     this.appId,
     this.appUrls,

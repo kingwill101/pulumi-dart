@@ -15,7 +15,7 @@ class TeradataPartitionSettingsResponse {
   /// [partitionColumnName] The name of the column that will be used for proceeding range or hash partitioning. Type: string (or Expression with resultType string).
   /// [partitionLowerBound] The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   /// [partitionUpperBound] The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  TeradataPartitionSettingsResponse({
+  const TeradataPartitionSettingsResponse({
     this.partitionColumnName,
     this.partitionLowerBound,
     this.partitionUpperBound,

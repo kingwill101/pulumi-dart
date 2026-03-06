@@ -21,7 +21,7 @@ class GetSessionEntityTypeArgs {
   /// [project] Optional.
   /// [sessionId] Required.
   /// [userId] Required.
-  GetSessionEntityTypeArgs({
+  const GetSessionEntityTypeArgs({
     required this.entityTypeId,
     required this.environmentId,
     required this.location,

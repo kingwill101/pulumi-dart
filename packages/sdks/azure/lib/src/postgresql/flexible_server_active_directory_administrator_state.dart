@@ -24,7 +24,7 @@ class FlexibleServerActiveDirectoryAdministratorState {
   /// [resourceGroupName] The name of the resource group for the PostgreSQL Server. Changing this forces a new resource to be created.
   /// [serverName] The name of the PostgreSQL Flexible Server on which to set the administrator. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID. Changing this forces a new resource to be created.
-  FlexibleServerActiveDirectoryAdministratorState({
+  const FlexibleServerActiveDirectoryAdministratorState({
     this.objectId,
     this.principalName,
     this.principalType,

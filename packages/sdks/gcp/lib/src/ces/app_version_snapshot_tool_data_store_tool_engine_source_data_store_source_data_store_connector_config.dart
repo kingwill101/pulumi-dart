@@ -18,7 +18,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreCon
   /// [collection] (Output)
   /// [collectionDisplayName] (Output)
   /// [dataSource] (Output)
-  AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig({
+  const AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig({
     this.collection,
     this.collectionDisplayName,
     this.dataSource,

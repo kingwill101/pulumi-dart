@@ -33,7 +33,7 @@ class Hl7StoreIamMemberState {
   /// [hl7V2StoreId] The HL7v2 store ID, in the form
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  Hl7StoreIamMemberState({
+  const Hl7StoreIamMemberState({
     this.condition,
     this.etag,
     this.hl7V2StoreId,

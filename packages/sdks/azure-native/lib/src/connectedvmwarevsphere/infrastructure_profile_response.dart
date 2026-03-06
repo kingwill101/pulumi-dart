@@ -36,7 +36,7 @@ class InfrastructureProfileResponse {
   /// [smbiosUuid] Gets or sets the SMBIOS UUID of the vm.
   /// [templateId] Gets or sets the ARM Id of the template resource to deploy the virtual machine.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
-  InfrastructureProfileResponse({
+  const InfrastructureProfileResponse({
     required this.customResourceName,
     this.firmwareType,
     required this.folderPath,

@@ -11,7 +11,7 @@ class SoftwareUpdateConfigurationPreTask {
   /// Creates a new [SoftwareUpdateConfigurationPreTask].
   /// [parameters] Specifies a map of parameters for the task.
   /// [source] The name of the runbook for the pre task.
-  SoftwareUpdateConfigurationPreTask({
+  const SoftwareUpdateConfigurationPreTask({
     this.parameters,
     this.source,
   });

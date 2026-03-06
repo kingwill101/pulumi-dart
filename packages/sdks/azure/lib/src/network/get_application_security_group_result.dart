@@ -18,7 +18,7 @@ class GetApplicationSecurityGroupResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the resource.
-  GetApplicationSecurityGroupResult({
+  const GetApplicationSecurityGroupResult({
     required this.id,
     required this.location,
     required this.name,

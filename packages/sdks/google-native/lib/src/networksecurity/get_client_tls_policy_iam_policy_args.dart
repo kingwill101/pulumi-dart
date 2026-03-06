@@ -17,7 +17,7 @@ class GetClientTlsPolicyIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetClientTlsPolicyIamPolicyArgs({
+  const GetClientTlsPolicyIamPolicyArgs({
     required this.clientTlsPolicyId,
     required this.location,
     this.optionsRequestedPolicyVersion,

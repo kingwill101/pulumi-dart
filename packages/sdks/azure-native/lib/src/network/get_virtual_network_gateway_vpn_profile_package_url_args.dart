@@ -15,7 +15,7 @@ class GetVirtualNetworkGatewayVpnProfilePackageUrlArgs {
   /// Creates a new [GetVirtualNetworkGatewayVpnProfilePackageUrlArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  GetVirtualNetworkGatewayVpnProfilePackageUrlArgs({
+  const GetVirtualNetworkGatewayVpnProfilePackageUrlArgs({
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,
   });

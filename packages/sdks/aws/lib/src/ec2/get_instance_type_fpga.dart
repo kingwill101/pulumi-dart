@@ -14,7 +14,7 @@ class GetInstanceTypeFpga {
   /// [manufacturer] Required.
   /// [memorySize] Size of the instance memory, in MiB.
   /// [name] Required.
-  GetInstanceTypeFpga({
+  const GetInstanceTypeFpga({
     required this.count,
     required this.manufacturer,
     required this.memorySize,

@@ -8,7 +8,7 @@ class FeatureSpecRbacrolebindingactuation {
 
   /// Creates a new [FeatureSpecRbacrolebindingactuation].
   /// [allowedCustomRoles] The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
-  FeatureSpecRbacrolebindingactuation({
+  const FeatureSpecRbacrolebindingactuation({
     this.allowedCustomRoles,
   });
 

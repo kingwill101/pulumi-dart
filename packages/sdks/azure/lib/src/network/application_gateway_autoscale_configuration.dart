@@ -11,7 +11,7 @@ class ApplicationGatewayAutoscaleConfiguration {
   /// Creates a new [ApplicationGatewayAutoscaleConfiguration].
   /// [maxCapacity] Maximum capacity for autoscaling. Accepted values are in the range `2` to `125`.
   /// [minCapacity] Minimum capacity for autoscaling. Accepted values are in the range `0` to `100`.
-  ApplicationGatewayAutoscaleConfiguration({
+  const ApplicationGatewayAutoscaleConfiguration({
     this.maxCapacity,
     required this.minCapacity,
   });

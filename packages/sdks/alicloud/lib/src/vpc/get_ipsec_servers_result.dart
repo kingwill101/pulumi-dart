@@ -28,7 +28,7 @@ class GetIpsecServersResult {
   /// [outputFile] Optional.
   /// [servers] A list of Vpn Ipsec Servers. Each element contains the following attributes:
   /// [vpnGatewayId] The ID of the VPN gateway.
-  GetIpsecServersResult({
+  const GetIpsecServersResult({
     required this.id,
     required this.ids,
     this.ipsecServerName,

@@ -16,7 +16,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResp
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user.
   /// [variations] Configuration blocks for message variations to send to the user.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup({
     this.message,
     this.variations,
   });

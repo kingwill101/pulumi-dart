@@ -8,7 +8,7 @@ class DomainDevicesDiskSourceVhostVdpa {
 
   /// Creates a new [DomainDevicesDiskSourceVhostVdpa].
   /// [dev] Specifies the device to be used for the VHostVDPA source in the backing store.
-  DomainDevicesDiskSourceVhostVdpa({
+  const DomainDevicesDiskSourceVhostVdpa({
     required this.dev,
   });
 

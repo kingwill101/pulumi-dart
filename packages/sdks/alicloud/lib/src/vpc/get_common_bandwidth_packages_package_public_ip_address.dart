@@ -11,7 +11,7 @@ class GetCommonBandwidthPackagesPackagePublicIpAddress {
   /// [allocationId] Required.
   /// [bandwidthPackageIpRelationStatus] Required.
   /// [ipAddress] Required.
-  GetCommonBandwidthPackagesPackagePublicIpAddress({
+  const GetCommonBandwidthPackagesPackagePublicIpAddress({
     required this.allocationId,
     required this.bandwidthPackageIpRelationStatus,
     required this.ipAddress,

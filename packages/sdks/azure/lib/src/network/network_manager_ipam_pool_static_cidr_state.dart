@@ -22,7 +22,7 @@ class NetworkManagerIpamPoolStaticCidrState {
   /// [ipamPoolId] The ID of the Network Manager IP Address Management (IPAM) Pool. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   /// [name] The name which should be used for this Network Manager IPAM Pool Static CIDR. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   /// [numberOfIpAddressesToAllocate] The number of IP addresses to allocate to the Static CIDR. The value must be a string representing a positive integer which is a positive power of 2, e.g., `"16"`.
-  NetworkManagerIpamPoolStaticCidrState({
+  const NetworkManagerIpamPoolStaticCidrState({
     this.addressPrefixes,
     this.ipamPoolId,
     this.name,

@@ -21,7 +21,7 @@ class PostgresqlProfile {
   /// [password] Password for the PostgreSQL connection.
   /// [port] Port for the PostgreSQL connection, default value is 5432.
   /// [username] Username for the PostgreSQL connection.
-  PostgresqlProfile({
+  const PostgresqlProfile({
     required this.database,
     required this.hostname,
     required this.password,

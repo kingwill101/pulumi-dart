@@ -26,7 +26,7 @@ class PluginInstanceAuthConfigApiKeyConfig {
   /// [apiKey] Secret provides a reference to entries in Secret Manager.
   /// [httpElementLocation] The location of the API key.
   /// [name] The parameter name of the API key.
-  PluginInstanceAuthConfigApiKeyConfig({
+  const PluginInstanceAuthConfigApiKeyConfig({
     required this.apiKey,
     required this.httpElementLocation,
     required this.name,

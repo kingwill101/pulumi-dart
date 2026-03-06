@@ -41,7 +41,7 @@ class ConsumerPscConnectionResponse {
   /// [pscConnectionId] The PSC connection id of the PSC forwarding rule connected to the service attachments in this service connection map.
   /// [serviceAttachmentUri] The URI of a service attachment which is the target of the PSC connection.
   /// [state] The state of the PSC connection.
-  ConsumerPscConnectionResponse({
+  const ConsumerPscConnectionResponse({
     required this.error,
     required this.errorInfo,
     required this.errorType,

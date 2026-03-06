@@ -13,7 +13,7 @@ class FeatureSpecResponse {
   /// Creates a new [FeatureSpecResponse].
   /// [defaultConfig] Specifies default membership spec. Users can override the default in the member_configs for each member.
   /// [provisionGoogleCa] Immutable. Specifies CA configuration.
-  FeatureSpecResponse({
+  const FeatureSpecResponse({
     required this.defaultConfig,
     required this.provisionGoogleCa,
   });

@@ -14,7 +14,7 @@ class CloudProviderProfile {
   /// Creates a new [CloudProviderProfile].
   /// [infraNetworkProfile] InfraNetworkProfile - List of infra network profiles for the provisioned cluster
   /// [infraStorageProfile] InfraStorageProfile - List of infra storage profiles for the provisioned cluster
-  CloudProviderProfile({
+  const CloudProviderProfile({
     this.infraNetworkProfile,
     this.infraStorageProfile,
   });

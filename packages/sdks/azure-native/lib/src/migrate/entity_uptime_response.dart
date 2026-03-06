@@ -12,7 +12,7 @@ class EntityUptimeResponse {
   /// Creates a new [EntityUptimeResponse].
   /// [daysPerMonth] Gets the days per month.
   /// [hoursPerDay] Gets the hours per day.
-  EntityUptimeResponse({
+  const EntityUptimeResponse({
     this.daysPerMonth,
     this.hoursPerDay,
   });

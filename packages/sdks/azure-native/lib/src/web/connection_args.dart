@@ -27,7 +27,7 @@ class ConnectionArgs {
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags
-  ConnectionArgs({
+  const ConnectionArgs({
     this.connectionName,
     this.location,
     this.properties,

@@ -12,7 +12,7 @@ class MongoDbShardKeyFieldResponse {
   /// Creates a new [MongoDbShardKeyFieldResponse].
   /// [name] The name of the field
   /// [order] The field ordering
-  MongoDbShardKeyFieldResponse({
+  const MongoDbShardKeyFieldResponse({
     required this.name,
     required this.order,
   });

@@ -28,7 +28,7 @@ class HybridIdentityMetadatumArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Parameter for the name of the provisioned cluster
   /// [resourceUid] Unique id of the parent provisioned cluster resource.
-  HybridIdentityMetadatumArgs({
+  const HybridIdentityMetadatumArgs({
     this.hybridIdentityMetadataResourceName,
     this.identity,
     this.publicKey,

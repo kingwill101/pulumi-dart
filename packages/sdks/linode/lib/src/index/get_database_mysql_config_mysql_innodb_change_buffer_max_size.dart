@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize({
+  const GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize({
     required this.description,
     required this.example,
     required this.maximum,

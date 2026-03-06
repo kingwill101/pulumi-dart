@@ -56,7 +56,7 @@ class PolardbxInstanceArgs {
   /// [topologyType] Topology type:
   /// [vpcId] The VPC ID.
   /// [vswitchId] The ID of the virtual switch.
-  PolardbxInstanceArgs({
+  const PolardbxInstanceArgs({
     required this.cnClass,
     required this.cnNodeCount,
     this.description,

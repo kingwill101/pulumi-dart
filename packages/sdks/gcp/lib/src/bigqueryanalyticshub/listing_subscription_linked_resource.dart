@@ -13,7 +13,7 @@ class ListingSubscriptionLinkedResource {
   /// Creates a new [ListingSubscriptionLinkedResource].
   /// [linkedDataset] (Output)
   /// [listing] (Output)
-  ListingSubscriptionLinkedResource({
+  const ListingSubscriptionLinkedResource({
     this.linkedDataset,
     this.listing,
   });

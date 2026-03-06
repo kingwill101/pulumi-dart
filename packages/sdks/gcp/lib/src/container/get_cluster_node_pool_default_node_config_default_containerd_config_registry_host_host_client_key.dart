@@ -8,7 +8,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost
 
   /// Creates a new [GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the private key.
-  GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey({
+  const GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey({
     required this.gcpSecretManagerSecretUri,
   });
 

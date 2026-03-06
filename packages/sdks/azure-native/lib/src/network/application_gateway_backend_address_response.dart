@@ -12,7 +12,7 @@ class ApplicationGatewayBackendAddressResponse {
   /// Creates a new [ApplicationGatewayBackendAddressResponse].
   /// [fqdn] Fully qualified domain name (FQDN).
   /// [ipAddress] IP address.
-  ApplicationGatewayBackendAddressResponse({
+  const ApplicationGatewayBackendAddressResponse({
     this.fqdn,
     this.ipAddress,
   });

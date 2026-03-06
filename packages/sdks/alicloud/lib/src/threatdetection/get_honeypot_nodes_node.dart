@@ -27,7 +27,7 @@ class GetHoneypotNodesNode {
   /// [nodeName] The name of the management node.
   /// [securityGroupProbeIpLists] Release the collection of network segments.
   /// [status] Required.
-  GetHoneypotNodesNode({
+  const GetHoneypotNodesNode({
     required this.allowHoneypotAccessInternet,
     required this.availableProbeNum,
     required this.createTime,

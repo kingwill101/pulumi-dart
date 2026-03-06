@@ -28,7 +28,7 @@ class GetMetricRuleTemplatesResult {
   /// [outputFile] Optional.
   /// [templateId] Optional.
   /// [templates] Required.
-  GetMetricRuleTemplatesResult({
+  const GetMetricRuleTemplatesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

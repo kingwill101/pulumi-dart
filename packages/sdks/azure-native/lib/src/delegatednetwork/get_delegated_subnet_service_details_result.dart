@@ -41,7 +41,7 @@ class GetDelegatedSubnetServiceDetailsResult {
   /// [subnetDetails] subnet details
   /// [tags] The resource tags.
   /// [type] The type of resource.
-  GetDelegatedSubnetServiceDetailsResult({
+  const GetDelegatedSubnetServiceDetailsResult({
     this.allocationBlockPrefixSize,
     required this.azureApiVersion,
     this.controllerDetails,

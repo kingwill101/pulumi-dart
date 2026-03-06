@@ -11,7 +11,7 @@ class ServiceDnsConfigDnsRecord {
   /// Creates a new [ServiceDnsConfigDnsRecord].
   /// [ttl] The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
   /// [type] The type of the resource, which indicates the value that Amazon Route 53 returns in response to DNS queries. Valid Values: A, AAAA, SRV, CNAME
-  ServiceDnsConfigDnsRecord({
+  const ServiceDnsConfigDnsRecord({
     required this.ttl,
     required this.type,
   });

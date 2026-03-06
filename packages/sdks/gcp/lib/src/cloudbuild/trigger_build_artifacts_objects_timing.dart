@@ -17,7 +17,7 @@ class TriggerBuildArtifactsObjectsTiming {
   /// Creates a new [TriggerBuildArtifactsObjectsTiming].
   /// [endTime] End of time span.
   /// [startTime] Start of time span.
-  TriggerBuildArtifactsObjectsTiming({
+  const TriggerBuildArtifactsObjectsTiming({
     this.endTime,
     this.startTime,
   });

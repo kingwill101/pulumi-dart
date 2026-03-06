@@ -11,7 +11,7 @@ class DomainDevicesSerialSourceTcpReconnect {
   /// Creates a new [DomainDevicesSerialSourceTcpReconnect].
   /// [enabled] Enables or disables the automatic reconnection feature for the UNIX domain socket.
   /// [timeout] Sets the timeout duration for reconnections in the UNIX socket settings.
-  DomainDevicesSerialSourceTcpReconnect({
+  const DomainDevicesSerialSourceTcpReconnect({
     required this.enabled,
     this.timeout,
   });

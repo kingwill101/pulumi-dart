@@ -28,7 +28,7 @@ class JobTarget {
   /// [serverName] The target server name.
   /// [shardMapName] The target shard map.
   /// [type] The target type.
-  JobTarget({
+  const JobTarget({
     this.databaseName,
     this.elasticPoolName,
     this.membershipType,

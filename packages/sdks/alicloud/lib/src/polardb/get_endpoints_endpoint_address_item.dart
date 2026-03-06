@@ -23,7 +23,7 @@ class GetEndpointsEndpointAddressItem {
   /// [port] Intranet connection port.
   /// [vpcId] ID of the VPC the instance belongs to.
   /// [vswitchId] ID of the vSwitch the cluster belongs to.
-  GetEndpointsEndpointAddressItem({
+  const GetEndpointsEndpointAddressItem({
     required this.connectionString,
     required this.ipAddress,
     required this.netType,

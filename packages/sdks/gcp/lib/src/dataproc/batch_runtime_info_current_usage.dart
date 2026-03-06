@@ -33,7 +33,7 @@ class BatchRuntimeInfoCurrentUsage {
   /// [shuffleStorageGb] (Output)
   /// [shuffleStorageGbPremium] (Output)
   /// [snapshotTime] (Output)
-  BatchRuntimeInfoCurrentUsage({
+  const BatchRuntimeInfoCurrentUsage({
     this.acceleratorType,
     this.milliAccelerator,
     this.milliDcu,

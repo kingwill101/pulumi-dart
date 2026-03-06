@@ -18,7 +18,7 @@ class CreatorPropertiesResponse {
   /// [provisioningState] The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
   /// [storageUnits] The storage units to be allocated. Integer values from 1 to 100, inclusive.
   /// [totalStorageUnitSizeInBytes] The total allocated storage unit size in bytes for the creator resource.
-  CreatorPropertiesResponse({
+  const CreatorPropertiesResponse({
     this.consumedStorageUnitSizeInBytes,
     required this.provisioningState,
     required this.storageUnits,

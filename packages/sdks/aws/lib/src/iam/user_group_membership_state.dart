@@ -12,7 +12,7 @@ class UserGroupMembershipState {
   /// Creates a new [UserGroupMembershipState].
   /// [groups] A list of IAM Groups to add the user to
   /// [user] The name of the IAM User to add to groups
-  UserGroupMembershipState({
+  const UserGroupMembershipState({
     this.groups,
     this.user,
   });

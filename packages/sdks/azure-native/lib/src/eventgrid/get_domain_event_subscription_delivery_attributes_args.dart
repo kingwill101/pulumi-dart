@@ -18,7 +18,7 @@ class GetDomainEventSubscriptionDeliveryAttributesArgs {
   /// [domainName] Name of the domain.
   /// [eventSubscriptionName] Name of the event subscription.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetDomainEventSubscriptionDeliveryAttributesArgs({
+  const GetDomainEventSubscriptionDeliveryAttributesArgs({
     required this.domainName,
     required this.eventSubscriptionName,
     required this.resourceGroupName,

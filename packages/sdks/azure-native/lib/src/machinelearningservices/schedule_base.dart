@@ -14,7 +14,7 @@ class ScheduleBase {
   /// [id] A system assigned id for the schedule.
   /// [provisioningStatus] The current deployment state of schedule.
   /// [status] Is the schedule enabled or disabled?
-  ScheduleBase({
+  const ScheduleBase({
     this.id,
     this.provisioningStatus,
     this.status,

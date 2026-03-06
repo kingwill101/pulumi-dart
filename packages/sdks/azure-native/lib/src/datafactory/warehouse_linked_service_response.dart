@@ -62,7 +62,7 @@ class WarehouseLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
   /// [workspaceId] The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
-  WarehouseLinkedServiceResponse({
+  const WarehouseLinkedServiceResponse({
     this.annotations,
     required this.artifactId,
     this.authenticationType,

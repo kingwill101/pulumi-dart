@@ -13,7 +13,7 @@ class EndpointPropertiesUpdateParametersDeliveryPolicyResponse {
   /// Creates a new [EndpointPropertiesUpdateParametersDeliveryPolicyResponse].
   /// [description] User-friendly description of the policy.
   /// [rules] A list of the delivery rules.
-  EndpointPropertiesUpdateParametersDeliveryPolicyResponse({
+  const EndpointPropertiesUpdateParametersDeliveryPolicyResponse({
     this.description,
     required this.rules,
   });

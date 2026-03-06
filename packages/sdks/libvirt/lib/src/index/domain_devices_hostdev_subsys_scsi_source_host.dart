@@ -13,7 +13,7 @@ class DomainDevicesHostdevSubsysScsiSourceHost {
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceHost].
   /// [adapter] Defines the adapter settings for the SCSI host source.
   /// [address] Specifies the address settings for the SCSI host source.
-  DomainDevicesHostdevSubsysScsiSourceHost({
+  const DomainDevicesHostdevSubsysScsiSourceHost({
     this.adapter,
     this.address,
   });

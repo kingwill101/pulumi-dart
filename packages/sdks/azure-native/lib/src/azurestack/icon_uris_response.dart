@@ -21,7 +21,7 @@ class IconUrisResponse {
   /// [medium] URI to medium icon.
   /// [small] URI to small icon.
   /// [wide] URI to wide icon.
-  IconUrisResponse({
+  const IconUrisResponse({
     this.hero,
     this.large,
     this.medium,

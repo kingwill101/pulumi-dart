@@ -33,7 +33,7 @@ class GetFrontdoorCustomDomainResult {
   /// [resourceGroupName] Required.
   /// [tls] A `tls` block as defined below.
   /// [validationToken] The challenge used for DNS TXT record or file based validation.
-  GetFrontdoorCustomDomainResult({
+  const GetFrontdoorCustomDomainResult({
     required this.cdnFrontdoorProfileId,
     required this.dnsZoneId,
     required this.expirationDate,

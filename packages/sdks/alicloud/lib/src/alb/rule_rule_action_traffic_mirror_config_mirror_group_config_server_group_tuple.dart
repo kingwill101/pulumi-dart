@@ -8,7 +8,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 
   /// Creates a new [RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple].
   /// [serverGroupId] The ID of the destination server group to which requests are forwarded.
-  RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple({
+  const RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple({
     this.serverGroupId,
   });
 

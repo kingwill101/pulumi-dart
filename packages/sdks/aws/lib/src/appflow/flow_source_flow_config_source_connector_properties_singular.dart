@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSingular {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSingular].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesSingular({
+  const FlowSourceFlowConfigSourceConnectorPropertiesSingular({
     required this.object_,
   });
 

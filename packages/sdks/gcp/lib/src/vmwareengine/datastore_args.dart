@@ -36,7 +36,7 @@ class DatastoreArgs {
   /// [name] The user-provided identifier of the datastore to be created.
   /// [nfsDatastore] The NFS datastore configuration.
   /// [project] The ID of the project in which the resource belongs.
-  DatastoreArgs({
+  const DatastoreArgs({
     this.description,
     required this.location,
     this.name,

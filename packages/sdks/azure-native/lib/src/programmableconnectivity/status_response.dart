@@ -12,7 +12,7 @@ class StatusResponse {
   /// Creates a new [StatusResponse].
   /// [reason] Explanation of the current state of the OperatorApiConnection resource.
   /// [state] Current state of the OperatorApiConnection resource.
-  StatusResponse({
+  const StatusResponse({
     this.reason,
     this.state,
   });

@@ -15,7 +15,7 @@ class GetRdsDbInstanceArgs {
   /// Creates a new [GetRdsDbInstanceArgs].
   /// [name] Name of RdsDBInstance
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRdsDbInstanceArgs({
+  const GetRdsDbInstanceArgs({
     required this.name,
     required this.resourceGroupName,
   });

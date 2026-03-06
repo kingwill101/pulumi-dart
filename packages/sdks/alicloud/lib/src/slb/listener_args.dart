@@ -97,7 +97,7 @@ class ListenerArgs {
   /// [tlsCipherPolicy] Optional.
   /// [unhealthyThreshold] Optional.
   /// [xForwardedFor] Whether to set additional HTTP Header field "X-Forwarded-For".
-  ListenerArgs({
+  const ListenerArgs({
     this.aclId,
     this.aclIds,
     this.aclStatus,

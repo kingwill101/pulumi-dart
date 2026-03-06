@@ -9,7 +9,7 @@ class JWTAuthenticatorClaimMappingExpression {
 
   /// Creates a new [JWTAuthenticatorClaimMappingExpression].
   /// [expression] The CEL expression used to access token claims.
-  JWTAuthenticatorClaimMappingExpression({
+  const JWTAuthenticatorClaimMappingExpression({
     required this.expression,
   });
 

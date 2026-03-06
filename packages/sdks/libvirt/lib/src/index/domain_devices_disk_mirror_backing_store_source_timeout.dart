@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceTimeout {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceTimeout].
   /// [seconds] Specifies the duration in seconds for the timeout configuration in disk mirroring.
-  DomainDevicesDiskMirrorBackingStoreSourceTimeout({
+  const DomainDevicesDiskMirrorBackingStoreSourceTimeout({
     required this.seconds,
   });
 

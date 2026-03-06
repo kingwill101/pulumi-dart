@@ -9,7 +9,7 @@ class EdifactMessageIdentifierResponse {
 
   /// Creates a new [EdifactMessageIdentifierResponse].
   /// [messageId] The message id on which this envelope settings has to be applied.
-  EdifactMessageIdentifierResponse({
+  const EdifactMessageIdentifierResponse({
     required this.messageId,
   });
 

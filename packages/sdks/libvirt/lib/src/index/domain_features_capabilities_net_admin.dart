@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesNetAdmin {
 
   /// Creates a new [DomainFeaturesCapabilitiesNetAdmin].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesNetAdmin({
+  const DomainFeaturesCapabilitiesNetAdmin({
     this.state,
   });
 

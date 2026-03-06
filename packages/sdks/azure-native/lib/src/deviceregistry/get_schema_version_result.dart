@@ -36,7 +36,7 @@ class GetSchemaVersionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Globally unique, immutable, non-reusable id.
-  GetSchemaVersionResult({
+  const GetSchemaVersionResult({
     required this.azureApiVersion,
     this.description,
     required this.hash,

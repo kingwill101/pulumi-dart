@@ -13,7 +13,7 @@ class ListCatalogDeviceInsightsResult {
   /// Creates a new [ListCatalogDeviceInsightsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The DeviceInsight items on this page
-  ListCatalogDeviceInsightsResult({
+  const ListCatalogDeviceInsightsResult({
     this.nextLink,
     required this.value,
   });

@@ -42,7 +42,7 @@ class GetNamespaceNetworkRuleSetResult {
   /// [trustedServiceAccessEnabled] Value that indicates whether Trusted Service Access is Enabled or not.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   /// [virtualNetworkRules] List VirtualNetwork Rules
-  GetNamespaceNetworkRuleSetResult({
+  const GetNamespaceNetworkRuleSetResult({
     required this.azureApiVersion,
     this.defaultAction,
     required this.id,

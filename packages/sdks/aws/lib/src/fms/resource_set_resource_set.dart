@@ -25,7 +25,7 @@ class ResourceSetResourceSet {
   /// [resourceSetStatus] Indicates whether the resource set is in or out of the admin's Region scope. Valid values are `ACTIVE` (Admin can manage and delete the resource set) or `OUT_OF_ADMIN_SCOPE` (Admin can view the resource set, but they can't edit or delete the resource set.)
   /// [resourceTypeLists] Determines the resources that can be associated to the resource set. Depending on your setting for max results and the number of resource sets, a single call might not return the full list.
   /// [updateToken] Optional.
-  ResourceSetResourceSet({
+  const ResourceSetResourceSet({
     this.description,
     this.id,
     this.lastUpdateTime,

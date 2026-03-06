@@ -18,7 +18,7 @@ class SnapshotCreateVolumePermissionArgs {
   /// [accountId] An AWS Account ID to add create volume permissions. The AWS Account cannot be the snapshot's owner
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotId] A snapshot ID
-  SnapshotCreateVolumePermissionArgs({
+  const SnapshotCreateVolumePermissionArgs({
     required this.accountId,
     this.region,
     required this.snapshotId,

@@ -17,7 +17,7 @@ class KafkaClusterMetastores {
   /// [ambari] An `ambari` block as defined below.
   /// [hive] A `hive` block as defined below.
   /// [oozie] An `oozie` block as defined below.
-  KafkaClusterMetastores({
+  const KafkaClusterMetastores({
     this.ambari,
     this.hive,
     this.oozie,

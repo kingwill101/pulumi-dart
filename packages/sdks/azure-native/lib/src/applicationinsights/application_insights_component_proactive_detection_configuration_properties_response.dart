@@ -25,7 +25,7 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRespo
   /// [name] The rule name
   /// [ruleDefinitions] Static definitions of the ProactiveDetection configuration rule (same values for all components).
   /// [sendEmailsToSubscriptionOwners] A flag that indicated whether notifications on this rule should be sent to subscription owners
-  ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse({
+  const ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse({
     this.customEmails,
     this.enabled,
     required this.lastUpdatedTime,

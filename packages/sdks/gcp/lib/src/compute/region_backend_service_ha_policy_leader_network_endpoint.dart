@@ -9,7 +9,7 @@ class RegionBackendServiceHaPolicyLeaderNetworkEndpoint {
 
   /// Creates a new [RegionBackendServiceHaPolicyLeaderNetworkEndpoint].
   /// [instance] The name of the VM instance of the leader network endpoint. The instance must
-  RegionBackendServiceHaPolicyLeaderNetworkEndpoint({
+  const RegionBackendServiceHaPolicyLeaderNetworkEndpoint({
     this.instance,
   });
 

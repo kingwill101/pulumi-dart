@@ -69,7 +69,7 @@ class ExpressGatewayServiceState {
   /// [taskRoleArn] ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// [timeouts] Optional.
   /// [waitForSteadyState] Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
-  ExpressGatewayServiceState({
+  const ExpressGatewayServiceState({
     this.cluster,
     this.cpu,
     this.currentDeployment,

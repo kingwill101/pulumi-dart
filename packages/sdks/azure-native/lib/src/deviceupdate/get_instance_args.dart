@@ -18,7 +18,7 @@ class GetInstanceArgs {
   /// [accountName] Account name.
   /// [instanceName] Instance name.
   /// [resourceGroupName] The resource group name.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.accountName,
     required this.instanceName,
     required this.resourceGroupName,

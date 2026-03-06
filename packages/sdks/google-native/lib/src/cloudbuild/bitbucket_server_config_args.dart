@@ -44,7 +44,7 @@ class BitbucketServerConfigArgs {
   /// [secrets] Secret Manager secrets needed by the config.
   /// [sslCa] Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
   /// [username] Username of the account Cloud Build will use on Bitbucket Server.
-  BitbucketServerConfigArgs({
+  const BitbucketServerConfigArgs({
     required this.apiKey,
     this.bitbucketServerConfigId,
     this.createTime,

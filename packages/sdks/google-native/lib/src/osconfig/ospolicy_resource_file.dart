@@ -20,7 +20,7 @@ class OSPolicyResourceFile {
   /// [gcs] A Cloud Storage object.
   /// [localPath] A local path within the VM to use.
   /// [remote] A generic remote file.
-  OSPolicyResourceFile({
+  const OSPolicyResourceFile({
     this.allowInsecure,
     this.gcs,
     this.localPath,

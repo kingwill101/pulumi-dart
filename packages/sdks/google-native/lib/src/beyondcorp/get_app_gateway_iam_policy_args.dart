@@ -17,7 +17,7 @@ class GetAppGatewayIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAppGatewayIamPolicyArgs({
+  const GetAppGatewayIamPolicyArgs({
     required this.appGatewayId,
     required this.location,
     this.optionsRequestedPolicyVersion,

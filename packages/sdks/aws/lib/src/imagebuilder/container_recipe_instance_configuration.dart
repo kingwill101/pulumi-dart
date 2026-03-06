@@ -12,7 +12,7 @@ class ContainerRecipeInstanceConfiguration {
   /// Creates a new [ContainerRecipeInstanceConfiguration].
   /// [blockDeviceMappings] Configuration block(s) with block device mappings for the container recipe. Detailed below.
   /// [image] The AMI ID to use as the base image for a container build and test instance. If not specified, Image Builder will use the appropriate ECS-optimized AMI as a base image.
-  ContainerRecipeInstanceConfiguration({
+  const ContainerRecipeInstanceConfiguration({
     this.blockDeviceMappings,
     this.image,
   });

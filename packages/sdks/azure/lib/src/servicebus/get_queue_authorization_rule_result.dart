@@ -42,7 +42,7 @@ class GetQueueAuthorizationRuleResult {
   /// [secondaryConnectionStringAlias] The alias Secondary Connection String for the ServiceBus Namespace
   /// [secondaryKey] The Secondary Key for the ServiceBus Queue authorization Rule.
   /// [send] Required.
-  GetQueueAuthorizationRuleResult({
+  const GetQueueAuthorizationRuleResult({
     required this.id,
     required this.listen,
     required this.manage,

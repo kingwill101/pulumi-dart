@@ -11,7 +11,7 @@ class OneDashboardPageWidgetFunnelInitialSorting {
   /// Creates a new [OneDashboardPageWidgetFunnelInitialSorting].
   /// [direction] (Required) Defines the sort order. Accepted values are `asc` for ascending or `desc` for descending.
   /// [name] The title of the dashboard.
-  OneDashboardPageWidgetFunnelInitialSorting({
+  const OneDashboardPageWidgetFunnelInitialSorting({
     required this.direction,
     required this.name,
   });

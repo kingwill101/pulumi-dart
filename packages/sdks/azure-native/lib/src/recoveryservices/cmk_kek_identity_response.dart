@@ -12,7 +12,7 @@ class CmkKekIdentityResponse {
   /// Creates a new [CmkKekIdentityResponse].
   /// [useSystemAssignedIdentity] Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
   /// [userAssignedIdentity] The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
-  CmkKekIdentityResponse({
+  const CmkKekIdentityResponse({
     this.useSystemAssignedIdentity,
     this.userAssignedIdentity,
   });

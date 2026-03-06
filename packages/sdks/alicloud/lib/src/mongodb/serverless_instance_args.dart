@@ -66,7 +66,7 @@ class ServerlessInstanceArgs {
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The of the vswitch.
   /// [zoneId] The ID of the zone. Use this parameter to specify the zone created by the instance.
-  ServerlessInstanceArgs({
+  const ServerlessInstanceArgs({
     required this.accountPassword,
     this.autoRenew,
     required this.capacityUnit,

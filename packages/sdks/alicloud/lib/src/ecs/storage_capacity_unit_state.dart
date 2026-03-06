@@ -29,7 +29,7 @@ class StorageCapacityUnitState {
   /// [startTime] The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
   /// [status] The status of Storage Capacity Unit.
   /// [storageCapacityUnitName] The name of the Storage Capacity Unit.
-  StorageCapacityUnitState({
+  const StorageCapacityUnitState({
     this.capacity,
     this.description,
     this.period,

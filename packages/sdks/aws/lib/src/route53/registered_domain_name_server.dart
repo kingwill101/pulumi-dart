@@ -11,7 +11,7 @@ class RegisteredDomainNameServer {
   /// Creates a new [RegisteredDomainNameServer].
   /// [glueIps] Glue IP addresses of a name server. The list can contain only one IPv4 and one IPv6 address.
   /// [name] The fully qualified host name of the name server.
-  RegisteredDomainNameServer({
+  const RegisteredDomainNameServer({
     this.glueIps,
     required this.name,
   });

@@ -15,7 +15,7 @@ class ResourceGuardProxyBaseResponse {
   /// [lastUpdatedTime] Optional.
   /// [resourceGuardOperationDetails] Optional.
   /// [resourceGuardResourceId] Optional.
-  ResourceGuardProxyBaseResponse({
+  const ResourceGuardProxyBaseResponse({
     this.description,
     this.lastUpdatedTime,
     this.resourceGuardOperationDetails,

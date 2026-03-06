@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1NetworkSpecResponse {
   /// [enableInternetAccess] Whether to enable public internet access. Default false.
   /// [network] The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
   /// [subnetwork] The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
-  GoogleCloudAiplatformV1NetworkSpecResponse({
+  const GoogleCloudAiplatformV1NetworkSpecResponse({
     required this.enableInternetAccess,
     required this.network,
     required this.subnetwork,

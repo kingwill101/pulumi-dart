@@ -11,7 +11,7 @@ class StackParameter {
   /// Creates a new [StackParameter].
   /// [parameterKey] The parameter key.
   /// [parameterValue] The parameter value.
-  StackParameter({
+  const StackParameter({
     this.parameterKey,
     required this.parameterValue,
   });

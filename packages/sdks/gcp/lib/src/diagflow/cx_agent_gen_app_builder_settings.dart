@@ -9,7 +9,7 @@ class CxAgentGenAppBuilderSettings {
 
   /// Creates a new [CxAgentGenAppBuilderSettings].
   /// [engine] The full name of the Gen App Builder engine related to this agent if there is one.
-  CxAgentGenAppBuilderSettings({
+  const CxAgentGenAppBuilderSettings({
     required this.engine,
   });
 

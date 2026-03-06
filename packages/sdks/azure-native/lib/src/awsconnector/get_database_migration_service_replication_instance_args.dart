@@ -15,7 +15,7 @@ class GetDatabaseMigrationServiceReplicationInstanceArgs {
   /// Creates a new [GetDatabaseMigrationServiceReplicationInstanceArgs].
   /// [name] Name of DatabaseMigrationServiceReplicationInstance
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDatabaseMigrationServiceReplicationInstanceArgs({
+  const GetDatabaseMigrationServiceReplicationInstanceArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -12,7 +12,7 @@ class SbePartnerPropertiesResponse {
   /// Creates a new [SbePartnerPropertiesResponse].
   /// [name] SBE partner property name.
   /// [value] SBE partner property value.
-  SbePartnerPropertiesResponse({
+  const SbePartnerPropertiesResponse({
     this.name,
     this.value,
   });

@@ -46,7 +46,7 @@ class ProbeResponse {
   /// [provisioningState] The provisioning state of the probe resource.
   /// [requestPath] The URI used for requesting health status from the VM. Path is required if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
   /// [type] Type of the resource.
-  ProbeResponse({
+  const ProbeResponse({
     required this.etag,
     this.id,
     this.intervalInSeconds,

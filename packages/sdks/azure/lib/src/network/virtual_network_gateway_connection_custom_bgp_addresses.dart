@@ -11,7 +11,7 @@ class VirtualNetworkGatewayConnectionCustomBgpAddresses {
   /// Creates a new [VirtualNetworkGatewayConnectionCustomBgpAddresses].
   /// [primary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (first one)
   /// [secondary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (second one)
-  VirtualNetworkGatewayConnectionCustomBgpAddresses({
+  const VirtualNetworkGatewayConnectionCustomBgpAddresses({
     required this.primary,
     this.secondary,
   });

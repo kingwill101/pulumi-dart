@@ -10,7 +10,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
 
   /// Creates a new [FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding].
   /// [name] The relative resource name of the binauthz platform policy to audit. GKE
-  FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding({
+  const FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding({
     this.name,
   });
 

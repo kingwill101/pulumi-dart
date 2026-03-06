@@ -31,7 +31,7 @@ class GetSecretsArgs {
   /// [nameRegex] A regex string to filter the results by the KMS secret_name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A mapping of tags to assign to the resource, and can be used to filter secrets.
-  GetSecretsArgs({
+  const GetSecretsArgs({
     this.enableDetails,
     this.fetchTags,
     this.filters,

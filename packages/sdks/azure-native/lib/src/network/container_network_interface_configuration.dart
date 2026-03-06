@@ -20,7 +20,7 @@ class ContainerNetworkInterfaceConfiguration {
   /// [id] Resource ID.
   /// [ipConfigurations] A list of ip configurations of the container network interface configuration.
   /// [name] The name of the resource. This name can be used to access the resource.
-  ContainerNetworkInterfaceConfiguration({
+  const ContainerNetworkInterfaceConfiguration({
     this.containerNetworkInterfaces,
     this.id,
     this.ipConfigurations,

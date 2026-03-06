@@ -9,7 +9,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
 
   /// Creates a new [InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint].
   /// [connections] Structure is documented below.
-  InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint({
+  const InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint({
     this.connections,
   });
 

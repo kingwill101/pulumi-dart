@@ -65,7 +65,7 @@ class SchedulingResponse {
   /// [preemptible] Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
   /// [provisioningModel] Specifies the provisioning model of the instance.
   /// [terminationTime] Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
-  SchedulingResponse({
+  const SchedulingResponse({
     required this.automaticRestart,
     required this.availabilityDomain,
     required this.currentCpus,

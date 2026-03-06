@@ -32,7 +32,7 @@ class GetVirtualMachineConfigurationAssignmentResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [virtualMachineName] Required.
-  GetVirtualMachineConfigurationAssignmentResult({
+  const GetVirtualMachineConfigurationAssignmentResult({
     required this.assignmentHash,
     required this.complianceStatus,
     required this.contentHash,

@@ -31,7 +31,7 @@ class GetRulesResult {
   /// [ruleIds] Optional.
   /// [rules] A list of Alb Rules. Each element contains the following attributes:
   /// [status] The status of the forwarding rule.
-  GetRulesResult({
+  const GetRulesResult({
     required this.id,
     required this.ids,
     this.listenerIds,

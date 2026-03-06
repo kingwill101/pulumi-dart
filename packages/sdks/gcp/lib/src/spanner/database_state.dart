@@ -49,7 +49,7 @@ class DatabaseState {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] An explanation of the status of the database.
   /// [versionRetentionPeriod] The retention period for the database. The retention period must be between 1 hour
-  DatabaseState({
+  const DatabaseState({
     this.databaseDialect,
     this.ddls,
     this.defaultTimeZone,

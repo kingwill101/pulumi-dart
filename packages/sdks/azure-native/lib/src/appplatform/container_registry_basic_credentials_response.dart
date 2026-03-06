@@ -16,7 +16,7 @@ class ContainerRegistryBasicCredentialsResponse {
   /// [server] The login server of the Container Registry.
   /// [type] The credential type of the container registry credentials.
   /// [username] The username of the Container Registry.
-  ContainerRegistryBasicCredentialsResponse({
+  const ContainerRegistryBasicCredentialsResponse({
     required this.server,
     required this.type,
     required this.username,

@@ -27,7 +27,7 @@ class ScopeConnectionArgs {
   /// [resourceId] Resource ID.
   /// [scopeConnectionName] Name for the cross-tenant connection.
   /// [tenantId] Tenant ID.
-  ScopeConnectionArgs({
+  const ScopeConnectionArgs({
     this.description,
     required this.networkManagerName,
     required this.resourceGroupName,

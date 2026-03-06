@@ -18,7 +18,7 @@ class GetManagedClusterApplicationArgs {
   /// [applicationName] The name of the application resource.
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group.
-  GetManagedClusterApplicationArgs({
+  const GetManagedClusterApplicationArgs({
     required this.applicationName,
     required this.clusterName,
     required this.resourceGroupName,

@@ -14,7 +14,7 @@ class DeinterlaceResponse {
   /// Creates a new [DeinterlaceResponse].
   /// [bwdif] Specifies the Bob Weaver Deinterlacing Filter Configuration.
   /// [yadif] Specifies the Yet Another Deinterlacing Filter Configuration.
-  DeinterlaceResponse({
+  const DeinterlaceResponse({
     required this.bwdif,
     required this.yadif,
   });

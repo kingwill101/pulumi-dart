@@ -10,7 +10,7 @@ class AndroidDeviceList {
 
   /// Creates a new [AndroidDeviceList].
   /// [androidDevices] A list of Android devices.
-  AndroidDeviceList({
+  const AndroidDeviceList({
     required this.androidDevices,
   });
 

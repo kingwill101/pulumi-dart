@@ -11,7 +11,7 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingC
   /// Creates a new [PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl].
   /// [routingControlArn] ARN of the routing control.
   /// [state] State of the routing control. Valid values: `On`, `Off`.
-  PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl({
+  const PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl({
     required this.routingControlArn,
     required this.state,
   });

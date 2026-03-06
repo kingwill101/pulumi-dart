@@ -21,7 +21,7 @@ class RoutePropertiesResponse {
   /// [isEnabled] Used to specify whether a route is enabled.
   /// [name] The name of the route. The name can only include alphanumeric characters, periods, underscores, hyphens, has a maximum length of 64 characters, and must be unique.
   /// [source] The source that the routing rule is to be applied to, such as DeviceMessages.
-  RoutePropertiesResponse({
+  const RoutePropertiesResponse({
     this.condition,
     required this.endpointNames,
     required this.isEnabled,

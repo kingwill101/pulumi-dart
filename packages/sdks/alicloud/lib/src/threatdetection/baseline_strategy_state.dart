@@ -41,7 +41,7 @@ class BaselineStrategyState {
   /// [riskSubTypeName] Detection item subtype.
   /// [startTime] The baseline check policy start time.
   /// [targetType] The method of adding assets that take effect from the policy. Value:
-  BaselineStrategyState({
+  const BaselineStrategyState({
     this.baselineStrategyId,
     this.baselineStrategyName,
     this.customType,

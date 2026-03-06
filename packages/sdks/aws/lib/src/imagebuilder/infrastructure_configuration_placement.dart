@@ -17,7 +17,7 @@ class InfrastructureConfigurationPlacement {
   /// [hostId] ID of the Dedicated Host on which build and test instances run. Conflicts with `host_resource_group_arn`.
   /// [hostResourceGroupArn] ARN of the host resource group in which to launch build and test instances. Conflicts with `host_id`.
   /// [tenancy] Placement tenancy of the instance. Valid values: `default`, `dedicated` and `host`.
-  InfrastructureConfigurationPlacement({
+  const InfrastructureConfigurationPlacement({
     this.availabilityZone,
     this.hostId,
     this.hostResourceGroupArn,

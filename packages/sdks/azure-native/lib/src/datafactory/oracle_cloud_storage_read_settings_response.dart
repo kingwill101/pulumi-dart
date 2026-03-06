@@ -46,7 +46,7 @@ class OracleCloudStorageReadSettingsResponse {
   /// [type] The read setting type.
   /// [wildcardFileName] Oracle Cloud Storage wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Oracle Cloud Storage wildcardFolderPath. Type: string (or Expression with resultType string).
-  OracleCloudStorageReadSettingsResponse({
+  const OracleCloudStorageReadSettingsResponse({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

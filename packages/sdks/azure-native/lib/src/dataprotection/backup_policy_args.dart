@@ -22,7 +22,7 @@ class BackupPolicyArgs {
   /// [properties] BaseBackupPolicyResource properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the backup vault.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     this.backupPolicyName,
     this.properties,
     required this.resourceGroupName,

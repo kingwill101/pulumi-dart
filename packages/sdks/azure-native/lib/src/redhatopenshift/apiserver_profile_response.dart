@@ -15,7 +15,7 @@ class APIServerProfileResponse {
   /// [ip] The IP of the cluster API server.
   /// [url] The URL to access the cluster API server.
   /// [visibility] API server visibility.
-  APIServerProfileResponse({
+  const APIServerProfileResponse({
     required this.ip,
     required this.url,
     this.visibility,

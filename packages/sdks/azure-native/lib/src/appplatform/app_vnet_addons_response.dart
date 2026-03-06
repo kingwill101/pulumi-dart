@@ -12,7 +12,7 @@ class AppVNetAddonsResponse {
   /// Creates a new [AppVNetAddonsResponse].
   /// [publicEndpoint] Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
   /// [publicEndpointUrl] URL of the App in vnet injection instance which could be accessed from internet
-  AppVNetAddonsResponse({
+  const AppVNetAddonsResponse({
     this.publicEndpoint,
     required this.publicEndpointUrl,
   });

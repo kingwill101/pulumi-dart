@@ -38,7 +38,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescription {
   /// [enableOutputSchema] By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
   /// [executeCliCommand] Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
   /// [product] The name of the cloud product, such as Ecs.
-  OpenApiExplorerApiMcpServerAdditionalApiDescription({
+  const OpenApiExplorerApiMcpServerAdditionalApiDescription({
     this.apiName,
     this.apiOverrideJson,
     this.apiVersion,

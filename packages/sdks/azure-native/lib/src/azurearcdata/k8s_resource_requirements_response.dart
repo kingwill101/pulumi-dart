@@ -12,7 +12,7 @@ class K8sResourceRequirementsResponse {
   /// Creates a new [K8sResourceRequirementsResponse].
   /// [limits] Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
   /// [requests] Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
-  K8sResourceRequirementsResponse({
+  const K8sResourceRequirementsResponse({
     this.limits,
     this.requests,
   });

@@ -19,7 +19,7 @@ class SubscriptionRaiPolicyArgs {
   /// [properties] Properties of Cognitive Services RaiPolicy.
   /// [raiPolicyName] The name of the RaiPolicy associated with the Cognitive Services Account
   /// [tags] Resource tags.
-  SubscriptionRaiPolicyArgs({
+  const SubscriptionRaiPolicyArgs({
     this.properties,
     this.raiPolicyName,
     this.tags,

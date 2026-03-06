@@ -13,7 +13,7 @@ class SecurityScanConfigAuthenticationGoogleAccount {
   /// Creates a new [SecurityScanConfigAuthenticationGoogleAccount].
   /// [password] The password of the Google account. The credential is stored encrypted
   /// [username] The user name of the Google account.
-  SecurityScanConfigAuthenticationGoogleAccount({
+  const SecurityScanConfigAuthenticationGoogleAccount({
     required this.password,
     required this.username,
   });

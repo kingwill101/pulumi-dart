@@ -12,7 +12,7 @@ class DiskSecurityProfileResponse {
   /// Creates a new [DiskSecurityProfileResponse].
   /// [secureVMDiskEncryptionSetId] ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key
   /// [securityType] Specifies the SecurityType of the VM. Applicable for OS disks only.
-  DiskSecurityProfileResponse({
+  const DiskSecurityProfileResponse({
     this.secureVMDiskEncryptionSetId,
     this.securityType,
   });

@@ -9,7 +9,7 @@ class SummaryStatusEnumValueResponse {
 
   /// Creates a new [SummaryStatusEnumValueResponse].
   /// [value] Property value
-  SummaryStatusEnumValueResponse({
+  const SummaryStatusEnumValueResponse({
     this.value,
   });
 

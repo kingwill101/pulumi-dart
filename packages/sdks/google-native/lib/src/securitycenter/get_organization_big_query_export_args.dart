@@ -13,7 +13,7 @@ class GetOrganizationBigQueryExportArgs {
   /// Creates a new [GetOrganizationBigQueryExportArgs].
   /// [bigQueryExportId] Required.
   /// [organizationId] Required.
-  GetOrganizationBigQueryExportArgs({
+  const GetOrganizationBigQueryExportArgs({
     required this.bigQueryExportId,
     required this.organizationId,
   });

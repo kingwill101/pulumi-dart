@@ -12,7 +12,7 @@ class PacketCaptureMachineScope {
   /// Creates a new [PacketCaptureMachineScope].
   /// [exclude] List of AzureVMSS instances which has to be excluded from the AzureVMSS from running packet capture.
   /// [include] List of AzureVMSS instances to run packet capture on.
-  PacketCaptureMachineScope({
+  const PacketCaptureMachineScope({
     this.exclude,
     this.include,
   });

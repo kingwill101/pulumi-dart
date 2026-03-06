@@ -18,7 +18,7 @@ class TritonModelJobInputResponse {
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [mode] Input Asset Delivery Mode.
   /// [uri] [Required] Input Asset URI.
-  TritonModelJobInputResponse({
+  const TritonModelJobInputResponse({
     this.description,
     required this.jobInputType,
     this.mode,

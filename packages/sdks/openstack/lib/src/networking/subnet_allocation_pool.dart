@@ -11,7 +11,7 @@ class SubnetAllocationPool {
   /// Creates a new [SubnetAllocationPool].
   /// [end] The ending address.
   /// [start] The starting address.
-  SubnetAllocationPool({
+  const SubnetAllocationPool({
     required this.end,
     required this.start,
   });

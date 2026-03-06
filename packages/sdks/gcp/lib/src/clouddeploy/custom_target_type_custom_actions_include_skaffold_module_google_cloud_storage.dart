@@ -11,7 +11,7 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage {
   /// Creates a new [CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage].
   /// [path] Relative path from the source to the Skaffold file.
   /// [source] Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
-  CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage({
+  const CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage({
     this.path,
     required this.source,
   });

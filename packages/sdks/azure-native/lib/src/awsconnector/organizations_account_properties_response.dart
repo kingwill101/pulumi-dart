@@ -34,7 +34,7 @@ class OrganizationsAccountPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  OrganizationsAccountPropertiesResponse({
+  const OrganizationsAccountPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

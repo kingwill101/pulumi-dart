@@ -13,7 +13,7 @@ class AsyncOptionsResponseDeploymentmanagerV2beta {
   /// Creates a new [AsyncOptionsResponseDeploymentmanagerV2beta].
   /// [methodMatch] Method regex where this policy will apply.
   /// [pollingOptions] Deployment manager will poll instances for this API resource setting a RUNNING state, and blocking until polling conditions tell whether the resource is completed or failed.
-  AsyncOptionsResponseDeploymentmanagerV2beta({
+  const AsyncOptionsResponseDeploymentmanagerV2beta({
     required this.methodMatch,
     required this.pollingOptions,
   });

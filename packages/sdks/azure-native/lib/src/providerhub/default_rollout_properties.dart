@@ -13,7 +13,7 @@ class DefaultRolloutProperties {
   /// Creates a new [DefaultRolloutProperties].
   /// [specification] The default rollout specification.
   /// [status] The default rollout status.
-  DefaultRolloutProperties({
+  const DefaultRolloutProperties({
     this.specification,
     this.status,
   });

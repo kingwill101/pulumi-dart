@@ -11,7 +11,7 @@ class PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1 {
   /// Creates a new [PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1].
   /// [canonicalUrl] Unique identifier for the instance; defined by the server.
   /// [url] Resource URL to the virtual machine instance which is being mirrored.
-  PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1({
+  const PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1({
     required this.canonicalUrl,
     required this.url,
   });

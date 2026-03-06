@@ -15,7 +15,7 @@ class RuleRuleActionInsertHeaderConfig {
   /// [key] Optional.
   /// [value] Optional.
   /// [valueType] The value type of the inserted header field. Valid values:
-  RuleRuleActionInsertHeaderConfig({
+  const RuleRuleActionInsertHeaderConfig({
     this.key,
     this.value,
     this.valueType,

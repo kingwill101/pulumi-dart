@@ -17,7 +17,7 @@ class V3LayerVersionCode {
   /// [ossBucketName] Name of the OSS Bucket where the user stores the Layer Code ZIP package
   /// [ossObjectName] Name of the OSS Object where the user stores the Layer Code ZIP package
   /// [zipFile] Base 64 encoding of Layer Code ZIP package
-  V3LayerVersionCode({
+  const V3LayerVersionCode({
     this.checksum,
     this.ossBucketName,
     this.ossObjectName,

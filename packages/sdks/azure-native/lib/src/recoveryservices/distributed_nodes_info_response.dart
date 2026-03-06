@@ -20,7 +20,7 @@ class DistributedNodesInfoResponse {
   /// [nodeName] Name of the node under a distributed container.
   /// [sourceResourceId] ARM resource id of the node
   /// [status] Status of this Node.
-  DistributedNodesInfoResponse({
+  const DistributedNodesInfoResponse({
     this.errorDetail,
     this.nodeName,
     this.sourceResourceId,

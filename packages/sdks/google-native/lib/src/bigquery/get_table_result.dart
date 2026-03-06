@@ -149,7 +149,7 @@ class GetTableResult {
   /// [timePartitioning] Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
   /// [type] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
   /// [view] [Optional] The view definition.
-  GetTableResult({
+  const GetTableResult({
     required this.biglakeConfiguration,
     required this.cloneDefinition,
     required this.clustering,

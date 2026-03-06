@@ -21,7 +21,7 @@ class GetTableItemResult {
   /// [projectionExpression] Optional.
   /// [region] Required.
   /// [tableName] Required.
-  GetTableItemResult({
+  const GetTableItemResult({
     this.expressionAttributeNames,
     required this.id,
     required this.item,

@@ -10,7 +10,7 @@ class AuthorizationConfigResponse {
 
   /// Creates a new [AuthorizationConfigResponse].
   /// [policies] List of RbacPolicies.
-  AuthorizationConfigResponse({
+  const AuthorizationConfigResponse({
     required this.policies,
   });
 

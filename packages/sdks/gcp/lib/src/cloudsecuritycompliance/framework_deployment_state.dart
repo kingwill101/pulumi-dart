@@ -92,7 +92,7 @@ class FrameworkDeploymentState {
   /// [targetResourceConfig] TargetResourceConfig contains either the name of the target_resource or
   /// [targetResourceDisplayName] The display name of the target resource.
   /// [updateTime] The time at which the resource last updated.
-  FrameworkDeploymentState({
+  const FrameworkDeploymentState({
     this.cloudControlDeploymentReferences,
     this.cloudControlMetadatas,
     this.computedTargetResource,

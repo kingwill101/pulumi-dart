@@ -168,7 +168,7 @@ class BareMetalClusterState {
   /// [updateTime] The time the cluster was last updated, in RFC3339 text format.
   /// [upgradePolicy] The cluster upgrade policy.
   /// [validationChecks] Specifies the security related settings for the Bare Metal User Cluster.
-  BareMetalClusterState({
+  const BareMetalClusterState({
     this.adminClusterMembership,
     this.annotations,
     this.bareMetalVersion,

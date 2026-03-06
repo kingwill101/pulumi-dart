@@ -12,7 +12,7 @@ class ProjectRepoIdResponse {
   /// Creates a new [ProjectRepoIdResponse].
   /// [project] The ID of the project.
   /// [repoName] The name of the repo. Leave empty for the default repo.
-  ProjectRepoIdResponse({
+  const ProjectRepoIdResponse({
     required this.project,
     required this.repoName,
   });

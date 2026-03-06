@@ -36,7 +36,7 @@ class QuotaAlarmState {
   /// [thresholdPercent] The threshold percent of Quota Alarm.
   /// [thresholdType] Quota alarm type. Value:
   /// [webHook] The WebHook of Quota Alarm.
-  QuotaAlarmState({
+  const QuotaAlarmState({
     this.createTime,
     this.productCode,
     this.quotaActionCode,

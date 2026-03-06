@@ -99,7 +99,7 @@ class SmbFileShareState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [validUserLists] A list of users in the Active Directory that are allowed to access the file share. If you need to specify an Active directory group, add '@' before the name of the group. It will be set on Allowed group in AWS console. Only valid if `authentication` is set to `ActiveDirectory`.
   /// [vpcEndpointDnsName] The DNS name of the VPC endpoint for S3 private link.
-  SmbFileShareState({
+  const SmbFileShareState({
     this.accessBasedEnumeration,
     this.adminUserLists,
     this.arn,

@@ -13,7 +13,7 @@ class ClusterNetworkConfig {
   /// Creates a new [ClusterNetworkConfig].
   /// [allocatedIpRange] The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
   /// [network] The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
-  ClusterNetworkConfig({
+  const ClusterNetworkConfig({
     this.allocatedIpRange,
     this.network,
   });

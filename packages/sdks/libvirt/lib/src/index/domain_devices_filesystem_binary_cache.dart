@@ -8,7 +8,7 @@ class DomainDevicesFilesystemBinaryCache {
 
   /// Creates a new [DomainDevicesFilesystemBinaryCache].
   /// [mode] Sets the mode for the cache used by the binary filesystem device.
-  DomainDevicesFilesystemBinaryCache({
+  const DomainDevicesFilesystemBinaryCache({
     required this.mode,
   });
 

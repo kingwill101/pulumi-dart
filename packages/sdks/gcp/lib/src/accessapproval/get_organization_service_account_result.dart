@@ -17,7 +17,7 @@ class GetOrganizationServiceAccountResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The Access Approval service account resource name. Format is "organizations/{organization_id}/serviceAccount".
   /// [organizationId] Required.
-  GetOrganizationServiceAccountResult({
+  const GetOrganizationServiceAccountResult({
     required this.accountEmail,
     required this.id,
     required this.name,

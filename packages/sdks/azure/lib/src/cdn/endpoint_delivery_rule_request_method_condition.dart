@@ -14,7 +14,7 @@ class EndpointDeliveryRuleRequestMethodCondition {
   /// [matchValues] Valid values are `DELETE`, `GET`, `HEAD`, `OPTIONS`, `POST` and `PUT`.
   /// [negateCondition] Defaults to `false`.
   /// [operator] Valid values are `Equal`. Defaults to `Equal`.
-  EndpointDeliveryRuleRequestMethodCondition({
+  const EndpointDeliveryRuleRequestMethodCondition({
     required this.matchValues,
     this.negateCondition,
     this.operator,

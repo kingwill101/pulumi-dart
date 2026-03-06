@@ -10,7 +10,7 @@ class KubernetesRoleStorage {
 
   /// Creates a new [KubernetesRoleStorage].
   /// [endpoints] Mount points of shares in role(s).
-  KubernetesRoleStorage({
+  const KubernetesRoleStorage({
     this.endpoints,
   });
 

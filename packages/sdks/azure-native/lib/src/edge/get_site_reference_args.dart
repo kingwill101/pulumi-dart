@@ -18,7 +18,7 @@ class GetSiteReferenceArgs {
   /// [contextName] The name of the Context.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteReferenceName] The name of the SiteReference
-  GetSiteReferenceArgs({
+  const GetSiteReferenceArgs({
     required this.contextName,
     required this.resourceGroupName,
     required this.siteReferenceName,

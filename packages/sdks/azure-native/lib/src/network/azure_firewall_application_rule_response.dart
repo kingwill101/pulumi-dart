@@ -28,7 +28,7 @@ class AzureFirewallApplicationRuleResponse {
   /// [sourceAddresses] List of source IP addresses for this rule.
   /// [sourceIpGroups] List of source IpGroups for this rule.
   /// [targetFqdns] List of FQDNs for this rule.
-  AzureFirewallApplicationRuleResponse({
+  const AzureFirewallApplicationRuleResponse({
     this.description,
     this.fqdnTags,
     this.name,

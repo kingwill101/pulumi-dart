@@ -35,7 +35,7 @@ class GetLicenseResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [transferable] If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
-  GetLicenseResult({
+  const GetLicenseResult({
     required this.chargesUseFee,
     required this.creationTimestamp,
     required this.description,

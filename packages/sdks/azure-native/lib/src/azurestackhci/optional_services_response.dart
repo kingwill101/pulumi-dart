@@ -9,7 +9,7 @@ class OptionalServicesResponse {
 
   /// Creates a new [OptionalServicesResponse].
   /// [customLocation] The name of custom location.
-  OptionalServicesResponse({
+  const OptionalServicesResponse({
     this.customLocation,
   });
 

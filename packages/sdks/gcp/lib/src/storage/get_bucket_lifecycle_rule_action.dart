@@ -11,7 +11,7 @@ class GetBucketLifecycleRuleAction {
   /// Creates a new [GetBucketLifecycleRuleAction].
   /// [storageClass] The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
   /// [type] The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
-  GetBucketLifecycleRuleAction({
+  const GetBucketLifecycleRuleAction({
     required this.storageClass,
     required this.type,
   });

@@ -21,7 +21,7 @@ class WorkspaceExperimentArgs {
   /// [artifactUri] ArtifactUri is default OSS storage path of the output of trials in the experiment
   /// [experimentName] Name is the name of the experiment, unique in a namespace
   /// [workspaceId] WorkspaceId is the workspace id which contains the experiment
-  WorkspaceExperimentArgs({
+  const WorkspaceExperimentArgs({
     this.accessibility,
     required this.artifactUri,
     required this.experimentName,

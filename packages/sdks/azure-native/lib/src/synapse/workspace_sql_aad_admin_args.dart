@@ -27,7 +27,7 @@ class WorkspaceSqlAadAdminArgs {
   /// [sid] Object ID of the workspace active directory administrator
   /// [tenantId] Tenant ID of the workspace active directory administrator
   /// [workspaceName] The name of the workspace.
-  WorkspaceSqlAadAdminArgs({
+  const WorkspaceSqlAadAdminArgs({
     this.administratorType,
     this.login,
     required this.resourceGroupName,

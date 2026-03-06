@@ -13,7 +13,7 @@ class ListManagedClusterFaultSimulationResult {
   /// Creates a new [ListManagedClusterFaultSimulationResult].
   /// [nextLink] The link to the next page of items
   /// [value] The FaultSimulation items on this page
-  ListManagedClusterFaultSimulationResult({
+  const ListManagedClusterFaultSimulationResult({
     this.nextLink,
     required this.value,
   });

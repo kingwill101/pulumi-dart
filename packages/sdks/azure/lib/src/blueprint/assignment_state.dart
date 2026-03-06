@@ -52,7 +52,7 @@ class AssignmentState {
   /// [targetSubscriptionId] The Subscription ID the Blueprint Published Version is to be applied to. Changing this forces a new resource to be created.
   /// [type] Optional.
   /// [versionId] The ID of the Published Version of the blueprint to be assigned.
-  AssignmentState({
+  const AssignmentState({
     this.blueprintName,
     this.description,
     this.displayName,

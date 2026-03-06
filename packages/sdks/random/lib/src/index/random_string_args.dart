@@ -45,7 +45,7 @@ class RandomStringArgs {
   /// [overrideSpecial] Supply your own list of special characters to use for string generation.  This overrides the default character list in the special argument.  The `special` argument must still be set to true for any overwritten characters to be used in generation.
   /// [special] Include special characters in the result. These are `!@#$%&*()-_=+[]{}&lt;&gt;:?`. Default value is `true`.
   /// [upper] Include uppercase alphabet characters in the result. Default value is `true`.
-  RandomStringArgs({
+  const RandomStringArgs({
     this.keepers,
     required this.length,
     this.lower,

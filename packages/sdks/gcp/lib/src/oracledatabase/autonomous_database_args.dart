@@ -70,7 +70,7 @@ class AutonomousDatabaseArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] The properties of an Autonomous Database.
   /// [sourceConfig] The source Autonomous Database configuration for the standby Autonomous Database.
-  AutonomousDatabaseArgs({
+  const AutonomousDatabaseArgs({
     this.adminPassword,
     required this.autonomousDatabaseId,
     this.cidr,

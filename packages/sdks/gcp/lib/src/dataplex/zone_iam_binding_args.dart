@@ -46,7 +46,7 @@ class ZoneIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  ZoneIamBindingArgs({
+  const ZoneIamBindingArgs({
     this.condition,
     required this.dataplexZone,
     required this.lake,

@@ -13,7 +13,7 @@ class ListGitLabSubgroupResult {
   /// Creates a new [ListGitLabSubgroupResult].
   /// [nextLink] Gets or sets next link to scroll over the results.
   /// [value] Gets or sets list of resources.
-  ListGitLabSubgroupResult({
+  const ListGitLabSubgroupResult({
     this.nextLink,
     this.value,
   });

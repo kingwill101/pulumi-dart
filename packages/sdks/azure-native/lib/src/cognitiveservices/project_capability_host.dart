@@ -17,7 +17,7 @@ class ProjectCapabilityHost {
   /// [storageConnections] List of connection names from those available in the account or project to be used as a storage resource.
   /// [threadStorageConnections] List of connection names from those available in the account or project to be used for Thread storage.
   /// [vectorStoreConnections] List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
-  ProjectCapabilityHost({
+  const ProjectCapabilityHost({
     this.aiServicesConnections,
     this.storageConnections,
     this.threadStorageConnections,

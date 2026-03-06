@@ -11,7 +11,7 @@ class NetworkForwardNatPort {
   /// Creates a new [NetworkForwardNatPort].
   /// [end] Sets the ending port number for the NAT port range.
   /// [start] Specifies the starting port number for the NAT port range.
-  NetworkForwardNatPort({
+  const NetworkForwardNatPort({
     required this.end,
     required this.start,
   });

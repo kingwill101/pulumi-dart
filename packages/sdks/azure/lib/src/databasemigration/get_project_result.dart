@@ -26,7 +26,7 @@ class GetProjectResult {
   /// [sourcePlatform] The platform type of the migration source.
   /// [tags] A mapping of tags to assigned to the resource.
   /// [targetPlatform] The platform type of the migration target.
-  GetProjectResult({
+  const GetProjectResult({
     required this.id,
     required this.location,
     required this.name,

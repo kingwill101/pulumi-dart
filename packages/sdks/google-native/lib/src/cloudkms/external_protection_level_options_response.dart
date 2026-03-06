@@ -12,7 +12,7 @@ class ExternalProtectionLevelOptionsResponse {
   /// Creates a new [ExternalProtectionLevelOptionsResponse].
   /// [ekmConnectionKeyPath] The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
   /// [externalKeyUri] The URI for an external resource that this CryptoKeyVersion represents.
-  ExternalProtectionLevelOptionsResponse({
+  const ExternalProtectionLevelOptionsResponse({
     required this.ekmConnectionKeyPath,
     required this.externalKeyUri,
   });

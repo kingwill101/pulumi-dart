@@ -26,7 +26,7 @@ class FabricModelPropertiesResponse {
   /// [provisioningState] Gets or sets the provisioning state of the fabric.
   /// [serviceEndpoint] Gets or sets the service endpoint.
   /// [serviceResourceId] Gets or sets the service resource Id.
-  FabricModelPropertiesResponse({
+  const FabricModelPropertiesResponse({
     required this.customProperties,
     required this.health,
     required this.healthErrors,

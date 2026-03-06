@@ -31,7 +31,7 @@ class ApiAccessKeyState {
   /// [name] The name of the API key.
   /// [notes] Additional notes about the API access key.
   /// [userId] Required if `key_type` is `USER`. The New Relic user ID for which the API access key will be created.
-  ApiAccessKeyState({
+  const ApiAccessKeyState({
     this.accountId,
     this.ingestType,
     this.key,

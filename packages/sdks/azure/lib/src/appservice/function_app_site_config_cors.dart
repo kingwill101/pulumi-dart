@@ -11,7 +11,7 @@ class FunctionAppSiteConfigCors {
   /// Creates a new [FunctionAppSiteConfigCors].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
   /// [supportCredentials] Are credentials supported?
-  FunctionAppSiteConfigCors({
+  const FunctionAppSiteConfigCors({
     required this.allowedOrigins,
     this.supportCredentials,
   });

@@ -15,7 +15,7 @@ class ListManagedClusterFaultSimulationArgs {
   /// Creates a new [ListManagedClusterFaultSimulationArgs].
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListManagedClusterFaultSimulationArgs({
+  const ListManagedClusterFaultSimulationArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

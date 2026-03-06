@@ -9,7 +9,7 @@ class DataSetRefreshProperties {
 
   /// Creates a new [DataSetRefreshProperties].
   /// [refreshConfiguration] The refresh configuration for the data set. See refresh_configuration.
-  DataSetRefreshProperties({
+  const DataSetRefreshProperties({
     required this.refreshConfiguration,
   });
 

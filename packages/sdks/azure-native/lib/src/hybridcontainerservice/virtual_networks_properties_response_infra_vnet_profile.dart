@@ -17,7 +17,7 @@ class VirtualNetworksPropertiesResponseInfraVnetProfile {
   /// [hci] Infra network profile for HCI platform
   /// [networkCloud] Infra network profile for the NetworkCloud platform
   /// [vmware] Infra network profile for VMware platform
-  VirtualNetworksPropertiesResponseInfraVnetProfile({
+  const VirtualNetworksPropertiesResponseInfraVnetProfile({
     this.hci,
     this.networkCloud,
     this.vmware,

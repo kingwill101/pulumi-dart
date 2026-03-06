@@ -18,7 +18,7 @@ class GetInstanceArgs {
   /// [dbInstanceIdentifier] Name of the RDS instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired instance.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     this.dbInstanceIdentifier,
     this.region,
     this.tags,

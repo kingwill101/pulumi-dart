@@ -33,7 +33,7 @@ class ResourceProviderEndpoint {
   /// [requiredFeatures] The required features.
   /// [skuLink] The sku link.
   /// [timeout] The timeout.
-  ResourceProviderEndpoint({
+  const ResourceProviderEndpoint({
     this.apiVersions,
     this.enabled,
     this.endpointType,

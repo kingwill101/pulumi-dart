@@ -11,7 +11,7 @@ class AppAuthorizationCredentialOauth2Credential {
   /// Creates a new [AppAuthorizationCredentialOauth2Credential].
   /// [clientId] The client ID of the client application.
   /// [clientSecret] The client secret of the client application.
-  AppAuthorizationCredentialOauth2Credential({
+  const AppAuthorizationCredentialOauth2Credential({
     required this.clientId,
     required this.clientSecret,
   });

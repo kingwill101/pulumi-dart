@@ -8,7 +8,7 @@ class AlertRuleNrtSentinelEntityMapping {
 
   /// Creates a new [AlertRuleNrtSentinelEntityMapping].
   /// [columnName] The column name to be mapped to the identifier.
-  AlertRuleNrtSentinelEntityMapping({
+  const AlertRuleNrtSentinelEntityMapping({
     required this.columnName,
   });
 

@@ -12,7 +12,7 @@ class ScalingGroupVServerGroupsVserverGroup {
   /// Creates a new [ScalingGroupVServerGroupsVserverGroup].
   /// [loadbalancerId] Loadbalancer server ID of VServer Group.
   /// [vserverAttributes] A list of VServer Group attributes. See `vserver_attributes` below.
-  ScalingGroupVServerGroupsVserverGroup({
+  const ScalingGroupVServerGroupsVserverGroup({
     required this.loadbalancerId,
     required this.vserverAttributes,
   });

@@ -19,7 +19,7 @@ class GetSshKeysArgs {
   /// Creates a new [GetSshKeysArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetSshKeysArgs({
+  const GetSshKeysArgs({
     this.filters,
     this.sorts,
   });

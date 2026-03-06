@@ -17,7 +17,7 @@ class PrivateLinkServiceProxy {
   /// [groupConnectivityInformation] Group connectivity information.
   /// [id] NRP resource ID.
   /// [remotePrivateLinkServiceConnectionState] Remote private link service connection state
-  PrivateLinkServiceProxy({
+  const PrivateLinkServiceProxy({
     this.groupConnectivityInformation,
     this.id,
     this.remotePrivateLinkServiceConnectionState,

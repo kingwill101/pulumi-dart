@@ -48,7 +48,7 @@ class CertificateArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [serverFarmId] Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   /// [tags] Resource tags.
-  CertificateArgs({
+  const CertificateArgs({
     this.canonicalName,
     this.domainValidationMethod,
     this.hostNames,

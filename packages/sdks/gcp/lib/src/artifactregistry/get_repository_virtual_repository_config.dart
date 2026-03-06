@@ -10,7 +10,7 @@ class GetRepositoryVirtualRepositoryConfig {
 
   /// Creates a new [GetRepositoryVirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual
-  GetRepositoryVirtualRepositoryConfig({
+  const GetRepositoryVirtualRepositoryConfig({
     required this.upstreamPolicies,
   });
 

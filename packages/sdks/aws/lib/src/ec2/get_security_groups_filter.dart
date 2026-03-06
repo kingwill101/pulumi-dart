@@ -9,7 +9,7 @@ class GetSecurityGroupsFilter {
   /// Creates a new [GetSecurityGroupsFilter].
   /// [name] Required.
   /// [values] Required.
-  GetSecurityGroupsFilter({
+  const GetSecurityGroupsFilter({
     required this.name,
     required this.values,
   });

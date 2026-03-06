@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1QueryMetric {
   /// [name] Metric name.
   /// [operator] One of `+`, `-`, `/`, `%`, `*`.
   /// [value] Operand value should be provided when operator is set.
-  GoogleCloudApigeeV1QueryMetric({
+  const GoogleCloudApigeeV1QueryMetric({
     this.alias,
     this.function,
     required this.name,

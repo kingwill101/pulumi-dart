@@ -10,7 +10,7 @@ class S3KeyFilterResponse {
 
   /// Creates a new [S3KeyFilterResponse].
   /// [rules] A list of containers for the key-value pair that defines the criteria for the filter rule.
-  S3KeyFilterResponse({
+  const S3KeyFilterResponse({
     this.rules,
   });
 

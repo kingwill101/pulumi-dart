@@ -12,7 +12,7 @@ class EndpointRangeDescriptionResponse {
   /// Creates a new [EndpointRangeDescriptionResponse].
   /// [endPort] End port of a range of ports
   /// [startPort] Starting port of a range of ports
-  EndpointRangeDescriptionResponse({
+  const EndpointRangeDescriptionResponse({
     required this.endPort,
     required this.startPort,
   });

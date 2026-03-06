@@ -7,7 +7,7 @@ class GetOriginRequestPolicyHeadersConfigHeader {
 
   /// Creates a new [GetOriginRequestPolicyHeadersConfigHeader].
   /// [items] Required.
-  GetOriginRequestPolicyHeadersConfigHeader({
+  const GetOriginRequestPolicyHeadersConfigHeader({
     required this.items,
   });
 

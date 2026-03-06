@@ -13,7 +13,7 @@ class GetFirewallPolicyIamPolicyComputeV1Args {
   /// Creates a new [GetFirewallPolicyIamPolicyComputeV1Args].
   /// [optionsRequestedPolicyVersion] Optional.
   /// [resource] Required.
-  GetFirewallPolicyIamPolicyComputeV1Args({
+  const GetFirewallPolicyIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     required this.resource,
   });

@@ -26,7 +26,7 @@ class TagTemplateIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Template location region.
   /// [tagTemplate] Used to find the parent resource to bind the IAM policy to
-  TagTemplateIamPolicyArgs({
+  const TagTemplateIamPolicyArgs({
     required this.policyData,
     this.project,
     this.region,

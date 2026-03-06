@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionBlock {
 
   /// Creates a new [GetManagedRuleGroupRuleActionBlock].
   /// [customResponses] Required.
-  GetManagedRuleGroupRuleActionBlock({
+  const GetManagedRuleGroupRuleActionBlock({
     required this.customResponses,
   });
 

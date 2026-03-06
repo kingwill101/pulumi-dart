@@ -41,7 +41,7 @@ class EndpointGroupEndpointConfiguration {
   /// [vpcId] The ID of the VPC.
   /// [vswitchIds] The IDs of vSwitches that are deployed in the VPC.
   /// [weight] The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-  EndpointGroupEndpointConfiguration({
+  const EndpointGroupEndpointConfiguration({
     this.enableClientipPreservation,
     this.enableProxyProtocol,
     required this.endpoint,

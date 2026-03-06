@@ -13,7 +13,7 @@ class GetCompanyArgs {
   /// Creates a new [GetCompanyArgs].
   /// [companyId] Required.
   /// [project] Optional.
-  GetCompanyArgs({
+  const GetCompanyArgs({
     required this.companyId,
     this.project,
   });

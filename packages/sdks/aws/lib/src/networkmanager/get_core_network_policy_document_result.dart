@@ -35,7 +35,7 @@ class GetCoreNetworkPolicyDocumentResult {
   /// [segmentActions] Optional.
   /// [segments] Required.
   /// [version] Optional.
-  GetCoreNetworkPolicyDocumentResult({
+  const GetCoreNetworkPolicyDocumentResult({
     this.attachmentPolicies,
     this.attachmentRoutingPolicyRules,
     required this.coreNetworkConfigurations,

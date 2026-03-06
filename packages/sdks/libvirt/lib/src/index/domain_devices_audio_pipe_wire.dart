@@ -16,7 +16,7 @@ class DomainDevicesAudioPipeWire {
   /// [input] Configures the output settings for the PipeWire audio device.
   /// [output] Configures the output settings for the PipeWire audio device.
   /// [runtimeDir] Sets the runtime directory for the PipeWire audio system integration.
-  DomainDevicesAudioPipeWire({
+  const DomainDevicesAudioPipeWire({
     this.input,
     this.output,
     this.runtimeDir,

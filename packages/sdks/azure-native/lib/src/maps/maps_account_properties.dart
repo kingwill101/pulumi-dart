@@ -25,7 +25,7 @@ class MapsAccountProperties {
   /// [encryption] All encryption configuration for a resource.
   /// [linkedResources] The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
   /// [locations] List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
-  MapsAccountProperties({
+  const MapsAccountProperties({
     this.cors,
     this.disableLocalAuth,
     this.encryption,

@@ -9,7 +9,7 @@ class AdvancedNetworkingObservabilityResponse {
 
   /// Creates a new [AdvancedNetworkingObservabilityResponse].
   /// [enabled] Indicates the enablement of Advanced Networking observability functionalities on clusters.
-  AdvancedNetworkingObservabilityResponse({
+  const AdvancedNetworkingObservabilityResponse({
     this.enabled,
   });
 

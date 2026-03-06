@@ -7,7 +7,7 @@ class RouteSpecTcpRouteMatch {
 
   /// Creates a new [RouteSpecTcpRouteMatch].
   /// [port] Optional.
-  RouteSpecTcpRouteMatch({
+  const RouteSpecTcpRouteMatch({
     this.port,
   });
 

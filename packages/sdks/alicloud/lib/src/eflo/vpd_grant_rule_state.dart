@@ -21,7 +21,7 @@ class VpdGrantRuleState {
   /// [grantTenantId] Cross-account authorized tenant ID.
   /// [instanceId] Instance ID of VPD.
   /// [regionId] The Region ID.
-  VpdGrantRuleState({
+  const VpdGrantRuleState({
     this.createTime,
     this.erId,
     this.grantTenantId,

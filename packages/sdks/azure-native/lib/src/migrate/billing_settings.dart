@@ -12,7 +12,7 @@ class BillingSettings {
   /// Creates a new [BillingSettings].
   /// [licensingProgram] Gets or sets the licensing program.
   /// [subscriptionId] Gets or sets the subscription ID for licensing program selected.
-  BillingSettings({
+  const BillingSettings({
     this.licensingProgram,
     this.subscriptionId,
   });

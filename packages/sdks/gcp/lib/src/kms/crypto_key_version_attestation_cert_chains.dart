@@ -14,7 +14,7 @@ class CryptoKeyVersionAttestationCertChains {
   /// [caviumCerts] Cavium certificate chain corresponding to the attestation.
   /// [googleCardCerts] Google card certificate chain corresponding to the attestation.
   /// [googlePartitionCerts] Google partition certificate chain corresponding to the attestation.
-  CryptoKeyVersionAttestationCertChains({
+  const CryptoKeyVersionAttestationCertChains({
     this.caviumCerts,
     this.googleCardCerts,
     this.googlePartitionCerts,

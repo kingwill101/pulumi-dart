@@ -8,7 +8,7 @@ class AadConfigurationResponse {
 
   /// Creates a new [AadConfigurationResponse].
   /// [adminGroupObjectIds] The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
-  AadConfigurationResponse({
+  const AadConfigurationResponse({
     required this.adminGroupObjectIds,
   });
 

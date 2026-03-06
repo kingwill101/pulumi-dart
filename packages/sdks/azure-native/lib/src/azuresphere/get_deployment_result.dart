@@ -35,7 +35,7 @@ class GetDeploymentResult {
   /// [provisioningState] The status of the last operation.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDeploymentResult({
+  const GetDeploymentResult({
     required this.azureApiVersion,
     this.deployedImages,
     required this.deploymentDateUtc,

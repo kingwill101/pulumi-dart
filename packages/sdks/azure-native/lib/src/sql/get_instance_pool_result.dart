@@ -42,7 +42,7 @@ class GetInstancePoolResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [vCores] Count of vCores belonging to this instance pool.
-  GetInstancePoolResult({
+  const GetInstancePoolResult({
     required this.azureApiVersion,
     required this.dnsZone,
     required this.id,

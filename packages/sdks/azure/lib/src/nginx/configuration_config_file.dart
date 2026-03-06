@@ -11,7 +11,7 @@ class ConfigurationConfigFile {
   /// Creates a new [ConfigurationConfigFile].
   /// [content] Specifies the base-64 encoded contents of this config file.
   /// [virtualPath] Specifies the path of this config file.
-  ConfigurationConfigFile({
+  const ConfigurationConfigFile({
     required this.content,
     required this.virtualPath,
   });

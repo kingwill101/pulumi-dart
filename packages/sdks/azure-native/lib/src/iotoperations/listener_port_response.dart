@@ -25,7 +25,7 @@ class ListenerPortResponse {
   /// [port] TCP port for accepting client connections.
   /// [protocol] Protocol to use for client connections.
   /// [tls] TLS server certificate settings for this port. Omit to disable TLS.
-  ListenerPortResponse({
+  const ListenerPortResponse({
     this.authenticationRef,
     this.authorizationRef,
     this.nodePort,

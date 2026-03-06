@@ -23,7 +23,7 @@ class MailFromArgs {
   /// [domain] Verified domain name or email identity to generate DKIM tokens for.
   /// [mailFromDomain] Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MailFromArgs({
+  const MailFromArgs({
     this.behaviorOnMxFailure,
     required this.domain,
     required this.mailFromDomain,

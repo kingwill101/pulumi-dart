@@ -33,7 +33,7 @@ class TemplateState {
   /// [serviceName] Service name.
   /// [unit] Unit of measurement.
   /// [value] The new, increased value for the quota.
-  TemplateState({
+  const TemplateState({
     this.awsRegion,
     this.globalQuota,
     this.quotaCode,

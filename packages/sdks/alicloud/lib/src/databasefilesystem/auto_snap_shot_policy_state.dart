@@ -36,7 +36,7 @@ class AutoSnapShotPolicyState {
   /// [status] Automatic snapshot policy status
   /// [statusDetail] Automatic snapshot policy status details
   /// [timePoints] The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
-  AutoSnapShotPolicyState({
+  const AutoSnapShotPolicyState({
     this.appliedDbfsNumber,
     this.createTime,
     this.lastModified,

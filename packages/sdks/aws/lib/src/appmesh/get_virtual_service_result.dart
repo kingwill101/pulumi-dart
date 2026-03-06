@@ -36,7 +36,7 @@ class GetVirtualServiceResult {
   /// [resourceOwner] Resource owner's AWS account ID.
   /// [specs] Virtual service specification. See the `aws.appmesh.VirtualService` resource for details.
   /// [tags] Map of tags.
-  GetVirtualServiceResult({
+  const GetVirtualServiceResult({
     required this.arn,
     required this.createdDate,
     required this.id,

@@ -21,7 +21,7 @@ class GetDataQualityRulesRuleStatisticRangeExpectation {
   /// [statistic] The list of aggregate metrics a rule can be evaluated against.
   /// [strictMaxEnabled] Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.
   /// [strictMinEnabled] Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.
-  GetDataQualityRulesRuleStatisticRangeExpectation({
+  const GetDataQualityRulesRuleStatisticRangeExpectation({
     required this.maxValue,
     required this.minValue,
     required this.statistic,

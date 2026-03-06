@@ -51,7 +51,7 @@ class AuthorizedOrgsDescArgs {
   /// [name] Resource name for the `AuthorizedOrgsDesc`. Format:
   /// [orgs] The list of organization ids in this AuthorizedOrgsDesc.
   /// [parent] Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
-  AuthorizedOrgsDescArgs({
+  const AuthorizedOrgsDescArgs({
     this.assetType,
     this.authorizationDirection,
     this.authorizationType,

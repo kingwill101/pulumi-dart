@@ -26,7 +26,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
   /// [lambdaOutput] Identifies a Lambda function as the destination.
   /// [name] The name of the in-application stream.
   /// [outputId] Optional.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationOutput({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationOutput({
     required this.destinationSchema,
     this.kinesisFirehoseOutput,
     this.kinesisStreamsOutput,

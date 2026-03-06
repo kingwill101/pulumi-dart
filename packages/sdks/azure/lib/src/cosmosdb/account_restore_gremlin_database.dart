@@ -11,7 +11,7 @@ class AccountRestoreGremlinDatabase {
   /// Creates a new [AccountRestoreGremlinDatabase].
   /// [graphNames] A list of the Graph names for the restore request. Changing this forces a new resource to be created.
   /// [name] The Gremlin Database name for the restore request. Changing this forces a new resource to be created.
-  AccountRestoreGremlinDatabase({
+  const AccountRestoreGremlinDatabase({
     this.graphNames,
     required this.name,
   });

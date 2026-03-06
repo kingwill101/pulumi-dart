@@ -34,7 +34,7 @@ class GetProvisionedProductsArgs {
   /// [pageSize] Optional.
   /// [sortBy] The field that is used to sort the queried data.
   /// [sortOrder] The sorting method.
-  GetProvisionedProductsArgs({
+  const GetProvisionedProductsArgs({
     this.accessLevelFilter,
     this.enableDetails,
     this.ids,

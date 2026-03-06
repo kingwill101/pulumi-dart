@@ -75,7 +75,7 @@ class GetLoadBalancersBalancer {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
   /// [zoneMappings] The zones and vSwitches.
-  GetLoadBalancersBalancer({
+  const GetLoadBalancersBalancer({
     required this.accessLogConfigs,
     required this.addressAllocatedMode,
     required this.addressType,

@@ -9,7 +9,7 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
 
   /// Creates a new [GoogleCloudRetailV2RuleTwowaySynonymsAction].
   /// [synonyms] Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
-  GoogleCloudRetailV2RuleTwowaySynonymsAction({
+  const GoogleCloudRetailV2RuleTwowaySynonymsAction({
     this.synonyms,
   });
 

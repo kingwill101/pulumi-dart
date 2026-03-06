@@ -34,7 +34,7 @@ class GetTlsRouteResult {
   /// [rules] Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
   /// [selfLink] Server-defined URL of this resource
   /// [updateTime] The timestamp when the resource was updated.
-  GetTlsRouteResult({
+  const GetTlsRouteResult({
     required this.createTime,
     required this.description,
     required this.gateways,

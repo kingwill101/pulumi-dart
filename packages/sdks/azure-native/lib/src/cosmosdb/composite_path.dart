@@ -11,7 +11,7 @@ class CompositePath {
   /// Creates a new [CompositePath].
   /// [order] Sort order for composite paths.
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
-  CompositePath({
+  const CompositePath({
     this.order,
     this.path,
   });

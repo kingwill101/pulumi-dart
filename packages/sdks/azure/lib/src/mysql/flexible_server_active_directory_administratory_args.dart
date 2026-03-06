@@ -24,7 +24,7 @@ class FlexibleServerActiveDirectoryAdministratoryArgs {
   /// [objectId] The ID of the principal to set as the server administrator. For a managed identity this should be the Client ID of the identity.
   /// [serverId] The resource ID of the MySQL Flexible Server. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID.
-  FlexibleServerActiveDirectoryAdministratoryArgs({
+  const FlexibleServerActiveDirectoryAdministratoryArgs({
     required this.identityId,
     required this.login,
     required this.objectId,

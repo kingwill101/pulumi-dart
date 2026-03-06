@@ -62,7 +62,7 @@ class GetDbServersDbServer {
   /// [shape] The shape of the DB Server. The shape determines the amount of CPU, storage, and memory resources available.
   /// [timeCreated] The date and time that the DB Server was created.
   /// [vmClusterIds] The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the VM Clusters associated with the DB Server.
-  GetDbServersDbServer({
+  const GetDbServersDbServer({
     required this.autonomousVirtualMachineDs,
     required this.autonomousVmClusterIds,
     required this.compartmentId,

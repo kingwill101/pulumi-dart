@@ -16,7 +16,7 @@ class SpacesBucketLifecycleRuleExpiration {
   /// [date] Specifies the date/time after which you want applicable objects to expire. The argument uses
   /// [days] Specifies the number of days after object creation when the applicable objects will expire.
   /// [expiredObjectDeleteMarker] On a versioned bucket (versioning-enabled or versioning-suspended
-  SpacesBucketLifecycleRuleExpiration({
+  const SpacesBucketLifecycleRuleExpiration({
     this.date,
     this.days,
     this.expiredObjectDeleteMarker,

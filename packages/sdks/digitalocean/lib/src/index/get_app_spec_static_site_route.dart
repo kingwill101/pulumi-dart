@@ -11,7 +11,7 @@ class GetAppSpecStaticSiteRoute {
   /// Creates a new [GetAppSpecStaticSiteRoute].
   /// [path] Paths must start with `/` and must be unique within the app.
   /// [preservePathPrefix] An optional flag to preserve the path that is forwarded to the backend service.
-  GetAppSpecStaticSiteRoute({
+  const GetAppSpecStaticSiteRoute({
     this.path,
     this.preservePathPrefix,
   });

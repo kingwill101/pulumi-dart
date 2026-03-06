@@ -15,7 +15,7 @@ class PolicyAssignmentPropertiesResponseRoleDefinition {
   /// [displayName] Display name of the role definition
   /// [id] Id of the role definition
   /// [type] Type of the role definition
-  PolicyAssignmentPropertiesResponseRoleDefinition({
+  const PolicyAssignmentPropertiesResponseRoleDefinition({
     this.displayName,
     this.id,
     this.type,

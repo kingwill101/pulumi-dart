@@ -9,7 +9,7 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule {
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule].
   /// [header] Configuration block for header-based routing rules. See below.
-  ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule({
+  const ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule({
     this.header,
   });
 

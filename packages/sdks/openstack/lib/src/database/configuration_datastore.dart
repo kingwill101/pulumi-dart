@@ -11,7 +11,7 @@ class ConfigurationDatastore {
   /// Creates a new [ConfigurationDatastore].
   /// [type] Database engine type to be used with this configuration. Changing this creates a new resource.
   /// [version] Version of database engine type to be used with this configuration. Changing this creates a new resource.
-  ConfigurationDatastore({
+  const ConfigurationDatastore({
     required this.type,
     required this.version,
   });

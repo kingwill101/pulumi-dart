@@ -9,7 +9,7 @@ class ConfigManagementBinauthzConfigResponse {
 
   /// Creates a new [ConfigManagementBinauthzConfigResponse].
   /// [enabled] Whether binauthz is enabled in this cluster.
-  ConfigManagementBinauthzConfigResponse({
+  const ConfigManagementBinauthzConfigResponse({
     required this.enabled,
   });
 

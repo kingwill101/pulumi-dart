@@ -11,7 +11,7 @@ class DomainDevicesGraphicDbusGl {
   /// Creates a new [DomainDevicesGraphicDbusGl].
   /// [enable] Configures whether OpenGL support is enabled in the D-Bus graphics settings.
   /// [renderNode] Sets the render node for OpenGL in the D-Bus graphics configuration.
-  DomainDevicesGraphicDbusGl({
+  const DomainDevicesGraphicDbusGl({
     this.enable,
     this.renderNode,
   });

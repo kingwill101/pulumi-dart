@@ -48,7 +48,7 @@ class RegionTargetTcpProxyState {
   /// [proxyId] The unique identifier for the resource.
   /// [region] The Region in which the created target TCP proxy should reside.
   /// [selfLink] The URI of the created resource.
-  RegionTargetTcpProxyState({
+  const RegionTargetTcpProxyState({
     this.backendService,
     this.creationTimestamp,
     this.description,

@@ -17,7 +17,7 @@ class KubernetesClusterStorageProfile {
   /// [diskDriverEnabled] Is the Disk CSI driver enabled? Defaults to `true`.
   /// [fileDriverEnabled] Is the File CSI driver enabled? Defaults to `true`.
   /// [snapshotControllerEnabled] Is the Snapshot Controller enabled? Defaults to `true`.
-  KubernetesClusterStorageProfile({
+  const KubernetesClusterStorageProfile({
     this.blobDriverEnabled,
     this.diskDriverEnabled,
     this.fileDriverEnabled,

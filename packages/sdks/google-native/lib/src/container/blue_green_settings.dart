@@ -13,7 +13,7 @@ class BlueGreenSettings {
   /// Creates a new [BlueGreenSettings].
   /// [nodePoolSoakDuration] Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
   /// [standardRolloutPolicy] Standard policy for the blue-green upgrade.
-  BlueGreenSettings({
+  const BlueGreenSettings({
     this.nodePoolSoakDuration,
     this.standardRolloutPolicy,
   });

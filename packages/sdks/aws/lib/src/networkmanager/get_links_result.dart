@@ -21,7 +21,7 @@ class GetLinksResult {
   /// [siteId] Optional.
   /// [tags] Optional.
   /// [type] Optional.
-  GetLinksResult({
+  const GetLinksResult({
     required this.globalNetworkId,
     required this.id,
     required this.ids,

@@ -9,7 +9,7 @@ class GraphQLApiTypeEnumValue {
 
   /// Creates a new [GraphQLApiTypeEnumValue].
   /// [value] Property value
-  GraphQLApiTypeEnumValue({
+  const GraphQLApiTypeEnumValue({
     this.value,
   });
 

@@ -56,7 +56,7 @@ class ServiceState {
   /// [statuses] (Output)
   /// [template] template holds the latest specification for the Revision to
   /// [traffics] Traffic specifies how to distribute traffic over a collection of Knative Revisions
-  ServiceState({
+  const ServiceState({
     this.autogenerateRevisionName,
     this.location,
     this.metadata,

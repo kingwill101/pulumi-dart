@@ -66,7 +66,7 @@ class JobState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [template] A `template` block as defined below.
   /// [workloadProfileName] The name of the workload profile to use for the Container App Job.
-  JobState({
+  const JobState({
     this.containerAppEnvironmentId,
     this.eventStreamEndpoint,
     this.eventTriggerConfig,

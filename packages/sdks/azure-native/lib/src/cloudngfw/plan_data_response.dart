@@ -18,7 +18,7 @@ class PlanDataResponse {
   /// [effectiveDate] date when plan was applied
   /// [planId] plan id as published by Liftr.PAN
   /// [usageType] different usage type like PAYG/COMMITTED
-  PlanDataResponse({
+  const PlanDataResponse({
     required this.billingCycle,
     required this.effectiveDate,
     required this.planId,

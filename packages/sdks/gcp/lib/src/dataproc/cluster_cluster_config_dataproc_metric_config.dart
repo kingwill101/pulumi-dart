@@ -9,7 +9,7 @@ class ClusterClusterConfigDataprocMetricConfig {
 
   /// Creates a new [ClusterClusterConfigDataprocMetricConfig].
   /// [metrics] Metrics sources to enable.
-  ClusterClusterConfigDataprocMetricConfig({
+  const ClusterClusterConfigDataprocMetricConfig({
     required this.metrics,
   });
 

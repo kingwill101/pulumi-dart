@@ -14,7 +14,7 @@ class GetUserHierarchyStructureHierarchyStructureLevelThree {
   /// [arn] ARN of the hierarchy level.
   /// [id] The identifier of the hierarchy level.
   /// [name] Name of the user hierarchy level. Must not be more than 50 characters.
-  GetUserHierarchyStructureHierarchyStructureLevelThree({
+  const GetUserHierarchyStructureHierarchyStructureLevelThree({
     required this.arn,
     required this.id,
     required this.name,

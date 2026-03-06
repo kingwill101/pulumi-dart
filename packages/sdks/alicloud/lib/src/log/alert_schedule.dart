@@ -27,7 +27,7 @@ class AlertSchedule {
   /// [runImmediately] Optional.
   /// [timeZone] Time zone for schedule.
   /// [type] including FixedRate,Hourly,Daily,Weekly,Cron.
-  AlertSchedule({
+  const AlertSchedule({
     this.cronExpression,
     this.dayOfWeek,
     this.delay,

@@ -19,7 +19,7 @@ class WeeklyMaintenanceScheduleConfigurationResponse {
   /// [duration] The duration time to run the maintenance job, specified in ISO8601 format, e.g. PT8H
   /// [frequency] The frequency to run the maintenance job
   /// [hour] The hour to run the maintenance job
-  WeeklyMaintenanceScheduleConfigurationResponse({
+  const WeeklyMaintenanceScheduleConfigurationResponse({
     required this.day,
     required this.duration,
     required this.frequency,

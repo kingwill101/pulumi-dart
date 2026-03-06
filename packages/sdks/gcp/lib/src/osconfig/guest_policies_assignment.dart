@@ -34,7 +34,7 @@ class GuestPoliciesAssignment {
   /// [instances] Targets any of the instances specified. Instances are specified by their URI in the form
   /// [osTypes] Targets VM instances matching at least one of the following OS types.
   /// [zones] Targets instances in any of these zones. Leave empty to target instances in any zone.
-  GuestPoliciesAssignment({
+  const GuestPoliciesAssignment({
     this.groupLabels,
     this.instanceNamePrefixes,
     this.instances,

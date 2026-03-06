@@ -8,7 +8,7 @@ class RegionalSecretCustomerManagedEncryption {
 
   /// Creates a new [RegionalSecretCustomerManagedEncryption].
   /// [kmsKeyName] The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
-  RegionalSecretCustomerManagedEncryption({
+  const RegionalSecretCustomerManagedEncryption({
     required this.kmsKeyName,
   });
 

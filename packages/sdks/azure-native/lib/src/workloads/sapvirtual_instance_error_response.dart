@@ -10,7 +10,7 @@ class SAPVirtualInstanceErrorResponse {
 
   /// Creates a new [SAPVirtualInstanceErrorResponse].
   /// [properties] The Virtual Instance for SAP error body.
-  SAPVirtualInstanceErrorResponse({
+  const SAPVirtualInstanceErrorResponse({
     this.properties,
   });
 

@@ -36,7 +36,7 @@ class ApiProperties {
   /// [storageAccountConnectionString] (Personalization Only) The storage account connection string.
   /// [superUser] (Metrics Advisor Only) The super user of Metrics Advisor.
   /// [websiteName] (Metrics Advisor Only) The website name of Metrics Advisor.
-  ApiProperties({
+  const ApiProperties({
     this.aadClientId,
     this.aadTenantId,
     this.eventHubConnectionString,

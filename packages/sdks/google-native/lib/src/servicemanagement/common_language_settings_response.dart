@@ -12,7 +12,7 @@ class CommonLanguageSettingsResponse {
   /// Creates a new [CommonLanguageSettingsResponse].
   /// [destinations] The destination where API teams want this client library to be published.
   /// [referenceDocsUri] Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
-  CommonLanguageSettingsResponse({
+  const CommonLanguageSettingsResponse({
     required this.destinations,
     required this.referenceDocsUri,
   });

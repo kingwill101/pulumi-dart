@@ -56,7 +56,7 @@ class GetServiceResult {
   /// [serverlessConnectionTimeoutInSeconds] The serverless connection timeout of this SignalR service.
   /// [tags] Required.
   /// [tlsClientCertEnabled] Is tls client cert enabled for this SignalR service?
-  GetServiceResult({
+  const GetServiceResult({
     required this.aadAuthEnabled,
     required this.hostname,
     required this.id,

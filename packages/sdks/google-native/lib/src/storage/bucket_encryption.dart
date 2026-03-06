@@ -9,7 +9,7 @@ class BucketEncryption {
 
   /// Creates a new [BucketEncryption].
   /// [defaultKmsKeyName] A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-  BucketEncryption({
+  const BucketEncryption({
     this.defaultKmsKeyName,
   });
 

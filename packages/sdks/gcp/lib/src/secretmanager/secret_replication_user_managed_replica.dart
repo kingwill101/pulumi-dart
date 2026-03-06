@@ -13,7 +13,7 @@ class SecretReplicationUserManagedReplica {
   /// Creates a new [SecretReplicationUserManagedReplica].
   /// [customerManagedEncryption] Customer Managed Encryption for the secret.
   /// [location] The canonical IDs of the location to replicate data. For example: "us-east1".
-  SecretReplicationUserManagedReplica({
+  const SecretReplicationUserManagedReplica({
     this.customerManagedEncryption,
     required this.location,
   });

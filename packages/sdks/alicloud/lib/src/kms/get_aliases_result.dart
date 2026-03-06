@@ -23,7 +23,7 @@ class GetAliasesResult {
   /// [nameRegex] Optional.
   /// [names] A list of KMS alias name.
   /// [outputFile] Optional.
-  GetAliasesResult({
+  const GetAliasesResult({
     required this.aliases,
     required this.id,
     required this.ids,

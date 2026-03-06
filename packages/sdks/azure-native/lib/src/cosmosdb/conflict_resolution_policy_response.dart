@@ -15,7 +15,7 @@ class ConflictResolutionPolicyResponse {
   /// [conflictResolutionPath] The conflict resolution path in the case of LastWriterWins mode.
   /// [conflictResolutionProcedure] The procedure to resolve conflicts in the case of custom mode.
   /// [mode] Indicates the conflict resolution mode.
-  ConflictResolutionPolicyResponse({
+  const ConflictResolutionPolicyResponse({
     this.conflictResolutionPath,
     this.conflictResolutionProcedure,
     this.mode,

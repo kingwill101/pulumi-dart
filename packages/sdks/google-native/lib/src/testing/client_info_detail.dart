@@ -12,7 +12,7 @@ class ClientInfoDetail {
   /// Creates a new [ClientInfoDetail].
   /// [key] The key of detailed client information.
   /// [value] The value of detailed client information.
-  ClientInfoDetail({
+  const ClientInfoDetail({
     required this.key,
     required this.value,
   });

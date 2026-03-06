@@ -69,7 +69,7 @@ class MulticastGroupRangeArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [requireExplicitAccept] Whether an empty consumer_accept_list will deny all consumer projects.
   /// [reservedInternalRange] The resource name of the internal range reserved for this
-  MulticastGroupRangeArgs({
+  const MulticastGroupRangeArgs({
     this.consumerAcceptLists,
     this.description,
     this.distributionScope,

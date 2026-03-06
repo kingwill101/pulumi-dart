@@ -37,7 +37,7 @@ class TargetServerArgs {
   /// [port] The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
   /// [protocol] Immutable. The protocol used by this TargetServer.
   /// [sSlInfo] Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-  TargetServerArgs({
+  const TargetServerArgs({
     this.description,
     required this.envId,
     required this.host,

@@ -9,7 +9,7 @@ class WebPubSubTlsSettingsResponse {
 
   /// Creates a new [WebPubSubTlsSettingsResponse].
   /// [clientCertEnabled] Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  WebPubSubTlsSettingsResponse({
+  const WebPubSubTlsSettingsResponse({
     this.clientCertEnabled,
   });
 

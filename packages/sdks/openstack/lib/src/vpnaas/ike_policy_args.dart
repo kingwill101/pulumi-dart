@@ -56,7 +56,7 @@ class IkePolicyArgs {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [tenantId] The owner of the policy. Required if admin wants to
   /// [valueSpecs] Map of additional options.
-  IkePolicyArgs({
+  const IkePolicyArgs({
     this.authAlgorithm,
     this.description,
     this.encryptionAlgorithm,

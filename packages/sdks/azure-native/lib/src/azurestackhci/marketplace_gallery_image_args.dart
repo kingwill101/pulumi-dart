@@ -45,7 +45,7 @@ class MarketplaceGalleryImageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [version] Specifies information about the gallery image version that you want to create or update.
-  MarketplaceGalleryImageArgs({
+  const MarketplaceGalleryImageArgs({
     this.cloudInitDataSource,
     this.containerId,
     this.extendedLocation,

@@ -12,7 +12,7 @@ class AutoPauseProperties {
   /// Creates a new [AutoPauseProperties].
   /// [delayInMinutes] Number of minutes of idle time before the Big Data pool is automatically paused.
   /// [enabled] Whether auto-pausing is enabled for the Big Data pool.
-  AutoPauseProperties({
+  const AutoPauseProperties({
     this.delayInMinutes,
     this.enabled,
   });

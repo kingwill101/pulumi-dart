@@ -12,7 +12,7 @@ class AutoscaleCapacityResponse {
   /// Creates a new [AutoscaleCapacityResponse].
   /// [maxInstanceCount] The maximum instance count of the cluster
   /// [minInstanceCount] The minimum instance count of the cluster
-  AutoscaleCapacityResponse({
+  const AutoscaleCapacityResponse({
     this.maxInstanceCount,
     this.minInstanceCount,
   });

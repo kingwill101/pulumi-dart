@@ -30,7 +30,7 @@ class ViewArgs {
   /// [sourceViews] List of ARNs of the source data views for the custom billing view.
   /// [tags] List of key value map specifying tags associated to the billing view being created.
   /// [timeouts] Optional.
-  ViewArgs({
+  const ViewArgs({
     this.dataFilterExpression,
     this.description,
     this.name,

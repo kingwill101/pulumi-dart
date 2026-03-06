@@ -9,7 +9,7 @@ class AutoTargetLagsResponse {
 
   /// Creates a new [AutoTargetLagsResponse].
   /// [mode] Target lags selection modes.
-  AutoTargetLagsResponse({
+  const AutoTargetLagsResponse({
     required this.mode,
   });
 

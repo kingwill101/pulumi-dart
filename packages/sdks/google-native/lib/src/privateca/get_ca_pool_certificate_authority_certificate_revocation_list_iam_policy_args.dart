@@ -21,7 +21,7 @@ class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs({
+  const GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs({
     required this.caPoolId,
     required this.certificateAuthorityId,
     required this.certificateRevocationListId,

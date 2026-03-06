@@ -21,7 +21,7 @@ class MonthlyScheduleResponse {
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Monthly snapshot count to keep
   /// [usedBytes] Resource size in bytes, current storage usage for the volume in bytes
-  MonthlyScheduleResponse({
+  const MonthlyScheduleResponse({
     this.daysOfMonth,
     this.hour,
     this.minute,

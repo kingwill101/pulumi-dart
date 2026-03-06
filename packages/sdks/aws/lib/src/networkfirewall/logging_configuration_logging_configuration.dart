@@ -9,7 +9,7 @@ class LoggingConfigurationLoggingConfiguration {
 
   /// Creates a new [LoggingConfigurationLoggingConfiguration].
   /// [logDestinationConfigs] Set of configuration blocks describing the logging details for a firewall. See Log Destination Config below for details. At most, only Three blocks can be specified; one for `FLOW` logs and one for `ALERT` logs and one for `TLS` logs.
-  LoggingConfigurationLoggingConfiguration({
+  const LoggingConfigurationLoggingConfiguration({
     required this.logDestinationConfigs,
   });
 

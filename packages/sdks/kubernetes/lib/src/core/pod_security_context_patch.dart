@@ -64,7 +64,7 @@ class PodSecurityContextPatch {
   /// [supplementalGroupsPolicy] Defines how supplemental groups of the first container processes are calculated. Valid values are "Merge" and "Strict". If not specified, "Merge" is used. (Alpha) Using the field requires the SupplementalGroupsPolicy feature gate to be enabled and the container runtime must implement support for this feature. Note that this field cannot be set when spec.os.name is windows.
   /// [sysctls] Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.name is windows.
   /// [windowsOptions] The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.
-  PodSecurityContextPatch({
+  const PodSecurityContextPatch({
     this.appArmorProfile,
     this.fsGroup,
     this.fsGroupChangePolicy,

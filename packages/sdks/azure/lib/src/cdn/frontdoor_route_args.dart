@@ -58,7 +58,7 @@ class FrontdoorRouteArgs {
   /// [name] The name which should be used for this Front Door Route. Valid values must begin with a letter or number, end with a letter or number and may only contain letters, numbers and hyphens with a maximum length of 90 characters. Changing this forces a new Front Door Route to be created.
   /// [patternsToMatches] The route patterns of the rule.
   /// [supportedProtocols] One or more Protocols supported by this Front Door Route. Possible values are `Http` or `Https`.
-  FrontdoorRouteArgs({
+  const FrontdoorRouteArgs({
     this.cache,
     this.cdnFrontdoorCustomDomainIds,
     required this.cdnFrontdoorEndpointId,

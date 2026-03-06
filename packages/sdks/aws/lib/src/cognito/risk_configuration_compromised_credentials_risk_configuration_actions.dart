@@ -8,7 +8,7 @@ class RiskConfigurationCompromisedCredentialsRiskConfigurationActions {
 
   /// Creates a new [RiskConfigurationCompromisedCredentialsRiskConfigurationActions].
   /// [eventAction] The event action. Valid values are `BLOCK` or `NO_ACTION`.
-  RiskConfigurationCompromisedCredentialsRiskConfigurationActions({
+  const RiskConfigurationCompromisedCredentialsRiskConfigurationActions({
     required this.eventAction,
   });
 

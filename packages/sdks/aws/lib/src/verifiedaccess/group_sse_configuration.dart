@@ -11,7 +11,7 @@ class GroupSseConfiguration {
   /// Creates a new [GroupSseConfiguration].
   /// [customerManagedKeyEnabled] Boolean flag to indicate that the CMK should be used.
   /// [kmsKeyArn] ARN of the KMS key to use.
-  GroupSseConfiguration({
+  const GroupSseConfiguration({
     this.customerManagedKeyEnabled,
     this.kmsKeyArn,
   });

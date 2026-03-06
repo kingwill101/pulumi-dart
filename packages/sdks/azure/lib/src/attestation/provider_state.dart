@@ -43,7 +43,7 @@ class ProviderState {
   /// [tags] A mapping of tags which should be assigned to the Attestation Provider.
   /// [tpmPolicyBase64] Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   /// [trustModel] Trust model used for the Attestation Service.
-  ProviderState({
+  const ProviderState({
     this.attestationUri,
     this.location,
     this.name,

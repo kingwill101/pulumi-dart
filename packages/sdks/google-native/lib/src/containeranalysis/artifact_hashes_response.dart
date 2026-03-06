@@ -8,7 +8,7 @@ class ArtifactHashesResponse {
 
   /// Creates a new [ArtifactHashesResponse].
   /// [sha256] Required.
-  ArtifactHashesResponse({
+  const ArtifactHashesResponse({
     required this.sha256,
   });
 

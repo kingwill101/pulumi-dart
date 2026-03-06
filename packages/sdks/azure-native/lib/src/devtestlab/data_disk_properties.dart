@@ -16,7 +16,7 @@ class DataDiskProperties {
   /// [attachNewDataDiskOptions] Specifies options to attach a new disk to the virtual machine.
   /// [existingLabDiskId] Specifies the existing lab disk id to attach to virtual machine.
   /// [hostCaching] Caching option for a data disk (i.e. None, ReadOnly, ReadWrite).
-  DataDiskProperties({
+  const DataDiskProperties({
     this.attachNewDataDiskOptions,
     this.existingLabDiskId,
     this.hostCaching,

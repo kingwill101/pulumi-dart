@@ -25,7 +25,7 @@ class HostArgs {
   /// [providerType] The name of the external provider where your third-party code repository is configured.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcConfiguration] The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
-  HostArgs({
+  const HostArgs({
     this.name,
     required this.providerEndpoint,
     required this.providerType,

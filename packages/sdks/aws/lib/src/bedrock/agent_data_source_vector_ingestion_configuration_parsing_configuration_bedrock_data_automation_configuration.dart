@@ -8,7 +8,7 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockData
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration].
   /// [parsingModality] Specifies whether to enable parsing of multimodal data, including both text and images. Valid value: `MULTIMODAL`.
-  AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration({
     this.parsingModality,
   });
 

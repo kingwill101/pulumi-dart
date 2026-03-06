@@ -23,7 +23,7 @@ class RoutingControlState {
   /// [controlPanelArn] ARN of the control panel in which this routing control will reside.
   /// [name] The name describing the routing control.
   /// [status] Status of routing control. `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
-  RoutingControlState({
+  const RoutingControlState({
     this.arn,
     this.clusterArn,
     this.controlPanelArn,

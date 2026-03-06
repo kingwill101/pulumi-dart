@@ -22,7 +22,7 @@ class PostgresqlSourceConfigResponse {
   /// [maxConcurrentBackfillTasks] Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
   /// [publication] The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
   /// [replicationSlot] Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
-  PostgresqlSourceConfigResponse({
+  const PostgresqlSourceConfigResponse({
     required this.excludeObjects,
     required this.includeObjects,
     required this.maxConcurrentBackfillTasks,

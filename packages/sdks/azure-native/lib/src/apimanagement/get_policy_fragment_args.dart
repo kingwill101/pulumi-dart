@@ -21,7 +21,7 @@ class GetPolicyFragmentArgs {
   /// [id] A resource identifier.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetPolicyFragmentArgs({
+  const GetPolicyFragmentArgs({
     this.format,
     required this.id,
     required this.resourceGroupName,

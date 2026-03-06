@@ -21,7 +21,7 @@ class GoogleCloudChannelV1ContactInfo {
   /// [lastName] The customer account contact's last name. Optional for Team customers.
   /// [phone] The customer account's contact phone number.
   /// [title] Optional. The customer account contact's job title.
-  GoogleCloudChannelV1ContactInfo({
+  const GoogleCloudChannelV1ContactInfo({
     this.email,
     this.firstName,
     this.lastName,

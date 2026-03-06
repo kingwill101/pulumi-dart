@@ -51,7 +51,7 @@ class NetworkAclRuleArgs {
   /// [ruleAction] Indicates whether to allow or deny the traffic that matches the rule. Accepted values: `allow` | `deny`
   /// [ruleNumber] The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
   /// [toPort] The to port to match.
-  NetworkAclRuleArgs({
+  const NetworkAclRuleArgs({
     this.cidrBlock,
     this.egress,
     this.fromPort,

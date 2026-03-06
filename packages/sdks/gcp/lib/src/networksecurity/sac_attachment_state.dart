@@ -55,7 +55,7 @@ class SacAttachmentState {
   /// [symantecOptions] Configuration required for Symantec attachments.
   /// [timeZone] Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
   /// [updateTime] Timestamp when the realm was last updated.
-  SacAttachmentState({
+  const SacAttachmentState({
     this.country,
     this.createTime,
     this.effectiveLabels,

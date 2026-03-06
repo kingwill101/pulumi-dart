@@ -14,7 +14,7 @@ class EventTargetEcsTargetCapacityProviderStrategy {
   /// [base] The base value designates how many tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
   /// [capacityProvider] Short name of the capacity provider.
   /// [weight] The weight value designates the relative percentage of the total number of tasks launched that should use the specified capacity provider. The weight value is taken into consideration after the base value, if defined, is satisfied.
-  EventTargetEcsTargetCapacityProviderStrategy({
+  const EventTargetEcsTargetCapacityProviderStrategy({
     this.base,
     required this.capacityProvider,
     this.weight,

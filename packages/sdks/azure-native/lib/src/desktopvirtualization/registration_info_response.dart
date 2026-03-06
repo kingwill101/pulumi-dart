@@ -15,7 +15,7 @@ class RegistrationInfoResponse {
   /// [expirationTime] Expiration time of registration token.
   /// [registrationTokenOperation] The type of resetting the token.
   /// [token] The registration token base64 encoded string.
-  RegistrationInfoResponse({
+  const RegistrationInfoResponse({
     this.expirationTime,
     this.registrationTokenOperation,
     this.token,

@@ -15,7 +15,7 @@ class IdentityResponse {
   /// [principalId] The principal id of managed service identity.
   /// [tenantId] The tenant of managed service identity.
   /// [type] The type of managed service identity.
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

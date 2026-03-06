@@ -42,7 +42,7 @@ class GetEdgeActionVersionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationStatus] The validation status
-  GetEdgeActionVersionResult({
+  const GetEdgeActionVersionResult({
     required this.azureApiVersion,
     required this.deploymentType,
     required this.id,

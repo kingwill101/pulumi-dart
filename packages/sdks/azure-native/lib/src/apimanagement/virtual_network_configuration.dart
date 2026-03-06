@@ -9,7 +9,7 @@ class VirtualNetworkConfiguration {
 
   /// Creates a new [VirtualNetworkConfiguration].
   /// [subnetResourceId] The full resource ID of a subnet in a virtual network to deploy the API Management service in.
-  VirtualNetworkConfiguration({
+  const VirtualNetworkConfiguration({
     this.subnetResourceId,
   });
 

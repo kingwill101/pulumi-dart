@@ -12,7 +12,7 @@ class QuantityBasedExpiryResponseAlloydbV1beta {
   /// Creates a new [QuantityBasedExpiryResponseAlloydbV1beta].
   /// [retentionCount] The backup's position among its backups with the same source cluster and type, by descending chronological order create time(i.e. newest first).
   /// [totalRetentionCount] The length of the quantity-based queue, specified by the backup's retention policy.
-  QuantityBasedExpiryResponseAlloydbV1beta({
+  const QuantityBasedExpiryResponseAlloydbV1beta({
     required this.retentionCount,
     required this.totalRetentionCount,
   });

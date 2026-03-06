@@ -40,7 +40,7 @@ class VirtualNetworkGatewayNatRuleArgs {
   /// [resourceGroupName] The resource group name of the Virtual Network Gateway.
   /// [type] The type of NAT rule for VPN NAT.
   /// [virtualNetworkGatewayName] The name of the gateway.
-  VirtualNetworkGatewayNatRuleArgs({
+  const VirtualNetworkGatewayNatRuleArgs({
     this.externalMappings,
     this.id,
     this.internalMappings,

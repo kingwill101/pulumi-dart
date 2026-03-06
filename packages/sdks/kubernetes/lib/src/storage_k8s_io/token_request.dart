@@ -12,7 +12,7 @@ class TokenRequest {
   /// Creates a new [TokenRequest].
   /// [audience] audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
   /// [expirationSeconds] expirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".
-  TokenRequest({
+  const TokenRequest({
     required this.audience,
     this.expirationSeconds,
   });

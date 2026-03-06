@@ -21,7 +21,7 @@ class ListSelector {
   /// [id] String of the selector ID.
   /// [targets] List of Target references.
   /// [type] Enum of the selector type.
-  ListSelector({
+  const ListSelector({
     this.filter,
     required this.id,
     required this.targets,

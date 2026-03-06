@@ -9,7 +9,7 @@ class EncryptionConfigResponseComposerV1beta1 {
 
   /// Creates a new [EncryptionConfigResponseComposerV1beta1].
   /// [kmsKeyName] Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
-  EncryptionConfigResponseComposerV1beta1({
+  const EncryptionConfigResponseComposerV1beta1({
     required this.kmsKeyName,
   });
 

@@ -16,7 +16,7 @@ class GetRegionalParameterPolicyMember {
   /// Creates a new [GetRegionalParameterPolicyMember].
   /// [iamPolicyNamePrincipal] IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
   /// [iamPolicyUidPrincipal] IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier. If
-  GetRegionalParameterPolicyMember({
+  const GetRegionalParameterPolicyMember({
     required this.iamPolicyNamePrincipal,
     required this.iamPolicyUidPrincipal,
   });

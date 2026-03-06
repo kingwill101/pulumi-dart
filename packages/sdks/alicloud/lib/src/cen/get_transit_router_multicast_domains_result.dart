@@ -31,7 +31,7 @@ class GetTransitRouterMulticastDomainsResult {
   /// [status] The status of the Transit Router Multicast Domain.
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterMulticastDomainId] The ID of the Transit Router Multicast Domain.
-  GetTransitRouterMulticastDomainsResult({
+  const GetTransitRouterMulticastDomainsResult({
     required this.domains,
     required this.id,
     required this.ids,

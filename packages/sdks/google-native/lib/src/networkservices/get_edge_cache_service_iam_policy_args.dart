@@ -17,7 +17,7 @@ class GetEdgeCacheServiceIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetEdgeCacheServiceIamPolicyArgs({
+  const GetEdgeCacheServiceIamPolicyArgs({
     required this.edgeCacheServiceId,
     required this.location,
     this.optionsRequestedPolicyVersion,

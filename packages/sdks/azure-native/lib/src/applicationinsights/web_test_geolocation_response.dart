@@ -9,7 +9,7 @@ class WebTestGeolocationResponse {
 
   /// Creates a new [WebTestGeolocationResponse].
   /// [location] Location ID for the WebTest to run from.
-  WebTestGeolocationResponse({
+  const WebTestGeolocationResponse({
     this.location,
   });
 

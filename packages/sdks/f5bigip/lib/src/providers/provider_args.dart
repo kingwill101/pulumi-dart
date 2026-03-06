@@ -48,7 +48,7 @@ class ProviderArgs {
   /// [trustedCertPath] Valid Trusted Certificate path
   /// [username] Username with API access to the BigIP
   /// [validateCertsDisable] If set to true, Disables TLS certificate check on BIG-IP. Default : True
-  ProviderArgs({
+  const ProviderArgs({
     this.address,
     this.apiRetries,
     this.apiTimeout,

@@ -36,7 +36,7 @@ class IndexingPolicy {
   /// [indexingMode] Indicates the indexing mode.
   /// [spatialIndexes] List of spatial specifics
   /// [vectorIndexes] List of paths to include in the vector indexing
-  IndexingPolicy({
+  const IndexingPolicy({
     this.automatic,
     this.compositeIndexes,
     this.excludedPaths,

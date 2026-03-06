@@ -13,7 +13,7 @@ class SapLandscapeMonitorPropertiesGroupingResponse {
   /// Creates a new [SapLandscapeMonitorPropertiesGroupingResponse].
   /// [landscape] Gets or sets the list of landscape to SID mappings.
   /// [sapApplication] Gets or sets the list of Sap Applications to SID mappings.
-  SapLandscapeMonitorPropertiesGroupingResponse({
+  const SapLandscapeMonitorPropertiesGroupingResponse({
     this.landscape,
     this.sapApplication,
   });

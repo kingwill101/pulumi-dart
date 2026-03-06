@@ -27,7 +27,7 @@ class SubscriptionArgs {
   /// [name] The name of the publication.
   /// [publications] Names of the publications on the publisher to subscribe to
   /// [slotName] Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
-  SubscriptionArgs({
+  const SubscriptionArgs({
     required this.conninfo,
     this.createSlot,
     this.database,

@@ -8,7 +8,7 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchCondition {
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalConditionalBranchCondition].
   /// [expressionString] Expression string that is evaluated.
-  V2modelsIntentClosingSettingConditionalConditionalBranchCondition({
+  const V2modelsIntentClosingSettingConditionalConditionalBranchCondition({
     required this.expressionString,
   });
 

@@ -22,7 +22,7 @@ class GetNamespacesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetNamespacesArgs({
+  const GetNamespacesArgs({
     this.ids,
     this.keyword,
     this.outputFile,

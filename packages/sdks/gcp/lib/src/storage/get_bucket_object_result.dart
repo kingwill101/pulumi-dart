@@ -84,7 +84,7 @@ class GetBucketObjectResult {
   /// [sourceMd5hash] Required.
   /// [storageClass] (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
   /// [temporaryHold] (Computed) Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
-  GetBucketObjectResult({
+  const GetBucketObjectResult({
     this.bucket,
     required this.cacheControl,
     required this.content,

@@ -11,7 +11,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBasel
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp].
   /// [max] Maximum.
   /// [min] Minimum.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp({
     required this.max,
     required this.min,
   });

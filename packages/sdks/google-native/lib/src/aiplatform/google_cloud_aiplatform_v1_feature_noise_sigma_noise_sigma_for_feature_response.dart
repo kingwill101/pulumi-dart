@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse {
   /// Creates a new [GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse].
   /// [name] The name of the input feature for which noise sigma is provided. The features are defined in explanation metadata inputs.
   /// [sigma] This represents the standard deviation of the Gaussian kernel that will be used to add noise to the feature prior to computing gradients. Similar to noise_sigma but represents the noise added to the current feature. Defaults to 0.1.
-  GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse({
+  const GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse({
     required this.name,
     required this.sigma,
   });

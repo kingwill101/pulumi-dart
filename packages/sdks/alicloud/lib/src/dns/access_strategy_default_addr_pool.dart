@@ -11,7 +11,7 @@ class AccessStrategyDefaultAddrPool {
   /// Creates a new [AccessStrategyDefaultAddrPool].
   /// [addrPoolId] The ID of the address pool in the primary address pool group.
   /// [lbaWeight] The weight of the address pool in the primary address pool group.
-  AccessStrategyDefaultAddrPool({
+  const AccessStrategyDefaultAddrPool({
     required this.addrPoolId,
     this.lbaWeight,
   });

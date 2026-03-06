@@ -9,7 +9,7 @@ class VirtualMachinePreferencesNetworkCostParameters {
 
   /// Creates a new [VirtualMachinePreferencesNetworkCostParameters].
   /// [estimatedEgressTrafficPercentage] Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
-  VirtualMachinePreferencesNetworkCostParameters({
+  const VirtualMachinePreferencesNetworkCostParameters({
     this.estimatedEgressTrafficPercentage,
   });
 

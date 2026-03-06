@@ -7,7 +7,7 @@ class GetClusterAddonsConfigHttpLoadBalancing {
 
   /// Creates a new [GetClusterAddonsConfigHttpLoadBalancing].
   /// [disabled] Required.
-  GetClusterAddonsConfigHttpLoadBalancing({
+  const GetClusterAddonsConfigHttpLoadBalancing({
     required this.disabled,
   });
 

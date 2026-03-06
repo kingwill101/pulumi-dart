@@ -19,7 +19,7 @@ class GerritSourceContextResponseContaineranalysisV1beta1 {
   /// [gerritProject] The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
   /// [hostUri] The URI of a running Gerrit instance.
   /// [revisionId] A revision (commit) ID.
-  GerritSourceContextResponseContaineranalysisV1beta1({
+  const GerritSourceContextResponseContaineranalysisV1beta1({
     required this.aliasContext,
     required this.gerritProject,
     required this.hostUri,

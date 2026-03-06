@@ -39,7 +39,7 @@ class JobConfigurationResponse {
   /// [scheduleTriggerConfig] Cron formatted repeating trigger schedule ("* * * * *") for cronjobs. Properties completions and parallelism would be set to 1 by default
   /// [secrets] Collection of secrets used by a Container Apps Job
   /// [triggerType] Trigger type of the job
-  JobConfigurationResponse({
+  const JobConfigurationResponse({
     this.eventTriggerConfig,
     this.identitySettings,
     this.manualTriggerConfig,

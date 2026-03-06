@@ -21,7 +21,7 @@ class JobDelayDetailsResponse {
   /// [resolutionTime] Timestamp when the delay notification was resolved.
   /// [startTime] Timestamp when the delay notification was created.
   /// [status] Status of notification
-  JobDelayDetailsResponse({
+  const JobDelayDetailsResponse({
     required this.description,
     required this.errorCode,
     required this.resolutionTime,

@@ -44,7 +44,7 @@ class GetRegionHealthCheckServiceResult {
   /// [region] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL with id for the resource.
-  GetRegionHealthCheckServiceResult({
+  const GetRegionHealthCheckServiceResult({
     required this.creationTimestamp,
     required this.description,
     required this.fingerprint,

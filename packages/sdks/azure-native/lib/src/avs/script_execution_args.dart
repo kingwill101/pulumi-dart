@@ -45,7 +45,7 @@ class ScriptExecutionArgs {
   /// [scriptCmdletId] A reference to the script cmdlet resource if user is running a AVS script
   /// [scriptExecutionName] Name of the script cmdlet.
   /// [timeout] Time limit for execution
-  ScriptExecutionArgs({
+  const ScriptExecutionArgs({
     this.failureReason,
     this.hiddenParameters,
     this.namedOutputs,

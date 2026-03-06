@@ -27,7 +27,7 @@ class EipInstanceAttachmentState {
   /// [instanceType] The type of the EIP instance. Value:
   /// [standby] Indicates whether the EIP is a backup EIP. Value:
   /// [status] The status of the EIP.
-  EipInstanceAttachmentState({
+  const EipInstanceAttachmentState({
     this.allocationId,
     this.instanceId,
     this.instanceType,

@@ -17,7 +17,7 @@ class InstanceZoneVswitchSecurityGroup {
   /// [securityGroup] The ID of the security group.
   /// [vswitchId] The VSwitch ID.
   /// [zoneId] The zone ID.
-  InstanceZoneVswitchSecurityGroup({
+  const InstanceZoneVswitchSecurityGroup({
     required this.cidrBlock,
     required this.securityGroup,
     required this.vswitchId,

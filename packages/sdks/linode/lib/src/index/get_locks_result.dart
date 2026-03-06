@@ -20,7 +20,7 @@ class GetLocksResult {
   /// [locks] A list of Linode Locks that match the filter criteria.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetLocksResult({
+  const GetLocksResult({
     this.filters,
     required this.id,
     required this.locks,

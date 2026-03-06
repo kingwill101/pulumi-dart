@@ -24,7 +24,7 @@ class ScheduleTrigger {
   /// [pipelines] Pipelines that need to be started.
   /// [recurrence] Recurrence schedule configuration.
   /// [type] Trigger type.
-  ScheduleTrigger({
+  const ScheduleTrigger({
     this.annotations,
     this.description,
     this.pipelines,

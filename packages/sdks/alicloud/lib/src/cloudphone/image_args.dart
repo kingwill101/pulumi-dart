@@ -15,7 +15,7 @@ class ImageArgs {
   /// Creates a new [ImageArgs].
   /// [imageName] The image name.
   /// [instanceId] The instance ID.
-  ImageArgs({
+  const ImageArgs({
     required this.imageName,
     required this.instanceId,
   });

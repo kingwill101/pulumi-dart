@@ -44,7 +44,7 @@ class ConfigurationSetState {
   /// [tagsAll] Optional.
   /// [trackingOptions] An object that defines the open and click tracking options for emails that you send using the configuration set. See `tracking_options` Block for details.
   /// [vdmOptions] An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdm_options` Block for details.
-  ConfigurationSetState({
+  const ConfigurationSetState({
     this.arn,
     this.configurationSetName,
     this.deliveryOptions,

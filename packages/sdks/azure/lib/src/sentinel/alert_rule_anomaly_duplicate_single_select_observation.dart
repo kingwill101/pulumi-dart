@@ -17,7 +17,7 @@ class AlertRuleAnomalyDuplicateSingleSelectObservation {
   /// [name] The name of the single select observation.
   /// [supportedValues] A list of supported values of the single select observation.
   /// [value] The value of the multi select observation.
-  AlertRuleAnomalyDuplicateSingleSelectObservation({
+  const AlertRuleAnomalyDuplicateSingleSelectObservation({
     this.description,
     required this.name,
     this.supportedValues,

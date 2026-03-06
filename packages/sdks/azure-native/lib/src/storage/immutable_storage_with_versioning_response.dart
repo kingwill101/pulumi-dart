@@ -15,7 +15,7 @@ class ImmutableStorageWithVersioningResponse {
   /// [enabled] This is an immutable property, when set to true it enables object level immutability at the container level.
   /// [migrationState] This property denotes the container level immutability to object level immutability migration state.
   /// [timeStamp] Returns the date and time the object level immutability was enabled.
-  ImmutableStorageWithVersioningResponse({
+  const ImmutableStorageWithVersioningResponse({
     this.enabled,
     required this.migrationState,
     required this.timeStamp,

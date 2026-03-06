@@ -9,7 +9,7 @@ class NotebookPreparationErrorResponse {
   /// Creates a new [NotebookPreparationErrorResponse].
   /// [errorMessage] Optional.
   /// [statusCode] Optional.
-  NotebookPreparationErrorResponse({
+  const NotebookPreparationErrorResponse({
     this.errorMessage,
     this.statusCode,
   });

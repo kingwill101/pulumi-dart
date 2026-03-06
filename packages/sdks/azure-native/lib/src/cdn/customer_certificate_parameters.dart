@@ -20,7 +20,7 @@ class CustomerCertificateParameters {
   /// [secretVersion] Version of the secret to be used
   /// [type] The type of the secret resource.
   /// [useLatestVersion] Whether to use the latest version for the certificate
-  CustomerCertificateParameters({
+  const CustomerCertificateParameters({
     required this.secretSource,
     this.secretVersion,
     required this.type,

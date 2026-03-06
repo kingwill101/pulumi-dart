@@ -17,7 +17,7 @@ class HardwareInventoryNetworkInterfaceResponse {
   /// [macAddress] The MAC address associated with this interface.
   /// [name] The name of the interface.
   /// [networkInterfaceId] The resource ID of the network interface for the port on the switch that this machine's interface is connected to.
-  HardwareInventoryNetworkInterfaceResponse({
+  const HardwareInventoryNetworkInterfaceResponse({
     required this.linkStatus,
     required this.macAddress,
     required this.name,

@@ -47,7 +47,7 @@ class LkeNodePoolArgs {
   /// [taints] Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
   /// [type] A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
   /// [updateStrategy] The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
-  LkeNodePoolArgs({
+  const LkeNodePoolArgs({
     this.autoscaler,
     required this.clusterId,
     this.firewallId,

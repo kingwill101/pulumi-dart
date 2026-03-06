@@ -37,7 +37,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy {
   /// [modelSettings] (Output)
   /// [policyScope] (Output)
   /// [prompt] (Output)
-  AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy({
+  const AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy({
     this.failOpen,
     this.maxConversationMessages,
     this.modelSettings,

@@ -13,7 +13,7 @@ class DSSEAttestationOccurrenceResponse {
   /// Creates a new [DSSEAttestationOccurrenceResponse].
   /// [envelope] If doing something security critical, make sure to verify the signatures in this metadata.
   /// [statement] Required.
-  DSSEAttestationOccurrenceResponse({
+  const DSSEAttestationOccurrenceResponse({
     required this.envelope,
     required this.statement,
   });

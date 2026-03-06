@@ -85,7 +85,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
   /// [spotMaxPricePercentageOverLowestPrice] Price protection threshold for Spot Instances.
   /// [totalLocalStorageGbs] List of objects describing the minimum and maximum total storage (GB).
   /// [vcpuCounts] List of objects describing the minimum and maximum number of vCPUs.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement({
     required this.acceleratorCounts,
     required this.acceleratorManufacturers,
     required this.acceleratorNames,

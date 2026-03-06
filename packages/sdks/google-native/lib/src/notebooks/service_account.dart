@@ -9,7 +9,7 @@ class ServiceAccount {
 
   /// Creates a new [ServiceAccount].
   /// [email] Optional. Email address of the service account.
-  ServiceAccount({
+  const ServiceAccount({
     this.email,
   });
 

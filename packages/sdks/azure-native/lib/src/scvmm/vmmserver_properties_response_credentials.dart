@@ -9,7 +9,7 @@ class VMMServerPropertiesResponseCredentials {
 
   /// Creates a new [VMMServerPropertiesResponseCredentials].
   /// [username] Username to use to connect to VMMServer.
-  VMMServerPropertiesResponseCredentials({
+  const VMMServerPropertiesResponseCredentials({
     this.username,
   });
 

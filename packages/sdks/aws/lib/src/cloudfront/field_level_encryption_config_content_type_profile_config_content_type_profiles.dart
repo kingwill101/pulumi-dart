@@ -8,7 +8,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles {
 
   /// Creates a new [FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles].
   /// [items] Required.
-  FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles({
+  const FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles({
     required this.items,
   });
 

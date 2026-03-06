@@ -21,7 +21,7 @@ class GetFormulaArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the Formula
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFormulaArgs({
+  const GetFormulaArgs({
     this.expand,
     required this.labName,
     required this.name,

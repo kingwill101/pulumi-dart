@@ -13,7 +13,7 @@ class EphemeralDisk {
   /// Creates a new [EphemeralDisk].
   /// [disks] Only required if individual disk selection is desired. Path to disk, e.g. &lt;nodename&gt;:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
   /// [replicas] The number of data copies. Default 3.
-  EphemeralDisk({
+  const EphemeralDisk({
     this.disks,
     this.replicas,
   });

@@ -9,7 +9,7 @@ class SubResourceResponse {
 
   /// Creates a new [SubResourceResponse].
   /// [id] The identifier of the referenced resource.
-  SubResourceResponse({
+  const SubResourceResponse({
     this.id,
   });
 

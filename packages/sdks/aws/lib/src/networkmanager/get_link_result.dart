@@ -35,7 +35,7 @@ class GetLinkResult {
   /// [siteId] ID of the site.
   /// [tags] Key-value tags for the link.
   /// [type] Type of the link.
-  GetLinkResult({
+  const GetLinkResult({
     required this.arn,
     required this.bandwidths,
     required this.description,

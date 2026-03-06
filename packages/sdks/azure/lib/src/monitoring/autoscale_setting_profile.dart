@@ -24,7 +24,7 @@ class AutoscaleSettingProfile {
   /// [name] Specifies the name of the profile.
   /// [recurrence] A `recurrence` block as defined below. This cannot be specified if a `fixed_date` block is specified.
   /// [rules] One or more (up to 10) `rule` blocks as defined below.
-  AutoscaleSettingProfile({
+  const AutoscaleSettingProfile({
     required this.capacity,
     this.fixedDate,
     required this.name,

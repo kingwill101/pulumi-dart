@@ -22,7 +22,7 @@ class FleetUpdateStrategyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [strategy] Defines the update sequence of the clusters.
   /// [updateStrategyName] The name of the UpdateStrategy resource.
-  FleetUpdateStrategyArgs({
+  const FleetUpdateStrategyArgs({
     required this.fleetName,
     required this.resourceGroupName,
     required this.strategy,

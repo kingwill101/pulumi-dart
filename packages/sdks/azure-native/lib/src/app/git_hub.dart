@@ -17,7 +17,7 @@ class GitHub {
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the GitHub provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
   /// [login] The configuration settings of the login flow.
   /// [registration] The configuration settings of the app registration for the GitHub provider.
-  GitHub({
+  const GitHub({
     this.enabled,
     this.login,
     this.registration,

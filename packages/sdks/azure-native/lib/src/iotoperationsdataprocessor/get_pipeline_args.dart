@@ -18,7 +18,7 @@ class GetPipelineArgs {
   /// [instanceName] Name of instance.
   /// [pipelineName] Name of pipeline
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPipelineArgs({
+  const GetPipelineArgs({
     required this.instanceName,
     required this.pipelineName,
     required this.resourceGroupName,

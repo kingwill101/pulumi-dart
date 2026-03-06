@@ -15,7 +15,7 @@ class GetSslCertArgs {
   /// [instance] Required.
   /// [project] Optional.
   /// [sha1Fingerprint] Required.
-  GetSslCertArgs({
+  const GetSslCertArgs({
     required this.instance,
     this.project,
     required this.sha1Fingerprint,

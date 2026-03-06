@@ -17,7 +17,7 @@ class OneDashboardPageWidgetBillboardBillboardSettings {
   /// [gridOptions] (Optional) A nested block that configures grid layout options for the billboard widget. This block supports:
   /// [link] (Optional) A nested block that configures clickable links for the billboard widget. This block supports:
   /// [visual] (Optional) A nested block that configures the visual settings of the billboard widget. This block supports:
-  OneDashboardPageWidgetBillboardBillboardSettings({
+  const OneDashboardPageWidgetBillboardBillboardSettings({
     this.gridOptions,
     this.link,
     this.visual,

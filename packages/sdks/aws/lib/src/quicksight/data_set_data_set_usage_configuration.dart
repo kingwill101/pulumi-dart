@@ -11,7 +11,7 @@ class DataSetDataSetUsageConfiguration {
   /// Creates a new [DataSetDataSetUsageConfiguration].
   /// [disableUseAsDirectQuerySource] Controls whether a child dataset of a direct query can use this dataset as a source.
   /// [disableUseAsImportedSource] Controls whether a child dataset that's stored in QuickSight can use this dataset as a source.
-  DataSetDataSetUsageConfiguration({
+  const DataSetDataSetUsageConfiguration({
     this.disableUseAsDirectQuerySource,
     this.disableUseAsImportedSource,
   });

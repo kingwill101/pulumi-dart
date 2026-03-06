@@ -41,7 +41,7 @@ class GetArtifactAiplatformV1beta1Result {
   /// [state] The state of this Artifact. This is a property of the Artifact, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines), and the system does not prescribe or check the validity of state transitions.
   /// [updateTime] Timestamp when this Artifact was last updated.
   /// [uri] The uniform resource identifier of the artifact file. May be empty if there is no actual artifact file.
-  GetArtifactAiplatformV1beta1Result({
+  const GetArtifactAiplatformV1beta1Result({
     required this.createTime,
     required this.description,
     required this.displayName,

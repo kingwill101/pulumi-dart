@@ -39,7 +39,7 @@ class ServiceConnectionPolicyPscConnection {
   /// [gceOperation] The last Compute Engine operation to setup PSC connection.
   /// [pscConnectionId] The PSC connection id of the PSC forwarding rule.
   /// [state] The state of the PSC connection.
-  ServiceConnectionPolicyPscConnection({
+  const ServiceConnectionPolicyPscConnection({
     this.consumerAddress,
     this.consumerForwardingRule,
     this.consumerTargetProject,

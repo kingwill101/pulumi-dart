@@ -15,7 +15,7 @@ class StateStoreResourceRule {
   /// [keyType] Allowed keyTypes pattern, string, binary. The key type used for matching, for example pattern tries to match the key to a glob-style pattern and string checks key is equal to value provided in keys.
   /// [keys] Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*').
   /// [method] Give access for `Read`, `Write` and `ReadWrite` access level.
-  StateStoreResourceRule({
+  const StateStoreResourceRule({
     required this.keyType,
     required this.keys,
     required this.method,

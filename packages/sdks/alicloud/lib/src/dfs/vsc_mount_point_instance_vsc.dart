@@ -14,7 +14,7 @@ class VscMountPointInstanceVsc {
   /// [vscId] VSC Channel primary key representation, used to retrieve the specified VSC Channel.
   /// [vscStatus] VSC Mount status.
   /// [vscType] The VSC type.
-  VscMountPointInstanceVsc({
+  const VscMountPointInstanceVsc({
     this.vscId,
     this.vscStatus,
     this.vscType,

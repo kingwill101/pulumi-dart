@@ -10,7 +10,7 @@ class AkriConnectorTemplateDiagnosticsResponse {
 
   /// Creates a new [AkriConnectorTemplateDiagnosticsResponse].
   /// [logs] The log settings for the Connector template.
-  AkriConnectorTemplateDiagnosticsResponse({
+  const AkriConnectorTemplateDiagnosticsResponse({
     required this.logs,
   });
 

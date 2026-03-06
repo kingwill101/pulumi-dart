@@ -14,7 +14,7 @@ class ConnectionEventingRuntimeData {
   /// Creates a new [ConnectionEventingRuntimeData].
   /// [eventsListenerEndpoint] Events listener endpoint. The value will populated after provisioning the events listener.
   /// [statuses] (Output)
-  ConnectionEventingRuntimeData({
+  const ConnectionEventingRuntimeData({
     this.eventsListenerEndpoint,
     this.statuses,
   });

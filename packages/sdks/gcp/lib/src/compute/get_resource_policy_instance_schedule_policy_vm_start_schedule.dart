@@ -8,7 +8,7 @@ class GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
 
   /// Creates a new [GetResourcePolicyInstanceSchedulePolicyVmStartSchedule].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  GetResourcePolicyInstanceSchedulePolicyVmStartSchedule({
+  const GetResourcePolicyInstanceSchedulePolicyVmStartSchedule({
     required this.schedule,
   });
 

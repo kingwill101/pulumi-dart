@@ -11,7 +11,7 @@ class GetPlanRuleLifecycle {
   /// [coldStorageAfter] Required.
   /// [deleteAfter] Required.
   /// [optInToArchiveForSupportedResources] Required.
-  GetPlanRuleLifecycle({
+  const GetPlanRuleLifecycle({
     required this.coldStorageAfter,
     required this.deleteAfter,
     required this.optInToArchiveForSupportedResources,

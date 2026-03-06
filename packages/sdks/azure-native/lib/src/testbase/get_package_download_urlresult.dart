@@ -11,7 +11,7 @@ class GetPackageDownloadURLResult {
   /// Creates a new [GetPackageDownloadURLResult].
   /// [downloadUrl] The download URL.
   /// [expirationTime] Expiry date of the download URL.
-  GetPackageDownloadURLResult({
+  const GetPackageDownloadURLResult({
     required this.downloadUrl,
     required this.expirationTime,
   });

@@ -10,7 +10,7 @@ class Resources {
 
   /// Creates a new [Resources].
   /// [requests] Requests for capacity for the pool.
-  Resources({
+  const Resources({
     this.requests,
   });
 

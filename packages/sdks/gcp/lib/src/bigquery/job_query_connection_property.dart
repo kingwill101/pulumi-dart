@@ -11,7 +11,7 @@ class JobQueryConnectionProperty {
   /// Creates a new [JobQueryConnectionProperty].
   /// [key] The key of the property to set. Currently supported connection properties:
   /// [value] The value of the property to set.
-  JobQueryConnectionProperty({
+  const JobQueryConnectionProperty({
     required this.key,
     required this.value,
   });

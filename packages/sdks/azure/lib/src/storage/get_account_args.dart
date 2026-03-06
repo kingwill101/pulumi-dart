@@ -18,7 +18,7 @@ class GetAccountArgs {
   /// [minTlsVersion] The minimum supported TLS version for this storage account.
   /// [name] Specifies the name of the Storage Account
   /// [resourceGroupName] Specifies the name of the resource group the Storage Account is located in.
-  GetAccountArgs({
+  const GetAccountArgs({
     this.minTlsVersion,
     required this.name,
     this.resourceGroupName,

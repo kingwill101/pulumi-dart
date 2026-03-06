@@ -12,7 +12,7 @@ class ServiceCosmosDbConfigurationInfo {
   /// Creates a new [ServiceCosmosDbConfigurationInfo].
   /// [keyVaultKeyUri] The URI of the customer-managed key for the backing database.
   /// [offerThroughput] The provisioned throughput for the backing database.
-  ServiceCosmosDbConfigurationInfo({
+  const ServiceCosmosDbConfigurationInfo({
     this.keyVaultKeyUri,
     this.offerThroughput,
   });

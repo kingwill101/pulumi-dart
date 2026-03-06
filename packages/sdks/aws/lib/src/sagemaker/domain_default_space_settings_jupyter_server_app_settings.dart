@@ -16,7 +16,7 @@ class DomainDefaultSpaceSettingsJupyterServerAppSettings {
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `code_repository` Block below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  DomainDefaultSpaceSettingsJupyterServerAppSettings({
+  const DomainDefaultSpaceSettingsJupyterServerAppSettings({
     this.codeRepositories,
     this.defaultResourceSpec,
     this.lifecycleConfigArns,

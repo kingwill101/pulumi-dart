@@ -18,7 +18,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguratio
   /// [domainEndpoint] Endpoint URL of the OpenSearch domain.
   /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
   /// [vectorIndexName] Name of the vector store.
-  AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration({
     required this.domainArn,
     required this.domainEndpoint,
     required this.fieldMapping,

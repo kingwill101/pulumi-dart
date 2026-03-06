@@ -9,7 +9,7 @@ class NodeSwapStatusPatch {
 
   /// Creates a new [NodeSwapStatusPatch].
   /// [capacity] Total amount of swap memory in bytes.
-  NodeSwapStatusPatch({
+  const NodeSwapStatusPatch({
     this.capacity,
   });
 

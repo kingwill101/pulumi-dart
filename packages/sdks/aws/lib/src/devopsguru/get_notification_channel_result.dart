@@ -18,7 +18,7 @@ class GetNotificationChannelResult {
   /// [id] Required.
   /// [region] Required.
   /// [sns] SNS noficiation channel configurations. See the `sns` attribute reference below.
-  GetNotificationChannelResult({
+  const GetNotificationChannelResult({
     this.filters,
     required this.id,
     required this.region,

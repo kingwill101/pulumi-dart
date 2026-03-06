@@ -8,7 +8,7 @@ class GetDiscoveredWorkloadWorkloadReference {
 
   /// Creates a new [GetDiscoveredWorkloadWorkloadReference].
   /// [uri] The underlying resource URI.
-  GetDiscoveredWorkloadWorkloadReference({
+  const GetDiscoveredWorkloadWorkloadReference({
     required this.uri,
   });
 

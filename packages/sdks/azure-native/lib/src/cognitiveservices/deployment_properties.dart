@@ -30,7 +30,7 @@ class DeploymentProperties {
   /// [raiPolicyName] The name of RAI policy.
   /// [scaleSettings] Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
   /// [versionUpgradeOption] Deployment model version upgrade option.
-  DeploymentProperties({
+  const DeploymentProperties({
     this.capacitySettings,
     this.currentCapacity,
     this.model,

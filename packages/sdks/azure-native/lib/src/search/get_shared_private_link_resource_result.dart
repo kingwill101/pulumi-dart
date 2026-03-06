@@ -25,7 +25,7 @@ class GetSharedPrivateLinkResourceResult {
   /// [properties] Describes the properties of a shared private link resource managed by the Azure AI Search service.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSharedPrivateLinkResourceResult({
+  const GetSharedPrivateLinkResourceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

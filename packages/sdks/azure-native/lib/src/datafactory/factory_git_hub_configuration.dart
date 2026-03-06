@@ -38,7 +38,7 @@ class FactoryGitHubConfiguration {
   /// [repositoryName] Repository name.
   /// [rootFolder] Root folder.
   /// [type] Type of repo configuration.
-  FactoryGitHubConfiguration({
+  const FactoryGitHubConfiguration({
     required this.accountName,
     this.clientId,
     this.clientSecret,

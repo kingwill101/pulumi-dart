@@ -70,7 +70,7 @@ class SaaSState {
   /// [saasId] The ID value for the new saas.
   /// [uid] The unique identifier of the resource. UID is unique in the time
   /// [updateTime] The timestamp when the resource was last updated. Any
-  SaaSState({
+  const SaaSState({
     this.annotations,
     this.createTime,
     this.effectiveAnnotations,

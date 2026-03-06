@@ -8,7 +8,7 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard 
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard({
+  const DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard({
     required this.copyPaste,
   });
 

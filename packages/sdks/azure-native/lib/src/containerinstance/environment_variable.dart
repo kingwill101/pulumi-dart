@@ -18,7 +18,7 @@ class EnvironmentVariable {
   /// [secureValue] The value of the secure environment variable.
   /// [secureValueReference] The reference of the secure environment variable.
   /// [value] The value of the environment variable.
-  EnvironmentVariable({
+  const EnvironmentVariable({
     required this.name,
     this.secureValue,
     this.secureValueReference,

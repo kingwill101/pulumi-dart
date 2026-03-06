@@ -8,7 +8,7 @@ class InstanceRefreshDesiredConfigurationLaunchTemplateOverride {
 
   /// Creates a new [InstanceRefreshDesiredConfigurationLaunchTemplateOverride].
   /// [instanceType] The specified instance type, which overwrites the instance type in the launch template.
-  InstanceRefreshDesiredConfigurationLaunchTemplateOverride({
+  const InstanceRefreshDesiredConfigurationLaunchTemplateOverride({
     this.instanceType,
   });
 

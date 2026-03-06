@@ -14,7 +14,7 @@ class ProfileDiagnostics {
   /// Creates a new [ProfileDiagnostics].
   /// [logs] Diagnostic log settings for the resource.
   /// [metrics] The metrics settings for the resource.
-  ProfileDiagnostics({
+  const ProfileDiagnostics({
     this.logs,
     this.metrics,
   });

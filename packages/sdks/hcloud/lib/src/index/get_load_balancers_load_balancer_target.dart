@@ -11,7 +11,7 @@ class GetLoadBalancersLoadBalancerTarget {
   /// [labelSelector] Required.
   /// [serverId] Required.
   /// [type] Required.
-  GetLoadBalancersLoadBalancerTarget({
+  const GetLoadBalancersLoadBalancerTarget({
     required this.labelSelector,
     required this.serverId,
     required this.type,

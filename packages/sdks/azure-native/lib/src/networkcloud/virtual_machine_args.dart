@@ -81,7 +81,7 @@ class VirtualMachineArgs {
   /// [vmDeviceModel] The type of the device model to use.
   /// [vmImage] The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
   /// [vmImageRepositoryCredentials] The credentials used to login to the image repository that has access to the specified image.
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     required this.adminUsername,
     this.bootMethod,
     required this.cloudServicesNetworkAttachment,

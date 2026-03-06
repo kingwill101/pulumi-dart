@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsEc2InstanceVpcId {
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceVpcId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsEc2InstanceVpcId({
+  const InsightFiltersResourceAwsEc2InstanceVpcId({
     required this.comparison,
     required this.value,
   });

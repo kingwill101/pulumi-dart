@@ -18,7 +18,7 @@ class StreamDestinationConfig {
   /// [bigqueryDestinationConfig] A configuration for how data should be loaded to Google BigQuery.
   /// [destinationConnectionProfile] Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
   /// [gcsDestinationConfig] A configuration for how data should be loaded to Cloud Storage.
-  StreamDestinationConfig({
+  const StreamDestinationConfig({
     this.bigqueryDestinationConfig,
     required this.destinationConnectionProfile,
     this.gcsDestinationConfig,

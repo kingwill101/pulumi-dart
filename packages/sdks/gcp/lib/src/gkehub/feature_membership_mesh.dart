@@ -11,7 +11,7 @@ class FeatureMembershipMesh {
   /// Creates a new [FeatureMembershipMesh].
   /// [controlPlane] **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
   /// [management] Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
-  FeatureMembershipMesh({
+  const FeatureMembershipMesh({
     this.controlPlane,
     this.management,
   });

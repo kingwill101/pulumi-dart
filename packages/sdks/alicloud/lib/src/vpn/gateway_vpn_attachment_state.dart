@@ -84,7 +84,7 @@ class GatewayVpnAttachmentState {
   /// [tags] Tags
   /// [tunnelOptionsSpecifications] Configure the tunnel.
   /// [vpnAttachmentName] vpn attachment name
-  GatewayVpnAttachmentState({
+  const GatewayVpnAttachmentState({
     this.bgpConfig,
     this.createTime,
     this.customerGatewayId,

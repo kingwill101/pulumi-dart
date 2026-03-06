@@ -38,7 +38,7 @@ class GetZoneResult {
   /// [registrar] Registrar of the Zone.
   /// [ttl] Default Time To Live (TTL) of the Zone.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  GetZoneResult({
+  const GetZoneResult({
     required this.authoritativeNameservers,
     required this.deleteProtection,
     this.id,

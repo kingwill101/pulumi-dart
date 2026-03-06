@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1EnumArray {
 
   /// Creates a new [GoogleCloudContentwarehouseV1EnumArray].
   /// [values] List of enum values.
-  GoogleCloudContentwarehouseV1EnumArray({
+  const GoogleCloudContentwarehouseV1EnumArray({
     this.values,
   });
 

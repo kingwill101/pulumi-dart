@@ -12,7 +12,7 @@ class DateSpanResponse {
   /// Creates a new [DateSpanResponse].
   /// [end] The end date of the date span.
   /// [start] The start date of the date span.
-  DateSpanResponse({
+  const DateSpanResponse({
     required this.end,
     required this.start,
   });

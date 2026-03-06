@@ -10,7 +10,7 @@ class AutomationResourceSelector {
 
   /// Creates a new [AutomationResourceSelector].
   /// [targets] Contains attributes about a target.
-  AutomationResourceSelector({
+  const AutomationResourceSelector({
     this.targets,
   });
 

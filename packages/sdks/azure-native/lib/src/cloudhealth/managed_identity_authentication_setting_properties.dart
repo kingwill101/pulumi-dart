@@ -16,7 +16,7 @@ class ManagedIdentityAuthenticationSettingProperties {
   /// [authenticationKind] Supported kinds of authentication settings as discriminator
   /// [displayName] Display name
   /// [managedIdentityName] Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
-  ManagedIdentityAuthenticationSettingProperties({
+  const ManagedIdentityAuthenticationSettingProperties({
     required this.authenticationKind,
     this.displayName,
     required this.managedIdentityName,

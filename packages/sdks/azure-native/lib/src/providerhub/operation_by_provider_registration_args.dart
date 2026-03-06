@@ -12,7 +12,7 @@ class OperationByProviderRegistrationArgs {
 
   /// Creates a new [OperationByProviderRegistrationArgs].
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  OperationByProviderRegistrationArgs({
+  const OperationByProviderRegistrationArgs({
     required this.providerNamespace,
   });
 

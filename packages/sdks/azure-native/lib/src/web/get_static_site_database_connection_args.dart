@@ -18,7 +18,7 @@ class GetStaticSiteDatabaseConnectionArgs {
   /// [databaseConnectionName] Name of the database connection.
   /// [name] Name of the static site
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetStaticSiteDatabaseConnectionArgs({
+  const GetStaticSiteDatabaseConnectionArgs({
     required this.databaseConnectionName,
     required this.name,
     required this.resourceGroupName,

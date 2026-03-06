@@ -26,7 +26,7 @@ class GetControlPoliciesResult {
   /// [outputFile] Optional.
   /// [policies] Required.
   /// [policyType] Optional.
-  GetControlPoliciesResult({
+  const GetControlPoliciesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

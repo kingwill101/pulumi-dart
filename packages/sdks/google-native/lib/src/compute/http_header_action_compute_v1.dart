@@ -19,7 +19,7 @@ class HttpHeaderActionComputeV1 {
   /// [requestHeadersToRemove] A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
   /// [responseHeadersToAdd] Headers to add the response before sending the response back to the client.
   /// [responseHeadersToRemove] A list of header names for headers that need to be removed from the response before sending the response back to the client.
-  HttpHeaderActionComputeV1({
+  const HttpHeaderActionComputeV1({
     this.requestHeadersToAdd,
     this.requestHeadersToRemove,
     this.responseHeadersToAdd,

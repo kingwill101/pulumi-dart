@@ -27,7 +27,7 @@ class DefaultPrivilegesState {
   /// [role] The role that will automatically be granted the specified privileges on new objects created by the owner.
   /// [schema] The database schema to set default privileges for this role.
   /// [withGrantOption] Permit the grant recipient to grant it to others
-  DefaultPrivilegesState({
+  const DefaultPrivilegesState({
     this.database,
     this.objectType,
     this.owner,

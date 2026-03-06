@@ -158,7 +158,7 @@ class RegionInstanceTemplateState {
   /// [shieldedInstanceConfig] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] Tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
-  RegionInstanceTemplateState({
+  const RegionInstanceTemplateState({
     this.advancedMachineFeatures,
     this.canIpForward,
     this.confidentialInstanceConfig,

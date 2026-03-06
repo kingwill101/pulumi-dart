@@ -35,7 +35,7 @@ class GetCapacityBlockOfferingResult {
   /// [startDateRange] Required.
   /// [tenancy] Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   /// [upfrontFee] The total price to be paid up front.
-  GetCapacityBlockOfferingResult({
+  const GetCapacityBlockOfferingResult({
     required this.availabilityZone,
     required this.capacityBlockOfferingId,
     required this.capacityDurationHours,

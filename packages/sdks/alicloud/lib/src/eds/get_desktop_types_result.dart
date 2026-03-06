@@ -26,7 +26,7 @@ class GetDesktopTypesResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [types] Required.
-  GetDesktopTypesResult({
+  const GetDesktopTypesResult({
     this.cpuCount,
     this.gpuCount,
     required this.id,

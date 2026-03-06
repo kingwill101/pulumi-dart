@@ -41,7 +41,7 @@ class EventHubResponse {
   /// [entityPath] The EventHub name in the EventHub namespace for identity-based authentication.
   /// [identity] Managed identity properties for the endpoint.
   /// [provisioningState] The provisioning state.
-  EventHubResponse({
+  const EventHubResponse({
     this.authenticationType,
     this.connectionStringPrimaryKey,
     this.connectionStringSecondaryKey,

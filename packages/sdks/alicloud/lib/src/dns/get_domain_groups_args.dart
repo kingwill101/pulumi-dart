@@ -15,7 +15,7 @@ class GetDomainGroupsArgs {
   /// [ids] Optional.
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
-  GetDomainGroupsArgs({
+  const GetDomainGroupsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -21,7 +21,7 @@ class TransferFilterDetailsResponse {
   /// [blobFilterDetails] Filter details to transfer blobs.
   /// [dataAccountType] Type of the account of data.
   /// [filterFileDetails] Details of the filter files to be used for data transfer.
-  TransferFilterDetailsResponse({
+  const TransferFilterDetailsResponse({
     this.azureFileFilterDetails,
     this.blobFilterDetails,
     required this.dataAccountType,

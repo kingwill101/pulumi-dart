@@ -25,7 +25,7 @@ class DomainDevicesInterfaceVirtualPortParams {
   /// [openVSwitch] Defines parameters specific to the Open vSwitch configuration for the virtual port.
   /// [vepa8021qbg] Configures parameters for the VEPA8021QBG virtual port.
   /// [vnTag8011qbh] Configures parameters for the VNTag8011QBH virtual port.
-  DomainDevicesInterfaceVirtualPortParams({
+  const DomainDevicesInterfaceVirtualPortParams({
     this.any,
     this.midoNet,
     this.openVSwitch,

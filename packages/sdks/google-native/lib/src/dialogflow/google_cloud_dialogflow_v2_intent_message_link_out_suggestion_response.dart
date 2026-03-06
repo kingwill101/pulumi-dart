@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse {
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse].
   /// [destinationName] The name of the app or site this chip is linking to.
   /// [uri] The URI of the app or site to open when the user taps the suggestion chip.
-  GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse({
+  const GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse({
     required this.destinationName,
     required this.uri,
   });

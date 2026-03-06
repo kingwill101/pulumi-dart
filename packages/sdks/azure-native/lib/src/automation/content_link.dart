@@ -16,7 +16,7 @@ class ContentLink {
   /// [contentHash] Sets the hash.
   /// [uri] Sets the uri of the content.
   /// [version] Sets the version of the content.
-  ContentLink({
+  const ContentLink({
     this.contentHash,
     this.uri,
     this.version,

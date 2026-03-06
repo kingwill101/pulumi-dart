@@ -11,7 +11,7 @@ class AzureSkuResponse {
   /// Creates a new [AzureSkuResponse].
   /// [name] SKU name
   /// [tier] SKU tier
-  AzureSkuResponse({
+  const AzureSkuResponse({
     required this.name,
     required this.tier,
   });

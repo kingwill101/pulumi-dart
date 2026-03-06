@@ -13,7 +13,7 @@ class GetBucketLifecycleRule {
   /// Creates a new [GetBucketLifecycleRule].
   /// [actions] The Lifecycle Rule's action configuration. A single block of this type is supported.
   /// [conditions] The Lifecycle Rule's condition configuration.
-  GetBucketLifecycleRule({
+  const GetBucketLifecycleRule({
     required this.actions,
     required this.conditions,
   });

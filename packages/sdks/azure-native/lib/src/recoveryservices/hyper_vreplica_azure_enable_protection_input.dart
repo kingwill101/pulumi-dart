@@ -105,7 +105,7 @@ class HyperVReplicaAzureEnableProtectionInput {
   /// [userSelectedOSName] The OS name selected by user.
   /// [vhdId] The OS disk VHD id associated with VM.
   /// [vmName] The VM Name.
-  HyperVReplicaAzureEnableProtectionInput({
+  const HyperVReplicaAzureEnableProtectionInput({
     this.diskEncryptionSetId,
     this.diskType,
     this.disksToInclude,

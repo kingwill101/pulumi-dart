@@ -13,7 +13,7 @@ class EndpointCustomDomainUserManagedHttps {
   /// Creates a new [EndpointCustomDomainUserManagedHttps].
   /// [keyVaultSecretId] The ID of the Key Vault Secret that contains the HTTPS certificate.
   /// [tlsVersion] The minimum TLS protocol version that is used for HTTPS. Possible values are `TLS10` (representing TLS 1.0/1.1), `TLS12` (representing TLS 1.2) and `None` (representing no minimums). Defaults to `TLS12`.
-  EndpointCustomDomainUserManagedHttps({
+  const EndpointCustomDomainUserManagedHttps({
     required this.keyVaultSecretId,
     this.tlsVersion,
   });

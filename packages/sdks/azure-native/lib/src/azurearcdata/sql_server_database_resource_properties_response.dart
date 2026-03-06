@@ -72,7 +72,7 @@ class SqlServerDatabaseResourcePropertiesResponse {
   /// [spaceAvailableMB] Space left of the database.
   /// [state] State of the database.
   /// [vmId] The unique ID of the hybrid machine that this resource belongs to.
-  SqlServerDatabaseResourcePropertiesResponse({
+  const SqlServerDatabaseResourcePropertiesResponse({
     this.backupInformation,
     this.backupPolicy,
     this.collationName,

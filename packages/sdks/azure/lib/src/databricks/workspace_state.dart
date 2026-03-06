@@ -102,7 +102,7 @@ class WorkspaceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [workspaceId] The unique identifier of the databricks workspace in Databricks control plane.
   /// [workspaceUrl] The workspace URL which is of the format 'adb-{workspaceId}.{random}.azuredatabricks.net'
-  WorkspaceState({
+  const WorkspaceState({
     this.accessConnectorId,
     this.customParameters,
     this.customerManagedKeyEnabled,

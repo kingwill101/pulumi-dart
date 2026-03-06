@@ -11,7 +11,7 @@ class GetProjectsProjectIpWhiteList {
   /// Creates a new [GetProjectsProjectIpWhiteList].
   /// [ipList] Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
   /// [vpcIpList] Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
-  GetProjectsProjectIpWhiteList({
+  const GetProjectsProjectIpWhiteList({
     required this.ipList,
     required this.vpcIpList,
   });

@@ -18,7 +18,7 @@ class ListGlobalRulestackAdvancedSecurityObjectsArgs {
   /// [skip] Optional.
   /// [top] Optional.
   /// [type] Required.
-  ListGlobalRulestackAdvancedSecurityObjectsArgs({
+  const ListGlobalRulestackAdvancedSecurityObjectsArgs({
     required this.globalRulestackName,
     this.skip,
     this.top,

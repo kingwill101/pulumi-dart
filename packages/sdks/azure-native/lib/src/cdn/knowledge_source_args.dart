@@ -30,7 +30,7 @@ class KnowledgeSourceArgs {
   /// [updateFrequency] Specifies the units of time for scheduling update intervals for the knowledge source.
   /// [url] Endpoint or location of the knowledge source.
   /// [webAgentName] The name of the web agent.
-  KnowledgeSourceArgs({
+  const KnowledgeSourceArgs({
     this.description,
     this.knowledgeSourceName,
     required this.resourceGroupName,

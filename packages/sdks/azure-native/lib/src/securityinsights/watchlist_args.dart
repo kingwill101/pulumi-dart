@@ -79,7 +79,7 @@ class WatchlistArgs {
   /// [watchlistId] The id (a Guid) of the watchlist
   /// [watchlistType] The type of the watchlist
   /// [workspaceName] The name of the workspace.
-  WatchlistArgs({
+  const WatchlistArgs({
     this.contentType,
     this.created,
     this.createdBy,

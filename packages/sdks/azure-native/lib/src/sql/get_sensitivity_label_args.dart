@@ -30,7 +30,7 @@ class GetSensitivityLabelArgs {
   /// [sensitivityLabelSource] The source of the sensitivity label.
   /// [serverName] The name of the server.
   /// [tableName] The name of the table.
-  GetSensitivityLabelArgs({
+  const GetSensitivityLabelArgs({
     required this.columnName,
     required this.databaseName,
     required this.resourceGroupName,

@@ -11,7 +11,7 @@ class ExternalAccessRuleDestinationIpRange {
   /// Creates a new [ExternalAccessRuleDestinationIpRange].
   /// [externalAddress] The name of an `ExternalAddress` resource.
   /// [ipAddressRange] An IP address range in the CIDR format.
-  ExternalAccessRuleDestinationIpRange({
+  const ExternalAccessRuleDestinationIpRange({
     this.externalAddress,
     this.ipAddressRange,
   });

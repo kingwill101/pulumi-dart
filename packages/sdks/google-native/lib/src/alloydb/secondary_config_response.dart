@@ -9,7 +9,7 @@ class SecondaryConfigResponse {
 
   /// Creates a new [SecondaryConfigResponse].
   /// [primaryClusterName] The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
-  SecondaryConfigResponse({
+  const SecondaryConfigResponse({
     required this.primaryClusterName,
   });
 

@@ -25,7 +25,7 @@ class SchemaRegistryArgs {
   /// [schemaCompatibility] Optional.
   /// [schemaGroupName] The Schema Group name
   /// [schemaType] Optional.
-  SchemaRegistryArgs({
+  const SchemaRegistryArgs({
     this.groupProperties,
     required this.namespaceName,
     required this.resourceGroupName,

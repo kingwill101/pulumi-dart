@@ -15,7 +15,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig {
   /// Creates a new [ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines if the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Defines if the instance has Secure Boot enabled.
-  ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig({
+  const ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
   });

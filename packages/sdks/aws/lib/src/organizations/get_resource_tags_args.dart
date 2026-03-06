@@ -15,7 +15,7 @@ class GetResourceTagsArgs {
   /// Creates a new [GetResourceTagsArgs].
   /// [resourceId] ID of the resource with the tags to list. See details below.
   /// [tags] Map of key=value pairs for each tag set on the resource.
-  GetResourceTagsArgs({
+  const GetResourceTagsArgs({
     required this.resourceId,
     this.tags,
   });

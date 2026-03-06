@@ -195,7 +195,7 @@ class InstanceState {
   /// [warmNodeDiskType] The warm node disk type. Supported values:  cloud_efficiency.
   /// [warmNodeSpec] The warm node specifications of the Elasticsearch instance.
   /// [zoneCount] The number of zones in the Elasticsearch instance.
-  InstanceState({
+  const InstanceState({
     this.archType,
     this.autoRenewDuration,
     this.clientNodeAmount,

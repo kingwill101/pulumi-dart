@@ -27,7 +27,7 @@ class GroupPropertiesResponse {
   /// [groupType] The type of group.
   /// [machineCount] Number of machines part of this group.
   /// [updatedTimestamp] Time when this group was last updated. Date-Time represented in ISO-8601 format.
-  GroupPropertiesResponse({
+  const GroupPropertiesResponse({
     required this.areAssessmentsRunning,
     required this.assessments,
     required this.createdTimestamp,

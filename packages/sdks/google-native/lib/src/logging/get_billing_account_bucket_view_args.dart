@@ -17,7 +17,7 @@ class GetBillingAccountBucketViewArgs {
   /// [bucketId] Required.
   /// [location] Required.
   /// [viewId] Required.
-  GetBillingAccountBucketViewArgs({
+  const GetBillingAccountBucketViewArgs({
     required this.billingAccountId,
     required this.bucketId,
     required this.location,

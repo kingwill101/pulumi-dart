@@ -11,7 +11,7 @@ class ClusterClusterConfigSecurityConfigIdentityConfig {
 
   /// Creates a new [ClusterClusterConfigSecurityConfigIdentityConfig].
   /// [userServiceAccountMapping] The end user to service account mappings
-  ClusterClusterConfigSecurityConfigIdentityConfig({
+  const ClusterClusterConfigSecurityConfigIdentityConfig({
     required this.userServiceAccountMapping,
   });
 

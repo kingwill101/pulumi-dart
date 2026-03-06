@@ -45,7 +45,7 @@ class GetDataLakeSettingsResult {
   /// [readOnlyAdmins] List of ARNs of AWS Lake Formation principals (IAM users or roles) with only view access to the resources.
   /// [region] Required.
   /// [trustedResourceOwners] List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
-  GetDataLakeSettingsResult({
+  const GetDataLakeSettingsResult({
     required this.admins,
     required this.allowExternalDataFiltering,
     required this.allowFullTableExternalDataAccess,

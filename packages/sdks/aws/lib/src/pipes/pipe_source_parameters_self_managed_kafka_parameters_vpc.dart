@@ -9,7 +9,7 @@ class PipeSourceParametersSelfManagedKafkaParametersVpc {
   /// Creates a new [PipeSourceParametersSelfManagedKafkaParametersVpc].
   /// [securityGroups] Optional.
   /// [subnets] Optional.
-  PipeSourceParametersSelfManagedKafkaParametersVpc({
+  const PipeSourceParametersSelfManagedKafkaParametersVpc({
     this.securityGroups,
     this.subnets,
   });

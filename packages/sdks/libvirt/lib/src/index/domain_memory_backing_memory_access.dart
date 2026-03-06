@@ -8,7 +8,7 @@ class DomainMemoryBackingMemoryAccess {
 
   /// Creates a new [DomainMemoryBackingMemoryAccess].
   /// [mode] Specifies the mode for memory access, determining how memory can be accessed, such as shared or exclusive.
-  DomainMemoryBackingMemoryAccess({
+  const DomainMemoryBackingMemoryAccess({
     this.mode,
   });
 

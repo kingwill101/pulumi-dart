@@ -10,7 +10,7 @@ class UserRoleAssignmentResponse {
 
   /// Creates a new [UserRoleAssignmentResponse].
   /// [roles] A map of roles to assign to the parent user.
-  UserRoleAssignmentResponse({
+  const UserRoleAssignmentResponse({
     this.roles,
   });
 

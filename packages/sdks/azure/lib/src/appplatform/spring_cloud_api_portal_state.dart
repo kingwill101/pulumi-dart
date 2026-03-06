@@ -34,7 +34,7 @@ class SpringCloudApiPortalState {
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud API Portal to be created.
   /// [sso] A `sso` block as defined below.
   /// [url] TODO.
-  SpringCloudApiPortalState({
+  const SpringCloudApiPortalState({
     this.apiTryOutEnabled,
     this.gatewayIds,
     this.httpsOnlyEnabled,

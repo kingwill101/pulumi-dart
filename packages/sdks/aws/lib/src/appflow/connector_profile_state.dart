@@ -34,7 +34,7 @@ class ConnectorProfileState {
   /// [kmsArn] ARN (Amazon Resource Name) of the Key Management Service (KMS) key you provide for encryption. This is required if you do not want to use the Amazon AppFlow-managed KMS key. If you don't provide anything here, Amazon AppFlow uses the Amazon AppFlow-managed KMS key.
   /// [name] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ConnectorProfileState({
+  const ConnectorProfileState({
     this.arn,
     this.connectionMode,
     this.connectorLabel,

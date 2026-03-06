@@ -18,7 +18,7 @@ class GetUserWorkloadsSecretResult {
   /// [name] Required.
   /// [project] Optional.
   /// [region] Optional.
-  GetUserWorkloadsSecretResult({
+  const GetUserWorkloadsSecretResult({
     required this.data,
     required this.environment,
     required this.id,

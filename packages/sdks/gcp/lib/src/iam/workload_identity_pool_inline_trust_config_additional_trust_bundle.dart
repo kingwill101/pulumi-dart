@@ -15,7 +15,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
   /// Creates a new [WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle].
   /// [trustAnchors] List of Trust Anchors to be used while performing validation against a given
   /// [trustDomain] The identifier for this object. Format specified above.
-  WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle({
+  const WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle({
     required this.trustAnchors,
     required this.trustDomain,
   });

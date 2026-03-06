@@ -9,7 +9,7 @@ class VolumeTypeEnumValue {
 
   /// Creates a new [VolumeTypeEnumValue].
   /// [value] Property value
-  VolumeTypeEnumValue({
+  const VolumeTypeEnumValue({
     this.value,
   });
 

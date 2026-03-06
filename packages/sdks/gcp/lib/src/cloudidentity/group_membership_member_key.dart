@@ -21,7 +21,7 @@ class GroupMembershipMemberKey {
   /// Creates a new [GroupMembershipMemberKey].
   /// [id] The ID of the entity.
   /// [namespace] The namespace in which the entity exists.
-  GroupMembershipMemberKey({
+  const GroupMembershipMemberKey({
     required this.id,
     this.namespace,
   });

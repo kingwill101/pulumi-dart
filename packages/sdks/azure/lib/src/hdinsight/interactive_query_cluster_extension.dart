@@ -11,7 +11,7 @@ class InteractiveQueryClusterExtension {
   /// Creates a new [InteractiveQueryClusterExtension].
   /// [logAnalyticsWorkspaceId] The workspace ID of the log analytics extension.
   /// [primaryKey] The workspace key of the log analytics extension.
-  InteractiveQueryClusterExtension({
+  const InteractiveQueryClusterExtension({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

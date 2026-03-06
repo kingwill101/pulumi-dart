@@ -19,7 +19,7 @@ class ConnectedRegistryNotification {
   /// [digest] The digest of the artifact that wants to be subscribed for the Connected Registry.
   /// [name] The name of the artifact that wants to be subscribed for the Connected Registry.
   /// [tag] The tag of the artifact that wants to be subscribed for the Connected Registry.
-  ConnectedRegistryNotification({
+  const ConnectedRegistryNotification({
     required this.action,
     this.digest,
     required this.name,

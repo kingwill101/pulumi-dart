@@ -10,7 +10,7 @@ class ImageVersionSecurityProfile {
 
   /// Creates a new [ImageVersionSecurityProfile].
   /// [uefiSettings] Contains UEFI settings for the image version.
-  ImageVersionSecurityProfile({
+  const ImageVersionSecurityProfile({
     this.uefiSettings,
   });
 

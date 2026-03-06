@@ -31,7 +31,7 @@ class EnterpriseCrmEventbusProtoAttributesResponse {
   /// [readOnly] Used to indicate if the ParameterEntry is a read only field or not.
   /// [searchable] Required.
   /// [taskVisibility] List of tasks that can view this property, if empty then all.
-  EnterpriseCrmEventbusProtoAttributesResponse({
+  const EnterpriseCrmEventbusProtoAttributesResponse({
     required this.dataType,
     required this.defaultValue,
     required this.isRequired,

@@ -14,7 +14,7 @@ class KeyRotationPolicyAttributesResponse {
   /// [created] Creation time in seconds since 1970-01-01T00:00:00Z.
   /// [expiryTime] The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
   /// [updated] Last updated time in seconds since 1970-01-01T00:00:00Z.
-  KeyRotationPolicyAttributesResponse({
+  const KeyRotationPolicyAttributesResponse({
     required this.created,
     this.expiryTime,
     required this.updated,

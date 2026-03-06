@@ -14,7 +14,7 @@ class AuthorizedViewSubsetView {
   /// Creates a new [AuthorizedViewSubsetView].
   /// [familySubsets] A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
   /// [rowPrefixes] A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
-  AuthorizedViewSubsetView({
+  const AuthorizedViewSubsetView({
     this.familySubsets,
     this.rowPrefixes,
   });

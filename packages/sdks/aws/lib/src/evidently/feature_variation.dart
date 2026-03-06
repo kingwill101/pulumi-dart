@@ -12,7 +12,7 @@ class FeatureVariation {
   /// Creates a new [FeatureVariation].
   /// [name] The name of the variation. Minimum length of `1`. Maximum length of `127`.
   /// [value] A block that specifies the value assigned to this variation. Detailed below
-  FeatureVariation({
+  const FeatureVariation({
     required this.name,
     required this.value,
   });

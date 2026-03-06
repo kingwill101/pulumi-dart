@@ -30,7 +30,7 @@ class ApplicationGatewayTrustedClientCertificateResponse {
   /// [provisioningState] The provisioning state of the trusted client certificate resource.
   /// [type] Type of the resource.
   /// [validatedCertData] Validated certificate data.
-  ApplicationGatewayTrustedClientCertificateResponse({
+  const ApplicationGatewayTrustedClientCertificateResponse({
     required this.clientCertIssuerDN,
     this.data,
     required this.etag,

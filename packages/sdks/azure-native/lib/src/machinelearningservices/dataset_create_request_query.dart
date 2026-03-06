@@ -11,7 +11,7 @@ class DatasetCreateRequestQuery {
   /// Creates a new [DatasetCreateRequestQuery].
   /// [datastoreName] The SQL/PostgreSQL/MySQL datastore name.
   /// [query] SQL Quey.
-  DatasetCreateRequestQuery({
+  const DatasetCreateRequestQuery({
     this.datastoreName,
     this.query,
   });

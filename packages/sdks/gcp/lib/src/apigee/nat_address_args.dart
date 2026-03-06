@@ -19,7 +19,7 @@ class NatAddressArgs {
   /// [activate] Flag that specifies whether the reserved NAT address should be activate.
   /// [instanceId] The Apigee instance associated with the Apigee environment,
   /// [name] Resource ID of the NAT address.
-  NatAddressArgs({
+  const NatAddressArgs({
     this.activate,
     required this.instanceId,
     this.name,

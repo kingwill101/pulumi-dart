@@ -17,7 +17,7 @@ class GetAccountIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Automation Account.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Automation Account.
   /// [type] The type of Managed Service Identity that is configured on this Automation Account.
-  GetAccountIdentity({
+  const GetAccountIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

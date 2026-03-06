@@ -28,7 +28,7 @@ class GetTxtRecordResult {
   /// [tags] A mapping of tags assigned to the resource.
   /// [ttl] The Time To Live (TTL) of the Private DNS record in seconds.
   /// [zoneName] Required.
-  GetTxtRecordResult({
+  const GetTxtRecordResult({
     required this.fqdn,
     required this.id,
     required this.name,

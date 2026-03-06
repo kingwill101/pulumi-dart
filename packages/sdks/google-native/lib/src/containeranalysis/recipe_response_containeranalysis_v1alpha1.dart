@@ -21,7 +21,7 @@ class RecipeResponseContaineranalysisV1alpha1 {
   /// [entryPoint] String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
   /// [environment] Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
   /// [type] URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
-  RecipeResponseContaineranalysisV1alpha1({
+  const RecipeResponseContaineranalysisV1alpha1({
     required this.arguments,
     required this.definedInMaterial,
     required this.entryPoint,

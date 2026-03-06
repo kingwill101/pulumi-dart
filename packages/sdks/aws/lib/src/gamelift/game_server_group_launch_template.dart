@@ -14,7 +14,7 @@ class GameServerGroupLaunchTemplate {
   /// [id] A unique identifier for an existing EC2 launch template.
   /// [name] A readable identifier for an existing EC2 launch template.
   /// [version] The version of the EC2 launch template to use. If none is set, the default is the first version created.
-  GameServerGroupLaunchTemplate({
+  const GameServerGroupLaunchTemplate({
     this.id,
     this.name,
     this.version,

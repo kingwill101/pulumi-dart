@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationTransitGatewayAttachment {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationTransitGatewayAttachment({
+  const NetworkInsightsAnalysisExplanationTransitGatewayAttachment({
     this.arn,
     this.id,
     this.name,

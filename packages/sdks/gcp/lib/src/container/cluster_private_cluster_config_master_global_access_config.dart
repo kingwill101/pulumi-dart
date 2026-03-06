@@ -9,7 +9,7 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 
   /// Creates a new [ClusterPrivateClusterConfigMasterGlobalAccessConfig].
   /// [enabled] Whether the cluster master is accessible globally or
-  ClusterPrivateClusterConfigMasterGlobalAccessConfig({
+  const ClusterPrivateClusterConfigMasterGlobalAccessConfig({
     required this.enabled,
   });
 

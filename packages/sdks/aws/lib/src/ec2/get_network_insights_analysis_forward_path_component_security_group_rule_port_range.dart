@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange {
   /// Creates a new [GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange].
   /// [from] Required.
   /// [to] Required.
-  GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange({
+  const GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange({
     required this.from,
     required this.to,
   });

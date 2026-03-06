@@ -17,7 +17,7 @@ class GetReusableConfigIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [reusableConfigId] Required.
-  GetReusableConfigIamPolicyArgs({
+  const GetReusableConfigIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

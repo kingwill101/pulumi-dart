@@ -11,7 +11,7 @@ class RuntimeTemplateIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  RuntimeTemplateIamMemberCondition({
+  const RuntimeTemplateIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

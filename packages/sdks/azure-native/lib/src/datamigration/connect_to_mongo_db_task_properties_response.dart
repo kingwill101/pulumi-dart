@@ -32,7 +32,7 @@ class ConnectToMongoDbTaskPropertiesResponse {
   /// [output] An array containing a single MongoDbClusterInfo object
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  ConnectToMongoDbTaskPropertiesResponse({
+  const ConnectToMongoDbTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

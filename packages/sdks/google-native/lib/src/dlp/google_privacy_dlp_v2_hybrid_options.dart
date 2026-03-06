@@ -19,7 +19,7 @@ class GooglePrivacyDlpV2HybridOptions {
   /// [labels] To organize findings, these labels will be added to each finding. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`
   /// [requiredFindingLabelKeys] These are labels that each inspection request must include within their 'finding_labels' map. Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No more than 10 keys can be required.
   /// [tableOptions] If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
-  GooglePrivacyDlpV2HybridOptions({
+  const GooglePrivacyDlpV2HybridOptions({
     this.description,
     this.labels,
     this.requiredFindingLabelKeys,

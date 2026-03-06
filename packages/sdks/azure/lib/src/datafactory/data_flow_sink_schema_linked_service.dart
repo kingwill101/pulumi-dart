@@ -11,7 +11,7 @@ class DataFlowSinkSchemaLinkedService {
   /// Creates a new [DataFlowSinkSchemaLinkedService].
   /// [name] The name for the Data Factory Linked Service with schema.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  DataFlowSinkSchemaLinkedService({
+  const DataFlowSinkSchemaLinkedService({
     required this.name,
     this.parameters,
   });

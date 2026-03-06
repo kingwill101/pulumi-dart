@@ -9,7 +9,7 @@ class ImageMappingRuleProfileResponse {
 
   /// Creates a new [ImageMappingRuleProfileResponse].
   /// [userConfiguration] List of values.
-  ImageMappingRuleProfileResponse({
+  const ImageMappingRuleProfileResponse({
     this.userConfiguration,
   });
 

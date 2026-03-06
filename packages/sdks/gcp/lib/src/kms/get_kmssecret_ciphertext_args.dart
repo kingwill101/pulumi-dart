@@ -17,7 +17,7 @@ class GetKMSSecretCiphertextArgs {
   /// Creates a new [GetKMSSecretCiphertextArgs].
   /// [cryptoKey] The id of the CryptoKey that will be used to
   /// [plaintext] The plaintext to be encrypted
-  GetKMSSecretCiphertextArgs({
+  const GetKMSSecretCiphertextArgs({
     required this.cryptoKey,
     required this.plaintext,
   });

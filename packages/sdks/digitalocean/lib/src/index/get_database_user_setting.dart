@@ -11,7 +11,7 @@ class GetDatabaseUserSetting {
   /// Creates a new [GetDatabaseUserSetting].
   /// [acls] Optional.
   /// [opensearchAcls] Optional.
-  GetDatabaseUserSetting({
+  const GetDatabaseUserSetting({
     this.acls,
     this.opensearchAcls,
   });

@@ -13,7 +13,7 @@ class ReplicationRecoveryPlanFailoverRecoveryGroup {
   /// Creates a new [ReplicationRecoveryPlanFailoverRecoveryGroup].
   /// [postActions] one or more `action` block as defined below. which will be executed after the group recovery.
   /// [preActions] one or more `action` block as defined below. which will be executed before the group recovery.
-  ReplicationRecoveryPlanFailoverRecoveryGroup({
+  const ReplicationRecoveryPlanFailoverRecoveryGroup({
     this.postActions,
     this.preActions,
   });

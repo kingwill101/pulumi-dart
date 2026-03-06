@@ -53,7 +53,7 @@ class ProductSubscriptionArgs {
   /// Creates a new [ProductSubscriptionArgs].
   /// [productArn] The ARN of the product that generates findings that you want to import into Security Hub - see below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ProductSubscriptionArgs({
+  const ProductSubscriptionArgs({
     required this.productArn,
     this.region,
   });

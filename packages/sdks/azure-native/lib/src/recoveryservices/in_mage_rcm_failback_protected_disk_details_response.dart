@@ -40,7 +40,7 @@ class InMageRcmFailbackProtectedDiskDetailsResponse {
   /// [isOSDisk] A value indicating whether the disk is the OS disk.
   /// [lastSyncTime] The last sync time.
   /// [resyncDetails] The resync details.
-  InMageRcmFailbackProtectedDiskDetailsResponse({
+  const InMageRcmFailbackProtectedDiskDetailsResponse({
     required this.capacityInBytes,
     required this.dataPendingAtSourceAgentInMB,
     required this.dataPendingInLogDataStoreInMB,

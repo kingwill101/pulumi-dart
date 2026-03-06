@@ -57,7 +57,7 @@ class GlobalReplicationGroupArgs {
   /// [parameterGroupName] An ElastiCache Parameter Group to use for the Global Replication Group.
   /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primary_replication_group_id` is changed, creates a new resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GlobalReplicationGroupArgs({
+  const GlobalReplicationGroupArgs({
     this.automaticFailoverEnabled,
     this.cacheNodeType,
     this.engine,

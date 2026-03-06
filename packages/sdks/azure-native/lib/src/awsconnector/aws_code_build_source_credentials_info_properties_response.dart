@@ -20,7 +20,7 @@ class AwsCodeBuildSourceCredentialsInfoPropertiesResponse {
   /// [authType] &lt;p&gt; The type of authentication used by the credentials. Valid options are OAUTH, BASIC_AUTH, PERSONAL_ACCESS_TOKEN, or CODECONNECTIONS. &lt;/p&gt;
   /// [resource] &lt;p&gt;The connection ARN if your serverType type is GITLAB or GITLAB_SELF_MANAGED and your authType is CODECONNECTIONS.&lt;/p&gt;
   /// [serverType] &lt;p&gt; The type of source provider. The valid options are GITHUB, GITHUB_ENTERPRISE, GITLAB, GITLAB_SELF_MANAGED, or BITBUCKET. &lt;/p&gt;
-  AwsCodeBuildSourceCredentialsInfoPropertiesResponse({
+  const AwsCodeBuildSourceCredentialsInfoPropertiesResponse({
     this.arn,
     this.authType,
     this.resource,

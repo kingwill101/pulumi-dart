@@ -14,7 +14,7 @@ class AzureOperatorNexusNetworkFunctionTemplate {
   /// Creates a new [AzureOperatorNexusNetworkFunctionTemplate].
   /// [networkFunctionApplications] Network function applications.
   /// [nfviType] The network function type.
-  AzureOperatorNexusNetworkFunctionTemplate({
+  const AzureOperatorNexusNetworkFunctionTemplate({
     this.networkFunctionApplications,
     required this.nfviType,
   });

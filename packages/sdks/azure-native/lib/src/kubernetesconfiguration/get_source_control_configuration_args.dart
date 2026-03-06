@@ -24,7 +24,7 @@ class GetSourceControlConfigurationArgs {
   /// [clusterRp] The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlConfigurationName] Name of the Source Control Configuration.
-  GetSourceControlConfigurationArgs({
+  const GetSourceControlConfigurationArgs({
     required this.clusterName,
     required this.clusterResourceName,
     required this.clusterRp,

@@ -24,7 +24,7 @@ class GeoReplicationStatsResponse {
   /// [postFailoverRedundancy] The redundancy type of the account after an account failover is performed.
   /// [postPlannedFailoverRedundancy] The redundancy type of the account after a planned account failover is performed.
   /// [status] The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.
-  GeoReplicationStatsResponse({
+  const GeoReplicationStatsResponse({
     required this.canFailover,
     required this.canPlannedFailover,
     required this.lastSyncTime,

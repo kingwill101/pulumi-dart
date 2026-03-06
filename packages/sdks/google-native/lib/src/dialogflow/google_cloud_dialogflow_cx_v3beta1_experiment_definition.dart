@@ -13,7 +13,7 @@ class GoogleCloudDialogflowCxV3beta1ExperimentDefinition {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ExperimentDefinition].
   /// [condition] The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
   /// [versionVariants] The flow versions as the variants of this experiment.
-  GoogleCloudDialogflowCxV3beta1ExperimentDefinition({
+  const GoogleCloudDialogflowCxV3beta1ExperimentDefinition({
     this.condition,
     this.versionVariants,
   });

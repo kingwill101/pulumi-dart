@@ -23,7 +23,7 @@ class GetTrailsDeprecatedArgs {
   /// [nameRegex] A regex string to filter results action trail name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Optional.
-  GetTrailsDeprecatedArgs({
+  const GetTrailsDeprecatedArgs({
     this.ids,
     this.includeOrganizationTrail,
     this.includeShadowTrails,

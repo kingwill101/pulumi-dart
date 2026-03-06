@@ -12,7 +12,7 @@ class LocalBrokerConnectionTlsResponse {
   /// Creates a new [LocalBrokerConnectionTlsResponse].
   /// [tlsEnabled] Tls Enabled on Local Broker Connection.
   /// [trustedCaCertificateConfigMap] Trusted CA certificate config map name for Local Broker.
-  LocalBrokerConnectionTlsResponse({
+  const LocalBrokerConnectionTlsResponse({
     this.tlsEnabled,
     this.trustedCaCertificateConfigMap,
   });

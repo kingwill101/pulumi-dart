@@ -26,7 +26,7 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
   /// [serviceDirectoryConfig] Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
   /// [sslCa] SSL certificate to use for requests to GitLab Enterprise.
   /// [webhookSecretSecretVersion] Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
-  GoogleDevtoolsCloudbuildV2GitLabConfig({
+  const GoogleDevtoolsCloudbuildV2GitLabConfig({
     required this.authorizerCredential,
     this.hostUri,
     required this.readAuthorizerCredential,

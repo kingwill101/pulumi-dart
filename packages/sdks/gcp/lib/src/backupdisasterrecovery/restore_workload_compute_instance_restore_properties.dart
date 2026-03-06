@@ -117,7 +117,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
   /// [serviceAccounts] Optional. A list of service accounts, with their specified scopes, authorized for this instance.
   /// [shieldedInstanceConfig] Optional. Controls Shielded compute options on the instance.
   /// [tags] Optional. Tags to apply to this instance.
-  RestoreWorkloadComputeInstanceRestoreProperties({
+  const RestoreWorkloadComputeInstanceRestoreProperties({
     this.advancedMachineFeatures,
     this.allocationAffinity,
     this.canIpForward,

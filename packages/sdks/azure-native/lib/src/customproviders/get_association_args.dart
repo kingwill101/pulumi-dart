@@ -15,7 +15,7 @@ class GetAssociationArgs {
   /// Creates a new [GetAssociationArgs].
   /// [associationName] The name of the association.
   /// [scope] The scope of the association.
-  GetAssociationArgs({
+  const GetAssociationArgs({
     required this.associationName,
     required this.scope,
   });

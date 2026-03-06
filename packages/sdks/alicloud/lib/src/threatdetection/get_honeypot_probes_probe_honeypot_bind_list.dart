@@ -11,7 +11,7 @@ class GetHoneypotProbesProbeHoneypotBindList {
   /// Creates a new [GetHoneypotProbesProbeHoneypotBindList].
   /// [bindPortLists] List of listening ports. Available when `enable_details` is on.
   /// [honeypotId] Required.
-  GetHoneypotProbesProbeHoneypotBindList({
+  const GetHoneypotProbesProbeHoneypotBindList({
     required this.bindPortLists,
     required this.honeypotId,
   });

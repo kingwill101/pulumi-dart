@@ -9,7 +9,7 @@ class DisplayDeviceComputeBeta {
 
   /// Creates a new [DisplayDeviceComputeBeta].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDeviceComputeBeta({
+  const DisplayDeviceComputeBeta({
     this.enableDisplay,
   });
 

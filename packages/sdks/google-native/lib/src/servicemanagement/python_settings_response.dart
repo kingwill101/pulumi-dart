@@ -10,7 +10,7 @@ class PythonSettingsResponse {
 
   /// Creates a new [PythonSettingsResponse].
   /// [common] Some settings.
-  PythonSettingsResponse({
+  const PythonSettingsResponse({
     required this.common,
   });
 

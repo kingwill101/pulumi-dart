@@ -41,7 +41,7 @@ class GetSecurityPolicyResult {
   /// [rules] Required.
   /// [selfLink] Optional.
   /// [type] Required.
-  GetSecurityPolicyResult({
+  const GetSecurityPolicyResult({
     required this.adaptiveProtectionConfigs,
     required this.advancedOptionsConfigs,
     required this.description,

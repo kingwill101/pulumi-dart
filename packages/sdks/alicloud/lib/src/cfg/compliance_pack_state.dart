@@ -29,7 +29,7 @@ class CompliancePackState {
   /// [description] The Description of compliance pack.
   /// [riskLevel] The Risk Level. Valid values:
   /// [status] The status of the Compliance Pack.
-  CompliancePackState({
+  const CompliancePackState({
     this.compliancePackName,
     this.compliancePackTemplateId,
     this.configRuleIds,

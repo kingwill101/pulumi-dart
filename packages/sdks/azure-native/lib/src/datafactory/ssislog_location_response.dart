@@ -19,7 +19,7 @@ class SSISLogLocationResponse {
   /// [logPath] The SSIS package execution log path. Type: string (or Expression with resultType string).
   /// [logRefreshInterval] Specifies the interval to refresh log. The default interval is 5 minutes. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [type] The type of SSIS log location.
-  SSISLogLocationResponse({
+  const SSISLogLocationResponse({
     this.accessCredential,
     required this.logPath,
     this.logRefreshInterval,

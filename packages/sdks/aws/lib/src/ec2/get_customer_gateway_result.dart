@@ -37,7 +37,7 @@ class GetCustomerGatewayResult {
   /// [region] Required.
   /// [tags] Map of key-value pairs assigned to the gateway.
   /// [type] Type of customer gateway. The only type AWS supports at this time is "ipsec.1".
-  GetCustomerGatewayResult({
+  const GetCustomerGatewayResult({
     required this.arn,
     required this.bgpAsn,
     required this.bgpAsnExtended,

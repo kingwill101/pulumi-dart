@@ -44,7 +44,7 @@ class GetChannelResult {
   /// [tags] Contains resource tags defined as key/value pairs.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] Entity zones
-  GetChannelResult({
+  const GetChannelResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

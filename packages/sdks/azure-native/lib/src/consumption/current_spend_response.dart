@@ -12,7 +12,7 @@ class CurrentSpendResponse {
   /// Creates a new [CurrentSpendResponse].
   /// [amount] The total amount of cost which is being tracked by the budget.
   /// [unit] The unit of measure for the budget amount.
-  CurrentSpendResponse({
+  const CurrentSpendResponse({
     required this.amount,
     required this.unit,
   });

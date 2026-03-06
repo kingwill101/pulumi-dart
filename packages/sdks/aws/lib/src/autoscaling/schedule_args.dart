@@ -43,7 +43,7 @@ class ScheduleArgs {
   /// [scheduledActionName] The name of this scaling action.
   /// [startTime] The date and time for the recurring schedule to start, in UTC with the format `"YYYY-MM-DDThh:mm:ssZ"` (e.g. `"2021-06-01T00:00:00Z"`).
   /// [timeZone] Specifies the time zone for a cron expression. Valid values are the canonical names of the IANA time zones (such as `Etc/GMT+9` or `Pacific/Tahiti`).
-  ScheduleArgs({
+  const ScheduleArgs({
     required this.autoscalingGroupName,
     this.desiredCapacity,
     this.endTime,

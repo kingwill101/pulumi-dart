@@ -8,7 +8,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess {
 
   /// Creates a new [CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess({
+  const CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess({
     this.metadata,
   });
 

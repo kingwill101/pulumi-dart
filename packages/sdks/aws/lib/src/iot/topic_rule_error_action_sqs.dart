@@ -14,7 +14,7 @@ class TopicRuleErrorActionSqs {
   /// [queueUrl] The URL of the Amazon SQS queue.
   /// [roleArn] The ARN of the IAM role that grants access.
   /// [useBase64] Specifies whether to use Base64 encoding.
-  TopicRuleErrorActionSqs({
+  const TopicRuleErrorActionSqs({
     required this.queueUrl,
     required this.roleArn,
     required this.useBase64,

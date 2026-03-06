@@ -17,7 +17,7 @@ class GetApplicationTemplateArgs {
   /// Creates a new [GetApplicationTemplateArgs].
   /// [displayName] Specifies the display name of the templated application.
   /// [templateId] Specifies the ID of the templated application.
-  GetApplicationTemplateArgs({
+  const GetApplicationTemplateArgs({
     this.displayName,
     this.templateId,
   });

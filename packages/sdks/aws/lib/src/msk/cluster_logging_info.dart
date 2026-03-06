@@ -9,7 +9,7 @@ class ClusterLoggingInfo {
 
   /// Creates a new [ClusterLoggingInfo].
   /// [brokerLogs] Configuration block for Broker Logs settings for logging info. See logging_info broker_logs Argument Reference below.
-  ClusterLoggingInfo({
+  const ClusterLoggingInfo({
     required this.brokerLogs,
   });
 

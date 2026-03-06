@@ -21,7 +21,7 @@ class ApplicationGatewaySslProfileSslPolicy {
   /// [minProtocolVersion] Optional.
   /// [policyName] Optional.
   /// [policyType] The Type of the Policy. Possible values are `Predefined`, `Custom` and `CustomV2`.
-  ApplicationGatewaySslProfileSslPolicy({
+  const ApplicationGatewaySslProfileSslPolicy({
     this.cipherSuites,
     this.disabledProtocols,
     this.minProtocolVersion,

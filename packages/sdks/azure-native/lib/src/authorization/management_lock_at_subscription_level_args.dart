@@ -22,7 +22,7 @@ class ManagementLockAtSubscriptionLevelArgs {
   /// [lockName] The name of lock. The lock name can be a maximum of 260 characters. It cannot contain &lt;, &gt; %, &, :, \, ?, /, or any control characters.
   /// [notes] Notes about the lock. Maximum of 512 characters.
   /// [owners] The owners of the lock.
-  ManagementLockAtSubscriptionLevelArgs({
+  const ManagementLockAtSubscriptionLevelArgs({
     required this.level,
     this.lockName,
     this.notes,

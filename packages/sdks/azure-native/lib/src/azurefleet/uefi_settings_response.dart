@@ -15,7 +15,7 @@ class UefiSettingsResponse {
   /// Creates a new [UefiSettingsResponse].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine. Minimum
   /// [vTpmEnabled] Specifies whether vTPM should be enabled on the virtual machine. Minimum
-  UefiSettingsResponse({
+  const UefiSettingsResponse({
     this.secureBootEnabled,
     this.vTpmEnabled,
   });

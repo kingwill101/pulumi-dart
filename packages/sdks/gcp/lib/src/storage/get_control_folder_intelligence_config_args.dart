@@ -12,7 +12,7 @@ class GetControlFolderIntelligenceConfigArgs {
 
   /// Creates a new [GetControlFolderIntelligenceConfigArgs].
   /// [name] The number of GCP folder.
-  GetControlFolderIntelligenceConfigArgs({
+  const GetControlFolderIntelligenceConfigArgs({
     required this.name,
   });
 

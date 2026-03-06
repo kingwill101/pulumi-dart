@@ -12,7 +12,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse {
   /// Creates a new [GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse].
   /// [resourceId] Resource identifier. For a project this represents project_number.
   /// [resourceType] Indicates the type of resource.
-  GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse({
+  const GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse({
     required this.resourceId,
     required this.resourceType,
   });

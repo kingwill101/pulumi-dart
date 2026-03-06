@@ -9,7 +9,7 @@ class GetOrganizationElasticToAzureSubscriptionMappingResult {
 
   /// Creates a new [GetOrganizationElasticToAzureSubscriptionMappingResult].
   /// [properties] The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
-  GetOrganizationElasticToAzureSubscriptionMappingResult({
+  const GetOrganizationElasticToAzureSubscriptionMappingResult({
     required this.properties,
   });
 

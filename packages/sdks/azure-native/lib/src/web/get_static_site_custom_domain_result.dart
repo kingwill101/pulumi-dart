@@ -34,7 +34,7 @@ class GetStaticSiteCustomDomainResult {
   /// [status] The status of the custom domain
   /// [type] Resource type.
   /// [validationToken] The TXT record validation token
-  GetStaticSiteCustomDomainResult({
+  const GetStaticSiteCustomDomainResult({
     required this.azureApiVersion,
     required this.createdOn,
     required this.domainName,

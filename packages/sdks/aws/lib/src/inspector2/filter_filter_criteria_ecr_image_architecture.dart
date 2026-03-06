@@ -11,7 +11,7 @@ class FilterFilterCriteriaEcrImageArchitecture {
   /// Creates a new [FilterFilterCriteriaEcrImageArchitecture].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaEcrImageArchitecture({
+  const FilterFilterCriteriaEcrImageArchitecture({
     required this.comparison,
     required this.value,
   });

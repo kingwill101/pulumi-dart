@@ -8,7 +8,7 @@ class ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult {
 
   /// Creates a new [ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult].
   /// [value] List of Cloud Manager Tenants
-  ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult({
+  const ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult({
     required this.value,
   });
 

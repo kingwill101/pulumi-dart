@@ -24,7 +24,7 @@ class GetSolutionResult {
   /// [name] Gets the name of this REST resource.
   /// [properties] Gets or sets the properties of the solution.
   /// [type] Gets the type of this REST resource.
-  GetSolutionResult({
+  const GetSolutionResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

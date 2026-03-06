@@ -18,7 +18,7 @@ class PacketMirroringMirroredResources {
   /// [instances] All the listed instances will be mirrored.  Specify at most 50.
   /// [subnetworks] All instances in one of these subnetworks will be mirrored.
   /// [tags] All instances with these tags will be mirrored.
-  PacketMirroringMirroredResources({
+  const PacketMirroringMirroredResources({
     this.instances,
     this.subnetworks,
     this.tags,

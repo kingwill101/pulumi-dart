@@ -10,7 +10,7 @@ class PrivateEndpointConnection {
 
   /// Creates a new [PrivateEndpointConnection].
   /// [privateLinkServiceConnectionState] Connection state of the private endpoint connection.
-  PrivateEndpointConnection({
+  const PrivateEndpointConnection({
     this.privateLinkServiceConnectionState,
   });
 

@@ -9,7 +9,7 @@ class FeaturesApiManagement {
   /// Creates a new [FeaturesApiManagement].
   /// [purgeSoftDeleteOnDestroy] Optional.
   /// [recoverSoftDeleted] Optional.
-  FeaturesApiManagement({
+  const FeaturesApiManagement({
     this.purgeSoftDeleteOnDestroy,
     this.recoverSoftDeleted,
   });

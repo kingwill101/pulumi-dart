@@ -22,7 +22,7 @@ class OracleAuthModelResponse {
   /// [tenantId] Oracle tenant ID
   /// [type] Type of paging
   /// [userId] Oracle user ID
-  OracleAuthModelResponse({
+  const OracleAuthModelResponse({
     required this.pemFile,
     required this.publicFingerprint,
     required this.tenantId,

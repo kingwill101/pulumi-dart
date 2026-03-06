@@ -21,7 +21,7 @@ class NetworkManagerRoutingConfigurationArgs {
   /// [name] The name which should be used for this Network Manager Routing Configuration. Changing this forces a new Network Manager Routing Configuration to be created.
   /// [networkManagerId] The ID of the Network Manager. Changing this forces a new Network Manager Routing Configuration to be created.
   /// [routeTableUsageMode] The route table usage mode for the Network Manager Routing Configuration. Possible values are `ManagedOnly` and `UseExisting`. Defaults to `ManagedOnly`.
-  NetworkManagerRoutingConfigurationArgs({
+  const NetworkManagerRoutingConfigurationArgs({
     this.description,
     this.name,
     required this.networkManagerId,

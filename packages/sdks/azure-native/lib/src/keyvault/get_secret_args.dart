@@ -18,7 +18,7 @@ class GetSecretArgs {
   /// [resourceGroupName] The name of the Resource Group to which the vault belongs.
   /// [secretName] The name of the secret.
   /// [vaultName] The name of the vault.
-  GetSecretArgs({
+  const GetSecretArgs({
     required this.resourceGroupName,
     required this.secretName,
     required this.vaultName,

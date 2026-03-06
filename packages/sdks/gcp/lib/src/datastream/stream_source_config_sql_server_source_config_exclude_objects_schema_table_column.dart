@@ -37,7 +37,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn {
   /// [precision] (Output)
   /// [primaryKey] (Output)
   /// [scale] (Output)
-  StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn({
+  const StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn({
     this.column,
     this.dataType,
     this.length,

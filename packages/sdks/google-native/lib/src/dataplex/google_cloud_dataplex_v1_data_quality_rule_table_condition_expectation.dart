@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation].
   /// [sqlExpression] Optional. The SQL expression.
-  GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation({
+  const GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation({
     this.sqlExpression,
   });
 

@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1NotebookEucConfig {
 
   /// Creates a new [GoogleCloudAiplatformV1NotebookEucConfig].
   /// [eucDisabled] Input only. Whether EUC is disabled in this NotebookRuntimeTemplate. In proto3, the default value of a boolean is false. In this way, by default EUC will be enabled for NotebookRuntimeTemplate.
-  GoogleCloudAiplatformV1NotebookEucConfig({
+  const GoogleCloudAiplatformV1NotebookEucConfig({
     this.eucDisabled,
   });
 

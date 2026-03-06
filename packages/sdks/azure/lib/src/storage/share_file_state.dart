@@ -42,7 +42,7 @@ class ShareFileState {
   /// [source] An absolute path to a file on the local system. Changing this forces a new resource to be created.
   /// [storageShareId] Optional.
   /// [storageShareUrl] The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
-  ShareFileState({
+  const ShareFileState({
     this.contentDisposition,
     this.contentEncoding,
     this.contentLength,

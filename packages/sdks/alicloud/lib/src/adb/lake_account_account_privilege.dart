@@ -15,7 +15,7 @@ class LakeAccountAccountPrivilege {
   /// [privilegeObject] Object associated to privileges. See `privilege_object` below.
   /// [privilegeType] The type of privileges.
   /// [privileges] privilege list.
-  LakeAccountAccountPrivilege({
+  const LakeAccountAccountPrivilege({
     this.privilegeObject,
     this.privilegeType,
     this.privileges,

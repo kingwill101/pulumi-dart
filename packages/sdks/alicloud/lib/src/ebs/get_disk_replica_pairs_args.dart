@@ -21,7 +21,7 @@ class GetDiskReplicaPairsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [replicaGroupId] Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
   /// [site] Get data for replication pairs where this Region is the production site or the disaster recovery site.
-  GetDiskReplicaPairsArgs({
+  const GetDiskReplicaPairsArgs({
     this.ids,
     this.outputFile,
     this.replicaGroupId,

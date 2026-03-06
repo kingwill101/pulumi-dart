@@ -9,7 +9,7 @@ class EmissionPolicyDestination {
 
   /// Creates a new [EmissionPolicyDestination].
   /// [destinationType] Emission destination type.
-  EmissionPolicyDestination({
+  const EmissionPolicyDestination({
     this.destinationType,
   });
 

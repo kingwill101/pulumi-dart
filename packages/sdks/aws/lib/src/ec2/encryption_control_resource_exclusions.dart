@@ -37,7 +37,7 @@ class EncryptionControlResourceExclusions {
   /// [virtualPrivateGateway] `state` and `state_message` describing encryption enforcement state for Virtual Private Gateways.
   /// [vpcLattice] `state` and `state_message` describing encryption enforcement state for VPC Lattice.
   /// [vpcPeering] `state` and `state_message` describing encryption enforcement state for peered VPCs.
-  EncryptionControlResourceExclusions({
+  const EncryptionControlResourceExclusions({
     required this.egressOnlyInternetGateway,
     required this.elasticFileSystem,
     required this.internetGateway,

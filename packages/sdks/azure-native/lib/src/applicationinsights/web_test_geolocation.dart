@@ -9,7 +9,7 @@ class WebTestGeolocation {
 
   /// Creates a new [WebTestGeolocation].
   /// [location] Location ID for the WebTest to run from.
-  WebTestGeolocation({
+  const WebTestGeolocation({
     this.location,
   });
 

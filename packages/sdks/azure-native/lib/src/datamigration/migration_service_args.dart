@@ -21,7 +21,7 @@ class MigrationServiceArgs {
   /// [migrationServiceName] Name of the Migration Service.
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [tags] Resource tags.
-  MigrationServiceArgs({
+  const MigrationServiceArgs({
     this.location,
     this.migrationServiceName,
     required this.resourceGroupName,

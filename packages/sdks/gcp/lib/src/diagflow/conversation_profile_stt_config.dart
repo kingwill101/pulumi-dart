@@ -29,7 +29,7 @@ class ConversationProfileSttConfig {
   /// [sampleRateHertz] Sample rate (in Hertz) of the audio content sent in the query.
   /// [speechModelVariant] The speech model used in speech to text.
   /// [useTimeoutBasedEndpointing] Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
-  ConversationProfileSttConfig({
+  const ConversationProfileSttConfig({
     this.audioEncoding,
     this.enableWordInfo,
     this.languageCode,

@@ -52,7 +52,7 @@ class GetDiscoveredAssetEndpointProfileResult {
   /// [targetAddress] The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] An integer that is incremented each time the resource is modified.
-  GetDiscoveredAssetEndpointProfileResult({
+  const GetDiscoveredAssetEndpointProfileResult({
     this.additionalConfiguration,
     required this.azureApiVersion,
     required this.discoveryId,

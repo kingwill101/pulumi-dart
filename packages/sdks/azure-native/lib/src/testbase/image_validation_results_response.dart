@@ -10,7 +10,7 @@ class ImageValidationResultsResponse {
 
   /// Creates a new [ImageValidationResultsResponse].
   /// [results] The validation results of the image.
-  ImageValidationResultsResponse({
+  const ImageValidationResultsResponse({
     this.results,
   });
 

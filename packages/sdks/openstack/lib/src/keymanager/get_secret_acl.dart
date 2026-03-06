@@ -8,7 +8,7 @@ class GetSecretAcl {
 
   /// Creates a new [GetSecretAcl].
   /// [read] Required.
-  GetSecretAcl({
+  const GetSecretAcl({
     required this.read,
   });
 

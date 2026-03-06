@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// [content] The content of the certificate in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Cannot be used with `url`.
   /// [url] The URL of the website to get the certificates from. Cannot be used with `content`.
   /// [verifyChain] Whether to verify the certificate chain while parsing it or not (default: `true`). Cannot be used with `content`.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     this.content,
     this.url,
     this.verifyChain,

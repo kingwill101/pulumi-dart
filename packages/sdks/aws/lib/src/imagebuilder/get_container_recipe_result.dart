@@ -64,7 +64,7 @@ class GetContainerRecipeResult {
   /// [targetRepositories] Destination repository for the container image.
   /// [version] Version of the container recipe.
   /// [workingDirectory] Working directory used during build and test workflows.
-  GetContainerRecipeResult({
+  const GetContainerRecipeResult({
     required this.arn,
     required this.components,
     required this.containerType,

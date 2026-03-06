@@ -50,7 +50,7 @@ class SecretState {
   /// [valueWoVersion] An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
   /// [version] The current version of the Key Vault Secret.
   /// [versionlessId] The Base ID of the Key Vault Secret.
-  SecretState({
+  const SecretState({
     this.contentType,
     this.expirationDate,
     this.keyVaultId,

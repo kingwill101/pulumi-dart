@@ -9,7 +9,7 @@ class GoogleCloudRetailV2betaModelServingConfigListResponse {
 
   /// Creates a new [GoogleCloudRetailV2betaModelServingConfigListResponse].
   /// [servingConfigIds] Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
-  GoogleCloudRetailV2betaModelServingConfigListResponse({
+  const GoogleCloudRetailV2betaModelServingConfigListResponse({
     required this.servingConfigIds,
   });
 

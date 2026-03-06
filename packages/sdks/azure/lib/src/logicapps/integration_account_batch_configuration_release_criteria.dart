@@ -15,7 +15,7 @@ class IntegrationAccountBatchConfigurationReleaseCriteria {
   /// [batchSize] The batch size in bytes for the Logic App Integration Batch Configuration.
   /// [messageCount] The message count for the Logic App Integration Batch Configuration.
   /// [recurrence] A `recurrence` block as documented below.
-  IntegrationAccountBatchConfigurationReleaseCriteria({
+  const IntegrationAccountBatchConfigurationReleaseCriteria({
     this.batchSize,
     this.messageCount,
     this.recurrence,

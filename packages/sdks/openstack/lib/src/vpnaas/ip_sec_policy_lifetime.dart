@@ -11,7 +11,7 @@ class IpSecPolicyLifetime {
   /// Creates a new [IpSecPolicyLifetime].
   /// [units] Optional.
   /// [value] The value for the lifetime of the security association. Must be a positive integer.
-  IpSecPolicyLifetime({
+  const IpSecPolicyLifetime({
     this.units,
     this.value,
   });

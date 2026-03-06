@@ -24,7 +24,7 @@ class GetGatewayBlockVolumesResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [volumes] Required.
-  GetGatewayBlockVolumesResult({
+  const GetGatewayBlockVolumesResult({
     required this.gatewayId,
     required this.id,
     required this.ids,

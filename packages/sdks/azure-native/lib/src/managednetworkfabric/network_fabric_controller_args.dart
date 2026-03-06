@@ -47,7 +47,7 @@ class NetworkFabricControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workloadExpressRouteConnections] As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
-  NetworkFabricControllerArgs({
+  const NetworkFabricControllerArgs({
     this.annotation,
     this.infrastructureExpressRouteConnections,
     this.ipv4AddressSpace,

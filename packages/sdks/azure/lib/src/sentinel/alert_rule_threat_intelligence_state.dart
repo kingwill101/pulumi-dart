@@ -18,7 +18,7 @@ class AlertRuleThreatIntelligenceState {
   /// [enabled] Whether the Threat Intelligence Alert rule enabled? Defaults to `true`.
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace this Sentinel Threat Intelligence Alert Rule belongs to. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
   /// [name] The name which should be used for this Sentinel Threat Intelligence Alert Rule. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
-  AlertRuleThreatIntelligenceState({
+  const AlertRuleThreatIntelligenceState({
     this.alertRuleTemplateGuid,
     this.enabled,
     this.logAnalyticsWorkspaceId,

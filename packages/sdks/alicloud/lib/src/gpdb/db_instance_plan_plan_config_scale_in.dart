@@ -17,7 +17,7 @@ class DbInstancePlanPlanConfigScaleIn {
   /// [planCronTime] The Cron Time of the plan.
   /// [planTaskStatus] (Available since v1.231.0) The status of the plan task.
   /// [segmentNodeNum] The segment Node Num of the Plan.
-  DbInstancePlanPlanConfigScaleIn({
+  const DbInstancePlanPlanConfigScaleIn({
     this.executeTime,
     this.planCronTime,
     this.planTaskStatus,

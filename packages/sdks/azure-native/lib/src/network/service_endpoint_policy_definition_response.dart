@@ -30,7 +30,7 @@ class ServiceEndpointPolicyDefinitionResponse {
   /// [service] Service endpoint name.
   /// [serviceResources] A list of service resources.
   /// [type] The type of the resource.
-  ServiceEndpointPolicyDefinitionResponse({
+  const ServiceEndpointPolicyDefinitionResponse({
     this.description,
     required this.etag,
     this.id,

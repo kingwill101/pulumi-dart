@@ -11,7 +11,7 @@ class GetRegionInstanceGroupInstanceNamedPort {
   /// Creates a new [GetRegionInstanceGroupInstanceNamedPort].
   /// [name] The name of the instance group.  One of `name` or `self_link` must be provided.
   /// [port] Integer port number
-  GetRegionInstanceGroupInstanceNamedPort({
+  const GetRegionInstanceGroupInstanceNamedPort({
     required this.name,
     required this.port,
   });

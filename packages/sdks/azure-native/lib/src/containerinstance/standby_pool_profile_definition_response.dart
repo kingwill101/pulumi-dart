@@ -12,7 +12,7 @@ class StandbyPoolProfileDefinitionResponse {
   /// Creates a new [StandbyPoolProfileDefinitionResponse].
   /// [failContainerGroupCreateOnReuseFailure] The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
   /// [id] The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
-  StandbyPoolProfileDefinitionResponse({
+  const StandbyPoolProfileDefinitionResponse({
     this.failContainerGroupCreateOnReuseFailure,
     this.id,
   });

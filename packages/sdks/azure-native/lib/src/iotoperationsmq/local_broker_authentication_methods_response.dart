@@ -10,7 +10,7 @@ class LocalBrokerAuthenticationMethodsResponse {
 
   /// Creates a new [LocalBrokerAuthenticationMethodsResponse].
   /// [kubernetes] Kubernetes local broker authentication method.
-  LocalBrokerAuthenticationMethodsResponse({
+  const LocalBrokerAuthenticationMethodsResponse({
     required this.kubernetes,
   });
 

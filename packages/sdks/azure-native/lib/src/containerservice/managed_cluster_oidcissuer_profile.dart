@@ -9,7 +9,7 @@ class ManagedClusterOIDCIssuerProfile {
 
   /// Creates a new [ManagedClusterOIDCIssuerProfile].
   /// [enabled] Whether the OIDC issuer is enabled.
-  ManagedClusterOIDCIssuerProfile({
+  const ManagedClusterOIDCIssuerProfile({
     this.enabled,
   });
 

@@ -25,7 +25,7 @@ class GetInstanceSerialPortArgs {
   /// [port] The number of the serial port to read output from. Possible values are 1-4.
   /// [project] The project in which the Compute Instance exists. If it
   /// [zone] The zone in which the Compute Instance exists.
-  GetInstanceSerialPortArgs({
+  const GetInstanceSerialPortArgs({
     required this.instance,
     required this.port,
     this.project,

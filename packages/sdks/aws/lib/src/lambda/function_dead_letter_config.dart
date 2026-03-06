@@ -8,7 +8,7 @@ class FunctionDeadLetterConfig {
 
   /// Creates a new [FunctionDeadLetterConfig].
   /// [targetArn] ARN of an SNS topic or SQS queue to notify when an invocation fails.
-  FunctionDeadLetterConfig({
+  const FunctionDeadLetterConfig({
     required this.targetArn,
   });
 

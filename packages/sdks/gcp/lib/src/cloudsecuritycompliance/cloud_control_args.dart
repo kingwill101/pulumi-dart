@@ -58,7 +58,7 @@ class CloudControlArgs {
   /// [rules] The Policy to be enforced to prevent/detect resource non-compliance.
   /// [severity] Possible values:
   /// [supportedCloudProviders] cloud providers supported
-  CloudControlArgs({
+  const CloudControlArgs({
     this.categories,
     required this.cloudControlId,
     this.description,

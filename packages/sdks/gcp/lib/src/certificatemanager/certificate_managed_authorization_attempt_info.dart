@@ -19,7 +19,7 @@ class CertificateManagedAuthorizationAttemptInfo {
   /// [domain] Domain name of the authorization attempt.
   /// [failureReason] Reason for failure of the authorization attempt for the domain.
   /// [state] State of the domain for managed certificate issuance.
-  CertificateManagedAuthorizationAttemptInfo({
+  const CertificateManagedAuthorizationAttemptInfo({
     this.details,
     this.domain,
     this.failureReason,

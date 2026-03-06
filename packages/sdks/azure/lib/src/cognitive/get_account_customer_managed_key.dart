@@ -11,7 +11,7 @@ class GetAccountCustomerManagedKey {
   /// Creates a new [GetAccountCustomerManagedKey].
   /// [identityClientId] The client ID of the managed identity associated with the storage resource.
   /// [keyVaultKeyId] The ID of the Key Vault Key which is used to encrypt the data in this Cognitive Services Account.
-  GetAccountCustomerManagedKey({
+  const GetAccountCustomerManagedKey({
     required this.identityClientId,
     required this.keyVaultKeyId,
   });

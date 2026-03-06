@@ -12,7 +12,7 @@ class InstanceIpv6Address {
   /// Creates a new [InstanceIpv6Address].
   /// [ipv6Address] Property ipv6Address
   /// [isPrimaryIpv6] &lt;p&gt;Determines if an IPv6 address associated with a network interface is the primary IPv6 address. When you enable an IPv6 GUA address to be a primary IPv6, the first IPv6 GUA will be made the primary IPv6 address until the instance is terminated or the network interface is detached. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html'&gt;RunInstances&lt;/a&gt;.&lt;/p&gt;
-  InstanceIpv6Address({
+  const InstanceIpv6Address({
     this.ipv6Address,
     this.isPrimaryIpv6,
   });

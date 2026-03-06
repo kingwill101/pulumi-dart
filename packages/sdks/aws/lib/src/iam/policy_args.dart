@@ -30,7 +30,7 @@ class PolicyArgs {
   /// [path] Path in which to create the policy. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
   /// [policy] Policy document. This is a JSON formatted string. For more information about building AWS IAM policy documents, see the AWS IAM Policy Document Guide
   /// [tags] Map of resource tags for the IAM Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  PolicyArgs({
+  const PolicyArgs({
     this.delayAfterPolicyCreationInMs,
     this.description,
     this.name,

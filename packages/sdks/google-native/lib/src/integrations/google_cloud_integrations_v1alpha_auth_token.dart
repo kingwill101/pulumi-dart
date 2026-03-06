@@ -12,7 +12,7 @@ class GoogleCloudIntegrationsV1alphaAuthToken {
   /// Creates a new [GoogleCloudIntegrationsV1alphaAuthToken].
   /// [token] The token for the auth type.
   /// [type] Authentication type, e.g. "Basic", "Bearer", etc.
-  GoogleCloudIntegrationsV1alphaAuthToken({
+  const GoogleCloudIntegrationsV1alphaAuthToken({
     this.token,
     this.type,
   });

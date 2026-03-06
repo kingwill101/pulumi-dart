@@ -25,7 +25,7 @@ class SchemaPackageHealthcareV1beta1 {
   /// [schematizedParsingType] Determines how messages that fail to parse are handled.
   /// [types] Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
   /// [unexpectedSegmentHandling] Determines how unexpected segments (segments not matched to the schema) are handled.
-  SchemaPackageHealthcareV1beta1({
+  const SchemaPackageHealthcareV1beta1({
     this.ignoreMinOccurs,
     this.schemas,
     this.schematizedParsingType,

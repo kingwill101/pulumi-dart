@@ -38,7 +38,7 @@ class DedicatedHostArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
   /// [tags] Resource tags.
-  DedicatedHostArgs({
+  const DedicatedHostArgs({
     this.autoReplaceOnFailure,
     required this.hostGroupName,
     this.hostName,

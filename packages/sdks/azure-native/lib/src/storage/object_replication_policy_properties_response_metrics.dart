@@ -9,7 +9,7 @@ class ObjectReplicationPolicyPropertiesResponseMetrics {
 
   /// Creates a new [ObjectReplicationPolicyPropertiesResponseMetrics].
   /// [enabled] Indicates whether object replication metrics feature is enabled for the policy.
-  ObjectReplicationPolicyPropertiesResponseMetrics({
+  const ObjectReplicationPolicyPropertiesResponseMetrics({
     this.enabled,
   });
 

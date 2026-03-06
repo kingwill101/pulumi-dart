@@ -35,7 +35,7 @@ class NamespaceArgs {
   /// [scope] The name of the Scope instance.
   /// [scopeId] Id of the scope
   /// [scopeNamespaceId] The client-provided identifier of the namespace.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.labels,
     this.namespaceLabels,
     this.project,

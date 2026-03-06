@@ -12,7 +12,7 @@ class ModuleModuleLink {
   /// Creates a new [ModuleModuleLink].
   /// [hash] A `hash` block as defined below.
   /// [uri] The URI of the module content (zip or nupkg).
-  ModuleModuleLink({
+  const ModuleModuleLink({
     this.hash,
     required this.uri,
   });

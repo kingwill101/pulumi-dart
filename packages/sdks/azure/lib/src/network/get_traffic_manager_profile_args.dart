@@ -21,7 +21,7 @@ class GetTrafficManagerProfileArgs {
   /// [resourceGroupName] Specifies the name of the resource group the Traffic Manager Profile is located in.
   /// [tags] A mapping of tags to assign to the resource.
   /// [trafficViewEnabled] Indicates whether Traffic View is enabled for the Traffic Manager profile.
-  GetTrafficManagerProfileArgs({
+  const GetTrafficManagerProfileArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

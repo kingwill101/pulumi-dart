@@ -12,7 +12,7 @@ class GetRuleArgs {
 
   /// Creates a new [GetRuleArgs].
   /// [name] Name of the WAF rule.
-  GetRuleArgs({
+  const GetRuleArgs({
     required this.name,
   });
 

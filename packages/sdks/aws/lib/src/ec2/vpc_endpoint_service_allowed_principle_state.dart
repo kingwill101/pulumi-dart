@@ -15,7 +15,7 @@ class VpcEndpointServiceAllowedPrincipleState {
   /// [principalArn] The ARN of the principal to allow permissions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointServiceId] The ID of the VPC endpoint service to allow permission.
-  VpcEndpointServiceAllowedPrincipleState({
+  const VpcEndpointServiceAllowedPrincipleState({
     this.principalArn,
     this.region,
     this.vpcEndpointServiceId,

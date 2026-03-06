@@ -16,7 +16,7 @@ class GclbTargetResponse {
   /// [ipConfigs] IP configurations for this Target Proxy where the Certificate Map is serving.
   /// [targetHttpsProxy] This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
   /// [targetSslProxy] This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
-  GclbTargetResponse({
+  const GclbTargetResponse({
     required this.ipConfigs,
     required this.targetHttpsProxy,
     required this.targetSslProxy,

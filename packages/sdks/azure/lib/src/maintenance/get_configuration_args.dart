@@ -15,7 +15,7 @@ class GetConfigurationArgs {
   /// Creates a new [GetConfigurationArgs].
   /// [name] Specifies the name of the Maintenance Configuration.
   /// [resourceGroupName] Specifies the name of the Resource Group where this Maintenance Configuration exists.
-  GetConfigurationArgs({
+  const GetConfigurationArgs({
     required this.name,
     required this.resourceGroupName,
   });

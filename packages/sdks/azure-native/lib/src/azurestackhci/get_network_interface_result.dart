@@ -57,7 +57,7 @@ class GetNetworkInterfaceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNetworkInterfaceResult({
+  const GetNetworkInterfaceResult({
     required this.azureApiVersion,
     this.createFromLocal,
     this.dnsSettings,

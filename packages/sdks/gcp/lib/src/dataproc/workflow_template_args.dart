@@ -46,7 +46,7 @@ class WorkflowTemplateArgs {
   /// [placement] Required. WorkflowTemplate scheduling information.
   /// [project] The project for the resource
   /// [version] Output only. The current version of this workflow template.
-  WorkflowTemplateArgs({
+  const WorkflowTemplateArgs({
     this.dagTimeout,
     this.encryptionConfig,
     required this.jobs,

@@ -26,7 +26,7 @@ class MuteConfigArgs {
   /// [muteConfigId] Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
   /// [name] This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
   /// [project] Optional.
-  MuteConfigArgs({
+  const MuteConfigArgs({
     this.description,
     this.displayName,
     required this.filter,

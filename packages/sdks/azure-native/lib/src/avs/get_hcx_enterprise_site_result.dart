@@ -30,7 +30,7 @@ class GetHcxEnterpriseSiteResult {
   /// [status] The status of the HCX Enterprise Site
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHcxEnterpriseSiteResult({
+  const GetHcxEnterpriseSiteResult({
     required this.activationKey,
     required this.azureApiVersion,
     required this.id,

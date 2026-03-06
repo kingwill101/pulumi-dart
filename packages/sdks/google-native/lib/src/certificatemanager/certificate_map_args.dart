@@ -25,7 +25,7 @@ class CertificateMapArgs {
   /// [location] Optional.
   /// [name] A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
   /// [project] Optional.
-  CertificateMapArgs({
+  const CertificateMapArgs({
     required this.certificateMapId,
     this.description,
     this.labels,

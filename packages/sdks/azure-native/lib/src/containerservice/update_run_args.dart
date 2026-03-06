@@ -42,7 +42,7 @@ class UpdateRunArgs {
   /// [strategy] The strategy defines the order in which the clusters will be updated.
   /// [updateRunName] The name of the UpdateRun resource.
   /// [updateStrategyId] The resource id of the FleetUpdateStrategy resource to reference.
-  UpdateRunArgs({
+  const UpdateRunArgs({
     required this.fleetName,
     required this.managedClusterUpdate,
     required this.resourceGroupName,

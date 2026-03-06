@@ -13,7 +13,7 @@ class LinkedIntegrationRuntimeRbacAuthorization {
   /// Creates a new [LinkedIntegrationRuntimeRbacAuthorization].
   /// [authorizationType] The authorization type for integration runtime sharing.
   /// [resourceId] The resource identifier of the integration runtime to be shared.
-  LinkedIntegrationRuntimeRbacAuthorization({
+  const LinkedIntegrationRuntimeRbacAuthorization({
     required this.authorizationType,
     required this.resourceId,
   });

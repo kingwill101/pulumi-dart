@@ -54,7 +54,7 @@ class ServerTlsPolicyState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [serverCertificate] Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
   /// [updateTime] Time the ServerTlsPolicy was updated in UTC.
-  ServerTlsPolicyState({
+  const ServerTlsPolicyState({
     this.allowOpen,
     this.createTime,
     this.description,

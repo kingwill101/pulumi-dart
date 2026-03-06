@@ -8,7 +8,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPassword
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField].
   /// [identifier] The name of the password field.
-  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField({
+  const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField({
     required this.identifier,
   });
 

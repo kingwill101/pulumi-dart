@@ -27,7 +27,7 @@ class IdentityProviderAadState {
   /// [clientSecret] Client secret of the Application in the AAD Identity Provider.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   /// [signinTenant] The AAD Tenant to use instead of Common when logging into Active Directory.
-  IdentityProviderAadState({
+  const IdentityProviderAadState({
     this.allowedTenants,
     this.apiManagementName,
     this.clientId,

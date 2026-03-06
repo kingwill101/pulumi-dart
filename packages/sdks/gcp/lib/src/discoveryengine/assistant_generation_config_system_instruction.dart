@@ -8,7 +8,7 @@ class AssistantGenerationConfigSystemInstruction {
 
   /// Creates a new [AssistantGenerationConfigSystemInstruction].
   /// [additionalSystemInstruction] Additional system instruction that will be added to the default system instruction.
-  AssistantGenerationConfigSystemInstruction({
+  const AssistantGenerationConfigSystemInstruction({
     this.additionalSystemInstruction,
   });
 

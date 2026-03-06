@@ -24,7 +24,7 @@ class GetAggregatorsArgs {
   /// [nameRegex] A regex string to filter results by aggregator name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
-  GetAggregatorsArgs({
+  const GetAggregatorsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

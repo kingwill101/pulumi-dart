@@ -8,7 +8,7 @@ class AzureMonitorAlertSettingsResponse {
 
   /// Creates a new [AzureMonitorAlertSettingsResponse].
   /// [alertsForAllJobFailures] Optional.
-  AzureMonitorAlertSettingsResponse({
+  const AzureMonitorAlertSettingsResponse({
     this.alertsForAllJobFailures,
   });
 

@@ -26,7 +26,7 @@ class GetAccountBlobContainerSASPermissions {
   /// [list] Should List permissions be enabled for this SAS?
   /// [read] Should Read permissions be enabled for this SAS?
   /// [write] Should Write permissions be enabled for this SAS?
-  GetAccountBlobContainerSASPermissions({
+  const GetAccountBlobContainerSASPermissions({
     required this.add,
     required this.create,
     required this.delete,

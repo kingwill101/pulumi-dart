@@ -28,7 +28,7 @@ class DataAccessScopeAllowedDataAccessLabel {
   /// [displayName] (Output)
   /// [ingestionLabel] Representation of an ingestion label type.
   /// [logType] The name of the log type.
-  DataAccessScopeAllowedDataAccessLabel({
+  const DataAccessScopeAllowedDataAccessLabel({
     this.assetNamespace,
     this.dataAccessLabel,
     this.displayName,

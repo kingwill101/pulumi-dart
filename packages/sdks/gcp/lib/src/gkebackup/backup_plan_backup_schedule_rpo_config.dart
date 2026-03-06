@@ -21,7 +21,7 @@ class BackupPlanBackupScheduleRpoConfig {
   /// Creates a new [BackupPlanBackupScheduleRpoConfig].
   /// [exclusionWindows] User specified time windows during which backup can NOT happen for this BackupPlan.
   /// [targetRpoMinutes] Defines the target RPO for the BackupPlan in minutes, which means the target
-  BackupPlanBackupScheduleRpoConfig({
+  const BackupPlanBackupScheduleRpoConfig({
     this.exclusionWindows,
     required this.targetRpoMinutes,
   });

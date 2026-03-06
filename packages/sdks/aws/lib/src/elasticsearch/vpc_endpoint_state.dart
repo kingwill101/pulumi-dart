@@ -19,7 +19,7 @@ class VpcEndpointState {
   /// [endpoint] The connection endpoint ID for connecting to the domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcOptions] Options to specify the subnets and security groups for the endpoint.
-  VpcEndpointState({
+  const VpcEndpointState({
     this.domainArn,
     this.endpoint,
     this.region,

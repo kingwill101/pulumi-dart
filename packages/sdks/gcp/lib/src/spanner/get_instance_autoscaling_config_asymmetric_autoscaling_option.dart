@@ -13,7 +13,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOption {
   /// Creates a new [GetInstanceAutoscalingConfigAsymmetricAutoscalingOption].
   /// [overrides] A nested object resource.
   /// [replicaSelections] A nested object resource.
-  GetInstanceAutoscalingConfigAsymmetricAutoscalingOption({
+  const GetInstanceAutoscalingConfigAsymmetricAutoscalingOption({
     required this.overrides,
     required this.replicaSelections,
   });

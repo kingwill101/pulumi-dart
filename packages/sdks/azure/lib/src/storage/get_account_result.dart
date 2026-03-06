@@ -288,7 +288,7 @@ class GetAccountResult {
   /// [secondaryWebMicrosoftHost] The microsoft routing hostname with port if applicable for web storage in the secondary location.
   /// [tableEncryptionKeyType] The encryption key type of the table.
   /// [tags] A mapping of tags to assigned to the resource.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accessTier,
     required this.accountKind,
     required this.accountReplicationType,

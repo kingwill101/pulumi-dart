@@ -18,7 +18,7 @@ class GetUserArgs {
   /// [labName] The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
-  GetUserArgs({
+  const GetUserArgs({
     required this.labName,
     required this.resourceGroupName,
     required this.userName,

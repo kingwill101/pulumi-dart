@@ -27,7 +27,7 @@ class LibraryInfoResponse {
   /// [provisioningStatus] Provisioning status of the library/package.
   /// [type] Type of the library.
   /// [uploadedTimestamp] The last update time of the library.
-  LibraryInfoResponse({
+  const LibraryInfoResponse({
     this.containerName,
     required this.creatorId,
     this.name,

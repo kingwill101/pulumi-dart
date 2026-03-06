@@ -11,7 +11,7 @@ class OneDashboardPageWidgetMarkdownInitialSorting {
   /// Creates a new [OneDashboardPageWidgetMarkdownInitialSorting].
   /// [direction] (Required) Defines the sort order. Accepted values are `asc` for ascending or `desc` for descending.
   /// [name] The title of the dashboard.
-  OneDashboardPageWidgetMarkdownInitialSorting({
+  const OneDashboardPageWidgetMarkdownInitialSorting({
     required this.direction,
     required this.name,
   });

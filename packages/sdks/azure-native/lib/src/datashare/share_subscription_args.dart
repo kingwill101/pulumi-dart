@@ -27,7 +27,7 @@ class ShareSubscriptionArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
   /// [sourceShareLocation] Source share location.
-  ShareSubscriptionArgs({
+  const ShareSubscriptionArgs({
     required this.accountName,
     this.expirationDate,
     required this.invitationId,

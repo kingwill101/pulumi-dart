@@ -19,7 +19,7 @@ class ConnectionSpark {
   /// [metastoreServiceConfig] Dataproc Metastore Service configuration for the connection.
   /// [serviceAccountId] (Output)
   /// [sparkHistoryServerConfig] Spark History Server configuration for the connection.
-  ConnectionSpark({
+  const ConnectionSpark({
     this.metastoreServiceConfig,
     this.serviceAccountId,
     this.sparkHistoryServerConfig,

@@ -38,7 +38,7 @@ class IcebergCatalogIamBindingArgs {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  IcebergCatalogIamBindingArgs({
+  const IcebergCatalogIamBindingArgs({
     this.condition,
     required this.members,
     this.name,

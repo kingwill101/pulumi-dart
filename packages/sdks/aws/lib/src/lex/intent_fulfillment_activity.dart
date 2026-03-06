@@ -14,7 +14,7 @@ class IntentFulfillmentActivity {
   /// Creates a new [IntentFulfillmentActivity].
   /// [codeHook] A description of the Lambda function that is run to fulfill the intent.
   /// [type] How the intent should be fulfilled, either by running a Lambda function or by
-  IntentFulfillmentActivity({
+  const IntentFulfillmentActivity({
     this.codeHook,
     required this.type,
   });

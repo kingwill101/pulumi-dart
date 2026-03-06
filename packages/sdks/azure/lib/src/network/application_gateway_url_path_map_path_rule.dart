@@ -41,7 +41,7 @@ class ApplicationGatewayUrlPathMapPathRule {
   /// [redirectConfigurationName] The Name of a Redirect Configuration to use for this Path Rule. Cannot be set if `backend_address_pool_name` or `backend_http_settings_name` is set.
   /// [rewriteRuleSetId] The ID of the associated Rewrite Rule Set.
   /// [rewriteRuleSetName] The Name of the Rewrite Rule Set which should be used for this URL Path Map. Only valid for v2 SKUs.
-  ApplicationGatewayUrlPathMapPathRule({
+  const ApplicationGatewayUrlPathMapPathRule({
     this.backendAddressPoolId,
     this.backendAddressPoolName,
     this.backendHttpSettingsId,

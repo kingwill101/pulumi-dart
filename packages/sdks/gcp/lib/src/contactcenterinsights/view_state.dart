@@ -30,7 +30,7 @@ class ViewState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. The most recent time at which the view was updated.
   /// [value] A filter to reduce conversation results to a specific subset.
-  ViewState({
+  const ViewState({
     this.createTime,
     this.displayName,
     this.location,

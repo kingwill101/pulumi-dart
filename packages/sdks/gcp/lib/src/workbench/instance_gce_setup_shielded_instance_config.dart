@@ -22,7 +22,7 @@ class InstanceGceSetupShieldedInstanceConfig {
   /// [enableIntegrityMonitoring] Optional. Defines whether the VM instance has integrity monitoring
   /// [enableSecureBoot] Optional. Defines whether the VM instance has Secure Boot enabled.
   /// [enableVtpm] Optional. Defines whether the VM instance has the vTPM enabled.
-  InstanceGceSetupShieldedInstanceConfig({
+  const InstanceGceSetupShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

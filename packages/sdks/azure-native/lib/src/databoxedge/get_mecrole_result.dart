@@ -38,7 +38,7 @@ class GetMECRoleResult {
   /// [roleStatus] Role status.
   /// [systemData] Metadata pertaining to creation and last modification of Role
   /// [type] The hierarchical type of the object.
-  GetMECRoleResult({
+  const GetMECRoleResult({
     required this.azureApiVersion,
     this.connectionString,
     this.controllerEndpoint,

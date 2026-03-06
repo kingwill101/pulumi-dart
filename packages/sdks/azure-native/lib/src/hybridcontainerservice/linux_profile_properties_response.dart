@@ -13,7 +13,7 @@ class LinuxProfilePropertiesResponse {
   /// Creates a new [LinuxProfilePropertiesResponse].
   /// [adminUsername] AdminUsername - The administrator username to use for Linux VMs.
   /// [ssh] SSH - SSH configuration for Linux-based VMs running on Azure.
-  LinuxProfilePropertiesResponse({
+  const LinuxProfilePropertiesResponse({
     this.adminUsername,
     this.ssh,
   });

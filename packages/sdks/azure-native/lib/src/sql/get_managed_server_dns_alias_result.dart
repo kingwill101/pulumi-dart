@@ -23,7 +23,7 @@ class GetManagedServerDnsAliasResult {
   /// [name] Resource name.
   /// [publicAzureDnsRecord] The fully qualified public DNS record for managed server alias
   /// [type] Resource type.
-  GetManagedServerDnsAliasResult({
+  const GetManagedServerDnsAliasResult({
     required this.azureApiVersion,
     required this.azureDnsRecord,
     required this.id,

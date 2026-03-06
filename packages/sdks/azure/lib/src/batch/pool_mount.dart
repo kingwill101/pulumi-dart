@@ -21,7 +21,7 @@ class PoolMount {
   /// [azureFileShares] A `azure_file_share` block defined as below.
   /// [cifsMounts] A `cifs_mount` block defined as below.
   /// [nfsMounts] A `nfs_mount` block defined as below.
-  PoolMount({
+  const PoolMount({
     this.azureBlobFileSystem,
     this.azureFileShares,
     this.cifsMounts,

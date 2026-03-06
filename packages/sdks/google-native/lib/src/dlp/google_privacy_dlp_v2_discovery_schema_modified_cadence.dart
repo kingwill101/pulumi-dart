@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
   /// Creates a new [GooglePrivacyDlpV2DiscoverySchemaModifiedCadence].
   /// [frequency] How frequently profiles may be updated when schemas are modified. Defaults to monthly.
   /// [types] The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
-  GooglePrivacyDlpV2DiscoverySchemaModifiedCadence({
+  const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence({
     this.frequency,
     this.types,
   });

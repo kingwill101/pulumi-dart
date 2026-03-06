@@ -67,7 +67,7 @@ class AwsDaxClusterProperties {
   /// [status] &lt;p&gt;The current status of the cluster.&lt;/p&gt;
   /// [subnetGroup] &lt;p&gt;The subnet group where the DAX cluster is running.&lt;/p&gt;
   /// [totalNodes] &lt;p&gt;The total number of nodes in the cluster.&lt;/p&gt;
-  AwsDaxClusterProperties({
+  const AwsDaxClusterProperties({
     this.activeNodes,
     this.clusterArn,
     this.clusterDiscoveryEndpoint,

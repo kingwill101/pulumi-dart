@@ -12,7 +12,7 @@ class SecretReplicationAuto {
 
   /// Creates a new [SecretReplicationAuto].
   /// [customerManagedEncryption] The customer-managed encryption configuration of the Secret.
-  SecretReplicationAuto({
+  const SecretReplicationAuto({
     this.customerManagedEncryption,
   });
 

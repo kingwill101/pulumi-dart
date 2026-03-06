@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp {
   /// Creates a new [GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp({
+  const GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp({
     required this.max,
     required this.min,
   });

@@ -8,7 +8,7 @@ class GcpIntegrationsVpcAccess {
 
   /// Creates a new [GcpIntegrationsVpcAccess].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsVpcAccess({
+  const GcpIntegrationsVpcAccess({
     this.metricsPollingInterval,
   });
 

@@ -12,7 +12,7 @@ class UpdateProfileResponse {
   /// Creates a new [UpdateProfileResponse].
   /// [rollingUpdateProfile] This profile allows the customers to customize the rolling update.
   /// [updateMode] Optional.
-  UpdateProfileResponse({
+  const UpdateProfileResponse({
     this.rollingUpdateProfile,
     this.updateMode,
   });

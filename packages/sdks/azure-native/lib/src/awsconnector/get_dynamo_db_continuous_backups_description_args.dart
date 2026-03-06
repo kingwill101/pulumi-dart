@@ -15,7 +15,7 @@ class GetDynamoDbContinuousBackupsDescriptionArgs {
   /// Creates a new [GetDynamoDbContinuousBackupsDescriptionArgs].
   /// [name] Name of DynamoDBContinuousBackupsDescription
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDynamoDbContinuousBackupsDescriptionArgs({
+  const GetDynamoDbContinuousBackupsDescriptionArgs({
     required this.name,
     required this.resourceGroupName,
   });

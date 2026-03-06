@@ -27,7 +27,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocol {
   /// [contextualHeaders] Configuration for the contextual headers.
   /// [gatewayIdentity] Gateway identity configuration.
   /// [metadataHeaders] Custom resource specific headers along with the values.
-  SecurityGatewayApplicationUpstreamProxyProtocol({
+  const SecurityGatewayApplicationUpstreamProxyProtocol({
     this.allowedClientHeaders,
     this.clientIp,
     this.contextualHeaders,

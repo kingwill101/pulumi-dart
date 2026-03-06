@@ -12,7 +12,7 @@ class RdsDbClusterEndpoint {
   /// Creates a new [RdsDbClusterEndpoint].
   /// [address] The connection endpoint for the DB cluster.
   /// [port] The port number that will accept connections on this DB cluster.
-  RdsDbClusterEndpoint({
+  const RdsDbClusterEndpoint({
     this.address,
     this.port,
   });

@@ -17,7 +17,7 @@ class CounterSetResourceK8sIoV1beta2 {
   /// Creates a new [CounterSetResourceK8sIoV1beta2].
   /// [counters] Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.
   /// [name] Name defines the name of the counter set. It must be a DNS label.
-  CounterSetResourceK8sIoV1beta2({
+  const CounterSetResourceK8sIoV1beta2({
     required this.counters,
     required this.name,
   });

@@ -34,7 +34,7 @@ class FeatureArgs {
   /// [name] The full, unique name of this Feature resource
   /// [project] The ID of the project in which the resource belongs.
   /// [spec] Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-  FeatureArgs({
+  const FeatureArgs({
     this.fleetDefaultMemberConfig,
     this.labels,
     required this.location,

@@ -66,7 +66,7 @@ class CacheRedisConfiguration {
   /// [rdbBackupMaxSnapshotCount] The maximum number of snapshots to create as a backup. Only supported for Premium SKUs.
   /// [rdbStorageConnectionString] The Connection String to the Storage Account. Only supported for Premium SKUs. In the format: `DefaultEndpointsProtocol=https;BlobEndpoint=${azurerm_storage_account.example.primary_blob_endpoint};AccountName=${azurerm_storage_account.example.name};AccountKey=${azurerm_storage_account.example.primary_access_key}`.
   /// [storageAccountSubscriptionId] The ID of the Subscription containing the Storage Account.
-  CacheRedisConfiguration({
+  const CacheRedisConfiguration({
     this.activeDirectoryAuthenticationEnabled,
     this.aofBackupEnabled,
     this.aofStorageConnectionString0,

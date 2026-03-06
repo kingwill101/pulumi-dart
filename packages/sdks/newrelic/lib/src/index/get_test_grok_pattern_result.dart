@@ -19,7 +19,7 @@ class GetTestGrokPatternResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [logLines] Required.
   /// [testGroks] Nested attribute containing information about the test of Grok pattern against a list of log lines.
-  GetTestGrokPatternResult({
+  const GetTestGrokPatternResult({
     this.accountId,
     required this.grok,
     required this.id,

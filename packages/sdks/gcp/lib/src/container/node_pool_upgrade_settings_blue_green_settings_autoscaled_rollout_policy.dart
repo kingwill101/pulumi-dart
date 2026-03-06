@@ -8,7 +8,7 @@ class NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
 
   /// Creates a new [NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy].
   /// [waitForDrainDuration] Time in seconds to wait after cordoning the blue pool before draining the nodes.
-  NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy({
+  const NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy({
     this.waitForDrainDuration,
   });
 

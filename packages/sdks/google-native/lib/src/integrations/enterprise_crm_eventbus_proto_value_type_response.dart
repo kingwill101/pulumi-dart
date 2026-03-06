@@ -25,7 +25,7 @@ class EnterpriseCrmEventbusProtoValueTypeResponse {
   /// [protoValue] Required.
   /// [stringArray] Required.
   /// [stringValue] Required.
-  EnterpriseCrmEventbusProtoValueTypeResponse({
+  const EnterpriseCrmEventbusProtoValueTypeResponse({
     required this.booleanValue,
     required this.doubleArray,
     required this.doubleValue,

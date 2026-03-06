@@ -44,7 +44,7 @@ class TagTemplateIamMemberState {
   /// [region] Template location region.
   /// [role] The role that should be applied. Only one
   /// [tagTemplate] Used to find the parent resource to bind the IAM policy to
-  TagTemplateIamMemberState({
+  const TagTemplateIamMemberState({
     this.condition,
     this.etag,
     this.member,

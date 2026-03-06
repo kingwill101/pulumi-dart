@@ -13,7 +13,7 @@ class CxWebhookGenericWebServiceServiceAccountAuthConfig {
 
   /// Creates a new [CxWebhookGenericWebServiceServiceAccountAuthConfig].
   /// [serviceAccount] The email address of the service account used to authenticate the webhook call.
-  CxWebhookGenericWebServiceServiceAccountAuthConfig({
+  const CxWebhookGenericWebServiceServiceAccountAuthConfig({
     required this.serviceAccount,
   });
 

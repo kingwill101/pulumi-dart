@@ -30,7 +30,7 @@ class WranglingDataFlow {
   /// [script] Power query mashup script.
   /// [sources] List of sources in Power Query.
   /// [type] Type of data flow.
-  WranglingDataFlow({
+  const WranglingDataFlow({
     this.annotations,
     this.description,
     this.documentLocale,

@@ -15,7 +15,7 @@ class GetLambdaFunctionCodeLocationArgs {
   /// Creates a new [GetLambdaFunctionCodeLocationArgs].
   /// [name] Name of LambdaFunctionCodeLocation
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLambdaFunctionCodeLocationArgs({
+  const GetLambdaFunctionCodeLocationArgs({
     required this.name,
     required this.resourceGroupName,
   });

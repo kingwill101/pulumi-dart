@@ -17,7 +17,7 @@ class GetIndexArgs {
   /// [databaseId] Required.
   /// [indexId] Required.
   /// [project] Optional.
-  GetIndexArgs({
+  const GetIndexArgs({
     required this.collectionGroupId,
     required this.databaseId,
     required this.indexId,

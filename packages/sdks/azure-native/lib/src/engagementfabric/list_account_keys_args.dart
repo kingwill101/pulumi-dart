@@ -15,7 +15,7 @@ class ListAccountKeysArgs {
   /// Creates a new [ListAccountKeysArgs].
   /// [accountName] Account Name
   /// [resourceGroupName] Resource Group Name
-  ListAccountKeysArgs({
+  const ListAccountKeysArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

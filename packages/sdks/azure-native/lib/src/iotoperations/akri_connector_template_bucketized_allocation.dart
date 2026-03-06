@@ -13,7 +13,7 @@ class AkriConnectorTemplateBucketizedAllocation {
   /// Creates a new [AkriConnectorTemplateBucketizedAllocation].
   /// [bucketSize] The bucketized allocation of AEPs for connectors.
   /// [policy] AkriConnectorTemplateAllocationPolicy properties.
-  AkriConnectorTemplateBucketizedAllocation({
+  const AkriConnectorTemplateBucketizedAllocation({
     required this.bucketSize,
     required this.policy,
   });

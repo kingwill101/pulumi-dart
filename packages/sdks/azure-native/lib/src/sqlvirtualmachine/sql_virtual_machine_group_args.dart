@@ -31,7 +31,7 @@ class SqlVirtualMachineGroupArgs {
   /// [sqlVirtualMachineGroupName] Name of the SQL virtual machine group.
   /// [tags] Resource tags.
   /// [wsfcDomainProfile] Cluster Active Directory domain profile.
-  SqlVirtualMachineGroupArgs({
+  const SqlVirtualMachineGroupArgs({
     this.location,
     required this.resourceGroupName,
     this.sqlImageOffer,

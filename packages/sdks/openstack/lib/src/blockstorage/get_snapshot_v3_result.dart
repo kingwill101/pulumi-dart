@@ -31,7 +31,7 @@ class GetSnapshotV3Result {
   /// [size] The size of the snapshot.
   /// [status] See Argument Reference above.
   /// [volumeId] See Argument Reference above.
-  GetSnapshotV3Result({
+  const GetSnapshotV3Result({
     required this.description,
     required this.id,
     required this.metadata,

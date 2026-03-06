@@ -14,7 +14,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
   /// [delimiter] The delimiter of the selection criteria being used.
   /// [maxDepth] The max depth of the selection criteria.
   /// [minStorageBytesPercentage] The minimum number of storage bytes percentage whose metrics will be selected.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria({
     this.delimiter,
     this.maxDepth,
     this.minStorageBytesPercentage,

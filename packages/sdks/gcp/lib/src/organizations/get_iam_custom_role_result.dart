@@ -24,7 +24,7 @@ class GetIamCustomRoleResult {
   /// [roleId] Required.
   /// [stage] Required.
   /// [title] Required.
-  GetIamCustomRoleResult({
+  const GetIamCustomRoleResult({
     required this.deleted,
     required this.description,
     required this.id,

@@ -17,7 +17,7 @@ class SecuritySettingsResponse {
   /// [immutabilitySettings] Immutability Settings of a vault
   /// [multiUserAuthorization] MUA Settings of a vault
   /// [softDeleteSettings] Soft delete Settings of a vault
-  SecuritySettingsResponse({
+  const SecuritySettingsResponse({
     this.immutabilitySettings,
     required this.multiUserAuthorization,
     this.softDeleteSettings,

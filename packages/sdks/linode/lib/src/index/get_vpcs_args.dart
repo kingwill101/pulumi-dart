@@ -12,7 +12,7 @@ class GetVpcsArgs {
 
   /// Creates a new [GetVpcsArgs].
   /// [filters] Optional.
-  GetVpcsArgs({
+  const GetVpcsArgs({
     this.filters,
   });
 

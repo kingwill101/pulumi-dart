@@ -28,7 +28,7 @@ class SqlCollectorOperationArgs {
   /// [projectName] Assessment Project Name
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  SqlCollectorOperationArgs({
+  const SqlCollectorOperationArgs({
     this.agentProperties,
     this.collectorName,
     this.discoverySiteId,

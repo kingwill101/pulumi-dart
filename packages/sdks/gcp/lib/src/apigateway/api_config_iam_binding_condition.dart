@@ -11,7 +11,7 @@ class ApiConfigIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ApiConfigIamBindingCondition({
+  const ApiConfigIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

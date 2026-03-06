@@ -26,7 +26,7 @@ class ManagedPolicyAttachmentsExclusiveArgs {
   /// [permissionSetArn] ARN of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  ManagedPolicyAttachmentsExclusiveArgs({
+  const ManagedPolicyAttachmentsExclusiveArgs({
     required this.instanceArn,
     required this.managedPolicyArns,
     required this.permissionSetArn,

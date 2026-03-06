@@ -23,7 +23,7 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
   /// [minLength] Minimum number of characters allowed.
   /// [passwordChangeInterval] Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
   /// [reuseInterval] Number of previous passwords that cannot be reused.
-  GetDatabaseInstancesInstanceSettingPasswordValidationPolicy({
+  const GetDatabaseInstancesInstanceSettingPasswordValidationPolicy({
     required this.complexity,
     required this.disallowUsernameSubstring,
     required this.enablePasswordPolicy,

@@ -26,7 +26,7 @@ class GetLifecyclePolicyDocumentRuleSelection {
   /// [tagPatternLists] You must specify a comma-separated list of image tag patterns that may contain wildcards (\*) on which to take action with your lifecycle policy. For example, if your images are tagged as `prod`, `prod1`, `prod2`, and so on, you would use the tag pattern list `["prod\*"]` to specify all of them. If you specify multiple tags, only the images with all specified tags are selected. There is a maximum limit of four wildcards (\*) per string. For example, `["*test*1*2*3", "test*1*2*3*"]` is valid but `["test*1*2*3*4*5*6"]` is invalid.
   /// [tagPrefixLists] You must specify a comma-separated list of image tag prefixes on which to take action with your lifecycle policy. For example, if your images are tagged as `prod`, `prod1`, `prod2`, and so on, you would use the tag prefix "prod" to specify all of them. If you specify multiple tags, only images with all specified tags are selected.
   /// [tagStatus] Determines whether the lifecycle policy rule that you are adding specifies a tag for an image. Acceptable options are `tagged`, `untagged`, or `any`. If you specify `any`, then all images have the rule evaluated against them. If you specify `tagged`, then you must also specify a `tag_prefix_list` value or a `tag_pattern_list` value. If you specify `untagged`, then you must omit both `tag_prefix_list` and `tag_pattern_list`.
-  GetLifecyclePolicyDocumentRuleSelection({
+  const GetLifecyclePolicyDocumentRuleSelection({
     required this.countNumber,
     required this.countType,
     this.countUnit,

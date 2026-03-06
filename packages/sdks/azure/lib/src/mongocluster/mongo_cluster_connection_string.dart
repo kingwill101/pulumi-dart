@@ -14,7 +14,7 @@ class MongoClusterConnectionString {
   /// [description] The description of the connection string.
   /// [name] The name which should be used for the MongoDB Cluster. Changing this forces a new resource to be created.
   /// [value] The value of the Mongo Cluster connection string. The `&lt;user&gt;:&lt;password&gt;` placeholder returned from API will be replaced by the real `administrator_username` and `administrator_password` if available in the state.
-  MongoClusterConnectionString({
+  const MongoClusterConnectionString({
     this.description,
     this.name,
     this.value,

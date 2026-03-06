@@ -27,7 +27,7 @@ class RelationshipPropertiesResponse {
   /// [labels] Optional set of labels (key-value pairs)
   /// [parentEntityName] Resource name of the parent entity
   /// [provisioningState] The status of the last operation.
-  RelationshipPropertiesResponse({
+  const RelationshipPropertiesResponse({
     required this.childEntityName,
     required this.deletionDate,
     required this.discoveredBy,

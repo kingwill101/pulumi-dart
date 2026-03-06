@@ -13,7 +13,7 @@ class GetExternalVpnGatewayArgs {
   /// Creates a new [GetExternalVpnGatewayArgs].
   /// [externalVpnGateway] Required.
   /// [project] Optional.
-  GetExternalVpnGatewayArgs({
+  const GetExternalVpnGatewayArgs({
     required this.externalVpnGateway,
     this.project,
   });

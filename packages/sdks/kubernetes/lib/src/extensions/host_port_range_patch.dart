@@ -12,7 +12,7 @@ class HostPortRangePatch {
   /// Creates a new [HostPortRangePatch].
   /// [max] max is the end of the range, inclusive.
   /// [min] min is the start of the range, inclusive.
-  HostPortRangePatch({
+  const HostPortRangePatch({
     this.max,
     this.min,
   });

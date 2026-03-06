@@ -10,7 +10,7 @@ class NetworkRuleSet {
 
   /// Creates a new [NetworkRuleSet].
   /// [virtualNetworkRules] The list of virtual network rules.
-  NetworkRuleSet({
+  const NetworkRuleSet({
     this.virtualNetworkRules,
   });
 

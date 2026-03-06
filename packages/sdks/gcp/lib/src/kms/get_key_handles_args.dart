@@ -22,7 +22,7 @@ class GetKeyHandlesArgs {
   /// [location] The Google Cloud Platform location for the KeyHandle.
   /// [project] The project in which the resource belongs. If it
   /// [resourceTypeSelector] The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
-  GetKeyHandlesArgs({
+  const GetKeyHandlesArgs({
     required this.location,
     this.project,
     required this.resourceTypeSelector,

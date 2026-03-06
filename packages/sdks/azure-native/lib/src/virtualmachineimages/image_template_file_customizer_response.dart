@@ -22,7 +22,7 @@ class ImageTemplateFileCustomizerResponse {
   /// [sha256Checksum] SHA256 checksum of the file provided in the sourceUri field above
   /// [sourceUri] The URI of the file to be uploaded for customizing the VM. It can be a github link, SAS URI for Azure Storage, etc
   /// [type] The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
-  ImageTemplateFileCustomizerResponse({
+  const ImageTemplateFileCustomizerResponse({
     this.destination,
     this.name,
     this.sha256Checksum,

@@ -17,7 +17,7 @@ class GetEntryArgs {
   /// [entryId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEntryArgs({
+  const GetEntryArgs({
     required this.entryGroupId,
     required this.entryId,
     required this.location,

@@ -22,7 +22,7 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
   /// [retainRule] Optional.
   /// [target] Optional.
   /// [targetRegion] Use only for DLM policies of `policy_type=IMAGE_MANAGEMENT`. The target Region or the Amazon Resource Name (ARN) of the target Outpost for the snapshot copies.
-  LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule({
+  const LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule({
     this.cmkArn,
     this.copyTags,
     this.deprecateRule,

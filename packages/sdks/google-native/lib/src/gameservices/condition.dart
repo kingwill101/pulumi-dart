@@ -24,7 +24,7 @@ class Condition {
   /// [svc] Trusted attributes discharged by the service.
   /// [sys] Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
   /// [values] The objects of the condition.
-  Condition({
+  const Condition({
     this.iam,
     this.op,
     this.svc,

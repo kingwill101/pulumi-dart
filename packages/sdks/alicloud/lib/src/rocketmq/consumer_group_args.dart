@@ -28,7 +28,7 @@ class ConsumerGroupArgs {
   /// [instanceId] Instance ID.
   /// [maxReceiveTps] Maximum received message tps.
   /// [remark] Custom remarks.
-  ConsumerGroupArgs({
+  const ConsumerGroupArgs({
     required this.consumeRetryPolicy,
     required this.consumerGroupId,
     this.deliveryOrderType,

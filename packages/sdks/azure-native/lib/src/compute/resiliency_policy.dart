@@ -18,7 +18,7 @@ class ResiliencyPolicy {
   /// [automaticZoneRebalancingPolicy] The configuration parameters used while performing automatic AZ balancing.
   /// [resilientVMCreationPolicy] The configuration parameters used while performing resilient VM creation.
   /// [resilientVMDeletionPolicy] The configuration parameters used while performing resilient VM deletion.
-  ResiliencyPolicy({
+  const ResiliencyPolicy({
     this.automaticZoneRebalancingPolicy,
     this.resilientVMCreationPolicy,
     this.resilientVMDeletionPolicy,

@@ -34,7 +34,7 @@ class EmailTemplateArgs {
   /// [subject] Subject of the Template.
   /// [templateName] Email Template Name Identifier.
   /// [title] Title of the Template.
-  EmailTemplateArgs({
+  const EmailTemplateArgs({
     this.body,
     this.description,
     this.parameters,

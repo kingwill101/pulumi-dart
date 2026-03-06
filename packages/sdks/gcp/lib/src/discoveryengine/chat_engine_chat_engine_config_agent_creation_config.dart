@@ -17,7 +17,7 @@ class ChatEngineChatEngineConfigAgentCreationConfig {
   /// [defaultLanguageCode] The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
   /// [location] Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
   /// [timeZone] The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-  ChatEngineChatEngineConfigAgentCreationConfig({
+  const ChatEngineChatEngineConfigAgentCreationConfig({
     this.business,
     required this.defaultLanguageCode,
     this.location,

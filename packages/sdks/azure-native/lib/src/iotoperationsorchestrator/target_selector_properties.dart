@@ -9,7 +9,7 @@ class TargetSelectorProperties {
 
   /// Creates a new [TargetSelectorProperties].
   /// [name] Name of the target.
-  TargetSelectorProperties({
+  const TargetSelectorProperties({
     this.name,
   });
 

@@ -48,7 +48,7 @@ class GetTriggerResult {
   /// [transport] Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
   /// [uid] Server-assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   /// [updateTime] The last-modified time.
-  GetTriggerResult({
+  const GetTriggerResult({
     required this.channel,
     required this.conditions,
     required this.createTime,

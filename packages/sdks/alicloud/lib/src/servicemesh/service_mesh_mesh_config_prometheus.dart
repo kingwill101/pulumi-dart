@@ -11,7 +11,7 @@ class ServiceMeshMeshConfigPrometheus {
   /// Creates a new [ServiceMeshMeshConfigPrometheus].
   /// [externalUrl] Prometheus service addresses (enabled external Prometheus when the system automatically populates)
   /// [useExternal] Whether to enable external Prometheus
-  ServiceMeshMeshConfigPrometheus({
+  const ServiceMeshMeshConfigPrometheus({
     this.externalUrl,
     this.useExternal,
   });

@@ -15,7 +15,7 @@ class TemplateAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Skip disassociating the quota increase template upon destruction. This will remove the resource from Terraform state, but leave the remote association in place.
   /// [status] Association status. Creating this resource will result in an `ASSOCIATED` status, and quota increase requests in the template are automatically applied to new AWS accounts in the organization.
-  TemplateAssociationState({
+  const TemplateAssociationState({
     this.region,
     this.skipDestroy,
     this.status,

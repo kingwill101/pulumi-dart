@@ -16,7 +16,7 @@ class DeploymentGroupEc2TagSetEc2TagFilter {
   /// [key] The key of the tag filter.
   /// [type] The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
   /// [value] The value of the tag filter.
-  DeploymentGroupEc2TagSetEc2TagFilter({
+  const DeploymentGroupEc2TagSetEc2TagFilter({
     this.key,
     this.type,
     this.value,

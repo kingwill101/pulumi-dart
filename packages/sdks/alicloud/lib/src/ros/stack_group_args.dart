@@ -56,7 +56,7 @@ class StackGroupArgs {
   /// [templateId] The ID of the template.
   /// [templateUrl] The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
   /// [templateVersion] The version of the template.
-  StackGroupArgs({
+  const StackGroupArgs({
     this.administrationRoleName,
     this.autoDeployment,
     this.capabilities,

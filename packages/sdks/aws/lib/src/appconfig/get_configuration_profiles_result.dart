@@ -15,7 +15,7 @@ class GetConfigurationProfilesResult {
   /// [configurationProfileIds] Set of Configuration Profile IDs associated with the AppConfig Application.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetConfigurationProfilesResult({
+  const GetConfigurationProfilesResult({
     required this.applicationId,
     required this.configurationProfileIds,
     required this.id,

@@ -17,7 +17,7 @@ class MulticastGroupConsumerActivationState {
 
   /// Creates a new [MulticastGroupConsumerActivationState].
   /// [state] (Output)
-  MulticastGroupConsumerActivationState({
+  const MulticastGroupConsumerActivationState({
     this.state,
   });
 

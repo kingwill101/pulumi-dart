@@ -8,7 +8,7 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader {
 
   /// Creates a new [WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader({
+  const WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

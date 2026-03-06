@@ -16,7 +16,7 @@ class ConnectionStatusDefinition {
   /// [error] Connection error
   /// [status] The gateway status
   /// [target] Target of the error
-  ConnectionStatusDefinition({
+  const ConnectionStatusDefinition({
     this.error,
     this.status,
     this.target,

@@ -18,7 +18,7 @@ class GetAssessmentArgs {
   /// [assessmentName] The Assessment Key - Unique key for the assessment type
   /// [expand] OData expand. Optional.
   /// [resourceId] The identifier of the resource.
-  GetAssessmentArgs({
+  const GetAssessmentArgs({
     required this.assessmentName,
     this.expand,
     required this.resourceId,

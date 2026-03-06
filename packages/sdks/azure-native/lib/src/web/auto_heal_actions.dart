@@ -18,7 +18,7 @@ class AutoHealActions {
   /// [actionType] Predefined action to be taken.
   /// [customAction] Custom action to be taken.
   /// [minProcessExecutionTime] Minimum time the process must execute
-  AutoHealActions({
+  const AutoHealActions({
     this.actionType,
     this.customAction,
     this.minProcessExecutionTime,

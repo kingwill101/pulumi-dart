@@ -47,7 +47,7 @@ class AzureFunctionLinkedService {
   /// [resourceId] Allowed token audiences for azure function. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureFunctionLinkedService({
+  const AzureFunctionLinkedService({
     this.annotations,
     this.authentication,
     this.connectVia,

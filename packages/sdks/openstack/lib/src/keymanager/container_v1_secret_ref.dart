@@ -11,7 +11,7 @@ class ContainerV1SecretRef {
   /// Creates a new [ContainerV1SecretRef].
   /// [name] The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
   /// [secretRef] The secret reference / where to find the secret, URL.
-  ContainerV1SecretRef({
+  const ContainerV1SecretRef({
     this.name,
     required this.secretRef,
   });

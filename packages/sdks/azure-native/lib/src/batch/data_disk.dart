@@ -29,7 +29,7 @@ class DataDisk {
   /// [diskSizeGB] The initial disk size in GB when creating new data disk.
   /// [lun] The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
   /// [storageAccountType] If omitted, the default is "Standard_LRS". Values are:
-  DataDisk({
+  const DataDisk({
     this.caching,
     required this.diskSizeGB,
     required this.lun,

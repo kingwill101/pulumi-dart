@@ -13,7 +13,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
   /// [inputLossAction] Specifies behavior of last resort when input video os lost.
   /// [timedMetadataId3Frame] Indicates ID3 frame that has the timecode.
   /// [timedMetadataId3Period] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings({
     this.inputLossAction,
     this.timedMetadataId3Frame,
     this.timedMetadataId3Period,

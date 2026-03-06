@@ -9,7 +9,7 @@ class JobDeliveryInfoResponse {
 
   /// Creates a new [JobDeliveryInfoResponse].
   /// [scheduledDateTime] Scheduled date time.
-  JobDeliveryInfoResponse({
+  const JobDeliveryInfoResponse({
     this.scheduledDateTime,
   });
 

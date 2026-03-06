@@ -67,7 +67,7 @@ class JobArgs {
   /// [runExecutionToken] A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
   /// [startExecutionToken] A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
   /// [template] The template used to create executions for this Job.
-  JobArgs({
+  const JobArgs({
     this.annotations,
     this.binaryAuthorization,
     this.client,

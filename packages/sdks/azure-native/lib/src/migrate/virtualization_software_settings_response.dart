@@ -9,7 +9,7 @@ class VirtualizationSoftwareSettingsResponse {
 
   /// Creates a new [VirtualizationSoftwareSettingsResponse].
   /// [vMwareCloudFoundationLicenseCost] VMware cloud foundation license cost.
-  VirtualizationSoftwareSettingsResponse({
+  const VirtualizationSoftwareSettingsResponse({
     required this.vMwareCloudFoundationLicenseCost,
   });
 

@@ -23,7 +23,7 @@ class RunBookDraft {
   /// [lastModifiedTime] Optional.
   /// [outputTypes] Specifies the output types of the runbook.
   /// [parameters] A list of `parameters` block as defined below.
-  RunBookDraft({
+  const RunBookDraft({
     this.contentLink,
     this.creationTime,
     this.editModeEnabled,

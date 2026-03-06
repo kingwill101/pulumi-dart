@@ -14,7 +14,7 @@ class StatelessRulesAndCustomActions {
   /// Creates a new [StatelessRulesAndCustomActions].
   /// [customActions] Property customActions
   /// [statelessRules] Property statelessRules
-  StatelessRulesAndCustomActions({
+  const StatelessRulesAndCustomActions({
     this.customActions,
     this.statelessRules,
   });

@@ -26,7 +26,7 @@ class ImportJobArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [protectionLevel] Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-  ImportJobArgs({
+  const ImportJobArgs({
     this.importJobId,
     required this.importMethod,
     required this.keyRingId,

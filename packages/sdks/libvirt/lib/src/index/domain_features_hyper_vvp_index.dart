@@ -8,7 +8,7 @@ class DomainFeaturesHyperVVpIndex {
 
   /// Creates a new [DomainFeaturesHyperVVpIndex].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVVpIndex({
+  const DomainFeaturesHyperVVpIndex({
     this.state,
   });
 

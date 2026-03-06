@@ -15,7 +15,7 @@ class CustomRoutingListenerState {
   /// [acceleratorArn] The Amazon Resource Name (ARN) of a custom routing accelerator.
   /// [arn] Optional.
   /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-  CustomRoutingListenerState({
+  const CustomRoutingListenerState({
     this.acceleratorArn,
     this.arn,
     this.portRanges,

@@ -12,7 +12,7 @@ class StackProperties {
   /// Creates a new [StackProperties].
   /// [id] Id of the ClusterStack.
   /// [version] Version of the ClusterStack
-  StackProperties({
+  const StackProperties({
     this.id,
     this.version,
   });

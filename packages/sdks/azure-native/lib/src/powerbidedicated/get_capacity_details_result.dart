@@ -50,7 +50,7 @@ class GetCapacityDetailsResult {
   /// [tags] Resource tags.
   /// [tenantId] Tenant ID for the capacity. Used for creating Pro Plus capacity.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCapacityDetailsResult({
+  const GetCapacityDetailsResult({
     this.administration,
     required this.azureApiVersion,
     required this.friendlyName,

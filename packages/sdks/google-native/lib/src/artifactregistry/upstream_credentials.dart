@@ -10,7 +10,7 @@ class UpstreamCredentials {
 
   /// Creates a new [UpstreamCredentials].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.
-  UpstreamCredentials({
+  const UpstreamCredentials({
     this.usernamePasswordCredentials,
   });
 

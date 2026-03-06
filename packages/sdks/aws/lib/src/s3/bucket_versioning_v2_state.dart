@@ -22,7 +22,7 @@ class BucketVersioningV2State {
   /// [mfa] Concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [versioningConfiguration] Configuration block for the versioning parameters. See below.
-  BucketVersioningV2State({
+  const BucketVersioningV2State({
     this.bucket,
     this.expectedBucketOwner,
     this.mfa,

@@ -27,7 +27,7 @@ class WorkerProfile {
   /// [name] The worker profile name.
   /// [subnetId] The Azure resource ID of the worker subnet.
   /// [vmSize] The size of the worker VMs.
-  WorkerProfile({
+  const WorkerProfile({
     this.count,
     this.diskEncryptionSetId,
     this.diskSizeGB,

@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [clusterName] The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.clusterName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

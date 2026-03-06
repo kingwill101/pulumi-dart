@@ -42,7 +42,7 @@ class EffectiveConnectivityConfigurationResponse {
   /// [isGlobal] Flag if global mesh is supported.
   /// [provisioningState] The provisioning state of the connectivity configuration resource.
   /// [resourceGuid] Unique identifier for this resource.
-  EffectiveConnectivityConfigurationResponse({
+  const EffectiveConnectivityConfigurationResponse({
     required this.appliesToGroups,
     this.configurationGroups,
     required this.connectivityTopology,

@@ -34,7 +34,7 @@ class AppArgs {
   /// [spaceName] The name of the space. At least one of `user_profile_name` or `space_name` required.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userProfileName] The user profile name. At least one of `user_profile_name` or `space_name` required.
-  AppArgs({
+  const AppArgs({
     required this.appName,
     required this.appType,
     required this.domainId,

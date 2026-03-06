@@ -81,7 +81,7 @@ class FrontdoorRuleConditions {
   /// [urlFileExtensionConditions] A `url_file_extension_condition` block as defined below.
   /// [urlFilenameConditions] A `url_filename_condition` block as defined below.
   /// [urlPathConditions] A `url_path_condition` block as defined below.
-  FrontdoorRuleConditions({
+  const FrontdoorRuleConditions({
     this.clientPortConditions,
     this.cookiesConditions,
     this.hostNameConditions,

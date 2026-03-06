@@ -24,7 +24,7 @@ class PrivateAccessArgs {
   /// [publicNetworkAccess] Public Network Access Control for PrivateAccess resource.
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [tags] Resource tags.
-  PrivateAccessArgs({
+  const PrivateAccessArgs({
     this.location,
     this.privateAccessName,
     this.publicNetworkAccess,

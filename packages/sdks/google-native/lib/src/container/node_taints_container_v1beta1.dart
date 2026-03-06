@@ -10,7 +10,7 @@ class NodeTaintsContainerV1beta1 {
 
   /// Creates a new [NodeTaintsContainerV1beta1].
   /// [taints] List of node taints.
-  NodeTaintsContainerV1beta1({
+  const NodeTaintsContainerV1beta1({
     this.taints,
   });
 

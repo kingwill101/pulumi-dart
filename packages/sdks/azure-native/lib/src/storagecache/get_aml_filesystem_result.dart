@@ -74,7 +74,7 @@ class GetAmlFilesystemResult {
   /// [throughputProvisionedMBps] Throughput provisioned in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] Availability zones for resources. This field should only contain a single element in the array.
-  GetAmlFilesystemResult({
+  const GetAmlFilesystemResult({
     required this.azureApiVersion,
     required this.clientInfo,
     this.encryptionSettings,

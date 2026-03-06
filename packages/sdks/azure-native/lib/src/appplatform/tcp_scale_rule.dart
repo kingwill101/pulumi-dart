@@ -13,7 +13,7 @@ class TcpScaleRule {
   /// Creates a new [TcpScaleRule].
   /// [auth] Authentication secrets for the tcp scale rule.
   /// [metadata] Metadata properties to describe tcp scale rule.
-  TcpScaleRule({
+  const TcpScaleRule({
     this.auth,
     this.metadata,
   });

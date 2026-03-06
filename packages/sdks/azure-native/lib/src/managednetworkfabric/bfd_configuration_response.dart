@@ -15,7 +15,7 @@ class BfdConfigurationResponse {
   /// [administrativeState] Administrative state of the BfdConfiguration. Example: Enabled | Disabled.
   /// [intervalInMilliSeconds] Interval in milliseconds. Example: 300.
   /// [multiplier] Multiplier for the Bfd Configuration. Example: 5.
-  BfdConfigurationResponse({
+  const BfdConfigurationResponse({
     required this.administrativeState,
     this.intervalInMilliSeconds,
     this.multiplier,

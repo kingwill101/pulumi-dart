@@ -21,7 +21,7 @@ class SiteOriginClientCertificateArgs {
   /// [privateKey] The private key of the certificate.
   /// [siteId] Site ID.
   /// [siteOriginClientCertificateName] The certificate name.
-  SiteOriginClientCertificateArgs({
+  const SiteOriginClientCertificateArgs({
     required this.certificate,
     required this.privateKey,
     required this.siteId,

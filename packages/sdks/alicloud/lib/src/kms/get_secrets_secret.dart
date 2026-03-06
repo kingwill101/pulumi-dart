@@ -41,7 +41,7 @@ class GetSecretsSecret {
   /// [tags] A mapping of tags to assign to the resource, and can be used to filter secrets.
   /// [versionId] (Available since v1.124.0)  The version number of the initial version.
   /// [versionStages] (Available since v1.124.0)  The stage labels that mark the new secret version.
-  GetSecretsSecret({
+  const GetSecretsSecret({
     required this.arn,
     required this.description,
     required this.encryptionKeyId,

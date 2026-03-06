@@ -15,7 +15,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
   /// [dayOfWeek] A day of the week.
   /// [dayOffset] Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
   /// [weekOrdinal] Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-  PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth({
+  const PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth({
     required this.dayOfWeek,
     this.dayOffset,
     required this.weekOrdinal,

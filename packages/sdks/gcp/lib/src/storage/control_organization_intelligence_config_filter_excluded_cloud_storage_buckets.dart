@@ -8,7 +8,7 @@ class ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets {
 
   /// Creates a new [ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets].
   /// [bucketIdRegexes] List of bucket id regexes to exclude in the storage intelligence plan.
-  ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets({
+  const ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets({
     required this.bucketIdRegexes,
   });
 

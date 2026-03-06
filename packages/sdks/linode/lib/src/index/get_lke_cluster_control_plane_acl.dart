@@ -12,7 +12,7 @@ class GetLkeClusterControlPlaneAcl {
   /// Creates a new [GetLkeClusterControlPlaneAcl].
   /// [addresses] A list of ip addresses to allow.
   /// [enabled] The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
-  GetLkeClusterControlPlaneAcl({
+  const GetLkeClusterControlPlaneAcl({
     required this.addresses,
     required this.enabled,
   });

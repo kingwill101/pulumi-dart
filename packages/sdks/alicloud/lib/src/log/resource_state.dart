@@ -21,7 +21,7 @@ class ResourceState {
   /// [name] The meta store's name, can be used as table name.
   /// [schema] The meta store's schema info, which is json string format, used to define table's fields.
   /// [type] The meta store's type, userdefine e.g.
-  ResourceState({
+  const ResourceState({
     this.description,
     this.extInfo,
     this.name,

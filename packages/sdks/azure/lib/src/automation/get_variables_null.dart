@@ -19,7 +19,7 @@ class GetVariablesNull {
   /// [id] Required.
   /// [name] The name of the Automation Variable.
   /// [value] The value of the Automation Variable.
-  GetVariablesNull({
+  const GetVariablesNull({
     required this.description,
     required this.encrypted,
     required this.id,

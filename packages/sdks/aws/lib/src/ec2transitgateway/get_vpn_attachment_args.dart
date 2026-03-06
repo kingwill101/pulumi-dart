@@ -25,7 +25,7 @@ class GetVpnAttachmentArgs {
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired Transit Gateway VPN Attachment.
   /// [transitGatewayId] Identifier of the EC2 Transit Gateway.
   /// [vpnConnectionId] Identifier of the EC2 VPN Connection.
-  GetVpnAttachmentArgs({
+  const GetVpnAttachmentArgs({
     this.filters,
     this.region,
     this.tags,

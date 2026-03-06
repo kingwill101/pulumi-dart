@@ -11,7 +11,7 @@ class LocationHdfsNameNode {
   /// Creates a new [LocationHdfsNameNode].
   /// [hostname] The hostname of the NameNode in the HDFS cluster. This value is the IP address or Domain Name Service (DNS) name of the NameNode. An agent that's installed on-premises uses this hostname to communicate with the NameNode in the network.
   /// [port] The port that the NameNode uses to listen to client requests.
-  LocationHdfsNameNode({
+  const LocationHdfsNameNode({
     required this.hostname,
     required this.port,
   });

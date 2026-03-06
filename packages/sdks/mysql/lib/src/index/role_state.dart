@@ -9,7 +9,7 @@ class RoleState {
 
   /// Creates a new [RoleState].
   /// [name] The name of the role.
-  RoleState({
+  const RoleState({
     this.name,
   });
 

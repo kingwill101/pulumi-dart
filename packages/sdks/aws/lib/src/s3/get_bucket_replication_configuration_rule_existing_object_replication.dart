@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleExistingObjectReplication {
 
   /// Creates a new [GetBucketReplicationConfigurationRuleExistingObjectReplication].
   /// [status] Required.
-  GetBucketReplicationConfigurationRuleExistingObjectReplication({
+  const GetBucketReplicationConfigurationRuleExistingObjectReplication({
     required this.status,
   });
 

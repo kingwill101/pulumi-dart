@@ -15,7 +15,7 @@ class ResourceShareAccepterArgs {
   /// Creates a new [ResourceShareAccepterArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [shareArn] The ARN of the resource share.
-  ResourceShareAccepterArgs({
+  const ResourceShareAccepterArgs({
     this.region,
     required this.shareArn,
   });

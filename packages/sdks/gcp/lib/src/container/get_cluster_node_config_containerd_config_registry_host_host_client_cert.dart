@@ -8,7 +8,7 @@ class GetClusterNodeConfigContainerdConfigRegistryHostHostClientCert {
 
   /// Creates a new [GetClusterNodeConfigContainerdConfigRegistryHostHostClientCert].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the client certificate.
-  GetClusterNodeConfigContainerdConfigRegistryHostHostClientCert({
+  const GetClusterNodeConfigContainerdConfigRegistryHostHostClientCert({
     required this.gcpSecretManagerSecretUri,
   });
 

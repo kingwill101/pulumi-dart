@@ -15,7 +15,7 @@ class GatewayApiArgs {
   /// Creates a new [GatewayApiArgs].
   /// [apiId] The Identifier of the API Management API within the API Management Service. Changing this forces a new API Management Gateway API to be created.
   /// [gatewayId] The Identifier for the API Management Gateway. Changing this forces a new API Management Gateway API to be created.
-  GatewayApiArgs({
+  const GatewayApiArgs({
     required this.apiId,
     required this.gatewayId,
   });

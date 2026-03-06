@@ -13,7 +13,7 @@ class ListFirewallPolicyIdpsSignatureResult {
   /// Creates a new [ListFirewallPolicyIdpsSignatureResult].
   /// [matchingRecordsCount] Number of total records matching the query.
   /// [signatures] Array containing the results of the query
-  ListFirewallPolicyIdpsSignatureResult({
+  const ListFirewallPolicyIdpsSignatureResult({
     this.matchingRecordsCount,
     this.signatures,
   });

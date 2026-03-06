@@ -9,7 +9,7 @@ class ParameterValuesValue {
 
   /// Creates a new [ParameterValuesValue].
   /// [value] The value of the parameter.
-  ParameterValuesValue({
+  const ParameterValuesValue({
     this.value,
   });
 

@@ -21,7 +21,7 @@ class SuppressionScheduleResponse {
   /// [recurrenceValues] Specifies the values for recurrence pattern
   /// [startDate] Start date for suppression
   /// [startTime] Start time for suppression
-  SuppressionScheduleResponse({
+  const SuppressionScheduleResponse({
     this.endDate,
     this.endTime,
     this.recurrenceValues,

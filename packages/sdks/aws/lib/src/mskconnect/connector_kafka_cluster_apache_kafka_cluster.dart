@@ -12,7 +12,7 @@ class ConnectorKafkaClusterApacheKafkaCluster {
   /// Creates a new [ConnectorKafkaClusterApacheKafkaCluster].
   /// [bootstrapServers] The bootstrap servers of the cluster.
   /// [vpc] Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster. See `vpc` Block for details.
-  ConnectorKafkaClusterApacheKafkaCluster({
+  const ConnectorKafkaClusterApacheKafkaCluster({
     required this.bootstrapServers,
     required this.vpc,
   });
